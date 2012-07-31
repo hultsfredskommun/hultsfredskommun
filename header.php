@@ -71,7 +71,7 @@
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
 		<hgroup>
-			<h1 id="logo"><span><a href="/wordpress"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Hultsfreds_kommun_logga.png" alt="<?php bloginfo( 'name' ); ?>" /></a></span></h1>
+			<h1 id="logo"><span><a href="/hultsfred"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Hultsfreds_kommun_logga.png" alt="<?php bloginfo( 'name' ); ?>" /></a></span></h1>
 			
 			
 			<?php //dynamic_sidebar('sidebar-top-link'); ?>
@@ -90,38 +90,10 @@
 			
 		</hgroup>
 		
-		<div id="searchnavigation">
-			<ul>
-				<li><span id="searchnavigation-ao">A-Ö</span></li>
-				<li><span id="searchnavigation-map" >Karta</span></li>
-			</ul>
+		<div id="searchnavigation">			
 			<?php get_search_form(); ?>
-			<div id="searchnavigation-ao-div">
-				<div class="letters">
-					<?php foreach(range('a', 'z') as $letter) { ?>
-						<a href="#" class=letter><?php echo $letter; ?></a>
-					<?php } ?>
-					<?php foreach(array("å","ä","ö") as $letter) { ?>
-						<a href="#" class=letter><?php echo $letter; ?></a> 
-						<?php //if ($letter != "ö") echo "|"; ?>
-					<?php } ?>
-				</div>
-				<div id="aoplaceholder">&nbsp;</div>
-			</div>
-			<div class="clear">&nbsp;</div>
 		</div>
-		<div id="access-selector" style="display: none">	
-			<ul id="menu-selector" class="menu">
-				<?php wp_nav_menu( array( 
-						'theme_location' => 'primary',
-						'menu' => 'selector',
-						'echo' => true,
-						'depth' => 1,
-						'container_class' => 'menu-wrapper',
-						'items_wrap' => '%3$s'
-					) ); ?>
-			</ul>
-		</div>
+		
 		<nav id="access" role="navigation">
 			<ul id="menu" class="menu">
 				<a class="dropdown-menu">Meny<img id="dropdown-image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/downarrow.png" /></a>
