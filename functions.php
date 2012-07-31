@@ -79,6 +79,9 @@ function twentyeleven_setup() {
 	// Grab hk documents.
 	require( get_template_directory() . '/inc/hk-documents.php' );
 
+	// Grab hk menu widget.
+	require( get_template_directory() . '/inc/hk-menu-widget.php' );
+
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );
 
@@ -114,6 +117,35 @@ function twentyeleven_setup() {
 
 }
 endif; // twentyeleven_setup
+
+
+
+/**
+ * add theme javascript file and needed jquery 
+ */
+
+wp_enqueue_script(
+	'history_js',
+	get_stylesheet_directory_uri() . '/js/native.history.js',
+	array('jquery'),
+	'1.0',
+	true
+);
+wp_enqueue_script(
+	'hultsfred_js',
+	get_stylesheet_directory_uri() . '/js/hultsfred.js',
+	array('jquery','jquery-ui-core','history_js'), /*,'jquery-ui-tabs'*/
+	'1.0',
+	true
+);
+wp_enqueue_script(
+	'cycle_lite_js',
+	get_stylesheet_directory_uri() . '/js/jquery.cycle.lite.js',
+	array('jquery'),
+	'1.0',
+	true
+);
+
 
 
 /**
