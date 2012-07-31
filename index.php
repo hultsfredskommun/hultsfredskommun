@@ -20,32 +20,36 @@ get_header(); ?>
 	</div>
 	
 	<div id="content" role="main">
-		<div id="sticky-posts">
-			<?php 
-				/* Get all sticky posts */
-				$sticky = get_option( 'sticky_posts' );
+		<?php 
+			/* Get all sticky posts */
+			$sticky = get_option( 'sticky_posts' );
+			
+			if( isset($sticky) ) :
+				echo '<div id="sticky-posts">';
 				
 				/* Sort the stickies with the newest ones at the top */
 				rsort( $sticky );
 				
-				/* Get the 2 newest stickies (change 2 for a different number) */
-				$sticky = array_slice( $sticky, 0, 2 );
+				/* Get the 5 newest stickies (change 5 for a different number) */
+				$sticky = array_slice( $sticky, 0, 5 );
 
 				/* Query sticky posts */
 				query_posts( array( 'post__in' => $sticky, /*'cat__in' => ,*/ 'caller_get_posts' => 1 ) );
-			?>
-			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>			
+		?>
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>			
 				<div <?php post_class(); ?>>
 					<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 					<?php the_content(); ?>
 				</div>
-			<?php endwhile; else: ?>
+		<?php endwhile; else: ?>
 				<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-			<?php endif; 
+		<?php endif; 
 				// Reset Query
 				wp_reset_query(); 
-			?>
-		</div><!-- #sticky-posts -->
+			
+				echo '</div><!-- #sticky-posts -->';
+			endif;
+		?>
 		
 		<?php dynamic_sidebar('firstpage-content'); ?>
 	</div><!-- #content -->
