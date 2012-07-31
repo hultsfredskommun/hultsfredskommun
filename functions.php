@@ -88,6 +88,9 @@ function twentyeleven_setup() {
 	// Grab Twenty Eleven's Ephemera widget.
 	require( get_template_directory() . '/inc/widgets.php' );
 
+	// Grab hk text widget.
+	require( get_template_directory() . '/inc/hk-text-widget.php' );
+
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );
 
