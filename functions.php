@@ -1,48 +1,29 @@
 <?php
 /**
- * Twenty Eleven functions and definitions
+ * Hultsfredskommun functions and definitions
  *
  * Sets up the theme and provides some helper functions. Some helper functions
  * are used in the theme as custom template tags. Others are attached to action and
  * filter hooks in WordPress to change core functionality.
  *
- * The first function, twentyeleven_setup(), sets up the theme by registering support
- * for various features in WordPress, such as post thumbnails, navigation menus, and the like.
- *
- * When using a child theme (see http://codex.wordpress.org/Theme_Development and
- * http://codex.wordpress.org/Child_Themes), you can override certain functions
- * (those wrapped in a function_exists() call) by defining them first in your child theme's
- * functions.php file. The child theme's functions.php file is included before the parent
- * theme's file, so the child theme functions would be used.
- *
- * Functions that are not pluggable (not wrapped in function_exists()) are instead attached
- * to a filter or action hook. The hook can be removed by using remove_action() or
- * remove_filter() and you can attach your own function to the hook.
- *
- * We can remove the parent theme's hook only after it is attached, which means we need to
- * wait until setting up the child theme:
- *
- * <code>
- * add_action( 'after_setup_theme', 'my_child_theme_setup' );
- * function my_child_theme_setup() {
- *     // We are providing our own filter for excerpt_length (or using the unfiltered value)
- *     remove_filter( 'excerpt_length', 'twentyeleven_excerpt_length' );
- *     ...
- * }
- * </code>
- *
- * For more information on hooks, actions, and filters, see http://codex.wordpress.org/Plugin_API.
- *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
  */
+
+
 
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) )
 	$content_width = 584;
+
+	/* SET DEFAULT SETTINGS */
+if ( ! isset( $default_settings ) )
+	$default_settings = array(	'fullimagewidth' => 1000,
+								'fullimageheight' => 300,
+								'largeimagewidth' => 500,
+								'largeimageheight' => 300,
+								'smallimagewidth' => 500,
+								'smallimageheight' => 300 );
 
 /**
  * Tell WordPress to run twentyeleven_setup() when the 'after_setup_theme' hook is run.
@@ -63,7 +44,7 @@ if ( ! function_exists( 'twentyeleven_setup' ) ):
  * @uses load_theme_textdomain() For translation/localization support.
  * @uses add_editor_style() To style the visual editor.
  * @uses add_theme_support() To add support for post thumbnails, automatic feed links, custom headers
- * 	and backgrounds, and post formats.
+ * 	and backgrounds.
  * @uses register_nav_menus() To add support for navigation menus.
  * @uses register_default_headers() To register the default custom header images provided with the theme.
  * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
@@ -71,6 +52,7 @@ if ( ! function_exists( 'twentyeleven_setup' ) ):
  * @since Twenty Eleven 1.0
  */
 function twentyeleven_setup() {
+
 
 	/* Make Twenty Eleven available for translation.
 	 * Translations can be added to the /languages/ directory.
@@ -91,14 +73,17 @@ function twentyeleven_setup() {
 	// Grab hk text widget.
 	require( get_template_directory() . '/inc/hk-text-widget.php' );
 
+	// Grab hk contacts.
+	require( get_template_directory() . '/inc/hk-contacts.php' );
+
+	// Grab hk documents.
+	require( get_template_directory() . '/inc/hk-documents.php' );
+
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Primary Menu', 'twentyeleven' ) );
-
-	// Add support for a variety of post formats
-	add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'status', 'quote', 'image' ) );
 
 	$theme_options = twentyeleven_get_theme_options();
 	if ( 'dark' == $theme_options['color_scheme'] )
@@ -116,218 +101,75 @@ function twentyeleven_setup() {
 	// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
 	add_theme_support( 'post-thumbnails' );
 
-	// Add support for custom headers.
-	$custom_header_support = array(
-		// The default header text color.
-		'default-text-color' => '000',
-		// The height and width of our custom header.
-		'width' => apply_filters( 'twentyeleven_header_image_width', 1000 ),
-		'height' => apply_filters( 'twentyeleven_header_image_height', 288 ),
-		// Support flexible heights.
-		'flex-height' => true,
-		// Random image rotation by default.
-		'random-default' => true,
-		// Callback for styling the header.
-		'wp-head-callback' => 'twentyeleven_header_style',
-		// Callback for styling the header preview in the admin.
-		'admin-head-callback' => 'twentyeleven_admin_header_style',
-		// Callback used to display the header preview in the admin.
-		'admin-preview-callback' => 'twentyeleven_admin_header_image',
-	);
-	
-	add_theme_support( 'custom-header', $custom_header_support );
-
-	if ( ! function_exists( 'get_custom_header' ) ) {
-		// This is all for compatibility with versions of WordPress prior to 3.4.
-		define( 'HEADER_TEXTCOLOR', $custom_header_support['default-text-color'] );
-		define( 'HEADER_IMAGE', '' );
-		define( 'HEADER_IMAGE_WIDTH', $custom_header_support['width'] );
-		define( 'HEADER_IMAGE_HEIGHT', $custom_header_support['height'] );
-		add_custom_image_header( $custom_header_support['wp-head-callback'], $custom_header_support['admin-head-callback'], $custom_header_support['admin-preview-callback'] );
-		add_custom_background();
-	}
-
 	// We'll be using post thumbnails for custom header images on posts and pages.
 	// We want them to be the size of the header image that we just defined
 	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
-	set_post_thumbnail_size( $custom_header_support['width'], $custom_header_support['height'], true );
+	set_post_thumbnail_size( $default_settings['fullimagewidth'], $default_settings['fullimageheight'], true );
 
 	// Add Twenty Eleven's custom image sizes.
 	// Used for large feature (header) images.
-	add_image_size( 'large-feature', $custom_header_support['width'], $custom_header_support['height'], true );
+	add_image_size( 'large-feature', $default_settings['largeimagewidth'], $default_settings['largeimageheight'], true );
 	// Used for featured posts if a large-feature doesn't exist.
-	add_image_size( 'small-feature', 500, 300 );
+	add_image_size( 'small-feature', $default_settings['smallimagewidth'], $default_settings['smallimageheight'] );
 
-	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
-	register_default_headers( array(
-		'wheel' => array(
-			'url' => '%s/images/headers/wheel.jpg',
-			'thumbnail_url' => '%s/images/headers/wheel-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Wheel', 'twentyeleven' )
-		),
-		'shore' => array(
-			'url' => '%s/images/headers/shore.jpg',
-			'thumbnail_url' => '%s/images/headers/shore-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Shore', 'twentyeleven' )
-		),
-		'trolley' => array(
-			'url' => '%s/images/headers/trolley.jpg',
-			'thumbnail_url' => '%s/images/headers/trolley-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Trolley', 'twentyeleven' )
-		),
-		'pine-cone' => array(
-			'url' => '%s/images/headers/pine-cone.jpg',
-			'thumbnail_url' => '%s/images/headers/pine-cone-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Pine Cone', 'twentyeleven' )
-		),
-		'chessboard' => array(
-			'url' => '%s/images/headers/chessboard.jpg',
-			'thumbnail_url' => '%s/images/headers/chessboard-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Chessboard', 'twentyeleven' )
-		),
-		'lanterns' => array(
-			'url' => '%s/images/headers/lanterns.jpg',
-			'thumbnail_url' => '%s/images/headers/lanterns-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Lanterns', 'twentyeleven' )
-		),
-		'willow' => array(
-			'url' => '%s/images/headers/willow.jpg',
-			'thumbnail_url' => '%s/images/headers/willow-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Willow', 'twentyeleven' )
-		),
-		'hanoi' => array(
-			'url' => '%s/images/headers/hanoi.jpg',
-			'thumbnail_url' => '%s/images/headers/hanoi-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Hanoi Plant', 'twentyeleven' )
-		)
-	) );
 }
 endif; // twentyeleven_setup
 
-if ( ! function_exists( 'twentyeleven_header_style' ) ) :
-/**
- * Styles the header image and text displayed on the blog
- *
- * @since Twenty Eleven 1.0
- */
-function twentyeleven_header_style() {
-	$text_color = get_header_textcolor();
 
-	// If no custom options for text are set, let's bail.
-	if ( $text_color == HEADER_TEXTCOLOR )
-		return;
-		
-	// If we get this far, we have custom styles. Let's do this.
-	?>
-	<style type="text/css">
-	<?php
-		// Has the text been hidden?
-		if ( 'blank' == $text_color ) :
-	?>
-		#site-title,
-		#site-description {
-			position: absolute !important;
-			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-			clip: rect(1px, 1px, 1px, 1px);
-		}
-	<?php
-		// If the user has set a custom color for the text use that
-		else :
-	?>
-		#site-title a,
-		#site-description {
-			color: #<?php echo $text_color; ?> !important;
-		}
-	<?php endif; ?>
-	</style>
-	<?php
+/**
+ * Change name of menus in admin 
+ */
+function change_post_menu_label() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'Sidor';
+    $submenu['edit.php'][5][0] = 'Sidor';
+    $submenu['edit.php'][10][0] = 'Skapa ny';
+    //$submenu['edit.php'][15][0] = 'Status'; // Change name for categories
+    //$submenu['edit.php'][16][0] = 'Labels'; // Change name for tags
+
+    $menu[20][0] = 'Special';
+    $submenu['edit.php?post_type=page'][5][0] = 'Special';
+    $submenu['edit.php?post_type=page'][10][0] = 'Skapa';
+    echo '';
 }
-endif; // twentyeleven_header_style
 
-if ( ! function_exists( 'twentyeleven_admin_header_style' ) ) :
-/**
- * Styles the header image displayed on the Appearance > Header admin panel.
- *
- * Referenced via add_theme_support('custom-header') in twentyeleven_setup().
- *
- * @since Twenty Eleven 1.0
- */
-function twentyeleven_admin_header_style() {
-?>
-	<style type="text/css">
-	.appearance_page_custom-header #headimg {
-		border: none;
-	}
-	#headimg h1,
-	#desc {
-		font-family: "Helvetica Neue", Arial, Helvetica, "Nimbus Sans L", sans-serif;
-	}
-	#headimg h1 {
-		margin: 0;
-	}
-	#headimg h1 a {
-		font-size: 32px;
-		line-height: 36px;
-		text-decoration: none;
-	}
-	#desc {
-		font-size: 14px;
-		line-height: 23px;
-		padding: 0 0 3em;
-	}
-	<?php
-		// If the user has set a custom color for the text use that
-		if ( get_header_textcolor() != HEADER_TEXTCOLOR ) :
-	?>
-		#site-title a,
-		#site-description {
-			color: #<?php echo get_header_textcolor(); ?>;
-		}
-	<?php endif; ?>
-	#headimg img {
-		max-width: 1000px;
-		height: auto;
-		width: 100%;
-	}
-	</style>
-<?php
+function change_post_object_label() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'Sidor';
+    $labels->singular_name = 'Sida';
+    $labels->add_new = 'L&auml;gg till';
+    $labels->add_new_item = 'L&auml;gg till sida';
+    $labels->edit_item = '&Auml;ndra sida';
+    $labels->new_item = 'Sida';
+    $labels->view_item = 'Visa sida';
+    $labels->search_items = 'S&ouml;k';
+    $labels->not_found = 'Hittade inga sidor';
+    $labels->not_found_in_trash = 'Hittade inga sidor i papperskorgen';
+
+    $labels = &$wp_post_types['page']->labels;
+    $labels->name = 'Special';
+    $labels->singular_name = 'Special';
+    $labels->add_new = 'L&auml;gg till';
+    $labels->add_new_item = 'L&auml;gg till';
+    $labels->edit_item = '&Auml;ndra';
+    $labels->new_item = 'Ny';
+    $labels->view_item = 'Visa';
+    $labels->search_items = 'S&ouml;k';
+    $labels->not_found = 'Hittade inga';
+    $labels->not_found_in_trash = 'Hittade inga i papperskorgen';
 }
-endif; // twentyeleven_admin_header_style
+add_action( 'init', 'change_post_object_label' );
+add_action( 'admin_menu', 'change_post_menu_label' );
 
-if ( ! function_exists( 'twentyeleven_admin_header_image' ) ) :
+
+
 /**
- * Custom header image markup displayed on the Appearance > Header admin panel.
- *
- * Referenced via add_theme_support('custom-header') in twentyeleven_setup().
- *
- * @since Twenty Eleven 1.0
+ * force install plugins "direct"  
  */
-function twentyeleven_admin_header_image() { ?>
-	<div id="headimg">
-		<?php
-		$color = get_header_textcolor();
-		$image = get_header_image();
-		if ( $color && $color != 'blank' )
-			$style = ' style="color:#' . $color . '"';
-		else
-			$style = ' style="display:none"';
-		?>
-		<h1><a id="name"<?php echo $style; ?> onclick="return false;" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-		<div id="desc"<?php echo $style; ?>><?php bloginfo( 'description' ); ?></div>
-		<?php if ( $image ) : ?>
-			<img src="<?php echo esc_url( $image ); ?>" alt="" />
-		<?php endif; ?>
-	</div>
-<?php }
-endif; // twentyeleven_admin_header_image
+add_filter( 'filesystem_method', create_function( '$a', 'return "direct";' ) );
+
 
 /**
  * Sets the post excerpt length to 40 words.
@@ -664,3 +506,5 @@ class mainMenu extends Walker_Nav_Menu
 		$output .= '</div>';
 	}
 }
+
+
