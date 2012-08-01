@@ -65,10 +65,6 @@
 	 */
 	wp_head();
 ?>
-<script type="text/javascript">
-	var templateDir = "<?php bloginfo('template_directory') ?>";
-	var currPageUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-</script>
 </head>
 
 <body <?php body_class(); ?>>

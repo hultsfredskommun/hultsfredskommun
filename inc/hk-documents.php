@@ -1,6 +1,6 @@
 <?php
 
-/* Plugin Name: HK documents
+/**
  * Description: Add document widget and document post_type. 
  * Create an ACF with these fields.
  *  1. Name hk_document_attach with type File

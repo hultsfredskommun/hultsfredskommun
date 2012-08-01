@@ -8,6 +8,11 @@
  */
 
 get_header(); ?>
+		<div id="top-nav-sidebar" style="display:none">
+			<?php dynamic_sidebar('top-nav-sidebar'); ?>
+		</div><!-- #top-nav-sidebar -->
+
+		<?php // Ev toppbildanimation ?>
 
 		<section id="primary">
 			<div id="content" role="main">
@@ -16,7 +21,7 @@ get_header(); ?>
 
 				<header class="page-header">
 					<h1 class="page-title"><?php
-						printf( __( 'Category Archives: %s', 'twentyeleven' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+						echo 'Sidor i <span>' . single_cat_title( '', false ) . '</span>';
 					?></h1>
 
 					<?php
@@ -24,19 +29,70 @@ get_header(); ?>
 						if ( ! empty( $category_description ) )
 							echo apply_filters( 'category_archive_meta', '<div class="category-archive-meta">' . $category_description . '</div>' );
 					?>
+
+					<div id="sort-order">
+						<?php
+							//init
+							$tags = get_query_var("tag");
+							$vem_tags = get_query_var("vem");
+							$ort_tags = get_query_var("ort");
+							
+							if($tags != ''){ $tags = "&tag=".$tags; }
+							if($vem_tags != ''){ $vem_tags = "&vem=".$vem_tags; }
+							if($ort_tags != ''){ $ort_tags = "&ort=".$ort_tags; }
+						?>
+						<a href="?orderby=alpha<?php echo $tags.$vem_tags.$ort_tags; ?>">A - &Ouml;</a>
+						<span class="sep"> | </span>
+						<a href="?orderby=alpha_desc<?php echo $tags.$vem_tags.$ort_tags; ?>">&Ouml; - A</a>
+						<span class="sep"> | </span>
+						<a href="?orderby=latest<?php echo $tags.$vem_tags.$ort_tags; ?>">Nyaste</a>
+						<span class="sep"> | </span>
+						<a href="?orderby=oldest<?php echo $tags.$vem_tags.$ort_tags; ?>">&Auml;ldsta</a>
+						<span class="sep"> | </span>
+						<a href="?v_sortby=views&amp;v_orderby=desc<?php echo $tags.$vem_tags.$ort_tags; ?>">Popul&auml;raste</a>
+					</div>
+					<div id="display-mode">
+						<a id="posts_framed" title="Visa ingress" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_framed.png" /></a>
+						<a id="posts_titles" title="Visa endast rubriker" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_titles.png" /></a>
+					</div>
+					<div class="clear"></div>
 				</header>
 
-				<?php twentyeleven_content_nav( 'nav-above' ); ?>
+				<div id="sticky-posts">
+					<?php
+						/* Get category id by slug */
+						$catID = get_query_var("cat");
+					
+						/* Get all sticky posts */
+						$sticky = get_option( 'sticky_posts' );
+						
+						if (isset($sticky)):
+
+							/* Query sticky posts */
+							query_posts( array( 'category__in' => $catID, 'post__in' => $sticky ) );
+							
+							if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>			
+								<?php get_template_part( 'content', get_post_format() ); ?>
+							<?php endwhile; else: ?>
+								<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+					<?php 	endif; endif; 
+						// Reset Query
+						wp_reset_query(); 
+					?>
+				</div><!-- #sticky-posts -->
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php
-						/* Include the Post-Format-specific template for the content.
-						 * If you want to overload this in a child theme then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'content', get_post_format() );
+						if( !is_sticky() ) {
+
+							/* Include the Post-Format-specific template for the content.
+							 * If you want to overload this in a child theme then include a file
+							 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+							 */
+							get_template_part( 'content', get_post_format() );
+						}
 					?>
 
 				<?php endwhile; ?>
@@ -61,5 +117,8 @@ get_header(); ?>
 			</div><!-- #content -->
 		</section><!-- #primary -->
 
-<?php get_sidebar(); ?>
+		<div id="sidebar">
+			<?php dynamic_sidebar('sidebar'); ?>
+		</div><!-- #sidebar -->	
+<?php //get_sidebar(); ?>
 <?php get_footer(); ?>

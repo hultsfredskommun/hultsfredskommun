@@ -2,6 +2,9 @@
 // JavaScript Document
 
 
+var settings = new Array();
+
+
 /**
  * print element (TODO not working in IE)
  */
@@ -168,7 +171,7 @@ $.fn.searchSuggest = function()
  * Initialize function read-more toggle-button 
  */
 function readMoreToggleButton(el){
-	//toggle funktionen
+	//toggle function
 	function toggleShow(){
 		//store readMoreContainer and readMoreContent as objects
 		var wrapper = $(el).prev();
@@ -270,7 +273,7 @@ function readMoreToggleButton(el){
 		//create a new div with requested content
 		var morediv = $("<div>").attr("class","more-content").hide();
 		$.ajaxSetup({cache:false});
-		$(morediv).load(templateDir+"/post_template.php",{id:post_id}, function()
+		$(morediv).load(hultsfred_object["templateDir"]+"/post_template.php",{id:post_id}, function()
 		{
 			//append div in readMoreContent
 			$(readMore).find(".entry-header").after(this);
@@ -349,7 +352,7 @@ $(document).ready(function(){
 	 */
 	$("#sort-order").find("a").each(function(){
 		$(this).click(function(ev){
-			window.location.assign(currPageUrl + $(this).attr("href"));
+			window.location.assign(hultsfred_object["currPageUrl"] + $(this).attr("href"));
 			ev.preventDefault();
 		});
 	});
@@ -369,7 +372,7 @@ $(document).ready(function(){
 	if( !$("body").hasClass("single") && !$("body").hasClass("page") ){
 		//do a clean-up that removes the hash (tags, sort m.m.)
 		var title = $("html head title").html();
-		History.replaceState(null, title, currPageUrl);
+		History.replaceState(null, title, hultsfred_object["currPageUrl"]);
 	}
 
 
@@ -429,9 +432,7 @@ $(document).ready(function(){
 	//Stores the window-width for later use
 	oldWidth = $(window).width();	
 	
-	//Read-more init START
-	//------------------->
-	
+
 	/**
 	 * add action to read-more toggle button
 	 */
@@ -443,7 +444,6 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
 	$("#content").find('.entry-title').each(function(){
 		$(this).find('a').click(function(ev){
 			ev.preventDefault();
@@ -453,6 +453,7 @@ $(document).ready(function(){
 	});
 	
     // ajax read more
+    /*
 	$(".slideshow").find(".more-link").addClass("slideshow");
 	$(".largefront").find(".more-link").addClass("largefront").show().click( function(ev){
 		ev.preventDefault();
@@ -466,7 +467,7 @@ $(document).ready(function(){
 			read_more(this);
 		}
 	});;
-	
+	*/
 	$.ajaxSetup({cache:false});
 	
 
@@ -642,7 +643,7 @@ $(document).ready(function(){
 	/**
 	 * first simple test of dynamic search 
 	 */
-	$('#s').searchSuggest();
+	//$('#s').searchSuggest();
 	/*
 	$('#s').keyup(function(ev) {
 		if ($('#s').val().length > 2)
@@ -659,6 +660,10 @@ $(document).ready(function(){
 
 });/* END $(document).ready() */
 
+
+/**
+ * load next posts dynamic
+ */
 var loading_next_page = false;
 function dyn_posts_load_posts() {
 	// Are there more posts to load?
@@ -667,10 +672,10 @@ function dyn_posts_load_posts() {
 		log("Laddar sida " + settings["pageNum"] + ".. ")
 		loading_next_page = true;
 
-		// Show that we're working.
-		//$(this).text('Laddar sidor...');
 		$('#dyn-posts-placeholder-'+ settings["pageNum"]).hide().load(settings["nextLink"] + ' .post',
 			function() {
+				log("ready " + settings["pageNum"] + " " +settings["nextLink"]);
+				
 				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('.entry-title').each(function(){
 					$(this).find('a').click(function(ev){
 						ev.preventDefault();
@@ -703,9 +708,12 @@ function dyn_posts_load_posts() {
 				
 				loading_next_page = false;
 				if( $('#dyn-posts-load-posts a').hasClass("loading") ){
+					log("really ready");
 					$('#dyn-posts-load-posts a').removeClass("loading").click();
 				}
+				
 			}
+
 		);
 	} else {
 		// 	$('#dyn-posts-load-posts a').append('.');
@@ -717,9 +725,6 @@ function dyn_posts_load_posts() {
 
 //om webbläsaren ändrar storlek
 $(window).resize(function() {
-	/* dynamic footer */
-	//resizeFooter();
-
 
 	if( oldWidth != $(window).width() ) {
 

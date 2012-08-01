@@ -1,6 +1,6 @@
 <?php
 
-/* Plugin Name: HK Menu Widget
+/** 
  * Description: Add Menu widget and remove Menu category from loop
  *  */
 

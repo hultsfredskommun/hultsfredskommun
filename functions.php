@@ -147,6 +147,54 @@ wp_enqueue_script(
 );
 
 
+/**
+ * Settings to be available in javascript
+ */
+function curPageURL() {
+	$pageURL = 'http';
+	if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+		$pageURL .= "://";
+	if ($_SERVER["SERVER_PORT"] != "80") {
+		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+	} else {
+		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+	}
+	return $pageURL;
+}
+function curBaseURL() {
+	$pageURL = 'http';
+	if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+		$pageURL .= "://";
+	if ($_SERVER["SERVER_PORT"] != "80") {
+		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"];
+	} else {
+		$pageURL .= $_SERVER["SERVER_NAME"];
+	}
+	return $pageURL;
+}
+function setup_javascript_settings() {
+	global $wp_query;
+	// What page are we on? And what is the pages limit?
+	if (is_home()) {
+		$max = 0;
+	}
+	else {
+		$max = $wp_query->max_num_pages;
+	}
+	// Add some parameters for the dynamic load more posts JS.
+	wp_localize_script(
+		'hultsfred_js',
+		'hultsfred_object',
+		array(
+			'startPage' => 1,
+			'maxPages' => $max,
+			'nextLink' => str_replace(curBaseURL(), "", next_posts($max, false)),
+			'templateDir' => get_bloginfo('template_directory'),
+			'currPageUrl' => curPageURL() //window.location.protocol + "//" + window.location.host + window.location.pathname
+		)
+	);
+}
+add_action('wp_head', 'setup_javascript_settings');
 
 /**
  * Change name of menus in admin 
@@ -286,6 +334,16 @@ function twentyeleven_widgets_init() {
 		'name' => 'Startsidans sidof&auml;lt',
 		'id' => 'firstpage-sidebar',
 		'description' => 'Startsidans sidof&auml;lt',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name' => 'Responsiva navigering',
+		'id' => 'top-nav-sidebar',
+		'description' => 'Inneh&aring;llsidans responsiva navigeringsyta',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',

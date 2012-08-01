@@ -13,12 +13,10 @@
  */
 
 get_header(); ?>
-
-<div id="primary">
-	<div id="firstpage-top-content">
+<div id="firstpage-top-content">
 		<?php dynamic_sidebar('firstpage-top-content'); ?>
-	</div>
-	
+</div>
+<div id="primary">
 	<div id="content" role="main">
 		<?php 
 			/* Get all sticky posts */
@@ -35,15 +33,12 @@ get_header(); ?>
 
 				/* Query sticky posts */
 				query_posts( array( 'post__in' => $sticky, /*'cat__in' => ,*/ 'caller_get_posts' => 1 ) );
-		?>
-		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>			
-				<div <?php post_class(); ?>>
-					<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-					<?php the_content(); ?>
-				</div>
-		<?php endwhile; else: ?>
+		
+			if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+				get_template_part( 'content', get_post_format() ); 
+			endwhile; else: ?>
 				<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-		<?php endif; 
+			<?php endif; 
 				// Reset Query
 				wp_reset_query(); 
 			
@@ -53,11 +48,11 @@ get_header(); ?>
 		
 		<?php dynamic_sidebar('firstpage-content'); ?>
 	</div><!-- #content -->
-	
-	<div id="firstpage-sidebar">
-		<?php dynamic_sidebar('firstpage-sidebar'); ?>
-	</div>
 </div><!-- #primary -->
+
+<div id="firstpage-sidebar">
+	<?php dynamic_sidebar('firstpage-sidebar'); ?>
+</div>
 
 <?php// get_sidebar(); ?>		
 <?php get_footer(); ?>
