@@ -9,6 +9,11 @@
 	if ($post) : 
 		setup_postdata($post);
 		
+		//inc view-count
+		if( function_exists('hk_process_postviews') ){
+			hk_process_postviews();
+		}
+		
 		// load the content of post	
 		require("single_content.php");
 

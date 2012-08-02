@@ -81,6 +81,9 @@ function twentyeleven_setup() {
 
 	// Grab hk menu widget.
 	require( get_template_directory() . '/inc/hk-menu-widget.php' );
+	
+	// Grab hk sort-order function
+	require( get_template_directory() . '/inc/hk-sort-order.php' );
 
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );

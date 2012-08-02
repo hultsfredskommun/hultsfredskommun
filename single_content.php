@@ -3,11 +3,6 @@
 		 * Single content, used in content.php (if is_single) and in post_load.php for dynamic load of post
 		 */
 
-		//view_count START
-            //code in view-counter-function.php
-		//view_count END
-
-
 		// featured image
 		the_post_thumbnail('full-image'); ?>
 		

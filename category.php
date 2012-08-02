@@ -30,27 +30,12 @@ get_header(); ?>
 							echo apply_filters( 'category_archive_meta', '<div class="category-archive-meta">' . $category_description . '</div>' );
 					?>
 
-					<div id="sort-order">
-						<?php
-							//init
-							$tags = get_query_var("tag");
-							$vem_tags = get_query_var("vem");
-							$ort_tags = get_query_var("ort");
-							
-							if($tags != ''){ $tags = "&tag=".$tags; }
-							if($vem_tags != ''){ $vem_tags = "&vem=".$vem_tags; }
-							if($ort_tags != ''){ $ort_tags = "&ort=".$ort_tags; }
-						?>
-						<a href="?orderby=alpha<?php echo $tags.$vem_tags.$ort_tags; ?>">A - &Ouml;</a>
-						<span class="sep"> | </span>
-						<a href="?orderby=alpha_desc<?php echo $tags.$vem_tags.$ort_tags; ?>">&Ouml; - A</a>
-						<span class="sep"> | </span>
-						<a href="?orderby=latest<?php echo $tags.$vem_tags.$ort_tags; ?>">Nyaste</a>
-						<span class="sep"> | </span>
-						<a href="?orderby=oldest<?php echo $tags.$vem_tags.$ort_tags; ?>">&Auml;ldsta</a>
-						<span class="sep"> | </span>
-						<a href="?v_sortby=views&amp;v_orderby=desc<?php echo $tags.$vem_tags.$ort_tags; ?>">Popul&auml;raste</a>
-					</div>
+					<?php 
+						if( function_exists('displaySortOrderButtons') ){
+							displaySortOrderButtons();
+						} 
+					?>
+					
 					<div id="display-mode">
 						<a id="posts_framed" title="Visa ingress" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_framed.png" /></a>
 						<a id="posts_titles" title="Visa endast rubriker" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_titles.png" /></a>
