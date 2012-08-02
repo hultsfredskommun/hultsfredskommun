@@ -251,6 +251,7 @@ add_action( 'admin_menu', 'change_post_menu_label' );
 add_filter( 'filesystem_method', create_function( '$a', 'return "direct";' ) );
 
 
+
 /**
  * Sets the post excerpt length to 40 words.
  *

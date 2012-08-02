@@ -965,6 +965,26 @@ dl.gallery-item {
 	display: block;
 }
 
+/* article summary look */
+.summary-content{
+	height: 100px;
+	overflow: hidden;
+	position: relative;
+}
+.readMoreFadeBottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding:30px 0 0;
+	width:100%;
+	background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0.9)));
+	background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+	background-image:-moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+	background-image:-ms-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+	background-image:-o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+}
+
+
 /* Images */
 .entry-content img,
 .comment-content img,

@@ -172,7 +172,65 @@ $.fn.searchSuggest = function()
  */
 function readMoreToggleButton(el){
 	//toggle function
-	function toggleShow(){
+	function toggleShow() {
+
+			
+			article = $(el).parents("article");
+			// show summary content
+			if (article.hasClass("full"))
+			{
+				// toggle visibility
+				$(article).find('.summary-content').show();
+				$(article).find('.more-content').hide("fast");
+
+				// alter close-buttons
+				$(article).find('.closeButton').remove();
+				$(article).find(".readMoreToggleButton").html(". . .")
+
+				// remove full class to track article state
+				$(article).removeClass("full");
+
+				// scroll to top of post 
+				$("html,body").animate({scrollTop: $(article).position().top},"slow");
+
+				// reset webbrowser history
+				History.replaceState(null, title, hultsfred_object["currPageUrl"]);
+
+			}
+			// show full content
+			else
+			{
+				// toggle visibility
+				$(article).find('.summary-content').hide();
+				$(article).find('.more-content').show("fast");
+				
+				// alter close-button
+				$(article).find(".readMoreToggleButton").html("St&auml;ng");
+
+				//add close-button top right corner
+				var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(){
+					readMoreToggleButton( $(article).find('.readMoreToggleButton') );
+				});
+				$(article).append(closea);
+
+				// add full class to track article state
+				$(article).addClass("full");
+
+				//change webbrowser url
+				//find and store post-title and post-url
+				var entry_title = $(article).find(".entry-title");
+				var title = $(entry_title).find("a").html().replace("&amp;","&") + " | Hultsfred";
+				var url = $(entry_title).find("a").attr("href");
+
+				History.replaceState(null, title, url);
+
+			}
+
+
+		//});
+
+
+		/*
 		//store readMoreContainer and readMoreContent as objects
 		var wrapper = $(el).prev();
 		var content = $(wrapper).find('.readMoreContent');
@@ -181,6 +239,7 @@ function readMoreToggleButton(el){
 			if( $(wrapper).find('.readMoreContent').children(".more-content").is(":hidden") ){
 				$(wrapper).find('.readMoreContent').children(".more-content").show();
 				$(wrapper).find('.readMoreContent').children(".entry-content").hide();
+				$(wrapper).find('.readMoreContent').children(".entry-title").hide();
 			}
 		}
 		else if( $(el).hasClass("loading") ){
@@ -194,7 +253,8 @@ function readMoreToggleButton(el){
 		var title = $(entry_title).find("a").html().replace("&amp;","&") + " | Hultsfred";
 		var url = $(entry_title).find("a").attr("href");
 		
-		if( $(el).attr('href') == "?visa=full" ){
+		// if article is short
+		if( $(entry_title).is(":hidden") ){
 			//show hidden elements
 			$(wrapper).parent().removeClass("post_short"); //show everything in view-mode titles
 			$(content).children(".entry-header").hide();
@@ -232,7 +292,7 @@ function readMoreToggleButton(el){
 				$(el).remove();
 			}
 		}
-		else if( $(el).attr('href') == "?visa=kort" ){
+		else {
 			$(wrapper).css('height', $(wrapper).attr('oldheight') );
 			$(wrapper).removeAttr('oldheight');
 			$(wrapper).find('.readMoreFadeBottom').toggle();
@@ -247,13 +307,14 @@ function readMoreToggleButton(el){
 				
 				$(wrapper).parent().addClass("post_short"); //if showing titles - hide border m.m.
 				
-				/* scroll to top of post */
+				// scroll to top of post 
 				$("html,body").animate({scrollTop: $(wrapper).parent().position().top},"slow");
 			}, 200);
 			
 			//remove close-button
 			$(wrapper).parent().find('.closeButton').remove();
-		}
+			
+		}*/
 	}
 
 	if( !$(el).hasClass("loaded") ){
@@ -265,21 +326,21 @@ function readMoreToggleButton(el){
 		var entry_title = $(el).parent().find(".entry-title");
 		var post_id = $(entry_title).find("a").attr("post_id");
 		
-		//store entry-content in variable
-		//store readMoreContent in variable
-		var content = $(el).parent().find('.entry-content');				
-		var readMore = $(el).parent().find('.readMoreContent');
 	
 		//create a new div with requested content
 		var morediv = $("<div>").attr("class","more-content").hide();
+		
+		//append div in readMoreContent
+		var readMore = $(el).parent().find('.readMoreContent');
+		$(readMore).append(morediv);
+
 		$.ajaxSetup({cache:false});
-		$(morediv).load(hultsfred_object["templateDir"]+"/post_template.php",{id:post_id}, function()
+		$(morediv).load(hultsfred_object["templateDir"]+"/post_load.php",{id:post_id}, function()
 		{
-			//append div in readMoreContent
-			$(readMore).find(".entry-header").after(this);
-			$(this).show();
-			//hide old content
-			$(content).hide();
+			//hide old content and show new
+			//$(this).parent().find('.entry-content').hide();
+			//$(this).parent().find('.entry-title').hide();
+			//$(this).show();
 			
 			//****** click-actions START *******
 			
@@ -309,8 +370,10 @@ function readMoreToggleButton(el){
 			});
 			//***** click-actions END ******
 			
+			$(this).parents("article").find(".readMoreToggleButton").removeClass("loading").addClass("loaded");
+
 			//exec toggle function
-			setTimeout(function(){ toggleShow(); }, 100);
+			toggleShow();
 		});
 	}
 	else{
