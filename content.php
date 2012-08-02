@@ -8,7 +8,6 @@
  */
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky":""); ?>>
-		<?php if (!is_single()) : ?>
 		<div class="readMoreContainer">
 			<div class="readMoreContent">
 				<div class="summary-content">
@@ -37,8 +36,4 @@
 			</div>
 		</div>
 		<a class="readMoreToggleButton" href="<?php the_permalink(); ?>">. . .</a>
-		<?php else : // if is_single ?>
-			<?php require("single_content.php"); ?>
-		<?php endif; ?>
-
 	</article><!-- #post-<?php the_ID(); ?> -->
