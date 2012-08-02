@@ -235,18 +235,7 @@ function readMoreToggleButton(el){
 		var wrapper = $(el).prev();
 		var content = $(wrapper).find('.readMoreContent');
 		
-		if(	$(el).hasClass("loaded") ){
-			if( $(wrapper).find('.readMoreContent').children(".more-content").is(":hidden") ){
-				$(wrapper).find('.readMoreContent').children(".more-content").show();
-				$(wrapper).find('.readMoreContent').children(".entry-content").hide();
-				$(wrapper).find('.readMoreContent').children(".entry-title").hide();
-			}
-		}
-		else if( $(el).hasClass("loading") ){
-			$(el).removeClass("loading");
-			$(el).addClass("loaded");
-		}
-		else{ return false; }
+		
 		
 		//find and store post-title and post-url
 		var entry_title = $(el).parent().find(".entry-title");
@@ -683,6 +672,14 @@ $(document).ready(function(){
 		if(!loading_next_page){
 			settings["pageNumVisible"]++;
 			$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).slideDown('',function(){
+				// Update the button message.
+				if(settings["pageNumVisible"] < settings["maxPages"]) {
+					$('#dyn-posts-load-posts a').text('Ladda fler sidor');
+				} else {
+					$('#dyn-posts-load-posts a').text('Inga fler sidor att ladda.').click(function() {
+						ev.preventDefault();
+					});
+				}
 				// read-more toggle button
 				$(this).find('.readMoreToggleButton').each(function(){
 					$(this).click(function(ev){
@@ -729,15 +726,21 @@ $(document).ready(function(){
  */
 var loading_next_page = false;
 function dyn_posts_load_posts() {
+	filter = hultsfred_object["currentFilter"];
+
 	// Are there more posts to load?
 		
 	if(settings["pageNum"] <= settings["pageNumVisible"]+1 && settings["pageNum"] <= settings["maxPages"] && !loading_next_page) {
-		log("Laddar sida " + settings["pageNum"] + ".. ")
+		log("Laddar sida " + settings["pageNum"] + " . " + settings["maxPages"] + " .. " + filter)
 		loading_next_page = true;
 
-		$('#dyn-posts-placeholder-'+ settings["pageNum"]).hide().load(settings["nextLink"] + ' .post',
+
+		var uri = window.location.href.slice(window.location.href.indexOf('?') + 1);
+
+		$('#dyn-posts-placeholder-'+ settings["pageNum"]).hide().load(hultsfred_object["templateDir"]+"/dyn_posts_load.php?" + uri,
+			{ pageNum: settings["pageNum"], filter: filter }, /*settings["nextLink"] + ' .post',*/
 			function() {
-				log("ready " + settings["pageNum"] + " " +settings["nextLink"]);
+				//log("ready " + settings["pageNum"] + " " +settings["nextLink"]);
 				
 				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('.entry-title').each(function(){
 					$(this).find('a').click(function(ev){
@@ -762,12 +765,6 @@ function dyn_posts_load_posts() {
 				$('#dyn-posts-load-posts')
 					.before('<div id="dyn-posts-placeholder-'+ settings["pageNum"] +'" class="dyn-posts-placeholder"></div>')
 				
-				// Update the button message.
-				if(settings["pageNum"] <= settings["maxPages"]) {
-					$('#dyn-posts-load-posts a').text('Ladda fler sidor');
-				} else {
-					$('#dyn-posts-load-posts a').text('Inga fler sidor att ladda.').unbind("click");
-				}
 				
 				loading_next_page = false;
 				if( $('#dyn-posts-load-posts a').hasClass("loading") ){

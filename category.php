@@ -7,7 +7,9 @@
  * @since Twenty Eleven 1.0
  */
 
-get_header(); ?>
+get_header(); 
+
+?>
 		<div id="top-nav-sidebar" style="display:none">
 			<?php dynamic_sidebar('top-nav-sidebar'); ?>
 		</div><!-- #top-nav-sidebar -->
@@ -45,7 +47,7 @@ get_header(); ?>
 
 				<div id="sticky-posts">
 					<?php
-						/* Get category id by slug */
+						/* Get category id */
 						$catID = get_query_var("cat");
 					
 						/* Get all sticky posts */
@@ -58,9 +60,8 @@ get_header(); ?>
 							
 							if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>			
 								<?php get_template_part( 'content', get_post_format() ); ?>
-							<?php endwhile; else: ?>
-								<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-					<?php 	endif; endif; 
+							<?php endwhile; endif;
+						endif; 
 						// Reset Query
 						wp_reset_query(); 
 					?>
