@@ -10,7 +10,7 @@
 		setup_postdata($post);
 		
 		// load the content of post	
-		require("single_content.php");
+		require("inc/single_content.php");
 
 	endif; 
 ?>
