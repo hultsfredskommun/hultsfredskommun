@@ -92,7 +92,7 @@ get_header();
 
 				<?php endwhile; ?>
 
-				<?php twentyeleven_content_nav( 'nav-below' ); ?>
+				<?php hk_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 

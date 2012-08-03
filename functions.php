@@ -17,20 +17,22 @@ if ( ! isset( $content_width ) )
 	$content_width = 584;
 
 	/* SET DEFAULT SETTINGS */
-if ( ! isset( $default_settings ) )
-	$default_settings = array(	'fullimagewidth' => 1000,
-								'fullimageheight' => 300,
-								'largeimagewidth' => 500,
-								'largeimageheight' => 300,
-								'smallimagewidth' => 500,
-								'smallimageheight' => 300 );
+if ( ! isset( $default_settings ) ) {
+	$options = get_option('hk_theme');
+	$default_settings = array(	'thumbnail-image' => array(200, 120, true),
+								'featured-image' => array(660, 396, true),
+								'slideshow-image' => array(980, 250, true),
+								'contact-image' => array(150, 150, true),
+								'startpage_cat' => $options["startpage_cat"],
+								'news_cat' => $options["news_cat"]);
+}
 
 /**
- * Tell WordPress to run twentyeleven_setup() when the 'after_setup_theme' hook is run.
+ * Tell WordPress to run hk_setup() when the 'after_setup_theme' hook is run.
  */
-add_action( 'after_setup_theme', 'twentyeleven_setup' );
+add_action( 'after_setup_theme', 'hk_setup' );
 
-if ( ! function_exists( 'twentyeleven_setup' ) ):
+if ( ! function_exists( 'hk_setup' ) ):
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -38,20 +40,11 @@ if ( ! function_exists( 'twentyeleven_setup' ) ):
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  *
- * To override twentyeleven_setup() in a child theme, add your own twentyeleven_setup to your child theme's
+ * To override hk_setup() in a child theme, add your own hk_setup to your child theme's
  * functions.php file.
  *
- * @uses load_theme_textdomain() For translation/localization support.
- * @uses add_editor_style() To style the visual editor.
- * @uses add_theme_support() To add support for post thumbnails, automatic feed links, custom headers
- * 	and backgrounds.
- * @uses register_nav_menus() To add support for navigation menus.
- * @uses register_default_headers() To register the default custom header images provided with the theme.
- * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
- *
- * @since Twenty Eleven 1.0
  */
-function twentyeleven_setup() {
+function hk_setup() {
 
 
 	/* Make Twenty Eleven available for translation.
@@ -63,6 +56,12 @@ function twentyeleven_setup() {
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
+
+	// Grab hk option page.
+	require( get_template_directory() . '/inc/hk-option-page.php' );
+
+	// Grab hk dynamic widgets
+	require( get_template_directory() . '/inc/hk-dynamic-widgets.php' );
 
 	// Grab hk text widget.
 	require( get_template_directory() . '/inc/hk-text-widget.php' );
@@ -88,19 +87,16 @@ function twentyeleven_setup() {
 	// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
 	add_theme_support( 'post-thumbnails' );
 
-	// We'll be using post thumbnails for custom header images on posts and pages.
-	// We want them to be the size of the header image that we just defined
-	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
-	set_post_thumbnail_size( $default_settings['fullimagewidth'], $default_settings['fullimageheight'], true );
-
-	// Add Twenty Eleven's custom image sizes.
-	// Used for large feature (header) images.
-	add_image_size( 'large-feature', $default_settings['largeimagewidth'], $default_settings['largeimageheight'], true );
-	// Used for featured posts if a large-feature doesn't exist.
-	add_image_size( 'small-feature', $default_settings['smallimagewidth'], $default_settings['smallimageheight'] );
-
 }
-endif; // twentyeleven_setup
+endif; // hk_setup
+
+// Add Hultsfredskommun custom image sizes.
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'thumbnail-image',  $default_settings['thumbnail-image'][0], $default_settings['thumbnail-image'][1], $default_settings['thumbnail-image'][2] );
+	add_image_size( 'featured-image',  $default_settings['featured-image'][0], $default_settings['featured-image'][1], $default_settings['featured-image'][2] );
+	add_image_size( 'slideshow-image',  $default_settings['slideshow-image'][0], $default_settings['slideshow-image'][1], $default_settings['slideshow-image'][2] );
+	add_image_size( 'contact-image',  $default_settings['contact-image'][0], $default_settings['contact-image'][1], $default_settings['contact-image'][2] );
+}
 
 
 
@@ -250,28 +246,28 @@ add_filter( 'filesystem_method', create_function( '$a', 'return "direct";' ) );
  * To override this length in a child theme, remove the filter and add your own
  * function tied to the excerpt_length filter hook.
  */
-function twentyeleven_excerpt_length( $length ) {
+function hk_excerpt_length( $length ) {
 	return 40;
 }
-add_filter( 'excerpt_length', 'twentyeleven_excerpt_length' );
+add_filter( 'excerpt_length', 'hk_excerpt_length' );
 
 /**
  * Returns a "Continue Reading" link for excerpts
  */
-function twentyeleven_continue_reading_link() {
+function hk_continue_reading_link() {
 	return ' <a href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) . '</a>';
 }
 
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and twentyeleven_continue_reading_link().
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and hk_continue_reading_link().
  *
  * To override this in a child theme, remove the filter and add your own
  * function tied to the excerpt_more filter hook.
  */
-function twentyeleven_auto_excerpt_more( $more ) {
-	return ' &hellip;' . twentyeleven_continue_reading_link();
+function hk_auto_excerpt_more( $more ) {
+	return ' &hellip;' . hk_continue_reading_link();
 }
-add_filter( 'excerpt_more', 'twentyeleven_auto_excerpt_more' );
+add_filter( 'excerpt_more', 'hk_auto_excerpt_more' );
 
 /**
  * Adds a pretty "Continue Reading" link to custom post excerpts.
@@ -279,128 +275,21 @@ add_filter( 'excerpt_more', 'twentyeleven_auto_excerpt_more' );
  * To override this link in a child theme, remove the filter and add your own
  * function tied to the get_the_excerpt filter hook.
  */
-function twentyeleven_custom_excerpt_more( $output ) {
+function hk_custom_excerpt_more( $output ) {
 	if ( has_excerpt() && ! is_attachment() ) {
-		$output .= twentyeleven_continue_reading_link();
+		$output .= hk_continue_reading_link();
 	}
 	return $output;
 }
-add_filter( 'get_the_excerpt', 'twentyeleven_custom_excerpt_more' );
-
-/**
- * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
- */
-function twentyeleven_page_menu_args( $args ) {
-	$args['show_home'] = true;
-	return $args;
-}
-add_filter( 'wp_page_menu_args', 'twentyeleven_page_menu_args' );
-
-/**
- * Register our sidebars and widgetized areas. Also register the default Epherma widget.
- *
- * @since Twenty Eleven 1.0
- */
-function twentyeleven_widgets_init() {
-
-	register_sidebar( array(
-		'name' => 'Bildspelsyta',
-		'id' => 'slideshow-content',
-		'description' => 'Bildspelsyta p&aring; alla sidor',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => 'Startsidans toppinneh&aring;ll',
-		'id' => 'firstpage-top-content',
-		'description' => 'Inneh&aring;ll h&ouml;gst upp p&aring; startsidan',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-	
-	register_sidebar( array(
-		'name' => 'Startsidans inneh&aring;ll',
-		'id' => 'firstpage-content',
-		'description' => 'Inneh&aring;ll under sticky-posts p&aring; startsidan',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-	
-	register_sidebar( array(
-		'name' => 'Startsidans sidof&auml;lt',
-		'id' => 'firstpage-sidebar',
-		'description' => 'Startsidans sidof&auml;lt',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => 'Sidonavigering',
-		'id' => 'nav-sidebar',
-		'description' => 'Inneh&aring;llsidans navigeringsyta',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => 'Sidof&auml;lt',
-		'id' => 'sidebar',
-		'description' => 'Inneh&aring;llsidans sidof&auml;lt',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
+add_filter( 'get_the_excerpt', 'hk_custom_excerpt_more' );
 
 
-	register_sidebar( array(
-		'name' => __( 'Footer Area One', 'twentyeleven' ),
-		'id' => 'sidebar-3',
-		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
 
-	register_sidebar( array(
-		'name' => __( 'Footer Area Two', 'twentyeleven' ),
-		'id' => 'sidebar-4',
-		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Footer Area Three', 'twentyeleven' ),
-		'id' => 'sidebar-5',
-		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-}
-add_action( 'widgets_init', 'twentyeleven_widgets_init' );
-
-if ( ! function_exists( 'twentyeleven_content_nav' ) ) :
+if ( ! function_exists( 'hk_content_nav' ) ) :
 /**
  * Display navigation to next/previous pages when applicable
  */
-function twentyeleven_content_nav( $nav_id ) {
+function hk_content_nav( $nav_id ) {
 	global $wp_query;
 
 	if ( $wp_query->max_num_pages > 1 ) : ?>
@@ -411,7 +300,7 @@ function twentyeleven_content_nav( $nav_id ) {
 		</nav><!-- #nav-above -->
 	<?php endif;
 }
-endif; // twentyeleven_content_nav
+endif; // hk_content_nav
 
 /**
  * Return the URL for the first link found in the post content.
