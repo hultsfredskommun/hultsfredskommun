@@ -6,8 +6,6 @@
 	$filter = $_POST['filter'];
 	$filter = stripslashes($filter);
 	$filter = json_decode($filter);
-	echo "cat" . $filter->cat;
-	echo "vem" . $filter->vem_tags;
 
 	/* get filter variables */
 	$cat = $filter->cat;

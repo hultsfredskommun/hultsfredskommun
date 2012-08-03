@@ -13,9 +13,14 @@
  */
 
 get_header(); ?>
+<div id="slideshow-sidebar" style="display:none">
+	<?php dynamic_sidebar('slideshow-sidebar'); ?>
+</div><!-- #slideshow-sidebar -->
+
 <div id="firstpage-top-content">
 		<?php dynamic_sidebar('firstpage-top-content'); ?>
-</div>
+</div><!-- #firstpage-top-sidebar -->
+
 <div id="primary">
 	<div id="content" role="main">
 		<?php 
@@ -34,11 +39,9 @@ get_header(); ?>
 				/* Query sticky posts */
 				query_posts( array( 'post__in' => $sticky, /*'cat__in' => ,*/ 'caller_get_posts' => 1 ) );
 		
-			if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-				get_template_part( 'content', get_post_format() ); 
-			endwhile; else: ?>
-				<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-			<?php endif; 
+				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+					get_template_part( 'content', get_post_format() ); 
+				endwhile; endif; 
 				// Reset Query
 				wp_reset_query(); 
 			
