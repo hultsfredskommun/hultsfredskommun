@@ -175,10 +175,12 @@ function readMoreToggleButton(el){
 	function toggleShow() {
 		article = $(el).parents("article");
 		// show summary content
-		if (article.hasClass("full"))
+		if ( $(article).hasClass("full") )
 		{
-			$(article).addClass("post_short"); //if showing titles - hide border m.m.
-
+			if( $("#content").hasClass("viewmode_titles") ){
+				$(article).addClass("only-title");
+			}
+		
 			// toggle visibility
 			$(article).find('.summary-content').show();
 			$(article).find('.more-content').hide("fast");
@@ -200,8 +202,10 @@ function readMoreToggleButton(el){
 		// show full content
 		else
 		{
-			$(article).removeClass("post_short"); //if showing titles - hide border m.m.
-
+			if( $("#content").hasClass("viewmode_titles") ){
+				$(article).removeClass("only-title");
+			}
+		
 			// toggle visibility
 			$(article).find('.summary-content').hide();
 			$(article).find('.more-content').show("fast");
@@ -232,7 +236,6 @@ function readMoreToggleButton(el){
 	if( !$(el).hasClass("loaded") ){
 		//add class loading
 		$(el).addClass("loading").html("Laddar...");
-		$(el).parent().removeClass("post_short"); //show everything in view-mode titles
 		
 		//find posts url and store it in variable
 		var entry_title = $(el).parent().find(".entry-title");

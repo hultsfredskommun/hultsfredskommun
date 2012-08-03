@@ -23,7 +23,7 @@
 				</div>asdf
 				<div id="optional">
 					<?php
-						$optionaltext = get_post_custom_values('optional-text')
+						$optionaltext = get_post_custom_values('optional-text');
 						if ($optionaltext) : foreach ($optionaltext as $value) {
 							echo "<div class='optional-area'>" . $value . "<br></div>";
 						} endif;
@@ -92,7 +92,7 @@
 				$optionaldoc = get_post_custom_values('optional-docs');
 				if ($optionaldoc) : foreach ($optionaldoc as $value) {
 					echo "<div class='optional-area'><b>Dokument</b><br>";
-					if (is_array($value) && !empty($value) : (foreach (unserialize($value) as $docpage) {
+					if (is_array($value) && !empty($value)) : foreach (unserialize($value) as $docpage) {
 						$doc = get_page($docpage);
 						echo "<a href='#'>" . $doc->post_title . "</a><br>";
 					} endif;
@@ -103,12 +103,14 @@
 				$optionalcontacts = get_post_custom_values('optional-contacts');
 				if ($optionalcontacts) : foreach ($optionalcontacts as $value) {
 					echo "<div class='optional-area'><b>Kontakter</b><br>";
-					if (is_array($value) && !empty($value) : (foreach (unserialize($value) as $docpage) {
-						$doc = get_page($docpage);
-						echo "<a href='#'>" . $doc->post_title . "</a><br>";
-					}
+						if (is_array($value) && !empty($value)) : 
+							foreach (unserialize($value) as $docpage) {
+								$doc = get_page($docpage);
+								echo "<a href='#'>" . $doc->post_title . "</a><br>";
+							}
+						endif;
 					echo "</div>";
-				} ?>
+				} endif; ?>
 		</footer><!-- #entry-meta -->
 		
 <?php 
@@ -184,4 +186,4 @@
 				<?php edit_post_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>
 			</footer><!-- #entry-meta -->
 			*/
-			?>
+?>

@@ -634,11 +634,11 @@ input#s {
 .entry-title {
 	clear: both;
 	color: #222;
-	font-size: 26px;
+	font-size: 20px;
 	font-weight: bold;
 	line-height: 1.5em;
 	padding-bottom: .3em;
-	padding-top: 15px;
+	padding-top: 0;
 }
 .entry-title,
 .entry-title a {
@@ -664,7 +664,7 @@ input#s {
 }
 .entry-content,
 .entry-summary {
-	padding: 1.625em 0 0;
+	padding: 0; /*1.625em 0 0;*/
 }
 .entry-content h1,
 .entry-content h2,
@@ -846,9 +846,10 @@ dl.gallery-item {
 .only-title {
 	border: none !important;
 	height: 28px;
-	padding: 0;
+	padding: 0 !important;
 	overflow: hidden;
 }
+.only-title.sticky { height: 42px; }
 .only-title:hover {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
