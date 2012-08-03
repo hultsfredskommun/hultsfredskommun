@@ -37,7 +37,9 @@ get_header(); ?>
 				$sticky = array_slice( $sticky, 0, 5 );
 
 				/* Query sticky posts */
-				query_posts( array( 'post__in' => $sticky, /*'cat__in' => ,*/ 'caller_get_posts' => 1 ) );
+				$query = array( 'post__in' => $sticky, 'category_slug__in' => $default_settings["startpage_cat"] , 'caller_get_posts' => 1 );
+				var_dump($query);
+				query_posts( $query );
 		
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 					get_template_part( 'content', get_post_format() ); 
