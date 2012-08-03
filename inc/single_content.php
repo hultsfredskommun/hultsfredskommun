@@ -13,7 +13,7 @@
                 </h1>
             </header>
         
-			<div id="misc-ctrl" class="grid_3 omega">
+			<div id="misc-ctrl">
 				<div id="default">
 					<ul>
 						<li><a href="<?php get_permalink(); ?>">G&aring; till artikel</a></li>
