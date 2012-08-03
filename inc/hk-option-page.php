@@ -28,6 +28,9 @@ function hk_theme_options_do_page() {
 				news_cat - kategori som ska användas för nyheter<br/>
 			</p>
 
+			<p><fieldset>Startsidans kategori</fieldset><input type="text" name="hk_theme[startpage_cat]" value="<?php echo $options['startpage_cat']; ?>" /></p>
+			<p><fieldset>Nyheternas kategori</fieldset><input type="text" name="hk_theme[news_cat]" value="<?php echo $options['news_cat']; ?>" /></p>
+
 			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
 				<tr valign="top">
 					<th style="width: 120px">Namn:</td>
