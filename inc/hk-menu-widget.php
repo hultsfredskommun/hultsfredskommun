@@ -94,12 +94,8 @@ class HK_Menu_Widget extends WP_Widget {
 
 	/* echo the tags and categories that currently are selected */
 	function hk_selected() {
-
-		// init
-		$cat = get_query_var("cat");
-		$tags = get_query_var("tag");
-		$vem_tags = get_query_var("vem");
-		$ort_tags = get_query_var("ort");
+		global $cat, $tags, $vem_tags, $ort_tags;
+		
 		
 		// check if any tag or cat is set
 		if ($cat != "" || $tags != "" || $ort_tags != "" || $vem_tags != "") :

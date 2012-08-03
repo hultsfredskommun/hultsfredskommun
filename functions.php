@@ -184,6 +184,13 @@ function setup_javascript_settings() {
 	else {
 		$max = $wp_query->max_num_pages;
 	}
+	// get filter selection to use with dynamic load of posts
+	$cat = get_query_var("cat");
+	$tags = get_query_var("tag");
+	$vem_tags = get_query_var("vem");
+	$ort_tags = get_query_var("ort");
+	$filter = array("cat" => $cat, "tags" => $tags, "vem_tags" => $vem_tags, "ort_tags" => $ort_tags);
+	
 	// Add some parameters for the dynamic load more posts JS.
 	wp_localize_script(
 		'hultsfred_js',
@@ -193,7 +200,8 @@ function setup_javascript_settings() {
 			'maxPages' => $max,
 			'nextLink' => str_replace(curBaseURL(), "", next_posts($max, false)),
 			'templateDir' => get_bloginfo('template_directory'),
-			'currPageUrl' => curPageURL() //window.location.protocol + "//" + window.location.host + window.location.pathname
+			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
+			'currentFilter' => json_encode($filter)
 		)
 	);
 }

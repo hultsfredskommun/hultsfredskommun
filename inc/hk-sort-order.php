@@ -3,6 +3,7 @@
 	 * Sort-order function:
 	 * adds function for displaying sort-order buttons
 	 * adds filter for sort-order
+	 * orderby == popular depends on the plugin WP-PostViews by Lester 'GaMerZ' Chan 
 	 */
 
 	function displaySortOrderButtons(){ ?>
@@ -99,19 +100,21 @@
 	}
 	add_filter ('posts_orderby', 'hk_FilterOrder');
 	
-	// Sets sort-order most viewed as default or if orderby == popular
-	add_action('pre_get_posts', 'hk_views_sorting');
+	// Sets sort-order most viewed as default or if orderby == popular and plugin WP-PostViews is loaded
 	function hk_views_sorting($local_wp_query) {
-		if ( !isset($_REQUEST["orderby"]) or (isset($_REQUEST["orderby"]) and $_REQUEST["orderby"] == 'popular') ) {
-			add_filter('posts_fields', 'views_fields');
-			add_filter('posts_join', 'views_join');
-			add_filter('posts_where', 'views_where');
-			add_filter('posts_orderby', 'views_orderby');
-		} else {
-			remove_filter('posts_fields', 'views_fields');
-			remove_filter('posts_join', 'views_join');
-			remove_filter('posts_where', 'views_where');
-			remove_filter('posts_orderby', 'views_orderby');
+		if( function_exists( 'views_orderby' )) {
+			if ( !isset($_REQUEST["orderby"]) or (isset($_REQUEST["orderby"]) and $_REQUEST["orderby"] == 'popular') ) {
+				add_filter('posts_fields', 'views_fields');
+				add_filter('posts_join', 'views_join');
+				add_filter('posts_where', 'views_where');
+				add_filter('posts_orderby', 'views_orderby');
+			} else {
+				remove_filter('posts_fields', 'views_fields');
+				remove_filter('posts_join', 'views_join');
+				remove_filter('posts_where', 'views_where');
+				remove_filter('posts_orderby', 'views_orderby');
+			}
 		}
 	}
+	add_action('pre_get_posts', 'hk_views_sorting');
 ?>
