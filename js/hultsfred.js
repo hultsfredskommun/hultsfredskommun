@@ -570,7 +570,7 @@ function dyn_posts_load_posts() {
 				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('.entry-title').each(function(){
 					$(this).find('a').click(function(ev){
 						ev.preventDefault();
-						var post = $(this).parent().parent().parent().parent().parent();
+						var post = $(this).parents("article");
 						$(post).find('.readMoreToggleButton').click();
 					});
 				});

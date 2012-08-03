@@ -22,9 +22,11 @@
 					</ul>
 				</div>asdf
 				<div id="optional">
-					<?php foreach (get_post_custom_values('optional-text') as $value) {
+					<?php
+						$optionaltext = get_post_custom_values('optional-text')
+						if ($optionaltext) : foreach ($optionaltext as $value) {
 							echo "<div class='optional-area'>" . $value . "<br></div>";
-						}
+						} endif;
 					?>
 			</div><!-- #optional -->
 			</div><!-- #misc-ctrl -->
@@ -85,22 +87,28 @@
 			
 			<?php if(function_exists('the_views')) { the_views(); } ?>
 
-			<?php foreach (get_post_custom_values('optional-docs') as $value) {
-				echo "<div class='optional-area'><b>Dokument</b><br>";
-				foreach (unserialize($value) as $docpage) {
-					$doc = get_page($docpage);
-					echo "<a href='#'>" . $doc->post_title . "</a><br>";
-				}
-				echo "</div>";
-			} ?>
-			<?php foreach (get_post_custom_values('optional-contacts') as $value) {
-				echo "<div class='optional-area'><b>Kontakter</b><br>";
-				foreach (unserialize($value) as $docpage) {
-					$doc = get_page($docpage);
-					echo "<a href='#'>" . $doc->post_title . "</a><br>";
-				}
-				echo "</div>";
-			} ?>
+			<?php
+				// get connected documents
+				$optionaldoc = get_post_custom_values('optional-docs');
+				if ($optionaldoc) : foreach ($optionaldoc as $value) {
+					echo "<div class='optional-area'><b>Dokument</b><br>";
+					if (is_array($value) && !empty($value) : (foreach (unserialize($value) as $docpage) {
+						$doc = get_page($docpage);
+						echo "<a href='#'>" . $doc->post_title . "</a><br>";
+					} endif;
+					echo "</div>";
+				} endif; 
+
+				// get connected contacts
+				$optionalcontacts = get_post_custom_values('optional-contacts');
+				if ($optionalcontacts) : foreach ($optionalcontacts as $value) {
+					echo "<div class='optional-area'><b>Kontakter</b><br>";
+					if (is_array($value) && !empty($value) : (foreach (unserialize($value) as $docpage) {
+						$doc = get_page($docpage);
+						echo "<a href='#'>" . $doc->post_title . "</a><br>";
+					}
+					echo "</div>";
+				} ?>
 		</footer><!-- #entry-meta -->
 		
 <?php 

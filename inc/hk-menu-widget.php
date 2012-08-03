@@ -94,7 +94,11 @@ class HK_Menu_Widget extends WP_Widget {
 
 	/* echo the tags and categories that currently are selected */
 	function hk_selected() {
-		global $cat, $tags, $vem_tags, $ort_tags;
+
+		$cat = get_query_var("cat");
+		$tags = get_query_var("tag");
+		$vem_tags = get_query_var("vem");
+		$ort_tags = get_query_var("ort");
 		
 		
 		// check if any tag or cat is set
@@ -350,21 +354,19 @@ class HK_Menu_Widget extends WP_Widget {
 		// loop the posts to get all taxonomies used 
 		$wpq = new WP_Query($query);
 		if ($wpq->have_posts()) : while ($wpq->have_posts()) : $wpq->the_post();
-			foreach ($taxonomies as $taxonomy) {
+			if ($taxonomies) : foreach ($taxonomies as $taxonomy) {
 			    $posttags = wp_get_post_terms(get_the_ID(),$taxonomy);
-				if ($posttags) {
-					foreach($posttags as $tag) {
+				if ($posttags) : foreach($posttags as $tag) {
 						//USING JUST $tag MAKING $all_tags_arr A MULTI-DIMENSIONAL ARRAY, WHICH DOES WORK WITH array_unique
 						$all_tags_arr[$taxonomy][$tag -> slug] = $tag -> name; 
-					}
-				}
-			}
+					} endif;
+			} endif;
 		endwhile; endif;
 
-		foreach ($taxonomies as $taxonomy) {
+		if ($taxonomies) : foreach ($taxonomies as $taxonomy) {
 			//REMOVES DUPLICATES
 			$tags_arr[$taxonomy] = array_unique($all_tags_arr[$taxonomy]); 
-		}
+		} endif;
 		
 		return $tags_arr;
 
