@@ -112,14 +112,5 @@ get_header();
 			</div><!-- #content -->
 		</section><!-- #primary -->
 
-		<div id="sidebar-wrapper">
-			<div id="nav-sidebar">
-				<?php dynamic_sidebar('nav-sidebar'); ?>
-			</div><!-- #nav-sidebar -->
-			<div id="sidebar">
-				<?php dynamic_sidebar('sidebar'); ?>
-			</div><!-- #sidebar -->
-		</div><!-- #sidebar-wrapper -->
-
-<?php //get_sidebar(); ?>
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>
