@@ -173,148 +173,55 @@ $.fn.searchSuggest = function()
 function readMoreToggleButton(el){
 	//toggle function
 	function toggleShow() {
+		article = $(el).parents("article");
+		// show summary content
+		if (article.hasClass("full"))
+		{
+			// toggle visibility
+			$(article).find('.summary-content').show();
+			$(article).find('.more-content').hide("fast");
 
-			
-			article = $(el).parents("article");
-			// show summary content
-			if (article.hasClass("full"))
-			{
-				// toggle visibility
-				$(article).find('.summary-content').show();
-				$(article).find('.more-content').hide("fast");
+			// alter close-buttons
+			$(article).find('.closeButton').remove();
+			$(article).find(".readMoreToggleButton").html(". . .")
 
-				// alter close-buttons
-				$(article).find('.closeButton').remove();
-				$(article).find(".readMoreToggleButton").html(". . .")
+			// remove full class to track article state
+			$(article).removeClass("full");
 
-				// remove full class to track article state
-				$(article).removeClass("full");
+			// scroll to top of post 
+			$("html,body").animate({scrollTop: $(article).position().top},"slow");
 
-				// scroll to top of post 
-				$("html,body").animate({scrollTop: $(article).position().top},"slow");
+			// reset webbrowser history
+			History.replaceState(null, title, hultsfred_object["currPageUrl"]);
 
-				// reset webbrowser history
-				History.replaceState(null, title, hultsfred_object["currPageUrl"]);
-
-			}
-			// show full content
-			else
-			{
-				// toggle visibility
-				$(article).find('.summary-content').hide();
-				$(article).find('.more-content').show("fast");
-				
-				// alter close-button
-				$(article).find(".readMoreToggleButton").html("St&auml;ng");
-
-				//add close-button top right corner
-				var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(){
-					readMoreToggleButton( $(article).find('.readMoreToggleButton') );
-				});
-				$(article).append(closea);
-
-				// add full class to track article state
-				$(article).addClass("full");
-
-				//change webbrowser url
-				//find and store post-title and post-url
-				var entry_title = $(article).find(".entry-title");
-				var title = $(entry_title).find("a").html().replace("&amp;","&") + " | Hultsfred";
-				var url = $(entry_title).find("a").attr("href");
-
-				History.replaceState(null, title, url);
-
-			}
-
-
-		//});
-
-
-		/*
-		//store readMoreContainer and readMoreContent as objects
-		var wrapper = $(el).prev();
-		var content = $(wrapper).find('.readMoreContent');
-		
-		if(	$(el).hasClass("loaded") ){
-			if( $(wrapper).find('.readMoreContent').children(".more-content").is(":hidden") ){
-				$(wrapper).find('.readMoreContent').children(".more-content").show();
-				$(wrapper).find('.readMoreContent').children(".entry-content").hide();
-				$(wrapper).find('.readMoreContent').children(".entry-title").hide();
-			}
 		}
-		else if( $(el).hasClass("loading") ){
-			$(el).removeClass("loading");
-			$(el).addClass("loaded");
+		// show full content
+		else
+		{
+			// toggle visibility
+			$(article).find('.summary-content').hide();
+			$(article).find('.more-content').show("fast");
+			
+			// alter close-button
+			$(article).find(".readMoreToggleButton").html("St&auml;ng");
+
+			//add close-button top right corner
+			var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(){
+				readMoreToggleButton( $(article).find('.readMoreToggleButton') );
+			});
+			$(article).append(closea);
+
+			// add full class to track article state
+			$(article).addClass("full");
+
+			//change webbrowser url
+			//find and store post-title and post-url
+			var entry_title = $(article).find(".entry-title");
+			var title = $(entry_title).find("a").html().replace("&amp;","&") + " | Hultsfred";
+			var url = $(entry_title).find("a").attr("href");
+
+			History.replaceState(null, title, url);
 		}
-		else{ return false; }
-		
-		//find and store post-title and post-url
-		var entry_title = $(el).parent().find(".entry-title");
-		var title = $(entry_title).find("a").html().replace("&amp;","&") + " | Hultsfred";
-		var url = $(entry_title).find("a").attr("href");
-		
-		// if article is short
-		if( $(entry_title).is(":hidden") ){
-			//show hidden elements
-			$(wrapper).parent().removeClass("post_short"); //show everything in view-mode titles
-			$(content).children(".entry-header").hide();
-			$(content).children(".more-content").find(".entry-meta").show();
-			
-			//calculate heights
-			var contentHeight = content.outerHeight(true);
-			var wrapperHeight = wrapper.height();
-			
-			$(content).css({"height": contentHeight, "overflow-x": "hidden", "overflow-y": "auto"});
-			
-			//alert(contentHeight + " > " + wrapperHeight + " = " + (contentHeight > wrapperHeight ? "true" : "false"));
-			
-			if( contentHeight > wrapperHeight ){
-				$(wrapper).attr('oldheight', wrapperHeight);
-				$(wrapper).css('height', contentHeight+10);
-				$(wrapper).find('.readMoreFadeBottom').toggle();
-				$(el).attr('href', '?visa=kort');
-				$(el).html("St&auml;ng");
-				
-				//change webbrowser url
-				History.replaceState(null, title, url);
-				
-				//add close-button top right corner
-				var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(){
-					readMoreToggleButton( $(this).parent().find('.readMoreToggleButton') );
-				});
-				$(wrapper).parent().append(closea);
-			}
-			else{
-				//$(el).html(". . .");
-				//style-change
-				$(wrapper).find('.readMoreFadeBottom').css("display", "none");
-				$(el).after( $('<div>').addClass("space").css("height", "18px") );
-				$(el).remove();
-			}
-		}
-		else {
-			$(wrapper).css('height', $(wrapper).attr('oldheight') );
-			$(wrapper).removeAttr('oldheight');
-			$(wrapper).find('.readMoreFadeBottom').toggle();
-			$(content).css({"height": "auto", "overflow-x": "hidden", "overflow-y": "hidden"});
-			$(el).attr('href', '?visa=full');
-			$(el).html('. . .');
-			
-			setTimeout(function(){
-				$(content).children(".entry-header").show();
-				$(wrapper).find('.readMoreContent').children(".more-content").hide(); //hide more-content
-				$(wrapper).find('.readMoreContent').children(".entry-content").show(); //show entry-content
-				
-				$(wrapper).parent().addClass("post_short"); //if showing titles - hide border m.m.
-				
-				// scroll to top of post 
-				$("html,body").animate({scrollTop: $(wrapper).parent().position().top},"slow");
-			}, 200);
-			
-			//remove close-button
-			$(wrapper).parent().find('.closeButton').remove();
-			
-		}*/
 	}
 
 	if( !$(el).hasClass("loaded") ){
@@ -437,63 +344,25 @@ $(document).ready(function(){
 		var title = $("html head title").html();
 		History.replaceState(null, title, hultsfred_object["currPageUrl"]);
 	}
-
-
-	/**
-	 * menu dropdown area
-	 */
-	var menutimer;
-	var hoveritem;
-	var menuheight = $("#access").outerHeight();
-	$(".menu-item").mouseenter(function() {
-		hoveritem = $(this).attr("id");
-		
-		clearTimeout(menutimer);	
-		menutimer = setTimeout(function() {
-			$(".menu-item").removeClass("hovered");
-			$("#"+hoveritem).addClass("hovered");
-			$("#access ul").css("border-radius","5px 5px 0 0");
-			$("#full-menu .descr").fadeIn("fast");
-			$("#access #dropdown").fadeIn("fast",function() {
-				// TODO - load dynamic dropdown content.
-				$(this).html("H&auml;r kan vi visa info om " + hoveritem);
-			});
-			newheight = $("#full-menu").outerHeight() -5;
-			$(".menu-item").height(newheight);
-			$("#access").height(newheight);
-
-		},200);
-	});
-	$("#access").mouseleave(function() {
-		clearTimeout(menutimer);
-		$(".menu-item").removeClass("hovered");
-		menutimer = setTimeout(function() {
-			$("#access ul").css("border-radius","5px");
-			$("#full-menu .descr").fadeOut("fast");
-			$("#access #dropdown").fadeOut("fast");
-			$("#access").css("height","");
-			$(".menu-item").css("height","");
-		}, 800);
-	});
 	
 
 	/**
 	 * view-modes 
 	 */
 	// show framed articles click action
-	$("#posts_framed").click(function(ev){
-		$("body").removeClass("posts_titles");
+	$("#viewmode_summary").click(function(ev){
+		$("body").removeClass("viewmode_titles");
 		ev.preventDefault();
 	});
 	// show only title click action
-	$("#posts_titles").click(function(ev){
-		$("body").addClass("posts_titles");	
+	$("#viewmode_titles").click(function(ev){
+		$("body").addClass("viewmode_titles");	
 		ev.preventDefault();
 	});
 
 
 	//Stores the window-width for later use
-	oldWidth = $(window).width();	
+	oldWidth = $(window).width();
 	
 
 	/**
@@ -515,48 +384,6 @@ $(document).ready(function(){
 		});
 	});
 	
-    // ajax read more
-    /*
-	$(".slideshow").find(".more-link").addClass("slideshow");
-	$(".largefront").find(".more-link").addClass("largefront").show().click( function(ev){
-		ev.preventDefault();
-		if ( !$(this).hasClass('loading') ){
-			read_more(this);
-		}
-	});;
-	$(".smallfront").find(".more-link").addClass("smallfront").show().click( function(ev){
-		ev.preventDefault();
-		if ( !$(this).hasClass('loading') ){
-			read_more(this);
-		}
-	});;
-	*/
-	$.ajaxSetup({cache:false});
-	
-
-	/* responsive menu */
-	//Sätter dynamisk storlek på top-menyn
-	/*var nr_items = $("#nr-menu-items").html();
-	if( nr_items != 0 ) {
-		var item_width = (100/nr_items);
-		$('#menu #full-menu .menu-item').css({"width":item_width+"%"});
-	}*/
-	
-	/* Minimize Kontakt or Kalender */
-	var clicked = false;
-	if( $('body').hasClass('home') ){
-		if( !clicked ){
-			$(".widget h3:contains('Kontakt')").click();
-			clicked = true;
-		}
-	}
-	else{
-		if( !clicked ){
-			$(".widget h3:contains('Kalender')").click();
-			clicked = true;
-		}
-	}	
-		
 	/**
 	 * init slideshow
 	 */
@@ -570,8 +397,6 @@ $(document).ready(function(){
 		fit: 1,
 		pause: 1
 	});
-
-
 
 	/**
 	 * scroll to top actions 
@@ -616,31 +441,15 @@ $(document).ready(function(){
 	/**
 	 * responsive dropdown menu
 	 */
-	if ($(window).width() <= (max_width - scrollbar)) {
-		$("#menu a.dropdown-menu").show();
-		if ($("#full-menu").attr('class') == "start-visible") {
-			$("#full-menu").hide();
-			$("#full-menu").toggleClass("hidden");
-		}
-	}  
-	else {
-		$("#menu a.dropdown-menu").hide();
-		if ($("#full-menu").attr('class') != "start-visible") {
-			$("#full-menu").show;
-			$("#full-menu").toggleClass("hidden");
-		}
-	}
 	// set click action	
-	$(".dropdown-menu").click( function(){
-		if( $("#full-menu").attr('class') == "start-visible" ){
-			$("#full-menu").slideUp('fast');
-		}
+	$("#dropdown-menu").click( function(){
 		
-		$("#full-menu").toggleClass("hidden");
-		
-		if( $("#full-menu").attr('class') == "start-visible" ){
-			$("#full-menu").slideDown('fast');
+		//toggle "#menu ul"
+		if( $("#menu ul").is(":visible") ){
+			$("#menu ul").slideUp('fast');
 		}
+		else{ $("#menu ul").slideDown('fast'); }
+	
 	});  
 
 	
@@ -793,21 +602,14 @@ $(window).resize(function() {
 
 		//Skriver ut skärmens storlek
 		log( "$(window).width = " + $(window).width() + ", " +
-									"MQ Screensize = " + ($(window).width() + scrollbar) );
+			"MQ Screensize = " + ($(window).width() + scrollbar) 
+		);
 
-		if ( $(window).width() <= (max_width - scrollbar) ) {
-			$("#menu a.dropdown-menu").show();
-			if ($("#full-menu").attr('class') == "start-visible") {
-				$("#full-menu").hide();
-				$("#full-menu").toggleClass("hidden");
-			}
-		}  
-		else {
-			$("#menu a.dropdown-menu").hide();
-			if ($("#full-menu").attr('class') != "start-visible") {
-				$("#full-menu").slideDown('fast');
-				$("#full-menu").toggleClass("hidden");
-			}
+		if ( $(window).width() > (max_width - scrollbar) ) 
+		{
+			$("#menu ul").show();
+		}else{
+			$("#menu ul").hide();
 		}
 	}
 	oldWidth = $(window).width();

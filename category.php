@@ -37,8 +37,8 @@ get_header(); ?>
 					?>
 					
 					<div id="display-mode">
-						<a id="posts_framed" title="Visa ingress" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_framed.png" /></a>
-						<a id="posts_titles" title="Visa endast rubriker" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_titles.png" /></a>
+						<a id="viewmode_summary" title="Visa ingress" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_framed.png" /></a>
+						<a id="viewmode_titles" title="Visa endast rubriker" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_titles.png" /></a>
 					</div>
 					<div class="clear"></div>
 				</header>

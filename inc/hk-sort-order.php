@@ -70,7 +70,6 @@
 				add_post_meta($id, 'views', 1, true);
 			}
 		}
-	
 	}
 	function hk_FilterOrder ($order = '') {
 		global $wpdb;

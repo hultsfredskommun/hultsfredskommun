@@ -94,24 +94,18 @@
 			<?php get_search_form(); ?>
 		</div>
 		
-		<nav id="access" role="navigation">
-			<ul id="menu" class="menu">
-				<a class="dropdown-menu">Meny<img id="dropdown-image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/downarrow.png" /></a>
-				<div id="full-menu" class="start-visible" >
+		<nav id="menu" role="navigation">
+				<a id="dropdown-menu">Meny<img id="dropdown-image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/downarrow.png" /></a>
 					<?php 
 						wp_nav_menu( array(
 							'theme_location' => 'primary', 
-							'container_class' => 'menu-wrapper',							
-							'items_wrap' => '%3$s',
+							'container' => '',							
+							'items_wrap' => '<ul>%3$s</ul>',
 							'depth' => 1,
-							'echo' => true,
-							'walker' => new mainMenu
+							'echo' => true
 						)); 
 					?>
-					<div class="clear">&nbsp;</div>
-				</div>
-			</ul>
-			<div id="dropdown">Här kan vi lägga en massa kolumner och liknande.</div>
+				<div class="clear"></div>
 		</nav><!-- #access -->
 
 		<div id="blog_id" style="display:none"><?php global $blog_id; echo $blog_id; ?></div>
