@@ -64,12 +64,6 @@ function twentyeleven_setup() {
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
 
-	// Load up our theme options page and related code.
-	require( get_template_directory() . '/inc/theme-options.php' );
-
-	// Grab Twenty Eleven's Ephemera widget.
-	require( get_template_directory() . '/inc/widgets.php' );
-
 	// Grab hk text widget.
 	require( get_template_directory() . '/inc/hk-text-widget.php' );
 
@@ -90,19 +84,6 @@ function twentyeleven_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Primary Menu', 'twentyeleven' ) );
-
-	$theme_options = twentyeleven_get_theme_options();
-	if ( 'dark' == $theme_options['color_scheme'] )
-		$default_background_color = '1d1d1d';
-	else
-		$default_background_color = 'f1f1f1';
-
-	// Add support for custom backgrounds.
-	add_theme_support( 'custom-background', array(
-		// Let WordPress know what our default background color is.
-		// This is dependent on our current color scheme.
-		'default-color' => $default_background_color,
-	) );
 
 	// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
 	add_theme_support( 'post-thumbnails' );
