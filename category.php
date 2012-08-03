@@ -10,11 +10,13 @@
 get_header(); 
 
 ?>
-		<div id="top-nav-sidebar" style="display:none">
-			<?php dynamic_sidebar('top-nav-sidebar'); ?>
-		</div><!-- #top-nav-sidebar -->
+		<div id="dynamic-nav-sidebar" style="display:none">
+			<?php dynamic_sidebar('nav-sidebar'); ?>
+		</div><!-- #dynamic-nav-sidebar -->
 
-		<?php // Ev toppbildanimation ?>
+		<div id="slideshow-sidebar" style="display:none">
+			<?php dynamic_sidebar('slideshow-sidebar'); ?>
+		</div><!-- #slideshow-sidebar -->
 
 		<section id="primary">
 			<div id="content" role="main">
@@ -103,8 +105,14 @@ get_header();
 			</div><!-- #content -->
 		</section><!-- #primary -->
 
-		<div id="sidebar">
-			<?php dynamic_sidebar('sidebar'); ?>
-		</div><!-- #sidebar -->	
+		<div id="sidebar-wrapper">
+			<div id="nav-sidebar">
+				<?php dynamic_sidebar('nav-sidebar'); ?>
+			</div><!-- #nav-sidebar -->
+			<div id="sidebar">
+				<?php dynamic_sidebar('sidebar'); ?>
+			</div><!-- #sidebar -->
+		</div><!-- #sidebar-wrapper -->
+
 <?php //get_sidebar(); ?>
 <?php get_footer(); ?>

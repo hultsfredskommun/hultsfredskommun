@@ -323,7 +323,17 @@ add_filter( 'wp_page_menu_args', 'twentyeleven_page_menu_args' );
 function twentyeleven_widgets_init() {
 
 	register_sidebar( array(
-		'name' => 'Startsidans Toppinneh&aring;ll',
+		'name' => 'Bildspelsyta',
+		'id' => 'slideshow-content',
+		'description' => 'Bildspelsyta p&aring; alla sidor',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name' => 'Startsidans toppinneh&aring;ll',
 		'id' => 'firstpage-top-content',
 		'description' => 'Inneh&aring;ll h&ouml;gst upp p&aring; startsidan',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -333,7 +343,7 @@ function twentyeleven_widgets_init() {
 	) );
 	
 	register_sidebar( array(
-		'name' => 'Startsidans huvudinneh&aring;ll',
+		'name' => 'Startsidans inneh&aring;ll',
 		'id' => 'firstpage-content',
 		'description' => 'Inneh&aring;ll under sticky-posts p&aring; startsidan',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -353,14 +363,25 @@ function twentyeleven_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name' => 'Responsiva navigering',
-		'id' => 'top-nav-sidebar',
-		'description' => 'Inneh&aring;llsidans responsiva navigeringsyta',
+		'name' => 'Sidonavigering',
+		'id' => 'nav-sidebar',
+		'description' => 'Inneh&aring;llsidans navigeringsyta',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
+
+	register_sidebar( array(
+		'name' => 'Sidof&auml;lt',
+		'id' => 'sidebar',
+		'description' => 'Inneh&aring;llsidans sidof&auml;lt',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
 
 	register_sidebar( array(
 		'name' => __( 'Footer Area One', 'twentyeleven' ),
