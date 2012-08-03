@@ -217,7 +217,8 @@ function readMoreToggleButton(el){
 			//change webbrowser url
 			//find and store post-title and post-url
 			var entry_title = $(article).find(".entry-title");
-			var title = $(entry_title).find("a").html().replace("&amp;","&") + " | Hultsfred";
+			var blog_title = $("#logo").find('img').attr('alt');
+			var title = $(entry_title).find("a").html().replace("&amp;","&") + " | " + blog_title;
 			var url = $(entry_title).find("a").attr("href");
 
 			History.replaceState(null, title, url);
