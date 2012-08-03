@@ -47,8 +47,12 @@ get_header();
 					<div class="clear"></div>
 				</header>
 
-				<div id="sticky-posts">
-					<?php
+				<!-- ***Sticky posts*** -->
+				<?php
+					/**
+					 * Print stickies here only if orderby is empty
+					 */
+					if ($_REQUEST["orderby"] == "") :
 						/* Get category id */
 						$catID = get_query_var("cat");
 					
@@ -56,7 +60,6 @@ get_header();
 						$sticky = get_option( 'sticky_posts' );
 						
 						if (isset($sticky)):
-
 							/* Query sticky posts */
 							query_posts( array( 'category__in' => $catID, 'post__in' => $sticky ) );
 							
@@ -65,22 +68,26 @@ get_header();
 							<?php endwhile; endif;
 						endif; 
 						// Reset Query
-						wp_reset_query(); 
-					?>
-				</div><!-- #sticky-posts -->
+						wp_reset_query();
+					endif;
+				?><!-- ***Sticky posts END*** -->
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php
-						//if( !is_sticky() ) {
+						/**
+						 * Default: don't print stickies here
+						 * If orderby is not empty: print stickies
+						 */
+						if( !is_sticky() or ($_REQUEST["orderby"] != "") ) {
 
 							/* Include the Post-Format-specific template for the content.
 							 * If you want to overload this in a child theme then include a file
 							 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 							 */
 							get_template_part( 'content', get_post_format() );
-						//}
+						}
 					?>
 
 				<?php endwhile; ?>
