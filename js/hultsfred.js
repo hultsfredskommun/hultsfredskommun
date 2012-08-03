@@ -356,12 +356,14 @@ $(document).ready(function(){
 	 */
 	// show framed articles click action
 	$("#viewmode_summary").click(function(ev){
-		$("body").removeClass("viewmode_titles");
+		$("#content").removeClass("viewmode_titles");
+		$("#content").find('article').removeClass("only-title");
 		ev.preventDefault();
 	});
 	// show only title click action
 	$("#viewmode_titles").click(function(ev){
-		$("body").addClass("viewmode_titles");	
+		$("#content").addClass("viewmode_titles");	
+		$("#content").find('article').addClass("only-title");
 		ev.preventDefault();
 	});
 
@@ -515,6 +517,7 @@ $(document).ready(function(){
 					});
 				});
 			});
+			$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).children(":first-child").unwrap();
 			ev.preventDefault();
 		}
 		else{ 
@@ -566,6 +569,8 @@ function dyn_posts_load_posts() {
 			{ pageNum: settings["pageNum"], filter: filter }, /*settings["nextLink"] + ' .post',*/
 			function() {
 				//log("ready " + settings["pageNum"] + " " +settings["nextLink"]);
+				
+				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('article').addClass("only-title");
 				
 				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('.entry-title').each(function(){
 					$(this).find('a').click(function(ev){
