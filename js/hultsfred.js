@@ -177,6 +177,8 @@ function readMoreToggleButton(el){
 		// show summary content
 		if (article.hasClass("full"))
 		{
+			$(article).addClass("post_short"); //if showing titles - hide border m.m.
+
 			// toggle visibility
 			$(article).find('.summary-content').show();
 			$(article).find('.more-content').hide("fast");
@@ -198,6 +200,8 @@ function readMoreToggleButton(el){
 		// show full content
 		else
 		{
+			$(article).removeClass("post_short"); //if showing titles - hide border m.m.
+
 			// toggle visibility
 			$(article).find('.summary-content').hide();
 			$(article).find('.more-content').show("fast");
