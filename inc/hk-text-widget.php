@@ -40,6 +40,11 @@ class HK_text_widget extends WP_Widget {
 		} else {
 			$height = 80;
 		}
+		if ( isset( $instance[ 'width' ] ) ) {
+			$width = $instance[ 'width' ];
+		} else {
+			$width = 0;
+		}
 		
 		?>
 		<p>
@@ -49,6 +54,10 @@ class HK_text_widget extends WP_Widget {
 		<p>
 		<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e( 'H&ouml;jd (i px):' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo esc_attr( $height); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e( 'Bredd (i %):' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" type="text" value="<?php echo esc_attr( $width); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'color' ); ?>"><?php _e( 'F&auml;rg:' ); ?></label> 
@@ -90,6 +99,7 @@ class HK_text_widget extends WP_Widget {
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['color'] = strip_tags( $new_instance['color'] );
 		$instance['height'] = rtrim(strip_tags( $new_instance['height'] ),"empx%");
+		$instance['width'] = rtrim(strip_tags( $new_instance['width'] ),"empx%");
 		$instance['link'] = strip_tags( $new_instance['link'] );
 		$instance['target'] = strip_tags( $new_instance['target'] );
 		$instance['imageurl'] = strip_tags( $new_instance['imageurl'] );
@@ -103,6 +113,7 @@ class HK_text_widget extends WP_Widget {
 		$title = $instance['title'];
 		$color = $instance['color'];
 		$height = $instance['height'];
+		$width = $instance['width'];
 		$link = $instance['link'];
 		$target = $instance['target'];
 		$imageurl = $instance['imageurl'];
@@ -113,9 +124,14 @@ class HK_text_widget extends WP_Widget {
 			$onclick = "onclick='javascript:$onclick'";
 			$link = "#";
 		}
-		echo $before_widget;
 
-		echo "<div class='$color' style='height:".$height."px; line-height:".$height."px; background-image: url($imageurl)'>";
+		$heightstyle = "height: ".$height."px; line-height:".$height."px;";
+		$widthstyle = ($width!=null)?"width: ".$width."%;":"";
+		$bgstyle = ($imageurl!=null)?"background-image: url($imageurl)":"";
+
+		echo str_replace("aside", "aside style='$widthstyle'", $before_widget);
+
+		echo "<div class='$color' style='$heightstyle $bgstyle'>";
 		echo "<div class='text'>";
 		echo "<div class='transp-background $color'></div>";
 		echo "<a class='$color' $onclick href='$link' target='$target'>$title</a>";
@@ -127,4 +143,4 @@ class HK_text_widget extends WP_Widget {
 }
 
 add_action( 'widgets_init', create_function( '', 'register_widget( "HK_Text_Widget" );' ) );
-?>
+?>	
