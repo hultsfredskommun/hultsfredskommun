@@ -553,7 +553,7 @@ function dyn_posts_load_posts() {
 	// Are there more posts to load?
 		
 	if(settings["pageNum"] <= settings["pageNumVisible"]+1 && settings["pageNum"] <= settings["maxPages"] && !loading_next_page) {
-		log("Laddar sida " + settings["pageNum"] + " . " + settings["maxPages"] + " .. " + filter)
+		log("Laddar sida " + settings["pageNum"] + " / " + settings["maxPages"])
 		loading_next_page = true;
 
 
@@ -604,7 +604,6 @@ function dyn_posts_load_posts() {
 				
 				loading_next_page = false;
 				if( $('#dyn-posts-load-posts a').hasClass("loading") ){
-					log("really ready");
 					$('#dyn-posts-load-posts a').removeClass("loading").click();
 				}
 				

@@ -947,11 +947,24 @@ article:hover{
 	transition:opacity 0.2s ease-in-out 0s
 }
 
+/* Excerpt/Summary */
 .summary-content {
 	height: 100px;
 	overflow: hidden;
     position: relative;
 }
+.summary-content .thumbnail-image {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.sticky .summary-content .thumbnail-image {
+	float: right;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+/* Excerpt/Summary END */
 
 .readMoreContent .more-content > img{
 	margin-bottom: 10px;
