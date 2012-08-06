@@ -254,7 +254,7 @@ add_filter( 'filesystem_method', create_function( '$a', 'return "direct";' ) );
  * function tied to the excerpt_length filter hook.
  */
 function hk_excerpt_length( $length ) {
-	return 40;
+	return 60;
 }
 add_filter( 'excerpt_length', 'hk_excerpt_length' );
 
