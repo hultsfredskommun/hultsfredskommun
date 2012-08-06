@@ -979,13 +979,18 @@ article:hover{
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
-.summary-content .the_content { float: left }
-
 .sticky .summary-content img {
 	float: right;
 	margin-left: 10px;
 	margin-bottom: 10px;
 }
+.summary-content header {
+	float: left;
+	clear: right;
+}
+.summary-content .the_content { 
+}
+
 /* Excerpt/Summary END */
 
 /* More-content */
