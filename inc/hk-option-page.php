@@ -23,13 +23,45 @@ function hk_theme_options_do_page() {
 		<form id="form_hk_options" method="post" action="options.php">
 			<?php settings_fields('hk_theme_options_options'); ?>
 			<?php $options = get_option('hk_theme'); ?>
-			<p>
-				startpage_cat - kategori som ska användas som startsida<br/>
-				news_cat - kategori som ska användas för nyheter<br/>
+
+
+
+			<p><fieldset>Välj den kategori som innehåller <b>startsidans</b> sidor.</fieldset>
+			<?php 
+				$args = array(
+					'orderby'            => 'ID', 
+					'order'              => 'ASC',
+					'echo'               => 1,
+					'selected'           => esc_attr( $options["startpage_cat"] ),
+					'hierarchical'       => 1, 
+					'name'               => 'hk_theme[startpage_cat]',
+					'depth'              => 0,
+					'taxonomy'           => 'category',
+					'show_count'           => true,
+					'hide_empty'      => false,
+					'hide_if_empty'      => false );  
+				wp_dropdown_categories( $args ); 
+			?>
+			</p>
+			
+			<p><fieldset>Välj den kategori som innehåller <b>nyheter</b>.</fieldset>
+							<?php 
+				$args = array(
+					'orderby'            => 'ID', 
+					'order'              => 'ASC',
+					'echo'               => 1,
+					'selected'           => esc_attr( $options["news_cat"] ),
+					'hierarchical'       => 1, 
+					'name'               => 'hk_theme[news_cat]',
+					'depth'              => 0,
+					'taxonomy'           => 'category',
+					'show_count'           => true,
+					'hide_empty'      => false,
+					'hide_if_empty'      => false );  
+				wp_dropdown_categories( $args ); 
+			?>
 			</p>
 
-			<p><fieldset>Startsidans kategori</fieldset><input type="text" name="hk_theme[startpage_cat]" value="<?php echo $options['startpage_cat']; ?>" /><span>Skriv in "slug"-namnet på den kategorien som innehåller startsidans sidor.</span></p>
-			<p><fieldset>Nyheternas kategori</fieldset><input type="text" name="hk_theme[news_cat]" value="<?php echo $options['news_cat']; ?>" /><span>Skriv in "slug"-namnet på den kategorien som innehåller nyheter.</span></p>
 			<p><fieldset>Topp navigeringsmeny</fieldset><input type="text" name="hk_theme[topmenu]" value="<?php echo $options['topmenu']; ?>" /><span>Skriv in namnet på den meny som ska vara toppmeny. Visar bara första nivån i den nivån.</span></p>
 
 			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
