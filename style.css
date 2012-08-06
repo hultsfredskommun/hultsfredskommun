@@ -869,6 +869,10 @@ dl.gallery-item {
 	padding: 0 !important;
 	overflow: hidden;
 }
+.news.only-title { margin-bottom: 0 !important; }
+.news.only-title .entry-title {
+	font-size: 16px;
+}
 .only-title:hover {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
