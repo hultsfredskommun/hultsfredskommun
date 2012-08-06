@@ -74,9 +74,6 @@
 			<h1 id="logo"><span><a href="/hultsfred"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Hultsfreds_kommun_logga.png" alt="<?php bloginfo( 'name' ); ?>" /></a></span></h1>
 			
 			
-			<?php //dynamic_sidebar('sidebar-top-link'); ?>
-			
-			
 			<!--div id='wrapper-sHys'>
 				<span id='h2-sHys'><a id='url-sHys' href="http://www.vackertvader.se/hultsfred"> Hultsfred</a></span>
 				<div id='load-sHys'></div>
@@ -89,6 +86,21 @@
 			
 			
 		</hgroup>
+		<?php 
+			//hk_options
+			$hk_options = get_option('hk_theme');
+			if ($hk_options["topmenu"]) {
+				echo "<aside id='topmenu'><nav>";
+				wp_nav_menu( array(
+					'menu' => $hk_options["topmenu"], 
+					'container' => '',							
+					'items_wrap' => '<ul>%3$s</ul>',
+					'depth' => 1,
+					'echo' => true
+				)); 
+				echo "</nav></aside>";
+			}
+		?>
 		
 		<div id="searchnavigation">			
 			<?php get_search_form(); ?>

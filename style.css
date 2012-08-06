@@ -401,6 +401,26 @@ a:hover {
 	width: 100%;
 }
 
+
+/* top menu links */
+#topmenu {
+	float: right;
+	text-align: right;
+	height: 20px;
+	margin-top: 5px;
+	color: white;
+	background: #F7A02E;
+	border-radius: 5px;
+	padding-right: 35px;
+}
+#topmenu nav ul li {
+	list-style-type: none;
+	display: inline;
+}
+#topmenu nav ul li a {
+	color: black;
+	margin: 0 0 0 10px;
+}
 /* Search Form */
 #searchnavigation {
 	margin-left: 25%;
