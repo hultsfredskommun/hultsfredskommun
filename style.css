@@ -869,7 +869,6 @@ dl.gallery-item {
 	padding: 0 !important;
 	overflow: hidden;
 }
-.only-title.sticky { height: 42px; }
 .only-title:hover {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
@@ -877,6 +876,7 @@ dl.gallery-item {
 	-ms-box-shadow: none;
 	box-shadow: none;
 }
+.only-title .summary-content { padding: 0; }
 .only-title .summary-content .entry-content,
 .only-title .summary-content .readMoreFadeBottom,
 .only-title .readMoreToggleButton{
