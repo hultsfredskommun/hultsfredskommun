@@ -24,9 +24,20 @@ get_header(); ?>
 <div id="primary">
 	<div id="content" role="main">
 		<?php 
-			/* Query all posts with selected startpage category */
-			if ($default_settings["startpage_cat"] != "") {
-				$query = array( 'posts_per_page' => '-1', 'category_name' => $default_settings["startpage_cat"] );
+			/* Get all sticky posts */
+			$sticky = get_option( 'sticky_posts' );
+			
+			if( isset($sticky) ) :
+				echo '<div id="sticky-posts">';
+				
+				/* Sort the stickies with the newest ones at the top */
+				rsort( $sticky );
+				
+				/* Get the 5 newest stickies (change 5 for a different number) */
+				$sticky = array_slice( $sticky, 0, 5 );
+
+				/* Query sticky posts */
+				$query = array( 'post__in' => $sticky, 'category_slug__in' => $default_settings["startpage_cat"] , 'caller_get_posts' => 1 );
 				query_posts( $query );
 		
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
@@ -34,10 +45,9 @@ get_header(); ?>
 				endwhile; endif; 
 				// Reset Query
 				wp_reset_query(); 
-			}
-			else {
-				echo "Du m&aring;ste s&auml;tta egenskapen <i>Startsidans kategori</i> under Utseende -> Inst&auml;llningar.";	
-			}		
+			
+				echo '</div><!-- #sticky-posts -->';
+			endif;
 		?>
 		
 		<?php dynamic_sidebar('firstpage-content'); ?>

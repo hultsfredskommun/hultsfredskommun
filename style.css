@@ -954,12 +954,12 @@ article:hover{
     position: relative;
 	padding: .8em .8em 0;
 }
-.summary-content .thumbnail-image {
+.summary-content img {
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
-.sticky .summary-content .thumbnail-image {
+.sticky .summary-content img {
 	float: right;
 	margin-left: 10px;
 	margin-bottom: 10px;

@@ -215,7 +215,7 @@ function readMoreToggleButton(el){
 
 			//add close-button top right corner
 			var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(){
-				readMoreToggleButton( $(article).find('.readMoreToggleButton') );
+				readMoreToggleButton( $(this).parent().find('.readMoreToggleButton') );
 			});
 			$(article).append(closea);
 
