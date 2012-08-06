@@ -871,7 +871,7 @@ article {
 	border-bottom-left-radius: 5px !important;
 	margin-bottom: 10px !important;
 	border: 1px solid #E6E6E6 !important;
-	padding: 1em !important;
+	/*padding: 1em !important;*/
 	position: relative;
 	background: white;
 }
@@ -952,6 +952,7 @@ article:hover{
 	height: 100px;
 	overflow: hidden;
     position: relative;
+	padding: .8em .8em 0;
 }
 .summary-content .thumbnail-image {
 	float: left;
@@ -963,12 +964,14 @@ article:hover{
 	margin-left: 10px;
 	margin-bottom: 10px;
 }
-
 /* Excerpt/Summary END */
 
-.readMoreContent .more-content > img{
-	margin-bottom: 10px;
-}
+/* More-content */
+.more-content { padding: 0; }
+.more-content #the_content-container { padding: 0.5em 0.8em 0.8em; }
+.more-content footer { margin: 1em; }
+/* More-content END */
+
 /* #misc-ctrl */
 #misc-ctrl { 
 	width: 25%;

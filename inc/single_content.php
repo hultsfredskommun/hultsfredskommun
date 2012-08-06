@@ -4,7 +4,7 @@
 		 */
 
 		// featured image
-		the_post_thumbnail('full-image'); ?>
+		the_post_thumbnail('featured-image'); ?>
 		
 		<div id="the_content-container">
             <header class="entry-header">
