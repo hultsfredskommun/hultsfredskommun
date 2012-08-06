@@ -905,6 +905,22 @@ article:hover{
 	-ms-box-shadow: 0 1px 5px 0 #E0E0E0;
 	box-shadow: 0 1px 5px 0 #E0E0E0;
 }
+
+/* News Header */
+#news_header {
+	background-color: #F7A02E;
+	font-weight: bold;
+	font-size: 18px;
+	color: black;
+	padding: .18em;
+	border-radius: 5px;
+	text-decoration: underline;
+}
+.newline{
+	line-height: 2.8em;
+	clear: both;
+}
+
 /*#content > article,
 #content #sticky-posts > article,
 #content > .dyn-posts-placeholder article {
