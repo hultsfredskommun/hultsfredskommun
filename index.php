@@ -39,6 +39,23 @@ get_header(); ?>
 			else {
 				echo "Du m&aring;ste s&auml;tta egenskapen <i>Startsidans kategori</i> under Utseende -> Inst&auml;llningar.";	
 			}
+
+
+			/* Query all posts with news category */
+			if ($default_settings["news_cat"] != "") {
+				echo "<span id='news_header'>Nyheter</span>";
+				$query = array( 'posts_per_page' => '10', 'category_name' => $default_settings["news_cat"] );
+						
+				query_posts( $query );		
+				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+					get_template_part( 'content', "news" ); 
+				endwhile; endif; 
+				// Reset Query
+				wp_reset_query(); 
+			}
+			else {
+				echo "Du m&aring;ste s&auml;tta egenskapen <i>Nyheternas kategori</i> under Utseende -> Inst&auml;llningar.";	
+			}
 		?>
 		
 		<?php dynamic_sidebar('firstpage-content'); ?>
