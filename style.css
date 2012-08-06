@@ -979,6 +979,8 @@ article:hover{
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
+.summary-content .the_content { float: left }
+
 .sticky .summary-content img {
 	float: right;
 	margin-left: 10px;
@@ -988,7 +990,7 @@ article:hover{
 
 /* More-content */
 .more-content { padding: 0; }
-.more-content #the_content-container { padding: 0.5em 0.8em 0.8em; }
+.more-content #the_content-container { padding: .8em .8em 0; }
 .more-content footer { margin: 1em; }
 /* More-content END */
 
