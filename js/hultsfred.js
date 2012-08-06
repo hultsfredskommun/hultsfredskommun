@@ -174,10 +174,11 @@ function readMoreToggleButton(el){
 	//toggle function
 	function toggleShow() {
 		article = $(el).parents("article");
+		
 		// show summary content
 		if ( $(article).hasClass("full") )
 		{
-			if( $("#content").hasClass("viewmode_titles") ){
+			if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
 				$(article).addClass("only-title");
 			}
 		
@@ -202,7 +203,7 @@ function readMoreToggleButton(el){
 		// show full content
 		else
 		{
-			if( $("#content").hasClass("viewmode_titles") ){
+			if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
 				$(article).removeClass("only-title");
 			}
 		
@@ -460,16 +461,6 @@ $(document).ready(function(){
 	
 	});  
 
-	/**
-	 * Hover-action for news on startPage
-	 */
-	$(".news").mouseenter(function(){
-		$(this).removeClass("only-title");
-	}).mouseleave(function(){
-		$(this).addClass("only-title");
-	});
-	
-	
 	/**
 	 * load more posts dynamic 
 	 */

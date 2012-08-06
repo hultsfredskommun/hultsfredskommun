@@ -877,9 +877,10 @@ dl.gallery-item {
 	box-shadow: none;
 }
 .only-title .summary-content { padding: 0; }
+.only-title .summary-content img,
 .only-title .summary-content .entry-content,
 .only-title .summary-content .readMoreFadeBottom,
-.only-title .readMoreToggleButton{
+.only-title .readMoreToggleButton {
 	display: none;
 }
 
