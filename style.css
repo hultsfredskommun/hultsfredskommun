@@ -181,7 +181,7 @@ body {
 	background: #fff;
 }
 #page {
-	background: #fff;
+	_ackground: #fff;
 }
 
 /* Headings */
@@ -394,11 +394,6 @@ a:hover {
 	color: #7a7a7a;
 	font-size: 14px;
 	margin: 0 270px 3.65625em 0;
-}
-#branding img {
-	height: auto;
-	margin-bottom: -7px;
-	width: 100%;
 }
 
 

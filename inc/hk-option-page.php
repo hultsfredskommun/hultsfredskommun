@@ -26,7 +26,7 @@ function hk_theme_options_do_page() {
 
 
 
-			<p><fieldset>Välj den kategori som innehåller <b>startsidans</b> sidor.</fieldset>
+			<p><label for="hk_theme[startpage_cat]">Välj den kategori som innehåller <b>startsidans</b> sidor.</label><br/>
 			<?php 
 				$args = array(
 					'orderby'            => 'ID', 
@@ -44,7 +44,7 @@ function hk_theme_options_do_page() {
 			?>
 			</p>
 			
-			<p><fieldset>Välj den kategori som innehåller <b>nyheter</b>.</fieldset>
+			<p><label for="hk_theme[news_cat]">Välj den kategori som innehåller <b>nyheter</b>.</label><br/>
 							<?php 
 				$args = array(
 					'orderby'            => 'ID', 
@@ -62,7 +62,26 @@ function hk_theme_options_do_page() {
 			?>
 			</p>
 
-			<p><fieldset>Topp navigeringsmeny</fieldset><input type="text" name="hk_theme[topmenu]" value="<?php echo $options['topmenu']; ?>" /><span>Skriv in namnet på den meny som ska vara toppmeny. Visar bara första nivån i den nivån.</span></p>
+			<p><label for="hk_theme[topmenu]">Topp navigeringsmeny</label><br/><input type="text" name="hk_theme[topmenu]" value="<?php echo $options['topmenu']; ?>" /><span>Skriv in namnet på den meny som ska vara toppmeny. Visar bara första nivån i den nivån.</span></p>
+
+			<p><label for="hk_theme[top_image]">Toppbild</label><br/>
+				<img width=150 src="<?php echo $options["top_image"]; ?>" />
+				<input class="upload-url" type="text" size="36" name="hk_theme[top_image]" value="<?php echo $options["top_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[footer_image]">Sidfot</label><br/>
+				<img width=150 src="<?php echo $options["footer_image"]; ?>" />
+				<input class="upload-url" type="text" size="36" name="hk_theme[footer_image]" value="<?php echo $options["footer_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[logo_image]">Logga</label><br/>
+				<img width=150  src="<?php echo $options["logo_image"]; ?>" />
+				<input class="upload-url" type="text" size="36" name="hk_theme[logo_image]" value="<?php echo $options["logo_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+
+
+
 
 			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
 				<tr valign="top">
@@ -306,3 +325,19 @@ function hk_theme_options_validate($input) {
 	return $input;
 }
 
+
+
+/* make media upload work */
+function my_admin_scripts() {
+	wp_enqueue_script('media-upload');
+	wp_enqueue_script('thickbox');
+	wp_register_script('my-upload', get_template_directory_uri() . '/js/hk-option-page.js', array('jquery','media-upload','thickbox'));
+	wp_enqueue_script('my-upload');
+}
+ 
+function my_admin_styles() {
+	wp_enqueue_style('thickbox');
+}
+ 
+add_action('admin_print_scripts', 'my_admin_scripts');
+add_action('admin_print_styles', 'my_admin_styles');
