@@ -110,42 +110,44 @@ add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
 /**
  * add theme javascript file and needed jquery 
  */
-
-wp_enqueue_script(
-	'history_js',
-	get_stylesheet_directory_uri() . '/js/native.history.js',
-	array('jquery'),
-	'1.0',
-	true
-);
-wp_enqueue_script(
-	'hultsfred_js',
-	get_stylesheet_directory_uri() . '/js/hultsfred.js',
-	array('jquery','jquery-ui-core','history_js'), /*,'jquery-ui-tabs'*/
-	'1.0',
-	true
-);
-wp_enqueue_script(
-	'cycle_lite_js',
-	get_stylesheet_directory_uri() . '/js/jquery.cycle.lite.js',
-	array('jquery'),
-	'1.0',
-	true
-);
-
+if (!is_admin()) {
+	wp_enqueue_script(
+		'history_js',
+		get_stylesheet_directory_uri() . '/js/native.history.js',
+		array('jquery'),
+		'1.0',
+		true
+	);
+	wp_enqueue_script(
+		'hultsfred_js',
+		get_stylesheet_directory_uri() . '/js/hultsfred.js',
+		array('jquery','jquery-ui-core','history_js'), /*,'jquery-ui-tabs'*/
+		'1.0',
+		true
+	);
+	wp_enqueue_script(
+		'cycle_lite_js',
+		get_stylesheet_directory_uri() . '/js/jquery.cycle.lite.js',
+		array('jquery'),
+		'1.0',
+		true
+	);
+}
 
 /**
  * Settings to be available in javascript
  */
 function curPageURL() {
 	$pageURL = 'http';
+	$uri = str_replace("?".$_SERVER['QUERY_STRING'], "", $_SERVER['REQUEST_URI']);
 	if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-		$pageURL .= "://";
+			$pageURL .= "://";
 	if ($_SERVER["SERVER_PORT"] != "80") {
-		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+		$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"] . $uri;
 	} else {
-		$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		$pageURL .= $_SERVER["SERVER_NAME"] . $uri;
 	}
+
 	return $pageURL;
 }
 function curBaseURL() {
