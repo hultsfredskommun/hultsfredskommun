@@ -317,6 +317,9 @@ var oldWidth; //used to check if window-width have changed
 
 $(document).ready(function(){
 
+	//Stores the window-width for later use
+	oldWidth = $(window).width();
+
 	/**
 	 * Fix scroll to top on single and page
 	 */
@@ -369,11 +372,6 @@ $(document).ready(function(){
 		$("#content").find('article').addClass("only-title");
 		ev.preventDefault();
 	});
-
-
-	//Stores the window-width for later use
-	oldWidth = $(window).width();
-	
 
 	/**
 	 * add action to read-more toggle button
@@ -462,7 +460,14 @@ $(document).ready(function(){
 	
 	});  
 
-	
+	/**
+	 * Hover-action for news on startPage
+	 */
+	$(".news").mouseenter(function(){
+		$(this).removeClass("only-title");
+	}).mouseleave(function(){
+		$(this).addClass("only-title");
+	});
 	
 	
 	/**

@@ -979,16 +979,16 @@ article:hover{
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
-.sticky .summary-content img {
-	float: right;
-	margin-left: 10px;
-	margin-bottom: 10px;
+.sticky .summary-content {
+	
 }
 .summary-content header {
 	float: left;
 	clear: right;
 }
-.summary-content .the_content { 
+.summary-content .entry-content {
+	float: left;
+	display: inline-block;
 }
 
 /* Excerpt/Summary END */
@@ -1098,9 +1098,6 @@ article:hover{
 	cursor: pointer;
 }
 /* new read-more functionality  END */
-
-
-
 
 /* Images */
 .entry-content img,
@@ -1308,6 +1305,8 @@ To hide the headings, display: none the ".entry-header .entry-format" selector,
 and remove the padding rules below.
 */
 .entry-header .entry-format {
+	display: none;
+	/*
 	color: #666;
 	font-size: 10px;
 	font-weight: 500;
@@ -1316,9 +1315,10 @@ and remove the padding rules below.
 	position: absolute;
 	text-transform: uppercase;
 	top: -5px;
+	*/
 }
 .entry-header hgroup .entry-title {
-	padding-top: 15px;
+	/*padding-top: 15px;*/
 }
 article.format-aside .entry-content,
 article.format-link .entry-content,

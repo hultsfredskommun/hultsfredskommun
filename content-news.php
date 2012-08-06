@@ -7,7 +7,7 @@
  * @since Twenty Eleven 1.0
  */
 ?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky news":"news"); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky news only-title":"news only-title"); ?>>
 		<div class="readMoreContainer">
 			<div class="readMoreContent">
 				<div class="summary-content">
