@@ -2041,17 +2041,19 @@ p.comment-form-comment {
 
 #colophon {
 	clear: both;
+	border-radius: 5px;
+	background-color: #F7A02E;
+	color: white;
 }
 #supplementary {
 	padding: 1.625em 1%;
 	overflow: hidden;
-	border-radius: 5px 5px 0 5px;
-	background-image: url(images/sidfot_right_bottom.png);
-	background-color: #F7A02E;
-	background-position: right bottom; 
-   	background-repeat: no-repeat; 
 }
+#logo_footer_image {
+	text-align: right;
+	line-height: 0;
 
+}
 /* Two Footer Widget Areas */
 #supplementary.two .widget-area {
 	float: left;

@@ -79,6 +79,11 @@ function hk_theme_options_do_page() {
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_image]" value="<?php echo $options["logo_image"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
+			<p><label for="hk_theme[logo_footer_image]">Logga i sidfot</label><br/>
+				<img width=150  src="<?php echo $options["logo_footer_image"]; ?>" />
+				<input class="upload-url" type="text" size="36" name="hk_theme[logo_footer_image]" value="<?php echo $options["logo_footer_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
 
 
 
