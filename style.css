@@ -117,6 +117,16 @@ body {
 }
 
 /* Colors */
+.hultsfred-transparent > a,
+.hultsfred-transparent {
+    background-color: transparent;
+    color: inherit;
+}
+.hultsfred-white > a,
+.hultsfred-white {
+    background-color: white;
+    color: #000;
+}
 .hultsfred-bjorklov > a,
 .hultsfred-bjorklov {
     background-color: rgb(158,186,33);
@@ -2010,9 +2020,13 @@ p.comment-form-comment {
 	clear: both;
 }
 #supplementary {
-	border-top: 1px solid #ddd;
-	padding: 1.625em 7.6%;
+	padding: 1.625em 1%;
 	overflow: hidden;
+	border-radius: 5px 5px 0 5px;
+	background-image: url(images/sidfot_right_bottom.png);
+	background-color: #F7A02E;
+	background-position: right bottom; 
+   	background-repeat: no-repeat; 
 }
 
 /* Two Footer Widget Areas */
@@ -2033,21 +2047,6 @@ p.comment-form-comment {
 }
 #supplementary.three .widget-area + .widget-area + .widget-area {
 	margin-right: 0;
-}
-
-/* Site Generator Line */
-#site-generator {
-	background: #f9f9f9;
-	border-top: 1px solid #ddd;
-	color: #666;
-	font-size: 12px;
-	line-height: 2.2em;
-	padding: 2.2em 0.5em;
-	text-align: center;
-}
-#site-generator a {
-	color: #555;
-	font-weight: bold;
 }
 
 
