@@ -20,12 +20,13 @@ function hk_theme_options_add_page() {
 function hk_theme_options_do_page() {
 	?>
 	<div class="wrap">
+		<h1>Inställningar för temat Hultsfredskommun</h1>
 		<form id="form_hk_options" method="post" action="options.php">
 			<?php settings_fields('hk_theme_options_options'); ?>
 			<?php $options = get_option('hk_theme'); ?>
 
 
-
+			<h3>Kategorier och menyer</h3>
 			<p><label for="hk_theme[startpage_cat]">Välj den kategori som innehåller <b>startsidans</b> sidor.</label><br/>
 			<?php 
 				$args = array(
@@ -62,8 +63,14 @@ function hk_theme_options_do_page() {
 			?>
 			</p>
 
-			<p><label for="hk_theme[topmenu]">Topp navigeringsmeny</label><br/><input type="text" name="hk_theme[topmenu]" value="<?php echo $options['topmenu']; ?>" /><span>Skriv in namnet på den meny som ska vara toppmeny. Visar bara första nivån i den nivån.</span></p>
+			<p><label for="hk_theme[topmenu]">Namn på meny som ska vara toppmeny.</label><br/><input type="text" name="hk_theme[topmenu]" value="<?php echo $options['topmenu']; ?>" /></p>
 
+
+			<h3>Utseende</h3>
+			<p><label for="hk_theme[primary_width]">Bredden på huvudinnehåll.</label><br/><input type="text" name="hk_theme[primary_width]" value="<?php echo $options['primary_width']; ?>" /></p>
+			<p><label for="hk_theme[sidebar_width]">Bredden på bredd på sidoinnehåll.</label><br/><input type="text" name="hk_theme[sidebar_width]" value="<?php echo $options['sidebar_wrapper_width']; ?>" /></p>
+
+			<h3>Bilder</h3>
 			<p><label for="hk_theme[top_image]">Toppbild</label><br/>
 				<img width=150 src="<?php echo $options["top_image"]; ?>" />
 				<input class="upload-url" type="text" size="36" name="hk_theme[top_image]" value="<?php echo $options["top_image"]; ?>" />

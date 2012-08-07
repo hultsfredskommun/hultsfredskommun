@@ -76,7 +76,7 @@ body {
 	width: 100%;
 }
 #branding, #main, #colophon {
-	margin: 2em auto;
+	margin: 0 auto;
 	padding: 1%;
 	max-width: 1000px;
 }
@@ -2053,25 +2053,6 @@ p.comment-form-comment {
 	text-align: right;
 	line-height: 0;
 
-}
-/* Two Footer Widget Areas */
-#supplementary.two .widget-area {
-	float: left;
-	margin-right: 3.7%;
-	width: 48.1%;
-}
-#supplementary.two .widget-area + .widget-area {
-	margin-right: 0;
-}
-
-/* Three Footer Widget Areas */
-#supplementary.three .widget-area {
-	float: left;
-	margin-right: 3.7%;
-	width: 30.85%;
-}
-#supplementary.three .widget-area + .widget-area + .widget-area {
-	margin-right: 0;
 }
 
 
