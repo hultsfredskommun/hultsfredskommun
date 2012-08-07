@@ -324,38 +324,6 @@ function twentyeleven_url_grabber() {
 	return esc_url_raw( $matches[1] );
 }
 
-/**
- * Count the number of footer sidebars to enable dynamic classes for the footer
- */
-function twentyeleven_footer_sidebar_class() {
-	$count = 0;
-
-	if ( is_active_sidebar( 'sidebar-3' ) )
-		$count++;
-
-	if ( is_active_sidebar( 'sidebar-4' ) )
-		$count++;
-
-	if ( is_active_sidebar( 'sidebar-5' ) )
-		$count++;
-
-	$class = '';
-
-	switch ( $count ) {
-		case '1':
-			$class = 'one';
-			break;
-		case '2':
-			$class = 'two';
-			break;
-		case '3':
-			$class = 'three';
-			break;
-	}
-
-	if ( $class )
-		echo 'class="' . $class . '"';
-}
 
 if ( ! function_exists( 'twentyeleven_comment' ) ) :
 /**

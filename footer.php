@@ -14,7 +14,7 @@ $hk_options = get_option('hk_theme');
 
 ?>
 	</div><!-- #main -->
-
+	<?php if ( $hk_options["logo_footer_image"] && is_active_sidebar( 'footer-sidebar' ) ) : ?>
 	<footer id="colophon" role="contentinfo">
 
 			<?php
@@ -23,10 +23,12 @@ $hk_options = get_option('hk_theme');
 				 */
 				if ( ! is_404() )
 					get_sidebar( 'footer' );
+				if ( $hk_options["logo_footer_image"] ) :
 			?>
-			<div id="logo_footer_image"><img src="<?php echo $hk_options["logo_footer_image"]; ?>" /></div>
-						
+				<div id="logo_footer_image"><img src="<?php echo $hk_options["logo_footer_image"]; ?>" /></div>
+			<?php endif; ?>					
 	</footer><!-- #colophon -->
+	<?php endif; ?>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

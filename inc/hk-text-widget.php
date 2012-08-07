@@ -20,6 +20,9 @@ class HK_text_widget extends WP_Widget {
 		if ( isset( $instance[ 'title' ] ) ) {
 			$title = $instance[ 'title' ];
 		}
+		if ( isset( $instance[ 'text' ] ) ) {
+			$text = $instance[ 'text' ];
+		}
 		if ( isset( $instance[ 'color' ] ) ) {
 			$color = $instance[ 'color' ];
 		}
@@ -40,6 +43,11 @@ class HK_text_widget extends WP_Widget {
 		} else {
 			$height = 80;
 		}
+		if ( isset( $instance[ 'lineheight' ] ) ) {
+			$lineheight = $instance[ 'lineheight' ];
+		} else {
+			$lineheight = 80;
+		}
 		if ( isset( $instance[ 'width' ] ) ) {
 			$width = $instance[ 'width' ];
 		} else {
@@ -48,12 +56,20 @@ class HK_text_widget extends WP_Widget {
 		
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Text:' ); ?></label> 
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Titel:' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e( 'Text:' ); ?></label> 
+		<textarea class="widefat" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" type="text"><?php echo $text; ?></textarea>
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e( 'H&ouml;jd (i px):' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo esc_attr( $height); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'lineheight' ); ?>"><?php _e( 'Radh&ouml;jd (i px):' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'lineheight' ); ?>" name="<?php echo $this->get_field_name( 'lineheight' ); ?>" type="text" value="<?php echo esc_attr( $lineheight); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e( 'Bredd (i %):' ); ?></label> 
@@ -97,8 +113,10 @@ class HK_text_widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['text'] = $new_instance['text'];
 		$instance['color'] = strip_tags( $new_instance['color'] );
 		$instance['height'] = rtrim(strip_tags( $new_instance['height'] ),"empx%");
+		$instance['lineheight'] = rtrim(strip_tags( $new_instance['lineheight'] ),"empx%");
 		$instance['width'] = rtrim(strip_tags( $new_instance['width'] ),"empx%");
 		$instance['link'] = strip_tags( $new_instance['link'] );
 		$instance['target'] = strip_tags( $new_instance['target'] );
@@ -111,8 +129,10 @@ class HK_text_widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 		extract( $args );
 		$title = $instance['title'];
+		$text = $instance['text'];
 		$color = $instance['color'];
 		$height = $instance['height'];
+		$lineheight = $instance['lineheight'];
 		$width = $instance['width'];
 		$link = $instance['link'];
 		$target = $instance['target'];
@@ -125,7 +145,7 @@ class HK_text_widget extends WP_Widget {
 			$link = "#";
 		}
 
-		$heightstyle = "height: ".$height."px; line-height:".$height."px;";
+		$heightstyle = "height: ".$height."px; line-height:".$lineheight."px;";
 		$widthstyle = ($width!=null)?"width: ".$width."%;":"";
 		$bgstyle = ($imageurl!=null)?"background-image: url($imageurl)":"";
 
@@ -135,7 +155,9 @@ class HK_text_widget extends WP_Widget {
 		echo "<div class='text'>";
 		echo "<div class='transp-background $color'></div>";
 		echo "<a class='$color' $onclick href='$link' target='$target'>$title</a>";
-		echo "</div></div>";
+		echo "</div>";
+		echo "<div class='textarea'>" . str_replace("\n","<br>",$text) . "</div>";
+		echo "</div>";
 		
 		echo $after_widget;
 	}
