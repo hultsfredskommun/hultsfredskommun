@@ -178,27 +178,26 @@ function readMoreToggleButton(el){
 		// show summary content
 		if ( $(article).hasClass("full") )
 		{
-			if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
-				$(article).addClass("only-title");
-			}
-		
 			// toggle visibility
-			$(article).find('.summary-content').show();
-			$(article).find('.more-content').hide("fast");
+			$(article).find('.summary-content').show("slow");
+			$(article).find('.more-content').hide("slow", function(){
+				if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
+					$(article).addClass("only-title");
+				}
+				
+				// alter close-buttons
+				$(article).find('.closeButton').remove();
+				$(article).find(".readMoreToggleButton").html(". . .")
 
-			// alter close-buttons
-			$(article).find('.closeButton').remove();
-			$(article).find(".readMoreToggleButton").html(". . .")
+				// remove full class to track article state
+				$(article).removeClass("full");
 
-			// remove full class to track article state
-			$(article).removeClass("full");
-
-			// scroll to top of post 
-			$("html,body").animate({scrollTop: $(article).position().top},"slow");
-
+				// scroll to top of post 
+				$("html,body").animate({scrollTop: $(article).position().top}, 300);
+			});
+			
 			// reset webbrowser history
 			History.replaceState(null, title, hultsfred_object["currPageUrl"]);
-
 		}
 		// show full content
 		else
@@ -208,28 +207,31 @@ function readMoreToggleButton(el){
 			}
 		
 			// toggle visibility
-			$(article).find('.summary-content').hide();
-			$(article).find('.more-content').show("fast");
-			
-			// alter close-button
-			$(article).find(".readMoreToggleButton").html("St&auml;ng");
+			$(article).find('.summary-content').hide("slow");
+			$(article).find('.more-content').show("slow", function(){
+				// alter close-button
+				$(article).find(".readMoreToggleButton").html("St&auml;ng");
 
-			//add close-button top right corner
-			var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(){
-				readMoreToggleButton( $(this).parent().find('.readMoreToggleButton') );
+				//add close-button top right corner
+				var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(){
+					readMoreToggleButton( $(this).parent().find('.readMoreToggleButton') );
+				});
+				$(article).append(closea);
+
+				// add full class to track article state
+				$(article).addClass("full");
+				
+				// scroll to top of post 
+				$("html,body").animate({scrollTop: $(article).position().top}, 300);
 			});
-			$(article).append(closea);
-
-			// add full class to track article state
-			$(article).addClass("full");
-
+			
 			//change webbrowser url
 			//find and store post-title and post-url
 			var entry_title = $(article).find(".entry-title");
 			var blog_title = $("#logo").find('img').attr('alt');
 			var title = $(entry_title).find("a").html().replace("&amp;","&") + " | " + blog_title;
 			var url = $(entry_title).find("a").attr("href");
-
+			
 			History.replaceState(null, title, url);
 		}
 	}

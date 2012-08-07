@@ -847,6 +847,21 @@ dl.gallery-item {
 	text-decoration: none !important;
 }
 
+/* news startpage */
+#news {
+	background-color: white;
+	border: 1px solid #E6E6E6;
+	border-radius: 5px;
+	padding: .5em;
+}
+#news ul {
+	margin: 0 0.8em 0;
+	list-style: disc outside none;
+}
+article.full < li {
+	list-style: none;
+}
+
 /* Sort-order and Viewmode */
 #sort-order {
 	float: left;
@@ -2052,7 +2067,8 @@ p.comment-form-comment {
 #logo_footer_image {
 	text-align: right;
 	line-height: 0;
-
+	position: absolute;
+	bottom: 0;
 }
 /* Two Footer Widget Areas */
 #supplementary.two .widget-area {
