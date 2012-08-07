@@ -179,8 +179,10 @@ function readMoreToggleButton(el){
 		if ( $(article).hasClass("full") )
 		{
 			// toggle visibility
-			$(article).find('.summary-content').show("slow");
-			$(article).find('.more-content').hide("slow", function(){
+			setTimeout( function(){
+				$(article).find('.summary-content').fadeIn("fast");
+			}, 250);
+			$(article).find('.more-content').hide(500, function(){
 				if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
 					$(article).addClass("only-title");
 				}
@@ -207,8 +209,8 @@ function readMoreToggleButton(el){
 			}
 		
 			// toggle visibility
-			$(article).find('.summary-content').hide("slow");
-			$(article).find('.more-content').show("slow", function(){
+			$(article).find('.summary-content').fadeOut("fast");
+			$(article).find('.more-content').show(500, function(){
 				// alter close-button
 				$(article).find(".readMoreToggleButton").html("St&auml;ng");
 
