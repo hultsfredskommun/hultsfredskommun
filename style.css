@@ -854,10 +854,8 @@ dl.gallery-item {
 	padding: .18em;
 }
 #news .newline{
-	border-bottom: 1px solid #9EBA21;
-    line-height: 2.8em;
-	clear: both;
-    padding: 2px;
+	border-bottom: 1px solid #F7A02E;
+	margin: 0 0 .5em !important;
     display: block;
 }
 
@@ -876,13 +874,11 @@ dl.gallery-item {
 }
 #news .only-title .entry-title a {
 	background: url("images/right_dot.gif") no-repeat scroll 0 1px transparent;
-	color: #1A5D86;
 	font-size: 12px;
 	padding-left: 10px;
 }
 #news .only-title .entry-title a:hover{
 	text-decoration: underline;
-	color: #CC0066;
 }
 
 /* Sort-order and Viewmode */
@@ -947,7 +943,6 @@ article {
 	background: white;
 }
 article:last-child { margin-bottom: 0 }
-
 article:hover{
 	border: 1px solid #CCC;
 	-webkit-box-shadow: 0 1px 5px 0 #E0E0E0;
@@ -956,7 +951,17 @@ article:hover{
 	-ms-box-shadow: 0 1px 5px 0 #E0E0E0;
 	box-shadow: 0 1px 5px 0 #E0E0E0;
 }
-
+article.sticky {
+	background-color: #FDEAD1;
+}
+article.sticky .readMoreFadeBottom {
+	background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(1, rgba(253, 234, 209, 0.9)));
+	background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(253, 234, 209, 0.9));
+	background-image:-moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(253, 234, 209, 0.9));
+	background-image:-ms-linear-gradient(top, rgba(255, 255, 255, 0), rgba(253, 234, 209, 0.9));
+	background-image:-o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(253, 234, 209, 0.9));
+}
+	
 /*#content > article,
 #content #sticky-posts > article,
 #content > .dyn-posts-placeholder article {
@@ -1032,9 +1037,9 @@ article:hover{
 }
 .summary-content .img-wrapper { 
 	float: left;
-	width: 38%; 
+	width: 38%;
 }
-.summary-content .entry-wrapper { 
+.summary-content .entry-wrapper.has-img { 
 	float: left;
 	width: 62%; 
 }
@@ -1107,7 +1112,7 @@ article:hover{
 	text-decoration: none;
 	padding: 0;
     vertical-align: baseline;
-	margin: 0 -14px -14px;
+	margin: 0 0 -20px;
 	_ont-size: 14pt;
 	/*
 	-moz-opacity: 0.50 !important;

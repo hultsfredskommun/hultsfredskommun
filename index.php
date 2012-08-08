@@ -48,7 +48,7 @@ get_header(); ?>
 			/* Query all posts with news category */
 			if ($default_settings["news_cat"] != "") {
 				echo "<div id='news'>";
-				echo "<span id='news_header'>Fler nyheter</span><br class='newline'>";
+				echo "<span id='news_header'>Fler nyheter</span><hr class='newline' />";
 				$query = array( 'posts_per_page' => '10', 'category__and' => $default_settings["news_cat"] );
 						
 				query_posts( $query );		

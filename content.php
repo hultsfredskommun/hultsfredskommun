@@ -11,10 +11,12 @@
 		<div class="readMoreContainer">
 			<div class="readMoreContent">
 				<div class="summary-content">
-					<div class="img-wrapper">
-						<?php the_post_thumbnail('thumbnail-image'); ?>
-					</div>
-					<div class="entry-wrapper">
+					<?php if (has_post_thumbnail()) : ?>
+						<div class="img-wrapper">
+							<?php the_post_thumbnail('thumbnail-image'); ?>
+						</div>
+					<?php endif; ?>
+					<div class="entry-wrapper <?php echo (has_post_thumbnail()) ? "has-img" : "";  ?>" >
 						<header class="entry-header">
 							<?php if ( is_sticky() ) : ?>
 								<hgroup>
