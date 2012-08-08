@@ -23,6 +23,9 @@ class HK_text_widget extends WP_Widget {
 		if ( isset( $instance[ 'text' ] ) ) {
 			$text = $instance[ 'text' ];
 		}
+		if ( isset( $instance[ 'menu' ] ) ) {
+			$menu = $instance[ 'menu' ];
+		}
 		if ( isset( $instance[ 'color' ] ) ) {
 			$color = $instance[ 'color' ];
 		}
@@ -62,6 +65,10 @@ class HK_text_widget extends WP_Widget {
 		<p>
 		<label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e( 'Text:' ); ?></label> 
 		<textarea class="widefat" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" type="text"><?php echo $text; ?></textarea>
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'menu' ); ?>"><?php _e( 'Meny:' ); ?></label> 
+		<textarea class="widefat" id="<?php echo $this->get_field_id( 'menu' ); ?>" name="<?php echo $this->get_field_name( 'menu' ); ?>" type="text"><?php echo $menu; ?></textarea>
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e( 'H&ouml;jd:' ); ?></label> 
@@ -114,6 +121,7 @@ class HK_text_widget extends WP_Widget {
 		$instance = array();
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['text'] = $new_instance['text'];
+		$instance['menu'] = $new_instance['menu'];
 		$instance['color'] = strip_tags( $new_instance['color'] );
 		$instance['height'] = strip_tags( $new_instance['height'] );
 		$instance['lineheight'] = strip_tags( $new_instance['lineheight'] );
@@ -130,6 +138,7 @@ class HK_text_widget extends WP_Widget {
 		extract( $args );
 		$title = $instance['title'];
 		$text = $instance['text'];
+		$menu = $instance['menu'];
 		$color = $instance['color'];
 		$height = $instance['height'];
 		$lineheight = $instance['lineheight'];
@@ -160,6 +169,19 @@ class HK_text_widget extends WP_Widget {
 		echo "<a class='$color' $onclick $link $target>$title</a>";
 		echo "</div>";
 		echo "<div class='textarea'>" . str_replace("\n","<br>",$text) . "</div>";
+		echo "<div class='menu'>";
+			if ($menu) {
+				echo "<aside><nav>";
+				wp_nav_menu( array(
+					'menu' => $menu, 
+					'container' => '',							
+					'items_wrap' => '<ul>%3$s</ul>',
+					'depth' => 1,
+					'echo' => true
+				)); 
+				echo "</nav></aside>";
+			}
+		echo "</div>";
 		echo "</div>";
 		
 		echo $after_widget;
