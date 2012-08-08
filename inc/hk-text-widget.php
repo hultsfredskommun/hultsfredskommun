@@ -41,17 +41,17 @@ class HK_text_widget extends WP_Widget {
 		if ( isset( $instance[ 'height' ] ) ) {
 			$height = $instance[ 'height' ];
 		} else {
-			$height = 80;
+			$height = auto;
 		}
 		if ( isset( $instance[ 'lineheight' ] ) ) {
 			$lineheight = $instance[ 'lineheight' ];
 		} else {
-			$lineheight = 80;
+			$lineheight = auto;
 		}
 		if ( isset( $instance[ 'width' ] ) ) {
 			$width = $instance[ 'width' ];
 		} else {
-			$width = 0;
+			$width = auto;
 		}
 		
 		?>
@@ -149,12 +149,15 @@ class HK_text_widget extends WP_Widget {
 		$widthstyle = ($width!=null)?"width: ".$width.";":"";
 		$bgstyle = ($imageurl!=null)?"background-image: url($imageurl)":"";
 
+		if ($link != "") $link = "href='$link'";
+		if ($target != "") $target = "target='$target'";
+		
 		echo str_replace("aside", "aside style='$widthstyle'", $before_widget);
 
 		echo "<div class='$color' style='$heightstyle $bgstyle'>";
 		echo "<div class='text'>";
 		echo "<div class='transp-background $color'></div>";
-		echo "<a class='$color' $onclick href='$link' target='$target'>$title</a>";
+		echo "<a class='$color' $onclick $link $target>$title</a>";
 		echo "</div>";
 		echo "<div class='textarea'>" . str_replace("\n","<br>",$text) . "</div>";
 		echo "</div>";

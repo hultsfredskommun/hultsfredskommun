@@ -21,7 +21,7 @@ if ( ! isset( $default_settings ) ) {
 	$options = get_option('hk_theme');
 	$default_settings = array(	'thumbnail-image' => array(200, 120, true),
 								'featured-image' => array(660, 396, true),
-								'slideshow-image' => array(980, 250, true),
+								'slideshow-image' => array(1000, 250, true),
 								'contact-image' => array(150, 150, true),
 								'startpage_cat' => $options["startpage_cat"],
 								'news_cat' => $options["news_cat"]);
@@ -65,6 +65,9 @@ function hk_setup() {
 
 	// Grab hk text widget.
 	require( get_template_directory() . '/inc/hk-text-widget.php' );
+
+	// Grab hk slideshow.
+	require( get_template_directory() . '/inc/hk-slideshow.php' );
 
 	// Grab hk contacts.
 	require( get_template_directory() . '/inc/hk-contacts.php' );

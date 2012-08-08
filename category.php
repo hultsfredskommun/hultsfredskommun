@@ -10,9 +10,9 @@
 get_header(); 
 
 ?>
-		<div id="dynamic-nav-sidebar" style="display:none">
-			<?php dynamic_sidebar('nav-sidebar'); ?>
-		</div><!-- #dynamic-nav-sidebar -->
+		<?php if ( is_active_sidebar("slideshow-content") ) : ?>
+			<?php dynamic_sidebar('slideshow-content'); ?>
+		<?php endif; ?>
 
 		<div id="slideshow-sidebar" style="display:none">
 			<?php dynamic_sidebar('slideshow-sidebar'); ?>
