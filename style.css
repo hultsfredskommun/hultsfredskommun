@@ -2039,14 +2039,13 @@ p.comment-form-comment {
 /* =Footer
 ----------------------------------------------- */
 
-#colophon {
+#supplementary {
 	clear: both;
 	border-radius: 5px;
 	background-color: #F7A02E;
 	color: white;
-}
-#supplementary {
-	padding: 1.625em 1%;
+
+	padding: 1%;
 	overflow: hidden;
 }
 #logo_footer_image {

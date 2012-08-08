@@ -64,15 +64,15 @@ class HK_text_widget extends WP_Widget {
 		<textarea class="widefat" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" type="text"><?php echo $text; ?></textarea>
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e( 'H&ouml;jd (i px):' ); ?></label> 
+		<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e( 'H&ouml;jd:' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo esc_attr( $height); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'lineheight' ); ?>"><?php _e( 'Radh&ouml;jd (i px):' ); ?></label> 
+		<label for="<?php echo $this->get_field_id( 'lineheight' ); ?>"><?php _e( 'Radh&ouml;jd:' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'lineheight' ); ?>" name="<?php echo $this->get_field_name( 'lineheight' ); ?>" type="text" value="<?php echo esc_attr( $lineheight); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e( 'Bredd (i %):' ); ?></label> 
+		<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e( 'Bredd:' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" type="text" value="<?php echo esc_attr( $width); ?>" />
 		</p>
 		<p>
@@ -115,9 +115,9 @@ class HK_text_widget extends WP_Widget {
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['text'] = $new_instance['text'];
 		$instance['color'] = strip_tags( $new_instance['color'] );
-		$instance['height'] = rtrim(strip_tags( $new_instance['height'] ),"empx%");
-		$instance['lineheight'] = rtrim(strip_tags( $new_instance['lineheight'] ),"empx%");
-		$instance['width'] = rtrim(strip_tags( $new_instance['width'] ),"empx%");
+		$instance['height'] = strip_tags( $new_instance['height'] );
+		$instance['lineheight'] = strip_tags( $new_instance['lineheight'] );
+		$instance['width'] = strip_tags( $new_instance['width'] );
 		$instance['link'] = strip_tags( $new_instance['link'] );
 		$instance['target'] = strip_tags( $new_instance['target'] );
 		$instance['imageurl'] = strip_tags( $new_instance['imageurl'] );
@@ -145,8 +145,8 @@ class HK_text_widget extends WP_Widget {
 			$link = "#";
 		}
 
-		$heightstyle = "height: ".$height."px; line-height:".$lineheight."px;";
-		$widthstyle = ($width!=null)?"width: ".$width."%;":"";
+		$heightstyle = "height: ".$height."; line-height:".$lineheight.";";
+		$widthstyle = ($width!=null)?"width: ".$width.";":"";
 		$bgstyle = ($imageurl!=null)?"background-image: url($imageurl)":"";
 
 		echo str_replace("aside", "aside style='$widthstyle'", $before_widget);

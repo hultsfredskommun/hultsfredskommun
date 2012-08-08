@@ -16,14 +16,16 @@ $hk_options = get_option('hk_theme');
 	</div><!-- #main -->
 	<?php if ( $hk_options["logo_footer_image"] || is_active_sidebar( 'footer-sidebar' ) ) : ?>
 	<footer id="colophon" role="contentinfo">
-
+		<div id="supplementary">
 			<?php
 				get_sidebar( 'footer' );
 
 				if ( $hk_options["logo_footer_image"] ) :
 			?>
 				<div id="logo_footer_image"><img src="<?php echo $hk_options["logo_footer_image"]; ?>" /></div>
-			<?php endif; ?>					
+			<?php endif; ?>	
+		</div><!-- #supplementary -->
+		
 	</footer><!-- #colophon -->
 	<?php endif; ?>
 </div><!-- #page -->

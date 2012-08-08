@@ -68,7 +68,7 @@ function hk_theme_options_do_page() {
 
 			<h3>Utseende</h3>
 			<p><label for="hk_theme[primary_width]">Bredden på huvudinnehåll.</label><br/><input type="text" name="hk_theme[primary_width]" value="<?php echo $options['primary_width']; ?>" /></p>
-			<p><label for="hk_theme[sidebar_width]">Bredden på bredd på sidoinnehåll.</label><br/><input type="text" name="hk_theme[sidebar_width]" value="<?php echo $options['sidebar_wrapper_width']; ?>" /></p>
+			<p><label for="hk_theme[sidebar_width]">Bredden på bredd på sidoinnehåll.</label><br/><input type="text" name="hk_theme[sidebar_width]" value="<?php echo $options['sidebar_width']; ?>" /></p>
 
 			<h3>Bilder</h3>
 			<p><label for="hk_theme[top_image]">Toppbild</label><br/>
