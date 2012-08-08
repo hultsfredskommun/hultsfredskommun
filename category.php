@@ -10,15 +10,14 @@
 get_header(); 
 
 ?>
-		<?php if ( is_active_sidebar("slideshow-content") ) : ?>
-			<?php dynamic_sidebar('slideshow-content'); ?>
-		<?php endif; ?>
 
-		<div id="slideshow-sidebar" style="display:none">
-			<?php dynamic_sidebar('slideshow-sidebar'); ?>
-		</div><!-- #slideshow-sidebar -->
-
+	
 		<section id="primary">
+			<?php if ( is_active_sidebar("slideshow-content") ) : ?>
+			<div id="slideshow-content">
+				<?php dynamic_sidebar('slideshow-content'); ?>
+			</div><!-- #slideshow-content -->
+			<?php endif; ?>
 			<div id="content" role="main">
 
 			<?php if ( have_posts() ) : ?>

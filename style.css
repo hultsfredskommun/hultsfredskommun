@@ -643,7 +643,6 @@ input#s {
 	float: right;
 	min-width: 100%;
 	height: 250px;
-	overflow: hidden;
 }
 #slideshow-content article.hk_slideshow .text-area
 {
@@ -652,7 +651,7 @@ input#s {
 	z-index: 1000;
 	max-height: 60px;
 	width: 100%;
-	bottom: 20px;
+	top: 140px;
 }
 #slideshow-content article.hk_slideshow .text-area .text-content
 {

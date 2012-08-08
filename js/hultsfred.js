@@ -400,7 +400,7 @@ $(document).ready(function(){
 	/**
 	 * init slideshow
 	 */
-	$('.slideshow').cycle({
+	$('#slideshow-content').cycle({
 		slideExpr: 'article',
 		fx: 'fade',
 		timeout: 10000, //10 sekunder

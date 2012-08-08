@@ -74,7 +74,6 @@ function hk_slideshow_generate_output($vars) {
 		$meta_query = new WP_Query($args);
 		if ($meta_query->have_posts()) {
        		// The Loop
-			$retValue .= '<div class="' . $vars['divclass'] .'">';
 			$counter = 0;
        		while ( $meta_query->have_posts() ) : $meta_query->the_post();
 				$retValue .= '<article id="post-' . get_the_ID() . '" class="';
@@ -86,7 +85,7 @@ function hk_slideshow_generate_output($vars) {
 				$retValue .= 	'<div class="text-area">';
 				$retValue .= 		'<div class="text-content">';
 				$retValue .= 			'<div class="transp-background"></div>';
-				$retValue .= 			"<header class='entry-header'><h2 class='entry-title'><a href='". get_permalink(get_the_id()) ."' title='" . esc_attr__( 'Permalink to %s', 'twentyeleven' ) ."'". the_title_attribute( 'echo=0' )  ." rel='bookmark'>" . get_the_title() . "</a></h2></header>";
+				$retValue .= 			"<header class='entry-header'><h2 class='entry-title'><a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_title() . "</a></h2></header>";
 				$retValue .= 			'<div class="entry-content">';
 				$retValue .= 				get_the_content();
 				$retValue .=			'</div>';
@@ -97,7 +96,6 @@ function hk_slideshow_generate_output($vars) {
 				$counter++;
         	endwhile;
 
-			$retValue .= '</div>';
 		}
 		
 	}
