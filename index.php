@@ -47,13 +47,15 @@ get_header(); ?>
 
 			/* Query all posts with news category */
 			if ($default_settings["news_cat"] != "") {
-				echo "<span id='news_header'>Senaste Nytt:</span><br class='newline'/>";
+				echo "<div id='news'>";
+				echo "<span id='news_header'>Fler nyheter</span><br class='newline'>";
 				$query = array( 'posts_per_page' => '10', 'category__and' => $default_settings["news_cat"] );
 						
 				query_posts( $query );		
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 					get_template_part( 'content', "news" ); 
 				endwhile; endif; 
+				echo "</div>";
 				// Reset Query
 				wp_reset_query(); 
 			}
