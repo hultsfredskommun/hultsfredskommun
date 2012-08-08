@@ -870,16 +870,17 @@ dl.gallery-item {
 	list-style: disc outside none;
 }
 #news .only-title {
-	height: 20px;
+	height: 22px;
 }
 #news .only-title .entry-title a {
-	background: url("images/right_dot.gif") no-repeat scroll 0 1px transparent;
+	background: url("images/right_dot.gif") no-repeat scroll 4px 1px transparent;
 	font-size: 12px;
-	padding-left: 10px;
+	padding-left: 14px;
 }
 #news .only-title .entry-title a:hover{
 	text-decoration: underline;
 }
+#news article.sticky { border-radius: 0 !important; }
 
 /* Sort-order and Viewmode */
 #sort-order {
@@ -960,6 +961,16 @@ article.sticky .readMoreFadeBottom {
 	background-image:-moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(253, 234, 209, 0.9));
 	background-image:-ms-linear-gradient(top, rgba(255, 255, 255, 0), rgba(253, 234, 209, 0.9));
 	background-image:-o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(253, 234, 209, 0.9));
+}
+article.sticky.full {
+	background-color: white;
+}
+article.sticky.full .readMoreFadeBottom {
+	background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0.9)));
+	background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+	background-image:-moz-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+	background-image:-ms-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+	background-image:-o-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
 }
 	
 /*#content > article,

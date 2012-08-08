@@ -207,6 +207,8 @@ function readMoreToggleButton(el){
 			if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
 				$(article).removeClass("only-title");
 			}
+			// add full class to track article state
+			$(article).addClass("full");
 		
 			// toggle visibility
 			$(article).find('.summary-content').fadeOut("fast");
@@ -219,9 +221,6 @@ function readMoreToggleButton(el){
 					readMoreToggleButton( $(this).parent().find('.readMoreToggleButton') );
 				});
 				$(article).append(closea);
-
-				// add full class to track article state
-				$(article).addClass("full");
 				
 				// scroll to top of post 
 				$("html,body").animate({scrollTop: $(article).position().top}, 300);
