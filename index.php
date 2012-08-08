@@ -13,11 +13,8 @@
  */
 
 get_header(); ?>
-<?php if ( is_active_sidebar("slideshow-content") ) : ?>
-<div id="slideshow-content">
-	<?php dynamic_sidebar('slideshow-content'); ?>
-</div><!-- #slideshow-content -->
-<?php endif; ?>
+
+<?php dynamic_sidebar('slideshow-content'); ?>
 
 <?php if ( is_active_sidebar("firstpage-top-content") ) : ?>
 <div id="firstpage-top-content">

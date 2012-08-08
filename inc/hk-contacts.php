@@ -8,7 +8,7 @@
 /* WIDGET */
 class Hk_Contacts extends WP_Widget {
 
-        public function __construct() {
+    public function __construct() {
 		parent::__construct(
 	 		'hk_contacts', // Base ID
 			'Hk_Contacts', // Name
@@ -105,23 +105,22 @@ function hk_contacts_save($postID) {
 */
 }
 
+// outputs the content of the widget
 function hk_contacts_generate_cache() {
 
 	$retValue = "";
-	// outputs the content of the widget
-
- 	$selected_categories = single_cat_title( '', false);
-	if ($selected_categories != "")
+	
+	// set startpage category if on startpage
+	$category_in = array();
+ 	if ( is_home() )
+ 	{
+ 		$hk_options = get_option("hk_theme");
+ 		$category_in[] = $hk_options["startpage_cat"];
+ 	}
+ 	else {
+	 	
+    	foreach(get_the_category() as $cat)
     	{
-		$cat = get_category_by_slug($selected_categories);
-		$category_in = array($cat->term_id);
-    	}
-
-    	else
-    	{
-		$category_in = array();
-        	foreach(get_the_category() as $cat)
-        	{
 			$category_in[] = $cat->term_id;
 		}
   	}
@@ -150,7 +149,7 @@ function hk_contacts_generate_cache() {
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
 				$retValue .= get_the_post_thumbnail(get_the_ID(),"contact-image",array("class"=>"alignleft"));
 
-				//$retValue .= "<h4>" . get_the_title() . "</h4>";
+				$retValue .= "<h4>" . get_the_title() . "</h4>";
 				$retValue .= str_replace("\n","<br>",get_the_content());
 				$retValue .= "</div>";
 	    	endwhile;

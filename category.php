@@ -13,11 +13,8 @@ get_header();
 
 	
 		<section id="primary">
-			<?php if ( is_active_sidebar("slideshow-content") ) : ?>
-			<div id="slideshow-content">
-				<?php dynamic_sidebar('slideshow-content'); ?>
-			</div><!-- #slideshow-content -->
-			<?php endif; ?>
+			<?php dynamic_sidebar('slideshow-content'); ?>
+
 			<div id="content" role="main">
 
 			<?php if ( have_posts() ) : ?>
