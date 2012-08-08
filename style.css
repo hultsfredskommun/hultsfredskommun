@@ -651,6 +651,7 @@ input#s {
 }
 .slideshow article.hk_slideshow .text-area .text-content
 {
+	padding-top: 10px;
 }
 .slideshow article.hk_slideshow .text-area .text-content .transp-background
 {

@@ -55,7 +55,7 @@ function hk_slideshow_generate_output($vars) {
 	// set startpage category if on startpage
  	if ( is_home() )
  	{
- 		$hk_options = get_option("hk_theme");
+		$hk_options = get_option("hk_theme");
  		$selected_categories = $hk_options["startpage_cat"];
  	}
  	else {
@@ -68,11 +68,15 @@ function hk_slideshow_generate_output($vars) {
 	   	$args = array(
 	   	   	'posts_per_page' => $vars["posts_per_page"], 
 			'post_type'	 => 'hk_slideshow',
-	 	    'category__and' => $selected_categories
+	 	    'category__and' => array($selected_categories)
 		);
 		
-		
+		//remove troubling action before wp_query
+		remove_action('pre_get_posts', 'hk_views_sorting');
 		$meta_query = new WP_Query($args);
+		//add it again
+		add_action('pre_get_posts', 'hk_views_sorting');
+		
 		if ($meta_query->have_posts()) {
 			$retValue .= "<div class='slideshow'>";
        		// The Loop

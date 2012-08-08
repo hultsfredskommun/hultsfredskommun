@@ -232,6 +232,7 @@ class HK_Menu_Widget extends WP_Widget {
 
 		// set tag headings
 		$tag_heading = array('category' => "Kategorier", 'post_tag' => "Vad vill du", "vem" => "Vem är du", "ort" => "Ort" );
+		$tag_heading = array('category' => "Visa", 'post_tag' => "Visa bara", "vem" => "Visa bara", "ort" => "Visa bara" );
 		
 		// get an array with the current tag filters 
 		$tag_clouds = $this->hk_helper_get_tag_filters(array("category","post_tag","vem","ort"));
