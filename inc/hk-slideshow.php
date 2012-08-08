@@ -52,6 +52,7 @@ class HK_slideshow extends WP_Widget {
 function hk_slideshow_generate_output($vars) {
 
 	$retValue = "";
+	// set startpage category if on startpage
  	if ( is_home() )
  	{
  		$hk_options = get_option("hk_theme");
@@ -73,6 +74,7 @@ function hk_slideshow_generate_output($vars) {
 		
 		$meta_query = new WP_Query($args);
 		if ($meta_query->have_posts()) {
+			$retValue .= "<div class='slideshow'>";
        		// The Loop
 			$counter = 0;
        		while ( $meta_query->have_posts() ) : $meta_query->the_post();
@@ -95,6 +97,7 @@ function hk_slideshow_generate_output($vars) {
 				
 				$counter++;
         	endwhile;
+			$retValue .= "</div>";
 
 		}
 		
