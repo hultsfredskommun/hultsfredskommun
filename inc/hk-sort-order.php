@@ -6,7 +6,7 @@
 	 * orderby == popular depends on the plugin WP-PostViews by Lester 'GaMerZ' Chan 
 	 */
 
-	function displaySortOrderButtons(){ ?>
+	function displaySortOrderButtons() { ?>
 		<div id="sort-order">
 			<?php
 				//init
@@ -98,11 +98,12 @@
 		}
 		return $order;
 	}
-	add_filter ('posts_orderby', 'hk_FilterOrder');
-	
+	if (!is_admin()) {
+		add_filter ('posts_orderby', 'hk_FilterOrder');
+	}
 	// Sets sort-order most viewed as default or if orderby == popular and plugin WP-PostViews is loaded
 	function hk_views_sorting($local_wp_query) {
-		if( function_exists( 'views_orderby' )) {
+		if(function_exists( 'views_orderby' )) {
 			if ( !isset($_REQUEST["orderby"]) or (isset($_REQUEST["orderby"]) and $_REQUEST["orderby"] == 'popular') ) {
 				add_filter('posts_fields', 'views_fields');
 				add_filter('posts_join', 'views_join');
@@ -116,5 +117,7 @@
 			}
 		}
 	}
-	add_action('pre_get_posts', 'hk_views_sorting');
+	if (!is_admin()) {
+		add_action('pre_get_posts', 'hk_views_sorting');
+	}
 ?>
