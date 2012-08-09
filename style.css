@@ -568,6 +568,11 @@ input#s {
 		font-size: 12px;
 	}
 }
+@media screen and (max-width: 768px) {
+	#menu ul li a {
+		color: red;
+	}
+}
 @media screen and (max-width: 650px) {
 	/*show dropdown-menu*/
 	#menu #dropdown-menu { display: block; }
@@ -961,6 +966,10 @@ dl.gallery-item {
 .only-title .summary-content .readMoreFadeBottom,
 .only-title .readMoreToggleButton {
 	display: none;
+}
+.only-title .summary-content header,
+.only-title .summary-content .entry-content {
+	margin: 0 !important;
 }
 
 /* Post style */

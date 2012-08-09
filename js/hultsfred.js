@@ -538,6 +538,18 @@ $(document).ready(function(){
 		}
 	});
 	*/
+	
+	
+	//Skriver ut skärmens storlek
+	log( "$(window).width = " + $(window).width() + ", " +
+		"MQ Screensize = " + ($(window).width() + scrollbar) 
+	);
+	setTimeout( function(){
+		clearTimeout(hide);
+		$("#log").fadeOut("slow", function() {
+			log( "#page: " + $("#page").outerWidth() + ", body: " + $("body").outerWidth() + ", #branding: " + $("#branding").outerWidth() + ", #main: " + $("#main").outerWidth() + ", #colophon: " + $("#colophon").outerWidth() );
+		});
+	}, 3000);
 
 });/* END $(document).ready() */
 
@@ -645,7 +657,7 @@ function log(logtext) {
 	//Fading out in 5s.
 	hide = setTimeout( function(){
 		$("#log").fadeOut("slow");
-	},2000);
+	},5000);
 }
 
 
