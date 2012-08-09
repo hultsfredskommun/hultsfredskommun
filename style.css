@@ -649,8 +649,8 @@ a:hover {
 /* =Content
 ----------------------------------------------- */
 
-##the_content-container { 
-	padding: .8em .8em 0; 
+#the_content-container {
+	padding: .4em .8em 0;
 }
 .post footer { margin: 1em; }
 
