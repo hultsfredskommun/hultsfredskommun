@@ -1038,7 +1038,7 @@ article.sticky.full .readMoreFadeBottom {
 	height: 100px;
 	overflow: hidden;
     position: relative;
-	padding: .8em .8em 0;
+	_adding: .8em .8em 0;
 }
 .summary-content .img-wrapper { 
 	float: left;
@@ -1049,13 +1049,16 @@ article.sticky.full .readMoreFadeBottom {
 	position: relative;
 	z-index: 500;
 }
+.summary-content .entry-wrapper {
+	padding: .4em .8em 0;
+}
 .summary-content .entry-wrapper.has-img { 
 	float: left;
 	max-width: 62%;
 }
 .summary-content .entry-wrapper.has-img  header,
 .summary-content .entry-wrapper.has-img .entry-content {
-	margin-left: 10px;
+	_argin-left: 10px;
 }
 
 /* More-content */
