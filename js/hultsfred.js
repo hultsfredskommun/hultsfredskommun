@@ -538,6 +538,12 @@ $(document).ready(function(){
 		}
 	});
 	*/
+	
+	
+	//Skriver ut skärmens storlek
+	log( "$(window).width = " + $(window).width() + ", " +
+		"MQ Screensize = " + ($(window).width() + scrollbar) 
+	);
 
 });/* END $(document).ready() */
 
