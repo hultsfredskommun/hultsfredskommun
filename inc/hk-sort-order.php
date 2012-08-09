@@ -18,12 +18,21 @@
 				if($vem_tags != ''){ $vem_tags = "&vem=".$vem_tags; }
 				if($ort_tags != ''){ $ort_tags = "&ort=".$ort_tags; }
 			?>
-			<li <?php echo ($_REQUEST["orderby"] == "alpha")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha<?php echo $tags.$vem_tags.$ort_tags; ?>">A - &Ouml;</a></li>
-			<li <?php echo ($_REQUEST["orderby"] == "alpha_desc")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha_desc<?php echo $tags.$vem_tags.$ort_tags; ?>">&Ouml; - A</a></li>
-			<li <?php echo ($_REQUEST["orderby"] == "latest")?"class='current-menu-item'":""; ?>><a href="?orderby=latest<?php echo $tags.$vem_tags.$ort_tags; ?>">Nyaste</a></li>
-			<li <?php echo ($_REQUEST["orderby"] == "oldest")?"class='current-menu-item'":""; ?>><a href="?orderby=oldest<?php echo $tags.$vem_tags.$ort_tags; ?>">&Auml;ldsta</a></li>
+			<?php 
+				$orderby = $_REQUEST["orderby"];
+				if ($orderby == "") {
+					if (function_exists( 'views_orderby' ))
+						$orderby = "popular";
+					else
+						$orderby = "latest";
+				}
+			?>
+			<li <?php echo ( $orderby == "alpha")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha<?php echo $tags.$vem_tags.$ort_tags; ?>">A - &Ouml;</a></li>
+			<li <?php echo ($orderby == "alpha_desc")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha_desc<?php echo $tags.$vem_tags.$ort_tags; ?>">&Ouml; - A</a></li>
+			<li <?php echo ($orderby == "latest")?"class='current-menu-item'":""; ?>><a href="?orderby=latest<?php echo $tags.$vem_tags.$ort_tags; ?>">Nyaste</a></li>
+			<li <?php echo ($orderby == "oldest")?"class='current-menu-item'":""; ?>><a href="?orderby=oldest<?php echo $tags.$vem_tags.$ort_tags; ?>">&Auml;ldsta</a></li>
 			<?php if( function_exists('views_orderby') ) : ?>
-				<li <?php echo ($_REQUEST["orderby"] == "popular")?"class='current-menu-item'":""; ?>><a href="?orderby=popular<?php echo $tags.$vem_tags.$ort_tags; ?>">Popul&auml;raste</a></li>
+				<li <?php echo ($orderby == "popular")?"class='current-menu-item'":""; ?>><a href="?orderby=popular<?php echo $tags.$vem_tags.$ort_tags; ?>">Popul&auml;raste</a></li>
 			<?php endif; ?>
 		</ul></div>
 

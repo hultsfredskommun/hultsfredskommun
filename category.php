@@ -2,9 +2,6 @@
 /**
  * The template for displaying Category Archive pages.
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
  */
 
 get_header(); 
@@ -20,10 +17,6 @@ get_header();
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
-					<h1 class="page-title"><?php
-						echo 'Sidor i <span>' . single_cat_title( '', false ) . '</span>';
-					?></h1>
-
 					<?php
 						$category_description = category_description();
 						if ( ! empty( $category_description ) )

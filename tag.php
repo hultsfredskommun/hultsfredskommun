@@ -17,10 +17,6 @@ get_header();
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
-					<h1 class="page-title"><?php
-						echo 'Sidor i <span>' . single_tag_title( '', false ) . '</span>';
-					?></h1>
-
 					<?php
 						$tag_description = tag_description();
 						if ( ! empty( $tag_description ) )

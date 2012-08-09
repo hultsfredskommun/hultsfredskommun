@@ -72,7 +72,7 @@ class HK_Menu_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 	    global $post;
 	    extract( $args );
-		echo "<div id='nav'><nav>";
+		echo "<aside id='nav'><nav>";
 		if (is_single())
 		{
 			$this->hk_single_page_menu();
@@ -81,8 +81,8 @@ class HK_Menu_Widget extends WP_Widget {
 			$this->hk_selected();
 			$this->hk_tag_filters();
 		}
-		echo "<div style='clear:both;'>&nbsp;</div>";
-		echo "</nav></div>";
+		//echo "<div style='clear:both;'>&nbsp;</div>";
+		echo "</nav></aside>";
 	}
 
 
@@ -115,7 +115,7 @@ class HK_Menu_Widget extends WP_Widget {
 			</script>
 			<span class='heading'>Du har valt:</span>
 					
-			<ul id="you_are_tag">
+			<ul id="selected_filter">
 			<?php 
 
 			// initialize caturl
