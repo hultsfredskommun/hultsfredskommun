@@ -502,7 +502,6 @@ input#s {
 	height: 100%;
 	float: left;
 	display: inline;
-	text-align: center;
 	border-right: 1px solid white;
 	overflow: hidden;
 	background-color: transparent;
@@ -525,9 +524,10 @@ input#s {
 #menu ul li a {
 	display: block;
 	height: 100%;
-	margin: 4px 20px;
+	margin: 4px 15px;
 	line-height: 20px;
 	color: #2B2B2B;
+	text-align: left;
 }
 #menu ul li:first-child {
 	border-top-left-radius: 5px;
@@ -1068,7 +1068,10 @@ article.sticky.full .readMoreFadeBottom {
 }
 
 /* More-content */
-.more-content { padding: 0; }
+.more-content { 
+	padding: 0;
+	overflow: hidden;
+}
 .more-content #the_content-container { padding: .8em .8em 0; }
 .more-content footer { margin: 1em; }
 
