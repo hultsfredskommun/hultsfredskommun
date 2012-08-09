@@ -170,11 +170,12 @@ $.fn.searchSuggest = function()
 /**
  * Initialize function read-more toggle-button 
  */
-function readMoreToggleButton(el){
+function readMoreToggle(el){
+	//global var to article
+	article = $(el).parents("article");
+
 	//toggle function
 	function toggleShow() {
-		article = $(el).parents("article");
-		
 		// show summary content
 		if ( $(article).hasClass("full") )
 		{
@@ -189,13 +190,16 @@ function readMoreToggleButton(el){
 				
 				// alter close-buttons
 				$(article).find('.closeButton').remove();
-				$(article).find(".readMoreToggleButton").html(". . .")
 
 				// remove full class to track article state
 				$(article).removeClass("full");
 
 				// scroll to top of post 
 				$("html,body").animate({scrollTop: $(article).position().top}, 300);
+				
+				$(article).click(function(){
+					readMoreToggle( $(this).find(".entry-title a") );
+				});
 			});
 			
 			// reset webbrowser history
@@ -204,6 +208,9 @@ function readMoreToggleButton(el){
 		// show full content
 		else
 		{
+			//unbind click-action on article
+			$(article).unbind('click');
+		
 			if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
 				$(article).removeClass("only-title");
 			}
@@ -213,12 +220,10 @@ function readMoreToggleButton(el){
 			// toggle visibility
 			$(article).find('.summary-content').fadeOut("fast");
 			$(article).find('.more-content').show(500, function(){
-				// alter close-button
-				$(article).find(".readMoreToggleButton").html("St&auml;ng");
-
 				//add close-button top right corner
-				var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(){
-					readMoreToggleButton( $(this).parent().find('.readMoreToggleButton') );
+				var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(ev){
+					ev.preventDefault();
+					readMoreToggle( $(this).parents("article").find(".entry-title a") );
 				});
 				$(article).append(closea);
 				
@@ -237,30 +242,22 @@ function readMoreToggleButton(el){
 		}
 	}
 
-	if( !$(el).hasClass("loaded") ){
+	if( !$(article).hasClass("loaded") ){
 		//add class loading
-		$(el).addClass("loading").html("Laddar...");
+		$(article).addClass("loading"); //.html("Laddar...");
 		
-		//find posts url and store it in variable
-		var entry_title = $(el).parent().find(".entry-title");
-		var post_id = $(entry_title).find("a").attr("post_id");
-		
+		//find posts id and store it in variable
+		var post_id = $(el).attr("post_id");
 	
 		//create a new div with requested content
 		var morediv = $("<div>").attr("class","more-content").hide();
 		
-		//append div in readMoreContent
-		var readMore = $(el).parent().find('.readMoreContent');
-		$(readMore).append(morediv);
+		//append div after summary-content
+		$(article).find('.summary-content').after(morediv);
 
 		$.ajaxSetup({cache:false});
 		$(morediv).load(hultsfred_object["templateDir"]+"/post_load.php",{id:post_id}, function()
-		{
-			//hide old content and show new
-			//$(this).parent().find('.entry-content').hide();
-			//$(this).parent().find('.entry-title').hide();
-			//$(this).show();
-			
+		{			
 			//****** click-actions START *******
 			
 			//set click-action on print-post-link
@@ -289,7 +286,8 @@ function readMoreToggleButton(el){
 			});
 			//***** click-actions END ******
 			
-			$(this).parents("article").find(".readMoreToggleButton").removeClass("loading").addClass("loaded");
+			//All is loaded
+			$(this).parents("article").removeClass("loading").addClass("loaded");
 
 			//exec toggle function
 			toggleShow();
@@ -380,19 +378,19 @@ $(document).ready(function(){
 	/**
 	 * add action to read-more toggle button
 	 */
-	$("#content").find('.readMoreToggleButton').each( function(){
-		$(this).click(function(ev){
+	$("#content").find('.post').each(function(){
+		//sets click-action on entry-titles
+		$(this).find('.entry-title a').click(function(ev){
+			ev.stopPropagation();
 			ev.preventDefault();
-			if( !$(this).hasClass('loading') ){
-				readMoreToggleButton(this);
+			if( !$(this).parents('article').hasClass('loading') ){
+				readMoreToggle(this);
 			}
+			else{ return false; }
 		});
-	});
-	$("#content").find('.entry-title').each(function(){
-		$(this).find('a').click(function(ev){
-			ev.preventDefault();
-			var post = $(this).parents('.post');
-			$(post).find('.readMoreToggleButton').click();
+		//triggers articles click-action entry-title clicked
+		$(this).click(function(){
+			readMoreToggle( $(this).find(".summary-content").find('.entry-title a') );
 		});
 	});
 	
@@ -579,21 +577,20 @@ function dyn_posts_load_posts() {
 					$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('article').addClass("only-title");
 				}
 				
-				// read-more toggle button
-				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('.readMoreToggleButton').each(function(){
-					$(this).click(function(ev){
+				// read-more toggle
+				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('article').each(function(){
+					//sets click-action on entry-titles
+					$(this).find('.entry-title a').click(function(ev){
+						ev.stopPropagation();
 						ev.preventDefault();
-						if( !$(this).hasClass('loading') ){
-							readMoreToggleButton(this);	
+						if( !$(this).parents('article').hasClass('loading') ){
+							readMoreToggle(this);
 						}
+						else{ return false; }
 					});
-				});
-				
-				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('.entry-title').each(function(){
-					$(this).find('a').click(function(ev){
-						ev.preventDefault();
-						var post = $(this).parents("article");
-						$(post).find('.readMoreToggleButton').click();
+					//triggers articles click-action entry-title clicked
+					$(this).click(function(){
+						readMoreToggle( $(this).find(".summary-content").find('.entry-title a') );
 					});
 				});
 			
