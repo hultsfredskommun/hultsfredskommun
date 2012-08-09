@@ -1,47 +1,92 @@
 <?php
 /**
- * The template used to display Tag Archive pages
+ * The template for displaying Category Archive pages.
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
  */
 
-get_header(); ?>
+get_header(); 
 
+?>
+
+	
 		<section id="primary">
+			<?php dynamic_sidebar('slideshow-content'); ?>
+
 			<div id="content" role="main">
 
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
 					<h1 class="page-title"><?php
-						printf( __( 'Tag Archives: %s', 'twentyeleven' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+						echo 'Sidor i <span>' . single_tag_title( '', false ) . '</span>';
 					?></h1>
 
 					<?php
 						$tag_description = tag_description();
 						if ( ! empty( $tag_description ) )
 							echo apply_filters( 'tag_archive_meta', '<div class="tag-archive-meta">' . $tag_description . '</div>' );
+
 					?>
+
+					<?php 
+						if( function_exists('displaySortOrderButtons') ){
+							displaySortOrderButtons();
+						} 
+					?>
+					
+					<div id="viewmode">
+						<a id="viewmode_summary" title="Visa ingress" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_framed.png" /></a>
+						<a id="viewmode_titles" title="Visa endast rubriker" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_titles.png" /></a>
+					</div>
+					<div class="clear"></div>
 				</header>
 
-				<?php twentyeleven_content_nav( 'nav-above' ); ?>
+				<!-- ***Sticky posts*** -->
+				<?php
+					/**
+					 * Print stickies here only if orderby is empty
+					 */
+					if ($_REQUEST["orderby"] == "") :
+						/* Get category id */
+						$catID = get_query_var("cat");
+					
+						/* Get all sticky posts */
+						$sticky = get_option( 'sticky_posts' );
+						
+						if (isset($sticky)):
+							/* Query sticky posts */
+							query_posts( array( 'category__in' => $catID, 'post__in' => $sticky ) );
+							
+							if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>			
+								<?php get_template_part( 'content', get_post_format() ); ?>
+							<?php endwhile; endif;
+						endif; 
+						// Reset Query
+						wp_reset_query();
+					endif;
+				?><!-- ***Sticky posts END*** -->
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php
-						/* Include the Post-Format-specific template for the content.
-						 * If you want to overload this in a child theme then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+						/**
+						 * Default: don't print stickies here
+						 * If orderby is not empty: print stickies
 						 */
-						get_template_part( 'content', get_post_format() );
+						if( !is_sticky() or ($_REQUEST["orderby"] != "") ) {
+
+							/* Include the Post-Format-specific template for the content.
+							 * If you want to overload this in a child theme then include a file
+							 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+							 */
+							get_template_part( 'content', get_post_format() );
+						}
 					?>
 
 				<?php endwhile; ?>
 
-				<?php twentyeleven_content_nav( 'nav-below' ); ?>
+				<?php hk_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 

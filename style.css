@@ -322,12 +322,11 @@ input[type=text] {
 }
 input#s {
 	background: url(images/search.png) no-repeat 5px 6px;
-	-moz-border-radius: 2px;
-	border-radius: 2px;
 	font-size: 14px;
 	height: 22px;
 	line-height: 1.2em;
 	padding: 4px 10px 4px 28px;
+	width: 100%;
 }
 input#searchsubmit {
 	display: none;
@@ -1106,6 +1105,7 @@ article.sticky.full .readMoreFadeBottom {
 .more-content { padding: 0; }
 .more-content #the_content-container { padding: .8em .8em 0; }
 .more-content footer { margin: 1em; }
+.more-content img { width: 100%; }
 /* More-content END */
 
 /* #misc-ctrl */
