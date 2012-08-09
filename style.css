@@ -77,7 +77,6 @@ body {
 }
 #branding, #main, #colophon {
 	margin: 0 auto;
-	padding: 1%;
 	max-width: 1000px;
 }
 #branding hgroup {
@@ -375,45 +374,7 @@ a:hover {
 	height: auto;
 }
 
-#site-description {
-	color: #ffffff;
-	font-size: 14px;
-	margin: 0 270px 3.65625em 0;
-}
 
-
-#site-title {
-	margin-right: 270px;
-	padding: 3.65625em 0 0;
-}
-#site-title a {
-	color: #111;
-	font-size: 30px;
-	font-weight: bold;
-	line-height: 36px;
-	text-decoration: none;
-}
-#site-title a:hover,
-#site-title a:focus,
-#site-title a:active {
-	color: #1982d1;
-}
-#site-description {
-	color: #7a7a7a;
-	font-size: 14px;
-	margin: 0 270px 3.65625em 0;
-}
-
-
-/* top menu links */
-#topmenu {
-	float: right;
-	text-align: right;
-	color: white;
-	background: #F7A02E;
-	border-radius: 5px;
-
-}
 /* Search Form */
 #searchnavigation {
 	margin-left: 25%;
@@ -473,21 +434,36 @@ input#s {
 }
 
 
-/* =Menu
+/* =Menus and tools
 -------------------------------------------------------------- */
+#viewmode {
+	float: right;
+}
 
-#menu {
-	width: 100%;
-	background-color: #F7A02E;
+#menu,
+#topmenu,
+#sort-order {
+	background: #F7A02E;
 	border-radius: 5px;
 }
+#topmenu {
+	float: right;
+	font-size: 14px;
+}
+#menu {
+	margin-top: 1em;
+	width: 100%;
+}
+#sort-order {
+	background: #fff;
+	font-size: 11px;
+}
 #menu ul {
-	margin: 1% 0 0;
-	height: 28px;
-	#background-color: white;
+	margin: 0;
 }
 #menu ul li, 
-#topmenu nav ul li {
+#topmenu nav ul li,
+#sort-order ul li {
 	height: 100%;
 	float: left;
 	display: inline;
@@ -500,8 +476,12 @@ input#s {
 	-ms-transition: background-color 1s linear;
 	transition: background-color 1s linear;
 }
+#sort-order ul li {
+	border: 0;
+}
 #menu ul li:hover, 
-#topmenu nav ul li:hover {
+#topmenu nav ul li:hover,
+#sort-order ul li:hover {
 	background-color: #FACA8B;
 	-moz-transition: background-color .2s linear;
 	-webkit-transition: background-color .2s linear;
@@ -510,9 +490,13 @@ input#s {
 	transition: background-color .2s linear;
 }
 #menu ul li.current-menu-item,
-#menu ul li.current-category-ancestor { background-color: #FACA8B; }
+#sort-order ul li.current-menu-item,
+#menu ul li.current-category-ancestor { 
+	background-color: #FACA8B; 
+}
 #menu ul li a,
-#topmenu nav ul li a {
+#topmenu nav ul li a, 
+#sort-order ul li a {
 	display: block;
 	height: 100%;
 	margin: 4px 7px;
@@ -521,18 +505,26 @@ input#s {
 	text-align: left;
 }
 #menu ul li:first-child,
-#topmenu nav ul li:first-child {
+#topmenu nav ul li:first-child,
+#sort-order ul li:first-child {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 }
-#topmenu nav ul li:last-child {
+#topmenu nav ul li:last-child,
+#sort-order ul li:last-child {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
 #menu ul li:last-child,
-#topmenu nav ul li:last-child { border: none; }
+#topmenu nav ul li:last-child,
+#sort-order ul li:last-child { 
+	border: none; 
+}
 #menu ul li a:hover,
-#topmenu nav ul li a:hover { text-decoration: none; }
+#topmenu nav ul li a:hover,
+#sort-order ul li a:hover { 
+	text-decoration: none; 
+}
 
 #menu #dropdown-menu { 
 	display: none;  /*starts hidden*/
@@ -671,7 +663,7 @@ input#s {
 {
 	position: relative;
 	z-index: 1100;
-	padding: 1%;
+	padding: 0.7em;
 }
 
 /* =Content
@@ -941,26 +933,7 @@ dl.gallery-item {
 #news article.sticky { border-radius: 0 !important; }
 
 
-/* Sort-order and Viewmode */
-#sort-order {
-	float: left;
-	background-color: #F7A02E;
-	padding: 1px 4px;
-	border-radius: 2px;
-}
-#sort-order a,
-#sort-order a:hover,
-#sort-order a:active,
-#sort-order a:visited {
-	color: black;
-}
-#sort-order .sep {
-	color: white;
-}
 
-#viewmode {
-	float: right;
-}
 
 /**
  * If article has class only-title:
@@ -2111,9 +2084,8 @@ p.comment-form-comment {
 	border-radius: 5px;
 	background-color: #F7A02E;
 	color: white;
-
-	padding: 1%;
 	overflow: hidden;
+	padding: 0.4em;
 }
 #logo_footer_image {
 	text-align: right;
@@ -2127,17 +2099,12 @@ p.comment-form-comment {
 @media (max-width: 800px) {
 	/* Simplify the basic layout */
 	#main #content {
-		margin: 0 7.6%;
+		margin: 0;
 		width: auto;
 	}
 	#nav-below {
 		border-bottom: 1px solid #ddd;
 		margin-bottom: 1.625em;
-	}
-	#main #secondary {
-		float: none;
-		margin: 0 7.6%;
-		width: auto;
 	}
 	/* Make sure we have room for our comment avatars */
 	.commentlist {
@@ -2208,10 +2175,6 @@ p.comment-form-comment {
 	#site-title,
 	#site-description {
 		margin-right: 0;
-	}
-	/* Make sure the logo and search form don't collide */
-	#branding #searchform {
-		top: 1.625em !important;
 	}
 	/* Floated content doesn't work well at this size */
 	.alignleft,

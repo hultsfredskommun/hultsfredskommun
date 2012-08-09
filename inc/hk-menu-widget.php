@@ -453,7 +453,7 @@ function extra_tag_init() {
 		'post',
 	 	array(
 			'hierarchical' => false,
-			'label' => __( 'Vart' ),
+			'label' => __( 'Var' ),
 			'sort' => true,
 			'args' => array( 'orderby' => 'term_order' ),
 			'rewrite' => array( 'slug' => 'ort' )
