@@ -1045,6 +1045,10 @@ article.sticky.full .readMoreFadeBottom {
 	max-width: 38%;
 	overflow: hidden;
 }
+.summary-content .img-wrapper img {
+	position: relative;
+	z-index: 500;
+}
 .summary-content .entry-wrapper.has-img { 
 	float: left;
 	max-width: 62%;
