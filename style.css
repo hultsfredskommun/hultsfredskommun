@@ -493,7 +493,7 @@ input#s {
 	border-radius: 5px;
 }
 #menu ul {
-	margin: 1%;
+	margin: 1% 0 0;
 	height: 48px;
 	#background-color: white;
 }
@@ -528,6 +528,10 @@ input#s {
 	margin: 4px 20px;
 	line-height: 20px;
 	color: #2B2B2B;
+}
+#menu ul li:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 #menu ul li:last-child { border: none; }
 #menu ul li:last-child a {
