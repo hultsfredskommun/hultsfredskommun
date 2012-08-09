@@ -20,7 +20,7 @@ if ( ! isset( $content_width ) )
 if ( ! isset( $default_settings ) ) {
 	$options = get_option('hk_theme');
 	$default_settings = array(	'thumbnail-image' => array(200, 120, true),
-								'featured-image' => array(660, 396, true),
+								'featured-image' => array(748, 449, true), /* array(660, 396, true) */
 								'slideshow-image' => array(1000, 250, true),
 								'contact-image' => array(150, 150, true),
 								'startpage_cat' => $options["startpage_cat"],
