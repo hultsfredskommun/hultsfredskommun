@@ -610,6 +610,13 @@ a:hover {
 #nav a {
 	color: #2B2B2B;
 }
+#nav hr {
+	border: 0;
+	height: 1px;
+	padding: 0;
+	margin: 0 0 0 .8em;
+	background: #F7A02E;
+}
 #nav li {
 	list-style: none;
 	border: 0;

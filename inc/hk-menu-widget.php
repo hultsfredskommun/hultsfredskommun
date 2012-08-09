@@ -238,6 +238,10 @@ class HK_Menu_Widget extends WP_Widget {
 		$tag_clouds = $this->hk_helper_get_tag_filters(array("category","post_tag","vem","ort"));
 
 		// get one taxonomy at the time tag_key contain the slug, tag_cloud contain the cloud-array 
+		$hasFilters = false; ?>
+		<span class='heading'>Visa bara &raquo;</span>
+		
+		<?php
 		foreach ($tag_clouds as $tag_key => $tag_cloud) {
 			// set selected tags array
 			if ($tag_key != "category")
@@ -257,10 +261,13 @@ class HK_Menu_Widget extends WP_Widget {
 			
 			// echo the tags that are left in the array
 			if (count($tag_cloud) > 0) : ?>
-				<span class='heading'><?php echo $tag_heading[$tag_key]; ?> &raquo;</span>
-
+				<!--span class='heading'><?php echo $tag_heading[$tag_key]; ?> &raquo;</span-->
+				<?php if ($hasFilters) : ?> 
+				<hr>
+				<?php endif; ?>
 				<ul>
 				<?php foreach ($tag_cloud as $key => $value) {
+					$hasFilters = true;
 					if ($var[$tag_key] == "") {
 						$link[$tag_key] = $key;
 					}
@@ -284,6 +291,9 @@ class HK_Menu_Widget extends WP_Widget {
 		        </ul>
 			<?php 
 			endif; 
+		}
+		if (!$hasFilters) {
+			echo "Hittade inga fler filter";
 		}
 	}
 
