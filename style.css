@@ -576,6 +576,11 @@ input#s {
 		font-size: 12px;
 	}
 }
+@media screen and (max-width: 768px) {
+	#menu ul li a {
+		color: red;
+	}
+}
 @media screen and (max-width: 650px) {
 	/*show dropdown-menu*/
 	#menu #dropdown-menu { display: block; }
