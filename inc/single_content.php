@@ -9,7 +9,7 @@
 		<div id="the_content-container">
             <header class="entry-header">
                 <h1 class="entry-title">
-                    <a href="<? echo get_permalink(); ?>"><?php echo get_the_title(); ?></a>
+                    <?php echo get_the_title(); ?>
                 </h1>
             </header>
         

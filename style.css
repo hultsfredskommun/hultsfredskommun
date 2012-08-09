@@ -949,6 +949,9 @@ dl.gallery-item {
 #news .only-title header {
 	margin: 0 !important;
 }
+#news .only-title .entry-wrapper {
+	padding: 0;
+}
 #news .only-title .entry-title a {
 	background: url("images/right_dot.gif") no-repeat scroll 4px 1px transparent;
 	font-size: 12px;
@@ -996,9 +999,8 @@ dl.gallery-item {
 
 /* Post style */
 article {
-	margin-bottom: 10px !important;
+	margin-bottom: 1.2em !important;
 	border: 1px solid #E6E6E6 !important;
-	padding: 0 0 1.625em;
 	position: relative;
 	background: white;
 }
@@ -1053,23 +1055,21 @@ article.sticky.full .readMoreFadeBottom {
 
 /* Excerpt/Summary */
 .summary-content {
-	height: 100px;
+	height: 120px;
 	overflow: hidden;
     position: relative;
-	padding: .8em .8em 0;
 }
 .summary-content .img-wrapper { 
 	float: left;
 	max-width: 38%;
 	overflow: hidden;
 }
+.summary-content .entry-wrapper {
+	padding: .4em .8em 0;
+}
 .summary-content .entry-wrapper.has-img { 
 	float: left;
 	max-width: 62%;
-}
-.summary-content .entry-wrapper.has-img  header,
-.summary-content .entry-wrapper.has-img .entry-content {
-	margin-left: 10px;
 }
 
 /* More-content */
