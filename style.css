@@ -1054,17 +1054,18 @@ article.sticky.full .readMoreFadeBottom {
     position: relative;
 	padding: .8em .8em 0;
 }
-.summary-content img {
-	margin-right: 10px;
-	margin-bottom: 10px;
-}
 .summary-content .img-wrapper { 
 	float: left;
-	width: 38%;
+	max-width: 38%;
+	overflow: hidden;
 }
 .summary-content .entry-wrapper.has-img { 
 	float: left;
-	width: 62%; 
+	max-width: 62%;
+}
+.summary-content .entry-wrapper.has-img  header,
+.summary-content .entry-wrapper.has-img .entry-content {
+	margin-left: 10px;
 }
 
 /* More-content */
