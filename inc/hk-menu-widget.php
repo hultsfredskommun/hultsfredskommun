@@ -231,10 +231,10 @@ class HK_Menu_Widget extends WP_Widget {
 		$link = $var;
 
 		// set tag headings
-		$tag_heading = array('category' => "Kategorier", 'post_tag' => "Vad vill du", "vem" => "Vem är du", "ort" => "Ort" );
-		$tag_heading = array('category' => "Visa", 'post_tag' => "Visa bara", "vem" => "Visa bara", "ort" => "Visa bara" );
+		//$tag_heading = array('category' => "Kategorier", 'post_tag' => "Vad vill du", "vem" => "Vem är du", "ort" => "Ort" );
+		$tag_heading = array('category' => "Visa bara", 'post_tag' => "Visa bara", "vem" => "Visa bara", "ort" => "Visa bara" );
 		
-		// get an array with the current tag filters 
+		// get an array with the current tags used as filter
 		$tag_clouds = $this->hk_helper_get_tag_filters(array("category","post_tag","vem","ort"));
 
 		// get one taxonomy at the time tag_key contain the slug, tag_cloud contain the cloud-array 
@@ -268,13 +268,16 @@ class HK_Menu_Widget extends WP_Widget {
 						$link[$tag_key] = $var[$tag_key].",".$key;
 					}
 					$curr_caturl = $caturl;
+					
 					if ($tag_key == "category")
 						$curr_caturl = get_category_link(get_cat_ID($value));
-					echo "<li><a class='$selected' href='" . $curr_caturl . 
-					"?tag=" . $link["post_tag"] .
-					"&vem=" . $link["vem"] . 
-					"&ort=" . $link["ort"] . "'>" . $value . "</a></li> ";
-				
+					
+					if (!$hide) {
+						echo "<li><a class='$selected' href='" . $curr_caturl . 
+						"?tag=" . $link["post_tag"] .
+						"&vem=" . $link["vem"] . 
+						"&ort=" . $link["ort"] . "'>" . $value . "</a></li> ";
+					}			
 					$link[$tag_key] = $var[$tag_key];
 				} ?>
 		        
@@ -317,7 +320,7 @@ class HK_Menu_Widget extends WP_Widget {
 		$query = array( 'category__in' => $cat_array,
 					 	'tag_slug__in' => $tag_array,
 						
-					 	'posts_per_page' => '500');
+					 	'posts_per_page' => '-1');
 
 		if (count($vem_array) > 0 && count($ort_array) > 0) {
 			$query['tax_query'] = array(
@@ -352,15 +355,18 @@ class HK_Menu_Widget extends WP_Widget {
 		}
 
 
-		// loop the posts to get all taxonomies used 
+		// loop all posts to get all taxonomies used 
 		$wpq = new WP_Query($query);
 		if ($wpq->have_posts()) : while ($wpq->have_posts()) : $wpq->the_post();
 			if ($taxonomies) : foreach ($taxonomies as $taxonomy) {
 			    $posttags = wp_get_post_terms(get_the_ID(),$taxonomy);
 				if ($posttags) : foreach($posttags as $tag) {
+					// only show categories that are children to selected category
+					if ($taxonomy != "category" || $this->hk_childHasParent($tag->term_id, $cat)) :
 						//USING JUST $tag MAKING $all_tags_arr A MULTI-DIMENSIONAL ARRAY, WHICH DOES WORK WITH array_unique
 						$all_tags_arr[$taxonomy][$tag -> slug] = $tag -> name; 
-					} endif;
+					endif;
+				} endif;
 			} endif;
 		endwhile; endif;
 
@@ -374,7 +380,27 @@ class HK_Menu_Widget extends WP_Widget {
 	}
 
 
+	// check if category $child is a child of category $parent
+	function hk_childHasParent($child, $parent) {
+		$i = 0;
+		do {
+			$i++;
+			$args = array(
+				'type'                     => 'post',
+				'include'                  => $child,
+				'taxonomy'                 => 'category' );
+			$getparent = get_categories( $args );
 
+			// return true if parent is found
+			if ($parent == $getparent[0]->parent)
+				return true;
+			// else get next parent
+			$child = $getparent[0]->parent;
+			
+		} while($child != "0" && $i < 10);
+		
+		return false;
+	}
 
 	function hk_getParents($child) {
 		$parent_array = array();
@@ -512,7 +538,7 @@ class Tag_Rewrite {
 $tag_rewrite = new Tag_Rewrite;
 
 // SHOULD WE ENABLE THIS??
-add_action( 'init', array(&$tag_rewrite, 'flush_rewrite_rules') );
-add_action( 'generate_rewrite_rules', array(&$tag_rewrite, 'create_custom_rewrite_rules') );
-add_filter( 'query_vars', array(&$tag_rewrite, 'add_custom_page_variables') ); 
+//add_action( 'init', array(&$tag_rewrite, 'flush_rewrite_rules') );
+//add_action( 'generate_rewrite_rules', array(&$tag_rewrite, 'create_custom_rewrite_rules') );
+//add_filter( 'query_vars', array(&$tag_rewrite, 'add_custom_page_variables') ); 
 ?>
