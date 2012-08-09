@@ -681,6 +681,11 @@ input#s {
 	clear: both;
 	padding: 1.625em 0 0;
 }
+#the_content-container { 
+	padding: .8em .8em 0; 
+}
+.post footer { margin: 1em; }
+
 .page-title {
 	color: #666;
 	font-size: 10px;
@@ -922,6 +927,9 @@ dl.gallery-item {
 #news .only-title {
 	height: 22px;
 }
+#news .only-title header {
+	margin: 0 !important;
+}
 #news .only-title .entry-title a {
 	background: url("images/right_dot.gif") no-repeat scroll 4px 1px transparent;
 	font-size: 12px;
@@ -931,6 +939,7 @@ dl.gallery-item {
 	text-decoration: underline;
 }
 #news article.sticky { border-radius: 0 !important; }
+
 
 /* Sort-order and Viewmode */
 #sort-order {
@@ -1002,9 +1011,9 @@ article:hover{
 	-ms-box-shadow: 0 1px 5px 0 #E0E0E0;
 	box-shadow: 0 1px 5px 0 #E0E0E0;
 }
-article.sticky {
-	background-color: #FDEAD1;
-}
+article.sticky { background-color: #FDEAD1; }
+body.single article.sticky { background-color: white; }
+
 article.sticky .readMoreFadeBottom {
 	background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(1, rgba(253, 234, 209, 0.9)));
 	background-image:-webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(253, 234, 209, 0.9));
@@ -1049,17 +1058,18 @@ article.sticky.full .readMoreFadeBottom {
     position: relative;
 	padding: .8em .8em 0;
 }
-.summary-content img {
-	margin-right: 10px;
-	margin-bottom: 10px;
-}
 .summary-content .img-wrapper { 
 	float: left;
-	width: 38%;
+	max-width: 38%;
+	overflow: hidden;
 }
 .summary-content .entry-wrapper.has-img { 
 	float: left;
-	width: 62%; 
+	max-width: 62%;
+}
+.summary-content .entry-wrapper.has-img  header,
+.summary-content .entry-wrapper.has-img .entry-content {
+	margin-left: 10px;
 }
 
 /* More-content */
@@ -1067,9 +1077,10 @@ article.sticky.full .readMoreFadeBottom {
 	padding: 0;
 	overflow: hidden;
 }
-.more-content #the_content-container { padding: .8em .8em 0; }
-.more-content footer { margin: 1em; }
-.more-content img { width: 100%; }
+.more-content img { 
+	width: auto;
+	max-height: 400px;
+}
 /* More-content END */
 
 /* #misc-ctrl */
