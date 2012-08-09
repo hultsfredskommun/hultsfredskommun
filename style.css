@@ -994,6 +994,10 @@ dl.gallery-item {
 .only-title .readMoreToggleButton {
 	display: none;
 }
+.only-title .summary-content header,
+.only-title .summary-content .entry-content {
+	margin: 0 !important;
+}
 
 /* Post style */
 article {
