@@ -35,5 +35,5 @@
 				</div><!-- .summary-content -->
 			</div><!-- .readMoreContent -->
 		</div><!-- .readMoreContainer -->
-		<a class="readMoreToggleButton" href="<?php the_permalink(); ?>">. . .</a>
+		<a class="readMoreToggleButton" title="Läs mer" alt="Läs mer" href="<?php the_permalink(); ?>">. . .</a>
 	</article><!-- #post-<?php the_ID(); ?> -->

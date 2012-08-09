@@ -213,7 +213,7 @@ p {
 	margin-bottom: 1.625em;
 }
 ul, ol {
-	margin: 0 0 1.625em 2.5em;
+	margin: 0;
 }
 ul {
 	list-style: square;
@@ -361,7 +361,7 @@ a:hover {
 	position: relative;
 	z-index: 9999;
 	width: 100%;
-	height: 154px;
+	height: 120px;
 }
 #logo {
 	clear: none;
@@ -409,20 +409,10 @@ a:hover {
 #topmenu {
 	float: right;
 	text-align: right;
-	height: 20px;
-	margin-top: 5px;
 	color: white;
 	background: #F7A02E;
 	border-radius: 5px;
-	padding-right: 35px;
-}
-#topmenu nav ul li {
-	list-style-type: none;
-	display: inline;
-}
-#topmenu nav ul li a {
-	color: black;
-	margin: 0 0 0 10px;
+
 }
 /* Search Form */
 #searchnavigation {
@@ -493,11 +483,11 @@ input#s {
 }
 #menu ul {
 	margin: 1% 0 0;
-	height: 48px;
+	height: 28px;
 	#background-color: white;
 }
-#menu ul li {
-	#width: 12.5%;
+#menu ul li, 
+#topmenu nav ul li {
 	height: 100%;
 	float: left;
 	display: inline;
@@ -510,7 +500,8 @@ input#s {
 	-ms-transition: background-color 1s linear;
 	transition: background-color 1s linear;
 }
-#menu ul li:hover {
+#menu ul li:hover, 
+#topmenu nav ul li:hover {
 	background-color: #FACA8B;
 	-moz-transition: background-color .2s linear;
 	-webkit-transition: background-color .2s linear;
@@ -520,23 +511,28 @@ input#s {
 }
 #menu ul li.current-menu-item,
 #menu ul li.current-category-ancestor { background-color: #FACA8B; }
-#menu ul li a {
+#menu ul li a,
+#topmenu nav ul li a {
 	display: block;
 	height: 100%;
-	margin: 4px 15px;
+	margin: 4px 7px;
 	line-height: 20px;
 	color: #2B2B2B;
 	text-align: left;
 }
-#menu ul li:first-child {
+#menu ul li:first-child,
+#topmenu nav ul li:first-child {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 }
-#menu ul li:last-child { border: none; }
-#menu ul li:last-child a {
-	margin: 15px;
+#topmenu nav ul li:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
-#menu ul li a:hover { text-decoration: none; }
+#menu ul li:last-child,
+#topmenu nav ul li:last-child { border: none; }
+#menu ul li a:hover,
+#topmenu nav ul li a:hover { text-decoration: none; }
 
 #menu #dropdown-menu { 
 	display: none;  /*starts hidden*/
