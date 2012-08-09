@@ -30,10 +30,10 @@
 						<div class="entry-content">
 							<?php the_excerpt(); ?>
 						</div><!-- .entry-content -->
-					</div>
+					</div><!-- .entry-wrapper -->
 					<div class="readMoreFadeBottom"></div>
-				</div>
-			</div>
-		</div>
+				</div><!-- .summary-content -->
+			</div><!-- .readMoreContent -->
+		</div><!-- .readMoreContainer -->
 		<a class="readMoreToggleButton" href="<?php the_permalink(); ?>">. . .</a>
 	</article><!-- #post-<?php the_ID(); ?> -->

@@ -122,11 +122,11 @@
 			if ($hk_options["topmenu"]) {
 				echo "<aside id='topmenu'><nav>";
 				wp_nav_menu( array(
-					'menu' => $hk_options["topmenu"], 
-					'container' => '',							
-					'items_wrap' => '<ul>%3$s</ul>',
-					'depth' => 1,
-					'echo' => true
+					'menu' 			=> $hk_options["topmenu"], 
+					'container' 	=> '',							
+					'items_wrap'	=> '<ul>%3$s</ul>',
+					'depth' 		=> 1,
+					'echo' 			=> true
 				)); 
 				echo "</nav></aside>";
 			}
@@ -137,17 +137,19 @@
 		</div>
 		
 		<nav id="menu" role="navigation">
-				<a id="dropdown-menu">Meny<img id="dropdown-image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/downarrow.png" /></a>
-					<?php 
-						wp_nav_menu( array(
-							'theme_location' => 'primary', 
-							'container' => '',							
-							'items_wrap' => '<ul>%3$s</ul>',
-							'depth' => 1,
-							'echo' => true
-						)); 
-					?>
-				<div class="clear"></div>
+			<a id="dropdown-menu">Meny<img id="dropdown-image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/downarrow.png" /></a>
+			<?php 
+				wp_nav_menu( array(
+					'theme_location'	=> 'primary', 
+					'container' 		=> '',							
+					'items_wrap' 		=> '<ul>%3$s</ul>',
+					'before' 			=> '',
+					'after'				=> '',
+					'depth' 			=> 1,
+					'echo' 				=> true
+				)); 
+			?>
+			<div class="clear"></div>
 		</nav><!-- #access -->
 
 		<div id="blog_id" style="display:none"><?php global $blog_id; echo $blog_id; ?></div>
