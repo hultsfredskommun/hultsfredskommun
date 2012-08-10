@@ -132,7 +132,7 @@ class HK_Menu_Widget extends WP_Widget {
 				$taglink= "?tag=" . $tags;
 				$vemlink= "&vem=" . $vem_tags;
 				$ortlink= "&ort=" . $ort_tags;
-				$selected_array[] = array("name" => "\"$search\"", "url" => $caturl . $taglink . $vemlink . $ortlink, "noselect" => "" );
+				$selected_array[] = array("name" => "S&ouml;k: $search", "url" => $caturl . $taglink . $vemlink . $ortlink, "noselect" => "" );
 			}
 
 			// show selected categories

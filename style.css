@@ -25,6 +25,11 @@ a {
 
 /* main text color */
 body, input, textarea,
+.entry-title a {
+	color: #373737;
+}
+
+/* menu text color */
 #menu ul li a,
 #topmenu nav ul li a, 
 #sort-order ul li a,
@@ -32,8 +37,9 @@ body, input, textarea,
 #menu #dropdown-menu:hover,
 #menu #dropdown-menu:focus,
 #nav a,
-.entry-title a {
-	color: #373737;
+#footer-sidebar {
+	/*color: #fff; /* white */
+	color: #373737; /* black */
 }
 
 /* white background color */
@@ -51,8 +57,11 @@ hr,
 #menu,
 #sort-order,
 #nav #selected_filter li,
-#supplementary {
-	background-color: #9EBA21; /* green */
+#supplementary {	
+	background-color: #ACC6D3; /* light blue */
+	/*background-color: #06435A; /* deep blue */
+	/*background-color: #00A4D6; /* blue */
+	/*background-color: #9EBA21; /* green */
 	/*background-color: #F7A02E; /* orange */
 }
 
@@ -64,7 +73,10 @@ hr,
 #menu ul li.current-category-ancestor,
 #menu #dropdown-menu:hover,
 #menu #dropdown-menu:focus { 
-	background-color: #C5D67A; /* green */
+	background-color: #E6EEF2; /* light blue */
+	/*background-color: #9BB4BD; /* deep blue */
+	/*background-color: #99DBEF; /* blue */
+	/*background-color: #C5D67A; /* green */
 	/*background-color: #FACA8B; /* orange */
 }
 
@@ -75,8 +87,11 @@ hr,
 
 /* special background colors */
 article.sticky { 
-	border: 2px solid #C5D67A;
-	_background-color: #E2EABC; /* green */
+	border: 2px solid #ACC6D3; /* light blue */
+	/*border: 2px solid #06435A; /* deep blue */
+	/*border: 2px solid #00A4D6; /* blue */
+	/*border: 2px solid #C5D67A; /*green */
+	/*background-color: #E2EABC; /* green */
 	/*background-color: #FDEAD1; /* orange */
 }
 .slideshow article.hk_slideshow .text-area .text-content .transp-background
@@ -92,7 +107,10 @@ article.sticky {
 
 /* border colors */
 #branding #searchform {
-    border: 5px solid #9EBA21; /* green */
+	border: 5px solid #ACC6D3; /* light blue */
+	/*border: 5px solid #06435A; /* deep blue */
+	/*border: 5px solid #00A4D6; /* blue */
+    /*border: 5px solid #9EBA21; /* green */
     /*border: 5px solid #F7A02E; /* orange */
 }
 #menu ul li, 
@@ -101,7 +119,10 @@ article.sticky {
 	border-right: 1px solid white;
 }
 #news .newline {
-    border-bottom: 1px solid #9EBA21; /* green */
+	border-bottom: 1px solid #ACC6D3; /* light blue */
+	/*border-bottom: 1px solid #06435A; /* deep blue */
+	/*border-bottom: 1px solid #00A4D6; /* blue */
+    /*border-bottom: 1px solid #9EBA21; /* green */
 	/*border-bottom: 1px solid #F7A02E; /* orange */
 }
 .closeButton {
