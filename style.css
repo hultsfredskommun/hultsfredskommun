@@ -58,6 +58,7 @@ article.sticky.full,
 hr,
 #menu,
 #menu li,
+#dropdown-menu,
 #sort-order,
 #nav #selected_filter li,
 #supplementary {	
@@ -1851,7 +1852,6 @@ p.comment-form-comment {
 		width: 100%;
 		margin: 0;
 		padding: 0;
-		background-color: #ACC6D3;
 	}
 	#menu ul li {
 		width: 100% !important;
@@ -1860,7 +1860,7 @@ p.comment-form-comment {
 		clear: right;
 		font-size: 14px;
 		overflow: hidden;
-		
+		margin: 0;
 	}
 	#menu  ul li a{
 		padding-top: 0.4em;
