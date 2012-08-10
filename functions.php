@@ -255,20 +255,17 @@ add_filter( 'filesystem_method', create_function( '$a', 'return "direct";' ) );
 
 /**
  * Sets the post excerpt length to 40 words.
- *
- * To override this length in a child theme, remove the filter and add your own
- * function tied to the excerpt_length filter hook.
  */
 function hk_excerpt_length( $length ) {
-	return 60;
+	return 40;
 }
 add_filter( 'excerpt_length', 'hk_excerpt_length' );
 
 /**
- * Returns a "Continue Reading" link for excerpts
+ * Returns no link for excerpts
  */
 function hk_continue_reading_link() {
-	return ' <a href="'. esc_url( get_permalink() ) . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) . '</a>';
+	return ''; 
 }
 
 /**
