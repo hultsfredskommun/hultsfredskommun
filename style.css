@@ -997,6 +997,7 @@ a:hover {
 	height: 28px;
 	padding: 0 !important;
 	overflow: hidden;
+	margin-bottom: 0 !important;
 }
 .news.only-title { margin-bottom: 0 !important; }
 .news.only-title .entry-title {
@@ -1009,7 +1010,7 @@ a:hover {
 	-ms-box-shadow: none;
 	box-shadow: none;
 }
-.only-title .summary-content img,
+.only-title .summary-content .img-wrapper,
 .only-title .summary-content .entry-content,
 .only-title .summary-content .readMoreFadeBottom {
 	display: none;
