@@ -60,7 +60,7 @@ hr,
 #menu li,
 #dropdown-menu,
 #sort-order,
-#nav #selected_filter li,
+/*#nav #selected_filter li,*/
 #supplementary {	
 	background-color: #ACC6D3; /* light blue */
 	/*background-color: #06435A; /* deep blue */
@@ -107,6 +107,43 @@ article.sticky {
 	color: white;
 	text-shadow: 2px 2px 2px #081819;
 }
+
+
+/* menu tags and categories */
+/*
+#nav ul.category {
+	border-top: 5px solid #BDD1DC;
+	border-left: 5px solid #BDD1DC;
+}
+#nav #selected_filter li.cat a{
+	border-left: 5px solid #BDD1DC;
+	margin-left: -5px;
+}
+#nav ul.post_tag {
+	border-top: 5px solid #CDDDE5;
+	border-left: 5px solid #CDDDE5;
+}
+#nav #selected_filter li.tag a{
+	border-left: 5px solid #CDDDE5;
+	margin-left: -5px;
+}
+#nav ul.vem {
+	border-top: 5px solid #DEE8ED;
+	border-left: 5px solid #DEE8ED;
+}
+#nav #selected_filter li.vem a{
+	border-left: 5px solid #DEE8ED;
+	margin-left: -5px;
+}
+#nav ul.ort {
+	border-top: 5px solid #EEF4F6;
+	border-left: 5px solid #EEF4F6;
+}
+#nav #selected_filter li.ort a{
+	border-left: 5px solid #EEF4F6;
+	margin-left: -5px;
+}
+*/
 
 
 /* border colors */
