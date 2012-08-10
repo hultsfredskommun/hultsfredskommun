@@ -277,7 +277,7 @@ class HK_Menu_Widget extends WP_Widget {
 				<?php if ($hasFilters) : ?> 
 				<hr>
 				<?php endif; ?>
-				<ul>
+				<ul class="<?php echo $tag_key; ?>">
 				<?php foreach ($tag_cloud as $key => $value) {
 					$hasFilters = true;
 					if ($var[$tag_key] == "") {

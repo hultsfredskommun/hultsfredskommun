@@ -19,8 +19,8 @@ if ( ! isset( $content_width ) )
 	/* SET DEFAULT SETTINGS */
 if ( ! isset( $default_settings ) ) {
 	$options = get_option('hk_theme');
-	$default_settings = array(	'thumbnail-image' => array(200, 120, true),
-								'featured-image' => array(748, 449, true), /* array(660, 396, true) */
+	$default_settings = array(	'thumbnail-image' => array(200, 150, true),
+								'featured-image' => array(748, 561, true), /* array(660, 396, true) */
 								'slideshow-image' => array(1000, 250, true),
 								'contact-image' => array(150, 150, true),
 								'startpage_cat' => $options["startpage_cat"],
@@ -178,7 +178,8 @@ function setup_javascript_settings() {
 	$tags = get_query_var("tag");
 	$vem_tags = get_query_var("vem");
 	$ort_tags = get_query_var("ort");
-	$filter = array("cat" => $cat, "tags" => $tags, "vem_tags" => $vem_tags, "ort_tags" => $ort_tags);
+	$search = get_query_var("s");
+	$filter = array("cat" => $cat, "tags" => $tags, "vem_tags" => $vem_tags, "ort_tags" => $ort_tags, "s" => $search);
 	
 	// Add some parameters for the dynamic load more posts JS.
 	wp_localize_script(
