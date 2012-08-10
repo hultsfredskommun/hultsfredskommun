@@ -57,6 +57,8 @@ article.sticky.full,
 /* main background color */
 hr,
 #menu,
+#menu li,
+#dropdown-menu,
 #sort-order,
 /*#nav #selected_filter li,*/
 #supplementary {	
@@ -695,57 +697,6 @@ a:hover {
 	border-top-right-radius: 5px;
 	text-decoration: none;
 }
-
-
-/* Responsive Menu */
-@media screen and (max-width: 1000px) {
-	#menu ul li a {
-		font-size: 14px;
-	}
-}
-@media screen and (max-width: 885px) {
-	#menu ul li a {
-		font-size: 12px;
-	}
-}
-@media screen and (max-width: 768px) {
-	#menu ul li a {
-		_olor: red;
-	}
-}
-@media screen and (max-width: 650px) {
-	/*show dropdown-menu*/
-	#menu #dropdown-menu { display: block; }
-	/*hide menu elements*/
-	#menu ul { display: none; }
-	
-	#menu {
-		width: 100%;
-		margin: 0;
-		padding: 0;
-	}
-	#menu ul { height: auto; }
-	#menu ul li {
-		width: 100% !important;
-		float: left;
-		display: block;
-		clear: right;
-		font-size: 14px;
-		overflow: hidden;
-	}
-	#menu  ul li a{
-		padding-top: 0.4em;
-		text-align: center;
-		font-size: 18px;
-		font-weight: bold;
-	}
-	#menu ul li:last-child {
-		margin-bottom: .4em;
-		border-bottom-left-radius: 5px;
-		border-bottom-right-radius: 5px;
-	}
-}
-
 
 /* =nav-sidebar
 ----------------------------------------------- */
@@ -1869,12 +1820,21 @@ p.comment-form-comment {
  *** END STYLE FROM STANDARD TWENTYELEVEN ***
  ********************************************/
 
-
-
-
-/* =Responsive Structure
+ /* =Responsive Structure
 ----------------------------------------------- */
 
+@media screen and (max-width: 1000px) {
+	/* menu style */
+	#menu { background-color: transparent; }
+	#menu ul li {
+		border: none;
+		border-radius: 5px;
+		margin-right: 5px;
+		margin-bottom: 5px;
+	}
+	#menu ul li:last-child { margin-right: 0; }
+	#menu ul li a { font-size: 14px; }	
+}
 @media (max-width: 800px) {
 	/* Simplify the basic layout */
 	#main #content {
@@ -1917,6 +1877,44 @@ p.comment-form-comment {
 
 }
 @media (max-width: 650px) {
+	/*show dropdown-menu*/
+	#menu #dropdown-menu { display: block; }
+	/*hide menu elements*/
+	#menu ul { 
+		display: none;
+		height: auto;
+	}
+	
+	#menu {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#menu ul li {
+		width: 100% !important;
+		float: left;
+		display: block;
+		clear: right;
+		font-size: 14px;
+		overflow: hidden;
+		margin: 0;
+	}
+	#menu  ul li a{
+		padding-top: 0.4em;
+		text-align: center;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	#menu ul li,
+	#menu ul li:first-child {
+		border-radius: 0;
+	}
+	#menu ul li:last-child {
+		margin-bottom: .4em;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}
+	
 	/* @media (max-width: 650px) Reduce font-sizes for better readability on smaller devices */
 	body, input, textarea {
 		font-size: 13px;
