@@ -44,6 +44,7 @@ body, input, textarea,
 
 /* white background color */
 body,
+#branding #searchnavigation,
 #sort-order,
 #topmenu,
 #nav,
@@ -60,7 +61,7 @@ hr,
 #menu li,
 #dropdown-menu,
 #sort-order,
-/*#nav #selected_filter li,*/
+#nav #selected_filter li,
 #supplementary {	
 	background-color: #ACC6D3; /* light blue */
 	/*background-color: #06435A; /* deep blue */
@@ -169,6 +170,9 @@ article.sticky {
 .closeButton {
 	border-left: 1px solid #E6E6E6;
 	border-bottom: 1px solid #E6E6E6;
+}
+.summary-content footer {
+	border-top: 1px solid #E6E6E6;
 }
 /* bordered boxes */
 #news,
@@ -701,12 +705,13 @@ a:hover {
 /* =nav-sidebar
 ----------------------------------------------- */
 #nav-sidebar, #sidebar {
-	margin-bottom: 10px;
+	margin-bottom: .8em;
 }
 
 #nav {
 	padding: 0;
 	margin-bottom: .8em;
+	font-size: 13px;
 }
 #nav hr {
 	border: 0;
@@ -722,20 +727,15 @@ a:hover {
 	width: 100%;
 }
 #nav li a {
-	padding-left: 16px;
+	padding-left: .8em;
 	height:100%;
 	display: block;
-	font-size: 13px;
 }
 #nav #selected_filter li {
 	margin: 0 0 .8em 0;
 	background-image: url("images/delete.png");
 	background-repeat: no-repeat;
 	background-position: right;
-	font-weight: bold;
-}
-#nav #selected_filter li a {
-	font-size: 12px;
 }
 #nav #selected_filter li.noselect {
 	background-image: none;
@@ -1070,7 +1070,17 @@ article:last-child { margin-bottom: 0 }
 	margin: 0;
 	padding: 0;
 }
-
+.summary-content footer {
+	clear: none;
+	margin: 0;
+	font-size: 12px;
+}
+.summary-content footer span {
+	padding: 0 .4em;
+}
+.summary-content footer .modified-date {
+	float: right;
+}
 
 /* More-content */
 .more-content { 

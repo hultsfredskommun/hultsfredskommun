@@ -389,8 +389,11 @@ $(document).ready(function(){
 			else{ return false; }
 		});
 		//triggers articles click-action entry-title clicked
-		$(this).click(function(){
-			readMoreToggle( $(this).find(".summary-content").find('.entry-title a') );
+		$(this).find(".entry-wrapper").click(function(){
+			readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
+		});
+		$(this).find(".img-wrapper").click(function(){
+			readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
 		});
 	});
 	

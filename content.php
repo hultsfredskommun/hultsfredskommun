@@ -25,6 +25,18 @@
 					<?php the_excerpt(); ?>
 				</div>
 			</div>
+			<footer>
+				<?php
+					$categories_list = get_the_category_list( __( ', ', 'twentyeleven' ) );
+					if ( $categories_list ):
+					?>
+					<span class="cat-links">
+						<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', 'twentyeleven' ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?>
+					</span>
+				<?php endif; // End if categories ?>
+				<?php if(function_exists('the_views')) { echo "<span class='views'>"; the_views(); echo "</span>"; } ?>
+				<span class="modified-date"><?php the_modified_date(); ?></span>
+			</footer>
 			<!--<div class="readMoreFadeBottom"></div>-->
 		</div><!-- .summary-content -->
 	</article><!-- #post-<?php the_ID(); ?> -->
