@@ -6,38 +6,38 @@
 		// featured image
 		the_post_thumbnail('featured-image'); ?>
 		
-		<div id="the_content-container">
+		<div class="single-content">
             <header class="entry-header">
                 <h1 class="entry-title">
                     <?php echo get_the_title(); ?>
                 </h1>
             </header>
         
-			<div id="misc-ctrl">
-				<div id="default">
+			<div class="misc-ctrl">
+				<div class="default">
 					<ul>
 						<li><a href="<?php get_permalink(); ?>">G&aring; till artikel</a></li>
 						<li><a class="print-post" elem-id="#post-<?php echo $id ?>" href="#Print">Skriv ut</a></li>
 						<li><a class="scroll-to-postFooter" elem-id="#post-<?php echo $id ?>" href="#Scroll">Till artikelfoten &#x2193;</a></li>
 					</ul>
-				</div>asdf
-				<div id="optional">
+				</div>
+				<div class="optional">
 					<?php
 						$optionaltext = get_post_custom_values('optional-text');
 						if ($optionaltext) : foreach ($optionaltext as $value) {
 							echo "<div class='optional-area'>" . $value . "<br></div>";
 						} endif;
 					?>
-			</div><!-- #optional -->
-			</div><!-- #misc-ctrl -->
+			</div><!-- .optional -->
+			</div><!-- .misc-ctrl -->
 		
-			<div id="the_content">
+			<div class="content">
 				<?php
 					$more = 1;       // Set (inside the loop) to display all content, including text below more. 
 					the_content(); 
 				?>
-			</div><!-- #the_content -->
-		</div><!-- #the_content-container -->
+			</div><!-- .content -->
+		</div><!-- .single-content -->
 		
 		<footer class="entry-meta">
 			<?php $show_sep = false; ?>
@@ -111,7 +111,7 @@
 						endif;
 					echo "</div>";
 				} endif; ?>
-		</footer><!-- #entry-meta -->
+		</footer><!-- .entry-meta -->
 		
 <?php 
 /* version 1.4 snippet

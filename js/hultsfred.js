@@ -376,7 +376,7 @@ $(document).ready(function(){
 	});
 
 	/**
-	 * add action to read-more toggle button
+	 * add action to read-more toggle
 	 */
 	$("#content").find('.post').each(function(){
 		//sets click-action on entry-titles

@@ -134,7 +134,7 @@ article.sticky {
 /* bordered boxes */
 #news,
 article,
-#misc-ctrl {
+.misc-ctrl {
 	background-color: white;
 	border: 1px solid #E6E6E6;
 }
@@ -142,7 +142,7 @@ article,
 
 /* shadows */
 article:hover,
-#misc-ctrl:hover {
+.misc-ctrl:hover {
 	-webkit-box-shadow: 0 1px 5px 0 #E0E0E0;
 	-moz-box-shadow: 0 1px 5px 0 #E0E0E0;
 	-o-box-shadow: 0 1px 5px 0 #E0E0E0;
@@ -773,7 +773,7 @@ a:hover {
 	position: relative;
 	height: 250px;
 	overflow: hidden;
-	border-radius: 0;
+	border-radius: 5px;
 }
 .slideshow article.hk_slideshow img {
 	float: right;
@@ -809,10 +809,6 @@ a:hover {
 
 /* =Content
 ----------------------------------------------- */
-
-#the_content-container { 
-	padding: .8em .8em 0; 
-}
 .post footer { margin: 1em; }
 
 .entry-title {
@@ -989,12 +985,6 @@ a:hover {
 #news .only-title {
 	height: 22px;
 }
-#news .only-title header {
-	margin: 0 !important;
-}
-#news .only-title .entry-wrapper {
-	padding: 0;
-}
 #news .only-title .entry-title a {
 	background: url("images/right_dot.gif") no-repeat scroll 4px 1px transparent;
 	font-size: 12px;
@@ -1035,9 +1025,11 @@ a:hover {
 .only-title .readMoreToggleButton {
 	display: none;
 }
-.only-title .summary-content header,
-.only-title .summary-content .entry-content {
+.only-title .summary-content .entry-header,
+.only-title .summary-content .entry-content,
+.only-title .summary-content .entry-wrapper .inner-padding {
 	margin: 0 !important;
+	padding: 0 !important;
 }
 
 /* Post style */
@@ -1096,24 +1088,27 @@ article:last-child { margin-bottom: 0 }
 	width: auto;
 	max-height: 449px;
 }
+.single-content { 
+	padding: .8em .8em 0;
+}
 /* More-content END */
 
-/* #misc-ctrl */
-#misc-ctrl { 
+/* .misc-ctrl */
+.misc-ctrl { 
 	width: 25%;
 	float: right;
 	margin-left: 10px;
 	margin-bottom: 10px;
 }
-#misc-ctrl div ul { margin: 10px; }
-#misc-ctrl div ul li { list-style: none; }
-/* #optional */
-#optional h3 {
+.misc-ctrl div ul { margin: 10px; }
+.misc-ctrl div ul li { list-style: none; }
+/* .optional */
+.optional h3 {
 	font-weight: bold !important;
 	text-decoration: underline !important;
 	font-size: 11pt !important;
 }
-#optional p:last-child {
+.optional p:last-child {
 	margin-bottom: 0;
 }
 
