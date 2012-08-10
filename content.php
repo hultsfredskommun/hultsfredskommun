@@ -14,16 +14,13 @@
 					<?php the_post_thumbnail('thumbnail-image'); ?>
 				</div>
 			<?php endif; ?>
-			<div class="entry-wrapper <?php echo (has_post_thumbnail()) ? "has-img" : "";  ?>" >
-				<div class="inner-padding">
-					<header class="entry-header">
-						<h1 class="entry-title"><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
-					</header><!-- .entry-header -->
-					<div class="entry-content">
-						<?php the_excerpt(); ?>
-					</div><!-- .entry-content -->
-				</div><!-- .inner-padding -->
-			</div><!-- .entry-wrapper -->
+			
+			<div class="entry-wrapper">
+				<h1 class="entry-title"><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+				<div class="entry-content">
+					<?php the_excerpt(); ?>
+				</div>
+			</div>
 			<!--<div class="readMoreFadeBottom"></div>-->
 		</div><!-- .summary-content -->
 	</article><!-- #post-<?php the_ID(); ?> -->

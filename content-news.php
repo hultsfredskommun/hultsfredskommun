@@ -9,9 +9,8 @@
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky news only-title":"news only-title"); ?>>
 		<div class="summary-content">
-				<header class="entry-header">
-					<h1 class="entry-title"><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
-				</header><!-- .entry-header -->
+				<h1 class="entry-title"><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+				
 				<div class="entry-content">
 					<?php the_excerpt(); ?>
 				</div><!-- .entry-content -->

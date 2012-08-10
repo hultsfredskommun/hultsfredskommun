@@ -28,7 +28,7 @@
 							echo "<div class='optional-area'>" . $value . "<br></div>";
 						} endif;
 					?>
-			</div><!-- .optional -->
+				</div><!-- .optional -->
 			</div><!-- .misc-ctrl -->
 		
 			<div class="content">
