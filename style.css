@@ -701,7 +701,7 @@ a:hover {
 /* =Content
 ----------------------------------------------- */
 
-##the_content-container { 
+#the_content-container { 
 	padding: .8em .8em 0; 
 }
 .post footer { margin: 1em; }
