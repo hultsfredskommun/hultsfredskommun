@@ -355,7 +355,7 @@ $(document).ready(function(){
 	if( !$("body").hasClass("single") && !$("body").hasClass("page") ){
 		//do a clean-up that removes the hash (tags, sort m.m.)
 		var title = $("html head title").html();
-		History.replaceState(null, title, hultsfred_object["currPageUrl"]);
+		//History.replaceState(null, title, hultsfred_object["currPageUrl"]);
 	}
 	
 

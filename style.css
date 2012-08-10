@@ -39,6 +39,7 @@ body, input, textarea,
 /* white background color */
 body,
 #sort-order,
+#topmenu,
 body.single article.sticky,
 article.sticky.full,
 .closeButton {
@@ -48,7 +49,6 @@ article.sticky.full,
 /* main background color */
 hr,
 #menu,
-#topmenu,
 #sort-order,
 #nav #selected_filter li,
 #supplementary {
@@ -529,7 +529,8 @@ a:hover {
 }
 #topmenu {
 	float: right;
-	font-size: 14px;
+	font-size: 12px;
+	line-height: 12px;
 }
 #menu {
 	margin-top: 1em;
@@ -580,6 +581,10 @@ a:hover {
 	margin: 4px 7px;
 	line-height: 20px;
 	text-align: left;
+}
+#topmenu nav ul li a {
+	margin: 4px 7px;
+	line-height: 12px;
 }
 #menu ul li:first-child,
 #topmenu nav ul li:first-child,
