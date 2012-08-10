@@ -284,8 +284,6 @@ body {
 	clear: both;
 	padding: .8em 0 0;
 }
-
-}
 #branding hgroup {
 	margin: 0;
 }
@@ -810,7 +808,7 @@ a:hover {
 /* =Content
 ----------------------------------------------- */
 
-##the_content-container { 
+#the_content-container { 
 	padding: .8em .8em 0; 
 }
 .post footer { margin: 1em; }
@@ -1079,15 +1077,15 @@ article:last-child { margin-bottom: 0 }
 }
 .summary-content .img-wrapper { 
 	float: left;
-	max-width: 38%;
+	max-width: 27%;
 	overflow: hidden;
-}
-.summary-content .entry-wrapper {
-	padding: .4em .8em 0;
 }
 .summary-content .entry-wrapper.has-img { 
 	float: left;
-	max-width: 62%;
+	max-width: 73%;
+}
+.summary-content .entry-wrapper .inner-padding {
+	padding: .4em .8em 0;
 }
 
 /* More-content */
