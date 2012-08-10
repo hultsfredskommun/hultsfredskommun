@@ -13,10 +13,12 @@
 				$tags = get_query_var("tag");
 				$vem_tags = get_query_var("vem");
 				$ort_tags = get_query_var("ort");
+				$search = get_query_var("s");
 				
 				if($tags != ''){ $tags = "&tag=".$tags; }
 				if($vem_tags != ''){ $vem_tags = "&vem=".$vem_tags; }
 				if($ort_tags != ''){ $ort_tags = "&ort=".$ort_tags; }
+				if($search != ''){ $search = "&s=".$search; }
 			?>
 			<?php 
 				$orderby = $_REQUEST["orderby"];
@@ -27,12 +29,12 @@
 						$orderby = "latest";
 				}
 			?>
-			<li <?php echo ( $orderby == "alpha")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha<?php echo $tags.$vem_tags.$ort_tags; ?>">A - &Ouml;</a></li>
-			<li <?php echo ($orderby == "alpha_desc")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha_desc<?php echo $tags.$vem_tags.$ort_tags; ?>">&Ouml; - A</a></li>
-			<li <?php echo ($orderby == "latest")?"class='current-menu-item'":""; ?>><a href="?orderby=latest<?php echo $tags.$vem_tags.$ort_tags; ?>">Nyaste</a></li>
-			<li <?php echo ($orderby == "oldest")?"class='current-menu-item'":""; ?>><a href="?orderby=oldest<?php echo $tags.$vem_tags.$ort_tags; ?>">&Auml;ldsta</a></li>
+			<li <?php echo ( $orderby == "alpha")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha<?php echo $tags.$vem_tags.$ort_tags.$search; ?>">A - &Ouml;</a></li>
+			<li <?php echo ($orderby == "alpha_desc")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha_desc<?php echo $tags.$vem_tags.$ort_tags.$search; ?>">&Ouml; - A</a></li>
+			<li <?php echo ($orderby == "latest")?"class='current-menu-item'":""; ?>><a href="?orderby=latest<?php echo $tags.$vem_tags.$ort_tags.$search; ?>">Nyaste</a></li>
+			<li <?php echo ($orderby == "oldest")?"class='current-menu-item'":""; ?>><a href="?orderby=oldest<?php echo $tags.$vem_tags.$ort_tags.$search; ?>">&Auml;ldsta</a></li>
 			<?php if( function_exists('views_orderby') ) : ?>
-				<li <?php echo ($orderby == "popular")?"class='current-menu-item'":""; ?>><a href="?orderby=popular<?php echo $tags.$vem_tags.$ort_tags; ?>">Popul&auml;raste</a></li>
+				<li <?php echo ($orderby == "popular")?"class='current-menu-item'":""; ?>><a href="?orderby=popular<?php echo $tags.$vem_tags.$ort_tags.$search; ?>">Popul&auml;raste</a></li>
 			<?php endif; ?>
 		</ul></div>
 
@@ -85,10 +87,7 @@
 		else if( !function_exists( 'views_orderby' ))
 			$orderby = "latest"; // alphabetical to be standard if no set
 
-		if (is_search()) {
-			// wordpress standard for now
-		}
-		else if ($orderby == "latest") {
+		if ($orderby == "latest") {
 			// wordress blog standard
 			$order = ' (' . $wpdb->posts . '.post_date ) DESC';
 		}

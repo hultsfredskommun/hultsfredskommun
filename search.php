@@ -14,7 +14,19 @@ get_header(); ?>
 
 			<?php if ( have_posts() ) : ?>
 
-				<?php hk_content_nav( 'nav-above' ); ?>
+				<header class="page-header">
+					<?php 
+						if( function_exists('displaySortOrderButtons') ){
+							displaySortOrderButtons();
+						} 
+					?>
+					
+					<div id="viewmode">
+						<a id="viewmode_summary" title="Listvisning" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_framed.png" /></a>
+						<a id="viewmode_titles" title="Rubrikvisning" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/posts_titles.png" /></a>
+					</div>
+					<div class="clear"></div>
+				</header>
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>

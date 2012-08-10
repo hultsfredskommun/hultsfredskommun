@@ -8,6 +8,7 @@
 	$filter = json_decode($filter);
 
 	/* get filter variables */
+	$search = $filter->search;
 	$cat = $filter->cat;
 	$tags = $filter->tags;
 	$tag_array = "";
@@ -31,6 +32,12 @@
 					'posts_per_page' => get_option('posts_per_page'),
 					'paged' => $pageNum);
 
+	// add search to query
+	if ($search != "") {
+		$query["s"] = $search;
+	}
+	
+	// add custom tags to query
 	if (count($vem_array) > 0 && count($ort_array) > 0) {
 		$query['tax_query'] = array(
 			'relation' => 'AND',

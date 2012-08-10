@@ -46,6 +46,8 @@ body, input, textarea,
 body,
 #sort-order,
 #topmenu,
+#nav,
+#sidebar .widget,
 body.single article.sticky,
 article.sticky.full,
 .closeButton {
@@ -813,10 +815,6 @@ a:hover {
 }
 .post footer { margin: 1em; }
 
-.hentry:last-child,
-.no-results {
-	border-bottom: none;
-}
 .entry-title {
 	clear: both;
 	color: #222;
@@ -1071,7 +1069,7 @@ article:last-child { margin-bottom: 0 }
 /* Excerpt/Summary */
 .summary-content {
 	cursor: pointer;
-	height: 120px;
+	_eight: 150px;
 	overflow: hidden;
     position: relative;
 }
@@ -1079,6 +1077,7 @@ article:last-child { margin-bottom: 0 }
 	float: left;
 	max-width: 27%;
 	overflow: hidden;
+	line-height: 0;
 }
 .summary-content .entry-wrapper.has-img { 
 	float: left;
