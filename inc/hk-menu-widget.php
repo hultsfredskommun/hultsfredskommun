@@ -132,7 +132,7 @@ class HK_Menu_Widget extends WP_Widget {
 				$taglink= "?tag=" . $tags;
 				$vemlink= "&vem=" . $vem_tags;
 				$ortlink= "&ort=" . $ort_tags;
-				$selected_array[] = array("name" => "S&ouml;k: $search", "url" => $caturl . $taglink . $vemlink . $ortlink, "noselect" => "" );
+				$selected_array[] = array("name" => "S&ouml;k: $search", "url" => $caturl . $taglink . $vemlink . $ortlink, "noselect" => "", "tag" => "search" );
 			}
 
 			// show selected categories
@@ -158,11 +158,11 @@ class HK_Menu_Widget extends WP_Widget {
 							else
 								$parent_link = get_bloginfo("wpurl");
 
-							$selected_array[] = array("name" => $value->name, "url" => $parent_link . $taglink . $vemlink . $ortlink, "noselect" => "" );
+							$selected_array[] = array("name" => $value->name, "url" => $parent_link . $taglink . $vemlink . $ortlink, "noselect" => "", "tag" => "cat" );
 							
 						}
 						else {
-							$selected_array[] = array("name" => $value->name, "url" => "", "noselect" => "noselect" );
+							$selected_array[] = array("name" => $value->name, "url" => "", "noselect" => "noselect", "tag" => "cat" );
 						}
 						$parent_count++;
 					}
@@ -192,7 +192,7 @@ class HK_Menu_Widget extends WP_Widget {
 						$vemlink= "&vem=" . $tags["vem"];
 						$ortlink= "&ort=" . $tags["ort"];
 						$searchlink= "&s=" . $search;
-						$selected_array[] = array("name" => $value, "url" => $caturl . $taglink . $vemlink . $ortlink . $searchlink, "noselect" => "" );
+						$selected_array[] = array("name" => $value, "url" => $caturl . $taglink . $vemlink . $ortlink . $searchlink, "noselect" => "", "tag" => $tag );
 					}
 				}
 			}
@@ -202,11 +202,11 @@ class HK_Menu_Widget extends WP_Widget {
 			$selected_ids = array();
 			if (count($selected_array) == 1)
 			{
-				echo "<li class='noselect'><a>" . $selected_array[0]["name"] . "</a></li>";
+				echo "<li class='noselect " . $selected_array[0]["tag"] . "'><a>" . $selected_array[0]["name"] . "</a></li>";
 			}
 			else if (count($selected_array) > 0) {
 				foreach ($selected_array as $value) {
-					echo "<li class='" . $value["noselect"] . "'><a href='" . $value["url"] . "'>" . $value["name"] . "</a></li>";
+					echo "<li class='" . $value["noselect"] . " " . $value["tag"] . "'><a href='" . $value["url"] . "'>" . $value["name"] . "</a></li>";
 				}
 			}
 			?>

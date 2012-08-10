@@ -1059,7 +1059,6 @@ article:last-child { margin-bottom: 0 }
 /* Excerpt/Summary */
 .summary-content {
 	cursor: pointer;
-	min-height: 120px;
 	overflow: hidden;
     position: relative;
 }
