@@ -95,6 +95,7 @@ class HK_Menu_Widget extends WP_Widget {
 	/* echo the tags and categories that currently are selected */
 	function hk_selected() {
 
+		$search = get_query_var("s");
 		$cat = get_query_var("cat");
 		$tags = get_query_var("tag");
 		$vem_tags = get_query_var("vem");
@@ -102,7 +103,7 @@ class HK_Menu_Widget extends WP_Widget {
 		
 		
 		// check if any tag or cat is set
-		if ($cat != "" || $tags != "" || $ort_tags != "" || $vem_tags != "") :
+		if ($cat != "" || $tags != "" || $ort_tags != "" || $vem_tags != "" || $search != "") :
 
 			// javascript to be used for dynamic effects
 			?>
@@ -124,6 +125,17 @@ class HK_Menu_Widget extends WP_Widget {
 			else
 				$caturl = get_bloginfo("wpurl");
 
+			$selected_array = array();
+
+	    	// show selected search
+	    	if ($search != "") {
+				$taglink= "?tag=" . $tags;
+				$vemlink= "&vem=" . $vem_tags;
+				$ortlink= "&ort=" . $ort_tags;
+				$selected_array[] = array("name" => "\"$search\"", "url" => $caturl . $taglink . $vemlink . $ortlink, "noselect" => "" );
+			}
+
+			// show selected categories
 			if ($cat != "") {
 				
 				// get category parents
@@ -134,8 +146,6 @@ class HK_Menu_Widget extends WP_Widget {
 				$vemlink= "&vem=" . $vem_tags;
 				$ortlink= "&ort=" . $ort_tags;
 				
-				$selected_array = array();
-
 				// add category parents to selected_array set noselect if there are a selected child
 				if (count($parents) > 0) {
 					$prev_parent = $parents[0]->parent;
@@ -162,6 +172,8 @@ class HK_Menu_Widget extends WP_Widget {
 	        // get selected tags and add to selected_array
 	    	$tag_array = array("tag","vem","ort");
 	    	$tags = array();
+
+	    	// show selected tags
 	    	foreach ($tag_array as $tag) {
 	    		// reset tags array
 				$tags["tag"] = get_query_var("tag");
@@ -179,7 +191,8 @@ class HK_Menu_Widget extends WP_Widget {
 						$taglink= "?tag=" . $tags["tag"];
 						$vemlink= "&vem=" . $tags["vem"];
 						$ortlink= "&ort=" . $tags["ort"];
-						$selected_array[] = array("name" => $value, "url" => $caturl . $taglink . $vemlink . $ortlink, "noselect" => "" );
+						$searchlink= "&s=" . $search;
+						$selected_array[] = array("name" => $value, "url" => $caturl . $taglink . $vemlink . $ortlink . $searchlink, "noselect" => "" );
 					}
 				}
 			}
@@ -205,7 +218,7 @@ class HK_Menu_Widget extends WP_Widget {
 
 	/* echo the tags and categories that are available to filter result */
 	function hk_tag_filters() {
-
+		$search = get_query_var("s");
 		$cat = get_query_var("cat");
 		// initialize caturl
 		if ($cat != "")
@@ -232,12 +245,15 @@ class HK_Menu_Widget extends WP_Widget {
 
 		// set tag headings
 		//$tag_heading = array('category' => "Kategorier", 'post_tag' => "Vad vill du", "vem" => "Vem är du", "ort" => "Ort" );
-		$tag_heading = array('category' => "Visa bara", 'post_tag' => "Visa bara", "vem" => "Visa bara", "ort" => "Visa bara" );
 		
 		// get an array with the current tags used as filter
 		$tag_clouds = $this->hk_helper_get_tag_filters(array("category","post_tag","vem","ort"));
 
 		// get one taxonomy at the time tag_key contain the slug, tag_cloud contain the cloud-array 
+		$hasFilters = false; ?>
+		<span class='heading'>Visa bara &raquo;</span>
+		
+		<?php
 		foreach ($tag_clouds as $tag_key => $tag_cloud) {
 			// set selected tags array
 			if ($tag_key != "category")
@@ -257,10 +273,13 @@ class HK_Menu_Widget extends WP_Widget {
 			
 			// echo the tags that are left in the array
 			if (count($tag_cloud) > 0) : ?>
-				<span class='heading'><?php echo $tag_heading[$tag_key]; ?> &raquo;</span>
-
+				<!--span class='heading'><?php echo $tag_heading[$tag_key]; ?> &raquo;</span-->
+				<?php if ($hasFilters) : ?> 
+				<hr>
+				<?php endif; ?>
 				<ul>
 				<?php foreach ($tag_cloud as $key => $value) {
+					$hasFilters = true;
 					if ($var[$tag_key] == "") {
 						$link[$tag_key] = $key;
 					}
@@ -272,12 +291,13 @@ class HK_Menu_Widget extends WP_Widget {
 					if ($tag_key == "category")
 						$curr_caturl = get_category_link(get_cat_ID($value));
 					
-					if (!$hide) {
-						echo "<li><a class='$selected' href='" . $curr_caturl . 
-						"?tag=" . $link["post_tag"] .
-						"&vem=" . $link["vem"] . 
-						"&ort=" . $link["ort"] . "'>" . $value . "</a></li> ";
-					}			
+					echo "<li><a class='$selected' href='" . $curr_caturl . 
+					"?tag=" . $link["post_tag"] .
+					"&vem=" . $link["vem"] . 
+					"&ort=" . $link["ort"] .
+					"&s=" . $search . 
+					"'>" . $value . "</a></li> ";
+
 					$link[$tag_key] = $var[$tag_key];
 				} ?>
 		        
@@ -285,12 +305,16 @@ class HK_Menu_Widget extends WP_Widget {
 			<?php 
 			endif; 
 		}
+		if (!$hasFilters) {
+			echo "<ul><li>Hittade inga fler filter</li></ul>";
+		}
 	}
 
 
 	/* related tags to selected taxonomy in selected category */
 	function hk_helper_get_tag_filters($taxonomies) { 
 		/* get request variables */
+		$search = get_query_var("s");
 		$cat = get_query_var("cat");
 		$tags = get_query_var("tag");
 		$tag_array = "";
@@ -321,6 +345,9 @@ class HK_Menu_Widget extends WP_Widget {
 					 	'tag_slug__in' => $tag_array,
 						
 					 	'posts_per_page' => '-1');
+
+		if ($search != "")
+			$query["s"] = $search;
 
 		if (count($vem_array) > 0 && count($ort_array) > 0) {
 			$query['tax_query'] = array(
