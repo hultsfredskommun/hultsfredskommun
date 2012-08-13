@@ -6,6 +6,7 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
+global $default_settings;
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky":""); ?>>
 		<div class="summary-content">
@@ -25,7 +26,7 @@
 					<?php the_excerpt(); ?>
 				</div>
 			</div>
-			<?php if (!is_category($default_settings["startpage_cat"])) : ?>
+			<?php if (!in_category($default_settings["startpage_cat"])) : ?>
 			<div class="summary-footer">
 				<?php
 					$categories_list = get_the_category_list(', ');
