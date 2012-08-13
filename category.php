@@ -7,7 +7,9 @@
 get_header(); 
 
 ?>
-
+		<div id="top-nav-sidebar">
+			<?php dynamic_sidebar('nav-sidebar'); ?>
+		</div>
 	
 		<section id="primary">
 			<?php dynamic_sidebar('slideshow-content'); ?>

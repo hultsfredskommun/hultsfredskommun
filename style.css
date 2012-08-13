@@ -726,6 +726,8 @@ a:hover {
 
 /* =nav-sidebar
 ----------------------------------------------- */
+#top-nav-sidebar{ display: none; }
+
 #nav-sidebar, #sidebar {
 	margin-bottom: .8em;
 }
@@ -1886,6 +1888,8 @@ p.comment-form-comment {
 ----------------------------------------------- */
 
 @media screen and (max-width: 1000px) {
+	#page { padding: 2%; width: 96%; }
+
 	/* menu style */
 	#menu { background-color: transparent; }
 	#menu ul li {
@@ -1911,6 +1915,12 @@ p.comment-form-comment {
 		border-bottom: 1px solid #ddd;
 		margin-bottom: 1.625em;
 	}
+	
+	/* sticky-post */
+	.sticky .summary-content .img-wrapper {
+		width: 200px;
+	}
+	
 	/* Make sure we have room for our comment avatars */
 	.commentlist {
 		width: 100%;
@@ -1937,6 +1947,9 @@ p.comment-form-comment {
 		width: auto;
 	}
 
+}
+@media (max-width: 768px) {
+	
 }
 @media (max-width: 650px) {
 	/*show dropdown-menu*/
@@ -1975,6 +1988,18 @@ p.comment-form-comment {
 		margin-bottom: .4em;
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
+	}
+	
+	/* hide #nav-sidebar */
+	#nav-sidebar { display: none; }
+	/* show top-nav-sidebar */
+	#top-nav-sidebar { display: block; }
+	
+	/* primary m.m. 100% */
+	#primary,
+	#firstpage-sidebar, 
+	#sidebar-wrapper {
+		width: 100%;
 	}
 	
 	/* @media (max-width: 650px) Reduce font-sizes for better readability on smaller devices */
@@ -2089,7 +2114,29 @@ p.comment-form-comment {
 	#branding {
 		border-top: none;
 	}
+	
+	/* post-image */
+	.post .summary-content .img-wrapper {
+		width: 100%;
+	}
+}
 
+/* just for testing */
+@media (min-width: 320px) and (max-width: 480px) {
+	body {
+		padding: 0;
+	}
+	#page {
+		margin-top: 0;
+	}
+	#branding {
+		border-top: none;
+	}
+	
+	/* post-image */
+	.post .summary-content .img-wrapper {
+		width: 100%;
+	}
 }
 
 
