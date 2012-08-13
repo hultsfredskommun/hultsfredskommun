@@ -25,9 +25,10 @@
 					<?php the_excerpt(); ?>
 				</div>
 			</div>
-			<footer>
+			<?php if (!is_category($default_settings["startpage_cat"])) : ?>
+			<div class="summary-footer">
 				<?php
-					$categories_list = get_the_category_list(' ');
+					$categories_list = get_the_category_list(', ');
 					if ( $categories_list ):
 					?>
 					<span class="cat-links">
@@ -65,7 +66,8 @@
 
 				<?php if(function_exists('the_views')) { echo "<span class='views'>"; the_views(); echo "</span>"; } ?>
 				<span class="modified-date"><?php the_modified_date(); ?></span>
-			</footer>
+			</div>
+			<?php endif; ?>
 			<!--<div class="readMoreFadeBottom"></div>-->
 		</div><!-- .summary-content -->
 	</article><!-- #post-<?php the_ID(); ?> -->
