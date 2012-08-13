@@ -59,7 +59,7 @@
 				<?php endif; // End if $tags_list ?>
 
 				<?php 
-					$list = get_the_term_list(get_the_ID(), "vem", "", " ", ""); 					
+					$list = get_the_term_list(get_the_ID(), "vem", " ", " ", " "); 					
 					if ( $list ):
 					?>
 					<span class="vem-links">
@@ -67,7 +67,7 @@
 					</span>
 				<?php endif; // End if vem ?>
 				<?php 
-					$list = get_the_term_list(get_the_ID(), "ort", "", " ", ""); 					
+					$list = get_the_term_list(get_the_ID(), "ort", " ", " ", " "); 					
 					if ( $list ):
 					?>
 					<span class="ort-links">

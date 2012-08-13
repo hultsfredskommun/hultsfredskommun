@@ -1086,6 +1086,7 @@ article:last-child { margin-bottom: 0 }
 	cursor: pointer;
 	overflow: hidden;
     position: relative;
+    width: 100%;
 }
 .summary-content .img-wrapper {
 	float: left;

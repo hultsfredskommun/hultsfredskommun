@@ -375,7 +375,7 @@ $(document).ready(function(){
 	/**
 	 * add action to read-more toggle
 	 */
-	$("#content").find('.post').each(function(){
+	$("#primary").find('.post').each(function(){
 		//sets click-action on entry-titles
 		$(this).find('.entry-title a').click(function(ev){
 			ev.stopPropagation();
@@ -482,7 +482,7 @@ $(document).ready(function(){
 	 */
 	if(settings["pageNum"] <= settings["maxPages"]) {
 		// Insert the "More Posts" link.
-		$('#content')
+		$('#primary')
 			.append('<div id="dyn-posts-placeholder-'+ settings["pageNum"] +'" class="dyn-posts-placeholder"></div>')
 			.append('<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>');
 			
