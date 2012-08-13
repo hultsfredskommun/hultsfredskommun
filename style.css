@@ -38,6 +38,7 @@ body, input, textarea,
 #menu #dropdown-menu:focus,
 #nav a,
 #footer-sidebar,
+#branding #searchform #searchresult ul li a,
 .entry-meta .tag-cloud  a {
 	/*color: #fff; /* white */
 	color: #373737; /* black */
@@ -615,7 +616,10 @@ a:hover {
 	font-style: italic;
 }
 #branding #searchform #searchresult ul li a {
-	font-size: 12px;
+	font-size: 13px;
+}
+#branding #searchform #searchresult ul li i a {
+	font-size: 10px;
 }
 
 /* =Menus and tools
