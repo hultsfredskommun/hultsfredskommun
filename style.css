@@ -788,13 +788,14 @@ a:hover {
 /* =slideshow
 ----------------------------------------------- */
 .home .slideshow {
-	height: 250px;
+	#height: 250px;
 }
 .slideshow {
 	overflow: hidden;
 }
 .slideshow article.hk_slideshow {
 	border: 0 !important;
+	margin: 0 !important;
 	position: relative;
 	overflow: hidden;
 	border-radius: 5px;
