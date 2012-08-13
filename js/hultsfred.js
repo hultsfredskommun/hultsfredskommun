@@ -1,8 +1,9 @@
+//used by dynamic load 
+var settings = new Array();
+
 (function($) {
 // JavaScript Document
 
-//used by dynamic load 
-var settings = new Array();
 
 
 /**
@@ -253,7 +254,7 @@ function readMoreToggle(el){
 		$(article).find('.summary-content').after(morediv);
 
 		$.ajaxSetup({cache:false});
-		$(morediv).load(hultsfred_object["templateDir"]+"/post_load.php",{id:post_id}, function()
+		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id}, function()
 		{			
 			//****** click-actions START *******
 			
@@ -523,19 +524,35 @@ $(document).ready(function(){
 	 * first simple test of dynamic search 
 	 */
 	//$('#s').searchSuggest();
+	
+
 	/*
+	 * give result in dropdownlist
+	 */
 	$('#s').keyup(function(ev) {
 		if ($('#s').val().length > 2)
 		{
-			$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sök #content", function() {
-				$(this).find('.readMoreToggleButton').each( function(){
-					
-					initToggleReadMore(this);
-				});
+			if (!$("#searchform").find("#searchresult")[0]) {
+				$('#searchform').append("<div id='searchresult'></div>");				
+			}
+			searchstring = $("#s").val();
+			$("#searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php",
+			{ searchstring: searchstring },
+			function() {
+
 			});
+			//$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sök #content", function() {
+			//	$(this).find('.readMoreToggleButton').each( function(){
+			//		
+			//		initToggleReadMore(this);
+			//	});
+			//});
+		}
+		else {
+			$('#searchresult').remove();
 		}
 	});
-	*/
+	
 	
 	
 	//Skriver ut skärmens storlek
@@ -548,6 +565,9 @@ $(document).ready(function(){
 			log( "#page: " + $("#page").outerWidth() + ", body: " + $("body").outerWidth() + ", #branding: " + $("#branding").outerWidth() + ", #main: " + $("#main").outerWidth() + ", #colophon: " + $("#colophon").outerWidth() );
 		});
 	}, 3000);
+
+	/* do callbacks if found */
+	setSingleSettings();
 
 });/* END $(document).ready() */
 
@@ -568,7 +588,7 @@ function dyn_posts_load_posts() {
 
 		var uri = window.location.href.slice(window.location.href.indexOf('?') + 1);
 
-		$('#dyn-posts-placeholder-'+ settings["pageNum"]).hide().load(hultsfred_object["templateDir"]+"/dyn_posts_load.php?" + uri,
+		$('#dyn-posts-placeholder-'+ settings["pageNum"]).hide().load(hultsfred_object["templateDir"]+"/ajax/posts_load.php?" + uri,
 			{ pageNum: settings["pageNum"], filter: filter }, /*settings["nextLink"] + ' .post',*/
 			function() {
 				//log("ready " + settings["pageNum"] + " " +settings["nextLink"]);

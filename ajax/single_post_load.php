@@ -1,6 +1,6 @@
 <?php
 	define('WP_USE_THEMES', false);
-	require('../../../wp-blog-header.php');
+	require('../../../../wp-blog-header.php');
 	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 	
 	$id = $_POST['id'];
@@ -15,7 +15,7 @@
 		}
 		
 		// load the content of post	
-		require("inc/single_content.php");
+		require("../inc/single_content.php");
 
 	endif; 
 ?>

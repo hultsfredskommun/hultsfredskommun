@@ -94,9 +94,20 @@ get_header(); ?>
 			endwhile;
 			echo "</aside>";
 		endif;
+
+		$filter = array("cat" => implode(",",$cat_array));/*, "tags" => $tag_array, "vem_tags" => $vem_array, "ort_tags" => $ort_array);*/
+		
+		//print_r($wpq);
+		echo "<script type='text/javascript'>setSingleSettings = function () { \n";
+		echo "settings[\"maxPages\"] = " . $wpq->max_num_pages . ";\n";  
+		echo "settings[\"numPages\"] = 0;\n";
+		echo "hultsfred_object[\"currentFilter\"] = \"" . addslashes(json_encode($filter)) . "\";\n";
+  
+		echo "}\n</script>";
 		?>
-		<!--div id="dyn-posts-placeholder-'+ settings["pageNum"] +'" class="dyn-posts-placeholder"></div>
-		<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>--
+
+		<div id="dyn-posts-placeholder-2" class="dyn-posts-placeholder"></div>
+		<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>
 
 		</div><!-- #primary -->
 

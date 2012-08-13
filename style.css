@@ -46,6 +46,7 @@ body, input, textarea,
 /* white background color */
 body,
 #branding #searchform,
+#branding #searchform #searchresult,
 #sort-order,
 #topmenu,
 #nav,
@@ -158,6 +159,14 @@ article.sticky {
 /* border colors */
 #branding #searchform {
 	border: 5px solid #ACC6D3; /* light blue */
+	/*border: 5px solid #06435A; /* deep blue */
+	/*border: 5px solid #00A4D6; /* blue */
+    /*border: 5px solid #9EBA21; /* green */
+    /*border: 5px solid #F7A02E; /* orange */
+}
+#branding #searchform #searchresult {
+	border: 5px solid #ACC6D3; /* light blue */
+	border-top: 0;
 	/*border: 5px solid #06435A; /* deep blue */
 	/*border: 5px solid #00A4D6; /* blue */
     /*border: 5px solid #9EBA21; /* green */
@@ -591,8 +600,22 @@ a:hover {
 	border-radius: 10px;
 	clear: none;
 }
-
-
+#branding #searchform #searchresult {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	position: absolute;
+	margin-left: 24px;
+	padding: 0 .8em;
+}
+#branding #searchform #searchresult ul li {
+	list-style: none;
+}
+#branding #searchform #searchresult ul li:first-child {
+	font-style: italic;
+}
+#branding #searchform #searchresult ul li a {
+	font-size: 12px;
+}
 
 /* =Menus and tools
 -------------------------------------------------------------- */

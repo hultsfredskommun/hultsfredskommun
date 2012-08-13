@@ -1,6 +1,6 @@
 <?php
 	define('WP_USE_THEMES', false);
-	require('../../../wp-blog-header.php');
+	require('../../../../wp-blog-header.php');
 	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 	
 	$filter = $_POST['filter'];
@@ -28,15 +28,18 @@
 
 	/* get new posts */
 	$query = array( 'category__in' => $cat,
-				 	'tag_slug__in' => $tag_array,				
 					'posts_per_page' => get_option('posts_per_page'),
 					'paged' => $pageNum);
+	
+//	if ($tag_array != "") {
+//	 	$query['tag_slug__in'] => $tag_array;
+//	}
 
 	// add search to query
 	if ($search != "") {
 		$query["s"] = $search;
 	}
-	
+
 	// add custom tags to query
 	if (count($vem_array) > 0 && count($ort_array) > 0) {
 		$query['tax_query'] = array(
@@ -69,6 +72,7 @@
 				'terms' => $ort_array )
 		);
 	}
+
 	$dyn_query->query($query);
 
 	/* Start the Loop */
