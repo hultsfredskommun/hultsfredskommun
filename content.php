@@ -25,18 +25,49 @@
 					<?php the_excerpt(); ?>
 				</div>
 			</div>
-			<footer>
+			<?php if (!is_category($default_settings["startpage_cat"])) : ?>
+			<div class="summary-footer">
 				<?php
-					$categories_list = get_the_category_list( __( ', ', 'twentyeleven' ) );
+					$categories_list = get_the_category_list(', ');
 					if ( $categories_list ):
 					?>
 					<span class="cat-links">
-						<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', 'twentyeleven' ), 'entry-utility-prep entry-utility-prep-cat-links', $categories_list ); ?>
+						<?php echo $categories_list; ?>
 					</span>
 				<?php endif; // End if categories ?>
+				
+				<?php
+					if ( false ) : // hide all tags in summary footer 
+					$list = get_the_term_list(get_the_ID(), "post_tag"); 					
+					if ( $list ):
+					?>
+					<span class="tag-links">
+						<?php echo $list; ?>
+					</span>
+				<?php endif; // End if vem ?>
+				<?php 
+					$list = get_the_term_list(get_the_ID(), "vem"); 					
+					if ( $list ):
+					?>
+					<span class="vem-links">
+						<?php echo $list; ?>
+					</span>
+				<?php endif; // End if vem ?>
+				<?php 
+					$list = get_the_term_list(get_the_ID(), "ort"); 					
+					if ( $list ):
+					?>
+					<span class="ort-links">
+						<?php echo $list; ?>
+					</span>
+				<?php endif; // End if ort ?>
+				<?php endif; // END hide all tags in summary footer  ?>
+
+
 				<?php if(function_exists('the_views')) { echo "<span class='views'>"; the_views(); echo "</span>"; } ?>
 				<span class="modified-date"><?php the_modified_date(); ?></span>
-			</footer>
+			</div>
+			<?php endif; ?>
 			<!--<div class="readMoreFadeBottom"></div>-->
 		</div><!-- .summary-content -->
 	</article><!-- #post-<?php the_ID(); ?> -->
