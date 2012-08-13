@@ -3,8 +3,10 @@
 		 * Single content, used in content.php (if is_single) and in post_load.php for dynamic load of post
 		 */
 
-		// featured image
-		the_post_thumbnail('featured-image'); ?>
+		// featured image ?>
+		<div class="img-wrapper">
+			<?php the_post_thumbnail('featured-image'); ?>
+		</div>
 		
 		<div class="single-content">
             <header class="entry-header">
