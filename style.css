@@ -1175,8 +1175,9 @@ article:last-child { margin-bottom: 0 }
 #dyn-posts-load-posts
 {
 	width: 100px;
-	padding: .8em;
-	margin-bottom: .8em;
+	padding: .1em .8em;
+	margin: .8em 0;
+	border-radius: .8em;
 }
 #dyn-posts-load-posts a.loading
 {

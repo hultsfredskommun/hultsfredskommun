@@ -498,7 +498,7 @@ $(document).ready(function(){
 	$('#dyn-posts-load-posts a').click(function(ev) {
 		if(!loading_next_page){
 			settings["pageNumVisible"]++;
-			$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).slideDown('',function(){
+			$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).slideDown("slow",function(){
 				// Update the button message.
 				if(settings["pageNumVisible"] < settings["maxPages"]) {
 					$('#dyn-posts-load-posts a').text('Ladda fler sidor');
@@ -599,7 +599,7 @@ function dyn_posts_load_posts() {
 			
 				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('.more-link').addClass('dyn-posts').addClass('dyn-posts-placeholder-'+ settings["pageNum"]).click(function(ev){
 					settings["pageNumVisible"]++;
-					$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).slideDown();
+					$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).slideDown("slow");
 					ev.preventDefault();
 				});
 			
