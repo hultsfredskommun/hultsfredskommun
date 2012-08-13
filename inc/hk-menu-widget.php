@@ -78,8 +78,12 @@ class HK_Menu_Widget extends WP_Widget {
 			$this->hk_single_page_menu();
 		}
 		else {
-			$this->hk_selected();
-			$this->hk_tag_filters();
+			echo '<div id="selected">';
+				$this->hk_selected();
+			echo '</div>';
+			echo '<div id="filters">';
+				$this->hk_tag_filters();
+			echo '</div>';
 		}
 		//echo "<div style='clear:both;'>&nbsp;</div>";
 		echo "</nav></aside>";

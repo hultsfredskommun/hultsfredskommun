@@ -707,6 +707,8 @@ a:hover {
 	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }
 #menu #dropdown-image {
 	float: right;
@@ -726,7 +728,13 @@ a:hover {
 
 /* =nav-sidebar
 ----------------------------------------------- */
-#top-nav-sidebar{ display: none; }
+#top-nav-sidebar,
+#top-nav-sidebar #filters { display: none; }
+#top-nav-sidebar #nav { 
+	padding: 0.5em;
+	margin: 0;
+	border-radius: 5px;
+}
 
 #nav-sidebar, #sidebar {
 	margin-bottom: .8em;
@@ -2105,7 +2113,7 @@ p.comment-form-comment {
 	}
 
 }
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media (max-device-width: 480px) {
 	body {
 		padding: 0;
 	}
@@ -2123,7 +2131,7 @@ p.comment-form-comment {
 }
 
 /* just for testing */
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
 	body {
 		padding: 0;
 	}
