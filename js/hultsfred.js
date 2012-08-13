@@ -196,10 +196,6 @@ function readMoreToggle(el){
 
 				// scroll to top of post 
 				$("html,body").animate({scrollTop: $(article).position().top}, 300);
-				
-				$(article).click(function(){
-					readMoreToggle( $(this).find(".entry-title a") );
-				});
 			});
 			
 			// reset webbrowser history
@@ -207,7 +203,7 @@ function readMoreToggle(el){
 		}
 		// show full content
 		else
-		{		
+		{
 			if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
 				$(article).removeClass("only-title");
 			}
@@ -386,10 +382,10 @@ $(document).ready(function(){
 			else{ return false; }
 		});
 		//triggers articles click-action entry-title clicked
-		$(this).find(".entry-wrapper").click(function(){
+		$(this).find(".summary-content .entry-wrapper").click(function(){
 			readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
 		});
-		$(this).find(".img-wrapper").click(function(){
+		$(this).find(".summary-content .img-wrapper").click(function(){
 			readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
 		});
 	});
