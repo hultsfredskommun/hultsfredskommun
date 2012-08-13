@@ -1072,9 +1072,10 @@ article:last-child { margin-bottom: 0 }
 	padding: 0;
 }
 .summary-content footer {
-	clear: none;
+	clear: both;
 	margin: 0;
 	font-size: 12px;
+	cursor: default;
 }
 .summary-content footer span {
 	padding: 0 .4em;

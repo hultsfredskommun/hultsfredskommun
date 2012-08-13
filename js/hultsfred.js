@@ -1,7 +1,7 @@
 (function($) {
 // JavaScript Document
 
-
+//used by dynamic load 
 var settings = new Array();
 
 
@@ -207,10 +207,7 @@ function readMoreToggle(el){
 		}
 		// show full content
 		else
-		{
-			//unbind click-action on article
-			$(article).unbind('click');
-		
+		{		
 			if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
 				$(article).removeClass("only-title");
 			}
@@ -592,8 +589,11 @@ function dyn_posts_load_posts() {
 						else{ return false; }
 					});
 					//triggers articles click-action entry-title clicked
-					$(this).click(function(){
-						readMoreToggle( $(this).find(".summary-content").find('.entry-title a') );
+					$(this).find('.img-wrapper').click(function(){
+						readMoreToggle( $(this).parents('article').find(".summary-content").find('.entry-title a') );
+					});
+					$(this).find('.entry-wrapper').click(function(){
+						readMoreToggle( $(this).parents('article').find(".summary-content").find('.entry-title a') );
 					});
 				});
 			
