@@ -156,32 +156,34 @@ class HK_text_widget extends WP_Widget {
 
 		$heightstyle = "height: ".$height."; line-height:".$lineheight.";";
 		$widthstyle = ($width!=null)?"width: ".$width.";":"";
-		$bgstyle = ($imageurl!=null)?"background-image: url($imageurl)":"";
+		$bgstyle = ($imageurl!=null)?"background-image: url($imageurl);":"";
 
 		if ($link != "") $link = "href='$link'";
 		if ($target != "") $target = "target='$target'";
 		
 		echo str_replace("aside", "aside style='$widthstyle'", $before_widget);
 
-		echo "<div class='$color' style='$heightstyle $bgstyle'>";
-		echo "<div class='text'>";
-		echo "<div class='transp-background $color'></div>";
-		echo "<a class='$color' $onclick $link $target>$title</a>";
-		echo "</div>";
-		echo "<div class='textarea'>" . str_replace("\n","<br>",$text) . "</div>";
-		echo "<div class='menu'>";
+		echo "<div class='$color' style='$heightstyle $bgstyle min-height: 100px;'>";
+		echo "	<div class='top'>";
+		echo "		<div class='textarea'>" . str_replace("\n","<br>",$text) . "</div>";
+		echo "		<div class='text'>";
+		echo "			<div class='transp-background $color'></div>";
+		echo "			<a class='$color' $onclick $link $target>$title</a>";
+		echo "		</div>";
+		echo "	</div>";
 			if ($menu) {
-				echo "<aside><nav>";
+				echo "<div class='bottom $color'>";
+				echo "	<div class='menu'>";
 				wp_nav_menu( array(
 					'menu' => $menu, 
 					'container' => '',							
 					'items_wrap' => '<ul>%3$s</ul>',
 					'depth' => 1,
 					'echo' => true
-				)); 
-				echo "</nav></aside>";
+				));
+				echo "	</div>";
+				echo "</div>";
 			}
-		echo "</div>";
 		echo "</div>";
 		
 		echo $after_widget;

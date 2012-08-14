@@ -389,9 +389,17 @@ article, #news {
 	margin-right: auto;
 }
 
+/* special classes */
 .clear {
 	clear: both;
 	display: block;
+}
+.transp-background {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 100;
+	opacity: 0.75;
 }
 
 
@@ -978,12 +986,11 @@ a:hover {
 #firstpage-top-content {
 	border: none;
 	line-height: 140%;
-	margin: 0;
-	margin-top: 1em;
+	margin: 1em 0;
 	overflow: hidden;
 	clear: both;
 }
-
+#firstpage-top-content .widget { margin: 0; }
 #firstpage-top-content .widget_hk_text_widget {
 	position: relative;
 	clear: none;
@@ -1000,20 +1007,26 @@ a:hover {
 #firstpage-top-content .widget_hk_text_widget:last-child {
 	margin-right: 0% !important;
 }
+
+#firstpage-top-content .widget_hk_text_widget .top {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+#firstpage-top-content .widget_hk_text_widget .bottom {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-top: 0.52em;
+	border-top: 1px solid white;
+}
+
+
 #firstpage-top-content .widget_hk_text_widget .text {
 	width: 100%;
 	height: 28px;
 	display: block;
 	line-height: 100%;
 	position: absolute;
-	bottom: 8px;
-}
-#firstpage-top-content .widget_hk_text_widget .text .transp-background {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	z-index: 100;
-	opacity: 0.75;
+	top: 60px;
 }
 #firstpage-top-content .widget_hk_text_widget .text a {
 	z-index: 150;
@@ -1027,6 +1040,16 @@ a:hover {
 #firstpage-top-content .widget_hk_text_widget .text a:active,
 #firstpage-top-content .widget_hk_text_widget .text a:visited {
 	text-decoration: none !important;
+}
+#firstpage-top-content .widget_hk_text_widget .menu {
+	padding: .5em;
+}
+#firstpage-top-content .widget_hk_text_widget .menu ul li {
+	text-align: left;
+	line-height: 20px;
+}
+#firstpage-top-content .widget_hk_text_widget .menu ul li a {
+	color: white;
 }
 
 /* news startpage */
@@ -1164,8 +1187,9 @@ article:last-child { margin-bottom: 0 }
 	float: right;
 	padding: 0 .2em;
 }
+/* Excerpt/Summary END */
 
-/* More-content */
+/* More-content + single-content */
 .more-content { 
 	padding: 0;
 	overflow: hidden;
@@ -1173,7 +1197,8 @@ article:last-child { margin-bottom: 0 }
 .more-content .img-wrapper {
 	width: 100%;
 }
-.more-content img { 
+.more-content .img-wrapper img,
+.single .post .img-wrapper img { 
 	width: 100%;
 	height: 100%;
 	max-height: 500px;
@@ -1181,7 +1206,7 @@ article:last-child { margin-bottom: 0 }
 .single-content { 
 	padding: .8em .8em 0;
 }
-/* More-content END */
+/* More-content + single-content END */
 
 /* .misc-ctrl */
 .misc-ctrl { 
@@ -2107,17 +2132,6 @@ p.comment-form-comment {
 		float: none;
 		margin-left: 0;
 		margin-right: 0;
-	}
-	/* Make sure the post-post navigation doesn't collide with anything */
-	#nav-single {
-		display: block;
-		position: static;
-	}
-	.singular .hentry {
-		padding: 1.625em 0 0;
-	}
-	.singular.page .hentry {
-		padding: 1.625em 0 0;
 	}
 	/* Talking avatars take up too much room at this size */
 	.commentlist > li.comment,
