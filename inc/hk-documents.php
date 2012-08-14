@@ -133,11 +133,11 @@ function hk_documents_generate_cache() {
 
 		if ($the_query->have_posts())
 		{ 
-			$retValue .= "<aside class='widget hk_dokument-widget'>";
+			$retValue .= "<aside class='widget hk_dokument'>";
 			$retValue .= "<h3 class='widget-title'>Dokument</h3>";				    // The Loop
        		while ( $the_query->have_posts() ) : $the_query->the_post();
 				$retValue .= "<div id='document-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-		      	$retValue .= get_the_post_thumbnail(get_the_ID(),"document-image",array("class"=>"alignleft"));
+		      	$retValue .= get_the_post_thumbnail(get_the_ID(),"document-image");
 		      	$attachId = get_post_meta(get_the_ID(), "hk_document_attach", true);
 		      	if ($attachId != "" && $attachId > 0) {
 					//$retValue .= wp_get_attachment_link($attachId); 

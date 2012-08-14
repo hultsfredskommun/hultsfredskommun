@@ -143,15 +143,16 @@ function hk_contacts_generate_cache() {
 
 		if ($the_query->have_posts())
 		{ 
-  	        $retValue .= "<aside class='widget'>";
-	      	$retValue .= "<h3 class='widget-title'>Kontakter</h3>";				    // The Loop
+  	        $retValue .= "<aside class='widget hk_kontakter'>";
+	      	$retValue .= "<h3 class='widget-title'>Kontakter</h3>";
+	      	// The Loop
 	   		while ( $the_query->have_posts() ) : $the_query->the_post();
+				$retValue .= "<div class='contact-wrapper'><div class='img-wrapper'>" . get_the_post_thumbnail(get_the_ID(),"contact-image") . "</div>";
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-				$retValue .= get_the_post_thumbnail(get_the_ID(),"contact-image",array("class"=>"alignleft"));
 
 				$retValue .= "<h4>" . get_the_title() . "</h4>";
-				$retValue .= str_replace("\n","<br>",get_the_content());
-				$retValue .= "</div>";
+				$retValue .= "<div class='text'>" . str_replace("\n","<br>",get_the_content()). "</div>";
+				$retValue .= "</div></div>";
 	    	endwhile;
 	    	// Reset Post Data
 	    	wp_reset_postdata();

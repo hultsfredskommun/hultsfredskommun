@@ -93,6 +93,20 @@ function hk_setup() {
 }
 endif; // hk_setup
 
+
+/* 
+ * Media Library and images
+ */
+
+// add custom "mime types" (file supertypes)
+function filterPostMimeTypes($post_mime_types) {
+    $post_mime_types['application'] = array('Document', 'Hantera documents', _n_noop('Dokument <span class="count">(%s)</span>', 'Dokument <span class="count">(%s)</span>'));
+    $post_mime_types['audio'] = array('Audio', 'Hantera ljud', _n_noop('Ljud <span class="count">(%s)</span>', 'Ljud <span class="count">(%s)</span>'));
+    $post_mime_types['video'] = array('Video', 'Hantera video', _n_noop('Video <span class="count">(%s)</span>', 'Video <span class="count">(%s)</span>'));
+    return $post_mime_types;
+}
+add_filter('post_mime_types', 'filterPostMimeTypes');
+
 // Add Hultsfredskommun custom image sizes.
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'thumbnail-image',  $default_settings['thumbnail-image'][0], $default_settings['thumbnail-image'][1], $default_settings['thumbnail-image'][2] );
@@ -108,6 +122,7 @@ function remove_thumbnail_dimensions( $html ) {
 }
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
 add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
+
 
 
 /**

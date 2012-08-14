@@ -72,7 +72,12 @@ hr,
 	/*background-color: #9EBA21; /* green */
 	/*background-color: #F7A02E; /* orange */
 }
-
+.hk_kontakter.widget .widget-title {	
+	background-color: #9EBA21; /* green */
+}
+.hk_dokument.widget .widget-title {	
+	background-color: #F7A02E; /* orange */
+}
 /* selected background color */
 #menu ul li:hover, 
 #topmenu nav ul li:hover,
@@ -197,7 +202,9 @@ article.sticky {
 #news,
 article,
 .misc-ctrl,
-#dyn-posts-load-posts {
+#dyn-posts-load-posts,
+.widget.hk_kontakter,
+.widget.hk_dokument {
 	background-color: white;
 	border: 1px solid #E6E6E6;
 }
@@ -1246,8 +1253,8 @@ article:last-child { margin-bottom: 0 }
 }
 /* new read-more functionality  END */
 
-/* Dynamic load of posts */
 
+/* Dynamic load of posts */
 #dyn-posts-load-posts
 {
 	width: 100px;
@@ -1271,6 +1278,68 @@ article:last-child { margin-bottom: 0 }
 	
 	/* Opera 11.10+ */ 
 	background: url("images/loading.gif") no-repeat scroll 5px 6px, -o-linear-gradient(#f5f5f5, #eaeaea);
+}
+
+
+
+/* =Widgets
+----------------------------------------------- */
+
+.widget-area {
+	font-size: 12px;
+}
+.widget {
+	margin: .8em 0 .8em;
+}
+.widget-title {
+	line-height: 1.2em;
+	padding: .2em .8em .2em;
+	margin: 0 0 .4em;
+}
+.widget ul {
+	font-size: 13px;
+	margin: 0;
+}
+.widget ul ul {
+	margin-left: 1.5em;
+}
+.widget ul li {
+	font-size: 13px;
+}
+.widget a {
+	font-weight: bold;
+	text-decoration: none;
+}
+.widget a:hover,
+.widget a:focus,
+.widget a:active {
+	text-decoration: underline;
+}
+.hk_kontakter.widget {
+	clear: both;
+}
+.hk_kontakter.widget .img-wrapper {
+	float: left;
+	width: 80px;
+	line-height: 0;
+}
+.hk_kontakter.widget .img-wrapper img {
+	width: 100%;
+	height: auto;
+}
+.hk_kontakter.widget h4 {
+	clear: none;
+}
+.hk_kontakter.widget .hk_kontakter {
+	font-size: 12px;
+	margin: 0 .8em;
+	width: 100%;
+}
+.hk_kontakter.widget .hk_kontakter .text {
+	clear: none;
+}
+.hk_kontakter.widget .contact-wrapper {
+	overflow: hidden;
 }
 
 
@@ -1601,40 +1670,7 @@ object {
 }
 
 
-/* =Widgets
------------------------------------------------ */
 
-.widget-area {
-	font-size: 12px;
-}
-.widget {
-	clear: both;
-	margin: 0 0 2.2em;
-}
-.widget-title {
-	color: #666;
-	line-height: 2.6em;
-}
-.widget ul {
-	font-size: 15px;
-	margin: 0;
-}
-.widget ul ul {
-	margin-left: 1.5em;
-}
-.widget ul li {
-	color: #777;
-	font-size: 13px;
-}
-.widget a {
-	font-weight: bold;
-	text-decoration: none;
-}
-.widget a:hover,
-.widget a:focus,
-.widget a:active {
-	text-decoration: underline;
-}
 
 
 /* =Comments
