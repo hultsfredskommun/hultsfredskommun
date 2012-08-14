@@ -563,7 +563,9 @@ $(document).ready(function(){
 	}, 3000);
 
 	/* do callbacks if found */
-	setSingleSettings();
+	if(typeof setSingleSettings == 'function') {
+		setSingleSettings();
+	}
 
 });/* END $(document).ready() */
 

@@ -255,7 +255,7 @@ class HK_Menu_Widget extends WP_Widget {
 
 		// get one taxonomy at the time tag_key contain the slug, tag_cloud contain the cloud-array 
 		$hasFilters = false; ?>
-		<span class='heading'>Visa bara &raquo;</span>
+		<span class='heading heading-bg'>Visa bara</span>
 		
 		<?php
 		foreach ($tag_clouds as $tag_key => $tag_cloud) {

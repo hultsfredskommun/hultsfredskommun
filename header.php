@@ -137,7 +137,7 @@
 		</div>
 		
 		<nav id="menu" role="navigation">
-			<a id="dropdown-menu">Meny<img id="dropdown-image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/downarrow.png" /></a>
+			<a id="dropdown-menu">Meny<span id="dropdown-image"></span></a>
 			<?php 
 				wp_nav_menu( array(
 					'theme_location'	=> 'primary', 

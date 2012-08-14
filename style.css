@@ -585,7 +585,7 @@ a:hover {
 }
 #branding input#s {
 	border: 0;
-	background: url(images/search.png) no-repeat 5px 6px;
+	background: url("images/sprite.png") no-repeat scroll -175px -178px transparent;
 	font-size: 14px;
 	height: 22px;
 	line-height: 1.2em;
@@ -739,6 +739,7 @@ a:hover {
 	border-top-right-radius: 5px;
 }
 #menu #dropdown-image {
+	background: url("images/sprite.png") no-repeat scroll -1px -21px transparent;
 	float: right;
 	margin: 0;
 	margin-top: 10px;
@@ -793,9 +794,8 @@ a:hover {
 }
 #nav #selected_filter li {
 	margin: 0 0 .8em 0;
-	background-image: url("images/delete.png");
+	background: url("images/sprite.png") no-repeat scroll 39px -207px transparent;
 	background-repeat: no-repeat;
-	background-position: right;
 }
 #nav #selected_filter li.noselect {
 	background-image: none;
@@ -811,7 +811,10 @@ a:hover {
 	font-size: 12px;
 	font-weight: bold;
 }
-
+#nav .heading-bg { 
+	background: url("images/sprite.png") no-repeat scroll -126px -231px transparent;
+	padding-right: 15px;
+}
 
 /* =slideshow
 ----------------------------------------------- */
@@ -1048,7 +1051,7 @@ a:hover {
 	height: 22px;
 }
 #news .only-title .entry-title a {
-	background: url("images/right_dot.gif") no-repeat scroll 4px 1px transparent;
+	background: url("images/sprite.png") no-repeat scroll -186px -249px transparent;
 	padding-left: 14px;
 	font-size: 12px;
 }
