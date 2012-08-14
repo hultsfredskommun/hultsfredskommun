@@ -49,6 +49,7 @@ get_header(); ?>
 		<?php 
 		// check for all taxonomies in this query
 		$query = array( 'category__in' => $cat_array,
+						'post__not_in' => array(get_the_ID())
 					 	//'tag__in' => $tag_array
 						);
 		/*
