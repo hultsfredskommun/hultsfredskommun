@@ -90,6 +90,7 @@ get_header(); ?>
 		$wpq = new WP_Query($query);
 		if ($wpq->have_posts()) : 
 			echo "<aside id='related_posts'>";
+			echo "<header><h2>Relaterade sidor</h2></header>";
 			while ($wpq->have_posts()) : $wpq->the_post();
 				get_template_part( 'content' );
 			endwhile;

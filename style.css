@@ -416,6 +416,10 @@ body, input, textarea {
 h1,h2,h3,h4,h5,h6 {
 	clear: both;
 }
+.single h2 { 
+	font-size: 18px; 
+	font-weight: bold; 
+}
 hr {
 	border: 0;
 	height: 1px;
