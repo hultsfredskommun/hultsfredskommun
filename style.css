@@ -606,8 +606,10 @@ a:hover {
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	position: absolute;
-	margin-left: 24px;
+	margin-left: 3px;
 	padding: 0 .8em;
+	overflow: hidden;
+	max-width: 44%;
 }
 #branding #searchform #searchresult ul li {
 	list-style: none;
@@ -938,9 +940,6 @@ a:hover {
 .comment-content td {
 	border-top: 1px solid #ddd;
 	padding: 6px 10px 6px 0;
-}
-.entry-content #s {
-	width: 75%;
 }
 .comment-content ul,
 .comment-content ol {
@@ -1956,6 +1955,10 @@ p.comment-form-comment {
 		margin-left: 12.5%;
 		width: 75%;
     }
+    #branding #searchresult {
+		max-width: 67%;
+	}
+
 	#nav-below {
 		border-bottom: 1px solid #ddd;
 		margin-bottom: 1.625em;
@@ -2055,6 +2058,9 @@ p.comment-form-comment {
 		margin-left: 0%;
 		width: 100%;
     }
+    #branding #searchresult {
+		max-width: 87%;
+	}
 
 	#site-title a {
 		font-size: 24px;
