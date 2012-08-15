@@ -305,6 +305,7 @@ function readMoreToggle(el){
 //Webkit använder sig av ett annat sätt att mäta brädden på skärmen,
 //om inte webbläsaren använder webkit så kompenseras det med värdet 17
 var scrollbar = $.browser.webkit ? 0 : 17;
+var dropdown_max_width = 650;
 
 var hide; //used by Timeout to hide #log
 var oldWidth; //used to check if window-width have changed
@@ -659,6 +660,15 @@ $(window).resize(function() {
 		log( "$(window).width = " + $(window).width() + ", " +
 			"MQ Screensize = " + ($(window).width() + scrollbar) 
 		);
+		
+		if( $(window).width()+scrollbar > dropdown_max_width ){
+			$("#menu ul").show();
+		}
+		else{
+			if( $("#menu ul").is(":visible") ){
+				$("#menu ul").hide();
+			}
+		}
 	}
 	oldWidth = $(window).width();
 });
