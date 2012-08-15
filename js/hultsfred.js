@@ -180,49 +180,53 @@ function readMoreToggle(el){
 		// show summary content
 		if ( $(article).hasClass("full") )
 		{
-			// toggle visibility
-			setTimeout( function(){
-				$(article).find('.summary-content').fadeIn("fast");
-			}, 250);
-			$(article).find('.more-content').hide(500, function(){
+			// alter close-buttons
+			$(article).find('.closeButton').remove();
+			
+			$(article).find('.more-content').slideUp(500, function(){
+				
 				if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
 					$(article).addClass("only-title");
 				}
 				
-				// alter close-buttons
-				$(article).find('.closeButton').remove();
+				// toggle visibility
+				$(article).find('.summary-content').fadeIn("fast", function(){
+					
+					// remove full class to track article state
+					$(article).removeClass("full");
 
-				// remove full class to track article state
-				$(article).removeClass("full");
-
-				// scroll to top of post 
-				$("html,body").animate({scrollTop: $(article).position().top}, 300);
+					// scroll to top of post 
+					$("html,body").animate({scrollTop: $(article).position().top}, 300);
+				
+				});
 			});
 			
 			// reset webbrowser history
 			History.replaceState(null, title, hultsfred_object["currPageUrl"]);
 		}
 		// show full content
-		else
-		{
-			if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
-				$(article).removeClass("only-title");
-			}
-			// add full class to track article state
-			$(article).addClass("full");
-		
+		else {
 			// toggle visibility
-			$(article).find('.summary-content').fadeOut("fast");
-			$(article).find('.more-content').show(500, function(){
-				//add close-button top right corner
-				var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(ev){
-					ev.preventDefault();
-					readMoreToggle( $(this).parents("article").find(".entry-title a") );
-				});
-				$(article).append(closea);
+			$(article).find('.summary-content').fadeOut("fast", function(){
 				
-				// scroll to top of post 
-				$("html,body").animate({scrollTop: $(article).position().top}, 300);
+				if( $("#content").hasClass("viewmode_titles") || $(article).hasClass("news") ){
+					$(article).removeClass("only-title");
+				}
+				// add full class to track article state
+				$(article).addClass("full");
+				
+				$(article).find('.more-content').slideDown(500, function(){
+				
+					//add close-button top right corner
+					var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(ev){
+						ev.preventDefault();
+						readMoreToggle( $(this).parents("article").find(".entry-title a") );
+					});
+					$(article).append(closea);
+					
+					// scroll to top of post 
+					$("html,body").animate({scrollTop: $(article).position().top}, 300);
+				});
 			});
 			
 			//change webbrowser url
