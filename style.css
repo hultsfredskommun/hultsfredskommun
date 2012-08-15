@@ -195,7 +195,7 @@ article.sticky {
 #menu ul li, 
 #topmenu nav ul li,
 #sort-order ul li {
-	border-right: 1px solid white;
+	border-left: 1px solid white;
 }
 #news .newline {
 	border-bottom: 1px solid #ACC6D3; /* light blue */
@@ -734,7 +734,7 @@ a:hover {
 #sort-order ul li a {
 	display: block;
 	height: 100%;
-	margin: 4px 5px;
+	margin: 4px 7px;
 	line-height: 20px;
 	text-align: left;
 }
@@ -747,16 +747,12 @@ a:hover {
 #sort-order ul li:first-child {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
+	border: none; 
 }
 #topmenu nav ul li:last-child,
 #sort-order ul li:last-child {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
-}
-#menu ul li:last-child,
-#topmenu nav ul li:last-child,
-#sort-order ul li:last-child { 
-	border: none; 
 }
 #menu ul li a:hover,
 #topmenu nav ul li a:hover,
@@ -907,7 +903,7 @@ a:hover {
 	z-index: 1000;
 	max-height: 60px;
 	width: 100%;
-	top: 40%;
+	top: 65%;
 }
 .slideshow article.hk_slideshow .text-area .text-content
 {
@@ -1052,15 +1048,14 @@ a:hover {
 	float: left;
 	width: 32.66666666666667%;
 	margin-top: 0% !important;
-	margin-right: 1% !important;
-	text-align: center;
+	margin-left: 1% !important;
 }
 #firstpage-top-content .widget_hk_text_widget > div {
 	border-radius: 5px !important;
 }
 #firstpage-top-content .widget_hk_text_widget:hover { opacity: 1 }
-#firstpage-top-content .widget_hk_text_widget:last-child {
-	margin-right: 0% !important;
+#firstpage-top-content .widget_hk_text_widget:first-child {
+	margin-left: 0% !important;
 }
 
 #firstpage-top-content .widget_hk_text_widget .top {
@@ -1400,6 +1395,9 @@ article:last-child { margin-bottom: 0 }
 #logo_footer_image {
 	text-align: right;
 	line-height: 0;
+}
+#footer-sidebar {
+	position: relative; /* required by .transp-background */
 }
 
 /* log frame */

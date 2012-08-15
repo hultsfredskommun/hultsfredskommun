@@ -165,7 +165,9 @@ class HK_text_widget extends WP_Widget {
 
 		echo "<div class='$color' style='$heightstyle $bgstyle min-height: 100px;'>";
 		echo "	<div class='top' style='height: 80px'>";
-		echo "		<div class='textarea'>" . str_replace("\n","<br>",$text) . "</div>";
+			if ($text) {
+				echo "<div class='textarea' style='text-align: center'>" . str_replace("\n","<br>",$text) . "</div>";
+			}
 		echo "		<div class='text'>";
 		echo "			<div class='transp-background $color'></div>";
 		echo "			<a class='$color' $onclick $link $target>$title</a>";
