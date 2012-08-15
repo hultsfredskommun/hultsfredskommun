@@ -99,7 +99,8 @@ hr,
 #menu ul li.current-menu-item,
 #menu ul li.current-category-ancestor,
 #menu #dropdown-menu:hover,
-#menu #dropdown-menu:focus { 
+#menu #dropdown-menu:focus,
+#nav { 
 	background-color: #E6EEF2; /* light blue */
 	/*background-color: #9BB4BD; /* deep blue */
 	/*background-color: #99DBEF; /* blue */
@@ -177,6 +178,9 @@ article.sticky {
 
 
 /* border colors */
+#nav {
+	border: 2px solid #ACC6D3;
+}
 #branding #searchform {
 	border: 5px solid #ACC6D3; /* light blue */
 	/*border: 5px solid #06435A; /* deep blue */
@@ -505,7 +509,7 @@ blockquote em, blockquote i, blockquote cite {
 }
 blockquote cite {
 	color: #666;
-	font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
 	font-weight: 300;
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
@@ -681,7 +685,7 @@ a:hover {
 #menu,
 #topmenu,
 #sort-order {
-	border-radius: 5px;
+	_order-radius: 5px;
 }
 #topmenu {
 	float: right;
@@ -734,7 +738,7 @@ a:hover {
 #sort-order ul li a {
 	display: block;
 	height: 100%;
-	margin: 4px 7px;
+	margin: 4px 6px;
 	line-height: 20px;
 	text-align: left;
 }
@@ -745,14 +749,14 @@ a:hover {
 #menu ul li:first-child,
 #topmenu nav ul li:first-child,
 #sort-order ul li:first-child {
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
+	_order-top-left-radius: 5px;
+	_order-bottom-left-radius: 5px;
 	border: none; 
 }
 #topmenu nav ul li:last-child,
 #sort-order ul li:last-child {
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
+	_order-top-right-radius: 5px;
+	_order-bottom-right-radius: 5px;
 }
 #menu ul li a:hover,
 #topmenu nav ul li a:hover,
@@ -770,8 +774,8 @@ a:hover {
 	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+	_order-top-left-radius: 5px;
+	_order-top-right-radius: 5px;
 }
 #menu #dropdown-image {
 	background: url("images/sprite.png") no-repeat scroll -1px -21px transparent;
@@ -797,7 +801,6 @@ a:hover {
 #top-nav-sidebar #nav { 
 	padding: 0.5em;
 	margin: 0;
-	border-radius: 5px;
 }
 
 #nav-sidebar, #sidebar {
@@ -807,7 +810,7 @@ a:hover {
 	overflow: hidden;
 }
 #nav-sidebar .more-filters {
-	margin: 0;
+	margin: -15px 0 0 0;
 	font-size: 11px;
 	cursor: pointer; 
 	padding: 0;
@@ -836,7 +839,7 @@ a:hover {
 	border: 0;
 	height: 1px;
 	padding: 0;
-	margin: 0 0 0 .8em;
+	margin: 0;
 }
 #nav ul {
 	margin: 0 0 .2em 0;
@@ -868,6 +871,7 @@ a:hover {
 	text-decoration: none;
 }
 #nav .heading  { 
+	margin-left: .4em;
 	margin-top: .4em;
 	font-size: 12px;
 	font-weight: bold;
@@ -890,7 +894,7 @@ a:hover {
 	margin: 0 !important;
 	position: relative;
 	overflow: hidden;
-	border-radius: 5px;
+	_order-radius: 5px;
 }
 .slideshow article.hk_slideshow img {
 	float: right;
