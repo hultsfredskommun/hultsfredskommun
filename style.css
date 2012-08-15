@@ -1372,6 +1372,9 @@ article:last-child { margin-bottom: 0 }
 	text-align: right;
 	line-height: 0;
 }
+#footer-sidebar {
+	position: relative; /* required by .transp-background */
+}
 
 /* log frame */
 #log {
