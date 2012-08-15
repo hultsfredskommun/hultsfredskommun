@@ -1023,15 +1023,14 @@ a:hover {
 	float: left;
 	width: 32.66666666666667%;
 	margin-top: 0% !important;
-	margin-right: 1% !important;
-	text-align: center;
+	margin-left: 1% !important;
 }
 #firstpage-top-content .widget_hk_text_widget > div {
 	border-radius: 5px !important;
 }
 #firstpage-top-content .widget_hk_text_widget:hover { opacity: 1 }
-#firstpage-top-content .widget_hk_text_widget:last-child {
-	margin-right: 0% !important;
+#firstpage-top-content .widget_hk_text_widget:first-child {
+	margin-left: 0% !important;
 }
 
 #firstpage-top-content .widget_hk_text_widget .top {
