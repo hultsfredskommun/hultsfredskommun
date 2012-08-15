@@ -72,12 +72,26 @@ hr,
 	/*background-color: #9EBA21; /* green */
 	/*background-color: #F7A02E; /* orange */
 }
+.hk_kontakter.widget .contact-wrapper {
+	border: 2px solid #F7A02E;	/* orange */
+}
 .hk_kontakter.widget .widget-title {	
-	background-color: #9EBA21; /* green */
+	display: none;
+}
+.hk_kontakter.widget h4 {	
+	background: url("images/sprite.png") no-repeat scroll 208px -59px transparent;
+}
+
+.hk_dokument.widget  {	
+	border: 2px solid #9EBA21; /* green */
 }
 .hk_dokument.widget .widget-title {	
-	background-color: #F7A02E; /* orange */
+	display: none;
 }
+.hk_dokument.widget .document-link {	
+	background: url("images/sprite.png") no-repeat scroll 208px -36px transparent;
+}
+
 /* selected background color */
 #menu ul li:hover, 
 #topmenu nav ul li:hover,
@@ -202,9 +216,9 @@ article.sticky {
 #news,
 article,
 .misc-ctrl,
-#dyn-posts-load-posts,
+#dyn-posts-load-posts/*,
 .widget.hk_kontakter,
-.widget.hk_dokument {
+.widget.hk_dokument */{
 	background-color: white;
 	border: 1px solid #E6E6E6;
 }
