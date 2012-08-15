@@ -464,6 +464,31 @@ $(document).ready(function(){
 	});  
 
 	/**
+	 * nav-sidebar collapsing filters
+	 */
+	 collapse_height = 90;
+	 $("#nav-sidebar ul").each(function() {
+	 	$(this).attr("oldheight", $(this).height());
+ 		if ($(this).height() > collapse_height) {
+ 			$(this).css("height",collapse_height + "px");
+ 			$(this).after("<span class='more-filters'>visa fler <span class='more-filters-image'>&nbsp;</span></span>");
+ 		}
+	 });
+	$(this).find(".more-filters").click(function() {
+		ul = $(this).prev();
+		if ($(ul).height() == collapse_height) {
+			$(ul).css("height","auto");
+			$(this).html("d&ouml;lj <span class='less-filters-image'>&nbsp;</span>");
+		}
+		else {
+			$(ul).css("height",collapse_height + "px");
+			$(this).html("visa fler <span class='more-filters-image'>&nbsp;</span>");
+		}
+	});
+
+
+
+	/**
 	 * load more posts dynamic 
 	 */
 	
@@ -565,6 +590,7 @@ $(document).ready(function(){
 			log( "#page: " + $("#page").outerWidth() + ", body: " + $("body").outerWidth() + ", #branding: " + $("#branding").outerWidth() + ", #main: " + $("#main").outerWidth() + ", #colophon: " + $("#colophon").outerWidth() );
 		});
 	}, 3000);
+
 
 	/* do callbacks if found */
 	if(typeof setSingleSettings == 'function') {
