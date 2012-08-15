@@ -855,7 +855,7 @@ a:hover {
 /* =slideshow
 ----------------------------------------------- */
 .home .slideshow {
-	#height: 250px;
+	height: 250px;
 }
 .slideshow {
 	overflow: hidden;
