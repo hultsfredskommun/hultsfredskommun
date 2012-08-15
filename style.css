@@ -195,7 +195,7 @@ article.sticky {
 #menu ul li, 
 #topmenu nav ul li,
 #sort-order ul li {
-	border-right: 1px solid white;
+	border-left: 1px solid white;
 }
 #news .newline {
 	border-bottom: 1px solid #ACC6D3; /* light blue */
@@ -731,7 +731,7 @@ a:hover {
 #sort-order ul li a {
 	display: block;
 	height: 100%;
-	margin: 4px 5px;
+	margin: 4px 7px;
 	line-height: 20px;
 	text-align: left;
 }
@@ -744,16 +744,12 @@ a:hover {
 #sort-order ul li:first-child {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
+	border: none; 
 }
 #topmenu nav ul li:last-child,
 #sort-order ul li:last-child {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
-}
-#menu ul li:last-child,
-#topmenu nav ul li:last-child,
-#sort-order ul li:last-child { 
-	border: none; 
 }
 #menu ul li a:hover,
 #topmenu nav ul li a:hover,
