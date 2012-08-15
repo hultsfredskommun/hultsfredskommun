@@ -421,6 +421,7 @@ article, #news {
 	position: absolute;
 	z-index: 100;
 	opacity: 0.75;
+	filter: alpha(opacity = 75);
 }
 
 
