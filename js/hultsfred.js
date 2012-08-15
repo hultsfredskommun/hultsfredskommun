@@ -4,7 +4,8 @@ var settings = new Array();
 (function($) {
 // JavaScript Document
 
-
+var currPageTitle = $("head").find("title").html();
+var havePushed = false;
 
 /**
  * print element (TODO not working in IE)
@@ -169,6 +170,28 @@ $.fn.searchSuggest = function()
 */
 
 /**
+ * Initialize function resetHistory
+ */
+/*function resetHistory(){
+	// reset webbrowser history
+	History.replaceState(null, currPageTitle, hultsfred_object["currPageUrl"]);
+	return false;
+}*/
+
+/**
+ * Initialize function pushHistory
+ */
+function pushHistory(title, url){
+	if( havePushed ){
+		History.replaceState(null, title, url);
+	}else{
+		History.pushState(null, title, url);
+		havePushed = true;
+	}
+	return false;
+}
+
+/**
  * Initialize function read-more toggle-button 
  */
 function readMoreToggle(el){
@@ -202,7 +225,8 @@ function readMoreToggle(el){
 			});
 			
 			// reset webbrowser history
-			History.replaceState(null, title, hultsfred_object["currPageUrl"]);
+			//resetHistory();
+			//History.replaceState(null, title, hultsfred_object["currPageUrl"]);
 		}
 		// show full content
 		else {
@@ -235,8 +259,9 @@ function readMoreToggle(el){
 			var blog_title = $("#logo").find('img').attr('alt');
 			var title = $(entry_title).find("a").html().replace("&amp;","&") + " | " + blog_title;
 			var url = $(entry_title).find("a").attr("href");
-			
-			History.replaceState(null, title, url);
+			//call pushHistory
+			pushHistory(title, url);
+			//History.replaceState(null, title, url);
 		}
 	}
 
@@ -323,9 +348,7 @@ $(document).ready(function(){
 	/**
 	 * Fix scroll to top on single and page
 	 */
-	//if( $("body").hasClass("single") || $("body").hasClass("page") ){	
-	//	$('html, body').animate({scrollTop:0}, "fast" );
-	//}
+	$('html, body').animate({scrollTop:0}, 0);
 
 
 	/**

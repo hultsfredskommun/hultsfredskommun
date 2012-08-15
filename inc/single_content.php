@@ -18,7 +18,7 @@
 			<div class="misc-ctrl">
 				<div class="default">
 					<ul>
-						<li><a href="<?php get_permalink(); ?>">G&aring; till artikel</a></li>
+						<li><a href="<?php echo get_permalink(); ?>">G&aring; till artikel</a></li>
 						<li><a class="print-post" elem-id="#post-<?php echo $id ?>" href="#Print">Skriv ut</a></li>
 						<li><a class="scroll-to-postFooter" elem-id="#post-<?php echo $id ?>" href="#Scroll">Till artikelfoten &#x2193;</a></li>
 					</ul>
