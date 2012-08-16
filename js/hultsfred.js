@@ -283,8 +283,8 @@ function readMoreToggle(el){
 		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id}, function()
 		{
 			//add permalink
-			//var url = $(this).parents('article').find(".entry-title > a").attr("href");
-			//$(this).find(".default > ul").prepend("<li><a href='" + url + "'>G&aring; till artikel</a></li>");
+			var url = $(this).parents('article').find(".entry-title > a").attr("href");
+			$(this).find(".default > ul").prepend("<li><a href='" + url + "'>G&aring; till artikel</a></li>");
 		
 			//****** click-actions START *******
 			
