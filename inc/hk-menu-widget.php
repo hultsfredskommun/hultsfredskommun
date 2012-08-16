@@ -310,7 +310,7 @@ class HK_Menu_Widget extends WP_Widget {
 			endif; 
 		}
 		if (!$hasFilters) {
-			echo "<ul><li>Hittade inga fler filter</li></ul>";
+			echo "<ul><li><span>Hittade inga fler filter</span></li></ul>";
 		}
 	}
 

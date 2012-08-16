@@ -856,6 +856,9 @@ a:hover {
 	height:100%;
 	display: block;
 }
+#nav li span {
+	padding-left: .8em;
+}
 #nav #selected_filter li {
 	margin: 0 0 .8em 0;
 	background: url("images/sprite.png") no-repeat scroll 39px -207px transparent;
@@ -954,6 +957,7 @@ a:hover {
 }
 .entry-meta .tag-cloud  a {
 	font-weight: normal;
+	margin: 0 0.2em;
 	padding: 0.2em; 
 	border-radius: 5px;
 }
