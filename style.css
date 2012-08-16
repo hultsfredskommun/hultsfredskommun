@@ -738,7 +738,7 @@ a:hover {
 #sort-order ul li a {
 	display: block;
 	height: 100%;
-	margin: 4px 6px;
+	margin: 4px 5.8px;
 	line-height: 20px;
 	text-align: left;
 }
@@ -883,16 +883,18 @@ a:hover {
 
 /* =slideshow
 ----------------------------------------------- */
-.home .slideshow {
-	height: 250px;
-}
 .slideshow {
+	position: relative;
 	overflow: hidden;
+}
+.slideshow .slideshow_bg > img {
+    float: left;
+    width: 100%;
 }
 .slideshow article.hk_slideshow {
 	border: 0 !important;
 	margin: 0 !important;
-	position: relative;
+	position: absolute;
 	overflow: hidden;
 	_order-radius: 5px;
 }
@@ -907,7 +909,7 @@ a:hover {
 	z-index: 1000;
 	max-height: 60px;
 	width: 100%;
-	top: 65%;
+	bottom: 10%;
 }
 .slideshow article.hk_slideshow .text-area .text-content
 {

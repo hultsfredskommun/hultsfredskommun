@@ -79,6 +79,10 @@ function hk_slideshow_generate_output($vars) {
 		
 		if ($meta_query->have_posts()) {
 			$retValue .= "<div class='slideshow'>";
+			$retValue .= 	"<div class='slideshow_bg'>";
+			$retValue .=		"<img src='". get_bloginfo("template_directory") . "/images/slideshow_bg.png'>";
+			$retValue .=	"</div>";
+			
        		// The Loop
 			$counter = 0;
        		while ( $meta_query->have_posts() ) : $meta_query->the_post();
