@@ -451,19 +451,20 @@ $(document).ready(function(){
 			$('.scrollTo_top').fadeOut(300);
 		}
 
-		/*		if( $(this).scrollTop() > 50 ) {
-			$('#access').css("position", "fixed").css("top", "0px").css("border-top-left-radius","0").css("border-top-right-radius","0").css("border-bottom-left-radius","10px").css("border-bottom-right-radius","10px");
+		if( $(this).scrollTop() > 100 ) {
+			$('#menu').css("position", "fixed").css("top", "-1em"); /*.css("border-top-left-radius","0").css("border-top-right-radius","0").css("border-bottom-left-radius","10px").css("border-bottom-right-radius","10px")*/
 		}
 		else {
-			$('#access').css("position", "initial").css("border-top-left-radius","10px").css("border-top-right-radius","10px").css("border-bottom-left-radius","0").css("border-bottom-right-radius","0");
+			$('#menu').css("position", "initial"); /*.css("border-top-left-radius","10px").css("border-top-right-radius","10px").css("border-bottom-left-radius","0").css("border-bottom-right-radius","0")*/
 		}
-
-		if( $(this).scrollTop() > 380 ) {
-			$('#secondary-nav').css("position", "fixed").css("top", "69px").css("width", "22%");
+		/*
+		if( $(this).scrollTop() > 180 ) {
+			$('#nav-sidebar').css("position", "fixed").css("top", "69px").css("width", "17%");
 		}
 		else {
-			$('#secondary-nav').css("position", "initial").css("width", "100%");
-		}*/
+			$('#nav-sidebar').css("position", "initial").css("width", "100%");
+		}
+		*/
 	});
 	$('.scrollTo_top a').click(function(){
 		$('html, body').animate({scrollTop:0}, 500 );

@@ -370,7 +370,7 @@ body {
 #page {
 	width: 100%;
 }
-#branding, #main, #colophon {
+#branding, #menu, #main, #colophon {
 	margin: 0 auto;
 	max-width: 1000px;
 }
@@ -2116,15 +2116,13 @@ p.comment-form-comment {
 	/*show dropdown-menu*/
 	#menu #dropdown-menu { display: block; }
 	/*hide menu elements*/
+	#menu {
+		margin: 0;
+		padding: 0;
+	}
 	#menu ul { 
 		display: none;
 		height: auto;
-	}
-	
-	#menu {
-		width: 100%;
-		margin: 0;
-		padding: 0;
 	}
 	#menu ul li {
 		width: 100% !important;
