@@ -954,6 +954,7 @@ a:hover {
 }
 .entry-meta .tag-cloud  a {
 	font-weight: normal;
+	margin: 0 0.2em;
 	padding: 0.2em; 
 	border-radius: 5px;
 }

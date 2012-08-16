@@ -16,7 +16,7 @@ get_header(); ?>
 
 					<?php get_template_part( 'content', 'single' ); ?>
 
-					<?php comments_template( '', true ); ?>
+					<?php //comments_template( '', true ); ?>
 					<?php
 						// get category and tags from post to query related posts later.. 
 						$categories = get_the_category();
@@ -90,7 +90,7 @@ get_header(); ?>
 		$wpq = new WP_Query($query);
 		if ($wpq->have_posts()) : 
 			echo "<aside id='related_posts'>";
-			echo "<header><h2>Relaterade sidor</h2></header>";
+			//echo "<header><h2>Relaterade sidor</h2></header>";
 			while ($wpq->have_posts()) : $wpq->the_post();
 				get_template_part( 'content' );
 			endwhile;
