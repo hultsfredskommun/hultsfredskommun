@@ -360,25 +360,25 @@ $(document).ready(function(){
 			ev.preventDefault();
 		});
 	});
-
+	
 	/**
 	 * history url handling
-	 */
-	History.Adapter.bind(window,'popstate',function(evt){
+	 */ 
+	/*History.Adapter.bind(window,'popstate',function(evt){
 		//alert(evt.state);
 		var State = History.getState();
 		History.log(State);
 		if(evt.state !== null && evt.state !== undefined){	
 			window.location = State.url;
 		}
-	});
+	});*/
+	
 	//url clean-up and history-fix
 	if( !$("body").hasClass("single") && !$("body").hasClass("page") ){
 		//do a clean-up that removes the hash (tags, sort m.m.)
 		var title = $("html head title").html();
-		//History.replaceState(null, title, hultsfred_object["currPageUrl"]);
+		History.replaceState(null, title, hultsfred_object["currPageUrl"]);
 	}
-	
 
 	/**
 	 * view-modes 
