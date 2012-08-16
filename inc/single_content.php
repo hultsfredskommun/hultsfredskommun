@@ -35,7 +35,13 @@
 			<div class="content">
 				<?php
 					$more = 1;       // Set (inside the loop) to display all content, including text below more. 
-					the_content(); 
+					the_content();
+					
+					//embedded video
+					$embeddedvideo = get_post_custom_values('embedded_code');
+					if ($embeddedvideo) : foreach ($embeddedvideo as $value) {
+						echo "<div class='video-container'>" . $value . "<br></div>";
+					} endif;
 				?>
 			</div><!-- .content -->
 		</div><!-- .single-content -->
