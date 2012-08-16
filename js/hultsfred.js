@@ -182,11 +182,12 @@ $.fn.searchSuggest = function()
  * Initialize function pushHistory
  */
 function pushHistory(title, url){
-	if( havePushed ){
-		History.replaceState(null, title, url);
-	}else{
+	if( url != hultsfred_object["currPageUrl"] && !havePushed ){
 		History.pushState(null, title, url);
 		havePushed = true;
+	}
+	else if( url != hultsfred_object["currPageUrl"] ){
+		History.replaceState(null, title, url);
 	}
 	return false;
 }
@@ -280,7 +281,11 @@ function readMoreToggle(el){
 
 		$.ajaxSetup({cache:false});
 		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id}, function()
-		{			
+		{
+			//add permalink
+			//var url = $(this).parents('article').find(".entry-title > a").attr("href");
+			//$(this).find(".default > ul").prepend("<li><a href='" + url + "'>G&aring; till artikel</a></li>");
+		
 			//****** click-actions START *******
 			
 			//set click-action on print-post-link
@@ -391,8 +396,34 @@ $(document).ready(function(){
 	});
 	// show only title click action
 	$("#viewmode_titles").click(function(ev){
-		$("#content").addClass("viewmode_titles");	
-		$("#content").find('article').addClass("only-title");
+	
+		//get all articles in #content and store in arr
+		var arr = $("#content").find('article');
+		
+		//for each article in arr
+		arr.each(function(index, item) {
+			var is_last_item = (index == (arr.length - 1));
+			
+			if( $(item).hasClass("full") ){
+				
+				// remove close-button
+				$(item).find('.closeButton').remove();
+				
+				//hide more-content
+				$(item).find('.more-content').hide();				
+				
+				//show summary-content
+				$(item).find('.summary-content').show();
+			
+				// remove full class to track article state
+				$(item).removeClass("full");
+			}
+			
+			if(is_last_item){
+				$("#content").addClass("viewmode_titles");	
+				$("#content").find('article').addClass("only-title");
+			}
+		});
 		ev.preventDefault();
 	});
 
