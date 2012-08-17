@@ -367,6 +367,39 @@ $(document).ready(function(){
 	});
 	
 	/**
+	 * click-actions on single/page
+	 */
+	if( $('body').hasClass("single") || $('body').hasClass("page") ){
+		
+		var article = $("#content").find('article');
+		
+		//****** click-actions START *******
+		//set click-action on print-post-link
+		var print_link = $(article).find(".print-post");
+		$(print_link).click(function(ev){
+			PrintElem( article );
+			ev.preventDefault();
+		});
+		
+		//set click-action on scroll-to-postFooter-link
+		var scroll_link = $(article).find(".scroll-to-postFooter");
+		$(scroll_link).click(function(ev){
+			var posFooter = $(article).find("footer").position().top;
+			var posPost = $(article).position().top;
+			$("html,body").animate({scrollTop: (posPost + posFooter - 50)},"slow");
+			ev.preventDefault();
+		});
+		
+		//set click-action on scroll-to-postTop-link
+		scroll_link = $(article).find(".scroll-to-postTop");
+		$(scroll_link).click(function(ev){
+			$("html,body").animate({scrollTop: $(article).position().top},"slow");
+			ev.preventDefault();
+		});
+		//***** click-actions END ******
+	}
+	
+	/**
 	 * history url handling
 	 */ 
 	/*History.Adapter.bind(window,'popstate',function(evt){
