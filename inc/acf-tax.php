@@ -144,7 +144,7 @@ class Tax_field extends acf_Field
 		
 		// no choices
 		if(empty($terms)) {
-			echo '<p>' . _e("No choices to choose from",'acf') . '</p>';
+			echo '<p>' . "Inget att v&auml;lja fr&aring;n" . '</p>';
 			return false;
 		}
 	

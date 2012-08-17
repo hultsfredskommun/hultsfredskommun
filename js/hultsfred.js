@@ -412,11 +412,11 @@ $(document).ready(function(){
 	});*/
 	
 	//url clean-up and history-fix
-	if( !$("body").hasClass("single") && !$("body").hasClass("page") ){
+	/*if( !$("body").hasClass("single") && !$("body").hasClass("page") ){
 		//do a clean-up that removes the hash (tags, sort m.m.)
 		var title = $("html head title").html();
 		History.replaceState(null, title, hultsfred_object["currPageUrl"]);
-	}
+	}*/
 
 	/**
 	 * view-modes 
