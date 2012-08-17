@@ -1409,6 +1409,10 @@ article:last-child { margin-bottom: 0 }
 #footer-sidebar {
 	position: relative; /* required by .transp-background */
 }
+#footer-sidebar .widget {
+	float: left;
+	text-align: left;
+}
 
 /* log frame */
 #log {
