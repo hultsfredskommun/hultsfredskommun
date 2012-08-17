@@ -25,7 +25,7 @@
 				<div class="optional">
 					<?php
 						$optionaltext = get_post_custom_values('optional-text');
-						if ($optionaltext) : foreach ($optionaltext as $value) {
+						if (isset($optionaltext)) : foreach ($optionaltext as $value) {
 							echo "<div class='optional-area'>" . $value . "<br></div>";
 						} endif;
 					?>
@@ -39,7 +39,7 @@
 					
 					//embedded video
 					$embeddedvideo = get_post_custom_values('embedded_code');
-					if ($embeddedvideo) : foreach ($embeddedvideo as $value) {
+					if (isset($embeddedvideo)) : foreach ($embeddedvideo as $value) {
 						echo "<div class='video-container'>" . $value . "<br></div>";
 					} endif;
 				?>
