@@ -675,13 +675,13 @@ $(document).ready(function(){
 	//Skriver ut skärmens storlek
 	log( "$(window).width = " + $(window).width() + ", " +
 		"MQ Screensize = " + ($(window).width() + scrollbar) 
-	);
+	);/*
 	setTimeout( function(){
 		clearTimeout(hide);
 		$("#log").fadeOut("slow", function() {
 			log( "#page: " + $("#page").outerWidth() + ", body: " + $("body").outerWidth() + ", #branding: " + $("#branding").outerWidth() + ", #main: " + $("#main").outerWidth() + ", #colophon: " + $("#colophon").outerWidth() );
 		});
-	}, 3000);
+	}, 3000);*/
 
 
 	/* do callbacks if found */
@@ -799,7 +799,7 @@ function log(logtext) {
 	//Fading out in 5s.
 	hide = setTimeout( function(){
 		$("#log").fadeOut("slow");
-	},5000);
+	},2000);
 }
 
 
