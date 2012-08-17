@@ -40,9 +40,7 @@ class HK_text_widget extends WP_Widget {
 		}
 		if ( isset( $instance[ 'align' ] ) ) {
 			$align = $instance[ 'align' ];
-		} else {
-			$align = 'center';
-		}
+		} 
 		if ( isset( $instance[ 'onclick' ] ) ) {
 			$onclick = $instance[ 'onclick' ];
 		}
