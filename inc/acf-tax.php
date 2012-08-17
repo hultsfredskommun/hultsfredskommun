@@ -139,7 +139,7 @@ class Tax_field extends acf_Field
 		// defaults
 		$field[ 'taxonomy' ]  = ( array_key_exists( 'taxonomy', $field ) && isset( $field[ 'taxonomy' ] ) ) ? $field[ 'taxonomy' ] : 'category';
 		$field[ 'hidetax' ]   = isset( $field[ 'hidetax' ] ) ? $field[ 'hidetax' ] : '0';
-		$field[ 'taxcol' ]    = isset( $field[ 'taxcol' ] ) ? $field[ 'taxcol' ] : '2';
+		$field[ 'taxcol' ]    = isset( $field[ 'taxcol' ] ) ? $field[ 'taxcol' ]+1 : '2';
 		$terms = get_terms( $field[ 'taxonomy' ], array( 'hide_empty' => false ) );
 		
 		// no choices
@@ -157,7 +157,7 @@ class Tax_field extends acf_Field
 
 		$t = count($terms);
 		$n = $field[ 'taxcol' ];		// number of columns
-								
+		
 		if ($t > $n) {					// number of empty cells to add to balance the columns
 			$m = $n - ( $t % $n );		// modulus
 		} 		 
@@ -188,20 +188,22 @@ class Tax_field extends acf_Field
 			<?php
 			// Loop
 			
-			//get the posts taxologys
-			$post_terms = get_the_terms($post->ID, 'category');
+			//get the posts taxonomys
+			$post_terms = get_the_terms($post->ID, $field[ 'taxonomy' ]);
 			
 			foreach( $terms as $term ) {
 				
 				$selected = '';
 				//if($term->count == 1) $selected = 'checked="checked"';
 				
-				//if current taxology exists in current post
+				//if current taxonomys exists in current post
 				//then select checkbox
-				foreach( $post_terms as $p_term ) {
-					if( $p_term->term_id == $term->term_id ) {
-						$selected = 'checked="checked"';
-						break;
+				if( $post_terms ) {
+					foreach( $post_terms as $p_term ) {
+						if( $p_term->term_id == $term->term_id ) {
+							$selected = 'checked="checked"';
+							break;
+						}
 					}
 				}
 
