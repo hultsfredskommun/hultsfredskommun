@@ -38,6 +38,11 @@ class HK_text_widget extends WP_Widget {
 		if ( isset( $instance[ 'imageurl' ] ) ) {
 			$imageurl = $instance[ 'imageurl' ];
 		}
+		if ( isset( $instance[ 'align' ] ) ) {
+			$align = $instance[ 'align' ];
+		} else {
+			$align = 'center';
+		}
 		if ( isset( $instance[ 'onclick' ] ) ) {
 			$onclick = $instance[ 'onclick' ];
 		}
@@ -111,6 +116,10 @@ class HK_text_widget extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'imageurl' ); ?>" name="<?php echo $this->get_field_name( 'imageurl' ); ?>" type="text" value="<?php echo esc_attr($imageurl); ?>" />
 		</p>
 		<p>
+		<label for="<?php echo $this->get_field_id( 'align' ); ?>"><?php _e( 'Textjustering:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'align' ); ?>" name="<?php echo $this->get_field_name( 'align' ); ?>" type="text" value="<?php echo esc_attr($align); ?>" />
+		</p>
+		<p>
 		<label for="<?php echo $this->get_field_id( 'onclick' ); ?>"><?php _e( 'onclick javascript:' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'onclick' ); ?>" name="<?php echo $this->get_field_name( 'onclick' ); ?>" type="text" value="<?php echo esc_attr($onclick); ?>" />
 		</p>
@@ -129,6 +138,7 @@ class HK_text_widget extends WP_Widget {
 		$instance['link'] = strip_tags( $new_instance['link'] );
 		$instance['target'] = strip_tags( $new_instance['target'] );
 		$instance['imageurl'] = strip_tags( $new_instance['imageurl'] );
+		$instance['align'] = strip_tags( $new_instance['align'] );
 		$instance['onclick'] = strip_tags( $new_instance['onclick'] );
 
 		return $instance;
@@ -146,6 +156,7 @@ class HK_text_widget extends WP_Widget {
 		$link = $instance['link'];
 		$target = $instance['target'];
 		$imageurl = $instance['imageurl'];
+		$align = $instance['align'];
 		$onclick = $instance['onclick'];
 		if (empty($title))
 			$title ="&nbsp;";
@@ -157,6 +168,7 @@ class HK_text_widget extends WP_Widget {
 		$heightstyle = "height: ".$height."; line-height:".$lineheight.";";
 		$widthstyle = ($width!=null)?"width: ".$width.";":"";
 		$bgstyle = ($imageurl!=null)?"background-image: url($imageurl);":"";
+		$alignstyle = ($align!=null)?"style='text-align: $align';":"";
 
 		if ($link != "") $link = "href='$link'";
 		if ($target != "") $target = "target='$target'";
@@ -166,7 +178,7 @@ class HK_text_widget extends WP_Widget {
 		echo "<div class='$color' style='$heightstyle $bgstyle min-height: 100px;'>";
 		echo "	<div class='top' style='height: 80px'>";
 			if ($text) {
-				echo "<div class='textarea' style='text-align: center'>" . str_replace("\n","<br>",$text) . "</div>";
+				echo "<div class='textarea' $alignstyle>" . str_replace("\n","<br>",$text) . "</div>";
 			}
 		echo "		<div class='text'>";
 		echo "			<div class='transp-background $color'></div>";
