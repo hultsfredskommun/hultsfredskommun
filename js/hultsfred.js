@@ -600,7 +600,7 @@ $(document).ready(function(){
 	 */
 	if(settings["pageNum"] <= settings["maxPages"]) {
 		// Insert the "More Posts" link.
-		$('#primary')
+		$('#content')
 			.append('<div id="dyn-posts-placeholder-'+ settings["pageNum"] +'" class="dyn-posts-placeholder"></div>')
 			.append('<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>');
 			
