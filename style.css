@@ -18,6 +18,28 @@ Text Domain: hultsfredskommun
 
 /* COLORS OF THE THEME */
 
+/*some test values*/
+#page {
+	background-color: #F1F6F8;
+}
+#primary { 
+	width: 74% !important;
+	/*background-color: #F1F6F8;*/
+}
+#content {
+    border-right: 1px solid #ACC6D3;
+    padding-right: 3%;
+}
+#nav-sidebar #nav, 
+#sidebar #nav {
+    /*background-color: white;*/
+}
+.hk_kontakter.widget {
+    background-color: white !important;
+}
+
+/*END Test*/
+
 /* link color */
 a {
 	color: #1982d1;
@@ -1339,7 +1361,7 @@ article:last-child { margin-bottom: 0 }
 	font-size: 12px;
 }
 .widget {
-	margin: .8em 0 .8em;
+	margin: 0 0 .8em;
 }
 .widget-title {
 	line-height: 1.2em;
@@ -1348,7 +1370,8 @@ article:last-child { margin-bottom: 0 }
 }
 .widget ul {
 	font-size: 13px;
-	margin: 0;
+	_argin: 0;
+	margin-left: 20px;
 }
 .widget ul ul {
 	margin-left: 1.5em;
