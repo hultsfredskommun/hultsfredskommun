@@ -20,22 +20,19 @@ Text Domain: hultsfredskommun
 
 /*some test values*/
 #page {
-	background-color: #F1F6F8;
+	background-color: #F5F8E9;
 }
 #primary { 
 	width: 74% !important;
 	/*background-color: #F1F6F8;*/
 }
 #content {
-    border-right: 1px solid #ACC6D3;
+    border-right: 1px solid #9EBA21;
     padding-right: 3%;
 }
 #nav-sidebar #nav, 
 #sidebar #nav {
     /*background-color: white;*/
-}
-.hk_kontakter.widget {
-    background-color: white !important;
 }
 
 /*END Test*/
@@ -49,6 +46,11 @@ a {
 body, input, textarea,
 .entry-title a {
 	color: #373737;
+}
+
+/* white text color */
+#firstpage-top-content .widget_hk_text_widget .text a {
+	color: #fff; /* white */	
 }
 
 /* menu text color */
@@ -70,12 +72,12 @@ body, input, textarea,
 body,
 #branding #searchform,
 #branding #searchform #searchresult,
-#sort-order,
-#topmenu,
 #nav,
 #sidebar .widget,
 body.single article.sticky,
 article.sticky.full,
+.hk_kontakter.widget,
+.hk_dokument.widget
 .closeButton {
 	background-color: #fff;
 }
@@ -87,31 +89,15 @@ hr,
 #dropdown-menu,
 #sort-order,
 #nav #selected_filter li,
-#supplementary {	
-	background-color: #ACC6D3; /* light blue */
+#supplementary,
+#nav #selected_filter li.cat,
+.tag-cloud .cat-links a {	
+	/*background-color: #ACC6D3; /* light blue */
 	/*background-color: #06435A; /* deep blue */
 	/*background-color: #00A4D6; /* blue */
 	/*background-color: #9EBA21; /* green */
+	background-color: #B1C84D; /* lightgreen */
 	/*background-color: #F7A02E; /* orange */
-}
-.hk_kontakter.widget .contact-wrapper {
-	border: 2px solid #F7A02E;	/* orange */
-}
-.hk_kontakter.widget .widget-title {	
-	display: none;
-}
-.hk_kontakter.widget h4 {	
-	background: url("images/sprite.png") no-repeat scroll 208px -59px transparent;
-}
-
-.hk_dokument.widget  {	
-	border: 2px solid #9EBA21; /* green */
-}
-.hk_dokument.widget .widget-title {	
-	display: none;
-}
-.hk_dokument.widget .document-link {	
-	background: url("images/sprite.png") no-repeat scroll 208px -36px transparent;
 }
 
 /* selected background color */
@@ -121,26 +107,34 @@ hr,
 #menu ul li.current-menu-item,
 #menu ul li.current-category-ancestor,
 #menu #dropdown-menu:hover,
-#menu #dropdown-menu:focus,
-#nav { 
-	background-color: #E6EEF2; /* light blue */
+#menu #dropdown-menu:focus { 
+	/*background-color: #E6EEF2; /* light blue */
 	/*background-color: #9BB4BD; /* deep blue */
 	/*background-color: #99DBEF; /* blue */
 	/*background-color: #C5D67A; /* green */
+	background-color: #D8E3A6; /* lightgreen */
 	/*background-color: #FACA8B; /* orange */
 }
 
+/* light background color */
+#nav
+{
+	_ackground-color: #ECF1D3; /* light green */	
+}
 /* transparent backgrounds */
-#firstpage-top-content {
+#sort-order,
+#topmenu,
+#firstpage-top-content,
+#firstpage-top-content .widget_hk_text_widget .text a {
 	background-color: transparent;
 }
 
 /* special background colors */
 article.sticky { 
-	border: 2px solid #ACC6D3; /* light blue */
+	/*border: 2px solid #ACC6D3; /* light blue */
 	/*border: 2px solid #06435A; /* deep blue */
 	/*border: 2px solid #00A4D6; /* blue */
-	/*border: 2px solid #C5D67A; /*green */
+	border: 2px solid #C5D67A; /*green */
 	/*background-color: #E2EABC; /* green */
 	/*background-color: #FDEAD1; /* orange */
 }
@@ -148,75 +142,74 @@ article.sticky {
 {
 	background-color: lightgrey;
 }
-#firstpage-top-content .widget_hk_text_widget .text a {
-	background-color: transparent;
-	color: white;
-	text-shadow: 2px 2px 2px #081819;
-}
 
 
 /* menu tags and categories */
-
 #nav ul.category li {
 	background: url("images/sprite.png") no-repeat scroll -190px -42px transparent;
-}
-#nav #selected_filter li.cat {
-	background-color: #ACC6D3;
-}
-.tag-cloud .cat-links a {
-	background-color: #ACC6D3;
 }
 
 #nav ul.post_tag li {
 	background: url("images/sprite.png") no-repeat scroll -190px -114px transparent;
 }
 #nav #selected_filter li.tag {
-	background-color: #979797;
+	background-color: #B2C8CA;
 }
 .tag-cloud .tag-links a {
-	background-color: #979797;
+	background-color: #B2C8CA;
 }
 
 #nav ul.vem li {
 	background: url("images/sprite.png") no-repeat scroll -190px -138px transparent;
 }
 #nav #selected_filter li.vem {
-	background-color: #BABABA;
+	background-color: #CCDADC;
 }
 .tag-cloud .vem-links a {
-	background-color: #BABABA;
+	background-color: #CCDADC;
 }
 
 #nav ul.ort li {
 	background: url("images/sprite.png") no-repeat scroll -190px -162px transparent;
 }
 #nav #selected_filter li.ort {
-	background-color: #D7D7D7;
+	background-color: #E6EDEE;
 }
 .tag-cloud .ort-links a {
-	background-color: #D7D7D7;
+	background-color: #E6EDEE;
 }
 
 
 
 /* border colors */
+.hk_kontakter.widget .contact-wrapper {
+	/*border: 2px solid #F7A02E; /* orange */
+	border: 2px solid #E60040; /* energyred */
+}
+.hk_dokument.widget  {	
+	border: 2px solid #00A4D6; /* blue */
+	/*border: 2px solid #9EBA21; /* green */
+}
 #nav {
-	border: 2px solid #ACC6D3;
+	/*border: 2px solid #ACC6D3; /* blue */
+	border: 2px solid #9EBA21; /* green */
 }
 #branding #searchform {
-	border: 5px solid #ACC6D3; /* light blue */
+	/*border: 5px solid #ACC6D3; /* light blue */
 	/*border: 5px solid #06435A; /* deep blue */
 	/*border: 5px solid #00A4D6; /* blue */
     /*border: 5px solid #9EBA21; /* green */
+	border: 5px solid #B1C84D; /* lightgreen */
     /*border: 5px solid #F7A02E; /* orange */
 }
 #branding #searchform #searchresult {
-	border: 5px solid #ACC6D3; /* light blue */
+	/*border: 5px solid #ACC6D3; /* light blue */
 	border-top: 0;
 	/*border: 5px solid #06435A; /* deep blue */
 	/*border: 5px solid #00A4D6; /* blue */
     /*border: 5px solid #9EBA21; /* green */
-    /*border: 5px solid #F7A02E; /* orange */
+    border: 5px solid #B1C84D; /* lightgreen */
+   	/*border: 5px solid #F7A02E; /* orange */
 }
 #menu ul li, 
 #topmenu nav ul li,
@@ -261,7 +254,10 @@ article:hover,
 	box-shadow: 0 1px 5px 0 #E0E0E0;
 }
 #menu ul li {
-	text-shadow: 1px 1px #d4d4d4;	
+	_ext-shadow: 1px 1px #d4d4d4;	
+}
+#firstpage-top-content .widget_hk_text_widget .text a {
+	text-shadow: 2px 2px 2px #081819;
 }
 
 /* END COLORS OF THE THEME */
@@ -882,7 +878,7 @@ a:hover {
 	padding-left: .8em;
 }
 #nav #selected_filter li {
-	margin: 0 0 .8em 0;
+	margin: 0 0 .2em 0;
 	background: url("images/sprite.png") no-repeat scroll 39px -207px transparent;
 	background-repeat: no-repeat;
 }
@@ -1395,6 +1391,7 @@ article:last-child { margin-bottom: 0 }
 	float: left;
 	width: 80px;
 	line-height: 0;
+	margin-right: .8em;
 }
 .hk_kontakter.widget .img-wrapper img {
 	width: 100%;
@@ -1403,16 +1400,63 @@ article:last-child { margin-bottom: 0 }
 .hk_kontakter.widget h4 {
 	clear: none;
 }
+.hk_kontakter.widget .iconset {
+	background: url("images/sprite.png") no-repeat scroll 0px -59px transparent;
+	height: 20px;
+	width: 20px;
+	float: right;
+}
 .hk_kontakter.widget .hk_kontakter {
 	font-size: 12px;
-	margin: 0 .8em;
-	width: 100%;
+	padding: .8em;
 }
 .hk_kontakter.widget .hk_kontakter .text {
 	clear: none;
 }
 .hk_kontakter.widget .contact-wrapper {
 	overflow: hidden;
+}
+
+
+.hk_dokument.widget  {	
+
+}
+.hk_dokument.widget .document-wrapper {	
+	padding: 0.8em;
+}
+.hk_dokument.widget .iconset {
+	background: url("images/sprite.png") no-repeat scroll 0px -37px transparent;
+	height: 20px;
+	width: 20px;
+	float: right;
+}
+.hk_dokument div.icon {
+	height: 24px;
+	width:18px;
+	float: left;
+}
+.hk_dokument div.ppt,.hk_dokument div.pptx {
+	background-image: url("images/sprite.png");
+	background-position: -36px -352px;
+}
+.hk_dokument div.xls,.hk_dokument div.xlsx {
+	background-image: url("images/sprite.png");
+	background-position: -18px -352px;
+}
+.hk_dokument div.doc,.hk_dokument div.docx {
+	background-image: url("images/sprite.png");
+	background-position: 0px -352px;
+}
+.hk_dokument div.pdf {
+	background-image: url("images/sprite.png");
+	background-position: -36px -328px;
+}
+.hk_dokument div.none {
+	background-image: url("images/sprite.png");
+	background-position: 0px -328px;
+}
+.hk_dokument a.document-link {
+	padding-left: .8em;
 }
 
 

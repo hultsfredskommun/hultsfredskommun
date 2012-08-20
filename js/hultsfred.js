@@ -559,7 +559,7 @@ $(document).ready(function(){
 	 * nav-sidebar collapsing filters
 	 */
 	 collapse_height = 90;
-	 $("#nav-sidebar ul").each(function() {
+	 $("#nav-sidebar #filters ul").each(function() {
 	 	$(this).attr("oldheight", $(this).height());
  		if ($(this).height() > collapse_height) {
  			$(this).css("height",collapse_height + "px");

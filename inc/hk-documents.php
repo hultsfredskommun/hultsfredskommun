@@ -3,8 +3,8 @@
 /**
  * Description: Add document widget and document post_type. 
  * Create an ACF with these fields.
- *  1. Name hk_document_attach with type File
- *  2. Name hk_post_connect with type Post Object
+ *  1. Name hk_document_attach with type File and return value Attachment ID
+ *  2. Name hk_post_connect with type Post Object and Post Type "post" and Select Multiple Values
  *  3. Name hk_document_description with type Wysiwyg Editor
  * And location rules Post Type is equal to hk_dokument
  *  */
@@ -58,11 +58,11 @@ function hk_documents_init() {
 			'rewrite' => array('slug' => 'dokument')
 		)
 	);
-	add_post_type_support( "hk_dokument", array("title","author","thumbnail","custom-fields","revisions") );
+	add_post_type_support( "hk_dokument", array("title","author","custom-fields","revisions") );
 	remove_post_type_support( "hk_dokument", "editor" );
 
 	register_taxonomy_for_object_type( "category", "hk_dokument" );
-	register_taxonomy_for_object_type( "post_tag", "hk_dokument" );
+	//register_taxonomy_for_object_type( "post_tag", "hk_dokument" );
 
 }
 
@@ -74,39 +74,12 @@ function hk_documents_generate_cache() {
 
 
 	$cat = get_query_var("cat");
- 	$tag = get_query_var("tag");
- 	//echo $tag . " - " . $cat;
+ 	
+ 	$category_in = array($cat);
 
- 	if ($cat != "") {
- 		$category_in = array($cat);
- 		if ($tag != "") {
-			$tag_in = array();
-
-    		foreach(split(",", $tag) as $tag)
-    		{
-				$tag_slug_in[] = $tag;
-			}
-		}
- 	}
-	else if ($tag != "")
-	{
-		$tag_slug_in = array($tag);
-	}
-	else
-	{
-		$category_in = array();
-    	foreach(get_the_category() as $cat)
-    	{
-			$category_in[] = $cat->term_id;
-		}
-
-		$tag_in = array();
-    	foreach(get_the_tags() as $tag)
-    	{
-			$tag_in[] = $tag->term_id;
-		}
-
-	}
+	/* only return documents if in category */ 
+	if (count($category_in) <= 0)
+		return "";
 
 	$args = array(
 		    'posts_per_page' => 3,
@@ -114,17 +87,13 @@ function hk_documents_generate_cache() {
 			'more' => $more = 0,
 			'post_type' => 'hk_dokument',
 			'order' => 'ASC',
-			'suppress_filters' => 1
+			'suppress_filters' => 1,
+			'category__in' => $category_in
 			);
 
 
-	if (count($category_in) > 0)
-		$args['category__in'] = $category_in;
-	if (count($tag_in) > 0)
-		$args['tag__in'] = $tag_in;
-	if (count($tag_slug_in) > 0)
-		$args['tag_slug__in'] = $tag_slug_in;
 
+	
 	//print_r($args);
  	if ($args != "")
   	{
@@ -134,8 +103,12 @@ function hk_documents_generate_cache() {
 		if ($the_query->have_posts())
 		{ 
 			$retValue .= "<aside class='widget hk_dokument'>";
-			$retValue .= "<h3 class='widget-title'>Dokument</h3>";				    // The Loop
+			//$retValue .= "<h3 class='widget-title'>Dokument</h3>";
+			$retValue .= "<div class='iconset'></div>";
+
+		    // The Loop
        		while ( $the_query->have_posts() ) : $the_query->the_post();
+       			$retValue .= "<div class='document-wrapper'>";
 				$retValue .= "<div id='document-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
 		      	$retValue .= get_the_post_thumbnail(get_the_ID(),"document-image");
 		      	$attachId = get_post_meta(get_the_ID(), "hk_document_attach", true);
@@ -154,7 +127,7 @@ function hk_documents_generate_cache() {
 				}
 				//$retValue .= "<h4>" . get_the_title() . "</h4>";
 				//$retValue .= str_replace("\n","<br>",get_the_content());
-                $retValue .= "</div>";
+                $retValue .= "</div></div>";
         	endwhile;
         	// Reset Post Data
         	wp_reset_postdata();

@@ -75,7 +75,7 @@ function hk_contacts_init() {
 	add_post_type_support( "hk_kontakter", "revisions" );
 
 	register_taxonomy_for_object_type( "category", "hk_kontakter" );
-	register_taxonomy_for_object_type( "post_tag", "hk_kontakter" );
+	//register_taxonomy_for_object_type( "post_tag", "hk_kontakter" );
 
 }
 
@@ -117,14 +117,13 @@ function hk_contacts_generate_cache() {
  		$hk_options = get_option("hk_theme");
  		$category_in[] = $hk_options["startpage_cat"];
  	}
- 	else {
-	 	
-    	foreach(get_the_category() as $cat)
-    	{
-			$category_in[] = $cat->term_id;
-		}
+ 	else if (get_query_var("cat") != "") {
+		$category_in[] = get_query_var("cat");
   	}
 
+  	// skip if no category
+  	if (count($category_in) <= 0)
+  		return "no selected category";
 
 	$args = array(
 		'posts_per_page' => 3,
@@ -132,8 +131,8 @@ function hk_contacts_generate_cache() {
 		'more' => $more = 0,
 		'post_type' => 'hk_kontakter',
 		'category__in' => $category_in,
-		'order' => 'ASC',
-		'suppress_filters' => 1
+		'order' => 'ASC', /* TODO: is this needed, is default most viewed if not suppress_filters? */
+		'suppress_filters' => 1 /* TODO: is this needed? */
 	);
 
  	if ($args != "")
@@ -144,15 +143,16 @@ function hk_contacts_generate_cache() {
 		if ($the_query->have_posts())
 		{ 
   	        $retValue .= "<aside class='widget hk_kontakter'>";
-	      	$retValue .= "<h3 class='widget-title'>Kontakter</h3>";
+	      	//$retValue .= "<h3 class='widget-title'>Kontakter</h3>";
+	      	
 	      	// The Loop
 	   		while ( $the_query->have_posts() ) : $the_query->the_post();
 				$retValue .= "<div class='contact-wrapper'><div class='img-wrapper'>" . get_the_post_thumbnail(get_the_ID(),"contact-image") . "</div>";
+				$retValue .= "<div class='iconset'></div>";
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-
 				$retValue .= "<h4>" . get_the_title() . "</h4>";
 				$retValue .= "<div class='text'>" . str_replace("\n","<br>",get_the_content()). "</div>";
-				$retValue .= "</div></div>";
+				$retValue .= "<a class='permalink' href='" . get_permalink() . "'>Mer information</a></div></div>";
 	    	endwhile;
 	    	// Reset Post Data
 	    	wp_reset_postdata();
