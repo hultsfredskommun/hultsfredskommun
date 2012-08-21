@@ -717,6 +717,7 @@ a:hover {
 #menu {
 	margin-top: 1em;
 	width: 100%;
+	font-size: 14px;	
 }
 #sort-order {
 	font-size: 11px;
@@ -1304,7 +1305,7 @@ article:last-child { margin-bottom: 0 }
 
 /* .misc-ctrl */
 .misc-ctrl { 
-	font-size: 14px;
+	font-size: 13px;
 	width: 25%;
 	float: right;
 	margin: 0 0 .8em .8em;
@@ -1398,57 +1399,35 @@ article:last-child { margin-bottom: 0 }
 .widget a:active {
 	text-decoration: underline;
 }
-.hk_kontakter.widget {
-	clear: both;
-}
-.hk_kontakter.widget .img-wrapper {
-	float: left;
-	width: 80px;
-	line-height: 0;
-	margin-right: .8em;
-}
-.hk_kontakter.widget .img-wrapper img {
-	width: 100%;
-	height: auto;
-}
-.hk_kontakter.widget h4 {
-	clear: none;
-}
-.hk_kontakter.widget .iconset {
-	background: url("images/sprite.png") no-repeat scroll 0px -59px transparent;
-	height: 20px;
-	width: 20px;
-	margin: .8em;
+
+.hk_kontakter.widget .icon,
+.hk_dokument div.icon {
+	height: 24px;
+	width: 18px;
 	float: left;
 }
-.hk_kontakter.widget .hk_kontakter {
+.hk_kontakter.widget .hk_kontakter,
+.hk_dokument.widget .hk_dokument {
 	font-size: 12px;
 	padding: .8em;
 }
-.hk_kontakter.widget .hk_kontakter .text {
-	margin-left: 25px;
+
+.hk_kontakter.widget h4,
+.hk_dokument.widget h4 {
+	clear: none;
 }
-.hk_kontakter.widget .contact-wrapper {
-	overflow: hidden;
+.hk_kontakter.widget .hk_kontakter,
+.hk_dokument.widget .hk_dokument {
+	margin-left: 30px;
 }
 
-
-.hk_dokument.widget  {	
-
+.hk_kontakter.widget .icon,
+.hk_dokument.widget .icon {
+	margin: 0.4em;
 }
-.hk_dokument.widget .document-wrapper {	
-	padding: 0.8em;
-}
-.hk_dokument.widget .iconset {
-	background: url("images/sprite.png") no-repeat scroll 0px -37px transparent;
-	height: 20px;
-	width: 20px;
-	float: right;
-}
-.hk_dokument div.icon {
-	height: 24px;
-	width:18px;
-	float: left;
+.hk_kontakter.widget .icon {
+	background-image: url("images/sprite.png");
+	background-position: 0px -59px;
 }
 .hk_dokument div.ppt,.hk_dokument div.pptx {
 	background-image: url("images/sprite.png");
@@ -1469,9 +1448,6 @@ article:last-child { margin-bottom: 0 }
 .hk_dokument div.none {
 	background-image: url("images/sprite.png");
 	background-position: 0px -328px;
-}
-.hk_dokument a.document-link {
-	padding-left: .8em;
 }
 
 

@@ -104,30 +104,33 @@ function hk_documents_generate_cache() {
 		{ 
 			$retValue .= "<aside class='widget hk_dokument'>";
 			//$retValue .= "<h3 class='widget-title'>Dokument</h3>";
-			$retValue .= "<div class='iconset'></div>";
+			//$retValue .= "<div class='iconset'></div>";
 
 		    // The Loop
        		while ( $the_query->have_posts() ) : $the_query->the_post();
-       			$retValue .= "<div class='document-wrapper'>";
-				$retValue .= "<div id='document-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-		      	$retValue .= get_the_post_thumbnail(get_the_ID(),"document-image");
-		      	$attachId = get_post_meta(get_the_ID(), "hk_document_attach", true);
-		      	if ($attachId != "" && $attachId > 0) {
-					//$retValue .= wp_get_attachment_link($attachId); 
-					$title = get_the_title();
-					$url = wp_get_attachment_url($attachId);
-					$ext = substr(strrchr($url, '.'), 1);
-					$retValue .= "<div class='icon $ext'>&nbsp;</div><a class='document-link' href='$url' title='$title'>$title</a>";
+	      		//$retValue .= wp_get_attachment_link($attachId); 
+       			$title = get_the_title();
+				$attachId = get_post_meta(get_the_ID(), "hk_document_attach", true);
+				$url = wp_get_attachment_url($attachId);
+				$ext = substr(strrchr($url, '.'), 1);
+				
+				if ($attachId != "" && $attachId > 0) {
+				
+	       			$retValue .= "<div class='document-wrapper'><div class='icon $ext'>&nbsp;</div>";
+					$retValue .= "<div id='document-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
+			      	$retValue .= get_the_post_thumbnail(get_the_ID(),"document-image");
+			      	
+					$retValue .= "<h4>$title</h4>";//<a class='document-link' href='$url' title='$title'>$title</a>";
 					if (isset( $GLOBALS['wp_scripts']->registered[ 'jquery' ] )) {
 						$desc = get_post_meta(get_the_ID(), "hk_document_description", true);
 						if ($desc != "") {
 						}
 							$retValue .= " <a href='#' class='more-link' onclick=\"jQuery('#document-desc-$attachId').toggle('fast');return false;\">&rarr;</a><div id='document-desc-$attachId' class='description' style='display: none'>$desc</div>";
 					}
-				}
+		            $retValue .= "</div></div>";
+    			}
 				//$retValue .= "<h4>" . get_the_title() . "</h4>";
 				//$retValue .= str_replace("\n","<br>",get_the_content());
-                $retValue .= "</div></div>";
         	endwhile;
         	// Reset Post Data
         	wp_reset_postdata();
