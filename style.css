@@ -55,10 +55,6 @@ body, input, textarea,
 	color: #fff; /* white */	
 }
 
-/* arrow color */
-#nav li .arrow {
-	color: #D8E3A6; /* lightgreen */
-}
 
 /* menu text color */
 #menu ul li a,
@@ -70,7 +66,8 @@ body, input, textarea,
 #nav a,
 #footer-sidebar,
 #branding #searchform #searchresult ul li a,
-.entry-meta .tag-cloud  a {
+.entry-meta .tag-cloud  a,
+#nav li .arrow {
 	/*color: #fff; /* white */
 	color: #373737; /* black */
 }
@@ -885,8 +882,8 @@ a:hover {
 	padding-left: .8em;
 }
 #nav li .arrow {
-	padding: 0 .2em 0 .8em;
-	font-size: 13px;
+	padding: 0 .2em 0 1.8em;
+	font-size: 11px;
 	font-weight: bold;
 }
 #nav #selected_filter {
