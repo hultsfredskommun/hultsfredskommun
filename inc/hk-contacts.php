@@ -147,12 +147,21 @@ function hk_contacts_generate_cache() {
 	      	
 	      	// The Loop
 	   		while ( $the_query->have_posts() ) : $the_query->the_post();
+				/*
 				$retValue .= "<div class='contact-wrapper'><div class='img-wrapper'>" . get_the_post_thumbnail(get_the_ID(),"contact-image") . "</div>";
 				$retValue .= "<div class='iconset'></div>";
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
 				$retValue .= "<h4>" . get_the_title() . "</h4>";
 				$retValue .= "<div class='text'>" . str_replace("\n","<br>",get_the_content()). "</div>";
 				$retValue .= "<a class='permalink' href='" . get_permalink() . "'>Mer information</a></div></div>";
+				*/
+				$retValue .= "<div class='contact-wrapper'>";//<div class='img-wrapper'>" . get_the_post_thumbnail(get_the_ID(),"contact-image") . "</div>";
+				$retValue .= "<div class='iconset'></div>";
+				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
+				$retValue .= "<div class='text'><h4>" . get_the_title() . "</h4>";
+				$retValue .= "" . get_the_content(). "</div>";
+				//$retValue .= "<a class='permalink' href='" . get_permalink() . "'>Mer information</a></div>";
+				$retValue .= "</div>";
 	    	endwhile;
 	    	// Reset Post Data
 	    	wp_reset_postdata();

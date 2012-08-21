@@ -134,7 +134,7 @@ article.sticky {
 	/*border: 2px solid #ACC6D3; /* light blue */
 	/*border: 2px solid #06435A; /* deep blue */
 	/*border: 2px solid #00A4D6; /* blue */
-	border: 2px solid #C5D67A; /*green */
+	border: 1px solid #C5D67A; /*green */
 	/*background-color: #E2EABC; /* green */
 	/*background-color: #FDEAD1; /* orange */
 }
@@ -184,15 +184,15 @@ article.sticky {
 /* border colors */
 .hk_kontakter.widget .contact-wrapper {
 	/*border: 2px solid #F7A02E; /* orange */
-	border: 2px solid #E60040; /* energyred */
+	border: 0px solid #E60040; /* energyred */
 }
 .hk_dokument.widget  {	
-	border: 2px solid #00A4D6; /* blue */
+	_order: 2px solid #00A4D6; /* blue */
 	/*border: 2px solid #9EBA21; /* green */
 }
 #nav {
 	/*border: 2px solid #ACC6D3; /* blue */
-	border: 2px solid #9EBA21; /* green */
+	border: 1px solid #9EBA21; /* green */
 }
 #branding #searchform {
 	/*border: 5px solid #ACC6D3; /* light blue */
@@ -235,9 +235,9 @@ article.sticky {
 #news,
 article,
 .misc-ctrl,
-#dyn-posts-load-posts/*,
+#dyn-posts-load-posts,
 .widget.hk_kontakter,
-.widget.hk_dokument */{
+.widget.hk_dokument {
 	background-color: white;
 	border: 1px solid #E6E6E6;
 }
@@ -1418,14 +1418,15 @@ article:last-child { margin-bottom: 0 }
 	background: url("images/sprite.png") no-repeat scroll 0px -59px transparent;
 	height: 20px;
 	width: 20px;
-	float: right;
+	margin: .8em;
+	float: left;
 }
 .hk_kontakter.widget .hk_kontakter {
 	font-size: 12px;
 	padding: .8em;
 }
 .hk_kontakter.widget .hk_kontakter .text {
-	clear: none;
+	margin-left: 25px;
 }
 .hk_kontakter.widget .contact-wrapper {
 	overflow: hidden;
