@@ -49,7 +49,9 @@ body, input, textarea,
 }
 
 /* white text color */
-#firstpage-top-content .widget_hk_text_widget .text a {
+#firstpage-top-content .widget_hk_text_widget .text a,
+.hk_kontakter .widget-title,
+.hk_dokument .widget-title {
 	color: #fff; /* white */	
 }
 
@@ -73,11 +75,9 @@ body,
 #branding #searchform,
 #branding #searchform #searchresult,
 #nav,
-#sidebar .widget,
+/*#sidebar .widget,*/
 body.single article.sticky,
 article.sticky.full,
-.hk_kontakter.widget,
-.hk_dokument.widget
 .closeButton {
 	background-color: #fff;
 }
@@ -125,7 +125,10 @@ hr,
 #sort-order,
 #topmenu,
 #firstpage-top-content,
-#firstpage-top-content .widget_hk_text_widget .text a {
+#firstpage-top-content .widget_hk_text_widget .text a,
+.hk_kontakter.widget,
+.hk_dokument.widget
+{
 	background-color: transparent;
 }
 
@@ -181,13 +184,23 @@ article.sticky {
 
 
 
+
+.hk_kontakter .widget-title {
+	background: #E60040;
+}
+.hk_dokument .widget-title {
+	background: #00A4D6;
+}
+
+
+
 /* border colors */
-.hk_kontakter.widget .contact-wrapper {
+.hk_kontakter.widget {
 	/*border: 2px solid #F7A02E; /* orange */
-	border: 0px solid #E60040; /* energyred */
+	border-left: 1px solid #E60040; /* energyred */
 }
 .hk_dokument.widget  {	
-	_order: 2px solid #00A4D6; /* blue */
+	border-left: 1px solid #00A4D6; /* blue */
 	/*border: 2px solid #9EBA21; /* green */
 }
 #nav {
@@ -199,7 +212,7 @@ article.sticky {
 	/*border: 5px solid #06435A; /* deep blue */
 	/*border: 5px solid #00A4D6; /* blue */
     /*border: 5px solid #9EBA21; /* green */
-	border: 5px solid #B1C84D; /* lightgreen */
+	border: 3px solid #B1C84D; /* lightgreen */
     /*border: 5px solid #F7A02E; /* orange */
 }
 #branding #searchform #searchresult {
@@ -235,9 +248,9 @@ article.sticky {
 #news,
 article,
 .misc-ctrl,
-#dyn-posts-load-posts,
+#dyn-posts-load-posts/*,
 .widget.hk_kontakter,
-.widget.hk_dokument {
+.widget.hk_dokument*/ {
 	background-color: white;
 	border: 1px solid #E6E6E6;
 }
@@ -666,8 +679,8 @@ a:hover {
 	clear: none;
 }
 #branding #searchform #searchresult {
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
 	position: absolute;
 	margin-left: 3px;
 	padding: 0 .8em;
@@ -1377,11 +1390,9 @@ article:last-child { margin-bottom: 0 }
 .widget-title {
 	line-height: 1.2em;
 	padding: .2em .8em .2em;
-	margin: 0 0 .4em;
 }
 .widget ul {
 	font-size: 13px;
-	_argin: 0;
 	margin-left: 20px;
 }
 .widget ul ul {
@@ -1400,6 +1411,11 @@ article:last-child { margin-bottom: 0 }
 	text-decoration: underline;
 }
 
+.hk_kontakter .widget-title,
+.hk_dokument .widget-title {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
 .hk_kontakter.widget .icon,
 .hk_dokument div.icon {
 	height: 24px;

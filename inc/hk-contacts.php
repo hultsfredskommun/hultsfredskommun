@@ -143,7 +143,7 @@ function hk_contacts_generate_cache() {
 		if ($the_query->have_posts())
 		{ 
   	        $retValue .= "<aside class='widget hk_kontakter'>";
-	      	//$retValue .= "<h3 class='widget-title'>Kontakter</h3>";
+	      	$retValue .= "<h3 class='widget-title'>Kontakter</h3>";
 	      	
 	      	// The Loop
 	   		while ( $the_query->have_posts() ) : $the_query->the_post();

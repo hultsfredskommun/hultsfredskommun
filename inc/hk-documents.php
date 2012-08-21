@@ -103,7 +103,7 @@ function hk_documents_generate_cache() {
 		if ($the_query->have_posts())
 		{ 
 			$retValue .= "<aside class='widget hk_dokument'>";
-			//$retValue .= "<h3 class='widget-title'>Dokument</h3>";
+			$retValue .= "<h3 class='widget-title'>Relaterat</h3>";
 			//$retValue .= "<div class='iconset'></div>";
 
 		    // The Loop
