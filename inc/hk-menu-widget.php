@@ -118,7 +118,7 @@ class HK_Menu_Widget extends WP_Widget {
 					});
 				})(jQuery);
 			</script>
-			<span class='heading'>Du har valt:</span>
+			<div class='widget-title'>Du har valt:</div>
 					
 			<ul id="selected_filter">
 			<?php 
@@ -206,11 +206,11 @@ class HK_Menu_Widget extends WP_Widget {
 			$selected_ids = array();
 			if (count($selected_array) == 1)
 			{
-				echo "<li class='noselect " . $selected_array[0]["tag"] . "'><a>" . $selected_array[0]["name"] . "</a></li>";
+				echo "<li class='noselect " . $selected_array[0]["tag"] . "'><div class='icon'></div><a>" . $selected_array[0]["name"] . "</a></li>";
 			}
 			else if (count($selected_array) > 0) {
 				foreach ($selected_array as $value) {
-					echo "<li class='" . $value["noselect"] . " " . $value["tag"] . "'><a href='" . $value["url"] . "'>" . $value["name"] . "</a></li>";
+					echo "<li class='" . $value["noselect"] . " " . $value["tag"] . "'><div class='icon'></div><a href='" . $value["url"] . "'>" . $value["name"] . "</a></li>";
 				}
 			}
 			?>
@@ -255,7 +255,7 @@ class HK_Menu_Widget extends WP_Widget {
 
 		// get one taxonomy at the time tag_key contain the slug, tag_cloud contain the cloud-array 
 		$hasFilters = false; ?>
-		<span class='heading heading-bg'>Visa bara</span>
+		<span class='heading'>Visa bara</span>
 		
 		<?php
 		foreach ($tag_clouds as $tag_key => $tag_cloud) {
@@ -295,7 +295,7 @@ class HK_Menu_Widget extends WP_Widget {
 					if ($tag_key == "category")
 						$curr_caturl = get_category_link(get_cat_ID($value));
 					
-					echo "<li><a class='$selected' href='" . $curr_caturl . 
+					echo "<li><span class='arrow'>&gt;</span><a class='$selected' href='" . $curr_caturl . 
 					"?tag=" . $link["post_tag"] .
 					"&vem=" . $link["vem"] . 
 					"&ort=" . $link["ort"] .
@@ -310,7 +310,7 @@ class HK_Menu_Widget extends WP_Widget {
 			endif; 
 		}
 		if (!$hasFilters) {
-			echo "<ul><li><span>Hittade inga fler filter</span></li></ul>";
+			echo "<ul><li><span class='leftspace'>Hittade inga fler filter</span></li></ul>";
 		}
 	}
 
