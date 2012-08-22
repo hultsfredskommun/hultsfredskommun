@@ -160,7 +160,7 @@ function hk_contacts_generate_cache() {
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
 				$retValue .= "<div class='text'><h4>" . get_the_title() . "</h4>";
 				$retValue .= "" . str_replace("\n","<br>",get_the_content()). "</div>";
-				//$retValue .= "<a class='permalink' href='" . get_permalink() . "'>Mer information</a></div>";
+				$retValue .= "<a class='permalink' href='" . get_permalink() . "'>Mer information</a></div>";
 				$retValue .= "</div>";
 	    	endwhile;
 	    	// Reset Post Data

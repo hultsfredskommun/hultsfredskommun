@@ -19,12 +19,13 @@ Text Domain: hultsfredskommun
 /* COLORS OF THE THEME */
 
 /*some test values*/
+/*
 #page {
 	background-color: #F5F8E9;
 }
 #primary { 
 	width: 74% !important;
-	/*background-color: #F1F6F8;*/
+	_ackground-color: #F1F6F8;
 }
 #content {
     border-right: 1px solid #9EBA21;
@@ -32,9 +33,9 @@ Text Domain: hultsfredskommun
 }
 #nav-sidebar #nav, 
 #sidebar #nav {
-    /*background-color: white;*/
+    _ackground-color: white;
 }
-
+*/
 /*END Test*/
 
 /* link color */
@@ -192,7 +193,7 @@ article.sticky {
    	/*border: 5px solid #F7A02E; /* orange */
 }
 #menu ul li, 
-#topmenu nav ul li,
+/*#topmenu nav ul li,*/
 #sort-order ul li {
 	border-left: 1px solid white;
 }
@@ -741,6 +742,7 @@ a:hover {
 {
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
+	margin-right: 2em;
 }
 #menu ul li a,
 #topmenu nav ul li a, 
@@ -902,7 +904,7 @@ a:hover {
 	margin: 0 .8em; 
 	float: left;
 }
-#nav #selected_filter li.noselect {
+#nav #selected_filter li.noselect .icon {
 	background-image: none;
 }
 #nav #selected_filter li.noselect a {

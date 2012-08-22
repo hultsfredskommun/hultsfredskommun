@@ -556,15 +556,17 @@ $(document).ready(function(){
 	});  
 
 	/**
-	 * nav-sidebar collapsing filters
+	 * nav-sidebar collapsing filters on tags
 	 */
-	 collapse_height = 90;
+	 collapse_height = 120;
 	 $("#nav-sidebar #filters ul").each(function() {
-	 	$(this).attr("oldheight", $(this).height());
- 		if ($(this).height() > collapse_height) {
- 			$(this).css("height",collapse_height + "px");
- 			$(this).after("<span class='more-filters'>visa fler <span class='more-filters-image'>&nbsp;</span></span>");
- 		}
+	 	if (!$(this).hasClass("category")) {
+		 	$(this).attr("oldheight", $(this).height());
+	 		if ($(this).height() > collapse_height) {
+	 			$(this).css("height",collapse_height + "px");
+	 			$(this).after("<span class='more-filters'>visa fler <span class='more-filters-image'>&nbsp;</span></span>");
+	 		}
+	 	}
 	 });
 	$(this).find(".more-filters").click(function() {
 		ul = $(this).prev();
@@ -669,7 +671,47 @@ $(document).ready(function(){
 			$('#searchresult').remove();
 		}
 	});
-	
+
+
+	/*
+	 * set click action on contacts
+	 */
+	$(".type-hk_kontakter").each(function() {
+		href = $(this).find(".permalink").remove().attr("href");
+		$(this).css("cursor","pointer").click(function() {
+			window.location = href;
+		});
+	});
+
+
+	/*
+	 * give result in dropdownlist
+	 */
+	 /*
+	$('#menu li').each(function() {
+		$(this).mouseenter(function() {
+			if( $(window).width()+scrollbar > dropdown_max_width ) {
+				if ($(this).attr("dropdown-id") === undefined) {
+					rand = Math.floor(Math.random()*100000);
+					$(this).attr("dropdown-id", rand);
+					$(this).parent().after("<div class='menu-item-dropdown' id='menu-item-dropdown-" + rand + "'></div>");				
+					href = $(this).find("a").attr("href");
+					$("#menu-item-dropdown-" + rand).load(hultsfred_object["templateDir"]+"/ajax/dropdown.php",
+					{ href: href },
+					function() { 
+						$(this).mouseout(function() {
+							$(this).hide();
+						})
+					});
+
+				}
+				else {
+					$("#menu-item-dropdown-" + $(this).attr("dropdown-id")).show();
+				}
+			}
+		});
+	});
+	*/
 	
 	
 	//Skriver ut skärmens storlek
