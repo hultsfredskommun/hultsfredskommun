@@ -1431,7 +1431,16 @@ article:last-child { margin-bottom: 0 }
 .hk_dokument.widget .hk_dokument {
 	margin-left: 30px;
 }
+.hk_kontakter.widget .contact-wrapper {
+	overflow: hidden;
+}
+.hk_kontakter.widget .img-wrapper {
+	padding: 0.8em;
+	margin-left: 30px;
+}
 
+
+/* widget icons */
 .hk_kontakter.widget .icon,
 .hk_dokument.widget .icon {
 	margin: 0.4em;

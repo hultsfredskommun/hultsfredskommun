@@ -676,11 +676,26 @@ $(document).ready(function(){
 	/*
 	 * set click action on contacts
 	 */
-	$(".type-hk_kontakter").each(function() {
-		href = $(this).find(".permalink").remove().attr("href");
-		$(this).css("cursor","pointer").click(function() {
-			window.location = href;
-		});
+	contact_collapse_height = 50;
+	$(".contact-wrapper").each(function() {
+ 		if ($(this).height() > contact_collapse_height) {
+		 	$(this).attr("oldheight", $(this).height());
+	 		$(this).css("height",contact_collapse_height + "px");
+	 		$(this).find(".permalink").click(function(ev) {
+				ev.preventDefault();
+	 		});
+			$(this).click(function() {
+				if ($(this).height() != contact_collapse_height) {			
+					$(this).find(".img-wrapper").hide();
+		 			$(this).css("height", contact_collapse_height + "px");
+				}
+				else {
+					$(this).find(".img-wrapper").show();
+		 			$(this).css("height", "auto");
+				}
+			});
+
+		}
 	});
 
 
