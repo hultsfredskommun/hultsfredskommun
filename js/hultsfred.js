@@ -677,7 +677,7 @@ $(document).ready(function(){
 	 * set click action on contacts
 	 */
 	contact_collapse_height = 50;
-	$(".contact-wrapper,.document-wrapper").each(function() {
+	$(".contact-wrapper").each(function() {
  		if ($(this).height() > contact_collapse_height) {
 		 	$(this).attr("oldheight", $(this).height());
 	 		$(this).css("height",contact_collapse_height + "px");
@@ -696,6 +696,19 @@ $(document).ready(function(){
 			});
 
 		}
+	});
+
+	/*
+	 * set hover action on related
+	 */
+	$(".related-wrapper").each(function() {
+			$(this).find(".content").hide();
+			$(this).find(".permalink").hover(function() {
+				$(this).parents(".related-wrapper").find(".content").show();
+			}).mouseout(function() {
+				$(this).parents(".related-wrapper").find(".content").hide();
+			});
+
 	});
 
 

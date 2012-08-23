@@ -72,8 +72,8 @@ function hk_setup() {
 	// Grab hk contacts.
 	require( get_template_directory() . '/inc/hk-contacts.php' );
 
-	// Grab hk documents.
-	require( get_template_directory() . '/inc/hk-documents.php' );
+	// Grab hk related.
+	require( get_template_directory() . '/inc/hk-related.php' );
 
 	// Grab hk menu widget.
 	require( get_template_directory() . '/inc/hk-menu-widget.php' );
@@ -215,9 +215,15 @@ function setup_javascript_settings() {
 }
 add_action('wp_head', 'setup_javascript_settings');
 
+
+
+
 /**
+ * Alter the default admin menus, settings and looks.
  * Change name of menus in admin 
  */
+
+/* change names in admin menus */
 function change_post_menu_label() {
     global $menu;
     global $submenu;
@@ -230,9 +236,14 @@ function change_post_menu_label() {
     $menu[20][0] = 'Special';
     $submenu['edit.php?post_type=page'][5][0] = 'Special';
     $submenu['edit.php?post_type=page'][10][0] = 'Skapa';
+    $submenu['edit.php?post_type=page'][5][0] = 'Special';
+
+    // hide linkmanager
+    unset($menu[15]);
     echo '';
 }
 
+/* change names in admin pages */
 function change_post_object_label() {
     global $wp_post_types;
     $labels = &$wp_post_types['post']->labels;
@@ -261,6 +272,20 @@ function change_post_object_label() {
 }
 add_action( 'init', 'change_post_object_label' );
 add_action( 'admin_menu', 'change_post_menu_label' );
+
+/* remove unwanted fields from media library items */
+function remove_media_upload_fields( $form_fields, $post ) {
+    //unset( $form_fields['image-size'] );
+    unset( $form_fields['post_excerpt'] );
+    unset( $form_fields['image_alt'] );
+    //unset( $form_fields['post_content'] );
+    //unset( $form_fields['url'] );
+    //unset( $form_fields['image_url'] );
+    //unset( $form_fields['align'] );
+    
+    return $form_fields;
+}
+add_filter('attachment_fields_to_edit', 'remove_media_upload_fields', null, 2);
 
 
 

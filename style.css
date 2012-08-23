@@ -52,7 +52,7 @@ body, input, textarea,
 /* white text color */
 #firstpage-top-content .widget_hk_text_widget .text a,
 .hk_kontakter .widget-title,
-.hk_dokument .widget-title {
+.hk_related .widget-title {
 	color: #fff; /* white */	
 }
 
@@ -130,7 +130,7 @@ hr,
 #firstpage-top-content,
 #firstpage-top-content .widget_hk_text_widget .text a,
 .hk_kontakter.widget,
-.hk_dokument.widget,
+.hk_related.widget,
 #nav
 {
 	background-color: transparent;
@@ -156,7 +156,7 @@ article.sticky {
 .hk_kontakter .widget-title {
 	background: #E60040;
 }
-.hk_dokument .widget-title {
+.hk_related .widget-title {
 	background: #00A4D6;
 }
 
@@ -167,7 +167,7 @@ article.sticky {
 	/*border: 2px solid #F7A02E; /* orange */
 	border-left: 1px solid #E60040; /* energyred */
 }
-.hk_dokument.widget  {	
+.hk_related.widget  {	
 	border-left: 1px solid #00A4D6; /* blue */
 	/*border: 2px solid #9EBA21; /* green */
 }
@@ -218,7 +218,7 @@ article,
 .misc-ctrl,
 #dyn-posts-load-posts/*,
 .widget.hk_kontakter,
-.widget.hk_dokument*/ {
+.widget.hk_related*/ {
 	background-color: white;
 	border: 1px solid #E6E6E6;
 }
@@ -434,8 +434,11 @@ article, #news {
 /* =Global
 ----------------------------------------------- */
 
-#menu, h1, h2, h3, #firstpage-top-content a {
+#menu, h1, h2, h3, #firstpage-top-content a, #nav {
 	font-family: "Century Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#menu, #nav {
+	font-size: 14px;
 }
 body, input, textarea {
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -699,7 +702,6 @@ a:hover {
 #menu {
 	margin-top: 1em;
 	width: 100%;
-	font-size: 14px;	
 }
 #sort-order {
 	font-size: 11px;
@@ -1403,7 +1405,7 @@ article:last-child { margin-bottom: 0 }
 }
 
 .hk_kontakter .widget-title,
-.hk_dokument .widget-title,
+.hk_related .widget-title,
 #nav .widget-title {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
@@ -1412,27 +1414,29 @@ article:last-child { margin-bottom: 0 }
 	border-top-right-radius: 0;	
 }
 .hk_kontakter.widget .icon,
-.hk_dokument div.icon {
+.hk_related div.icon {
 	height: 24px;
 	width: 18px;
 	float: left;
 }
 .hk_kontakter.widget .hk_kontakter,
-.hk_dokument.widget .attachment {
+.hk_related.widget .hk_related,
+.hk_related.widget .attachment {
 	font-size: 12px;
 	padding: .8em;
 }
 
 .hk_kontakter.widget h4,
-.hk_dokument.widget h4 {
+.hk_related.widget h4 {
 	clear: none;
 }
 .hk_kontakter.widget .hk_kontakter,
-.hk_dokument.widget .attachment {
+.hk_related.widget .hk_related,
+.hk_related.widget .attachment {
 	margin-left: 30px;
 }
 .hk_kontakter.widget .contact-wrapper,
-.hk_dokument.widget .document-wrapper {
+.hk_related.widget .related-wrapper {
 	overflow: hidden;
 }
 .hk_kontakter.widget .img-wrapper {
@@ -1443,31 +1447,41 @@ article:last-child { margin-bottom: 0 }
 
 /* widget icons */
 .hk_kontakter.widget .icon,
-.hk_dokument.widget .icon {
+.hk_related.widget .icon {
 	margin: 0.4em;
+	background-image: url("images/sprite.png");
 }
 .hk_kontakter.widget .icon {
-	background-image: url("images/sprite.png");
 	background-position: 0px -59px;
 }
-.hk_dokument div.ppt,.hk_dokument div.pptx {
-	background-image: url("images/sprite.png");
+.hk_related div.ppt,.hk_related div.pptx {
 	background-position: -36px -352px;
 }
-.hk_dokument div.xls,.hk_dokument div.xlsx {
-	background-image: url("images/sprite.png");
+.hk_related div.xls,.hk_related div.xlsx {
 	background-position: -18px -352px;
 }
-.hk_dokument div.doc,.hk_dokument div.docx {
-	background-image: url("images/sprite.png");
+.hk_related div.doc,.hk_related div.docx {
 	background-position: 0px -352px;
 }
-.hk_dokument div.pdf {
-	background-image: url("images/sprite.png");
+.hk_related div.pdf {
 	background-position: -36px -328px;
 }
-.hk_dokument div.none {
-	background-image: url("images/sprite.png");
+.hk_related div.jpg {
+	background-position: -54px -352px;
+}
+.hk_related div.gif {
+	background-position: -90px -352px;
+}
+.hk_related div.png {
+	background-position: -72px -352px;
+}
+.hk_related div.internal.link {
+	background-position: 0px -328px;
+}
+.hk_related div.external.link {
+	background-position: 0px -328px;
+}
+.hk_related div.none {
 	background-position: 0px -328px;
 }
 
@@ -1643,47 +1657,6 @@ object {
 }
 .post-password-required input[type=password]:focus {
 	background: #f7f7f7;
-}
-
-/* Author Info */
-#author-info {
-	font-size: 12px;
-	overflow: hidden;
-}
-.singular #author-info {
-	background: #f9f9f9;
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
-	margin: 2.2em -35.6% 0 -35.4%;
-	padding: 20px 35.4%;
-}
-.archive #author-info {
-	border-bottom: 1px solid #ddd;
-	margin: 0 0 2.2em;
-	padding: 0 0 2.2em;
-}
-#author-avatar {
-	float: left;
-	margin-right: -78px;
-}
-#author-avatar img {
-	background: #fff;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	-webkit-box-shadow: 0 1px 2px #bbb;
-	-moz-box-shadow: 0 1px 2px #bbb;
-	box-shadow: 0 1px 2px #bbb;
-	padding: 3px;
-}
-#author-description {
-	float: left;
-	margin-left: 108px;
-}
-#author-description h2 {
-	color: #000;
-	font-size: 15px;
-	font-weight: bold;
-	margin: 5px 0 10px;
 }
 
 /* Comments link */
