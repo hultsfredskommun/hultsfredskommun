@@ -1418,7 +1418,7 @@ article:last-child { margin-bottom: 0 }
 	float: left;
 }
 .hk_kontakter.widget .hk_kontakter,
-.hk_dokument.widget .hk_dokument {
+.hk_dokument.widget .attachment {
 	font-size: 12px;
 	padding: .8em;
 }
@@ -1428,10 +1428,11 @@ article:last-child { margin-bottom: 0 }
 	clear: none;
 }
 .hk_kontakter.widget .hk_kontakter,
-.hk_dokument.widget .hk_dokument {
+.hk_dokument.widget .attachment {
 	margin-left: 30px;
 }
-.hk_kontakter.widget .contact-wrapper {
+.hk_kontakter.widget .contact-wrapper,
+.hk_dokument.widget .document-wrapper {
 	overflow: hidden;
 }
 .hk_kontakter.widget .img-wrapper {

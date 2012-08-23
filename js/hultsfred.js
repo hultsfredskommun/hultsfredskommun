@@ -558,7 +558,7 @@ $(document).ready(function(){
 	/**
 	 * nav-sidebar collapsing filters on tags
 	 */
-	 collapse_height = 120;
+	 collapse_height = 125;
 	 $("#nav-sidebar #filters ul").each(function() {
 	 	if (!$(this).hasClass("category")) {
 		 	$(this).attr("oldheight", $(this).height());
@@ -677,7 +677,7 @@ $(document).ready(function(){
 	 * set click action on contacts
 	 */
 	contact_collapse_height = 50;
-	$(".contact-wrapper").each(function() {
+	$(".contact-wrapper,.document-wrapper").each(function() {
  		if ($(this).height() > contact_collapse_height) {
 		 	$(this).attr("oldheight", $(this).height());
 	 		$(this).css("height",contact_collapse_height + "px");
