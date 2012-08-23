@@ -5,8 +5,14 @@
 == ABOUT HULTSFREDSKOMMUN THEME ==
 
 
-Uses hk_documents to view documents
 Uses hk_contacts to view contacts
+Uses hk_related to view related documents and links (of the post type hk_related) - 
+ * Depending on the plugin Advanced Custom Fields by Elliot Condon
+ * Create an ACF with these fields.
+ *  1. Name hk_related_post_link with Type "Page Link" and Post Type "Post"
+ *  2. Name hk_related_link_url with Type Text
+ * And location rules Post Type is equal to hk_related
+
 
 
 === Optional functionality ===
