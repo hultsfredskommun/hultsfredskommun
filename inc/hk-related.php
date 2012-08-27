@@ -5,7 +5,6 @@
  * Create an ACF with these fields.
  *  1. Name hk_related_post_link with Type "Page Link" and Post Type "Post"
  *  2. Name hk_related_link_url with Type Text
- *  3. Name hk_related_description with Type Wysiwyg Editor
  * And location rules Post Type is equal to hk_related
  **/
 
@@ -46,21 +45,24 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "Hk_Related" 
 
 add_action('init', hk_related_init);
 function hk_related_init() {
+	// only if in admin and is administrator
+    if (is_admin() && current_user_can("administrator")) {
 
-	register_post_type( 'hk_related',
-		array(
-			'labels' => array(
-				'name' => __( 'Relaterade' ),
-				'singular_name' => __( 'Relaterad' )
-			),
-			'public' => true,
-			'has_archive' => true,
-			'rewrite' => array('slug' => 'related')
-		)
-	);
-	add_post_type_support( "hk_related", array("title","author","revisions") );
+		register_post_type( 'hk_related',
+			array(
+				'labels' => array(
+					'name' => __( 'Relaterade' ),
+					'singular_name' => __( 'Relaterad' )
+				),
+				'public' => true,
+				'has_archive' => true,
+				'rewrite' => array('slug' => 'related')
+			)
+		);
+		add_post_type_support( "hk_related", array("title","author","revisions") );
 
-	register_taxonomy_for_object_type( "category", "hk_related" );
+		register_taxonomy_for_object_type( "category", "hk_related" );
+	}
 }
 
 // generates the output of the content to the widget

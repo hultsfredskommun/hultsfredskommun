@@ -123,29 +123,31 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_slideshow
 /* REGISTER post_type hk_slideshow */
 add_action('init', hk_slideshow_init);
 function hk_slideshow_init() {
+	// only if in admin and is administrator
+    if (is_admin() && current_user_can("administrator")) {
 
-	register_post_type( 'hk_slideshow',
-		array(
-			'labels' => array(
-				'name' => __( 'Bildspel' ),
-				'singular_name' => __( 'Bildspel' )
-			),
-			'public' => true,
-			'has_archive' => true,
-			'rewrite' => array('slug' => 'slideshow')
-		)
-	);
-	add_post_type_support( "hk_slideshow", "title" );
-	add_post_type_support( "hk_slideshow", "editor" );
-	add_post_type_support( "hk_slideshow", "author" );
-	add_post_type_support( "hk_slideshow", "thumbnail" );
-	//add_post_type_support( "hk_slideshow", "excerpt" );
-	//add_post_type_support( "hk_slideshow", "trackbacks" );
-	//add_post_type_support( "hk_slideshow", "custom-fields" );
-	add_post_type_support( "hk_slideshow", "revisions" );
+		register_post_type( 'hk_slideshow',
+			array(
+				'labels' => array(
+					'name' => __( 'Bildspel' ),
+					'singular_name' => __( 'Bildspel' )
+				),
+				'public' => true,
+				'has_archive' => true,
+				'rewrite' => array('slug' => 'slideshow')
+			)
+		);
+		add_post_type_support( "hk_slideshow", "title" );
+		add_post_type_support( "hk_slideshow", "editor" );
+		add_post_type_support( "hk_slideshow", "author" );
+		add_post_type_support( "hk_slideshow", "thumbnail" );
+		//add_post_type_support( "hk_slideshow", "excerpt" );
+		//add_post_type_support( "hk_slideshow", "trackbacks" );
+		//add_post_type_support( "hk_slideshow", "custom-fields" );
+		add_post_type_support( "hk_slideshow", "revisions" );
 
-	register_taxonomy_for_object_type( "category", "hk_slideshow" );
-
+		register_taxonomy_for_object_type( "category", "hk_slideshow" );
+	}
 }
 
 ?>

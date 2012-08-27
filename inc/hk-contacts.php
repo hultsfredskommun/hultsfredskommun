@@ -55,30 +55,32 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "Hk_Contacts"
 /* REGISTER post_type hk_kontakter */
 add_action('init', hk_contacts_init);
 function hk_contacts_init() {
+	// only if in admin and is administrator
+    if (is_admin() && current_user_can("administrator")) {
 
-	register_post_type( 'hk_kontakter',
-		array(
-			'labels' => array(
-				'name' => __( 'Kontakter' ),
-				'singular_name' => __( 'Kontakt' )
-			),
-			'public' => true,
-			'has_archive' => true,
-			'rewrite' => array('slug' => 'kontakt')
-		)
-	);
-	add_post_type_support( "hk_kontakter", "title" );
-	add_post_type_support( "hk_kontakter", "editor" );
-	add_post_type_support( "hk_kontakter", "author" );
-	add_post_type_support( "hk_kontakter", "thumbnail" );
-	//add_post_type_support( "hk_kontakter", "excerpt" );
-	//add_post_type_support( "hk_kontakter", "trackbacks" );
-	//add_post_type_support( "hk_kontakter", "custom-fields" );
-	add_post_type_support( "hk_kontakter", "revisions" );
+		register_post_type( 'hk_kontakter',
+			array(
+				'labels' => array(
+					'name' => __( 'Kontakter' ),
+					'singular_name' => __( 'Kontakt' )
+				),
+				'public' => true,
+				'has_archive' => true,
+				'rewrite' => array('slug' => 'kontakt')
+			)
+		);
+		add_post_type_support( "hk_kontakter", "title" );
+		add_post_type_support( "hk_kontakter", "editor" );
+		add_post_type_support( "hk_kontakter", "author" );
+		add_post_type_support( "hk_kontakter", "thumbnail" );
+		//add_post_type_support( "hk_kontakter", "excerpt" );
+		//add_post_type_support( "hk_kontakter", "trackbacks" );
+		//add_post_type_support( "hk_kontakter", "custom-fields" );
+		add_post_type_support( "hk_kontakter", "revisions" );
 
-	register_taxonomy_for_object_type( "category", "hk_kontakter" );
-	//register_taxonomy_for_object_type( "post_tag", "hk_kontakter" );
-
+		register_taxonomy_for_object_type( "category", "hk_kontakter" );
+		//register_taxonomy_for_object_type( "post_tag", "hk_kontakter" );
+	}
 }
 
 
@@ -125,7 +127,7 @@ function hk_contacts_generate_cache() {
 
   	// skip if no category
   	if (count($category_in) <= 0)
-  		return "no selected category";
+  		return "";
 
 	$args = array(
 		'posts_per_page' => 3,
@@ -149,7 +151,7 @@ function hk_contacts_generate_cache() {
 	      	
 	      	// The Loop
 	   		while ( $the_query->have_posts() ) : $the_query->the_post();
-	   		
+
 				$retValue .= "<div class='contact-wrapper'>";
 				$retValue .= "<div class='icon'>&nbsp;</div>";
 				$retValue .= "<div class='img-wrapper' style='display:none'>" . get_the_post_thumbnail(get_the_ID(),"contact-image") . "</div>";

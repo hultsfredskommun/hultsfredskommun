@@ -476,7 +476,13 @@ function extra_tag_init() {
 			'label' => __( 'Vem' ),
 			'sort' => true,
 			'args' => array( 'orderby' => 'term_order' ),
-			'rewrite' => array( 'slug' => 'vem' )
+			'rewrite' => array( 'slug' => 'vem' ),
+			'capabilities' => array (
+	            'manage_terms' => 'administrator',
+	            'edit_terms' => 'administrator',
+	            'delete_terms' => 'administrator',
+	            'assign_terms' => 'administrator', 'editor', 'author', 'contributor'
+            )
 		)
 	);
 	register_taxonomy(
@@ -487,7 +493,13 @@ function extra_tag_init() {
 			'label' => __( 'Var' ),
 			'sort' => true,
 			'args' => array( 'orderby' => 'term_order' ),
-			'rewrite' => array( 'slug' => 'ort' )
+			'rewrite' => array( 'slug' => 'ort' ),
+			'capabilities' => array (
+	            'manage_terms' => 'administrator',
+	            'edit_terms' => 'administrator',
+	            'delete_terms' => 'administrator',
+	            'assign_terms' => 'administrator', 'editor', 'author', 'contributor'
+            )
 		)
 	);
 }

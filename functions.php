@@ -223,25 +223,52 @@ add_action('wp_head', 'setup_javascript_settings');
  * Change name of menus in admin 
  */
 
+
+// remove links/menus from the admin bar 
+function hk_admin_bar_render() { 
+	global $wp_admin_bar; 
+    if (!current_user_can("administrator")) {
+		$wp_admin_bar->remove_menu('new-content'); 
+	}
+} 
+add_action( 'wp_before_admin_bar_render', 'hk_admin_bar_render' ); 
+
 /* change names in admin menus */
 function change_post_menu_label() {
     global $menu;
-    global $submenu;
+	global $submenu;
+
     $menu[5][0] = 'Sidor';
     $submenu['edit.php'][5][0] = 'Sidor';
     $submenu['edit.php'][10][0] = 'Skapa ny';
     //$submenu['edit.php'][15][0] = 'Status'; // Change name for categories
     //$submenu['edit.php'][16][0] = 'Labels'; // Change name for tags
-
-    $menu[20][0] = 'Special';
-    $submenu['edit.php?post_type=page'][5][0] = 'Special';
-    $submenu['edit.php?post_type=page'][10][0] = 'Skapa';
-    $submenu['edit.php?post_type=page'][5][0] = 'Special';
+    if (!current_user_can("administrator")) {
+	    $menu[20][0] = 'Special';
+	    $submenu['edit.php?post_type=page'][5][0] = 'Special';
+	    $submenu['edit.php?post_type=page'][10][0] = 'Skapa';
+	    $submenu['edit.php?post_type=page'][5][0] = 'Special';
+	}
 
     // hide linkmanager
     unset($menu[15]);
+
+    // hide tag divs if not administrator
+    if (!current_user_can("administrator")) {
+    	// hide category submenu
+	    unset($submenu['edit.php'][15][0]);
+    	// hide tags submenu
+	    unset($submenu['edit.php'][16][0]);
+	    // hide pages menu "special"
+	    unset($menu[20]);
+	    // hide meta tag boxes in edit
+    	remove_meta_box("tagsdiv-post_tag","post");
+    	remove_meta_box("tagsdiv-vem","post");
+    	remove_meta_box("tagsdiv-ort","post");
+	}
     echo '';
 }
+
 
 /* change names in admin pages */
 function change_post_object_label() {
@@ -270,9 +297,10 @@ function change_post_object_label() {
     $labels->not_found = 'Hittade inga';
     $labels->not_found_in_trash = 'Hittade inga i papperskorgen';
 }
-add_action( 'init', 'change_post_object_label' );
-add_action( 'admin_menu', 'change_post_menu_label' );
-
+if (is_admin()) {
+	add_action( 'init', 'change_post_object_label' );
+	add_action( 'admin_menu', 'change_post_menu_label' );
+}
 /* remove unwanted fields from media library items */
 function remove_media_upload_fields( $form_fields, $post ) {
     //unset( $form_fields['image-size'] );
