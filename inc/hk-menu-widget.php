@@ -16,56 +16,9 @@ class HK_Menu_Widget extends WP_Widget {
 	}
 
  	public function form( $instance ) {
-		// outputs the options form on admin
-		if ( isset( $instance[ 'category' ] ) ) {
-			$title = $instance[ 'category' ];
-		}
-		else {
-			$title = "";
-		}
-		?>
-		<p>
-		<p><?php _e( 'No function added to this setting!' ); ?></p>
-		<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php //_e( 'Menu category:' ); ?></label> 
-		</p>
-		<?php 
-		$args = array(
-			'orderby'            => 'ID', 
-			'order'              => 'ASC',
-			'echo'               => 1,
-			'selected'           => esc_attr( $title ),
-			'hierarchical'       => 1, 
-			'show_option_none'   => "Visa underkategorier",
-			'name'               => $this->get_field_name( 'category' ),
-			'id'                 => $this->get_field_id( 'category' ),
-			'depth'              => 0,
-			'taxonomy'           => 'category',
-			'show_count'           => true,
-			'hide_empty'      => false,
-			'hide_if_empty'      => false );  
-			//wp_dropdown_categories( $args ); 
-
 	}
 
 	public function update( $new_instance, $old_instance ) {
-		// processes widget options to be saved
-		$instance = array();
-		$instance['category'] = strip_tags( $new_instance['category'] );
-
-		// set option
-		$option_name = 'hk_menu_category';
-		$newvalue = $instance['category'];
-
-		if ( get_option( $option_name ) != $newvalue ) 
-		{
-			update_option( $option_name, $newvalue );
-		} 
-		else 
-		{
-			$deprecated = ' ';
-	    	$autoload = 'no';
-			add_option( $option_name, $newvalue, $deprecated, $autoload );
-		}
 		return $instance;
 	}
 
@@ -75,7 +28,9 @@ class HK_Menu_Widget extends WP_Widget {
 		echo "<aside id='nav'><nav>";
 		if (is_single())
 		{
+			echo '<div id="selected">';
 			$this->hk_single_page_menu();
+			echo "</div>";
 		}
 		else {
 			echo '<div id="selected">';
@@ -90,8 +45,33 @@ class HK_Menu_Widget extends WP_Widget {
 	}
 
 
-	function hk_single_page_menu() {
-		echo "En sida är vald.";
+	function hk_single_page_menu() { ?>
+		<div class='widget-title'>Sidans etiketter:</div>
+		<ul id="selected_filter">
+		<?php 
+			$categories_list = get_the_category();
+			foreach ( $categories_list as $list):
+				echo "<li class='link cat'><div class='icon'></div><a href='".get_category_link($list->term_id)."'>" . $list->name . "</a></li>";
+			endforeach; // End if categories
+
+			$tags_list = get_the_terms(get_the_ID(),"post_tag");
+			foreach ( $tags_list as $list):
+				echo "<li class='link tag'><div class='icon'></div><a href='".get_tag_link($list->term_id)."'>" . $list->name . "</a></li>";
+			endforeach; // End if tags
+		 
+			$tags_list = get_the_terms(get_the_ID(),"vem");
+			foreach ( $tags_list as $list):
+				echo "<li class='link vem'><div class='icon'></div><a href='".get_term_link($list->slug,"vem")."'>" . $list->name . "</a></li>";
+			endforeach; // End if vem
+
+			$tags_list = get_the_terms(get_the_ID(),"ort");
+			foreach ( $tags_list as $list):
+				echo "<li class='link ort'><div class='icon'></div><a href='".get_term_link($list->slug,"ort")."'>" . $list->name . "</a></li>";
+			endforeach; // End if vem
+
+		?>
+		</ul>
+	<?php 
 	}
 
 

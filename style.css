@@ -912,6 +912,9 @@ a:hover {
 #nav #selected_filter li.noselect .icon {
 	background-image: none;
 }
+#nav #selected_filter li.link .icon {
+	background-image: none;
+}
 #nav #selected_filter li.noselect a {
 	cursor: default;	
 }

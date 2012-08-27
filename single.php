@@ -60,9 +60,10 @@ get_header(); ?>
 				
 					echo "</aside>";
 				endif; ?>
-
+				<?php wp_reset_query(); ?>
 			<?php endif; ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>
