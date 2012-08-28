@@ -1300,6 +1300,7 @@ article:last-child { margin-bottom: 0 }
 }
 .more-content .img-wrapper {
 	width: 100%;
+	line-height: 0;
 }
 .more-content .img-wrapper img,
 .single .post .img-wrapper img { 
