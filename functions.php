@@ -97,6 +97,51 @@ function hk_setup() {
 endif; // hk_setup
 
 
+
+/*
+ * Add unfiltered_html capabilities to administrator, editor and author
+ */
+function add_theme_caps() {
+	$role = get_role( 'administrator' ); 
+	$role->add_cap( 'unfiltered_html' ); 
+	$role = get_role( 'editor' ); 
+	$role->add_cap( 'unfiltered_html' );
+	$role = get_role( 'author' ); 
+	$role->add_cap( 'unfiltered_html' );	 
+}
+add_action( 'admin_init', 'add_theme_caps');
+
+
+/*
+ * Change the WYSIWYG editor buttons
+ */
+function hk_formatTinyMCE($in)
+{
+//	$in['remove_linebreaks']=false;
+//	$in['gecko_spellcheck']=false;
+//	$in['keep_styles']=false;
+//	$in['accessibility_focus']=true;
+//	$in['tabfocus_elements']='major-publishing-actions';
+//	$in['media_strict']=false;
+//	$in['paste_remove_styles']=true;
+//	$in['paste_remove_spans']=true;
+//	$in['paste_strip_class_attributes']='none';
+//	$in['paste_text_use_dialog']=true;
+//	$in['wpeditimage_disable_captions']=true;
+//	$in['plugins']='inlinepopups,tabfocus,paste,media,fullscreen,wordpress,wpeditimage,wpgallery,wplink,wpdialogs,wpfullscreen';
+//	$in['content_css']=get_template_directory_uri() . "/editor-style.css";
+//	$in['wpautop']=true;
+//	$in['apply_source_formatting']=false;
+	$in['theme_advanced_buttons1']='formatselect,removeformat,|,bold,italic,|,bullist,numlist,blockquote,|,link,unlink,|,charmap,|,spellchecker,|,undo,redo,|,wp_fullscreen';
+	$in['theme_advanced_buttons2']='';
+	$in['theme_advanced_buttons3']='';
+	$in['theme_advanced_buttons4']='';
+	return $in;
+}
+add_filter('tiny_mce_before_init', 'hk_formatTinyMCE' );
+
+
+
 /* 
  * Media Library and images
  */
@@ -504,49 +549,3 @@ function twentyeleven_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'twentyeleven_body_classes' );
-
-
-/**
- * Adds functionality to the top-menu.
- * This version adds the description to each menu-item.
- */
-class mainMenu extends Walker_Nav_Menu
-{
-	function start_el(&$output, $item, $depth, $args) {
-		global $wp_query;
-		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
- 
-		$class_names = $value = '';
- 
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
- 
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
- 
-		$output .= $indent . '<div id="menu-item-'. $item->ID . '" class="'.$class_names.'">';
-		 
-		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
- 
-		$item_output = $args->before;
-		$item_output .= '<a'. $attributes .'>';
-		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-		$item_output .= '</a>';/*<span class="descr">' . $item->description . '</span>';*/
-		$item_output .= '';
-		
-		
-		//TODO
-		//<div class="sub-menu"> listar cat.
-		
-		
-		$item_output .= $args->after;
-		
-		
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-		
-		$output .= '</div>';
-	}
-}
-
-

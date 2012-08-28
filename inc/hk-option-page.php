@@ -341,10 +341,12 @@ function hk_theme_options_validate($input) {
 
 /* make media upload work */
 function my_admin_scripts() {
-	wp_enqueue_script('media-upload');
-	wp_enqueue_script('thickbox');
-	wp_register_script('my-upload', get_template_directory_uri() . '/js/hk-option-page.js', array('jquery','media-upload','thickbox'));
-	wp_enqueue_script('my-upload');
+	if ($_REQUEST["page"] == "hk_theme_options") {
+		wp_enqueue_script('media-upload');
+		wp_enqueue_script('thickbox');
+		wp_register_script('my-upload', get_template_directory_uri() . '/js/hk-option-page.js', array('jquery','media-upload','thickbox'));
+		wp_enqueue_script('my-upload');
+	}
 }
  
 function my_admin_styles() {
