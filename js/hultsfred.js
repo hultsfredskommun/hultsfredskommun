@@ -280,7 +280,8 @@ function readMoreToggle(el){
 		$(article).find('.summary-content').after(morediv);
 
 		$.ajaxSetup({cache:false});
-		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id}, function()
+		log( hultsfred_object["templateDir"] + " " + hultsfred_object["blogId"]);
+		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 		{
 			//add permalink
 			var url = $(this).parents('article').find(".entry-title > a").attr("href");
