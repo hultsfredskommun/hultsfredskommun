@@ -91,7 +91,7 @@
 					<?php while( has_sub_field('hk_related_pages') ): ?>
 						<li class="related_page">
 							<?php $value = get_sub_field('hk_related_page'); ?>
-							<a href="<?php echo $value->guid; ?>"><?php echo $value->post_title; ?></a>
+							<a href="<?php echo $value->guid; ?>" title="<?php echo get_sub_field('hk_related_page_description'); ?>"><?php echo $value->post_title; ?></a>
 						</li>			 
 					<?php endwhile; ?>			 
 				<?php endif; ?> 
@@ -99,7 +99,7 @@
 				<?php if( get_field('hk_related_links') ): ?>
 					<?php while( has_sub_field('hk_related_links') ): ?>
 						<li class="related_link">
-							<a href="<?php echo get_sub_field('hk_related_link_url'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
+							<a href="<?php echo get_sub_field('hk_related_link_url'); ?>" title="<?php echo get_sub_field('hk_related_link_description'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
 						</li>			 
 					<?php endwhile; ?>			 
 				<?php endif; ?> 
@@ -120,7 +120,7 @@
 				</ul>
 			<?php endif; ?>
 
-			<div class="editor">Webbansvarig: <?php the_author(); ?></div>
+			<div class="editor">Sidansvarig: <?php the_author(); ?></div>
 
 			<?php if ( comments_open() ) : ?>
 			

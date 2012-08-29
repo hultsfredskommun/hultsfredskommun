@@ -22,65 +22,6 @@
 
 if(function_exists("register_field_group"))
 {
-	
-	register_field_group(array (
-		'id' => '503ddc4d045c3',
-		'title' => 'Relaterade fält',
-		'fields' => 
-		array (
-			0 => 
-			array (
-				'key' => 'field_503686ed0f82c',
-				'label' => 'Länk	till egen sida',
-				'name' => 'hk_related_post_link',
-				'type' => 'page_link',
-				'instructions' => '',
-				'required' => '0',
-				'post_type' => 
-				array (
-					0 => 'post',
-				),
-				'allow_null' => '1',
-				'multiple' => '0',
-				'order_no' => '0',
-			),
-			1 => 
-			array (
-				'key' => 'field_503688b2c76bf',
-				'label' => 'Länk till annan sida',
-				'name' => 'hk_related_link_url',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => '0',
-				'default_value' => '',
-				'formatting' => 'none',
-				'order_no' => '1',
-			),
-		),
-		'location' => 
-		array (
-			'rules' => 
-			array (
-				0 => 
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'hk_related',
-					'order_no' => '0',
-				),
-			),
-			'allorany' => 'all',
-		),
-		'options' => 
-		array (
-			'position' => 'normal',
-			'layout' => 'default',
-			'hide_on_screen' => 
-			array (
-			),
-		),
-		'menu_order' => 0,
-	));
 	register_field_group(array (
 		'id' => '503ddc4d04719',
 		'title' => 'Sidans kontakt',
@@ -146,8 +87,8 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
-	register_field_group(array (
-		'id' => '503ddc4d04853',
+register_field_group(array (
+		'id' => '503e1d21c339a',
 		'title' => 'Sidans relaterad information',
 		'fields' => 
 		array (
@@ -178,6 +119,16 @@ if(function_exists("register_field_group"))
 						'allow_null' => '0',
 						'multiple' => '0',
 						'order_no' => '0',
+					),
+					1 => 
+					array (
+						'label' => 'Beskrivande text',
+						'name' => 'hk_related_page_description',
+						'type' => 'textarea',
+						'default_value' => '',
+						'formatting' => 'br',
+						'key' => 'field_503e1ff623fa9',
+						'order_no' => '1',
 					),
 				),
 				'row_min' => '0',
@@ -216,6 +167,16 @@ if(function_exists("register_field_group"))
 						'formatting' => 'none',
 						'order_no' => '1',
 					),
+					2 => 
+					array (
+						'label' => 'Beskrivande text',
+						'name' => 'hk_related_link_description',
+						'type' => 'textarea',
+						'default_value' => '',
+						'formatting' => 'br',
+						'key' => 'field_503e1ff623fa9',
+						'order_no' => '2',
+					),
 				),
 				'row_min' => '0',
 				'row_limit' => '',
@@ -235,8 +196,15 @@ if(function_exists("register_field_group"))
 					'value' => 'post',
 					'order_no' => '0',
 				),
+				1 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'hk_related',
+					'order_no' => '1',
+				),
 			),
-			'allorany' => 'all',
+			'allorany' => 'any',
 		),
 		'options' => 
 		array (
