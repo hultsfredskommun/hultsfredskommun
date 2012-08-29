@@ -390,7 +390,7 @@ body {
 	width: 72%;
 }
 #primary.with-secondary {
-	width: 48%%;
+	width: 49.5%;
 }
 #content {
 	#max-width: 600px;
@@ -1277,6 +1277,9 @@ article:last-child { margin-bottom: 0 }
 	margin: 0 10px 0 0;
 	overflow: hidden;
 	line-height: 0;
+}
+.with-secondary .summary-content .img-wrapper {
+	width: 100%;
 }
 .sticky .summary-content .img-wrapper {
 	float: right;
