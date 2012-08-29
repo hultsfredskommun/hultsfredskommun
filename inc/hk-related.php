@@ -81,7 +81,7 @@ function hk_related_generate_cache() {
  	// return current page related content if in_single
   	if (is_single())
   	{ 
-		if( get_field('hk_related_pages') && get_field('hk_related_links') ) : 
+		if( get_field('hk_related_pages') || get_field('hk_related_links') ) : 
 	        $retValue .= "<aside class='widget hk_related'>";
 	      	$retValue .= "<h3 class='widget-title'>Relaterat</h3>";
 			if( get_field('hk_related_pages') ) : 

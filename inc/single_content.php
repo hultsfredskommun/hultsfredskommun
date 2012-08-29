@@ -84,7 +84,7 @@
 				<?php endif; // End if ort ?>
 			</div>
 
-			<?php if( get_field('hk_related_pages') && get_field('hk_related_links') ) : ?>
+			<?php if( get_field('hk_related_pages') || get_field('hk_related_links') ) : ?>
 				<div>Relaterad information</div>
 				<ul>
 				<?php if( get_field('hk_related_pages') ): ?>
