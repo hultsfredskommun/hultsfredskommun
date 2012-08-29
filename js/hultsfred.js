@@ -698,6 +698,13 @@ $(document).ready(function(){
 
 		}
 	});
+	
+	$(".only-widget-title").css("cursor","pointer").each(function() {
+		$(this).find(".hk_kontakter").hide();
+		$(this).click(function() {
+			$(this).find(".hk_kontakter").toggle();
+		});
+	});
 
 	/*
 	 * set hover action on related
