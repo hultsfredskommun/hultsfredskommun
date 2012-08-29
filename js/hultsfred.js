@@ -675,10 +675,10 @@ $(document).ready(function(){
 
 
 	/*
-	 * set click action on contacts
+	 * set click action on contacts and events
 	 */
 	contact_collapse_height = 50;
-	$(".contact-wrapper").each(function() {
+	$(".contact-wrapper, .events-wrapper").each(function() {
  		if ($(this).height() > contact_collapse_height) {
 		 	$(this).attr("oldheight", $(this).height());
 	 		$(this).css("height",contact_collapse_height + "px");
