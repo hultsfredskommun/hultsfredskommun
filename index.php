@@ -22,7 +22,7 @@ get_header(); ?>
 </div><!-- #firstpage-top-sidebar -->
 <?php endif; ?>
 
-<div id="primary">
+<div id="primary" <?php echo (is_active_sidebar("firstpage-secondary-sidebar")) ? "class='with-secondary'" : ""; ?>>
 	<div id="content" role="main">
 		<?php 
 			/* Query all posts with selected startpage category */
@@ -67,6 +67,11 @@ get_header(); ?>
 	</div><!-- #content -->
 </div><!-- #primary -->
 
+<?php if (is_active_sidebar("firstpage-secondary-sidebar")) : ?>
+<div id="firstpage-secondary-sidebar">
+	<?php dynamic_sidebar('firstpage-secondary-sidebar'); ?>
+</div>
+<?php endif; ?>
 <div id="firstpage-sidebar">
 	<?php dynamic_sidebar('firstpage-sidebar'); ?>
 </div>

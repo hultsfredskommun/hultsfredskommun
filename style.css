@@ -52,6 +52,7 @@ body, input, textarea,
 /* white text color */
 #firstpage-top-content .widget_hk_text_widget .text a,
 .hk_kontakter .widget-title,
+.hk_events .widget-title,
 .hk_related .widget-title {
 	color: #fff; /* white */	
 }
@@ -155,6 +156,9 @@ article.sticky {
 /* right column widget color */
 .hk_kontakter .widget-title {
 	background: #E60040;
+}
+.hk_events .widget-title {
+	background: #00A4D6;
 }
 .hk_related .widget-title {
 	background: #00A4D6;
@@ -385,12 +389,20 @@ body {
 	margin: 0;
 	width: 72%;
 }
+#primary.with-secondary {
+	width: 48%%;
+}
 #content {
 	#max-width: 600px;
 }
 #firstpage-sidebar,
 #sidebar-wrapper {
 	float: right;
+	width: 24%;
+}
+#firstpage-secondary-sidebar {
+	float: left;
+	margin-left: 1%;
 	width: 24%;
 }
 
@@ -997,6 +1009,11 @@ a:hover {
 	font-size: 12px;
 	line-height: 18px;
 }
+.entry-meta .tag-cloud  span {
+	clear: both;
+	display: block;
+	margin: 0.8em 0;
+}
 .entry-meta .tag-cloud  a {
 	font-weight: normal;
 	margin: 0 0.2em;
@@ -1085,7 +1102,7 @@ a:hover {
 	display: block;
 }
 
-/* -- Vem är du -- */
+/* -- Vem Ã¤r du -- */
 #firstpage-top-content {
 	border: none;
 	line-height: 140%;
@@ -1385,6 +1402,7 @@ article:last-child { margin-bottom: 0 }
 	margin: 0 0 .8em;
 }
 .widget-title {
+	font-size: 15px;	
 	line-height: 1.2em;
 	padding: .4em .8em .4em;
 }
@@ -1409,6 +1427,7 @@ article:last-child { margin-bottom: 0 }
 }
 
 .hk_kontakter .widget-title,
+.hk_events .widget-title,
 .hk_related .widget-title,
 #nav .widget-title {
 	border-top-right-radius: 5px;
@@ -1418,12 +1437,14 @@ article:last-child { margin-bottom: 0 }
 	border-top-right-radius: 0;	
 }
 .hk_kontakter.widget .icon,
+.hk_events.widget .icon,
 .hk_related div.icon {
 	height: 24px;
 	width: 18px;
 	float: left;
 }
 .hk_kontakter.widget .hk_kontakter,
+.hk_events.widget .hk_events,
 .hk_related.widget .hk_related,
 .hk_related.widget .attachment {
 	font-size: 12px;
@@ -1431,15 +1452,18 @@ article:last-child { margin-bottom: 0 }
 }
 
 .hk_kontakter.widget h4,
+.hk_events.widget h4,
 .hk_related.widget h4 {
 	clear: none;
 }
 .hk_kontakter.widget .hk_kontakter,
+.hk_events.widget .hk_events,
 .hk_related.widget .hk_related,
 .hk_related.widget .attachment {
 	margin-left: 30px;
 }
 .hk_kontakter.widget .contact-wrapper,
+.hk_events.widget .events-wrapper,
 .hk_related.widget .related-wrapper {
 	overflow: hidden;
 }
@@ -1451,12 +1475,16 @@ article:last-child { margin-bottom: 0 }
 
 /* widget icons */
 .hk_kontakter.widget .icon,
+.hk_events.widget .icon,
 .hk_related.widget .icon {
 	margin: 0.4em;
 	background-image: url("images/sprite.png");
 }
 .hk_kontakter.widget .icon {
 	background-position: 0px -59px;
+}
+.hk_events.widget .icon {
+	background-position: 0px -35px;
 }
 .hk_related div.ppt,.hk_related div.pptx {
 	background-position: -36px -352px;

@@ -75,6 +75,9 @@ function hk_setup() {
 	// Grab hk related.
 	require( get_template_directory() . '/inc/hk-related.php' );
 
+	// Grab hk events.
+	require( get_template_directory() . '/inc/hk-events.php' );
+
 	// Grab hk menu widget.
 	require( get_template_directory() . '/inc/hk-menu-widget.php' );
 	
@@ -252,7 +255,8 @@ function setup_javascript_settings() {
 			'startPage' => 1,
 			'maxPages' => $max,
 			'nextLink' => str_replace(curBaseURL(), "", next_posts($max, false)),
-			'templateDir' => get_bloginfo('template_directory'),
+			'templateDir' => get_stylesheet_directory_uri(),
+			'blogId' => $blog_id,
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
 			'currentFilter' => json_encode($filter)
 		)

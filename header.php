@@ -151,8 +151,6 @@
 			?>
 			<div class="clear"></div>
 		</nav><!-- #access -->
-
-		<div id="blog_id" style="display:none"><?php global $blog_id; echo $blog_id; ?></div>
 		
 	</header><!-- #branding -->
 

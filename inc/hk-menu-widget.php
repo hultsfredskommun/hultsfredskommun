@@ -50,24 +50,24 @@ class HK_Menu_Widget extends WP_Widget {
 		<ul id="selected_filter">
 		<?php 
 			$categories_list = get_the_category();
-			foreach ( $categories_list as $list):
+			if (!empty($categories_list)) : foreach ( $categories_list as $list):
 				echo "<li class='link cat'><div class='icon'></div><a href='".get_category_link($list->term_id)."'>" . $list->name . "</a></li>";
-			endforeach; // End if categories
+			endforeach; endif; // End if categories
 
 			$tags_list = get_the_terms(get_the_ID(),"post_tag");
-			foreach ( $tags_list as $list):
+			if (!empty($tags_list)) : foreach ( $tags_list as $list):
 				echo "<li class='link tag'><div class='icon'></div><a href='".get_tag_link($list->term_id)."'>" . $list->name . "</a></li>";
-			endforeach; // End if tags
+			endforeach; endif; // End if tags
 		 
 			$tags_list = get_the_terms(get_the_ID(),"vem");
-			foreach ( $tags_list as $list):
+			if (!empty($tags_list)) : foreach ( $tags_list as $list):
 				echo "<li class='link vem'><div class='icon'></div><a href='".get_term_link($list->slug,"vem")."'>" . $list->name . "</a></li>";
-			endforeach; // End if vem
+			endforeach; endif; // End if vem
 
 			$tags_list = get_the_terms(get_the_ID(),"ort");
-			foreach ( $tags_list as $list):
+			if (!empty($tags_list)) : foreach ( $tags_list as $list):
 				echo "<li class='link ort'><div class='icon'></div><a href='".get_term_link($list->slug,"ort")."'>" . $list->name . "</a></li>";
-			endforeach; // End if vem
+			endforeach; endif; // End if vem
 
 		?>
 		</ul>
@@ -131,7 +131,7 @@ class HK_Menu_Widget extends WP_Widget {
 				$ortlink= "&ort=" . $ort_tags;
 				
 				// add category parents to selected_array set noselect if there are a selected child
-				if (count($parents) > 0) {
+				if (!empty($parents)) {
 					$prev_parent = $parents[0]->parent;
 					$parent_count = 1;
 
@@ -167,7 +167,7 @@ class HK_Menu_Widget extends WP_Widget {
 				// check if some tags selected
 				if ($tags[$tag] != "") {
 					$selected_tags = explode(",", $tags[$tag]);
-					foreach ($selected_tags as $value) {
+					if (!empty($selected_tags)) : foreach ($selected_tags as $value) {
 						// add name and url to remove the $value tag
 						$tags[$tag] = get_query_var($tag);
 						$tags[$tag] = str_replace($value, "", $tags[$tag]);
@@ -177,7 +177,7 @@ class HK_Menu_Widget extends WP_Widget {
 						$ortlink= "&ort=" . $tags["ort"];
 						$searchlink= "&s=" . $search;
 						$selected_array[] = array("name" => $value, "url" => $caturl . $taglink . $vemlink . $ortlink . $searchlink, "noselect" => "", "tag" => $tag );
-					}
+					} endif;
 				}
 			}
 
@@ -188,7 +188,7 @@ class HK_Menu_Widget extends WP_Widget {
 			{
 				echo "<li class='noselect " . $selected_array[0]["tag"] . "'><div class='icon'></div><a>" . $selected_array[0]["name"] . "</a></li>";
 			}
-			else if (count($selected_array) > 0) {
+			else if (!empty($selected_array)) {
 				foreach ($selected_array as $value) {
 					echo "<li class='" . $value["noselect"] . " " . $value["tag"] . "'><div class='icon'></div><a href='" . $value["url"] . "'>" . $value["name"] . "</a></li>";
 				}
@@ -256,13 +256,13 @@ class HK_Menu_Widget extends WP_Widget {
 			$tag_cloud = $set_tags;
 			
 			// echo the tags that are left in the array
-			if (count($tag_cloud) > 0) : ?>
+			if (!empty($tag_cloud)) : ?>
 				<!--span class='heading'><?php echo $tag_heading[$tag_key]; ?> &raquo;</span-->
 				<?php if ($hasFilters) : ?> 
 				<hr>
 				<?php endif; ?>
 				<ul class="<?php echo $tag_key; ?>">
-				<?php foreach ($tag_cloud as $key => $value) {
+				<?php if (!empty($tag_cloud)) : foreach ($tag_cloud as $key => $value) {
 					$hasFilters = true;
 					if ($var[$tag_key] == "") {
 						$link[$tag_key] = $key;
@@ -283,7 +283,7 @@ class HK_Menu_Widget extends WP_Widget {
 					"'>" . $value . "</a></li> ";
 
 					$link[$tag_key] = $var[$tag_key];
-				} ?>
+				} endif; ?>
 		        
 		        </ul>
 			<?php 
@@ -333,7 +333,7 @@ class HK_Menu_Widget extends WP_Widget {
 		if ($search != "")
 			$query["s"] = $search;
 
-		if (count($vem_array) > 0 && count($ort_array) > 0) {
+		if (!empty($vem_array) && !empty($ort_array)) {
 			$query['tax_query'] = array(
 				'relation' => 'AND',
 				array(
@@ -348,7 +348,7 @@ class HK_Menu_Widget extends WP_Widget {
 				)
 			);
 		}						 	
-		else if (count($vem_array) > 0) {
+		else if (!empty($vem_array)) {
 			$query['tax_query'] = array(
 				array(
 					'taxonomy' => 'vem',
@@ -356,7 +356,7 @@ class HK_Menu_Widget extends WP_Widget {
 					'terms' => $vem_array )
 			);
 		}						 	
-		else if (count($ort_array) > 0) {
+		else if (!empty($ort_array)) {
 			$query['tax_query'] = array(
 				array(
 					'taxonomy' => 'ort',
@@ -369,9 +369,9 @@ class HK_Menu_Widget extends WP_Widget {
 		// loop all posts to get all taxonomies used 
 		$wpq = new WP_Query($query);
 		if ($wpq->have_posts()) : while ($wpq->have_posts()) : $wpq->the_post();
-			if ($taxonomies) : foreach ($taxonomies as $taxonomy) {
+			if (!empty($taxonomies)) : foreach ($taxonomies as $taxonomy) {
 			    $posttags = wp_get_post_terms(get_the_ID(),$taxonomy);
-				if ($posttags) : foreach($posttags as $tag) {
+				if (!empty($posttags)) : foreach($posttags as $tag) {
 					// only show categories that are children to selected category
 					if ($taxonomy != "category" || $this->hk_childHasParent($tag->term_id, $cat)) :
 						//USING JUST $tag MAKING $all_tags_arr A MULTI-DIMENSIONAL ARRAY, WHICH DOES WORK WITH array_unique
@@ -381,9 +381,11 @@ class HK_Menu_Widget extends WP_Widget {
 			} endif;
 		endwhile; endif;
 
-		if ($taxonomies) : foreach ($taxonomies as $taxonomy) {
+		if (!empty($taxonomies)) : foreach ($taxonomies as $taxonomy) {
 			//REMOVES DUPLICATES
-			$tags_arr[$taxonomy] = array_unique($all_tags_arr[$taxonomy]); 
+			if (!empty($all_tags_arr[$taxonomy])) {
+				$tags_arr[$taxonomy] = array_unique($all_tags_arr[$taxonomy]);
+			} 
 		} endif;
 		
 		return $tags_arr;
@@ -558,7 +560,7 @@ class Tag_Rewrite {
 } // End Class
 
 // Instantiate class.
-$tag_rewrite = new Tag_Rewrite;
+//$tag_rewrite = new Tag_Rewrite;
 
 // SHOULD WE ENABLE THIS??
 //add_action( 'init', array(&$tag_rewrite, 'flush_rewrite_rules') );

@@ -77,6 +77,43 @@ function hk_related_generate_cache() {
  	
  	$category_in = array($cat);
 
+
+ 	// return current page related content if in_single
+  	if (is_single())
+  	{ 
+		if( get_field('hk_related_pages') && get_field('hk_related_links') ) : 
+	        $retValue .= "<aside class='widget hk_related'>";
+	      	$retValue .= "<h3 class='widget-title'>Relaterat</h3>";
+			if( get_field('hk_related_pages') ) : 
+				while( has_sub_field('hk_related_pages') ) :
+					$ext = "internal link";
+					$value = get_sub_field('hk_related_page');
+					$retValue .= "<div class='related-wrapper'>";
+	       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
+					$retValue .= "<div id='related-" . $value->ID . "' class='" . implode(" ",get_post_class("hk_related")) . "'>";
+					$retValue .= "<h4><a class='permalink' href='". $value->guid . "'>" . $value->post_title . "</a></h4>";
+					$retValue .= "<div class='content'>" . str_replace("\n","<br>",$value->post_content) . "</div>";
+					$retValue .= "</div></div>";
+		    	endwhile;
+		 	endif; 
+			if( get_field('hk_related_links') ) : 
+				while( has_sub_field('hk_related_links') ) :
+					$ext = "external link";
+					$retValue .= "<div class='related-wrapper'>";
+	       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
+					$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
+					$retValue .= "<h4><a class='permalink' href='". get_sub_field('hk_related_link_url') . "'>" . get_sub_field('hk_related_link_name'). "</a></h4>";
+					$retValue .= "<div class='content'>" . get_sub_field('hk_related_link_description') . "</div>";
+					$retValue .= "</div></div>";
+		    	endwhile;
+		 	endif; 
+			$retValue .= "</aside>";
+		endif;
+		echo $retValue;	
+		return;
+	}
+
+
 	/* only return related if in category */ 
 	if (empty($category_in))
 		return "";

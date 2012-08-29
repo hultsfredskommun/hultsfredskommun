@@ -125,6 +125,29 @@ function hk_contacts_generate_cache() {
 		$category_in[] = get_query_var("cat");
   	}
 
+ 	// return current page related contact if in_single
+  	if (is_single())
+  	{ 
+		if( get_field('hk_contacts') ) : 
+	        $retValue .= "<aside class='widget hk_kontakter'>";
+	      	$retValue .= "<h3 class='widget-title'>Kontakta oss</h3>";
+			if( get_field('hk_contacts') ) : 
+				while( has_sub_field('hk_contacts') ) :
+					$value = get_sub_field('hk_contact');
+					$retValue .= "<div class='contact-wrapper'>";
+					$retValue .= "<div class='icon'>&nbsp;</div>";
+					$retValue .= "<div class='img-wrapper' style='display:none'>" . get_the_post_thumbnail($value->ID,"contact-image") . "</div>";
+					$retValue .= "<div id='contact-" . $value->ID . "' class='" . implode(" ",get_post_class("hk_kontakter")) . "'>";
+					$retValue .= "<h4><a class='permalink' href='". $value->guid . "'>" . $value->post_title . "</a></h4>";
+					$retValue .= "<div class='content'>" . str_replace("\n","<br>",$value->post_content) . "</div>";
+					$retValue .= "</div></div>";
+		    	endwhile;
+		 	endif; 
+			$retValue .= "</aside>";
+		endif;
+		echo $retValue;	
+	}
+
   	// skip if no category
   	if (count($category_in) <= 0)
   		return "";
@@ -147,7 +170,7 @@ function hk_contacts_generate_cache() {
 		if ($the_query->have_posts())
 		{ 
   	        $retValue .= "<aside class='widget hk_kontakter'>";
-	      	$retValue .= "<h3 class='widget-title'>Kontakter</h3>";
+	      	$retValue .= "<h3 class='widget-title'>Kontakta oss</h3>";
 	      	
 	      	// The Loop
 	   		while ( $the_query->have_posts() ) : $the_query->the_post();

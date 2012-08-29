@@ -83,6 +83,45 @@
 
 				<?php endif; // End if ort ?>
 			</div>
+
+			<?php if( get_field('hk_related_pages') && get_field('hk_related_links') ) : ?>
+				<div>Relaterad information</div>
+				<ul>
+				<?php if( get_field('hk_related_pages') ): ?>
+					<?php while( has_sub_field('hk_related_pages') ): ?>
+						<li class="related_page">
+							<?php $value = get_sub_field('hk_related_page'); ?>
+							<a href="<?php echo $value->guid; ?>"><?php echo $value->post_title; ?></a>
+						</li>			 
+					<?php endwhile; ?>			 
+				<?php endif; ?> 
+
+				<?php if( get_field('hk_related_links') ): ?>
+					<?php while( has_sub_field('hk_related_links') ): ?>
+						<li class="related_link">
+							<a href="<?php echo get_sub_field('hk_related_link_url'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
+						</li>			 
+					<?php endwhile; ?>			 
+				<?php endif; ?> 
+				</ul>
+			<?php endif; ?>
+
+			<?php if( get_field('hk_contacts') ) : ?>
+				<div>Kontakta oss</div>
+				<ul>
+				<?php if( get_field('hk_contacts') ): ?>
+					<?php while( has_sub_field('hk_contacts') ): ?>
+						<li class="related_contact">
+							<?php $value = get_sub_field('hk_contact'); ?>
+							<a href="<?php echo $value->guid; ?>"><?php echo $value->post_title; ?></a>
+						</li>			 
+					<?php endwhile; ?>			 
+				<?php endif; ?> 
+				</ul>
+			<?php endif; ?>
+
+			<div class="editor">Webbansvarig: <?php the_author(); ?></div>
+
 			<?php if ( comments_open() ) : ?>
 			
 			<span class="comments-link"><?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'twentyeleven' ) . '</span>', __( '<b>1</b> Reply', 'twentyeleven' ), __( '<b>%</b> Replies', 'twentyeleven' ) ); ?></span>

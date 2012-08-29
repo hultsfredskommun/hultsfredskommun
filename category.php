@@ -40,11 +40,11 @@ get_header();
 					if ($_REQUEST["orderby"] == "") :
 						/* Get category id */
 						$catID = get_query_var("cat");
-					
+
 						/* Get all sticky posts */
 						$sticky = get_option( 'sticky_posts' );
 						
-						if (isset($sticky)):
+						if ($catID != "" && !empty($sticky)):
 							/* Query sticky posts */
 							query_posts( array( 'category__in' => $catID, 'post__in' => $sticky ) );
 							
