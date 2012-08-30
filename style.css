@@ -944,6 +944,7 @@ a:hover {
 	position: relative;
 	overflow: hidden;
 	float: left;
+	margin-bottom: 1.2em;
 }
 .slideshow .slideshow_bg > img {
     float: left;
