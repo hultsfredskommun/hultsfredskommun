@@ -21,21 +21,39 @@ class HK_slideshow extends WP_Widget {
 		$this->vars['divclass'] = 'slideshow';
 		$this->vars['posts_per_page'] = '-1';
 		$this->vars['thumbnail-size'] = 'slideshow-image';
+		$this->vars['width'] = '100%';
+
 	}
 
  	public function form( $instance ) {
-		// outputs the options form on admin
+		if ( isset( $instance[ 'width' ] ) ) {
+			$width = $instance[ 'width' ];
+		} else {
+			$width = auto;
+		}
+
+		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e( 'Bredd:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" type="text" value="<?php echo esc_attr( $width); ?>" />
+		</p>
+		<?php
 	}
 
 	public function update( $new_instance, $old_instance ) {
-		// processes widget options to be saved
-		return $new_instance;
+		$instance = array();
+		$instance['width'] = strip_tags( $new_instance['width'] );
+		return $instance;
 	}
 
 	public function widget( $args, $instance ) {
-	       	extract( $args );
+	    extract( $args );
+
+		if (isset($instance['width']))
+			$this->vars['width'] = $instance['width'];
 
 		echo hk_slideshow_generate_output($this->vars);
+
 		// TODO?? generate output on post_save
 		//$cache = get_option( $this->option_cache_name );
 		if ($cache != "") {
@@ -78,7 +96,7 @@ function hk_slideshow_generate_output($vars) {
 		add_action('pre_get_posts', 'hk_views_sorting');
 		
 		if ($meta_query->have_posts()) {
-			$retValue .= "<div class='slideshow'>";
+			$retValue .= "<div class='slideshow' style='width: " . $vars['width'] . " !important'>";
 			$retValue .= 	"<div class='slideshow_bg'>";
 			$retValue .=		"<img src='". get_bloginfo("template_directory") . "/images/slideshow_bg.png'>";
 			$retValue .=	"</div>";

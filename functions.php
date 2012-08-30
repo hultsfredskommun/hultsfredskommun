@@ -314,11 +314,13 @@ function change_post_menu_label() {
 	    unset($submenu['edit.php'][16][0]);
 	    // hide pages menu "special"
 	    unset($menu[20]);
-	    // hide meta tag boxes in edit
-    	remove_meta_box("tagsdiv-post_tag","post");
-    	remove_meta_box("tagsdiv-vem","post");
-    	remove_meta_box("tagsdiv-ort","post");
 	}
+
+    // hide meta tag boxes in edit
+	remove_meta_box("tagsdiv-post_tag","post");
+	remove_meta_box("tagsdiv-vem","post");
+	remove_meta_box("tagsdiv-ort","post");
+
     echo '';
 }
 

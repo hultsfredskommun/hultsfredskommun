@@ -943,6 +943,7 @@ a:hover {
 .slideshow {
 	position: relative;
 	overflow: hidden;
+	float: left;
 }
 .slideshow .slideshow_bg > img {
     float: left;
@@ -986,7 +987,9 @@ a:hover {
 	z-index: 1100;
 	padding: 0.7em;
 }
-
+#firstpage-top-content .widget {
+	float: left;
+}
 /* =Content
 ----------------------------------------------- */
 .post footer { 
@@ -1305,12 +1308,19 @@ article:last-child { margin-bottom: 0 }
 	cursor: default;
 }
 .summary-content .summary-footer span {
-	padding: 0 .2em;
+	padding: 0;
+	margin: 0 0.4em;
 }
 .summary-content .summary-footer .modified-date {
 	float: right;
 	padding: 0 .2em;
 }
+.summary-footer .icon {
+	float: right;
+	width: 18px;
+	height: 24px;
+}
+
 /* Excerpt/Summary END */
 
 /* More-content + single-content */
@@ -1476,14 +1486,19 @@ article:last-child { margin-bottom: 0 }
 }
 
 
-/* widget icons */
+/* icons */
 .hk_kontakter.widget .icon,
 .hk_events.widget .icon,
 .hk_related.widget .icon {
 	margin: 0.4em;
+}
+.icon {
 	background-image: url("images/sprite.png");
 }
-.hk_kontakter.widget .icon {
+.docs.icon {
+	background-position: 0px -328px;
+}
+.hk_kontakter.widget .icon, .contact.icon {
 	background-position: 0px -59px;
 }
 .hk_events.widget .icon {
