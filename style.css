@@ -1282,9 +1282,6 @@ article:last-child { margin-bottom: 0 }
 	overflow: hidden;
 	line-height: 0;
 }
-.with-secondary .summary-content .img-wrapper {
-	width: 100%;
-}
 .sticky .summary-content .img-wrapper {
 	float: right;
 	width: 280px;

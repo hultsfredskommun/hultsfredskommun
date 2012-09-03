@@ -100,21 +100,31 @@ function hk_slideshow_generate_output($vars) {
  	if ( is_home() )
  	{
 		$hk_options = get_option("hk_theme");
- 		$selected_categories = $hk_options["startpage_cat"];
+ 		$selected_special_categories = $hk_options["startpage_cat"];
  	}
  	else {
 	 	$selected_categories = get_query_var("cat");
  	}
 
-	if ($selected_categories != "")
+	if ( !empty($selected_categories) || !empty($selected_special_categories) )
 	{
 		// query arguments
 	   	$args = array(
 	   	   	'posts_per_page' => $vars["posts_per_page"], 
 			'post_type'	 => 'hk_slideshow',
-	 	    'category__and' => array($selected_categories)
 		);
-		
+		if ( !empty($selected_categories) ) {
+	 	    $args['category__and'] = array($selected_categories);
+		}
+		if ( !empty($selected_special_categories) ) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => 'special_category',
+					'field' => 'id',
+					'terms' => $default_settings["startpage_cat"]
+				)
+			);
+		}
 		//remove troubling action before wp_query
 		remove_action('pre_get_posts', 'hk_views_sorting');
 		$meta_query = new WP_Query($args);

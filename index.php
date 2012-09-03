@@ -39,7 +39,7 @@ get_header(); ?>
 				query_posts( $query );
 		
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-					get_template_part( 'content', get_post_format() ); 
+					get_template_part( 'content' ); 
 				endwhile; endif; 
 				// Reset Query
 				wp_reset_query(); 

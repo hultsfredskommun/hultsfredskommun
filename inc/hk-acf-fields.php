@@ -66,8 +66,22 @@ if(function_exists("register_field_group"))
 					'value' => 'post',
 					'order_no' => '0',
 				),
+				1 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'hk_slideshow',
+					'order_no' => '1',
+				),
+				2 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'hk_kontakter',
+					'order_no' => '1',
+				),
 			),
-			'allorany' => 'all',
+			'allorany' => 'any',
 		),
 		'options' => 
 		array (
