@@ -93,6 +93,7 @@ class HK_slideshow extends WP_Widget {
 
 // outputs the content of the widget
 function hk_slideshow_generate_output($vars) {
+	global $default_settings;
 
 	$retValue = "";
 	// set startpage category if on startpage
@@ -124,26 +125,28 @@ function hk_slideshow_generate_output($vars) {
 			$retValue .= "<div class='slideshow' style='width: " . $vars['width'] . " !important; height: " . $vars['height'] . " !important'>";
 			
        		// The Loop
-			$counter = 0;
-       		while ( $meta_query->have_posts() ) : $meta_query->the_post();
-				$retValue .= '<article id="post-' . get_the_ID() . '" class="';
-				if ($counter==0){ $retValue .= 'first '; }
-				else { $retValue .= 'img_left '; }
-
-				$retValue .= implode(" ",get_post_class()) . '">';
-				$retValue .= 	get_the_post_thumbnail(get_the_ID(),$vars["thumbnail-size"]);
-				$retValue .= 	'<div class="text-area">';
-				$retValue .= 		'<div class="text-content">';
-				$retValue .= 			'<div class="transp-background"></div>';
-				$retValue .= 			"<header class='entry-header'><h2 class='entry-title'><a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_title() . "</a></h2></header>";
-				$retValue .= 			'<div class="entry-content">';
-				$retValue .= 				get_the_content();
-				$retValue .=			'</div>';
-				$retValue .=		'</div>';
-				$retValue .= 	'</div>';
-				$retValue .= "</article>";
-				
-				$counter++;
+			$first = true;
+	   		while ( $meta_query->have_posts() ) : $meta_query->the_post();
+				$thumbnail = get_the_post_thumbnail(get_the_ID(),$vars["thumbnail-size"]);
+				if (strpos($thumbnail,$default_settings[$vars["thumbnail-size"]][0] . "x" . $default_settings[$vars["thumbnail-size"]][1])) {
+					$retValue .= '<article id="post-' . get_the_ID() . '" class="';
+					if ($first){ $retValue .= 'first '; }
+					else { $retValue .= 'img_left '; }
+					$retValue .= implode(" ",get_post_class()) . '">';
+					$retValue .= 	$thumbnail;
+					$retValue .= 	'<div class="text-area">';
+					$retValue .= 		'<div class="text-content">';
+					$retValue .= 			'<div class="transp-background"></div>';
+					$retValue .= 			"<header class='entry-header'><h2 class='entry-title'><a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_title() . "</a></h2></header>";
+					$retValue .= 			'<div class="entry-content">';
+					$retValue .= 				get_the_content();
+					$retValue .=			'</div>';
+					$retValue .=		'</div>';
+					$retValue .= 	'</div>';
+					$retValue .= "</article>";
+					
+					$first = false;
+				}
         	endwhile;
 			$retValue .= "</div>";
 

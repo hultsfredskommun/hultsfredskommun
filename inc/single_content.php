@@ -4,9 +4,9 @@
 		 */
 
 		// featured image ?>
-		<div class="img-wrapper">
-			<?php the_post_thumbnail('featured-image'); ?>
-		</div>
+		<?php //the_post_thumbnail('featured-image'); 
+			echo hk_get_the_post_thumbnail(get_the_ID(),'featured-image');
+		?>
 		
 		<div class="single-content">
             <header class="entry-header">
@@ -84,7 +84,7 @@
 				<?php endif; // End if ort ?>
 			</div>
 
-			<?php if( get_field('hk_related_pages') || get_field('hk_related_links') ) : ?>
+			<?php if( get_field('hk_related_pages') || get_field('hk_related_links') || get_field('hk_related_files') ) : ?>
 				<div>Relaterad information</div>
 				<ul>
 				<?php if( get_field('hk_related_pages') ): ?>
@@ -103,6 +103,17 @@
 						</li>			 
 					<?php endwhile; ?>			 
 				<?php endif; ?> 
+
+				<?php if( get_field('hk_related_files') ): ?>
+					<?php while( has_sub_field('hk_related_files') ): ?>
+						<?php $link = wp_get_attachment_link(get_sub_field('hk_related_file')); 
+						?>
+						<li class="related_file">
+							<?php echo str_replace("<a ", "<a title='" . get_sub_field('hk_related_file_description') . "' ", $link); ?>
+						</li>			 
+					<?php endwhile; ?>			 
+				<?php endif; ?> 
+
 				</ul>
 			<?php endif; ?>
 

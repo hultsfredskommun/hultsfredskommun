@@ -23,12 +23,70 @@
 if(function_exists("register_field_group"))
 {
 	register_field_group(array (
-		'id' => '503ddc4d04719',
-		'title' => 'Sidans kontakt',
+		'id' => '5044817d18ee2',
+		'title' => 'Artikelns bild',
 		'fields' => 
 		array (
 			0 => 
 			array (
+				'key' => 'field_504454d032c46',
+				'label' => 'Bilder',
+				'name' => 'hk_featured_images',
+				'type' => 'repeater',
+				'instructions' => '',
+				'required' => '0',
+				'sub_fields' => 
+				array (
+					0 => 
+					array (
+						'key' => 'field_504454d032c90',
+						'label' => 'Bild',
+						'name' => 'hk_featured_image',
+						'type' => 'image',
+						'save_format' => 'object',
+						'preview_size' => 'thumbnail',
+						'order_no' => '0',
+					),
+				),
+				'row_min' => '0',
+				'row_limit' => '',
+				'layout' => 'table',
+				'button_label' => 'Lägg till bild',
+				'order_no' => '0',
+			),
+		),
+		'location' => 
+		array (
+			'rules' => 
+			array (
+				0 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => '0',
+				),
+			),
+			'allorany' => 'all',
+		),
+		'options' => 
+		array (
+			'position' => 'side',
+			'layout' => 'default',
+			'hide_on_screen' => 
+			array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => '5044817d190d7',
+		'title' => 'Artikelns kontakt',
+		'fields' => 
+		array (
+			0 => 
+			array (
+				'key' => 'field_503cb02814012',
 				'label' => 'Kontakter',
 				'name' => 'hk_contacts',
 				'type' => 'repeater',
@@ -38,6 +96,7 @@ if(function_exists("register_field_group"))
 				array (
 					0 => 
 					array (
+						'key' => 'field_503cb0281406d',
 						'label' => 'Kontakt',
 						'name' => 'hk_contact',
 						'type' => 'post_object',
@@ -51,7 +110,6 @@ if(function_exists("register_field_group"))
 						),
 						'allow_null' => '0',
 						'multiple' => '0',
-						'key' => 'field_503cb0281406d',
 						'order_no' => '0',
 					),
 				),
@@ -59,8 +117,76 @@ if(function_exists("register_field_group"))
 				'row_limit' => '',
 				'layout' => 'row',
 				'button_label' => 'Lägg till kontakt',
-				'key' => 'field_503cb02814012',
 				'order_no' => '0',
+			),
+		),
+		'location' => 
+		array (
+			'rules' => 
+			array (
+				0 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => '0',
+				),
+			),
+			'allorany' => 'all',
+		),
+		'options' => 
+		array (
+			'position' => 'side',
+			'layout' => 'default',
+			'hide_on_screen' => 
+			array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => '5044817d19262',
+		'title' => 'Etiketter',
+		'fields' => 
+		array (
+			0 => 
+			array (
+				'key' => 'field_5037832c0395b',
+				'label' => 'Etikett',
+				'name' => 'tags',
+				'type' => 'tax',
+				'instructions' => '',
+				'required' => '0',
+				'taxonomy' => 'post_tag',
+				'taxcol' => '2',
+				'hidetax' => '1',
+				'order_no' => '0',
+			),
+			1 => 
+			array (
+				'key' => 'field_5037832bd101d',
+				'label' => 'Vem',
+				'name' => 'vem',
+				'type' => 'tax',
+				'instructions' => '',
+				'required' => '0',
+				'taxonomy' => 'vem',
+				'taxcol' => '2',
+				'hidetax' => '1',
+				'order_no' => '1',
+			),
+			2 => 
+			array (
+				'key' => 'field_5037832bdb33c',
+				'label' => 'Ort',
+				'name' => 'ort',
+				'type' => 'tax',
+				'instructions' => '',
+				'required' => '0',
+				'taxonomy' => 'ort',
+				'taxcol' => '2',
+				'hidetax' => '1',
+				'order_no' => '2',
 			),
 		),
 		'location' => 
@@ -87,9 +213,9 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
-register_field_group(array (
-		'id' => '503e1d21c339a',
-		'title' => 'Sidans relaterad information',
+	register_field_group(array (
+		'id' => '5044817d19422',
+		'title' => 'Relaterad information',
 		'fields' => 
 		array (
 			0 => 
@@ -122,19 +248,19 @@ register_field_group(array (
 					),
 					1 => 
 					array (
+						'key' => 'field_503e1ff623fa9',
 						'label' => 'Beskrivande text',
 						'name' => 'hk_related_page_description',
 						'type' => 'textarea',
 						'default_value' => '',
 						'formatting' => 'br',
-						'key' => 'field_503e1ff623fa9',
 						'order_no' => '1',
 					),
 				),
 				'row_min' => '0',
 				'row_limit' => '',
 				'layout' => 'table',
-				'button_label' => 'Add Row',
+				'button_label' => 'Lägg till rad',
 				'order_no' => '0',
 			),
 			1 => 
@@ -169,20 +295,56 @@ register_field_group(array (
 					),
 					2 => 
 					array (
-						'label' => 'Beskrivande text',
+						'key' => 'field_504073c4d1ef9',
+						'label' => 'Beskrivning',
 						'name' => 'hk_related_link_description',
 						'type' => 'textarea',
 						'default_value' => '',
 						'formatting' => 'br',
-						'key' => 'field_503e1ff623fa9',
 						'order_no' => '2',
 					),
 				),
 				'row_min' => '0',
 				'row_limit' => '',
 				'layout' => 'table',
-				'button_label' => 'Add Row',
+				'button_label' => 'Lägg till rad',
 				'order_no' => '1',
+			),
+			2 => 
+			array (
+				'key' => 'field_504073c4e19aa',
+				'label' => 'Filer',
+				'name' => 'hk_related_files',
+				'type' => 'repeater',
+				'instructions' => '',
+				'required' => '0',
+				'sub_fields' => 
+				array (
+					0 => 
+					array (
+						'key' => 'field_504073c4e19fa',
+						'label' => 'Fil',
+						'name' => 'hk_related_file',
+						'type' => 'file',
+						'save_format' => 'id',
+						'order_no' => '0',
+					),
+					1 => 
+					array (
+						'key' => 'field_504073c4e1a39',
+						'label' => 'Beskrivning',
+						'name' => 'hk_related_file_description',
+						'type' => 'textarea',
+						'default_value' => '',
+						'formatting' => 'br',
+						'order_no' => '1',
+					),
+				),
+				'row_min' => '0',
+				'row_limit' => '',
+				'layout' => 'table',
+				'button_label' => 'Lägg till rad',
+				'order_no' => '2',
 			),
 		),
 		'location' => 
@@ -217,13 +379,55 @@ register_field_group(array (
 		'menu_order' => 0,
 	));
 	register_field_group(array (
-		'id' => '503ddd9094276',
-		'title' => 'Extra information',
+		'id' => '5044817d19633',
+		'title' => 'Inbäddat videoklipp',
 		'fields' => 
 		array (
 			0 => 
 			array (
-				'key' => 'field_50164bf803f5a',
+				'key' => 'field_50408e0bde984',
+				'label' => 'Inbäddningskoden',
+				'name' => 'embedded_code',
+				'type' => 'textarea',
+				'instructions' => 'Klistra in inbäddningskoden till videoklippet här.',
+				'required' => '0',
+				'default_value' => '',
+				'formatting' => 'br',
+				'order_no' => '0',
+			),
+		),
+		'location' => 
+		array (
+			'rules' => 
+			array (
+				0 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => '0',
+				),
+			),
+			'allorany' => 'all',
+		),
+		'options' => 
+		array (
+			'position' => 'side',
+			'layout' => 'default',
+			'hide_on_screen' => 
+			array (
+			),
+		),
+		'menu_order' => 15,
+	));
+	register_field_group(array (
+		'id' => '5044817d19897',
+		'title' => 'Artikelns extra information',
+		'fields' => 
+		array (
+			0 => 
+			array (
+				'key' => 'field_50408dbf40c82',
 				'label' => 'Extra text',
 				'name' => 'optional-text',
 				'type' => 'textarea',
@@ -250,124 +454,13 @@ register_field_group(array (
 		),
 		'options' => 
 		array (
-			'position' => 'normal',
-			'layout' => 'default',
-			'hide_on_screen' => 
-			array (
-			),
-		),
-		'menu_order' => 0,
-	));
-	register_field_group(array (
-		'id' => '503ddd90944a4',
-		'title' => 'Inbäddat videoklipp',
-		'fields' => 
-		array (
-			0 => 
-			array (
-				'label' => 'Inbäddningskoden',
-				'name' => 'embedded_code',
-				'type' => 'textarea',
-				'instructions' => 'Klistra in inbäddningskoden till videoklippet här...',
-				'required' => '0',
-				'default_value' => '',
-				'formatting' => 'br',
-				'key' => 'field_502ce2d515d67',
-				'order_no' => '0',
-			),
-		),
-		'location' => 
-		array (
-			'rules' => 
-			array (
-				0 => 
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-					'order_no' => '0',
-				),
-			),
-			'allorany' => 'all',
-		),
-		'options' => 
-		array (
-			'position' => 'normal',
-			'layout' => 'default',
-			'hide_on_screen' => 
-			array (
-			),
-		),
-		'menu_order' => 0,
-	));
-	register_field_group(array (
-		'id' => '503ddd9094681',
-		'title' => 'Taxonomy',
-		'fields' => 
-		array (
-			0 => 
-			array (
-				'key' => 'field_502de86ea580e',
-				'label' => 'Etiketter',
-				'name' => 'etiketter',
-				'type' => 'tax',
-				'instructions' => '',
-				'required' => '0',
-				'taxonomy' => 'post_tag',
-				'taxcol' => '0',
-				'hidetax' => '0',
-				'order_no' => '0',
-			),
-			1 => 
-			array (
-				'label' => 'Vem',
-				'name' => 'vem',
-				'type' => 'tax',
-				'instructions' => '',
-				'required' => '0',
-				'taxonomy' => 'vem',
-				'taxcol' => '0',
-				'hidetax' => '0',
-				'key' => 'field_502dfd622c3ac',
-				'order_no' => '1',
-			),
-			2 => 
-			array (
-				'label' => 'Var',
-				'name' => 'var',
-				'type' => 'tax',
-				'instructions' => '',
-				'required' => '0',
-				'taxonomy' => 'ort',
-				'taxcol' => '0',
-				'hidetax' => '0',
-				'key' => 'field_502dfd62324a8',
-				'order_no' => '2',
-			),
-		),
-		'location' => 
-		array (
-			'rules' => 
-			array (
-				0 => 
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-					'order_no' => '0',
-				),
-			),
-			'allorany' => 'all',
-		),
-		'options' => 
-		array (
 			'position' => 'side',
 			'layout' => 'default',
 			'hide_on_screen' => 
 			array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 20,
 	));
 }
 ?>

@@ -27,6 +27,41 @@ if ( ! isset( $default_settings ) ) {
 								'news_cat' => $options["news_cat"]);
 }
 
+
+
+// Grab hk option page.
+require( get_template_directory() . '/inc/hk-option-page.php' );
+
+// Grab hk dynamic widgets
+require( get_template_directory() . '/inc/hk-dynamic-widgets.php' );
+
+// Grab hk text widget.
+require( get_template_directory() . '/inc/hk-text-widget.php' );
+
+// Grab hk slideshow.
+require( get_template_directory() . '/inc/hk-slideshow.php' );
+
+// Grab hk contacts.
+require( get_template_directory() . '/inc/hk-contacts.php' );
+
+// Grab hk related.
+require( get_template_directory() . '/inc/hk-related.php' );
+
+// Grab hk events.
+require( get_template_directory() . '/inc/hk-events.php' );
+
+// Grab hk menu widget.
+require( get_template_directory() . '/inc/hk-menu-widget.php' );
+
+// Grab hk sort-order function
+require( get_template_directory() . '/inc/hk-sort-order.php' );
+
+// Grab hk admin-page to alter admin/edit pages
+require( get_template_directory() . '/inc/hk-admin-pages.php' );
+
+// Grab hk sort-order function
+require( get_template_directory() . '/inc/hk-acf-fields.php' );
+
 /**
  * Tell WordPress to run hk_setup() when the 'after_setup_theme' hook is run.
  */
@@ -57,35 +92,6 @@ function hk_setup() {
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
 
-	// Grab hk option page.
-	require( get_template_directory() . '/inc/hk-option-page.php' );
-
-	// Grab hk dynamic widgets
-	require( get_template_directory() . '/inc/hk-dynamic-widgets.php' );
-
-	// Grab hk text widget.
-	require( get_template_directory() . '/inc/hk-text-widget.php' );
-
-	// Grab hk slideshow.
-	require( get_template_directory() . '/inc/hk-slideshow.php' );
-
-	// Grab hk contacts.
-	require( get_template_directory() . '/inc/hk-contacts.php' );
-
-	// Grab hk related.
-	require( get_template_directory() . '/inc/hk-related.php' );
-
-	// Grab hk events.
-	require( get_template_directory() . '/inc/hk-events.php' );
-
-	// Grab hk menu widget.
-	require( get_template_directory() . '/inc/hk-menu-widget.php' );
-	
-	// Grab hk sort-order function
-	require( get_template_directory() . '/inc/hk-sort-order.php' );
-
-	// Grab hk sort-order function
-	require( get_template_directory() . '/inc/hk-acf-fields.php' );
 
 	// Registers taxonomy add-on for Advanced Custom Fields
 	if (function_exists("register_field")) {
@@ -105,78 +111,6 @@ endif; // hk_setup
 
 
 
-/*
- * Add unfiltered_html capabilities to administrator, editor and author
- */
-function add_theme_caps() {
-	$role = get_role( 'administrator' ); 
-	$role->add_cap( 'unfiltered_html' ); 
-	$role = get_role( 'editor' ); 
-	$role->add_cap( 'unfiltered_html' );
-	$role = get_role( 'author' ); 
-	$role->add_cap( 'unfiltered_html' );	 
-}
-add_action( 'admin_init', 'add_theme_caps');
-
-
-/*
- * Change the WYSIWYG editor buttons
- */
-function hk_formatTinyMCE($in)
-{
-//	$in['remove_linebreaks']=false;
-//	$in['gecko_spellcheck']=false;
-//	$in['keep_styles']=false;
-//	$in['accessibility_focus']=true;
-//	$in['tabfocus_elements']='major-publishing-actions';
-//	$in['media_strict']=false;
-//	$in['paste_remove_styles']=true;
-//	$in['paste_remove_spans']=true;
-//	$in['paste_strip_class_attributes']='none';
-//	$in['paste_text_use_dialog']=true;
-//	$in['wpeditimage_disable_captions']=true;
-//	$in['plugins']='inlinepopups,tabfocus,paste,media,fullscreen,wordpress,wpeditimage,wpgallery,wplink,wpdialogs,wpfullscreen';
-//	$in['content_css']=get_template_directory_uri() . "/editor-style.css";
-//	$in['wpautop']=true;
-//	$in['apply_source_formatting']=false;
-	$in['theme_advanced_buttons1']='formatselect,removeformat,|,bold,italic,|,bullist,numlist,blockquote,|,link,unlink,|,charmap,|,spellchecker,|,undo,redo,|,wp_fullscreen';
-	$in['theme_advanced_buttons2']='';
-	$in['theme_advanced_buttons3']='';
-	$in['theme_advanced_buttons4']='';
-	return $in;
-}
-add_filter('tiny_mce_before_init', 'hk_formatTinyMCE' );
-
-
-
-/* 
- * Media Library and images
- */
-
-// add custom "mime types" (file supertypes)
-function filterPostMimeTypes($post_mime_types) {
-    $post_mime_types['application'] = array('Document', 'Hantera documents', _n_noop('Dokument <span class="count">(%s)</span>', 'Dokument <span class="count">(%s)</span>'));
-    $post_mime_types['audio'] = array('Audio', 'Hantera ljud', _n_noop('Ljud <span class="count">(%s)</span>', 'Ljud <span class="count">(%s)</span>'));
-    $post_mime_types['video'] = array('Video', 'Hantera video', _n_noop('Video <span class="count">(%s)</span>', 'Video <span class="count">(%s)</span>'));
-    return $post_mime_types;
-}
-add_filter('post_mime_types', 'filterPostMimeTypes');
-
-// Add Hultsfredskommun custom image sizes.
-if ( function_exists( 'add_image_size' ) ) { 
-	add_image_size( 'thumbnail-image',  $default_settings['thumbnail-image'][0], $default_settings['thumbnail-image'][1], $default_settings['thumbnail-image'][2] );
-	add_image_size( 'featured-image',  $default_settings['featured-image'][0], $default_settings['featured-image'][1], $default_settings['featured-image'][2] );
-	add_image_size( 'slideshow-image',  $default_settings['slideshow-image'][0], $default_settings['slideshow-image'][1], $default_settings['slideshow-image'][2] );
-	add_image_size( 'contact-image',  $default_settings['contact-image'][0], $default_settings['contact-image'][1], $default_settings['contact-image'][2] );
-}
-
-// remove width and height attr on img tags
-function remove_thumbnail_dimensions( $html ) {
-    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-    return $html;
-}
-add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
-add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
 
 
 
@@ -271,111 +205,6 @@ add_action('wp_head', 'setup_javascript_settings');
 
 
 
-/**
- * Alter the default admin menus, settings and looks.
- * Change name of menus in admin 
- */
-
-
-// remove links/menus from the admin bar 
-function hk_admin_bar_render() { 
-	global $wp_admin_bar; 
-    if (!current_user_can("administrator")) {
-		$wp_admin_bar->remove_menu('new-content'); 
-	}
-} 
-add_action( 'wp_before_admin_bar_render', 'hk_admin_bar_render' ); 
-
-/* change names in admin menus */
-function change_post_menu_label() {
-    global $menu;
-	global $submenu;
-
-    $menu[5][0] = 'Sidor';
-    $submenu['edit.php'][5][0] = 'Sidor';
-    $submenu['edit.php'][10][0] = 'Skapa ny';
-    //$submenu['edit.php'][15][0] = 'Status'; // Change name for categories
-    //$submenu['edit.php'][16][0] = 'Labels'; // Change name for tags
-    if (!current_user_can("administrator")) {
-	    $menu[20][0] = 'Special';
-	    $submenu['edit.php?post_type=page'][5][0] = 'Special';
-	    $submenu['edit.php?post_type=page'][10][0] = 'Skapa';
-	    $submenu['edit.php?post_type=page'][5][0] = 'Special';
-	}
-
-    // hide linkmanager
-    unset($menu[15]);
-
-    // hide tag divs if not administrator
-    if (!current_user_can("administrator")) {
-    	// hide category submenu
-	    unset($submenu['edit.php'][15][0]);
-    	// hide tags submenu
-	    unset($submenu['edit.php'][16][0]);
-	    // hide pages menu "special"
-	    unset($menu[20]);
-	}
-
-    // hide meta tag boxes in edit
-	remove_meta_box("tagsdiv-post_tag","post");
-	remove_meta_box("tagsdiv-vem","post");
-	remove_meta_box("tagsdiv-ort","post");
-
-    echo '';
-}
-
-
-/* change names in admin pages */
-function change_post_object_label() {
-    global $wp_post_types;
-    $labels = &$wp_post_types['post']->labels;
-    $labels->name = 'Sidor';
-    $labels->singular_name = 'Sida';
-    $labels->add_new = 'L&auml;gg till';
-    $labels->add_new_item = 'L&auml;gg till sida';
-    $labels->edit_item = '&Auml;ndra sida';
-    $labels->new_item = 'Sida';
-    $labels->view_item = 'Visa sida';
-    $labels->search_items = 'S&ouml;k';
-    $labels->not_found = 'Hittade inga sidor';
-    $labels->not_found_in_trash = 'Hittade inga sidor i papperskorgen';
-
-    $labels = &$wp_post_types['page']->labels;
-    $labels->name = 'Special';
-    $labels->singular_name = 'Special';
-    $labels->add_new = 'L&auml;gg till';
-    $labels->add_new_item = 'L&auml;gg till';
-    $labels->edit_item = '&Auml;ndra';
-    $labels->new_item = 'Ny';
-    $labels->view_item = 'Visa';
-    $labels->search_items = 'S&ouml;k';
-    $labels->not_found = 'Hittade inga';
-    $labels->not_found_in_trash = 'Hittade inga i papperskorgen';
-}
-if (is_admin()) {
-	add_action( 'init', 'change_post_object_label' );
-	add_action( 'admin_menu', 'change_post_menu_label' );
-}
-/* remove unwanted fields from media library items */
-function remove_media_upload_fields( $form_fields, $post ) {
-    //unset( $form_fields['image-size'] );
-    unset( $form_fields['post_excerpt'] );
-    unset( $form_fields['image_alt'] );
-    //unset( $form_fields['post_content'] );
-    //unset( $form_fields['url'] );
-    //unset( $form_fields['image_url'] );
-    //unset( $form_fields['align'] );
-    
-    return $form_fields;
-}
-add_filter('attachment_fields_to_edit', 'remove_media_upload_fields', null, 2);
-
-
-
-/**
- * force install plugins "direct"  
- */
-add_filter( 'filesystem_method', create_function( '$a', 'return "direct";' ) );
 
 
 
@@ -559,3 +388,34 @@ function twentyeleven_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'twentyeleven_body_classes' );
+
+
+
+
+/* help function to render custom thumbnail functionality */
+function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true) {
+	global $default_settings;
+	$retValue = "";
+	$first = true;
+	$sizestyle = "style='width: " . $default_settings[$thumbsize][0] . "; height: " . $default_settings[$thumbsize][1] . "px;'";
+	if( get_field('hk_featured_images') ) :
+		if ($showAll) { $slideshowclass = "slideshow"; }
+		$retValue .= "<div $sizestyle class='img-wrapper'><div $sizestyle class='featured-images $slideshowclass'>"; 
+		while( has_sub_field('hk_featured_images') && ($showAll || $first)) : // only once if not showAll
+			$image = get_sub_field('hk_featured_image');
+			$src = $image["sizes"][$thumbsize];
+			$caption = $image["caption"];
+			if (strpos($src,$default_settings[$thumbsize][0] . "x" . $default_settings[$thumbsize][1])) {
+				if (!$first) {
+					$style = "style='display: none;'";
+				}
+				if (!empty($src)) {
+					$retValue .= "<div $style class='image-wrapper $thumbsize'><img src='$src' alt='$title' title='$title'/><span>$caption</span></div>";
+				}
+				$first = false;
+			}
+    	endwhile;
+		$retValue .= "</div></div>"; 
+ 	endif; 
+ 	echo $retValue;
+}

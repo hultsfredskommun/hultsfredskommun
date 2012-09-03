@@ -37,7 +37,7 @@ function hk_theme_options_do_page() {
 					'hierarchical'       => 1, 
 					'name'               => 'hk_theme[startpage_cat]',
 					'depth'              => 0,
-					'taxonomy'           => 'category',
+					'taxonomy'           => 'special_category',
 					'show_count'           => true,
 					'hide_empty'      => false,
 					'hide_if_empty'      => false );  
@@ -55,7 +55,7 @@ function hk_theme_options_do_page() {
 					'hierarchical'       => 1, 
 					'name'               => 'hk_theme[news_cat]',
 					'depth'              => 0,
-					'taxonomy'           => 'category',
+					'taxonomy'           => 'special_category',
 					'show_count'           => true,
 					'hide_empty'      => false,
 					'hide_if_empty'      => false );  

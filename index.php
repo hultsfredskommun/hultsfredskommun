@@ -27,7 +27,14 @@ get_header(); ?>
 		<?php 
 			/* Query all posts with selected startpage category */
 			if ($default_settings["startpage_cat"] != "") {
-				$query = array( 'posts_per_page' => '-1', 'category__and' => $default_settings["startpage_cat"] );
+				$query = array( 'posts_per_page' => '-1', 
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'special_category',
+										'field' => 'id',
+										'terms' => $default_settings["startpage_cat"]
+									)
+								) );
 				
 				query_posts( $query );
 		
@@ -46,8 +53,15 @@ get_header(); ?>
 			if ($default_settings["news_cat"] != "") {
 				echo "<div id='news'>";
 				echo "<span id='news_header'>Nyheter</span><hr class='newline' />";
-				$query = array( 'posts_per_page' => '10', 'category__and' => $default_settings["news_cat"] );
-						
+				$query = array( 'posts_per_page' => '10', 
+								'tax_query' => array(
+									array(
+										'taxonomy' => 'special_category',
+										'field' => 'id',
+										'terms' => $default_settings["news_cat"]
+									)
+								) );
+
 				query_posts( $query );		
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 					get_template_part( 'content', "news" ); 

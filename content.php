@@ -10,14 +10,12 @@ global $default_settings;
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky":""); ?>>
 		<div class="summary-content">
-			<?php /*if (has_post_thumbnail()) : */ ?>
-			<?php $thumb = get_the_post_thumbnail(get_the_ID(),'thumbnail-image'); 
+
+			<?php $thumb = hk_get_the_post_thumbnail(get_the_ID(),'thumbnail-image', false); 
 			if ($thumb) : ?>
-				<div class="img-wrapper">
 					<?php 					
 						echo $thumb;
 					//the_post_thumbnail('thumbnail-image'); ?>
-				</div>
 			<?php endif;/*endif;*/ ?>
 			
 			<div class="entry-wrapper">
@@ -69,7 +67,7 @@ global $default_settings;
 
 				<span class="modified-date"><?php the_modified_date(); ?></span>
 
-				<?php if( get_field('hk_related_pages') || get_field('hk_related_links') ) { echo "<span class='docs icon'>&nbsp;</span>"; } ?>
+				<?php if( get_field('hk_related_pages') || get_field('hk_related_links') || get_field('hk_related_files') ) { echo "<span class='docs icon'>&nbsp;</span>"; } ?>
 				
 				<?php if( get_field('hk_contacts') ) { echo "<span class='contact icon'></span>"; } ?>
 				

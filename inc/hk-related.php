@@ -59,7 +59,8 @@ function hk_related_init() {
 				'rewrite' => array('slug' => 'related')
 			)
 		);
-		add_post_type_support( "hk_related", array("title","author","revisions") );
+		add_post_type_support( "hk_related", array("title","revisions") );
+		remove_post_type_support( "hk_related", "editor" );
 
 		register_taxonomy_for_object_type( "category", "hk_related" );
 	}
@@ -69,7 +70,7 @@ function hk_related_init() {
 function hk_related_generate_cache() {
 
 	if (!function_exists("get_field"))
-		return "You need to install ACF and create the fields found in readme.txt to get this widget to work.";
+		return "You need to install ACF to get this widget to work, read more in readme.txt.";
 
 	$retValue = "";
 
@@ -107,6 +108,20 @@ function hk_related_generate_cache() {
 					$retValue .= "</div></div>";
 		    	endwhile;
 		 	endif; 
+			if( get_field('hk_related_files') ) :
+				while( has_sub_field('hk_related_files') ) :
+					$ext = "external link";
+					$retValue .= "<div class='related-wrapper'>";
+	       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
+					$link = wp_get_attachment_link(get_sub_field('hk_related_file'));
+					$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
+					$retValue .= str_replace("<a ", "<a class='permalink' ", $link);
+					$retValue .= "<div class='content'>" . get_sub_field('hk_related_file_description') . "</div>";
+					$retValue .= "</div></div>";
+				endwhile;	 
+			endif; 
+
+
 			$retValue .= "</aside>";
 		endif;
 		echo $retValue;	
@@ -173,6 +188,18 @@ function hk_related_generate_cache() {
 							$retValue .= "</div></div>";
 				    	endwhile;
 				 	endif; 
+					if( get_field('hk_related_files') ) :
+						while( has_sub_field('hk_related_files') ) :
+							$ext = "external link";
+							$retValue .= "<div class='related-wrapper'>";
+			       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
+							$link = wp_get_attachment_link(get_sub_field('hk_related_file'));
+							$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
+							$retValue .= str_replace("<a ", "<a class='permalink' ", $link);
+							$retValue .= "<div class='content'>" . get_sub_field('hk_related_file_description') . "</div>";
+							$retValue .= "</div></div>";
+						endwhile;	 
+					endif; 
 		 		}
 				if ($url != "") {	
 				}		
