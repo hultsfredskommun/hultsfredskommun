@@ -134,7 +134,8 @@ if (!is_admin()) {
 	);
 	wp_enqueue_script(
 		'cycle_lite_js',
-		get_stylesheet_directory_uri() . '/js/jquery.cycle.lite.js',
+		//get_stylesheet_directory_uri() . '/js/jquery.cycle.lite.js',
+		get_stylesheet_directory_uri() . '/js/jquery.cycle.all.js',
 		array('jquery'),
 		'1.0',
 		true
@@ -397,25 +398,29 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true) {
 	global $default_settings;
 	$retValue = "";
 	$first = true;
-	$sizestyle = "style='width: " . $default_settings[$thumbsize][0] . "; height: " . $default_settings[$thumbsize][1] . "px;'";
 	if( get_field('hk_featured_images') ) :
 		if ($showAll) { $slideshowclass = "slideshow"; }
-		$retValue .= "<div $sizestyle class='img-wrapper'><div $sizestyle class='featured-images $slideshowclass'>"; 
+		$retValue .= "<div class='img-wrapper $slideshowclass'>";
 		while( has_sub_field('hk_featured_images') && ($showAll || $first)) : // only once if not showAll
 			$image = get_sub_field('hk_featured_image');
 			$src = $image["sizes"][$thumbsize];
-			$caption = $image["caption"];
+			$title = $image["title"];
+			$description = $image["description"];
+			
 			if (strpos($src,$default_settings[$thumbsize][0] . "x" . $default_settings[$thumbsize][1])) {
 				if (!$first) {
 					$style = "style='display: none;'";
 				}
 				if (!empty($src)) {
-					$retValue .= "<div $style class='image-wrapper $thumbsize'><img src='$src' alt='$title' title='$title'/><span>$caption</span></div>";
+					$retValue .= "<img class='slide' $style src='$src' alt='$description' title='$description'/>";
 				}
 				$first = false;
 			}
     	endwhile;
-		$retValue .= "</div></div>"; 
+		if ($showAll) {
+			$retValue .= "<img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&h=".$default_settings[$thumbsize][1]."'/>";
+		}
+		$retValue .= "</div>"; 
  	endif; 
  	echo $retValue;
 }

@@ -15,13 +15,12 @@
 get_header(); ?>
 
 <?php dynamic_sidebar('slideshow-content'); ?>
-
 <?php if ( is_active_sidebar("firstpage-top-content") ) : ?>
 <div id="firstpage-top-content">
 		<?php dynamic_sidebar('firstpage-top-content'); ?>
+		<div class="clear"></div>
 </div><!-- #firstpage-top-sidebar -->
 <?php endif; ?>
-
 <div id="primary" <?php echo (is_active_sidebar("firstpage-secondary-sidebar")) ? "class='with-secondary'" : ""; ?>>
 	<div id="content" role="main">
 		<?php 

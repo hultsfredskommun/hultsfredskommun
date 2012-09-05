@@ -223,6 +223,8 @@ function readMoreToggle(el){
 					$("html,body").animate({scrollTop: $(article).position().top}, 300);
 					
 				});
+
+				$(this).find('.slideshow').cycle('stop');
 			});
 			
 			// reset webbrowser history
@@ -252,17 +254,17 @@ function readMoreToggle(el){
 					// scroll to top of post 
 					$("html,body").animate({scrollTop: $(article).position().top}, 300);
 
-										// articles slideshow
-					$('.featured-images.slideshow').cycle({
+					// articles slideshow
+					$(this).find('.slideshow').cycle({
 						fx: 'fade',
-						timeout: 5000, //10 sekunder
+						slideExpr: '.slide',					
+						timeout: 5000, 
 						slideResize: true,
 						containerResize: false,
 						width: '100%',
 						fit: 1,
 						pause: 0
 					});
-
 				});
 			});
 			
@@ -498,20 +500,10 @@ $(document).ready(function(){
 	/**
 	 * init slideshows
 	 */
-	// firstpage
 	$('.slideshow').cycle({
 		fx: 'fade',
-		timeout: 5000, //10 sekunder
-		slideResize: true,
-		containerResize: false,
-		width: '100%',
-		fit: 1,
-		pause: 0
-	});
-	// articles
-	$('.featured-images.slideshow').cycle({
-		fx: 'fade',
-		timeout: 5000, //10 sekunder
+		slideExpr: '.slide',					
+		timeout: 5000, 
 		slideResize: true,
 		containerResize: false,
 		width: '100%',

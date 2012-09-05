@@ -132,31 +132,36 @@ function hk_slideshow_generate_output($vars) {
 		add_action('pre_get_posts', 'hk_views_sorting');
 		
 		if ($meta_query->have_posts()) {
-			$retValue .= "<div class='slideshow' style='width: " . $vars['width'] . " !important; height: " . $vars['height'] . " !important'>";
+			$retValue .= "<div class='slideshow'><img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&h=".$default_settings[$vars["thumbnail-size"]][1]."'/>";
 			
        		// The Loop
 			$first = true;
 	   		while ( $meta_query->have_posts() ) : $meta_query->the_post();
-				$thumbnail = get_the_post_thumbnail(get_the_ID(),$vars["thumbnail-size"]);
-				if (strpos($thumbnail,$default_settings[$vars["thumbnail-size"]][0] . "x" . $default_settings[$vars["thumbnail-size"]][1])) {
-					$retValue .= '<article id="post-' . get_the_ID() . '" class="';
-					if ($first){ $retValue .= 'first '; }
-					else { $retValue .= 'img_left '; }
-					$retValue .= implode(" ",get_post_class()) . '">';
-					$retValue .= 	$thumbnail;
-					$retValue .= 	'<div class="text-area">';
-					$retValue .= 		'<div class="text-content">';
-					$retValue .= 			'<div class="transp-background"></div>';
-					$retValue .= 			"<header class='entry-header'><h2 class='entry-title'><a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_title() . "</a></h2></header>";
-					$retValue .= 			'<div class="entry-content">';
-					$retValue .= 				get_the_content();
-					$retValue .=			'</div>';
-					$retValue .=		'</div>';
-					$retValue .= 	'</div>';
-					$retValue .= "</article>";
-					
-					$first = false;
-				}
+				if( get_field('hk_featured_images') ) :
+					while( has_sub_field('hk_featured_images') ) : 
+						$image = get_sub_field('hk_featured_image');
+						$src = $image["sizes"][$vars["thumbnail-size"]];
+						$description = $image["description"];
+
+						if (strpos($src,$default_settings[$vars["thumbnail-size"]][0] . "x" . $default_settings[$vars["thumbnail-size"]][1])) {
+							$retValue .= "<article class='slide' id='post-" . get_the_ID() . "' class='";
+							if ($first){ $retValue .= 'first '; }
+							else { $retValue .= 'img_left '; }
+							$retValue .= implode(" ",get_post_class()) . "'>";
+							$retValue .= 	"<img src='$src' class='attachment-slideshow-image wp-post-image' alt='$description' title='$description' />";
+							$retValue .= 	"<div class='text-area'>";
+							$retValue .= 		"<div class='text-content'>";
+							$retValue .= 			"<div class='transp-background'></div>";
+							$retValue .= 			"<header class='entry-header'><h2 class='entry-title'><a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_title() . "</a></h2></header>";
+							$retValue .= 			"<div class='entry-content'>";
+							$retValue .= 				get_the_content();
+							$retValue .=			"</div>";
+							$retValue .=		"</div>";
+							$retValue .= 	"</div>";
+							$retValue .= "</article>";
+						}
+					endwhile;
+				endif;
         	endwhile;
 			$retValue .= "</div>";
 
@@ -193,7 +198,7 @@ function hk_slideshow_init() {
 		add_post_type_support( "hk_slideshow", "title" );
 		add_post_type_support( "hk_slideshow", "editor" );
 		add_post_type_support( "hk_slideshow", "author" );
-		add_post_type_support( "hk_slideshow", "thumbnail" );
+		//add_post_type_support( "hk_slideshow", "thumbnail" );
 		//add_post_type_support( "hk_slideshow", "excerpt" );
 		//add_post_type_support( "hk_slideshow", "trackbacks" );
 		//add_post_type_support( "hk_slideshow", "custom-fields" );
