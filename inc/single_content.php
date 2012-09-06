@@ -84,36 +84,26 @@
 				<?php endif; // End if ort ?>
 			</div>
 
-			<?php if( get_field('hk_related_pages') || get_field('hk_related_links') || get_field('hk_related_files') ) : ?>
+			<?php if ( get_field('hk_related') ) : ?>
 				<div>Relaterad information</div>
 				<ul>
-				<?php if( get_field('hk_related_pages') ): ?>
-					<?php while( has_sub_field('hk_related_pages') ): ?>
+				<?php while ( has_sub_field('hk_related') ) : ?>
+					<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
 						<li class="related_page">
-							<?php $value = get_sub_field('hk_related_page'); ?>
-							<a href="<?php echo $value->guid; ?>" title="<?php echo get_sub_field('hk_related_page_description'); ?>"><?php echo $value->post_title; ?></a>
+							<?php $value = get_sub_field('hk_related_post'); ?>
+							<a href="<?php echo $value->guid; ?>" title="<?php echo get_sub_field('hk_related_post_description'); ?>"><?php echo $value->post_title; ?></a>
 						</li>			 
-					<?php endwhile; ?>			 
-				<?php endif; ?> 
-
-				<?php if( get_field('hk_related_links') ): ?>
-					<?php while( has_sub_field('hk_related_links') ): ?>
+					<?php elseif ( get_row_layout() == 'hk_related_links' ) : ?>
 						<li class="related_link">
 							<a href="<?php echo get_sub_field('hk_related_link_url'); ?>" title="<?php echo get_sub_field('hk_related_link_description'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
-						</li>			 
-					<?php endwhile; ?>			 
-				<?php endif; ?> 
-
-				<?php if( get_field('hk_related_files') ): ?>
-					<?php while( has_sub_field('hk_related_files') ): ?>
-						<?php $link = wp_get_attachment_link(get_sub_field('hk_related_file')); 
-						?>
+						</li>
+					<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
+						<?php $link = wp_get_attachment_link(get_sub_field('hk_related_file')); ?>
 						<li class="related_file">
 							<?php echo str_replace("<a ", "<a title='" . get_sub_field('hk_related_file_description') . "' ", $link); ?>
 						</li>			 
-					<?php endwhile; ?>			 
-				<?php endif; ?> 
-
+					<?php endif; ?> 
+				<?php endwhile; ?>
 				</ul>
 			<?php endif; ?>
 

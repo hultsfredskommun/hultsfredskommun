@@ -45,9 +45,13 @@ function hk_review_metabox() {
     $date = get_post_meta( $post->ID, 'hk_last_reviewed', true );
     $nextdate = get_post_meta( $post->ID, 'hk_next_review', true );
     $timespan = get_post_meta( $post->ID, 'hk_review_timespan', true );
-    if (!isset($timespan)) $timespan = "threemonths" 
+    if ($timespan == "") $timespan = "threemonths" 
     ?>
-    <p><?php echo "Granskades senast $date och ska granskas igen $nextdate."; ?></p>
+	<?php if ($date == "") : ?>
+	    <p><?php echo "Granskades senast $date och ska granskas igen $nextdate."; ?></p>
+	<?php else : ?>
+	    <p><?php echo "Inlägget har aldrig granskats."; ?></p>
+	<?php endif; ?>
     <p><label for="hk_reviewed"> 
         <input type="checkbox" id="hk_reviewed" name="hk_reviewed">&nbsp;Jag har granskat inlägget</input></label></p>
     <p><label for="hk_review_timespan">Tid till nästa granskning 

@@ -82,47 +82,40 @@ function hk_related_generate_cache() {
  	// return current page related content if in_single
   	if (is_single())
   	{ 
-		if( get_field('hk_related_pages') || get_field('hk_related_links') ) : 
-	        $retValue .= "<aside class='widget hk_related'>";
-	      	$retValue .= "<h3 class='widget-title'>Relaterat</h3>";
-			if( get_field('hk_related_pages') ) : 
-				while( has_sub_field('hk_related_pages') ) :
-					$ext = "internal link";
-					$value = get_sub_field('hk_related_page');
-					$retValue .= "<div class='related-wrapper'>";
-	       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
-					$retValue .= "<div id='related-" . $value->ID . "' class='" . implode(" ",get_post_class("hk_related")) . "'>";
-					$retValue .= "<h4><a class='permalink' href='". $value->guid . "'>" . $value->post_title . "</a></h4>";
-							$retValue .= "<div class='content'>" . get_sub_field('hk_related_page_description') . "</div>";
-					$retValue .= "</div></div>";
-		    	endwhile;
-		 	endif; 
-			if( get_field('hk_related_links') ) : 
-				while( has_sub_field('hk_related_links') ) :
-					$ext = "external link";
-					$retValue .= "<div class='related-wrapper'>";
-	       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
-					$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
-					$retValue .= "<h4><a class='permalink' href='". get_sub_field('hk_related_link_url') . "'>" . get_sub_field('hk_related_link_name'). "</a></h4>";
-					$retValue .= "<div class='content'>" . get_sub_field('hk_related_link_description') . "</div>";
-					$retValue .= "</div></div>";
-		    	endwhile;
-		 	endif; 
-			if( get_field('hk_related_files') ) :
-				while( has_sub_field('hk_related_files') ) :
-					$ext = "external link";
-					$retValue .= "<div class='related-wrapper'>";
-	       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
-					$link = wp_get_attachment_link(get_sub_field('hk_related_file'));
-					$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
-					$retValue .= str_replace("<a ", "<a class='permalink' ", $link);
-					$retValue .= "<div class='content'>" . get_sub_field('hk_related_file_description') . "</div>";
-					$retValue .= "</div></div>";
-				endwhile;	 
-			endif; 
+		if (get_field('hk_related') ) :
+			while (has_sub_field('hk_related')) : 
+		        $retValue .= "<aside class='widget hk_related'>";
+		      	$retValue .= "<h3 class='widget-title'>Relaterat</h3>";
+				if (get_row_layout() == 'hk_related_posts') : 
+						$ext = "internal link";
+						$value = get_sub_field('hk_related_post');
+						$retValue .= "<div class='related-wrapper'>";
+		       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
+						$retValue .= "<div id='related-" . $value->ID . "' class='" . implode(" ",get_post_class("hk_related")) . "'>";
+						$retValue .= "<h4><a class='permalink' href='". $value->guid . "'>" . $value->post_title . "</a></h4>";
+						$retValue .= "<div class='content'>" . get_sub_field('hk_related_post_description') . "</div>";
+						$retValue .= "</div></div>";
+				elseif (get_row_layout() == 'hk_related_links') : 
+						$ext = "external link";
+						$retValue .= "<div class='related-wrapper'>";
+		       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
+						$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
+						$retValue .= "<h4><a class='permalink' href='". get_sub_field('hk_related_link_url') . "'>" . get_sub_field('hk_related_link_name'). "</a></h4>";
+						$retValue .= "<div class='content'>" . get_sub_field('hk_related_link_description') . "</div>";
+						$retValue .= "</div></div>";
+				elseif (get_row_layout() == 'hk_related_files') :
+						$ext = "external link";
+						$retValue .= "<div class='related-wrapper'>";
+		       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
+						$link = wp_get_attachment_link(get_sub_field('hk_related_file'));
+						$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
+						$retValue .= str_replace("<a ", "<a class='permalink' ", $link);
+						$retValue .= "<div class='content'>" . get_sub_field('hk_related_file_description') . "</div>";
+						$retValue .= "</div></div>";
+				endif; 
 
-
-			$retValue .= "</aside>";
+				$retValue .= "</aside>";
+			endwhile;
 		endif;
 		echo $retValue;	
 		return;
@@ -152,59 +145,41 @@ function hk_related_generate_cache() {
 			$retValue .= "<h3 class='widget-title'>Relaterat</h3>";
 
 		    // The Loop
-       		while ( $the_query->have_posts() ) : $the_query->the_post();
+       		while ($the_query->have_posts()) : $the_query->the_post();
 	      		//$retValue .= wp_get_attachment_link($attachId); 
        			$title = get_the_title();
-       			if (get_post_type() == "attachment") {
-					$url = wp_get_attachment_url(get_the_ID());
-					$ext = substr(strrchr($url, '.'), 1);
-	       			$retValue .= "<div class='related-wrapper'>";
-	       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
-					$retValue .= "<div id='related-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-					$retValue .= "<h4><a class='permalink' href='$url' target='_blank'>$title</a></h4>";//<a class='related-link' href='$url' title='$title'>$title</a>";
-					$retValue .= "<div class='content'>" . get_the_content() . "</div>";
-					$retValue .= "</div></div>";
-				} else if (get_post_type() == "hk_related") {
-					if( get_field('hk_related_pages') ) : 
-						while( has_sub_field('hk_related_pages') ) :
-							$ext = "internal link";
-							$value = get_sub_field('hk_related_page');
-							$retValue .= "<div class='related-wrapper'>";
-			       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
-							$retValue .= "<div id='related-" . $value->ID . "' class='" . implode(" ",get_post_class("hk_related")) . "'>";
-							$retValue .= "<h4><a class='permalink' href='". $value->guid . "'>" . $value->post_title . "</a></h4>";
-							$retValue .= "<div class='content'>" . get_sub_field('hk_related_page_description') . "</div>";
-							$retValue .= "</div></div>";
-				    	endwhile;
-				 	endif; 
-					if( get_field('hk_related_links') ) : 
-						while( has_sub_field('hk_related_links') ) :
-							$ext = "external link";
-							$retValue .= "<div class='related-wrapper'>";
-			       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
-							$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
-							$retValue .= "<h4><a class='permalink' href='". get_sub_field('hk_related_link_url') . "'>" . get_sub_field('hk_related_link_name'). "</a></h4>";
-							$retValue .= "<div class='content'>" . get_sub_field('hk_related_link_description') . "</div>";
-							$retValue .= "</div></div>";
-				    	endwhile;
-				 	endif; 
-					if( get_field('hk_related_files') ) :
-						while( has_sub_field('hk_related_files') ) :
-							$ext = "external link";
-							$retValue .= "<div class='related-wrapper'>";
-			       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
-							$link = wp_get_attachment_link(get_sub_field('hk_related_file'));
-							$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
-							$retValue .= str_replace("<a ", "<a class='permalink' ", $link);
-							$retValue .= "<div class='content'>" . get_sub_field('hk_related_file_description') . "</div>";
-							$retValue .= "</div></div>";
-						endwhile;	 
-					endif; 
-		 		}
-				if ($url != "") {	
-				}		
-				//$retValue .= "<h4>" . get_the_title() . "</h4>";
-				//$retValue .= str_replace("\n","<br>",get_the_content());
+				if (get_field('hk_related')) :
+
+					while (has_sub_field('hk_related')) : 
+						if (get_row_layout() == 'hk_related_posts') : 
+								$ext = "internal link";
+								$value = get_sub_field('hk_related_post');
+								$retValue .= "<div class='related-wrapper'>";
+				       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
+								$retValue .= "<div id='related-" . $value->ID . "' class='" . implode(" ",get_post_class("hk_related")) . "'>";
+								$retValue .= "<h4><a class='permalink' href='". $value->guid . "'>" . $value->post_title . "</a></h4>";
+								$retValue .= "<div class='content'>" . get_sub_field('hk_related_post_description') . "</div>";
+								$retValue .= "</div></div>";
+						elseif (get_row_layout() == 'hk_related_links') : 
+								$ext = "external link";
+								$retValue .= "<div class='related-wrapper'>";
+				       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
+								$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
+								$retValue .= "<h4><a class='permalink' href='". get_sub_field('hk_related_link_url') . "'>" . get_sub_field('hk_related_link_name'). "</a></h4>";
+								$retValue .= "<div class='content'>" . get_sub_field('hk_related_link_description') . "</div>";
+								$retValue .= "</div></div>";
+						elseif (get_row_layout() == 'hk_related_files') :
+								$ext = "external link";
+								$retValue .= "<div class='related-wrapper'>";
+				       			$retValue .= "<div class='icon $ext'>&nbsp;</div>";
+								$link = wp_get_attachment_link(get_sub_field('hk_related_file'));
+								$retValue .= "<div class='" . implode(" ",get_post_class("hk_related")) . "'>";
+								$retValue .= str_replace("<a ", "<a class='permalink' ", $link);
+								$retValue .= "<div class='content'>" . get_sub_field('hk_related_file_description') . "</div>";
+								$retValue .= "</div></div>";
+						endif; 
+			 		endwhile;
+		 		endif;
         	endwhile;
 
         	// Reset Post Data

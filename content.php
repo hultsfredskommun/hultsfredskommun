@@ -67,7 +67,7 @@ global $default_settings;
 
 				<span class="modified-date"><?php the_modified_date(); ?></span>
 
-				<?php if( get_field('hk_related_pages') || get_field('hk_related_links') || get_field('hk_related_files') ) { echo "<span class='docs icon'>&nbsp;</span>"; } ?>
+				<?php if( get_field('hk_related') ) { echo "<span class='docs icon'>&nbsp;</span>"; } ?>
 				
 				<?php if( get_field('hk_contacts') ) { echo "<span class='contact icon'></span>"; } ?>
 				
