@@ -8,6 +8,14 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
+
+global $default_settings;
+if (is_single() && in_category($default_settings["hidden_cat"])) {
+	header("HTTP/1.0 404 Not Found");
+	//TODO print 404 error - include("404.php");?
+	die();
+}
+
 ?><!DOCTYPE html>
 <!--[if IE 6]>
 <html id="ie6" <?php language_attributes(); ?>>

@@ -2,15 +2,88 @@
 /*
  * Add unfiltered_html capabilities to administrator, editor and author
  */
-function add_theme_caps() {
+function change_role_caps() {
 	$role = get_role( 'administrator' ); 
 	$role->add_cap( 'unfiltered_html' ); 
+	$role->remove_cap('manage_links');
+
 	$role = get_role( 'editor' ); 
 	$role->add_cap( 'unfiltered_html' );
+	$role->remove_cap('manage_categories');
+	$role->remove_cap('manage_links');
+	
+
 	$role = get_role( 'author' ); 
 	$role->add_cap( 'unfiltered_html' );	 
+	$role->remove_cap('manage_links');
+
 }
-add_action( 'admin_init', 'add_theme_caps');
+add_action( 'admin_init', 'change_role_caps');
+
+
+// generate cache on save_post
+add_action('save_post', hk_save_post);
+function hk_save_post($postID) {
+
+}
+
+
+/*
+ * Add reviews functionality
+ * hk_reviewed - checkbox to set "now post is reviewed" (not saved)
+ * hk_last_reviewed - date last time post reviewed
+ * hk_next_review - date next time post should be reviewed
+ * hk_review_timespan - selectable list 4 alternatives of time span to next review date (used to set hk_next_review)
+ */
+function hk_add_review_metabox() {
+    add_meta_box( 'custom-metabox', "Granska", 'hk_review_metabox', 'post', 'side', 'high' );
+}
+
+function hk_review_metabox() {
+    global $post;
+    $hk_reviewed = get_post_meta( $post->ID, 'hk_reviewed', true );
+    $date = get_post_meta( $post->ID, 'hk_last_reviewed', true );
+    $nextdate = get_post_meta( $post->ID, 'hk_next_review', true );
+    $timespan = get_post_meta( $post->ID, 'hk_review_timespan', true );
+    if (!isset($timespan)) $timespan = "threemonths" 
+    ?>
+    <p><?php echo "Granskades senast $date och ska granskas igen $nextdate."; ?></p>
+    <p><label for="hk_reviewed"> 
+        <input type="checkbox" id="hk_reviewed" name="hk_reviewed">&nbsp;Jag har granskat inlägget</input></label></p>
+    <p><label for="hk_review_timespan">Tid till nästa granskning 
+        <select type="checkbox" id="hk_review_timespan" name="hk_review_timespan">
+	        <option value="week" <?php echo ($timespan == "week") ? "selected":""; ?>>Nästa vecka</option>
+			<option value="month" <?php echo ($timespan == "month") ? "selected":""; ?>>Nästa månad</option>
+			<option value="threemonths" <?php echo ($timespan == "threemonths") ? "selected":""; ?>>Tre månader</option>
+			<option value="sixmonths" <?php echo ($timespan == "sixmonths") ? "selected":""; ?>>Sex månader</option>
+			<option value="year" <?php echo ($timespan == "year") ? "selected":""; ?>>Nästa år</option>
+		</select></label></p>
+<?php
+}
+
+function hk_save_review_details( $post_ID ) {
+    global $post;   
+    if( $_POST ) {
+    	if ($_POST["hk_reviewed"]) {
+	    	$date = Date("Y-m-d", strtotime('now'));
+	    	$timespan = "+3 months";
+	    	switch($_POST["hk_review_timespan"]) {
+		    	case "week": $timespan = "+1 week"; break;
+		    	case "month": $timespan = "+1 month"; break;
+		    	case "threemonths": $timespan = "+3 months"; break;
+		    	case "sixmonths": $timespan = "+6 months"; break;
+		    	case "year": $timespan = "+1 year"; break;
+			}
+	    	$nextdate = Date("Y-m-d", strtotime($timespan));
+	        add_post_meta( $post->ID, 'hk_last_reviewed', $date, true ) || update_post_meta( $post->ID, 'hk_last_reviewed', $date );
+	        add_post_meta( $post->ID, 'hk_next_review', $nextdate, true ) || update_post_meta( $post->ID, 'hk_next_review', $nextdate );
+	        add_post_meta( $post->ID, 'hk_review_timespan', $_POST["hk_review_timespan"], true ) || update_post_meta( $post->ID, 'hk_review_timespan', $_POST["hk_review_timespan"] );
+    	}
+	}
+}
+
+add_action( 'admin_init', 'hk_add_review_metabox' );
+add_action( 'save_post', 'hk_save_review_details' );
 
 
 
@@ -86,50 +159,30 @@ add_filter('tiny_mce_before_init', 'hk_formatTinyMCE' );
 // remove links/menus from the admin bar 
 function hk_admin_bar_render() { 
 	global $wp_admin_bar; 
-    if (!current_user_can("administrator")) {
-		$wp_admin_bar->remove_menu('new-content'); 
-	}
+
 } 
 add_action( 'wp_before_admin_bar_render', 'hk_admin_bar_render' ); 
+
 
 /* change names in admin menus */
 function change_post_menu_label() {
     global $menu;
 	global $submenu;
 
-    $menu[5][0] = 'Artiklar';
-    $submenu['edit.php'][5][0] = 'Artiklar';
-    $submenu['edit.php'][10][0] = 'Skapa ny';
-    //$submenu['edit.php'][15][0] = 'Status'; // Change name for categories
-    //$submenu['edit.php'][16][0] = 'Labels'; // Change name for tags
-    if (!current_user_can("administrator")) {
-	    $menu[20][0] = 'Special';
-	    $submenu['edit.php?post_type=page'][5][0] = 'Special';
-	    $submenu['edit.php?post_type=page'][10][0] = 'Skapa';
-	    $submenu['edit.php?post_type=page'][5][0] = 'Special';
-	}
-
-    // hide linkmanager
-    unset($menu[15]);
-
     // hide tag divs if not administrator
     if (!current_user_can("administrator")) {
-    	// hide category submenu
-	    unset($submenu['edit.php'][15][0]);
-    	// hide tags submenu
-	    unset($submenu['edit.php'][16][0]);
-	    // hide pages menu "special"
-	    unset($menu[20]);
+        // hide tools menu
+	    unset($menu[75]);
 	}
 }
 
 function hk_change_meta_boxes () {
     // hide meta tag boxes in edit
     // hide tag divs if not administrator
- 	remove_meta_box("tagsdiv-post_tag","post",'side');
-	remove_meta_box("tagsdiv-vem","post",'side');
-	remove_meta_box("tagsdiv-ort","post",'side');
-	remove_meta_box("postimagediv","post",'side');
+ 	//remove_meta_box("tagsdiv-post_tag","post",'side');
+	//remove_meta_box("tagsdiv-vem","post",'side');
+	//remove_meta_box("tagsdiv-ort","post",'side');
+
     // hide tag divs if not administrator
     if (!current_user_can("administrator")) {
 		remove_meta_box("special_categorydiv","post","side");
@@ -141,18 +194,6 @@ function hk_change_meta_boxes () {
 /* change names in admin pages */
 function change_post_object_label() {
     global $wp_post_types;
-    $labels = &$wp_post_types['post']->labels;
-    $labels->name = 'Artiklar';
-    $labels->singular_name = 'Artikel';
-    $labels->add_new = 'L&auml;gg till';
-    $labels->add_new_item = 'L&auml;gg till artikel';
-    $labels->edit_item = '&Auml;ndra artikel';
-    $labels->new_item = 'Artikel';
-    $labels->view_item = 'Visa artikel';
-    $labels->search_items = 'S&ouml;k';
-    $labels->not_found = 'Hittade inga artiklar';
-    $labels->not_found_in_trash = 'Hittade inga artiklar i papperskorgen';
-
     $labels = &$wp_post_types['page']->labels;
     $labels->name = 'Special';
     $labels->singular_name = 'Special';

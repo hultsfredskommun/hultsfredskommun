@@ -14,6 +14,7 @@ Uses hk_related to view related documents and links (of the post type hk_related
 Use WP-PostViews by Lester 'GaMerZ' Chan to enable most viewed sort order in theme, is default sort order when enabled.
 Searchable Categories by Jason Corradino to make category selection more easy.
 Media Library Assistant by David Lingren to get some structure in the Media Library.
+Use Tag Select Meta Box by Jacob Buck to get a nice tag handling.
 
 === Handy tools ===
 Use Simple Image Size by Rahe to handle thumbnail regeneration when needed.

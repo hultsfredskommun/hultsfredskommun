@@ -24,7 +24,8 @@ if ( ! isset( $default_settings ) ) {
 								'slideshow-image' => array(1000, 250, true),
 								'contact-image' => array(150, 150, true),
 								'startpage_cat' => $options["startpage_cat"],
-								'news_cat' => $options["news_cat"]);
+								'news_cat' => $options["news_cat"],
+								'hidden_cat' => $options["hidden_cat"]);
 }
 
 
@@ -101,17 +102,19 @@ function hk_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Primary Menu', 'twentyeleven' ) );
 	
-	// This theme uses Featured Images (also known as post thumbnails) for per-post/per-page Custom Header images
-	add_theme_support( 'post-thumbnails' );
-	
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );
 }
 endif; // hk_setup
 
 
-
-
+function hk_exclude_category( $query ) {
+	global $default_settings;
+    if ( !is_admin() ) {
+        $query->set( 'category__not_in', $default_settings["hidden_cat"] );
+    }
+}
+add_action( 'pre_get_posts', 'hk_exclude_category' );
 
 
 /**
@@ -140,6 +143,17 @@ if (!is_admin()) {
 		'1.0',
 		true
 	);
+} 
+/* only in admin */
+else {
+	wp_enqueue_script(
+		'hk_admin_js',
+		get_stylesheet_directory_uri() . '/js/hultsfred-admin.js',
+		array('jquery'),
+		'1.0',
+		true
+);
+
 }
 
 /**
@@ -268,19 +282,17 @@ function hk_content_nav( $nav_id ) {
 }
 endif; // hk_content_nav
 
+if ( ! function_exists( 'hk_url_grabber' ) ) :
 /**
  * Return the URL for the first link found in the post content.
- *
- * @since Twenty Eleven 1.0
- * @return string|bool URL or false when no link is present.
  */
-function twentyeleven_url_grabber() {
+function hk_url_grabber() {
 	if ( ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches ) )
 		return false;
 
 	return esc_url_raw( $matches[1] );
 }
-
+endif;
 
 if ( ! function_exists( 'twentyeleven_comment' ) ) :
 /**
@@ -351,34 +363,12 @@ function twentyeleven_comment( $comment, $args, $depth ) {
 }
 endif; // ends check for twentyeleven_comment()
 
-if ( ! function_exists( 'twentyeleven_posted_on' ) ) :
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- * Create your own twentyeleven_posted_on to override in a child theme
- *
- * @since Twenty Eleven 1.0
- */
-function twentyeleven_posted_on() {
-	printf( __( '<span class="sep">Posted on </span><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s" pubdate>%4$s</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="%5$s" title="%6$s" rel="author">%7$s</a></span></span>', 'twentyeleven' ),
-		esc_url( get_permalink() ),
-		esc_attr( get_the_time() ),
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-		esc_attr( sprintf( __( 'View all posts by %s', 'twentyeleven' ), get_the_author() ) ),
-		get_the_author()
-	);
-}
-endif;
-
 /**
  * Adds two classes to the array of body classes.
  * The first is if the site has only had one author with published posts.
  * The second is if a singular post being displayed
- *
- * @since Twenty Eleven 1.0
  */
-function twentyeleven_body_classes( $classes ) {
+function hk_body_classes( $classes ) {
 
 	if ( function_exists( 'is_multi_author' ) && ! is_multi_author() )
 		$classes[] = 'single-author';
@@ -388,7 +378,7 @@ function twentyeleven_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'twentyeleven_body_classes' );
+add_filter( 'body_class', 'hk_body_classes' );
 
 
 

@@ -27,7 +27,7 @@ function hk_theme_options_do_page() {
 
 
 			<h3>Kategorier och menyer</h3>
-			<p><label for="hk_theme[startpage_cat]">Välj den kategori som innehåller <b>startsidans</b> sidor.</label><br/>
+			<p><label for="hk_theme[startpage_cat]">Välj den specialkategori som innehåller <b>startsidans</b> sidor.</label><br/>
 			<?php 
 				$args = array(
 					'orderby'            => 'ID', 
@@ -45,7 +45,7 @@ function hk_theme_options_do_page() {
 			?>
 			</p>
 			
-			<p><label for="hk_theme[news_cat]">Välj den kategori som innehåller <b>nyheter</b>.</label><br/>
+			<p><label for="hk_theme[news_cat]">Välj den specialkategori som innehåller <b>nyheter</b>.</label><br/>
 							<?php 
 				$args = array(
 					'orderby'            => 'ID', 
@@ -56,6 +56,24 @@ function hk_theme_options_do_page() {
 					'name'               => 'hk_theme[news_cat]',
 					'depth'              => 0,
 					'taxonomy'           => 'special_category',
+					'show_count'           => true,
+					'hide_empty'      => false,
+					'hide_if_empty'      => false );  
+				wp_dropdown_categories( $args ); 
+			?>
+			</p>
+
+			<p><label for="hk_theme[hidden_cat]">Välj den kategori som innehåller <b>ej synliga poster</b>.</label><br/>
+							<?php 
+				$args = array(
+					'orderby'            => 'ID', 
+					'order'              => 'ASC',
+					'echo'               => 1,
+					'selected'           => esc_attr( $options["hidden_cat"] ),
+					'hierarchical'       => 1, 
+					'name'               => 'hk_theme[hidden_cat]',
+					'depth'              => 0,
+					'taxonomy'           => 'category',
 					'show_count'           => true,
 					'hide_empty'      => false,
 					'hide_if_empty'      => false );  
