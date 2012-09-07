@@ -414,3 +414,10 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true) {
  	endif; 
  	echo $retValue;
 }
+function get_the_next_review_date($id) {
+	global $post;
+	if (!isset($id)) {
+		$id = $post->id;
+	}
+	return get_post_meta( $id, 'hk_next_review', true );
+}

@@ -84,6 +84,7 @@ function hk_contacts_init() {
 }
 
 
+
 // generate cache on save_post
 add_action('save_post', hk_contacts_save);
 function hk_contacts_save($postID) {
@@ -116,10 +117,11 @@ function hk_contacts_generate_cache() {
 	
 	// set startpage category if on startpage
 	$category_in = array();
+	$special_category_in = array();
  	if ( is_home() )
  	{
  		$hk_options = get_option("hk_theme");
- 		$category_in[] = $hk_options["startpage_cat"];
+ 		$special_category_in[] = $hk_options["startpage_cat"];
  	}
  	else if (get_query_var("cat") != "") {
 		$category_in[] = get_query_var("cat");
@@ -149,18 +151,30 @@ function hk_contacts_generate_cache() {
 	}
 
   	// skip if no category
-  	if (count($category_in) <= 0)
+  	if (empty($category_in) && empty($special_category_in))
   		return "";
 
+	// query arguments
 	$args = array(
 		'posts_per_page' => 3,
 		'paged' => 1,
 		'more' => $more = 0,
 		'post_type' => 'hk_kontakter',
-		'category__in' => $category_in,
 		'order' => 'ASC', /* TODO: is this needed, is default most viewed if not suppress_filters? */
 		'suppress_filters' => 1 /* TODO: is this needed? */
 	);
+	if ( !empty($category_in) ) {
+ 	    $args['category__and'] = $category_in;
+	}
+	if ( !empty($special_category_in) ) {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'special_category',
+				'field' => 'id',
+				'terms' => $special_category_in[0]
+			)
+		);
+	}
 
  	if ($args != "")
   	{

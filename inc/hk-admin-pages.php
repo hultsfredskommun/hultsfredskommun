@@ -47,7 +47,7 @@ function hk_review_metabox() {
     $timespan = get_post_meta( $post->ID, 'hk_review_timespan', true );
     if ($timespan == "") $timespan = "threemonths" 
     ?>
-	<?php if ($date == "") : ?>
+	<?php if ($date != "") : ?>
 	    <p><?php echo "Granskades senast $date och ska granskas igen $nextdate."; ?></p>
 	<?php else : ?>
 	    <p><?php echo "Inlägget har aldrig granskats."; ?></p>
@@ -68,9 +68,9 @@ function hk_review_metabox() {
 function hk_save_review_details( $post_ID ) {
     global $post;   
     if( $_POST ) {
+    	$date = Date("Y-m-d", strtotime('now'));
+    	$timespan = "+3 months";
     	if ($_POST["hk_reviewed"]) {
-	    	$date = Date("Y-m-d", strtotime('now'));
-	    	$timespan = "+3 months";
 	    	switch($_POST["hk_review_timespan"]) {
 		    	case "week": $timespan = "+1 week"; break;
 		    	case "month": $timespan = "+1 month"; break;
@@ -78,6 +78,12 @@ function hk_save_review_details( $post_ID ) {
 		    	case "sixmonths": $timespan = "+6 months"; break;
 		    	case "year": $timespan = "+1 year"; break;
 			}
+	    	$nextdate = Date("Y-m-d", strtotime($timespan));
+	        add_post_meta( $post->ID, 'hk_last_reviewed', $date, true ) || update_post_meta( $post->ID, 'hk_last_reviewed', $date );
+	        add_post_meta( $post->ID, 'hk_next_review', $nextdate, true ) || update_post_meta( $post->ID, 'hk_next_review', $nextdate );
+	        add_post_meta( $post->ID, 'hk_review_timespan', $_POST["hk_review_timespan"], true ) || update_post_meta( $post->ID, 'hk_review_timespan', $_POST["hk_review_timespan"] );
+    	}
+    	if (get_post_meta( $post->ID, 'hk_last_reviewed', true) == "") {
 	    	$nextdate = Date("Y-m-d", strtotime($timespan));
 	        add_post_meta( $post->ID, 'hk_last_reviewed', $date, true ) || update_post_meta( $post->ID, 'hk_last_reviewed', $date );
 	        add_post_meta( $post->ID, 'hk_next_review', $nextdate, true ) || update_post_meta( $post->ID, 'hk_next_review', $nextdate );
@@ -158,6 +164,90 @@ function hk_formatTinyMCE($in)
 add_filter('tiny_mce_before_init', 'hk_formatTinyMCE' );
 
 
+// dashboard cleanup
+function hk_cleanup_dashboard()
+{
+	global $wp_meta_boxes, $current_user;
+
+	// remove incoming links info for authors or editors
+	if(in_array('author', $current_user->roles) || in_array('editor', $current_user->roles))
+	{
+		//Incoming Links
+		unset($wp_meta_boxes['dashboard']['normal ']['core']['dashboard_incoming_links']);
+		//Plugins - Popular, New and Recently updated Wordpress Plugins
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+		//Recent Comments
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+	}
+    
+	//Right Now - Comments, Posts, Pages at a glance
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+	//Wordpress Development Blog Feed
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+	//Other Wordpress News Feed
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+	//Quick Press Form
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+	//Recent Drafts List
+	//unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);  
+
+	wp_add_dashboard_widget('hk_mylatestposts_dashboard_widget', 'Mina senaste ändringar', 'hk_display_mylatestposts_dashboard_widget' );
+	wp_add_dashboard_widget('hk_mycomingreviews_dashboard_widget', 'Kommande granskningar', 'hk_display_mycomingreviews_dashboard_widget' );
+}
+// function to display widget
+function hk_display_mylatestposts_dashboard_widget() 
+{
+	//define arguments for WP_Query()
+	$qargs = array(
+		'author'=> get_current_user_id(),
+		'posts_per_page' => 10, 
+		'orderby' => 'modified_date', 
+		'order' => 'DESC'
+	);
+	// perform the query
+	$q = new WP_Query();
+	$q->query($qargs);
+
+	// setup the content with a list
+	$widget_content = '<ul>';
+	// execute the WP loop
+	while ($q->have_posts()) : $q->the_post(); 
+		$widget_content .= '<li><a href="'.get_permalink() .'" rel="bookmark">'. get_the_title() .'</a> '.get_the_modified_date().'</li>';
+	endwhile;
+
+	$widget_content .= '</ul>';
+
+	echo $widget_content;
+} 
+function hk_display_mycomingreviews_dashboard_widget ()
+{
+	// setup the content with a list
+	$widget_content = '<ul>';
+
+	//define arguments for WP_Query()
+	$qargs = array(
+		'author'=> get_current_user_id(),
+		'orderby' => 'meta_value',
+		'meta_key' => 'hk_next_review',
+		'order' => 'ASC'	);
+	// perform the query
+	$q = new WP_Query();
+	$q->query($qargs);
+
+
+	// execute the WP loop
+	while ($q->have_posts()) : $q->the_post(); 
+		$widget_content .= '<li><a href="'.get_permalink() .'" rel="bookmark">'. get_the_title() .'</a> '.get_the_next_review_date(get_the_ID()).'</li>';
+	endwhile;
+
+	$widget_content .= '</ul>';
+
+	echo $widget_content;
+} 
+
+//add our function to the dashboard setup hook
+add_action('wp_dashboard_setup', 'hk_cleanup_dashboard');
+
 
 
 // remove links/menus from the admin bar 
@@ -236,7 +326,7 @@ add_filter('attachment_fields_to_edit', 'remove_media_upload_fields', null, 2);
 function extra_tag_init() {
 	register_taxonomy(
 		'special_category',
-		array('post','hk_slideshow'),
+		array('post','hk_slideshow','hk_kontakter'),
 	 	array(
 			'hierarchical' => true,
 			'label' => __( 'Specialkategori' ),
