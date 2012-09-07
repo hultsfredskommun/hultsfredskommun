@@ -20,7 +20,7 @@ class HK_slideshow extends WP_Widget {
 
 		$this->vars['divclass'] = 'slideshow';
 		$this->vars['posts_per_page'] = '-1';
-		$this->vars['thumbnail-size'] = 'slideshow-image';//'slideshow-image';
+		$this->vars['thumbnail-size'] = 'featured-image';//'slideshow-image';
 		$this->vars['width'] = '100%';
 		$this->vars['height'] = '250px';
 
@@ -33,9 +33,9 @@ class HK_slideshow extends WP_Widget {
 			$width = $this->vars['width'];
 		}
 		if ( isset( $instance[ 'height' ] ) ) {
-			$width = $instance[ 'height' ];
+			$height = $instance[ 'height' ];
 		} else {
-			$width = $this->vars['height'];
+			$height = $this->vars['height'];
 		}
 		if ( isset( $instance[ 'thumbnail-size' ] ) ) {
 			$thumbnailsize = $instance[ 'thumbnail-size' ];
@@ -46,11 +46,11 @@ class HK_slideshow extends WP_Widget {
 		?>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e( 'Bredd:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" type="text" value="<?php echo esc_attr( $width); ?>" />
+		<input class="widefat" id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" type="text" value="<?php echo esc_attr( $width ); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e( 'Höjd:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo esc_attr( $height); ?>" />
+		<input class="widefat" id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo esc_attr( $height ); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'thumbnail-size' ); ?>"><?php _e( 'Bildformat:' ); ?></label> 
@@ -130,9 +130,9 @@ function hk_slideshow_generate_output($vars) {
 		$meta_query = new WP_Query($args);
 		//add it again
 		add_action('pre_get_posts', 'hk_views_sorting');
-		
+
 		if ($meta_query->have_posts()) {
-			$retValue .= "<div class='slideshow'><img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&h=".$default_settings[$vars["thumbnail-size"]][1]."'/>";
+			$retValue .= "<div style='width: ".$vars['width'].";'><div class='slideshow'><img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&h=".($default_settings[$vars["thumbnail-size"]][1]+100)."'/>";
 			
        		// The Loop
 			$first = true;
@@ -149,21 +149,20 @@ function hk_slideshow_generate_output($vars) {
 							else { $retValue .= 'img_left '; }
 							$retValue .= implode(" ",get_post_class()) . "'>";
 							$retValue .= 	"<img src='$src' class='attachment-slideshow-image wp-post-image' alt='$description' title='$description' />";
-							$retValue .= 	"<div class='text-area'>";
-							$retValue .= 		"<div class='text-content'>";
-							$retValue .= 			"<div class='transp-background'></div>";
-							$retValue .= 			"<header class='entry-header'><h2 class='entry-title'><a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_title() . "</a></h2></header>";
-							$retValue .= 			"<div class='entry-content'>";
-							$retValue .= 				get_the_content();
-							$retValue .=			"</div>";
-							$retValue .=		"</div>";
-							$retValue .= 	"</div>";
+							if (get_the_content() != "") {
+								$retValue .= 	"<div class='text-area'>";
+								$retValue .= 		"<div class='text-content'>";
+								$retValue .= 			"<div class='transp-background'></div>";
+								$retValue .= 			"<a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_content() . "</a>";
+								$retValue .=		"</div>";
+								$retValue .= 	"</div>";
+							}
 							$retValue .= "</article>";
 						}
 					endwhile;
 				endif;
         	endwhile;
-			$retValue .= "</div>";
+			$retValue .= "</div></div>";
 
 		}
 		

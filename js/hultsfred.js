@@ -255,6 +255,7 @@ function readMoreToggle(el){
 					$("html,body").animate({scrollTop: $(article).position().top}, 300);
 
 					// articles slideshow
+					$('.slideshow_bg').show();
 					$(this).find('.slideshow').cycle({
 						fx: 'fade',
 						slideExpr: '.slide',					
@@ -500,6 +501,7 @@ $(document).ready(function(){
 	/**
 	 * init slideshows
 	 */
+	$('.slideshow_bg').show();
 	$('.slideshow').cycle({
 		fx: 'fade',
 		slideExpr: '.slide',					
