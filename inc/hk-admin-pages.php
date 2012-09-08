@@ -173,7 +173,7 @@ function hk_cleanup_dashboard()
 	if(in_array('author', $current_user->roles) || in_array('editor', $current_user->roles))
 	{
 		//Incoming Links
-		unset($wp_meta_boxes['dashboard']['normal ']['core']['dashboard_incoming_links']);
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
 		//Plugins - Popular, New and Recently updated Wordpress Plugins
 		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
 		//Recent Comments
@@ -191,8 +191,13 @@ function hk_cleanup_dashboard()
 	//Recent Drafts List
 	//unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);  
 
-	wp_add_dashboard_widget('hk_mylatestposts_dashboard_widget', 'Mina senaste ändringar', 'hk_display_mylatestposts_dashboard_widget' );
+	//My posts to review
 	wp_add_dashboard_widget('hk_mycomingreviews_dashboard_widget', 'Kommande granskningar', 'hk_display_mycomingreviews_dashboard_widget' );
+	//My latest modified posts
+	wp_add_dashboard_widget('hk_mylatestposts_dashboard_widget', 'Mina senaste ändringar', 'hk_display_mylatestposts_dashboard_widget' );
+	//All my hidden posts
+	wp_add_dashboard_widget('hk_myhidden_dashboard_widget', 'Mina ej synliga sidor', 'hk_display_myhidden_dashboard_widget' );
+
 }
 // function to display widget
 function hk_display_mylatestposts_dashboard_widget() 
@@ -208,22 +213,17 @@ function hk_display_mylatestposts_dashboard_widget()
 	$q = new WP_Query();
 	$q->query($qargs);
 
-	// setup the content with a list
-	$widget_content = '<ul>';
 	// execute the WP loop
+	echo '<ul>';
+	echo '<li>&nbsp; <span class="alignright">Ändrades senast</span></li>';
 	while ($q->have_posts()) : $q->the_post(); 
-		$widget_content .= '<li><a href="'.get_permalink() .'" rel="bookmark">'. get_the_title() .'</a> '.get_the_modified_date().'</li>';
+		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_modified_date()."</span></li>" );
 	endwhile;
+	echo '</ul>';
 
-	$widget_content .= '</ul>';
-
-	echo $widget_content;
 } 
 function hk_display_mycomingreviews_dashboard_widget ()
 {
-	// setup the content with a list
-	$widget_content = '<ul>';
-
 	//define arguments for WP_Query()
 	$qargs = array(
 		'author'=> get_current_user_id(),
@@ -236,13 +236,35 @@ function hk_display_mycomingreviews_dashboard_widget ()
 
 
 	// execute the WP loop
+	echo '<ul>';
+	echo '<li>&nbsp; <span class="alignright">Granskas igen</span></li>';
 	while ($q->have_posts()) : $q->the_post(); 
-		$widget_content .= '<li><a href="'.get_permalink() .'" rel="bookmark">'. get_the_title() .'</a> '.get_the_next_review_date(get_the_ID()).'</li>';
+		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_next_review_date(get_the_ID())."</span></li>" );
 	endwhile;
+	echo '</ul>';
+} 
+function hk_display_myhidden_dashboard_widget ()
+{
+	global $default_settings;
 
-	$widget_content .= '</ul>';
+	//define arguments for WP_Query()
+	$qargs = array(
+		'author'=> get_current_user_id(),
+		'category__in' => array($default_settings["hidden_cat"]),
+		'posts_per_page' => -1
+		);
+	// perform the query
+	$q = new WP_Query();
+	$q->query($qargs);
 
-	echo $widget_content;
+
+	// execute the WP loop
+	echo '<ul>';
+	echo '<li>&nbsp; <span class="alignright">Ändrades senast</span></li>';
+	while ($q->have_posts()) : $q->the_post(); 
+		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_modified_date()."</span></li>" );
+	endwhile;
+	echo '</ul>';
 } 
 
 //add our function to the dashboard setup hook
