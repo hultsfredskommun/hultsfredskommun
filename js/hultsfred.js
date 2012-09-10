@@ -373,6 +373,12 @@ $(document).ready(function(){
 
 
 	/**
+	 * tabs action
+	 */
+	$(".home #content").tabs();
+
+
+	/**
 	 * sort-order click-action
 	 */
 	$("#sort-order").find("a").each(function(){

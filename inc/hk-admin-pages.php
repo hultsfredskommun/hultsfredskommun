@@ -34,11 +34,12 @@ function hk_save_post($postID) {
  * hk_last_reviewed - date last time post reviewed
  * hk_next_review - date next time post should be reviewed
  * hk_review_timespan - selectable list 4 alternatives of time span to next review date (used to set hk_next_review)
+ * Cron job to send mail when needed.
  */
 function hk_add_review_metabox() {
     add_meta_box( 'custom-metabox', "Granska", 'hk_review_metabox', 'post', 'side', 'high' );
 }
-
+// echo review meta box with settings for is reviewed and when review next time
 function hk_review_metabox() {
     global $post;
     $hk_reviewed = get_post_meta( $post->ID, 'hk_reviewed', true );
@@ -48,7 +49,7 @@ function hk_review_metabox() {
     if ($timespan == "") $timespan = "threemonths" 
     ?>
 	<?php if ($date != "") : ?>
-	    <p><?php echo "Granskades senast $date och ska granskas igen $nextdate."; ?></p>
+	    <p>Granskas igen <?php echo get_the_next_review_date(get_the_ID()); ?>.</p>
 	<?php else : ?>
 	    <p><?php echo "Inlägget har aldrig granskats."; ?></p>
 	<?php endif; ?>
@@ -68,8 +69,9 @@ function hk_review_metabox() {
 function hk_save_review_details( $post_ID ) {
     global $post;   
     if( $_POST ) {
-    	$date = Date("Y-m-d", strtotime('now'));
+    	$date = strtotime('now');
     	$timespan = "+3 months";
+    	// if is reviewed checkbox is checked
     	if ($_POST["hk_reviewed"]) {
 	    	switch($_POST["hk_review_timespan"]) {
 		    	case "week": $timespan = "+1 week"; break;
@@ -78,13 +80,14 @@ function hk_save_review_details( $post_ID ) {
 		    	case "sixmonths": $timespan = "+6 months"; break;
 		    	case "year": $timespan = "+1 year"; break;
 			}
-	    	$nextdate = Date("Y-m-d", strtotime($timespan));
+	    	$nextdate = strtotime($timespan);
 	        add_post_meta( $post->ID, 'hk_last_reviewed', $date, true ) || update_post_meta( $post->ID, 'hk_last_reviewed', $date );
 	        add_post_meta( $post->ID, 'hk_next_review', $nextdate, true ) || update_post_meta( $post->ID, 'hk_next_review', $nextdate );
 	        add_post_meta( $post->ID, 'hk_review_timespan', $_POST["hk_review_timespan"], true ) || update_post_meta( $post->ID, 'hk_review_timespan', $_POST["hk_review_timespan"] );
     	}
+    	// if no review date is set
     	if (get_post_meta( $post->ID, 'hk_last_reviewed', true) == "") {
-	    	$nextdate = Date("Y-m-d", strtotime($timespan));
+	    	$nextdate = strtotime($timespan);
 	        add_post_meta( $post->ID, 'hk_last_reviewed', $date, true ) || update_post_meta( $post->ID, 'hk_last_reviewed', $date );
 	        add_post_meta( $post->ID, 'hk_next_review', $nextdate, true ) || update_post_meta( $post->ID, 'hk_next_review', $nextdate );
 	        add_post_meta( $post->ID, 'hk_review_timespan', $_POST["hk_review_timespan"], true ) || update_post_meta( $post->ID, 'hk_review_timespan', $_POST["hk_review_timespan"] );
@@ -94,6 +97,97 @@ function hk_save_review_details( $post_ID ) {
 
 add_action( 'admin_init', 'hk_add_review_metabox' );
 add_action( 'save_post', 'hk_save_review_details' );
+
+
+/* CRON SYNC JOB */
+add_filter( 'cron_schedules', 'cron_add_minute' );
+ 
+function cron_add_minute( $schedules ) {
+ 	// Adds once weekly to the existing schedules.
+ 	$schedules['hk_minute'] = array(
+ 		'interval' => 60,
+ 		'display' => __( 'Every minute' )
+ 	);
+ 	return $schedules;
+ }
+
+
+function hk_review_mail() {
+	$options = get_option('hk_theme');
+	$hk_review_mail_check_time = time();
+	$options["hk_review_mail_check_time"] = $hk_review_mail_check_time;
+
+	//define arguments for WP_Query()
+	$qargs = array(
+		'posts_per_page' => -1,
+        'post_status' => 'published', 
+		'meta_key' => 'hk_next_review',  // which meta to query
+		'meta_value'   => strtotime("+7 day"),  // value for comparison
+		'meta_compare' => '<',          // method of comparison
+		'meta_type' => 'numeric',
+		'orderby' => 'meta_value',
+		'order' => 'ASC',
+		'ignore_sticky_posts' => 1 );
+
+	// perform the query
+	if (function_exists("hk_FilterOrder"))
+		remove_filter ('posts_orderby', 'hk_FilterOrder');
+	
+	$q = new WP_Query();
+	$q->query($qargs);
+	
+	if (function_exists("hk_FilterOrder"))
+		add_filter ('posts_orderby', 'hk_FilterOrder');
+
+	// execute the WP loop
+	$log = "";
+	$maillist = Array();
+	while ($q->have_posts()) : $q->the_post();
+		$mail = get_the_author_email();
+		if ($mail == "") {
+			$log .= "Saknar e-postadress på användare ". get_the_author() . ".<br>";
+
+		} else
+		{
+			$maillist[$mail][] = array(get_the_ID(), get_the_title(), get_the_next_review_date(get_the_ID() ) );
+		}
+	}
+	endwhile;
+
+	$count_mail = 0;
+	foreach ($maillist as $mailaddress => $value) {
+		
+		$subject = "Dags att granska en sida på hultsfred.se";
+		$message = "Du har följande inlägg att granska på hultsfred.se.<br>";
+		$message .= "<ul>";
+		foreach ($value as $editpost) {
+			$message .= "<li><a href='". site_url("/") . "wp-admin/post.php?post=" . $editpost[0] . "&action=edit'>" . $editpost[1] . " " . $editpost[2] . "</a></li>";
+		}
+		$message .= "</ul>";
+		$count_mail++;
+		wp_mail($mailaddress, $subject, $message); 
+	} 
+	$log .= "Skickade $count_mail påminnelser den " . date("d M", strtotime("now"));
+	$options["hk_review_mail_log"] = $log;
+
+
+	update_option("hk_theme", $options);
+}
+add_action("hk_review_mail_event","hk_review_mail");
+
+function hk_visit_activation() {
+	$options = get_option('hk_theme');
+	if ($options['enable_cron_review_mail']) {
+		if ( !wp_next_scheduled( 'hk_review_mail_event' ) ) {
+			wp_schedule_event( time(), 'weekly', 'hk_review_mail_event');
+		}
+	}
+	else
+	{
+		wp_clear_scheduled_hook('hk_review_mail_event');
+	}
+}
+add_action('wp', 'hk_visit_activation');
 
 
 
@@ -164,13 +258,17 @@ function hk_formatTinyMCE($in)
 add_filter('tiny_mce_before_init', 'hk_formatTinyMCE' );
 
 
+/**
+ * Dashboard setup
+ */
+
 // dashboard cleanup
 function hk_cleanup_dashboard()
 {
 	global $wp_meta_boxes, $current_user;
 
 	// remove incoming links info for authors or editors
-	if(in_array('author', $current_user->roles) || in_array('editor', $current_user->roles))
+	if (in_array('author', $current_user->roles) || in_array('editor', $current_user->roles))
 	{
 		//Incoming Links
 		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
@@ -179,7 +277,14 @@ function hk_cleanup_dashboard()
 		//Recent Comments
 		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
 	}
-    
+    else if (in_array('administrator', $current_user->roles)) {
+		//All posts to review
+		wp_add_dashboard_widget('hk_allcomingreviews_dashboard_widget', 'Alla kommande granskningar', 'hk_display_allcomingreviews_dashboard_widget' );
+		//All latest modified posts
+		wp_add_dashboard_widget('hk_alllatestposts_dashboard_widget', 'Alla senaste ändringar', 'hk_display_alllatestposts_dashboard_widget' );
+		//All hidden posts
+		wp_add_dashboard_widget('hk_allhidden_dashboard_widget', 'Alla ej synliga sidor', 'hk_display_allhidden_dashboard_widget' );
+    }
 	//Right Now - Comments, Posts, Pages at a glance
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
 	//Wordpress Development Blog Feed
@@ -191,6 +296,7 @@ function hk_cleanup_dashboard()
 	//Recent Drafts List
 	//unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);  
 
+
 	//My posts to review
 	wp_add_dashboard_widget('hk_mycomingreviews_dashboard_widget', 'Kommande granskningar', 'hk_display_mycomingreviews_dashboard_widget' );
 	//My latest modified posts
@@ -199,7 +305,105 @@ function hk_cleanup_dashboard()
 	wp_add_dashboard_widget('hk_myhidden_dashboard_widget', 'Mina ej synliga sidor', 'hk_display_myhidden_dashboard_widget' );
 
 }
-// function to display widget
+// function to display my coming reviews dashboard widget
+function hk_display_allcomingreviews_dashboard_widget ()
+{
+	$options = get_option('hk_theme');
+
+	//define arguments for WP_Query()
+	$qargs = array(
+        'category__not_in' => array($options["hidden_cat"]),
+        'post_status' => 'published',
+		'posts_per_page' => -1, 
+		'meta_key' => 'hk_next_review',  // which meta to query
+		'meta_value'   => strtotime("+1 day"),  // value for comparison
+		'meta_compare' => '<',          // method of comparison
+		'meta_type' => 'numeric',
+		'orderby' => 'meta_value',
+		'order' => 'ASC',
+		'ignore_sticky_posts' => 1 );
+	// perform the query
+	$q = new WP_Query();
+	$q->query($qargs);
+
+	echo Date("H:i:s",$options["hk_review_mail_check_time"]) . "<br>" . $options["hk_review_mail_log"] . "<br><br><br>";
+
+	// execute the WP loop
+	echo '<br><br><ul>';
+	echo '<li>&nbsp; <span class="alignright">Granskas igen</span></li>';
+	while ($q->have_posts()) : $q->the_post(); 
+		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_next_review_date(get_the_ID())."</span></li>" );
+	endwhile;
+	echo '</ul>';
+} 
+// function to display my latest dashboard widget
+function hk_display_alllatestposts_dashboard_widget() 
+{
+	//define arguments for WP_Query()
+	$qargs = array(
+		'posts_per_page' => 10, 
+		'orderby' => 'modified_date', 
+		'order' => 'DESC'
+	);
+	// perform the query
+	$q = new WP_Query();
+	$q->query($qargs);
+
+	// execute the WP loop
+	echo '<ul>';
+	echo '<li>&nbsp; <span class="alignright">Ändrades senast</span></li>';
+	while ($q->have_posts()) : $q->the_post(); 
+		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_modified_date()."</span></li>" );
+	endwhile;
+	echo '</ul>';
+
+} 
+// function to display my hidden posts dashboard widget
+function hk_display_allhidden_dashboard_widget ()
+{
+	global $default_settings;
+
+	//define arguments for WP_Query()
+	$qargs = array(
+		'category__in' => array($default_settings["hidden_cat"]),
+		'posts_per_page' => -1
+		);
+	// perform the query
+	$q = new WP_Query();
+	$q->query($qargs);
+
+
+	// execute the WP loop
+	echo '<ul>';
+	echo '<li>&nbsp; <span class="alignright">Ändrades senast</span></li>';
+	while ($q->have_posts()) : $q->the_post(); 
+		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_modified_date()."</span></li>" );
+	endwhile;
+	echo '</ul>';
+} 
+// function to display my coming reviews dashboard widget
+function hk_display_mycomingreviews_dashboard_widget ()
+{
+	//define arguments for WP_Query()
+	$qargs = array(
+		'author'=> get_current_user_id(),
+		'orderby' => 'meta_value',
+		'meta_key' => 'hk_next_review',
+		'order' => 'ASC'	);
+	// perform the query
+	$q = new WP_Query();
+	$q->query($qargs);
+
+
+	// execute the WP loop
+	echo '<ul>';
+	echo '<li>&nbsp; <span class="alignright">Granskas igen</span></li>';
+	while ($q->have_posts()) : $q->the_post(); 
+		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_next_review_date(get_the_ID())."</span></li>" );
+	endwhile;
+	echo '</ul>';
+} 
+// function to display my latest dashboard widget
 function hk_display_mylatestposts_dashboard_widget() 
 {
 	//define arguments for WP_Query()
@@ -222,27 +426,7 @@ function hk_display_mylatestposts_dashboard_widget()
 	echo '</ul>';
 
 } 
-function hk_display_mycomingreviews_dashboard_widget ()
-{
-	//define arguments for WP_Query()
-	$qargs = array(
-		'author'=> get_current_user_id(),
-		'orderby' => 'meta_value',
-		'meta_key' => 'hk_next_review',
-		'order' => 'ASC'	);
-	// perform the query
-	$q = new WP_Query();
-	$q->query($qargs);
-
-
-	// execute the WP loop
-	echo '<ul>';
-	echo '<li>&nbsp; <span class="alignright">Granskas igen</span></li>';
-	while ($q->have_posts()) : $q->the_post(); 
-		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_next_review_date(get_the_ID())."</span></li>" );
-	endwhile;
-	echo '</ul>';
-} 
+// function to display my hidden posts dashboard widget
 function hk_display_myhidden_dashboard_widget ()
 {
 	global $default_settings;

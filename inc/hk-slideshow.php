@@ -125,12 +125,7 @@ function hk_slideshow_generate_output($vars) {
 				)
 			);
 		}
-		//remove troubling action before wp_query
-		remove_action('pre_get_posts', 'hk_views_sorting');
 		$meta_query = new WP_Query($args);
-		//add it again
-		add_action('pre_get_posts', 'hk_views_sorting');
-
 		if ($meta_query->have_posts()) {
 			$retValue .= "<div style='width: ".$vars['width'].";'><div class='slideshow'><img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&h=".($default_settings[$vars["thumbnail-size"]][1])."'/>";
 			

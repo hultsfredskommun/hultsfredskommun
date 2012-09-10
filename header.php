@@ -114,15 +114,6 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 			<h1 id="logo"><span><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span></h1>
 			
 			
-			<!--div id='wrapper-sHys'>
-				<span id='h2-sHys'><a id='url-sHys' href="http://www.vackertvader.se/hultsfred"> Hultsfred</a></span>
-				<div id='load-sHys'></div>
-				<a id='url_detail-sHys' href="http://www.vackertvader.se/hultsfred">Detaljerad prognos</a>
-			</div>
-			<script type="text/javascript" 
-					src="http://widget.vackertvader.se/widgetv3/widget_request/2704398?bgcolor=ffffff&border=none&days=2&key=-sHys&lang=&maxtemp=no&size=x120&textcolor=363636&wind=no" 
-					charset="utf-8">
-			</script-->
 			
 			
 		</hgroup>

@@ -81,12 +81,39 @@ function hk_theme_options_do_page() {
 			?>
 			</p>
 
+			<p><label for="hk_theme[protocol_cat]">Välj den kategori som innehåller <b>protokoll</b>.</label><br/>
+							<?php 
+				$args = array(
+					'orderby'            => 'ID', 
+					'order'              => 'ASC',
+					'echo'               => 1,
+					'selected'           => esc_attr( $options["protocol_cat"] ),
+					'hierarchical'       => 1, 
+					'name'               => 'hk_theme[protocol_cat]',
+					'depth'              => 0,
+					'taxonomy'           => 'special_category',
+					'show_count'           => true,
+					'hide_empty'      => false,
+					'hide_if_empty'      => false );  
+				wp_dropdown_categories( $args ); 
+			?>
+			</p>
+
 			<p><label for="hk_theme[topmenu]">Namn på meny som ska vara toppmeny.</label><br/><input type="text" name="hk_theme[topmenu]" value="<?php echo $options['topmenu']; ?>" /></p>
 
 
 			<h3>Utseende</h3>
 			<p><label for="hk_theme[primary_width]">Bredden på huvudinnehåll.</label><br/><input type="text" name="hk_theme[primary_width]" value="<?php echo $options['primary_width']; ?>" /></p>
 			<p><label for="hk_theme[sidebar_width]">Bredden på bredd på sidoinnehåll.</label><br/><input type="text" name="hk_theme[sidebar_width]" value="<?php echo $options['sidebar_width']; ?>" /></p>
+
+			<h3>Cron</h3>
+			<?php if ($options['enable_cron_review_mail']) {
+				if ( !wp_next_scheduled( 'hk_review_mail_event' ) ) {
+					wp_schedule_event( time(), 'hk_minute', 'hk_review_mail_event');
+				} }
+			else { wp_clear_scheduled_hook('hk_review_mail_event'); } ?>
+			<p><label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label><br/><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?> Kördes senast <?php echo Date("Y-m-d H:i:s",$options["hk_review_mail_check_time"]); ?><br/><?php echo $options["hk_review_mail_log"]; ?></p>
+
 
 			<h3>Bilder</h3>
 			<p><label for="hk_theme[top_image]">Toppbild</label><br/>

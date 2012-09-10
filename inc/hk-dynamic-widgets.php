@@ -47,16 +47,6 @@ function hk_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name' => 'Startsidans v&auml;nstra sidof&auml;lt',
-		'id' => 'firstpage-secondary-sidebar',
-		'description' => 'Startsidans v&auml;nstra sidof&auml;lt',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
 		'name' => 'Sidonavigering',
 		'id' => 'nav-sidebar',
 		'description' => 'Inneh&aring;llsidans navigeringsyta',

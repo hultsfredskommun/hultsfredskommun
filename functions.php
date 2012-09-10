@@ -25,7 +25,9 @@ if ( ! isset( $default_settings ) ) {
 								'contact-image' => array(150, 150, true),
 								'startpage_cat' => $options["startpage_cat"],
 								'news_cat' => $options["news_cat"],
-								'hidden_cat' => $options["hidden_cat"]);
+								'hidden_cat' => $options["hidden_cat"],
+								'protocol_cat' => $options["protocol_cat"]
+								);
 }
 
 
@@ -93,6 +95,8 @@ function hk_setup() {
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
 
+	// send email in html
+	add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
 
 	// Registers taxonomy add-on for Advanced Custom Fields
 	if (function_exists("register_field")) {
@@ -131,7 +135,7 @@ if (!is_admin()) {
 	wp_enqueue_script(
 		'hultsfred_js',
 		get_stylesheet_directory_uri() . '/js/hultsfred.js',
-		array('jquery','jquery-ui-core','history_js'), /*,'jquery-ui-tabs'*/
+		array('jquery','jquery-ui-core','history_js','jquery-ui-widget','jquery-ui-tabs'),
 		'1.0',
 		true
 	);
@@ -416,8 +420,37 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true) {
 }
 function get_the_next_review_date($id) {
 	global $post;
-	if (!isset($id)) {
-		$id = $post->id;
-	}
-	return get_post_meta( $id, 'hk_next_review', true );
+	$time = get_post_meta( $id, 'hk_next_review', true );
+
+	return duration(strtotime("now"),$time);
 }
+
+function duration($start,$end) {  
+	$neg = false;
+	$seconds = $end - $start;  
+
+	if ($seconds < 0) {
+		$seconds = -$seconds;
+		$neg = true;
+	}
+
+	$days = floor($seconds/60/60/24);  
+	$hours = $seconds/60/60%24;  
+	$mins = $seconds/60%60;  
+	$secs = $seconds%60;  
+
+	$duration='';  
+	if($days>0) $duration .= "$days dagar ";  
+	//if($hours>0) $duration .= "$hours timmar ";  
+	//if($mins>0) $duration .= "$mins minuter ";  
+	//if($secs>0) $duration .= "$secs seconds ";  
+
+	$duration = trim($duration);  
+	if($duration==null) $duration = 'nu';  
+
+	if ($neg)
+		$duration = "<b>för $duration sedan</b>";
+	else
+		$duration = "om $duration";
+	return $duration;  
+}  
