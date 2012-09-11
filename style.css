@@ -975,7 +975,7 @@ a:hover {
 #menu-quickmenu{
 	list-style: none;
 	font-weight: bold;
-	margin-bottom: 10px;
+	margin: 0 0 10px 0;
 	/* Clear floats */
 	float: left;
 	width: 100%;
@@ -989,7 +989,7 @@ a:hover {
 	margin: 10px;
 	position: relative;
 }
-#menu-quickmenu a{
+#menu-quickmenu a {
 	border: solid 1px #BEBEBE;
 	background-color: #FFF;
 	padding: 5px;
@@ -998,7 +998,7 @@ a:hover {
 	display: block;
 	text-decoration: none;
 }
-#menu-quickmenu a:hover{
+#menu-quickmenu a:hover {
 	background: #EDEDED;
 	text-decoration: underline;
 	box-shadow: none;
@@ -1247,7 +1247,10 @@ a:hover {
 	width: 25%; 
 	float: right;
 }
-
+.ui-tabs .rightcontent li
+{
+	list-style-type: none;
+}
 .ui-tabs ul.post_tabs_title
 {
     margin: 0px;

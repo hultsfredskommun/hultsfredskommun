@@ -74,7 +74,7 @@ get_header(); ?>
 				/* Query all posts with news category */
 				if ($default_settings["news_cat"] != "") { ?>
 					<div id='news'>
-						<span id='news_header'>Nyheter</span><hr class='newline' />
+						<span class='entry-title'>Nyheter</span>
 					<?php
 					$query = array( 'posts_per_page' => '10', 
 									'tax_query' => array(
@@ -86,9 +86,11 @@ get_header(); ?>
 									) );
 
 					query_posts( $query );		
-					if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-						get_template_part( 'content', "news" ); 
-					endwhile; endif; 
+					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+					<div class="entry-wrapper">
+						<a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+					</div>
+					<?php endwhile; endif; 
 					?> 
 						<span class="read-more-link"><a href="<?php echo get_category_link($default_settings["news_cat"]); ?>">Fler nyheter</a></span>
 					</div>
@@ -133,7 +135,21 @@ get_header(); ?>
 			?>
 
 			</div><div class="rightcontent">
-				Lista protokoll här:			
+				<div class="entry-title">Visa protokoll</div>
+				<?php 
+				 $args = array(
+					'hide_empty'         => 0,
+					'orderby'            => 'name',
+					'order'              => 'ASC',
+					'style'              => 'list',
+					'child_of'           => $default_settings["protocol_cat"],
+					'hierarchical'       => true,
+					'title_li'           => "",
+					'echo'               => 1,
+					'taxonomy'           => 'special_category',
+					);
+					wp_list_categories($args);	
+					?>			
 			</div>
 			<div class="clear"></div>
 		</div>	
@@ -158,19 +174,17 @@ get_header(); ?>
 			?>				
 			</div>
 			<div class="rightcontent">
-							<?php
+			<?php
 				/* Query all posts */
-				$query = array( 'posts_per_page' => '20', 
+				$query = array( 'posts_per_page' => '10', 
 								'ignore_sticky_posts' => 'true',
 								'post__not_in' => $shownposts
 								) ;
 				
 				query_posts( $query );
-				$shownposts = array();
 				if ( have_posts() ) : ?> 
-					<div class="entry-wrapper">Fler välbesökta: </div>
-					<?php while ( have_posts() ) : the_post();
-					$shownposts[] = get_the_ID(); ?>
+					<div class="entry-title">Fler välbesökta</div>
+					<?php while ( have_posts() ) : the_post(); ?>
 					<div class="entry-wrapper">
 						<a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 					</div>

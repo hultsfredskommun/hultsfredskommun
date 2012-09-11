@@ -531,7 +531,7 @@ add_filter('attachment_fields_to_edit', 'remove_media_upload_fields', null, 2);
 function extra_tag_init() {
 	register_taxonomy(
 		'special_category',
-		array('post','hk_slideshow','hk_kontakter'),
+		array('post','hk_slideshow','hk_kontakter','hk_events'),
 	 	array(
 			'hierarchical' => true,
 			'label' => __( 'Specialkategori' ),

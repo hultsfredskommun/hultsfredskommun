@@ -55,17 +55,18 @@ function hk_events_generate_output($vars) {
 	
 	// set startpage category if on startpage
 	$category_in = array();
+	$special_category_in = array();
  	if ( is_home() )
  	{
  		$hk_options = get_option("hk_theme");
- 		$category_in[] = $hk_options["startpage_cat"];
+ 		$special_category_in[] = $hk_options["startpage_cat"];
  	}
  	else if (get_query_var("cat") != "") {
 		$category_in[] = get_query_var("cat");
   	}
 
   	// skip if no category
-  	if (count($category_in) <= 0)
+  	if (empty($category_in) && empty($special_category_in))
   		return "";
 
 	$args = array(
@@ -74,9 +75,21 @@ function hk_events_generate_output($vars) {
 		'more' => $more = 0,
 		'post_type' => 'hk_events',
 		'category__in' => $category_in,
-		'order' => 'ASC', /* TODO: is this needed, is default most viewed if not suppress_filters? */
-		'suppress_filters' => 1 /* TODO: is this needed? */
+		'order' => 'ASC', 
+		'suppress_filters' => 1 
 	);
+	if ( !empty($category_in) ) {
+ 	    $args['category__and'] = $category_in;
+	}
+	if ( !empty($special_category_in) ) {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'special_category',
+				'field' => 'id',
+				'terms' => $special_category_in[0]
+			)
+		);
+	}
 
  	if ($args != "")
   	{
