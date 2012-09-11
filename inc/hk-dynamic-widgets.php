@@ -7,19 +7,18 @@
 function hk_widgets_init() {
 
 	register_sidebar( array(
-		'name' => 'Bildspelsyta',
-		'id' => 'slideshow-content',
-		'description' => 'Bildspelsyta p&aring; alla sidor',
+		'name' => 'Startsidans toppinneh&aring;ll',
+		'id' => 'firstpage-top-content',
+		'description' => 'Inneh&aring;ll h&ouml;gst upp p&aring; startsidan',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
-
 	register_sidebar( array(
-		'name' => 'Startsidans toppinneh&aring;ll',
-		'id' => 'firstpage-top-content',
-		'description' => 'Inneh&aring;ll h&ouml;gst upp p&aring; startsidan',
+		'name' => 'Startsidans toppinneh&aring;ll - h&ouml;ger',
+		'id' => 'firstpage-top-content-right',
+		'description' => 'Inneh&aring;ll h&ouml;gst upp till h&ouml;ger p&aring; startsidan',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',

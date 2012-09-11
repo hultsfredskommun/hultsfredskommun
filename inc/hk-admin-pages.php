@@ -111,7 +111,7 @@ function cron_add_minute( $schedules ) {
  	return $schedules;
  }
 
-
+// check which posts to be reviewed and send mail to remind author
 function hk_review_mail() {
 	$options = get_option('hk_theme');
 	$hk_review_mail_check_time = time();
@@ -122,7 +122,7 @@ function hk_review_mail() {
 		'posts_per_page' => -1,
         'post_status' => 'published', 
 		'meta_key' => 'hk_next_review',  // which meta to query
-		'meta_value'   => strtotime("+7 day"),  // value for comparison
+		'meta_value'   => strtotime("+1 week"),  // value for comparison
 		'meta_compare' => '<',          // method of comparison
 		'meta_type' => 'numeric',
 		'orderby' => 'meta_value',
@@ -151,13 +151,12 @@ function hk_review_mail() {
 		{
 			$maillist[$mail][] = array(get_the_ID(), get_the_title(), get_the_next_review_date(get_the_ID() ) );
 		}
-	}
 	endwhile;
 
 	$count_mail = 0;
 	foreach ($maillist as $mailaddress => $value) {
 		
-		$subject = "Dags att granska en sida på hultsfred.se";
+		$subject = "Dags att granska ett inlägg på hultsfred.se";
 		$message = "Du har följande inlägg att granska på hultsfred.se.<br>";
 		$message .= "<ul>";
 		foreach ($value as $editpost) {

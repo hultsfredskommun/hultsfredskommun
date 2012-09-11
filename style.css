@@ -81,7 +81,9 @@ body,
 /*#sidebar .widget,*/
 body.single article.sticky,
 article.sticky.full,
-.closeButton {
+.closeButton,
+.ui-tabs .ui-tabs-panel
+ {
 	background-color: #fff;
 }
 
@@ -104,7 +106,6 @@ hr,
 
 /* selected background color */
 #menu ul li:hover, 
-#topmenu nav ul li:hover,
 #sort-order ul li:hover,
 #menu ul li.current-menu-item,
 #menu ul li.current-category-ancestor,
@@ -214,13 +215,15 @@ article.sticky {
 }
 .summary-content .summary-footer,
 .post footer {
-	border-top: 1px solid #E6E6E6;
+	_order-top: 1px solid #E6E6E6;
 }
 /* bordered boxes */
-#news,
+/*#news,*/
 article,
 .misc-ctrl,
-#dyn-posts-load-posts/*,
+#dyn-posts-load-posts,
+.ui-tabs .ui-tabs-panel
+/*,
 .widget.hk_kontakter,
 .widget.hk_related*/ {
 	background-color: white;
@@ -240,9 +243,6 @@ article:hover,
 }
 #menu ul li {
 	_ext-shadow: 1px 1px #d4d4d4;	
-}
-#firstpage-top-content .widget_hk_text_widget .text a {
-	text-shadow: 2px 2px 2px #081819;
 }
 
 /* END COLORS OF THE THEME */
@@ -446,7 +446,7 @@ article, #news {
 /* =Global
 ----------------------------------------------- */
 
-#menu, h1, h2, h3, #firstpage-top-content a, #nav {
+#menu, h1, h2, h3, #nav {
 	_ont-family: "Century Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #menu, #nav {
@@ -940,9 +940,37 @@ a:hover {
 	display: block;
 }
 
+/*------------------------------------*\
+	logindiv - firstpage
+\*------------------------------------*/
+#logindiv {
+	background: #EDEDED;
+	border-radius: 5px;
+	padding: 8px;
+}
+#logindiv h3 {
+	
+}
+#logindiv a {
+	font-weight: normal;
+}
+#logindiv .loginlinks {
+	padding: 16px 0;
+}
+#logindiv .loginlinks a {
+	border: solid 1px #BEBEBE;
+	background-color: #FFF;
+	padding: 5px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px #999;
+}
+#logindiv .loginlinks a:hover {
+	background-color: #FFF;
+	box-shadow: none;
+}
 
 /*------------------------------------*\
-	menu-quickmenu
+	menu-quickmenu - firstpage
 \*------------------------------------*/
 #menu-quickmenu{
 	list-style: none;
@@ -962,13 +990,18 @@ a:hover {
 	position: relative;
 }
 #menu-quickmenu a{
-	display: block;
+	border: solid 1px #BEBEBE;
+	background-color: #FFF;
 	padding: 5px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px #999;
+	display: block;
 	text-decoration: none;
 }
 #menu-quickmenu a:hover{
 	background: #EDEDED;
 	text-decoration: underline;
+	box-shadow: none;
 }
 
 /*--- DROPDOWN ---*/
@@ -991,6 +1024,14 @@ a:hover {
 #menu-quickmenu li:hover ul { /* Display the dropdown on hover */
 	left: 0; /* Bring back on-screen when needed */
 }
+#menu-quickmenu ul li a { 
+	border: none;
+	background-color: #FFF;
+	border-radius: 0;
+	box-shadow: none;
+	display: block;
+	text-decoration: none;
+}
 #menu-quickmenu li:hover a { /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
 	text-decoration: underline;
 }
@@ -999,10 +1040,6 @@ a:hover {
 }
 #menu-quickmenu li:hover ul li a:hover { /* Here we define the most explicit hover states--what happens when you hover each individual link. */
 
-}
-#nav_menu-2 {
-	width: 38%;
-	float: right !important;
 }
 /* =slideshow
 ----------------------------------------------- */
@@ -1060,9 +1097,18 @@ a:hover {
 	z-index: 1100;
 	padding: 0.7em;
 }
-#firstpage-top-content .widget {
+
+/* =firstpage-top-content
+----------------------------------------------- */
+#firstpage-top-content .leftcontent {
+	width: 60%;
 	float: left;
 }
+#firstpage-top-content .rightcontent {
+	width: 38%;
+	float: right;
+}
+
 /* =Content
 ----------------------------------------------- */
 .post footer { 
@@ -1178,76 +1224,12 @@ a:hover {
 	display: block;
 }
 
-/* -- Vem är du -- */
-#firstpage-top-content {
-	border: none;
-	line-height: 140%;
-	margin: 1em 0;
-	overflow: hidden;
-	clear: both;
-}
-#firstpage-top-content .widget { margin: 0; }
-#firstpage-top-content .widget_hk_text_widget {
-	position: relative;
-	clear: none;
-	float: left;
-	width: 32.66666666666667%;
-	margin-top: 0% !important;
-	margin-left: 1% !important;
-}
-#firstpage-top-content .widget_hk_text_widget > div {
-	border-radius: 5px !important;
-}
-#firstpage-top-content .widget_hk_text_widget:hover { opacity: 1 }
-#firstpage-top-content .widget_hk_text_widget:first-child {
-	margin-left: 0% !important;
-}
-
-#firstpage-top-content .widget_hk_text_widget .top {
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-}
-#firstpage-top-content .widget_hk_text_widget .bottom {
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-top: 0.52em;
-	border-top: 1px solid white;
-}
-
-
-#firstpage-top-content .widget_hk_text_widget .text {
-	width: 100%;
-	height: 28px;
-	display: block;
-	line-height: 100%;
-	position: absolute;
-	top: 60px;
-}
-#firstpage-top-content .widget_hk_text_widget .text a {
-	z-index: 150;
-	position: absolute;
-	top: 7px;
-	left: 10px;
-	font-size: 16pt;
-	font-weight: bold;
-}
-#firstpage-top-content .widget_hk_text_widget .text a:hover,
-#firstpage-top-content .widget_hk_text_widget .text a:active,
-#firstpage-top-content .widget_hk_text_widget .text a:visited {
-	text-decoration: none !important;
-}
-#firstpage-top-content .widget_hk_text_widget .menu {
-	padding: .5em;
-}
-#firstpage-top-content .widget_hk_text_widget .menu ul li {
-	text-align: left;
-	line-height: 20px;
-}
-#firstpage-top-content .widget_hk_text_widget .menu ul li a {
-	color: white;
-}
 
 /* TABS */
+.ui-tabs article
+{
+	border: 0;
+}
 .ui-tabs
 {
     height: auto;
@@ -1258,6 +1240,7 @@ a:hover {
 {
 	width: 73%;
 	float: left; 
+	border-right: 1px solid #E6E6E6;
 }
 .ui-tabs .rightcontent
 {
@@ -1273,11 +1256,6 @@ a:hover {
     overflow: hidden;
 }
  
-.ui-tabs .ui-tabs-selected
-{
-	background: white;
-
-} 
 .ui-tabs li.ui-state-default
 {
     float: left;
@@ -1290,13 +1268,17 @@ a:hover {
     cursor: pointer;
     background-color: #EDEDED;
 }
+.ui-tabs li.ui-tabs-selected
+{
+	background-color: white;
+
+} 
   
 .ui-tabs .ui-tabs-panel
 {
     display: block;
     margin: 0px;
     padding: 0px;
-    background: none;
 }
 .ui-tabs .ui-tabs-hide
 {
@@ -1471,7 +1453,8 @@ article:last-child { margin-bottom: 0 }
 /* More-content + single-content END */
 
 /* .misc-ctrl */
-.misc-ctrl { 
+.misc-ctrl {
+	display: none; 
 	font-size: 13px;
 	width: 25%;
 	float: right;
@@ -1541,6 +1524,7 @@ article:last-child { margin-bottom: 0 }
 }
 .widget {
 	margin: 0 0 .8em;
+	padding: 0 0 .8em;
 }
 .widget-title {
 	font-size: 15px;	

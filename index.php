@@ -14,11 +14,15 @@
 
 get_header(); ?>
 
-<?php dynamic_sidebar('slideshow-content'); ?>
-<?php if ( is_active_sidebar("firstpage-top-content") ) : ?>
+<?php if ( is_active_sidebar("firstpage-top-content") || is_active_sidebar("firstpage-top-content-right") ) : ?>
 <div id="firstpage-top-content">
+	<div class="leftcontent">
 		<?php dynamic_sidebar('firstpage-top-content'); ?>
-		<div class="clear"></div>
+	</div>
+	<div class="rightcontent">
+		<?php dynamic_sidebar('firstpage-top-content-right'); ?>
+	</div>
+	<div class="clear"></div>
 </div><!-- #firstpage-top-sidebar -->
 <?php endif; ?>
 <div id="primary">
@@ -26,6 +30,7 @@ get_header(); ?>
 	    <ul class="post_tabs_title">
 	        <li title="Aktuellt"><a href="#newscontent">Aktuellt</a></li>
 	        <li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser och handlingar</a></li>
+	        <li title="Mest besökta"><a href="#mostvisited">Mest besökta</a></li>
 	    </ul>
 		<div id="newscontent">
 			<div class="leftcontent">
@@ -96,6 +101,7 @@ get_header(); ?>
 			?>
 		
 			</div>
+			<div class="clear"></div>
 		</div>
 
 
@@ -127,10 +133,55 @@ get_header(); ?>
 			?>
 
 			</div><div class="rightcontent">
-			
-				Info om protokoll.		
+				Lista protokoll här:			
 			</div>
+			<div class="clear"></div>
 		</div>	
+
+
+		<div id="mostvisited">
+			<div class="leftcontent">
+			<?php
+				/* Query all posts */
+				$query = array( 'posts_per_page' => '4', 
+								'ignore_sticky_posts' => 'true'
+								) ;
+				
+				query_posts( $query );
+				$shownposts = array();
+				if ( have_posts() ) : while ( have_posts() ) : the_post();
+					$shownposts[] = get_the_ID(); 
+					get_template_part( 'content' ); 
+				endwhile; endif; 
+				// Reset Query
+				wp_reset_query(); 				
+			?>				
+			</div>
+			<div class="rightcontent">
+							<?php
+				/* Query all posts */
+				$query = array( 'posts_per_page' => '20', 
+								'ignore_sticky_posts' => 'true',
+								'post__not_in' => $shownposts
+								) ;
+				
+				query_posts( $query );
+				$shownposts = array();
+				if ( have_posts() ) : ?> 
+					<div class="entry-wrapper">Fler välbesökta: </div>
+					<?php while ( have_posts() ) : the_post();
+					$shownposts[] = get_the_ID(); ?>
+					<div class="entry-wrapper">
+						<a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+					</div>
+				<?php
+				endwhile; endif; 
+				// Reset Query
+				wp_reset_query(); 
+			?>
+			</div>
+			<div class="clear"></div>
+		</div>
 	</div><!-- #content -->
 	<?php dynamic_sidebar('firstpage-content'); ?>
 </div><!-- #primary -->
