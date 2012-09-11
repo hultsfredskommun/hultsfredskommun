@@ -160,8 +160,8 @@ function hk_contacts_generate_cache() {
 		'paged' => 1,
 		'more' => $more = 0,
 		'post_type' => 'hk_kontakter',
-		'order' => 'ASC', /* TODO: is this needed, is default most viewed if not suppress_filters? */
-		'suppress_filters' => 1 /* TODO: is this needed? */
+		'order' => 'ASC', 
+		'suppress_filters' => 
 	);
 	if ( !empty($category_in) ) {
  	    $args['category__and'] = $category_in;

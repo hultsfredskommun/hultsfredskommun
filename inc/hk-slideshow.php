@@ -112,6 +112,7 @@ function hk_slideshow_generate_output($vars) {
 	   	$args = array(
 	   	   	'posts_per_page' => $vars["posts_per_page"], 
 			'post_type'	 => 'hk_slideshow',
+			'suppress_filters' => 'true',
 		);
 		if ( !empty($selected_categories) ) {
 	 	    $args['category__and'] = array($selected_categories);
