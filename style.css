@@ -79,7 +79,7 @@ body, input, textarea,
 
 /* white background color */
 body,
-#branding #searchform,
+#branding #searchform .field,
 #branding #searchform #searchresult,
 /*#sidebar .widget,*/
 body.single article.sticky,
@@ -190,7 +190,8 @@ article.sticky {
 	/*border: 2px solid #ACC6D3; /* blue */
 	_order-left: 1px solid #9EBA21; /* green */
 }
-#branding #searchform {
+#branding #searchform .field,
+#branding #searchform #searchsubmit {
 	/*border: 5px solid #ACC6D3; /* light blue */
 	/*border: 5px solid #06435A; /* deep blue */
 	/*border: 5px solid #00A4D6; /* blue */
@@ -198,10 +199,11 @@ article.sticky {
 	/*border: 3px solid #B1C84D; /* lightgreen */
     /*border: 5px solid #F7A02E; /* orange */
     /*border: 1px solid #A3A2A3; */
-    box-shadow: 0px 0px 16px #fff
+    box-shadow: 0px 0px 5px #fff
 }
-#branding #searchform:hover {
-    box-shadow: 0px 0px 25px #fff
+#branding #searchform .field:hover,
+#branding #searchform #searchsubmit:hover {
+    box-shadow: 0px 0px 15px #fff
 }
 #branding #searchform #searchresult {
 	/*border: 5px solid #ACC6D3; /* light blue */
@@ -209,17 +211,17 @@ article.sticky {
 	/*border: 5px solid #06435A; /* deep blue */
 	/*border: 5px solid #00A4D6; /* blue */
     /*border: 5px solid #9EBA21; /* green */
-    border: 3px solid #B1C84D; /* lightgreen */
+    /*border: 3px solid #B1C84D; /* lightgreen */
    	/*border: 5px solid #F7A02E; /* orange */
 }
 #menu ul li, 
 /*#topmenu nav ul li,*/
 #sort-order ul li {
-	border-left: 1px solid #A3A2A3;
+	border-left: 1px solid #E6E6E6;
 }
 #menu {
-	border-bottom: 1px solid #A3A2A3;
-;
+	/*border-bottom: 1px solid #A3A2A3;*/
+	border-bottom: 1px solid #E6E6E6;
 }
 #news .newline {
 	border-bottom: 1px solid #ACC6D3; /* light blue */
@@ -418,7 +420,7 @@ body {
 }
 #main {
 	clear: both;
-	padding: .8em 0 0;
+	padding: 1.8em 0 0;
 }
 #branding hgroup {
 	margin: 0;
@@ -693,14 +695,19 @@ a:hover {
 	width: 90%;
 }
 #branding input#searchsubmit {
-	display: none;
+	border: 0;
+	background-color: white;
+	border-radius: 8px;
+	font-size: 14px;
+	height: 32px;
+	line-height: 1.2em;
 }
 #branding #s {
 	font-size: 20px;
 }
-#branding #searchform {
-	border-radius: 18px;
-	clear: none;
+#branding #searchform .field {
+	border-radius: 8px;
+	width: 80%;
 }
 #branding #searchform #searchresult {
 	border-bottom-left-radius: 18px;
@@ -805,11 +812,12 @@ a:hover {
 	margin-right: 1em;
 	width: 110px;
 	text-align: center;
-	height: 22px;
-	line-height: 22px;
+	height: 28px;
+	line-height: 28px;
 }
 #topmenu nav ul li.tab a
 {
+	font-weight: bold;
 	display: inline;
 }
 #topmenu nav ul li.tab:last-child {
@@ -1009,6 +1017,7 @@ a:hover {
 	padding: 16px 0;
 }
 #logindiv .loginlinks a {
+	margin-right: 5px;
 	background-color: #00A4D6;
 	width: 100px;
 	color: white;
@@ -1019,40 +1028,33 @@ a:hover {
 	width: 90px;
 }
 #logindiv .loginlinks a:hover {
-	background-color: #FFF;
+
 }
 
 /*------------------------------------*\
 	menu-quickmenu - firstpage
 \*------------------------------------*/
-#menu-quickmenu{
+#menu-quickmenu {
 	list-style: none;
 	font-weight: bold;
 	margin: 0 0 10px 0;
-	/* Clear floats */
 	float: left;
 	width: 100%;
-	/* Bring the nav above everything else--uncomment if needed.
-	position:relative;
-	z-index:5;
-	*/
 }
-#menu-quickmenu li{
+#menu-quickmenu li {
 	float: left;
 	margin: 10px;
 	position: relative;
 }
 #menu-quickmenu a {
-	border: solid 1px #BEBEBE;
-	background-color: #FFF;
+	background-color: #EDEDED;
 	padding: 5px;
 	border-radius: 5px;
-	box-shadow: 1px 1px 1px #999;
 	display: block;
 	text-decoration: none;
 }
 #menu-quickmenu a:hover {
-	background: #EDEDED;
+	background-color: #EDEDED;
 	text-decoration: underline;
 	box-shadow: none;
 }
@@ -1124,11 +1126,7 @@ a:hover {
 	z-index: 1000;
 	max-height: 60px;
 	width: 100%;
-	bottom: 0;
-}
-.slideshow article .text-area .text-content
-{
-	padding-top: .8em;
+	bottom: 20px;
 }
 .slideshow article .text-area .text-content .transp-background
 {
@@ -1703,11 +1701,10 @@ article:last-child { margin-bottom: 0 }
 #supplementary {
 	clear: both;
 	overflow: hidden;
-	padding: 0.4em;
 	background-color: white;
 	border-bottom-right-radius: 8px;
 	border-bottom-left-radius: 8px;
-	border-top: 1px solid #A3A2A3;
+	border-top: 1px solid #E6E6E6;
 	position: relative;
 }
 #footertop .inner {
@@ -1728,8 +1725,8 @@ article:last-child { margin-bottom: 0 }
 #logo_footer_image {
 	line-height: 0;
 	position: absolute;
-	right: 15px;
-	bottom: 15px;
+	right: 0px;
+	bottom: 0px;
 }
 #footer-sidebar {
 	position: relative; /* required by .transp-background */
