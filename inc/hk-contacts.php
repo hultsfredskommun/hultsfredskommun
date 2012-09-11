@@ -161,7 +161,7 @@ function hk_contacts_generate_cache() {
 		'more' => $more = 0,
 		'post_type' => 'hk_kontakter',
 		'order' => 'ASC', 
-		'suppress_filters' => 
+		'suppress_filters' => 1
 	);
 	if ( !empty($category_in) ) {
  	    $args['category__and'] = $category_in;
