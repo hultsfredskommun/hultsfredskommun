@@ -110,30 +110,26 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
-		<hgroup>
+		<div id="topwrapper">
 			<h1 id="logo"><span><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span></h1>
-			
-			
-			
-			
-		</hgroup>
-		<?php 
-			if ($hk_options["topmenu"]) {
-				echo "<aside id='topmenu'><nav>";
-				wp_nav_menu( array(
-					'menu' 			=> $hk_options["topmenu"], 
-					'container' 	=> '',							
-					'items_wrap'	=> '<ul>%3$s</ul>',
-					'depth' 		=> 1,
-					'echo' 			=> true
-				)); 
-				echo "</nav></aside>";
-			}
-		?>
-		
-		<div id="searchnavigation">			
-			<?php get_search_form(); ?>
-		</div>
+				
+			<?php 
+				if ($hk_options["topmenu"]) {
+					echo "<aside id='topmenu'><nav>";
+					wp_nav_menu( array(
+						'menu' 			=> $hk_options["topmenu"], 
+						'container' 	=> '',							
+						'items_wrap'	=> '<ul>%3$s</ul>',
+						'depth' 		=> 1,
+						'echo' 			=> true
+					)); 
+					echo "</nav></aside>";
+				}
+			?>
+			<div id="searchnavigation">			
+				<?php get_search_form(); ?>
+			</div>
+		</div>		
 		
 		<nav id="menu" role="navigation">
 			<a id="dropdown-menu">Meny<span id="dropdown-image"></span></a>
