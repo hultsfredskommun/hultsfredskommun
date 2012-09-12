@@ -1126,7 +1126,7 @@ a:hover {
 	z-index: 1000;
 	max-height: 60px;
 	width: 100%;
-	bottom: 20px;
+	bottom: 0px;
 }
 .slideshow article .text-area .text-content .transp-background
 {
@@ -1296,7 +1296,7 @@ a:hover {
 }
 .ui-tabs .rightcontent
 {
-	width: 33%; 
+	width: 32%; 
 	float: right;
 }
 .ui-tabs .rightcontent li
