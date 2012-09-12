@@ -697,21 +697,21 @@ a:hover {
 #branding input#searchsubmit {
 	border: 0;
 	background-color: white;
-	border-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-top-right-radius: 8px;
 	font-size: 14px;
-	height: 32px;
+	height: 30px;
 	line-height: 1.2em;
 }
 #branding #s {
 	font-size: 20px;
 }
 #branding #searchform .field {
-	border-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-top-left-radius: 8px;
 	width: 80%;
 }
 #branding #searchform #searchresult {
-	border-bottom-left-radius: 18px;
-	border-bottom-right-radius: 18px;
 	position: absolute;
 	margin-left: 8px;
 	padding: 0 .8em;
@@ -1290,13 +1290,13 @@ a:hover {
 }
 .ui-tabs .leftcontent
 {
-	width: 73%;
+	width: 67%;
 	float: left; 
 	border-right: 1px solid #E6E6E6;
 }
 .ui-tabs .rightcontent
 {
-	width: 25%; 
+	width: 33%; 
 	float: right;
 }
 .ui-tabs .rightcontent li
