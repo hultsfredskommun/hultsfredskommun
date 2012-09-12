@@ -415,6 +415,11 @@ body {
 #page {
 	width: 100%;
 }
+#branding {
+	background: -webkit-gradient(linear,
+            left top, right bottom, from(#191718), to(#474546));
+
+}
 #branding, #menu, #main, #colophon {
 	margin: 0 auto;
 	max-width: 1000px;
@@ -1483,14 +1488,14 @@ article:last-child { margin-bottom: 0 }
 .summary-content .img-wrapper {
 	float: left;
 	width: 200px;
-	margin: 0 10px 0 0;
+	margin: 10px;
 	overflow: hidden;
 	line-height: 0;
 }
 .sticky .summary-content .img-wrapper {
 	float: right;
 	width: 280px;
-	margin: 0 0 0 10px;
+	margin: 10px;
 }
 .summary-content .img-wrapper img { 
 	width: 100%;
