@@ -199,7 +199,7 @@ article.sticky {
 	/*border: 3px solid #B1C84D; /* lightgreen */
     /*border: 5px solid #F7A02E; /* orange */
     /*border: 1px solid #A3A2A3; */
-    box-shadow: 0px 0px 5px #fff
+    box-shadow: 0px 0px 5px #fff;
 }
 #branding #searchform .field:hover,
 #branding #searchform #searchsubmit:hover {
@@ -311,6 +311,9 @@ article:hover,
     background-color: rgb(0,164,214);
     color: #fff;
 }
+.hultsfred-solglimt { 
+	box-shadow: 0px 0px 8px rgb(0,164,214);
+}
 .hultsfred-hostlov > a,
 .hultsfred-hostlov {
     background-color: rgb(100,0,23);
@@ -326,6 +329,9 @@ article:hover,
     background-color: rgb(246,149,23);
     color: #000 !important;
 }
+.hultsfred-solglimt { 
+	box-shadow: 0px 0px 8px rgb(246,149,23);
+}
 .hultsfred-white > a,
 .hultsfred-white {
 	background-color: white;
@@ -335,6 +341,9 @@ article:hover,
 .hultsfred-grey {
 	background-color: #474546;
 	color: white;
+}
+.hultsfred-grey { 
+	box-shadow: 0px 0px 8px #474546;
 }
 
 .hultsfred-white-border {
@@ -756,8 +765,6 @@ a:hover {
 }
 #topmenu {
 	float: right;
-	font-size: 12px;
-	line-height: 12px;
 }
 #menu {
 	margin-top: 1em;
@@ -812,12 +819,11 @@ a:hover {
 	margin-right: 1em;
 	width: 110px;
 	text-align: center;
-	height: 28px;
-	line-height: 28px;
+	height: 32px;
+	line-height: 32px;
 }
 #topmenu nav ul li.tab a
 {
-	font-weight: bold;
 	display: inline;
 }
 #topmenu nav ul li.tab:last-child {
@@ -1004,7 +1010,11 @@ a:hover {
 	logindiv - firstpage
 \*------------------------------------*/
 #logindiv {
-	background: #E6EEF2;
+	_ackground: #E6F6FB;
+	background: -webkit-gradient(linear,
+                left top, right bottom, from(#E6F6FB), to(#B2E4F3));
+	box-shadow: 1px 1px 5px #ccc;
+
 	padding: 8px;
 }
 #logindiv h3 {
@@ -1019,6 +1029,8 @@ a:hover {
 #logindiv .loginlinks a {
 	margin-right: 5px;
 	background-color: #00A4D6;
+	background: -webkit-gradient(linear,
+                left top, right bottom, from(#00A4D6), to(#4DBFE2));
 	width: 100px;
 	color: white;
 	padding: 5px;
@@ -1034,21 +1046,44 @@ a:hover {
 /*------------------------------------*\
 	menu-quickmenu - firstpage
 \*------------------------------------*/
+#menu-quickmenu .featured {
+	padding: 10px 0;
+	width: 100px;
+	text-align: center;
+}
+#menu-quickmenu .featured a {
+	
+	background-color: #640017 !important;
+	background: -webkit-gradient(linear,
+                left top, right bottom, from(#500012), to(#640017));
+	padding: 5px 10px;
+}
+#menu-quickmenu .clearleft {
+	clear: left;
+	display: block;
+}
+
 #menu-quickmenu {
+	background: -webkit-gradient(linear,
+                left top, right bottom, from(#E8E8E8), to(#BAB9BA));
+	box-shadow: 1px 1px 5px #aaa;
+	_ackground-color: #E8E8E8;
 	list-style: none;
-	font-weight: bold;
-	margin: 0 0 10px 0;
+	padding: 8px;
+	margin: 6px 0 10px 0;
 	float: left;
-	width: 100%;
 }
 #menu-quickmenu li {
 	float: left;
-	margin: 10px;
+	margin: 0 8px 8px 0;
 	position: relative;
 }
 #menu-quickmenu a {
-	background-color: #EDEDED;
-	padding: 5px;
+	background-color: #474546;
+	background: -webkit-gradient(linear,
+                left top, right bottom, from(#474546), to(#302E2F));
+	color: white;
+	padding: 2px 10px;
 	border-radius: 5px;
 	display: block;
 	text-decoration: none;
@@ -1569,25 +1604,21 @@ article:last-child { margin-bottom: 0 }
 ----------------------------------------------- */
 
 .widget-area {
-	font-size: 12px;
 }
 .widget {
 	margin: 0 0 .8em;
 }
 .widget-title {
-	font-size: 15px;	
 	line-height: 1.2em;
 	padding: .4em .8em .4em;
 }
 .widget ul {
-	font-size: 13px;
 	margin-left: 20px;
 }
 .widget ul ul {
 	margin-left: 1.5em;
 }
 .widget ul li {
-	font-size: 13px;
 }
 .widget a {
 	_ont-weight: bold;
