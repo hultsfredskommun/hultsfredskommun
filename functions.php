@@ -418,13 +418,23 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true) {
  	endif; 
  	echo $retValue;
 }
+
+
+// add filter to get ACF field stop publish to work
+function filter_where( $where = '' ) {
+    //$where .= " AND hk_stop_publish < '" . strtotime("now") . "'";
+    return $where;
+}
+add_filter( 'posts_where', 'filter_where' );
+
+
+// help function to display when next review date is
 function get_the_next_review_date($id) {
 	global $post;
 	$time = get_post_meta( $id, 'hk_next_review', true );
 
 	return duration(strtotime("now"),$time);
 }
-
 function duration($start,$end) {  
 	$neg = false;
 	$seconds = $end - $start;  
