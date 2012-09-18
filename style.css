@@ -215,6 +215,7 @@ article.sticky {
    	/*border: 5px solid #F7A02E; /* orange */
 }
 #menu ul li, 
+#menu .sub-menu,
 /*#topmenu nav ul li,*/
 #sort-order ul li {
 	border-left: 1px solid #E6E6E6;
@@ -768,6 +769,12 @@ a:hover {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
+#menu .sub-menu {
+	width: 100%;
+	border-radius: 0;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
 #topmenu {
 	float: right;
 }
@@ -780,6 +787,7 @@ a:hover {
 }
 #menu ul {
 	margin: 0;
+	position: relative;
 }
 #menu ul li, 
 #topmenu nav ul li,
@@ -811,6 +819,20 @@ a:hover {
 }
 #menu ul li.current-menu-item,
 #menu ul li.current-category-ancestor { 
+}
+#menu ul ul {
+	display: none;
+}
+#menu ul li.current-menu-item .sub-menu,
+#menu ul li.current-category-ancestor .sub-menu {
+	display: block;
+	margin: 0;
+	position: absolute;
+	left: 0;
+	top: 38px;
+}
+#menu {
+	margin-bottom: 38px;
 }
 #topmenu nav ul li.rightspace
 {
@@ -852,6 +874,11 @@ a:hover {
 #sort-order ul li:first-child {
 	border-top-left-radius: 5px;
 	border: none; 
+}
+#menu ul ul li:first-child,
+#sort-order ul ul li:first-child {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 5px;
 }
 #topmenu nav ul li:first-child,
 #sort-order ul li:first-child {

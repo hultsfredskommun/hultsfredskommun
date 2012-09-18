@@ -111,7 +111,11 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
 		<div id="topwrapper">
-			<h1 id="logo"><span><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span></h1>
+			<span id="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span>
+			<hgroup>
+				<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
+				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+			</hgroup>
 				
 			<?php 
 				if ($hk_options["topmenu"]) {
@@ -140,7 +144,7 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 					'items_wrap' 		=> '<ul>%3$s</ul>',
 					'before' 			=> '',
 					'after'				=> '',
-					'depth' 			=> 1,
+					'depth' 			=> 2,
 					'echo' 				=> true
 				)); 
 			?>
