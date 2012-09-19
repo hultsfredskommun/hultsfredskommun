@@ -199,10 +199,8 @@ function setup_javascript_settings() {
 	// get filter selection to use with dynamic load of posts
 	$cat = get_query_var("cat");
 	$tags = get_query_var("tag");
-	$vem_tags = get_query_var("vem");
-	$ort_tags = get_query_var("ort");
 	$search = get_query_var("s");
-	$filter = array("cat" => $cat, "tags" => $tags, "vem_tags" => $vem_tags, "ort_tags" => $ort_tags, "s" => $search);
+	$filter = array("cat" => $cat, "tags" => $tags, "s" => $search);
 	
 	// Add some parameters for the dynamic load more posts JS.
 	wp_localize_script(

@@ -479,8 +479,6 @@ function hk_change_meta_boxes () {
     // hide meta tag boxes in edit
     // hide tag divs if not administrator
  	//remove_meta_box("tagsdiv-post_tag","post",'side');
-	//remove_meta_box("tagsdiv-vem","post",'side');
-	//remove_meta_box("tagsdiv-ort","post",'side');
 
     // hide tag divs if not administrator
     if (!current_user_can("administrator")) {
@@ -526,7 +524,7 @@ add_filter('attachment_fields_to_edit', 'remove_media_upload_fields', null, 2);
 
 
 /**
- * Create a new taxonomies for vem, ort and special_cat
+ * Create a new taxonomies for special_cat
  */
 function extra_tag_init() {
 	register_taxonomy(
@@ -546,122 +544,10 @@ function extra_tag_init() {
             )
 		)
 	);
-	register_taxonomy(
-		'vem',
-		'post',
-	 	array(
-			'hierarchical' => false,
-			'label' => __( 'Vem' ),
-			'sort' => true,
-			'rewrite' => true,
-			'query_var' => true,
-			'capabilities' => array (
-	            'manage_terms' => "manage_options", 
-	            'edit_terms' => "manage_options",
-	            'delete_terms' => "manage_options",
-	            'assign_terms' => "edit_posts"
-            )
-		)
-	);
-	register_taxonomy(
-		'ort',
-		'post',
-	 	array(
-			'hierarchical' => false,
-			'label' => __( 'Var' ),
-			'sort' => true,
-			'rewrite' => true,
-			'query_var' => true,
-			'capabilities' => array (
-	            'manage_terms' => "manage_options", 
-	            'edit_terms' => "manage_options",
-	            'delete_terms' => "manage_options",
-	            'assign_terms' => "edit_posts"
-            )
-		)
-	);
+	
 }
 
 add_action( 'init', 'extra_tag_init' );
-
-
-
-
-class Tag_Rewrite {
-	
-	/**
-	* Matty_Rewrite()
-	* Constructor function.
-	**/
-	
-	function Tag_Rewrite () {} // End Matty_Rewrite()
-
-	/**
-	* create_custom_rewrite_rules()
-	* Creates the custom rewrite rules.
-	* return array $rules.
-	**/
-	
-	function create_custom_rewrite_rules() {
-		global $wp_rewrite;
-		
-		//** create new rule "vem" **
-		// Define custom rewrite tokens
-		$rewrite_tag = '%vem%';		
-		// Add the rewrite tokens
-		$wp_rewrite->add_rewrite_tag( $rewrite_tag, '(.+?)', 'vem=' );			
-		// Define the custom permalink structure
-		$rewrite_keywords_structure = $wp_rewrite->root . "%pagename%/$rewrite_tag/";		
-		// Generate the rewrite rules
-		$new_rule_vem = $wp_rewrite->generate_rewrite_rules( $rewrite_keywords_structure );
-		
-		//** create new rule "ort" **
-		// Define custom rewrite tokens
-		$rewrite_tag = '%ort%';		
-		// Add the rewrite tokens
-		$wp_rewrite->add_rewrite_tag( $rewrite_tag, '(.+?)', 'ort=' );			
-		// Define the custom permalink structure
-		$rewrite_keywords_structure = $wp_rewrite->root . "%pagename%/$rewrite_tag/";		
-		// Generate the rewrite rules
-		$new_rule_ort = $wp_rewrite->generate_rewrite_rules( $rewrite_keywords_structure );
-	 
-		//** add new rules **
-		$wp_rewrite->rules = $new_rule_vem + $new_rule_ort + $wp_rewrite->rules;
-	
-		return $wp_rewrite->rules;
-	} // End create_custom_rewrite_rules()
-	
-	/**
-	* add_custom_page_variables()
-	* Add the custom token as an allowed query variable.
-	* return array $public_query_vars.
-	**/
-	
-	function add_custom_page_variables( $public_query_vars ) {
-		$public_query_vars[] = 'vem';
-		return $public_query_vars;
-	} // End add_custom_page_variables()
-	
-	/**
-	* flush_rewrite_rules()
-	* Flush the rewrite rules, which forces the regeneration with new rules.
-	* return void.
-	**/
-	
-	function flush_rewrite_rules() {
-		global $wp_rewrite;
-		$wp_rewrite->flush_rules(); 	
-	} // End flush_rewrite_rules()
-
-} // End Class
-
-// Instantiate class.
-//$tag_rewrite = new Tag_Rewrite;
-
-// SHOULD WE ENABLE THIS??
-//add_action( 'init', array(&$tag_rewrite, 'flush_rewrite_rules') );
-//add_action( 'generate_rewrite_rules', array(&$tag_rewrite, 'create_custom_rewrite_rules') );
-//add_filter( 'query_vars', array(&$tag_rewrite, 'add_custom_page_variables') ); 
 
 
 ?>

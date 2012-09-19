@@ -16,5 +16,7 @@ Searchable Categories by Jason Corradino to make category selection more easy.
 Media Library Assistant by David Lingren to get some structure in the Media Library.
 Use Tag Select Meta Box by Jacob Buck to get a nice tag handling.
 
+TEST: Category Checklist Tree
+
 === Handy tools ===
 Use Simple Image Size by Rahe to handle thumbnail regeneration when needed.

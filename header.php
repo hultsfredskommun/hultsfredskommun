@@ -141,7 +141,7 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 				wp_nav_menu( array(
 					'theme_location'	=> 'primary', 
 					'container' 		=> '',							
-					'items_wrap' 		=> '<ul>%3$s</ul>',
+					'items_wrap' 		=> '<ul class="main-menu">%3$s</ul>',
 					'before' 			=> '',
 					'after'				=> '',
 					'depth' 			=> 2,

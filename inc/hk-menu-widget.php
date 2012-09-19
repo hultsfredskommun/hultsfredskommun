@@ -25,7 +25,49 @@ class HK_Menu_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 	    global $post;
 	    extract( $args );
+		$search = get_query_var("s");
+		$cat = get_query_var("cat");
+		$tags = get_query_var("tag");
+
 		echo "<aside id='nav'><nav>";
+
+		if ($cat != "") {
+				
+			if ($this->hk_countParents($cat) >= 2) {
+				$args = array(
+					'orderby'            => 'name',
+					'order'              => 'ASC',
+					'style'              => 'list',
+					'hide_empty'         => 0,
+					'use_desc_for_title' => 1,
+					'child_of'           => $cat,
+					'hierarchical'       => true,
+					'title_li'           => '',
+					'show_option_none'   => '',
+					'echo'               => 1,
+					'depth'              => 3,
+					'taxonomy'           => 'category'
+				);
+			
+				wp_list_categories( $args );
+
+				echo "<strong>Nyckelord</strong>";
+				$args = array(
+					'orderby'            => 'name',
+					'order'              => 'ASC',
+					'style'              => 'list',
+					'hide_empty'         => 0,
+					'use_desc_for_title' => 1,
+					'title_li'           => '',
+					'show_option_none'   => '',
+					'echo'               => 1,
+					'taxonomy'           => 'post_tag'
+				);
+			
+				wp_list_categories( $args );
+			}
+		}
+		
 		if (is_single())
 		{
 			echo '<div id="selected">';
@@ -34,10 +76,10 @@ class HK_Menu_Widget extends WP_Widget {
 		}
 		else {
 			echo '<div id="selected">';
-				$this->hk_selected();
+				//$this->hk_selected();
 			echo '</div>';
 			echo '<div id="filters">';
-				$this->hk_tag_filters();
+				//$this->hk_tag_filters();
 			echo '</div>';
 		}
 		//echo "<div style='clear:both;'>&nbsp;</div>";
@@ -82,12 +124,10 @@ class HK_Menu_Widget extends WP_Widget {
 		$search = get_query_var("s");
 		$cat = get_query_var("cat");
 		$tags = get_query_var("tag");
-		$vem_tags = get_query_var("vem");
-		$ort_tags = get_query_var("ort");
 		
 		
 		// check if any tag or cat is set
-		if ($cat != "" || $tags != "" || $ort_tags != "" || $vem_tags != "" || $search != "") :
+		if ($cat != "" || $tags != "" || $search != "") :
 
 			// javascript to be used for dynamic effects
 			?>
@@ -114,9 +154,7 @@ class HK_Menu_Widget extends WP_Widget {
 	    	// show selected search
 	    	if ($search != "") {
 				$taglink= "?tag=" . $tags;
-				$vemlink= "&vem=" . $vem_tags;
-				$ortlink= "&ort=" . $ort_tags;
-				$selected_array[] = array("name" => "S&ouml;k: $search", "url" => $caturl . $taglink . $vemlink . $ortlink, "noselect" => "", "tag" => "search" );
+				$selected_array[] = array("name" => "S&ouml;k: $search", "url" => $caturl . $taglink, "noselect" => "", "tag" => "search" );
 			}
 
 			// show selected categories
@@ -127,8 +165,6 @@ class HK_Menu_Widget extends WP_Widget {
 
 				// init tag links
 				$taglink= "?tag=" . $tags;
-				$vemlink= "&vem=" . $vem_tags;
-				$ortlink= "&ort=" . $ort_tags;
 				
 				// add category parents to selected_array set noselect if there are a selected child
 				if (!empty($parents)) {
@@ -142,7 +178,7 @@ class HK_Menu_Widget extends WP_Widget {
 							else
 								$parent_link = get_bloginfo("wpurl");
 
-							$selected_array[] = array("name" => $value->name, "url" => $parent_link . $taglink . $vemlink . $ortlink, "noselect" => "", "tag" => "cat" );
+							$selected_array[] = array("name" => $value->name, "url" => $parent_link . $taglink, "noselect" => "", "tag" => "cat" );
 							
 						}
 						else {
@@ -154,15 +190,13 @@ class HK_Menu_Widget extends WP_Widget {
 	        }
 
 	        // get selected tags and add to selected_array
-	    	$tag_array = array("tag","vem","ort");
+	    	$tag_array = array("tag");
 	    	$tags = array();
 
 	    	// show selected tags
 	    	foreach ($tag_array as $tag) {
 	    		// reset tags array
 				$tags["tag"] = get_query_var("tag");
-				$tags["vem"] = get_query_var("vem");
-				$tags["ort"] = get_query_var("ort");
 
 				// check if some tags selected
 				if ($tags[$tag] != "") {
@@ -173,10 +207,8 @@ class HK_Menu_Widget extends WP_Widget {
 						$tags[$tag] = str_replace($value, "", $tags[$tag]);
 						$tags[$tag] = str_replace(",,",",",trim($tags[$tag],","));
 						$taglink= "?tag=" . $tags["tag"];
-						$vemlink= "&vem=" . $tags["vem"];
-						$ortlink= "&ort=" . $tags["ort"];
 						$searchlink= "&s=" . $search;
-						$selected_array[] = array("name" => $value, "url" => $caturl . $taglink . $vemlink . $ortlink . $searchlink, "noselect" => "", "tag" => $tag );
+						$selected_array[] = array("name" => $value, "url" => $caturl . $taglink . $searchlink, "noselect" => "", "tag" => $tag );
 					} endif;
 				}
 			}
@@ -218,20 +250,16 @@ class HK_Menu_Widget extends WP_Widget {
 			}
 		}
 		$tags = get_query_var("tag");
-		$vem_tags = get_query_var("vem");
-		$ort_tags = get_query_var("ort");
 
 		$var = array(	"category" => $cat,
-						"post_tag" => $tags,
-						"vem" => $vem_tags,
-						"ort" => $ort_tags);
+						"post_tag" => $tags);
 		$link = $var;
 
 		// set tag headings
 		//$tag_heading = array('category' => "Kategorier", 'post_tag' => "Vad vill du", "vem" => "Vem är du", "ort" => "Ort" );
 		
 		// get an array with the current tags used as filter
-		$tag_clouds = $this->hk_helper_get_tag_filters(array("category","post_tag","vem","ort"));
+		$tag_clouds = $this->hk_helper_get_tag_filters(array("category","post_tag"));
 
 		// get one taxonomy at the time tag_key contain the slug, tag_cloud contain the cloud-array 
 		$hasFilters = false; ?>
@@ -277,8 +305,6 @@ class HK_Menu_Widget extends WP_Widget {
 					
 					echo "<li><span class='arrow'>&gt;</span><a class='$selected' href='" . $curr_caturl . 
 					"?tag=" . $link["post_tag"] .
-					"&vem=" . $link["vem"] . 
-					"&ort=" . $link["ort"] .
 					"&s=" . $search . 
 					"'>" . $value . "</a></li> ";
 
@@ -304,14 +330,6 @@ class HK_Menu_Widget extends WP_Widget {
 		$tag_array = "";
 		if ($tags != "")
 			$tag_array = split(",", $tags);
-		$vem_tags = get_query_var("vem");
-		$vem_array = array();
-		if ($vem_tags != "")
-			$vem_array = split(",", $vem_tags);
-		$ort_tags = get_query_var("ort");
-		$ort_array = array();
-		if ($ort_tags != "")
-			$ort_array = split(",", $ort_tags);
 
 		// init arrays
 		$tags_arr = array();
@@ -332,38 +350,6 @@ class HK_Menu_Widget extends WP_Widget {
 
 		if ($search != "")
 			$query["s"] = $search;
-
-		if (!empty($vem_array) && !empty($ort_array)) {
-			$query['tax_query'] = array(
-				'relation' => 'AND',
-				array(
-					'taxonomy' => 'vem',
-					'field' => 'slug',
-					'terms' => $vem_array )
-				,
-				array(
-					'taxonomy' => 'ort',
-					'field' => 'slug',
-					'terms' => $ort_array
-				)
-			);
-		}						 	
-		else if (!empty($vem_array)) {
-			$query['tax_query'] = array(
-				array(
-					'taxonomy' => 'vem',
-					'field' => 'slug',
-					'terms' => $vem_array )
-			);
-		}						 	
-		else if (!empty($ort_array)) {
-			$query['tax_query'] = array(
-				array(
-					'taxonomy' => 'ort',
-					'field' => 'slug',
-					'terms' => $ort_array )
-			);
-		}
 
 
 		// loop all posts to get all taxonomies used 
@@ -431,6 +417,13 @@ class HK_Menu_Widget extends WP_Widget {
 		//invert parent order
 		krsort($parent_array);
 		return $parent_array;
+	}
+	
+	function hk_countParents($cat) {
+		$cats_str = get_category_parents($cat, false, '%#%');
+		$cats_array = explode('%#%', $cats_str);
+		$cat_depth = sizeof($cats_array)-1;
+		return $cat_depth;
 	}
 }
 

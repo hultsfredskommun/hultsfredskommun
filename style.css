@@ -117,7 +117,8 @@ hr,
 #menu #dropdown-menu:hover,
 #menu #dropdown-menu:focus,
 #nav #selected_filter li,
-.tag-cloud a { 
+.tag-cloud a,
+#menu .sub-menu { 
 	/*background-color: #E6EEF2; /* light blue */
 	/*background-color: #9BB4BD; /* deep blue */
 	/*background-color: #99DBEF; /* blue */
@@ -139,7 +140,8 @@ hr,
 #firstpage-top-content .widget_hk_text_widget .text a,
 .hk_kontakter.widget,
 .hk_related.widget,
-#nav
+#nav,
+#menu .sub-menu li
 {
 	background-color: transparent;
 }
@@ -215,7 +217,6 @@ article.sticky {
    	/*border: 5px solid #F7A02E; /* orange */
 }
 #menu ul li, 
-#menu .sub-menu,
 /*#topmenu nav ul li,*/
 #sort-order ul li {
 	border-left: 1px solid #E6E6E6;

@@ -570,11 +570,11 @@ $(document).ready(function(){
 	// set click action	
 	$("#dropdown-menu").click( function(){
 		
-		//toggle "#menu ul"
-		if( $("#menu ul").is(":visible") ){
-			$("#menu ul").slideUp('fast');
+		//toggle "#menu ul.main-menu"
+		if( $("#menu ul.main-menu").is(":visible") ){
+			$("#menu ul.main-menu").slideUp('fast');
 		}
-		else{ $("#menu ul").slideDown('fast'); }
+		else{ $("#menu ul.main-menu").slideDown('fast'); }
 	
 	});  
 
@@ -880,11 +880,11 @@ $(window).resize(function() {
 		);
 		
 		if( $(window).width()+scrollbar > dropdown_max_width ){
-			$("#menu ul").show();
+			$("#menu ul.main-menu").show();
 		}
 		else{
-			if( $("#menu ul").is(":visible") ){
-				$("#menu ul").hide();
+			if( $("#menu ul.main-menu").is(":visible") ){
+				$("#menu ul.main-menu").hide();
 			}
 		}
 	}
