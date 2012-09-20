@@ -16,6 +16,7 @@ Searchable Categories by Jason Corradino to make category selection more easy.
 Media Library Assistant by David Lingren to get some structure in the Media Library.
 Use Tag Select Meta Box by Jacob Buck to get a nice tag handling.
 
+Advanced Custom Fields - Location Field add-on 1.0
 TEST: Category Checklist Tree
 
 === Handy tools ===

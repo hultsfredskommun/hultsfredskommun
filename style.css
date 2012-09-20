@@ -117,8 +117,7 @@ hr,
 #menu #dropdown-menu:hover,
 #menu #dropdown-menu:focus,
 #nav #selected_filter li,
-.tag-cloud a,
-#menu .sub-menu { 
+.tag-cloud a { 
 	/*background-color: #E6EEF2; /* light blue */
 	/*background-color: #9BB4BD; /* deep blue */
 	/*background-color: #99DBEF; /* blue */
@@ -129,9 +128,11 @@ hr,
 }
 
 /* light background color */
-#nav
+#nav,
+#menu .sub-menu
 {
-	_ackground-color: #ECF1D3; /* light green */	
+	/*_ackground-color: #ECF1D3; /* light green */	
+	background-color: #E8E8E8; /* asfalt */
 }
 /* transparent backgrounds */
 #sort-order,

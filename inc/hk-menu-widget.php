@@ -23,7 +23,7 @@ class HK_Menu_Widget extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-	    global $post;
+	    global $post, $default_settings;
 	    extract( $args );
 		$search = get_query_var("s");
 		$cat = get_query_var("cat");
@@ -32,15 +32,20 @@ class HK_Menu_Widget extends WP_Widget {
 		echo "<aside id='nav'><nav>";
 
 		if ($cat != "") {
+			// TODO if single, 
+			//  check if category (or parent or child) from last session state is among current page's categories, 
+			//  if so, show same menu as saved in session
+			if ($this->hk_countParents($cat) >= $default_settings["num_top_menus"]) {
 				
-			if ($this->hk_countParents($cat) >= 2) {
+				$parentCat = $this->hk_getMenuParent($cat, $default_settings["num_top_menus"]);
+
 				$args = array(
 					'orderby'            => 'name',
 					'order'              => 'ASC',
 					'style'              => 'list',
 					'hide_empty'         => 0,
 					'use_desc_for_title' => 1,
-					'child_of'           => $cat,
+					'child_of'           => $parentCat,
 					'hierarchical'       => true,
 					'title_li'           => '',
 					'show_option_none'   => '',
@@ -424,6 +429,16 @@ class HK_Menu_Widget extends WP_Widget {
 		$cats_array = explode('%#%', $cats_str);
 		$cat_depth = sizeof($cats_array)-1;
 		return $cat_depth;
+	}
+	function hk_getMenuParent($cat, $num_top_menus) {
+		$cats_str = get_category_parents($cat, false, '%#%', true);
+		$cats_array = explode('%#%', $cats_str);
+		$cat_depth = sizeof($cats_array)-1;
+		if ($cat_depth > $num_top_menus) {
+			return get_category_by_slug($cats_array[$num_top_menus-1])->term_id;
+		}
+		echo "cat " . $cat;
+		return $cat;
 	}
 }
 

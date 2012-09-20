@@ -26,7 +26,8 @@ if ( ! isset( $default_settings ) ) {
 								'startpage_cat' => $options["startpage_cat"],
 								'news_cat' => $options["news_cat"],
 								'hidden_cat' => $options["hidden_cat"],
-								'protocol_cat' => $options["protocol_cat"]
+								'protocol_cat' => $options["protocol_cat"],
+								'num_top_menus' => 2
 								);
 }
 
@@ -97,11 +98,6 @@ function hk_setup() {
 
 	// send email in html
 	add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
-
-	// Registers taxonomy add-on for Advanced Custom Fields
-	if (function_exists("register_field")) {
-		register_field('Tax_field', dirname(__File__) . '/inc/acf-tax.php');
-	}
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menu( 'primary', __( 'Primary Menu', 'twentyeleven' ) );

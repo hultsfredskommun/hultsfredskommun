@@ -488,23 +488,7 @@ function hk_change_meta_boxes () {
 }
 
 
-/* change names in admin pages */
-function change_post_object_label() {
-    global $wp_post_types;
-    $labels = &$wp_post_types['page']->labels;
-    $labels->name = 'Special';
-    $labels->singular_name = 'Special';
-    $labels->add_new = 'L&auml;gg till';
-    $labels->add_new_item = 'L&auml;gg till';
-    $labels->edit_item = '&Auml;ndra';
-    $labels->new_item = 'Ny';
-    $labels->view_item = 'Visa';
-    $labels->search_items = 'S&ouml;k';
-    $labels->not_found = 'Hittade inga';
-    $labels->not_found_in_trash = 'Hittade inga i papperskorgen';
-}
 if (is_admin()) {
-	add_action( 'init', 'change_post_object_label' );
 	add_action( 'add_meta_boxes', 'hk_change_meta_boxes' );
 	add_action( 'admin_menu', 'change_post_menu_label' );
 }

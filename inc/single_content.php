@@ -65,23 +65,6 @@
 
 				<?php endif; // End if $tags_list ?>
 
-				<?php 
-					$list = get_the_term_list(get_the_ID(), "vem", " ", " ", " "); 					
-					if ( $list ):
-					?>
-					<span class="vem-links">
-						<?php echo $list; ?>
-					</span>
-				<?php endif; // End if vem ?>
-				<?php 
-					$list = get_the_term_list(get_the_ID(), "ort", " ", " ", " "); 					
-					if ( $list ):
-					?>
-					<span class="ort-links">
-						<?php echo $list; ?>
-					</span>
-
-				<?php endif; // End if ort ?>
 			</div>
 
 			<?php if ( get_field('hk_related') ) : ?>
