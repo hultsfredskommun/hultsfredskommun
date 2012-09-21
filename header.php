@@ -16,6 +16,19 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 	die();
 }
 
+// redirect to first menu item in 'primary'-menu 
+// if on startpage, there are a 'primary' menu set and more than one top menu level
+$menu_name = 'primary';
+if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) && $default_settings["num_top_menus"] > 1 ) {
+	$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+	$menu_items = wp_get_nav_menu_items( $menu );
+	header("Location: " . $menu_items[0]->url);
+}
+
+// set current menuselection in session to next time
+
+
+
 ?><!DOCTYPE html>
 <!--[if IE 6]>
 <html id="ie6" <?php language_attributes(); ?>>
@@ -134,7 +147,6 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 				<?php get_search_form(); ?>
 			</div>
 		</div>		
-		
 		<nav id="menu" role="navigation">
 			<a id="dropdown-menu">Meny<span id="dropdown-image"></span></a>
 			<?php 
@@ -152,6 +164,5 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 		</nav><!-- #access -->
 		
 	</header><!-- #branding -->
-
 
 	<div id="main">

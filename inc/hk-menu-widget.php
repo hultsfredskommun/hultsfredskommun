@@ -53,8 +53,9 @@ class HK_Menu_Widget extends WP_Widget {
 					'depth'              => 3,
 					'taxonomy'           => 'category'
 				);
-			
+				echo "<ul>"; 
 				wp_list_categories( $args );
+				echo "</ul>"; 
 
 				echo "<strong>Nyckelord</strong>";
 				$args = array(
@@ -69,7 +70,9 @@ class HK_Menu_Widget extends WP_Widget {
 					'taxonomy'           => 'post_tag'
 				);
 			
+				echo "<ul>"; 
 				wp_list_categories( $args );
+				echo "</ul>"; 
 			}
 		}
 		
@@ -437,7 +440,6 @@ class HK_Menu_Widget extends WP_Widget {
 		if ($cat_depth > $num_top_menus) {
 			return get_category_by_slug($cats_array[$num_top_menus-1])->term_id;
 		}
-		echo "cat " . $cat;
 		return $cat;
 	}
 }
