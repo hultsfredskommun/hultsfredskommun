@@ -442,6 +442,7 @@ body {
 }
 #branding hgroup {
 	margin: 0;
+	display: none;
 }
 #primary {
 	float: left;
