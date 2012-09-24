@@ -458,3 +458,47 @@ function duration($start,$end) {
 		$duration = "om $duration";
 	return $duration;  
 }  
+
+
+function is_sub_category() {
+	global $default_settings;
+	if ( !isset($default_settings["is_sub_category"]) ) {
+		$cat = get_query_var("cat");
+		if ( isset($cat) && hk_countParents($cat) >= $default_settings["num_top_menus"] ) {
+			$default_settings["is_sub_category"] = true;
+		} else {
+			$default_settings["is_sub_category"] = false;
+		}
+	}
+	return $default_settings["is_sub_category"];
+}
+function is_sub_category_firstpage() {
+	global $default_settings;
+	if ( !isset($default_settings["is_sub_category_firstpage"]) ) {
+		$cat = get_query_var("cat");
+		if ( isset($cat) && hk_countParents($cat) == $default_settings["num_top_menus"]-1 ) {
+			$default_settings["is_sub_category_firstpage"] = true;
+		} else {
+			$default_settings["is_sub_category_firstpage"] = false;
+		}
+	}
+	return $default_settings["is_sub_category_firstpage"];
+}
+
+function hk_countParents($cat) {
+	$cats_str = get_category_parents($cat, false, '%#%');
+	$cats_array = explode('%#%', $cats_str);
+	$cat_depth = sizeof($cats_array)-1;
+	return $cat_depth;
+}
+function hk_getMenuParent($cat) {
+	global $default_settings;
+	$num_top_menus = $default_settings["num_top_menus"];
+	$cats_str = get_category_parents($cat, false, '%#%', true);
+	$cats_array = explode('%#%', $cats_str);
+	$cat_depth = sizeof($cats_array)-1;
+	if ($cat_depth > $num_top_menus) {
+		return get_category_by_slug($cats_array[$num_top_menus-1])->term_id;
+	}
+	return $cat;
+}

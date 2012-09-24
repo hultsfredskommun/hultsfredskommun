@@ -35,10 +35,9 @@ class HK_Menu_Widget extends WP_Widget {
 			// TODO if single, 
 			//  check if category (or parent or child) from last session state is among current page's categories, 
 			//  if so, show same menu as saved in session
-			if ($this->hk_countParents($cat) >= $default_settings["num_top_menus"]) {
-				
-				$parentCat = $this->hk_getMenuParent($cat, $default_settings["num_top_menus"]);
-
+			//if ($this->hk_countParents($cat) >= $default_settings["num_top_menus"]) {
+			if (is_sub_category()) {
+				$parentCat = hk_getMenuParent($cat);
 				$args = array(
 					'orderby'            => 'name',
 					'order'              => 'ASC',
@@ -427,21 +426,6 @@ class HK_Menu_Widget extends WP_Widget {
 		return $parent_array;
 	}
 	
-	function hk_countParents($cat) {
-		$cats_str = get_category_parents($cat, false, '%#%');
-		$cats_array = explode('%#%', $cats_str);
-		$cat_depth = sizeof($cats_array)-1;
-		return $cat_depth;
-	}
-	function hk_getMenuParent($cat, $num_top_menus) {
-		$cats_str = get_category_parents($cat, false, '%#%', true);
-		$cats_array = explode('%#%', $cats_str);
-		$cat_depth = sizeof($cats_array)-1;
-		if ($cat_depth > $num_top_menus) {
-			return get_category_by_slug($cats_array[$num_top_menus-1])->term_id;
-		}
-		return $cat;
-	}
 }
 
 add_action( 'widgets_init', create_function( '', 'register_widget( "Hk_Menu_Widget" );' ) );

@@ -120,7 +120,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class((is_sub_category_firstpage()) ? "home":""); ?>>
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
 		<div id="topwrapper">
