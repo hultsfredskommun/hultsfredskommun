@@ -11,13 +11,9 @@
 			<?php
 				//init
 				$tags = get_query_var("tag");
-				$vem_tags = get_query_var("vem");
-				$ort_tags = get_query_var("ort");
 				$search = get_query_var("s");
 				
 				if($tags != ''){ $tags = "&tag=".$tags; }
-				if($vem_tags != ''){ $vem_tags = "&vem=".$vem_tags; }
-				if($ort_tags != ''){ $ort_tags = "&ort=".$ort_tags; }
 				if($search != ''){ $search = "&s=".$search; }
 			?>
 			<?php 
@@ -29,13 +25,14 @@
 						$orderby = "latest";
 				}
 			?>
-			<li <?php echo ( $orderby == "alpha")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha<?php echo $tags.$vem_tags.$ort_tags.$search; ?>">A - &Ouml;</a></li>
-			<li <?php echo ($orderby == "alpha_desc")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha_desc<?php echo $tags.$vem_tags.$ort_tags.$search; ?>">&Ouml; - A</a></li>
-			<li <?php echo ($orderby == "latest")?"class='current-menu-item'":""; ?>><a href="?orderby=latest<?php echo $tags.$vem_tags.$ort_tags.$search; ?>">Nyaste</a></li>
-			<li <?php echo ($orderby == "oldest")?"class='current-menu-item'":""; ?>><a href="?orderby=oldest<?php echo $tags.$vem_tags.$ort_tags.$search; ?>">&Auml;ldsta</a></li>
+			<li <?php echo ($_REQUEST["orderby"] == "alpha")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha<?php echo $tags.$search; ?>">A - &Ouml;</a></li>
+			<li <?php echo ($_REQUEST["orderby"] == "alpha_desc")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha_desc<?php echo $tags.$search; ?>">&Ouml; - A</a></li>
+			<li <?php echo ($_REQUEST["orderby"] == "latest")?"class='current-menu-item'":""; ?>><a href="?orderby=latest<?php echo $tags.$search; ?>">Nyaste</a></li>
+			<li <?php echo ($_REQUEST["orderby"] == "oldest")?"class='current-menu-item'":""; ?>><a href="?orderby=oldest<?php echo $tags.$search; ?>">&Auml;ldsta</a></li>
 			<?php if( function_exists('views_orderby') ) : ?>
-				<li <?php echo ($orderby == "popular")?"class='current-menu-item'":""; ?>><a href="?orderby=popular<?php echo $tags.$vem_tags.$ort_tags.$search; ?>">Popul&auml;raste</a></li>
+				<li <?php echo ($_REQUEST["orderby"] == "popular")?"class='current-menu-item'":""; ?>><a href="?orderby=popular<?php echo $tags.$search; ?>">Popul&auml;raste</a></li>
 			<?php endif; ?>
+			<li <?php echo ($_REQUEST["orderby"] == "")?"class='current-menu-item'":""; ?>><a href="?orderby=<?php echo $tags.$search; ?>">Standard</a></li>
 		</ul></div>
 
 	<?php }

@@ -18,58 +18,84 @@
 			<div class="clear"></div>
 		</header>
 
-		<!-- ***Sticky posts*** -->
 		<?php
 			/**
-			 * Print stickies here only if orderby is empty
+			 * Default order in orderby no set
 			 */
 			if ($_REQUEST["orderby"] == "") :
 				/* Get category id */
-				$catID = get_query_var("cat");
+				$thiscat = get_query_var("cat");
+				
+				if ( $thiscat != "" ) :
+					/* Get all sticky posts from this category */
+					$sticky = get_option( 'sticky_posts' );
+						
+					if ( !empty($sticky) ) {
+						/* Query sticky posts */
+						query_posts( array( 'category__in' => $thiscat, 'post__in' => $sticky) );
+						if ( have_posts() ) : while ( have_posts() ) : the_post();
+							get_template_part( 'content', get_post_format() );
+						endwhile; endif;
+					}
+					wp_reset_query(); // Reset Query
 
-				/* Get all sticky posts */
-				$sticky = get_option( 'sticky_posts' );
-				print_r($sticky);
-				if ($catID != "" && !empty($sticky)):
-					/* Query sticky posts */
-					query_posts( array( 'category__in' => $catID, 'post__in' => $sticky, 'ignore_sticky_posts' => 0 ) );
-					echo $catID;
-					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-						<?php echo "test"; get_template_part( 'content', get_post_format() ); ?>
-					<?php endwhile; endif;
-				endif; 
-				// Reset Query
-				wp_reset_query();
-			endif;
-		?><!-- ***Sticky posts END*** -->
 
-		<?php /* Start the Loop */ ?>
-		<?php while ( have_posts() ) : the_post(); ?>
+					/* Get all NOT sticky posts from this category */
+					$args = array( 'category__and' => $thiscat );
+					if ( !empty($sticky) ) {
+						$args['post__not_in'] = $sticky;
+					}
+					query_posts( $args );
+					if ( have_posts() ) : while ( have_posts() ) : the_post();
+						get_template_part( 'content', get_post_format() );
+					endwhile; endif;
+					wp_reset_query(); // Reset Query
+					
+					
+					/* Get posts from children of this category */
+					$children =  hk_getChildrenIdArray($thiscat);
+					if ( !empty($children) ) {
+						/* Get all sticky posts children of this category */
+						echo "<span class='morefrom'>Mer från underkategorier</span>";
+						$args = array( 'category__in' => $children );
+						if (!empty($sticky)) {
+							$args['post__in'] = $sticky;
+							query_posts( $args );
+							if ( have_posts() ) : while ( have_posts() ) : the_post();
+								get_template_part( 'content', get_post_format() );
+							endwhile; endif;
+							wp_reset_query(); // Reset Query
+						}
+					
+						/* Get all NOT sticky posts children of this category */
+						$args = array( 'category__in' => $children );
+						if (!empty($sticky)) {
+							$args['post__not_in'] = $sticky;
+						}
+						query_posts( $args );
+						if ( have_posts() ) : while ( have_posts() ) : the_post();
+							get_template_part( 'content', get_post_format() );
+						endwhile; endif;
+						wp_reset_query(); // Reset Query
+					}
+					
+					
+					
+					// query_posts( array( 'category_slug__in' => hk_getParentsSlugArray($catID), 'post__in' => $sticky, 'ignore_sticky_posts' => 0 ) );
+				endif;
+			/****Default order END***/
 
-			<?php
-				/**
-				 * Default: don't print stickies here
-				 * If orderby is not empty: print stickies
-				 */
-				if( !is_sticky() or ($_REQUEST["orderby"] != "") ) {
+			else :
 
-					/* Include the Post-Format-specific template for the content.
-					 * If you want to overload this in a child theme then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					get_template_part( 'content', get_post_format() );
-				}
-			?>
-
-		<?php endwhile; ?>
-
+			/* Start standard the Loop */ 
+			while ( have_posts() ) : the_post();
+				get_template_part( 'content', get_post_format() );
+			endwhile;
+		endif;
 		
-		<?php // then show all from children
-			  // query_posts( array( 'category_slug__in' => hk_getParents($catID), 'post__in' => $sticky, 'ignore_sticky_posts' => 0 ) );
-		?>
-		<?php hk_content_nav( 'nav-below' ); ?>
+		hk_content_nav( 'nav-below' );
 
-	<?php else : ?>
+	else : ?>
 
 		<article id="post-0" class="post no-results not-found">
 			<header class="entry-header">

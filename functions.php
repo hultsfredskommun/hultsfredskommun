@@ -196,7 +196,8 @@ function setup_javascript_settings() {
 	$cat = get_query_var("cat");
 	$tags = get_query_var("tag");
 	$search = get_query_var("s");
-	$filter = array("cat" => $cat, "tags" => $tags, "s" => $search);
+	$orderby = get_query_var("orderby");
+	$filter = array("cat" => $cat, "tags" => $tags, "s" => $search, "orderby" => $orderby);
 	
 	// Add some parameters for the dynamic load more posts JS.
 	wp_localize_script(
@@ -491,7 +492,7 @@ function hk_countParents($cat) {
 	$cat_depth = sizeof($cats_array)-1;
 	return $cat_depth;
 }
-function hk_getParents($cat) {
+function hk_getParentsSlugArray($cat) {
 	$cats_str = get_category_parents($cat, false, '%#%', true);
 	$cats_array = explode('%#%', $cats_str);
 	$cat_depth = sizeof($cats_array)-1;
@@ -508,4 +509,12 @@ function hk_getMenuParent($cat) {
 		return get_category_by_slug($cats_array[$num_top_menus-1])->term_id;
 	}
 	return $cat;
+}
+function hk_getChildrenIdArray($cat) {
+	$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
+	$retArray = array();
+	foreach($children as $child) {
+		$retArray[] = $child->term_id;
+	}
+	return $retArray;
 }
