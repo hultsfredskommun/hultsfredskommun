@@ -20,7 +20,7 @@ class HK_events extends WP_Widget {
 
 		$this->vars['divclass'] = 'events';
 		$this->vars['posts_per_page'] = '-1';
-		$this->vars['thumbnail-size'] = 'events-image';
+		$this->vars['thumbnail-size'] = 'contact-image';
 	}
 
  	public function form( $instance ) {
@@ -55,18 +55,10 @@ function hk_events_generate_output($vars) {
 	
 	// set startpage category if on startpage
 	$category_in = array();
-	$special_category_in = array();
- 	if ( is_home() )
- 	{
- 		$hk_options = get_option("hk_theme");
- 		$special_category_in[] = $hk_options["startpage_cat"];
- 	}
- 	else if (get_query_var("cat") != "") {
-		$category_in[] = get_query_var("cat");
-  	}
+	$category_in[] = get_query_var("cat");
 
   	// skip if no category
-  	if (empty($category_in) && empty($special_category_in))
+  	if (empty($category_in))
   		return "";
 
 	$args = array(
@@ -80,15 +72,6 @@ function hk_events_generate_output($vars) {
 	);
 	if ( !empty($category_in) ) {
  	    $args['category__and'] = $category_in;
-	}
-	if ( !empty($special_category_in) ) {
-		$args['tax_query'] = array(
-			array(
-				'taxonomy' => 'special_category',
-				'field' => 'id',
-				'terms' => $special_category_in[0]
-			)
-		);
 	}
 
  	if ($args != "")

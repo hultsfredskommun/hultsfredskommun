@@ -491,6 +491,13 @@ function hk_countParents($cat) {
 	$cat_depth = sizeof($cats_array)-1;
 	return $cat_depth;
 }
+function hk_getParents($cat) {
+	$cats_str = get_category_parents($cat, false, '%#%', true);
+	$cats_array = explode('%#%', $cats_str);
+	$cat_depth = sizeof($cats_array)-1;
+	unset($cats_array[$cat_depth]);
+	return $cats_array;
+}
 function hk_getMenuParent($cat) {
 	global $default_settings;
 	$num_top_menus = $default_settings["num_top_menus"];

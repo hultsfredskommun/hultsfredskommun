@@ -94,19 +94,12 @@ class HK_slideshow extends WP_Widget {
 // outputs the content of the widget
 function hk_slideshow_generate_output($vars) {
 	global $default_settings;
-
+	
 	$retValue = "";
-	// set startpage category if on startpage
- 	if ( is_home() )
- 	{
-		$hk_options = get_option("hk_theme");
- 		$selected_special_categories = $hk_options["startpage_cat"];
- 	}
- 	else {
-	 	$selected_categories = get_query_var("cat");
- 	}
-
-	if ( !empty($selected_categories) || !empty($selected_special_categories) )
+	$selected_categories = get_query_var("cat");
+ 	
+	
+	if ( !empty($selected_categories) )
 	{
 		// query arguments
 	   	$args = array(
@@ -116,15 +109,6 @@ function hk_slideshow_generate_output($vars) {
 		);
 		if ( !empty($selected_categories) ) {
 	 	    $args['category__and'] = array($selected_categories);
-		}
-		if ( !empty($selected_special_categories) ) {
-			$args['tax_query'] = array(
-				array(
-					'taxonomy' => 'special_category',
-					'field' => 'id',
-					'terms' => $default_settings["startpage_cat"]
-				)
-			);
 		}
 		$meta_query = new WP_Query($args);
 		if ($meta_query->have_posts()) {
@@ -138,7 +122,7 @@ function hk_slideshow_generate_output($vars) {
 						$image = get_sub_field('hk_featured_image');
 						$src = $image["sizes"][$vars["thumbnail-size"]];
 						$description = $image["description"];
-
+	
 						if (strpos($src,$default_settings[$vars["thumbnail-size"]][0] . "x" . $default_settings[$vars["thumbnail-size"]][1])) {
 							$retValue .= "<article class='slide' id='post-" . get_the_ID() . "' class='";
 							if ($first){ $retValue .= 'first '; }

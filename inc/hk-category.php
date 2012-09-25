@@ -29,13 +29,13 @@
 
 				/* Get all sticky posts */
 				$sticky = get_option( 'sticky_posts' );
-				
+				print_r($sticky);
 				if ($catID != "" && !empty($sticky)):
 					/* Query sticky posts */
-					query_posts( array( 'category__in' => $catID, 'post__in' => $sticky ) );
-					
-					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>			
-						<?php get_template_part( 'content', get_post_format() ); ?>
+					query_posts( array( 'category__in' => $catID, 'post__in' => $sticky, 'ignore_sticky_posts' => 0 ) );
+					echo $catID;
+					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+						<?php echo "test"; get_template_part( 'content', get_post_format() ); ?>
 					<?php endwhile; endif;
 				endif; 
 				// Reset Query
@@ -63,6 +63,10 @@
 
 		<?php endwhile; ?>
 
+		
+		<?php // then show all from children
+			  // query_posts( array( 'category_slug__in' => hk_getParents($catID), 'post__in' => $sticky, 'ignore_sticky_posts' => 0 ) );
+		?>
 		<?php hk_content_nav( 'nav-below' ); ?>
 
 	<?php else : ?>
