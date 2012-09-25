@@ -23,25 +23,27 @@
 			 * Default order in orderby no set
 			 */
 			if ($_REQUEST["orderby"] == "") :
-				/* Get category id */
-				$thiscat = get_query_var("cat");
+				$posts_per_page = get_option('posts_per_page');
 				
-				if ( $thiscat != "" ) :
+				/* Get category id */
+				$cat = get_query_var("cat");
+				
+				if ( $cat != "" ) :
 					/* Get all sticky posts from this category */
 					$sticky = get_option( 'sticky_posts' );
 						
 					if ( !empty($sticky) ) {
 						/* Query sticky posts */
-						query_posts( array( 'category__in' => $thiscat, 'post__in' => $sticky) );
+						query_posts( array( 'category__in' => $cat, 'post__in' => $sticky, 'posts_per_page' => -1) );
 						if ( have_posts() ) : while ( have_posts() ) : the_post();
 							get_template_part( 'content', get_post_format() );
 						endwhile; endif;
 					}
 					wp_reset_query(); // Reset Query
-
+					
 
 					/* Get all NOT sticky posts from this category */
-					$args = array( 'category__and' => $thiscat );
+					$args = array( 'category__and' => $cat, 'posts_per_page' => -1 );
 					if ( !empty($sticky) ) {
 						$args['post__not_in'] = $sticky;
 					}
@@ -53,22 +55,22 @@
 					
 					
 					/* Get posts from children of this category */
-					$children =  hk_getChildrenIdArray($thiscat);
+					$children =  hk_getChildrenIdArray($cat);
 					if ( !empty($children) ) {
 						/* Get all sticky posts children of this category */
 						echo "<span class='morefrom'>Mer från underkategorier</span>";
-						$args = array( 'category__in' => $children );
+						$args = array( 'category__in' => $children, 'posts_per_page' => -1 );
 						if (!empty($sticky)) {
 							$args['post__in'] = $sticky;
 							query_posts( $args );
 							if ( have_posts() ) : while ( have_posts() ) : the_post();
-								get_template_part( 'content', get_post_format() );
+								get_template_part( 'content', get_post_format());
 							endwhile; endif;
 							wp_reset_query(); // Reset Query
 						}
-					
+						
 						/* Get all NOT sticky posts children of this category */
-						$args = array( 'category__in' => $children );
+						$args = array( 'category__in' => $children, 'posts_per_page' => $posts_per_page );
 						if (!empty($sticky)) {
 							$args['post__not_in'] = $sticky;
 						}
@@ -79,15 +81,12 @@
 						wp_reset_query(); // Reset Query
 					}
 					
-					
-					
-					// query_posts( array( 'category_slug__in' => hk_getParentsSlugArray($catID), 'post__in' => $sticky, 'ignore_sticky_posts' => 0 ) );
 				endif;
 			/****Default order END***/
 
 			else :
 
-			/* Start standard the Loop */ 
+			/* otherwise start standard Loop if orderby is set */ 
 			while ( have_posts() ) : the_post();
 				get_template_part( 'content', get_post_format() );
 			endwhile;

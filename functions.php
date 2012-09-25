@@ -460,7 +460,7 @@ function duration($start,$end) {
 	return $duration;  
 }  
 
-
+// return true if current category has more parents than specified in num_top_menus
 function is_sub_category() {
 	global $default_settings;
 	if ( !isset($default_settings["is_sub_category"]) ) {
@@ -473,6 +473,7 @@ function is_sub_category() {
 	}
 	return $default_settings["is_sub_category"];
 }
+// return true if current category is a sub firstpage, i.e. category level is one above num_top_menus
 function is_sub_category_firstpage() {
 	global $default_settings;
 	if ( !isset($default_settings["is_sub_category_firstpage"]) ) {
@@ -485,13 +486,15 @@ function is_sub_category_firstpage() {
 	}
 	return $default_settings["is_sub_category_firstpage"];
 }
-
+// return number of parents argument $cat has
 function hk_countParents($cat) {
 	$cats_str = get_category_parents($cat, false, '%#%');
+	if (!isset($cats_str)) return 0;
 	$cats_array = explode('%#%', $cats_str);
 	$cat_depth = sizeof($cats_array)-1;
 	return $cat_depth;
 }
+// return the parents of argument category $cat in slug array form
 function hk_getParentsSlugArray($cat) {
 	$cats_str = get_category_parents($cat, false, '%#%', true);
 	$cats_array = explode('%#%', $cats_str);
@@ -499,6 +502,7 @@ function hk_getParentsSlugArray($cat) {
 	unset($cats_array[$cat_depth]);
 	return $cats_array;
 }
+// return the first parent id found in the menu
 function hk_getMenuParent($cat) {
 	global $default_settings;
 	$num_top_menus = $default_settings["num_top_menus"];
@@ -510,6 +514,7 @@ function hk_getMenuParent($cat) {
 	}
 	return $cat;
 }
+// return all the category children of category $cat in id array form
 function hk_getChildrenIdArray($cat) {
 	$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
 	$retArray = array();

@@ -32,7 +32,9 @@
 			<?php if( function_exists('views_orderby') ) : ?>
 				<li <?php echo ($_REQUEST["orderby"] == "popular")?"class='current-menu-item'":""; ?>><a href="?orderby=popular<?php echo $tags.$search; ?>">Popul&auml;raste</a></li>
 			<?php endif; ?>
-			<li <?php echo ($_REQUEST["orderby"] == "")?"class='current-menu-item'":""; ?>><a href="?orderby=<?php echo $tags.$search; ?>">Standard</a></li>
+			<?php if ($_REQUEST["orderby"] != "") : ?>
+				<li><a href="?orderby=<?php echo $tags.$search; ?>">Standard</a></li>
+			<?php endif; ?>
 		</ul></div>
 
 	<?php }
