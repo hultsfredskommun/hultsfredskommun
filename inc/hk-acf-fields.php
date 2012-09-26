@@ -455,7 +455,7 @@ if(function_exists("register_field_group"))
 	 * KONTAKTINFORMATION
 	 *******/
 	register_field_group(array (
-		'id' => '5062a3958430e',
+		'id' => '5062a4b871449',
 		'title' => 'Kontaktinformation',
 		'fields' => 
 		array (
@@ -502,6 +502,84 @@ if(function_exists("register_field_group"))
 			),
 			2 => 
 			array (
+				'key' => 'field_505b206c9f70f',
+				'label' => 'Telefonnummer',
+				'name' => 'hk_contact_phones',
+				'type' => 'flexible_content',
+				'instructions' => '',
+				'required' => '0',
+				'layouts' => 
+				array (
+					0 => 
+					array (
+						'label' => 'Telefon',
+						'name' => 'hk_contact_phone',
+						'display' => 'table',
+						'sub_fields' => 
+						array (
+							0 => 
+							array (
+								'label' => 'Nummer',
+								'name' => 'number',
+								'type' => 'text',
+								'default_value' => '',
+								'formatting' => 'none',
+								'key' => 'field_5062a4b0641c8',
+								'order_no' => '0',
+							),
+						),
+					),
+					1 => 
+					array (
+						'label' => 'Mobil',
+						'name' => 'hk_contact_mobile',
+						'display' => 'table',
+						'sub_fields' => 
+						array (
+							0 => 
+							array (
+								'label' => 'Nummer',
+								'name' => 'number',
+								'type' => 'text',
+								'default_value' => '',
+								'formatting' => 'none',
+								'key' => 'field_5062a4b0641d0',
+								'order_no' => '0',
+							),
+						),
+					),
+					2 => 
+					array (
+						'label' => 'Fax',
+						'name' => 'fax',
+						'display' => 'table',
+						'sub_fields' => 
+						array (
+							0 => 
+							array (
+								'label' => 'Nummer',
+								'name' => 'number',
+								'type' => 'text',
+								'default_value' => '',
+								'formatting' => 'none',
+								'key' => 'field_5062a4b0641d5',
+								'order_no' => '0',
+							),
+						),
+					),
+				),
+				'sub_fields' => 
+				array (
+					0 => 
+					array (
+						'key' => 'field_505b213b16b15',
+					),
+				),
+				'button_label' => 'Lägg till nytt nummer',
+				'order_no' => '2',
+			),
+			3 => 
+			array (
 				'key' => 'field_505ad25f18351',
 				'label' => 'E-post',
 				'name' => 'hk_contact_emails',
@@ -527,21 +605,21 @@ if(function_exists("register_field_group"))
 				'row_limit' => '',
 				'layout' => 'table',
 				'button_label' => 'Lägg till e-postadress',
-				'order_no' => '2',
+				'order_no' => '3',
 			),
-			3 => 
+			4 => 
 			array (
 				'key' => 'field_505ad4be8d8d5',
 				'label' => 'Beskrivning',
 				'name' => 'hk_contact_description',
 				'type' => 'textarea',
-				'instructions' => '',
+				'instructions' => 'En kort frivillig beskrivning av kontakten.',
 				'required' => '0',
 				'default_value' => '',
 				'formatting' => 'br',
-				'order_no' => '3',
+				'order_no' => '4',
 			),
-			4 => 
+			5 => 
 			array (
 				'key' => 'field_505ad25f1c69c',
 				'label' => 'Besöksadress',
@@ -551,9 +629,9 @@ if(function_exists("register_field_group"))
 				'required' => '0',
 				'default_value' => '',
 				'formatting' => 'br',
-				'order_no' => '4',
+				'order_no' => '5',
 			),
-			5 => 
+			6 => 
 			array (
 				'key' => 'field_505ad25f205a2',
 				'label' => 'Besökstid',
@@ -563,9 +641,9 @@ if(function_exists("register_field_group"))
 				'required' => '0',
 				'default_value' => '',
 				'formatting' => 'br',
-				'order_no' => '5',
+				'order_no' => '6',
 			),
-			6 => 
+			7 => 
 			array (
 				'key' => 'field_505ad25f123cb',
 				'label' => 'Bild',
@@ -575,9 +653,9 @@ if(function_exists("register_field_group"))
 				'required' => '0',
 				'save_format' => 'object',
 				'preview_size' => 'thumbnail',
-				'order_no' => '6',
+				'order_no' => '7',
 			),
-			7 => 
+			8 => 
 			array (
 				'key' => 'field_505ad28e202d9',
 				'label' => 'Position',
@@ -588,84 +666,6 @@ if(function_exists("register_field_group"))
 				'val' => 'address',
 				'center' => '57.455560638683025,15.836223059667986',
 				'zoom' => '12',
-				'order_no' => '7',
-			),
-			8 => 
-			array (
-				'key' => 'field_505b206c9f70f',
-				'label' => 'Telefonnummer',
-				'name' => 'hk_contact_phones',
-				'type' => 'flexible_content',
-				'instructions' => '',
-				'required' => '0',
-				'layouts' => 
-				array (
-					0 => 
-					array (
-						'label' => 'Telefon',
-						'name' => 'hk_contact_phone',
-						'display' => 'table',
-						'sub_fields' => 
-						array (
-							0 => 
-							array (
-								'label' => 'Nummer',
-								'name' => 'number',
-								'type' => 'text',
-								'default_value' => '',
-								'formatting' => 'none',
-								'key' => 'field_505b213b16b05',
-								'order_no' => '0',
-							),
-						),
-					),
-					1 => 
-					array (
-						'label' => 'Mobil',
-						'name' => 'hk_contact_mobile',
-						'display' => 'table',
-						'sub_fields' => 
-						array (
-							0 => 
-							array (
-								'label' => 'Nummer',
-								'name' => 'number',
-								'type' => 'text',
-								'default_value' => '',
-								'formatting' => 'none',
-								'key' => 'field_505b213b16b0f',
-								'order_no' => '0',
-							),
-						),
-					),
-					2 => 
-					array (
-						'label' => 'Fax',
-						'name' => 'fax',
-						'display' => 'table',
-						'sub_fields' => 
-						array (
-							0 => 
-							array (
-								'label' => 'Nummer',
-								'name' => 'number',
-								'type' => 'text',
-								'default_value' => '',
-								'formatting' => 'none',
-								'key' => 'field_505b213b16b15',
-								'order_no' => '0',
-							),
-						),
-					),
-				),
-				'sub_fields' => 
-				array (
-					0 => 
-					array (
-						'key' => 'field_505b206c9f73e',
-					),
-				),
-				'button_label' => 'Lägg till nytt nummer',
 				'order_no' => '8',
 			),
 		),
