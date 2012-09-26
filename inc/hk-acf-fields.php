@@ -451,5 +451,248 @@ if(function_exists("register_field_group"))
 		'menu_order' => 55,
 	));
 
+	/*******
+	 * KONTAKTINFORMATION
+	 *******/
+	register_field_group(array (
+		'id' => '5062a3958430e',
+		'title' => 'Kontaktinformation',
+		'fields' => 
+		array (
+			0 => 
+			array (
+				'key' => 'field_505ad25f0c2bb',
+				'label' => 'Titel',
+				'name' => 'hk_contact_titel',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => '0',
+				'default_value' => '',
+				'formatting' => 'none',
+				'order_no' => '0',
+			),
+			1 => 
+			array (
+				'key' => 'field_505ad7e9928b3',
+				'label' => 'Arbetsplats',
+				'name' => 'hk_contact_workplaces',
+				'type' => 'repeater',
+				'instructions' => 'Här fyller du i vilken avdelning, förvaltning eller arbetsplats kontakten jobbar på.',
+				'required' => '0',
+				'sub_fields' => 
+				array (
+					0 => 
+					array (
+						'key' => 'field_505ad7e9928cf',
+						'label' => 'Plats',
+						'name' => 'hk_contact_workplace',
+						'type' => 'text',
+						'instructions' => '',
+						'column_width' => '',
+						'default_value' => '',
+						'formatting' => 'none',
+						'order_no' => '0',
+					),
+				),
+				'row_min' => '0',
+				'row_limit' => '',
+				'layout' => 'table',
+				'button_label' => 'Add Row',
+				'order_no' => '1',
+			),
+			2 => 
+			array (
+				'key' => 'field_505ad25f18351',
+				'label' => 'E-post',
+				'name' => 'hk_contact_emails',
+				'type' => 'repeater',
+				'instructions' => '',
+				'required' => '0',
+				'sub_fields' => 
+				array (
+					0 => 
+					array (
+						'key' => 'field_505ad25f1838b',
+						'label' => 'E-post',
+						'name' => 'hk_contact_email',
+						'type' => 'text',
+						'instructions' => '',
+						'column_width' => '',
+						'default_value' => '',
+						'formatting' => 'none',
+						'order_no' => '0',
+					),
+				),
+				'row_min' => '0',
+				'row_limit' => '',
+				'layout' => 'table',
+				'button_label' => 'Lägg till e-postadress',
+				'order_no' => '2',
+			),
+			3 => 
+			array (
+				'key' => 'field_505ad4be8d8d5',
+				'label' => 'Beskrivning',
+				'name' => 'hk_contact_description',
+				'type' => 'textarea',
+				'instructions' => '',
+				'required' => '0',
+				'default_value' => '',
+				'formatting' => 'br',
+				'order_no' => '3',
+			),
+			4 => 
+			array (
+				'key' => 'field_505ad25f1c69c',
+				'label' => 'Besöksadress',
+				'name' => 'hk_contact_address',
+				'type' => 'textarea',
+				'instructions' => '',
+				'required' => '0',
+				'default_value' => '',
+				'formatting' => 'br',
+				'order_no' => '4',
+			),
+			5 => 
+			array (
+				'key' => 'field_505ad25f205a2',
+				'label' => 'Besökstid',
+				'name' => 'hk_contact_visit_hours',
+				'type' => 'textarea',
+				'instructions' => '',
+				'required' => '0',
+				'default_value' => '',
+				'formatting' => 'br',
+				'order_no' => '5',
+			),
+			6 => 
+			array (
+				'key' => 'field_505ad25f123cb',
+				'label' => 'Bild',
+				'name' => 'hk_featured_image',
+				'type' => 'image',
+				'instructions' => '',
+				'required' => '0',
+				'save_format' => 'object',
+				'preview_size' => 'thumbnail',
+				'order_no' => '6',
+			),
+			7 => 
+			array (
+				'key' => 'field_505ad28e202d9',
+				'label' => 'Position',
+				'name' => 'hk_contact_position',
+				'type' => 'location-field',
+				'instructions' => '',
+				'required' => '0',
+				'val' => 'address',
+				'center' => '57.455560638683025,15.836223059667986',
+				'zoom' => '12',
+				'order_no' => '7',
+			),
+			8 => 
+			array (
+				'key' => 'field_505b206c9f70f',
+				'label' => 'Telefonnummer',
+				'name' => 'hk_contact_phones',
+				'type' => 'flexible_content',
+				'instructions' => '',
+				'required' => '0',
+				'layouts' => 
+				array (
+					0 => 
+					array (
+						'label' => 'Telefon',
+						'name' => 'hk_contact_phone',
+						'display' => 'table',
+						'sub_fields' => 
+						array (
+							0 => 
+							array (
+								'label' => 'Nummer',
+								'name' => 'number',
+								'type' => 'text',
+								'default_value' => '',
+								'formatting' => 'none',
+								'key' => 'field_505b213b16b05',
+								'order_no' => '0',
+							),
+						),
+					),
+					1 => 
+					array (
+						'label' => 'Mobil',
+						'name' => 'hk_contact_mobile',
+						'display' => 'table',
+						'sub_fields' => 
+						array (
+							0 => 
+							array (
+								'label' => 'Nummer',
+								'name' => 'number',
+								'type' => 'text',
+								'default_value' => '',
+								'formatting' => 'none',
+								'key' => 'field_505b213b16b0f',
+								'order_no' => '0',
+							),
+						),
+					),
+					2 => 
+					array (
+						'label' => 'Fax',
+						'name' => 'fax',
+						'display' => 'table',
+						'sub_fields' => 
+						array (
+							0 => 
+							array (
+								'label' => 'Nummer',
+								'name' => 'number',
+								'type' => 'text',
+								'default_value' => '',
+								'formatting' => 'none',
+								'key' => 'field_505b213b16b15',
+								'order_no' => '0',
+							),
+						),
+					),
+				),
+				'sub_fields' => 
+				array (
+					0 => 
+					array (
+						'key' => 'field_505b206c9f73e',
+					),
+				),
+				'button_label' => 'Lägg till nytt nummer',
+				'order_no' => '8',
+			),
+		),
+		'location' => 
+		array (
+			'rules' => 
+			array (
+				0 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'hk_kontakter',
+					'order_no' => '0',
+				),
+			),
+			'allorany' => 'all',
+		),
+		'options' => 
+		array (
+			'position' => 'normal',
+			'layout' => 'default',
+			'hide_on_screen' => 
+			array (
+				0 => 'the_content',
+			),
+		),
+		'menu_order' => 0,
+	));
 }
 ?>
