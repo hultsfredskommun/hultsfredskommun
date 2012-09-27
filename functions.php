@@ -24,7 +24,7 @@ if ( ! isset( $default_settings ) ) {
 								'slideshow-image' => array(1000, 250, true),
 								'contact-image' => array(150, 150, true),
 								'startpage_cat' => $options["startpage_cat"],
-								'news_cat' => $options["news_cat"],
+								'news_tag' => $options["news_tag"],
 								'hidden_cat' => $options["hidden_cat"],
 								'protocol_cat' => $options["protocol_cat"],
 								'num_top_menus' => 2

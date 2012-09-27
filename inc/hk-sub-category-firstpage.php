@@ -10,6 +10,11 @@
 	</div><!-- #firstpage-top-sidebar -->
 <?php endif; ?>
 
+<?php
+	/* get all sub categories to use in queries */
+	$all_categories = hk_getChildrenIdArray($cat);
+	$all_categories[] = $cat;
+?>
 <div id="primary">
 	<div id="content" role="main">
 		<ul class="post_tabs_title">
@@ -22,28 +27,16 @@
 			<?php 
 				/* Query all posts with selected startpage category */
 				$cat = get_query_var("cat");
-				if ($default_settings["startpage_cat"] != "") {
-					$query = array( 'posts_per_page' => '-1', 
-									'category__and' => $cat,
-									'tax_query' => array(
-										array(
-											'taxonomy' => 'special_category',
-											'field' => 'id',
-											'terms' => $default_settings["startpage_cat"]
-										)
-									) );
-					
-					query_posts( $query );
-			
-					if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-						get_template_part( 'content' ); 
-					endwhile; endif; 
-					// Reset Query
-					wp_reset_query(); 
-				}
-				else {
-					echo "Du m&aring;ste s&auml;tta egenskapen <i>Startsidans kategori</i> under Utseende -> Inst&auml;llningar.";	
-				}
+				$query = array( 'posts_per_page' => '-1', 
+								'category__in' => $cat );
+				
+				query_posts( $query );
+		
+				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+					get_template_part( 'content' ); 
+				endwhile; endif; 
+				// Reset Query
+				wp_reset_query(); 
 			?>
 
 			</div><div class="rightcontent">
@@ -59,24 +52,18 @@
 
 			<?php
 				/* Query all posts with news category */
-				if ($default_settings["news_cat"] != "") { ?>
+				if ($default_settings["news_tag"] != "") { ?>
 					<div id='news'>
 						<span class='entry-title'>Nyheter</span>
 					<?php
 					$query = array( 'posts_per_page' => '10', 
-									'category__and' => $cat,
-									'tax_query' => array(
-										array(
-											'taxonomy' => 'special_category',
-											'field' => 'id',
-											'terms' => $default_settings["news_cat"]
-										)
-									) );
+									'category__in' => $all_categories,
+									'tags__and' => $default_settings["news_tag"] );
 
 					query_posts( $query );		
 					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<div class="entry-wrapper">
-						<a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+						<?php the_modified_date("Y-m-d"); ?> <a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 					</div>
 					<?php endwhile; endif; 
 					?> 
@@ -101,13 +88,7 @@
 				/* Query all posts with selected startpage category */
 				if ($default_settings["protocol_cat"] != "") {
 					$query = array( 'posts_per_page' => '-1', 
-									'tax_query' => array(
-										array(
-											'taxonomy' => 'special_category',
-											'field' => 'id',
-											'terms' => $default_settings["protocol_cat"]
-										)
-									) );
+									'category__in' => $default_settings["protocol_cat"] );
 					
 					query_posts( $query );
 			
@@ -134,7 +115,7 @@
 					'hierarchical'       => true,
 					'title_li'           => "",
 					'echo'               => 1,
-					'taxonomy'           => 'special_category',
+					'taxonomy'           => 'category',
 					);
 					wp_list_categories($args);	
 					?>			
@@ -148,7 +129,7 @@
 			<?php
 				/* Query all posts */
 				$query = array( 'posts_per_page' => '4', 
-								'category__and' => $cat,
+								'category__in' => $all_categories,
 								'ignore_sticky_posts' => 'true'
 								) ;
 				
@@ -166,7 +147,7 @@
 			<?php
 				/* Query all posts */
 				$query = array( 'posts_per_page' => '10', 
-								'category__and' => $cat,
+								'category__in' => $all_categories,
 								'ignore_sticky_posts' => 'true',
 								'post__not_in' => $shownposts
 								) ;

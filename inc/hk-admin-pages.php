@@ -480,10 +480,6 @@ function hk_change_meta_boxes () {
     // hide tag divs if not administrator
  	//remove_meta_box("tagsdiv-post_tag","post",'side');
 
-    // hide tag divs if not administrator
-    if (!current_user_can("administrator")) {
-		remove_meta_box("special_categorydiv","post","side");
-	}
     echo '';
 }
 
@@ -505,33 +501,6 @@ function remove_media_upload_fields( $form_fields, $post ) {
     return $form_fields;
 }
 add_filter('attachment_fields_to_edit', 'remove_media_upload_fields', null, 2);
-
-
-/**
- * Create a new taxonomies for special_cat
- */
-function extra_tag_init() {
-	register_taxonomy(
-		'special_category',
-		array('post'),
-	 	array(
-			'hierarchical' => true,
-			'label' => __( 'Specialkategori' ),
-			'sort' => true,
-			'args' => array( 'orderby' => 'term_order' ),
-			'rewrite' => array( 'slug' => 'special_category' ),
-			'capabilities' => array (
-	            'manage_terms' => 'administrator',
-	            'edit_terms' => 'administrator',
-	            'delete_terms' => 'administrator',
-	            'assign_terms' => 'administrator'
-            )
-		)
-	);
-	
-}
-
-add_action( 'init', 'extra_tag_init' );
 
 
 ?>

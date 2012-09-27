@@ -27,37 +27,20 @@ function hk_theme_options_do_page() {
 
 
 			<h3>Kategorier och menyer</h3>
-			<p><label for="hk_theme[startpage_cat]">Välj den specialkategori som innehåller <b>startsidans</b> sidor.</label><br/>
-			<?php 
-				$args = array(
-					'orderby'            => 'ID', 
-					'order'              => 'ASC',
-					'echo'               => 1,
-					'selected'           => esc_attr( $options["startpage_cat"] ),
-					'hierarchical'       => 1, 
-					'name'               => 'hk_theme[startpage_cat]',
-					'depth'              => 0,
-					'taxonomy'           => 'special_category',
-					'show_count'           => true,
-					'hide_empty'      => false,
-					'hide_if_empty'      => false );  
-				wp_dropdown_categories( $args ); 
-			?>
-			</p>
 			
-			<p><label for="hk_theme[news_cat]">Välj den specialkategori som innehåller <b>nyheter</b>.</label><br/>
+			<p><label for="hk_theme[news_tag]">Välj den etikett som innehåller <b>nyheter</b>.</label><br/>
 							<?php 
 				$args = array(
 					'orderby'            => 'ID', 
 					'order'              => 'ASC',
 					'echo'               => 1,
-					'selected'           => esc_attr( $options["news_cat"] ),
+					'selected'           => esc_attr( $options["news_tag"] ),
 					'hierarchical'       => 1, 
-					'name'               => 'hk_theme[news_cat]',
+					'name'               => 'hk_theme[news_tag]',
 					'depth'              => 0,
-					'taxonomy'           => 'special_category',
-					'show_count'           => true,
-					'hide_empty'      => false,
+					'taxonomy'           => 'post_tag',
+					'show_count'         => true,
+					'hide_empty'         => false,
 					'hide_if_empty'      => false );  
 				wp_dropdown_categories( $args ); 
 			?>
@@ -74,8 +57,8 @@ function hk_theme_options_do_page() {
 					'name'               => 'hk_theme[hidden_cat]',
 					'depth'              => 0,
 					'taxonomy'           => 'category',
-					'show_count'           => true,
-					'hide_empty'      => false,
+					'show_count'         => true,
+					'hide_empty'         => false,
 					'hide_if_empty'      => false );  
 				wp_dropdown_categories( $args ); 
 			?>
@@ -91,9 +74,9 @@ function hk_theme_options_do_page() {
 					'hierarchical'       => 1, 
 					'name'               => 'hk_theme[protocol_cat]',
 					'depth'              => 0,
-					'taxonomy'           => 'special_category',
-					'show_count'           => true,
-					'hide_empty'      => false,
+					'taxonomy'           => 'category',
+					'show_count'         => true,
+					'hide_empty'         => false,
 					'hide_if_empty'      => false );  
 				wp_dropdown_categories( $args ); 
 			?>
