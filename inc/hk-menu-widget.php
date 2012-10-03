@@ -35,8 +35,50 @@ class HK_Menu_Widget extends WP_Widget {
 			// TODO if single, 
 			//  check if category (or parent or child) from last session state is among current page's categories, 
 			//  if so, show same menu as saved in session
-			//if ($this->hk_countParents($cat) >= $default_settings["num_top_menus"]) {
+
 			if (is_sub_category()) {
+				$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
+				$currentparent = $cat;
+				/*echo "<ul>";
+				foreach ( $children as $child ) {
+					if ($currentparent == $child->parent)
+					{
+							//<li class="cat-item cat-item-26"><a href="http://localhost/wordpress/category/invanare/bo-bygga/bygga-renovera/" title="Se alla inlägg sparade under Bygga &amp; renovera">Bygga &amp; renovera</a>
+							echo "<li ". post_class() . "><a href='" .. "' title='" . . "'>" .  . "</a>";
+							echo "</li>";
+					}*/
+/*
+<ul>	
+	<li class="cat-item cat-item-26"><a href="http://localhost/wordpress/category/invanare/bo-bygga/bygga-renovera/" title="Se alla inlägg sparade under Bygga &amp; renovera">Bygga &amp; renovera</a>
+	</li>
+	<li class="cat-item cat-item-27"><a href="http://localhost/wordpress/category/invanare/bo-bygga/vatten-avlopp/" title="Se alla inlägg sparade under Vatten &amp; avlopp">Vatten &amp; avlopp</a>
+		<ul class="children">
+			<li class="cat-item cat-item-30"><a href="http://localhost/wordpress/category/invanare/bo-bygga/vatten-avlopp/bara-vatten/" title="Se alla inlägg sparade under Bara vatten">Bara vatten</a>
+			</li>
+		</ul>
+	</li>
+</ul>
+*/					/*
+				}
+				echo "</ul>";*/
+				/*$retArray = array();
+						
+				$hierarch_children = array();
+				foreach ($children as $child) {
+					$hierarch_children[$child->term_id] = $child;
+				}
+
+				$hierarch_children = array_reverse($hierarch_children);
+				
+				foreach ($hierarch_children as $id => $child) {
+					if ($child->parent != $cat) {
+						$hierarch_children[$child->parent]["children"][$child->term_id] = $child;
+						unset($hirarch_children[$child->term_id]);
+					}
+				}
+			*/
+				
+				$hk_cat_walker = new hk_Category_Walker();
 				$parentCat = hk_getMenuParent($cat);
 				$args = array(
 					'orderby'            => 'name',
@@ -50,13 +92,15 @@ class HK_Menu_Widget extends WP_Widget {
 					'show_option_none'   => '',
 					'echo'               => 1,
 					'depth'              => 3,
-					'taxonomy'           => 'category'
+					'taxonomy'           => 'category',
+					'walker'			 => $hk_cat_walker
 				);
 				echo "<ul>"; 
 				wp_list_categories( $args );
 				echo "</ul>"; 
 
 				echo "<strong>Nyckelord</strong>";
+				$hk_tag_walker = new hk_Tag_Walker();
 				$args = array(
 					'orderby'            => 'name',
 					'order'              => 'ASC',
@@ -66,7 +110,8 @@ class HK_Menu_Widget extends WP_Widget {
 					'title_li'           => '',
 					'show_option_none'   => '',
 					'echo'               => 1,
-					'taxonomy'           => 'post_tag'
+					'taxonomy'           => 'post_tag',
+					'walker'			 => $hk_tag_walker
 				);
 			
 				echo "<ul>"; 
@@ -107,17 +152,6 @@ class HK_Menu_Widget extends WP_Widget {
 			if (!empty($tags_list)) : foreach ( $tags_list as $list):
 				echo "<li class='link tag'><div class='icon'></div><a href='".get_tag_link($list->term_id)."'>" . $list->name . "</a></li>";
 			endforeach; endif; // End if tags
-		 
-			$tags_list = get_the_terms(get_the_ID(),"vem");
-			if (!empty($tags_list)) : foreach ( $tags_list as $list):
-				echo "<li class='link vem'><div class='icon'></div><a href='".get_term_link($list->slug,"vem")."'>" . $list->name . "</a></li>";
-			endforeach; endif; // End if vem
-
-			$tags_list = get_the_terms(get_the_ID(),"ort");
-			if (!empty($tags_list)) : foreach ( $tags_list as $list):
-				echo "<li class='link ort'><div class='icon'></div><a href='".get_term_link($list->slug,"ort")."'>" . $list->name . "</a></li>";
-			endforeach; endif; // End if vem
-
 		?>
 		</ul>
 	<?php 
@@ -430,4 +464,163 @@ class HK_Menu_Widget extends WP_Widget {
 
 add_action( 'widgets_init', create_function( '', 'register_widget( "Hk_Menu_Widget" );' ) );
 
+
+// TODO make tags selection work, do one called hk_Tag_Walker? 
+// Show which category and tag is selected
+class hk_Category_Walker extends Walker_Category {
+	function start_el(&$output, $category, $depth, $args) { 
+        extract($args); 
+		$tags_filter = get_query_var("tag");
+		if (!empty($tags_filter)) {
+			$tags_filter = "?tag=$tags_filter";
+		}
+        $cat_name = esc_attr( $category->name); 
+        $link = '<a href="' . get_category_link( $category->term_id ) . $tags_filter . '" '; 
+        $cat_name = apply_filters( 'list_cats', $cat_name, $category ); 
+        if ( $use_desc_for_title == 0 || empty($category->description) ) 
+            $link .= 'title="' . sprintf(__( 'View all posts filed under %s' ), $cat_name) . '"'; 
+        else 
+            $link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"'; 
+        $link .= '>'; 
+
+        $link .= $cat_name . '</a>'; 
+        if ( (! empty($feed_image)) || (! empty($feed)) ) { 
+            $link .= ' '; 
+            if ( empty($feed_image) ) 
+                $link .= '('; 
+            $link .= '<a href="' . get_category_feed_link($category->term_id, $feed_type) . $tags_filter . '"'; 
+            if ( empty($feed) ) 
+                $alt = ' alt="' . sprintf(__( 'Feed for all posts filed under %s' ), $cat_name ) . '"'; 
+            else { 
+                $title = ' title="' . $feed . '"'; 
+                $alt = ' alt="' . $feed . '"'; 
+                $name = $feed; 
+                $link .= $title; 
+            } 
+
+            $link .= '>'; 
+            if ( empty($feed_image) ) 
+                $link .= $name; 
+            else 
+                $link .= "<img src='$feed_image'$alt$title" . ' />'; 
+            $link .= '</a>'; 
+            if ( empty($feed_image) ) 
+                $link .= ')'; 
+        } 
+
+        if ( isset($show_count) && $show_count ) 
+            $link .= ' (' . intval($category->count) . ')'; 
+ 
+        if ( isset($show_date) && $show_date ) { 
+            $link .= ' ' . gmdate('Y-m-d', $category->last_update_timestamp); 
+        } 
+
+        if ( isset($current_category) && $current_category ) 
+            $_current_category = get_category( $current_category ); 
+
+        if ( 'list' == $args['style'] ) { 
+            $output .= "\t<li"; 
+            $class = 'cat-item cat-item-'.$category->term_id; 
+            if ( isset($current_category) && $current_category && ($category->term_id == $current_category) ) 
+                $class .=  ' current-cat'; 
+            elseif ( isset($_current_category) && $_current_category && ($category->term_id == $_current_category->parent) ) 
+                $class .=  ' current-cat-parent'; 
+            $output .=  ' class="'.$class.'"'; 
+            $output .= ">$link\n"; 
+        } else { 
+            $output .= "\t$link<br />\n"; 
+        } 
+	} 
+
+}
+class hk_Tag_Walker extends Walker_Category {
+	function start_el(&$output, $tag, $depth, $args) { 
+        extract($args);
+		$currtagslug = $tag->slug;
+		$tags_filter = get_query_var("tag");
+		$term_id = get_query_var("cat");
+
+		if (!empty($tags_filter))
+			$tag_array = explode(",",$tags_filter);
+		
+		// check if tag i selected, 
+		if(in_array($currtagslug, $tag_array)) {
+			$current_tag = true;
+			$tag_array = array_values(array_diff($tag_array, array($currtagslug)));
+		}
+		else { 
+			$tag_array[] = $currtagslug;
+		}
+
+		if (count($tag_array) == 1) {
+			$tags_filter = $tag_array[0];
+		}
+		else if (count($tag_array) > 1) {
+			$tags_filter = implode(",",$tag_array);
+		}
+		else {
+			$tags_filter = "";
+		}
+
+		if (!empty($tags_filter)) {
+			$tags_filter = "?tag=" . $tags_filter;
+		}
+		else {
+			$tags_filter = "?tag=";
+		}
+        $cat_name = esc_attr( $tag->name); 
+        $link = '<a href="' . get_category_link( $term_id ) . $tags_filter . '" '; 
+        $cat_name = apply_filters( 'list_cats', $cat_name, $tag ); 
+        if ( $use_desc_for_title == 0 || empty($tag->description) ) 
+            $link .= 'title="' . sprintf(__( 'View all posts filed under %s' ), $cat_name) . '"'; 
+        else 
+            $link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $tag->description, $tag ) ) ) . '"'; 
+        $link .= '>'; 
+
+        $link .= $cat_name . '</a>'; 
+        if ( (! empty($feed_image)) || (! empty($feed)) ) { 
+            $link .= ' '; 
+            if ( empty($feed_image) ) 
+                $link .= '('; 
+            $link .= '<a href="' . get_category_feed_link($term_id, $feed_type) . $tags_filter . '"'; 
+            if ( empty($feed) ) 
+                $alt = ' alt="' . sprintf(__( 'Feed for all posts filed under %s' ), $cat_name ) . '"'; 
+            else { 
+                $title = ' title="' . $feed . '"'; 
+                $alt = ' alt="' . $feed . '"'; 
+                $name = $feed; 
+                $link .= $title; 
+            } 
+
+            $link .= '>'; 
+            if ( empty($feed_image) ) 
+                $link .= $name; 
+            else 
+                $link .= "<img src='$feed_image'$alt$title" . ' />'; 
+            $link .= '</a>'; 
+            if ( empty($feed_image) ) 
+                $link .= ')'; 
+        } 
+
+        if ( isset($show_count) && $show_count ) 
+            $link .= ' (' . intval($tag->count) . ')'; 
+ 
+        if ( isset($show_date) && $show_date ) { 
+            $link .= ' ' . gmdate('Y-m-d', $tag->last_update_timestamp); 
+        } 
+
+        if ( 'list' == $args['style'] ) { 
+			$output .= "\t<li"; 
+            $class = 'tag-item tag-item-'.$tag->term_id; 
+			
+            if ( isset($current_tag) && $current_tag && ($tag->term_id == $current_tag) ) 
+                $class .=  ' current-tag'; 
+            $output .=  ' class="'.$class.'"'; 
+            $output .= ">$link\n"; 
+        } else { 
+            $output .= "\t$link<br />\n"; 
+        } 
+	} 
+
+}
 ?>

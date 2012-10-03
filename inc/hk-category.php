@@ -27,14 +27,19 @@
 				
 				/* Get category id */
 				$cat = get_query_var("cat");
-				
+				$tag = get_query_var("tag");
+
 				if ( $cat != "" ) :
 					/* Get all sticky posts from this category */
 					$sticky = get_option( 'sticky_posts' );
 						
 					if ( !empty($sticky) ) {
 						/* Query sticky posts */
-						query_posts( array( 'category__in' => $cat, 'post__in' => $sticky, 'posts_per_page' => -1) );
+						$args = array( 'category__in' => $cat, 'post__in' => $sticky, 'posts_per_page' => -1);
+						if ( !empty($tag) ) {
+							$args["tag_slug__and"] = $tag;
+						}
+						query_posts( $args );
 						if ( have_posts() ) : while ( have_posts() ) : the_post();
 							get_template_part( 'content', get_post_format() );
 						endwhile; endif;
@@ -43,9 +48,13 @@
 					
 
 					/* Get all NOT sticky posts from this category */
+
 					$args = array( 'category__and' => $cat, 'posts_per_page' => -1 );
 					if ( !empty($sticky) ) {
 						$args['post__not_in'] = $sticky;
+					}
+					if ( !empty($tag) ) {
+						$args["tag_slug__and"] = $tag;
 					}
 					query_posts( $args );
 					if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -62,6 +71,9 @@
 						$args = array( 'category__in' => $children, 'posts_per_page' => -1 );
 						if (!empty($sticky)) {
 							$args['post__in'] = $sticky;
+							if ( !empty($tag) ) {
+								$args["tag_slug__and"] = $tag;
+							}
 							query_posts( $args );
 							if ( have_posts() ) : while ( have_posts() ) : the_post();
 								get_template_part( 'content', get_post_format());
@@ -73,6 +85,9 @@
 						$args = array( 'category__in' => $children, 'posts_per_page' => $posts_per_page );
 						if (!empty($sticky)) {
 							$args['post__not_in'] = $sticky;
+						}
+						if ( !empty($tag) ) {
+							$args["tag_slug__and"] = $tag;
 						}
 						query_posts( $args );
 						if ( have_posts() ) : while ( have_posts() ) : the_post();

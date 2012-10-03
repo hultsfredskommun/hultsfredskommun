@@ -488,14 +488,15 @@ function is_sub_category_firstpage() {
 }
 // return number of parents argument $cat has
 function hk_countParents($cat) {
+	if (empty($cat)) return 0;
 	$cats_str = get_category_parents($cat, false, '%#%');
-	if (!isset($cats_str)) return 0;
 	$cats_array = explode('%#%', $cats_str);
 	$cat_depth = sizeof($cats_array)-1;
 	return $cat_depth;
 }
 // return the parents of argument category $cat in slug array form
 function hk_getParentsSlugArray($cat) {
+	if (empty($cat)) return array();
 	$cats_str = get_category_parents($cat, false, '%#%', true);
 	$cats_array = explode('%#%', $cats_str);
 	$cat_depth = sizeof($cats_array)-1;
@@ -505,6 +506,7 @@ function hk_getParentsSlugArray($cat) {
 // return the first parent id found in the menu
 function hk_getMenuParent($cat) {
 	global $default_settings;
+	if (empty($cat)) return array();
 	$num_top_menus = $default_settings["num_top_menus"];
 	$cats_str = get_category_parents($cat, false, '%#%', true);
 	$cats_array = explode('%#%', $cats_str);
@@ -516,6 +518,7 @@ function hk_getMenuParent($cat) {
 }
 // return all the category children of category $cat in id array form
 function hk_getChildrenIdArray($cat) {
+	if (empty($cat)) return array();
 	$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
 	$retArray = array();
 	foreach($children as $child) {

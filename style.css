@@ -831,7 +831,7 @@ a:hover {
 	display: none;
 }
 #menu ul li.current-menu-item .sub-menu,
-#menu ul li.current-category-ancestor:first-child .sub-menu,
+#menu ul li.current-category-ancestor .sub-menu,
 #menu ul li.current-post-ancestor:first-child .sub-menu {
 	display: block;
 	margin: 0;
@@ -1029,6 +1029,9 @@ a:hover {
 }
 #nav .children {
 	margin-left: 1.2em;
+}
+#nav .current-tag a, #nav .current-cat a {
+	background: #eee;
 }
 /*------------------------------------*\
 	logindiv - firstpage
