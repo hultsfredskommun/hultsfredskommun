@@ -1215,11 +1215,11 @@ a:hover {
 	margin-bottom: 1.2em;
 }
 #firstpage-top-content .leftcontent {
-	width: 60%;
+	width: 100%;
 	float: left;
 }
 #firstpage-top-content .rightcontent {
-	width: 38%;
+	width: 0%;
 	float: right;
 }
 

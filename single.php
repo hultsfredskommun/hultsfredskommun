@@ -49,9 +49,8 @@ get_header(); ?>
 						get_template_part( 'content' );
 					endwhile;
 
-					$filter = array("cat" => implode(",",$cat_array));/*, "tags" => $tag_array, "vem_tags" => $vem_array, "ort_tags" => $ort_array);*/
+					$filter = array("cat" => implode(",",$cat_array));
 					
-					//print_r($wpq);
 					echo "<script type='text/javascript'>setSingleSettings = function () { \n";
 					echo "settings[\"maxPages\"] = " . $wpq->max_num_pages . ";\n";  
 					echo "settings[\"numPages\"] = 0;\n";
