@@ -186,7 +186,7 @@ if(function_exists("register_field_group"))
 			array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 3,
 	));
 	register_field_group(array (
 		'id' => '5048edc031ead',
@@ -257,7 +257,7 @@ if(function_exists("register_field_group"))
 			array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 2,
 	));
 	register_field_group(array (
 		'id' => '5048edc032013',
@@ -366,6 +366,7 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 1,
 	));
+	/*
 	register_field_group(array (
 		'id' => '5048edc032267',
 		'title' => 'Artikelns extra information',
@@ -408,6 +409,8 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 50,
 	));
+	*/
+	/*
 	register_field_group(array (
 		'id' => '5048edc0324cf',
 		'title' => 'Inbäddat videoklipp',
@@ -450,7 +453,7 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 55,
 	));
-
+	*/
 	/*******
 	 * KONTAKTINFORMATION
 	 *******/
