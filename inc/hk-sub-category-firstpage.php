@@ -87,8 +87,10 @@
 			<?php 
 				/* Query all posts with selected startpage category */
 				if ($default_settings["protocol_cat"] != "") {
+					$children =  hk_getChildrenIdArray($default_settings["protocol_cat"]);
+					$children[] =  $default_settings["protocol_cat"];
 					$query = array( 'posts_per_page' => '-1', 
-									'category__in' => $default_settings["protocol_cat"] );
+									'category__in' => $children );
 					
 					query_posts( $query );
 			

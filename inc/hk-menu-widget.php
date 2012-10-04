@@ -544,7 +544,7 @@ class hk_Tag_Walker extends Walker_Category {
 			$tag_array = explode(",",$tags_filter);
 		
 		// check if tag i selected, 
-		if(in_array($currtagslug, $tag_array)) {
+		if(!empty($tag_array) && in_array($currtagslug, $tag_array)) {
 			$current_tag = true;
 			$tag_array = array_values(array_diff($tag_array, array($currtagslug)));
 		}
@@ -572,7 +572,7 @@ class hk_Tag_Walker extends Walker_Category {
         $link = '<a href="' . get_category_link( $term_id ) . $tags_filter . '" '; 
         $cat_name = apply_filters( 'list_cats', $cat_name, $tag ); 
         if ( $use_desc_for_title == 0 || empty($tag->description) ) 
-            $link .= 'title="' . sprintf(__( 'View all posts filed under %s' ), $cat_name) . '"'; 
+            $link .= 'title="Filtrera med nyckelordet ' .  $cat_name . '"'; 
         else 
             $link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $tag->description, $tag ) ) ) . '"'; 
         $link .= '>'; 

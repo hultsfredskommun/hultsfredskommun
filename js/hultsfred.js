@@ -276,7 +276,7 @@ function readMoreToggle(el){
 			var title = $(entry_title).find("a").html().replace("&amp;","&") + " | " + blog_title;
 			var url = $(entry_title).find("a").attr("href");
 			//call pushHistory
-			pushHistory(title, url);
+			//pushHistory(title, url);
 			//History.replaceState(null, title, url);
 		}
 	}

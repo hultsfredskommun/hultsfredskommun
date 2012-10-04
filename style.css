@@ -97,7 +97,6 @@ hr,
 #dropdown-menu,
 #sort-order,
 #colophon,
-.tag-cloud .cat-links a,
 #branding 
   {	
 	/*background-color: #ACC6D3; /* light blue */
@@ -117,6 +116,7 @@ hr,
 #menu ul li.current-post-ancestor:first-child,
 #menu #dropdown-menu:hover,
 #menu #dropdown-menu:focus,
+.tag-cloud .cat-links a,
 #nav #selected_filter li,
 .tag-cloud a { 
 	/*background-color: #E6EEF2; /* light blue */
@@ -1034,7 +1034,7 @@ a:hover {
 #nav .children {
 	margin-left: 1.2em;
 }
-#nav .current-tag a, #nav .current-cat a {
+#nav .current-tag > a, #nav .current-cat > a {
 	background: #eee;
 }
 /*------------------------------------*\

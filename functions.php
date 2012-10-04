@@ -386,27 +386,28 @@ add_filter( 'body_class', 'hk_body_classes' );
 function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true) {
 	global $default_settings;
 	$retValue = "";
-	$first = true;
+
 	if( get_field('hk_featured_images') ) :
 		if ($showAll) { $slideshowclass = "slideshow"; }
+		$countSlides = 0;
 		$retValue .= "<div class='img-wrapper $slideshowclass'>";
-		while( has_sub_field('hk_featured_images') && ($showAll || $first)) : // only once if not showAll
+		while( has_sub_field('hk_featured_images') && ($showAll || $countSlides == 0)) : // only once if not showAll
 			$image = get_sub_field('hk_featured_image');
 			$src = $image["sizes"][$thumbsize];
 			$title = $image["title"];
 			$description = $image["description"];
 			
 			if (strpos($src,$default_settings[$thumbsize][0] . "x" . $default_settings[$thumbsize][1])) {
-				if (!$first) {
-					$style = "style='display: none;'";
-				}
 				if (!empty($src)) {
+					if ($countSlides > 0) {
+						$style = "style='display: none;'";
+					}
 					$retValue .= "<img class='slide' $style src='$src' alt='$description' title='$description'/>";
+					$countSlides++;
 				}
-				$first = false;
 			}
     	endwhile;
-		if ($showAll) {
+		if ($showAll && $countSlides > 1) {
 			$retValue .= "<img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&h=".$default_settings[$thumbsize][1]."'/>";
 		}
 		$retValue .= "</div>"; 

@@ -22,6 +22,7 @@
 			/**
 			 * Default order in orderby no set
 			 */
+			$shownPosts = array();
 			if ($_REQUEST["orderby"] == "") :
 				$posts_per_page = get_option('posts_per_page');
 				
@@ -41,6 +42,7 @@
 						}
 						query_posts( $args );
 						if ( have_posts() ) : while ( have_posts() ) : the_post();
+							$shownPosts[] = get_the_ID();
 							get_template_part( 'content', get_post_format() );
 						endwhile; endif;
 					}
@@ -50,14 +52,15 @@
 					/* Get all NOT sticky posts from this category */
 
 					$args = array( 'category__and' => $cat, 'posts_per_page' => -1 );
-					if ( !empty($sticky) ) {
-						$args['post__not_in'] = $sticky;
+					if ( !empty($sticky) || !empty($shownPosts)) {
+						$args['post__not_in'] = array_merge($sticky,$shownPosts);
 					}
 					if ( !empty($tag) ) {
 						$args["tag_slug__and"] = $tag;
 					}
 					query_posts( $args );
 					if ( have_posts() ) : while ( have_posts() ) : the_post();
+						$shownPosts[] = get_the_ID();
 						get_template_part( 'content', get_post_format() );
 					endwhile; endif;
 					wp_reset_query(); // Reset Query
@@ -74,8 +77,12 @@
 							if ( !empty($tag) ) {
 								$args["tag_slug__and"] = $tag;
 							}
+							if (!empty($shownPosts)) {
+								$args['post__not_in'] = $shownPosts;
+							}
 							query_posts( $args );
 							if ( have_posts() ) : while ( have_posts() ) : the_post();
+								$shownPosts[] = get_the_ID();
 								get_template_part( 'content', get_post_format());
 							endwhile; endif;
 							wp_reset_query(); // Reset Query
@@ -83,8 +90,8 @@
 						
 						/* Get all NOT sticky posts children of this category */
 						$args = array( 'category__in' => $children, 'posts_per_page' => $posts_per_page );
-						if (!empty($sticky)) {
-							$args['post__not_in'] = $sticky;
+						if ( !empty($sticky) || !empty($shownPosts)) {
+							$args['post__not_in'] = array_merge($sticky,$shownPosts);
 						}
 						if ( !empty($tag) ) {
 							$args["tag_slug__and"] = $tag;
