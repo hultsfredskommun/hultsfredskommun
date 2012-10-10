@@ -30,7 +30,7 @@ function change_role_caps() {
 	unset($capabilities["delete_private_pages"]);
 	unset($capabilities["edit_private_pages"]);
 	unset($capabilities["delete_published_pages"]);
-	add_role( "extended_auther", "Ut&ouml;kad f&ouml;rfattare", $capabilities);
+	add_role( "extended_author", "Ut&ouml;kad f&ouml;rfattare", $capabilities);
 }
 add_action( 'admin_init', 'change_role_caps');
 

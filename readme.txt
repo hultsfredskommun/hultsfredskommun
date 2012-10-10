@@ -16,9 +16,11 @@ Use Tag Select Meta Box by Jacob Buck to get a nice tag handling.
 Advanced Custom Fields - Location Field add-on 1.0 is used as a Location field on the contact post type.
 Intuitive Category Checklist by Dave Bergschneider to get collapsible catogories in edit.
 
+
 TEST: Easy Image Crop
 TEST: WP2Cloud for images in Amazon cloud
 
 === Handy tools ===
 Use Simple Image Size by Rahe to handle thumbnail regeneration when needed.
 WP Smush.it by Dialect to get smaller image sizes.
+Use EU Cookie Law to get a popup question to accept cookies.
