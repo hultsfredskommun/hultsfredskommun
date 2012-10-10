@@ -11,12 +11,26 @@ function change_role_caps() {
 	$role->add_cap( 'unfiltered_html' );
 	$role->remove_cap('manage_categories');
 	$role->remove_cap('manage_links');
-	
 
 	$role = get_role( 'author' ); 
 	$role->add_cap( 'unfiltered_html' );	 
 	$role->remove_cap('manage_links');
 
+	
+	// add new role extended author
+	$role = get_role( 'editor' ); 
+	$capabilities = $role->capabilities;
+	unset($capabilities["edit_pages"]);
+	unset($capabilities["edit_others_pages"]);
+	unset($capabilities["edit_published_pages"]);
+	unset($capabilities["publish_pages"]);
+	unset($capabilities["delete_pages"]);
+	unset($capabilities["delete_others_pages"]);
+	unset($capabilities["delete_published_pages"]);
+	unset($capabilities["delete_private_pages"]);
+	unset($capabilities["edit_private_pages"]);
+	unset($capabilities["delete_published_pages"]);
+	add_role( "extended_auther", "Ut&ouml;kad f&ouml;rfattare", $capabilities);
 }
 add_action( 'admin_init', 'change_role_caps');
 

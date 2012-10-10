@@ -383,7 +383,7 @@ add_filter( 'body_class', 'hk_body_classes' );
 
 
 /* help function to render custom thumbnail functionality */
-function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true) {
+function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true) {
 	global $default_settings;
 	$retValue = "";
 
@@ -412,7 +412,12 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true) {
 		}
 		$retValue .= "</div>"; 
  	endif; 
- 	echo $retValue;
+	if ($echo) {
+		echo $retValue;
+	}
+	else {
+		return $retValue;
+	}
 }
 
 

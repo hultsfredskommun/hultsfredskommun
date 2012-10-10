@@ -117,13 +117,7 @@ function hk_contacts_generate_cache() {
 	
 	// set startpage category if on startpage
 	$category_in = array();
-	$special_category_in = array();
- 	if ( is_home() )
- 	{
- 		$hk_options = get_option("hk_theme");
- 		$special_category_in[] = $hk_options["startpage_cat"];
- 	}
- 	else if (get_query_var("cat") != "") {
+	if (get_query_var("cat") != "") {
 		$category_in[] = get_query_var("cat");
   	}
 
@@ -151,7 +145,7 @@ function hk_contacts_generate_cache() {
 	}
 
   	// skip if no category
-  	if (empty($category_in) && empty($special_category_in))
+  	if (empty($category_in))
   		return "";
 
 	// query arguments
@@ -165,15 +159,6 @@ function hk_contacts_generate_cache() {
 	);
 	if ( !empty($category_in) ) {
  	    $args['category__and'] = $category_in;
-	}
-	if ( !empty($special_category_in) ) {
-		$args['tax_query'] = array(
-			array(
-				'taxonomy' => 'special_category',
-				'field' => 'id',
-				'terms' => $special_category_in[0]
-			)
-		);
 	}
 
  	if ($args != "")
@@ -191,10 +176,39 @@ function hk_contacts_generate_cache() {
 
 				$retValue .= "<div class='contact-wrapper'>";
 				$retValue .= "<div class='icon'>&nbsp;</div>";
-				$retValue .= "<div class='img-wrapper' style='display:none'>" . get_the_post_thumbnail(get_the_ID(),"contact-image") . "</div>";
+				$retValue .= "<div class='img-wrapper' style='display:none'>" . hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false) . "</div>";
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
 				$retValue .= "<h4><a class='permalink' href='". get_permalink() . "'>" . get_the_title() . "</a></h4>";
-				$retValue .= "<div class='content'>" . str_replace("\n","<br>",get_the_content()) . "</div>";
+				$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
+				$retValue .= "<div class='more-content'>";
+				// workplace
+				if( get_field('hk_contact_workplaces') ): while( has_sub_field('hk_contact_workplaces') ): 
+					$retValue .= "<p>" . get_sub_field('hk_contact_workplace') . "</p>";
+				endwhile; endif;
+				// phone
+				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
+					$retValue .= "<p>";
+					if(get_row_layout() == "hk_contact_fax"): $retValue .= "fax "; endif;
+					$retValue .= get_sub_field('number') . "</p>";
+				endwhile; endif; 
+				// email
+				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ): 
+					$retValue .= "<p>" . get_sub_field('hk_contact_email') . "</p>";
+				endwhile; endif;
+				// description
+				$retValue .= "<p>" . get_field("hk_contact_description") . "</p>";
+				// address
+				$retValue .= "<p>" . get_field("hk_contact_address") . "</p>";
+				// visit hours
+				$retValue .= "<p>" . get_field("hk_contact_visit_hours") . "</p>";
+				// position
+				$contact_position = get_field("hk_contact_position");
+				if (!empty($contact_position)) :
+					$retValue .= "<p>" . $contact_position["address"] . "</p>";
+				endif;
+				
+				
+				$retValue .= "</div>";
 				$retValue .= "</div></div>";
 	    	endwhile;
 	    	// Reset Post Data

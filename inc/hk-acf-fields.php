@@ -554,7 +554,7 @@ if(function_exists("register_field_group"))
 					2 => 
 					array (
 						'label' => 'Fax',
-						'name' => 'fax',
+						'name' => 'hk_contact_fax',
 						'display' => 'table',
 						'sub_fields' => 
 						array (
@@ -645,18 +645,6 @@ if(function_exists("register_field_group"))
 				'default_value' => '',
 				'formatting' => 'br',
 				'order_no' => '6',
-			),
-			7 => 
-			array (
-				'key' => 'field_505ad25f123cb',
-				'label' => 'Bild',
-				'name' => 'hk_featured_image',
-				'type' => 'image',
-				'instructions' => '',
-				'required' => '0',
-				'save_format' => 'object',
-				'preview_size' => 'thumbnail',
-				'order_no' => '7',
 			),
 			8 => 
 			array (
