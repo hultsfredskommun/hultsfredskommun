@@ -217,17 +217,9 @@ function filterPostMimeTypes($post_mime_types) {
     return $post_mime_types;
 }
 add_filter('post_mime_types', 'filterPostMimeTypes');
-function addUploadMimes($mimes) {
-    $mimes = array_merge($mimes, array(
-        'tmbundle|tmCommand|tmDragCommand|tmSnippet|tmLanguage|tmPreferences' => 'application/octet-stream'
-    ));
- 
-    return $mimes;
-}
 
-add_filter('upload_mimes', 'addUploadMimes');
 
-// add your extension to the array
+// add mime extensions 
 function custom_upload_mimes ( $existing_mimes=array() ) {
 	// add your extension to the array
 	$existing_mimes['doc'] = 'application/msword';
