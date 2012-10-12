@@ -217,6 +217,29 @@ function filterPostMimeTypes($post_mime_types) {
     return $post_mime_types;
 }
 add_filter('post_mime_types', 'filterPostMimeTypes');
+function addUploadMimes($mimes) {
+    $mimes = array_merge($mimes, array(
+        'tmbundle|tmCommand|tmDragCommand|tmSnippet|tmLanguage|tmPreferences' => 'application/octet-stream'
+    ));
+ 
+    return $mimes;
+}
+
+add_filter('upload_mimes', 'addUploadMimes');
+
+// add your extension to the array
+function custom_upload_mimes ( $existing_mimes=array() ) {
+	// add your extension to the array
+	$existing_mimes['doc'] = 'application/msword';
+	$existing_mimes['docx'] = 'application/msword';
+	$existing_mimes['xls'] = 'application/msexcel';
+	$existing_mimes['xlsx'] = 'application/msexcel';
+	
+	//unset( $existing_mimes['exe'] );
+	return $existing_mimes;
+}
+add_filter('upload_mimes', 'custom_upload_mimes');
+
 
 // Add Hultsfredskommun custom image sizes.
 if ( function_exists( 'add_image_size' ) ) { 
