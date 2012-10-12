@@ -80,7 +80,7 @@ function hk_related_generate_cache() {
 
 
  	// return current page related content if in_single
-  	if (is_single())
+  	if (false) // TODO if is_single (is_single())
   	{ 
 		if (get_field('hk_related') ) :
 			while (has_sub_field('hk_related')) : 

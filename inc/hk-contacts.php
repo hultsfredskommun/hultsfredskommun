@@ -122,7 +122,7 @@ function hk_contacts_generate_cache() {
   	}
 
  	// return current page related contact if in_single
-  	if (is_single())
+  	if (false) //TODO what to do if single (is_single())
   	{ 
 		if( get_field('hk_contacts') ) : 
 	        $retValue .= "<aside class='widget hk_kontakter'>";
