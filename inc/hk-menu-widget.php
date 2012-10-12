@@ -31,6 +31,31 @@ class HK_Menu_Widget extends WP_Widget {
 
 		echo "<aside id='nav'><nav>";
 
+		// if in tag and no category
+		if ($tags != "" && $cat == "") {
+			$hk_cat_walker = new hk_Category_Walker();
+			$parentCat = hk_getMenuParent($cat);
+			$args = array(
+				'orderby'            => 'name',
+				'order'              => 'ASC',
+				'style'              => 'list',
+				'hide_empty'         => 0,
+				'use_desc_for_title' => 1,
+				'hierarchical'       => true,
+				'title_li'           => '',
+				'show_option_none'   => '',
+				'echo'               => 1,
+				'depth'              => 2,
+				'taxonomy'           => 'category',
+				'exclude'			 => $default_settings["hidden_cat"],
+				'walker'			 => $hk_cat_walker
+			);
+			echo "<ul>"; 
+			wp_list_categories( $args );
+			echo "</ul>";
+		}
+
+		// if in category
 		if ($cat != "") {
 			// TODO if single, 
 			//  check if category (or parent or child) from last session state is among current page's categories, 

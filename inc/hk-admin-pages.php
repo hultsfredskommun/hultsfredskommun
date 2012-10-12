@@ -262,7 +262,7 @@ function hk_formatTinyMCE($in)
 //	$in['content_css']=get_template_directory_uri() . "/editor-style.css";
 //	$in['wpautop']=true;
 //	$in['apply_source_formatting']=false;
-	$in['theme_advanced_buttons1']='formatselect,removeformat,|,bold,italic,|,bullist,numlist,blockquote,|,link,unlink,|,charmap,|,valideratext,spellchecker,|,undo,redo,|,wp_fullscreen';
+	$in['theme_advanced_buttons1']='formatselect,removeformat,|,bold,italic,|,bullist,numlist,|,link,unlink,|,charmap,|,valideratext,spellchecker,|,undo,redo,|,wp_fullscreen';
 	$in['theme_advanced_buttons2']='';
 	$in['theme_advanced_buttons3']='';
 	$in['theme_advanced_buttons4']='';

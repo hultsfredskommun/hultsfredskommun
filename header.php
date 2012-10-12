@@ -132,7 +132,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 				
 			<?php 
 				if ($hk_options["topmenu"]) {
-					echo "<aside id='topmenu'><nav>";
+					echo "<div id='topmenu'><nav>";
 					wp_nav_menu( array(
 						'menu' 			=> $hk_options["topmenu"], 
 						'container' 	=> '',							
@@ -140,7 +140,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 						'depth' 		=> 1,
 						'echo' 			=> true
 					)); 
-					echo "</nav></aside>";
+					echo "</nav></div>";
 				}
 			?>
 			<div id="searchnavigation">			

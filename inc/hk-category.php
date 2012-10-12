@@ -30,13 +30,16 @@
 				$cat = get_query_var("cat");
 				$tag = get_query_var("tag");
 
-				if ( $cat != "" ) :
+				if ( $cat != "" || $tag != "") :
 					/* Get all sticky posts from this category */
 					$sticky = get_option( 'sticky_posts' );
 						
 					if ( !empty($sticky) ) {
 						/* Query sticky posts */
-						$args = array( 'category__in' => $cat, 'post__in' => $sticky, 'posts_per_page' => -1);
+						$args = array( 'post__in' => $sticky, 'posts_per_page' => -1);
+						if ( !empty($cat) ) {
+							$args["category__and"] = $cat;
+						}
 						if ( !empty($tag) ) {
 							$args["tag_slug__and"] = $tag;
 						}
@@ -51,9 +54,12 @@
 
 					/* Get all NOT sticky posts from this category */
 
-					$args = array( 'category__and' => $cat, 'posts_per_page' => -1 );
+					$args = array( 'posts_per_page' => -1 );
 					if ( !empty($sticky) || !empty($shownPosts)) {
 						$args['post__not_in'] = array_merge($sticky,$shownPosts);
+					}
+					if ( !empty($cat) ) {
+						$args["category__and"] = $cat;
 					}
 					if ( !empty($tag) ) {
 						$args["tag_slug__and"] = $tag;
@@ -67,42 +73,43 @@
 					
 					
 					/* Get posts from children of this category */
-					$children =  hk_getChildrenIdArray($cat);
-					if ( !empty($children) ) {
-						/* Get all sticky posts children of this category */
-						echo "<span class='morefrom'>Mer från underkategorier</span>";
-						$args = array( 'category__in' => $children, 'posts_per_page' => -1 );
-						if (!empty($sticky)) {
-							$args['post__in'] = $sticky;
+					if ($cat != "") {
+						$children =  hk_getChildrenIdArray($cat);
+						if ( !empty($children) ) {
+							/* Get all sticky posts children of this category */
+							echo "<span class='morefrom'>Mer från underkategorier</span>";
+							$args = array( 'category__in' => $children, 'posts_per_page' => -1 );
+							if (!empty($sticky)) {
+								$args['post__in'] = $sticky;
+								if ( !empty($tag) ) {
+									$args["tag_slug__and"] = $tag;
+								}
+								if (!empty($shownPosts)) {
+									$args['post__not_in'] = $shownPosts;
+								}
+								query_posts( $args );
+								if ( have_posts() ) : while ( have_posts() ) : the_post();
+									$shownPosts[] = get_the_ID();
+									get_template_part( 'content', get_post_format());
+								endwhile; endif;
+								wp_reset_query(); // Reset Query
+							}
+							
+							/* Get all NOT sticky posts children of this category */
+							$args = array( 'category__in' => $children, 'posts_per_page' => $posts_per_page );
+							if ( !empty($sticky) || !empty($shownPosts)) {
+								$args['post__not_in'] = array_merge($sticky,$shownPosts);
+							}
 							if ( !empty($tag) ) {
 								$args["tag_slug__and"] = $tag;
 							}
-							if (!empty($shownPosts)) {
-								$args['post__not_in'] = $shownPosts;
-							}
 							query_posts( $args );
 							if ( have_posts() ) : while ( have_posts() ) : the_post();
-								$shownPosts[] = get_the_ID();
-								get_template_part( 'content', get_post_format());
+								get_template_part( 'content', get_post_format() );
 							endwhile; endif;
 							wp_reset_query(); // Reset Query
 						}
-						
-						/* Get all NOT sticky posts children of this category */
-						$args = array( 'category__in' => $children, 'posts_per_page' => $posts_per_page );
-						if ( !empty($sticky) || !empty($shownPosts)) {
-							$args['post__not_in'] = array_merge($sticky,$shownPosts);
-						}
-						if ( !empty($tag) ) {
-							$args["tag_slug__and"] = $tag;
-						}
-						query_posts( $args );
-						if ( have_posts() ) : while ( have_posts() ) : the_post();
-							get_template_part( 'content', get_post_format() );
-						endwhile; endif;
-						wp_reset_query(); // Reset Query
 					}
-					
 				endif;
 			/****Default order END***/
 
