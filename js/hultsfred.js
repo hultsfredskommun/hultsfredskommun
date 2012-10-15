@@ -581,26 +581,18 @@ $(document).ready(function(){
 	/**
 	 * nav-sidebar collapsing filters on tags
 	 */
-	 collapse_height = 125;
-	 $("#nav-sidebar #filters ul").each(function() {
-	 	if (!$(this).hasClass("category")) {
-		 	$(this).attr("oldheight", $(this).height());
-	 		if ($(this).height() > collapse_height) {
-	 			$(this).css("height",collapse_height + "px");
-	 			$(this).after("<span class='more-filters'>visa fler <span class='more-filters-image'>&nbsp;</span></span>");
-	 		}
+	$(".children").each(function() {
+	 	if ($(this).parent().parent().hasClass("parent") && !$(this).parent().hasClass("current-cat-parent")) {
+
+				$(this).prev().after("<span class='more-children'>+</span>");
+				$(this).hide();
+			
 	 	}
-	 });
-	$(this).find(".more-filters").click(function() {
-		ul = $(this).prev();
-		if ($(ul).height() == collapse_height) {
-			$(ul).css("height","auto");
-			$(this).html("d&ouml;lj <span class='less-filters-image'>&nbsp;</span>");
-		}
-		else {
-			$(ul).css("height",collapse_height + "px");
-			$(this).html("visa fler <span class='more-filters-image'>&nbsp;</span>");
-		}
+	});
+	$(".more-children").each(function() {
+		$(this).click(function() {
+			$(this).parent().find(".children:first").toggle();
+		});
 	});
 
 

@@ -120,11 +120,11 @@ class HK_Menu_Widget extends WP_Widget {
 					'taxonomy'           => 'category',
 					'walker'			 => $hk_cat_walker
 				);
-				echo "<ul>"; 
+				echo "<ul class='parent'>"; 
 				wp_list_categories( $args );
 				echo "</ul>"; 
 
-				echo "<strong>Nyckelord</strong>";
+				echo "<a class='tag-title' title='Filtrera med hj&auml;lp av etiketter'>Etiketter</a>";
 				$hk_tag_walker = new hk_Tag_Walker();
 				$args = array(
 					'orderby'            => 'name',
@@ -139,7 +139,7 @@ class HK_Menu_Widget extends WP_Widget {
 					'walker'			 => $hk_tag_walker
 				);
 			
-				echo "<ul>"; 
+				echo "<ul class='tags'>"; 
 				wp_list_categories( $args );
 				echo "</ul>"; 
 			}

@@ -516,7 +516,16 @@ article, #news {
 #menu {
 	font-size: 16px;
 }
-#nav {
+#nav, 
+#firstpage-sidebar,
+#sidebar-wrapper,
+.widget h1,
+.widget h2,
+.widget h3,
+.widget h4,
+.widget h5,
+.widget h6
+ {
 	font-size: 14px;
 }
 body, input, textarea {
@@ -529,36 +538,31 @@ body, input, textarea {
 /* Headings */
 h1,h2,h3,h4,h5,h6 {
 	clear: none;
+	padding: .4em 0 .3em;	
 }
 h1
 {
 	font-size: 2.0em;
-	padding: 0 0 .3em;
 }
 h2
 {
-	font-size: 1.8em;
-	padding: 0 0 .3em;
+	font-size: 1.6em;
 }
 h3
 {
-	font-size: 1.6em;
-	padding: 0 0 .3em;
+	font-size: 1.4em;
 }
 h4
 {
-	font-size: 1.4em;
-	padding: 0 0 .3em;
+	font-size: 1.3em;
 }
 h5
 {
-	font-size: 1.3em;
-	padding: 0 0 .3em;
+	font-size: 1.2em;
 }
 h6
 {
-	font-size: 1.2em;
-	padding: 0 0 .3em;
+	font-size: 1.1em;
 }
 hr {
 	border: 0;
@@ -569,12 +573,13 @@ hr {
 /* Text elements */
 p {
 	margin-bottom: 0.625em;
+	line-height: 1.5;
 }
 p:last-child {
 	margin-bottom: 0;
 }
 #content ul, #content ol {
-	margin: 2em;
+	margin: 0.4em 0.4em 0.4em 2em;
 }
 ul, ol {
 	margin: 0;
@@ -999,27 +1004,7 @@ a:hover {
 #nav-sidebar ul {
 	overflow: hidden;
 }
-#nav-sidebar .more-filters {
-	margin: -15px 0 0 0;
-	font-size: 11px;
-	cursor: pointer; 
-	padding: 0;
-	display: block;
-	width: 100%;
-	text-align: right;
-}
-#nav-sidebar .more-filters-image,#nav-sidebar .less-filters-image {
-	width: 15px;
-	height: 15px;
-	display: block;
-	float: right;
-}
-#nav-sidebar .more-filters-image {
-	background: url("images/sprite.png") no-repeat scroll -182px -230px transparent;
-}
-#nav-sidebar .less-filters-image {
-	background: url("images/sprite.png") no-repeat scroll -182px -265px transparent;
-}
+
 #nav {
 	padding: 0;
 	margin-bottom: .8em;
@@ -1041,7 +1026,7 @@ a:hover {
 	width: 100%;
 }
 #nav li a {
-	padding-left: .2em;
+	padding-left: 0;
 	height:100%;
 }
 #nav li .leftspace {
@@ -1056,12 +1041,29 @@ a:hover {
 	margin: .8em .8em 0;
 	display: block;
 }
-#nav .children {
+
+#nav .more-children {
+	padding-left: 0.2em;
+	cursor: pointer;
+}
+
+#nav .children, #nav .tags {
 	margin-left: 1.2em;
+}
+#nav .children a, #nav .tags a {
+	font-size: 12px;
+	color: #666;
+}
+#nav .tag-title {
+	cursor: default;
+	padding-top: 0.8em;
+	font-weight: bold;
+	display: block;
 }
 #nav .current-tag > a, #nav .current-cat > a {
 	background: #eee;
 }
+
 /*------------------------------------*\
 	logindiv - firstpage
 \*------------------------------------*/
