@@ -84,6 +84,7 @@ function hk_theme_options_do_page() {
 
 			<p><label for="hk_theme[topmenu]">Namn på meny som ska vara toppmeny.</label><br/><input type="text" name="hk_theme[topmenu]" value="<?php echo $options['topmenu']; ?>" /></p>
 
+			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo $options['num_levels_in_menu']; ?>" /></p>
 
 			<h3>Utseende</h3>
 			<p><label for="hk_theme[primary_width]">Bredden på huvudinnehåll.</label><br/><input type="text" name="hk_theme[primary_width]" value="<?php echo $options['primary_width']; ?>" /></p>

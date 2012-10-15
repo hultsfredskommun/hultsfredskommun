@@ -27,7 +27,7 @@ if ( ! isset( $default_settings ) ) {
 								'news_tag' => $options["news_tag"],
 								'hidden_cat' => $options["hidden_cat"],
 								'protocol_cat' => $options["protocol_cat"],
-								'num_top_menus' => 2
+								'num_levels_in_menu' => (!isset($options["num_levels_in_menu"]))?2:$options["num_levels_in_menu"],
 								);
 }
 
@@ -466,12 +466,12 @@ function duration($start,$end) {
 	return $duration;  
 }  
 
-// return true if current category has more parents than specified in num_top_menus
+// return true if current category has more parents than specified in num_levels_in_menu
 function is_sub_category() {
 	global $default_settings;
 	if ( !isset($default_settings["is_sub_category"]) ) {
 		$cat = get_query_var("cat");
-		if ( isset($cat) && hk_countParents($cat) >= $default_settings["num_top_menus"] ) {
+		if ( isset($cat) && hk_countParents($cat) >= $default_settings["num_levels_in_menu"] ) {
 			$default_settings["is_sub_category"] = true;
 		} else {
 			$default_settings["is_sub_category"] = false;
@@ -479,12 +479,12 @@ function is_sub_category() {
 	}
 	return $default_settings["is_sub_category"];
 }
-// return true if current category is a sub firstpage, i.e. category level is one above num_top_menus
+// return true if current category is a sub firstpage, i.e. category level is one above num_levels_in_menu
 function is_sub_category_firstpage() {
 	global $default_settings;
 	if ( !isset($default_settings["is_sub_category_firstpage"]) ) {
 		$cat = get_query_var("cat");
-		if ( isset($cat) && hk_countParents($cat) == $default_settings["num_top_menus"]-1 ) {
+		if ( isset($cat) && hk_countParents($cat) == $default_settings["num_levels_in_menu"]-1 ) {
 			$default_settings["is_sub_category_firstpage"] = true;
 		} else {
 			$default_settings["is_sub_category_firstpage"] = false;
@@ -513,12 +513,12 @@ function hk_getParentsSlugArray($cat) {
 function hk_getMenuParent($cat) {
 	global $default_settings;
 	if (empty($cat)) return array();
-	$num_top_menus = $default_settings["num_top_menus"];
+	$num_levels_in_menu = $default_settings["num_levels_in_menu"];
 	$cats_str = get_category_parents($cat, false, '%#%', true);
 	$cats_array = explode('%#%', $cats_str);
 	$cat_depth = sizeof($cats_array)-1;
-	if ($cat_depth > $num_top_menus) {
-		return get_category_by_slug($cats_array[$num_top_menus-1])->term_id;
+	if ($cat_depth > $num_levels_in_menu) {
+		return get_category_by_slug($cats_array[$num_levels_in_menu-1])->term_id;
 	}
 	return $cat;
 }

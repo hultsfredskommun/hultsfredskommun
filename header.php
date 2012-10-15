@@ -19,7 +19,7 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 // redirect to first menu item in 'primary'-menu 
 // if on startpage, there are a 'primary' menu set and more than one top menu level
 $menu_name = 'primary';
-if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) && $default_settings["num_top_menus"] > 1 ) {
+if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) && $default_settings["num_levels_in_menu"] > 1 ) {
 	$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
 	$menu_items = wp_get_nav_menu_items( $menu );
 	header("Location: " . $menu_items[0]->url);
@@ -156,7 +156,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 					'items_wrap' 		=> '<ul class="main-menu">%3$s</ul>',
 					'before' 			=> '',
 					'after'				=> '',
-					'depth' 			=> 2,
+					'depth' 			=> $default_settings['num_levels_in_menu'],
 					'echo' 				=> true
 				)); 
 			?>

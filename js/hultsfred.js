@@ -582,11 +582,9 @@ $(document).ready(function(){
 	 * nav-sidebar collapsing filters on tags
 	 */
 	$(".children").each(function() {
-	 	if ($(this).parent().parent().hasClass("parent") && !$(this).parent().hasClass("current-cat-parent")) {
-
-				$(this).prev().after("<span class='more-children'>+</span>");
-				$(this).hide();
-			
+	 	if ($(this).parent().parent().hasClass("parent") && !($(this).parent().hasClass("current-cat-parent") || $(this).parent().hasClass("current-cat"))) {
+			$(this).prev().after("<span class='more-children'>+</span>");
+			$(this).hide();		
 	 	}
 	});
 	$(".more-children").each(function() {
