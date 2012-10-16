@@ -17,12 +17,21 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php
+					$cat_array = array();
+					$tag_array = array();
+					$from_string = "" ;
 					// get category and tags from post to query related posts later.. 
 					$categories = get_the_category();
-					$cat_array = array();
 					if ($categories) { foreach ($categories as $value) {
 						$cat_array[] = $value->term_id;	
+						$from_string .= $value->name . ", ";
 					} }  
+					$tags = get_the_tags();
+					if ($tags) { foreach ($tags as $value) {
+						$tag_array[] = $value->term_id;	
+						$from_string .= $value->name . ", ";
+					} }  
+					$from_string = rtrim($from_string, ", ");
 					// get post type
 					$post_type = get_post_type();
 				?>
@@ -32,21 +41,24 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?>
 			
 			<?php /* only show related if post_type is post */
-			if ($post_type == "post") : ?>
+			if (!empty($cat_array) || !empty($tag_array)) : ?>
 			
 				<?php 
+				
 				// check for all taxonomies in this query
 				$query = array( 'category__in' => $cat_array,
-								'post__not_in' => array(get_the_ID())
-								//'tag__in' => $tag_array
+								'post__not_in' => array(get_the_ID()),
+								'tag__in' => $tag_array,
+								'post_type' => $post_type
 								);
 				
 				// loop related posts  
 				$wpq = new WP_Query($query);
 				if ($wpq->have_posts()) : 
+					echo "Mer fr&aring;n " . $from_string;
 					echo "<aside id='related_posts'>";
 					while ($wpq->have_posts()) : $wpq->the_post();
-						get_template_part( 'content' );
+						get_template_part( 'content' , get_post_type());
 					endwhile;
 
 					$filter = array("cat" => implode(",",$cat_array));

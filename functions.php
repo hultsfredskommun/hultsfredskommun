@@ -49,7 +49,7 @@ require( get_template_directory() . '/inc/hk-slideshow.php' );
 require( get_template_directory() . '/inc/hk-contacts.php' );
 
 // Grab hk related.
-require( get_template_directory() . '/inc/hk-related.php' );
+//require( get_template_directory() . '/inc/hk-related.php' );
 
 // Grab hk events.
 require( get_template_directory() . '/inc/hk-events.php' );

@@ -247,10 +247,9 @@ article.sticky {
 article,
 .misc-ctrl,
 #dyn-posts-load-posts,
-.ui-tabs .ui-tabs-panel
-/*,
-.widget.hk_kontakter,
-.widget.hk_related*/ {
+.ui-tabs .ui-tabs-panel,
+.contact-popup 
+ {
 	background-color: white;
 	border: 1px solid #E6E6E6;
 }
@@ -449,9 +448,6 @@ body {
 	margin: 0;
 	width: 58%;
 }
-.home #primary {
-	width: 72%;
-}
 #content {
 	#max-width: 600px;
 }
@@ -510,9 +506,6 @@ article, #news {
 /* =Global
 ----------------------------------------------- */
 
-#menu, h1, h2, h3, #nav {
-	_ont-family: "Century Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 #menu {
 	font-size: 16px;
 }
@@ -540,13 +533,17 @@ h1,h2,h3,h4,h5,h6 {
 	clear: none;
 	padding: .4em 0 .3em;	
 }
+.entry-title {
+	padding: 0 0 .3em;	
+}
+
 h1
 {
-	font-size: 2.0em;
+	font-size: 1.8em;
 }
 h2
 {
-	font-size: 1.6em;
+	font-size: 1.5em;
 }
 h3
 {
@@ -1021,7 +1018,7 @@ a:hover {
 #nav li {
 	list-style: none;
 	border: 0;
-	margin: .2em 0 0;
+	margin: .5em 0 0;
 	border-radius: 0;
 	width: 100%;
 }
@@ -1047,7 +1044,7 @@ a:hover {
 	cursor: pointer;
 }
 
-#nav .children, #nav .tags {
+#nav .children {
 	margin-left: 1.2em;
 }
 #nav .children a, #nav .tags a {
@@ -1530,7 +1527,7 @@ article:last-child { margin-bottom: 0 }
 .summary-content .entry-title {
 	clear: none;
 	margin: 0;
-	padding: 0;
+	padding: 0 0 0.3em;
 }
 .summary-content .summary-footer {
 	clear: both;
@@ -1689,21 +1686,25 @@ article:last-child { margin-bottom: 0 }
 	padding: .8em;
 }
 
-.hk_kontakter.widget h4,
-.hk_events.widget h4,
-.hk_related.widget h4 {
-	clear: none;
-}
 .hk_kontakter.widget .hk_kontakter,
 .hk_events.widget .hk_events,
 .hk_related.widget .hk_related,
 .hk_related.widget .attachment {
 	margin-left: 30px;
 }
-.hk_kontakter.widget .contact-wrapper,
-.hk_events.widget .events-wrapper,
-.hk_related.widget .related-wrapper {
-	overflow: hidden;
+.hk_kontakter.widget .contact-wrapper  {
+	position: relative;
+
+}
+.hk_kontakter.widget .contact-wrapper  .contact-popup {
+	position: absolute;
+	width: 300px;
+	left: -360px;
+	top: 0;
+	padding: .8em;
+}
+.hk_kontakter.widget .contact-wrapper .more-content {
+	display: none;
 }
 .hk_kontakter.widget .img-wrapper {
 	padding: 0.8em;

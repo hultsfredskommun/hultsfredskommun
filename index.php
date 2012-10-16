@@ -14,6 +14,6 @@
 
 get_header(); ?>
 
-<?php /* NOT USED */ ?>
+<!-- NOT USED //-->
 
 <?php get_footer(); ?>

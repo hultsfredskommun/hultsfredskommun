@@ -56,33 +56,37 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "Hk_Contacts"
 add_action('init', hk_contacts_init);
 function hk_contacts_init() {
 	// only if in admin and is administrator
-    if (is_admin() && current_user_can("administrator")) {
+    //if (is_admin() && current_user_can("administrator")) {
 
 		register_post_type( 'hk_kontakter',
 			array(
 				'labels' => array(
 					'name' => __( 'Kontakter' ),
-					'singular_name' => __( 'Kontakt' )
+					'singular_name' => __( 'Kontakt' ),
+					'description' => 'L&auml;gg till en kontakt i kontaktbanken.'
 				),
 				'public' => true,
 				'has_archive' => true,
-				'rewrite' => array('slug' => 'kontakt')
-			)
-		);
-		add_post_type_support( "hk_kontakter", "title" );
-		add_post_type_support( "hk_kontakter", "editor" );
-		add_post_type_support( "hk_kontakter", "author" );
-		add_post_type_support( "hk_kontakter", "thumbnail" );
-		//add_post_type_support( "hk_kontakter", "excerpt" );
-		//add_post_type_support( "hk_kontakter", "trackbacks" );
-		//add_post_type_support( "hk_kontakter", "custom-fields" );
-		add_post_type_support( "hk_kontakter", "revisions" );
+				'rewrite' => array('slug' => 'kontakt'),
+				'show_ui' => true,
+				'show_in_menu' => true,
+				'capability_type' => 'page',
+				'hierarchical' => false,
+				'publicly_queryable' => true,
+				'query_var' => true,
+				'supports' => array('title','editor','comments','revisions','author'),
+				'taxonomies' => array('category'),
+				// there are a lot more available arguments, but the above is plenty for now
+			));
 
-		register_taxonomy_for_object_type( "category", "hk_kontakter" );
-		//register_taxonomy_for_object_type( "post_tag", "hk_kontakter" );
-	}
+	//}
 }
 
+// rewrites custom post type name
+global $wp_rewrite;
+$projects_structure = '/kontakt/%hk_kontakter%/';
+$wp_rewrite->add_rewrite_tag("%hk_kontakter%", '([^/]+)', "kontakt=");
+$wp_rewrite->add_permastruct('kontakt', $projects_structure, false);
 
 
 // generate cache on save_post
@@ -134,7 +138,7 @@ function hk_contacts_generate_cache() {
 					$retValue .= "<div class='icon'>&nbsp;</div>";
 					$retValue .= "<div class='img-wrapper' style='display:none'>" . get_the_post_thumbnail($value->ID,"contact-image") . "</div>";
 					$retValue .= "<div id='contact-" . $value->ID . "' class='" . implode(" ",get_post_class("hk_kontakter")) . "'>";
-					$retValue .= "<h4><a class='permalink' href='". $value->guid . "'>" . $value->post_title . "</a></h4>";
+					$retValue .= "<a class='permalink' href='". $value->guid . "'>" . $value->post_title . "</a>";
 					$retValue .= "<div class='content'>" . str_replace("\n","<br>",$value->post_content) . "</div>";
 					$retValue .= "</div></div>";
 		    	endwhile;
@@ -174,13 +178,13 @@ function hk_contacts_generate_cache() {
 	      	// The Loop
 	   		while ( $the_query->have_posts() ) : $the_query->the_post();
 
-				$retValue .= "<div class='contact-wrapper'>";
+				$retValue .= "<div class='contact-wrapper'>";// . get_the_ID();
 				$retValue .= "<div class='icon'>&nbsp;</div>";
 				$retValue .= "<div class='img-wrapper' style='display:none'>" . hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false) . "</div>";
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-				$retValue .= "<h4><a class='permalink' href='". get_permalink() . "'>" . get_the_title() . "</a></h4>";
+				$retValue .= "<a class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
 				$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
-				$retValue .= "<div class='more-content'>";
+				/*$retValue .= "<div class='more-content'>";
 				// workplace
 				if( get_field('hk_contact_workplaces') ): while( has_sub_field('hk_contact_workplaces') ): 
 					$retValue .= "<p>" . get_sub_field('hk_contact_workplace') . "</p>";
@@ -208,7 +212,7 @@ function hk_contacts_generate_cache() {
 				endif;
 				
 				
-				$retValue .= "</div>";
+				$retValue .= "</div>";*/
 				$retValue .= "</div></div>";
 	    	endwhile;
 	    	// Reset Post Data

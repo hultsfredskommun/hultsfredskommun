@@ -687,28 +687,14 @@ $(document).ready(function(){
 
 
 	/*
-	 * set click action on contacts and events
+	 * set click action on contacts //and events (, .events-wrapper)
 	 */
-	contact_collapse_height = 50;
-	$(".contact-wrapper, .events-wrapper").each(function() {
- 		if ($(this).height() > contact_collapse_height) {
-		 	$(this).attr("oldheight", $(this).height());
-	 		$(this).css("height",contact_collapse_height + "px");
+	$(".contact-wrapper").each(function() {
 	 		$(this).find(".permalink").click(function(ev) {
-				ev.preventDefault();
+				//ev.preventDefault();
+				//$(this).parent().after("<div class='contact-popup'></div>");
+				//$(".contact-popup").html($(this).html() + $(this).parent().find(".more-content").html());
 	 		});
-			$(this).click(function() {
-				if ($(this).height() != contact_collapse_height) {			
-					$(this).find(".img-wrapper").hide();
-		 			$(this).css("height", contact_collapse_height + "px");
-				}
-				else {
-					$(this).find(".img-wrapper").show();
-		 			$(this).css("height", "auto");
-				}
-			});
-
-		}
 	});
 	
 	$(".only-widget-title").css("cursor","pointer").each(function() {
