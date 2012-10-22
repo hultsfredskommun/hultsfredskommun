@@ -243,8 +243,8 @@ tr th {
 }
 td {
 	border: none !important;
-	border-top: 1px solid #ddd !important;
-	padding: 6px 10px 6px 0;
+	border: 1px solid #ddd !important;
+	padding: 6px 10px 6px 6px !important;
 }
 
 /* Images */

@@ -84,7 +84,7 @@ function hk_contacts_init() {
 
 // rewrites custom post type name
 global $wp_rewrite;
-$projects_structure = '/kontakt/%hk_kontakter%/';
+$projects_structure = '/artikel/kontakt/%hk_kontakter%/';
 $wp_rewrite->add_rewrite_tag("%hk_kontakter%", '([^/]+)', "kontakt=");
 $wp_rewrite->add_permastruct('kontakt', $projects_structure, false);
 

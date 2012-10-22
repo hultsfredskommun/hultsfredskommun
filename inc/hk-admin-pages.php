@@ -277,9 +277,9 @@ function hk_formatTinyMCE($in)
 //	$in['content_css']=get_template_directory_uri() . "/editor-style.css";
 //	$in['wpautop']=true;
 //	$in['apply_source_formatting']=false;
-	$in['theme_advanced_blockformats'] = 'p,h2,h3,h4';
-	$in['theme_advanced_buttons1']='formatselect,removeformat,|,bold,italic,|,bullist,numlist,|,link,unlink,|,charmap,|,valideratext,spellchecker,|,undo,redo,|,wp_fullscreen';
-	$in['theme_advanced_buttons2']='';
+//	$in['theme_advanced_blockformats'] = 'p,h2,h3,h4';
+	$in['theme_advanced_buttons1']='formatselect,bold,italic,removeformat,|,link,unlink,|,undo,redo,|,valideratext,spellchecker,|,wp_fullscreen, wp_adv';
+	$in['theme_advanced_buttons2']='bullist,numlist,|,charmap,|,table,row_props,cell_props,row_before,row_after,delete_row,|,col_before,col_after,delete_col,|,split_cells,merge_cells';
 	$in['theme_advanced_buttons3']='';
 	$in['theme_advanced_buttons4']='';
 	return $in;
@@ -355,10 +355,10 @@ function hk_display_allcomingreviews_dashboard_widget ()
 	$q = new WP_Query();
 	$q->query($qargs);
 
-	echo Date("H:i:s",$options["hk_review_mail_check_time"]) . "<br>" . $options["hk_review_mail_log"] . "<br><br><br>";
+	//echo Date("H:i:s",$options["hk_review_mail_check_time"]) . "<br>" . $options["hk_review_mail_log"] . "<br><br><br>";
 
 	// execute the WP loop
-	echo '<br><br><ul>';
+	echo '<ul>';
 	echo '<li>&nbsp; <span class="alignright">Granskas igen</span></li>';
 	while ($q->have_posts()) : $q->the_post(); 
 		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_next_review_date(get_the_ID())."</span></li>" );

@@ -18,25 +18,6 @@ Text Domain: hultsfredskommun
 
 /* COLORS OF THE THEME */
 
-/*some test values*/
-/*
-#page {
-	background-color: #F5F8E9;
-}
-#primary { 
-	width: 74% !important;
-	_ackground-color: #F1F6F8;
-}
-#content {
-    border-right: 1px solid #9EBA21;
-    padding-right: 3%;
-}
-#nav-sidebar #nav, 
-#sidebar #nav {
-    _ackground-color: white;
-}
-*/
-/*END Test*/
 
 /* link color */
 a {
@@ -57,7 +38,14 @@ body, input, textarea,
 .hk_events .widget-title,
 .hk_related .widget-title,
 #topmenu nav ul li a, 
-.ui-tabs li.ui-tabs-selected a {
+.ui-tabs li.ui-tabs-selected a,
+#menu ul li.current-menu-item a,
+#menu ul li.current-category-ancestor a,
+#menu ul li.current-post-ancestor:first-child  a,
+#menu ul li:hover a,
+#topmenu nav ul li:hover a,
+#sort-order ul li:hover a
+ {
 	color: #fff; /* white */	
 }
 
@@ -87,8 +75,7 @@ article.sticky.full,
 .closeButton,
 .ui-tabs .ui-tabs-panel,
 #menu,
-#menu li
- {
+#menu li {
 	background-color: #fff;
 }
 
@@ -99,38 +86,46 @@ hr,
 #colophon,
 #branding 
   {	
+	background-color: #E6ECEE; /* light blue */
 	/*background-color: #ACC6D3; /* light blue */
 	/*background-color: #06435A; /* deep blue */
 	/*background-color: #00A4D6; /* blue */
 	/*background-color: #9EBA21; /* green */
 	/*background-color: #B1C84D; /* lightgreen */
 	/*background-color: #F7A02E; /* orange */
-	background-color: #191718; /* asfalt */
+	/*background-color: #191718; /* asfalt */
 }
 
-/* selected background color */
 #menu ul li:hover, 
-#sort-order ul li:hover,
 #menu ul li.current-menu-item,
 #menu ul li.current-category-ancestor,
 #menu ul li.current-post-ancestor:first-child,
+#menu .sub-menu
+{
+	background-color: #06435A; /* deep blue */
+}
+#menu ul li.current-menu-item,
+#menu ul li.current-category-ancestor {
+	text-decoration: underline;
+}
+/* selected background color */
+#sort-order ul li:hover,
 #menu #dropdown-menu:hover,
 #menu #dropdown-menu:focus,
 .tag-cloud .cat-links a,
 #nav #selected_filter li,
 .tag-cloud a { 
 	/*background-color: #E6EEF2; /* light blue */
-	/*background-color: #9BB4BD; /* deep blue */
+	background-color: #9BB4BD; /* deep blue */
 	/*background-color: #99DBEF; /* blue */
 	/*background-color: #C5D67A; /* green */
 	/*background-color: #D8E3A6; /* lightgreen */
 	/*background-color: #FACA8B; /* orange */
-	background-color: #BAB9BA; /* asfalt */
+	/*background-color: #BAB9BA; /* asfalt */
 }
 
 /* light background color */
-#nav,
-#menu .sub-menu
+#nav
 {
 	/*_ackground-color: #ECF1D3; /* light green */	
 	background-color: #E8E8E8; /* asfalt */
@@ -151,9 +146,9 @@ hr,
 /* special background colors */
 article.sticky { 
 	/*border: 2px solid #ACC6D3; /* light blue */
-	/*border: 2px solid #06435A; /* deep blue */
+	border-left: 4px solid #06435A; /* deep blue */
 	/*border: 2px solid #00A4D6; /* blue */
-	border: 1px solid #C5D67A; /*green */
+	/*border-left: 4px solid #C5D67A; /*green */
 	/*background-color: #E2EABC; /* green */
 	/*background-color: #FDEAD1; /* orange */
 }
@@ -204,10 +199,16 @@ article.sticky {
     /*border: 5px solid #F7A02E; /* orange */
     /*border: 1px solid #A3A2A3; */
     box-shadow: 0px 0px 5px #fff;
+	-webkit-box-shadow: 0 0px 5px #fff;
+	-moz-box-shadow: 0 0px 5px #fff;
+	
+
 }
 #branding #searchform .field:hover,
 #branding #searchform #searchsubmit:hover {
     box-shadow: 0px 0px 15px #fff
+	-webkit-box-shadow: 0 0px 15px #fff;
+	-moz-box-shadow: 0 0px 15px #fff;
 }
 #branding #searchform #searchresult {
 	/*border: 5px solid #ACC6D3; /* light blue */
@@ -244,7 +245,8 @@ article.sticky {
 }
 /* bordered boxes */
 /*#news,*/
-article,
+.content-wrapper,
+.single .single-content,
 .misc-ctrl,
 #dyn-posts-load-posts,
 .ui-tabs .ui-tabs-panel,
@@ -256,7 +258,7 @@ article,
 
 
 /* shadows */
-article:hover,
+.content-wrapper:hover,
 .misc-ctrl:hover,
 #dyn-posts-load-posts {
 	-webkit-box-shadow: 0 1px 5px 0 #E0E0E0;
@@ -314,7 +316,7 @@ article:hover,
     background-color: rgb(0,164,214);
     color: #fff;
 }
-.hultsfred-solglimt { 
+.hultsfred-himmelsbla { 
 	box-shadow: 0px 0px 8px rgb(0,164,214);
 }
 .hultsfred-hostlov > a,
@@ -393,6 +395,14 @@ caption, th, td {
 	font-weight: normal;
 	text-align: left;
 }
+table {
+	border: 1px solid #ddd !important;
+}
+td {
+	border: none !important;
+	border: 1px solid #ddd !important;
+	padding: 6px 10px 6px 6px !important;
+}
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: "";
@@ -419,7 +429,7 @@ body {
 	width: 100%;
 }
 #branding {
-	background: -webkit-gradient(linear,
+	_ackground: -webkit-gradient(linear,
             left top, right bottom, from(#191718), to(#474546));
 
 }
@@ -438,6 +448,7 @@ body {
 #main {
 	clear: both;
 	padding: 1.8em 0 0;
+	position: relative;
 }
 #branding hgroup {
 	margin: 0;
@@ -446,7 +457,7 @@ body {
 #primary {
 	float: left;
 	margin: 0;
-	width: 58%;
+	width: 81%;
 }
 #content {
 	#max-width: 600px;
@@ -456,7 +467,9 @@ body {
 	width: 24%;	
 }
 #sidebar-wrapper {
-	float: right;
+	position: absolute;
+	right: 0;
+	top: 2.3em;
 	width: 20%;
 }
 #firstpage-sidebar {
@@ -533,10 +546,6 @@ h1,h2,h3,h4,h5,h6 {
 	clear: none;
 	padding: .4em 0 .3em;	
 }
-.entry-title {
-	padding: 0 0 .3em;	
-}
-
 h1
 {
 	font-size: 1.8em;
@@ -868,7 +877,7 @@ a:hover {
 	margin: 0;
 	position: absolute;
 	left: 0;
-	top: 38px;
+	_op: 38px;
 }
 #menu {
 	margin-bottom: 38px;
@@ -1057,7 +1066,7 @@ a:hover {
 	font-weight: bold;
 	display: block;
 }
-#nav .current-tag > a, #nav .current-cat > a {
+#nav .current-tag, #nav .current-cat {
 	background: #eee;
 }
 
@@ -1251,15 +1260,59 @@ a:hover {
 	float: right;
 }
 
+
+/* =articel footer - in right column
+----------------------------------------------- */
+.side-content {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 27%;
+	padding-left: 25px;
+}
+.side-content  .box {
+	background: #E6ECEE;
+	border: 10px solid white;
+	padding: 8px;
+	-webkit-box-shadow: 0 1px 15px 0 #E0E0E0;
+	-moz-box-shadow: 0 1px 15px 0 #E0E0E0;
+	-o-box-shadow: 0 1px 15px 0 #E0E0E0;
+	-ms-box-shadow: 0 1px 15px 0 #E0E0E0;
+	box-shadow: 0 1px 15px 0 #E0E0E0;	
+}
+.post .side-content {
+	display: none;
+}
+.full .side-content,article.single .side-content {
+	display: block;
+}
+.post .reviewed {
+	margin-top: -5px;
+	height: 15px;
+}
+.post .reviewed span{
+	display: none;
+}
+.full .reviewed span,article.single .reviewed  span{
+	display: inline;
+}
 /* =Content
 ----------------------------------------------- */
 .post footer { 
 	padding: .8em; 
 }
-
 .entry-title {
-	clear: both;
+	clear: none;
+	margin: 0;
+	padding: 0 0 0em;
 }
+.reviewed {
+	padding: 0 0 0.8em;
+	font-size: 12px;
+	color: #999;
+	font-style: italic;
+}
+
 .entry-title a {
 	text-decoration: none;
 }
@@ -1347,7 +1400,8 @@ a:hover {
 }
 
 
-/* TABS */
+/* =firstpage ui-tabs
+----------------------------------------------- */
 .ui-tabs article
 {
 	border: 0;
@@ -1498,12 +1552,12 @@ article:last-child { margin-bottom: 0 }
 	transition:opacity 0.2s ease-in-out 0s
 }
 
+.content-wrapper, .single .single-content {
+	width: 70%;
+}
 /* Excerpt/Summary */
 .summary-content {
 	cursor: pointer;
-	overflow: hidden;
-    position: relative;
-    width: 100%;
 }
 .summary-content .img-wrapper {
 	float: left;
@@ -1521,13 +1575,8 @@ article:last-child { margin-bottom: 0 }
 	width: 100%;
 	height: auto;
 }
-.summary-content .entry-wrapper {
+.entry-wrapper {
 	padding: 0.4em 0.8em 0.8em;
-}
-.summary-content .entry-title {
-	clear: none;
-	margin: 0;
-	padding: 0 0 0.3em;
 }
 .summary-content .summary-footer {
 	clear: both;
@@ -1554,7 +1603,7 @@ article:last-child { margin-bottom: 0 }
 /* More-content + single-content */
 .more-content { 
 	padding: 0;
-	overflow: hidden;
+	position: relative;
 }
 .more-content .img-wrapper {
 	width: 100%;
@@ -1565,9 +1614,6 @@ article:last-child { margin-bottom: 0 }
 	width: 100%;
 	height: 100%;
 	max-height: 500px;
-}
-.single-content { 
-	padding: .8em .8em 0;
 }
 /* More-content + single-content END */
 
@@ -2701,6 +2747,8 @@ p.comment-form-comment {
 	#main {
 		border-top: none;
 		box-shadow: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
 	}
 	#primary {
 		float: left;

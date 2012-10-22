@@ -249,7 +249,7 @@ function readMoreToggle(el){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(article).append(closea);
+					$(this).append(closea);
 					
 					// scroll to top of post 
 					$("html,body").animate({scrollTop: $(article).position().top}, 300);
@@ -502,6 +502,19 @@ $(document).ready(function(){
 		$(this).find(".summary-content .img-wrapper").click(function(){
 			readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
 		});
+		// show contact and related in rightcolumn
+		$(this).hover(function() {
+			$(this).find(".side-content").fadeIn("fast");
+			$(this).find(".reviewed").children().fadeIn("fast");
+			return false;
+		},function() {
+			if (!$(this).hasClass("single")) {
+				$(this).find(".side-content").fadeOut("fast");
+				$(this).find(".reviewed").children().fadeOut("fast");
+			}
+			return false;
+		});
+
 	});
 	
 	/**
@@ -810,6 +823,19 @@ function dyn_posts_load_posts() {
 					});
 					$(this).find('.entry-wrapper').click(function(){
 						readMoreToggle( $(this).parents('article').find(".summary-content").find('.entry-title a') );
+					});
+
+					// show contact and related in rightcolumn
+					$(this).hover(function() {
+						$(this).find(".side-content").fadeIn("fast");
+						$(this).find(".reviewed").children().fadeIn("fast");
+						return false;
+					},function() {
+						if (!$(this).hasClass("single")) {
+							$(this).find(".side-content").fadeOut("fast");
+							$(this).find(".reviewed").children().fadeOut("fast");
+						}
+						return false;
 					});
 				});
 			
