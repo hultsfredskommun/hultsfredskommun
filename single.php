@@ -37,7 +37,7 @@ get_header(); ?>
 				?>
 				<?php get_template_part( 'content', ($post_type == 'post')?'single':$post_type ); ?>
 
-				<?php //comments_template( '', true ); ?>
+				<?php comments_template( '', true ); ?>
 			<?php endwhile; // end of the loop. ?>
 			
 			<?php /* only show related if post_type is post */
