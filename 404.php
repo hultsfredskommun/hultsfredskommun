@@ -12,15 +12,19 @@ get_header(); ?>
 		<div id="content" role="main">
 
 			<article id="post-0" class="post error404 not-found">
-				<header class="entry-header">
-					<h1 class="entry-title"><?php _e( 'This is somewhat embarrassing, isn&rsquo;t it?', 'twentyeleven' ); ?></h1>
-				</header>
-
-				<div class="entry-content">
-					<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching, or one of the links below, can help.', 'twentyeleven' ); ?></p>
-
-
-				</div><!-- .entry-content -->
+			<div class="content-wrapper">
+			<div class="summary-content">
+				<div class="entry-wrapper">
+					<h1 class="entry-title">H&auml;r finns ingenting</h1>
+					<div class="entry-content">
+						<p>Anv&aumlnd s&ouml;krutan f&ouml;r att hitta.</p>
+						<p>Eller v&auml;lj bland de mest bes&ouml;kta sidorna. </p>
+						<?php if(function_exists('get_most_viewed')) { get_most_viewed('post'); } ?>
+						
+					</div>
+				</div>
+			</div><!-- .summary-content -->
+			</div>
 			</article><!-- #post-0 -->
 
 		</div><!-- #content -->
