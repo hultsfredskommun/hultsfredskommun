@@ -521,8 +521,8 @@ if (is_admin()) {
 /* remove unwanted fields from media library items */
 function remove_media_upload_fields( $form_fields, $post ) {
     //unset( $form_fields['image-size'] );
-    unset( $form_fields['post_excerpt'] );
-    unset( $form_fields['image_alt'] );
+    //unset( $form_fields['post_excerpt'] );
+    //unset( $form_fields['image_alt'] );
     //unset( $form_fields['post_content'] );
     //unset( $form_fields['url'] );
     //unset( $form_fields['image_url'] );

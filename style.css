@@ -1269,6 +1269,7 @@ a:hover {
 	right: 0;
 	width: 27%;
 	padding-left: 25px;
+	z-index: 100;
 }
 .side-content  .box {
 	background: #E6ECEE;
