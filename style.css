@@ -1209,7 +1209,7 @@ a:hover {
 .slideshow {
 	position: relative;
 	_verflow: hidden;
-	float: left;
+	_loat: left;
 }
 .slideshow .slideshow_bg {
     float: left;
