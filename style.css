@@ -105,7 +105,9 @@ hr,
 	background-color: #06435A; /* deep blue */
 }
 #menu ul li.current-menu-item,
-#menu ul li.current-category-ancestor {
+#menu ul li.current-category-ancestor,
+#nav .current-cat > a,
+#nav .current-cat-parent > a  {
 	text-decoration: underline;
 }
 /* selected background color */
@@ -1054,7 +1056,7 @@ a:hover {
 }
 
 #nav .children {
-	margin-left: 1.2em;
+	margin-left: 0em;
 }
 #nav .children a, #nav .tags a {
 	font-size: 12px;
@@ -1067,9 +1069,16 @@ a:hover {
 	display: block;
 }
 #nav .current-tag, #nav .current-cat {
-	background: #eee;
+	_ackground: #eee;
 }
-
+#nav .current-tag, #nav  .children {
+	border-left: 4px solid #06435A;
+	padding-left: 0.4em;
+}
+#nav .children .children {
+	border-left: none;
+	padding-left: 1.2em;
+}
 /*------------------------------------*\
 	logindiv - firstpage
 \*------------------------------------*/

@@ -508,7 +508,7 @@ $(document).ready(function(){
 			$(this).find(".reviewed").children().fadeIn("fast");
 			return false;
 		},function() {
-			if (!$(this).hasClass("single")) {
+			if (!$(this).hasClass("single") && !$(this).hasClass("full")) {
 				$(this).find(".side-content").fadeOut("fast");
 				$(this).find(".reviewed").children().fadeOut("fast");
 			}
