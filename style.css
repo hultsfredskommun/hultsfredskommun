@@ -1208,7 +1208,7 @@ a:hover {
 ----------------------------------------------- */
 .slideshow {
 	position: relative;
-	overflow: hidden;
+	_verflow: hidden;
 	float: left;
 }
 .slideshow .slideshow_bg {
