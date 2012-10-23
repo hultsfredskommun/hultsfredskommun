@@ -30,7 +30,7 @@ global $default_settings;
 						
 			<div class="summary-footer">
 				<?php
-					$categories_list = get_the_category_list(', ');
+					$categories_list = get_the_category_list(' | ');
 					if ( $categories_list ):
 					?>
 					<span class="cat-links">
@@ -41,6 +41,9 @@ global $default_settings;
 				<?php
 					$list = get_the_term_list(get_the_ID(), "post_tag"); 					
 					if ( $list ):
+						if ($categories_list ) {
+							echo " | ";
+						}
 					?>
 					<span class="tag-links">
 						<?php echo $list; ?>
@@ -48,11 +51,15 @@ global $default_settings;
 				<?php endif; // END if tags  ?>
 
 
-				<?php if(function_exists('the_views')) { echo "<span class='views'>"; the_views(); echo "</span>"; } ?>
-
-				<?php if( get_field('hk_related') ) { echo "<span class='docs icon'>&nbsp;</span>"; } ?>
-				
-				<?php if( get_field('hk_contacts') ) { echo "<span class='contact icon'></span>"; } ?>
+				<?php //if(function_exists('the_views')) { echo "<span class='views'>"; the_views(); echo "</span>"; } ?>
+					
+				<?php if (false) { //REMOVE CONTACT AND RELATED ICONS if( get_field('hk_related') || get_field('hk_contacts') ) { ?>
+					<div class="summary-icons">
+					<?php if( get_field('hk_related') ) { echo "<span class='docs icon'>&nbsp;</span>"; } ?>
+					
+					<?php if( get_field('hk_contacts') ) { echo "<span class='contact icon'></span>"; } ?>
+					</div>
+				<?php } ?>
 				
 			</div>
 			<?php endif; ?>

@@ -505,14 +505,18 @@ $(document).ready(function(){
 		// show contact and related in rightcolumn
 		$(this).hover(function() {
 			$(this).find(".side-content").fadeIn("fast");
+			//$(this).find(".summary-icons").fadeIn("fast");
 			$(this).find(".reviewed").children().fadeIn("fast");
 			return false;
 		},function() {
 			if (!$(this).hasClass("single") && !$(this).hasClass("full")) {
 				$(this).find(".side-content").fadeOut("fast");
+				//$(this).find(".summary-icons").fadeOut("fast");
 				$(this).find(".reviewed").children().fadeOut("fast");
 			}
 			return false;
+		});
+		$(this).find(".related_contact a").each(function() {
 		});
 
 	});

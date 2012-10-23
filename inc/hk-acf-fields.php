@@ -366,7 +366,6 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 1,
 	));
-	/*
 	register_field_group(array (
 		'id' => '5048edc032267',
 		'title' => 'Artikelns extra information',
@@ -409,7 +408,6 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 50,
 	));
-	*/
 	/*
 	register_field_group(array (
 		'id' => '5048edc0324cf',

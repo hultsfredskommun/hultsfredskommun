@@ -165,12 +165,17 @@ class HK_Menu_Widget extends WP_Widget {
 
 
 	function hk_single_page_menu() { ?>
-		<div class='widget-title'>Sidans etiketter:</div>
 		<ul id="selected_filter">
 		<?php 
 			$categories_list = get_the_category();
+			$pre_parent = 0;
 			if (!empty($categories_list)) : foreach ( $categories_list as $list):
-				echo "<li class='link cat'><div class='icon'></div><a href='".get_category_link($list->term_id)."'>" . $list->name . "</a></li>";
+				if ($pre_parent == $list->category_parent) { $class = "children"; }
+				else { $class = "";}
+				echo "<li class='link cat $class'><div class='icon'></div>";
+					echo "<a href='".get_category_link($list->term_id)."'>" . $list->name . "</a>";
+				echo "</li>";
+				$pre_parent = $list->term_id;
 			endforeach; endif; // End if categories
 
 			$tags_list = get_the_terms(get_the_ID(),"post_tag");

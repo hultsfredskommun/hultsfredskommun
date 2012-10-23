@@ -49,7 +49,7 @@
 			
 					<div class="tag-cloud">
 						<?php
-							$categories_list = get_the_category_list( ' ' );
+							$categories_list = get_the_category_list( ' | ' );
 							if ( $categories_list ):
 						?>
 						<span class="cat-links">
@@ -57,8 +57,12 @@
 						</span>
 						<?php endif; // End if categories ?>
 						<?php
-							$tags_list = get_the_tag_list( ' ' );
-							if ( $tags_list ): ?>
+							$tags_list = get_the_tag_list( ' | ' );
+							if ( $tags_list ): 
+								if ($categories_list ) {
+									//echo " | ";
+								} ?>
+
 						<span class="tag-links">
 							<?php echo $tags_list; ?>
 						</span>
@@ -67,44 +71,14 @@
 
 					</div>
 
-					<div class="editor">Sidansvarig: <?php the_author(); ?></div>
+					<div class="editor">Sidansvarig: <?php comments_popup_link(get_the_author()); ?></div>
 
-					<?php if ( comments_open() ) : ?>
+					<?php if (false) : //( comments_open() ) : ?>
 					
-					<span class="comments-link"><?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'twentyeleven' ) . '</span>', __( '<b>1</b> Reply', 'twentyeleven' ), __( '<b>%</b> Replies', 'twentyeleven' ) ); ?></span>
+					<span class="comments-link"><?php comments_popup_link( '<span class="leave-reply">L&auml;mna en kommentar</span>', __( '<b>1</b> Reply', 'twentyeleven' ), __( '<b>%</b> Replies', 'twentyeleven' ) ); ?></span>
 					<?php endif; // End if comments_open() ?>
 
 					<?php edit_post_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>
 					
-					
-					<a class="scroll-to-postTop" elem-id="#post-<?php echo $id ?>" href="#Scroll">Till toppen &#x2191;</a>
-					
-					
-					<?php if(function_exists('the_views')) { the_views(); } ?>
-
-					<?php
-						// get connected documents
-						$optionaldoc = get_post_custom_values('optional-docs');
-						if ($optionaldoc) : foreach ($optionaldoc as $value) {
-							echo "<div class='optional-area'><b>Dokument</b><br>";
-							if (is_array($value) && !empty($value)) : foreach (unserialize($value) as $docpage) {
-								$doc = get_page($docpage);
-								echo "<a href='#'>" . $doc->post_title . "</a><br>";
-							} endif;
-							echo "</div>";
-						} endif; 
-
-						// get connected contacts
-						$optionalcontacts = get_post_custom_values('optional-contacts');
-						if ($optionalcontacts) : foreach ($optionalcontacts as $value) {
-							echo "<div class='optional-area'><b>Kontakter</b><br>";
-								if (is_array($value) && !empty($value)) : 
-									foreach (unserialize($value) as $docpage) {
-										$doc = get_page($docpage);
-										echo "<a href='#'>" . $doc->post_title . "</a><br>";
-									}
-								endif;
-							echo "</div>";
-						} endif; ?>
 				</footer><!-- .entry-meta -->
 			</div><!-- .entry-wrapper -->			

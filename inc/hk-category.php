@@ -128,19 +128,13 @@
 		<article id="post-0; ?>">
 		<div class="content-wrapper">
 		<div class="summary-content">
-			<?php $thumb = hk_get_the_post_thumbnail(get_the_ID(),'thumbnail-image', false); 
-			if ($thumb) : ?>
-					<?php 					
-						echo $thumb;
-					//the_post_thumbnail('thumbnail-image'); ?>
-			<?php endif;/*endif;*/ ?>
-			
 			<div class="entry-wrapper">
 				<h1 class="entry-title">Här finns ingenting</h1>
 				<div class="entry-content">
 					<p>Ändra ditt urval eller använd sökrutan för att hitta.</p>
+					<?php if(function_exists('get_most_viewed')) { ?>
 					<p>Eller välj bland de mest besökta sidorna. </p>
-					<?php if(function_exists('get_most_viewed')) { get_most_viewed('post'); } ?>
+					<?php get_most_viewed('post'); } ?>
 					
 				</div>
 			</div>

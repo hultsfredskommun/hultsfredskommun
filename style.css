@@ -21,7 +21,7 @@ Text Domain: hultsfredskommun
 
 /* link color */
 a {
-	color: #1982d1;
+	color: #00A4D6;
 }
 
 /* main text color */
@@ -59,12 +59,20 @@ body, input, textarea,
 #nav a,
 #footer-sidebar,
 #branding #searchform #searchresult ul li a,
-.entry-meta .tag-cloud  a,
 #nav li .arrow {
 	/*color: #fff; /* white */
 	color: #373737; /* black */
 }
 
+/* deep blue text */
+.entry-title,
+#menu ul li.current-menu-item,
+#menu ul li.current-category-ancestor,
+#nav .current-cat > a,
+#nav .current-cat-parent > a   {
+	color: #06435A !important;
+	
+}
 /* white background color */
 body,
 #branding #searchform .field,
@@ -86,7 +94,7 @@ hr,
 #colophon,
 #branding 
   {	
-	background-color: #f6f6f6;
+	background-color: #F5F8E9;
 	/*background-color: #E6ECEE; /* light blue */
 	/*background-color: #ACC6D3; /* light blue */
 	/*background-color: #06435A; /* deep blue */
@@ -114,10 +122,7 @@ hr,
 /* selected background color */
 #sort-order ul li:hover,
 #menu #dropdown-menu:hover,
-#menu #dropdown-menu:focus,
-.tag-cloud .cat-links a,
-#nav #selected_filter li,
-.tag-cloud a { 
+#menu #dropdown-menu:focus { 
 	/*background-color: #E6EEF2; /* light blue */
 	background-color: #9BB4BD; /* deep blue */
 	/*background-color: #99DBEF; /* blue */
@@ -201,17 +206,17 @@ article.sticky {
 	/*border: 3px solid #B1C84D; /* lightgreen */
     /*border: 5px solid #F7A02E; /* orange */
     /*border: 1px solid #A3A2A3; */
-    box-shadow: 0px 0px 5px #fff;
-	-webkit-box-shadow: 0 0px 5px #fff;
-	-moz-box-shadow: 0 0px 5px #fff;
+    box-shadow: 0px 0px 5px #999;
+	-webkit-box-shadow: 0 0px 5px #999;
+	-moz-box-shadow: 0 0px 5px #999;
 	
 
 }
 #branding #searchform .field:hover,
 #branding #searchform #searchsubmit:hover {
-    box-shadow: 0px 0px 15px #fff
-	-webkit-box-shadow: 0 0px 15px #fff;
-	-moz-box-shadow: 0 0px 15px #fff;
+    box-shadow: 0px 0px 15px #333
+	-webkit-box-shadow: 0 0px 15px #333;
+	-moz-box-shadow: 0 0px 15px #333;
 }
 #branding #searchform #searchresult {
 	/*border: 5px solid #ACC6D3; /* light blue */
@@ -261,7 +266,6 @@ article.sticky {
 
 
 /* shadows */
-.content-wrapper:hover,
 .misc-ctrl:hover,
 #dyn-posts-load-posts {
 	-webkit-box-shadow: 0 1px 5px 0 #E0E0E0;
@@ -270,6 +274,15 @@ article.sticky {
 	-ms-box-shadow: 0 1px 5px 0 #E0E0E0;
 	box-shadow: 0 1px 5px 0 #E0E0E0;
 }
+.content-wrapper:hover,
+.side-content  .box {
+	-webkit-box-shadow: 2px 2px 15px 0 #E0E0E0;
+	-moz-box-shadow: 2px 2px 15px 0 #E0E0E0;
+	-o-box-shadow: 2px 2px 15px 0 #E0E0E0;
+	-ms-box-shadow: 2px 2px 15px 0 #E0E0E0;
+	box-shadow: 2px 2px 15px 0 #E0E0E0;	
+}
+
 #menu ul li {
 	_ext-shadow: 1px 1px #d4d4d4;	
 }
@@ -851,6 +864,11 @@ a:hover {
 	-o-transition: background-color 1s linear;
 	-ms-transition: background-color 1s linear;
 	transition: background-color 1s linear;
+	-moz-transition: color 1s linear;
+	-webkit-transition: color 1s linear;
+	-o-transition: color 1s linear;
+	-ms-transition: color 1s linear;
+	transition: color 1s linear;
 }
 #menu ul li:hover, 
 #topmenu nav ul li:hover,
@@ -1069,16 +1087,20 @@ a:hover {
 	font-weight: bold;
 	display: block;
 }
-#nav .current-tag, #nav .current-cat {
-	_ackground: #eee;
-}
-#nav .current-tag, #nav  .children {
+#nav .current-tag, 
+#nav  .children,
+#nav #selected_filter li  {
 	border-left: 4px solid #06435A;
 	padding-left: 0.4em;
 }
 #nav .children .children {
 	border-left: none;
 	padding-left: 1.2em;
+}
+#nav #selected_filter li.children{
+	padding-top: 0;
+	padding-left: 1.2em;
+	margin: 0;
 }
 /*------------------------------------*\
 	logindiv - firstpage
@@ -1282,36 +1304,35 @@ a:hover {
 	z-index: 100;
 }
 .side-content  .box {
-	background: #E6ECEE;
+	background: #F5F8E9;
 	border: 10px solid white;
 	padding: 8px;
-	-webkit-box-shadow: 0 1px 15px 0 #E0E0E0;
-	-moz-box-shadow: 0 1px 15px 0 #E0E0E0;
-	-o-box-shadow: 0 1px 15px 0 #E0E0E0;
-	-ms-box-shadow: 0 1px 15px 0 #E0E0E0;
-	box-shadow: 0 1px 15px 0 #E0E0E0;	
 	overflow: hidden;
 }
-.post .side-content {
+.post .side-content,
+.post .reviewed span,
+.post .summary-icons {
 	display: none;
 }
-.full .side-content,article.single .side-content {
+.full .side-content,
+article.single .side-content,
+.full .summary-icons,
+article.single .summary-icons {
 	display: block;
 }
+.full .reviewed span,
+article.single .reviewed  span{
+	display: inline;
+}
+
 .post .reviewed {
 	margin-top: -5px;
 	height: 15px;
 }
-.post .reviewed span{
-	display: none;
-}
-.full .reviewed span,article.single .reviewed  span{
-	display: inline;
-}
 /* =Content
 ----------------------------------------------- */
 .post footer { 
-	padding: .8em; 
+	padding: 0em; 
 }
 .entry-title {
 	clear: none;
@@ -1330,16 +1351,16 @@ a:hover {
 	font-size: 12px;
 	line-height: 18px;
 }
+.entry-meta .tag-cloud  {
+	margin-bottom: 0.8em;
+}
 .entry-meta .tag-cloud  span {
-	clear: both;
-	display: block;
-	margin: 0.8em 0;
+	margin: 0;
 }
 .entry-meta .tag-cloud  a {
 	font-weight: normal;
-	margin: 0 0.2em;
-	padding: 0.2em; 
-	border-radius: 5px;
+	margin: 0em;
+	padding: 0em; 
 }
 
 .entry-meta span {
@@ -1567,6 +1588,7 @@ article:last-child { margin-bottom: 0 }
 /* Excerpt/Summary */
 .summary-content {
 	cursor: pointer;
+	position: relative;
 }
 .summary-content .img-wrapper {
 	float: left;
@@ -1592,10 +1614,11 @@ svt	overflow: hidden;
 	margin: 0;
 	font-size: 12px;
 	cursor: default;
+	margin: 0.6em;
 }
 .summary-content .summary-footer span {
 	padding: 0;
-	margin: 0 0.4em;
+	margin: 0 0em;
 }
 .summary-content .summary-footer .modified-date {
 	float: right;
@@ -1604,7 +1627,7 @@ svt	overflow: hidden;
 .summary-footer .icon {
 	float: right;
 	width: 18px;
-	height: 24px;
+	height: 18px;
 }
 
 /* Excerpt/Summary END */
@@ -1729,7 +1752,7 @@ svt	overflow: hidden;
 .hk_kontakter.widget .icon,
 .hk_events.widget .icon,
 .hk_related div.icon {
-	height: 24px;
+	height: 18px;
 	width: 18px;
 	float: left;
 }
@@ -1768,6 +1791,11 @@ svt	overflow: hidden;
 
 
 /* icons */
+.summary-icons {
+	position: absolute;
+	top:0;
+	right: 0;
+}
 .hk_kontakter.widget .icon,
 .hk_events.widget .icon,
 .hk_related.widget .icon {
@@ -1777,7 +1805,7 @@ svt	overflow: hidden;
 	background-image: url("images/sprite.png");
 }
 .docs.icon {
-	background-position: 0px -328px;
+	background-position: 0px -134px;
 }
 .hk_kontakter.widget .icon, .contact.icon {
 	background-position: 0px -59px;
