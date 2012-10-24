@@ -485,39 +485,8 @@ $(document).ready(function(){
 	/**
 	 * add action to read-more toggle
 	 */
-	$("#primary").find('.post').each(function(){
-		//sets click-action on entry-titles
-		$(this).find('.entry-title a').click(function(ev){
-			ev.stopPropagation();
-			ev.preventDefault();
-			if( !$(this).parents('article').hasClass('loading') ){
-				readMoreToggle(this);
-			}
-			else{ return false; }
-		});
-		//triggers articles click-action entry-title clicked
-		$(this).find(".summary-content .entry-wrapper").click(function(){
-			readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
-		});
-		$(this).find(".summary-content .img-wrapper").click(function(){
-			readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
-		});
-		// show contact and related in rightcolumn
-		$(this).hover(function() {
-			$(this).find(".side-content").fadeIn("fast");
-			//$(this).find(".summary-icons").fadeIn("fast");
-			$(this).find(".reviewed").children().fadeIn("fast");
-			return false;
-		},function() {
-			if (!$(this).hasClass("single") && !$(this).hasClass("full")) {
-				$(this).find(".side-content").fadeOut("fast");
-				//$(this).find(".summary-icons").fadeOut("fast");
-				$(this).find(".reviewed").children().fadeOut("fast");
-			}
-			return false;
-		});
-		$(this).find(".related_contact a").each(function() {
-		});
+	$("#primary").find('article').each(function(){
+		setArticleActions($(this));
 
 	});
 	
@@ -703,16 +672,6 @@ $(document).ready(function(){
 	});
 
 
-	/*
-	 * set click action on contacts //and events (, .events-wrapper)
-	 */
-	$(".contact-wrapper").each(function() {
-	 		$(this).find(".permalink").click(function(ev) {
-				//ev.preventDefault();
-				//$(this).parent().after("<div class='contact-popup'></div>");
-				//$(".contact-popup").html($(this).html() + $(this).parent().find(".more-content").html());
-	 		});
-	});
 	
 	$(".only-widget-title").css("cursor","pointer").each(function() {
 		$(this).find(".hk_kontakter").hide();
@@ -784,6 +743,62 @@ $(document).ready(function(){
 
 });/* END $(document).ready() */
 
+/* article actions to be set when ready and when dynamic loading */
+function setArticleActions(el) {
+	//sets click-action on entry-titles
+	$(el).find('.entry-title a').click(function(ev){
+		ev.stopPropagation();
+		ev.preventDefault();
+		if( !$(this).parents('article').hasClass('loading') ){
+			readMoreToggle(this);
+		}
+		else{ return false; }
+	});
+	//triggers articles click-action entry-title clicked
+	$(el).find(".summary-content .entry-wrapper").click(function(){
+		readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
+	});
+	$(el).find(".summary-content .img-wrapper").click(function(){
+		readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
+	});
+	// show contact and related in rightcolumn
+	$(el).hover(function() {
+		if ($(".contact-popup").length == 0 && !$(this).hasClass("only-title")) {
+			$(this).find(".side-content").fadeIn("fast");
+			//$(this).find(".summary-icons").fadeIn("fast");
+			$(this).find(".reviewed").children().fadeIn("fast");
+		}
+		return false;
+	},function() {
+		if ($(".contact-popup").length == 0 && !$(this).hasClass("single") && !$(this).hasClass("full")) {
+			$(this).find(".side-content").fadeOut("fast");
+			//$(this).find(".summary-icons").fadeOut("fast");
+			$(this).find(".reviewed").children().fadeOut("fast");
+		}
+		return false;
+	});
+	$(el).find(".contact-wrapper a").each(function() {
+		$(this).click(function(ev) {
+			if ($(".contact-popup").length == 0) {
+				var post_id = $(this).attr("post_id");
+				ev.preventDefault();
+				$(this).parents(".contact-wrapper").append("<div class='contact-popup'>");
+				$(".contact-popup").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
+				{
+					$(this).append("<div class='close-contact'>X</div>");
+					$(".close-contact").click(function() {
+						$(".contact-popup").remove();
+					});
+				});
+			}
+			else {
+				$(".contact-popup").remove();
+			}
+			return false;
+		});
+	});
+
+}
 
 /**
  * load next posts dynamic
@@ -812,35 +827,7 @@ function dyn_posts_load_posts() {
 				
 				// read-more toggle
 				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('article').each(function(){
-					//sets click-action on entry-titles
-					$(this).find('.entry-title a').click(function(ev){
-						ev.stopPropagation();
-						ev.preventDefault();
-						if( !$(this).parents('article').hasClass('loading') ){
-							readMoreToggle(this);
-						}
-						else{ return false; }
-					});
-					//triggers articles click-action entry-title clicked
-					$(this).find('.img-wrapper').click(function(){
-						readMoreToggle( $(this).parents('article').find(".summary-content").find('.entry-title a') );
-					});
-					$(this).find('.entry-wrapper').click(function(){
-						readMoreToggle( $(this).parents('article').find(".summary-content").find('.entry-title a') );
-					});
-
-					// show contact and related in rightcolumn
-					$(this).hover(function() {
-						$(this).find(".side-content").fadeIn("fast");
-						$(this).find(".reviewed").children().fadeIn("fast");
-						return false;
-					},function() {
-						if (!$(this).hasClass("single")) {
-							$(this).find(".side-content").fadeOut("fast");
-							$(this).find(".reviewed").children().fadeOut("fast");
-						}
-						return false;
-					});
+					setArticleActions($(this));
 				});
 			
 				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('.more-link').addClass('dyn-posts').addClass('dyn-posts-placeholder-'+ settings["pageNum"]).click(function(ev){

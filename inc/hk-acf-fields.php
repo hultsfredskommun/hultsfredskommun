@@ -375,7 +375,7 @@ if(function_exists("register_field_group"))
 			array (
 				'key' => 'field_5048dc7a43e1a',
 				'label' => 'Extra text',
-				'name' => 'optional-text',
+				'name' => 'hk_optional_text',
 				'type' => 'textarea',
 				'instructions' => '',
 				'required' => '0',

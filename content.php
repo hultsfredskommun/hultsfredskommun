@@ -39,7 +39,7 @@ global $default_settings;
 				<?php endif; // End if categories ?>
 				
 				<?php
-					$list = get_the_term_list(get_the_ID(), "post_tag"); 					
+					$list = get_the_term_list(get_the_ID(), "post_tag",'',' | ','');
 					if ( $list ):
 						if ($categories_list ) {
 							echo " | ";

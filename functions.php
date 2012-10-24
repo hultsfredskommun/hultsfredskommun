@@ -432,6 +432,7 @@ add_filter( 'posts_where', 'filter_where' );
 // help function to display when next review date is
 function get_the_reviewed_date($id) {
 	global $post;
+
 	$time = get_post_meta( $id, 'hk_last_reviewed', true );
 	if (isset($time)) {
 		$time = "Granskades den " . date("j F, Y" ,$time);
