@@ -1027,8 +1027,10 @@ a:hover {
 #sidebar-wrapper #nav-sidebar {
 	display: none;
 }
-
-#nav-sidebar, #sidebar {
+#sidebar {
+	_osition: absolute;
+}
+#nav-sidebar {
 	margin-bottom: .8em;
 	margin-top: 2.4em;
 }
@@ -1052,7 +1054,7 @@ a:hover {
 #nav li {
 	list-style: none;
 	border: 0;
-	margin: .5em 0 0;
+	padding: .5em 0 .5em;
 	border-radius: 0;
 	width: 100%;
 }
@@ -1078,6 +1080,12 @@ a:hover {
 	cursor: pointer;
 }
 
+#nav .parent li {
+	border-bottom: 1px solid #06435A;
+}
+#nav .children li {
+	border-bottom: none;
+}
 #nav .children {
 	margin-left: 0em;
 }
@@ -1719,6 +1727,15 @@ article:last-child { margin-bottom: 0 }
 .widget a:focus,
 .widget a:active {
 	text-decoration: underline;
+}
+
+.hk_kontakter .contact-wrapper
+{
+	display:none;
+}
+
+.hk_kontakter .widget-title {
+	cursor: pointer; 
 }
 
 .hk_kontakter .widget-title,

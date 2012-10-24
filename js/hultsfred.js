@@ -755,14 +755,15 @@ function setArticleActions(el) {
 	// show contact and related in rightcolumn
 	$(el).hover(function() {
 		if ($(".contact-popup").length == 0 && !$(this).hasClass("only-title")) {
-			$(this).find(".side-content").fadeIn("fast");
+			$(this).find(".side-content").fadeIn("slow");
 			//$(this).find(".summary-icons").fadeIn("fast");
 			$(this).find(".reviewed").children().fadeIn("fast");
+			//log(document.documentMode + " " + document.compatMode);
 		}
 		return false;
 	},function() {
 		if ($(".contact-popup").length == 0 && !$(this).hasClass("single") && !$(this).hasClass("full")) {
-			$(this).find(".side-content").fadeOut("fast");
+			$(this).find(".side-content").fadeOut("slow");
 			//$(this).find(".summary-icons").fadeOut("fast");
 			$(this).find(".reviewed").children().fadeOut("fast");
 		}

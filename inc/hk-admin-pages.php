@@ -263,23 +263,27 @@ add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
 // Change the WYSIWYG editor buttons
 function hk_formatTinyMCE($in)
 {
-//	$in['remove_linebreaks']=false;
-//	$in['gecko_spellcheck']=false;
-//	$in['keep_styles']=false;
-//	$in['accessibility_focus']=true;
-//	$in['tabfocus_elements']='major-publishing-actions';
-//	$in['media_strict']=false;
-//	$in['paste_remove_styles']=true;
-//	$in['paste_remove_spans']=true;
-//	$in['paste_strip_class_attributes']='none';
-//	$in['paste_text_use_dialog']=true;
-//	$in['wpeditimage_disable_captions']=true;
-//	$in['plugins']='inlinepopups,tabfocus,paste,media,fullscreen,wordpress,wpeditimage,wpgallery,wplink,wpdialogs,wpfullscreen';
-//	$in['content_css']=get_template_directory_uri() . "/editor-style.css";
-//	$in['wpautop']=true;
-//	$in['apply_source_formatting']=false;
-//	$in['theme_advanced_blockformats'] = 'p,h2,h3,h4';
-	$in['theme_advanced_buttons1']='formatselect,bold,italic,removeformat,|,link,unlink,|,undo,redo,|,valideratext,spellchecker,|,wp_fullscreen, wp_adv';
+	//$in['remove_linebreaks']=false;
+	//$in['gecko_spellcheck']=false;
+	//$in['keep_styles']=false;
+	//$in['accessibility_focus']=true;
+	//$in['tabfocus_elements']='major-publishing-actions';
+	//$in['media_strict']=false;
+	//$in['paste_remove_styles']=true;
+	//$in['paste_remove_spans']=true;
+	//$in['paste_strip_class_attributes']='all';
+	//$in['paste_text_use_dialog']=true;
+	//$in['wpeditimage_disable_captions']=true;
+	//$in['plugins']='inlinepopups,tabfocus,paste,media,fullscreen,wordpress,wpeditimage,wpgallery,wplink,wpdialogs,wpfullscreen';
+	
+	//$in['content_css']=get_template_directory_uri() . "/editor-style.css";
+	//$in['wpautop']=true;
+	//$in['apply_source_formatting']=false;
+	//$in['paste_retain_style_properties'] = 'none';
+	$in['paste_text_sticky'] = true;
+	$in['paste_text_sticky_default'] = true;
+	$in['theme_advanced_blockformats'] = 'p,h2,h3,h4';
+	$in['theme_advanced_buttons1']='formatselect,bold,italic,removeformat,|,link,unlink,|,undo,redo,|,valideratext,|,wp_fullscreen, wp_adv';
 	$in['theme_advanced_buttons2']='bullist,numlist,|,charmap,|,table,row_props,cell_props,row_before,row_after,delete_row,|,col_before,col_after,delete_col,|,split_cells,merge_cells';
 	$in['theme_advanced_buttons3']='';
 	$in['theme_advanced_buttons4']='';
