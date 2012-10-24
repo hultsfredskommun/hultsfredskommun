@@ -245,11 +245,15 @@ function readMoreToggle(el){
 				$(article).find('.more-content').slideDown(500, function(){
 				
 					//add close-button top right corner
-					var closea = $('<a>').addClass('closeButton').html("St&auml;ng").click(function(ev){
+					var closea = $('<a>').addClass('closeButton').addClass('top').html("St&auml;ng").click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(this).append(closea);
+					var closeb = $('<a>').addClass('closeButton').addClass('bottom').html("St&auml;ng").click(function(ev){
+						ev.preventDefault();
+						readMoreToggle( $(this).parents("article").find(".entry-title a") );
+					});
+					$(this).prepend(closea).append(closeb);
 					
 					// scroll to top of post 
 					$("html,body").animate({scrollTop: $(article).position().top}, 300);

@@ -35,6 +35,8 @@
 		</ul>
 	<?php endif; ?>
 
+	<div class='flow-left'></div>
+
 	</div>
 </aside>
 <?php endif; ?>		

@@ -94,7 +94,7 @@ hr,
 #colophon,
 #branding 
   {	
-	background-color: #F5F8E9;
+	background-color: #ACC6D3;
 	/*background-color: #E6ECEE; /* light blue */
 	/*background-color: #ACC6D3; /* light blue */
 	/*background-color: #06435A; /* deep blue */
@@ -243,13 +243,16 @@ article.sticky {
     /*border-bottom: 1px solid #9EBA21; /* green */
 	/*border-bottom: 1px solid #F7A02E; /* orange */
 }
-.closeButton {
+.closeButton.top {
 	border-left: 1px solid #E6E6E6;
 	border-bottom: 1px solid #E6E6E6;
 }
-.summary-content .summary-footer,
+.closeButton.bottom {
+	border-top: 1px solid #E6E6E6;
+}
+.full .summary-content .summary-footer,
 .post footer {
-	_order-top: 1px solid #E6E6E6;
+	border-top: 1px solid #ACC6D3;
 }
 /* bordered boxes */
 /*#news,*/
@@ -260,7 +263,7 @@ article.sticky {
 .contact-popup 
  {
 	background-color: white;
-	border-top: 1px solid #E6E6E6;
+	border: 1px solid #ACC6D3;
 }
 
 
@@ -274,11 +277,11 @@ article.sticky {
 }
 .content-wrapper:hover,
 .side-content  .box {
-	-webkit-box-shadow: 0px 1px 2px 0 #E0E0E0;
-	-moz-box-shadow: 0px 1px 2px 0 #E0E0E0;
-	-o-box-shadow: 0px 1px 2px 0 #E0E0E0;
-	-ms-box-shadow: 0px 1px 2px 0 #E0E0E0;
-	box-shadow: 0px 1px 2px 0 #E0E0E0;	
+	-webkit-box-shadow: 0px 1px 5px 0 #ccc;
+	-moz-box-shadow: 0px 1px 5px 0 #ccc;
+	-o-box-shadow: 0px 1px 5px 0 #ccc;
+	-ms-box-shadow: 0px 1px 5px 0 #ccc;
+	box-shadow: 0px 1px 5px 0 #ccc;	
 }
 .contact-wrapper  .contact-popup {
 	-webkit-box-shadow: 5px 5px 15px 0 #ccc;
@@ -1081,7 +1084,7 @@ a:hover {
 }
 
 #nav .parent li {
-	border-bottom: 1px solid #06435A;
+	border-bottom: 1px solid #ACC6D3;
 }
 #nav .children li {
 	border-bottom: none;
@@ -1315,6 +1318,17 @@ a:hover {
 	padding-left: 25px;
 	z-index: 100;
 }
+.side-content .flow-left {
+	background: url("images/sprite.png") no-repeat scroll 0px -216px transparent;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	left: -32px;
+	top: 0;
+}
+.side-content  .box {
+	position: relative;
+}
 .contact-wrapper  .contact-popup,
 .side-content  .box {
 	background: #F5F8E9;
@@ -1344,7 +1358,8 @@ article.single .reviewed  span{
 /* =Content
 ----------------------------------------------- */
 .post footer { 
-	padding: 2em 0 0; 
+	padding: 1em 0 0;
+	margin: 2em 0 0;
 	clear: both;
 	font-size: 12px;
 	line-height: 18px;
@@ -1658,7 +1673,7 @@ article:last-child { margin-bottom: 0 }
 	padding: 0.4em;
 }
 
-.closeButton {
+.closeButton.top {
 	border-bottom-left-radius: 5px;
 	position: absolute;
 	top: 0;
@@ -1667,6 +1682,15 @@ article:last-child { margin-bottom: 0 }
 	margin: 0;
 	cursor: pointer;
 	z-index: 100;
+}
+.closeButton.bottom {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	z-index: 100;
+	width: 100%;
+	display: block;
 }
 /* new read-more functionality  END */
 
