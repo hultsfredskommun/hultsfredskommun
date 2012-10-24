@@ -14,20 +14,20 @@
 	<?php endif; ?>
 	
 	<?php if ( get_field('hk_related') ) : ?>
-		<ul>
+		<ul class="related-wrapper">
 		<?php while ( has_sub_field('hk_related') ) : ?>
 			<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
-				<li class="related_page">
+				<li class="related_page"><div class="icon"></div>
 					<?php $value = get_sub_field('hk_related_post');?>
 					<a href="<?php echo get_permalink($value->ID); ?>" title="<?php echo get_sub_field('hk_related_post_description'); ?>"><?php echo $value->post_title; ?></a>
 				</li>			 
 			<?php elseif ( get_row_layout() == 'hk_related_links' ) : ?>
-				<li class="related_link">
+				<li class="related_link"><div class="icon"></div>
 					<a target="_blank" href="<?php echo get_sub_field('hk_relate_link_url'); ?>" title="<?php echo get_sub_field('hk_related_link_description'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
 				</li>
 			<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
 				<?php $link = wp_get_attachment_link(get_sub_field('hk_related_file')); ?>
-				<li class="related_file">
+				<li class="related_file"><div class="icon"></div>
 					<?php echo str_replace("<a ", "<a title='" . get_sub_field('hk_related_file_description') . "' ", $link); ?>
 				</li>			 
 			<?php endif; ?> 

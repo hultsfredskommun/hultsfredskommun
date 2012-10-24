@@ -487,9 +487,11 @@ $(document).ready(function(){
 	 */
 	$("#primary").find('article').each(function(){
 		setArticleActions($(this));
-
 	});
-	
+	$("#sidebar-wrapper").find(".contact-wrapper a").each(function() {
+		setContactPopupAction($(this));
+	});
+
 	/**
 	 * init slideshows
 	 */
@@ -680,18 +682,7 @@ $(document).ready(function(){
 		});
 	});
 
-	/*
-	 * set hover action on related
-	 */
-	$(".related-wrapper").each(function() {
-			$(this).find(".content").hide();
-			$(this).find(".permalink").hover(function() {
-				$(this).parents(".related-wrapper").find(".content").show();
-			}).mouseout(function() {
-				$(this).parents(".related-wrapper").find(".content").hide();
-			});
-
-	});
+	
 
 
 	/*
@@ -778,24 +769,29 @@ function setArticleActions(el) {
 		return false;
 	});
 	$(el).find(".contact-wrapper a").each(function() {
-		$(this).click(function(ev) {
-			if ($(".contact-popup").length == 0) {
-				var post_id = $(this).attr("post_id");
-				ev.preventDefault();
-				$(this).parents(".contact-wrapper").append("<div class='contact-popup'>");
-				$(".contact-popup").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
-				{
-					$(this).append("<div class='close-contact'>X</div>");
-					$(".close-contact").click(function() {
-						$(".contact-popup").remove();
-					});
+		setContactPopupAction($(this));
+	});
+}
+
+/* set contact popup action */
+function setContactPopupAction(el) {
+	$(el).click(function(ev) {
+		if ($(".contact-popup").length == 0) {
+			var post_id = $(el).attr("post_id");
+			ev.preventDefault();
+			$(el).parents(".contact-wrapper").append("<div class='contact-popup'>");
+			$(".contact-popup").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
+			{
+				$(this).append("<div class='close-contact'>X</div>");
+				$(".close-contact").click(function() {
+					$(".contact-popup").remove();
 				});
-			}
-			else {
-				$(".contact-popup").remove();
-			}
-			return false;
-		});
+			});
+		}
+		else {
+			$(".contact-popup").remove();
+		}
+		return false;
 	});
 
 }

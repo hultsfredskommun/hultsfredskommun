@@ -182,7 +182,7 @@ function hk_contacts_generate_cache() {
 				$retValue .= "<div class='icon'>&nbsp;</div>";
 				$retValue .= "<div class='img-wrapper' style='display:none'>" . hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false) . "</div>";
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-				$retValue .= "<a class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
+				$retValue .= "<a  post_id='" . get_the_ID() . "' class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
 				$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
 				/*$retValue .= "<div class='more-content'>";
 				// workplace
