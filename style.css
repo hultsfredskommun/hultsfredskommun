@@ -1831,12 +1831,12 @@ article:last-child { margin-bottom: 0 }
 .contact-wrapper  .contact-popup .close-contact{
 	position: absolute;
 	cursor: pointer;
-	top: -5px;
-	right: -10px;
+	top: 5px;
+	right: 5px;
 	background-image: url("images/sprite.png");
-	background-position: 0px -275px;
-	width: 32px;
-	height: 32px;
+	background-position: 0px -276px;
+	width: 20px;
+	height: 20px;
 }
 .img-wrapper {
 	padding: 0;

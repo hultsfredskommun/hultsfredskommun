@@ -52,11 +52,13 @@
 				</div>
 			</div>
 			<div class="summary-footer">
+				
 				<?php
 					$categories_list = get_the_category_list(', ');
 					if ( $categories_list ):
 					?>
 					<span class="cat-links">
+						Tillh&ouml;r kategori 
 						<?php echo $categories_list; ?>
 					</span>
 				<?php endif; // End if categories ?>
@@ -71,5 +73,5 @@
 					<?php endif; ?>
 
 				
-				<span class="modified-date">Uppdaterades <?php the_modified_date(); ?></span>
+				<div class="modified-date">Uppdaterades <?php the_modified_date(); ?></div>
 			</div>
