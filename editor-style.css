@@ -67,10 +67,11 @@ p {
 	margin-bottom: 0.625em;
 }
 ul, ol {
-	margin: 2em;
+	margin: 0em 0.4em 0.625em 2em;
 	padding: 0;
 }
 ul {
+	list-style-image: url("images/list-square.png");
 	list-style: square;
 }
 ol {

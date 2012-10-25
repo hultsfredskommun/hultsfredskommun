@@ -12,9 +12,10 @@
 			<?php endwhile; ?>			 
 		<?php endif; ?> 
 	<?php endif; ?>
-	
+	<?php  ?>
 	<?php if ( get_field('hk_related') ) : ?>
-		<ul class="related-wrapper">
+		
+		<ul class="related-wrapper<?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
 		<?php while ( has_sub_field('hk_related') ) : ?>
 			<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
 				<li class="related_page"><div class="icon"></div>

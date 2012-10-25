@@ -537,5 +537,15 @@ function remove_media_upload_fields( $form_fields, $post ) {
 }
 add_filter('attachment_fields_to_edit', 'remove_media_upload_fields', null, 2);
 
+ 
+function my_plugin_image_tabs($_default_tabs) {
+
+    //unset($_default_tabs['type']);
+    //unset($_default_tabs['type_url']);
+    //unset($_default_tabs['gallery']);
+	
+	return($_default_tabs); 
+}
+add_filter('media_upload_tabs', 'my_plugin_image_tabs', 10, 1);
 
 ?>

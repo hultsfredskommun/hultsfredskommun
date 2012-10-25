@@ -7,6 +7,7 @@
 			$(".special_category-checklist").prev().prev().remove(); // remove special cat title in quick edit
 			$(".special_category-checklist").remove() // remove special cat in quick edit
 		}
+		//$("#content-add_media").attr("href",$("#content-add_media").attr("href") + "&tab=library");
 	});
 
 })(jQuery);
