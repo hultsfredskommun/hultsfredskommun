@@ -784,10 +784,10 @@ function setContactPopupAction(el) {
 		if ($(".contact-popup").length == 0) {
 			var post_id = $(el).attr("post_id");
 			ev.preventDefault();
-			$(el).parents(".contact-wrapper").append("<div class='contact-popup'>");
+			$(el).parents(".contact-wrapper").append("<div class='contact-popup'>H&aulm;mtar kontaktuppgifter.</div>");
 			$(".contact-popup").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 			{
-				$(this).append("<div class='close-contact'>X</div>");
+				$(this).append("<div class='close-contact'></div>");
 				$(".close-contact").click(function() {
 					$(".contact-popup").remove();
 				});

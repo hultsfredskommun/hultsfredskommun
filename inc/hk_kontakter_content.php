@@ -9,41 +9,46 @@
 			<?php endif; ?>
 			
 			<div class="entry-wrapper">
-				<h1 class="entry-title"><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+				<div class='img-wrapper'><?php echo hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false); ?></div>
+				<h1 class="entry-title"><?php the_title(); ?></h1>
 				<div class="entry-content">
-				<?php
-					$retValue .= "<div class='img-wrapper'>" . hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false) . "</div>";
-					$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-					$retValue .= "<a class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
-					$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
-					$retValue .= "<div class='more-content'>";
-					// workplace
-					if( get_field('hk_contact_workplaces') ): while( has_sub_field('hk_contact_workplaces') ): 
-						$retValue .= "<p>" . get_sub_field('hk_contact_workplace') . "</p>";
-					endwhile; endif;
-					// phone
-					if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
-						$retValue .= "<p>";
-						if(get_row_layout() == "hk_contact_fax"): $retValue .= "fax "; endif;
-						$retValue .= get_sub_field('number') . "</p>";
-					endwhile; endif; 
-					// email
-					if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ): 
-						$retValue .= "<p>" . get_sub_field('hk_contact_email') . "</p>";
-					endwhile; endif;
-					// description
-					$retValue .= "<p>" . get_field("hk_contact_description") . "</p>";
-					// address
-					$retValue .= "<p>" . get_field("hk_contact_address") . "</p>";
-					// visit hours
-					$retValue .= "<p>" . get_field("hk_contact_visit_hours") . "</p>";
-					// position
-					$contact_position = get_field("hk_contact_position");
-					if (!empty($contact_position)) :
-						$retValue .= "<p>[Kommer ers&auml;ttas med karta " . $contact_position["coordinates"] . "]</p>";
-					endif;
-					echo $retValue;
-				?>
+				
+				<div id='contact-<?php echo get_the_ID(); ?>' class='<?php echo implode(" ",get_post_class()); ?>'>
+				<div class='content'><?php echo get_field("hk_contact_titel"); ?></div>
+				<div class='more-content'>
+				
+				<?php // workplace
+				if( get_field('hk_contact_workplaces') ): while( has_sub_field('hk_contact_workplaces') ): ?>
+					<p><?php echo get_sub_field('hk_contact_workplace'); ?></p>
+				<?php endwhile; endif; ?>
+				
+				<?php // phone
+				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): ?>
+					<p>
+					<?php echo (get_row_layout() == "hk_contact_fax")?"fax ":""; ?>
+					<?php echo get_sub_field('number'); ?></p>
+				<?php endwhile; endif; ?>
+				
+				<?php // email
+				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ): ?>
+					<p><a href='mailto:<?php echo get_sub_field('hk_contact_email'); ?>'><?php echo get_sub_field('hk_contact_email'); ?></a></p>
+				<?php endwhile; endif; ?>
+				
+				<?php // description ?>
+				<p><?php echo get_field("hk_contact_description"); ?></p>
+				
+				<?php // address ?>
+				<p><?php echo get_field("hk_contact_address"); ?></p>
+				
+				<?php // visit hours ?>
+				<p><?php echo get_field("hk_contact_visit_hours"); ?></p>
+				
+				<?php // position ?>
+				<?php $contact_position = get_field("hk_contact_position");
+				if (!empty($contact_position)) : ?>
+					<p>[Kommer ers&auml;ttas med karta <?php echo $contact_position["coordinates"]; ?>]</p>
+				<?php endif; ?>
+				
 				</div>
 			</div>
 			<div class="summary-footer">
@@ -65,6 +70,6 @@
 					</span>
 					<?php endif; ?>
 
-				<?php if(function_exists('the_views')) { echo "<span class='views'>"; the_views(); echo "</span>"; } ?>
-				<span class="modified-date"><?php the_modified_date(); ?></span>
+				
+				<span class="modified-date">Uppdaterades <?php the_modified_date(); ?></span>
 			</div>
