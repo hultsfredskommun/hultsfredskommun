@@ -1821,9 +1821,10 @@ article:last-child { margin-bottom: 0 }
 .contact-wrapper  .contact-popup {
 	position: absolute;
 	width: 400px;
-	left: -470px;
+	left: -465px;
 	top: 0;
 	padding: .8em;
+	z-index: 200;
 }
 .contact-wrapper  .contact-popup .img-wrapper {
 	padding-right: 0.8em;

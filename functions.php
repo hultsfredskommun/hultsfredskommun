@@ -395,14 +395,17 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true) {
 			$image = get_sub_field('hk_featured_image');
 			$src = $image["sizes"][$thumbsize];
 			$title = $image["title"];
-			$description = $image["description"];
+			$alt = $image["alt"];
+			if ($alt == "") {
+				$alt = $title;
+			}
 			
 			if (strpos($src,$default_settings[$thumbsize][0] . "x" . $default_settings[$thumbsize][1])) {
 				if (!empty($src)) {
 					if ($countSlides > 0) {
 						$style = "style='display: none;'";
 					}
-					$retValue .= "<img class='slide' $style src='$src' alt='$description' title='$description'/>";
+					$retValue .= "<img class='slide' $style src='$src' alt='$alt' title='$alt' />";
 					$countSlides++;
 				}
 			}
