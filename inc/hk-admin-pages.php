@@ -320,7 +320,7 @@ function hk_cleanup_dashboard()
 		wp_add_dashboard_widget('hk_allhidden_dashboard_widget', 'Alla ej synliga sidor', 'hk_display_allhidden_dashboard_widget' );
     }
 	//Right Now - Comments, Posts, Pages at a glance
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+	//unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
 	//Wordpress Development Blog Feed
 	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
 	//Other Wordpress News Feed

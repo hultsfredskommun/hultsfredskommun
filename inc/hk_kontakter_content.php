@@ -45,7 +45,7 @@
 				
 				<?php // position ?>
 				<?php $contact_position = get_field("hk_contact_position");
-				if (!empty($contact_position)) : ?>
+				if (!empty($contact_position) && $contact_position["coordinates"] != "") : ?>
 					<p>[Kommer ers&auml;ttas med karta <?php echo $contact_position["coordinates"]; ?>]</p>
 				<?php endif; ?>
 				
@@ -58,7 +58,6 @@
 					if ( $categories_list ):
 					?>
 					<span class="cat-links">
-						Tillh&ouml;r kategori 
 						<?php echo $categories_list; ?>
 					</span>
 				<?php endif; // End if categories ?>
@@ -73,5 +72,5 @@
 					<?php endif; ?>
 
 				
-				<div class="modified-date">Uppdaterades <?php the_modified_date(); ?></div>
+				<div class="modified-date">Senast uppdaterad <?php the_modified_date(); ?></div>
 			</div>

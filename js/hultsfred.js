@@ -749,6 +749,9 @@ function setArticleActions(el) {
 		}
 		else{ return false; }
 	});
+	$(el).find('.post-edit-link').click(function(ev){
+		ev.stopPropagation();
+	});
 	//triggers articles click-action entry-title clicked
 	$(el).find(".summary-content .entry-wrapper").click(function(){
 		readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
