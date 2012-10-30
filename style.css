@@ -1901,8 +1901,8 @@ article:last-child { margin-bottom: 0 }
 .contact-popup {
 	position: absolute;
 	width: 400px;
-	left: -465px;
-	top: 0;
+	left: 50px;
+	top: 20px;
 	z-index: 200;
 }
 .contact-popup .img-wrapper {
