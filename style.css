@@ -559,7 +559,7 @@ article.sticky {
 /*#news,*/
 .content-wrapper .summary-content,
 .content-wrapper .more-content,
-.single .single-content .entry-wrapper,
+.single .single-content .content,
 #dyn-posts-load-posts,
 .ui-tabs .ui-tabs-panel
 {
