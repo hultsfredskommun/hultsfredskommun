@@ -856,7 +856,7 @@ function setArticleActions(el) {
 	// show contact and related in rightcolumn
 	$(el).hover(function() {
 		if ($(".contact-popup").length == 0 && !$(this).hasClass("only-title")) {
-			$(this).find(".side-content").fadeIn("slow");
+			//$(this).find(".side-content").fadeIn("slow");
 			//$(this).find(".summary-icons").fadeIn("fast");
 			$(this).find(".reviewed").children().fadeIn("fast");
 			//log(document.documentMode + " " + document.compatMode);
@@ -864,7 +864,7 @@ function setArticleActions(el) {
 		return false;
 	},function() {
 		if ($(".contact-popup").length == 0 && !$(this).hasClass("single") && !$(this).hasClass("full")) {
-			$(this).find(".side-content").fadeOut("slow");
+			//$(this).find(".side-content").fadeOut("slow");
 			//$(this).find(".summary-icons").fadeOut("fast");
 			$(this).find(".reviewed").children().fadeOut("fast");
 		}
@@ -881,7 +881,7 @@ function setContactPopupAction(el) {
 		if ($(".contact-popup").length == 0) {
 			var post_id = $(el).attr("post_id");
 			ev.preventDefault();
-			$(el).parents(".contact-wrapper").append("<div class='contact-popup'>H&auml;mtar kontaktuppgifter...</div>");
+			$(el).parents(".side-content").append("<div class='contact-popup'>H&auml;mtar kontaktuppgifter...</div>");
 			$(".contact-popup").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 			{
 				$(this).append("<div class='close-contact'></div>");

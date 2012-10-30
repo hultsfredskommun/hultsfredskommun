@@ -36,6 +36,6 @@
 
 
 	</div>
-	<div class='flow-left'></div>
 </aside>
+<div class='flow-left'></div>
 <?php endif; ?>		
