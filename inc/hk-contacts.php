@@ -201,5 +201,80 @@ function hk_contacts_generate_cache() {
 	return $retValue;
 
 }
+
+
+
+// outputs the content of the widget
+function hk_contact_tab() {
+
+
+	$retValue = "";
+	$retValue .= "<aside id='side-tab' class='hk_kontakter content-wrapper'>";
+	$retValue .= "<h3 class='widget-title'>Kontakta oss</h3>";
+	
+	// set startpage category if on startpage
+	$category_in = array();
+	if (get_query_var("cat") != "") {
+		$category_in = hk_getParentsSlugArray(get_query_var("cat"));
+		$category_in = array_reverse($category_in);
+
+
+		foreach($category_in as $category) {
+		
+			// query arguments
+			$args = array(
+				'posts_per_page' => -1,
+				'paged' => 1,
+				'more' => $more = 0,
+				'post_type' => 'hk_kontakter',
+				'order' => 'ASC', 
+				'suppress_filters' => 1
+			);
+			$cat = get_category_by_slug($category);
+			if ($cat) {
+				
+				$args['category__and'] = $cat->term_id;
+
+				// search in all posts (ignore filters)
+				$the_query = new WP_Query( $args );
+	
+				if ($the_query->have_posts())
+				{ 
+
+					// The Loop
+					while ( $the_query->have_posts() ) : $the_query->the_post();
+
+						$retValue .= "<div class='contact-wrapper'>";
+						$retValue .= "<div class='icon'>&nbsp;</div>";
+						$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
+						$retValue .= "<a post_id='" . get_the_ID() . "' class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
+						$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
+						
+						$retValue .= "</div></div>";
+					endwhile;
+					// Reset Post Data
+					wp_reset_postdata();
+				}
+			}
+		}
+
+	}
+	
+	$retValue .= "<div class='contact-wrapper'>";
+	$retValue .= "<div class='icon'>&nbsp;</div>";
+	$retValue .= "<div id='contact-synpunkt' class='" . implode(" ",get_post_class()) . "'>";
+	$retValue .= "<a post_id='" . get_the_ID() . "' class='permalink' href='". get_permalink(get_the_ID()) . "'>L&auml;mna en synpunkt</a>";
+	$retValue .= "</div></div>";
+
+	$retValue .= "<div class='contact-wrapper'>";
+	$retValue .= "<div class='icon'>&nbsp;</div>";
+	$retValue .= "<div id='contact-synpunkt' class='" . implode(" ",get_post_class()) . "'>";
+	$retValue .= "<a post_id='" . get_the_ID() . "' class='permalink' href='". get_permalink(get_the_ID()) . "'>L&auml;mna en felanm&auml;an</a>";
+	
+	$retValue .= "</div></div>";
+	$retValue .= "</aside>";
+	echo $retValue;
+
+}
 ?>
 

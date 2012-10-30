@@ -144,7 +144,7 @@ footer, header, hgroup, menu, nav, section {
 #primary {
 	width: 80.875%;
 }
-.content-wrapper, .single .single-content, #comments, .more-from-heading  {
+.post .content-wrapper, .single .single-content, #comments, .more-from-heading  {
 	width: 68.46986%;
 }
 #firstpage-sidebar, #sidebar-wrapper, .side-content {
@@ -333,9 +333,8 @@ body, input, textarea,
 
 
 .contact-popup,
-.side-content  .box ,
-#nav {
-	background-color: #D8E3A6;
+.side-content  .box {
+	background-color: #F5F8E9;
 }
 	
 /* deep blue text */
@@ -404,7 +403,7 @@ hr,
 #selected_filter li > a,
 #nav .current-cat > a,
 #nav .current-tag > a {
-	background: #fff;
+	background: #F5F8E9;
 }
 /* selected background color */
 #sort-order ul li:hover,
@@ -425,7 +424,6 @@ hr,
 #topmenu,
 #firstpage-top-content,
 #firstpage-top-content .widget_hk_text_widget .text a,
-.hk_kontakter.widget,
 .hk_related.widget,
 #menu .sub-menu li
 {
@@ -484,7 +482,7 @@ article.sticky {
 	_order-top: 1px solid #ACC6D3;
 }
 #nav .parent li {
-	border-bottom: 2px solid #fff;
+	border-bottom: 2px solid #E8E8E8;
 }
 #nav .children li:first-child {
 	border-top: none;
@@ -495,8 +493,8 @@ article.sticky {
 #nav .current-tag, 
 #nav  .children,
 #nav #selected_filter li  {
-	/*border-left: 4px solid #06435A;*/
-	border-left: 2px solid #fff
+	border-left: 4px solid #06435A;
+	/*border-left: 2px solid #fff; */
 }
 #branding #searchform .field,
 #branding #searchform #searchsubmit {
@@ -566,8 +564,7 @@ article.sticky {
 	background-color: white;
 	border: 1px solid #E8E8E8;
 }
-.misc-ctrl,
-.side-content  {
+.misc-ctrl {
 	border: 1px solid #E8E8E8;
 }
 
@@ -580,7 +577,7 @@ article.sticky {
 	-ms-box-shadow: 0 1px 5px 0 #E0E0E0;
 	box-shadow: 0 1px 5px 0 #E0E0E0;
 }
-.content-wrapper:hover {
+.post .content-wrapper:hover {
 	-webkit-box-shadow: 0px 1px 5px 0 #ccc;
 	-moz-box-shadow: 0px 1px 5px 0 #ccc;
 	-o-box-shadow: 0px 1px 5px 0 #ccc;
@@ -1465,8 +1462,10 @@ a:hover {
 }
 .contact-popup,
 .side-content  .box {
-	border: 10px solid white;
 	padding: 8px;
+}
+.contact-popup {
+	border: 10px solid white;
 }
 /*.post .side-content,*/
 .post .reviewed span {
@@ -1820,6 +1819,24 @@ article:last-child { margin-bottom: 0 }
 
 
 
+/* =side-tab
+----------------------------------------------- */
+#side-tab {
+	position: absolute;
+	top: 250px;
+	right: -150px;
+	z-index: 10000;
+	width: 200px
+}
+#side-tab .contact-wrapper {
+	background: white;
+	display: none;
+	padding-left: 8px;
+}
+#side-tab .contact-popup {
+	left: -450px;
+}
+
 /* =Widgets
 ----------------------------------------------- */
 
@@ -1847,11 +1864,6 @@ article:last-child { margin-bottom: 0 }
 .widget a:focus,
 .widget a:active {
 	text-decoration: underline;
-}
-
-.hk_kontakter .contact-wrapper
-{
-	display:none;
 }
 
 .hk_kontakter .widget-title {

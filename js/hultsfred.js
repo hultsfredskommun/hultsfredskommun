@@ -366,88 +366,7 @@ var oldWidth; //used to check if window-width have changed
 
 
 $(document).ready(function(){
-	/* LOAD MAPS API */
-	/*function addMarker(position,address){
-		if(marker){marker.setMap(null)}
-		marker=new google.maps.Marker({map:map,position:position,title:address,draggable:true});
-		map.setCenter(position);
-		dragdropMarker()
-	}
-	function dragdropMarker(){
-		google.maps.event.addListener(marker,'dragend',function(mapEvent){
-			coordinates=mapEvent.latLng.lat()+','+mapEvent.latLng.lng();locateByCoordinates(coordinates)
-		})
-	}
-	function locateByAddress(address){
-		geocoder.geocode({'address':address},function(results,status){
-			if(status==google.maps.GeocoderStatus.OK){addMarker(results[0].geometry.location,address);coordinates=results[0].geometry.location.lat()+','+results[0].geometry.location.lng();coordinatesAddressInput.value=address+'|'+coordinates;ddAddress.innerHTML=address;ddCoordinates.innerHTML=coordinates}
-			else{alert("This address couldn't be found: "+status)}
-		})
-	}
-	function locateByCoordinates(coordinates){
-		latlngTemp=coordinates.split(',',2);lat=parseFloat(latlngTemp[0]);lng=parseFloat(latlngTemp[1]);latlng=new google.maps.LatLng(lat,lng);
-		geocoder.geocode({'latLng':latlng},function(results,status){
-			if(status==google.maps.GeocoderStatus.OK){address=results[0].formatted_address;addMarker(latlng,address);coordinatesAddressInput.value=address+'|'+coordinates;ddAddress.innerHTML=address;ddCoordinates.innerHTML=coordinates}
-			else{alert("This place couldn't be found: "+status)}
-		})
-	}
-	var map,lat,lng,latlng,marker,coordinates,address,val;
-	var geocoder=new google.maps.Geocoder();
-	var ddAddress=document.getElementById('location_dd-address_fields_field_505ad28e202d9');
-	var dtAddress=document.getElementById('location_dt-address_fields_field_505ad28e202d9');
-	var ddCoordinates=document.getElementById('location_dd-coordinates_fields_field_505ad28e202d9');
-	var locationInput=document.getElementById('location_input_fields_field_505ad28e202d9');
-	var location=locationInput.value;
-	var coordinatesAddressInput=document.getElementById('location_coordinates-address_fields_field_505ad28e202d9');
-	var coordinatesAddress=coordinatesAddressInput.value;
-	if(coordinatesAddress){
-		var coordinatesAddressTemp=coordinatesAddress.split('|',2);
-		coordinates=coordinatesAddressTemp[1];
-		address=coordinatesAddressTemp[0]
-	}
-	if(address){
-		ddAddress.innerHTML=address
-	}
-	if(coordinates){
-		ddCoordinates.innerHTML=coordinates;
-		var latlngTemp=coordinates.split(',',2);
-		lat=parseFloat(latlngTemp[0]);
-		lng=parseFloat(latlngTemp[1])
-	}
-	else{
-		lat=57.455560638683025;
-		lng=15.836223059667986
-	}
-	latlng=new google.maps.LatLng(lat,lng);
-	var mapOptions={zoom:12,center:latlng,mapTypeId:google.maps.MapTypeId.ROADMAP};
-	map=new google.maps.Map(document.getElementById('location_map_fields_field_505ad28e202d9'),mapOptions);
-	if(coordinates){
-		addMarker(map.getCenter())
-	}
-	google.maps.event.addListener(map,'click',function(point){
-		locateByCoordinates(point.latLng.lat()+','+point.latLng.lng())
-	});
-	locationInput.addEventListener('keypress',function(event){
-		if(event.keyCode==13){
-			location=locationInput.value;
-			var regexp=new RegExp('^\-?[0-9]{1,3}\.[0-9]{6,},\-?[0-9]{1,3}\.[0-9]{6,}$');
-			if(location){
-				if(regexp.test(location)){locateByCoordinates(location)}
-				else{locateByAddress(location)}
-			}
-			event.stopPropagation();event.preventDefault();return false
-		}
-	},false);
-	dtAddress.addEventListener('click',function(){
-		if(coordinates){locateByCoordinates(coordinates)}
-	},false)
-});*/
-/*
-	var script = document.createElement("script");
-	script.type = "text/javascript";
-	script.src = "http://maps.googleapis.com/maps/api/js?sensor=false"; //key=AIzaSyBwAFyJDPO82hjRyCAmt-8-if6r6rrzlcE&
-	document.body.appendChild(script);
-	*/
+	
 	
 	/* GRID LINES */
 	$("#cssgridbutton .onoff").click(function() {
@@ -581,12 +500,39 @@ $(document).ready(function(){
 	});
 
 	/**
+	 * side-tab toggle
+	 */
+	$("#side-tab").hover(function() {
+		if ($(".contact-popup").length == 0) {
+			$(this).animate({
+				right: '+=150',
+				}, 500, function() {
+				// Animation complete.
+			});
+			$(this).find(".contact-wrapper").show();
+		}
+	},function() {
+		if ($(".contact-popup").length == 0) {
+			$(this).animate({
+				right: '-=150',
+				}, 500, function() {
+				// Animation complete.
+			});
+			$(this).find(".contact-wrapper").hide();
+		}
+	});
+	
+	/**
 	 * add action to read-more toggle
 	 */
 	$("#primary").find('article').each(function(){
 		setArticleActions($(this));
 	});
 	$("#sidebar-wrapper").find(".contact-wrapper a").each(function() {
+		setContactPopupAction($(this));
+	});
+	
+	$("#side-tab").find(".contact-wrapper a").each(function() {
 		setContactPopupAction($(this));
 	});
 
@@ -881,7 +827,7 @@ function setContactPopupAction(el) {
 		if ($(".contact-popup").length == 0) {
 			var post_id = $(el).attr("post_id");
 			ev.preventDefault();
-			$(el).parents(".side-content").after("<div class='contact-popup'>H&auml;mtar kontaktuppgifter...</div>");
+			$(el).parents(".content-wrapper").append("<div class='contact-popup'>H&auml;mtar kontaktuppgifter...</div>");
 			$(".contact-popup").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 			{
 				$(this).append("<div class='close-contact'></div>");

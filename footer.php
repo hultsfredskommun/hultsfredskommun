@@ -15,6 +15,9 @@ $hk_options = get_option('hk_theme');
 ?>
 	<div class="clear"></div>
 	</div><!-- #main -->
+
+	<?php hk_contact_tab(); ?>
+
 	<?php if ( $hk_options["logo_footer_image"] || is_active_sidebar( 'footer-sidebar' ) ) : ?>
 	<footer id="colophon" role="contentinfo">
 		<div id="supplementary">
