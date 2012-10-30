@@ -17,9 +17,6 @@ $hk_options = get_option('hk_theme');
 	</div><!-- #main -->
 	<?php if ( $hk_options["logo_footer_image"] || is_active_sidebar( 'footer-sidebar' ) ) : ?>
 	<footer id="colophon" role="contentinfo">
-		<!--div id="footertop">
-			<div class="wrapper"><div class="inner"></div></div>
-		</div-->
 		<div id="supplementary">
 			<?php
 				get_sidebar( 'footer' );

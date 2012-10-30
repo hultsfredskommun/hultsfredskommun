@@ -8,7 +8,8 @@
  */
 
 get_header(); ?>
-
+		<?php hk_navigation(); ?>
+		
 		<section id="primary">
 			<div id="content" role="main">
 
@@ -61,5 +62,4 @@ get_header(); ?>
 			</div><!-- #content -->
 		</section><!-- #primary -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

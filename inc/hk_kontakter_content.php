@@ -15,7 +15,6 @@
 				
 				<div id='contact-<?php echo get_the_ID(); ?>' class='<?php echo implode(" ",get_post_class()); ?>'>
 				<div class='content'><?php echo get_field("hk_contact_titel"); ?></div>
-				<div class='more-content'>
 				
 				<?php // workplace
 				if( get_field('hk_contact_workplaces') ): while( has_sub_field('hk_contact_workplaces') ): ?>
@@ -46,10 +45,9 @@
 				<?php // position ?>
 				<?php $contact_position = get_field("hk_contact_position");
 				if (!empty($contact_position) && $contact_position["coordinates"] != "") : ?>
-					<p>[Kommer ers&auml;ttas med karta <?php echo $contact_position["coordinates"]; ?>]</p>
+					<div id="map_canvas">[Kommer ers&auml;ttas med karta <span class="coordinates"><?php echo $contact_position["coordinates"]; ?></span> <span class="address"><?php echo $contact_position["address"]; ?></span>]</div>
 				<?php endif; ?>
 				
-				</div>
 			</div>
 			<div class="summary-footer">
 				

@@ -8,9 +8,7 @@ get_header();
 
 ?>
 		<?php if ( !is_sub_category_firstpage() ) : ?>
-			<div id="top-nav-sidebar">
-				<?php dynamic_sidebar('nav-sidebar'); ?>
-			</div>
+			<?php hk_navigation(); ?>
 		<?php endif; ?>
 		
 		<?php if ( is_sub_category_firstpage() ) : ?>

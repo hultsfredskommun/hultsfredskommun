@@ -175,3 +175,5 @@
 <div id="firstpage-sidebar">
 	<?php dynamic_sidebar('firstpage-sidebar'); ?>
 </div>
+
+<?php dynamic_sidebar('firstpage-pre-footer-sidebar'); ?>

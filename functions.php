@@ -49,13 +49,13 @@ require( get_template_directory() . '/inc/hk-slideshow.php' );
 require( get_template_directory() . '/inc/hk-contacts.php' );
 
 // Grab hk related.
-require( get_template_directory() . '/inc/hk-related.php' );
+//require( get_template_directory() . '/inc/hk-related.php' );
 
 // Grab hk events.
 require( get_template_directory() . '/inc/hk-events.php' );
 
 // Grab hk menu widget.
-require( get_template_directory() . '/inc/hk-menu-widget.php' );
+require( get_template_directory() . '/inc/hk-navigation.php' );
 
 // Grab hk sort-order function
 require( get_template_directory() . '/inc/hk-sort-order.php' );
@@ -121,6 +121,31 @@ add_action( 'pre_get_posts', 'hk_exclude_category' );
  * add theme javascript file and needed jquery 
  */
 if (!is_admin()) {
+
+	wp_enqueue_script(
+		'google_map_js',
+		'http://maps.google.com/maps/api/js?sensor=false',
+		array('jquery'),
+		'1.0',
+		true
+	);
+	wp_enqueue_script(
+		'jquery_ui_map_js',
+		get_stylesheet_directory_uri() . '/js/jquery.ui.map.min.js',
+		array('jquery'),
+		'1.0',
+		true
+	);
+
+	
+/*
+	wp_enqueue_script(
+		'google_maps_js',
+		'https://maps.googleapis.com/maps/api/js?key=AIzaSyBwAFyJDPO82hjRyCAmt-8-if6r6rrzlcE&sensor=false',
+		array('jquery'),
+		'1.0',
+		true
+	);*/    
 	wp_enqueue_script(
 		'history_js',
 		get_stylesheet_directory_uri() . '/js/native.history.js',

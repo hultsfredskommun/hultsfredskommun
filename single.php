@@ -9,9 +9,8 @@
 
 get_header(); ?>
 
-	<div id="top-nav-sidebar">
-		<?php dynamic_sidebar('nav-sidebar'); ?>
-	</div>
+	<?php hk_navigation(); ?>
+	
 	<div id="primary">
 		<div id="content" role="main">
 

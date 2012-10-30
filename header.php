@@ -121,6 +121,10 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 </head>
 
 <body <?php body_class((is_sub_category_firstpage()) ? "home":""); ?>>
+<div id='cssgridbutton'><div class="onoff">grid av/p&aring;</div><div class="zindex">&ouml;verst/underst</div></div>
+<div id="cssgrid"><div class="wrapper">
+	<div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div>
+</div></div>
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
 		<div id="topwrapper">
@@ -132,7 +136,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 				
 			<?php 
 				if ($hk_options["topmenu"]) {
-					echo "<div id='topmenu'><nav>";
+					echo "<div id='topmenu'><aside><nav>";
 					wp_nav_menu( array(
 						'menu' 			=> $hk_options["topmenu"], 
 						'container' 	=> '',							
@@ -140,7 +144,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 						'depth' 		=> 1,
 						'echo' 			=> true
 					)); 
-					echo "</nav></div>";
+					echo "</aside></nav></div>";
 				}
 			?>
 			<div id="searchnavigation">			

@@ -46,19 +46,9 @@ function hk_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name' => 'Sidonavigering',
-		'id' => 'nav-sidebar',
-		'description' => 'Inneh&aring;llsidans navigeringsyta',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => 'Sidof&auml;lt',
-		'id' => 'sidebar',
-		'description' => 'Inneh&aring;llsidans sidof&auml;lt',
+		'name' => "Startsidan f&ouml;re sidfot",
+		'id' => 'firstpage-pre-footer-sidebar',
+		'description' => "Widgetyta som visas p&aring; startsidan f&ouml;re sidfoten.",
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',

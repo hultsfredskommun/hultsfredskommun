@@ -77,7 +77,7 @@
 						$children =  hk_getChildrenIdArray($cat);
 						if ( !empty($children) ) {
 							/* Get all sticky posts children of this category */
-							echo "<span class='morefrom'>Mer från underkategorier</span>";
+							echo "<div class='more-from-heading'><span>Mer från underkategorier</span></div>";
 							$args = array( 'category__in' => $children, 'posts_per_page' => -1 );
 							if (!empty($sticky)) {
 								$args['post__in'] = $sticky;
@@ -134,7 +134,7 @@
 					<p>Ändra ditt urval eller använd sökrutan för att hitta.</p>
 					<?php if(function_exists('get_most_viewed')) { ?>
 					<p>Eller välj bland de mest besökta sidorna. </p>
-					<?php get_most_viewed('post'); } ?>
+					<ul><?php get_most_viewed('post'); } ?></ul>
 					
 				</div>
 			</div>
@@ -149,4 +149,3 @@
 
 	</div><!-- #content -->
 </div><!-- #primary -->
-<?php get_sidebar(); ?>
