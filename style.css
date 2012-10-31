@@ -1765,13 +1765,13 @@ article:last-child { margin-bottom: 0 }
 	cursor: pointer;
 	position: relative;
 }
-.summary-content .img-wrapper {
+#content .summary-content .img-wrapper {
 	float: left;
 	width: 200px;
 	margin: 10px 10px 2px 10px;
 	overflow: hidden;
 }
-.sticky .summary-content .img-wrapper {
+#content .sticky .summary-content .img-wrapper {
 	float: right;
 	width: 280px;
 }
