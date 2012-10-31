@@ -502,23 +502,31 @@ $(document).ready(function(){
 	/**
 	 * side-tab toggle
 	 */
-	$("#side-tab").hover(function() {
+	$("#side-tab .widget-title").click(function() {
 		if ($(".contact-popup").length == 0) {
-			$(this).animate({
-				right: '+=150',
-				}, 500, function() {
-				// Animation complete.
-			});
-			$(this).find(".contact-wrapper").show();
+			if ($(this).parent().find(".content-wrapper").width() < 200) {
+				$(this).parents("#side-tab").animate({
+					right: '+=1px',
+					}, 500, function() {
+				});
+				$(this).parent().find(".content-wrapper").animate({
+					width: '+=200px',
+					}, 500, function() {
+				});
+			}
+			else {
+				$(this).parents("#side-tab").animate({
+					right: '-=1px',
+					}, 500, function() {
+				});
+				$(this).parent().find(".content-wrapper").animate({
+					width: '-=200px',
+					}, 500, function() {
+				});
+			}
 		}
-	},function() {
-		if ($(".contact-popup").length == 0) {
-			$(this).animate({
-				right: '-=150',
-				}, 500, function() {
-				// Animation complete.
-			});
-			$(this).find(".contact-wrapper").hide();
+		else {
+			$(".contact-popup").remove();
 		}
 	});
 	
@@ -527,6 +535,9 @@ $(document).ready(function(){
 	 */
 	$("#primary").find('article').each(function(){
 		setArticleActions($(this));
+	});
+	$("#firstpage-sidebar").find(".contact-wrapper a").each(function() {
+		setContactPopupAction($(this));
 	});
 	$("#sidebar-wrapper").find(".contact-wrapper a").each(function() {
 		setContactPopupAction($(this));
@@ -611,19 +622,21 @@ $(document).ready(function(){
 	});  
 
 	/**
-	 * nav-sidebar collapsing filters on tags
+	 * nav-sidebar collapsing and expand filters on category and tags
 	 */
-	/*$(".children").each(function() {
+	$(".children").each(function() {
 	 	if ($(this).parent().parent().hasClass("parent") && !($(this).parent().hasClass("current-cat-parent") || $(this).parent().hasClass("current-cat"))) {
-			$(this).prev().after("<span class='more-children'>+</span>");
+			$(this).prev().append("<span class='more-children'>+</span>");
 			$(this).hide();		
 	 	}
 	});
 	$(".more-children").each(function() {
-		$(this).click(function() {
-			$(this).parent().find(".children:first").toggle();
+		$(this).click(function(ev) {
+			ev.preventDefault();
+			ev.stopPropagation();
+			$(this).parent().parent().find(".children:first").toggle();
 		});
-	});*/
+	});
 
 
 
@@ -828,6 +841,7 @@ function setContactPopupAction(el) {
 			var post_id = $(el).attr("post_id");
 			ev.preventDefault();
 			$(el).parents(".content-wrapper").append("<div class='contact-popup'>H&auml;mtar kontaktuppgifter...</div>");
+	
 			$(".contact-popup").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 			{
 				$(this).append("<div class='close-contact'></div>");

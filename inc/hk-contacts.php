@@ -150,7 +150,7 @@ function hk_contacts_generate_cache() {
 		if ($the_query->have_posts())
 		{ 
   	        $retValue .= "<aside class='widget hk_kontakter'>";
-	      	$retValue .= "<h3 class='widget-title'>Kontakta oss</h3>";
+			$retValue .= "<h3 class='widget-title'>Kontakta oss</h3><div class='content-wrapper'>";
 	      	
 	      	// The Loop
 	   		while ( $the_query->have_posts() ) : $the_query->the_post();
@@ -194,7 +194,7 @@ function hk_contacts_generate_cache() {
 	    	endwhile;
 	    	// Reset Post Data
 	    	wp_reset_postdata();
-			$retValue .= "</aside>";
+			$retValue .= "</div></aside>";
 		}
 	}
 
@@ -209,8 +209,8 @@ function hk_contact_tab() {
 
 
 	$retValue = "";
-	$retValue .= "<aside id='side-tab' class='hk_kontakter content-wrapper'>";
-	$retValue .= "<h3 class='widget-title'>Kontakta oss</h3>";
+	$retValue .= "<aside id='side-tab' class='hk_kontakter'>";
+	$retValue .= "<h3 class='widget-title'>Kontakta oss</h3><div class='content-wrapper'>";
 	
 	// set startpage category if on startpage
 	$category_in = array();
@@ -270,9 +270,9 @@ function hk_contact_tab() {
 	$retValue .= "<div class='icon'>&nbsp;</div>";
 	$retValue .= "<div id='contact-synpunkt' class='" . implode(" ",get_post_class()) . "'>";
 	$retValue .= "<a post_id='" . get_the_ID() . "' class='permalink' href='". get_permalink(get_the_ID()) . "'>L&auml;mna en felanm&auml;an</a>";
-	
 	$retValue .= "</div></div>";
-	$retValue .= "</aside>";
+	
+	$retValue .= "</div></aside>";
 	echo $retValue;
 
 }

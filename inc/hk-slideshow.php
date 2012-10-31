@@ -121,14 +121,18 @@ function hk_slideshow_generate_output($vars) {
 					while( has_sub_field('hk_featured_images') ) : 
 						$image = get_sub_field('hk_featured_image');
 						$src = $image["sizes"][$vars["thumbnail-size"]];
-						$description = $image["description"];
+						$title = $image["title"];
+						$alt = $image["alt"];
+						if ($alt == "") {
+							$alt = $title;
+						}
 	
 						if (strpos($src,$default_settings[$vars["thumbnail-size"]][0] . "x" . $default_settings[$vars["thumbnail-size"]][1])) {
 							$retValue .= "<article class='slide' id='post-" . get_the_ID() . "' class='";
 							if ($first){ $retValue .= 'first '; }
 							else { $retValue .= 'img_left '; }
 							$retValue .= implode(" ",get_post_class()) . "'>";
-							$retValue .= 	"<img src='$src' class='attachment-slideshow-image wp-post-image' alt='$description' title='$description' />";
+							$retValue .= 	"<img src='$src' class='attachment-slideshow-image wp-post-image' alt='$alt' title='$alt' />";
 							if (get_the_content() != "") {
 								$retValue .= 	"<div class='text-area'>";
 								$retValue .= 		"<div class='text-content'>";

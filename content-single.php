@@ -4,7 +4,7 @@
  */
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky single":"single"); ?>>
-		<div class="single-content">
+		<div class="single-content content-wrapper">
 			<?php require("inc/single_content.php"); ?>
 			<?php include("inc/hk-aside-content.php"); ?>
 		</div><!-- .single-content -->

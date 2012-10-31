@@ -83,6 +83,7 @@ footer, header, hgroup, menu, nav, section {
 	3 col: 17.125%
 	4 col: 23.5%
 	9 col: 55.375%
+	12 col: 74.5%;
 	13 col: 80.875%;
 	56.875
 */
@@ -141,22 +142,42 @@ footer, header, hgroup, menu, nav, section {
 #nav { 
 	width: 17.125%;
 }
+.home #primary {
+	width: 74.5%;
+}
+.home #primary .post .content-wrapper {
+	width: 100%;
+}
+.home #primary .post .side-content,
+.home #primary .post .flow-left {
+	display: none;
+}
+.home #firstpage-sidebar {
+	width: 23.5%;
+}
+.home #firstpage-sidebar .hk_kontakter {
+	position: relative;
+}
+.home #firstpage-sidebar .contact-popup {
+	left: -450px;
+}
+
 #primary {
 	width: 80.875%;
 }
 .post .content-wrapper, .single .single-content, #comments, .more-from-heading  {
 	width: 68.46986%;
 }
-#firstpage-sidebar, #sidebar-wrapper, .side-content {
+#sidebar-wrapper, .side-content {
 	width: 29.057187%;
 }
 .ui-tabs .leftcontent
 {
-	width: 67%;
+	width: 74.29%;
 }
 .ui-tabs .rightcontent
 {
-	width: 32%; 
+	width: 23.7%; 
 }
 .misc-ctrl {
 	width: 25%;
@@ -557,7 +578,6 @@ article.sticky {
 /*#news,*/
 .content-wrapper .summary-content,
 .content-wrapper .more-content,
-.single .single-content .content,
 #dyn-posts-load-posts,
 .ui-tabs .ui-tabs-panel
 {
@@ -937,7 +957,7 @@ a:hover {
 	clear: both;
 	width: 50%;
     /*opacity: 0.8;*/
-    padding: 40px 0 10px;
+    padding: 20px 0 5px;
 
 }
 #branding input#s {
@@ -1120,6 +1140,7 @@ a:hover {
 	border-bottom-right-radius: 5px;
 }
 #menu ul li a:hover,
+#nav ul li a:hover,
 #topmenu nav ul li a:hover,
 #sort-order ul li a:hover { 
 	text-decoration: none; 
@@ -1181,6 +1202,7 @@ a:hover {
 #nav li {
 	border: 0;
 	padding: 10px 0;
+	position: relative;
 }
 #selected_filter li {
 	margin: 10px 0;
@@ -1215,6 +1237,7 @@ a:hover {
 	padding-left: 8px;
 	cursor: pointer;
 }
+#nav .more-children:hover,
 #nav .tag-title:hover {
 	text-decoration: none;
 }
@@ -1588,7 +1611,7 @@ article.single .reviewed  span {
 .ui-tabs .leftcontent
 {
 	float: left; 
-	border-right: 1px solid #E6E6E6;
+	_order-right: 1px solid #E6E6E6;
 }
 .ui-tabs .rightcontent
 {
@@ -1822,15 +1845,33 @@ article:last-child { margin-bottom: 0 }
 /* =side-tab
 ----------------------------------------------- */
 #side-tab {
-	position: absolute;
-	top: 250px;
-	right: -150px;
+	position: fixed;
+	top: 50%;
+	margin-top: -50px;
+	right: 0px;
 	z-index: 10000;
-	width: 200px
+}
+#side-tab .widget-title {
+	position: absolute;
+	top: 43px;
+	left: -85px;
+	text-align: center;
+	height: 30px;
+	width: 100px;
+	rotation: -90deg; 
+	-webkit-transform: rotate(-90deg); 
+	-moz-transform: rotate(-90deg);	
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+	cursor: pointer; 
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+#side-tab .content-wrapper {
+	width: 0;
 }
 #side-tab .contact-wrapper {
 	background: white;
-	display: none;
 	padding-left: 8px;
 }
 #side-tab .contact-popup {
@@ -1864,10 +1905,6 @@ article:last-child { margin-bottom: 0 }
 .widget a:focus,
 .widget a:active {
 	text-decoration: underline;
-}
-
-.hk_kontakter .widget-title {
-	cursor: pointer; 
 }
 
 .hk_kontakter .widget-title,

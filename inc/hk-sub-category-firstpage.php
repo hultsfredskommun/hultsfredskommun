@@ -28,8 +28,8 @@
 				/* Query all posts with selected startpage category */
 				$cat = get_query_var("cat");
 				$query = array( 'posts_per_page' => '-1', 
-								'category__in' => $cat );
-				
+								'category__and' => $cat,
+								'tag__and' => $default_settings["news_tag"] );
 				query_posts( $query );
 		
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
@@ -58,7 +58,7 @@
 					<?php
 					$query = array( 'posts_per_page' => '10', 
 									'category__in' => $all_categories,
-									'tags__and' => $default_settings["news_tag"] );
+									'tag__and' => $default_settings["news_tag"] );
 
 					query_posts( $query );		
 					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
