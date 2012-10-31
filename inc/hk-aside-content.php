@@ -27,7 +27,7 @@
 			<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
 				<?php $link = wp_get_attachment_link(get_sub_field('hk_related_file')); ?>
 				<li class="related_file"><div class="icon"></div>
-					<?php echo str_replace("<a ", "<a title='" . get_sub_field('hk_related_file_description') . "' ", $link); ?>
+					<?php echo str_replace("<a ", "<a target='_blank' title='" . get_sub_field('hk_related_file_description') . "' ", $link); ?>
 				</li>			 
 			<?php endif; ?> 
 		<?php endwhile; ?>

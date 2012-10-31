@@ -31,8 +31,10 @@
 								'category__and' => $cat,
 								'tag__and' => $default_settings["news_tag"] );
 				query_posts( $query );
-		
+				
+				$shownposts = array();
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+					$shownposts[] = get_the_ID(); 
 					get_template_part( 'content' ); 
 				endwhile; endif; 
 				// Reset Query
@@ -58,6 +60,7 @@
 					<?php
 					$query = array( 'posts_per_page' => '10', 
 									'category__in' => $all_categories,
+									'post__not_in' => $shownposts,
 									'tag__and' => $default_settings["news_tag"] );
 
 					query_posts( $query );		

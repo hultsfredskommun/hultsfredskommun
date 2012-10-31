@@ -149,6 +149,7 @@ footer, header, hgroup, menu, nav, section {
 	width: 100%;
 }
 .home #primary .post .side-content,
+.home #primary .post .summary-footer,
 .home #primary .post .flow-left {
 	display: none;
 }
@@ -161,9 +162,13 @@ footer, header, hgroup, menu, nav, section {
 .home #firstpage-sidebar .contact-popup {
 	left: -450px;
 }
-.home #firstpage-pre-footer-sidebar {
+#firstpage-pre-footer-sidebar {
 	float: left;
 	clear: both
+}
+#firstpage-pre-footer-sidebar .widget {
+	float: left;
+	margin: 0 8px;
 }
 #primary {
 	width: 80.875%;
@@ -420,7 +425,8 @@ hr,
 #menu ul li.current-menu-item,
 #menu ul li.current-category-ancestor,
 #menu ul li.current-post-ancestor:first-child,
-#menu .sub-menu
+#menu .sub-menu,
+.ui-tabs li.ui-tabs-selected 
 {
 	background-color: #06435A; /* deep blue */
 }
@@ -473,10 +479,6 @@ article.sticky {
 }
 
 
-/* selected tab */
-.ui-tabs li.ui-tabs-selected {
-	background: #E60040 !important;
-}
 
 /* right column widget color */
 .hk_kontakter .widget-title {
@@ -571,6 +573,10 @@ article.sticky {
 .misc-ctrl {
 	border: 1px solid #E8E8E8;
 }
+.home .content-wrapper .summary-content,
+.home .content-wrapper .more-content {
+	border: 0;
+}
 
 
 
@@ -619,6 +625,14 @@ article.sticky {
 	-ms-box-shadow: 0px 1px 5px 0 #ccc;
 	box-shadow: 0px 1px 5px 0 #ccc;	
 }
+.home .post .content-wrapper:hover {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+	-ms-box-shadow: none;
+	box-shadow: none;	
+}
+
 .contact-popup {
 	-webkit-box-shadow: 5px 5px 15px 0 #ccc;
 	-moz-box-shadow: 5px 5px 15px 0 #ccc;
@@ -1625,7 +1639,8 @@ article.single .reviewed  span {
 {
     height: auto;
     margin: 0px 0px 7px 0px;
-    padding: 5px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background-color: #EDEDED;
 }
 .ui-tabs .leftcontent
 {
@@ -1653,7 +1668,6 @@ article.single .reviewed  span {
     _order-top-left-radius: 5px;
     _order-top-right-radius: 5px;
     cursor: pointer;
-    background-color: #EDEDED;
 }
 .ui-tabs .ui-tabs-panel
 {
@@ -1786,9 +1800,11 @@ article:last-child { margin-bottom: 0 }
 	padding: 0;
 	position: relative;
 }
+#content .img-wrapper,
 .more-content .img-wrapper {
 	width: 100%;
 }
+#content .img-wrapper img,
 .more-content .img-wrapper img,
 .single .post .img-wrapper img { 
 	width: 100%;
@@ -1944,7 +1960,7 @@ article:last-child { margin-bottom: 0 }
 }
 .related-wrapper li,
 .contact-wrapper,
-.hk_events.widget .hk_events,
+.events-wrapper,
 .hk_related.widget .hk_related,
 .hk_related.widget .attachment {
 	padding: 6px 0;

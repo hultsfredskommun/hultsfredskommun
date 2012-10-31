@@ -91,7 +91,7 @@ function hk_events_generate_output($vars) {
 				$retValue .= "<div class='icon'>&nbsp;</div>";
 				$retValue .= "<div class='img-wrapper' style='display:none'>" . get_the_post_thumbnail(get_the_ID(),"events-image") . "</div>";
 				$retValue .= "<div id='events-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-				$retValue .= "<h4><a class='permalink' href='". get_permalink() . "'>" . get_the_title() . "</a></h4>";
+				$retValue .= "<a class='permalink' href='". get_permalink() . "'>" . get_the_title() . "</a>";
 				$retValue .= "<div class='content'>" . str_replace("\n","<br>",get_the_content()) . "</div>";
 				$retValue .= "</div></div>";
 	    	endwhile;
