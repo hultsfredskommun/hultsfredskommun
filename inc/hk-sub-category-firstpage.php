@@ -176,4 +176,8 @@
 	<?php dynamic_sidebar('firstpage-sidebar'); ?>
 </div>
 
+<?php if (is_active_sidebar('firstpage-pre-footer-sidebar')) : ?>
+<div id="firstpage-pre-footer-sidebar">
 <?php dynamic_sidebar('firstpage-pre-footer-sidebar'); ?>
+</div>
+<?php endif; ?>

@@ -33,7 +33,7 @@ $hk_options = get_option('hk_theme');
 	</footer><!-- #colophon -->
 	<?php endif; ?>
 </div><!-- #page -->
-<?php if ($hk_options["footer_image"]) : ?>
+<?php if ($hk_options["footer_image"] != "") : ?>
 		<div id="footer-image"><img src="<?php echo $hk_options["footer_image"]; ?>"/></div>
 <?php endif; ?>
 

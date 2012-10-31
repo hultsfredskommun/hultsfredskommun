@@ -161,7 +161,10 @@ footer, header, hgroup, menu, nav, section {
 .home #firstpage-sidebar .contact-popup {
 	left: -450px;
 }
-
+.home #firstpage-pre-footer-sidebar {
+	float: left;
+	clear: both
+}
 #primary {
 	width: 80.875%;
 }
@@ -2551,7 +2554,7 @@ p.comment-form-comment {
 		
 	/* primary m.m. 100% */
 	#primary,
-	#firstpage-sidebar, 
+	#firstpage-pre-footer-sidebar,	
 	#sidebar-wrapper {
 		width: 100%;
 	}
