@@ -16,7 +16,10 @@
 if ( ! isset( $content_width ) )
 	$content_width = 584;
 
-	/* SET DEFAULT SETTINGS */
+/* help variable */	
+$s_when_https = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 's' : '');
+	
+/* SET DEFAULT SETTINGS */
 if ( ! isset( $default_settings ) ) {
 	$options = get_option('hk_theme');
 	$default_settings = array(	'thumbnail-image' => array(272, 153, true),
@@ -124,7 +127,7 @@ if (!is_admin()) {
 
 	wp_enqueue_script(
 		'google_map_js',
-		'http://maps.google.com/maps/api/js?sensor=false',
+		'http'.$s_when_https.'://maps.google.com/maps/api/js?sensor=false',
 		array('jquery'),
 		'1.0',
 		true
@@ -430,6 +433,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true) {
 					if ($countSlides > 0) {
 						$style = "style='display: none;'";
 					}
+					$src = str_replace("http://" . $_SERVER['SERVER_NAME'], "", $src);
 					$retValue .= "<img class='slide' $style src='$src' alt='$alt' title='$alt' />";
 					$countSlides++;
 				}

@@ -1974,12 +1974,12 @@ article:last-child { margin-bottom: 0 }
 
 /* icons */
 .related-wrapper .icon {
-	margin: 0 0.6em 0 0;
+	margin: 0 8px 1px 0;
 }
 .contact-wrapper .icon,
 .hk_events.widget .icon,
 .hk_related.widget .icon {
-	margin: 0 0.6em 0.6em 0;
+	margin: 0 8px 8px 0;
 }
 .icon {
 	background-image: url("images/sprite.png");
