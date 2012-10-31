@@ -67,7 +67,7 @@
 					</div>
 					<?php endwhile; endif; 
 					?> 
-						<span class="read-more-link"><a href="<?php echo get_category_link($default_settings["news_cat"]); ?>">Fler nyheter</a></span>
+						<span class="read-more-link"><a href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Fler nyheter</a></span>
 					</div>
 					<?php // Reset Query
 					wp_reset_query(); 

@@ -67,7 +67,11 @@
 					query_posts( $args );
 					if ( have_posts() ) : while ( have_posts() ) : the_post();
 						$shownPosts[] = get_the_ID();
-						get_template_part( 'content', get_post_format() );
+						if ($wp_query->post_count == 1) {
+							get_template_part( 'content', "single" );
+						} else {
+							get_template_part( 'content', get_post_format() );
+						}
 					endwhile; endif;
 					wp_reset_query(); // Reset Query
 					
@@ -77,7 +81,9 @@
 						$children =  hk_getChildrenIdArray($cat);
 						if ( !empty($children) ) {
 							/* Get all sticky posts children of this category */
-							echo "<div class='more-from-heading'><span>Mer från underkategorier</span></div>";
+							
+							$no_top_space = (count($shownPosts) == 0)?" no-top-space":"";
+							echo "<div class='more-from-heading" . $no_top_space ."'><span>Mer från underkategorier</span></div>";
 							$args = array( 'category__in' => $children, 'posts_per_page' => -1 );
 							if (!empty($sticky)) {
 								$args['post__in'] = $sticky;

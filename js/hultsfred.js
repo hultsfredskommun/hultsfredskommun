@@ -569,8 +569,13 @@ $(document).ready(function(){
 	$(window).scroll(function () {
 		/* load next pages posts dynamically when reaching bottom of page */
 		if( parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2) ) {
-			//$('#dyn-posts-load-posts a').click();
-			dyn_posts_load_posts();
+			if (!$(body).hasClass("home")) {
+				//$('#dyn-posts-load-posts a').click();
+				dyn_posts_load_posts();
+			}
+			else {
+				log("Ingen dynamisk laddning p&aring; f&ouml;rstasidan.");
+			}
 		}
 
 		/* show scroll to top icon */
@@ -658,7 +663,7 @@ $(document).ready(function(){
 	 * Replace the traditional navigation with our own,
 	 * but only if there is at least one page of new posts to load.
 	 */
-	if(settings["pageNum"] <= settings["maxPages"]) {
+	if(settings["pageNum"] <= settings["maxPages"] && !$(body).hasClass("home")) {
 		// Insert the "More Posts" link.
 		$('#content')
 			.append('<div id="dyn-posts-placeholder-'+ settings["pageNum"] +'" class="dyn-posts-placeholder"></div>')

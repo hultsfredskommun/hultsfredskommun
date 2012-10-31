@@ -92,13 +92,6 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 			background-repeat: no-repeat;
 			background-position: top center;
 		}
-		<?php endif; if ($hk_options["footer_image"]) : ?>
-		body {
-			background-image: url('<?php echo $hk_options["footer_image"]; ?>');
-			background-repeat: no-repeat;
-			background-position: bottom center;
-			background-size: 100%;
-		}
 		<?php endif; if ($hk_options["primary_width"]) : ?>
 		#primary {
 			width: <?php echo $hk_options["primary_width"]; ?>;
