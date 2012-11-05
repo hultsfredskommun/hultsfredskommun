@@ -95,6 +95,9 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 		#branding {
 			background-color: transparent;
 		}
+		#main {
+			background-color: white;
+		}
 		<?php endif; if ($hk_options["primary_width"]) : ?>
 		#primary {
 			width: <?php echo $hk_options["primary_width"]; ?>;
