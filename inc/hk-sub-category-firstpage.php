@@ -19,7 +19,9 @@
 	<div id="content" role="main">
 		<ul class="post_tabs_title">
 			<li title="Aktuellt"><a href="#newscontent">Aktuellt</a></li>
+			<?php if ($default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0") : ?>
 			<li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser och handlingar</a></li>
+			<?php endif; ?>
 			<li title="Mest besökta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
 		</ul>
 		<div id="newscontent">
@@ -85,11 +87,11 @@
 		</div>
 
 
+		<?php if ($default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0") : ?>
 		<div id="protocolcontent">
 			<div class="leftcontent">
 			<?php 
 				/* Query all posts with selected startpage category */
-				if ($default_settings["protocol_cat"] != "") {
 					$children =  hk_getChildrenIdArray($default_settings["protocol_cat"]);
 					$children[] =  $default_settings["protocol_cat"];
 					$query = array( 'posts_per_page' => '-1', 
@@ -102,12 +104,7 @@
 					endwhile; endif; 
 					// Reset Query
 					wp_reset_query(); 
-				}
-				else {
-					echo "Du m&aring;ste s&auml;tta egenskapen <i>Protokoll kategori</i> under Utseende -> Inst&auml;llningar.";	
-				}
 			?>
-
 			</div><div class="rightcontent">
 				<div class="entry-title">Visa protokoll</div>
 				<?php 
@@ -127,7 +124,7 @@
 			</div>
 			<div class="clear"></div>
 		</div>	
-
+		<?php endif; ?>
 
 		<div id="mostvisited">
 			<div class="leftcontent">

@@ -69,6 +69,8 @@ function hk_navigation() {
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
+			if ($default_settings["show_tags"] != 0) :
+
 			echo "<a class='tag-title' title='Filtrera med hj&auml;lp av etiketter'>Etiketter</a>";
 			$hk_tag_walker = new hk_Tag_Walker();
 			$args = array(
@@ -86,7 +88,9 @@ function hk_navigation() {
 		
 			echo "<ul class='tags'>"; 
 			wp_list_categories( $args );
-			echo "</ul>"; 
+			echo "</ul>";
+			
+			endif;
 		}
 	}
 	
