@@ -92,6 +92,9 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 			background-repeat: no-repeat;
 			background-position: top center;
 		}
+		#branding {
+			background-color: transparent;
+		}
 		<?php endif; if ($hk_options["primary_width"]) : ?>
 		#primary {
 			width: <?php echo $hk_options["primary_width"]; ?>;
