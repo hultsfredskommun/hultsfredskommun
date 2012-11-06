@@ -6,7 +6,16 @@
 			<div class="contact-wrapper">
 				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>
 				<div class="icon"></div><div id="contact-<?php echo $value->ID; ?>"><a post_id="<?php echo $value->ID; ?>" href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
-				<div class="content"><?php echo get_field('hk_contact_titel',$value->ID); ?></div>
+				
+				<?php $alt_title = get_sub_field('hk_contact_extra',get_the_ID());
+				if (!empty($alt_title)) : ?>
+				<div class="content">
+					<?php echo $alt_title; ?>
+				</div>
+				<?php endif; ?>
+				<div class="content">
+					<?php echo get_field('hk_contact_titel',$value->ID); ?>
+				</div>
 			</div></div>			 
 		<?php endwhile; ?>			 
 	<?php endif; ?>

@@ -292,6 +292,16 @@ if(function_exists("register_field_group"))
 						'multiple' => '0',
 						'order_no' => '0',
 					),
+					1 => 
+					array (
+						'label' => 'Extra titel (frivilligt)',
+						'name' => 'hk_contact_extra',
+						'type' => 'text',
+						'default_value' => '',
+						'formatting' => 'br',
+						'key' => 'field_5048afee75d93',
+						'order_no' => '1',
+					),
 				),
 				'row_min' => '0',
 				'row_limit' => '',

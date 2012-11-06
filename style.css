@@ -1965,6 +1965,9 @@ article:last-child { margin-bottom: 0 }
 .hk_related.widget .attachment {
 	padding: 6px 0;
 }
+.contact-wrapper .content {
+	margin-left: 26px;
+}
 .related-wrapper li a {
 	display: block;
 }
