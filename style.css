@@ -219,6 +219,7 @@ textarea,
 h1
 {
 	font-size: 1.7em;
+	line-height: 1.2em;
 }
 h2
 {
@@ -1533,8 +1534,8 @@ article.single .reviewed  span {
 }
 
 .post .reviewed {
-	margin-top: -5px;
-	height: 15px;
+	margin-top: -7px;
+	height: 5px;
 }
 /* =Content
 ----------------------------------------------- */
