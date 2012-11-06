@@ -630,7 +630,7 @@ $(document).ready(function(){
 	 * nav-sidebar collapsing and expand filters on category and tags
 	 */
 	$(".children").each(function() {
-	 	if ($(this).parent().parent().hasClass("parent") && !($(this).parent().hasClass("current-cat-parent") || $(this).parent().hasClass("current-cat"))) {
+	 	if ($(this).parent().parent().hasClass("parent") && !$(this).parent().hasClass("current-cat") && $(this).parent().find(".current-cat").length == 0) {
 			$(this).prev().append("<span class='more-children'>+</span>");
 			$(this).hide();		
 	 	}

@@ -12,8 +12,7 @@
 				<h1 class="entry-title">
 					<?php echo get_the_title(); ?>
 				</h1>
-				<div class="reviewed"><span class="reviewed-date"><?php echo get_the_reviewed_date(get_the_ID()); ?></span>
-				<span class="reviewed-by">av <?php echo get_the_author(); ?></span></div>
+				<div class="reviewed"><span class="reviewed-date"><?php echo get_the_reviewed_date(get_the_ID()); ?></span></div>
 			
 				<?php
 				$optionaltext = get_field('hk_optional_text');
@@ -62,8 +61,8 @@
 
 					</div>
 
-					<div class="editor">Sidansvarig: <?php comments_popup_link(get_the_author()); ?><?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></div>
-					<div class="permalink">Direktl&auml;nk till artikel: <a href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></div>
+					<div class="editor">Sidansvarig: <?php comments_popup_link(get_the_author(),get_the_author(),get_the_author(),'',get_the_author()); ?><?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></div>
+					<div class="permalink">Direktl&auml;nk: <a href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></div>
 					
 
 					<?php if (false) : //( comments_open() ) : ?>

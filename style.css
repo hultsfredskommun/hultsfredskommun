@@ -251,11 +251,11 @@ h6
 }
 #nav a{
 	font-size: 14px;
-	line-height: 28px;
+	line-height: 20px;
 }
 #nav .children a, #nav .tags a {
 	font-size: 13px;
-	line-height: 26px;
+
 }
 .slideshow article .text-area .text-content a
 {
@@ -1248,7 +1248,7 @@ a:hover {
 	margin: 8px 0 0 0;
 }
 #nav ul.children li {
-	padding: 8px 0 0;
+	padding: 12px 0 0;
 }
 #nav ul.children > li:first-child {
 	padding: 0;

@@ -468,11 +468,11 @@ function get_the_reviewed_date($id) {
 
 	$time = get_post_meta( $id, 'hk_last_reviewed', true );
 	if (isset($time)) {
-		$time = "Granskades den " . date("j F, Y" ,$time);
+		$time = "Granskad " . date("j F, Y" ,$time);
 	}
 	else 
 	{
-		$time = "Inte granskat";
+		$time = "Inte granskad";
 	}
 	return $time;
 }
@@ -497,18 +497,16 @@ function duration($start,$end) {
 	$secs = $seconds%60;  
 
 	$duration='';  
-	if($days>0) $duration .= "$days dagar ";  
-	//if($hours>0) $duration .= "$hours timmar ";  
-	//if($mins>0) $duration .= "$mins minuter ";  
-	//if($secs>0) $duration .= "$secs seconds ";  
-
-	$duration = trim($duration);  
-	if($duration==null) $duration = 'nu';  
-
-	if ($neg)
-		$duration = "<b>för $duration sedan</b>";
-	else
-		$duration = "om $duration";
+	if($days>0) {
+		if ($neg)
+			$duration = "<b>för $days dagar sedan</b>";
+		else
+			$duration = "om $days dagar";
+	}
+	else {
+		$duration = 'nu';
+	}
+	
 	return $duration;  
 }  
 
