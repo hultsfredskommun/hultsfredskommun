@@ -31,6 +31,7 @@ if ( ! isset( $default_settings ) ) {
 								'hidden_cat' => $options["hidden_cat"],
 								'protocol_cat' => $options["protocol_cat"],
 								'num_levels_in_menu' => (!isset($options["num_levels_in_menu"]))?2:$options["num_levels_in_menu"],
+								'show_tags' => (!isset($options["show_tags"]))?0:$options["show_tags"],
 								);
 }
 

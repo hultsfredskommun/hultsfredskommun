@@ -22,13 +22,17 @@
 			/**
 			 * Default order in orderby no set
 			 */
-			$shownPosts = array();
+
 			if ($_REQUEST["orderby"] == "") :
 				$posts_per_page = get_option('posts_per_page');
 				
 				/* Get category id */
 				$cat = get_query_var("cat");
 				$tag = get_query_var("tag");
+				$shownPosts = array();
+				$tag_array = array();
+				if ($tag != "")
+					$tag_array = split(",", $tag);
 
 				if ( $cat != "" || $tag != "") :
 					/* Get all sticky posts from this category */
@@ -40,8 +44,8 @@
 						if ( !empty($cat) ) {
 							$args["category__and"] = $cat;
 						}
-						if ( !empty($tag) ) {
-							$args["tag_slug__in"] = $tag;
+						if ( !empty($tag_array) ) {
+							$args["tag_slug__and"] = $tag_array;
 						}
 						query_posts( $args );
 						if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -61,9 +65,10 @@
 					if ( !empty($cat) ) {
 						$args["category__and"] = $cat;
 					}
-					if ( !empty($tag) ) {
-						$args["tag_slug__in"] = $tag;
+					if ( !empty($tag_array) ) {
+						$args["tag_slug__and"] = $tag_array;
 					}
+					
 					query_posts( $args );
 					if ( have_posts() ) : while ( have_posts() ) : the_post();
 						$shownPosts[] = get_the_ID();
@@ -87,8 +92,8 @@
 							$args = array( 'category__in' => $children, 'posts_per_page' => -1 );
 							if (!empty($sticky)) {
 								$args['post__in'] = $sticky;
-								if ( !empty($tag) ) {
-									$args["tag_slug__in"] = $tag;
+								if ( !empty($tag_array) ) {
+									$args["tag_slug__and"] = $tag_array;
 								}
 								if (!empty($shownPosts)) {
 									$args['post__not_in'] = $shownPosts;
@@ -106,8 +111,8 @@
 							if ( !empty($sticky) || !empty($shownPosts)) {
 								$args['post__not_in'] = array_merge($sticky,$shownPosts);
 							}
-							if ( !empty($tag) ) {
-								$args["tag_slug__in"] = $tag;
+							if ( !empty($tag_array) ) {
+								$args["tag_slug__and"] = $tag_array;
 							}
 							query_posts( $args );
 							if ( have_posts() ) : while ( have_posts() ) : the_post();
