@@ -37,7 +37,7 @@
 					$args['post__not_in'] = $sticky;
 				}
 				if (!empty($tag_array)) {
-					$query['tags__in'] = $tag_array;
+					$query['tag_slug__and'] = $tag_array;
 				}				
 				// add search to query
 				if ($search != "") {
@@ -64,7 +64,7 @@
 			$query['category__in'] = $children;
 		}
 		if (!empty($tag_array)) {
-			$query['tags__in'] = $tag_array;
+			$query['tag_slug__and'] = $tag_array;
 		}
 		
 		// add search to query

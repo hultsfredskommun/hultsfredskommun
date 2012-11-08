@@ -1,14 +1,13 @@
-<?php if ( is_active_sidebar("firstpage-top-content") || is_active_sidebar("firstpage-top-content-right") ) : ?>
+<?php if ( is_active_sidebar("firstpage-top-content") ) : ?>
 	<div id="firstpage-top-content">
-		<div class="leftcontent">
-			<?php dynamic_sidebar('firstpage-top-content'); ?>
-		</div>
-		<div class="rightcontent">
-			<?php dynamic_sidebar('firstpage-top-content-right'); ?>
-		</div>
-		<div class="clear"></div>
+		<?php dynamic_sidebar('firstpage-top-content'); ?>
 	</div><!-- #firstpage-top-sidebar -->
 <?php endif; ?>
+
+
+<div id="firstpage-sidebar">
+	<?php dynamic_sidebar('firstpage-sidebar'); ?>
+</div>
 
 <?php
 	/* get all sub categories to use in queries */
@@ -31,13 +30,16 @@
 				$cat = get_query_var("cat");
 				$query = array( 'posts_per_page' => '-1', 
 								'category__and' => $cat,
-								'tag__and' => $default_settings["news_tag"] );
+								'tag__and' => $default_settings["news_tag"],
+								'suppress_filters' => 'true',
+								'orderby' => 'date',
+								'order' => 'desc' );
 				query_posts( $query );
 				
 				$shownposts = array();
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 					$shownposts[] = get_the_ID(); 
-					get_template_part( 'content' ); 
+					get_template_part( 'content', 'news' ); 
 				endwhile; endif; 
 				// Reset Query
 				wp_reset_query(); 
@@ -63,12 +65,15 @@
 					$query = array( 'posts_per_page' => '10', 
 									'category__in' => $all_categories,
 									'post__not_in' => $shownposts,
-									'tag__and' => $default_settings["news_tag"] );
+									'tag__and' => $default_settings["news_tag"],
+									'suppress_filters' => 'true',
+									'orderby' => 'date',
+									'order' => 'desc'  );
 
 					query_posts( $query );		
 					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<div class="entry-wrapper">
-						<?php the_modified_date("Y-m-d"); ?> <a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+						<?php the_date("","<time>","</time>"); ?><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 					</div>
 					<?php endwhile; endif; 
 					?> 
@@ -95,7 +100,9 @@
 					$children =  hk_getChildrenIdArray($default_settings["protocol_cat"]);
 					$children[] =  $default_settings["protocol_cat"];
 					$query = array( 'posts_per_page' => '-1', 
-									'category__in' => $children );
+									'category__in' => $children,
+									'orderby' => 'date',
+									'order' => 'desc'  );
 					
 					query_posts( $query );
 			
@@ -172,9 +179,6 @@
 	</div><!-- #content -->
 	<?php dynamic_sidebar('firstpage-content'); ?>
 </div><!-- #primary -->
-<div id="firstpage-sidebar">
-	<?php dynamic_sidebar('firstpage-sidebar'); ?>
-</div>
 
 <?php if (is_active_sidebar('firstpage-pre-footer-sidebar')) : ?>
 <div id="firstpage-pre-footer-sidebar">

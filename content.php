@@ -64,7 +64,9 @@ global $default_settings;
 			<?php endif; ?>
 			<!--<div class="readMoreFadeBottom"></div>-->
 		</div><!-- .summary-content -->
-		<?php include("inc/hk-aside-content.php"); ?>
+		<?php 
+			include("inc/hk-aside-content.php"); 
+		?>
 
 		</div>
 	</article><!-- #post-<?php the_ID(); ?> -->

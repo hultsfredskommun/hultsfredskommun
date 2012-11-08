@@ -21,22 +21,9 @@ class HK_slideshow extends WP_Widget {
 		$this->vars['divclass'] = 'slideshow';
 		$this->vars['posts_per_page'] = '-1';
 		$this->vars['thumbnail-size'] = 'featured-image';//'slideshow-image';
-		$this->vars['width'] = '100%';
-		$this->vars['height'] = '250px';
-
 	}
 
  	public function form( $instance ) {
-		if ( isset( $instance[ 'width' ] ) ) {
-			$width = $instance[ 'width' ];
-		} else {
-			$width = $this->vars['width'];
-		}
-		if ( isset( $instance[ 'height' ] ) ) {
-			$height = $instance[ 'height' ];
-		} else {
-			$height = $this->vars['height'];
-		}
 		if ( isset( $instance[ 'thumbnail-size' ] ) ) {
 			$thumbnailsize = $instance[ 'thumbnail-size' ];
 		} else {
@@ -44,14 +31,6 @@ class HK_slideshow extends WP_Widget {
 		}
 
 		?>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php _e( 'Bredd:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" type="text" value="<?php echo esc_attr( $width ); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php _e( 'Höjd:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo esc_attr( $height ); ?>" />
-		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'thumbnail-size' ); ?>"><?php _e( 'Bildformat:' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'thumbnail-size' ); ?>" name="<?php echo $this->get_field_name( 'thumbnail-size' ); ?>" type="text" value="<?php echo esc_attr( $thumbnailsize); ?>" />
@@ -61,8 +40,6 @@ class HK_slideshow extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		$instance['width'] = strip_tags( $new_instance['width'] );
-		$instance['height'] = strip_tags( $new_instance['height'] );
 		$instance['thumbnail-size'] = strip_tags( $new_instance['thumbnail-size'] );
 		return $instance;
 	}
@@ -70,10 +47,6 @@ class HK_slideshow extends WP_Widget {
 	public function widget( $args, $instance ) {
 	    extract( $args );
 
-		if (isset($instance['width']))
-			$this->vars['width'] = $instance['width'];
-		if (isset($instance['height']))
-			$this->vars['height'] = $instance['height'];
 		if (isset($instance['thumbnail-size']))
 			$this->vars['thumbnail-size'] = $instance['thumbnail-size'];
 
@@ -112,7 +85,7 @@ function hk_slideshow_generate_output($vars) {
 		}
 		$meta_query = new WP_Query($args);
 		if ($meta_query->have_posts()) {
-			$retValue .= "<div style='width: ".$vars['width'].";'><div class='slideshow'><img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&h=".($default_settings[$vars["thumbnail-size"]][1])."'/>";
+			$retValue .= "<div><div class='slideshow'><img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&h=".($default_settings[$vars["thumbnail-size"]][1])."'/>";
 			
        		// The Loop
 			$first = true;
