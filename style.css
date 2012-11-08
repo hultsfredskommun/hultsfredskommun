@@ -1001,7 +1001,7 @@ a:hover {
 	clear: both;
 	width: 50%;
     /*opacity: 0.8;*/
-    padding: 20px 0 5px;
+    padding: 0 0 5px;
 
 }
 #branding input#s {
@@ -2547,6 +2547,11 @@ p.comment-form-comment {
 ----------------------------------------------- */
 
 /* LARGE */
+@media (max-height: 750px) {
+	#firstpage-top-content {
+		width: 55.375%;
+	}
+}
 @media (max-width: 1000px) {
 	#firstpage-top-content {
 		width: 55.375%;
