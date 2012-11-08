@@ -311,7 +311,7 @@ function readMoreToggle(el){
 		$(article).find('.summary-content').after(morediv);
 
 		$.ajaxSetup({cache:false});
-		log( hultsfred_object["templateDir"] + " " + hultsfred_object["blogId"]);
+
 		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 		{
 			//****** click-actions START *******
@@ -411,21 +411,6 @@ $(document).ready(function(){
 			ev.preventDefault();
 		});
 		
-		//set click-action on scroll-to-postFooter-link
-		var scroll_link = $(article).find(".scroll-to-postFooter");
-		$(scroll_link).click(function(ev){
-			var posFooter = $(article).find("footer").position().top;
-			var posPost = $(article).position().top;
-			$("html,body").animate({scrollTop: (posPost + posFooter - 50)},"slow");
-			ev.preventDefault();
-		});
-		
-		//set click-action on scroll-to-postTop-link
-		scroll_link = $(article).find(".scroll-to-postTop");
-		$(scroll_link).click(function(ev){
-			$("html,body").animate({scrollTop: $(article).position().top},"slow");
-			ev.preventDefault();
-		});
 		//***** click-actions END ******
 	}
 	
@@ -663,11 +648,9 @@ $(document).ready(function(){
 	 */
 	if(settings["pageNum"] <= settings["maxPages"]) { // && !$(body).hasClass("home")) {
 		// Insert the "More Posts" link.
-		if ($('.navigation').length > 0) {
-			$('#content')
-			.append('<div id="dyn-posts-placeholder-'+ settings["pageNum"] +'" class="dyn-posts-placeholder"></div>')
-			.append('<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>');
-		}
+		$('#content')
+		.append('<div id="dyn-posts-placeholder-'+ settings["pageNum"] +'" class="dyn-posts-placeholder"></div>')
+		.append('<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>');
 		// Remove the traditional navigation.
 		$('.navigation').remove();
 		$("#nav-below").remove();
@@ -685,9 +668,7 @@ $(document).ready(function(){
 				if(settings["pageNumVisible"] < settings["maxPages"]) {
 					$('#dyn-posts-load-posts a').text('Ladda fler sidor');
 				} else {
-					$('#dyn-posts-load-posts a').text('Inga fler sidor att ladda.').click(function() {
-						ev.preventDefault();
-					});
+					$('#dyn-posts-load-posts').remove();
 				}
 				$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).children(":first-child").unwrap();
 			});

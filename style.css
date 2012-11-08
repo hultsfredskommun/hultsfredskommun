@@ -589,7 +589,8 @@ article.sticky {
 	border: 1px solid #E8E8E8;
 }
 .home .content-wrapper .summary-content,
-.home .content-wrapper .more-content {
+.home .content-wrapper .more-content,
+.only-title .content-wrapper .summary-content {
 	border: 0;
 }
 
