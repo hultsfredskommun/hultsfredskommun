@@ -35,7 +35,7 @@
 						<?php // position ?>
 						<?php $contact_position = get_field("hk_contact_position");
 						if (!empty($contact_position) && $contact_position["coordinates"] != "") : ?>
-							<div id="map_canvas">[Karta <span class="coordinates"><?php echo $contact_position["coordinates"]; ?></span> <span class="address"><?php echo $contact_position["address"]; ?></span>]</div>
+							<div class="map_canvas">[Karta <span class="coordinates"><?php echo $contact_position["coordinates"]; ?></span> <span class="address"><?php echo $contact_position["address"]; ?></span>]</div>
 						<?php endif; ?>
 						
 					</div>

@@ -548,6 +548,18 @@ $(document).ready(function(){
 		next:   '.nextslide'
 	});
 
+	/* init google maps on ready */
+	$(".map_canvas").each(function() {
+		var coordinates = $(this).find(".coordinates").html();
+		var address = $(this).find(".address").html();
+		$(this).height("300px").gmap({'center': coordinates, 'zoom': 15, 'callback': function() {
+			var self = this;
+			self.addMarker({'position': this.get('map').getCenter()}).click(function() {
+				self.openInfoWindow({ 'content': address}, this);
+			});
+		}});
+	});
+	
 	/**
 	 * scroll to top actions 
 	 */
@@ -838,9 +850,9 @@ function setContactPopupAction(el) {
 					$(".contact-popup").remove();
 				});
 				/* load google maps */
-				var coordinates = $("#map_canvas").find(".coordinates").html();
-				var address = $("#map_canvas").find(".address").html();
-				$("#map_canvas").height("300px").gmap({'center': coordinates, 'zoom': 15, 'callback': function() {
+				var coordinates = $(this).find(".coordinates").html();
+				var address = $(this).find(".address").html();
+				$(this).find(".map_canvas").height("300px").gmap({'center': coordinates, 'zoom': 15, 'callback': function() {
 					var self = this;
 					self.addMarker({'position': this.get('map').getCenter()}).click(function() {
 						self.openInfoWindow({ 'content': address}, this);
