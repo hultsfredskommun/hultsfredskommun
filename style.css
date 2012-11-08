@@ -70,18 +70,13 @@ footer, header, hgroup, menu, nav, section {
 
 
 
-
-
-
-
-
-
 /* CSS GRID */
 /*
 	1 col: 4.375%
 	2 col: 10.75%
 	3 col: 17.125%
 	4 col: 23.5%
+	7 col: 42.625%
 	9 col: 55.375%
 	12 col: 74.5%;
 	13 col: 80.875%;
@@ -130,7 +125,7 @@ footer, header, hgroup, menu, nav, section {
 
 
 /* WIDTHS */
-#page, #branding, #colophon {
+#page, #branding, #colophon, #firstpage-top-content {
 	width: 100%;
 }
 #menu, #main, #topwrapper, #supplementary {
@@ -143,7 +138,8 @@ footer, header, hgroup, menu, nav, section {
 	width: 17.125%;
 }
 .home #primary {
-	width: 74.5%;
+	_idth: 74.5%;
+	width: 55.375%;
 }
 .home #primary .post .content-wrapper {
 	width: 100%;
@@ -154,8 +150,11 @@ footer, header, hgroup, menu, nav, section {
 .home #primary .post .flow-more-side {
 	display: none;
 }
+.home #contact-area {
+	width: 100%;
+}
 .home #firstpage-sidebar {
-	width: 23.5%;
+	width: 42.625%;
 }
 .home #firstpage-sidebar .hk_kontakter {
 	position: relative;
@@ -182,11 +181,11 @@ footer, header, hgroup, menu, nav, section {
 }
 .ui-tabs .leftcontent
 {
-	width: 74.29%;
+	_idth: 74.29%;
 }
 .ui-tabs .rightcontent
 {
-	width: 23.7%; 
+	_idth: 23.7%; 
 }
 .misc-ctrl {
 	width: 25%;
@@ -377,7 +376,8 @@ body, input, textarea,
 
 
 .contact-popup,
-.side-content  .box {
+.side-content  .box,
+#contact-area {
 	background-color: #F5F8E9;
 }
 	
@@ -776,13 +776,13 @@ body {
 #firstpage-sidebar{
 	float: right;
 }
+#contact-area {
+	margin-bottom: 10px;
+}
 #sidebar-wrapper {
 	position: absolute;
 	right: 0;
 	top: 2.3em;
-}
-#firstpage-sidebar {
-	margin-top: 45px;
 }
 
 /* set border-radius */
@@ -1493,12 +1493,30 @@ a:hover {
 	z-index: 1100;
 	padding: 0.7em;
 }
+.slideshow .nextslide {
+	right: 0;
+	background: url("images/sprite.png") no-repeat scroll 0px -216px transparent;
+}
+.slideshow .prevslide {
+	left: 0;
+	background: url("images/sprite.png") no-repeat scroll 0px -240px transparent;
+}
+.slideshow .nextslide,
+.slideshow .prevslide
+{
+	display: none;
+	width: 24px;
+	height: 24px;
+	top: 50%;
+	position: absolute;
+	cursor: pointer;
+	z-index: 2000;
+}
 
 /* =firstpage-top-content
 ----------------------------------------------- */
 #firstpage-top-content {
 	margin-bottom: 1.2em;
-	width: 100%;
 	float: left;
 }
 
@@ -1525,6 +1543,7 @@ a:hover {
 	display: none;
 }
 .flow-more-side {
+	cursor: pointer;
 	background: url("images/sprite.png") no-repeat scroll -24px -216px transparent;
 	margin-top: 7px;
 	width: 24px;
@@ -1673,12 +1692,12 @@ article.single .reviewed  span {
 }
 .ui-tabs .leftcontent
 {
-	float: left; 
+	_loat: left; 
 	_order-right: 1px solid #E6E6E6;
 }
 .ui-tabs .rightcontent
 {
-	float: right;
+	_loat: right;
 }
 .ui-tabs ul.post_tabs_title
 {
@@ -1836,6 +1855,7 @@ article:last-child { margin-bottom: 0 }
 .more-content .img-wrapper {
 	width: 100%;
 }
+#content .slideshow,
 #content .single .img-wrapper,
 #content .full .img-wrapper {
 	padding-bottom: 12px;
@@ -2020,8 +2040,12 @@ article:last-child { margin-bottom: 0 }
 	top: 20px;
 	z-index: 200;
 }
-.contact-popup .img-wrapper {
-	padding-right: 0.8em;
+#contact-area .img-wrapper,
+.contact-popup .img-wrapper,
+#contact-area .img-wrapper .slideshow,
+.contact-popup .img-wrapper .slideshow {
+	margin-right: 10px;
+	width: 150px;
 }
 .contact-popup .close-contact{
 	position: absolute;
@@ -2061,6 +2085,9 @@ article:last-child { margin-bottom: 0 }
 }
 .related_file .icon {
 	background-position: 0px -134px;
+}
+.related_file img {
+	width: 75px;
 }
 .contact-wrapper .icon {
 	background-position: 0px -59px;
@@ -2497,10 +2524,34 @@ p.comment-form-comment {
  *** END STYLE FROM STANDARD TWENTYELEVEN ***
  ********************************************/
 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  /* =Responsive Structure
 ----------------------------------------------- */
 
-@media screen and (max-width: 1000px) {
+/* LARGE */
+@media (max-width: 1000px) {
+	#firstpage-top-content {
+		width: 55.375%;
+	}
+
 	#menu ul li a { font-size: 14px; }	
 	
 
@@ -2516,6 +2567,10 @@ p.comment-form-comment {
 	}
 	#menu ul li:last-child { margin-right: 0; }
 }
+
+
+/* SMALL */
+
 @media (max-width: 800px) {
 	/* Simplify the basic layout */
 	#main #content {
@@ -2567,9 +2622,8 @@ p.comment-form-comment {
 	}
 
 }
-@media (max-width: 768px) {
-	
-}
+
+
 @media (max-width: 650px) {
 	#menu ul li {
 		font-size: 14px;
@@ -2735,8 +2789,24 @@ p.comment-form-comment {
 }
 
 
-/* =Print
------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media print {
 	body {
@@ -2785,7 +2855,7 @@ p.comment-form-comment {
 	#primary {
 		float: left;
 		margin: 0;
-		width: 100%;
+	width: 100%;
 	}
 	#content {
 		margin: 0;

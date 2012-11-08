@@ -6,6 +6,9 @@
 
 
 <div id="firstpage-sidebar">
+	<div id="contact-area">
+		<?php hk_contact_firstpage(); ?>
+	</div>
 	<?php dynamic_sidebar('firstpage-sidebar'); ?>
 </div>
 
@@ -14,7 +17,9 @@
 	$all_categories = hk_getChildrenIdArray($cat);
 	$all_categories[] = $cat;
 ?>
+
 <div id="primary">
+
 	<div id="content" role="main">
 		<ul class="post_tabs_title">
 			<li title="Aktuellt"><a href="#newscontent">Aktuellt</a></li>
@@ -60,7 +65,7 @@
 				/* Query all posts with news category */
 				if ($default_settings["news_tag"] != "") { ?>
 					<div id='news'>
-						<span class='entry-title'>Nyheter</span>
+						<span class='entry-title'>Fler nyheter</span>
 					<?php
 					$query = array( 'posts_per_page' => '10', 
 									'category__in' => $all_categories,
@@ -73,7 +78,7 @@
 					query_posts( $query );		
 					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<div class="entry-wrapper">
-						<?php the_date("","<time>","</time>"); ?><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+						<?php the_date("","<time>","</time>"); ?><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
 					</div>
 					<?php endwhile; endif; 
 					?> 
@@ -166,7 +171,7 @@
 					<div class="entry-title">Fler v&auml;lbes&ouml;kta</div>
 					<?php while ( have_posts() ) : the_post(); ?>
 					<div class="entry-wrapper">
-						<a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+						<a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
 					</div>
 				<?php
 				endwhile; endif; 

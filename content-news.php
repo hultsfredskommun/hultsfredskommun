@@ -26,5 +26,6 @@
 				</div><!-- .entry-wrapper -->
 				
 			</div><!-- .summary-content -->
+
 		</div><!-- .content-wrapper -->
 	</article><!-- #post-<?php the_ID(); ?> -->
