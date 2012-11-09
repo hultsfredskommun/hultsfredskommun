@@ -200,7 +200,7 @@ if (typeof $.fn.googlemap != 'function') {
 		$(this).each(function() {
 			var coordinates = $(this).find(".coordinates").html();
 			var address = $(this).find(".address").html();
-			$(this).height("300px").gmap({'center': coordinates, 'zoom': 15, 'callback': function() {
+			$(this).height("300px").gmap({scrollwheel: false, center: coordinates, zoom: 15, callback: function() {
 				var self = this;
 				self.addMarker({'position': this.get('map').getCenter()}).click(function() {
 					self.openInfoWindow({ 'content': address}, this);
