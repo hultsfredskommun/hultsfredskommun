@@ -249,6 +249,15 @@ add_action('wp_head', 'setup_javascript_settings');
 
 
 
+/**
+ * Remove the gallery inline css
+ */
+add_filter('gallery_style', 
+	create_function(
+		'$css', 
+		'return preg_replace("#<style type=\'text/css\'>(.*?)</style>#s", "", $css);'
+		)
+	);
 
 /**
  * Sets the post excerpt length to 40 words.

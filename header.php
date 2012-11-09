@@ -13,7 +13,7 @@ global $default_settings;
 if (is_single() && in_category($default_settings["hidden_cat"])) {
 	header("HTTP/1.0 404 Not Found");
 	//TODO print 404 error - include("404.php");?
-	die();
+	die("Inte synlig.");
 }
 
 // redirect to first menu item in 'primary'-menu 

@@ -1447,6 +1447,33 @@ a:hover {
 #menu-quickmenu li:hover ul li a:hover { /* Here we define the most explicit hover states--what happens when you hover each individual link. */
 
 }
+
+/* =gallery
+----------------------------------------------- */
+.gallery {
+	margin: auto;
+}
+.gallery .gallery-item {
+	float: left;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	width: 33%;
+}
+.gallery .gallery-icon {
+	margin: 10px;
+}
+.gallery img {
+	border: 2px solid #cfcfcf;
+	width: 100%;
+}
+.gallery .gallery-caption {
+	margin-left: 0;
+}
+.gallery br {
+	display: none;
+}
+
 /* =slideshow
 ----------------------------------------------- */
 .slideshow {
