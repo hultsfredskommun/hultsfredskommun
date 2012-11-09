@@ -120,6 +120,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 </head>
 
 <body <?php body_class((is_sub_category_firstpage()) ? "home":""); ?>>
+<div id="responsive-info"></div>
 <div id='cssgridbutton'><div class="onoff">grid av/p&aring;</div><div class="zindex">&ouml;verst/underst</div></div>
 <div id="cssgrid"><div class="wrapper">
 	<div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div>

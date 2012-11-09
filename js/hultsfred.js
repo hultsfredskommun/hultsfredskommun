@@ -193,6 +193,76 @@ function pushHistory(title, url){
 }
 
 /**
+ * Initialize google map function 
+ */
+if (typeof $.fn.googlemap != 'function') {
+	$.fn.googlemap = function() {
+		$(this).each(function() {
+			var coordinates = $(this).find(".coordinates").html();
+			var address = $(this).find(".address").html();
+			$(this).height("300px").gmap({'center': coordinates, 'zoom': 15, 'callback': function() {
+				var self = this;
+				self.addMarker({'position': this.get('map').getCenter()}).click(function() {
+					self.openInfoWindow({ 'content': address}, this);
+				});
+			}});
+		});
+	}
+} else {
+	alert("ERROR: The function $.fn.googlemap already exists");
+}	
+/**
+ * Initialize slideshow function 
+ */
+if (typeof $.fn.slideshow != 'function') {
+	$.fn.slideshow = function() {
+		if ($(this).find('.slideshow_bg').length >= 1) {
+			rand = Math.floor((Math.random()*1000)+1);
+			$(this).find(".prevslide").addClass("prev"+rand);
+			$(this).find(".nextslide").addClass("next"+rand);
+
+			$(this).find('.slideshow_bg').show();
+			args = {
+				fx: 'fade',
+				slideExpr: '.slide',					
+				timeout: 5000, 
+				slideResize: true,
+				containerResize: false,
+				width: '100%',
+				fit: 1,
+				pause: 0,
+				prev:   '.prev' + rand, 
+				next:   '.next' + rand
+			};
+			if ($(this).find('.slideshow .slide').length > 1) {
+				args['pager'] =  '.pager' + rand;
+					// callback fn that creates a thumbnail to use as pager anchor 
+				args['pagerAnchorBuilder'] = function(idx, slide) {
+					var src = slide.src;
+					if (src == undefined)
+						src = $(slide).find("img").attr("src");
+					return '<li><a href="#"><img src="' + src + '" width="50" height="50" /></a></li>'; 
+				};
+				$(this).find('.slideshow').after('<ul class="pager pager'+rand+'">');
+			}
+			$(this).find('.slideshow').cycle( args );
+			
+			// show slide navigation on hover
+			//$(this).find(".nextslide, .prevslide, .pager").fadeIn("fast");
+			$(this).hover(function() {
+				$(this).find(".nextslide, .prevslide, .pager").fadeIn("fast");
+				return false;
+			},function() {
+				$(this).find(".nextslide, .prevslide, .pager").fadeOut("fast");
+				return false;
+			});
+		}
+	}
+}
+else {
+	alert("ERROR: The function $.fn.slideshow already exists");
+}
+/**
  * Initialize function read-more toggle-button 
  */
 function readMoreToggle(el){
@@ -259,29 +329,7 @@ function readMoreToggle(el){
 					$("html,body").animate({scrollTop: $(article).position().top}, 300);
 
 					// articles slideshow
-					$(this).find('.slideshow_bg').show();
-					$(this).find('.slideshow').cycle({
-						fx: 'fade',
-						slideExpr: '.slide',					
-						timeout: 5000, 
-						slideResize: true,
-						containerResize: false,
-						width: '100%',
-						fit: 1,
-						pause: 0,
-						prev:   '.prevslide', 
-						next:   '.nextslide'
-					});
-					// show slide navigation on hover
-					$(this).find(".nextslide, .prevslide").fadeIn("fast");
-					$(this).find(".img-wrapper").hover(function() {
-						$(this).find(".nextslide, .prevslide").fadeIn("fast");
-						return false;
-					},function() {
-						$(this).find(".nextslide, .prevslide").fadeOut("fast");
-						return false;
-					});
-
+					$(this).slideshow();
 				});
 			});
 			
@@ -506,9 +554,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	/**
-	 * add action to read-more toggle
-	 */
+	/* add action to read-more toggle */
 	$("#primary").find('article').each(function(){
 		setArticleActions($(this));
 	});
@@ -516,34 +562,13 @@ $(document).ready(function(){
 		setContactPopupAction($(this));
 	});
 	
-	/**
-	 * init slideshows
-	 */
-	$('.slideshow_bg').show();
-	$('.slideshow').cycle({
-		fx: 'fade',
-		slideExpr: '.slide',					
-		timeout: 5000, 
-		slideResize: true,
-		containerResize: false,
-		width: '100%',
-		fit: 1,
-		pause: 0,
-		prev:   '.prevslide', 
-		next:   '.nextslide'
+	/* init slideshows */
+	$('.img-wrapper').each(function() {
+		$(this).slideshow();
 	});
-
+	
 	/* init google maps on ready */
-	$(".map_canvas").each(function() {
-		var coordinates = $(this).find(".coordinates").html();
-		var address = $(this).find(".address").html();
-		$(this).height("300px").gmap({'center': coordinates, 'zoom': 15, 'callback': function() {
-			var self = this;
-			self.addMarker({'position': this.get('map').getCenter()}).click(function() {
-				self.openInfoWindow({ 'content': address}, this);
-			});
-		}});
-	});
+	$(".map_canvas").googlemap();
 	
 	/**
 	 * scroll to top actions 
@@ -831,28 +856,10 @@ function setContactPopupAction(el) {
 					$(".contact-popup").remove();
 				});
 				/* load google maps */
-				var coordinates = $(this).find(".coordinates").html();
-				var address = $(this).find(".address").html();
-				$(this).find(".map_canvas").height("300px").gmap({'center': coordinates, 'zoom': 15, 'callback': function() {
-					var self = this;
-					self.addMarker({'position': this.get('map').getCenter()}).click(function() {
-						self.openInfoWindow({ 'content': address}, this);
-					});
-				}});
-				// contact slideshow
-				$(this).find('.slideshow_bg').show();
-				$(this).find('.slideshow').cycle({
-					fx: 'fade',
-					slideExpr: '.slide',					
-					timeout: 5000, 
-					slideResize: true,
-					containerResize: false,
-					fit: 1,
-					pause: 0,
-					prev:   '.prevslide', 
-					next:   '.nextslide'
-				});
-
+				$(this).find(".map_canvas").googlemap();
+				
+				/* init contact slideshow */
+				$(this).slideshow();
 			});
 		}
 		else {

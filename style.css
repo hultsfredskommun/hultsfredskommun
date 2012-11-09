@@ -441,7 +441,8 @@ hr,
 #menu ul li.current-category-ancestor,
 #menu ul li.current-post-ancestor:first-child,
 #menu .sub-menu,
-.ui-tabs li.ui-tabs-selected 
+.ui-tabs li.ui-tabs-selected,
+.pager li.activeSlide a
 {
 	background-color: #06435A; /* deep blue */
 }
@@ -1503,8 +1504,7 @@ a:hover {
 	background: url("images/sprite.png") no-repeat scroll 0px -240px transparent;
 }
 .slideshow .nextslide,
-.slideshow .prevslide
-{
+.slideshow .prevslide {
 	display: none;
 	width: 24px;
 	height: 24px;
@@ -1512,6 +1512,38 @@ a:hover {
 	position: absolute;
 	cursor: pointer;
 	z-index: 2000;
+}
+.img-wrapper {
+	position: relative;
+}
+.pager { 
+	display: none;
+	width: 100%; 
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	z-index: 100;
+	padding: 0;
+	margin: 0;
+}
+.pager li { 
+	width: 50px; 
+	float: left; 
+	margin: 8px; 
+	list-style: none 
+}
+.pager a { 
+	width: 100%; 
+	padding: 3px; 
+	display: block; 
+	border: 1px solid #ccc; 
+}
+.pager a:focus { 
+	outline: none; 
+}
+.pager img { 
+	border: none; 
+	display: block 
 }
 
 /* =firstpage-top-content
@@ -2546,38 +2578,49 @@ p.comment-form-comment {
  
  /* =Responsive Structure
 ----------------------------------------------- */
+#responsive-info
+{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	background: black;
+	color: white;
+	font-weight: bold;
+	z-index: 10000;
+	border-top-left-radius: 5px;
+	padding: 5px;
+}
+/* LOW */
+@media (max-height: 750px) {
+	#responsive-info:after {
+		content: "L\C5G";
+	}
+	#firstpage-top-content {
+		width: 55.375%;
+	}
+}
+
 
 /* LARGE */
-@media (max-height: 750px) {
-	#firstpage-top-content {
-		width: 55.375%;
-	}
-}
 @media (max-width: 1000px) {
+	#responsive-info:after {
+		content: "STOR";
+	}
 	#firstpage-top-content {
 		width: 55.375%;
 	}
-
 	#menu ul li a { font-size: 14px; }	
 	
-
-	#page { padding: 2%; width: 96%; }
-
-	/* menu style */
-	#menu { background-color: transparent; }
-	#menu ul li {
-		border: none;
-		border-radius: 5px;
-		margin-right: 5px;
-		margin-bottom: 5px;
-	}
-	#menu ul li:last-child { margin-right: 0; }
 }
 
 
-/* SMALL */
+/* MEDIUM */
 
 @media (max-width: 800px) {
+	#responsive-info:after {
+		content: "MELLAN";
+	}
+
 	/* Simplify the basic layout */
 	#main #content {
 		margin: 0;
@@ -2629,8 +2672,13 @@ p.comment-form-comment {
 
 }
 
+/* SMALL */
 
 @media (max-width: 650px) {
+	#responsive-info:after {
+		content: "LITEN";
+	}
+
 	#menu ul li {
 		font-size: 14px;
 	}
@@ -2759,7 +2807,14 @@ p.comment-form-comment {
 	}
 
 }
+
+
+/* MOBIL */
+
 @media (max-device-width: 480px) {
+	#responsive-info:after {
+		content: "MOBIL";
+	}
 	body {
 		padding: 0;
 	}
@@ -2778,6 +2833,9 @@ p.comment-form-comment {
 
 /* just for testing */
 @media (max-width: 480px) {
+	#responsive-info:after {
+		content: "MOBILTEST";
+	}
 	body {
 		padding: 0;
 	}

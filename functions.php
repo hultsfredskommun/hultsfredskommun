@@ -165,8 +165,7 @@ if (!is_admin()) {
 		true
 	);
 	wp_enqueue_script(
-		'cycle_lite_js',
-		//get_stylesheet_directory_uri() . '/js/jquery.cycle.lite.js',
+		'cycle_all_js',
 		get_stylesheet_directory_uri() . '/js/jquery.cycle.all.js',
 		array('jquery'),
 		'1.0',
