@@ -1549,7 +1549,7 @@ a:hover {
 	top: 0px;
 	left: 0px;
 	position: absolute;
-	z-index: 100;
+	z-index: 98;
 	padding: 0;
 	margin: 0;
 }

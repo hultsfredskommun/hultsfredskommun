@@ -217,45 +217,58 @@ if (typeof $.fn.googlemap != 'function') {
 if (typeof $.fn.slideshow != 'function') {
 	$.fn.slideshow = function() {
 		if ($(this).find('.slideshow_bg').length >= 1) {
-			rand = Math.floor((Math.random()*1000)+1);
-			$(this).find(".prevslide").addClass("prev"+rand);
-			$(this).find(".nextslide").addClass("next"+rand);
+			
+			/* set up slideshow first time */
+			if (!$(this).hasClass("initialized")) {
+				rand = Math.floor((Math.random()*1000)+1);
+				$(this).find(".prevslide").addClass("prev"+rand);
+				$(this).find(".nextslide").addClass("next"+rand);
+				$(this).find('.slideshow').after('<ul class="pager pager'+rand+'">');
+				// show slide navigation on hover
+				$(this).hover(function() {
+				$(this).find(".nextslide, .prevslide, .pager").fadeIn("fast");
+					return false;
+				},function() {
+					$(this).find(".nextslide, .prevslide, .pager").fadeOut("fast");
+					return false;
+				});
 
-			$(this).find('.slideshow_bg').show();
-			args = {
-				fx: 'fade',
-				slideExpr: '.slide',					
-				timeout: 5000, 
-				slideResize: true,
-				containerResize: false,
-				width: '100%',
-				fit: 1,
-				pause: 0,
-				prev:   '.prev' + rand, 
-				next:   '.next' + rand
-			};
-			if ($(this).find('.slideshow .slide').length > 1) {
+				$(this).find('.slideshow_bg').show();
+				args = {
+					fx: 'fade',
+					slideExpr: '.slide',					
+					timeout: 5000, 
+					slideResize: true,
+					containerResize: false,
+					width: '100%',
+					fit: 1,
+					pause: 0,
+					prev:   '.prev' + rand, 
+					next:   '.next' + rand
+				};
+
 				args['pager'] =  '.pager' + rand;
 					// callback fn that creates a thumbnail to use as pager anchor 
+					
 				args['pagerAnchorBuilder'] = function(idx, slide) {
 					var src = slide.src;
 					if (src == undefined)
 						src = $(slide).find("img").attr("src");
 					return '<li><a href="#"><img src="' + src + '" width="50" height="50" /></a></li>'; 
 				};
-				$(this).find('.slideshow').after('<ul class="pager pager'+rand+'">');
+				
+				$(this).find('.slideshow').cycle( args );
+
+				$(this).addClass("initialized");
 			}
-			$(this).find('.slideshow').cycle( args );
+			else {
+				/* just resume if already initialized */
+				$(this).find('.slideshow').cycle( 'resume' );
+			}
+				
+				
+				
 			
-			// show slide navigation on hover
-			//$(this).find(".nextslide, .prevslide, .pager").fadeIn("fast");
-			$(this).hover(function() {
-				$(this).find(".nextslide, .prevslide, .pager").fadeIn("fast");
-				return false;
-			},function() {
-				$(this).find(".nextslide, .prevslide, .pager").fadeOut("fast");
-				return false;
-			});
 		}
 	}
 }
@@ -294,7 +307,7 @@ function readMoreToggle(el){
 					
 				});
 
-				$(this).find('.slideshow').cycle('stop');
+				$(this).find('.slideshow').cycle('pause');
 			});
 			
 			// reset webbrowser history
@@ -863,7 +876,7 @@ function setContactPopupAction(el) {
 			});
 		}
 		else {
-			$(this).find('.slideshow').cycle('stop')
+			$(this).find('.slideshow').cycle('pause')
 			$(".contact-popup").remove();
 		}
 		return false;
