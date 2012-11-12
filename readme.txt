@@ -15,13 +15,15 @@ Use WP-PostViews by Lester 'GaMerZ' Chan to enable most viewed sort order in the
 Use Tag Select Meta Box by Jacob Buck to get a nice tag handling.
 Advanced Custom Fields - Location Field add-on 1.0 is used as a Location field on the contact post type.
 Intuitive Category Checklist by Dave Bergschneider to get collapsible catogories in edit.
-MCE Table Buttons 
+MCE Table Buttons to add table buttons to editor.
+wpDirAuth by Paul Gilzow to get AD-intagrated login.
 
 TEST: Easy Image Crop
 TEST: WP2Cloud for images in Amazon cloud
 
 === Handy tools ===
-Use Simple Image Size by Rahe to handle thumbnail regeneration when needed.
+Simple Image Size by Rahe to handle thumbnail regeneration when needed.
 WP Smush.it by Dialect to get smaller image sizes.
-Use EU Cookie Law to get a popup question to accept cookies.
-
+EU Cookie Law to get a popup question to accept cookies.
+Enable Media Replace by mungobbq to get a replace this file in Media Library.
+Force User Login to hide site from public view before release.

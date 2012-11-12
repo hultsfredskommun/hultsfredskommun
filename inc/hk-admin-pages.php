@@ -552,6 +552,8 @@ add_filter('media_upload_tabs', 'my_plugin_image_tabs', 10, 1);
 
 /* 
  * Extra filter dropdown in admin
+ * more info here about adding adminpostfilter: 
+ * http://wordpress.stackexchange.com/questions/16637/how-to-filter-post-listing-in-wp-dashboard-posts-listing-using-a-custom-field 
  */
 
 add_filter( 'parse_query', 'hk_admin_posts_filter' );
@@ -590,4 +592,59 @@ function hk_admin_posts_filter_restrict_manage_posts()
 </select>
 <?php
 }
+
+
+/*
+ * POINTER HELPERS
+ */
+
+add_action( 'admin_enqueue_scripts', 'hk_admin_enqueue_scripts' );
+$seenit_id = 'hkseenit1';
+function hk_admin_enqueue_scripts() {
+	global $seenit_id;
+    // find out which pointer IDs this user has already seen
+    $seen_it = explode( ',', (string) get_user_meta( get_current_user_id(), 'dismissed_wp_pointers', true ) );
+    // at first assume we don't want to show pointers
+    $do_add_script = false;
+	
+	// Handle our first pointer announcing the plugin's new settings screen.
+	// check for dismissal of pksimplenote settings menu pointer 'hkseenit'
+	if ( ! in_array( $seenit_id, $seen_it ) ) {
+	   // flip the flag enabling pointer scripts and styles to be added later
+	   $do_add_script = true;
+	} // end if
+
+	// if not seen, then show
+	if ( $do_add_script ) {
+		wp_enqueue_style( 'wp-pointer' );
+		wp_enqueue_script( 'wp-pointer' );
+		add_action( 'admin_print_footer_scripts', 'my_admin_print_footer_scripts' );
+	}
+}
+
+function my_admin_print_footer_scripts() {
+	global $seenit_id;
+    $pointer_content = '<h3>Filtrera på författare</h3>';
+    $pointer_content .= '<p>Du kan nu filtrera fram dina inlägg genom att välja dig själv som författare och klicka på knappen filtrera.</p>';
+?>
+   <script type="text/javascript">
+   //<![CDATA[
+   jQuery(document).ready( function($) {
+    $('.tablenav .actions:nth-child(2) select:nth-child(3)').pointer({
+        content: '<?php echo $pointer_content; ?>',
+        position: 'top',
+        close: function() {
+			$.post( ajaxurl, {
+				pointer: '<?php echo $seenit_id; ?>',
+				action: 'dismiss-wp-pointer'
+			});        }
+		}).pointer('open');
+	});
+   //]]>
+   </script>
+
+<?php
+
+}
+
 ?>

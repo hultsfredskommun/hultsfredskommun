@@ -343,6 +343,9 @@ function readMoreToggle(el){
 
 					// articles slideshow
 					$(this).slideshow();
+
+					// articles maps
+					$(this).find(".map_canvas").googlemap();
 				});
 			});
 			

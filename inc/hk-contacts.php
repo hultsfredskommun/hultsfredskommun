@@ -202,6 +202,58 @@ function hk_contacts_generate_cache() {
 
 }
 
+
+// [kontakt id="kontakt_id"]
+// TODO add button mce to add this shortcode. Ex. http://wordpress.org/extend/plugins/post-snippets/
+function hk_contact_shortcode_func( $atts ) {
+	extract( shortcode_atts( array(
+		'id' => '-1',
+	), $atts ) );
+	if ($id > 0) {
+		return hk_get_contact_by_id($id);
+	}
+	return "Hittade ingen kontakt med id $id.";
+}
+add_shortcode( 'kontakt', 'hk_contact_shortcode_func' );
+
+
+
+
+// outputs the content of first page contact
+function hk_get_contact_by_id($contact_id) {
+
+	
+	// query arguments
+	$args = array(
+		'posts_per_page' => -1,
+		'paged' => 1,
+		'more' => $more = 0,
+		'post__in' => array($contact_id),
+		'post_type' => 'hk_kontakter',
+		'order' => 'ASC', 
+		'suppress_filters' => 1
+	);
+
+	// search in all posts (ignore filters)
+	$the_query = new WP_Query( $args );
+	$retValue = "";
+	if ($the_query->have_posts())
+	{ 
+
+		// The Loop
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+			$retValue .= "<div class='contact-area'>";
+			$retValue .= hk_get_the_contact();
+			$retValue .= "</div>";
+		endwhile;
+		// Reset Post Data
+		wp_reset_postdata();
+	}
+	return $retValue;
+
+}
+
+
 // outputs the content of first page contact
 function hk_contact_firstpage() {
 
@@ -264,6 +316,55 @@ function hk_contact_firstpage() {
 	$retValue .= "</div></aside>";
 	//echo $retValue;
 
+}
+function hk_the_contact() {
+	echo hk_get_the_contact();
+}
+function hk_get_the_contact() {
+	$retValue = "<div class='entry-wrapper'>";
+		$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false);
+		$retValue .= "<h1 class='entry-title'>" . get_the_title() . "</h1>";
+		$retValue .= "<div class='entry-content'>";
+		
+			$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) ."'>";
+				$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
+				
+				// workplace
+				if( get_field('hk_contact_workplaces') ): while( has_sub_field('hk_contact_workplaces') ):
+					$retValue .= "<p>" . get_sub_field('hk_contact_workplace') . "</p>";
+				endwhile; endif;
+				
+				// phone
+				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
+					$retValue .= "<p>";
+					$retValue .= (get_row_layout() == "hk_contact_fax")?"fax ":"";
+					$retValue .= get_sub_field('number') . "</p>";
+				endwhile; endif;
+				
+				// email
+				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
+					$retValue .= "<p><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></p>";
+				endwhile; endif;
+				
+				// description
+				$retValue .= "<p>" . get_field("hk_contact_description") . "</p>";
+				
+				// address
+				$retValue .= "<p>" . get_field("hk_contact_address") . "</p>";
+				
+				// visit hours
+				$retValue .= "<p>" . get_field("hk_contact_visit_hours") . "</p>";
+				
+				// position
+				$contact_position = get_field("hk_contact_position");
+				if (!empty($contact_position) && $contact_position["coordinates"] != "") :
+					$retValue .= "<div class='map_canvas'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div>";
+				endif;
+				
+			$retValue .= "</div>";
+		$retValue .= "</div>";
+	$retValue .= "</div>";
+	return $retValue;
 }
 
 // outputs the content of the contact side tab

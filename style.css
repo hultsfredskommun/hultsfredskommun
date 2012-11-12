@@ -150,7 +150,7 @@ footer, header, hgroup, menu, nav, section {
 .home #primary .post .flow-more-side {
 	display: none;
 }
-.home #contact-area {
+.home .contact-area {
 	width: 100%;
 }
 .home #firstpage-sidebar {
@@ -377,7 +377,7 @@ body, input, textarea,
 
 .contact-popup,
 .side-content  .box,
-#contact-area {
+.contact-area {
 	background-color: #F5F8E9;
 }
 	
@@ -778,7 +778,7 @@ body {
 #firstpage-sidebar{
 	float: right;
 }
-#contact-area {
+.contact-area {
 	margin-bottom: 10px;
 }
 #sidebar-wrapper {
@@ -1911,8 +1911,7 @@ article:last-child { margin-bottom: 0 }
 	padding: 0;
 	position: relative;
 }
-#content .img-wrapper,
-.more-content .img-wrapper {
+.img-wrapper {
 	width: 100%;
 }
 #content .slideshow,
@@ -2100,9 +2099,9 @@ article:last-child { margin-bottom: 0 }
 	top: 20px;
 	z-index: 200;
 }
-#contact-area .img-wrapper,
+.contact-area .img-wrapper,
 .contact-popup .img-wrapper,
-#contact-area .img-wrapper .slideshow,
+.contact-area .img-wrapper .slideshow,
 .contact-popup .img-wrapper .slideshow {
 	margin-right: 10px;
 	width: 150px;

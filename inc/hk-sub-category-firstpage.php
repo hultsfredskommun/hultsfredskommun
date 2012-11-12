@@ -6,7 +6,7 @@
 
 
 <div id="firstpage-sidebar">
-	<div id="contact-area">
+	<div class="contact-area">
 		<?php hk_contact_firstpage(); ?>
 	</div>
 	<?php dynamic_sidebar('firstpage-sidebar'); ?>
