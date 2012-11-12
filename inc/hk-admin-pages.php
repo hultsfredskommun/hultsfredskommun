@@ -599,26 +599,33 @@ function hk_admin_posts_filter_restrict_manage_posts()
  */
 
 add_action( 'admin_enqueue_scripts', 'hk_admin_enqueue_scripts' );
-$seenit_id = 'hkseenit1';
+$seenit_id = 'hkseenit1'; // filter by writer
+$seenit_id2 = 'hkseenit2'; // replace media
 function hk_admin_enqueue_scripts() {
-	global $seenit_id;
+	global $seenit_id, $seenit_id2;
     // find out which pointer IDs this user has already seen
     $seen_it = explode( ',', (string) get_user_meta( get_current_user_id(), 'dismissed_wp_pointers', true ) );
     // at first assume we don't want to show pointers
     $do_add_script = false;
+	$do_add_script2 = false;
 	
 	// Handle our first pointer announcing the plugin's new settings screen.
 	// check for dismissal of pksimplenote settings menu pointer 'hkseenit'
 	if ( ! in_array( $seenit_id, $seen_it ) ) {
-	   // flip the flag enabling pointer scripts and styles to be added later
 	   $do_add_script = true;
+	} // end if
+	if ( ! in_array( $seenit_id2, $seen_it ) ) {
+	   $do_add_script2 = true;
 	} // end if
 
 	// if not seen, then show
-	if ( $do_add_script ) {
+	if ( $do_add_script || $do_add_script2 ) {
 		wp_enqueue_style( 'wp-pointer' );
 		wp_enqueue_script( 'wp-pointer' );
-		add_action( 'admin_print_footer_scripts', 'my_admin_print_footer_scripts' );
+		if ($do_add_script)
+			add_action( 'admin_print_footer_scripts', 'my_admin_print_footer_scripts' );
+		if ($do_add_script2)
+			add_action( 'admin_print_footer_scripts', 'my_admin_print_footer_scripts2' );
 	}
 }
 
@@ -639,7 +646,32 @@ function my_admin_print_footer_scripts() {
 				action: 'dismiss-wp-pointer'
 			});        }
 		}).pointer('open');
+	});	
+   //]]>
+   </script>
+
+<?php
+
+}
+function my_admin_print_footer_scripts2() {
+	global $seenit_id2;
+    $pointer_content = '<h3>Ersätt bild eller dokument</h3>';
+    $pointer_content .= '<p>Nu går det ersätta en befintlig fil utan att bryta alla länkar. Använd knappen <i>Ladda upp en ny fil</i> och välj om du vill ersätta med en ny fil och behålla namnet, eller om du vill byta både filnamn och fil helt och hållet.</p>';
+?>
+   <script type="text/javascript">
+   //<![CDATA[
+   jQuery(document).ready( function($) {
+    $('.enable-media-replace .button-secondary').pointer({
+        content: '<?php echo $pointer_content; ?>',
+        position: 'top',
+        close: function() {
+			$.post( ajaxurl, {
+				pointer: '<?php echo $seenit_id2; ?>',
+				action: 'dismiss-wp-pointer'
+			});        }
+		}).pointer('open');
 	});
+	
    //]]>
    </script>
 
