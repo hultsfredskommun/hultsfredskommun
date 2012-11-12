@@ -548,4 +548,46 @@ function my_plugin_image_tabs($_default_tabs) {
 }
 add_filter('media_upload_tabs', 'my_plugin_image_tabs', 10, 1);
 
+
+
+/* 
+ * Extra filter dropdown in admin
+ */
+
+add_filter( 'parse_query', 'hk_admin_posts_filter' );
+add_action( 'restrict_manage_posts', 'hk_admin_posts_filter_restrict_manage_posts' );
+
+function hk_admin_posts_filter( $query )
+{
+    global $pagenow;
+    if ( is_admin() && $pagenow=='edit.php' && isset($_REQUEST['author']) && $_REQUEST['author'] != '') {
+        $query->query_vars['author'] = $_REQUEST['author'];
+	}
+}
+
+function hk_admin_posts_filter_restrict_manage_posts()
+{
+    global $wpdb;
+    $sql = 'SELECT DISTINCT ID, user_nicename FROM '.$wpdb->users.'';
+    $fields = $wpdb->get_results($sql, ARRAY_N);
+?>
+<select name="author">
+<option value="">Författare</option>
+<?php
+    $current = $_REQUEST['author'];
+    foreach ($fields as $field) {
+        if (substr($field[0],0,1) != "_"){
+        printf
+            (
+                '<option value="%s"%s>%s</option>',
+                $field[0],
+                $field[0] == $current? ' selected="selected"':'',
+                $field[1]
+            );
+        }
+    }
+?>
+</select>
+<?php
+}
 ?>
