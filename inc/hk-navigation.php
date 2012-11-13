@@ -71,7 +71,6 @@ function hk_navigation() {
 
 			if ($default_settings["show_tags"] != 0) :
 
-			echo "<a class='tag-title' title='Filtrera med hj&auml;lp av etiketter'>Etiketter</a>";
 			$hk_tag_walker = new hk_Tag_Walker();
 			$args = array(
 				'orderby'            => 'name',

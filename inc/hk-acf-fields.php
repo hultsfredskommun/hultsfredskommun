@@ -294,7 +294,7 @@ if(function_exists("register_field_group"))
 					),
 					1 => 
 					array (
-						'label' => 'Extra titel (frivilligt)',
+						'label' => 'Byt ut titel (frivilligt)',
 						'name' => 'hk_contact_extra',
 						'type' => 'text',
 						'default_value' => '',

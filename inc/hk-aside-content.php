@@ -13,10 +13,11 @@
 				<div class="content">
 					<?php echo $alt_title; ?>
 				</div>
-				<?php endif; ?>
+				<?php else : ?>
 				<div class="content">
 					<?php echo get_field('hk_contact_titel',$value->ID); ?>
 				</div>
+				<?php endif; ?>
 			</div></div>
 		<?php endwhile; ?>			 
 	<?php endif; ?>

@@ -595,6 +595,19 @@ function hk_admin_posts_filter_restrict_manage_posts()
 
 
 /*
+ * Disable easter egg
+ */
+ add_action('admin_action_diff', function() {
+	$left = empty( $_GET['left'] ) ? '' : $_GET['left'];
+	$right = empty( $_GET['right'] ) ? '' : $_GET['right'];
+
+	if ($left == $right) {
+	   wp_die('Fel val, det g&aring;r inte j&auml;mf&ouml;ra versionen med sig sj&auml;lv.'.
+				'<br /><a href="'.get_edit_post_link($left).'">Tillbaka</a>');
+	}
+});
+
+/*
  * POINTER HELPERS
  */
 
