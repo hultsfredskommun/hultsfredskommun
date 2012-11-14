@@ -85,7 +85,6 @@ footer, header, hgroup, menu, nav, section {
 
 
 
-
 /* WIDTHS */
 #page, #branding, #colophon, #firstpage-top-content {
 	width: 100%;
@@ -285,6 +284,9 @@ h6
 #logo_footer_image {
 	line-height: 0;
 }
+#searchresult i {
+	font-size: 85%;
+}
 
 
 
@@ -294,6 +296,9 @@ h6
 /* link color */
 a {
 	color: #007396;
+}
+a:focus {
+	color: orange;
 }
 .post a {
 	font-weight: bold;
@@ -334,19 +339,12 @@ body, input, textarea,
 #sort-order ul li a,
 #nav a,
 #footer-sidebar,
-#branding #searchform #searchresult ul li a{
+#searchresult ul li a{
 	/*color: #fff; /* white */
 	color: #373737; /* black */
 }
 
 
-.contact-popup,
-.side-content  .box,
-.contact-area,
-.flow-more-side {
-	background-color: #F5F8E9;
-}
-	
 /* deep blue text */
 h2, 
 h3,
@@ -372,22 +370,24 @@ h3,
 
 /* white background color */
 body,
-#branding #searchform .field,
-#branding #searchform #searchresult,
+#searchform,
+#searchresult,
 /*#sidebar .widget,*/
-body.single article.sticky,
-article.sticky.full,
-.closeButton,
-.ui-tabs .ui-tabs-panel,
 #menu,
 #menu li,.content-wrapper .summary-content,
 .content-wrapper .more-content,
-#dyn-posts-load-posts,
-.ui-tabs .ui-tabs-panel,
+#dyn-posts-load-posts
 {
 	background-color: #fff;
 }
 
+.contact-popup,
+.side-content  .box,
+.contact-area,
+.flow-more-side {
+	background-color: #F5F8E9;
+}
+	
 /* main background color */
 hr,
 #sort-order,
@@ -590,8 +590,7 @@ article.sticky {
 
 
 /* shadows */
-#branding #searchform .field,
-#branding #searchform #searchsubmit {
+#branding #searchform {
 	/*border: 5px solid #ACC6D3; /* light blue */
 	/*border: 5px solid #06435A; /* deep blue */
 	/*border: 5px solid #00A4D6; /* blue */
@@ -605,8 +604,7 @@ article.sticky {
 	
 
 }
-#branding #searchform .field:hover,
-#branding #searchform #searchsubmit:hover {
+#branding #searchform:hover {
     box-shadow: 0px 0px 15px #333
 	-webkit-box-shadow: 0 0px 15px #333;
 	-moz-box-shadow: 0 0px 15px #333;
@@ -989,45 +987,50 @@ a:hover {
 
 
 /* Search Form */
-#branding #searchnavigation {
+#searchnavigation {
 	margin-left: 25%;
 	clear: both;
 	width: 50%;
     /*opacity: 0.8;*/
-    padding: 0 0 5px;
-
 }
-#branding input#s {
+#searchform {
+    padding: 0;
+	border-radius: 13px;
+}
+#searchnavigation .input-wrapper {
+	width: 85%;
+	float: left;
+}
+#s {
 	border: 0;
 	background: url("images/sprite.png") no-repeat scroll -175px -178px transparent;
 	height: 22px;
-	padding: 4px 10px 4px 28px;
-	width: 90%;
+	padding: 4px 0 4px 28px;
+	background-color: transparent;
+	width: 100%;
 }
-#branding input#searchsubmit {
+#searchsubmit {
 	border: 0;
-	background-color: white;
-	border-bottom-right-radius: 8px;
-	border-top-right-radius: 8px;
+	background-color: transparent;
 	height: 30px;
+	width: 13%;
+	cursor: pointer;
 }
-#branding #searchform .field {
-	border-bottom-left-radius: 8px;
-	border-top-left-radius: 8px;
-	width: 79%;
-}
-#branding #searchform #searchresult {
+#searchresult {
 	position: absolute;
-	margin-left: 8px;
-	padding: 0 .8em;
+	margin-left: 16px;
+	padding: 0 10px;
 	overflow: hidden;
 	max-width: 44%;
 	z-index: 200;
 }
-#branding #searchform #searchresult ul li {
+#searchresult ul{
+	margin-left: 0;
+}
+#searchresult ul li {
 	list-style: none;
 }
-#branding #searchform #searchresult ul li:first-child {
+#searchresult ul li:first-child {
 	font-style: italic;
 }
 
@@ -1078,16 +1081,11 @@ a:hover {
 	float: left;
 	display: inline;
 	overflow: hidden;
-	-moz-transition: color 1s linear;
-	-webkit-transition: color 1s linear;
-	-o-transition: color 1s linear;
-	-ms-transition: color 1s linear;
-	transition: color 1s linear;
-	-moz-transition: background-color 1s linear;
-	-webkit-transition: background-color 1s linear;
-	-o-transition: background-color 1s linear;
-	transition: background-color 1s linear;
-	-ms-transition: background-color 1s linear;
+	-moz-transition: color .5s linear, background-color .5s linear;
+	-webkit-transition: color .5s linear, background-color .5s linear;
+	-o-transition: color .5s linear, background-color .5s linear;
+	-ms-transition: color .5s linear, background-color .5s linear;
+	transition: color .5s linear, background-color .5s linear;
 }
 #sort-order ul li {
 	border: 0;
@@ -1720,11 +1718,8 @@ article.single .reviewed  span {
 {
 	border: 0;
 }
-.ui-tabs
+.ui-tabs .post_tabs_title 
 {
-    height: auto;
-    margin: 0px 0px 7px 0px;
-    padding: 0px 0px 0px 0px;
     background-color: #EDEDED;
 }
 .ui-tabs .leftcontent
@@ -2630,6 +2625,13 @@ p.comment-form-comment {
 		content: "MELLAN";
 	}
 
+	#nav {
+		width: 23.5%;
+	}
+	#primary {
+		width: 74.5%;
+	}
+
 	/* menu font size */
 	#menu ul li a { 
 		font-size: 12px; 
@@ -2714,7 +2716,6 @@ p.comment-form-comment {
 	
 	/* primary m.m. 100% */
 	#nav,
-	#primary,
 	.home #firstpage-top-content
 	{
 		width: 100% !important;
@@ -2722,7 +2723,6 @@ p.comment-form-comment {
 	#main {
 		padding-top: 3px;
 	}
-	
 	
 	/*show dropdown-menu*/
 	#menu .dropdown-menu { display: block; }
