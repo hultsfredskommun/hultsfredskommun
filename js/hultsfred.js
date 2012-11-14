@@ -328,7 +328,7 @@ function readMoreToggle(el){
 				$(article).find('.more-content').slideDown(500, function(){
 				
 					//add close-button top right corner
-					var closea = $('<a>').addClass('closeButton').addClass('top').html("St&auml;ng").click(function(ev){
+					var closea = $('<a>').addClass('closeButton').addClass('top').click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
@@ -640,13 +640,13 @@ $(document).ready(function(){
 	 * responsive dropdown menu
 	 */
 	// set click action	
-	$("#dropdown-menu").click( function(){
+	$("#menu .dropdown-menu").click( function(){
 		
 		//toggle "#menu ul.main-menu"
 		if( $("#menu ul.main-menu").is(":visible") ){
-			$("#menu ul.main-menu").slideUp('fast');
+			$("#menu ul.main-menu, #nav").slideUp('fast');
 		}
-		else{ $("#menu ul.main-menu").slideDown('fast'); }
+		else{ $("#menu ul.main-menu, #nav").slideDown('fast'); }
 	
 	});  
 

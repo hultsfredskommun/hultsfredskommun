@@ -121,10 +121,6 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 
 <body <?php body_class((is_sub_category_firstpage()) ? "home":""); ?>>
 <div id="responsive-info"></div>
-<div id='cssgridbutton'><div class="onoff">grid av/p&aring;</div><div class="zindex">&ouml;verst/underst</div></div>
-<div id="cssgrid"><div class="wrapper">
-	<div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div><div class="column"><div class="visual"></div></div>
-</div></div>
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
 		<div id="topwrapper">
@@ -152,7 +148,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 			</div>
 		</div>		
 		<nav id="menu" role="navigation">
-			<a id="dropdown-menu">Meny<span id="dropdown-image"></span></a>
+			<a class="dropdown-menu">Meny<span class="dropdown-image"></span></a>
 			<?php 
 				wp_nav_menu( array(
 					'theme_location'	=> 'primary', 
