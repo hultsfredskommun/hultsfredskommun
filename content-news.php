@@ -18,7 +18,7 @@
 				<?php endif;/*endif;*/ ?>
 				
 				<div class="entry-wrapper">
-					<h1 class="entry-title"><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+					<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 					<time><?php echo get_the_date(); ?></time>
 					<div class="entry-content">
 						<?php the_excerpt(); ?>
@@ -28,4 +28,5 @@
 			</div><!-- .summary-content -->
 
 		</div><!-- .content-wrapper -->
+		<span class='hidden post_id'><?php the_ID(); ?></span>
 	</article><!-- #post-<?php the_ID(); ?> -->

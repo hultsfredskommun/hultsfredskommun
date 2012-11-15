@@ -78,7 +78,7 @@
 					query_posts( $query );		
 					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<div class="entry-wrapper">
-						<?php the_date("","<time>","</time>"); ?><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
+						<?php the_date("","<span>","</span>"); ?><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
 					</div>
 					<?php endwhile; endif; 
 					?> 

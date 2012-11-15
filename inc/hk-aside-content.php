@@ -1,16 +1,18 @@
 
 <aside class="side-content">
-	<div class="box full top">
-		<div class="article-top-menu"><a class="close">St&auml;ng</a> <a class="print">Skriv ut</a></div>
+	<div class="box top tools">
+		<div class="close tool-line summary"><div class="icon"></div><a href="#">&Ouml;ppna artikel</a></div>
+		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line summary'><div class='icon'></div>", "</div>" ); ?>
+		<div class="reviewed tool-line full"><div class="icon"></div><?php echo get_the_reviewed_date(get_the_ID()); ?></div>
+		<div class="print tool-line full"><div class="icon"></div><a class="print">Skriv ut</a></div>
 	</div>
-	<?php if( get_field('hk_contacts') || get_field('hk_related') ) : ?>
-	<div class="box">
 	<?php $count = 0; ?>
 	<?php if( get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
+		<div class="box contacts">
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
 			<div class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
 				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>
-				<div class="icon"></div><div id="contact-<?php echo $value->ID; ?>"><a post_id="<?php echo $value->ID; ?>" href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
+				<div class="icon"></div><div id="contact-<?php echo $value->ID; ?>"><a href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
 				
 				<?php $alt_title = get_sub_field('hk_contact_extra',get_the_ID());
 				if (!empty($alt_title)) : ?>
@@ -22,11 +24,13 @@
 					<?php echo get_field('hk_contact_titel',$value->ID); ?>
 				</div>
 				<?php endif; ?>
-			</div></div>
+			<span class="post_id hidden"><?php echo $value->ID; ?></span></div></div>
 		<?php endwhile; ?>			 
+		</div>
 	<?php endif; ?>
 	<?php  ?>
 	<?php if ( get_field('hk_related') ) : // related docs and links ?>
+		<div class="box related <?php echo ($count < 2)?"summary":"full"; ?>">
 		<ul class="related-wrapper <?php echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
 		<?php while ( has_sub_field('hk_related') ) : ?>
 			<?php if (!$summary || $count++ < 2) : ?>
@@ -53,10 +57,10 @@
 					</li>			 
 				<?php endif; ?> 
 			<?php endif; ?> 
+			
 		<?php endwhile; ?>
 		</ul>
-	<?php endif; ?>
-	</div>
+		</div>
 	<?php endif; ?>	
 	
 

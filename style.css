@@ -232,9 +232,6 @@ h6
 	font-size: 12px;
 	line-height: 18px;
 }
-.reviewed {
-	font-size: 12px;
-}
 #news_header {
 	font-size: 16px;
 }
@@ -328,7 +325,8 @@ body, input, textarea,
 #topmenu nav ul li:hover a,
 #sort-order ul li:hover a,
 #nav .current-cat > a,
-#nav .current-tag > a 
+#nav .current-tag > a ,
+#selected_filter li > a
  {
 	color: #fff; /* white */	
 }
@@ -383,7 +381,7 @@ body,
 
 .contact-popup,
 /*.side-content  .box,*/
-.contact-area,
+/*.contact-area,*/
 .flow-more-side {
 	background-color: #F5F8E9;
 }
@@ -460,10 +458,6 @@ article.sticky {
 	/*background-color: #E2EABC; /* green */
 	/*background-color: #FDEAD1; /* orange */
 }
-.slideshow article.hk_slideshow .text-area .text-content .transp-background
-{
-	background-color: lightgrey;
-}
 
 
 
@@ -483,8 +477,14 @@ article.sticky {
 
 
 /* BORDER COLORS */
-.side-content  {
+.box.tools,
+.box.contacts,
+.box.related,
+.contact-area {
 	border-left: 4px solid #e8e8e8;
+}
+#searchsubmit {
+	border-left: 1px solid #e8e8e8;
 }
 
 #menu ul.sub-menu li  a {
@@ -532,6 +532,7 @@ article.sticky {
 	border-top: none;
 }
 #nav .children li {
+	border-top: none;
 	border-bottom: none;
 }
 #nav  .children {
@@ -784,10 +785,7 @@ body {
 	top: 2.3em;
 }
 
-/* set border-radius */
-article, #news {
-	_order-radius: 5px;
-}
+
 /* Alignment */
 .alignleft {
 	display: inline;
@@ -807,6 +805,9 @@ article, #news {
 }
 
 /* special classes */
+.hidden {
+	display: none;
+}
 .clear {
 	clear: both;
 	display: block;
@@ -1011,7 +1012,7 @@ a:hover {
 }
 #s {
 	border: 0;
-	background: url("images/sprite.png") no-repeat scroll -175px -178px transparent;
+	_ackground: url("images/sprite.png") no-repeat scroll -175px -178px transparent;
 	height: 22px;
 	padding: 4px 0 4px 28px;
 	background-color: transparent;
@@ -1148,6 +1149,9 @@ a:hover {
 	margin: 8px 10px;
 	text-align: left;
 }
+#sort-order ul li a {
+	margin: 2px 10px;
+}
 #topmenu nav ul li a {
 	margin: 0 7px 10px;
 	padding-top: 0.8em;
@@ -1216,7 +1220,7 @@ a:hover {
 /* =nav-sidebar
 ----------------------------------------------- */
 #nav { 
-	margin: 37px 2% 0 0;
+	margin: 0 2% 0 0;
 	padding: 0;	
 	float: left; 
 }
@@ -1241,7 +1245,7 @@ a:hover {
 }
 
 #nav ul.children {
-	margin: 8px 0 0 8px;
+	margin: 8px 0 0 16px;
 }
 #nav ul.children .children {
 	margin: 8px 0 0 0;
@@ -1575,7 +1579,7 @@ a:hover {
 }
 .contact-popup,
 .side-content  .box {
-	padding: 8px;
+	padding:  0 8px;
 	margin: 10px 10px 0 0;
 }
 .side-content  .box.top {
@@ -1584,17 +1588,9 @@ a:hover {
 .contact-popup {
 	border: 10px solid white;
 }
-/*.post .side-content,*/
-.post .reviewed span {
-	display: none;
-}
 .full .side-content,
 article.single .side-content {
 	display: block;
-}
-.full .reviewed span,
-article.single .reviewed  span {
-	display: inline;
 }
 .side-content .full {
 	display: none;
@@ -1603,26 +1599,6 @@ article.single .reviewed  span {
 	display: block;
 }
 
-.post  .reviewed {
-	margin-top: -3px;
-	height: 4px;
-}
-.post.full  .reviewed {
-	margin-top: 0;
-	height: auto;
-}
-
-
-.side-content .close {
-	border-right: 1px solid #e8e8e8;
-	background-image: url("images/sprite.png");
-	background-position: 0px -276px;
-	padding-left: 24px;
-	padding-right: 10px;
-	display: block;
-	height: 22px;
-	
-}
 
 /* =Content
 ----------------------------------------------- */
@@ -1635,11 +1611,6 @@ article.single .reviewed  span {
 	clear: none;
 	margin: 0;
 	padding: 0 0 0em;
-}
-.reviewed {
-	padding: 0 0 10px;
-	color: #999;
-	font-style: italic;
 }
 
 .entry-meta .tag-cloud ,
@@ -1820,9 +1791,6 @@ article.single .reviewed  span {
 }
 
 /* Post style */
-.page-header {
-	height: 40px;
-}
 article {
 	margin-bottom: 1.2em !important;
 	position: relative;
@@ -1913,17 +1881,6 @@ article:last-child { margin-bottom: 0 }
 
 .closeButton {
 	background: #E6E6E6;
-}
-.closeButton.top {
-	background-image: url("images/sprite.png");
-	background-position: 0px -276px;
-	width: 100%;
-	height: 20px;	
-	
-	padding: 5px;
-	margin: 0;
-	cursor: pointer;
-	z-index: 1000;
 }
 .closeButton.bottom {
 	text-align: center;
@@ -2036,23 +1993,15 @@ article:last-child { margin-bottom: 0 }
 #nav .widget-title {
 	border-radius: 5px;
 }
-.related-wrapper .icon,
-.contact-wrapper .icon,
-.hk_events.widget .icon,
-.hk_related div.icon {
-	height: 18px;
-	width: 18px;
-	float: left;
-}
 .related-wrapper.top-margin {
 	margin-top: 1em !important;
-	padding-top: 1em !important;
 	border-top: 2px solid white;
 }
 .related-wrapper {
 	margin: 0 !important;
 	padding: 0 !important;
 }
+.tool-line,
 .related-wrapper li,
 .contact-wrapper,
 .events-wrapper,
@@ -2093,9 +2042,9 @@ article:last-child { margin-bottom: 0 }
 	top: 5px;
 	right: 5px;
 	background-image: url("images/sprite.png");
-	background-position: 0px -276px;
-	width: 20px;
-	height: 20px;
+	background-position: -163px -290px;
+	width: 16px;
+	height: 16px;
 }
 .img-wrapper {
 	padding: 0;
@@ -2103,37 +2052,45 @@ article:last-child { margin-bottom: 0 }
 
 
 /* icons */
-.related-wrapper .icon {
-	margin: 0 8px 1px 0;
-}
-.contact-wrapper .icon,
-.hk_events.widget .icon,
-.hk_related.widget .icon {
-	margin: 0 8px 8px 0;
+.tool-line {
+	height: 20px;
 }
 .icon {
+	height: 16px;
+	width: 16px;
+	float: left;
+	margin: 0px 4px 6px 8px;
 	background-image: url("images/sprite.png");
 }
-.docs.icon {
-	background-position: 0px -134px;
+.close .icon {
+	background-position: -194px -290px;
+}
+.editlink .icon {
+	background-position: -98px -65px;
+}
+.reviewed .icon {
+	background-position: -160px -65px;
+}
+.print .icon {
+	background-position: -31px -65px;
 }
 .related_page .icon {
-	background-position: 0px -154px;
+	background-position: -226px -193px;
 }
 .related_link .icon {
-	background-position: 0px -172px;
+	background-position: -226px -193px;
 }
 .related_file .icon {
-	background-position: 0px -134px;
+	background-position: -256px -193px;
 }
 .related_file img {
 	width: 75px;
 }
 .contact-wrapper .icon {
-	background-position: 0px -59px;
+	background-position: -226px 0px;
 }
 .hk_events.widget .icon {
-	background-position: 0px -35px;
+	background-position: -255px -354px;
 }
 .hk_related div.ppt,.hk_related div.pptx {
 	background-position: -36px -352px;

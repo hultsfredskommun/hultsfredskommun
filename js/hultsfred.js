@@ -366,7 +366,7 @@ function readMoreToggle(el){
 		$(article).addClass("loading"); //.html("Laddar...");
 		
 		//find posts id and store it in variable
-		var post_id = $(el).attr("post_id");
+		var post_id = $(article).find(".post_id").html();
 	
 		//create a new div with requested content
 		var morediv = $("<div>").attr("class","more-content").hide();
@@ -861,7 +861,7 @@ function setArticleActions(el) {
 function setContactPopupAction(el) {
 	$(el).click(function(ev) {
 		if ($(".contact-popup").length == 0) {
-			var post_id = $(el).attr("post_id");
+			var post_id = $(el).parent().find(".post_id").html();
 			ev.preventDefault();
 			$(el).parents(".content-wrapper").append("<div class='contact-popup'>H&auml;mtar kontaktuppgifter...</div>");
 	

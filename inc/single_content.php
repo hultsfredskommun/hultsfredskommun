@@ -14,7 +14,6 @@
 				<h1 class="entry-title">
 					<?php echo get_the_title(); ?>
 				</h1>
-				<div class="reviewed"><span class="reviewed-date"><?php echo get_the_reviewed_date(get_the_ID()); ?></span></div>
 			
 				<?php
 				$optionaltext = get_field('hk_optional_text');

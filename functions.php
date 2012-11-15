@@ -420,14 +420,14 @@ add_filter( 'body_class', 'hk_body_classes' );
 
 
 /* help function to render custom thumbnail functionality */
-function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true) {
+function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $class="") {
 	global $default_settings;
 	$retValue = "";
 
 	if( get_field('hk_featured_images') ) :
 		if ($showAll) { $slideshowclass = "slideshow"; }
 		$countSlides = 0;
-		$retValue .= "<div class='img-wrapper'><div class='$slideshowclass'>";
+		$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
 		while( has_sub_field('hk_featured_images') && ($showAll || $countSlides == 0)) : // only once if not showAll
 			$image = get_sub_field('hk_featured_image');
 			$src = $image["sizes"][$thumbsize];
@@ -449,7 +449,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true) {
 			}
     	endwhile;
 		if ($showAll && $countSlides > 1) {
-			$retValue .= "<img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&h=".$default_settings[$thumbsize][1]."'/>";
+			$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
 			$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
 		}
 		$retValue .= "</div></div>"; 

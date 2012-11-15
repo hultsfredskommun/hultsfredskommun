@@ -140,7 +140,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 						'depth' 		=> 1,
 						'echo' 			=> true
 					)); 
-					echo "</aside></nav></div>";
+					echo "</nav></aside></div>";
 				}
 			?>
 			<div id="searchnavigation">			
@@ -166,3 +166,4 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 	</header><!-- #branding -->
 
 	<div id="main">
+		<div id="breadcrumb"><?php hk_breadcrumb(); ?></div>

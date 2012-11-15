@@ -159,7 +159,8 @@ function hk_contacts_generate_cache() {
 				$retValue .= "<div class='icon'>&nbsp;</div>";
 				$retValue .= "<div class='img-wrapper' style='display:none'>" . hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false) . "</div>";
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-				$retValue .= "<a  post_id='" . get_the_ID() . "' class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
+				$retValue .= "<a class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
+				$retValue .= "<span class='hidden post_id'>" . get_the_ID() . "'</span>";
 				$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
 				/*$retValue .= "<div class='more-content'>";
 				// workplace
@@ -205,12 +206,25 @@ function hk_contacts_generate_cache() {
 
 // [kontakt id="kontakt_id"]
 // TODO add button mce to add this shortcode. Ex. http://wordpress.org/extend/plugins/post-snippets/
+// TODO check default settings and check if it works to set from shortcode
 function hk_contact_shortcode_func( $atts ) {
-	extract( shortcode_atts( array(
+	$args = array(
 		'id' => '-1',
-	), $atts ) );
+		'image' => true,
+		'name' => true,
+		'title' => true,
+		'workplace' => true,
+		'phone' => true,
+		'email' => false,
+		'description' => false,
+		'address' => false,
+		'visit_hours' => false,
+		'map' => true);
+	extract( shortcode_atts( $args, $atts ) );
+
 	if ($id > 0) {
-		return hk_get_contact_by_id($id);
+		print_r( $args);
+		return hk_get_contact_by_id($id, $args);
 	}
 	return "Hittade ingen kontakt med id $id.";
 }
@@ -220,9 +234,8 @@ add_shortcode( 'kontakt', 'hk_contact_shortcode_func' );
 
 
 // outputs the content of first page contact
-function hk_get_contact_by_id($contact_id) {
+function hk_get_contact_by_id($contact_id, $args) {
 
-	
 	// query arguments
 	$args = array(
 		'posts_per_page' => -1,
@@ -243,7 +256,7 @@ function hk_get_contact_by_id($contact_id) {
 		// The Loop
 		while ( $the_query->have_posts() ) : $the_query->the_post();
 			$retValue .= "<div class='contact-area'>";
-			$retValue .= hk_get_the_contact();
+			$retValue .= hk_get_the_contact($args);
 			$retValue .= "</div>";
 		endwhile;
 		// Reset Post Data
@@ -284,14 +297,7 @@ function hk_contact_firstpage() {
 
 				// The Loop
 				while ( $the_query->have_posts() ) : $the_query->the_post();
-					require("hk_kontakter_content.php");
-					$retValue .= "<div class='contact-wrapper'>";
-					$retValue .= "<div class='icon'>&nbsp;</div>";
-					$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-					$retValue .= "<a post_id='" . get_the_ID() . "' class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
-					$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
-					
-					$retValue .= "</div></div>";
+					$retValue .= hk_get_the_contact();
 				endwhile;
 				// Reset Post Data
 				wp_reset_postdata();
@@ -314,52 +320,72 @@ function hk_contact_firstpage() {
 	$retValue .= "</div></div>";
 	
 	$retValue .= "</div></aside>";
-	//echo $retValue;
+	echo $retValue;
 
 }
-function hk_the_contact() {
-	echo hk_get_the_contact();
+function hk_the_contact($args = array()) {
+	echo hk_get_the_contact($args);
 }
-function hk_get_the_contact() {
+function hk_get_the_contact($args = array()) {
+	$default = array(
+		'image' => false,
+		'name' => true,
+		'title' => true,
+		'workplace' => true,
+		'phone' => true,
+		'email' => false,
+		'description' => false,
+		'address' => false,
+		'visit_hours' => false,
+		'map' => false
+		);
+	if (isset($args)) {
+		$default =  $args + $default;
+	}
+
+	foreach($default as $key => $value) {
+		$hidden[$key] = ($value)?"visible":"hidden";
+	}
 	$retValue = "<div class='entry-wrapper'>";
-		$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false);
-		$retValue .= "<h1 class='entry-title'>" . get_the_title() . "</h1>";
+		$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
+		$retValue .= "<h1 class='entry-title " . $hidden['name'] . "'>" . get_the_title() . "</h1>";
 		$retValue .= "<div class='entry-content'>";
 		
 			$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) ."'>";
-				$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
+				$retValue .= "<div class='content " . $hidden['title'] . "'>" . get_field("hk_contact_titel") . "</div>";
 				
 				// workplace
 				if( get_field('hk_contact_workplaces') ): while( has_sub_field('hk_contact_workplaces') ):
-					$retValue .= "<p>" . get_sub_field('hk_contact_workplace') . "</p>";
+					$retValue .= "<p class='" . $hidden['workplace'] . "'>" . get_sub_field('hk_contact_workplace') . "</p>";
 				endwhile; endif;
 				
 				// phone
 				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
-					$retValue .= "<p>";
+					$retValue .= "<p class='" . $hidden['phone'] . "'>";
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"fax ":"";
 					$retValue .= get_sub_field('number') . "</p>";
 				endwhile; endif;
 				
 				// email
 				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
-					$retValue .= "<p><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></p>";
+					$retValue .= "<p class='" . $hidden['email'] . "'><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></p>";
 				endwhile; endif;
 				
 				// description
-				$retValue .= "<p>" . get_field("hk_contact_description") . "</p>";
+				$retValue .= "<p class='" . $hidden['description'] . "'>" . get_field("hk_contact_description") . "</p>";
 				
 				// address
-				$retValue .= "<p>" . get_field("hk_contact_address") . "</p>";
+				$retValue .= "<p class='" . $hidden['address'] . "'>" . get_field("hk_contact_address") . "</p>";
 				
 				// visit hours
-				$retValue .= "<p>" . get_field("hk_contact_visit_hours") . "</p>";
+				$retValue .= "<p class='" . $hidden['visit_hours'] . "'>" . get_field("hk_contact_visit_hours") . "</p>";
 				
 				// position
 				$contact_position = get_field("hk_contact_position");
 				if (!empty($contact_position) && $contact_position["coordinates"] != "") :
-					$retValue .= "<div class='map_canvas'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div>";
+					$retValue .= "<div class='map_canvas " . $hidden['map'] . "'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div>";
 				endif;
+				
 				
 			$retValue .= "</div>";
 		$retValue .= "</div>";
@@ -411,6 +437,7 @@ function hk_contact_tab() {
 						$retValue .= "<div class='icon'>&nbsp;</div>";
 						$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
 						$retValue .= "<a post_id='" . get_the_ID() . "' class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
+						$retValue .= "<span class='hidden post_id'>" . get_the_ID() . "</span>";
 						$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
 						
 						$retValue .= "</div></div>";

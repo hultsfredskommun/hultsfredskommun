@@ -4,13 +4,27 @@
  * Description: Echo navigation
  *  */
 
+function hk_breadcrumb() {
+	$search = get_query_var("s");
+	$categories_list = get_the_category();
+	$retValue = "";
+	if (!empty($categories_list)) : foreach ( $categories_list as $list):
+		$retValue .= "<a href='".get_category_link($list->term_id)."'>" . $list->name . "</a> | ";
+	endforeach; endif; // End if categories
+
+	$tags_list = get_the_terms(get_the_ID(),"post_tag");
+	if (!empty($tags_list)) : foreach ( $tags_list as $list):
+		$retValue .= "<a href='".get_tag_link($list->term_id)."'>" . $list->name . "</a> | ";
+	endforeach; endif; // End if tags
+
+	echo rtrim($retValue," |");
+}
 function hk_navigation() {
 	global $post, $default_settings;
 	
 	$search = get_query_var("s");
 	$cat = get_query_var("cat");
 	$tags = get_query_var("tag");
-	$search = get_query_var("s");
 
 	echo "<aside id='nav'><nav>";
 	if ($search != "") {

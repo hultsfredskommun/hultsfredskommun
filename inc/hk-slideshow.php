@@ -101,7 +101,7 @@ function hk_slideshow_generate_output($vars) {
 						}
 	
 						if (strpos($src,$default_settings[$vars["thumbnail-size"]][0] . "x" . $default_settings[$vars["thumbnail-size"]][1])) {
-							$retValue .= "<article class='slide' id='post-" . get_the_ID() . "' class='";
+							$retValue .= "<article id='post-" . get_the_ID() . "' class='slide ";
 							if ($first){ $retValue .= 'first '; }
 							else { $retValue .= 'img_left '; }
 							$retValue .= implode(" ",get_post_class()) . "'>";
