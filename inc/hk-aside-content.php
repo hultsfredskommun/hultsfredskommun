@@ -1,7 +1,11 @@
-<?php if( get_field('hk_contacts') || get_field('hk_related') ) : ?>
-<?php $count = 0; ?>
+
 <aside class="side-content">
+	<div class="box full top">
+		<div class="article-top-menu"><a class="close">St&auml;ng</a> <a class="print">Skriv ut</a></div>
+	</div>
+	<?php if( get_field('hk_contacts') || get_field('hk_related') ) : ?>
 	<div class="box">
+	<?php $count = 0; ?>
 	<?php if( get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
 			<div class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
@@ -52,12 +56,9 @@
 		<?php endwhile; ?>
 		</ul>
 	<?php endif; ?>
-	<?php if ($count >= 2) : // show more related arrow ?>
-	<div class='flow-more-side'></div>
-	<?php endif; ?>
-
 	</div>
+	<?php endif; ?>	
+	
 
 </aside>
-<div class='flow-left'></div>
-<?php endif; ?>		
+

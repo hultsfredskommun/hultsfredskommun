@@ -26,7 +26,7 @@
 			<?php if ($default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0") : ?>
 			<li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser och handlingar</a></li>
 			<?php endif; ?>
-			<li title="Mest besökta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
+			<li title="Mest bes&ouml;kta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
 		</ul>
 		<div id="newscontent">
 			<div class="leftcontent">

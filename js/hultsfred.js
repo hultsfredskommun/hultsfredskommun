@@ -297,13 +297,13 @@ function readMoreToggle(el){
 				}
 				
 				// toggle visibility
-				$(article).find('.summary-content').fadeIn("fast", function(){
+				$(article).find('.summary-content').slideDown("fast", function(){
 					
 					// remove full class to track article state
 					$(article).removeClass("full");
 
 					// scroll to top of post 
-					$("html,body").animate({scrollTop: $(article).position().top}, 300);
+					//$("html,body").animate({scrollTop: $(article).position().top}, 300);
 					
 				});
 
@@ -317,7 +317,7 @@ function readMoreToggle(el){
 		// show full content
 		else {
 			// toggle visibility
-			$(article).find('.summary-content').fadeOut("fast", function(){
+			$(article).find('.summary-content').slideUp("fast", function(){
 				
 				if( $("#content").hasClass("viewmode_titles") ){
 					$(article).removeClass("only-title");
@@ -328,7 +328,7 @@ function readMoreToggle(el){
 				$(article).find('.more-content').slideDown(500, function(){
 				
 					//add close-button top right corner
-					var closea = $('<a>').addClass('closeButton').addClass('top').click(function(ev){
+					$(this).find("article-top-menu .close").click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
@@ -336,10 +336,10 @@ function readMoreToggle(el){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(this).prepend(closea).append(closeb);
+					$(this).append(closeb);
 					
 					// scroll to top of post 
-					$("html,body").animate({scrollTop: $(article).position().top}, 300);
+					//$("html,body").animate({scrollTop: $(article).position().top}, 300);
 
 					// articles slideshow
 					$(this).slideshow();
@@ -840,7 +840,7 @@ function setArticleActions(el) {
 		if ($(".contact-popup").length == 0 && !$(this).hasClass("only-title")) {
 			//$(this).find(".side-content").fadeIn("slow");
 			//$(this).find(".summary-icons").fadeIn("fast");
-			$(this).find(".reviewed").children().fadeIn("fast");
+			//$(this).find(".reviewed").children().fadeIn("fast");
 			//log(document.documentMode + " " + document.compatMode);
 		}
 		return false;
@@ -848,7 +848,7 @@ function setArticleActions(el) {
 		if ($(".contact-popup").length == 0 && !$(this).hasClass("single") && !$(this).hasClass("full")) {
 			//$(this).find(".side-content").fadeOut("slow");
 			//$(this).find(".summary-icons").fadeOut("fast");
-			$(this).find(".reviewed").children().fadeOut("fast");
+			//$(this).find(".reviewed").children().fadeOut("fast");
 		}
 		return false;
 	});

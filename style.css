@@ -382,7 +382,7 @@ body,
 }
 
 .contact-popup,
-.side-content  .box,
+/*.side-content  .box,*/
 .contact-area,
 .flow-more-side {
 	background-color: #F5F8E9;
@@ -483,6 +483,10 @@ article.sticky {
 
 
 /* BORDER COLORS */
+.side-content  {
+	border-left: 4px solid #e8e8e8;
+}
+
 #menu ul.sub-menu li  a {
 	-moz-transition: border-color .3s linear;
 	-webkit-transition: border-color .3s linear;
@@ -573,12 +577,15 @@ article.sticky {
 
 /* bordered boxes */
 /*#news,*/
-.content-wrapper .summary-content,
-.content-wrapper .more-content,
+/*.content-wrapper .summary-content,
+.content-wrapper .more-content,*/
 #dyn-posts-load-posts,
 .ui-tabs .ui-tabs-panel,
 .misc-ctrl {
 	border: 1px solid #E8E8E8;
+}
+article {
+	border-bottom: 1px solid #E8E8E8;
 }
 .home .content-wrapper .summary-content,
 .home .content-wrapper .more-content,
@@ -624,13 +631,14 @@ article.sticky {
 	-ms-box-shadow: 0 1px 5px 0 #E0E0E0;
 	box-shadow: 0 1px 5px 0 #E0E0E0;
 }
-.post .content-wrapper:hover {
+/*.post .content-wrapper:hover {
 	-webkit-box-shadow: 0px 1px 5px 0 #ccc;
 	-moz-box-shadow: 0px 1px 5px 0 #ccc;
 	-o-box-shadow: 0px 1px 5px 0 #ccc;
 	-ms-box-shadow: 0px 1px 5px 0 #ccc;
 	box-shadow: 0px 1px 5px 0 #ccc;	
-}
+}*/
+
 .home .post .content-wrapper:hover {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
@@ -1560,34 +1568,18 @@ a:hover {
 ----------------------------------------------- */
 .side-content {
 	position: absolute;
-	top: 0;
+	top: 8px;
 	right: 0;
 	z-index: 100;
 	overflow: hidden;
-	height: 100%;
-}
-.flow-left {
-	background: url("images/sprite.png") no-repeat scroll 0px -216px transparent;
-	width: 24px;
-	height: 24px;
-	position: absolute;
-	left: 68.46986%;
-	top: 5px;
-}
-.full .flow-more-side {
-	display: none;
-}
-.flow-more-side {
-	cursor: pointer;
-	text-align: left;
-	line-height: 8px;
-}
-.flow-more-side:after {
-	content: '+';
 }
 .contact-popup,
 .side-content  .box {
 	padding: 8px;
+	margin: 10px 10px 0 0;
+}
+.side-content  .box.top {
+	margin-top: 0;
 }
 .contact-popup {
 	border: 10px solid white;
@@ -1619,6 +1611,19 @@ article.single .reviewed  span {
 	margin-top: 0;
 	height: auto;
 }
+
+
+.side-content .close {
+	border-right: 1px solid #e8e8e8;
+	background-image: url("images/sprite.png");
+	background-position: 0px -276px;
+	padding-left: 24px;
+	padding-right: 10px;
+	display: block;
+	height: 22px;
+	
+}
+
 /* =Content
 ----------------------------------------------- */
 .post footer { 
@@ -1906,14 +1911,15 @@ article:last-child { margin-bottom: 0 }
 	padding: 8px;
 }
 
+.closeButton {
+	background: #E6E6E6;
+}
 .closeButton.top {
 	background-image: url("images/sprite.png");
 	background-position: 0px -276px;
-	width: 20px;
+	width: 100%;
 	height: 20px;	
-	position: absolute;
-	top: 8px;
-	right: 0;
+	
 	padding: 5px;
 	margin: 0;
 	cursor: pointer;

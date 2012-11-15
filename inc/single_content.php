@@ -4,6 +4,8 @@
 		 */
 
 		// featured image ?>
+
+
 		<?php //the_post_thumbnail('featured-image'); 
 			echo hk_get_the_post_thumbnail(get_the_ID(),'featured-image');
 		?>
