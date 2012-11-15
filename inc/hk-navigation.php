@@ -6,9 +6,10 @@
 
 function hk_breadcrumb() {
 	$search = get_query_var("s");
+	
 	$categories_list = get_the_category();
 	$retValue = "";
-	if (!empty($categories_list)) : foreach ( $categories_list as $list):
+/*	if (!empty($categories_list)) : foreach ( $categories_list as $list):
 		$retValue .= "<a href='".get_category_link($list->term_id)."'>" . $list->name . "</a> | ";
 	endforeach; endif; // End if categories
 
@@ -16,7 +17,7 @@ function hk_breadcrumb() {
 	if (!empty($tags_list)) : foreach ( $tags_list as $list):
 		$retValue .= "<a href='".get_tag_link($list->term_id)."'>" . $list->name . "</a> | ";
 	endforeach; endif; // End if tags
-
+*/
 	echo rtrim($retValue," |");
 }
 function hk_navigation() {

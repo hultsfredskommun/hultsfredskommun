@@ -289,6 +289,7 @@ function readMoreToggle(el){
 		{
 			// alter close-buttons
 			$(article).find('.closeButton').remove();
+			$(article).find('.close a').html("&Ouml;ppna artikel");
 			
 			$(article).find('.more-content').slideUp(500, function(){
 				
@@ -337,6 +338,7 @@ function readMoreToggle(el){
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
 					$(this).append(closeb);
+					$(article).find('.close a').html("St&auml;ng artikel");
 					
 					// scroll to top of post 
 					//$("html,body").animate({scrollTop: $(article).position().top}, 300);
@@ -820,7 +822,8 @@ $(document).ready(function(){
 /* article actions to be set when ready and when dynamic loading */
 function setArticleActions(el) {
 	//sets click-action on entry-titles
-	$(el).find('.entry-title a').click(function(ev){
+
+	$(el).find('.entry-title a, .close a').click(function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
 		if( !$(this).parents('article').hasClass('loading') ){
