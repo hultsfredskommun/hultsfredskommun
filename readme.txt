@@ -27,3 +27,6 @@ WP Smush.it by Dialect to get smaller image sizes.
 EU Cookie Law to get a popup question to accept cookies.
 Enable Media Replace by mungobbq to get a replace this file in Media Library.
 Force User Login to hide site from public view before release.
+
+
+Iconset used: http://www.icondeposit.com/theicondeposit:113

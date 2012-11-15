@@ -8,5 +8,6 @@
 			<?php require("inc/single_content.php"); ?>
 			<?php include("inc/hk-aside-content.php"); ?>
 		</div><!-- .single-content -->
-		<span class='hidden post_id'><?php the_ID(); ?></span>
+		<span class='hidden article_id'><?php the_ID(); ?></span>
+		<div class="clear"></div>
 	</article><!-- #post-<?php the_ID(); ?> -->

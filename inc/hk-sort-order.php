@@ -13,8 +13,8 @@
 				$tags = get_query_var("tag");
 				$search = get_query_var("s");
 				
-				if($tags != ''){ $tags = "&tag=".$tags; }
-				if($search != ''){ $search = "&s=".$search; }
+				if($tags != ''){ $tags = "&amp;tag=".$tags; }
+				if($search != ''){ $search = "&amp;s=".$search; }
 			?>
 			<?php 
 				$orderby = $_REQUEST["orderby"];
@@ -27,20 +27,28 @@
 			?>
 			
 			<?php if ($_REQUEST["orderby"] == "alpha") { ?>
-				<li class='current-menu-item'><a href="?orderby=alpha<?php echo $tags.$search; ?>">A - &Ouml;</a></li>
+				<li class='current-menu-item'><a href="?orderby=<?php echo $tags.$search; ?>">A - &Ouml;</a></li>
 			<?php } else { ?>
-				<li><a href="?orderby=<?php echo $tags.$search; ?>">A - &Ouml;</a></li>
+				<li><a href="?orderby=alpha<?php echo $tags.$search; ?>">A - &Ouml;</a></li>
 			<?php } ?>
-			<li <?php echo ($_REQUEST["orderby"] == "alpha")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha<?php echo $tags.$search; ?>">A - &Ouml;</a></li>
-			<li <?php echo ($_REQUEST["orderby"] == "alpha_desc")?"class='current-menu-item'":""; ?>><a href="?orderby=alpha_desc<?php echo $tags.$search; ?>">&Ouml; - A</a></li>
-			<li <?php echo ($_REQUEST["orderby"] == "latest")?"class='current-menu-item'":""; ?>><a href="?orderby=latest<?php echo $tags.$search; ?>">Senast</a></li>
-			<li <?php echo ($_REQUEST["orderby"] == "oldest")?"class='current-menu-item'":""; ?>><a href="?orderby=oldest<?php echo $tags.$search; ?>">&Auml;ldst</a></li>
-			<?php if( function_exists('views_orderby') ) : ?>
-				<li <?php echo ($_REQUEST["orderby"] == "popular")?"class='current-menu-item'":""; ?>><a href="?orderby=popular<?php echo $tags.$search; ?>">Popul&auml;rast</a></li>
-			<?php endif; ?>
-			<?php if ($_REQUEST["orderby"] != "") : ?>
-				<li><a href="?orderby=<?php echo $tags.$search; ?>">Standard</a></li>
-			<?php endif; ?>
+
+			<?php if ($_REQUEST["orderby"] == "alpha_desc") { ?>
+				<li class='current-menu-item'><a href="?orderby=<?php echo $tags.$search; ?>">&Ouml; - A</a></li>
+			<?php } else { ?>
+				<li><a href="?orderby=alpha_desc<?php echo $tags.$search; ?>">&Ouml; - A</a></li>
+			<?php } ?>
+
+			<?php if ($_REQUEST["orderby"] == "latest") { ?>
+				<li class='current-menu-item'><a href="?orderby=<?php echo $tags.$search; ?>">Senast</a></li>
+			<?php } else { ?>
+				<li><a href="?orderby=latest&amp;<?php echo $tags.$search; ?>">Senast</a></li>
+			<?php } ?>
+
+			<?php if ($_REQUEST["orderby"] == "oldest") { ?>
+				<li class='current-menu-item'><a href="?orderby=<?php echo $tags.$search; ?>">Senast</a></li>
+			<?php } else { ?>
+				<li><a href="?orderby=oldest<?php echo $tags.$search; ?>">&Auml;ldst</a></li>
+			<?php } ?>
 		</ul></div>
 
 	<?php }

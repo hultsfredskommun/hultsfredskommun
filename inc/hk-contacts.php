@@ -160,7 +160,7 @@ function hk_contacts_generate_cache() {
 				$retValue .= "<div class='img-wrapper' style='display:none'>" . hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false) . "</div>";
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
 				$retValue .= "<a class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
-				$retValue .= "<span class='hidden post_id'>" . get_the_ID() . "'</span>";
+				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "'</span>";
 				$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
 				/*$retValue .= "<div class='more-content'>";
 				// workplace
@@ -302,23 +302,8 @@ function hk_contact_firstpage() {
 				// Reset Post Data
 				wp_reset_postdata();
 			}
-		
-		
-
 	}
-	
-	$retValue .= "<div class='contact-wrapper'>";
-	$retValue .= "<div class='icon'>&nbsp;</div>";
-	$retValue .= "<div id='contact-synpunkt'>";
-	$retValue .= "<a post_id='-1' class='permalink' href='". get_permalink(get_the_ID()) . "'>L&auml;mna en synpunkt</a>";
-	$retValue .= "</div></div>";
-
-	$retValue .= "<div class='contact-wrapper'>";
-	$retValue .= "<div class='icon'>&nbsp;</div>";
-	$retValue .= "<div id='contact-synpunkt'>";
-	$retValue .= "<a post_id='-2' class='permalink' href='". get_permalink(get_the_ID()) . "'>L&auml;mna en felanm&auml;an</a>";
-	$retValue .= "</div></div>";
-	
+		
 	$retValue .= "</div></aside>";
 	echo $retValue;
 
@@ -407,7 +392,6 @@ function hk_contact_tab() {
 		$category_in = hk_getParentsSlugArray(get_query_var("cat"));
 		$category_in = array_reverse($category_in);
 
-
 		foreach($category_in as $category) {
 		
 			// query arguments
@@ -436,8 +420,8 @@ function hk_contact_tab() {
 						$retValue .= "<div class='contact-wrapper'>";
 						$retValue .= "<div class='icon'>&nbsp;</div>";
 						$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-						$retValue .= "<a post_id='" . get_the_ID() . "' class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
-						$retValue .= "<span class='hidden post_id'>" . get_the_ID() . "</span>";
+						$retValue .= "<a class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
+						$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
 						$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
 						
 						$retValue .= "</div></div>";
@@ -449,18 +433,6 @@ function hk_contact_tab() {
 		}
 
 	}
-	
-	$retValue .= "<div class='contact-wrapper'>";
-	$retValue .= "<div class='icon'>&nbsp;</div>";
-	$retValue .= "<div id='contact-synpunkt'>";
-	$retValue .= "<a post_id='-1' class='permalink' href='". get_permalink(get_the_ID()) . "'>L&auml;mna en synpunkt</a>";
-	$retValue .= "</div></div>";
-
-	$retValue .= "<div class='contact-wrapper'>";
-	$retValue .= "<div class='icon'>&nbsp;</div>";
-	$retValue .= "<div id='contact-synpunkt'>";
-	$retValue .= "<a post_id='-2' class='permalink' href='". get_permalink(get_the_ID()) . "'>L&auml;mna en felanm&auml;an</a>";
-	$retValue .= "</div></div>";
 	
 	$retValue .= "</div></aside>";
 	echo $retValue;

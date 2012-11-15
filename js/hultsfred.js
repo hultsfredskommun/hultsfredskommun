@@ -215,60 +215,62 @@ if (typeof $.fn.googlemap != 'function') {
  * Initialize slideshow function 
  */
 if (typeof $.fn.slideshow != 'function') {
-	$.fn.slideshow = function() {
-		if ($(this).find('.slideshow_bg').length >= 1) {
-			
-			/* set up slideshow first time */
-			if (!$(this).hasClass("initialized")) {
-				rand = Math.floor((Math.random()*1000)+1);
-				$(this).find(".prevslide").addClass("prev"+rand);
-				$(this).find(".nextslide").addClass("next"+rand);
-				$(this).find('.slideshow').after('<ul class="pager pager'+rand+'">');
-				// show slide navigation on hover
-				$(this).hover(function() {
-				$(this).find(".nextslide, .prevslide, .pager").fadeIn("fast");
-					return false;
-				},function() {
-					$(this).find(".nextslide, .prevslide, .pager").fadeOut("fast");
-					return false;
-				});
+	$.fn.slideshow = function(args) {
+		if (args != undefined) {
+			$(this).cycle(args);
+		}
+		else if ($(this).hasClass("slideshow")) {
+			if ($(this).find('.slideshow_bg').length >= 1) {
+				
+				/* set up slideshow first time */
+				if (!$(this).hasClass("initialized")) {
+					rand = Math.floor((Math.random()*1000)+1);
+					$(this).find(".prevslide").addClass("prev"+rand);
+					$(this).find(".nextslide").addClass("next"+rand);
+					$(this).append('<ul class="pager pager'+rand+'">');
+					// show slide navigation on hover
+					$(this).hover(function() {
+						$(this).find(".nextslide, .prevslide, .pager").fadeIn("fast");
+						return false;
+					},function() {
+						$(this).find(".nextslide, .prevslide, .pager").fadeOut("fast");
+						return false;
+					});
 
-				$(this).find('.slideshow_bg').show();
-				args = {
-					fx: 'fade',
-					slideExpr: '.slide',					
-					timeout: 5000, 
-					slideResize: true,
-					containerResize: false,
-					width: '100%',
-					fit: 1,
-					pause: 0,
-					prev:   '.prev' + rand, 
-					next:   '.next' + rand
-				};
+					$(this).find('.slideshow_bg').show();
+					args = {
+						fx: 'fade',
+						slideExpr: '.slide',					
+						timeout: 5000, 
+						slideResize: true,
+						containerResize: false,
+						width: '100%',
+						fit: 1,
+						pause: 0,
+						prev:   '.prev' + rand, 
+						next:   '.next' + rand
+					};
 
-				args['pager'] =  '.pager' + rand;
-					// callback fn that creates a thumbnail to use as pager anchor 
+					args['pager'] =  '.pager' + rand;
+						// callback fn that creates a thumbnail to use as pager anchor 
+						
+					args['pagerAnchorBuilder'] = function(idx, slide) {
+						var src = slide.src;
+						if (src == undefined)
+							src = $(slide).find("img").attr("src");
+						return '<li><a href="#"><img src="' + src + '" width="50" height="50" /></a></li>'; 
+					};
 					
-				args['pagerAnchorBuilder'] = function(idx, slide) {
-					var src = slide.src;
-					if (src == undefined)
-						src = $(slide).find("img").attr("src");
-					return '<li><a href="#"><img src="' + src + '" width="50" height="50" /></a></li>'; 
-				};
-				
-				$(this).find('.slideshow').cycle( args );
+					$(this).cycle( args );
 
-				$(this).addClass("initialized");
+					$(this).addClass("initialized");
+				}
+				else {
+					/* just resume if already initialized */
+					$(this).cycle( 'resume' );
+				}
+				
 			}
-			else {
-				/* just resume if already initialized */
-				$(this).find('.slideshow').cycle( 'resume' );
-			}
-				
-				
-				
-			
 		}
 	}
 }
@@ -289,7 +291,6 @@ function readMoreToggle(el){
 		{
 			// alter close-buttons
 			$(article).find('.closeButton').remove();
-			$(article).find('.close a').html("&Ouml;ppna artikel");
 			
 			$(article).find('.more-content').slideUp(500, function(){
 				
@@ -308,7 +309,7 @@ function readMoreToggle(el){
 					
 				});
 
-				$(this).find('.slideshow').cycle('pause');
+				$(article).find('.slideshow').slideshow('pause');
 			});
 			
 			// reset webbrowser history
@@ -329,22 +330,17 @@ function readMoreToggle(el){
 				$(article).find('.more-content').slideDown(500, function(){
 				
 					//add close-button top right corner
-					$(this).find("article-top-menu .close").click(function(ev){
+					var closeb = $('<a>').addClass('closeButton').addClass('bottom').html("Visa mindre").click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					var closeb = $('<a>').addClass('closeButton').addClass('bottom').html("St&auml;ng").click(function(ev){
-						ev.preventDefault();
-						readMoreToggle( $(this).parents("article").find(".entry-title a") );
-					});
-					$(this).append(closeb);
-					$(article).find('.close a').html("St&auml;ng artikel");
+					$(this).parents("article").append(closeb);
 					
 					// scroll to top of post 
 					//$("html,body").animate({scrollTop: $(article).position().top}, 300);
 
 					// articles slideshow
-					$(this).slideshow();
+					$(this).find(".slideshow").slideshow();
 
 					// articles maps
 					$(this).find(".map_canvas").googlemap();
@@ -368,7 +364,7 @@ function readMoreToggle(el){
 		$(article).addClass("loading"); //.html("Laddar...");
 		
 		//find posts id and store it in variable
-		var post_id = $(article).find(".post_id").html();
+		var post_id = $(article).find(".article_id").html();
 	
 		//create a new div with requested content
 		var morediv = $("<div>").attr("class","more-content").hide();
@@ -582,7 +578,7 @@ $(document).ready(function(){
 	
 	/* init slideshows */
 	$('.img-wrapper').each(function() {
-		$(this).slideshow();
+		$(this).find(".slideshow").slideshow();
 	});
 	
 	/* init google maps on ready */
@@ -823,7 +819,7 @@ $(document).ready(function(){
 function setArticleActions(el) {
 	//sets click-action on entry-titles
 
-	$(el).find('.entry-title a, .close a').click(function(ev){
+	$(el).find('.entry-title a, .togglearticle').click(function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
 		if( !$(this).parents('article').hasClass('loading') ){
@@ -835,25 +831,8 @@ function setArticleActions(el) {
 		ev.stopPropagation();
 	});
 	//triggers articles click-action entry-title clicked
-	$(el).find(".summary-content .entry-wrapper, .summary-content .img-wrapper, .side-content .flow-more-side").click(function(){
-		readMoreToggle( $(this).parents("article").find(".summary-content").find('.entry-title a') );
-	});
-	// show contact and related in rightcolumn
-	$(el).hover(function() {
-		if ($(".contact-popup").length == 0 && !$(this).hasClass("only-title")) {
-			//$(this).find(".side-content").fadeIn("slow");
-			//$(this).find(".summary-icons").fadeIn("fast");
-			//$(this).find(".reviewed").children().fadeIn("fast");
-			//log(document.documentMode + " " + document.compatMode);
-		}
-		return false;
-	},function() {
-		if ($(".contact-popup").length == 0 && !$(this).hasClass("single") && !$(this).hasClass("full")) {
-			//$(this).find(".side-content").fadeOut("slow");
-			//$(this).find(".summary-icons").fadeOut("fast");
-			//$(this).find(".reviewed").children().fadeOut("fast");
-		}
-		return false;
+	$(el).find(".summary-content .entry-wrapper, .summary-content .img-wrapper").click(function(){
+		readMoreToggle( $(this).parents("article").find('.entry-title a') );
 	});
 	$(el).find(".contact-wrapper a").each(function() {
 		setContactPopupAction($(this));
@@ -864,9 +843,9 @@ function setArticleActions(el) {
 function setContactPopupAction(el) {
 	$(el).click(function(ev) {
 		if ($(".contact-popup").length == 0) {
-			var post_id = $(el).parent().find(".post_id").html();
+			var post_id = $(el).parent().find(".contact_id").html();
 			ev.preventDefault();
-			$(el).parents(".content-wrapper").append("<div class='contact-popup'>H&auml;mtar kontaktuppgifter...</div>");
+			$("#page").append("<div class='contact-popup'>H&auml;mtar kontaktuppgifter...</div>");
 	
 			$(".contact-popup").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 			{
@@ -878,11 +857,11 @@ function setContactPopupAction(el) {
 				$(this).find(".map_canvas").googlemap();
 				
 				/* init contact slideshow */
-				$(this).slideshow();
+				$(this).find(".slideshow").slideshow();
 			});
 		}
 		else {
-			$(this).find('.slideshow').cycle('pause')
+			$(this).find('.slideshow').slideshow("pause");
 			$(".contact-popup").remove();
 		}
 		return false;

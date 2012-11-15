@@ -63,10 +63,11 @@ global $default_settings;
 				<?php endif; ?>
 				<!--<div class="readMoreFadeBottom"></div>-->
 			</div><!-- .summary-content -->
-			<?php 
-				include("inc/hk-aside-content.php"); 
-			?>
 
 		</div><!-- .content-wrapper -->
-		<span class='hidden post_id'><?php the_ID(); ?></span>
+		<?php 
+			include("inc/hk-aside-content.php"); 
+		?>
+		<span class='hidden article_id'><?php the_ID(); ?></span>
+		<div class="clear"></div>
 	</article><!-- #post-<?php the_ID(); ?> -->

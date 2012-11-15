@@ -281,7 +281,7 @@ function hk_continue_reading_link() {
  * function tied to the excerpt_more filter hook.
  */
 function hk_auto_excerpt_more( $more ) {
-	return ' &hellip;' . hk_continue_reading_link();
+	return '&hellip; <a href="#" class="togglearticle">Visa hela</a>' . hk_continue_reading_link();
 }
 add_filter( 'excerpt_more', 'hk_auto_excerpt_more' );
 

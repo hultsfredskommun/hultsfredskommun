@@ -1,8 +1,8 @@
 
 <aside class="side-content">
 	<div class="box top tools">
-		<div class="close tool-line summary"><div class="icon"></div><a href="#">&Ouml;ppna artikel</a></div>
-		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line full'><div class='icon'></div>", "</div>" ); ?>
+		<div class="close tool-line full"><div class="icon"></div><a class="togglearticle" href="#">Visa mindre</a></div>
+		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line summary'><div class='icon'></div>", "</div>" ); ?>
 		<div class="reviewed tool-line full"><div class="icon"></div><?php echo get_the_reviewed_date(get_the_ID()); ?></div>
 		<div class="print tool-line full"><div class="icon"></div><a class="print">Skriv ut</a></div>
 	</div>
@@ -24,7 +24,7 @@
 					<?php echo get_field('hk_contact_titel',$value->ID); ?>
 				</div>
 				<?php endif; ?>
-			<span class="post_id hidden"><?php echo $value->ID; ?></span></div></div>
+			<span class="contact_id hidden"><?php echo $value->ID; ?></span></div></div>
 		<?php endwhile; ?>			 
 		</div>
 	<?php endif; ?>
