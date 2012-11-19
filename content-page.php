@@ -20,5 +20,6 @@
 	<footer class="entry-meta">
 		<?php edit_post_link( __( 'Edit', 'twentyeleven' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->
-	<span class='hidden post_id'><?php the_ID(); ?></span>
+	<span class='hidden article_id'><?php the_ID(); ?></span>
+	<div class="clear"></div>
 </article><!-- #post-<?php the_ID(); ?> -->

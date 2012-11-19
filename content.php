@@ -65,9 +65,7 @@ global $default_settings;
 			</div><!-- .summary-content -->
 
 		</div><!-- .content-wrapper -->
-		<?php 
-			include("inc/hk-aside-content.php"); 
-		?>
+		<?php include("inc/hk-aside-content.php"); ?>
 		<span class='hidden article_id'><?php the_ID(); ?></span>
 		<div class="clear"></div>
 	</article><!-- #post-<?php the_ID(); ?> -->
