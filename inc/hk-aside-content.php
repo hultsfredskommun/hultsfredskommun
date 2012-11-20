@@ -4,11 +4,12 @@
 		<div class="close tool-line full"><div class="icon"></div><a class="togglearticle" href="#">Visa mindre</a></div>
 		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line summary'><div class='icon'></div>", "</div>" ); ?>
 		<div class="reviewed tool-line full"><div class="icon"></div><?php echo get_the_reviewed_date(get_the_ID()); ?></div>
-		<div class="print tool-line full"><div class="icon"></div><a class="print">Skriv ut</a></div>
+		<div class="print tool-line full"><div class="icon"></div><a class="print" href="<?php the_permalink(); ?>?print=1">Skriv ut</a></div>
+		<div class="read tool-line full"><div class="icon"></div><a class="read">L&auml;s upp</a></div>
 	</div>
 	<?php $count = 0; ?>
 	<?php if( get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
-		<div class="box contacts">
+		<div class="box contacts summary">
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
 			<div class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
 				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>

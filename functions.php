@@ -271,7 +271,7 @@ add_filter( 'excerpt_length', 'hk_excerpt_length' );
  * Returns no link for excerpts
  */
 function hk_continue_reading_link() {
-	return ''; 
+	return ' <a href="' . get_permalink() . '" class="togglearticle">Visa hela</a>'; 
 }
 
 /**
@@ -281,7 +281,7 @@ function hk_continue_reading_link() {
  * function tied to the excerpt_more filter hook.
  */
 function hk_auto_excerpt_more( $more ) {
-	return '&hellip; <a href="#" class="togglearticle">Visa hela</a>' . hk_continue_reading_link();
+	return '&hellip; ';
 }
 add_filter( 'excerpt_more', 'hk_auto_excerpt_more' );
 
@@ -292,9 +292,9 @@ add_filter( 'excerpt_more', 'hk_auto_excerpt_more' );
  * function tied to the get_the_excerpt filter hook.
  */
 function hk_custom_excerpt_more( $output ) {
-	if ( has_excerpt() && ! is_attachment() ) {
+	//if ( has_excerpt() && ! is_attachment() ) {
 		$output .= hk_continue_reading_link();
-	}
+	//}
 	return $output;
 }
 add_filter( 'get_the_excerpt', 'hk_custom_excerpt_more' );

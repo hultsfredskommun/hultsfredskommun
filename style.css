@@ -102,7 +102,9 @@ footer, header, hgroup, menu, nav, section {
 	_idth: 74.5%;
 	width: 55.375%;
 }
-.home #primary .post .content-wrapper {
+.home #primary .post .content-wrapper ,
+.more-from-heading,
+.home .contact-area {
 	width: 100%;
 }
 .home #primary .post .side-content,
@@ -110,9 +112,6 @@ footer, header, hgroup, menu, nav, section {
 .home #primary .post .flow-left,
 .home #primary .post .flow-more-side {
 	display: none;
-}
-.home .contact-area {
-	width: 100%;
 }
 .home #firstpage-sidebar {
 	width: 42.625%;
@@ -131,7 +130,9 @@ footer, header, hgroup, menu, nav, section {
 #primary {
 	width: 80.875%;
 }
-.post .content-wrapper, .single .single-content, #comments, .more-from-heading  {
+.post .content-wrapper, 
+.single .single-content, 
+#comments  {
 	width: 68.46986%;
 }
 #sidebar-wrapper, .side-content {
@@ -374,7 +375,7 @@ body,
 #menu li,.content-wrapper .summary-content,
 .content-wrapper .more-content,
 #dyn-posts-load-posts,
-.contact-popup
+.contact-popup.box
 {
 	background-color: #fff;
 }
@@ -471,7 +472,9 @@ article.sticky {
 
 
 /* BORDER COLORS */
-.box.tools,
+.box.tools {
+	border-left: 4px solid #ccc;
+}
 .box.contacts,
 .box.related,
 .contact-area {
@@ -582,6 +585,9 @@ article.sticky {
 article {
 	border-bottom: 1px solid #E8E8E8;
 }
+article.full {
+	border: 2px solid #E8E8E8;
+}
 .home .content-wrapper .summary-content,
 .home .content-wrapper .more-content,
 .only-title .content-wrapper .summary-content {
@@ -619,12 +625,12 @@ article {
 	box-shadow: 0 1px 5px 0 #E0E0E0;
 }
 
-.contact-popup {
-	-webkit-box-shadow: 5px 5px 15px 0 #ccc;
-	-moz-box-shadow: 5px 5px 15px 0 #ccc;
-	-o-box-shadow: 5px 5px 15px 0 #ccc;
-	-ms-box-shadow: 5px 5px 15px 0 #ccc;
-	box-shadow: 5px 5px 15px 0 #ccc;	
+.contact-popup.box {
+	-webkit-box-shadow: 5px 5px 15px 0 #666;
+	-moz-box-shadow: 5px 5px 15px 0 #666;
+	-o-box-shadow: 5px 5px 15px 0 #666;
+	-ms-box-shadow: 5px 5px 15px 0 #666;
+	box-shadow: 5px 5px 15px 0 #666;
 }
 
 /* END COLORS OF THE THEME */
@@ -1202,7 +1208,7 @@ a:hover {
 }
 #nav li {
 	border: 0;
-	padding: 10px 0;
+	padding: 8px 0;
 	position: relative;
 }
 #selected_filter li {
@@ -1480,17 +1486,18 @@ a:hover {
 }
 .slideshow .nextslide {
 	right: 0;
-	background: url("images/sprite.png") no-repeat scroll 0px -216px transparent;
+	background-position: -132px -387px;
 }
 .slideshow .prevslide {
 	left: 0;
-	background: url("images/sprite.png") no-repeat scroll 0px -240px transparent;
+	background-position: -92px -387px;
 }
 .slideshow .nextslide,
 .slideshow .prevslide {
+	background-image: url("images/sprite.png");
 	display: none;
-	width: 24px;
-	height: 24px;
+	width: 16px;
+	height: 16px;
 	top: 50%;
 	position: absolute;
 	cursor: pointer;
@@ -1543,13 +1550,23 @@ a:hover {
 	float:left;
 }
 .side-content {
-	margin: 0 0 8px 2%;
+	margin: 0 0 12px 2%;
 }
-.contact-popup,
+.full .side-content  .box.summary,
 .side-content  .box {
 	padding: 0 8px;
-	margin-top: 10px;
+	margin-top: 20px;
 }
+.full.single .side-content  .close {
+	display: none;
+}
+.side-content  .editlink {
+	margin-bottom: 20px;
+}
+.full .side-content  .editlink {
+	margin-bottom: 0;
+}
+.side-content  .box.summary,
 .side-content  .box.top {
 	margin-top: 0;
 }
@@ -1563,7 +1580,7 @@ article.single .side-content {
 .full .side-content .full {
 	display: block;
 }
-.contact-popup {
+.contact-popup.box {
 	border: 4px solid #e8e8e8;
 }
 
@@ -1760,7 +1777,8 @@ article.single .side-content {
 
 /* Post style */
 article {
-	margin-bottom: 1.2em !important;
+	padding-top: 10px !important;
+	margin-bottom: 10px !important;
 	position: relative;
 }
 article:last-child { margin-bottom: 0 }
@@ -1782,6 +1800,11 @@ article:last-child { margin-bottom: 0 }
 	-o-transition:opacity 0.2s ease-in-out 0s;
 	-ms-transition:opacity 0.2s ease-in-out 0s;
 	transition:opacity 0.2s ease-in-out 0s
+}
+
+
+.page-header {
+	padding-bottom: 16px;
 }
 
 /* Excerpt/Summary */
@@ -1824,13 +1847,15 @@ article:last-child { margin-bottom: 0 }
 	padding: 0;
 	position: relative;
 }
-.img-wrapper {
-	width: 100%;
-}
 #content .slideshow,
 #content .single .img-wrapper,
 #content .full .img-wrapper {
 	padding-bottom: 12px;
+}
+#content .img-wrapper
+{
+	margin-left: 10px;
+	margin-right: 10px;
 }
 #content .img-wrapper img,
 .more-content .img-wrapper img,
@@ -1851,9 +1876,8 @@ article:last-child { margin-bottom: 0 }
 	background: #E6E6E6;
 }
 .closeButton.bottom {
-	text-align: center;
-	padding: 0;
-	margin: 4px 0;
+	padding: 4px 0;
+	margin: 0;
 	cursor: pointer;
 	z-index: 100;
 	width: 100%;
@@ -1893,6 +1917,7 @@ article:last-child { margin-bottom: 0 }
 /* =side-tab
 ----------------------------------------------- */
 #side-tab {
+	display: none;
 	position: fixed;
 	top: 50%;
 	margin-top: -50px;
@@ -1986,20 +2011,35 @@ article:last-child { margin-bottom: 0 }
 .hk_related.widget .attachment {
 	margin-left: 30px;
 }
-.contact-popup {
+.contact-popup.overlay {
 	position: fixed;
-	width: 50%;
-	height: 50%;
-	z-index: 2000;
-	top: 25%;
-	left: 25%;
+	height: 100%;
+	background: rgba(0, 0, 0, .3);
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1999;
 }
-.contact-popup .entry-wrapper {
+.contact-popup.box {
+	position: fixed;
+	width: 30%;
+	height: 30%;
+	z-index: 2000;
+	top: 35%;
+	left: 35%;
+}
+.contact-popup.box .entry-wrapper {
+	padding: 0;
+	margin: 0;
 	height: 100%;
 	width: 100%;
 	overflow: auto;
 }
-
+.contact-popup.box .img-wrapper,
+.contact-popup.box .entry-content {
+	padding: 10px;
+	margin: 0;
+}
 .contact-area .img-wrapper,
 .contact-area .img-wrapper .slideshow,
 .contact-popup .img-wrapper,
@@ -2008,14 +2048,19 @@ article:last-child { margin-bottom: 0 }
 	width: 150px;
 }
 .contact-popup .close-contact{
-	position: absolute;
+	_osition: absolute;
 	cursor: pointer;
-	top: 5px;
-	right: 5px;
+	_op: 5px;
+	_eft: 5px;
+	line-height: 15px;
+	margin-top: 8px;
+}
+.contact-popup .close-contact .icon {
 	background-image: url("images/sprite.png");
 	background-position: -163px -290px;
 	width: 16px;
 	height: 16px;
+	margin: 0px 0px 6px 10px;
 }
 .img-wrapper {
 	padding: 0;
@@ -2548,7 +2593,13 @@ p.comment-form-comment {
 		width: 55.375%;
 	}
 	#menu ul li a { font-size: 14px; }	
-	
+
+	.contact-popup.box {
+		width: 50%;
+		height: 50%;
+		top: 25%;
+		left: 25%;
+	}	
 }
 
 
@@ -2577,7 +2628,7 @@ p.comment-form-comment {
 		margin: 8px 3px;
 	}
 	
-	.contact-popup {
+	.contact-popup.box {
 		width: 70%;
 		height: 70%;
 		top: 15%;
@@ -2750,10 +2801,10 @@ p.comment-form-comment {
 	}
 	
 	
-	.contact-popup {
-		width: 90%;
-		height: 90%;
-		top: 5%;
+	.contact-popup.box {
+		width: 80%;
+		height: 80%;
+		top: 10%;
 		left: 5%;
 	}
 

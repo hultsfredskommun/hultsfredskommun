@@ -34,7 +34,7 @@ get_header(); ?>
 			<?php endwhile; // end of the loop. ?>
 			
 			<?php /* only show related if post_type is post */
-			if (!empty($cat_array)) : ?>
+			if (empty($_REQUEST["print"]) && !empty($cat_array)) : ?>
 			
 				<?php 
 				

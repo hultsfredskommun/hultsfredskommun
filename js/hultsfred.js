@@ -217,10 +217,12 @@ if (typeof $.fn.googlemap != 'function') {
 if (typeof $.fn.slideshow != 'function') {
 	$.fn.slideshow = function(args) {
 		if (args != undefined) {
-			$(this).cycle(args);
+			if ($(this).find('.slide').length > 1) {
+				$(this).cycle(args);
+			}
 		}
 		else if ($(this).hasClass("slideshow")) {
-			if ($(this).find('.slideshow_bg').length >= 1) {
+			if ($(this).find('.slide').length > 1) {
 				
 				/* set up slideshow first time */
 				if (!$(this).hasClass("initialized")) {
@@ -292,14 +294,14 @@ function readMoreToggle(el){
 			// alter close-buttons
 			$(article).find('.closeButton').remove();
 			
-			$(article).find('.more-content').slideUp(500, function(){
+			$(article).find('.more-content').slideUp(100, function(){
 				
 				if( $("#content").hasClass("viewmode_titles") ){
 					$(article).addClass("only-title");
 				}
 				
 				// toggle visibility
-				$(article).find('.summary-content').slideDown("fast", function(){
+				$(article).find('.summary-content').slideDown(100, function(){
 					
 					// remove full class to track article state
 					$(article).removeClass("full");
@@ -319,18 +321,17 @@ function readMoreToggle(el){
 		// show full content
 		else {
 			// toggle visibility
-			$(article).find('.summary-content').slideUp("fast", function(){
+			$(article).find('.summary-content').slideUp(100, function(){
 				
 				if( $("#content").hasClass("viewmode_titles") ){
 					$(article).removeClass("only-title");
 				}
 				// add full class to track article state
 				$(article).addClass("full");
-				
-				$(article).find('.more-content').slideDown(500, function(){
+				$(article).find('.more-content').slideDown(100, function(){
 				
 					//add close-button top right corner
-					var closeb = $('<a>').addClass('closeButton').addClass('bottom').html("Visa mindre").click(function(ev){
+					var closeb = $('<div>').addClass('closeButton bottom close').html("<div class='icon'></div><a href='#'>Visa mindre</a>").click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
@@ -373,9 +374,10 @@ function readMoreToggle(el){
 		$(article).find('.summary-content').after(morediv);
 
 		$.ajaxSetup({cache:false});
-
+		$(article).find('.summary-content').css("cursor","wait");
 		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 		{
+			$(this).parents("article").find('.summary-content').css("cursor","pointer");
 			//****** click-actions START *******
 			
 			//set click-action on print-post-link
@@ -845,11 +847,14 @@ function setContactPopupAction(el) {
 		if ($(".contact-popup").length == 0) {
 			var post_id = $(el).parent().find(".contact_id").html();
 			ev.preventDefault();
-			$("#page").append("<div class='contact-popup'>H&auml;mtar kontaktuppgifter...</div>");
+			$("#page").append("<div class='contact-popup box'>H&auml;mtar kontaktuppgifter...</div>").append("<div class='contact-popup overlay'></div>");
 	
-			$(".contact-popup").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
+			$(".contact-popup.overlay").click(function() {
+				$(".contact-popup").remove();
+			});
+			$(".contact-popup.box").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 			{
-				$(this).append("<div class='close-contact'></div>");
+				$(this).find(".entry-wrapper").prepend("<div class='close-contact'><div class='icon'></div> St&auml;ng</div>");
 				$(".close-contact").click(function() {
 					$(".contact-popup").remove();
 				});
