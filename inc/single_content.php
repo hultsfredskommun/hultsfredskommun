@@ -38,7 +38,7 @@
 			
 				<footer class="entry-meta">
 			
-					<div class="tag-cloud">
+					<div class="tag-cloud">Tillh&ouml;r: 
 						<?php
 							$categories_list = get_the_category_list( ' | ' );
 							if ( $categories_list ):

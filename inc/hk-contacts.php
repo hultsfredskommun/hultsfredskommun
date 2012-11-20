@@ -210,6 +210,8 @@ function hk_contacts_generate_cache() {
 function hk_contact_shortcode_func( $atts ) {
 	$args = array(
 		'id' => '-1',
+		'cat' => '',
+		'cat_slug' => '',
 		'image' => true,
 		'name' => true,
 		'title' => true,
@@ -224,14 +226,64 @@ function hk_contact_shortcode_func( $atts ) {
 	if ($id > 0) {
 		return hk_get_contact_by_id($id, $atts);
 	}
+	if ($cat != "") {
+		return hk_get_contact_by_cat($cat, $atts, false);
+	}
+	if ($cat_slug != "") {
+		return hk_get_contact_by_cat($cat_slug, $atts, true);
+	}
 	return "Hittade ingen kontakt med id $id.";
 }
 add_shortcode( 'kontakt', 'hk_contact_shortcode_func' );
 
 
 
+// get contact by categories
+function hk_get_contact_by_cat($cat, $args, $slug = false) {
+	global $post;
+	$org_post = $post;
+	$cat_array = split(",", $cat);
+		
+	// query arguments
+	$query_args = array(
+		'posts_per_page' => -1,
+		'paged' => 1,
+		'more' => $more = 0,
+		'post_type' => 'hk_kontakter',
+		'order' => 'ASC', 
+		'suppress_filters' => 1
+	);
+	
+	if ($slug) {
+		$query_args['category_name'] = $cat;
+	}
+	else {
+		$query_args['category__and'] = $cat_array;
+	}
 
-// outputs the content of first page contact
+	// search in all posts (ignore filters)
+	$the_query = new WP_Query( $query_args );
+	$retValue = "";
+
+	// The Loop
+	if ( $the_query->have_posts() ) :
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+			$retValue .= "<div class='contact-area'>";
+			$retValue .= hk_get_the_contact($args);
+			$retValue .= "</div>";
+		endwhile;
+	endif;
+
+	// Reset Post Data
+	wp_reset_postdata();
+	wp_reset_query();
+	$post = $org_post;
+
+	return $retValue;
+
+}
+
+// get contact by id
 function hk_get_contact_by_id($contact_id, $args) {
 	global $post;
 	$org_post = $post;

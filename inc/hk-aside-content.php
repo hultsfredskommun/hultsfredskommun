@@ -4,7 +4,7 @@
 		<div class="close tool-line full"><div class="icon"></div><a class="togglearticle" href="#">Visa mindre</a></div>
 		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line summary'><div class='icon'></div>", "</div>" ); ?>
 		<div class="reviewed tool-line full"><div class="icon"></div><?php echo get_the_reviewed_date(get_the_ID()); ?></div>
-		<div class="print tool-line full"><div class="icon"></div><a class="print" href="<?php the_permalink(); ?>?print=1">Skriv ut</a></div>
+		<div class="print tool-line full"><div class="icon"></div><a class="print" target="_blank" href="<?php the_permalink(); ?>?print=1">Skriv ut</a></div>
 		<div class="read tool-line full"><div class="icon"></div><a class="read">L&auml;s upp</a></div>
 	</div>
 	<?php $count = 0; ?>
