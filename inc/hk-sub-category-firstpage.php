@@ -118,7 +118,7 @@
 					wp_reset_query(); 
 			?>
 			</div><div class="rightcontent">
-				<div class="entry-title">Visa protokoll</div>
+				<div class="entry-title">Visa protokoll</div><ul>
 				<?php 
 				 $args = array(
 					'hide_empty'         => 0,
@@ -133,7 +133,7 @@
 					);
 					wp_list_categories($args);	
 					?>			
-			</div>
+			</ul></div>
 			<div class="clear"></div>
 		</div>	
 		<?php endif; ?>
@@ -171,7 +171,7 @@
 					<div class="entry-title">Fler v&auml;lbes&ouml;kta</div>
 					<?php while ( have_posts() ) : the_post(); ?>
 					<div class="entry-wrapper">
-						<a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
+						<a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
 					</div>
 				<?php
 				endwhile; endif; 

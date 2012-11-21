@@ -275,7 +275,7 @@ function hk_continue_reading_link() {
 }
 
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and hk_continue_reading_link().
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis.
  *
  * To override this in a child theme, remove the filter and add your own
  * function tied to the excerpt_more filter hook.
@@ -417,6 +417,19 @@ function hk_body_classes( $classes ) {
 add_filter( 'body_class', 'hk_body_classes' );
 
 
+ 
+/**
+ * Adds a filter that replaces the w3 validate error rel="category tag" with rel="tag"
+ */
+function replace_cat_tag ( $text ) {
+	$text = str_replace('rel="category tag"', 'rel="tag"', $text); return $text;
+}
+add_filter( 'the_category', 'replace_cat_tag' );
+
+function strip_tags_from_excerpt ( $text ) {
+	$text = strip_tags($text); return $text;
+}
+add_filter( 'the_excerpt_rss', 'strip_tags_from_excerpt' );
 
 
 /* help function to render custom thumbnail functionality */
