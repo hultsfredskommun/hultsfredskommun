@@ -85,7 +85,7 @@ function hk_slideshow_generate_output($vars) {
 		}
 		$meta_query = new WP_Query($args);
 		if ($meta_query->have_posts()) {
-			$retValue .= "<div class='img-wrapper'><div class='slideshow'><img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&h=".($default_settings[$vars["thumbnail-size"]][1])."'/>";
+			$retValue .= "<div class='img-wrapper'><div class='slideshow'><img class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&amp;h=".($default_settings[$vars["thumbnail-size"]][1])."'/>";
 			
        		// The Loop
 			$first = true;

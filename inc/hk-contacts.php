@@ -208,31 +208,53 @@ function hk_contacts_generate_cache() {
 // TODO add button mce to add this shortcode. Ex. http://wordpress.org/extend/plugins/post-snippets/
 // TODO check default settings and check if it works to set from shortcode
 function hk_contact_shortcode_func( $atts ) {
-	$args = array(
+	$default = array(
 		'id' => '-1',
-		'cat' => '',
-		'cat_slug' => '',
-		'image' => true,
-		'name' => true,
-		'title' => true,
-		'workplace' => true,
-		'phone' => true,
-		'email' => false,
-		'description' => false,
-		'address' => false,
-		'visit_hours' => false,
-		'map' => true);
-	extract( shortcode_atts( $args, $atts ) );
-	if ($id > 0) {
-		return hk_get_contact_by_id($id, $atts);
+		'kategori' => '',
+		'kategorinamn' => '',
+		'bild' => true,
+		'namn' => true,
+		'titel' => true,
+		'arbetsplats' => true,
+		'telefon' => true,
+		'epost' => false,
+		'beskrivning' => false,
+		'adress' => false,
+		'besokstid' => false,
+		'karta' => true);
+	$atts = shortcode_atts( $default, $atts );
+
+	$translate = array(
+		'kategori' => 'cat',
+		'kategorinamn' => 'cat_slug',
+		'bild' => 'image',
+		'namn' => 'name',
+		'titel' => 'title',
+		'arbetsplats' => 'workplace',
+		'telefon' => 'phone',
+		'epost' => 'email',
+		'beskrivning' => 'description',
+		'adress' => 'address',
+		'besokstid' => 'visit_hours',
+		'karta' => 'map');
+		
+	$tranlated_atts = array();
+	foreach ($atts as $key => $value) {
+		$tranlated_atts[$translate[$key]] = $value;
 	}
-	if ($cat != "") {
-		return hk_get_contact_by_cat($cat, $atts, false);
+
+	if ($tranlated_atts["id"] > 0) {
+		return hk_get_contact_by_id($tranlated_atts["id"], $tranlated_atts);
 	}
-	if ($cat_slug != "") {
-		return hk_get_contact_by_cat($cat_slug, $atts, true);
+	if ($tranlated_atts["cat"] != "") {
+		return hk_get_contact_by_cat($tranlated_atts["cat"], $tranlated_atts, false);
 	}
-	return "Hittade ingen kontakt med id $id.";
+	if ($tranlated_atts["cat_slug"] != "") {
+		return hk_get_contact_by_cat($tranlated_atts["cat_slug"], $tranlated_atts, true);
+	}
+	if ($retValue == "") {
+		return "Hittade ingen kontakt med id $id.";
+	}
 }
 add_shortcode( 'kontakt', 'hk_contact_shortcode_func' );
 
@@ -392,8 +414,8 @@ function hk_get_the_contact($args = array()) {
 		$hidden[$key] = ($value)?"visible":"hidden";
 	}
 	$retValue = "<div class='entry-wrapper'>";
-		$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
 		$retValue .= "<h1 class='entry-title " . $hidden['name'] . "'>" . get_the_title() . "</h1>";
+		$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
 		$retValue .= "<div class='entry-content'>";
 		
 			$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) ."'>";
@@ -431,14 +453,14 @@ function hk_get_the_contact($args = array()) {
 				// visit hours
 				$retValue .= "<p class='" . $hidden['visit_hours'] . "'>" . get_field("hk_contact_visit_hours") . "</p>";
 				
-				// position
-				$contact_position = get_field("hk_contact_position");
-				if (!empty($contact_position) && $contact_position["coordinates"] != "") :
-					$retValue .= "<div class='map_canvas " . $hidden['map'] . "'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div>";
-				endif;
 				
 				
 			$retValue .= "</div>";
+			// position
+			$contact_position = get_field("hk_contact_position");
+			if (!empty($contact_position) && $contact_position["coordinates"] != "") :
+				$retValue .= "<div class='map_canvas " . $hidden['map'] . "'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div>";
+			endif;
 		$retValue .= "</div>";
 	$retValue .= "</div>";
 	return $retValue;

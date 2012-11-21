@@ -595,7 +595,9 @@ $(document).ready(function(){
 		if( parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2) ) {
 			/*if (!$(body).hasClass("home")) {*/
 				//$('#dyn-posts-load-posts a').click();
+				/* REMOVED - load more functionality 
 				dyn_posts_load_posts();
+				*/
 			/*}
 			else {
 				log("Ingen dynamisk laddning p&aring; f&ouml;rstasidan.");
@@ -689,9 +691,10 @@ $(document).ready(function(){
 	 */
 	if(settings["pageNum"] <= settings["maxPages"]) { // && !$(body).hasClass("home")) {
 		// Insert the "More Posts" link.
+		/* REMOVED - load more functionality 
 		$('#content')
 		.append('<div id="dyn-posts-placeholder-'+ settings["pageNum"] +'" class="dyn-posts-placeholder"></div>')
-		.append('<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>');
+		.append('<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>');*/
 		// Remove the traditional navigation.
 		$('.navigation').remove();
 		$("#nav-below").remove();
