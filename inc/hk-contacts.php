@@ -418,7 +418,7 @@ function hk_get_the_contact($args = array()) {
 		$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
 		$retValue .= "<div class='entry-content'>";
 		
-			$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) ."'>";
+			$retValue .= "<div class='contact-" . get_the_ID() . " " . implode(" ",get_post_class()) ."'>";
 				$retValue .= "<div class='content " . $hidden['title'] . "'>" . get_field("hk_contact_titel") . "</div>";
 				
 				// workplace

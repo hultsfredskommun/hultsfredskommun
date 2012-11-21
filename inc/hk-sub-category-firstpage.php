@@ -171,7 +171,7 @@
 					<div class="entry-title">Fler v&auml;lbes&ouml;kta</div>
 					<?php while ( have_posts() ) : the_post(); ?>
 					<div class="entry-wrapper">
-						<a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
+						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
 					</div>
 				<?php
 				endwhile; endif; 
