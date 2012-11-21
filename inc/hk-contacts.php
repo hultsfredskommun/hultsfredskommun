@@ -507,7 +507,7 @@ function hk_contact_tab() {
 
 						$retValue .= "<div class='contact-wrapper'>";
 						$retValue .= "<div class='icon'>&nbsp;</div>";
-						$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
+						$retValue .= "<div class='contact-" . get_the_ID() . " " . implode(" ",get_post_class()) . "'>";
 						$retValue .= "<a class='permalink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
 						$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
 						$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
