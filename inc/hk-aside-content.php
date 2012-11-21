@@ -13,7 +13,7 @@
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
 			<div class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
 				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>
-				<div class="icon"></div><div id="contact-<?php echo $value->ID; ?>"><a href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
+				<div class="icon"></div><div class="contact-<?php echo $value->ID; ?>"><a href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
 				
 				<?php $alt_title = get_sub_field('hk_contact_extra',get_the_ID());
 				if (!empty($alt_title)) : ?>
