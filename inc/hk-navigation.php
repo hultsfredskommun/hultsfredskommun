@@ -84,27 +84,7 @@ function hk_navigation() {
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
-			if ($default_settings["show_tags"] != 0) :
-
-			$hk_tag_walker = new hk_Tag_Walker();
-			$args = array(
-				'orderby'            => 'name',
-				'order'              => 'ASC',
-				'style'              => 'list',
-				'hide_empty'         => 0,
-				'use_desc_for_title' => 1,
-				'title_li'           => '',
-				'show_option_none'   => '',
-				'echo'               => 1,
-				'taxonomy'           => 'post_tag',
-				'walker'			 => $hk_tag_walker
-			);
-		
-			echo "<ul class='tags'>"; 
-			wp_list_categories( $args );
-			echo "</ul>";
 			
-			endif;
 		}
 	}
 	
@@ -290,4 +270,33 @@ class hk_Tag_Walker extends Walker_Category {
 	} 
 
 }
+
+
+
+function displayTagFilter() {
+	global $default_settings;
+	if ($default_settings["show_tags"] != 0) :
+		echo "<div id='tags'><div id='toggle-tags'>Visa bara</div>";
+		$hk_tag_walker = new hk_Tag_Walker();
+		$args = array(
+			'orderby'            => 'name',
+			'order'              => 'ASC',
+			'style'              => 'list',
+			'hide_empty'         => 0,
+			'use_desc_for_title' => 1,
+			'title_li'           => '',
+			'show_option_none'   => '',
+			'echo'               => 1,
+			'taxonomy'           => 'post_tag',
+			'walker'			 => $hk_tag_walker
+		);
+
+		echo "<div class='tags-wrapper'><ul>"; 
+		wp_list_categories( $args );
+		echo "</ul></div>";
+		echo "</div>";
+	endif;
+}
+
+
 ?>

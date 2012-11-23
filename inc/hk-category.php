@@ -15,6 +15,12 @@
 				<a id="viewmode_summary" title="Listvisning" href="#"></a>
 				<a id="viewmode_titles" title="Rubrikvisning" href="#"></a>
 			</div>
+
+			<?php 
+				if( function_exists('displayTagFilter') ){
+					displayTagFilter();
+				} 
+			?>
 			<div class="clear"></div>
 		</header>
 
