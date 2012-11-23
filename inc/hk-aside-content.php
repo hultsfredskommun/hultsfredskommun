@@ -1,11 +1,11 @@
 
 <aside class="side-content">
+	<div class="close full"><div class="icon"></div><a class="togglearticle" href="#">Visa mindre</a></div>
 	<div class="box top tools">
-		<div class="close tool-line full"><div class="icon"></div><a class="togglearticle" href="#">Visa mindre</a></div>
 		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line summary'><div class='icon'></div>", "</div>" ); ?>
-		<div class="reviewed tool-line full"><div class="icon"></div><?php echo get_the_reviewed_date(get_the_ID()); ?></div>
-		<div class="print tool-line full"><div class="icon"></div><a class="print" target="_blank" href="<?php the_permalink(); ?>?print=1">Skriv ut</a></div>
-		<div class="read tool-line full"><div class="icon"></div><a class="read">L&auml;s upp</a></div>
+		<div class="print tool-line full"><div class="icon"></div><a class="print" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Funktionen kommer senare">Skriv ut</a></div>
+		<div class="read tool-line full"><div class="icon"></div><a class="read" title="Funktionen kommer senare">L&auml;s upp</a></div>
+		<div class="friend tool-line full"><div class="icon"></div><a class="read" title="Funktionen kommer senare">Tipsa</a></div>
 	</div>
 	<?php $count = 0; ?>
 	<?php if( get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
@@ -52,9 +52,10 @@
 						<a target="_blank" href="<?php echo $relate_link_url; ?>" title="<?php echo get_sub_field('hk_related_link_description'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
 					</li>
 				<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
-					<?php $link = wp_get_attachment_link(get_sub_field('hk_related_file')); ?>
+					<?php $link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
+						$link_name = get_the_title(get_sub_field('hk_related_file')); ?>
 					<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>"><div class="icon"></div>
-						<?php echo str_replace("title='", "title='" . get_sub_field('hk_related_file_description') . " " ,str_replace("<a ", "<a target='_blank' ", $link)); ?>
+						<a target="_blank" href="<?php echo $link; ?>" title="<?php echo get_sub_field('hk_related_file_description'); ?>"><?php echo $link_name; ?></a>
 					</li>			 
 				<?php endif; ?> 
 			<?php endif; ?> 

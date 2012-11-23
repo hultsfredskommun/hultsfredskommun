@@ -421,7 +421,7 @@ var oldWidth; //used to check if window-width have changed
 
 
 $(document).ready(function(){
-	
+	var wpadminbarheight = $("#wpadminbar").height();
 	
 	/* GRID LINES */
 	$("#cssgridbutton .onoff").click(function() {
@@ -504,11 +504,15 @@ $(document).ready(function(){
 	$("#viewmode_summary").click(function(ev){
 		$("#content").removeClass("viewmode_titles");
 		$("#content").find('article').removeClass("only-title");
+		$("#viewmode_titles").show();
+		$("#viewmode_summary").hide();
 		ev.preventDefault();
 	});
 	// show only title click action
 	$("#viewmode_titles").click(function(ev){
-	
+		$("#viewmode_titles").hide();
+		$("#viewmode_summary").show();
+		
 		//get all articles in #content and store in arr
 		var arr = $("#content").find('article');
 		
@@ -614,11 +618,11 @@ $(document).ready(function(){
 
 		
 		/* stick menu to top */
-		//if( $(this).scrollTop() > 100 ) {
-		//	$('#menu').css("position", "fixed").css("top", "-1em"); /*.css("border-top-left-radius","0").css("border-top-right-radius","0").css("border-bottom-left-radius","10px").css("border-bottom-right-radius","10px")*/
+		//if( $(this).scrollTop() > wpadminbarheight ) {
+		//	$('#branding').css("position", "fixed").css("top", wpadminbarheight + "px"); /*.css("border-top-left-radius","0").css("border-top-right-radius","0").css("border-bottom-left-radius","10px").css("border-bottom-right-radius","10px")*/
 		//}
 		//else {
-		//	$('#menu').css("position", "initial").css("top","initial"); /*.css("border-top-left-radius","10px").css("border-top-right-radius","10px").css("border-bottom-left-radius","0").css("border-bottom-right-radius","0")*/
+		//	$('#branding').css("position", "initial").css("top","initial"); /*.css("border-top-left-radius","10px").css("border-top-right-radius","10px").css("border-bottom-left-radius","0").css("border-bottom-right-radius","0")*/
 		//}
 
 		

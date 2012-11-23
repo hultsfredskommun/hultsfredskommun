@@ -24,44 +24,7 @@ global $default_settings;
 						<?php the_excerpt(); ?>
 					</div>
 				</div>
-				<?php if (is_single() || !in_category($default_settings["startpage_cat"])) : ?>
-							
-				<div class="summary-footer">
-					<?php
-						$categories_list = get_the_category_list(' | ');
-						if ( $categories_list ):
-						?>
-						<span class="cat-links">
-							<?php echo $categories_list; ?>
-						</span>
-					<?php endif; // End if categories ?>
-					
-					<?php
-						$list = get_the_term_list(get_the_ID(), "post_tag",'',' | ','');
-						if ( $list ):
-							if ($categories_list ) {
-								echo " | ";
-							}
-						?>
-						<span class="tag-links">
-							<?php echo $list; ?>
-						</span>
-					<?php endif; // END if tags  ?>
 
-
-					<?php //if(function_exists('the_views')) { echo "<span class='views'>"; the_views(); echo "</span>"; } ?>
-						
-					<?php if (false) { //REMOVE CONTACT AND RELATED ICONS if( get_field('hk_related') || get_field('hk_contacts') ) { ?>
-						<div class="summary-icons">
-						<?php if( get_field('hk_related') ) { echo "<span class='docs icon'>&nbsp;</span>"; } ?>
-						
-						<?php if( get_field('hk_contacts') ) { echo "<span class='contact icon'></span>"; } ?>
-						</div>
-					<?php } ?>
-					
-				</div>
-				<?php endif; ?>
-				<!--<div class="readMoreFadeBottom"></div>-->
 			</div><!-- .summary-content -->
 
 		</div><!-- .content-wrapper -->

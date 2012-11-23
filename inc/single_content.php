@@ -63,6 +63,8 @@
 					</div>
 
 					<div class="editor">Sidansvarig: <?php comments_popup_link(get_the_author(),get_the_author(),get_the_author(),'',get_the_author()); ?><?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></div>
+					<div class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></div>
+
 					<div class="permalink">Direktl&auml;nk: <a href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></div>
 					
 
