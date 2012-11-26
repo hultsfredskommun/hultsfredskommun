@@ -335,7 +335,7 @@ body, input, textarea,
 /* menu text color */
 #topmenu nav ul li a, 
 #menu ul li a,
-#nav a,
+#nav ul.parent a,
 #sort-order ul li a,
 #searchresult ul li a{
 	/*color: #fff; /* white */
@@ -373,7 +373,7 @@ body,
 #searchform,
 #searchresult,
 /*#sidebar .widget,*/
-#tags ul,
+.dropdown-tags ul,
 #menu,
 #menu li,.content-wrapper .summary-content,
 .content-wrapper .more-content,
@@ -516,6 +516,7 @@ article.sticky {
 	border-bottom: 4px solid #ccc;
 	margin-bottom: 6px;
 }
+.tags,
 .more-from-heading {
 	border-top: 4px solid #E6E6E6;
 }
@@ -1281,22 +1282,30 @@ a:hover {
 	background: url("images/sprite.png") no-repeat scroll -65px -387px transparent;
 }
 
-
-#toggle-tags {
+.tags {
+	margin-top: 20px;
+	padding-top: 20px;
+}
+.tags a.selected-tags {
+	display: inline-block;
+	margin: 8px;
+}
+.dropdown-tags ,
+.dropdown-tags .toggle-tags {
 	float: left;
 }
 #sort-order ul,
-#tags ul {
+.dropdown-tags ul {
 	margin: 0;
 }
-#tags ul li {
+.dropdown-tags ul li {
 	margin: 8px;
 }
 .selected-tags,
-#tags {
+.dropdown-tags {
 	margin-left: 8px;
 }
-#toggle-tags {
+.toggle-tags {
 	cursor: pointer;
 }
 .selected-tags {
@@ -1305,17 +1314,17 @@ a:hover {
 .selected-tags:after {
 	content: " x";
 }
-#toggle-tags:after {
+.dropdown-tags .toggle-tags:after {
 	content: ' \2B';
 }
-#toggle-tags.open:after {
+.toggle-tags.open:after {
 	content: ' \2D';
 }
-#tags .tags-wrapper {
+.dropdown-tags .tags-wrapper {
 	position: relative;
 	float: left;
 }
-#tags ul {
+.dropdown-tags ul {
 	display: none;
 	position: absolute;
 	z-index: 200;

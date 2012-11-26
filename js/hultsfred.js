@@ -546,9 +546,9 @@ $(document).ready(function(){
 		ev.preventDefault();
 	});
 	// show only title click action
-	$("#toggle-tags").click(function(ev){
+	$(".dropdown-tags .toggle-tags").click(function(ev){
 		$(this).toggleClass("open");
-		$("#tags ul").toggle();
+		$(this).parent().find("ul").toggle();
 		
 		ev.preventDefault();
 	});

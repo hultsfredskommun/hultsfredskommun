@@ -84,8 +84,12 @@ function hk_navigation() {
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
-			
+			if( function_exists('displayTagFilter') ){
+				displayTagFilter("tags");
+			}
+	
 		}
+		
 	}
 	
 	if (is_single())
@@ -109,6 +113,7 @@ function hk_navigation() {
 	
 		echo "</ul></div>";
 	}
+	
 	echo "</nav></aside>";
 }
 	
@@ -282,14 +287,14 @@ class hk_Tag_Walker extends Walker_Category {
 
 
 
-function displayTagFilter() {
+function displayTagFilter($class = "dropdown-tags") {
 	global $default_settings;
 	if ($default_settings["show_tags"] != 0) :
 		
-		echo "<div id='tags'><div id='toggle-tags'>";
-		if ($_REQUEST["tag"] == "") {
+		echo "<div class='$class'><div class='toggle-tags'>";
+		//if ($_REQUEST["tag"] == "") {
 			echo "Visa bara";
-		}
+		//}
 		echo "</div>";
 		
 		if ($_REQUEST["tag"] != "") {

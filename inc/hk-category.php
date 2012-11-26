@@ -18,7 +18,7 @@
 			<?php 
 				if( function_exists('displayTagFilter') ){
 					displayTagFilter();
-				} 
+				}
 			?>
 			<div class="clear"></div>
 		</header>
