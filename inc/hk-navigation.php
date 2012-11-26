@@ -279,7 +279,7 @@ class hk_Tag_Walker extends Walker_Category {
             $output .=  ' class="'.$class.'"'; 
             $output .= ">$link\n"; 
         } else { 
-            $output .= "\t$link<br />\n"; 
+            $output .= "\t$link</li>\n"; 
         } 
 	} 
 

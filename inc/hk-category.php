@@ -143,7 +143,7 @@
 
 	else : ?>
 
-		<article id="post-0; ?>">
+		<article id="post-nothing">
 		<div class="content-wrapper">
 		<div class="summary-content">
 			<div class="entry-wrapper">
