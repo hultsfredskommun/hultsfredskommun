@@ -223,8 +223,8 @@ h6
 }
 .slideshow article .text-area .text-content a
 {
-	font-size: 2em;
-	line-height: 2em;
+	font-size: 20px;
+	line-height: 3em;
 }
 .post footer { 
 	font-size: 12px;
@@ -415,7 +415,8 @@ hr,
 #menu ul li.current-post-ancestor:first-child,
 #menu .sub-menu,
 .ui-tabs li.ui-tabs-selected,
-.pager li.activeSlide a
+.pager li.activeSlide a,
+.slideshow article .text-area .text-content .transp-background
 {
 	background-color: #06435A; /* deep blue */
 }
@@ -1503,11 +1504,10 @@ a:hover {
 	z-index: 1000;
 	max-height: 60px;
 	width: 100%;
-	bottom: 0px;
+	bottom: 10px;
 }
 .slideshow article .text-area .text-content .transp-background
 {
-	background: black;
 	height: 100%;
 	width: 100%;
 	opacity: 0.75;

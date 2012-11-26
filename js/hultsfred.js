@@ -229,7 +229,6 @@ if (typeof $.fn.slideshow != 'function') {
 					rand = Math.floor((Math.random()*1000)+1);
 					$(this).find(".prevslide").addClass("prev"+rand);
 					$(this).find(".nextslide").addClass("next"+rand);
-					$(this).append('<ul class="pager pager'+rand+'">');
 					// show slide navigation on hover
 					$(this).hover(function() {
 						$(this).find(".nextslide, .prevslide, .pager").fadeIn("fast");
@@ -253,15 +252,19 @@ if (typeof $.fn.slideshow != 'function') {
 						next:   '.next' + rand
 					};
 
-					args['pager'] =  '.pager' + rand;
-						// callback fn that creates a thumbnail to use as pager anchor 
 						
-					args['pagerAnchorBuilder'] = function(idx, slide) {
-						var src = slide.src;
-						if (src == undefined)
-							src = $(slide).find("img").attr("src");
-						return '<li><a href="#"><img src="' + src + '" width="50" height="50" /></a></li>'; 
-					};
+					// if pager should be added
+					if (!$(this).hasClass("nopager")) {
+						$(this).append('<ul class="pager pager'+rand+'">');
+						args['pager'] =  '.pager' + rand;
+						// callback fn that creates a thumbnail to use as pager anchor 
+						args['pagerAnchorBuilder'] = function(idx, slide) {
+							var src = slide.src;
+							if (src == undefined)
+								src = $(slide).find("img").attr("src");
+							return '<li><a href="#"><img src="' + src + '" width="50" height="50" /></a></li>'; 
+						};
+					}
 					
 					$(this).cycle( args );
 
