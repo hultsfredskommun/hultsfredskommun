@@ -202,7 +202,6 @@ class hk_Tag_Walker extends Walker_Category {
 		if(!empty($tag_array) && in_array($currtagslug, $tag_array)) {
 			$current_tag = true;
 			$tag_array = array_values(array_diff($tag_array, array($currtagslug)));
-			return; // return here to remove current item from wp_list_category since it is seleced.
 		}
 		else { 
 			$tag_array[] = $currtagslug;
@@ -270,17 +269,22 @@ class hk_Tag_Walker extends Walker_Category {
         } 
 		
 		// if style == list
-        if ( 'list' == $args['style'] ) { 
-			$output .= "\t<li"; 
-            $class = 'tag-item tag-item-'.$tag->term_id; 
-			
-            if ( isset($current_tag) && $current_tag && ($tag->term_id == $current_tag) ) 
-                $class .=  ' current-tag'; 
-            $output .=  ' class="'.$class.'"'; 
-            $output .= ">$link</li>\n"; 
-        } else { 
-            $output .= "\t$link\n"; 
-        } 
+		if ($current_tag) {
+			$output .= "<li class='hidden'>";
+		} 
+		else {
+			if ( 'list' == $args['style'] ) { 
+				$output .= "\t<li"; 
+				$class = 'tag-item tag-item-'.$tag->term_id; 
+				
+				if ( isset($current_tag) && $current_tag && ($tag->term_id == $current_tag) ) 
+					$class .=  ' current-tag'; 
+				$output .=  ' class="'.$class.'"'; 
+				$output .= ">$link\n"; 
+			} else { 
+				$output .= "\t$link</li>\n"; 
+			} 
+		}
 	} 
 
 }
