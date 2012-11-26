@@ -186,7 +186,10 @@ class hk_Tag_Walker extends Walker_Category {
 		$currtagslug = $tag->slug;
 		$tags_filter = get_query_var("tag");
 		$term_id = get_query_var("cat");
-
+		$orderby = $_REQUEST["orderby"];
+		if ($orderby != "") {
+			$orderby = "&orderby=$orderby";
+		}
 		if (!empty($tags_filter))
 			$tag_array = explode(",",$tags_filter);
 		
@@ -194,11 +197,13 @@ class hk_Tag_Walker extends Walker_Category {
 		if(!empty($tag_array) && in_array($currtagslug, $tag_array)) {
 			$current_tag = true;
 			$tag_array = array_values(array_diff($tag_array, array($currtagslug)));
+			return; // return here to remove current item from wp_list_category since it is seleced.
 		}
 		else { 
 			$tag_array[] = $currtagslug;
 		}
-
+		
+		// set new tag filter
 		if (count($tag_array) == 1) {
 			$tags_filter = $tag_array[0];
 		}
@@ -208,28 +213,30 @@ class hk_Tag_Walker extends Walker_Category {
 		else {
 			$tags_filter = "";
 		}
-
 		if (!empty($tags_filter)) {
 			$tags_filter = "?tag=" . $tags_filter;
 		}
 		else {
 			$tags_filter = "?tag=";
 		}
+		
+		// generate tag link
         $cat_name = esc_attr( $tag->name); 
-        $link = '<a href="' . get_category_link( $term_id ) . $tags_filter . '" '; 
+        $link = '<a href="' . get_category_link( $term_id ) . $tags_filter. $orderby  . '" '; 
         $cat_name = apply_filters( 'list_cats', $cat_name, $tag ); 
         if ( $use_desc_for_title == 0 || empty($tag->description) ) 
             $link .= 'title="Filtrera med nyckelordet ' .  $cat_name . '"'; 
         else 
             $link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $tag->description, $tag ) ) ) . '"'; 
         $link .= '>'; 
-
         $link .= $cat_name . '</a>'; 
+		
+		// if feed
         if ( (! empty($feed_image)) || (! empty($feed)) ) { 
             $link .= ' '; 
             if ( empty($feed_image) ) 
                 $link .= '('; 
-            $link .= '<a href="' . get_category_feed_link($term_id, $feed_type) . $tags_filter . '"'; 
+            $link .= '<a href="' . get_category_feed_link($term_id, $feed_type) . $tags_filter . $orderby . '"'; 
             if ( empty($feed) ) 
                 $alt = ' alt="' . sprintf(__( 'Feed for all posts filed under %s' ), $cat_name ) . '"'; 
             else { 
@@ -249,13 +256,15 @@ class hk_Tag_Walker extends Walker_Category {
                 $link .= ')'; 
         } 
 
+		// show count
         if ( isset($show_count) && $show_count ) 
             $link .= ' (' . intval($tag->count) . ')'; 
- 
+		// show date
         if ( isset($show_date) && $show_date ) { 
             $link .= ' ' . gmdate('Y-m-d', $tag->last_update_timestamp); 
         } 
-
+		
+		// if style == list
         if ( 'list' == $args['style'] ) { 
 			$output .= "\t<li"; 
             $class = 'tag-item tag-item-'.$tag->term_id; 
@@ -276,7 +285,26 @@ class hk_Tag_Walker extends Walker_Category {
 function displayTagFilter() {
 	global $default_settings;
 	if ($default_settings["show_tags"] != 0) :
-		echo "<div id='tags'><div id='toggle-tags'>Visa bara</div>";
+		
+		echo "<div id='tags'><div id='toggle-tags'>";
+		if ($_REQUEST["tag"] == "") {
+			echo "Visa bara";
+		}
+		echo "</div>";
+		
+		if ($_REQUEST["tag"] != "") {
+			$tag_array = split(",",$_REQUEST["tag"]);
+			$orderby = $_REQUEST["orderby"];
+			if ($orderby != "") {
+				$orderby = "&orderby=$orderby";
+			}
+			foreach ($tag_array as $value) {
+				$new_tags = "?tag=" . rtrim(str_replace($value . ",", "", $_REQUEST["tag"] . ","), ",");
+				
+				echo "<a title='Ta bort filtrera p&aring; $value' href='" . $new_tags . $orderby . "' class='selected-tags'>$value</a> ";
+			}
+		}
+		
 		$hk_tag_walker = new hk_Tag_Walker();
 		$args = array(
 			'orderby'            => 'name',
