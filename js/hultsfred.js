@@ -628,12 +628,12 @@ $(document).ready(function(){
 
 		
 		/* stick menu to top */
-		if( $(this).scrollTop() > wpadminbarheight ) {
-			$('#branding').css("position", "fixed").css("top", wpadminbarheight + "px"); /*.css("border-top-left-radius","0").css("border-top-right-radius","0").css("border-bottom-left-radius","10px").css("border-bottom-right-radius","10px")*/
-		}
-		else {
-			$('#branding').css("position", "initial").css("top","initial"); /*.css("border-top-left-radius","10px").css("border-top-right-radius","10px").css("border-bottom-left-radius","0").css("border-bottom-right-radius","0")*/
-		}
+		//if( $(this).scrollTop() > wpadminbarheight ) {
+		//	$('#branding').css("position", "fixed").css("top", wpadminbarheight + "px"); /*.css("border-top-left-radius","0").css("border-top-right-radius","0").css("border-bottom-left-radius","10px").css("border-bottom-right-radius","10px")*/
+		//}
+		//else {
+		//	$('#branding').css("position", "initial").css("top","initial"); /*.css("border-top-left-radius","10px").css("border-top-right-radius","10px").css("border-bottom-left-radius","0").css("border-bottom-right-radius","0")*/
+		//}
 
 		
 		/*
