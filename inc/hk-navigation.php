@@ -277,9 +277,9 @@ class hk_Tag_Walker extends Walker_Category {
             if ( isset($current_tag) && $current_tag && ($tag->term_id == $current_tag) ) 
                 $class .=  ' current-tag'; 
             $output .=  ' class="'.$class.'"'; 
-            $output .= ">$link\n"; 
+            $output .= ">$link</li>\n"; 
         } else { 
-            $output .= "\t$link</li>\n"; 
+            $output .= "\t$link\n"; 
         } 
 	} 
 
