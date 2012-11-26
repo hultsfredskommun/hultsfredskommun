@@ -2,7 +2,6 @@
 
 	<div id="content" role="main">
 
-	<?php if ( have_posts() ) : ?>
 
 		<header class="page-header">
 			<?php 
@@ -23,6 +22,8 @@
 			?>
 			<div class="clear"></div>
 		</header>
+		
+	<?php if ( have_posts() ) : ?>
 
 		<?php
 			/**
