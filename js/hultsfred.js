@@ -355,7 +355,7 @@ function readMoreToggle(el){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(this).parents("article").prepend(closea).append(closeb);
+					$(this).parents("article").find(".article-wrapper").prepend(closea).after(closeb);
 					
 					// scroll to top of post 
 					//$("html,body").animate({scrollTop: $(article).position().top}, 150);

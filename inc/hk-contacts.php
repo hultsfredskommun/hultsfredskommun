@@ -413,10 +413,16 @@ function hk_get_the_contact($args = array()) {
 	foreach($default as $key => $value) {
 		$hidden[$key] = ($value)?"visible":"hidden";
 	}
-	$retValue = "<div class='entry-wrapper'>";
-		$retValue .= "<h1 class='entry-title " . $hidden['name'] . "'>" . get_the_title() . "</h1>";
-		$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
+	$contact_position = get_field("hk_contact_position");
+	if (!empty($contact_position) && $contact_position["coordinates"] != "") {
+		$mapclass = "hasmap";
+	}
+		
+	$retValue = "<div class='entry-wrapper $mapclass'>";
 		$retValue .= "<div class='entry-content'>";
+
+			$retValue .= "<h1 class='entry-title " . $hidden['name'] . "'>" . get_the_title() . "</h1>";
+			$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
 		
 			$retValue .= "<div class='contact-" . get_the_ID() . " " . implode(" ",get_post_class()) ."'>";
 				$retValue .= "<div class='content " . $hidden['title'] . "'>" . get_field("hk_contact_titel") . "</div>";
@@ -456,13 +462,15 @@ function hk_get_the_contact($args = array()) {
 				
 				
 			$retValue .= "</div>";
-			// position
-			$contact_position = get_field("hk_contact_position");
-			if (!empty($contact_position) && $contact_position["coordinates"] != "") :
-				$retValue .= "<div class='map_canvas " . $hidden['map'] . "'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div>";
-			endif;
 		$retValue .= "</div>";
+	
+		// position
+		if (!empty($contact_position) && $contact_position["coordinates"] != "") :
+			$retValue .= "<div class='map_canvas " . $hidden['map'] . "'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div>";
+		endif;
+		
 	$retValue .= "</div>";
+
 	return $retValue;
 }
 
