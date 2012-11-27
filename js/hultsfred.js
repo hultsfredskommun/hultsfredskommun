@@ -216,12 +216,24 @@ if (typeof $.fn.googlemap != 'function') {
  */
 if (typeof $.fn.slideshow != 'function') {
 	$.fn.slideshow = function(args) {
+		if ($(this).hasClass("slideshow")) {
+			$(this).doslideshow(args);
+		}
+		else {
+			$(this).find(".slideshow").each(function() {
+				$(this).doslideshow(args);
+			});
+		}
+	}
+}
+if (typeof $.fn.doslideshow != 'function') {
+	$.fn.doslideshow = function(args) {	
 		if (args != undefined) {
 			if ($(this).find('.slide').length > 1) {
 				$(this).cycle(args);
 			}
 		}
-		else if ($(this).hasClass("slideshow")) {
+		else {
 			if ($(this).find('.slide').length > 1) {
 				
 				/* set up slideshow first time */
@@ -304,7 +316,9 @@ function readMoreToggle(el){
 				}
 				
 				// toggle visibility
-				$("html,body").animate({scrollTop: $(article).position().top +130}, 0);
+				if ($(article).position().top +130 + $("html,body").position().top < 0) {
+					$("html,body").animate({scrollTop: $(article).position().top +130}, 0);
+				}
 				$(article).find('.summary-content').slideDown(0, function(){
 					
 					// remove full class to track article state
@@ -313,7 +327,7 @@ function readMoreToggle(el){
 					
 				});
 
-				$(article).find('.slideshow').slideshow('pause');
+				$(article).slideshow('pause');
 			});
 			
 			// reset webbrowser history
@@ -333,7 +347,7 @@ function readMoreToggle(el){
 				$(article).find('.more-content').slideDown(0, function(){
 				
 					//add close-button top right corner
-					var closea = $('<div>').addClass('closeButton top close white').html("<div class='icon'></div><a href='#'>Visa mindre</a>").click(function(ev){
+					var closea = $('<div>').addClass('closeButton top close').html("<div class='icon'></div><a href='#'>Visa mindre</a>").click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
@@ -347,7 +361,7 @@ function readMoreToggle(el){
 					//$("html,body").animate({scrollTop: $(article).position().top}, 150);
 
 					// articles slideshow
-					$(this).find(".slideshow").slideshow();
+					$(this).slideshow();
 
 					// articles maps
 					$(this).find(".map_canvas").googlemap();
@@ -596,9 +610,7 @@ $(document).ready(function(){
 	});
 	
 	/* init slideshows */
-	$('.img-wrapper').each(function() {
-		$(this).find(".slideshow").slideshow();
-	});
+	$('.img-wrapper').slideshow();
 	
 	/* init google maps on ready */
 	$(".map_canvas").googlemap();
@@ -882,11 +894,11 @@ function setContactPopupAction(el) {
 				$(this).find(".map_canvas").googlemap();
 				
 				/* init contact slideshow */
-				$(this).find(".slideshow").slideshow();
+				$(this).slideshow();
 			});
 		}
 		else {
-			$(this).find('.slideshow').slideshow("pause");
+			$(this).slideshow("pause");
 			$(".contact-popup").remove();
 		}
 		return false;
