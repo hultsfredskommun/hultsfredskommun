@@ -2677,8 +2677,7 @@ p.comment-form-comment {
 	#menu ul li a { 
 		font-size: 13px; 
 	}
-	#menu ul li a,
-	#sort-order ul li a
+	#menu ul li a
 	{
 		margin: 8px 6px;
 	}
@@ -2714,11 +2713,6 @@ p.comment-form-comment {
     }
     #branding #searchresult {
 		max-width: 67%;
-	}
-
-	#nav-below {
-		border-bottom: 1px solid #ddd;
-		margin-bottom: 1.625em;
 	}
 	
 	/* sticky-post */

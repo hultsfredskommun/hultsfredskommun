@@ -297,20 +297,19 @@ function readMoreToggle(el){
 			// alter close-buttons
 			$(article).find('.closeButton').remove();
 			
-			$(article).find('.more-content').slideUp(100, function(){
+			$(article).find('.more-content').slideUp(0, function(){
 				
 				if( $("#content").hasClass("viewmode_titles") ){
 					$(article).addClass("only-title");
 				}
 				
 				// toggle visibility
-				$(article).find('.summary-content').slideDown(100, function(){
+				$("html,body").animate({scrollTop: $(article).position().top +130}, 0);
+				$(article).find('.summary-content').slideDown(0, function(){
 					
 					// remove full class to track article state
 					$(article).removeClass("full");
-
 					// scroll to top of post 
-					//$("html,body").animate({scrollTop: $(article).position().top}, 300);
 					
 				});
 
@@ -324,14 +323,14 @@ function readMoreToggle(el){
 		// show full content
 		else {
 			// toggle visibility
-			$(article).find('.summary-content').slideUp(100, function(){
+			$(article).find('.summary-content').slideUp(0, function(){
 				
 				if( $("#content").hasClass("viewmode_titles") ){
 					$(article).removeClass("only-title");
 				}
 				// add full class to track article state
 				$(article).addClass("full");
-				$(article).find('.more-content').slideDown(100, function(){
+				$(article).find('.more-content').slideDown(0, function(){
 				
 					//add close-button top right corner
 					var closea = $('<div>').addClass('closeButton top close white').html("<div class='icon'></div><a href='#'>Visa mindre</a>").click(function(ev){
@@ -345,7 +344,7 @@ function readMoreToggle(el){
 					$(this).parents("article").prepend(closea).append(closeb);
 					
 					// scroll to top of post 
-					//$("html,body").animate({scrollTop: $(article).position().top}, 300);
+					//$("html,body").animate({scrollTop: $(article).position().top}, 150);
 
 					// articles slideshow
 					$(this).find(".slideshow").slideshow();
