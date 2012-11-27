@@ -334,11 +334,15 @@ function readMoreToggle(el){
 				$(article).find('.more-content').slideDown(100, function(){
 				
 					//add close-button top right corner
-					var closeb = $('<div>').addClass('closeButton bottom close').html("<div class='icon'></div><a href='#'>Visa mindre</a>").click(function(ev){
+					var closea = $('<div>').addClass('closeButton top close white').html("<div class='icon'></div><a href='#'>Visa mindre</a>").click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(this).parents("article").append(closeb);
+					var closeb = $('<div>').addClass('closeButton bottom close white').html("<div class='icon'></div><a href='#'>Visa mindre</a>").click(function(ev){
+						ev.preventDefault();
+						readMoreToggle( $(this).parents("article").find(".entry-title a") );
+					});
+					$(this).parents("article").prepend(closea).append(closeb);
 					
 					// scroll to top of post 
 					//$("html,body").animate({scrollTop: $(article).position().top}, 300);

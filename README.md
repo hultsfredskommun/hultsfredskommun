@@ -1,4 +1,0 @@
-hultsfredskommun
-================
-
-Hultsfreds kommuns wordpresstema
