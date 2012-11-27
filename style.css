@@ -2066,15 +2066,23 @@ article:last-child { margin-bottom: 0 }
 	left: 30%;
 }
 .contact-popup.box .entry-wrapper {
+	position: relative;
 	padding: 0;
 	margin: 0;
 	height: 100%;
 	width: 100%;
-	overflow: auto;
 }
-.contact-popup.box .img-wrapper,
 .contact-popup.box .entry-content {
+	overflow: auto;
+	height: 100%;
+}
+.contact-popup.box .img-wrapper {
 	padding: 10px;
+	margin: 0;
+	clear: both;
+}
+.contact-popup.box .entry-content {
+	padding: 0;
 	margin: 0;
 	clear: both;
 }
@@ -2086,26 +2094,31 @@ article:last-child { margin-bottom: 0 }
 	width: 150px;
 }
 .contact-popup .close-contact{
-	_osition: absolute;
 	cursor: pointer;
-	_op: 5px;
-	_eft: 5px;
+	top: -10px;
+	right: -10px;
+	border-radius: 10px;
 	line-height: 15px;
-	margin-top: 8px;
+	margin-top: 0;
+	position: absolute;
+	z-index: 200;
+	background: #fff;
 }
 .contact-popup .close-contact .icon {
 	background-image: url("images/sprite.png");
 	background-position: -163px -290px;
-	width: 16px;
+	width:9px;
 	height: 16px;
-	margin: 0px 0px 6px 10px;
+	margin: 3px 7px;
 }
 .hasmap .entry-content {
 	width: 60%;
 }
-.map_canvas {
+.side-map {
 	width: 40%;
-	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
 }
 
 .img-wrapper {

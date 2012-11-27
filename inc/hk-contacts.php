@@ -466,7 +466,7 @@ function hk_get_the_contact($args = array()) {
 	
 		// position
 		if (!empty($contact_position) && $contact_position["coordinates"] != "") :
-			$retValue .= "<div class='map_canvas " . $hidden['map'] . "'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div>";
+			$retValue .= "<div class='side-map'><div class='map_canvas " . $hidden['map'] . "'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div></div>";
 		endif;
 		
 	$retValue .= "</div>";

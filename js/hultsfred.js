@@ -200,7 +200,8 @@ if (typeof $.fn.googlemap != 'function') {
 		$(this).each(function() {
 			var coordinates = $(this).find(".coordinates").html();
 			var address = $(this).find(".address").html();
-			$(this).height("300px").gmap({scrollwheel: false, center: coordinates, zoom: 15, callback: function() {
+			height = $(".contact-popup").height();
+			$(this).height(height).gmap({scrollwheel: false, center: coordinates, zoom: 15, callback: function() {
 				var self = this;
 				self.addMarker({'position': this.get('map').getCenter()}).click(function() {
 					self.openInfoWindow({ 'content': address}, this);
@@ -886,7 +887,7 @@ function setContactPopupAction(el) {
 			});
 			$(".contact-popup.box").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 			{
-				$(this).find(".entry-wrapper").prepend("<div class='close-contact'><div class='icon'></div> St&auml;ng</div>");
+				$(this).find(".entry-wrapper").prepend("<div class='close-contact'><div class='icon'></div></div>");
 				$(".close-contact").click(function() {
 					$(".contact-popup").remove();
 				});
