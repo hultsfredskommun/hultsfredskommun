@@ -104,8 +104,10 @@ function hk_setup() {
 	add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menu( 'primary', __( 'Primary Menu', 'twentyeleven' ) );
-	
+	register_nav_menus( array('primary' => 'Huvudmenu',
+							'topmenu' => 'Toppmeny',
+							'quickmenu' => 'Snabbgenv&auml;gar'
+							));	
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );
 }

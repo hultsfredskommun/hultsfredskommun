@@ -414,7 +414,7 @@ function hk_get_the_contact($args = array()) {
 		$hidden[$key] = ($value)?"visible":"hidden";
 	}
 	$contact_position = get_field("hk_contact_position");
-	if (!empty($contact_position) && $contact_position["coordinates"] != "") {
+	if ($hidden["map"] == "visible" && !empty($contact_position) && $contact_position["coordinates"] != "") {
 		$mapclass = "hasmap";
 	}
 		

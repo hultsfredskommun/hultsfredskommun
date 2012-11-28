@@ -85,15 +85,12 @@ function hk_theme_options_do_page() {
 			?>
 			</p>
 
-			<p><label for="hk_theme[topmenu]">Namn på meny som ska vara toppmeny.</label><br/><input type="text" name="hk_theme[topmenu]" value="<?php echo $options['topmenu']; ?>" /></p>
-
 			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo $options['num_levels_in_menu']; ?>" /></p>
 			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo $options['show_tags']; ?>" /></p>
 
 			<h3>Utseende</h3>
-			<p><label for="hk_theme[primary_width]">Bredden på huvudinnehåll.</label><br/><input type="text" name="hk_theme[primary_width]" value="<?php echo $options['primary_width']; ?>" /></p>
-			<p><label for="hk_theme[sidebar_width]">Bredden på bredd på sidoinnehåll.</label><br/><input type="text" name="hk_theme[sidebar_width]" value="<?php echo $options['sidebar_width']; ?>" /></p>
 
+			
 			<h3>Cron</h3>
 			<?php if ($options['enable_cron_review_mail']) {
 				if ( !wp_next_scheduled( 'hk_review_mail_event' ) ) {

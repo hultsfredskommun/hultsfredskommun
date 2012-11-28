@@ -5,18 +5,71 @@
 <?php endif; ?>
 
 
-<div id="firstpage-sidebar">
-	<div class="contact-area">
-		<?php hk_contact_firstpage(); ?>
-	</div>
-	<?php dynamic_sidebar('firstpage-sidebar'); ?>
-</div>
-
 <?php
 	/* get all sub categories to use in queries */
 	$all_categories = hk_getChildrenIdArray($cat);
 	$all_categories[] = $cat;
 ?>
+
+
+<div id="firstpage-sidebar">
+	<?php /* CONTACT */ ?>
+	<div class="contact-area">
+		<?php hk_contact_firstpage(); ?>
+		<div class="clear"></div>
+	</div>
+
+	<?php /* QUICK MENUS AND MOST VISITED */ ?>
+	<div id="quickmenus" class="widget">
+		<ul class="post_tabs_title">
+			<li title="Snabbgenv&auml;g"><a href="#quickmenu">Snabbgenv&auml;g</a></li>
+			<?php if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) : ?>
+			<li title="Mest bes&ouml;kta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
+			<?php endif; ?>
+		</ul>
+		<?php 
+		if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) :
+			echo "<div id='quickmenu'>";
+			wp_nav_menu( array(
+				'theme_location' => 'quickmenu', 
+				'container' 	=> '',							
+				'items_wrap'	=> '<ul>%3$s</ul>',
+				'depth' 		=> 1,
+				'echo' 			=> true
+			)); 
+			echo "</div>";
+		endif;
+		?>
+
+		<div id="mostvisited">
+			<div class="leftcontent">
+			<?php
+				/* Query all posts */
+				$query = array( 'posts_per_page' => '10', 
+								'category__in' => $all_categories,
+								'ignore_sticky_posts' => 'true'
+								) ;
+				
+				query_posts( $query );
+				if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+					<div class="entry-wrapper">
+						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
+					</div>
+				<?php endwhile; endif; 
+				// Reset Query
+				wp_reset_query(); 				
+			?>				
+			</div>
+
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<?php /* DYNAMIC WIDGET CONTENT */ ?>	
+	<?php dynamic_sidebar('firstpage-sidebar'); ?>
+	
+</div>
+
 
 <div id="primary">
 
@@ -26,10 +79,9 @@
 			<?php if ($default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0") : ?>
 			<li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser och handlingar</a></li>
 			<?php endif; ?>
-			<li title="Mest bes&ouml;kta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
+			<li title="Driftinformation"><a href="#driftcontent">Driftinformation</a></li>
 		</ul>
 		<div id="newscontent">
-			<div class="leftcontent">
 			<?php 
 				/* Query all posts with selected startpage category */
 				$cat = get_query_var("cat");
@@ -49,8 +101,6 @@
 				// Reset Query
 				wp_reset_query(); 
 			?>
-
-			</div><div class="rightcontent">
 			<!--div id='wrapper-sHys'>
 				<span id='h2-sHys'><a id='url-sHys' href="http://www.vackertvader.se/hultsfred"> Hultsfred</a></span>
 				<div id='load-sHys'></div>
@@ -92,14 +142,12 @@
 				}
 			?>
 		
-			</div>
 			<div class="clear"></div>
 		</div>
 
 
 		<?php if ($default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0") : ?>
 		<div id="protocolcontent">
-			<div class="leftcontent">
 			<?php 
 				/* Query all posts with selected startpage category */
 					$children =  hk_getChildrenIdArray($default_settings["protocol_cat"]);
@@ -117,7 +165,6 @@
 					// Reset Query
 					wp_reset_query(); 
 			?>
-			</div><div class="rightcontent">
 				<div class="entry-title">Visa protokoll</div><ul>
 				<?php 
 				 $args = array(
@@ -133,54 +180,14 @@
 					);
 					wp_list_categories($args);	
 					?>			
-			</ul></div>
+			</ul>
 			<div class="clear"></div>
 		</div>	
 		<?php endif; ?>
-
-		<div id="mostvisited">
-			<div class="leftcontent">
-			<?php
-				/* Query all posts */
-				$query = array( 'posts_per_page' => '4', 
-								'category__in' => $all_categories,
-								'ignore_sticky_posts' => 'true'
-								) ;
-				
-				query_posts( $query );
-				$shownposts = array();
-				if ( have_posts() ) : while ( have_posts() ) : the_post();
-					$shownposts[] = get_the_ID(); 
-					get_template_part( 'content' ); 
-				endwhile; endif; 
-				// Reset Query
-				wp_reset_query(); 				
-			?>				
-			</div>
-			<div class="rightcontent">
-			<?php
-				/* Query all posts */
-				$query = array( 'posts_per_page' => '10', 
-								'category__in' => $all_categories,
-								'ignore_sticky_posts' => 'true',
-								'post__not_in' => $shownposts
-								) ;
-				
-				query_posts( $query );
-				if ( have_posts() ) : ?> 
-					<div class="entry-title">Fler v&auml;lbes&ouml;kta</div>
-					<?php while ( have_posts() ) : the_post(); ?>
-					<div class="entry-wrapper">
-						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
-					</div>
-				<?php
-				endwhile; endif; 
-				// Reset Query
-				wp_reset_query(); 
-			?>
-			</div>
-			<div class="clear"></div>
+		<div id="driftcontent">
+			H&auml;r kommer driftinformation.
 		</div>
+		
 	</div><!-- #content -->
 	<?php dynamic_sidebar('firstpage-content'); ?>
 </div><!-- #primary -->

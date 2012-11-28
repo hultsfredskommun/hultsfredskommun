@@ -468,7 +468,7 @@ $(document).ready(function(){
 	/**
 	 * tabs action
 	 */
-	$(".home #content").tabs();
+	$(".home #content,.home #quickmenus").tabs();
 
 
 	/**
@@ -621,6 +621,9 @@ $(document).ready(function(){
 	 */
 	$('.scrollTo_top').hide();
 	$(window).scroll(function () {
+		/* scale map */
+		$(".map_canvas").height($(".contact-popup").height());
+	
 		/* load next pages posts dynamically when reaching bottom of page */
 		if( parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2) ) {
 			/*if (!$(body).hasClass("home")) {*/

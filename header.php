@@ -98,14 +98,6 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 		#main {
 			background-color: white;
 		}
-		<?php endif; if ($hk_options["primary_width"]) : ?>
-		#primary {
-			width: <?php echo $hk_options["primary_width"]; ?>;
-		}
-		<?php endif; if ($hk_options["sidebar_width"]) : ?>
-		#sidebar-wrapper, #firstpage-sidebar {
-			width: <?php echo $hk_options["sidebar_width"]; ?>;
-		}
 		<?php endif; ?>
 
 	</style><?php
@@ -131,10 +123,10 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 			</hgroup>
 				
 			<?php 
-				if ($hk_options["topmenu"]) {
+				if (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) {
 					echo "<div id='topmenu'><aside><nav>";
 					wp_nav_menu( array(
-						'menu' 			=> $hk_options["topmenu"], 
+						'theme_location' => 'topmenu', 
 						'container' 	=> '',							
 						'items_wrap'	=> '<ul>%3$s</ul>',
 						'depth' 		=> 1,
@@ -146,6 +138,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 			<div id="searchnavigation">			
 				<?php get_search_form(); ?>
 			</div>
+			<div class="clear"></div>
 		</div>		
 		<nav id="menu" role="navigation">
 			<a class="dropdown-menu">Meny<span class="dropdown-image"></span></a>
@@ -162,7 +155,6 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 			?>
 			<div class="clear"></div>
 		</nav><!-- #access -->
-		
 	</header><!-- #branding -->
 
 	<div id="main">
