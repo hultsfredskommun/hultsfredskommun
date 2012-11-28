@@ -621,8 +621,6 @@ $(document).ready(function(){
 	 */
 	$('.scrollTo_top').hide();
 	$(window).scroll(function () {
-		/* scale map */
-		$(".map_canvas").height($(".contact-popup").height());
 	
 		/* load next pages posts dynamically when reaching bottom of page */
 		if( parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2) ) {
@@ -975,9 +973,11 @@ function dyn_posts_load_posts() {
 //om webbläsaren ändrar storlek
 $(window).resize(function() {
 
-	/* CSS GRID */
-	
+	/* scale map */
+	$(".map_canvas").height($(".contact-popup").height());
 
+	
+	/* CSS GRID */
 	if( oldWidth != $(window).width() ) {
 
 		//Skriver ut skärmens storlek

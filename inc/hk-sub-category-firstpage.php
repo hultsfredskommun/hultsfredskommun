@@ -22,10 +22,10 @@
 	<?php /* QUICK MENUS AND MOST VISITED */ ?>
 	<div id="quickmenus" class="widget">
 		<ul class="post_tabs_title">
-			<li title="Snabbgenv&auml;g"><a href="#quickmenu">Snabbgenv&auml;g</a></li>
 			<?php if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) : ?>
-			<li title="Mest bes&ouml;kta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
+			<li title="Snabbgenv&auml;g"><a href="#quickmenu">Snabbgenv&auml;g</a></li>
 			<?php endif; ?>
+			<li title="Mest bes&ouml;kta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
 		</ul>
 		<?php 
 		if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) :
@@ -42,7 +42,6 @@
 		?>
 
 		<div id="mostvisited">
-			<div class="leftcontent">
 			<?php
 				/* Query all posts */
 				$query = array( 'posts_per_page' => '10', 
@@ -59,8 +58,6 @@
 				// Reset Query
 				wp_reset_query(); 				
 			?>				
-			</div>
-
 			<div class="clear"></div>
 		</div>
 	</div>
