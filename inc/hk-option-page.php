@@ -28,6 +28,26 @@ function hk_theme_options_do_page() {
 
 			<h3>Kategorier och menyer</h3>
 			
+			<p><label for="hk_theme[startpage_cat]">Välj kategori som är startsida.</label><br/>
+							<?php 
+				$args = array(
+					'orderby'            => 'ID', 
+					'order'              => 'ASC',
+					'echo'               => 1,
+					'selected'           => esc_attr( $options["startpage_cat"] ),
+					'hierarchical'       => 1, 
+					'name'               => 'hk_theme[startpage_cat]',
+					'depth'              => 0,
+					'taxonomy'           => 'category',
+					'show_count'         => true,
+					'hide_empty'         => false,
+					'hide_if_empty'      => false,
+					'show_option_all' => 'Ingen' );  
+				wp_dropdown_categories( $args ); 
+			?>
+			</p>
+
+			
 			<p><label for="hk_theme[news_tag]">Välj den etikett som innehåller <b>nyheter</b>.</label><br/>
 							<?php 
 				$args = array(
@@ -47,7 +67,7 @@ function hk_theme_options_do_page() {
 			?>
 			</p>
 
-			<p><label for="hk_theme[hidden_cat]">Välj den kategori som innehåller <b>ej synliga poster</b>.</label><br/>
+			<p><label for="hk_theme[hidden_cat]">Välj kategori som innehåller <b>ej synliga poster</b>.</label><br/>
 							<?php 
 				$args = array(
 					'orderby'            => 'ID', 
@@ -66,7 +86,7 @@ function hk_theme_options_do_page() {
 			?>
 			</p>
 
-			<p><label for="hk_theme[protocol_cat]">Välj den kategori som innehåller <b>protokoll</b>.</label><br/>
+			<p><label for="hk_theme[protocol_cat]">Välj kategori som innehåller <b>protokoll</b>.</label><br/>
 							<?php 
 				$args = array(
 					'orderby'            => 'ID', 
@@ -84,6 +104,9 @@ function hk_theme_options_do_page() {
 				wp_dropdown_categories( $args ); 
 			?>
 			</p>
+
+
+			<p><label for="hk_theme[google_analytics]">Google Analytics id (enligt UA-XXXXX-X). </label><br/><input type="text" name="hk_theme[google_analytics]" value="<?php echo $options['google_analytics']; ?>" /></p>
 
 			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo $options['num_levels_in_menu']; ?>" /></p>
 			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo $options['show_tags']; ?>" /></p>
