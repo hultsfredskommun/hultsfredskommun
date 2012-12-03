@@ -1532,7 +1532,7 @@ a:hover {
 	z-index: 1000;
 	max-height: 60px;
 	width: 100%;
-	bottom: 10px;
+	bottom: 0px;
 }
 .slideshow article .text-area .text-content .transp-background
 {
@@ -2039,7 +2039,7 @@ article:last-child { margin-bottom: 0 }
 	margin-left: 1.5em;
 }
 .widget ul li {
-	margin: 8px 0px;
+	margin: 2px 0px;
 }
 .widget a {
 	_ont-weight: bold;

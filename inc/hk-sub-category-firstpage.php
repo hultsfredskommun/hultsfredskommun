@@ -25,7 +25,10 @@
 			<?php if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) : ?>
 			<li title="Genv&auml;g"><a href="#quickmenu">Genv&auml;g</a></li>
 			<?php endif; ?>
+			<?php if (function_exists( 'views_orderby' )) : ?>
 			<li title="Mest bes&ouml;kta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
+			<?php endif; ?>
+			<li title="Senaste"><a href="#latest">Senaste</a></li>
 		</ul>
 		<?php 
 		if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) :
@@ -40,6 +43,8 @@
 			echo "</div>";
 		endif;
 		?>
+		
+		<?php if (function_exists( 'views_orderby' )) : ?>
 
 		<div id="mostvisited">
 			<?php
@@ -50,16 +55,48 @@
 								) ;
 				
 				query_posts( $query );
-				if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-					<div class="entry-wrapper">
+				if ( have_posts() ) : ?>
+				<ul>
+					<?php while ( have_posts() ) : the_post(); ?>
+					<li>
 						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
-					</div>
-				<?php endwhile; endif; 
+					</li>
+				<?php endwhile; ?>
+				</ul>
+				<?php endif;
 				// Reset Query
 				wp_reset_query(); 				
 			?>				
 			<div class="clear"></div>
 		</div>
+
+		<?php endif; ?>
+		
+		<div id="latest">
+			<?php
+				/* Query all posts */
+				$query = array( 'posts_per_page' => '10', 
+								'category__in' => $all_categories,
+								'ignore_sticky_posts' => 'true',
+								'suppress_filters' => 'true'
+								) ;
+				
+				query_posts( $query );
+				if ( have_posts() ) : ?>
+				<ul>
+					<?php while ( have_posts() ) : the_post(); ?>
+					<li>
+						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
+					</li>
+				<?php endwhile; ?>
+				</ul>
+				<?php endif;
+				// Reset Query
+				wp_reset_query(); 				
+			?>				
+			<div class="clear"></div>
+		</div>
+
 	</div>
 
 	<?php /* DYNAMIC WIDGET CONTENT */ ?>	
