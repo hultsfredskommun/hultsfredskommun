@@ -78,11 +78,7 @@
 					
 					query_posts( $args );
 					if ( have_posts() ) : while ( have_posts() ) : the_post();
-						if (empty($shownPosts) && $wp_query->post_count == 1) {
-							get_template_part( 'content', "single" );
-						} else {
-							get_template_part( 'content', get_post_format() );
-						}
+						get_template_part( 'content', get_post_format() );
 						$shownPosts[] = get_the_ID();
 					endwhile; endif;
 					wp_reset_query(); // Reset Query

@@ -374,7 +374,16 @@ function hk_contact_firstpage() {
 			{ 
 				// The Loop
 				while ( $the_query->have_posts() ) : $the_query->the_post();
-					$retValue .= hk_get_the_contact();
+					$retValue .= hk_get_the_contact(array('image' => false,
+													'name' => true,
+													'title' => false,
+													'workplace' => false,
+													'phone' => true,
+													'email' => true,
+													'description' => false,
+													'address' => false,
+													'visit_hours' => false,
+													'map' => false ));
 				endwhile;
 			}
 			
@@ -435,17 +444,17 @@ function hk_get_the_contact($args = array()) {
 					$retValue .= "<div class='" . $hidden['workplace'] . "'>" . get_sub_field('hk_contact_workplace') . "</div>";
 				endwhile; endif;
 				
+				// email
+				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
+					$retValue .= "<div class='" . $hidden['email'] . "'><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></div>";
+				endwhile; endif;
+
 				// phone
 				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
 					$retValue .= "<div class='" . $hidden['phone'] . "'>";
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"fax ":"";
 					$retValue .= get_sub_field('number') . " </div>";
-				endwhile; endif;
-				
-				// email
-				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
-					$retValue .= "<div class='" . $hidden['email'] . "'><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></div>";
-				endwhile; endif;
+				endwhile; endif;				
 				
 				if( (get_field('hk_contact_workplaces') && !$hidden['workplace']) || (get_field('hk_contact_phones') && !$hidden['phone']) || (get_field('hk_contact_emails') && !$hidden['email']) ) {
 					$retValue .= "</p>";

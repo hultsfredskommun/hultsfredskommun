@@ -1,14 +1,8 @@
 
 <aside class="side-content">
-	<div class="box top tools">
-		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line summary'><div class='icon'></div>", "</div>" ); ?>
-		<div class="print tool-line full"><div class="icon"></div><a class="print" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Funktionen kommer senare">Skriv ut</a></div>
-		<div class="read tool-line full"><div class="icon"></div><a class="read" title="Funktionen kommer senare">L&auml;s upp</a></div>
-		<div class="friend tool-line full"><div class="icon"></div><a class="read" title="Funktionen kommer senare">Tipsa</a></div>
-	</div>
 	<?php $count = 0; ?>
 	<?php if( get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
-		<div class="box contacts summary">
+	<div class="box top contacts summary">
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
 			<div class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
 				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>
@@ -26,11 +20,11 @@
 				<?php endif; ?>
 			<span class="contact_id hidden"><?php echo $value->ID; ?></span></div></div>
 		<?php endwhile; ?>			 
-		</div>
+	</div>
 	<?php endif; ?>
 	<?php  ?>
 	<?php if ( get_field('hk_related') ) : // related docs and links ?>
-		<div class="box related <?php echo ($count < 2)?"summary":"full"; ?>">
+	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo ($count < 2)?"summary":"full"; ?>">
 		<ul class="related-wrapper <?php echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
 		<?php while ( has_sub_field('hk_related') ) : ?>
 			<?php if (!$summary || $count++ < 2) : ?>
@@ -61,8 +55,14 @@
 			
 		<?php endwhile; ?>
 		</ul>
-		</div>
+	</div>
 	<?php endif; ?>	
+	<div class="box tools">
+		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line summary'><div class='icon'></div>", "</div>" ); ?>
+		<div class="print tool-line full"><div class="icon"></div><a class="print" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Funktionen kommer senare">Skriv ut</a></div>
+		<div class="read tool-line full"><div class="icon"></div><a class="read" title="Funktionen kommer senare">L&auml;s upp</a></div>
+		<div class="friend tool-line full"><div class="icon"></div><a class="read" title="Funktionen kommer senare">Tipsa</a></div>
+	</div>
 	
 
 </aside>

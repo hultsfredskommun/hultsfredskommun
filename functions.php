@@ -262,10 +262,10 @@ add_filter('gallery_style',
 	);
 
 /**
- * Sets the post excerpt length to 40 words.
+ * Sets the post excerpt length to 30 words.
  */
 function hk_excerpt_length( $length ) {
-	return 40;
+	return 30;
 }
 add_filter( 'excerpt_length', 'hk_excerpt_length' );
 
@@ -273,7 +273,7 @@ add_filter( 'excerpt_length', 'hk_excerpt_length' );
  * Returns no link for excerpts
  */
 function hk_continue_reading_link() {
-	return ' <a href="' . get_permalink() . '" class="togglearticle">Visa hela</a>'; 
+	return ' <a href="' . get_permalink() . '" class="togglearticle">Visa hela</a> '; 
 }
 
 /**

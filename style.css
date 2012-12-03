@@ -312,7 +312,6 @@ body, input, textarea,
 .hk_kontakter .widget-title,
 .hk_events .widget-title,
 .hk_related .widget-title,
-.ui-tabs li.ui-tabs-selected a,
 #menu ul li.current-menu-item a,
 #menu ul li.current-category-ancestor a,
 #menu ul li.current-post-ancestor:first-child  a,
@@ -346,7 +345,8 @@ h2,
 h3,
 .entry-title,
 .entry-title a,
-#nav .parent > .current-cat > a
+#nav .parent > .current-cat > a,
+.ui-tabs li.ui-tabs-selected a
 {
 	color: #06435A;
 	
@@ -394,7 +394,6 @@ hr,
 #menu ul li.current-category-ancestor,
 #menu ul li.current-post-ancestor:first-child,
 #menu .sub-menu,
-.ui-tabs li.ui-tabs-selected,
 .pager li.activeSlide a,
 .slideshow article .text-area .text-content .transp-background
 {
@@ -481,12 +480,18 @@ article.sticky {
 	border-bottom: 4px solid white;
 	margin-bottom: 6px;
 }
+.ui-tabs li.ui-tabs-selected a,
+.ui-tabs li.ui-state-default a:hover,
 #menu ul.sub-menu li a {
 	border-bottom: 4px solid #06435A;
+	padding-bottom: 2px;
 	margin-bottom: 6px;
+	text-decoration: none;	
 }
 #menu ul.sub-menu li a:hover {
+	text-decoration: none;
 	border-bottom: 4px solid #ccc;
+	padding-bottom: 2px;
 	margin-bottom: 6px;
 }
 .tags,
@@ -556,7 +561,6 @@ article.sticky {
 /*.content-wrapper .summary-content,
 .content-wrapper .more-content,*/
 #dyn-posts-load-posts,
-.ui-tabs .ui-tabs-panel,
 .misc-ctrl {
 	border: 1px solid #E8E8E8;
 }
@@ -1571,6 +1575,12 @@ a:hover {
 #firstpage-top-content .pager {
 	padding-top: 10px;
 }
+#firstpage-top-content .img-wrapper article{
+	padding-top: 0;
+}
+/* =firstpage to the right
+----------------------------------------------- */
+
 
 /* =articel footer - in right column
 ----------------------------------------------- */
@@ -1595,7 +1605,7 @@ a:hover {
 	margin-bottom: 0;
 }
 .side-content  .box.top {
-	margin-top: 0px;
+	margin-top: 0px !important;
 }
 .full .side-content,
 article.single .side-content {
@@ -1712,19 +1722,6 @@ article.single .side-content {
 {
 	border: 0;
 }
-.ui-tabs .post_tabs_title 
-{
-    background-color: #EDEDED;
-}
-.ui-tabs .leftcontent
-{
-	_loat: left; 
-	_order-right: 1px solid #E6E6E6;
-}
-.ui-tabs .rightcontent
-{
-	_loat: right;
-}
 .ui-tabs ul.post_tabs_title
 {
     margin: 0px;
@@ -1735,13 +1732,10 @@ article.single .side-content {
 .ui-tabs li.ui-state-default
 {
     float: left;
-    _order: 1px solid #EDEDED;
-    border-bottom: 0;
     margin: 0px 1px 0px 0px;
-    padding: 8px;
-    _order-top-left-radius: 5px;
-    _order-top-right-radius: 5px;
+    padding: 12px 8px;
     cursor: pointer;
+	font-weight: bold;
 }
 .ui-tabs .ui-tabs-panel
 {
@@ -1810,8 +1804,8 @@ article.single .side-content {
 
 /* Post style */
 article {
-	padding-top: 10px !important;
-	margin-bottom: 10px !important;
+	padding-top: 10px;
+	margin-bottom: 10px;
 	position: relative;
 }
 article:last-child { margin-bottom: 0 }

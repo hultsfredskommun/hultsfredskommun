@@ -23,7 +23,7 @@
 	<div id="quickmenus" class="widget">
 		<ul class="post_tabs_title">
 			<?php if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) : ?>
-			<li title="Snabbgenv&auml;g"><a href="#quickmenu">Snabbgenv&auml;g</a></li>
+			<li title="Genv&auml;g"><a href="#quickmenu">Genv&auml;g</a></li>
 			<?php endif; ?>
 			<li title="Mest bes&ouml;kta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
 		</ul>
