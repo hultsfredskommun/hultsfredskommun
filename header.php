@@ -20,10 +20,14 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 // if on startpage, there are a 'primary' menu set and more than one top menu level
 $menu_name = 'primary';
 if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) && $default_settings["num_levels_in_menu"] > 1 ) {
-	//$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-	//$menu_items = wp_get_nav_menu_items( $menu );
-	//header("Location: " . $menu_items[0]->url);
-	header("Location: " . get_category_link($default_settings["startpage_cat"]));
+	if ($default_settings["startpage_cat"] != "" && $default_settings["startpage_cat"] != "0") {
+		header("Location: " . get_category_link($default_settings["startpage_cat"]));
+	}
+	else {
+		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+		$menu_items = wp_get_nav_menu_items( $menu );
+		header("Location: " . $menu_items[0]->url);
+	}
 }
 
 // set current menuselection in session to next time

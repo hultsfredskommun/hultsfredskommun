@@ -74,7 +74,7 @@
 		<ul class="post_tabs_title">
 			<li title="Aktuellt"><a href="#newscontent">Aktuellt</a></li>
 			<?php if ($default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0") : ?>
-			<li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser och handlingar</a></li>
+			<li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser &amp; handlingar</a></li>
 			<?php endif; ?>
 			<li title="Driftinformation"><a href="#driftcontent">Driftinformation</a></li>
 		</ul>

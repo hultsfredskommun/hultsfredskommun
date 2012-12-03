@@ -459,6 +459,15 @@ $(document).ready(function(){
 	//Stores the window-width for later use
 	oldWidth = $(window).width();
 
+	
+	/**
+	 * Expand article if only one
+	 */
+	if ($('.archive #content').find("article").length == 1) {
+		readMoreToggle($('.archive #content').find("article .entry-title a"));
+	}
+
+
 	/**
 	 * Fix scroll to top on single and page
 	 */
