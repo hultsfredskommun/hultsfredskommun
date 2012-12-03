@@ -32,8 +32,8 @@ function hk_widgets_init() {
 		'description' => 'Startsidans sidof&auml;lt',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_title' => '<h3 class="widget-title"><span>',
+		'after_title' => '</span></h3>',
 	) );
 
 	register_sidebar( array(
@@ -51,6 +51,16 @@ function hk_widgets_init() {
 		'id' => 'footer-sidebar',
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name' => 'Viktigt toppinneh&aring;ll',
+		'id' => 'important-top-content',
+		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp p&aring; alla sidor',
+		'before_widget' => '<aside id="%1$s" class="important-widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',

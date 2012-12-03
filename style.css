@@ -208,6 +208,21 @@ h6
 .more-from-heading {
 	font-size: 1.2em;
 }
+.time {
+	font-style: italic;
+}
+.important-widget {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.important-widget,
+.important-widget h3 {
+	background: black;
+	color: white;
+}
+.important-widget .textwidget {
+	padding: 10px;
+}
 .nopassword,
 .nocomments,
 #respond .comment-form-author .required,
@@ -219,6 +234,8 @@ h6
 #menu .dropdown-menu { 
 	font-size: 20px;
 }
+.ui-tabs li.ui-state-default,
+.widget .widget-title span,
 .news.only-title .entry-title,
 .only-title a,
 #news_header {
@@ -474,7 +491,7 @@ article.sticky {
 	border-bottom: 4px solid white;
 	margin-bottom: 6px;
 }
-.widget .widget-title span,
+/*.widget .widget-title span,*/
 .ui-tabs li.ui-tabs-selected a,
 .ui-tabs li.ui-state-default a:hover,
 #menu ul.sub-menu li a {
@@ -494,6 +511,20 @@ article.sticky {
 	border-top: 4px solid #E6E6E6;
 }
 
+#quickmenus {
+	margin-bottom: 30px;
+}
+.textwidget:first-child {
+	border-left: 0 !important;
+}
+#text-5 .widget-title span,
+#text-10 .widget-title span {
+	margin-left: 4px;
+}
+#text-5 .textwidget,
+#text-10 .textwidget {
+	border-left: 4px solid #06435A;
+}
 .hk_kontakter.widget {
 	/*border: 2px solid #F7A02E; /* orange */
 	_order-left: 1px solid #E60040; /* energyred */
@@ -1434,7 +1465,14 @@ a:hover {
 
 /*--- Right column - firstpage ---*/
 .widget .textwidget {
-	margin-left: 10px;
+	padding: 0 10px;
+}
+.widget .textwidget ul {
+	margin: 0;
+}
+.widget.widget_text {
+	float: left;
+	width: 49%;
 }
 
 
@@ -1729,10 +1767,16 @@ article.single .side-content {
 .ui-tabs li.ui-state-default
 {
     float: left;
-    margin: 0px 1px 0px 0px;
-    padding: 12px 24px 12px 10px;
     cursor: pointer;
 	font-weight: bold;
+    margin: 0px;
+    padding: 12px 24px 12px 10px;
+}
+.widget .widget-title span
+{
+	font-weight: bold;
+    margin: 0px;
+    padding: 12px 24px 12px 0px;
 }
 .ui-tabs .ui-tabs-panel
 {
@@ -1976,13 +2020,14 @@ article:last-child { margin-bottom: 0 }
 	padding-left: 8px;
 }
 
+
 /* =Widgets
 ----------------------------------------------- */
 
 .widget-area {
 }
 .widget {
-	margin: 0 0 .8em;
+	margin: 0 0 20px;
 }
 .widget-title {
 	padding: .4em .8em .4em;
@@ -1994,6 +2039,7 @@ article:last-child { margin-bottom: 0 }
 	margin-left: 1.5em;
 }
 .widget ul li {
+	margin: 8px 0px;
 }
 .widget a {
 	_ont-weight: bold;

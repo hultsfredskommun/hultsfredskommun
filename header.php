@@ -119,6 +119,9 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 <body <?php body_class((is_sub_category_firstpage()) ? "home":""); ?>>
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
+	<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>	
+	<?php dynamic_sidebar('important-top-content'); ?>
+
 	<header id="branding" role="banner">
 		<div id="topwrapper">
 			<span id="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span>
