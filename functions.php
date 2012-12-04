@@ -223,7 +223,7 @@ function curBaseURL() {
 	return $pageURL;
 }
 function setup_javascript_settings() {
-	global $wp_query;
+	global $wp_query, $hk_options, $default_settings;
 	// What page are we on? And what is the pages limit?
 	if (is_home()) {
 		$max = 0;
@@ -239,18 +239,22 @@ function setup_javascript_settings() {
 	$filter = array("cat" => $cat, "tags" => $tags, "s" => $search, "orderby" => $orderby);
 	
 	// Add some parameters for the dynamic load more posts JS.
-	wp_localize_script(
-		'hultsfred_js',
-		'hultsfred_object',
-		array(
+	$hultsfred_array = array(
 			'startPage' => 1,
 			'maxPages' => $max,
 			'nextLink' => str_replace(curBaseURL(), "", next_posts($max, false)),
 			'templateDir' => get_stylesheet_directory_uri(),
 			'blogId' => $blog_id,
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
-			'currentFilter' => json_encode($filter)
-		)
+			'currentFilter' => json_encode($filter),
+			'allow_cookies' => $default_settings['allow_cookies'],
+			'google_analytics' => $hk_options['google_analytics'],
+			'google_analytics_domain' => $hk_options['google_analytics_domain'],
+		);
+	wp_localize_script(
+		'hultsfred_js',
+		'hultsfred_object',
+		$hultsfred_array
 	);
 }
 add_action('wp_head', 'setup_javascript_settings');

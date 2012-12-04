@@ -398,6 +398,14 @@ function readMoreToggle(el){
 		$(article).find('.summary-content').css("cursor","wait");
 		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 		{
+			// google analytics
+			if (hultsfred_object['allow_cookies']) {
+				page = $(this).parents("article").find(".entry-title a").attr("href");
+				_gaq.push(['_setAccount', hultsfred_object['google_analytics']]); 
+				_gaq.push(['_setDomainName', hultsfred_object['google_analytics_domain']]);
+				_gaq.push(['_trackPageview', page]);
+			}
+			
 			$(this).parents("article").find('.summary-content').css("cursor","pointer");
 			//****** click-actions START *******
 			
@@ -899,8 +907,16 @@ function setContactPopupAction(el) {
 			$(".contact-popup.overlay").click(function() {
 				$(".contact-popup").remove();
 			});
+			page = $(this).attr("href");
 			$(".contact-popup.box").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 			{
+				// google analytics
+				if (hultsfred_object['allow_cookies']) {
+					_gaq.push(['_setAccount', hultsfred_object['google_analytics']]); 
+					_gaq.push(['_setDomainName', hultsfred_object['google_analytics_domain']]);
+					_gaq.push(['_trackPageview', page]);
+				}
+
 				$(this).find(".entry-wrapper").prepend("<div class='close-contact'><div class='icon'></div></div>");
 				$(".close-contact").click(function() {
 					$(".contact-popup").remove();
