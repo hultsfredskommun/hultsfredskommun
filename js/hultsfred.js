@@ -889,6 +889,10 @@ function setContactPopupAction(el) {
 	$(el).click(function(ev) {
 		if ($(".contact-popup").length == 0) {
 			var post_id = $(el).parent().find(".contact_id").html();
+			
+			// follow link if post_id not found
+			if (post_id == null) return true;
+			
 			ev.preventDefault();
 			$("#page").append("<div class='contact-popup box'>H&auml;mtar kontaktuppgifter...</div>").append("<div class='contact-popup overlay'></div>");
 	

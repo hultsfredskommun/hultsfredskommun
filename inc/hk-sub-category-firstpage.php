@@ -119,7 +119,7 @@
 			<?php 
 				/* Query all posts with selected startpage category */
 				$cat = get_query_var("cat");
-				$query = array( 'posts_per_page' => '-1', 
+				$query = array( 'posts_per_page' => '4', 
 								'category__and' => $cat,
 								'tag__and' => $default_settings["news_tag"],
 								'suppress_filters' => 'true',
@@ -147,7 +147,7 @@
 
 			<?php
 				/* Query all posts with news category */
-				if ($default_settings["news_tag"] != "") { ?>
+				if ($default_settings["news_tag"] != "" && $default_settings["news_tag"] != "0") { ?>
 					<div id='news'>
 						<span class='entry-title'>Fler nyheter</span>
 					<?php
@@ -162,17 +162,15 @@
 					query_posts( $query );		
 					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 					<div class="entry-wrapper">
-						<?php the_date("","<span>","</span>"); ?><a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
+						<?php the_date("","<span class='time'>","</span><br/>"); ?> <a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
 					</div>
 					<?php endwhile; endif; 
+					echo $default_settings["news_tag"] . " - ";
 					?> 
 						<span class="read-more-link"><a href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Fler nyheter</a></span>
 					</div>
 					<?php // Reset Query
 					wp_reset_query(); 
-				}
-				else {
-					echo "Du m&aring;ste s&auml;tta egenskapen <i>Nyheternas kategori</i> under Utseende -> Inst&auml;llningar.";	
 				}
 			?>
 		

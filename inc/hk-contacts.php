@@ -350,7 +350,7 @@ function hk_contact_firstpage() {
 	$org_post = $post;
 
 	$retValue = "";
-	$retValue .= "<aside class='hk_kontakter'><div class='content-wrapper'>";
+	$retValue .= "<aside class='hk_kontakter'><div class='contact-wrapper'>";
 	
 	// set startpage category if on startpage
 	$category_in = array();
@@ -383,7 +383,8 @@ function hk_contact_firstpage() {
 													'description' => false,
 													'address' => false,
 													'visit_hours' => false,
-													'map' => false ));
+													'map' => false,
+													'title_link' => true));
 				endwhile;
 			}
 			
@@ -412,7 +413,8 @@ function hk_get_the_contact($args = array()) {
 		'description' => false,
 		'address' => false,
 		'visit_hours' => false,
-		'map' => false
+		'map' => false,
+		'title_link' => false
 		);
 
 	if (isset($args)) {
@@ -430,7 +432,20 @@ function hk_get_the_contact($args = array()) {
 	$retValue = "<div class='entry-wrapper $mapclass'>";
 		$retValue .= "<div class='entry-content'>";
 
-			$retValue .= "<h1 class='entry-title " . $hidden['name'] . "'>" . get_the_title() . "</h1>";
+			$retValue .= "<h1 class='entry-title " . $hidden['name'] . "'>";
+			// add link to title
+			if ($default['title_link']) { 
+				$retValue .= "<a class='permalink' href='" . get_permalink(get_the_ID()) . "'>"; 
+			}
+			// title
+			$retValue .= get_the_title();
+			if ($default['title_link']) { 
+				$retValue .= "</a>"; 
+				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
+			}
+			$retValue .= "</h1>";
+			
+			// image
 			$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
 		
 			$retValue .= "<div class='contact-" . get_the_ID() . " " . implode(" ",get_post_class()) ."'>";
@@ -467,9 +482,7 @@ function hk_get_the_contact($args = array()) {
 				
 				// visit hours
 				$retValue .= "<p class='" . $hidden['visit_hours'] . "'>" . get_field("hk_contact_visit_hours") . "</p>";
-				
-				
-				
+								
 			$retValue .= "</div>";
 		$retValue .= "</div>";
 	
@@ -478,6 +491,7 @@ function hk_get_the_contact($args = array()) {
 			$retValue .= "<div class='side-map'><div class='map_canvas " . $hidden['map'] . "'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div></div>";
 		endif;
 		
+
 	$retValue .= "</div>";
 
 	return $retValue;
