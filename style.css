@@ -222,6 +222,10 @@ h6
 	background: rgb(230,0,64);
 	color: white;
 }
+.important-widget a {
+	color: white;
+	text-decoration: underline;
+}
 .important-widget .textwidget {
 	padding: 10px;
 }

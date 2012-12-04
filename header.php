@@ -122,6 +122,14 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 	<header id="branding" role="banner">
 		<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>	
 		<?php dynamic_sidebar('important-top-content'); ?>
+		
+		<?php if(!$default_settings['allow_cookies'] && $hk_options["cookie_text"] != "") : ?>
+			<div class="important-widget"><div class="textwidget"><?php echo $hk_options["cookie_text"]; ?>
+			<?php if ($hk_options["cookie_link"] != "") : ?>
+			<a href="?cookies=true">Forts&auml;tt</a> <a href="<?php echo $hk_options["cookie_link"]; ?>">Mer information</a>
+			<?php endif; ?>
+			</div></div>
+		<?php endif; ?>
 
 		<div id="topwrapper">
 			<span id="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span>

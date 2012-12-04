@@ -18,6 +18,14 @@ if ( ! isset( $content_width ) )
 
 /* help variable */	
 $s_when_https = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 's' : '');
+/* get hk_options */
+$hk_options = get_option('hk_theme');
+	
+/* set allow cookie */
+if ($_REQUEST["cookies"] && $hk_options["cookie_text"] != "") {
+	// allow cookies for 10 years
+	setcookie("allow_cookies", "true", time()+3600*24*3650);
+}
 	
 /* SET DEFAULT SETTINGS */
 if ( ! isset( $default_settings ) ) {
@@ -32,6 +40,7 @@ if ( ! isset( $default_settings ) ) {
 								'protocol_cat' => $options["protocol_cat"],
 								'num_levels_in_menu' => (!isset($options["num_levels_in_menu"]))?2:$options["num_levels_in_menu"],
 								'show_tags' => (!isset($options["show_tags"]))?0:$options["show_tags"],
+								'allow_cookies' => $_COOKIE['allow_cookies'] || $hk_options["cookie_text"] == "",
 								);
 }
 

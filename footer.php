@@ -11,7 +11,7 @@
 
 /* get hk_options */
 $hk_options = get_option('hk_theme');
-
+global $default_settings;
 ?>
 	<div class="clear"></div>
 	</div><!-- #main -->
@@ -38,12 +38,12 @@ $hk_options = get_option('hk_theme');
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-<?php if ($hk_options["google_analytics"] != "") : ?>
+<?php if ($hk_options["google_analytics"] != "" && $default_settings['allow_cookies']) : ?>
 <script type="text/javascript">
 
 var _gaq = _gaq || [];
-_gaq.push(['_setAccount', '<?php echo $hk_options["google_analytics"]; ?>']); _gaq.push(['_setDomainName', '<?php echo $_SERVER['SERVER_NAME'];  ?>']);
-_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_setAccount', '<?php echo $hk_options["google_analytics"]; ?>']); 
+_gaq.push(['_setDomainName', '<?php echo $hk_options['google_analytics_domain'];  ?>']);
 _gaq.push(['_trackPageview']);
 
   (function() {
