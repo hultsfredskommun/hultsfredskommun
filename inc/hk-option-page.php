@@ -109,23 +109,20 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo $options['show_tags']; ?>" /></p>
 
 			<h3>Statistik och cookies</h3>
+			<p><input type="checkbox" name="hk_theme[cookie_accept_enable]" value="1"<?php checked( 1 == $options['cookie_accept_enable'] ); ?> /> <label for="hk_theme[cookie_accept_enable]">St&auml;ll fr&aring;ga om cookies f&aring;r anv&auml;ndas.</label></p>
 			<p><label for="hk_theme[cookie_text]">Förklarande text för att godkänna cookies. </label><br/><input type="text" name="hk_theme[cookie_text]" value="<?php echo $options['cookie_text']; ?>" /></p>
 			<p><label for="hk_theme[cookie_link]">Länk till mer information om cookies. </label><br/><input type="text" name="hk_theme[cookie_link]" value="<?php echo $options['cookie_link']; ?>" /></p>
 
 			<p><label for="hk_theme[google_analytics]">Google Analytics id (enligt UA-XXXXX-X). </label><br/><input type="text" name="hk_theme[google_analytics]" value="<?php echo $options['google_analytics']; ?>" /></p>
 			<p><label for="hk_theme[google_analytics_domain]">Google Analytics topp dom&auml;n (ex. mindom&auml;n.se). </label><br/><input type="text" name="hk_theme[google_analytics_domain]" value="<?php echo $options['google_analytics_domain']; ?>" /></p>
-
+			<p><input type="checkbox" name="hk_theme[google_analytics_disable_if_no_cookies]" value="1"<?php checked( 1 == $options['google_analytics_disable_if_no_cookies'] ); ?> /> <label for="hk_theme[google_analytics_disable_if_no_cookies]">Anv&auml;nd inte Google Analytics om cookies inte &auml;r accepterade (p&aring;verkar bara om "fr&aring;ga om cookies" &auml;r p&aring).</label</p>
+			
+			
 			<h3>Utseende</h3>
-
 			
 			<h3>Cron</h3>
-			<?php if ($options['enable_cron_review_mail']) {
-				if ( !wp_next_scheduled( 'hk_review_mail_event' ) ) {
-					wp_schedule_event( time(), 'hk_minute', 'hk_review_mail_event');
-				} }
-			else { wp_clear_scheduled_hook('hk_review_mail_event'); } ?>
 			<p><label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label><br/><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?> Kördes senast <?php echo Date("Y-m-d H:i:s",$options["hk_review_mail_check_time"]); ?><br/><?php echo $options["hk_review_mail_log"]; ?></p>
-
+			<p>Normaliserade räknare <?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?>: <br><?php echo $options["hk_normalize_count_log"]; ?></p>
 
 			<h3>Bilder</h3>
 			<p><label for="hk_theme[top_image]">Toppbild</label><br/>

@@ -1157,27 +1157,14 @@ a:hover {
 	text-decoration: none; 
 }
 
+#nav .dropdown-menu, 
 #menu .dropdown-menu { 
 	display: none;  /*starts hidden*/
 	margin-top: .2em;
-	height: 34px;
 	cursor: pointer;
 	padding-top: .20em;
-	padding-left: 35px;
 	font-weight: bold;
 	text-align: center;
-	_order-top-left-radius: 5px;
-	_order-top-right-radius: 5px;
-}
-#menu .dropdown-image {
-	background: url("images/sprite.png") no-repeat scroll -1px -21px transparent;
-	float: right;
-	margin: 0;
-	margin-top: 10px;
-	margin-right: 12px;
-	padding: 0;
-	height: 16px;
-	width: 16px;
 }
 
 /* =menu dropdown
@@ -1573,6 +1560,9 @@ a:hover {
 	position: absolute;
 	cursor: pointer;
 	z-index: 2000;
+}
+.home .img-wrapper {
+	margin: 0 10px;
 }
 .img-wrapper {
 	position: relative;
@@ -2716,8 +2706,16 @@ p.comment-form-comment {
 	#firstpage-top-content {
 		width: 55.375%;
 	}
+	
 	#menu ul li a { font-size: 14px; }	
 
+	/* remove border-radius */
+	.important-widget,
+	#menu,
+	#menu .sub-menu,
+	#menu ul li:first-child {
+		border-radius: 0px;
+	}
 	.contact-popup.box {
 		width: 50%;
 		height: 50%;
@@ -2843,15 +2841,21 @@ p.comment-form-comment {
 	}
 
 }
-
-
+/*
+// TODO - remove border-radius on menu and search when needed.
+//  add leftmargin to slideshow on startpage
+//  move category menu out from dropdown, create new dropdown with selected category as clickable span or div
+//Ta bort ordet "bara" i det röda fältet längst upp
+//Driftinformation ska väl enbart synas på invånare?
+//Behöver vi lägga rött fält även på Hultsfred.com eftersom den är så ofärdig och går upp i en egen sajt? 
+//  remove complete adress in contact and article href. Only relative is needed!!
+*/
 /* SMALL */
 
 @media (max-width: 650px) {
 	#responsive-info:after {
 		content: "LITEN";
 	}
-	
 	/* primary m.m. 100% */
 	#nav,
 	#primary,
@@ -2864,8 +2868,14 @@ p.comment-form-comment {
 	}
 	
 	/*show dropdown-menu*/
-	#menu .dropdown-menu { display: block; }
-
+	#nav .dropdown-menu, 
+	#menu .dropdown-menu { 
+		display: block; 
+	}
+	#nav .dropdown-menu:after {
+		content: ' \2B';
+	}
+	
 	/*hide menu elements*/
 	#menu,
 	#nav {
@@ -2874,8 +2884,7 @@ p.comment-form-comment {
 	}
 	#menu .menu-item,
 	#menu li,
-	#menu,
-	#nav {
+	#menu {
 	
 		background: #06435A;
 	}
@@ -2885,9 +2894,11 @@ p.comment-form-comment {
 	#nav .parent > .current-cat > a {
 		color: #fff;
 	}
-	
-	#menu ul,
-	#nav {
+	#nav ul.parent,
+	.tags{
+		display: none;
+	}
+	#menu ul {
 		margin-top : 0;
 		font-size: 12px;
 		display: none;
@@ -2945,6 +2956,11 @@ p.comment-form-comment {
 		border: 0;
 	}
 	
+
+	.home .img-wrapper {
+		margin-left: 0;
+	}
+
 	
 	.contact-popup.box {
 		width: 80%;
@@ -2986,6 +3002,9 @@ p.comment-form-comment {
 	}
 	.entry-meta {
 		font-size: 12px;
+	}
+	#searchform {
+		border-radius: 0;
 	}
 	#branding #searchnavigation {
 		margin-left: 0%;
@@ -3038,6 +3057,9 @@ p.comment-form-comment {
 @media (max-width: 480px) {
 	#responsive-info:after {
 		content: "MOBIL";
+	}
+	#topmenu {
+		display: none;
 	}
 	body {
 		padding: 0;

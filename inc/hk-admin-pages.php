@@ -141,17 +141,17 @@ function hk_review_mail() {
 		'meta_type' => 'numeric',
 		'orderby' => 'meta_value',
 		'order' => 'ASC',
-		'ignore_sticky_posts' => 1 );
+		'suppress_filters' => true );
 
 	// perform the query
-	if (function_exists("hk_FilterOrder"))
-		remove_filter ('posts_orderby', 'hk_FilterOrder');
+	//if (function_exists("hk_FilterOrder"))
+	//	remove_filter ('posts_orderby', 'hk_FilterOrder');
 	
 	$q = new WP_Query();
 	$q->query($qargs);
 	
-	if (function_exists("hk_FilterOrder"))
-		add_filter ('posts_orderby', 'hk_FilterOrder');
+	//if (function_exists("hk_FilterOrder"))
+	//	add_filter ('posts_orderby', 'hk_FilterOrder');
 
 	// execute the WP loop
 	$log = "";
@@ -170,8 +170,8 @@ function hk_review_mail() {
 	$count_mail = 0;
 	foreach ($maillist as $mailaddress => $value) {
 		
-		$subject = "Dags att granska ett inlägg på hultsfred.se";
-		$message = "Du har följande inlägg att granska på hultsfred.se.<br>";
+		$subject = "Dags att granska ett inlägg på hemsidan";
+		$message = "Du har följande inlägg att granska:<br>";
 		$message .= "<ul>";
 		foreach ($value as $editpost) {
 			$message .= "<li><a href='". site_url("/") . "wp-admin/post.php?post=" . $editpost[0] . "&action=edit'>" . $editpost[1] . " " . $editpost[2] . "</a></li>";
@@ -192,16 +192,68 @@ function hk_visit_activation() {
 	$options = get_option('hk_theme');
 	if ($options['enable_cron_review_mail']) {
 		if ( !wp_next_scheduled( 'hk_review_mail_event' ) ) {
-			wp_schedule_event( time(), 'weekly', 'hk_review_mail_event');
+			wp_schedule_event( time(), 'daily', 'hk_review_mail_event');
 		}
 	}
 	else
 	{
-		wp_clear_scheduled_hook('hk_review_mail_event');
+		if ( wp_next_scheduled( 'hk_review_mail_event' ) ) {
+			wp_clear_scheduled_hook('hk_review_mail_event');
+		}
 	}
 }
 add_action('wp', 'hk_visit_activation');
 
+
+/*
+ * Cron job to normalize views
+ */
+if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled
+
+// check which posts to be reviewed and send mail to remind author
+function hk_normalize_count() {
+	$options = get_option('hk_theme');
+	$hk_normalize_count_time = time();
+	$options["hk_normalize_count_time"] = $hk_normalize_count_time;
+	//define arguments for WP_Query()
+	$qargs = array(
+		'posts_per_page' => -1,
+        'post_status' => 'published',
+		'suppress_filters' => true);
+	
+	$q = new WP_Query();
+	$q->query($qargs);
+	
+	// execute the WP loop
+	$log = "";
+	$count = 0;
+	while ($q->have_posts()) : $q->the_post();
+		$count++;
+		$post_id = get_the_ID();
+		$views = get_post_meta($post_id, "views", true);
+		$new_views = floor(sqrt($views));
+		update_post_meta($post_id, "views", $new_views, $views); 
+		
+		//$log .= $id . " " . $views . " " . $new_views . "<br>";
+	endwhile;
+
+	$log .= "Normaliserade $count artiklar " . date("d M", strtotime("now"));
+	$options["hk_normalize_count_log"] = $log;
+
+
+	update_option("hk_theme", $options);
+}
+add_action("hk_normalize_count_event", "hk_normalize_count");
+
+
+function hk_normalize_activation() {
+	if ( !wp_next_scheduled( 'hk_normalize_count_event' ) ) {
+		wp_schedule_event( time(), 'daily', 'hk_normalize_count_event');
+	}
+}
+add_action('wp', 'hk_normalize_activation');
+
+endif; // endif (function_exists( 'views_orderby' ))
 
 
 

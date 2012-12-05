@@ -31,9 +31,11 @@ function hk_navigation() {
 	if ($search != "") {
 		echo "Du s&ouml;kte p&aring; " . $search . ".";
 	}
-
+	
 	// if in tag and no category
 	if ($tags != "" && $cat == "") {
+		echo "<a class='dropdown-menu'>Etiketter</a>";
+
 		$hk_cat_walker = new hk_Category_Walker();
 		$parentCat = hk_getMenuParent($cat);
 		$args = array(
@@ -60,6 +62,7 @@ function hk_navigation() {
 	if ($cat != "") {
 
 		if (is_sub_category()) {
+			
 			$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
 			$currentparent = $cat;
 			
@@ -80,6 +83,7 @@ function hk_navigation() {
 				'taxonomy'           => 'category',
 				'walker'			 => $hk_cat_walker
 			);
+			echo "<a class='dropdown-menu'>" . get_the_category_by_ID($parentCat) . "</a>";
 			echo "<ul class='parent'>"; 
 			wp_list_categories( $args );
 			echo "</ul>"; 

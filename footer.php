@@ -38,7 +38,7 @@ global $default_settings;
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-<?php if ($hk_options["google_analytics"] != "" && $default_settings['allow_cookies']) : ?>
+<?php if ($hk_options["google_analytics"] != "" && $default_settings['allow_google_analytics']) : ?>
 <script type="text/javascript">
 
 var _gaq = _gaq || [];

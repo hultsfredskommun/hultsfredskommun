@@ -22,9 +22,9 @@ $s_when_https = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 's' : '
 $hk_options = get_option('hk_theme');
 	
 /* set allow cookie */
-if ($_REQUEST["cookies"] && $hk_options["cookie_text"] != "") {
+if ($_REQUEST["cookies"] && $hk_options["cookie_accept_enable"] == "1") {
 	// allow cookies for 10 years
-	setcookie("allow_cookies", "true", time()+3600*24*3650);
+	setcookie("allow_cookies", "true", time()+3600*24*3650, "/");
 }
 	
 /* SET DEFAULT SETTINGS */
@@ -40,7 +40,8 @@ if ( ! isset( $default_settings ) ) {
 								'protocol_cat' => $options["protocol_cat"],
 								'num_levels_in_menu' => (!isset($options["num_levels_in_menu"]))?2:$options["num_levels_in_menu"],
 								'show_tags' => (!isset($options["show_tags"]))?0:$options["show_tags"],
-								'allow_cookies' => $_COOKIE['allow_cookies'] || $hk_options["cookie_text"] == "",
+								'allow_cookies' => $_REQUEST["cookies"] || $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "",
+								'allow_google_analytics' => $_REQUEST["cookies"] || $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "" || $hk_options['google_analytics_disable_if_no_cookies'] != "1",
 								);
 }
 
@@ -247,7 +248,7 @@ function setup_javascript_settings() {
 			'blogId' => $blog_id,
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
 			'currentFilter' => json_encode($filter),
-			'allow_cookies' => $default_settings['allow_cookies'],
+			'allow_google_analytics' => $default_settings['allow_google_analytics'],
 			'google_analytics' => $hk_options['google_analytics'],
 			'google_analytics_domain' => $hk_options['google_analytics_domain'],
 		);

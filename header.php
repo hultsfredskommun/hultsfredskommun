@@ -123,7 +123,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 		<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>	
 		<?php dynamic_sidebar('important-top-content'); ?>
 		
-		<?php if(!$default_settings['allow_cookies'] && $hk_options["cookie_text"] != "") : ?>
+		<?php if(!$default_settings['allow_cookies'] && $hk_options["cookie_accept_enable"] == "1") : ?>
 			<div class="important-widget"><div class="textwidget"><?php echo $hk_options["cookie_text"]; ?>
 			<?php if ($hk_options["cookie_link"] != "") : ?>
 			<a href="?cookies=true">Forts&auml;tt</a> <a href="<?php echo $hk_options["cookie_link"]; ?>">Mer information</a>
@@ -157,7 +157,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 			<div class="clear"></div>
 		</div>		
 		<nav id="menu" role="navigation">
-			<a class="dropdown-menu">Meny<span class="dropdown-image"></span></a>
+			<a class="dropdown-menu">Meny</a>
 			<?php 
 				wp_nav_menu( array(
 					'theme_location'	=> 'primary', 
