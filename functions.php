@@ -262,6 +262,15 @@ add_action('wp_head', 'setup_javascript_settings');
 
 
 
+/*
+ * Make the_permalink links relative instead of static.
+ */
+function hk_relative_permalinks($input) {
+    return preg_replace('!http(s)?://' . $_SERVER['SERVER_NAME'] . '/!', '/', $input);
+}
+add_filter( 'post_link', 'hk_relative_permalinks' );
+//add_filter( 'the_permalink', 'hk_relative_permalinks' );
+add_filter( 'post_type_link', 'hk_relative_permalinks' );
 
 
 

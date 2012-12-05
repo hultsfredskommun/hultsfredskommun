@@ -27,7 +27,7 @@ function hk_navigation() {
 	$cat = get_query_var("cat");
 	$tags = get_query_var("tag");
 
-	echo "<aside id='nav'><nav>";
+	echo "<aside id='nav' role='navigation'><nav>";
 	if ($search != "") {
 		echo "Du s&ouml;kte p&aring; " . $search . ".";
 	}
@@ -300,9 +300,8 @@ function displayTagFilter($class = "dropdown-tags") {
 	if ($default_settings["show_tags"] != 0) :
 		
 		echo "<div class='$class'><div class='toggle-tags'>";
-		//if ($_REQUEST["tag"] == "") {
-			echo "Visa bara";
-		//}
+		echo "Visa bara";
+		
 		echo "</div>";
 		
 		if ($_REQUEST["tag"] != "") {

@@ -1457,13 +1457,13 @@ a:hover {
 }
 
 /*--- Right column - firstpage ---*/
-.widget .textwidget {
+#firstpage-sidebar .widget .textwidget {
 	padding: 0 10px;
 }
-.widget .textwidget ul {
+#firstpage-sidebar .widget .textwidget ul {
 	margin: 0;
 }
-.widget.widget_text {
+#firstpage-sidebar .widget.widget_text {
 	float: left;
 	width: 49%;
 }

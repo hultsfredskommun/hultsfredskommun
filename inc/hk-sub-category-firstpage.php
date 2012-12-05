@@ -12,7 +12,7 @@
 ?>
 
 
-<div id="firstpage-sidebar">
+<aside id="firstpage-sidebar" role="complementary">
 	<?php /* CONTACT */ ?>
 	<div class="contact-area">
 		<?php hk_contact_firstpage(); ?>
@@ -102,7 +102,7 @@
 	<?php /* DYNAMIC WIDGET CONTENT */ ?>	
 	<?php dynamic_sidebar('firstpage-sidebar'); ?>
 	
-</div>
+</aside>
 
 
 <div id="primary">

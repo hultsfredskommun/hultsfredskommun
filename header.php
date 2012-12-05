@@ -151,7 +151,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 					echo "</nav></aside></div>";
 				}
 			?>
-			<div id="searchnavigation">			
+			<div id="searchnavigation" role="search">			
 				<?php get_search_form(); ?>
 			</div>
 			<div class="clear"></div>

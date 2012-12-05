@@ -25,8 +25,13 @@ global $default_settings;
 					<div id="footer-image"><img src="<?php echo $hk_options["footer_image"]; ?>"/></div>
 			<?php endif; ?>
 			<?php
-				get_sidebar( 'footer' );
 
+			if ( is_active_sidebar( 'footer-sidebar' ) ) :
+
+				echo "<div id='footer-sidebar' class='widget-area'>";
+				dynamic_sidebar( 'footer-sidebar' );
+				echo "</div>";
+			endif;
 				if ( $hk_options["logo_footer_image"] ) :
 			?>
 				<div id="logo_footer_image"><img src="<?php echo $hk_options["logo_footer_image"]; ?>" /></div>
