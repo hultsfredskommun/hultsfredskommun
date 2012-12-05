@@ -2884,9 +2884,7 @@ p.comment-form-comment {
 		background: #06435A;
 	}
 	
-	#menu ul li a,
-	#nav a, 
-	#nav .parent > .current-cat > a {
+	#menu ul li a {
 		color: #fff;
 	}
 	#nav ul.parent,
