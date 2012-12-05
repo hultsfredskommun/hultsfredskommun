@@ -345,7 +345,8 @@ body, input, textarea,
 .closeButton.bottom a,
 .dropdown-menu,
 #menu ul.sub-menu li.current-category-ancestor > a,
-#menu ul.sub-menu li.current-menu-item > a {
+#menu ul.sub-menu li.current-menu-item > a,
+#footer-sidebar a {
 	color: #fff; /* white */	
 }
 
@@ -2278,9 +2279,6 @@ article:last-child { margin-bottom: 0 }
 #footer-sidebar li {
 	margin: .8em;
 }
-#footer-sidebar a {
-	color: #373737;
-}
 #footer-image {
 	width: 100%;
 	line-height: 0;
@@ -2842,12 +2840,8 @@ p.comment-form-comment {
 
 }
 /*
-// TODO - remove border-radius on menu and search when needed.
-//  add leftmargin to slideshow on startpage
-//  move category menu out from dropdown, create new dropdown with selected category as clickable span or div
-//Ta bort ordet "bara" i det röda fältet längst upp
+//
 //Driftinformation ska väl enbart synas på invånare?
-//Behöver vi lägga rött fält även på Hultsfred.com eftersom den är så ofärdig och går upp i en egen sajt? 
 //  remove complete adress in contact and article href. Only relative is needed!!
 */
 /* SMALL */
@@ -2859,6 +2853,7 @@ p.comment-form-comment {
 	/* primary m.m. 100% */
 	#nav,
 	#primary,
+	.home #firstpage-sidebar,
 	.home #firstpage-top-content
 	{
 		width: 100% !important;
@@ -2955,13 +2950,7 @@ p.comment-form-comment {
 	#nav .parent li {
 		border: 0;
 	}
-	
-
-	.home .img-wrapper {
-		margin-left: 0;
-	}
-
-	
+		
 	.contact-popup.box {
 		width: 80%;
 		height: 80%;
