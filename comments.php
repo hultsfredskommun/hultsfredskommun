@@ -26,8 +26,10 @@
 	?>
 
 	<?php // You can start editing here -- including this comment! ?>
-
-	<?php if ( have_comments() ) : ?>
+	<?php 
+		global $current_user;
+	?>
+	<?php if ( have_comments() && in_array('administrator', $current_user->roles)) : ?>
 		<h2 id="comments-title">
 			<?php
 				printf( _n( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'twentyeleven' ),

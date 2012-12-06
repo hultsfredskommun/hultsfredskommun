@@ -575,15 +575,13 @@ article.sticky {
 .closeButton.top {
 	_order-top: 4px solid #06435A;
 }
-.full .article-wrapper ,
-.single .article-wrapper {
-/*	border-top: 1px solid #06435A;
-	border-left: 1px solid #06435A;
-	border-right: 1px solid #06435A;
-	*/
+.full .article-wrapper {
 	border-top: 1px solid #ccc;
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
+}
+.single .full .article-wrapper {
+	border: 0;
 }
 .article-wrapper {
 	border-radius: 4px 4px 0 0; 
