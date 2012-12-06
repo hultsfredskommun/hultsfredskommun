@@ -272,7 +272,8 @@ h6
 
 .slideshow article .text-area .text-content a
 {
-	line-height: 3em;
+	line-height: 1.5em;
+	display: block;
 }
 .post footer { 
 	line-height: 18px;
@@ -1519,10 +1520,10 @@ a:hover {
 .slideshow article .text-area
 {
 	float: left;
-	overflow: hidden;
+	_verflow: hidden;
 	position: absolute;
 	z-index: 1000;
-	max-height: 60px;
+	_ax-height: 60px;
 	width: 100%;
 	bottom: 0px;
 }
@@ -2294,6 +2295,7 @@ article:last-child { margin-bottom: 0 }
 
 /* log frame */
 #log {
+	display: none;
 	position: fixed;
 	left: 20px;
 	top: 20px;
@@ -2665,6 +2667,7 @@ p.comment-form-comment {
 ----------------------------------------------- */
 #responsive-info
 {
+	display: none;
 	position: fixed;
 	bottom: 0;
 	right: 0;
