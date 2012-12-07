@@ -581,7 +581,7 @@ article.sticky {
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
-.single .full .article-wrapper {
+.single .single .article-wrapper {
 	border: 0;
 }
 .article-wrapper {
@@ -1269,16 +1269,16 @@ a:hover {
 }
 #viewmode a{
 	margin: 1px 6px 4px;
-	height: 16px;
-	width: 16px;
+	_eight: 16px;
+	_idth: 16px;
 	float: left;
 }
 #viewmode_summary {
-	background: url("images/sprite.png") no-repeat scroll -32px -387px transparent;
+	_ackground: url("images/sprite.png") no-repeat scroll -32px -387px transparent;
 	display:none;
 }
 #viewmode_titles {
-	background: url("images/sprite.png") no-repeat scroll -65px -387px transparent;
+	_ackground: url("images/sprite.png") no-repeat scroll -65px -387px transparent;
 }
 
 .tags {
@@ -1674,7 +1674,8 @@ article.single .side-content {
 .entry-meta .tag-cloud ,
 .entry-meta .editor ,
 .entry-meta .reviewed ,
-.entry-meta .permalink  {
+.entry-meta .permalink ,
+.entry-meta .helpus  {
 	margin-top: 10px;
 }
 .entry-meta .tag-cloud  span {
@@ -2198,14 +2199,17 @@ article:last-child { margin-bottom: 0 }
 .friend .icon {
 	background-position: -287px 0px;
 }
-.related_page .icon {
-	background-position: -226px -193px;
+.helpus .icon {
+	background-position: -256px -32px;
 }
-.related_link .icon {
+.related_page .icon {
 	background-position: -256px -193px;
 }
+.related_link .icon {
+	background-position: -2px -322px;
+}
 .related_file .icon {
-	background-position: -287px -193px;
+	background-position: -288px -290px;
 }
 .related_file img {
 	width: 75px;

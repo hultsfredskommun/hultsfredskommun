@@ -62,6 +62,7 @@
 		<div class="print tool-line full"><div class="icon"></div><a class="print" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Funktionen kommer senare">Skriv ut</a></div>
 		<div class="read tool-line full"><div class="icon"></div><a class="read" title="Funktionen kommer senare">L&auml;s upp</a></div>
 		<div class="friend tool-line full"><div class="icon"></div><a class="read" title="Funktionen kommer senare">Tipsa</a></div>
+		<div class="helpus tool-line full"><div class="icon"></div><?php comments_popup_link('Hj&auml;lp oss!','Hj&auml;lp oss!','Hj&auml;lp oss!','','Hj&auml;lp oss!'); ?></div>
 	</div>
 	
 

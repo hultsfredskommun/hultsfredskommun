@@ -66,12 +66,8 @@
 					<div class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></div>
 
 					<div class="permalink">Direktl&auml;nk: <a href="http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>">http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?></a></div>
-					
+					<div class="helpus"><?php comments_popup_link('Hj&auml;lp oss bli b&auml;ttre!','Hj&auml;lp oss bli b&auml;ttre!','Hj&auml;lp oss bli b&auml;ttre!','','Hj&auml;lp oss bli b&auml;ttre!'); ?></div>
 
-					<?php if (false) : //( comments_open() ) : ?>
-					
-					<span class="comments-link"><?php comments_popup_link( '<span class="leave-reply">L&auml;mna en kommentar</span>', __( '<b>1</b> Reply', 'twentyeleven' ), __( '<b>%</b> Replies', 'twentyeleven' ) ); ?></span>
-					<?php endif; // End if comments_open() ?>
 
 					
 				</footer><!-- .entry-meta -->

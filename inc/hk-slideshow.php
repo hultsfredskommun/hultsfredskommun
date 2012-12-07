@@ -110,7 +110,8 @@ function hk_slideshow_generate_output($vars) {
 								$retValue .= 	"<div class='text-area'>";
 								$retValue .= 		"<div class='text-content'>";
 								$retValue .= 			"<div class='transp-background'></div>";
-								$retValue .= 			"<a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_content() . "</a>";
+								$retValue .= 			"<a>" . get_the_content() . "</a>";
+								//$retValue .= 			"<a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_content() . "</a>";
 								$retValue .=		"</div>";
 								$retValue .= 	"</div>";
 							}
