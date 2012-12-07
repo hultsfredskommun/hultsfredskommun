@@ -113,7 +113,9 @@
 			<?php if ($default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0") : ?>
 			<li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser &amp; handlingar</a></li>
 			<?php endif; ?>
+			<?php if (in_array(get_query_var("cat"), split(",",$hk_options["show_drift"]))) : ?>
 			<li title="Driftinformation"><a href="#driftcontent">Driftinformation</a></li>
+			<?php endif; ?>
 		</ul>
 		<div id="newscontent">
 			<?php 
@@ -214,9 +216,11 @@
 			<div class="clear"></div>
 		</div>	
 		<?php endif; ?>
+		<?php if (in_array(get_query_var("cat"), split(",",$hk_options["show_drift"]))) : ?>
 		<div id="driftcontent">
 			H&auml;r kommer driftinformation.
 		</div>
+		<?php endif; ?>
 		
 	</div><!-- #content -->
 	<?php dynamic_sidebar('firstpage-content'); ?>

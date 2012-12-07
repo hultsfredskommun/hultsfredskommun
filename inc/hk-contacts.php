@@ -225,6 +225,7 @@ function hk_contact_shortcode_func( $atts ) {
 	$atts = shortcode_atts( $default, $atts );
 
 	$translate = array(
+		'id' => 'id',
 		'kategori' => 'cat',
 		'kategorinamn' => 'cat_slug',
 		'bild' => 'image',

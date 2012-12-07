@@ -107,6 +107,7 @@ function hk_theme_options_do_page() {
 
 			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo $options['num_levels_in_menu']; ?>" /></p>
 			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo $options['show_tags']; ?>" /></p>
+			<p><label for="hk_theme[show_drift]">Visa driftflik i kategorier (exempel 23,42,19).</label><br/><input type="text" name="hk_theme[show_drift]" value="<?php echo $options['show_drift']; ?>" /></p>
 
 			<h3>Statistik och cookies</h3>
 			<p><input type="checkbox" name="hk_theme[cookie_accept_enable]" value="1"<?php checked( 1 == $options['cookie_accept_enable'] ); ?> /> <label for="hk_theme[cookie_accept_enable]">St&auml;ll fr&aring;ga om cookies f&aring;r anv&auml;ndas.</label></p>

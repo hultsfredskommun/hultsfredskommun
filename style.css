@@ -1267,18 +1267,14 @@ a:hover {
 #viewmode {
 	float: left;
 }
-#viewmode a{
-	margin: 1px 6px 4px;
-	_eight: 16px;
-	_idth: 16px;
+#viewmode a {
+	margin: 2px 10px;
 	float: left;
 }
 #viewmode_summary {
-	_ackground: url("images/sprite.png") no-repeat scroll -32px -387px transparent;
 	display:none;
 }
 #viewmode_titles {
-	_ackground: url("images/sprite.png") no-repeat scroll -65px -387px transparent;
 }
 
 .tags {
