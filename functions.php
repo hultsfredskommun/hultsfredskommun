@@ -262,6 +262,13 @@ add_action('wp_head', 'setup_javascript_settings');
 
 
 
+
+/*
+ * Make shortcodes work in widgets
+ */
+add_filter('widget_text', 'do_shortcode');
+
+
 /*
  * Make the_permalink links relative instead of static.
  */
