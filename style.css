@@ -831,8 +831,8 @@ hr {
 }
 
 /* Text elements */
-p, table {
-	margin-bottom: 0.625em;
+p, table, iframe {
+	margin-bottom: 10px;
 }
 ul, ol {
 	margin: 0em 0.4em 0.625em 2em;
