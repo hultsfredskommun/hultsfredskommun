@@ -501,9 +501,6 @@ function hk_get_the_contact($args = array()) {
 // outputs the content of the contact side tab
 function hk_contact_tab() {
 	global $hk_options;
-	if ($hk_options["contact_side_image"] == "") {
-		return "";
-	}
 	
 	$retValue = "";
 	$retValue .= "<aside id='contact-side-tab' class='hk_kontakter'>";
