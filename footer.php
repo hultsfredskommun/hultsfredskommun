@@ -18,6 +18,10 @@ global $default_settings;
 
 	<?php hk_contact_tab(); ?>
 
+	<?php if ($hk_options["comment_side_image"] != "" && $hk_options["comment_side_link"] != "") : ?>
+		<div id="comment-side-tab"><a href="<?php echo $hk_options["comment_side_link"]; ?>" title="Hj&auml;lp oss att bli b&auml;ttre"><img src="<?php echo $hk_options["comment_side_image"]; ?>" alt="Hj&auml;lp oss att bli b&auml;ttre" /></a></div>
+	<?php endif; ?>
+
 	<?php if ( $hk_options["logo_footer_image"] || is_active_sidebar( 'footer-sidebar' ) ) : ?>
 	<footer id="colophon" role="contentinfo">
 		<div id="supplementary">

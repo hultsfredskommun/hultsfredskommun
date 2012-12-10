@@ -50,6 +50,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title><?php
 	/* get hk_options */
 	$hk_options = get_option('hk_theme');

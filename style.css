@@ -1289,6 +1289,9 @@ a:hover {
 .dropdown-tags .toggle-tags {
 	float: left;
 }
+.dropdown-tags .toggle-tags {
+	margin: 2px 0;
+}
 #sort-order ul,
 .dropdown-tags ul {
 	margin: 0;
@@ -1979,36 +1982,29 @@ article:last-child { margin-bottom: 0 }
 
 
 
-/* =side-tab
+/* =side-tab and comment-side-tab
 ----------------------------------------------- */
-#side-tab {
-	display: none;
+#comment-side-tab {
 	position: fixed;
-	top: 50%;
-	margin-top: -50px;
+	top: 20%;
 	right: 0px;
 	z-index: 10000;
 }
-#side-tab .widget-title {
-	position: absolute;
-	top: 43px;
-	left: -85px;
-	text-align: center;
-	height: 30px;
-	width: 100px;
-	rotation: -90deg; 
-	-webkit-transform: rotate(-90deg); 
-	-moz-transform: rotate(-90deg);	
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-	cursor: pointer; 
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+
+#contact-side-tab {
+	position: fixed;
+	top: 50%;
+	right: 0px;
+	z-index: 10001;
+}
+#contact-side-tab .widget-title {
 }
 
-#side-tab .content-wrapper {
+#contact-side-tab .content-wrapper {
 	width: 0;
+	float: none;
 }
-#side-tab .contact-wrapper {
+#contact-side-tab .contact-wrapper {
 	background: white;
 	padding-left: 8px;
 }

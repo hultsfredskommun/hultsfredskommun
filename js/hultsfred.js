@@ -595,10 +595,10 @@ $(document).ready(function(){
 	/**
 	 * side-tab toggle
 	 */
-	$("#side-tab .widget-title").click(function() {
+	$("#contact-side-tab .toggle-tab").click(function() {
 		if ($(".contact-popup").length == 0) {
 			if ($(this).parent().find(".content-wrapper").width() < 200) {
-				$(this).parents("#side-tab").animate({
+				$(this).parents("#contact-side-tab").animate({
 					right: '+=1px',
 					}, 500, function() {
 				});
@@ -608,7 +608,7 @@ $(document).ready(function(){
 				});
 			}
 			else {
-				$(this).parents("#side-tab").animate({
+				$(this).parents("#contact-side-tab").animate({
 					right: '-=1px',
 					}, 500, function() {
 				});

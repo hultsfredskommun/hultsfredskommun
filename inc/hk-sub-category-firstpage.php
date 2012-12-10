@@ -150,8 +150,6 @@
 			<?php
 				/* Query all posts with news tag */
 				if ($default_settings["news_tag"] != "" && $default_settings["news_tag"] != "0") { ?>
-					<div id='news'>
-						<span class='entry-title'>Fler nyheter</span>
 					<?php
 					$query = array( 'posts_per_page' => '10', 
 									'category__in' => $all_categories,
@@ -162,13 +160,18 @@
 									'order' => 'desc'  );
 
 					query_posts( $query );		
-					if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-					<div class="entry-wrapper">
+					if ( have_posts() ) : ?>
+					<div id='news'>
+						<span class='entry-title'>Fler nyheter</span>
+
+						<?php while ( have_posts() ) : the_post(); ?>
+						<div class="entry-wrapper">
 						<?php the_date("","<span class='time'>","</span><br/>"); ?> <a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
-					</div>
-					<?php endwhile; endif; ?> 
+						</div>
+						<?php endwhile; ?>
 						<span class="read-more-link"><a href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Fler nyheter</a></span>
-					</div>
+					</div>					
+					<?php endif; ?> 
 					<?php // Reset Query
 					wp_reset_query(); 
 				}

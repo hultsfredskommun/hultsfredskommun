@@ -500,11 +500,14 @@ function hk_get_the_contact($args = array()) {
 
 // outputs the content of the contact side tab
 function hk_contact_tab() {
-
-
+	global $hk_options;
+	if ($hk_options["contact_side_image"] == "") {
+		return "";
+	}
+	
 	$retValue = "";
-	$retValue .= "<aside id='side-tab' class='hk_kontakter'>";
-	$retValue .= "<h3 class='widget-title'>Kontakta oss</h3><div class='content-wrapper'>";
+	$retValue .= "<aside id='contact-side-tab' class='hk_kontakter'>";
+	$retValue .= "<img class='toggle-tab' src='" . $hk_options["contact_side_image"] . "' /><div class='content-wrapper'>";
 	
 	// set startpage category if on startpage
 	$category_in = array();
