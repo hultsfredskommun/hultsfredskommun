@@ -219,8 +219,9 @@ if (typeof $.fn.googlemap != 'function') {
  */
 if (typeof $.fn.push_google_analytics != 'function') {
 	$.fn.push_google_analytics = function() {
-		page = $(this).attr("href");
-		push_google_analytics(page);
+		if ($(this).attr("href") !== undefined) {
+			push_google_analytics($(this).attr("href"));
+		}
 	}
 }
 if (typeof push_google_analytics != 'function') {
