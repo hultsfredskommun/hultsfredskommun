@@ -598,25 +598,16 @@ $(document).ready(function(){
 	 */
 	$("#contact-side-tab .toggle-tab").click(function() {
 		if ($(".contact-popup").length == 0) {
-			if ($(this).parent().find(".content-wrapper").width() < 200) {
-				$(this).parents("#contact-side-tab").animate({
-					right: '+=1px',
+			if ($(this).parent().css("right") != "0px") {
+				$(this).parent().animate({
+					right: '+=250px',
 					}, 500, function() {
 				});
-				$(this).parent().find(".content-wrapper").animate({
-					width: '+=200px',
+			} else {
+				$(this).parent().animate({
+					right: '-=250px',
 					}, 500, function() {
-				});
-			}
-			else {
-				$(this).parents("#contact-side-tab").animate({
-					right: '-=1px',
-					}, 500, function() {
-				});
-				$(this).parent().find(".content-wrapper").animate({
-					width: '-=200px',
-					}, 500, function() {
-				});
+				});			
 			}
 		}
 		else {
@@ -628,7 +619,7 @@ $(document).ready(function(){
 	$("#primary").find('article').each(function(){
 		setArticleActions($(this));
 	});
-	$("#firstpage-sidebar, #sidebar-wrapper, #side-tab").find(".contact-wrapper a").each(function() {
+	$("#firstpage-sidebar, #sidebar-wrapper, #contact-side-tab").find(".contact-wrapper a").each(function() {
 		setContactPopupAction($(this));
 	});
 	

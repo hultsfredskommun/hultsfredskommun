@@ -146,18 +146,7 @@ function hk_theme_options_do_page() {
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_footer_image]" value="<?php echo $options["logo_footer_image"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
-			<p><label for="hk_theme[comment_side_image]">Bild till kommenteraflik</label><br/>
-				<img width=150  src="<?php echo $options["comment_side_image"]; ?>" />
-				<input class="upload-url" type="text" size="36" name="hk_theme[comment_side_image]" value="<?php echo $options["comment_side_image"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[comment_side_link]">Kommentarsl&auml;nk</label><br/><input type="text" name="hk_theme[comment_side_link]" value="<?php echo $options['comment_side_link']; ?>" /></p>
-			<p><label for="hk_theme[contact_side_image]">Bild till kontaktaflik</label><br/>
-				<img width=150  src="<?php echo $options["contact_side_image"]; ?>" />
-				<input class="upload-url" type="text" size="36" name="hk_theme[contact_side_image]" value="<?php echo $options["contact_side_image"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-
+			<p><label for="hk_theme[comment_side_link]">Hjälp-oss-l&auml;nk</label><br/><input type="text" name="hk_theme[comment_side_link]" value="<?php echo $options['comment_side_link']; ?>" /></p>
 
 
 

@@ -507,7 +507,7 @@ function hk_contact_tab() {
 	
 	$retValue = "";
 	$retValue .= "<aside id='contact-side-tab' class='hk_kontakter'>";
-	$retValue .= "<img class='toggle-tab' src='" . $hk_options["contact_side_image"] . "' /><div class='content-wrapper'>";
+	$retValue .= "<a class='toggle-tab'></a><div class='content-wrapper'>";
 	
 	// set startpage category if on startpage
 	$category_in = array();
