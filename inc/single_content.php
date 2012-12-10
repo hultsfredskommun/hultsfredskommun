@@ -38,7 +38,7 @@
 			
 				<footer class="entry-meta">
 			
-					<div class="helpus"><?php comments_popup_link('Hj&auml;lp oss bli b&auml;ttre!','Hj&auml;lp oss bli b&auml;ttre!','Hj&auml;lp oss bli b&auml;ttre!','','Hj&auml;lp oss bli b&auml;ttre!'); ?></div>
+					<div class="helpus"><?php comments_popup_link('Hj&auml;lp oss att bli b&auml;ttre!','Hj&auml;lp oss att bli b&auml;ttre!','Hj&auml;lp oss att bli b&auml;ttre!','','Hj&auml;lp oss att bli b&auml;ttre!'); ?></div>
 					<div class="tag-cloud">Tillh&ouml;r: 
 						<?php
 							$categories_list = get_the_category_list( ' | ' );

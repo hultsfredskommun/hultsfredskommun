@@ -904,20 +904,16 @@ function setArticleActions(el) {
 		setContactPopupAction($(this));
 	});
 	$(el).find(".related_link a").each(function() {
-		page = $(this).attr("href");
-		if (page != "") {
+		if ($(this).attr("href") !== undefined) {
 			$(this).click(function () {
-				page = $(this).attr("href");
-				push_google_analytics("#link=" + page);
+				push_google_analytics("#link=" + $(this).attr("href"));
 			});
 		}
 	});
 	$(el).find(".related_file a").each(function() {
-		page = $(this).attr("href");
-		if (page != "") {
+		if ($(this).attr("href") !== undefined) {
 			$(this).click(function () {
-				page = $(this).attr("href");
-				push_google_analytics("#file=" + page);
+				push_google_analytics("#file=" + $(this).attr("href"));
 			});
 		}
 	});
