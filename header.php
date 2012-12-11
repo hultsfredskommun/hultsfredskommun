@@ -157,8 +157,8 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 			</div>
 			<div class="clear"></div>
 		</div>		
+		<a class="dropdown-menu">Meny</a>
 		<nav id="menu" role="navigation">
-			<a class="dropdown-menu">Meny</a>
 			<?php 
 				wp_nav_menu( array(
 					'theme_location'	=> 'primary', 

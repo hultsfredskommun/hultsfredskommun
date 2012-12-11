@@ -34,7 +34,7 @@ function hk_navigation() {
 	
 	// if in tag and no category
 	if ($tags != "" && $cat == "") {
-		echo "<a class='dropdown-menu'>Etiketter</a>";
+		echo "<a class='dropdown-nav'>Etiketter</a>";
 
 		$hk_cat_walker = new hk_Category_Walker();
 		$parentCat = hk_getMenuParent($cat);
@@ -83,7 +83,7 @@ function hk_navigation() {
 				'taxonomy'           => 'category',
 				'walker'			 => $hk_cat_walker
 			);
-			echo "<a class='dropdown-menu'>" . get_the_category_by_ID($parentCat) . "</a>";
+			echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
 			echo "<ul class='parent'>"; 
 			wp_list_categories( $args );
 			echo "</ul>"; 
@@ -134,7 +134,7 @@ class hk_Category_Walker extends Walker_Category {
         $link = '<a href="' . get_category_link( $category->term_id ) . $tags_filter . '" '; 
         $cat_name = apply_filters( 'list_cats', $cat_name, $category ); 
         if ( $use_desc_for_title == 0 || empty($category->description) ) 
-            $link .= 'title="' . sprintf(__( 'View all posts filed under %s' ), $cat_name) . '"'; 
+            $link .= 'title="Visa allt om ' . $cat_name . '"'; 
         else 
             $link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"'; 
         $link .= '>'; 
@@ -298,11 +298,8 @@ class hk_Tag_Walker extends Walker_Category {
 function displayTagFilter($class = "dropdown-tags") {
 	global $default_settings;
 	if ($default_settings["show_tags"] != 0) :
+		echo "<div class='$class'>";
 		
-		echo "<div class='$class'><div class='toggle-tags'>";
-		echo "Visa bara";
-		
-		echo "</div>";
 		
 		if ($_REQUEST["tag"] != "") {
 			$tag_array = split(",",$_REQUEST["tag"]);
@@ -311,11 +308,24 @@ function displayTagFilter($class = "dropdown-tags") {
 				$orderby = "&orderby=$orderby";
 			}
 			foreach ($tag_array as $value) {
+				$tag_name = get_term_by('slug',$value,'post_tag');
+				if (!empty($tag_name )) {
+					$tag_name = $tag_name->name;
+				}
+				else {
+					$tag_name = $value;
+				}
 				$new_tags = "?tag=" . rtrim(str_replace($value . ",", "", $_REQUEST["tag"] . ","), ",");
 				
-				echo "<a title='Ta bort filtrera p&aring; $value' href='" . $new_tags . $orderby . "' class='selected-tags'>$value</a> ";
+				echo "<a title='Ta bort filtrera p&aring; $value' href='" . $new_tags . $orderby . "' class='selected-tags'>$tag_name<div class='icon'></div></a>";
 			}
 		}
+
+		echo "<div class='toggle-tags'>";
+		if ($_REQUEST["tag"] == "") {
+			echo "Visa bara";
+		}
+		echo "</div>";
 		
 		$hk_tag_walker = new hk_Tag_Walker();
 		$args = array(

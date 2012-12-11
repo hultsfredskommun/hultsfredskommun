@@ -19,7 +19,7 @@
 		$retString = "<ul>";
 		$retString .= "<li><a href='" . site_url() . "/?s=" . $searchstring . "'>S&ouml;k efter " . $searchstring . "</a></li>";
 		while ( $dyn_query->have_posts() ) : $dyn_query->the_post();
-			$retString .= "<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a> <i>" . get_the_category_list(', ') . "</i></li>";
+			$retString .= "<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a></li>"; //<i>" . get_the_category_list(', ') . "</i>
 		endwhile;
 		$retString .= "</ul>";
 		echo $retString;

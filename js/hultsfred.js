@@ -686,7 +686,7 @@ $(document).ready(function(){
 	 * responsive dropdown menu
 	 */
 	// set click action	
-	$("#menu .dropdown-menu").click( function(){
+	$(".dropdown-menu").click( function(){
 		
 		//toggle "#menu ul.main-menu"
 		if( $("#menu ul.main-menu").is(":visible") ){
@@ -695,7 +695,7 @@ $(document).ready(function(){
 		else{ $("#menu ul.main-menu").slideDown('fast'); }
 	
 	});  
-	$("#nav .dropdown-menu").click( function(){
+	$(".dropdown-nav").click( function(){
 		
 		//toggle "#nav ul.parent"
 		if( $("#nav ul.parent").is(":visible") ){
