@@ -2060,7 +2060,8 @@ article:last-child { margin-bottom: 0 }
 .contact-wrapper .content {
 	margin-left: 26px;
 }
-.contact-area .entry-wrapper {
+.full .contact-area .entry-wrapper,
+.single .contact-area .entry-wrapper {
 	padding: 0;
 }
 .contact-wrapper .entry-wrapper,
