@@ -579,7 +579,7 @@ hr,
 }
 
 
-
+#selected_filter a,
 .selected-tags,
 .tags a:hover,
 .tags a:focus,
@@ -1019,7 +1019,7 @@ a:hover {
 	border-radius: 5px;
 }
 #searchnavigation .input-wrapper {
-	width: 85%;
+	width: 94%;
 	float: left;
 }
 #s {
@@ -1033,9 +1033,12 @@ a:hover {
 #searchsubmit {
 	border: 0;
 	background-color: transparent;
-	height: 30px;
-	width: 13%;
+	height: 16px;
+	margin: 7px 0;
+	width: 5%;
 	cursor: pointer;
+	background-image: url("images/sprite.png");
+	background-position: -26px 0px;
 }
 #searchsubmit:focus {
 	text-decoration: underline;
@@ -1316,6 +1319,8 @@ a:hover {
 .tags a.selected-tags {
 	display: inline-block;
 	margin: 4px 8px;
+}
+.dropdown-tags a.selected-tags {
 	float: left;
 }
 .dropdown-tags a.selected-tags .icon,
@@ -2055,6 +2060,13 @@ article:last-child { margin-bottom: 0 }
 .contact-wrapper .content {
 	margin-left: 26px;
 }
+.contact-area .entry-wrapper {
+	padding: 0;
+}
+.contact-wrapper .entry-wrapper,
+.contact-area .entry-wrapper {
+	clear: both;
+}
 .related-wrapper li a {
 	display: block;
 }
@@ -2104,17 +2116,25 @@ article:last-child { margin-bottom: 0 }
 	clear: both;
 }
 .contact-popup.box .entry-title {
-	margin: 10px 0 0 10px;
+	margin: 20px 0 0 10px;
 }
 .contact-popup.box .hk_kontakter {
-	margin: 0 0 0 10px;
+	margin: 0 0 0 20px;
 }
 .contact-area .img-wrapper,
 .contact-area .img-wrapper .slideshow,
 .contact-popup .img-wrapper,
 .contact-popup .img-wrapper .slideshow {
-	margin: 0 10px;
 	width: 150px;
+}
+.contact-area .img-wrapper,
+.contact-area .img-wrapper .slideshow {
+	margin: 0px 10px 2px 0px !important;
+	padding-bottom: 0 !important;
+}
+.contact-popup .img-wrapper,
+.contact-popup .img-wrapper .slideshow {
+	margin: 20px 10px 2px 20px;
 }
 .contact-popup .close-contact{
 	cursor: pointer;
@@ -3078,6 +3098,12 @@ p.comment-form-comment {
 	}
 	#branding {
 		border-top: none;
+	}
+	#searchsubmit {
+		width: 14%;
+	}
+	#searchnavigation .input-wrapper{
+		width: 85%
 	}
 	
 	/* post-image */

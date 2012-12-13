@@ -210,6 +210,7 @@ function hk_contacts_generate_cache() {
 function hk_contact_shortcode_func( $atts ) {
 	$default = array(
 		'id' => '-1',
+		'kontaktnamn' => '',
 		'kategori' => '',
 		'kategorinamn' => '',
 		'bild' => true,
@@ -223,9 +224,9 @@ function hk_contact_shortcode_func( $atts ) {
 		'besokstid' => false,
 		'karta' => true);
 	$atts = shortcode_atts( $default, $atts );
-
 	$translate = array(
 		'id' => 'id',
+		'kontaktnamn' => 'contactslug',
 		'kategori' => 'cat',
 		'kategorinamn' => 'cat_slug',
 		'bild' => 'image',
@@ -238,20 +239,21 @@ function hk_contact_shortcode_func( $atts ) {
 		'adress' => 'address',
 		'besokstid' => 'visit_hours',
 		'karta' => 'map');
-		
 	$tranlated_atts = array();
 	foreach ($atts as $key => $value) {
 		$tranlated_atts[$translate[$key]] = $value;
 	}
-
 	if ($tranlated_atts["id"] > 0) {
 		return hk_get_contact_by_id($tranlated_atts["id"], $tranlated_atts);
 	}
+	if ($tranlated_atts["contactslug"] != "") {
+		return hk_get_contact_by_name($tranlated_atts["contactslug"], $tranlated_atts);
+	}
 	if ($tranlated_atts["cat"] != "") {
-		return hk_get_contact_by_cat($tranlated_atts["cat"], $tranlated_atts, false);
+		return hk_get_contact_by_cat($tranlated_atts["cat"], $tranlated_atts);
 	}
 	if ($tranlated_atts["cat_slug"] != "") {
-		return hk_get_contact_by_cat($tranlated_atts["cat_slug"], $tranlated_atts, true);
+		return hk_get_contact_by_cat_slug($tranlated_atts["cat_slug"], $tranlated_atts);
 	}
 	if ($retValue == "") {
 		return "Hittade ingen kontakt med id $id.";
@@ -262,11 +264,22 @@ add_shortcode( 'kontakt', 'hk_contact_shortcode_func' );
 
 
 // get contact by categories
-function hk_get_contact_by_cat($cat, $args, $slug = false) {
+function hk_get_contact_by_cat_slug($cat, $args) {
+	$cat_array = array();
+	foreach(preg_split("/[\s,]+/",$cat ,NULL ,PREG_SPLIT_NO_EMPTY) as $value) {
+		$post = get_category_by_slug($value);
+		if ($post) {
+			$cat_array[] = $post->term_id;
+		} 
+	}
+	return hk_get_contact_by_cat(implode(",",$cat_array), $args);
+
+}
+function hk_get_contact_by_cat($cat, $args) {
 	global $post;
 	$org_post = $post;
-	$cat_array = split(",", $cat);
-		
+	$cat_array = preg_split("/[\s,]+/",$cat,NULL,PREG_SPLIT_NO_EMPTY);
+
 	// query arguments
 	$query_args = array(
 		'posts_per_page' => -1,
@@ -274,15 +287,9 @@ function hk_get_contact_by_cat($cat, $args, $slug = false) {
 		'more' => $more = 0,
 		'post_type' => 'hk_kontakter',
 		'order' => 'ASC', 
-		'suppress_filters' => 1
+		'suppress_filters' => 1,
+		'category__in' => $cat_array
 	);
-	
-	if ($slug) {
-		$query_args['category_name'] = $cat;
-	}
-	else {
-		$query_args['category__and'] = $cat_array;
-	}
 
 	// search in all posts (ignore filters)
 	$the_query = new WP_Query( $query_args );
@@ -301,9 +308,26 @@ function hk_get_contact_by_cat($cat, $args, $slug = false) {
 	wp_reset_postdata();
 	wp_reset_query();
 	$post = $org_post;
-
 	return $retValue;
 
+}
+
+// get contact by name
+function hk_get_contact_by_name($post_slug, $args) {
+	$id_array = array();
+	foreach(preg_split("/[\s,]+/",$post_slug,NULL,PREG_SPLIT_NO_EMPTY) as $value) {
+		$get_post_args =array(
+			'name' => $value,
+			'post_type' => 'hk_kontakter',
+			'post_status' => 'publish',
+			'numberposts' => 1
+		);
+		$post = get_posts($get_post_args );
+		if ($post) {
+			$id_array[] = $post[0]->ID;
+		} 	
+	}
+	return hk_get_contact_by_id(implode(",",$id_array), $args);
 }
 
 // get contact by id
@@ -316,7 +340,7 @@ function hk_get_contact_by_id($contact_id, $args) {
 		'posts_per_page' => -1,
 		'paged' => 1,
 		'more' => $more = 0,
-		'post__in' => array($contact_id),
+		'post__in' => preg_split("/[\s,]+/",$contact_id,NULL,PREG_SPLIT_NO_EMPTY),
 		'post_type' => 'hk_kontakter',
 		'order' => 'ASC', 
 		'suppress_filters' => 1
@@ -433,6 +457,9 @@ function hk_get_the_contact($args = array()) {
 	$retValue = "<div class='entry-wrapper $mapclass'>";
 		$retValue .= "<div class='entry-content'>";
 
+			// image
+			$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
+
 			$retValue .= "<h1 class='entry-title " . $hidden['name'] . "'>";
 			// add link to title
 			if ($default['title_link']) { 
@@ -446,8 +473,6 @@ function hk_get_the_contact($args = array()) {
 			}
 			$retValue .= "</h1>";
 			
-			// image
-			$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
 		
 			$retValue .= "<div class='contact-" . get_the_ID() . " " . implode(" ",get_post_class()) ."'>";
 				$retValue .= "<div class='content " . $hidden['title'] . "'>" . get_field("hk_contact_titel") . "</div>";
@@ -493,7 +518,7 @@ function hk_get_the_contact($args = array()) {
 		endif;
 		
 
-	$retValue .= "</div>";
+	$retValue .= "<div class='clear'></div></div>";
 
 	return $retValue;
 }
@@ -511,7 +536,7 @@ function hk_contact_tab() {
 	if (get_query_var("cat") != "") {
 		$category_in = hk_getParentsSlugArray(get_query_var("cat"));
 		$category_in = array_reverse($category_in);
-
+		$shown = array();
 		foreach($category_in as $category) {
 		
 			// query arguments
@@ -523,6 +548,9 @@ function hk_contact_tab() {
 				'order' => 'ASC', 
 				'suppress_filters' => 1
 			);
+			if (!empty($shown)) {
+				$args['post__not_in'] = $shown;
+			}
 			$cat = get_category_by_slug($category);
 			if ($cat) {
 				
@@ -536,7 +564,7 @@ function hk_contact_tab() {
 
 					// The Loop
 					while ( $the_query->have_posts() ) : $the_query->the_post();
-
+						$shown[] = get_the_ID();
 						$retValue .= "<div class='contact-wrapper'>";
 						$retValue .= "<div class='icon'>&nbsp;</div>";
 						$retValue .= "<div class='contact-" . get_the_ID() . " " . implode(" ",get_post_class()) . "'>";
