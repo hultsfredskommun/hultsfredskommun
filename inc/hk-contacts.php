@@ -439,7 +439,7 @@ function hk_get_the_contact($args = array()) {
 		'address' => false,
 		'visit_hours' => false,
 		'map' => false,
-		'title_link' => false
+		'title_link' => true
 		);
 
 	if (isset($args)) {

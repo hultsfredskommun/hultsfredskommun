@@ -423,7 +423,13 @@ function readMoreToggle(el){
 			// google analytics
 			$(this).parents("article").find(".entry-title a").push_google_analytics();
 			
+			// contact popup
+			$(this).find(".contact-area a.permalink").each(function() {
+				setContactPopupAction($(this));
+			});
+
 			$(this).parents("article").find('.summary-content').css("cursor","pointer");
+			
 			//****** click-actions START *******
 			
 			//set click-action on print-post-link
@@ -435,7 +441,7 @@ function readMoreToggle(el){
 			
 			//***** click-actions END ******
 			
-			//All is loaded
+			// All is loaded
 			$(this).parents("article").removeClass("loading").addClass("loaded");
 
 			//exec toggle function

@@ -1,5 +1,8 @@
 (function($) {
 	$(document).ready(function() {
+		// change of helptext
+		$("#sticky-span .selectit").html("Klistra det h&auml;r inl&auml;gget.");
+		
 		/* if not administrator */
 		if ( !$("#menu-settings").is(":visible") ) {
 			//$(".tagselect-add-wrap").remove(); // hide add tags in edit.php

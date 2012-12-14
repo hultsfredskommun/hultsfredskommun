@@ -1,5 +1,6 @@
 /*
-Theme Name: Hultsfredskommun
+Theme Name: Campus
+Template: hultsfredskommun
 Theme URI: 
 Author: the Hultsfred team
 Author URI: http://wordpress.org/
@@ -516,14 +517,6 @@ hr,
 }
 .textwidget:first-child {
 	border-left: 0 !important;
-}
-#text-5 .widget-title span,
-#text-10 .widget-title span {
-	margin-left: 4px;
-}
-#text-5 .textwidget,
-#text-10 .textwidget {
-	border-left: 4px solid #06435A;
 }
 .hk_kontakter.widget {
 	/*border: 2px solid #F7A02E; /* orange */
@@ -1224,6 +1217,9 @@ a:hover {
 #nav ul {
 	margin: 0;
 }
+#nav li:first-child {
+	padding-top: 2px;
+}
 #nav li {
 	border: 0;
 	padding: 8px 0;
@@ -1423,18 +1419,6 @@ a:hover {
 
 }
 
-
-/*--- Right column - firstpage ---*/
-#firstpage-sidebar .widget .textwidget {
-	padding: 0 10px;
-}
-#firstpage-sidebar .widget .textwidget ul {
-	margin: 0;
-}
-#firstpage-sidebar .widget.widget_text {
-	float: left;
-	width: 49%;
-}
 
 
 /* =gallery
@@ -1739,8 +1723,8 @@ article.single .side-content {
     float: left;
     cursor: pointer;
 	font-weight: bold;
-    margin: 6px 14px 6px 6px;
-    padding: 8px;
+    margin: 5px 14px 5px 5px;
+    padding: 5px;
 	border-radius: 2px;
 }
 .widget .widget-title span
@@ -1866,7 +1850,7 @@ article:last-child { margin-bottom: 0 }
 	height: auto;
 }
 .entry-wrapper {
-	padding: 0 10px 10px;
+	padding: 0 10px 15px;
 }
 .summary-content .summary-footer {
 	clear: both;
@@ -2015,13 +1999,17 @@ article:last-child { margin-bottom: 0 }
 	margin: 0 0 20px;
 }
 .widget-title {
-	padding: .4em .8em .4em;
+	padding: 5px 10px 5px;
 }
-.widget ul {
+.widget ul,
+.widget .textwidget {
 	margin-left: 10px;
 }
+.widget .textwidget ul {
+	margin-left: 0px;
+}
 .widget ul ul {
-	margin-left: 1.5em;
+	margin-left: 12px;
 }
 .widget ul li {
 	margin: 2px 0px;
@@ -2043,7 +2031,7 @@ article:last-child { margin-bottom: 0 }
 	border-radius: 5px;
 }
 .related-wrapper.top-margin {
-	margin-top: 1em !important;
+	margin-top: 10px !important;
 }
 .related-wrapper {
 	margin: 0 !important;
@@ -2066,7 +2054,7 @@ article:last-child { margin-bottom: 0 }
 }
 .contact-wrapper .entry-wrapper,
 .contact-area .entry-wrapper {
-	clear: both;
+	clear: both;		
 }
 .related-wrapper li a {
 	display: block;
