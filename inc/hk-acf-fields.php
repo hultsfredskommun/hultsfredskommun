@@ -22,6 +22,11 @@
 
 if(function_exists("register_field_group"))
 {
+	/*******
+	 * POST
+	 *******/
+	 
+	/* POST RELATED */
 	register_field_group(array (
 		'id' => '5048edc031ca0',
 		'title' => 'Relaterad information',
@@ -188,6 +193,8 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 3,
 	));
+	
+	/* POST IMAGES */
 	register_field_group(array (
 		'id' => '5048edc031ead',
 		'title' => 'Utvald bild',
@@ -259,6 +266,10 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 2,
 	));
+	
+	
+
+	/* POST CONTACT */
 	register_field_group(array (
 		'id' => '5048edc032013',
 		'title' => 'Utvald kontakt',
@@ -332,8 +343,57 @@ if(function_exists("register_field_group"))
 			array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 5,
 	));
+	
+	/* POST POSITION */
+	register_field_group(array (
+		'id' => '50cee6e1718b6',
+		'title' => 'Position',
+		'fields' => 
+		array (
+			0 => 
+			array (
+				'key' => 'field_505af28e232de',
+				'label' => 'Position',
+				'name' => 'hk_position',
+				'type' => 'location-field',
+				'instructions' => '',
+				'required' => '0',
+				'val' => 'address',
+				'center' => '57.455560638683025,15.836223059667986',
+				'zoom' => '12',
+				'order_no' => '8',
+			),
+		),
+		'location' => 
+		array (
+			'rules' => 
+			array (
+				0 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => 0,
+				),
+			),
+			'allorany' => 'all',
+		),
+		'options' => 
+		array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => 
+			array (
+			),
+		),
+		'menu_order' => 10,
+	));
+
+
+	
+	/* POST STOP PUBLISH */
 	register_field_group(array (
 		'id' => '5048edc032149',
 		'title' => 'Sluta publicera',
@@ -376,6 +436,9 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 1,
 	));
+	
+	
+	/* POST EXTRA INFO */
 	register_field_group(array (
 		'id' => '5048edc032267',
 		'title' => 'Artikelns extra information',
@@ -418,52 +481,11 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 50,
 	));
-	/*
-	register_field_group(array (
-		'id' => '5048edc0324cf',
-		'title' => 'Inbäddat videoklipp',
-		'fields' => 
-		array (
-			0 => 
-			array (
-				'key' => 'field_5048dc4653524',
-				'label' => 'Inbäddningskoden',
-				'name' => 'embedded_code',
-				'type' => 'textarea',
-				'instructions' => 'Klistra in inbäddningskoden till videoklippet här.',
-				'required' => '0',
-				'default_value' => '',
-				'formatting' => 'br',
-				'order_no' => '0',
-			),
-		),
-		'location' => 
-		array (
-			'rules' => 
-			array (
-				0 => 
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-					'order_no' => '0',
-				),
-			),
-			'allorany' => 'all',
-		),
-		'options' => 
-		array (
-			'position' => 'normal',
-			'layout' => 'default',
-			'hide_on_screen' => 
-			array (
-			),
-		),
-		'menu_order' => 55,
-	));
-	*/
+
+
+
 	/*******
-	 * KONTAKTINFORMATION
+	 * CONTACT
 	 *******/
 	register_field_group(array (
 		'id' => '5062a4b871449',

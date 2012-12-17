@@ -130,6 +130,10 @@ class hk_Category_Walker extends Walker_Category {
 		if (!empty($tags_filter)) {
 			$tags_filter = "?tag=$tags_filter";
 		}
+		
+		// remove tag filter
+		$tags_filter = "";
+		
         $cat_name = esc_attr( $category->name); 
         $link = '<a href="' . get_category_link( $category->term_id ) . $tags_filter . '" '; 
         $cat_name = apply_filters( 'list_cats', $cat_name, $category ); 

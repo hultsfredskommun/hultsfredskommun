@@ -10,16 +10,18 @@
 				} 
 			?>
 			
-			<div id="viewmode">
-				<a id="viewmode_summary" title="Listvisning" href="#">Lista</a>
-				<a id="viewmode_titles" title="Rubrikvisning" href="#">Rubriker</a>
-			</div>
+			
 
 			<?php 
 				if( function_exists('displayTagFilter') ){
 					displayTagFilter();
 				}
 			?>
+			
+			<div id="viewmode">
+				<a id="viewmode_summary" title="Listvisning" href="#">Sammanfattning</a>
+				<a id="viewmode_titles" title="Rubrikvisning" href="#">Rubriker</a>
+			</div>
 			<div class="clear"></div>
 		</header>
 		

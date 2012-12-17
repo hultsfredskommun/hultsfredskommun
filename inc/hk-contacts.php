@@ -209,6 +209,7 @@ function hk_contacts_generate_cache() {
 // TODO check default settings and check if it works to set from shortcode
 function hk_contact_shortcode_func( $atts ) {
 	$default = array(
+		'echo_args' => '', // to echo help texts
 		'id' => '-1',
 		'kontaktnamn' => '',
 		'kategori' => '',
@@ -224,6 +225,12 @@ function hk_contact_shortcode_func( $atts ) {
 		'besokstid' => false,
 		'karta' => true);
 	$atts = shortcode_atts( $default, $atts );
+	
+	if ($atts["echo_args"] != "") {
+		return "[kontakt ".$atts["echo_args"] . "]";
+	}
+	
+	// translate from swedish to variables
 	$translate = array(
 		'id' => 'id',
 		'kontaktnamn' => 'contactslug',
@@ -243,20 +250,24 @@ function hk_contact_shortcode_func( $atts ) {
 	foreach ($atts as $key => $value) {
 		$tranlated_atts[$translate[$key]] = $value;
 	}
+	/* if id is set */
 	if ($tranlated_atts["id"] > 0) {
 		return hk_get_contact_by_id($tranlated_atts["id"], $tranlated_atts);
 	}
+	/* if contact slug or slugs */
 	if ($tranlated_atts["contactslug"] != "") {
 		return hk_get_contact_by_name($tranlated_atts["contactslug"], $tranlated_atts);
 	}
+	/* if category id or ids */
 	if ($tranlated_atts["cat"] != "") {
 		return hk_get_contact_by_cat($tranlated_atts["cat"], $tranlated_atts);
 	}
+	/* if category slug or slugs */
 	if ($tranlated_atts["cat_slug"] != "") {
 		return hk_get_contact_by_cat_slug($tranlated_atts["cat_slug"], $tranlated_atts);
 	}
 	if ($retValue == "") {
-		return "Hittade ingen kontakt med id $id.";
+		return "Hittade ingen kontakt.";
 	}
 }
 add_shortcode( 'kontakt', 'hk_contact_shortcode_func' );

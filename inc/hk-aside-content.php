@@ -56,6 +56,13 @@
 		<?php endwhile; ?>
 		</ul>
 	</div>
+	
+	<?php $contact_position = get_field("hk_position"); ?>
+	<?php // position
+		if (!empty($contact_position) && $contact_position["coordinates"] != "") : ?>
+			<div class='box map full'><div class='map_canvas'>[Karta <span class='coordinates'><?php echo $contact_position["coordinates"]; ?></span> <span class='address'><?php echo $contact_position["address"]; ?></span>]</div></div>
+	<?php endif; ?>
+
 	<?php endif; ?>	
 	<div class="box tools">
 		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line summary'><div class='icon'></div>", "</div>" ); ?>

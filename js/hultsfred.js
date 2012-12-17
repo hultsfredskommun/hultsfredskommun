@@ -423,6 +423,9 @@ function readMoreToggle(el){
 			// google analytics
 			$(this).parents("article").find(".entry-title a").push_google_analytics();
 			
+			// load google map
+			$(".map_canvas").googlemap();
+
 			// contact popup
 			$(this).find(".contact-area a.permalink").each(function() {
 				setContactPopupAction($(this));
@@ -633,7 +636,7 @@ $(document).ready(function(){
 	$('.img-wrapper').slideshow();
 	
 	/* init google maps on ready */
-	$(".map_canvas").googlemap();
+	$(".contact-area .map_canvas").googlemap();
 	
 	/**
 	 * scroll to top actions 
