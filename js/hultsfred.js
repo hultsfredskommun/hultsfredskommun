@@ -664,7 +664,11 @@ $(document).ready(function(){
 	$("#primary").find('article').each(function(){
 		setArticleActions($(this));
 	});
-	$("#firstpage-sidebar, #sidebar-wrapper, #contact-side-tab").find(".contact-wrapper a").each(function() {
+	// contact popup
+	$(".single .contact-area a.permalink").each(function() {
+		setContactPopupAction($(this));
+	});
+	$("#firstpage-sidebar, #sidebar-wrapper, #contact-side-tab").find(".contact-wrapper a.permalink").each(function() {
 		setContactPopupAction($(this));
 	});
 	
@@ -938,7 +942,7 @@ function setArticleActions(el) {
 	$(el).find(".summary-content .entry-wrapper, .summary-content .img-wrapper").click(function(){
 		readMoreToggle( $(this).parents("article").find('.entry-title a') );
 	});
-	$(el).find(".contact-wrapper a").each(function() {
+	$(el).find(".contact-wrapper a.permalink").each(function() {
 		setContactPopupAction($(this));
 	});
 	$(el).find(".related_link a").each(function() {

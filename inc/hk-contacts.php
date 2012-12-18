@@ -225,7 +225,7 @@ function hk_contact_shortcode_func( $atts ) {
 	$atts = shortcode_atts( $default, $atts );
 	
 	if ($atts["echo_args"] != "") {
-		return "[kontakt ".$atts["echo_args"] . "]";
+		return "<p>[kontakt ".$atts["echo_args"] . "]</p>";
 	}
 	
 	// translate from swedish to variables
@@ -265,7 +265,7 @@ function hk_contact_shortcode_func( $atts ) {
 		return hk_get_contact_by_cat_slug($tranlated_atts["cat_slug"], $tranlated_atts);
 	}
 	if ($retValue == "") {
-		return "Hittade ingen kontakt.";
+		return "<p>Hittade ingen kontakt.</p>";
 	}
 }
 add_shortcode( 'kontakt', 'hk_contact_shortcode_func' );

@@ -663,15 +663,15 @@ function hk_map_shortcode_func( $atts ) {
 	$atts = shortcode_atts( $default, $atts );
 	
 	if ($atts["echo_args"] != "") {
-		return "[karta ".$atts["echo_args"] . "]";
+		return "<p>[karta ".$atts["echo_args"] . "]</p>";
 	}
 	
 	if ($atts["punkt"] == "") {
-		return "Hittade ingen kartapunkt.";
+		return "<p>Hittade ingen kartpunkt.</p>";
 	}
 	$style = "";
 	if ($atts["width"] != "") {
-		$style .= "width: " . $atts["width"] . ";";
+		$style .= "max-width: " . $atts["width"] . ";";
 	}
 	if ($atts["height"] != "") {
 		$style .= "height: " . $atts["height"] . ";";

@@ -347,50 +347,7 @@ if(function_exists("register_field_group"))
 	));
 	
 	/* POST POSITION */
-	register_field_group(array (
-		'id' => '50cee6e1718b6',
-		'title' => 'Position',
-		'fields' => 
-		array (
-			0 => 
-			array (
-				'key' => 'field_505af28e232de',
-				'label' => 'Position',
-				'name' => 'hk_position',
-				'type' => 'location-field',
-				'instructions' => '',
-				'required' => '0',
-				'val' => 'address',
-				'center' => '57.455560638683025,15.836223059667986',
-				'zoom' => '12',
-				'order_no' => '8',
-			),
-		),
-		'location' => 
-		array (
-			'rules' => 
-			array (
-				0 => 
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-					'order_no' => 0,
-				),
-			),
-			'allorany' => 'all',
-		),
-		'options' => 
-		array (
-			'position' => 'normal',
-			'layout' => 'default',
-			'hide_on_screen' => 
-			array (
-			),
-		),
-		'menu_order' => 10,
-	));
-
+	
 
 	
 	/* POST STOP PUBLISH */

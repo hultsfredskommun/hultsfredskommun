@@ -9,5 +9,6 @@
 		'description' => true,
 		'address' => true,
 		'visit_hours' => true,
-		'map' => true));
+		'map' => true,
+		'title_link' => false));
 ?>
