@@ -205,8 +205,6 @@ function hk_contacts_generate_cache() {
 
 
 // [kontakt id="kontakt_id"]
-// TODO add button mce to add this shortcode. Ex. http://wordpress.org/extend/plugins/post-snippets/
-// TODO check default settings and check if it works to set from shortcode
 function hk_contact_shortcode_func( $atts ) {
 	$default = array(
 		'echo_args' => '', // to echo help texts

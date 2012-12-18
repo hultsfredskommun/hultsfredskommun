@@ -646,6 +646,40 @@ function hk_admin_posts_filter_restrict_manage_posts()
 }
 
 
+
+// [karta punkt="57.455560638683025,15.836223059667986"]
+function hk_map_shortcode_func( $atts ) {
+	$default = array(
+		'echo_args' => '', // to echo help texts
+		'punkt' => '',
+		'text' => '',
+		'popuptext' => '',
+		'visa' => 'karta' // show map or link or other
+		);
+		
+	$atts = shortcode_atts( $default, $atts );
+	
+	if ($atts["echo_args"] != "") {
+		return "[karta ".$atts["echo_args"] . "]";
+	}
+	
+	if ($atts["punkt"] == "") {
+		return "Hittade ingen kartapunkt.";
+	}
+
+	if ($atts["visa"] == "karta") {
+		return "<div class='map_canvas'>[karta <span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>]</div>";
+	}
+	if ($atts["visa"] == "popup") {
+		return "<a class='map_link'><span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>" . $atts["text"] . "</a>";	
+	}
+}
+add_shortcode( 'karta', 'hk_map_shortcode_func' );
+
+
+
+
+
 /*
  * Disable easter egg
  */

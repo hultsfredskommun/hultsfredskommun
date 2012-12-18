@@ -214,6 +214,44 @@ if (typeof $.fn.googlemap != 'function') {
 } else {
 	alert("ERROR: The function $.fn.googlemap already exists");
 }	
+if (typeof $.fn.googlemaplink != 'function') {
+	$.fn.googlemaplink = function() {
+		if (google !== undefined) {
+			$(this).each(function() {
+				$(this).find(".coordinates, .address").hide();
+				$(this).click( function(ev) {
+					ev.preventDefault();
+					var coordinates = $(this).find(".coordinates").html();
+					var address = $(this).find(".address").html();
+					
+					$("#page").append("<div class='contact-popup box'><div class='map_canvas'>H&auml;mtar karta...</div></div>").append("<div class='contact-popup overlay'></div>");
+			
+					// google analytics
+					push_google_analytics("#googlemap=" + address + " " + coordinates);
+
+					$(".contact-popup").prepend("<div class='close-contact'><div class='icon'></div></div>");
+					$(".close-contact").click(function() {
+						$(".contact-popup").remove();
+					});
+
+					$(".contact-popup.overlay").click(function() {
+						$(".contact-popup").remove();
+					});
+
+					height = $(".contact-popup").height();
+					$(".contact-popup .map_canvas").height(height).gmap({scrollwheel: false, center: coordinates, zoom: 15, callback: function() {
+						var self = this;
+						self.addMarker({'position': this.get('map').getCenter()}).click(function() {
+							self.openInfoWindow({ 'content': address}, this);
+						});
+					}});
+				});
+			});
+		}
+	}
+} else {
+	alert("ERROR: The function $.fn.googlemaplink already exists");
+}	
 /**
  * Initialize google analytics push function 
  */
@@ -385,9 +423,6 @@ function readMoreToggle(el){
 
 					// articles slideshow
 					$(this).slideshow();
-
-					// articles maps
-					$(this).find(".map_canvas").googlemap();
 				});
 			});
 			
@@ -424,8 +459,9 @@ function readMoreToggle(el){
 			$(this).parents("article").find(".entry-title a").push_google_analytics();
 			
 			// load google map
-			$(".map_canvas").googlemap();
-
+			$(this).parents("article").find(".map_canvas").googlemap();
+			$(this).parents("article").find(".map_link").googlemaplink();
+			
 			// contact popup
 			$(this).find(".contact-area a.permalink").each(function() {
 				setContactPopupAction($(this));
@@ -636,7 +672,8 @@ $(document).ready(function(){
 	$('.img-wrapper').slideshow();
 	
 	/* init google maps on ready */
-	$(".contact-area .map_canvas").googlemap();
+	$(".contact-area .map_canvas, article.single .map_canvas").googlemap();
+	$("article.single .map_link").googlemaplink();
 	
 	/**
 	 * scroll to top actions 

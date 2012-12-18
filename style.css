@@ -1615,9 +1615,17 @@ article.single .side-content {
 }*/
 .box.map {
 	padding: 0;
+	margin-right: 10px;
 }
 .side-content .map_canvas {
 	height: 200px;
+}
+.full .content .map_canvas {
+	height: 300px;
+	margin-bottom: 10px;
+}
+a.map_link {
+	cursor: pointer;
 }
 
 /* =Content
