@@ -654,6 +654,9 @@ function hk_map_shortcode_func( $atts ) {
 		'punkt' => '',
 		'text' => '',
 		'popuptext' => '',
+		'width' => '',
+		'height' => '',
+		'class' => '',
 		'visa' => 'karta' // show map or link or other
 		);
 		
@@ -666,12 +669,21 @@ function hk_map_shortcode_func( $atts ) {
 	if ($atts["punkt"] == "") {
 		return "Hittade ingen kartapunkt.";
 	}
-
+	$style = "";
+	if ($atts["width"] != "") {
+		$style .= "width: " . $atts["width"] . ";";
+	}
+	if ($atts["height"] != "") {
+		$style .= "height: " . $atts["height"] . ";";
+	}
+	if ($style != "") {
+		$style = "style='$style'";
+	}
 	if ($atts["visa"] == "karta") {
-		return "<div class='map_canvas'>[karta <span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>]</div>";
+		return "<div $style class='map_canvas " . $atts["class"] . "'>[karta <span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>]</div>";
 	}
 	if ($atts["visa"] == "popup") {
-		return "<a class='map_link'><span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>" . $atts["text"] . "</a>";	
+		return "<a $style class='map_link " . $atts["class"] . "'><span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>" . $atts["text"] . "</a>";	
 	}
 }
 add_shortcode( 'karta', 'hk_map_shortcode_func' );
