@@ -21,12 +21,12 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 $menu_name = 'primary';
 if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) && $default_settings["num_levels_in_menu"] > 1 ) {
 	if ($default_settings["startpage_cat"] != "" && $default_settings["startpage_cat"] != "0") {
-		header("Location: " . get_category_link($default_settings["startpage_cat"]));
+		wp_redirect(get_category_link($default_settings["startpage_cat"]));
 	}
 	else {
 		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
 		$menu_items = wp_get_nav_menu_items( $menu );
-		header("Location: " . $menu_items[0]->url);
+		wp_redirect($menu_items[0]->url);
 	}
 }
 

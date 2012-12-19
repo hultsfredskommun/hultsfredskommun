@@ -6,6 +6,7 @@
 
 === Added functionality ===
 Uses hk_contacts to view contacts
+ * shortcode to add [kontakt] to post
 Uses hk_related to view related documents and links (of the post type hk_related) - 
  * The theme properties are in most cases depending on the plugin Advanced Custom Fields by Elliot Condon
  * and the additional plugins ACF Repeater. ACF fields are created in inc/hk-acf-fields.php.
@@ -14,6 +15,7 @@ Settings page with
  - Set news tag
  - Set protocol category
  - Set "not visible" category
+Shortcode to add [karta] to post.
 
  
 === Optional functionality ===
@@ -32,11 +34,9 @@ Enable Media Replace by mungobbq to get a replace this file in Media Library.
 Force User Login to hide site from public view before release.
 
 
-Iconset used: http://www.icondeposit.com/theicondeposit:113
+Iconset used: 
+http://www.icondeposit.com/theicondeposit:113
+http://adamwhitcroft.com/batch/
 
-
-
-
-
-TEST: Easy Image Crop
-TEST: WP2Cloud for images in Amazon cloud
+Fix sortorder if not correct collate from start
+http://wpquicktips.wordpress.com/2011/03/24/fix-sortorder-with-post_title-for-international-characters/

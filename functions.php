@@ -80,6 +80,9 @@ require( get_template_directory() . '/inc/hk-admin-pages.php' );
 // Grab hk sort-order function
 require( get_template_directory() . '/inc/hk-acf-fields.php' );
 
+// Grab hk widgets function containing general widgets
+require( get_template_directory() . '/inc/hk-widgets.php' );
+
 /**
  * Tell WordPress to run hk_setup() when the 'after_setup_theme' hook is run.
  */
@@ -120,6 +123,7 @@ function hk_setup() {
 							));	
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );
+
 }
 endif; // hk_setup
 

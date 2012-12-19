@@ -317,8 +317,7 @@ a:focus {
 }
 
 /* main text color */
-body, input, textarea,
-.ui-tabs li.ui-state-default a
+body, input, textarea
  {
 	color: #373737;
 }
@@ -369,12 +368,13 @@ h3,
 .entry-title,
 .entry-title a,
 #nav .parent > .current-cat > a,
-.ui-tabs li.ui-tabs-selected a {
+.ui-tabs li.ui-tabs-selected a,
+.ui-tabs li.ui-state-default a {
 	color: #06435A;
 }
 
 #menu ul.sub-menu li a {
-	color: #ccc;
+	color: #eee;
 }
 
 
@@ -503,7 +503,7 @@ hr,
 #menu ul.sub-menu li a:hover,
 #menu ul.sub-menu li a:focus {
 	text-decoration: none;
-	border-bottom: 4px solid #ccc;
+	border-bottom: 4px solid #eee;
 	padding-bottom: 2px;
 	margin-bottom: 6px;
 }
@@ -618,18 +618,9 @@ article {
 	border-top: 0;
 }
 #branding #searchform {
-	/*border: 5px solid #ACC6D3; /* light blue */
-	/*border: 5px solid #06435A; /* deep blue */
-	/*border: 5px solid #00A4D6; /* blue */
-    /*border: 5px solid #9EBA21; /* green */
-	/*border: 3px solid #B1C84D; /* lightgreen */
-    /*border: 5px solid #F7A02E; /* orange */
-    /*border: 1px solid #A3A2A3; */
     box-shadow: 0px 0px 5px #999;
 	-webkit-box-shadow: 0 0px 5px #999;
 	-moz-box-shadow: 0 0px 5px #999;
-	
-
 }
 .pager li.activeSlide a img{
     box-shadow: 0px 0px 10px #000;
@@ -641,6 +632,7 @@ article {
 	-webkit-box-shadow: 0 0px 15px #333;
 	-moz-box-shadow: 0 0px 15px #333;
 }
+#all_title_div,
 #dyn-posts-load-posts {
 	-webkit-box-shadow: 0 1px 5px 0 #E0E0E0;
 	-moz-box-shadow: 0 1px 5px 0 #E0E0E0;
@@ -1294,7 +1286,19 @@ a:hover {
 /*------------------------------------*\
 	sort-order, viewmode, tags
 \*------------------------------------*/
+#all_title_div {
+	position: absolute;
+	top: 24px;
+	z-index: 1000;
+	background: white;
+	width: 200px;
+}
+#all_title_div a {
+	display: block;
+	clear: both;
+}
 #viewmode {
+	position: relative;
 	float: left;
 }
 #viewmode a {

@@ -589,6 +589,14 @@ $(document).ready(function(){
 	 * view-modes 
 	 */
 	// show framed articles click action
+	$("#viewmode").hover(function() {
+		$(this).append("<div id='all_title_div'></div>");
+		$("#content article .entry-title").each(function() {
+			$("#all_title_div").append($(this).html());	
+		});
+	}, function() {
+		$("#all_title_div").remove();
+	});
 	$("#viewmode_summary").click(function(ev){
 		$("#content").removeClass("viewmode_titles");
 		$("#content").find('article').removeClass("only-title");
