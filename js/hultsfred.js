@@ -592,7 +592,9 @@ $(document).ready(function(){
 	$("#viewmode").hover(function() {
 		$(this).append("<div id='all_title_div'></div>");
 		$("#content article .entry-title").each(function() {
-			$("#all_title_div").append($(this).html());	
+			if ($(this).find("a").length == 1) {
+				$("#all_title_div").append($(this).html());	
+			}
 		});
 	}, function() {
 		$("#all_title_div").remove();
