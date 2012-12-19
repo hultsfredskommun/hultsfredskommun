@@ -259,6 +259,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 	    extract( $args );
 		global $default_settings;
 		/* get all sub categories to use in queries */
+		$cat = get_query_var("cat");
 		$all_categories = hk_getChildrenIdArray($cat);
 		$all_categories[] = $cat;
 ?>
@@ -305,8 +306,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 			<?php
 				/* Query all posts with news tag */
-				if ($default_settings["news_tag"] != "" && $default_settings["news_tag"] != "0") { ?>
-					<?php
+				if ($default_settings["news_tag"] != "" && $default_settings["news_tag"] != "0") {
 					$query = array( 'posts_per_page' => $instance["num_news"], 
 									'category__in' => $all_categories,
 									'post__not_in' => $shownposts,
@@ -316,6 +316,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 									'order' => 'desc'  );
 
 					query_posts( $query );		
+
 					if ( have_posts() ) : ?>
 					<div id='news'>
 						<span class='entry-title'>Fler nyheter</span>
