@@ -3,7 +3,6 @@
  * Description: Add text-widget widgets with support for title, color, link and image. 
  *  */
 
-
 /* WIDGET */
 class HK_text_widget extends WP_Widget {
 
@@ -204,4 +203,4 @@ class HK_text_widget extends WP_Widget {
 }
 
 add_action( 'widgets_init', create_function( '', 'register_widget( "HK_Text_Widget" );' ) );
-?>	
+?>

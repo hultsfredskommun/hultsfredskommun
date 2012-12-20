@@ -161,7 +161,9 @@ function hk_contacts_generate_cache() {
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
 				$retValue .= "<a class='contactlink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
 				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "'</span>";
-				$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
+				if (function_exists("get_field")) :
+					$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
+				endif;
 				/*$retValue .= "<div class='more-content'>";
 				// workplace
 				if( get_field('hk_contact_workplaces') ): while( has_sub_field('hk_contact_workplaces') ): 
@@ -458,6 +460,9 @@ function hk_get_the_contact($args = array()) {
 	foreach($default as $key => $value) {
 		$hidden[$key] = ($value)?"visible":"hidden";
 	}
+	if (!function_exists("get_field")) 
+		return "You need the Advanced Custom Field plugin for the contact to work properly.";
+	
 	$contact_position = get_field("hk_contact_position");
 	if ($hidden["map"] == "visible" && !empty($contact_position) && $contact_position["coordinates"] != "") {
 		$mapclass = "hasmap";
@@ -596,4 +601,3 @@ function hk_contact_tab() {
 
 }
 ?>
-

@@ -1,10 +1,7 @@
 <?php
-
 /* 
  * Description: Add events widget 
  **/
-
-
 
 // events widget
 class HK_events extends WP_Widget {
@@ -104,10 +101,8 @@ function hk_events_generate_output($vars) {
 	return $retValue;
 }
 
-
 /* add the widget  */
 add_action( 'widgets_init', create_function( '', 'register_widget( "HK_events" );' ) );
-
 
 
 /* REGISTER post_type hk_events */
@@ -139,5 +134,4 @@ function hk_events_init() {
 		register_taxonomy_for_object_type( "category", "hk_events" );
 	}
 }
-
 ?>
