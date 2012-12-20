@@ -650,3 +650,4 @@ function hk_getChildrenIdArray($cat) {
 	}
 	return $retArray;
 }
+?>
