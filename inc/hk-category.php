@@ -156,7 +156,6 @@
 			</div>
 			
 		</div><!-- .summary-content -->
-		<?php //include("inc/hk-aside-content.php"); ?>
 
 		</div>
 	</article><!-- #post-0 -->
@@ -164,4 +163,5 @@
 	<?php endif; ?>
 
 	</div><!-- #content -->
+		
 </div><!-- #primary -->

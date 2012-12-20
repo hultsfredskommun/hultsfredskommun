@@ -4,7 +4,6 @@
  * QUICK MENUS AND MOST VISITED 
  */ 
 class HK_quickmenu extends WP_Widget {
-	var $option_cache_name = 'HK_quickmenu_cache';
 	protected $vars = array();
 
 	public function __construct() {
@@ -148,7 +147,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
  * FIRSTPAGE CONTACT WIDGET 
  */ 
  class HK_firstpagecontact extends WP_Widget {
-	var $option_cache_name = 'HK_quickmenu_cache';
 	protected $vars = array();
 
 	public function __construct() {
@@ -189,7 +187,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
  * FIRSTPAGE CONTENT WIDGET 
  */ 
  class HK_firstpagecontent extends WP_Widget {
-	var $option_cache_name = 'HK_quickmenu_cache';
 	protected $vars = array();
 
 	public function __construct() {
@@ -388,3 +385,78 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 }
 /* add the widget  */
 add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpagecontent" );' ) );
+
+
+
+/* 
+ * WORK RSS WIDGET 
+ */ 
+ class HK_work_rss extends WP_Widget {
+	protected $vars = array();
+
+	public function __construct() {
+		parent::__construct(
+	 		'HK_work_rss', // Base ID
+			'HK lediga jobb', // Name
+			array( 'description' => "Widget som visar lediga jobb" ) // Args
+		);
+
+	}
+
+ 	public function form( $instance ) {
+	}
+
+	public function update( $new_instance, $old_instance ) {
+	}
+
+	public function widget( $args, $instance ) {
+	    extract( $args );
+?>
+	<div class="content-area">
+		H&auml;r ska det visas lediga jobb.
+		<div class="clear"></div>
+	</div>
+
+<?php
+	}
+}
+/* add the widget  */
+add_action( 'widgets_init', create_function( '', 'register_widget( "HK_work_rss" );' ) );
+
+
+/* 
+ * WORK RSS WIDGET 
+ */ 
+ class HK_event_rss extends WP_Widget {
+	protected $vars = array();
+
+	public function __construct() {
+		parent::__construct(
+	 		'HK_work_rss', // Base ID
+			'HK evenemang', // Name
+			array( 'description' => "Widget som visar evenemang" ) // Args
+		);
+
+	}
+
+ 	public function form( $instance ) {
+	}
+
+	public function update( $new_instance, $old_instance ) {
+	}
+
+	public function widget( $args, $instance ) {
+	    extract( $args );
+?>
+	<div class="content-area">
+		H&auml;r ska det visas evenemang.
+		<div class="clear"></div>
+	</div>
+
+<?php
+	}
+}
+/* add the widget  */
+add_action( 'widgets_init', create_function( '', 'register_widget( "HK_event_rss" );' ) );
+
+

@@ -20,6 +20,8 @@ function hk_breadcrumb() {
 */
 	echo rtrim($retValue," |");
 }
+
+
 function hk_navigation() {
 	global $post, $default_settings;
 	

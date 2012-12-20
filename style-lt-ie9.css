@@ -39,3 +39,10 @@
 	background-image: url("images/sprite.png");
 	background-position: -256px -32px;
 }
+
+#searchsubmit {
+	background: transparent;
+	background-image: url("images/sprite.png");
+	background-position: -26px 0px;
+}
+

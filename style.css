@@ -1022,8 +1022,10 @@ a:hover {
 	margin: 7px 0;
 	width: 5%;
 	cursor: pointer;
-	background-image: url("images/sprite.png");
-	background-position: -26px 0px;
+	background-image: url("images/icons/search.svg");
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: 70%;
 }
 #searchsubmit:focus {
 	text-decoration: underline;
