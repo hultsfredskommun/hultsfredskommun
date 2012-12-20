@@ -463,7 +463,7 @@ function readMoreToggle(el){
 			$(this).parents("article").find(".map_link").googlemaplink();
 			
 			// contact popup
-			$(this).find(".contact-area a.permalink").each(function() {
+			$(this).find(".contact-area a.contactlink").each(function() {
 				setContactPopupAction($(this));
 			});
 
@@ -675,10 +675,10 @@ $(document).ready(function(){
 		setArticleActions($(this));
 	});
 	// contact popup
-	$(".single .contact-area a.permalink").each(function() {
+	$(".single .contact-area a.contactlink").each(function() {
 		setContactPopupAction($(this));
 	});
-	$("#firstpage-sidebar, #sidebar-wrapper, #contact-side-tab").find(".contact-wrapper a.permalink").each(function() {
+	$("#firstpage-sidebar, #sidebar-wrapper, #contact-side-tab").find(".contact-wrapper a.contactlink").each(function() {
 		setContactPopupAction($(this));
 	});
 	
@@ -952,7 +952,7 @@ function setArticleActions(el) {
 	$(el).find(".summary-content .entry-wrapper, .summary-content .img-wrapper").click(function(){
 		readMoreToggle( $(this).parents("article").find('.entry-title a') );
 	});
-	$(el).find(".contact-wrapper a.permalink").each(function() {
+	$(el).find(".contact-wrapper a.contactlink").each(function() {
 		setContactPopupAction($(this));
 	});
 	$(el).find(".related_link a").each(function() {

@@ -2188,7 +2188,7 @@ article:last-child { margin-bottom: 0 }
 	height: 16px;
 	width: 16px;
 	float: left;
-	margin: 0px 4px 6px 10px;
+	margin: 0px 8px 6px 4px;
 	background-image: url("images/sprite.png");
 }
 .white .icon {
@@ -2198,71 +2198,50 @@ article:last-child { margin-bottom: 0 }
 	margin-top: 2px;
 	background-position: -3px -387px;
 }
-.editlink .icon {
-	background-position: -98px -65px;
-}
-.reviewed .icon {
-	background-position: -160px -65px;
-}
-.print .icon {
-	background-position: -31px -65px;
-}
-.read .icon {
-	background-position: -130px -354px;
-}
-.friend .icon {
-	background-position: -287px 0px;
-}
-.helpus .icon {
-	background-position: -256px -32px;
-}
-.related_page .icon {
-	background-position: -256px -193px;
-}
-.related_link .icon {
-	background-position: -2px -322px;
-}
-.related_file .icon {
-	background-position: -288px -290px;
-}
+
 .related_file img {
 	width: 75px;
-}
-.contact-wrapper .icon {
-	background-position: -226px 0px;
 }
 .hk_events.widget .icon {
 	background-position: -255px -354px;
 }
-.hk_related div.ppt,.hk_related div.pptx {
-	background-position: -36px -352px;
+
+
+.contact-wrapper .icon {
+	background-image: url("images/icons/user-4.svg");
+	background-size: 100%;
 }
-.hk_related div.xls,.hk_related div.xlsx {
-	background-position: -18px -352px;
+.related_page .icon {
+	background-image: url("images/icons/paragraph-justify-2.svg");
+	background-size: 100%;
 }
-.hk_related div.doc,.hk_related div.docx {
-	background-position: 0px -352px;
+.related_link .icon {
+	background-image: url("images/icons/outgoing.svg");
+	background-size: 100%;
 }
-.hk_related div.pdf {
-	background-position: -36px -328px;
+.related_file .icon {
+	background-image: url("images/icons/inbox.svg");
+	background-size: 100%;
 }
-.hk_related div.jpg {
-	background-position: -54px -352px;
+.editlink .icon {
+	background-image: url("images/icons/pencil.svg");
+	background-size: 100%;
 }
-.hk_related div.gif {
-	background-position: -90px -352px;
+.print .icon {
+	background-image: url("images/icons/print.svg");
+	background-size: 100%;
 }
-.hk_related div.png {
-	background-position: -72px -352px;
+.read .icon {
+	background-image: url("images/icons/audio-high.svg");
+	background-size: 100%;
 }
-.hk_related div.internal.link {
-	background-position: 0px -328px;
+.friend .icon {
+	background-image: url("images/icons/speech-bubble-left-4.svg");
+	background-size: 100%;
 }
-.hk_related div.external.link {
-	background-position: 0px -328px;
-}
-.hk_related div.none {
-	background-position: 0px -328px;
+.helpus .icon {
+	background-image: url("images/icons/settings-3.svg");
+	background-size: 100%;
 }
 
 
