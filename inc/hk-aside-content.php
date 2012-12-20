@@ -6,7 +6,7 @@
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
 			<div class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
 				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>
-				<a href="#" class="contactlink" title="Kontaktinformation"><div class="icon"></div></a><div class="contact-<?php echo $value->ID; ?>"><a class="contactlink" href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
+				<a title="Kontaktinformation"><div class="icon"></div></a><div class="contact-<?php echo $value->ID; ?>"><a class="contactlink" href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
 				
 				<?php $alt_title = get_sub_field('hk_contact_extra',get_the_ID());
 				if (!empty($alt_title)) : ?>

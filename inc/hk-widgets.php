@@ -323,7 +323,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 						<?php while ( have_posts() ) : the_post(); ?>
 						<div class="entry-wrapper">
-						<?php the_date("","<span class='time'>","</span><br/>"); ?> <a post_id="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
+						<?php the_date("","<span class='time'>","</span><br/>"); ?> <a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
 						</div>
 						<?php endwhile; ?>
 						<span class="read-more-link"><a href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Fler nyheter</a></span>

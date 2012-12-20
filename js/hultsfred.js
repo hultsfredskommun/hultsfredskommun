@@ -978,13 +978,13 @@ function setContactPopupAction(el) {
 			});
 			
 			if ($(this).attr("href") !== undefined) {
-				page = $(this).attr("href");
+				var thepage = $(this).attr("href");
 			}
 			$(".contact-popup.box").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 			{
 				// google analytics
-				if (page !== undefined) {
-					push_google_analytics(page);
+				if (thepage !== undefined) {
+					push_google_analytics(thepage);
 				}
 
 				$(this).find(".entry-wrapper").prepend("<div class='close-contact'><div class='icon'></div></div>");
