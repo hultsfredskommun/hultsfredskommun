@@ -1018,7 +1018,7 @@ a:hover {
 #searchsubmit {
 	border: 0;
 	background-color: transparent;
-	height: 16px;
+	height: 1.2em;
 	margin: 7px 0;
 	width: 5%;
 	cursor: pointer;
@@ -1375,7 +1375,8 @@ a:hover {
 	position: relative;
 	float: left;
 }
-.tags-wrapper
+.dropdown-tags .tags-wrapper,
+.tags .tags-wrapper
 {
 	margin: 0 8px;
 }
@@ -2187,11 +2188,12 @@ article:last-child { margin-bottom: 0 }
 	height: 20px;
 }
 .icon {
-	height: 16px;
-	width: 16px;
+	height: 1.4em;
+	width: 1.4em;
 	float: left;
 	margin: 0px 8px 6px 4px;
 	background-image: url("images/sprite.png");
+	background-repeat: no-repeat;
 }
 .white .icon {
 	background-image: url("images/sprite-white.png");
@@ -2212,6 +2214,7 @@ article:last-child { margin-bottom: 0 }
 .contact-wrapper .icon {
 	background-image: url("images/icons/user-4.svg");
 	background-size: 100%;
+	
 }
 .related_page .icon {
 	background-image: url("images/icons/paragraph-justify-2.svg");

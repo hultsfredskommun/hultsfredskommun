@@ -16,7 +16,7 @@
 				</h1>
 			
 				<?php
-				$optionaltext = get_field('hk_optional_text');
+				if (function_exists("get_field")) { $optionaltext = get_field('hk_optional_text'); }
 				if (isset($optionaltext) && $optionaltext != "") : ?>
 					<div class="misc-ctrl">
 						<div class='optional-area'><?php echo $optionaltext; ?></div>

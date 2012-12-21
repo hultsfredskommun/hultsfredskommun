@@ -1,7 +1,7 @@
 
 <aside class="side-content">
 	<?php $count = 0; ?>
-	<?php if( get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
+	<?php if( function_exists("get_field") && get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
 	<div class="box top contacts summary">
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
 			<div class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
@@ -23,7 +23,7 @@
 	</div>
 	<?php endif; ?>
 	<?php  ?>
-	<?php if ( get_field('hk_related') ) : // related docs and links ?>
+	<?php if ( function_exists("get_field") && get_field('hk_related') ) : // related docs and links ?>
 	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo ($count < 2)?"summary":"full"; ?>">
 		<ul class="related-wrapper <?php echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
 		<?php while ( has_sub_field('hk_related') ) : ?>
@@ -57,7 +57,7 @@
 		</ul>
 	</div>
 	
-	<?php $contact_position = get_field("hk_position"); ?>
+	<?php if (function_exists("get_field")) { $contact_position = get_field("hk_position"); } ?>
 	<?php // position
 		if (!empty($contact_position) && $contact_position["coordinates"] != "") : ?>
 			<div class='box map full'><div class='map_canvas'>[Karta <span class='coordinates'><?php echo $contact_position["coordinates"]; ?></span> <span class='address'><?php echo $contact_position["address"]; ?></span>]</div></div>

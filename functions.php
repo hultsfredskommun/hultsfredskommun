@@ -473,7 +473,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 	global $default_settings;
 	$retValue = "";
 
-	if( get_field('hk_featured_images') ) :
+	if( function_exists("get_field") && get_field('hk_featured_images') ) :
 		if ($showAll) { $slideshowclass = "slideshow"; }
 		$countSlides = 0;
 		$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";

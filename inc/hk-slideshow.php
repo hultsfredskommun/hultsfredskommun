@@ -71,6 +71,8 @@ function hk_slideshow_generate_output($vars) {
 	$retValue = "";
 	$selected_categories = get_query_var("cat");
  	
+	if (!function_exists("get_field"))
+		return "";
 	
 	if ( !empty($selected_categories) )
 	{

@@ -21,6 +21,102 @@ function hk_breadcrumb() {
 	echo rtrim($retValue," |");
 }
 
+function hk_category_help_navigation() {
+	global $post, $default_settings;
+	
+	$search = get_query_var("s");
+	$cat = get_query_var("cat");
+	$tags = get_query_var("tag");
+
+	echo "<aside><nav>";
+	if ($search != "") {
+		echo "Du s&ouml;kte p&aring; " . $search . ".";
+	}
+
+	
+	// if in tag and no category
+	if ($tags != "" && $cat == "") {
+
+	}
+
+	// if in category
+	if ($cat != "") {
+
+		if (is_sub_category()) {
+			
+			echo "<hr><p>Om du inte hittar det du s&ouml;ker s&aring; kan du klicka dig vidare h&auml;r.</p>";
+			
+			$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
+			$currentparent = $cat;
+			
+			$hk_cat_walker = new hk_Category_Walker();
+			
+			$args = array(
+				'orderby'            => 'name',
+				'order'              => 'ASC',
+				'style'              => 'list',
+				'hide_empty'         => 0,
+				'use_desc_for_title' => 1,
+				'child_of'           => $cat,
+				'hierarchical'       => true,
+				'title_li'           => '',
+				'show_option_none'   => '',
+				'echo'               => 1,
+				'depth'              => 1,
+				'taxonomy'           => 'category',
+				'walker'			 => $hk_cat_walker
+			);
+			echo "<ul class=''>"; 
+			wp_list_categories( $args );
+			echo "</ul>"; 
+
+			echo "<p>Eller v&auml;lj att g&ouml;ra ett alternativt urval h&auml;r.</p>";
+
+			$hk_tag_walker = new hk_Tag_Walker();
+			$args = array(
+				'orderby'            => 'name',
+				'order'              => 'ASC',
+				'style'              => 'list',
+				'hide_empty'         => 0,
+				'use_desc_for_title' => 1,
+				'title_li'           => '',
+				'show_option_none'   => '',
+				'echo'               => 1,
+				'taxonomy'           => 'post_tag',
+				'walker'			 => $hk_tag_walker
+			);
+
+			echo "<ul>"; 
+			wp_list_categories( $args );
+			echo "</ul>";
+		}
+		
+	}
+	
+	if (is_single())
+	{
+		echo '<div id="selected"><ul id="selected_filter">';
+		$categories_list = get_the_category();
+		$pre_parent = 0;
+		if (!empty($categories_list)) : foreach ( $categories_list as $list):
+			if ($pre_parent == $list->category_parent) { $class = "children"; }
+			else { $class = "";}
+			echo "<li class='link cat $class'>";
+				echo "<a href='".get_category_link($list->term_id)."'>" . $list->name . "</a>";
+			echo "</li>";
+			$pre_parent = $list->term_id;
+		endforeach; endif; // End if categories
+
+		$tags_list = get_the_terms(get_the_ID(),"post_tag");
+		if (!empty($tags_list)) : foreach ( $tags_list as $list):
+			echo "<li class='link tag'><a href='".get_tag_link($list->term_id)."'>" . $list->name . "</a></li>";
+		endforeach; endif; // End if tags
+	
+		echo "</ul></div>";
+	}
+	
+	echo "</nav></aside>";
+}
 
 function hk_navigation() {
 	global $post, $default_settings;
@@ -332,7 +428,7 @@ function displayTagFilter($class = "dropdown-tags") {
 			echo "Visa bara";
 		}
 		echo "</div>";
-		
+
 		$hk_tag_walker = new hk_Tag_Walker();
 		$args = array(
 			'orderby'            => 'name',

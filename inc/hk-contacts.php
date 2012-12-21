@@ -584,7 +584,7 @@ function hk_contact_tab() {
 						$retValue .= "<div class='contact-" . get_the_ID() . " " . implode(" ",get_post_class()) . "'>";
 						$retValue .= "<a class='contactlink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
 						$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
-						$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";
+						if (function_exists("get_field")) { $retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>"; }
 						
 						$retValue .= "</div></div>";
 					endwhile;

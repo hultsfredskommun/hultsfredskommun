@@ -163,5 +163,7 @@
 	<?php endif; ?>
 
 	</div><!-- #content -->
-		
+
+	<?php hk_category_help_navigation(); ?>
+	
 </div><!-- #primary -->
