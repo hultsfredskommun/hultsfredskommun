@@ -114,7 +114,7 @@ add_action( 'save_post', 'hk_save_review_details' );
 
 
 /* CRON SYNC JOB */
-/*add_filter( 'cron_schedules', 'cron_add_minute' );
+add_filter( 'cron_schedules', 'cron_add_minute' );
  
 function cron_add_minute( $schedules ) {
  	// Adds once weekly to the existing schedules.
@@ -124,7 +124,7 @@ function cron_add_minute( $schedules ) {
  	);
  	return $schedules;
  }
-*/
+
 // check which posts to be reviewed and send mail to remind author
 function hk_review_mail() {
 	$options = get_option('hk_theme');
@@ -222,8 +222,11 @@ function hk_normalize_count() {
 		'suppress_filters' => true);
 	
 	$q = new WP_Query();
-	$q->query($qargs);
 	
+	remove_action( 'pre_get_posts', 'hk_exclude_category' );
+	$q->query($qargs);
+	add_action( 'pre_get_posts', 'hk_exclude_category' );
+
 	// execute the WP loop
 	$log = "";
 	$count = 0;
@@ -335,7 +338,7 @@ function hk_formatTinyMCE($in)
 	$in['paste_text_sticky'] = true;
 	$in['paste_text_sticky_default'] = true;
 	$in['theme_advanced_blockformats'] = 'p,h2,h3';
-	$in['theme_advanced_buttons1']='formatselect,bold,italic,removeformat,|,bullist,numlist,|,charmap,|,link,unlink,|,undo,redo,|,valideratext,|,wp_fullscreen, wp_adv';
+	$in['theme_advanced_buttons1']='formatselect,bold,italic,removeformat,|,bullist,numlist,indent,outdent,|,charmap,|,link,unlink,|,undo,redo,|,valideratext,|,wp_fullscreen, wp_adv';
 	$in['theme_advanced_buttons2']='table,row_props,cell_props,row_before,row_after,delete_row,|,col_before,col_after,delete_col,|,split_cells,merge_cells';
 	$in['theme_advanced_buttons3']='';
 	$in['theme_advanced_buttons4']='';

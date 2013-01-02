@@ -813,6 +813,9 @@ body {
 	opacity: 0.75;
 	filter: alpha(opacity = 75);
 }
+.topspace {
+	margin-top: 0.6em;
+}
 
 /* =Global
 ----------------------------------------------- */
@@ -2113,6 +2116,9 @@ article:last-child { margin-bottom: 0 }
 .contact-popup.box .entry-content {
 	overflow: auto;
 	height: 100%;
+}
+.contact-popup.box .entry-content p {
+	clear: both;
 }
 .contact-popup.box .img-wrapper {
 	padding: 0;

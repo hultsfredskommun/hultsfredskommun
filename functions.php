@@ -366,18 +366,12 @@ function hk_url_grabber() {
 }
 endif;
 
-if ( ! function_exists( 'twentyeleven_comment' ) ) :
+if ( ! function_exists( 'hk_comment' ) ) :
 /**
  * Template for comments and pingbacks.
- *
- * To override this walker in a child theme without modifying the comments template
- * simply create your own twentyeleven_comment(), and that function will be used instead.
- *
  * Used as a callback by wp_list_comments() for displaying the comments.
- *
- * @since Twenty Eleven 1.0
  */
-function twentyeleven_comment( $comment, $args, $depth ) {
+function hk_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :

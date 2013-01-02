@@ -48,12 +48,11 @@
 		<ol class="commentlist">
 			<?php
 				/* Loop through and list the comments. Tell wp_list_comments()
-				 * to use twentyeleven_comment() to format the comments.
+				 * to use hk_comment() to format the comments.
 				 * If you want to overload this in a child theme then you can
-				 * define twentyeleven_comment() and that will be used instead.
-				 * See twentyeleven_comment() in twentyeleven/functions.php for more.
+				 * define hk_comment() and that will be used instead.
 				 */
-				wp_list_comments( array( 'callback' => 'twentyeleven_comment' ) );
+				wp_list_comments( array( 'callback' => 'hk_comment' ) );
 			?>
 		</ol>
 
