@@ -46,9 +46,6 @@ function hk_category_help_navigation() {
 			
 			echo "<hr><p>Om du inte hittar det du s&ouml;ker s&aring; kan du klicka dig vidare h&auml;r.</p>";
 			
-			$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
-			$currentparent = $cat;
-			
 			$hk_cat_walker = new hk_Category_Walker();
 			
 			$args = array(
@@ -93,27 +90,6 @@ function hk_category_help_navigation() {
 		
 	}
 	
-	if (is_single())
-	{
-		echo '<div id="selected"><ul id="selected_filter">';
-		$categories_list = get_the_category();
-		$pre_parent = 0;
-		if (!empty($categories_list)) : foreach ( $categories_list as $list):
-			if ($pre_parent == $list->category_parent) { $class = "children"; }
-			else { $class = "";}
-			echo "<li class='link cat $class'>";
-				echo "<a href='".get_category_link($list->term_id)."'>" . $list->name . "</a>";
-			echo "</li>";
-			$pre_parent = $list->term_id;
-		endforeach; endif; // End if categories
-
-		$tags_list = get_the_terms(get_the_ID(),"post_tag");
-		if (!empty($tags_list)) : foreach ( $tags_list as $list):
-			echo "<li class='link tag'><a href='".get_tag_link($list->term_id)."'>" . $list->name . "</a></li>";
-		endforeach; endif; // End if tags
-	
-		echo "</ul></div>";
-	}
 	
 	echo "</nav></aside>";
 }
@@ -130,8 +106,8 @@ function hk_navigation() {
 		echo "Du s&ouml;kte p&aring; " . $search . ".";
 	}
 	
-	// if in tag and no category
-	if ($tags != "" && $cat == "") {
+	// if in tag
+	if ($tags != "") {
 		echo "<a class='dropdown-nav'>Etiketter</a>";
 
 		$hk_cat_walker = new hk_Category_Walker();
@@ -142,6 +118,7 @@ function hk_navigation() {
 			'style'              => 'list',
 			'hide_empty'         => 0,
 			'use_desc_for_title' => 1,
+			'child_of'           => $parentCat,
 			'hierarchical'       => true,
 			'title_li'           => '',
 			'show_option_none'   => '',
@@ -154,10 +131,14 @@ function hk_navigation() {
 		echo "<ul>"; 
 		wp_list_categories( $args );
 		echo "</ul>";
+		
+		if( function_exists('displayTagFilter') ){
+			displayTagFilter("tags");
+		}
 	}
 
 	// if in category
-	if ($cat != "") {
+	else if ($cat != "") {
 
 		if (is_sub_category()) {
 			
@@ -224,14 +205,12 @@ function hk_navigation() {
 class hk_Category_Walker extends Walker_Category {
 	function start_el(&$output, $category, $depth, $args) { 
         extract($args); 
+		
 		$tags_filter = get_query_var("tag");
 		if (!empty($tags_filter)) {
 			$tags_filter = "?tag=$tags_filter";
 		}
-		
-		// remove tag filter
-		$tags_filter = "";
-		
+				
         $cat_name = esc_attr( $category->name); 
         $link = '<a href="' . get_category_link( $category->term_id ) . $tags_filter . '" '; 
         $cat_name = apply_filters( 'list_cats', $cat_name, $category ); 
@@ -397,7 +376,7 @@ class hk_Tag_Walker extends Walker_Category {
 
 
 
-function displayTagFilter($class = "dropdown-tags") {
+function displayTagFilter($class = "dropdown-tags", $show_heading = true) {
 	global $default_settings;
 	if ($default_settings["show_tags"] != 0) :
 		echo "<div class='$class'>";
@@ -423,12 +402,14 @@ function displayTagFilter($class = "dropdown-tags") {
 			}
 		}
 
-		echo "<div class='toggle-tags'>";
-		if ($_REQUEST["tag"] == "") {
-			echo "Visa bara";
+		if ($show_heading) {
+			echo "<div class='toggle-tags'>";
+			if ($_REQUEST["tag"] == "") {
+				echo "Visa bara";
+			}
+			echo "</div>";
 		}
-		echo "</div>";
-
+		
 		$hk_tag_walker = new hk_Tag_Walker();
 		$args = array(
 			'orderby'            => 'name',

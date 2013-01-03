@@ -1330,19 +1330,18 @@ a:hover {
 }
 .dropdown-tags a.selected-tags .icon,
 .tags a.selected-tags .icon {
-	background-image: url("images/sprite-white.png");
-	background-position: -159px -290px;
+	background-image: url("images/icons/delete-3-white.svg");
 	float:right;
-	margin: 2px 0 0 6px;
+	background-size: 100%;
+	margin: 0 0 0 6px;
 	padding-left: 1px;
 }
 .dropdown-tags a.selected-tags .icon:hover,
 .dropdown-tags a.selected-tags .icon:focus,
 .tags a.selected-tags .icon:hover,
 .tags a.selected-tags .icon:focus {
-	background-image: url("images/sprite.png");
-	background-color: white;
-	border-radius: 8px;
+	background-image: url("images/icons/delete-2-white.svg");
+	background-size: 100%;
 }
 .dropdown-tags ,
 .dropdown-tags .toggle-tags {
@@ -1884,6 +1883,16 @@ article:last-child { margin-bottom: 0 }
 	padding: 0;
 	margin: 0;
 }
+.entry-title .icon {
+	background-image: url("images/icons/pencil.svg");
+	float: none;
+	background-size: 60%;
+	background-position: 30% 0;
+	display: inline-block;
+	width: 1.4em;
+	height: 0.8em;
+	margin: 0 0 0 6px;
+}
 
 /* Excerpt/Summary END */
 
@@ -1980,14 +1989,18 @@ article:last-child { margin-bottom: 0 }
 	top: 15%;
 	right: -250px;
 }
-#contact-side-tab,
 #comment-side-tab a {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 	box-shadow: 0px 0px 10px black;
 	z-index: 5000;
 }
+#contact-side-tab {
+	background-color: transparent;
+	z-index: 5000;
+}
 #contact-side-tab a.toggle-tab {
+	box-shadow: 0px 0px 10px black;
 	cursor: pointer;
 	float: left;
 	width: 40px;
@@ -1999,11 +2012,9 @@ article:last-child { margin-bottom: 0 }
 	border-bottom-left-radius: 4px;
 }
 
-#contact-side-tab .widget-title {
-}
-
 #contact-side-tab .content-wrapper {
-	height: 174px;
+	box-shadow: 0px 0px 10px black;
+	min-height: 174px;
 	width: 250px;
 	float: left;
 	padding-left: 8px;
@@ -2163,11 +2174,11 @@ article:last-child { margin-bottom: 0 }
 	background: #fff;
 }
 .contact-popup .close-contact .icon {
-	background-image: url("images/sprite.png");
-	background-position: -163px -290px;
-	width:9px;
-	height: 16px;
-	margin: 5px 9px;
+	background-image: url("images/icons/delete-2.svg");
+	background-size: 100%;
+	width:24px;
+	height: 24px;
+	margin: 0;
 }
 .hasmap .entry-content {
 	width: 60%;

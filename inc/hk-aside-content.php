@@ -65,7 +65,7 @@
 
 	<?php endif; ?>	
 	<div class="box tools">
-		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line summary'><div class='icon'></div>", "</div>" ); ?>
+		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line full'><div class='icon'></div>", "</div>" ); ?>
 		<div class="print tool-line full"><div class="icon"></div><a class="print" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Funktionen kommer senare">Skriv ut</a></div>
 		<div class="read tool-line full"><div class="icon"></div><a class="read" title="Funktionen kommer senare">L&auml;s upp</a></div>
 		<div class="friend tool-line full"><div class="icon"></div><a class="read" title="Funktionen kommer senare">Tipsa</a></div>

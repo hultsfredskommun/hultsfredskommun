@@ -52,7 +52,7 @@ get_header(); ?>
 					while ($wpq->have_posts()) : $wpq->the_post();
 						get_template_part( 'content' , get_post_type());
 					endwhile;
-
+					/*
 					$filter = array("cat" => implode(",",$cat_array));
 					
 					echo "<script type='text/javascript'>setSingleSettings = function () { \n";
@@ -63,9 +63,14 @@ get_header(); ?>
 
 					echo '<div id="dyn-posts-placeholder-2" class="dyn-posts-placeholder"></div>';
 					echo '<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>';
-				
+					*/
 					echo "</aside>";
-				endif; ?>
+				endif; 
+				
+				// help navigation
+				hk_category_help_navigation();
+				
+				?>
 				<?php wp_reset_query(); ?>
 			<?php endif; ?>
 		</div><!-- #content -->

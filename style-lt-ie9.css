@@ -40,6 +40,20 @@
 	background-position: -256px -32px;
 }
 
+.dropdown-tags a.selected-tags .icon,
+.tags a.selected-tags .icon {
+	background-image: url("images/sprite-white.png");
+	background-position: -159px -290px;
+}
+.dropdown-tags a.selected-tags .icon:hover,
+.dropdown-tags a.selected-tags .icon:focus,
+.tags a.selected-tags .icon:hover,
+.tags a.selected-tags .icon:focus {
+	background-image: url("images/sprite.png");
+	background-color: white;
+	border-radius: 8px;
+}
+
 #searchsubmit {
 	background: transparent;
 	background-image: url("images/sprite.png");

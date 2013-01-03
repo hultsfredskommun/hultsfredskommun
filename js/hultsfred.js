@@ -582,10 +582,11 @@ $(document).ready(function(){
 	$("#viewmode").hover(function() {
 		$(this).append("<div id='all_title_div'></div>");
 		$("#content article .entry-title").each(function() {
-			if ($(this).find("a").length == 1) {
+			if ($(this).find("a").length > 1) {
 				$("#all_title_div").append($(this).html());	
 			}
 		});
+		$("#all_title_div a.post-edit-link").remove(); // cleanup if edit links added
 	}, function() {
 		$("#all_title_div").remove();
 	});
@@ -807,6 +808,7 @@ $(document).ready(function(){
 	/**
 	 * Show new posts when the link is clicked.
 	 */
+	 /*
 	$('#dyn-posts-load-posts a').click(function(ev) {
 		if(!loading_next_page){
 			settings["pageNumVisible"]++;
@@ -825,7 +827,7 @@ $(document).ready(function(){
 			$(this).addClass("loading");
 			ev.preventDefault();
 		}	
-	});
+	});*/
 
 
 
@@ -925,8 +927,9 @@ $(document).ready(function(){
 
 /* article actions to be set when ready and when dynamic loading */
 function setArticleActions(el) {
-	//sets click-action on entry-titles
+	
 
+	//sets click-action on entry-titles
 	$(el).find('.entry-title a, .togglearticle').click(function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
@@ -935,9 +938,16 @@ function setArticleActions(el) {
 		}
 		else{ return false; }
 	});
+	
+	// edit links
+	if ($(el).find(".post-edit-link").attr("href") !== undefined) {
+		$(el).find(".entry-title").append("<a title='Redigera inl&auml;gg' class='post-edit-link' href='"+$(el).find(".post-edit-link").attr("href")+"'><span class='icon'></span></a>");
+	}
 	$(el).find('.post-edit-link').click(function(ev){
 		ev.stopPropagation();
 	});
+	
+	
 	//triggers articles click-action entry-title clicked
 	$(el).find(".summary-content .entry-wrapper, .summary-content .img-wrapper").click(function(){
 		readMoreToggle( $(this).parents("article").find('.entry-title a') );
@@ -945,6 +955,9 @@ function setArticleActions(el) {
 	$(el).find(".contact-wrapper a.contactlink").each(function() {
 		setContactPopupAction($(this));
 	});
+	
+	
+	//google analytics
 	$(el).find(".related_link a").each(function() {
 		if ($(this).attr("href") !== undefined) {
 			$(this).click(function () {

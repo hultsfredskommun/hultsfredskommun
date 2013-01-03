@@ -114,7 +114,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 ?>
 </head>
 
-<body <?php body_class((is_sub_category_firstpage()) ? "home":""); ?>>
+<body <?php body_class((is_sub_category_firstpage() && get_query_var("tag") == "") ? "home":""); ?>>
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">

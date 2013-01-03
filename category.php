@@ -7,7 +7,7 @@
 get_header(); 
 
 ?>
-		<?php if ( !is_sub_category_firstpage()) : // || get_query_var("tag") != "" ) : ?>
+		<?php if ( !is_sub_category_firstpage() || get_query_var("tag") != "" ) : ?>
 			<?php hk_navigation(); ?>
 			<?php require("inc/hk-category.php"); ?>
 		<?php else : ?>

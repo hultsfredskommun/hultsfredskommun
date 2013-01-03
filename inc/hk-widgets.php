@@ -17,10 +17,16 @@ class HK_quickmenu extends WP_Widget {
 	}
 
  	public function form( $instance ) {
+		global $default_settings;
 		if ( isset( $instance[ 'posts_per_page' ] ) ) {
 			$posts_per_page = $instance[ 'posts_per_page' ];
 		} else {
 			$posts_per_page = $this->vars['posts_per_page'];
+		}
+		if ( isset( $instance[ 'show_tags' ] ) ) {
+			$show_tags = $instance[ 'show_tags' ];
+		} else {
+			$show_tags = 1;
 		}
 
 		?>
@@ -28,16 +34,25 @@ class HK_quickmenu extends WP_Widget {
 		<label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>"><?php _e( 'Antal poster i senaste och mest bes&ouml;kta:' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" type="text" value="<?php echo esc_attr( $posts_per_page); ?>" />
 		</p>
+		<?php if ($default_settings["show_tags"] != 0) : ?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'show_tags' ); ?>"><?php _e( 'Visa etiketter som flik:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_tags' ); ?>" name="<?php echo $this->get_field_name( 'show_tags' ); ?>" type="text" value="<?php echo esc_attr( $show_tags); ?>" />
+		</p>		
+		<?php endif; ?>
+
 		<?php
 	}
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['posts_per_page'] = strip_tags( $new_instance['posts_per_page'] );
+		$instance['show_tags'] = strip_tags( $new_instance['show_tags'] );
 		return $instance;
 	}
 
 	public function widget( $args, $instance ) {
+		global $default_settings;
 	    extract( $args );
 
 		/* get all sub categories to use in queries */
@@ -48,7 +63,11 @@ class HK_quickmenu extends WP_Widget {
 		// set number of posts
 		if (isset($instance['posts_per_page']))
 			$this->vars['posts_per_page'] = $instance['posts_per_page'];
-?>
+		if (isset($instance['show_tags']))
+			$show_tags = $instance['show_tags'];
+		else
+			$show_tags = $default_settings["show_tags"];
+		?>
 	<div id="quickmenus" class="widget">
 		<ul class="post_tabs_title">
 			<?php if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) : ?>
@@ -58,6 +77,9 @@ class HK_quickmenu extends WP_Widget {
 			<li title="Mest bes&ouml;kta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
 			<?php endif; ?>
 			<li title="Senaste"><a href="#latest">Senaste</a></li>
+			<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
+			<li title="Visa bara"><a href="#onlytag">Visa bara</a></li>
+			<?php endif; ?>
 		</ul>
 		<?php 
 		if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) :
@@ -129,7 +151,15 @@ class HK_quickmenu extends WP_Widget {
 			?>				
 			<div class="clear"></div>
 		</div>
-
+		
+		<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
+		<div id="onlytag">
+			<?php
+			displayTagFilter("dropdown", false);			
+			?>				
+			<div class="clear"></div>
+		</div>
+		<?php endif; ?>
 	</div>
 <?php
 	}
