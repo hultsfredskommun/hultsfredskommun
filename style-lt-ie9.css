@@ -54,6 +54,14 @@
 	border-radius: 8px;
 }
 
+.contact-popup .close-contact .icon {
+	background-image: url("images/sprite.png");
+	background-position: -163px -290px;
+	width:9px;
+	height: 16px;
+	margin: 5px 9px;
+}
+
 #searchsubmit {
 	background: transparent;
 	background-image: url("images/sprite.png");

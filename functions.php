@@ -520,28 +520,31 @@ function get_the_reviewed_date($id) {
 
 	$time = get_post_meta( $id, 'hk_last_reviewed', true );
 	if (isset($time)) {
-		$time = "Granskad: " . date("j F Y" ,$time);
-		$mo = array('januari' => 'January',
-				'februari' => 'February',
-				'mars' => 'March',
-				'april' => 'Aprli',
-				'maj' => 'Mey',
-				'juni' => 'June',
-				'juli' => 'July',
-				'augusti' => 'August',
-				'september' => 'September',
-				'oktober' => 'October',
-				'november' => 'November',
-				'december' => 'December');
-				
-		foreach ($mo as $swe => $eng)
-		$time = preg_replace('/\b'.$eng.'\b/', $swe, $time);
-		
+		$time = "Granskad: " . hk_nicedate($time);
 	}
 	else 
 	{
 		$time = "Inte granskad";
 	}
+	return $time;
+}
+function hk_nicedate($time) {
+	$time = date("j F Y" , $time);
+	$mo = array('januari' => 'January',
+			'februari' => 'February',
+			'mars' => 'March',
+			'april' => 'Aprli',
+			'maj' => 'Mey',
+			'juni' => 'June',
+			'juli' => 'July',
+			'augusti' => 'August',
+			'september' => 'September',
+			'oktober' => 'October',
+			'november' => 'November',
+			'december' => 'December');
+			
+	foreach ($mo as $swe => $eng)
+	$time = preg_replace('/\b'.$eng.'\b/', $swe, $time);
 	return $time;
 }
 function get_the_next_review_date($id) {

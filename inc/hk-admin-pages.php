@@ -114,17 +114,24 @@ add_action( 'save_post', 'hk_save_review_details' );
 
 
 /* CRON SYNC JOB */
-add_filter( 'cron_schedules', 'cron_add_minute' );
- 
 function cron_add_minute( $schedules ) {
- 	// Adds once weekly to the existing schedules.
  	$schedules['hk_minute'] = array(
  		'interval' => 60,
  		'display' => __( 'Every minute' )
  	);
  	return $schedules;
- }
+}
+function cron_add_quarter( $schedules ) {
+ 	$schedules['hk_quarter'] = array(
+ 		'interval' => 15*60,
+ 		'display' => __( 'Every quarter' )
+ 	);
+ 	return $schedules;
+}
+add_filter( 'cron_schedules', 'cron_add_minute' );
+add_filter( 'cron_schedules', 'cron_add_quarter' );
 
+ 
 // check which posts to be reviewed and send mail to remind author
 function hk_review_mail() {
 	$options = get_option('hk_theme');

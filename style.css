@@ -277,8 +277,13 @@ h6
 	padding-top: 10px;
 	display: block;
 }
+#driftcontent .entry-wrapper,
 #news .entry-wrapper {
 	padding: 2px 10px;
+}
+#driftcontent .entry-wrapper .time,
+#news .entry-wrapper .time {
+	display: block;
 }
 .only-title .entry-title { line-height: 0.8em; }
 /*
