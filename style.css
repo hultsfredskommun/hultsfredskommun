@@ -159,7 +159,7 @@ body, p {
 	line-height: 1.5;
 }
 #menu {
-	font-size: 15px;
+	font-size: 16px;
 }
 body, 
 input, 
@@ -502,6 +502,7 @@ a:active ,
 }
 #menu ul.main-sub-menu li > a:hover,
 #menu ul.main-sub-menu li.current-menu-item > a,
+#menu ul.main-sub-menu li.current-category-ancestor > a,
 #menu ul.sub-menu li.current-category-ancestor > a,
 #menu ul.sub-menu li.current-menu-item > a,
 #menu ul.sub-menu li.current-category-ancestor > a:hover,
@@ -1937,7 +1938,6 @@ article:last-child { margin-bottom: 0 }
 }
 #content .sticky .summary-content .img-wrapper {
 	float: right;
-	width: 280px;
 }
 .summary-content .img-wrapper img { 
 	width: 100%;
@@ -2159,8 +2159,8 @@ article:last-child { margin-bottom: 0 }
 .contact-area .entry-wrapper {
 	clear: both;		
 }
-.related-wrapper li a {
-	display: block;
+.related-wrapper a.link {
+	margin-left: 30px;
 }
 
 

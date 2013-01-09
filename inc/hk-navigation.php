@@ -197,7 +197,7 @@ function hk_navigation() {
 		echo "</ul></div>";
 	}
 	
-	echo "</nav></aside>";
+	echo "</nav>&nbsp;</aside>";
 }
 	
 

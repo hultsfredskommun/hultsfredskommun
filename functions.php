@@ -299,7 +299,7 @@ add_filter('gallery_style',
  * Sets the post excerpt length to 30 words.
  */
 function hk_excerpt_length( $length ) {
-	return 30;
+	return 40;
 }
 add_filter( 'excerpt_length', 'hk_excerpt_length' );
 
