@@ -33,13 +33,13 @@ if ( ! isset( $default_settings ) ) {
 	$default_settings = array(	'thumbnail-image' => array(200, 113, true),
 								'featured-image' => array(532, 311, true), /* array(660, 396, true) */
 								'slideshow-image' => array(980, 551, true),
-								'contact-image' => array(150, 150, true),
+								'contact-image' => array(150, 190, true),
 								'startpage_cat' => $options["startpage_cat"],
 								'news_tag' => $options["news_tag"],
 								'hidden_cat' => $options["hidden_cat"],
 								'protocol_cat' => $options["protocol_cat"],
-								'num_levels_in_menu' => (!isset($options["num_levels_in_menu"]))?2:$options["num_levels_in_menu"],
-								'show_tags' => (!isset($options["show_tags"]))?0:$options["show_tags"],
+								'num_levels_in_menu' => (!isset($options["num_levels_in_menu"]) || $options["num_levels_in_menu"] == "")?2:$options["num_levels_in_menu"],
+								'show_tags' => (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options["show_tags"],
 								'allow_cookies' => $_REQUEST["cookies"] || $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "",
 								'allow_google_analytics' => $_REQUEST["cookies"] || $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "" || $hk_options['google_analytics_disable_if_no_cookies'] != "1",
 								);
@@ -528,24 +528,26 @@ function get_the_reviewed_date($id) {
 	}
 	return $time;
 }
-function hk_nicedate($time) {
-	$time = date("j F Y" , $time);
-	$mo = array('januari' => 'January',
-			'februari' => 'February',
-			'mars' => 'March',
-			'april' => 'Aprli',
-			'maj' => 'Mey',
-			'juni' => 'June',
-			'juli' => 'July',
-			'augusti' => 'August',
-			'september' => 'September',
-			'oktober' => 'October',
-			'november' => 'November',
-			'december' => 'December');
-			
-	foreach ($mo as $swe => $eng)
-	$time = preg_replace('/\b'.$eng.'\b/', $swe, $time);
-	return $time;
+if (!function_exists("hk_nicedate")) {
+	function hk_nicedate($time) {
+		$time = date("j F Y" , $time);
+		$mo = array('januari' => 'January',
+				'februari' => 'February',
+				'mars' => 'March',
+				'april' => 'Aprli',
+				'maj' => 'Mey',
+				'juni' => 'June',
+				'juli' => 'July',
+				'augusti' => 'August',
+				'september' => 'September',
+				'oktober' => 'October',
+				'november' => 'November',
+				'december' => 'December');
+				
+		foreach ($mo as $swe => $eng)
+		$time = preg_replace('/\b'.$eng.'\b/', $swe, $time);
+		return $time;
+	}
 }
 function get_the_next_review_date($id) {
 	global $post;
@@ -637,6 +639,18 @@ function hk_getMenuParent($cat) {
 	}
 	return $cat;
 }
+// return the top parent id found in the menu
+function hk_getTopMenuParent($cat) {
+	global $default_settings;
+	if (empty($cat)) return array();
+	$cats_str = get_category_parents($cat, false, '%#%', true);
+	$cats_array = explode('%#%', $cats_str);
+	$cat_depth = sizeof($cats_array)-1;
+	if ($cat_depth > 0) {
+		return get_category_by_slug($cats_array[0])->term_id;
+	}
+	return $cat;
+}
 // return all the category children of category $cat in id array form
 function hk_getChildrenIdArray($cat) {
 	if (empty($cat)) return array();
@@ -647,4 +661,72 @@ function hk_getChildrenIdArray($cat) {
 	}
 	return $retArray;
 }
+
+// submenu walker to get second row of top menu
+class submenu_walker_nav_menu extends Walker_Nav_Menu {
+	  
+	// add classes to ul sub-menus
+	function start_lvl( &$output, $depth ) {
+		// depth dependent classes
+		$output .= "";
+	}
+	function end_lvl( &$output, $depth ) {
+		$output .= "";
+	}  
+	// add main/sub classes to li's and links
+	function start_el( &$output, $item, $depth, $args ) {
+		global $wp_query;
+		//$output .= print_r($item,true);
+		// dont show first level, and only show sublevels when right parent category
+		if ($depth > 0 && hk_getTopMenuParent(get_query_var("cat")) == hk_getTopMenuParent($item->object_id)) {
+			//$output .= hk_getTopMenuParent(get_query_var("cat")) ."==". hk_getTopMenuParent($item->ID) . "<br>";
+			//$output .= get_category_parents(get_query_var("cat"), false, '%#%', true) ."==". get_category_parents($item->ID, false, '%#%', true) . "<br><br>";
+
+			$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
+		  
+			// depth dependent classes
+			$depth_classes = array(
+				( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
+				( $depth >=2 ? 'sub-sub-menu-item' : '' ),
+				( $depth % 2 ? 'menu-item-odd' : 'menu-item-even' ),
+				'menu-item-depth-' . $depth
+			);
+			$depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
+		  
+			// passed classes
+			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+			$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
+		  
+			// build html
+			$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . '">';
+		  
+			// link attributes
+			$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+			$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+			$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+			$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+			$attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
+		  
+			$item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
+				$args->before,
+				$attributes,
+				$args->link_before,
+				apply_filters( 'the_title', $item->title, $item->ID ),
+				$args->link_after,
+				$args->after
+			);
+		  
+			// build html
+			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+		}
+	}
+	function end_el( &$output, $item, $depth, $args ) {
+		if ($depth > 0 && hk_getTopMenuParent(get_query_var("cat")) == hk_getTopMenuParent($item->object_id)) {
+			$output .= "</li>";
+		}
+	
+	}  
+
+}
+
 ?>

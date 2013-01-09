@@ -160,13 +160,29 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 				wp_nav_menu( array(
 					'theme_location'	=> 'primary', 
 					'container' 		=> '',							
-					'items_wrap' 		=> '<ul class="main-menu">%3$s</ul>',
+					'items_wrap' 		=> '<ul class="main-menu">%3$s<li class="clear"></li></ul>',
 					'before' 			=> '',
 					'after'				=> '',
-					'depth' 			=> $default_settings['num_levels_in_menu'],
+					'depth' 			=> 1, //$default_settings['num_levels_in_menu'],
 					'echo' 				=> true
 				)); 
+			
+				if ($default_settings['num_levels_in_menu'] > 1) {
+					$submenu = new submenu_walker_nav_menu();
+					wp_nav_menu( array(
+						'theme_location'	=> 'primary', 
+						'container' 		=> '',							
+						'items_wrap' 		=> '<ul class="main-sub-menu">%3$s<li class="clear"></li></ul>',
+						'before' 			=> '',
+						'after'				=> '',
+						'depth' 			=> $default_settings['num_levels_in_menu'],
+						'echo' 				=> true,
+						'walker'			=> $submenu
+					)); 
+				}
+
 			?>
+			
 			<div class="clear"></div>
 		</nav><!-- #access -->
 	</header><!-- #branding -->

@@ -515,13 +515,18 @@ function hk_get_the_contact($args = array()) {
 					$retValue .= "</div>";
 				}
 				// description
-				$retValue .= "<p class='" . $hidden['description'] . "'>" . get_field("hk_contact_description") . "</p>";
-				
+				if (get_field("hk_contact_description")) {
+					$retValue .= "<p class='" . $hidden['description'] . "'>" . get_field("hk_contact_description") . "</p>";
+				}				
 				// address
-				$retValue .= "<p class='" . $hidden['address'] . "'>Bes&ouml;ksadress:<br/>" . get_field("hk_contact_address") . "</p>";
+				if (get_field("hk_contact_address")) {
+					$retValue .= "<p class='" . $hidden['address'] . "'>" . get_field("hk_contact_address") . "</p>";
+				}
 				
 				// visit hours
-				$retValue .= "<p class='" . $hidden['visit_hours'] . "'>Bes&ouml;kstid:<br/>" . get_field("hk_contact_visit_hours") . "</p>";
+				if (get_field("hk_contact_visit_hours")) {
+					$retValue .= "<p class='" . $hidden['visit_hours'] . "'>" . get_field("hk_contact_visit_hours") . "</p>";
+				}
 								
 			$retValue .= "</div>";
 		$retValue .= "</div>";

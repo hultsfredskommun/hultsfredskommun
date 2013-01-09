@@ -330,7 +330,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 			<li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser &amp; handlingar</a></li>
 			<?php endif; ?>
 			<?php if (in_array(get_query_var("cat"), split(",",$instance["show_drift"])) && $options["hk_drift"] != "") : ?>
-			<li title="Driftinformation"<?php echo ($options["hk_drift_has_new"] != "")?" class='has_new'":""; ?>><a href="#driftcontent">Driftinformation</a></li>
+			<li title="Driftst&ouml;rning"<?php echo ($options["hk_drift_has_new"] != "")?" class='has_new'":""; ?>><a href="#driftcontent">Driftst&ouml;rning</a></li>
 			<?php endif; ?>
 		</ul>
 		<div id="newscontent">
@@ -519,51 +519,18 @@ add_action('wp', 'hk_drift_activation');
 
 
 
+
+
+
 /* 
- * WORK RSS WIDGET 
+ * EVENT RSS WIDGET 
  */ 
- class HK_work_rss extends WP_Widget {
+ class HK_event_rss_widget extends WP_Widget {
 	protected $vars = array();
 
 	public function __construct() {
 		parent::__construct(
-	 		'HK_work_rss', // Base ID
-			'HK lediga jobb', // Name
-			array( 'description' => "Widget som visar lediga jobb" ) // Args
-		);
-
-	}
-
- 	public function form( $instance ) {
-	}
-
-	public function update( $new_instance, $old_instance ) {
-	}
-
-	public function widget( $args, $instance ) {
-	    extract( $args );
-?>
-	<div class="content-area">
-		H&auml;r ska det visas lediga jobb.
-		<div class="clear"></div>
-	</div>
-
-<?php
-	}
-}
-/* add the widget  */
-add_action( 'widgets_init', create_function( '', 'register_widget( "HK_work_rss" );' ) );
-
-
-/* 
- * WORK RSS WIDGET 
- */ 
- class HK_event_rss extends WP_Widget {
-	protected $vars = array();
-
-	public function __construct() {
-		parent::__construct(
-	 		'HK_work_rss', // Base ID
+	 		'HK_event_rss_widget', // Base ID
 			'HK evenemang', // Name
 			array( 'description' => "Widget som visar evenemang" ) // Args
 		);
@@ -588,6 +555,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_work_rss"
 	}
 }
 /* add the widget  */
-add_action( 'widgets_init', create_function( '', 'register_widget( "HK_event_rss" );' ) );
+add_action( 'widgets_init', create_function( '', 'register_widget( "HK_event_rss_widget" );' ) );
 
 
+?>

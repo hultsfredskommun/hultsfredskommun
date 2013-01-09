@@ -204,7 +204,7 @@ if (typeof $.fn.googlemap != 'function') {
 				height = $(".contact-popup").height();
 				$(this).height(height).gmap({scrollwheel: false, center: coordinates, zoom: 15, callback: function() {
 					var self = this;
-					self.addMarker({'position': this.get('map').getCenter()}).click(function() {
+					self.addMarker({'position': this.get('map').getCenter()}).unbind("click").click(function() {
 						self.openInfoWindow({ 'content': address}, this);
 					});
 				}});
@@ -219,7 +219,7 @@ if (typeof $.fn.googlemaplink != 'function') {
 		if (google !== undefined) {
 			$(this).each(function() {
 				$(this).find(".coordinates, .address").hide();
-				$(this).click( function(ev) {
+				$(this).unbind("click").click( function(ev) {
 					ev.preventDefault();
 					var coordinates = $(this).find(".coordinates").html();
 					var address = $(this).find(".address").html();
@@ -230,18 +230,18 @@ if (typeof $.fn.googlemaplink != 'function') {
 					push_google_analytics("#googlemap=" + address + " " + coordinates);
 
 					$(".contact-popup").prepend("<div class='close-contact'><div class='icon'></div></div>");
-					$(".close-contact").click(function() {
+					$(".close-contact").unbind("click").click(function() {
 						$(".contact-popup").remove();
 					});
 
-					$(".contact-popup.overlay").click(function() {
+					$(".contact-popup.overlay").unbind("click").click(function() {
 						$(".contact-popup").remove();
 					});
 
 					height = $(".contact-popup").height();
 					$(".contact-popup .map_canvas").height(height).gmap({scrollwheel: false, center: coordinates, zoom: 15, callback: function() {
 						var self = this;
-						self.addMarker({'position': this.get('map').getCenter()}).click(function() {
+						self.addMarker({'position': this.get('map').getCenter()}).unbind("click").click(function() {
 							self.openInfoWindow({ 'content': address}, this);
 						});
 					}});
@@ -264,7 +264,7 @@ if (typeof $.fn.push_google_analytics != 'function') {
 }
 if (typeof push_google_analytics != 'function') {
 	push_google_analytics = function(page) {
-		if (hultsfred_object['allow_google_analytics'] && _gaq !== undefined) {
+		if (hultsfred_object['allow_google_analytics'] && typeof _gaq != 'undefined') {
 			_gaq.push(['_setAccount', hultsfred_object['google_analytics']]); 
 			_gaq.push(['_setDomainName', hultsfred_object['google_analytics_domain']]);
 			_gaq.push(['_trackPageview', page]);
@@ -303,7 +303,7 @@ if (typeof $.fn.doslideshow != 'function') {
 					$(this).find(".prevslide").addClass("prev"+rand);
 					$(this).find(".nextslide").addClass("next"+rand);
 					// show slide navigation on hover
-					$(this).hover(function() {
+					$(this).unbind("hover").hover(function() {
 						$(this).find(".nextslide, .prevslide, .pager").fadeIn("fast");
 						return false;
 					},function() {
@@ -408,11 +408,11 @@ function readMoreToggle(el){
 				$(article).find('.more-content').slideDown(0, function(){
 				
 					//add close-button top right corner
-					var closea = $('<div>').addClass('closeButton top close').html("<div class='icon'></div><a href='#'>Visa mindre</a>").click(function(ev){
+					var closea = $('<div>').addClass('closeButton top close').html("<div class='icon'></div><a href='#'>Visa mindre</a>").unbind("click").click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					var closeb = $('<div>').addClass('closeButton bottom close white').html("<div class='icon'></div><a href='#'>Visa mindre</a>").click(function(ev){
+					var closeb = $('<div>').addClass('closeButton bottom close white').html("<div class='icon'></div><a href='#'>Visa mindre</a>").unbind("click").click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
@@ -473,7 +473,7 @@ function readMoreToggle(el){
 			
 			//set click-action on print-post-link
 			var print_link = $(this).find(".print-post");
-			$(print_link).click(function(ev){
+			$(print_link).unbind("click").click(function(ev){
 				PrintElem( $(this).attr("elem-id") );
 				ev.preventDefault();
 			});
@@ -548,7 +548,7 @@ $(document).ready(function(){
 		//****** click-actions START *******
 		//set click-action on print-post-link
 		var print_link = $(article).find(".print-post");
-		$(print_link).click(function(ev){
+		$(print_link).unbind("click").click(function(ev){
 			PrintElem( article );
 			ev.preventDefault();
 		});
@@ -575,11 +575,39 @@ $(document).ready(function(){
 		History.replaceState(null, title, hultsfred_object["currPageUrl"]);
 	}*/
 
+	/* show all side-content when hover */
+	$("article .side-content").unbind("hover").hover(function() {
+		if ($(this).find("a.contactlink, .related_link a, .related_file a").length > 2) {
+			$(this).append("<div class='hover-side-content'></div>");
+			$(".hover-side-content").html($(this).html()).unbind("mouseout").mouseout(function() {
+				$(this).find("a.contactlink").each(function() {
+					setContactPopupAction($(this));
+				});
+				$(this).find(".related_link a").each(function() {
+					if ($(this).attr("href") !== undefined) {
+						$(this).unbind("click").click(function () {
+							push_google_analytics("#link=" + $(this).attr("href"));
+						});
+					}
+				});
+				$(this).find(".related_file a").each(function() {
+					if ($(this).attr("href") !== undefined) {
+						$(this).unbind("click").click(function () {
+							push_google_analytics("#file=" + $(this).attr("href"));
+						});
+					}
+				});
+			
+			});
+		}
+	},function() {	
+		$(".hover-side-content").remove();
+	});
 	/**
 	 * view-modes 
 	 */
 	// show framed articles click action
-	$("#viewmode").hover(function() {
+	$("#viewmode").unbind("hover").hover(function() {
 		$(this).append("<div id='all_title_div'></div>");
 		$("#content article .entry-title").each(function() {
 			if ($(this).find("a").length > 1) {
@@ -590,7 +618,7 @@ $(document).ready(function(){
 	}, function() {
 		$("#all_title_div").remove();
 	});
-	$("#viewmode_summary").click(function(ev){
+	$("#viewmode_summary").unbind("click").click(function(ev){
 		$("#content").removeClass("viewmode_titles");
 		$("#content").find('article').removeClass("only-title");
 		$("#viewmode_titles").show();
@@ -598,7 +626,7 @@ $(document).ready(function(){
 		ev.preventDefault();
 	});
 	// show only title click action
-	$("#viewmode_titles").click(function(ev){
+	$("#viewmode_titles").unbind("click").click(function(ev){
 		$("#viewmode_titles").hide();
 		$("#viewmode_summary").show();
 		
@@ -632,7 +660,7 @@ $(document).ready(function(){
 		ev.preventDefault();
 	});
 	// show only title click action
-	$(".dropdown-tags .toggle-tags").click(function(ev){
+	$(".dropdown-tags .toggle-tags").unbind("click").click(function(ev){
 		$(this).toggleClass("open");
 		$(this).parent().find("ul").toggle();
 		
@@ -642,7 +670,7 @@ $(document).ready(function(){
 	/**
 	 * side-tab toggle
 	 */
-	$("#contact-side-tab .toggle-tab").click(function() {
+	$("#contact-side-tab .toggle-tab").unbind("click").click(function() {
 		if ($(".contact-popup").length == 0) {
 			if ($(this).parent().css("right") != "0px") {
 				$(this).parent().animate({
@@ -726,7 +754,7 @@ $(document).ready(function(){
 		}
 		*/
 	});
-	$('.scrollTo_top a').click(function(){
+	$('.scrollTo_top a').unbind("click").click(function(){
 		$('html, body').animate({scrollTop:0}, 500 );
 		return false;
 	});
@@ -737,16 +765,20 @@ $(document).ready(function(){
 	 * responsive dropdown menu
 	 */
 	// set click action	
-	$(".dropdown-menu").click( function(){
+	$(".dropdown-menu").unbind("click").click( function(){
 		
 		//toggle "#menu ul.main-menu"
-		if( $("#menu ul.main-menu").is(":visible") ){
-			$("#menu ul.main-menu").slideUp('fast');
+		if( $("ul.main-menu").is(":visible") ){
+			$("ul.main-menu").slideUp('fast');
+			$("ul.main-sub-menu").slideUp('fast');
 		}
-		else{ $("#menu ul.main-menu").slideDown('fast'); }
+		else{ 
+			$("ul.main-menu").slideDown('fast'); 
+			$("ul.main-sub-menu").slideDown('fast'); 
+		}
 	
 	});  
-	$(".dropdown-nav").click( function(){
+	$(".dropdown-nav").unbind("click").click( function(){
 		
 		//toggle "#nav ul.parent"
 		if( $("#nav ul.parent").is(":visible") ){
@@ -766,7 +798,7 @@ $(document).ready(function(){
 	 	}
 	});
 	$(".more-children").each(function() {
-		$(this).click(function(ev) {
+		$(this).unbind("click").click(function(ev) {
 			ev.preventDefault();
 			ev.stopPropagation();
 			$(this).parent().parent().find(".children:first").toggle();
@@ -809,7 +841,7 @@ $(document).ready(function(){
 	 * Show new posts when the link is clicked.
 	 */
 	 /*
-	$('#dyn-posts-load-posts a').click(function(ev) {
+	$('#dyn-posts-load-posts a').unbind("click").click(function(ev) {
 		if(!loading_next_page){
 			settings["pageNumVisible"]++;
 			$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).slideDown("slow",function(){
@@ -868,7 +900,7 @@ $(document).ready(function(){
 	
 	$(".only-widget-title").css("cursor","pointer").each(function() {
 		$(this).find(".hk_kontakter").hide();
-		$(this).click(function() {
+		$(this).unbind("click").click(function() {
 			$(this).find(".hk_kontakter").toggle();
 		});
 	});
@@ -881,7 +913,7 @@ $(document).ready(function(){
 	 */
 	 /*
 	$('#menu li').each(function() {
-		$(this).mouseenter(function() {
+		$(this).unbind("mouseenter").mouseenter(function() {
 			if( $(window).width()+scrollbar > dropdown_max_width ) {
 				if ($(this).attr("dropdown-id") === undefined) {
 					rand = Math.floor(Math.random()*100000);
@@ -891,7 +923,7 @@ $(document).ready(function(){
 					$("#menu-item-dropdown-" + rand).load(hultsfred_object["templateDir"]+"/ajax/dropdown.php",
 					{ href: href },
 					function() { 
-						$(this).mouseout(function() {
+						$(this).unbind("mouseout").mouseout(function() {
 							$(this).hide();
 						})
 					});
@@ -930,7 +962,7 @@ function setArticleActions(el) {
 	
 
 	//sets click-action on entry-titles
-	$(el).find('.entry-title a, .togglearticle').click(function(ev){
+	$(el).find('.entry-title a, .togglearticle').unbind("click").click(function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
 		if( !$(this).parents('article').hasClass('loading') ){
@@ -943,13 +975,13 @@ function setArticleActions(el) {
 	if ($(el).find(".post-edit-link").attr("href") !== undefined) {
 		$(el).find(".entry-title").append("<a title='Redigera inl&auml;gg' class='post-edit-link' href='"+$(el).find(".post-edit-link").attr("href")+"'><span class='icon'></span></a>");
 	}
-	$(el).find('.post-edit-link').click(function(ev){
+	$(el).find('.post-edit-link').unbind("click").click(function(ev){
 		ev.stopPropagation();
 	});
 	
 	
 	//triggers articles click-action entry-title clicked
-	$(el).find(".summary-content .entry-wrapper, .summary-content .img-wrapper").click(function(){
+	$(el).find(".summary-content .entry-wrapper, .summary-content .img-wrapper").unbind("click").click(function(){
 		readMoreToggle( $(this).parents("article").find('.entry-title a') );
 	});
 	$(el).find(".contact-wrapper a.contactlink").each(function() {
@@ -960,14 +992,14 @@ function setArticleActions(el) {
 	//google analytics
 	$(el).find(".related_link a").each(function() {
 		if ($(this).attr("href") !== undefined) {
-			$(this).click(function () {
+			$(this).unbind("click").click(function () {
 				push_google_analytics("#link=" + $(this).attr("href"));
 			});
 		}
 	});
 	$(el).find(".related_file a").each(function() {
 		if ($(this).attr("href") !== undefined) {
-			$(this).click(function () {
+			$(this).unbind("click").click(function () {
 				push_google_analytics("#file=" + $(this).attr("href"));
 			});
 		}
@@ -976,7 +1008,7 @@ function setArticleActions(el) {
 
 /* set contact popup action */
 function setContactPopupAction(el) {
-	$(el).click(function(ev) {
+	$(el).unbind("click").click(function(ev) {
 		if ($(".contact-popup").length == 0) {
 			var post_id = $(el).parent().find(".contact_id").html();
 			
@@ -986,7 +1018,7 @@ function setContactPopupAction(el) {
 			ev.preventDefault();
 			$("#page").append("<div class='contact-popup box'>H&auml;mtar kontaktuppgifter...</div>").append("<div class='contact-popup overlay'></div>");
 	
-			$(".contact-popup.overlay").click(function() {
+			$(".contact-popup.overlay").unbind("click").click(function() {
 				$(".contact-popup").remove();
 			});
 			
@@ -1001,7 +1033,7 @@ function setContactPopupAction(el) {
 				}
 
 				$(this).find(".entry-wrapper").prepend("<div class='close-contact'><div class='icon'></div></div>");
-				$(".close-contact").click(function() {
+				$(".close-contact").unbind("click").click(function() {
 					$(".contact-popup").remove();
 				});
 				/* load google maps */
@@ -1098,11 +1130,11 @@ $(window).resize(function() {
 		);
 		
 		if( $(window).width()+scrollbar > dropdown_max_width ){
-			$("#menu ul.main-menu").show();
+			$("ul.main-menu, ul.main-sub-menu").show();
 		}
 		else{
-			if( $("#menu ul.main-menu").is(":visible") ){
-				$("#menu ul.main-menu").hide();
+			if( $("ul.main-menu").is(":visible") ){
+				$("ul.main-menu, ul.main-sub-menu").hide();
 			}
 		}
 	}

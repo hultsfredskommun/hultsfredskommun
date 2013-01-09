@@ -105,18 +105,18 @@ function hk_theme_options_do_page() {
 			?>
 			</p>
 
-			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo $options['num_levels_in_menu']; ?>" /></p>
-			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo $options['show_tags']; ?>" /></p>
+			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input size="8" type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo (!isset($options["num_levels_in_menu"]) || $options["num_levels_in_menu"] == "")?2:$options['num_levels_in_menu']; ?>" /></p>
+			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options['show_tags']; ?>" /></p>
+			<p><label for="hk_theme[comment_side_link]">Hjälp-oss-l&auml;nk</label><br/><input size="80" type="text" name="hk_theme[comment_side_link]" value="<?php echo $options['comment_side_link']; ?>" /></p>
 
 			<h3>Statistik och cookies</h3>
 			<p><input type="checkbox" name="hk_theme[cookie_accept_enable]" value="1"<?php checked( 1 == $options['cookie_accept_enable'] ); ?> /> <label for="hk_theme[cookie_accept_enable]">St&auml;ll fr&aring;ga om cookies f&aring;r anv&auml;ndas.</label></p>
-			<p><label for="hk_theme[cookie_text]">Förklarande text för att godkänna cookies. </label><br/><input type="text" name="hk_theme[cookie_text]" value="<?php echo $options['cookie_text']; ?>" /></p>
-			<p><label for="hk_theme[cookie_link]">Länk till mer information om cookies. </label><br/><input type="text" name="hk_theme[cookie_link]" value="<?php echo $options['cookie_link']; ?>" /></p>
+			<p><label for="hk_theme[cookie_text]">Förklarande text för att godkänna cookies. </label><br/><input size="80" type="text" name="hk_theme[cookie_text]" value="<?php echo $options['cookie_text']; ?>" /></p>
+			<p><label for="hk_theme[cookie_link]">Länk till mer information om cookies. </label><br/><input size="80" type="text" name="hk_theme[cookie_link]" value="<?php echo $options['cookie_link']; ?>" /></p>
 
 			<p><label for="hk_theme[google_analytics]">Google Analytics id (enligt UA-XXXXX-X). </label><br/><input type="text" name="hk_theme[google_analytics]" value="<?php echo $options['google_analytics']; ?>" /></p>
 			<p><label for="hk_theme[google_analytics_domain]">Google Analytics topp dom&auml;n (ex. mindom&auml;n.se). </label><br/><input type="text" name="hk_theme[google_analytics_domain]" value="<?php echo $options['google_analytics_domain']; ?>" /></p>
 			<p><input type="checkbox" name="hk_theme[google_analytics_disable_if_no_cookies]" value="1"<?php checked( 1 == $options['google_analytics_disable_if_no_cookies'] ); ?> /> <label for="hk_theme[google_analytics_disable_if_no_cookies]">Anv&auml;nd inte Google Analytics om cookies inte &auml;r accepterade (p&aring;verkar bara om "fr&aring;ga om cookies" &auml;r p&aring).</label</p>
-			
 			
 			<h3>Utseende</h3>
 			
@@ -145,7 +145,6 @@ function hk_theme_options_do_page() {
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_footer_image]" value="<?php echo $options["logo_footer_image"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
-			<p><label for="hk_theme[comment_side_link]">Hjälp-oss-l&auml;nk</label><br/><input type="text" name="hk_theme[comment_side_link]" value="<?php echo $options['comment_side_link']; ?>" /></p>
 
 
 
@@ -178,9 +177,8 @@ function hk_theme_options_do_page() {
 					<td></td>
 				</tr>
 			</table>
-			<p class="submit">
-			<input type="submit" id="btn_submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-			</p>
+			
+			<?php submit_button(); ?>
 		</form>
 	</div>
 	<script>
@@ -409,3 +407,5 @@ function my_admin_styles() {
  
 add_action('admin_print_scripts', 'my_admin_scripts');
 add_action('admin_print_styles', 'my_admin_styles');
+
+?>

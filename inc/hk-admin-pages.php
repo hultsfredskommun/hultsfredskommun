@@ -123,7 +123,7 @@ function cron_add_minute( $schedules ) {
 }
 function cron_add_quarter( $schedules ) {
  	$schedules['hk_quarter'] = array(
- 		'interval' => 15*60,
+ 		'interval' => 900,
  		'display' => __( 'Every quarter' )
  	);
  	return $schedules;
@@ -137,7 +137,7 @@ function hk_review_mail() {
 	$options = get_option('hk_theme');
 	$hk_review_mail_check_time = time();
 	$options["hk_review_mail_check_time"] = $hk_review_mail_check_time;
-
+	
 	//define arguments for WP_Query()
 	$qargs = array(
 		'posts_per_page' => -1,
@@ -187,7 +187,7 @@ function hk_review_mail() {
 		$count_mail++;
 		wp_mail($mailaddress, $subject, $message); 
 	} 
-	$log .= "Skickade $count_mail påminnelser den " . date("d M", strtotime("now"));
+	$log .= "Skickade $count_mail påminnelser den " . date("Y-m-d H:i:s", strtotime("now"));
 	$options["hk_review_mail_log"] = $log;
 
 
@@ -799,5 +799,8 @@ function my_admin_print_footer_scripts2() {
 <?php
 
 }
+
+
+
 
 ?>
