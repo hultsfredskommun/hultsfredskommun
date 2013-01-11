@@ -43,7 +43,7 @@
 	endwhile; endif;
 */
 	?>
-stuff
+
 	<?php
 		/**
 		 * Default order in orderby no set

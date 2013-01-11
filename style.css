@@ -783,7 +783,7 @@ article {
 
 body {
 	padding: 0;
-	background: white url(images/bg.png) repeat-x !important;
+	background: white url(images/bg.png) repeat-x fixed;
 }
 #branding, #menu, #main, #colophon , #topwrapper, #supplementary {
 	margin: 0 auto;
@@ -1856,7 +1856,7 @@ a.map_link {
     display: block;
 }
 #news {
-	padding: 6px;
+	padding: 10px;
 	margin-bottom: 10px;
 }
 #news ul {
