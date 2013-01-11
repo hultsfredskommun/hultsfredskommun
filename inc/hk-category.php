@@ -130,7 +130,7 @@
 						}
 						
 						/* Get all NOT sticky posts children of this category */
-						$args = array( 'category__in' => $children, 'posts_per_page' => -1); //$posts_per_page );
+						$args = array( 'category__in' => $children, 'posts_per_page' => $posts_per_page );
 						if ( !empty($sticky) || !empty($shownPosts)) {
 							$args['post__not_in'] = array_merge($sticky,$shownPosts);
 						}
