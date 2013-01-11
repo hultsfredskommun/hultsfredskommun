@@ -1387,10 +1387,13 @@ ul.main-sub-menu li a:hover,
 	margin-top: 20px;
 	padding-top: 20px;
 }
-.dropdown-tags a.selected-tags,
-.tags a.selected-tags {
+.dropdown-tags a.selected-tags {
 	display: inline-block;
 	margin: 4px 8px;
+}
+.tags a.selected-tags {
+	display: inline-block;
+	margin: 4px 0px;
 }
 .dropdown-tags a.selected-tags {
 	float: left;
