@@ -71,7 +71,7 @@
 						$args["category__and"] = $cat;
 					}
 					if ( !empty($tag_array) ) {
-						$args["tag_slug__and"] = $tag_array;
+						$args["tag_slug__in"] = $tag_array;
 					}
 					query_posts( $args );
 					if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -93,7 +93,7 @@
 					$args["category__and"] = $cat;
 				}
 				if ( !empty($tag_array) ) {
-					$args["tag_slug__and"] = $tag_array;
+					$args["tag_slug__in"] = $tag_array;
 				}
 				
 				query_posts( $args );
@@ -116,7 +116,7 @@
 						if (!empty($sticky)) {
 							$args['post__in'] = $sticky;
 							if ( !empty($tag_array) ) {
-								$args["tag_slug__and"] = $tag_array;
+								$args["tag_slug__in"] = $tag_array;
 							}
 							if (!empty($shownPosts)) {
 								$args['post__not_in'] = $shownPosts;
@@ -135,7 +135,7 @@
 							$args['post__not_in'] = array_merge($sticky,$shownPosts);
 						}
 						if ( !empty($tag_array) ) {
-							$args["tag_slug__and"] = $tag_array;
+							$args["tag_slug__in"] = $tag_array;
 						}
 						query_posts( $args );
 						if ( have_posts() ) : while ( have_posts() ) : the_post();
