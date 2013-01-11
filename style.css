@@ -269,9 +269,11 @@ h6
 	padding-top: 10px;
 	display: block;
 }
-#driftcontent .entry-wrapper,
-#news .entry-wrapper {
+#driftcontent .entry-wrapper {
 	padding: 2px 10px;
+ }
+#news .entry-wrapper {
+	padding: 2px 0px;
 }
 #workwidget .entry-wrapper .time,
 #driftcontent .entry-wrapper .time,
@@ -798,6 +800,9 @@ body {
 #primary {
 	float: left;
 	margin: 0;
+}
+#content {
+	margin-right: 10px;
 }
 #firstpage-sidebar{
 	float: right;
@@ -1425,6 +1430,7 @@ ul.main-sub-menu li a:hover,
 }
 .toggle-tags {
 	cursor: pointer;
+	margin-left: 4px;
 }
 .selected-tags {
 	padding: 2px 4px;
@@ -1442,7 +1448,7 @@ ul.main-sub-menu li a:hover,
 .dropdown-tags .tags-wrapper,
 .tags .tags-wrapper
 {
-	margin: 0 8px;
+	margin: 0;
 }
 .dropdown-tags ul {
 	display: none;
@@ -1868,6 +1874,14 @@ a.map_link {
 	text-decoration: underline;
 }
 #news article.sticky { border-radius: 0 !important; }
+
+/* protocol startpage */
+#protocolcategories {
+	margin-left: 10px;
+}
+#protocolcategories ul {
+	margin-left: 0px;
+}
 
 
 

@@ -701,6 +701,15 @@ add_shortcode( 'karta', 'hk_map_shortcode_func' );
 
 
 
+/* add categories and tags to media */
+add_action('init', 'reg_tax');
+function reg_tax() {
+   register_taxonomy_for_object_type('category', 'attachment');
+   register_taxonomy_for_object_type('post_tag', 'attachment');
+}
+
+
+
 
 /*
  * Disable easter egg

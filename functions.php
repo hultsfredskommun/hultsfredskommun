@@ -729,4 +729,14 @@ class submenu_walker_nav_menu extends Walker_Nav_Menu {
 
 }
 
+
+
+// show attachments in post flow
+function hk_attachments_in_query($local_wp_query) {
+	$local_wp_query->set( 'post_type', 'attachment' );
+}
+if (!is_admin()) {
+//	add_action('pre_get_posts', 'hk_attachments_in_query');
+}
+
 ?>

@@ -416,22 +416,24 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 					// Reset Query
 					wp_reset_query(); 
 			?>
-				<div class="entry-title">Visa protokoll</div><ul>
-				<?php 
-				 $args = array(
-					'hide_empty'         => 0,
-					'orderby'            => 'name',
-					'order'              => 'ASC',
-					'style'              => 'list',
-					'child_of'           => $default_settings["protocol_cat"],
-					'hierarchical'       => true,
-					'title_li'           => "",
-					'echo'               => 1,
-					'taxonomy'           => 'category',
-					);
-					wp_list_categories($args);	
+				<div id="protocolcategories">
+					<div class="entry-title">Visa protokoll fr&aring;n</div><ul>
+					<?php 
+					 $args = array(
+						'hide_empty'         => 0,
+						'orderby'            => 'name',
+						'order'              => 'ASC',
+						'style'              => 'list',
+						'child_of'           => $default_settings["protocol_cat"],
+						'hierarchical'       => true,
+						'title_li'           => "",
+						'echo'               => 1,
+						'taxonomy'           => 'category',
+						);
+						wp_list_categories($args);	
 					?>			
-			</ul>
+					</ul>
+				</div>
 			<div class="clear"></div>
 		</div>	
 		<?php endif; ?>
