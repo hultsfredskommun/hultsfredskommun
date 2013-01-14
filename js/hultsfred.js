@@ -671,22 +671,7 @@ $(document).ready(function(){
 	 * side-tab toggle
 	 */
 	$("#contact-side-tab .toggle-tab").unbind("click").click(function() {
-		if ($(".contact-popup").length == 0) {
-			if ($(this).parent().css("right") != "0px") {
-				$(this).parent().animate({
-					right: '+=250px',
-					}, 500, function() {
-				});
-			} else {
-				$(this).parent().animate({
-					right: '-=250px',
-					}, 500, function() {
-				});			
-			}
-		}
-		else {
-			$(".contact-popup").remove();
-		}
+		alert("Funktionen kommer snart.");
 	});
 	
 	/* add action to read-more toggle */
@@ -957,9 +942,9 @@ $(document).ready(function(){
 
 });/* END $(document).ready() */
 
+
 /* article actions to be set when ready and when dynamic loading */
 function setArticleActions(el) {
-	
 
 	//sets click-action on entry-titles
 	$(el).find('.entry-title a, .togglearticle').unbind("click").click(function(ev){

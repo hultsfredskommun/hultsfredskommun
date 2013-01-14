@@ -201,7 +201,7 @@ function hk_navigation() {
 }
 	
 
-// Show which category and tag is selected
+// Walker class: Show which category and tag is selected
 class hk_Category_Walker extends Walker_Category {
 	function start_el(&$output, $category, $depth, $args) { 
         extract($args); 
@@ -270,6 +270,8 @@ class hk_Category_Walker extends Walker_Category {
 	} 
 
 }
+
+// Walker class: Show which tags available to selected
 class hk_Tag_Walker extends Walker_Category {
 	function start_el(&$output, $tag, $depth, $args) { 
         extract($args);
@@ -375,7 +377,7 @@ class hk_Tag_Walker extends Walker_Category {
 }
 
 
-
+// show tag filter list
 function displayTagFilter($class = "dropdown-tags", $show_heading = true) {
 	global $default_settings;
 	if ($default_settings["show_tags"] != 0) :

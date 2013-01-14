@@ -73,13 +73,13 @@ class HK_quickmenu extends WP_Widget {
 			<?php if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) : ?>
 			<li title="Genv&auml;g"><a href="#quickmenu">Genv&auml;g</a></li>
 			<?php endif; ?>
+			<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
+			<li title="Visa bara"><a href="#onlytag">Visa bara</a></li>
+			<?php endif; ?>
 			<?php if (function_exists( 'views_orderby' )) : ?>
 			<li title="Mest bes&ouml;kta"><a href="#mostvisited">Mest bes&ouml;kta</a></li>
 			<?php endif; ?>
 			<li title="Senaste"><a href="#latest">Senaste</a></li>
-			<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
-			<li title="Visa bara"><a href="#onlytag">Visa bara</a></li>
-			<?php endif; ?>
 		</ul>
 		<?php 
 		if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) :
@@ -95,8 +95,16 @@ class HK_quickmenu extends WP_Widget {
 		endif;
 		?>
 		
+		<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
+		<div id="onlytag">
+			<?php
+			displayTagFilter("dropdown", false);			
+			?>				
+			<div class="clear"></div>
+		</div>
+		<?php endif; ?>
+		
 		<?php if (function_exists( 'views_orderby' )) : ?>
-
 		<div id="mostvisited">
 			<?php
 			if ($all_categories != "") {
@@ -152,14 +160,6 @@ class HK_quickmenu extends WP_Widget {
 			<div class="clear"></div>
 		</div>
 		
-		<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
-		<div id="onlytag">
-			<?php
-			displayTagFilter("dropdown", false);			
-			?>				
-			<div class="clear"></div>
-		</div>
-		<?php endif; ?>
 	</div>
 <?php
 	}

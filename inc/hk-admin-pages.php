@@ -290,6 +290,12 @@ function custom_upload_mimes ( $existing_mimes=array() ) {
 	$existing_mimes['xlsx'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 	$existing_mimes['ppt'] = 'application/vnd.ms-powerpoint';
 	$existing_mimes['pptx'] = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+	if (current_user_can('manage_options')) {
+		$existing_mimes['exe'] = 'application/exe';
+	}
+	else {
+		unset($existing_mimes['exe']);
+	}
 	//unset( $existing_mimes['exe'] );
 	return $existing_mimes;
 }

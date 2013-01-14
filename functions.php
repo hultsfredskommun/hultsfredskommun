@@ -640,6 +640,36 @@ function hk_getMenuParent($cat) {
 	return $cat;
 }
 // return the top parent id found in the menu
+function hk_getMenuTopParent($cat) {
+	global $default_settings;
+	if (empty($cat)) return array();
+	
+	$cats_str = get_category_parents($cat, false, '%#%', true);
+	$cats_array = explode('%#%', $cats_str);
+	$cat_depth = sizeof($cats_array)-1;
+	if ($cat_depth > 0) {
+		return get_category_by_slug($cats_array[0])->term_id;
+	}
+	return $cat;
+}
+// return nav menu id of category
+function hk_getNavMenuId($cat_id, $menu_name) {
+	if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
+		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+		$menu_items = wp_get_nav_menu_items($menu->term_id);
+
+		foreach ( (array) $menu_items as $key => $menu_item ) {
+			$title = $menu_item->title;
+			$url = $menu_item->url;
+			
+			if ($menu_item->object_id == $cat_id) {
+				return $menu_item->ID;
+			}
+		}
+	} 
+	return -1;
+}	
+// return the top parent id found in the menu
 function hk_getTopMenuParent($cat) {
 	global $default_settings;
 	if (empty($cat)) return array();
@@ -676,12 +706,9 @@ class submenu_walker_nav_menu extends Walker_Nav_Menu {
 	// add main/sub classes to li's and links
 	function start_el( &$output, $item, $depth, $args ) {
 		global $wp_query;
-		//$output .= print_r($item,true);
+		
 		// dont show first level, and only show sublevels when right parent category
-		if ($depth > 0 && hk_getTopMenuParent(get_query_var("cat")) == hk_getTopMenuParent($item->object_id)) {
-			//$output .= hk_getTopMenuParent(get_query_var("cat")) ."==". hk_getTopMenuParent($item->ID) . "<br>";
-			//$output .= get_category_parents(get_query_var("cat"), false, '%#%', true) ."==". get_category_parents($item->ID, false, '%#%', true) . "<br><br>";
-
+		if ($depth > 0 && $args->nav_menu_parent == $item->menu_item_parent) {
 			$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
 		  
 			// depth dependent classes
@@ -721,7 +748,7 @@ class submenu_walker_nav_menu extends Walker_Nav_Menu {
 		}
 	}
 	function end_el( &$output, $item, $depth, $args ) {
-		if ($depth > 0 && hk_getTopMenuParent(get_query_var("cat")) == hk_getTopMenuParent($item->object_id)) {
+		if ($depth > 0 && $args->nav_menu_parent == $item->menu_item_parent) {
 			$output .= "</li>";
 		}
 	

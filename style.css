@@ -2077,7 +2077,7 @@ article:last-child { margin-bottom: 0 }
 #contact-side-tab {
 	position: fixed;
 	top: 15%;
-	right: -250px;
+	right: 0px;
 }
 #comment-side-tab a {
 	border-top-left-radius: 4px;
@@ -2099,16 +2099,6 @@ article:last-child { margin-bottom: 0 }
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 }
-
-#contact-side-tab .content-wrapper {
-	min-height: 174px;
-	width: 242px;
-	float: left;
-	padding-left: 8px;
-	background: white;
-	overflow: auto;
-}
-
 
 /* =Widgets
 ----------------------------------------------- */

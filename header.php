@@ -157,8 +157,9 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 		<a class="dropdown-menu">Meny</a>
 		<nav id="menu" role="navigation">
 			<?php 
+				$theme_location = 'primary';
 				wp_nav_menu( array(
-					'theme_location'	=> 'primary', 
+					'theme_location'	=> $theme_location, 
 					'container' 		=> '',							
 					'items_wrap' 		=> '<ul class="main-menu">%3$s<li class="clear"></li></ul>',
 					'before' 			=> '',
@@ -166,18 +167,24 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 					'depth' 			=> 1, //$default_settings['num_levels_in_menu'],
 					'echo' 				=> true
 				)); 
-			
+				
+				// get nav_menu_parent id
+				$parent_category = hk_getMenuTopParent($cat);
+				$nav_menu_parent = hk_getNavMenuId($parent_category, $menu_name);
+				
+				
 				if ($default_settings['num_levels_in_menu'] > 1) {
 					$submenu = new submenu_walker_nav_menu();
 					wp_nav_menu( array(
-						'theme_location'	=> 'primary', 
+						'theme_location'	=> $theme_location, 
 						'container' 		=> '',							
 						'items_wrap' 		=> '<ul class="main-sub-menu">%3$s<li class="clear"></li></ul>',
 						'before' 			=> '',
 						'after'				=> '',
 						'depth' 			=> $default_settings['num_levels_in_menu'],
 						'echo' 				=> true,
-						'walker'			=> $submenu
+						'walker'			=> $submenu,
+						'nav_menu_parent'	=> $nav_menu_parent
 					)); 
 				}
 

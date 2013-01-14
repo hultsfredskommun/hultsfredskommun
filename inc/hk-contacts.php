@@ -550,6 +550,7 @@ function hk_contact_tab() {
 	$retValue .= "<aside id='contact-side-tab' class='hk_kontakter'>";
 	$retValue .= "<a class='toggle-tab'></a><div class='content-wrapper'>";
 	
+	/*
 	// set startpage category if on startpage
 	$category_in = array();
 	if (get_query_var("cat") != "") {
@@ -599,7 +600,7 @@ function hk_contact_tab() {
 			}
 		}
 
-	}
+	}*/
 	
 	$retValue .= "</div></aside>";
 	echo $retValue;
