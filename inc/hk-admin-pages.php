@@ -296,7 +296,6 @@ function custom_upload_mimes ( $existing_mimes=array() ) {
 	else {
 		unset($existing_mimes['exe']);
 	}
-	//unset( $existing_mimes['exe'] );
 	return $existing_mimes;
 }
 add_filter('upload_mimes', 'custom_upload_mimes');

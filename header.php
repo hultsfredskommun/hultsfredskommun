@@ -169,25 +169,33 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 				)); 
 				
 				// get nav_menu_parent id
-				$parent_category = hk_getMenuTopParent($cat);
-				$nav_menu_parent = hk_getNavMenuId($parent_category, $menu_name);
-				
-				
-				if ($default_settings['num_levels_in_menu'] > 1) {
-					$submenu = new submenu_walker_nav_menu();
-					wp_nav_menu( array(
-						'theme_location'	=> $theme_location, 
-						'container' 		=> '',							
-						'items_wrap' 		=> '<ul class="main-sub-menu">%3$s<li class="clear"></li></ul>',
-						'before' 			=> '',
-						'after'				=> '',
-						'depth' 			=> $default_settings['num_levels_in_menu'],
-						'echo' 				=> true,
-						'walker'			=> $submenu,
-						'nav_menu_parent'	=> $nav_menu_parent
-					)); 
+				if (is_single()) {
+					$categories = wp_get_post_categories(get_the_ID());
+					if (!empty($categories)) {
+						$parent_category = hk_getMenuTopParent($categories[0]);
+					}
+				} else {
+					$parent_category = hk_getMenuTopParent($cat);
 				}
-
+				if (!empty($parent_category)) {
+					$nav_menu_parent = hk_getNavMenuId($parent_category, $menu_name);
+					
+					
+					if ($default_settings['num_levels_in_menu'] > 1) {
+						$submenu = new submenu_walker_nav_menu();
+						wp_nav_menu( array(
+							'theme_location'	=> $theme_location, 
+							'container' 		=> '',							
+							'items_wrap' 		=> '<ul class="main-sub-menu">%3$s<li class="clear"></li></ul>',
+							'before' 			=> '',
+							'after'				=> '',
+							'depth' 			=> $default_settings['num_levels_in_menu'],
+							'echo' 				=> true,
+							'walker'			=> $submenu,
+							'nav_menu_parent'	=> $nav_menu_parent
+						)); 
+					}
+				}
 			?>
 			
 			<div class="clear"></div>

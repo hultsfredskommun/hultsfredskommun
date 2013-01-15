@@ -519,12 +519,8 @@ function get_the_reviewed_date($id) {
 	global $post;
 
 	$time = get_post_meta( $id, 'hk_last_reviewed', true );
-	if (isset($time)) {
+	if (isset($time) && $time != "") {
 		$time = "Granskad: " . hk_nicedate($time);
-	}
-	else 
-	{
-		$time = "Inte granskad";
 	}
 	return $time;
 }

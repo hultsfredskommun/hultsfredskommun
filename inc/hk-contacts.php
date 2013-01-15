@@ -219,11 +219,11 @@ function hk_contact_shortcode_func( $atts ) {
 		'titel' => true,
 		'arbetsplats' => true,
 		'telefon' => true,
-		'epost' => false,
+		'epost' => true,
 		'beskrivning' => false,
 		'adress' => false,
 		'besokstid' => false,
-		'karta' => true);
+		'karta' => false);
 	$atts = shortcode_atts( $default, $atts );
 	
 	if ($atts["echo_args"] != "") {
@@ -289,8 +289,12 @@ function hk_get_contact_by_cat_slug($cat, $args) {
 function hk_get_contact_by_cat($cat, $args) {
 	global $post;
 	$org_post = $post;
-	$cat_array = preg_split("/[\s,]+/",$cat,NULL,PREG_SPLIT_NO_EMPTY);
+	if (empty($cat)) {
+		return "<div class='contact-area'>Hittade ingen kategori att h&auml;mta kontakter ifr&aring;n.</div>";
+	}
 
+	$cat_array = preg_split("/[\s,]+/",$cat,NULL,PREG_SPLIT_NO_EMPTY);
+	
 	// query arguments
 	$query_args = array(
 		'posts_per_page' => -1,
@@ -345,7 +349,9 @@ function hk_get_contact_by_name($post_slug, $args) {
 function hk_get_contact_by_id($contact_id, $args) {
 	global $post;
 	$org_post = $post;
-
+	if (empty($contact_id)) {
+		return "<div class='contact-area'>Hittade ingen kontakt.</div>";
+	}
 	// query arguments
 	$query_args = array(
 		'posts_per_page' => -1,

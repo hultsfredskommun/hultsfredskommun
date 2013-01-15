@@ -131,6 +131,7 @@ footer, header, hgroup, menu, nav, section {
 #primary {
 	width: 80.875%;
 }
+.attachment .content-wrapper, 
 .post .content-wrapper, 
 .single .single-content, 
 #comments  {
@@ -1286,7 +1287,7 @@ ul.main-sub-menu li a:hover,
 }
 #nav li {
 	border: 0;
-	padding: 8px 0;
+	padding: 4px 0;
 	position: relative;
 }
 #nav .tags li {

@@ -26,7 +26,9 @@
 				<div class="content">
 					<?php
 						$more = 1;       // Set (inside the loop) to display all content, including text below more. 
+						if ( get_post_type() != "attachment" ) : // if not an attachment
 						the_content();
+						endif;
 						
 						//embedded video
 						/*$embeddedvideo = get_post_custom_values('embedded_code');

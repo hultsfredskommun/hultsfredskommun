@@ -168,4 +168,22 @@
 	if (!is_admin()) {
 		add_action('pre_get_posts', 'hk_views_sorting');
 	}
+	if( function_exists( 'views_orderby' )) {
+		function hk_add_views_fields($post_ID) {
+			global $wpdb;
+
+			if ( !get_post_meta($post_ID, 'views', true) ) {
+				add_post_meta($post_ID, 'views', 0, true);
+			}
+		}
+		function hk_delete_views_fields($post_ID) {
+			global $wpdb;
+			delete_post_meta($post_ID, 'views');
+		}
+
+		add_action('add_attachment', 'hk_add_views_fields');
+		add_action('edit_attachment', 'hk_add_views_fields');
+		add_action('delete_attachment', 'hk_delete_views_fields');
+	}
+
 ?>

@@ -25,25 +25,6 @@
 			<div class="clear"></div>
 		</header>
 		
-	<?php  /*
-	$my_key_query_args = array(
-		'post_type'   => 'attachment',
-		'post_status' => 'inherit',
-		'suppress_filters' => 1,
-		'posts_per_page' => -1);
-
-	$my_key_query = new WP_Query( $my_key_query_args );
-	print_r($my_key_query);
-	if ( $my_key_query->have_posts() ) : while ( $my_key_query->have_posts() ) :  
-		$my_key_query->next_post();
-		echo "<br>";
-		echo get_the_title($my_key_query->post->ID);
-		//get_template_part( 'content', get_post_format() );
-		
-	endwhile; endif;
-*/
-	?>
-
 	<?php
 		/**
 		 * Default order in orderby no set
@@ -66,7 +47,14 @@
 				if ( !empty($sticky) ) {
 					/* Query sticky posts */
 					$args = array( 'post__in' => $sticky, 'posts_per_page' => -1);
-					$args["post_type"] = array('post','attachment');
+					if ($tag == "") {
+						$args["post_type"] = array('post');
+					}
+					else {
+						$args["post_type"] = array('post','attachment');
+					}
+					$args['post_status'] = 'all';		
+					
 					if ( !empty($cat) ) {
 						$args["category__and"] = $cat;
 					}
@@ -85,7 +73,15 @@
 				/* Get all NOT sticky posts from this category */
 
 				$args = array( 'posts_per_page' => -1 );
-				$args["post_type"] = array('post','attachment');
+
+					if ($tag == "") {
+						$args["post_type"] = array('post');
+					}
+					else {
+						$args["post_type"] = array('post','attachment');
+					}
+				$args['post_status'] = 'all';		
+
 				if ( !empty($sticky) || !empty($shownPosts)) {
 					$args['post__not_in'] = array_merge($sticky,$shownPosts);
 				}
@@ -114,6 +110,13 @@
 						echo "<div class='more-from-heading" . $no_top_space ."'><span>Mer från underkategorier</span></div>";
 						$args = array( 'category__in' => $children, 'posts_per_page' => -1 );
 						if (!empty($sticky)) {
+							if ($tag == "") {
+								$args["post_type"] = array('post');
+							}
+							else {
+								$args["post_type"] = array('post','attachment');
+							}
+							$args['post_status'] = 'all';		
 							$args['post__in'] = $sticky;
 							if ( !empty($tag_array) ) {
 								$args["tag_slug__in"] = $tag_array;
@@ -131,6 +134,13 @@
 						
 						/* Get all NOT sticky posts children of this category */
 						$args = array( 'category__in' => $children, 'posts_per_page' => $posts_per_page );
+						if ($tag == "") {
+							$args["post_type"] = array('post');
+						}
+						else {
+							$args["post_type"] = array('post','attachment');
+						}
+						$args['post_status'] = 'all';
 						if ( !empty($sticky) || !empty($shownPosts)) {
 							$args['post__not_in'] = array_merge($sticky,$shownPosts);
 						}

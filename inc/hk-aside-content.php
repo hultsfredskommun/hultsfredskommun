@@ -22,7 +22,17 @@
 		<?php endwhile; ?>			 
 	</div>
 	<?php endif; ?>
-	<?php  ?>
+	<?php //print_r($post); ?>
+	<?php if ( get_post_type() == "attachment" ) : // if view of attachment ?>
+	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo ($count < 2)?"summary":"full"; ?>">
+		<ul class="related-wrapper <?php echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
+			<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Ladda ner dokument"><div class="icon"></div></a>
+				<a target="_blank" href="<?php echo wp_get_attachment_url(get_the_ID()); ?>" title="Direktl&auml;nk till filen<?php //echo get_the_content(); ?>"><?php the_title(); ?></a>
+			</li>
+		</ul>
+	</div>
+	<?php endif; ?>
+
 	<?php if ( function_exists("get_field") && get_field('hk_related') ) : // related docs and links ?>
 	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo ($count < 2)?"summary":"full"; ?>">
 		<ul class="related-wrapper <?php echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
