@@ -1,5 +1,5 @@
 /*
-Theme Name: Campus
+Theme Name: Hultsfreds kommun theme
 Template: hultsfredskommun
 Theme URI: 
 Author: the Hultsfred team
@@ -463,20 +463,6 @@ a:active ,
 
 
 
-/* right column widget color */
-.hk_kontakter .widget-title {
-	background: #E60040;
-}
-.hk_events .widget-title {
-	background: #00A4D6;
-}
-.hk_related .widget-title {
-	background: #00A4D6;
-}
-
-
-
-
 
 /* BORDER COLORS */
 .hover-side-content .box.contacts,
@@ -537,46 +523,15 @@ a:active ,
 .more-from-heading {
 	border-top: 4px solid #E6E6E6;
 }
-
-#quickmenus {
-	margin-bottom: 30px;
-}
-.textwidget:first-child {
-	border-left: 0 !important;
-}
-.hk_kontakter.widget {
-	/*border: 2px solid #F7A02E; /* orange */
-	_order-left: 1px solid #E60040; /* energyred */
-}
-.hk_related.widget  {	
-	_order-left: 1px solid #00A4D6; /* blue */
-	/*border: 2px solid #9EBA21; /* green */
-}
 #nav .parent li:first-child {
 	_order-top: 1px solid #ACC6D3;
 }
 #nav .parent li {
 	_order-top: 2px solid #E8E8E8;
 }
-#nav .parent li:first-child,
-#nav .children li:first-child {
-	border-top: none;
-}
-#nav .children li {
-	border-top: none;
-	border-bottom: none;
-}
 #nav  .children {
 	border-left: 4px solid #06435A;
 	/*border-left: 2px solid #fff; */
-}
-#branding #searchform #searchresult {
-	border-top: 0;
-	margin-left: 10px;
-}
-#menu {
-	/*border-bottom: 1px solid #A3A2A3;*/
-	/*border-bottom: 1px solid #E6E6E6;*/
 }
 #news .newline {
 	border-bottom: 1px solid #06435A; /* deep blue */
@@ -585,14 +540,38 @@ a:active ,
 .post footer {
 	border-top: 1px solid #ccc;
 }
-.closeButton.top {
-	_order-top: 4px solid #06435A;
-}
 .full .article-wrapper {
 	border-top: 1px solid #ccc;
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
+
+
+
+
+
+
+
+#quickmenus {
+	margin-bottom: 30px;
+}
+.textwidget:first-child {
+	border-left: 0 !important;
+}
+
+#nav .parent li:first-child,
+#nav .children li:first-child {
+	border-top: none;
+}
+#nav .children li {
+	border-top: none;
+	border-bottom: none;
+}
+#branding #searchform #searchresult {
+	border-top: 0;
+	margin-left: 10px;
+}
+
 .single .single .article-wrapper {
 	border: 0;
 }

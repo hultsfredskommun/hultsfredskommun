@@ -151,7 +151,7 @@ if (!is_admin()) {
 	);
 	wp_enqueue_script(
 		'jquery_ui_map_js',
-		get_stylesheet_directory_uri() . '/js/jquery.ui.map.min.js',
+		get_template_directory_uri() . '/js/jquery.ui.map.min.js',
 		array('jquery'),
 		'1.0',
 		true
@@ -168,21 +168,21 @@ if (!is_admin()) {
 	);*/    
 	wp_enqueue_script(
 		'history_js',
-		get_stylesheet_directory_uri() . '/js/native.history.js',
+		get_template_directory_uri() . '/js/native.history.js',
 		array('jquery'),
 		'1.0',
 		true
 	);
 	wp_enqueue_script(
 		'hultsfred_js',
-		get_stylesheet_directory_uri() . '/js/hultsfred.js',
+		get_template_directory_uri() . '/js/hultsfred.js',
 		array('jquery','jquery-ui-core','history_js','jquery-ui-widget','jquery-ui-tabs'),
 		'1.0',
 		true
 	);
 	wp_enqueue_script(
 		'cycle_all_js',
-		get_stylesheet_directory_uri() . '/js/jquery.cycle.all.js',
+		get_template_directory_uri() . '/js/jquery.cycle.all.js',
 		array('jquery'),
 		'1.0',
 		true
@@ -192,7 +192,7 @@ if (!is_admin()) {
 else {
 	wp_enqueue_script(
 		'hk_admin_js',
-		get_stylesheet_directory_uri() . '/js/hultsfred-admin.js',
+		get_template_directory_uri() . '/js/hultsfred-admin.js',
 		array('jquery'),
 		'1.0',
 		true
@@ -492,7 +492,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 			}
     	endwhile;
 		if ($showAll && $countSlides > 1) {
-			$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_stylesheet_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
+			$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
 			$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
 		}
 		$retValue .= "</div></div>"; 
