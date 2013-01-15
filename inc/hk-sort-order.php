@@ -172,7 +172,7 @@
 		function hk_add_views_fields($post_ID) {
 			global $wpdb;
 
-			if ( !get_post_meta($post_ID, 'views', true) ) {
+			if ( get_post_meta($post_ID, 'views', true) == "" ) {
 				add_post_meta($post_ID, 'views', 0, true);
 			}
 		}

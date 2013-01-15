@@ -1962,7 +1962,7 @@ article:last-child { margin-bottom: 0 }
 	height: auto;
 }
 .entry-wrapper {
-	padding: 0 10px 15px;
+	padding: 2px 10px;
 }
 .summary-content .summary-footer {
 	clear: both;
