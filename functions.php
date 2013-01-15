@@ -248,7 +248,7 @@ function setup_javascript_settings() {
 			'startPage' => 1,
 			'maxPages' => $max,
 			'nextLink' => str_replace(curBaseURL(), "", next_posts($max, false)),
-			'templateDir' => get_stylesheet_directory_uri(),
+			'templateDir' => get_template_directory_uri(),
 			'blogId' => $blog_id,
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
 			'currentFilter' => json_encode($filter),
