@@ -6,10 +6,15 @@
 define('WP_USE_THEMES', false);
 require('./wp-blog-header.php');
 if ($post) { 
-   setup_postdata($post); 
-   $url = strip_tags(get_the_content(""));
-   if ($url == "") {
-   		$url = "/";
-   }
+	setup_postdata($post); 
+	if (function_exists("get_field")) {
+		$url = get_field("hk_redirect_link");
+	}
+	else {
+		$url = strip_tags(get_the_content(""));
+		if ($url == "") {
+			$url = "/";
+		}
+	}
 } 
-?><meta http-equiv="refresh" content="0;url=<?php echo $url; ?>">
+if ($url != "") : ?><meta http-equiv="refresh" content="0;url=<?php echo $url; ?>"><?php else : echo "Ingen enkel adress hittades."; endif;?>

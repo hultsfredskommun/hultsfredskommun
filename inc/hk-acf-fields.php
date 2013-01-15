@@ -672,5 +672,64 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
+	
+	
+	/* ENKEL ADRESS TILL SIDA */
+	register_field_group(array (
+		'id' => '50f53001d8c88',
+		'title' => 'Enkel adress',
+		'fields' => 
+		array (
+			0 => 
+			array (
+				'key' => 'field_505b21d9177e7',
+				'label' => 'Länk att skicka vidare till',
+				'name' => 'hk_redirect_link',
+				'type' => 'text',
+				'order_no' => 0,
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 
+				array (
+					'status' => 0,
+					'rules' => 
+					array (
+						0 => 
+						array (
+							'field' => 'null',
+							'operator' => '==',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'default_value' => '',
+				'formatting' => 'none',
+			),
+		),
+		'location' => 
+		array (
+			'rules' => 
+			array (
+				0 => 
+				array (
+					'param' => 'page_template',
+					'operator' => '==',
+					'value' => 'hk_redirect_page.php',
+					'order_no' => 0,
+				),
+			),
+			'allorany' => 'all',
+		),
+		'options' => 
+		array (
+			'position' => 'normal',
+			'layout' => 'default',
+			'hide_on_screen' => 
+			array (
+				0 => 'the_content',
+			),
+		),
+		'menu_order' => 0,
+	));
 }
 ?>
