@@ -55,6 +55,33 @@ function hk_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
+	register_sidebar( array(
+		'name' => "Sidfot 2",
+		'id' => 'footer-sidebar-2',
+		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	register_sidebar( array(
+		'name' => "Sidfot 3",
+		'id' => 'footer-sidebar-3',
+		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	register_sidebar( array(
+		'name' => "Sidfot 4",
+		'id' => 'footer-sidebar-4',
+		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => "</aside>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
 
 	register_sidebar( array(
 		'name' => 'Viktigt toppinneh&aring;ll',

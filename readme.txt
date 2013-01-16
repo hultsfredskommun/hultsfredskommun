@@ -5,17 +5,31 @@
 == ABOUT HULTSFREDSKOMMUN THEME ==
 
 === Added functionality ===
-Uses hk_contacts to view contacts
+* Added page type hk_contacts to view contacts
+* Added page type hk_slideshow to get slideshow functionality
  * shortcode to add [kontakt] to post
-Uses hk_related to view related documents and links (of the post type hk_related) - 
- * The theme properties are in most cases depending on the plugin Advanced Custom Fields by Elliot Condon
- * and the additional plugins ACF Repeater. ACF fields are created in inc/hk-acf-fields.php.
-Filter by editor dropdown in admin list view.
-Settings page with
- - Set news tag
- - Set protocol category
- - Set "not visible" category
-Shortcode to add [karta] to post.
+* Custom meta to add related contacts, documents, posts and links
+* Special featured image using ACF repeater to add more than one image, is slideshow if more than one
+* The theme properties are in most cases depending on the plugin Advanced Custom Fields by Elliot Condon
+* and the additional plugins ACF Repeater. ACF fields are created in inc/hk-acf-fields.php.
+* Filter by editor dropdown in admin list view.
+* Settings page with
+ * Set news tag
+ * Set protocol category
+ * Set "not visible" category
+* Shortcode to add [karta] to post.
+* Google analytics if id added in settings
+* Approve Cookies question
+* Widget areas
+ * Startpage topcontent
+ * Startpage content
+ * Startpage sidebar
+ * Startpage pre-footer
+ * Footer
+ * Footer-2
+ * Footer-3
+ * Footer-4 (dynamic width set depend of how many footers are active)
+ * Important (placed on top of all pages)
 
  
 === Optional functionality ===
@@ -25,11 +39,12 @@ Advanced Custom Fields - Location Field add-on 1.0 is used as a Location field o
 Intuitive Category Checklist by Dave Bergschneider to get collapsible catogories in edit.
 MCE Table Buttons to add table buttons to editor.
 wpDirAuth by Paul Gilzow to get AD-intagrated login.
+Adritrorecruit by Jonas Hjalmarsson to get available jobs from adritrorecruit.com
+CBIS widget by Jonas Hjalmarsson to get CBIS search widgets
 
 === Handy tools ===
 Simple Image Size by Rahe to handle thumbnail regeneration when needed.
 WP Smush.it by Dialect to get smaller image sizes.
-EU Cookie Law to get a popup question to accept cookies.
 Enable Media Replace by mungobbq to get a replace this file in Media Library.
 Force User Login to hide site from public view before release.
 

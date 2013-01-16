@@ -22,7 +22,7 @@ global $default_settings;
 		<div id="comment-side-tab"><a href="<?php echo $hk_options["comment_side_link"]; ?>" title="Hj&auml;lp oss att bli b&auml;ttre"></a></div>
 	<?php endif; ?>
 
-	<?php if ( $hk_options["logo_footer_image"] || is_active_sidebar( 'footer-sidebar' ) ) : ?>
+	<?php if ( $hk_options["logo_footer_image"] || is_active_sidebar( 'footer-sidebar' ) || is_active_sidebar( 'footer-sidebar-2' ) || is_active_sidebar( 'footer-sidebar-3' ) || is_active_sidebar( 'footer-sidebar-4' ) ) : ?>
 	<footer id="colophon" role="contentinfo">
 		<div id="supplementary">
 			<?php if ($hk_options["footer_image"] != "") : ?>
@@ -30,10 +30,49 @@ global $default_settings;
 			<?php endif; ?>
 			<?php
 
-			if ( is_active_sidebar( 'footer-sidebar' ) ) :
-
-				echo "<div id='footer-sidebar' class='widget-area'>";
-				dynamic_sidebar( 'footer-sidebar' );
+			$footers = 0;
+			if ( is_active_sidebar( 'footer-sidebar' ) ) { $footers++; }
+			if ( is_active_sidebar( 'footer-sidebar-2' ) ) { $footers++; }
+			if ( is_active_sidebar( 'footer-sidebar-3' ) ) { $footers++; }
+			if ( is_active_sidebar( 'footer-sidebar-4' ) ) { $footers++; }
+			$footerclass = "";
+			switch($footers) {
+				case 1:
+					$footerclass = "one";
+					break;
+				case 2:
+					$footerclass = "two";
+					break;
+				case 3:
+					$footerclass = "three";
+					break;
+				case 4:
+					$footerclass = "four";
+					break;
+			}
+		
+			if ( $footers > 0 ) :
+				echo "<div id='footer-sidebar' class='widget-area $footerclass'>";
+				if ( is_active_sidebar( 'footer-sidebar' ) ) { 
+					echo "<div class='footer-widgets first'>";
+					dynamic_sidebar( 'footer-sidebar' ); 
+					echo "</div>";
+				}
+				if ( is_active_sidebar( 'footer-sidebar-2' ) ) {  
+					echo "<div class='footer-widgets second'>";
+					dynamic_sidebar( 'footer-sidebar-2' ); 
+					echo "</div>";
+				}
+				if ( is_active_sidebar( 'footer-sidebar-3' ) ) {  
+					echo "<div class='footer-widgets third'>";
+					dynamic_sidebar( 'footer-sidebar-3' ); 
+					echo "</div>";
+				}
+				if ( is_active_sidebar( 'footer-sidebar-4' ) ) {  
+					echo "<div class='footer-widgets fourth'>";
+					dynamic_sidebar( 'footer-sidebar-4' ); 
+					echo "</div>";
+				}
 				echo "</div>";
 			endif;
 				if ( $hk_options["logo_footer_image"] ) :
