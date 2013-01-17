@@ -13,7 +13,7 @@ class Hk_Contacts extends WP_Widget {
     public function __construct() {
 		parent::__construct(
 	 		'hk_contacts', // Base ID
-			'Hk_Contacts', // Name
+			'HK Kontakter', // Name
 			array( 'description' => __( 'Contact Widget to display contacts from selected category', 'text_domain' ), ) // Args
 		);
 	}

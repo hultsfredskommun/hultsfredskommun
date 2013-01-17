@@ -7,7 +7,10 @@
 		/* get new posts */
 		//$query = array(	'posts_per_page' => get_option('posts_per_page') );
 		$query = array(	'posts_per_page' => 15 );
-	
+		
+		/* hook to be able to add other search result */ 
+		do_action('hk_pre_ajax_search', $searchstring);
+
 		// add search to query
 		$query["s"] = $searchstring;
 		$dyn_query = new WP_Query();

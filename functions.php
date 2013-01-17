@@ -54,7 +54,7 @@ require( get_template_directory() . '/inc/hk-option-page.php' );
 require( get_template_directory() . '/inc/hk-dynamic-widgets.php' );
 
 // Grab hk text widget.
-require( get_template_directory() . '/inc/hk-text-widget.php' );
+//require( get_template_directory() . '/inc/hk-text-widget.php' );
 
 // Grab hk slideshow.
 require( get_template_directory() . '/inc/hk-slideshow.php' );
@@ -66,7 +66,7 @@ require( get_template_directory() . '/inc/hk-contacts.php' );
 //require( get_template_directory() . '/inc/hk-related.php' );
 
 // Grab hk events.
-require( get_template_directory() . '/inc/hk-events.php' );
+//require( get_template_directory() . '/inc/hk-events.php' );
 
 // Grab hk menu widget.
 require( get_template_directory() . '/inc/hk-navigation.php' );

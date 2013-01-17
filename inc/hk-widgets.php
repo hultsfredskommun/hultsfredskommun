@@ -321,18 +321,22 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$cat = get_query_var("cat");
 		$all_categories = hk_getChildrenIdArray($cat);
 		$all_categories[] = $cat;
-?>
+		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && in_array(get_query_var("cat"), split(",",$instance["show_protocol"]));
+		$showdrift = in_array(get_query_var("cat"), split(",",$instance["show_drift"])) && $options["hk_drift"] != "";
+		?>
 
 	<div id="content" role="main">
+		<?php if ($showdrift || $showprotocol) : ?>
 		<ul class="post_tabs_title">
 			<li title="Aktuellt"><a href="#newscontent">Aktuellt</a></li>
-			<?php if ($default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && in_array(get_query_var("cat"), split(",",$instance["show_protocol"]))) : ?>
+			<?php if ($showprotocol) : ?>
 			<li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser &amp; handlingar</a></li>
 			<?php endif; ?>
-			<?php if (in_array(get_query_var("cat"), split(",",$instance["show_drift"])) && $options["hk_drift"] != "") : ?>
+			<?php if ($showdrift) : ?>
 			<li title="Driftst&ouml;rning"<?php echo ($options["hk_drift_has_new"] != "")?" class='has_new'":""; ?>><a href="#driftcontent">Driftst&ouml;rning</a></li>
 			<?php endif; ?>
 		</ul>
+		<?php endif; ?>
 		<div id="newscontent">
 			<?php 
 				/* Query all posts with selected startpage category */
@@ -397,7 +401,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		</div>
 
 
-		<?php if ($default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && in_array(get_query_var("cat"), split(",",$instance["show_protocol"]))) : ?>
+		<?php if ($showprotocol) : ?>
 		<div id="protocolcontent">
 			<?php 
 				/* Query all posts with selected startpage category */
@@ -437,7 +441,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 			<div class="clear"></div>
 		</div>	
 		<?php endif; ?>
-		<?php if (in_array(get_query_var("cat"), split(",",$instance["show_drift"])) && $options["hk_drift"] != "") : ?>
+		<?php if ($showdrift) : ?>
 		
 		<div id="driftcontent">
 			<?php echo $options["hk_drift"];?>

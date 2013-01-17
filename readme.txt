@@ -30,7 +30,7 @@
  * Footer-3
  * Footer-4 (dynamic width set depend of how many footers are active)
  * Important (placed on top of all pages)
-
+* hk_pre_search and hk_pre_ajax_search hooks
  
 === Optional functionality ===
 Use WP-PostViews by Lester 'GaMerZ' Chan to enable most viewed sort order in theme, is default sort order when enabled.

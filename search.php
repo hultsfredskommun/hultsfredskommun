@@ -29,6 +29,9 @@ get_header(); ?>
 					<div class="clear"></div>
 				</header>
 
+				<?php /* hook to be able to add other search result */ 
+				do_action('hk_pre_search', get_query_var("s")); ?>
+				
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 

@@ -1618,9 +1618,26 @@ img {
 #firstpage-top-content .img-wrapper article{
 	padding-top: 0;
 }
-/* =firstpage to the right
------------------------------------------------ */
 
+/* =firstpage
+----------------------------------------------- */
+/* image widget plugin */
+.widget.widget_sp_image {
+	margin: 0 10px;
+}
+.widget.widget_sp_image h3 {
+	padding-left: 0px;
+}
+.widget.widget_sp_image img {
+	width: 100%;
+}
+/* aditroreqruit plugin */
+#aditrowidget.shortcode .entry-wrapper {
+	padding: 2px 0px;
+}
+#aditrowidget .entry-content {
+	padding-bottom: 10px;
+}
 
 /* =articel footer - in right column
 ----------------------------------------------- */
