@@ -143,7 +143,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 						'theme_location' => 'topmenu', 
 						'container' 	=> '',							
 						'items_wrap'	=> '<ul>%3$s</ul>',
-						'depth' 		=> 1,
+						'depth' 		=> 2,
 						'echo' 			=> true
 					)); 
 					echo "</nav></aside></div>";

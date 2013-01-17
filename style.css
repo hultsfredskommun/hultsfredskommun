@@ -239,6 +239,7 @@ h6
 .widget .widget-title span,
 .news.only-title .entry-title,
 .only-title a,
+#news .read-more-link,
 #news_header {
 	font-size: 16px;
 }
@@ -255,7 +256,6 @@ h6
 .closeButton a,
 .summary-content .summary-footer,
 #news .only-title .entry-title a,
-#news .read-more-link,
 .page-header {
 	font-size: 12px;
 }
@@ -396,6 +396,8 @@ body,
 #searchresult,
 /*#sidebar .widget,*/
 .dropdown-tags ul,
+#all_title_div,
+#topmenu ul.sub-menu,
 ul.main-menu,
 .content-wrapper .summary-content,
 .content-wrapper .more-content,
@@ -656,13 +658,15 @@ article {
 	-webkit-box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);
 	-moz-box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);
 }
+#topmenu ul.sub-menu,
+.page-header .tags-wrapper ul,
 #all_title_div,
 #dyn-posts-load-posts {
-	-webkit-box-shadow: 0 1px 5px 0 #E0E0E0;
-	-moz-box-shadow: 0 1px 5px 0 #E0E0E0;
-	-o-box-shadow: 0 1px 5px 0 #E0E0E0;
-	-ms-box-shadow: 0 1px 5px 0 #E0E0E0;
-	box-shadow: 0 1px 5px 0 #E0E0E0;
+	-webkit-box-shadow: 0 1px 5px #DDD;
+	-moz-box-shadow: 0 1px 5px #DDD;
+	-o-box-shadow: 0 1px 5px #DDD;
+	-ms-box-shadow: 0 1px 5px #DDD;
+	box-shadow: 0 1px 5px #DDD;
 }
 
 
@@ -1108,6 +1112,20 @@ a:hover {
 #topmenu {
 	float: right;
 }
+#topmenu ul {
+	position: relative;
+}
+#topmenu ul li:hover > ul.sub-menu {
+	display: block;
+	width: auto;
+	border-radius: 0;
+}
+#topmenu ul ul.sub-menu {
+	position: absolute;
+	top: 100%;
+	z-index: 200;
+	display: none;
+}
 
 ul.main-menu, 
 ul.main-sub-menu {
@@ -1334,7 +1352,6 @@ ul.main-sub-menu li a:hover,
 	position: absolute;
 	top: 24px;
 	z-index: 1000;
-	background: white;
 	width: 200px;
 }
 #all_title_div a {
@@ -1850,6 +1867,7 @@ a.map_link {
 #news {
 	padding: 10px;
 	margin-bottom: 10px;
+	clear: both;
 }
 #news ul {
 	margin: 0 0.8em 0;

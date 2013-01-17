@@ -106,6 +106,10 @@ function hk_navigation() {
 		echo "Du s&ouml;kte p&aring; " . $search . ".";
 	}
 	
+	//if (is_single()) {
+		
+	//}
+
 	// if in tag
 	if ($tags != "") {
 		echo "<a class='dropdown-nav'>Etiketter</a>";

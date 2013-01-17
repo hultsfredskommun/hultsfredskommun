@@ -428,12 +428,12 @@ function readMoreToggle(el){
 			
 			//change webbrowser url
 			//find and store post-title and post-url
-			//var entry_title = $(article).find(".entry-title");
-			//var blog_title = $("#logo").find('img').attr('alt');
-			//var title = $(entry_title).find("a").html().replace("&amp;","&") + " | " + blog_title;
-			//var url = $(entry_title).find("a").attr("href");
+			var entry_title = $(article).find(".entry-title");
+			var blog_title = $("#logo").find('img').attr('alt');
+			var title = $(entry_title).find("a").html().replace("&amp;","&") + " | " + blog_title;
+			var url = $(entry_title).find("a").attr("href");
 			//call pushHistory
-			//pushHistory(title, url);
+			pushHistory(title, url);
 			//History.replaceState(null, title, url);
 		}
 	}
@@ -676,7 +676,9 @@ $(document).ready(function(){
 	
 	/* add action to read-more toggle */
 	$("#primary").find('article').each(function(){
-		setArticleActions($(this));
+		if (!$(this).parents('.home').length) {
+			setArticleActions($(this));
+		}
 	});
 	// contact popup
 	$(".single .contact-area a.contactlink").each(function() {
