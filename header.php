@@ -149,6 +149,9 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 					echo "</nav></aside></div>";
 				}
 			?>
+			<?php if ($hk_options["logo2_image"] != "") : ?>
+			<span id="logo2"><a target="_blank" href="<?php echo $hk_options["logo2_link"]; ?>" title="<?php echo $hk_options["logo2_descr"]; ?>"><img src="<?php echo $hk_options["logo2_image"]; ?>" alt="<?php echo $hk_options["logo2_descr"]; ?>" /></a></span>
+			<?php endif; ?>
 			<div id="searchnavigation" role="search">			
 				<?php get_search_form(); ?>
 			</div>

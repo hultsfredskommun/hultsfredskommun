@@ -276,6 +276,7 @@ h6
 #news .entry-wrapper {
 	padding: 2px 0px;
 }
+#aditrowidget .time,
 #workwidget .entry-wrapper .time,
 #driftcontent .entry-wrapper .time,
 #news .entry-wrapper .time {
@@ -1000,6 +1001,12 @@ a:hover {
 	width: 25%;
 	clear: both;
 	float: left;
+}
+#logo2 {
+	width: 25%;
+	clear: both;
+	float: right;
+	text-align:right;
 }
 #logo a,
 #logo img {

@@ -140,6 +140,13 @@ function hk_theme_options_do_page() {
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_image]" value="<?php echo $options["logo_image"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
+			<p><label for="hk_theme[logo2_image]">Logga 2</label><br/>
+				<img width=150  src="<?php echo $options["logo2_image"]; ?>" />
+				<input class="upload-url" type="text" size="36" name="hk_theme[logo2_image]" value="<?php echo $options["logo2_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[logo2_link]">Logga 2 l&auml;nk. </label><br/><input size="80" type="text" name="hk_theme[logo2_link]" value="<?php echo $options['logo2_link']; ?>" /></p>
+			<p><label for="hk_theme[logo2_descr]">Logga 2 beskrivning. </label><br/><input size="80" type="text" name="hk_theme[logo2_descr]" value="<?php echo $options['logo2_descr']; ?>" /></p>
 			<p><label for="hk_theme[logo_footer_image]">Logga i sidfot</label><br/>
 				<img width=150  src="<?php echo $options["logo_footer_image"]; ?>" />
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_footer_image]" value="<?php echo $options["logo_footer_image"]; ?>" />

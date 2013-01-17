@@ -17,6 +17,11 @@
  * Set news tag
  * Set protocol category
  * Set "not visible" category
+ * Top image
+ * Footer image
+ * Logo
+ * Logo 2 (with link and alt-text settings)
+ * Logo in footer
 * Shortcode to add [karta] to post.
 * Google analytics if id added in settings
 * Approve Cookies question
