@@ -106,9 +106,7 @@ function hk_navigation() {
 		echo "Du s&ouml;kte p&aring; " . $search . ".";
 	}
 	
-	//if (is_single()) {
-		
-	//}
+	
 
 	// if in tag
 	if ($tags != "") {
@@ -166,39 +164,19 @@ function hk_navigation() {
 				'taxonomy'           => 'category',
 				'walker'			 => $hk_cat_walker
 			);
+			
 			echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
+
 			echo "<ul class='parent'>"; 
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
-			if( function_exists('displayTagFilter') ){
+			if( function_exists('displayTagFilter') && !is_single() ){
 				displayTagFilter("tags");
 			}
 	
 		}
 		
-	}
-	
-	if (is_single())
-	{
-		echo '<div id="selected"><ul id="selected_filter">';
-		$categories_list = get_the_category();
-		$pre_parent = 0;
-		if (!empty($categories_list)) : foreach ( $categories_list as $list):
-			if ($pre_parent == $list->category_parent) { $class = "children"; }
-			else { $class = "";}
-			echo "<li class='link cat $class'>";
-				echo "<a href='".get_category_link($list->term_id)."'>" . $list->name . "</a>";
-			echo "</li>";
-			$pre_parent = $list->term_id;
-		endforeach; endif; // End if categories
-
-		$tags_list = get_the_terms(get_the_ID(),"post_tag");
-		if (!empty($tags_list)) : foreach ( $tags_list as $list):
-			echo "<li class='link tag'><a href='".get_tag_link($list->term_id)."'>" . $list->name . "</a></li>";
-		endforeach; endif; // End if tags
-	
-		echo "</ul></div>";
 	}
 	
 	echo "</nav>&nbsp;</aside>";

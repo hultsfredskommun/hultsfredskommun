@@ -410,7 +410,6 @@ function readMoreToggle(el){
 					// get plugin WP Lightbox 2 by Pankaj Jha to work with dynamical click
 					var haveConf = (typeof JQLBSettings == 'object');
 					if (haveConf && !$(this).attr("jqlbloaded")) {
-						alert("load");
 						$(this).attr("jqlbloaded",true);
 						if(haveConf && JQLBSettings.resizeSpeed) {
 							JQLBSettings.resizeSpeed = parseInt(JQLBSettings.resizeSpeed);
@@ -710,9 +709,13 @@ $(document).ready(function(){
 	});
 	
 	/* add action to read-more toggle */
-	$("#primary").find('article').each(function(){
-		if (!$(this).parents('.home').length) {
+	$("#primary").find("article").each(function(){
+		if (!$(this).parents(".home").length) {
 			setArticleActions($(this));
+		} else {
+			$(this).unbind("click").click(function() {
+				location.href = $(this).find(".entry-title a").attr("href");
+			});
 		}
 	});
 	// contact popup
