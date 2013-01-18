@@ -291,7 +291,9 @@ function custom_upload_mimes ( $existing_mimes=array() ) {
 	$existing_mimes['xls'] = 'application/msexcel';
 	$existing_mimes['xlsx'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 	$existing_mimes['ppt'] = 'application/vnd.ms-powerpoint';
+	$existing_mimes['pot'] = 'application/vnd.ms-powerpoint';
 	$existing_mimes['pptx'] = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+	$existing_mimes['potx'] = 'application/vnd.openxmlformats-officedocument.presentationml.template';
 	if (current_user_can('manage_options')) {
 		$existing_mimes['exe'] = 'application/exe';
 	}
