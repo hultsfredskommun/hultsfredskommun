@@ -228,8 +228,8 @@ function hk_navigation() {
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
-			if( function_exists('displayTagFilter') && !is_single() ){
-				displayTagFilter("more-in-navigation");
+			if( function_exists('displayTagFilter') ){
+				displayTagFilter("more-in-navigation", "Visa bara inneh&aring;ll av typen");
 			}
 	
 		}
