@@ -106,10 +106,67 @@ function hk_navigation() {
 		echo "Du s&ouml;kte p&aring; " . $search . ".";
 	}
 	
-	
+	if (is_single()) {
+		/* get post first parents */
+		$menu_name = "primary";
+		$all_categories_object = get_the_category(get_the_ID());
+		$all_categories = array();
+		foreach ($all_categories_object as $item) { $all_categories[] = $item->cat_ID; }
+		$category_hierarchy = hk_get_parent_categories_from_id(get_the_ID(), $menu_name);
+		$nav_menu_top_parent = hk_getNavMenuId($category_hierarchy[0], $menu_name);
+		$nav_menu_sub_parent = hk_getNavMenuId($category_hierarchy[1], $menu_name);
+		$top_parent = $category_hierarchy[0];
+		$sub_parent = $category_hierarchy[1];
+		$category = $category_hierarchy[2];
+		$rest_categories = array();
+		if (!empty($all_categories) && !empty($category_hierarchy)) {
+			$rest_categories = array_diff($all_categories, $category_hierarchy);
+		}
+		
+		$hk_cat_walker = new hk_Category_Walker();
+		$args = array(
+			'orderby'            => 'name',
+			'order'              => 'ASC',
+			'style'              => 'list',
+			'hide_empty'         => 0,
+			'use_desc_for_title' => 1,
+			'child_of'           => $sub_parent,
+			'hierarchical'       => true,
+			'title_li'           => '',
+			'show_option_none'   => '',
+			'echo'               => 1,
+			'depth'              => 3,
+			'taxonomy'           => 'category',
+			'walker'			 => $hk_cat_walker,
+			'current_category'	 => $category
+		);
+		//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($category) . "</a>";
+
+		echo "<ul class='parent'>"; 
+		wp_list_categories( $args );
+		echo "</ul>"; 
+		//print_r($all_categories);
+		//print_r($category_hierarchy);
+		//print_r($rest_categories);
+		
+		if (!empty($rest_categories)) {
+			echo "<div class='more-in-navigation'><div class='nav-sub-title'>Artikeln ing&aring;r &auml;ven i kategorierna</div>";
+			echo "<ul id='more_categories'>";
+				foreach($rest_categories as $item) {
+					$cat = get_term( $item, "category");
+					if (!empty($cat)) {
+						echo "<li class='cat-item cat-item-" . $cat->term_id . "'><a href='" .
+						get_category_link( $cat->term_id ) . "' title='Visa allt om ".
+						$cat->name. "'>".
+						$cat->name. "</a></li>";
+					}
+				}
+			echo "</ul></div>"; 
+		}
+	}
 
 	// if in tag
-	if ($tags != "") {
+	else if ($tags != "") {
 		echo "<a class='dropdown-nav'>Etiketter</a>";
 
 		$hk_cat_walker = new hk_Category_Walker();
@@ -135,7 +192,7 @@ function hk_navigation() {
 		echo "</ul>";
 		
 		if( function_exists('displayTagFilter') ){
-			displayTagFilter("tags");
+			displayTagFilter("more-in-navigation", "Visa bara inneh&aring;ll av typen");
 		}
 	}
 
@@ -172,7 +229,7 @@ function hk_navigation() {
 			echo "</ul>"; 
 
 			if( function_exists('displayTagFilter') && !is_single() ){
-				displayTagFilter("tags");
+				displayTagFilter("more-in-navigation");
 			}
 	
 		}
@@ -360,7 +417,7 @@ class hk_Tag_Walker extends Walker_Category {
 
 
 // show tag filter list
-function displayTagFilter($class = "dropdown-tags", $show_heading = true) {
+function displayTagFilter($class = "dropdown-tags", $title_text = "Visa bara") {
 	global $default_settings;
 	if ($default_settings["show_tags"] != 0) :
 		echo "<div class='$class'>";
@@ -386,13 +443,12 @@ function displayTagFilter($class = "dropdown-tags", $show_heading = true) {
 			}
 		}
 
-		if ($show_heading) {
-			echo "<div class='toggle-tags'>";
-			if ($_REQUEST["tag"] == "") {
-				echo "Visa bara";
-			}
-			echo "</div>";
+		echo "<div class='toggle-tags nav-sub-title'>";
+		if ($_REQUEST["tag"] == "") {
+			echo $title_text;
 		}
+		echo "</div>";
+		
 		
 		$hk_tag_walker = new hk_Tag_Walker();
 		$args = array(

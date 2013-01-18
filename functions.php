@@ -665,6 +665,34 @@ function hk_getNavMenuId($cat_id, $menu_name) {
 	} 
 	return -1;
 }	
+// return top nav menu ids
+function hk_getTopNavMenuIdArray($menu_name) {
+	$menu_array = array();
+	if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
+		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+		$menu_items = wp_get_nav_menu_items($menu->term_id);
+		foreach ( (array) $menu_items as $key => $menu_item ) {
+			if ($menu_item->menu_item_parent == 0) {
+				$menu_array[] = $menu_item->object_id;
+			}
+		}
+	} 
+	return $menu_array;
+}	
+// return sub nav menu ids
+function hk_getSubNavMenuIdArray($topmenu, $menu_name) {
+	$menu_array = array();
+	if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
+		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+		$menu_items = wp_get_nav_menu_items($menu->term_id);
+		foreach ( (array) $menu_items as $key => $menu_item ) {
+			if ($menu_item->menu_item_parent == $topmenu) {
+				$menu_array[] = $menu_item->object_id;
+			}
+		}
+	} 
+	return $menu_array;
+}	
 // return the top parent id found in the menu
 function hk_getTopMenuParent($cat) {
 	global $default_settings;
@@ -687,6 +715,67 @@ function hk_getChildrenIdArray($cat) {
 	}
 	return $retArray;
 }
+
+// get parents from post, returns array(topmenucategory, submenucategory, category)
+function hk_get_parent_categories_from_id($id, $menu_name) {
+	$categories_list = get_the_category($id);
+	
+	// get current posts top menus
+	$topparentsarr = array();
+	foreach($categories_list as $item) {
+		$parent = hk_getMenuTopParent($item->term_id);
+		if (!in_array($parent, $topparentsarr)) {
+			$topparentsarr[] = $parent;
+		}
+	}
+	
+	// get the first top menu
+	$parent_category = -1;
+	foreach(hk_getTopNavMenuIdArray($menu_name) as $item) {
+		if (in_array($item, $topparentsarr)) {
+			$parent_category = $item;
+			break;
+		}
+	}
+	
+	// get current posts sub menus from selected top menu
+	$subparentsarr = array();
+	foreach($categories_list as $item) {
+		$subparent = hk_getMenuParent($item->term_id);
+		if (!in_array($subparent, $subparentsarr)) {
+			$subparentsarr[] = $subparent;
+		}
+	}
+
+	// get first relevant sub menu
+	$sub_parent_category = -1;
+	foreach(hk_getSubNavMenuIdArray(hk_getNavMenuId($parent_category,$menu_name),$menu_name) as $item) {
+		if (in_array($item, $subparentsarr)) {
+			$sub_parent_category = $item;
+			break;
+		}
+	}
+	
+	// get child category if any
+	$category = -1;
+	foreach($categories_list as $item) {
+		if (hk_getMenuParent($item->cat_ID) == $sub_parent_category && $item->cat_ID != $sub_parent_category) {
+			$category = $item->cat_ID;
+			break;
+		}
+	}
+
+	return array($parent_category, $sub_parent_category, $category);
+}
+
+// get parents from category, returns array(topmenucategory, submenucategory, the category)
+function hk_get_parent_categories_from_cat($cat) {
+	$parent_category = hk_getMenuTopParent($cat);
+	$sub_parent_category = hk_getMenuParent($cat);
+	return array($parent_category, $sub_parent_category, $cat);
+}
+
+
 
 // submenu walker to get second row of top menu
 class submenu_walker_nav_menu extends Walker_Nav_Menu {
@@ -720,8 +809,11 @@ class submenu_walker_nav_menu extends Walker_Nav_Menu {
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
 		  
+			// current category classes
+			$cat_class = ($item->object_id == $args->current_category) ? "current-menu-item" : "";
+
 			// build html
-			$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . '">';
+			$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . ' ' . $cat_class . '">';
 		  
 			// link attributes
 			$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
@@ -749,8 +841,68 @@ class submenu_walker_nav_menu extends Walker_Nav_Menu {
 		}
 	
 	}  
-
 }
+
+// topmenu walker to get second row of top menu
+class topmenu_walker_nav_menu extends Walker_Nav_Menu {
+	  
+	// add classes to ul sub-menus
+	function start_lvl( &$output, $depth ) {
+		// depth dependent classes
+		$output .= "";
+	}
+	function end_lvl( &$output, $depth ) {
+		$output .= "";
+	}  
+	// add main/sub classes to li's and links
+	function start_el( &$output, $item, $depth, $args ) {
+		global $wp_query;
+		
+		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
+	  
+		// depth dependent classes
+		$depth_classes = array(
+			( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
+			( $depth >=2 ? 'sub-sub-menu-item' : '' ),
+			( $depth % 2 ? 'menu-item-odd' : 'menu-item-even' ),
+			'menu-item-depth-' . $depth
+		);
+		$depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
+	  
+		// passed classes
+		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
+	  
+		// current category classes
+		$cat_class = ($item->object_id == $args->current_category) ? "current-menu-item" : "";
+
+		// build html
+		$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . ' ' . $cat_class . '">';
+	  
+		// link attributes
+		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+		$attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
+	  
+		$item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
+			$args->before,
+			$attributes,
+			$args->link_before,
+			apply_filters( 'the_title', $item->title, $item->ID ),
+			$args->link_after,
+			$args->after
+		);
+	  
+		// build html
+		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+	}
+	function end_el( &$output, $item, $depth, $args ) {
+		$output .= "</li>";
+	}  
+}
+
 
 
 

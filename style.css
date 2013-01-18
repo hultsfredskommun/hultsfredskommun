@@ -342,8 +342,8 @@ body, input, textarea
 #nav ul.parent li a:hover,
 #nav ul.parent li a:focus,
 #selected_filter li > a,
-.tags a:hover,
-.tags a:focus,
+.more-in-navigation a:hover,
+.more-in-navigation a:focus,
 .closeButton.bottom a,
 .dropdown-menu,
 .dropdown-nav,
@@ -430,8 +430,8 @@ hr/*,
 #menu .sub-menu,
 .slideshow article .text-area .text-content .transp-background,
 .selected-tags,
-.tags a:hover,
-.tags a:focus,
+.more-in-navigation a:hover,
+.more-in-navigation a:focus,
 .closeButton.bottom,
 #selected_filter li > a,
 #nav .children .current-cat > a,
@@ -522,7 +522,7 @@ a:active ,
 	padding-bottom: 2px;
 	margin-bottom: 6px;
 }
-.tags,
+.more-in-navigation,
 .more-from-heading {
 	border-top: 4px solid #E6E6E6;
 }
@@ -582,8 +582,8 @@ a:active ,
 
 #selected_filter a,
 .selected-tags,
-.tags a:hover,
-.tags a:focus,
+.more-in-navigation a:hover,
+.more-in-navigation a:focus,
 #nav ul.parent li a:hover,
 #nav ul.parent li a:focus {
 	border-radius: 2px; 
@@ -1286,7 +1286,7 @@ ul.main-sub-menu li a:hover,
 	padding: 4px 0;
 	position: relative;
 }
-#nav .tags li {
+#nav .more-in-navigation li {
 	padding: 4px 0;
 }
 #selected_filter li {
@@ -1379,7 +1379,7 @@ ul.main-sub-menu li a:hover,
 #viewmode_titles {
 }
 
-.tags {
+.more-in-navigation {
 	margin-top: 20px;
 	padding-top: 20px;
 }
@@ -1387,7 +1387,7 @@ ul.main-sub-menu li a:hover,
 	display: inline-block;
 	margin: 4px 8px;
 }
-.tags a.selected-tags {
+.more-in-navigation a.selected-tags {
 	display: inline-block;
 	margin: 4px 0px;
 }
@@ -1395,7 +1395,7 @@ ul.main-sub-menu li a:hover,
 	float: left;
 }
 .dropdown-tags a.selected-tags .icon,
-.tags a.selected-tags .icon {
+.more-in-navigation a.selected-tags .icon {
 	background-image: url("images/icons/delete-3-white.svg");
 	float:right;
 	background-size: 100%;
@@ -1404,8 +1404,8 @@ ul.main-sub-menu li a:hover,
 }
 .dropdown-tags a.selected-tags .icon:hover,
 .dropdown-tags a.selected-tags .icon:focus,
-.tags a.selected-tags .icon:hover,
-.tags a.selected-tags .icon:focus {
+.more-in-navigation a.selected-tags .icon:hover,
+.more-in-navigation a.selected-tags .icon:focus {
 	background-image: url("images/icons/delete-2-white.svg");
 	background-size: 100%;
 }
@@ -1427,8 +1427,10 @@ ul.main-sub-menu li a:hover,
 .dropdown-tags {
 	margin-left: 8px;
 }
-.toggle-tags {
+.dropdown-tags .nav-sub-title {
 	cursor: pointer;
+}
+.nav-sub-title {
 	margin-left: 4px;
 }
 .selected-tags {
@@ -1445,7 +1447,7 @@ ul.main-sub-menu li a:hover,
 	float: left;
 }
 .dropdown-tags .tags-wrapper,
-.tags .tags-wrapper
+.more-in-navigation .tags-wrapper
 {
 	margin: 0;
 }
@@ -3033,7 +3035,7 @@ p.comment-form-comment {
 		color: #fff;
 	}
 	#nav ul.parent,
-	.tags{
+	.more-in-navigation {
 		display: none;
 	}
 	#menu ul {

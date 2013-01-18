@@ -285,7 +285,9 @@ add_filter('post_mime_types', 'filterPostMimeTypes');
 function custom_upload_mimes ( $existing_mimes=array() ) {
 	// add your extension to the array
 	$existing_mimes['doc'] = 'application/msword';
+	$existing_mimes['dot'] = 'application/msword';
 	$existing_mimes['docx'] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+	$existing_mimes['dotx'] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.template';
 	$existing_mimes['xls'] = 'application/msexcel';
 	$existing_mimes['xlsx'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 	$existing_mimes['ppt'] = 'application/vnd.ms-powerpoint';
