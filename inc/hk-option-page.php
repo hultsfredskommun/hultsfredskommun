@@ -153,8 +153,10 @@ function hk_theme_options_do_page() {
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
 
-
-
+			<?php /* hook to be able to add options from child theme */ 
+			echo do_action('hk_options_hook', $options); ?>			
+			
+			<h3>Anv&auml;nds inte just nu:</h3>
 			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
 				<tr valign="top">
 					<th style="width: 120px">Namn:</td>

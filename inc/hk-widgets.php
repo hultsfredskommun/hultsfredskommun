@@ -223,19 +223,15 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		parent::__construct(
 	 		'HK_firstpagecontent', // Base ID
 			'HK f&ouml;rstasida', // Name
-			array( 'description' => "Widget som visar huvudinneh&aring; som aktuellt och nyheter kopplat till aktiv kategori samt protokoll och drift i flikar" ) // Args
+			array( 'description' => "Widget som visar huvudinneh&aring; som aktuellt och nyheter kopplat till aktiv kategori samt protokoll i flikar" ) // Args
 		);
-		$this->vars["show_drift"] = "";
 		$this->vars["show_protocol"] = "";
 		$this->vars["num_aktuellt"] = "4";
 		$this->vars["num_news"] = "10";
 		$this->vars["num_protocol"] = "4";
 	}
 
- 	public function form( $instance ) {
-		if ( isset( $instance[ 'show_drift' ] ) ) {	$show_drift = $instance[ 'show_drift' ];
-		} else { $show_drift = $this->vars['show_drift']; }
-		
+ 	public function form( $instance ) {		
 		if ( isset( $instance[ 'show_protocol' ] ) ) {	$show_protocol = $instance[ 'show_protocol' ];
 		} else {$show_protocol = $this->vars['show_protocol']; }
 		
@@ -250,33 +246,11 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 
 		$options = get_option('hk_theme');
-		$hk_drift_rss = $options["hk_drift_rss"];
-		$hk_drift_days_new  = ($options["hk_drift_days_new"] != "")?$options["hk_drift_days_new"]:"1";
-		$hk_drift_num  = ($options["hk_drift_num"] != "")?$options["hk_drift_num"]:"10";
 
 		?>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'show_protocol' ); ?>">Visa protokollflik i kategorier (exempel 23,42,19).</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'show_protocol' ); ?>" name="<?php echo $this->get_field_name( 'show_protocol' ); ?>" type="text" value="<?php echo esc_attr( $show_protocol); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'show_drift' ); ?>">Visa driftflik i kategorier (exempel 23,42,19).</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'show_drift' ); ?>" name="<?php echo $this->get_field_name( 'show_drift' ); ?>" type="text" value="<?php echo esc_attr( $show_drift); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'hk_drift_rss' ); ?>">URL till drift RSS.</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'hk_drift_rss' ); ?>" name="<?php echo $this->get_field_name( 'hk_drift_rss' ); ?>" type="text" value="<?php echo esc_attr( $hk_drift_rss); ?>" />
-		</p>
-		<p>
-			<?php echo $options["hk_drift_log"]; ?>
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'hk_drift_num' ); ?>">Antal drift.</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'hk_drift_num' ); ?>" name="<?php echo $this->get_field_name( 'hk_drift_num' ); ?>" type="text" value="<?php echo esc_attr( $hk_drift_num); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'hk_drift_days_new' ); ?>">Antal dagar drift &auml;r ny.</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'hk_drift_days_new' ); ?>" name="<?php echo $this->get_field_name( 'hk_drift_days_new' ); ?>" type="text" value="<?php echo esc_attr( $hk_drift_days_new); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'num_aktuellt' ); ?>">Antal inl&auml;gg i aktuellt.</label> 
@@ -296,19 +270,12 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		$instance['show_drift'] = strip_tags( $new_instance['show_drift'] );
 		$instance['show_protocol'] = strip_tags( $new_instance['show_protocol'] );
 		$instance['num_aktuellt'] = strip_tags( $new_instance['num_aktuellt'] );
 		$instance['num_news'] = strip_tags( $new_instance['num_news'] );
 		$instance['num_protocol'] = strip_tags( $new_instance['num_protocol'] );
 		$instance['num_days_new'] = strip_tags( $new_instance['num_days_new'] );
 		
-		$options = get_option('hk_theme');
-		$options["hk_drift_rss"] = strip_tags( $new_instance['hk_drift_rss'] );
-		$options["hk_drift_days_new"] = strip_tags( $new_instance['hk_drift_days_new'] );
-		$options["hk_drift_num"] = strip_tags( $new_instance['hk_drift_num'] );
-		update_option("hk_theme", $options);
-
 		return $instance;
 	}
 
@@ -322,18 +289,14 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$all_categories = hk_getChildrenIdArray($cat);
 		$all_categories[] = $cat;
 		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && in_array(get_query_var("cat"), split(",",$instance["show_protocol"]));
-		$showdrift = in_array(get_query_var("cat"), split(",",$instance["show_drift"])) && $options["hk_drift"] != "";
 		?>
 
 	<div id="content" role="main">
-		<?php if ($showdrift || $showprotocol) : ?>
+		<?php if ($showprotocol) : ?>
 		<ul class="post_tabs_title">
 			<li title="Aktuellt"><a href="#newscontent">Aktuellt</a></li>
 			<?php if ($showprotocol) : ?>
 			<li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser &amp; handlingar</a></li>
-			<?php endif; ?>
-			<?php if ($showdrift) : ?>
-			<li title="Driftst&ouml;rning"<?php echo ($options["hk_drift_has_new"] != "")?" class='has_new'":""; ?>><a href="#driftcontent">Driftst&ouml;rning</a></li>
 			<?php endif; ?>
 		</ul>
 		<?php endif; ?>
@@ -441,12 +404,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 			<div class="clear"></div>
 		</div>	
 		<?php endif; ?>
-		<?php if ($showdrift) : ?>
-		
-		<div id="driftcontent">
-			<?php echo $options["hk_drift"];?>
-		</div>
-		<?php endif; ?>
 		
 	</div><!-- #content -->
 <?php
@@ -457,70 +414,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 
 
-/*
- * DRIFTINFO RSS CRONJOB
- */
-function hk_drift() {
-	$options = get_option('hk_theme');
-	$hk_drift_check_time = time();
-	$options["hk_drift_check_time"] = $hk_drift_check_time;
-	
-	$hk_drift_days_new  = ($options["hk_drift_days_new"] != "")?$options["hk_drift_days_new"]:"1";
-	$hk_drift_num  = ($options["hk_drift_num"] != "")?$options["hk_drift_num"]:"10";
-	
-	$log = "Ingen drift kollad.";
-	$drift = "";
-	
-	if ($options['hk_drift_rss'] != "") :
-		$log = "Kollade rss " . date("d M H:i:s", strtotime("now"));
-		$url = $options['hk_drift_rss'];
-		$rss =  simplexml_load_file($url);
-		$has_new = "";
-		if (count($rss->channel->item) > 0 ) {
-			$log .= "<br>Hittade " . count($rss->channel->item) . " i RSS fl&ouml;det.";
-			$baseurl = $rss->channel->link;
-			$newrsstime = strtotime("-" . $hk_drift_days_new . " days");
-			$count = 0;
-			foreach ($rss->channel->item as $item)
-			{
-				if ($hk_drift_num <= $count++) break;
-				$time = strtotime($item->pubDate);
-				$newclass = "";
-				if ($time > $newrsstime) { 
-					$has_new = "true";
-					$newclass = " isnew";
-				}
-				$drift .= "<div class='entry-wrapper$newclass'><span class='time'>".
-				hk_nicedate($time) . "</span><a title='" . $item->description
-				 . "' href='". $baseurl . $item->link
-				 . "' target='_blank'>" . $item->title
-				 . "</a></div>";
-			} 
-		}	
-	endif;
-	$options["hk_drift_log"] = $log;
-	$options["hk_drift"] = $drift;
-	$options["hk_drift_has_new"] = $has_new;
-
-	update_option("hk_theme", $options);
-}
-add_action("hk_drift_event", "hk_drift");
-
-function hk_drift_activation() {
-	$options = get_option('hk_theme');
-	if ($options['hk_drift_rss'] != "") {
-		if ( !wp_next_scheduled( 'hk_drift_event' ) ) {
-			wp_schedule_event( time(), 'hk_quarter', 'hk_drift_event');
-		}
-	}
-	else
-	{
-		if ( wp_next_scheduled( 'hk_drift_event' ) ) {
-			wp_clear_scheduled_hook('hk_drift_event');
-		}
-	}
-}
-add_action('wp', 'hk_drift_activation');
 
 
 

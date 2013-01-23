@@ -105,7 +105,8 @@ footer, header, hgroup, menu, nav, section {
 }
 .home #primary .post .content-wrapper ,
 .more-from-heading,
-.home .contact-area {
+.home .contact-area,
+.post .entry-meta {
 	width: 100%;
 }
 .home #primary .post .side-content,
@@ -270,15 +271,11 @@ h6
 	padding-top: 10px;
 	display: block;
 }
-#driftcontent .entry-wrapper {
-	padding: 2px 10px;
- }
 #news .entry-wrapper {
 	padding: 2px 0px;
 }
 #aditrowidget .time,
 #workwidget .entry-wrapper .time,
-#driftcontent .entry-wrapper .time,
 #news .entry-wrapper .time {
 	display: block;
 }
@@ -351,6 +348,9 @@ body, input, textarea
 #menu ul.sub-menu li.current-menu-item > a,
 #footer-sidebar a,
 .ui-tabs li.ui-state-default:hover > a,
+#wp_feedcontent,
+#wp_feedcontent a,
+#wp_feedcontent h3,
 .important-widget a,
 .important-widget,
 .important-widget h3,
@@ -444,6 +444,7 @@ hr/*,
 }
 
 /* red background */
+#wp_feedcontent,
 .important-widget,
 .important-widget h3,
 #comment-side-tab a {
@@ -1647,6 +1648,18 @@ img {
 
 /* =firstpage
 ----------------------------------------------- */
+/* wp feed */
+#wp_feedcontent {
+	border-radius: 2px;
+	margin: 0 10px 10px;
+}
+#wp_feedcontent h3 {
+	margin-left: 10px;
+}
+#wp_feedcontent .time {
+	display: block;
+}
+
 /* image widget plugin */
 .widget.widget_sp_image {
 	margin: 0 10px;
@@ -1667,10 +1680,18 @@ img {
 
 /* =articel footer - in right column
 ----------------------------------------------- */
-.side-content, .content-wrapper {
+.full .single-content .side-content,
+.full .more-content .side-content {
+	display: none;
+}
+
+.side-content, 
+.content-wrapper,
+.entry-meta {
 	float:left;
 }
 .side-content {
+	float: right;
 	position: relative;
 }
 .hover-side-content {
@@ -1738,9 +1759,8 @@ a.map_link {
 /* =Content
 ----------------------------------------------- */
 .post footer { 
-	padding: 10px 0 0;
+	padding: 10px 0 10px;
 	margin: 20px 0 0;
-	clear: both;
 }
 .entry-title {
 	clear: none;
@@ -1976,6 +1996,7 @@ article:last-child { margin-bottom: 0 }
 	width: 100%;
 	height: auto;
 }
+.entry-meta .footer-wrapper,
 .entry-wrapper {
 	padding: 2px 10px;
 }
@@ -2388,7 +2409,7 @@ article:last-child { margin-bottom: 0 }
 	text-align: left;
 }
 #footer-sidebar li {
-	margin: .8em;
+	margin: 2px;
 }
 #footer-image {
 	width: 100%;
@@ -2426,6 +2447,10 @@ article:last-child { margin-bottom: 0 }
 #footer-sidebar.four .footer-widgets.second,
 #footer-sidebar.four .footer-widgets.third {
 	margin-right: 4%;
+}
+.footer-widgets .widget ul,
+.footer-widgets .widget .entry-wrapper {
+	margin-left: 0px;
 }
 
 
@@ -2915,6 +2940,20 @@ p.comment-form-comment {
 		display: none;
 	}
 	
+	/* aside content */
+	.full .single-content .side-content,
+	.full .more-content .side-content {
+		display: block;
+		width: 100%;
+	}
+	.full .single-content .side-content .box,
+	.full .more-content .side-content .box {
+		border-left: 0;
+	}
+	.full .side-content,
+	article.single .side-content {
+		display: none;
+	}
 
 	/* Simplify the basic layout */
 	#main #content {
@@ -2976,11 +3015,7 @@ p.comment-form-comment {
 	}
 
 }
-/*
-//
-//Driftinformation ska väl enbart synas på invånare?
-//  remove complete adress in contact and article href. Only relative is needed!!
-*/
+
 /* SMALL */
 
 @media (max-width: 650px) {

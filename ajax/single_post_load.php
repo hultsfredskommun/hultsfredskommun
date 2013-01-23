@@ -9,7 +9,7 @@
 	if ($post) : 
 		setup_postdata($post);
 		
-		//inc view-count
+		// count views of post
 		if( function_exists('hk_process_postviews') ){
 			hk_process_postviews();
 		}
