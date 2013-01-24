@@ -57,7 +57,7 @@
 				<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
 					<?php $link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
 						$link_name = get_the_title(get_sub_field('hk_related_file')); ?>
-					<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Ladda ner dokument"><div class="icon"<img src="<?php hk_icon_path(); ?>/inbox.svg" alt="Ladda ner dokument" />></div></a>
+					<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Ladda ner dokument"><div class="icon"><img src="<?php hk_icon_path(); ?>/inbox.svg" alt="Ladda ner dokument" /></div></a>
 						<a target="_blank" href="<?php echo $link; ?>" title="<?php echo get_sub_field('hk_related_file_description'); ?>"><?php echo $link_name; ?></a>
 					</li>			 
 				<?php endif; ?> 
