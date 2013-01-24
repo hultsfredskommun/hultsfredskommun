@@ -274,8 +274,6 @@ h6
 #news .entry-wrapper {
 	padding: 2px 0px;
 }
-#aditrowidget .time,
-#workwidget .entry-wrapper .time,
 #news .entry-wrapper .time {
 	display: block;
 }
@@ -303,7 +301,7 @@ h6
 
 /* link color */
 a {
-	color: #007396;
+	color: #00519E;
 }
 a:focus {
 	color: orange;
@@ -348,9 +346,9 @@ body, input, textarea
 #menu ul.sub-menu li.current-menu-item > a,
 #footer-sidebar a,
 .ui-tabs li.ui-state-default:hover > a,
-#wp_feedcontent,
-#wp_feedcontent a,
-#wp_feedcontent h3,
+.widget_hk_wp_feed_rss_widget,
+.widget_hk_wp_feed_rss_widget a,
+.widget_hk_wp_feed_rss_widget h3,
 .important-widget a,
 .important-widget,
 .important-widget h3,
@@ -444,7 +442,7 @@ hr/*,
 }
 
 /* red background */
-#wp_feedcontent,
+.widget_hk_wp_feed_rss_widget,
 .important-widget,
 .important-widget h3,
 #comment-side-tab a {
@@ -1207,7 +1205,8 @@ ul.main-menu li:hover .sub-menu
 ul.main-menu li a,
 ul.main-sub-menu li a,
 #topmenu nav ul li a, 
-#sort-order ul li a {
+#sort-order ul li a,
+ul.main-menu li .textwidget {
 	display: block;
 	height: 100%;
 	margin: 8px;
@@ -1250,6 +1249,9 @@ ul.main-sub-menu li a:hover,
 	padding-top: .20em;
 	font-weight: bold;
 	text-align: center;
+}
+#menu ul li.right-nav-menu-item {
+	float: right;
 }
 
 /* =menu dropdown
@@ -1649,14 +1651,14 @@ img {
 /* =firstpage
 ----------------------------------------------- */
 /* wp feed */
-#wp_feedcontent {
+.widget_hk_wp_feed_rss_widget {
 	border-radius: 2px;
 	margin: 0 10px 10px;
 }
-#wp_feedcontent h3 {
+.widget_hk_wp_feed_rss_widget h3 {
 	margin-left: 10px;
 }
-#wp_feedcontent .time {
+.widget_hk_wp_feed_rss_widget .time {
 	display: block;
 }
 
@@ -1670,12 +1672,14 @@ img {
 .widget.widget_sp_image img {
 	width: 100%;
 }
+
 /* aditroreqruit plugin */
-#aditrowidget.shortcode .entry-wrapper {
-	padding: 2px 0px;
+.widget_hk_aditro_rss_widget .time {
+	display: block;
 }
-#aditrowidget .entry-content {
-	padding-bottom: 10px;
+
+.shortcode.widget_hk_aditro_rss_widget .entry-wrapper {
+	padding: 2px 0px;
 }
 
 /* =articel footer - in right column
@@ -2342,11 +2346,28 @@ article:last-child { margin-bottom: 0 }
 }
 
 
-.contact-wrapper .icon {
+/*.contact-wrapper .icon {
 	background-image: url("images/icons/user-4.svg");
 	background-size: 100%;
 	
+}*/
+.editlink .icon,
+.print .icon,
+.read .icon,
+.friend .icon,
+.helpus .icon,
+.related_link .icon,
+.related_page .icon,
+.related_file .icon,
+.contact-wrapper .icon {
+	background-image: none;
+	background-size: 100%;	
 }
+.icon img {
+	width: 100%;
+	height: 100%;
+}
+/*
 .related_page .icon {
 	background-image: url("images/icons/paragraph-justify-2.svg");
 	background-size: 100%;
@@ -2378,7 +2399,7 @@ article:last-child { margin-bottom: 0 }
 .helpus .icon {
 	background-image: url("images/icons/settings-3.svg");
 	background-size: 100%;
-}
+}*/
 
 
 /* =Footer

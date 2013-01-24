@@ -29,12 +29,6 @@
 						if ( get_post_type() != "attachment" ) : // if not an attachment
 						the_content();
 						endif;
-						
-						//embedded video
-						/*$embeddedvideo = get_post_custom_values('embedded_code');
-						if (isset($embeddedvideo)) : foreach ($embeddedvideo as $value) {
-							echo "<div class='video-container'>" . $value . "<br></div>";
-						} endif;*/
 					?>
 				</div><!-- .content -->
 			

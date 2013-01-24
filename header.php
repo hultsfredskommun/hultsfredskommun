@@ -178,7 +178,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 				$args = array(
 					'theme_location'	=> $menu_name, 
 					'container' 		=> '',							
-					'items_wrap' 		=> '<ul class="main-menu">%3$s<li class="clear"></li></ul>',
+					'items_wrap' 		=> '%3$s',
 					'before' 			=> '',
 					'after'				=> '',
 					'depth' 			=> 1, //$default_settings['num_levels_in_menu'],
@@ -188,7 +188,14 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 				if ($top_parent > 0) {
 					$args["current_category"] = $top_parent;
 				}
+				echo "<ul class='main-menu'>";
 				wp_nav_menu( $args ); 
+				if ( is_active_sidebar( 'right-top-menu-item-sidebar' ) ) { 
+					dynamic_sidebar( 'right-top-menu-item-sidebar' ); 
+				}
+
+				
+				echo "<li class='clear'></li></ul>";
 				
 				
 				if ($nav_menu_sub_parent > 0) {

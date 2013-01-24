@@ -1,4 +1,6 @@
-
+.icon img {
+	display: none;
+}
 .white .icon {
 	background-image: url("images/sprite-white.png");
 }

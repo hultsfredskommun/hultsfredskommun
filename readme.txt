@@ -4,7 +4,7 @@
 
 == ABOUT HULTSFREDSKOMMUN THEME ==
 
-=== Added functionality ===
+=== Functionality ===
 * Added page type hk_contacts to view contacts
 * Added page type hk_slideshow to get slideshow functionality
  * shortcode to add [kontakt] to post
@@ -35,7 +35,9 @@
  * Footer-3
  * Footer-4 (dynamic width set depend of how many footers are active)
  * Important (placed on top of all pages)
-* hk_pre_search and hk_pre_ajax_search hooks
+ * Right-top-menu-item
+* hk_pre_search and hk_pre_ajax_search action hooks to add extra search in child theme
+* hk_icon_path action hook to set other icons in child theme
  
 === Optional functionality ===
 Use WP-PostViews by Lester 'GaMerZ' Chan to enable most viewed sort order in theme, is default sort order when enabled.

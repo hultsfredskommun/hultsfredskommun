@@ -776,6 +776,19 @@ function hk_get_parent_categories_from_cat($cat) {
 }
 
 
+// get iconpath, to be able to add hk_icon_path action hook in child theme
+function hk_icon_path() {
+	echo hk_get_icon_path();
+}
+function hk_get_icon_path() {
+	if (has_filter( "hk_icon_path")) {
+		return apply_filters("hk_icon_path" , "");
+	}
+	else {
+		return get_template_directory_uri() . "/images/icons";
+	}
+}
+
 
 // submenu walker to get second row of top menu
 class submenu_walker_nav_menu extends Walker_Nav_Menu {

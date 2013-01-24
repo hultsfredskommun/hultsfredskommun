@@ -92,6 +92,17 @@ function hk_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
+	
+	register_sidebar( array(
+		'name' => 'H&ouml;gerst&auml;ld i toppmeny',
+		'id' => 'right-top-menu-item-sidebar',
+		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i toppmenyn',
+		'before_widget' => '<li id="%1$s" class="right-nav-menu-item %2$s">',
+		'after_widget' => "</li>",
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	
 }
 add_action( 'widgets_init', 'hk_widgets_init' );
 ?>
