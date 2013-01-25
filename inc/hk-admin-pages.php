@@ -5,8 +5,7 @@
 function change_role_caps() {
 	$role = get_role( 'administrator' ); 
 	$role->add_cap( 'unfiltered_html' ); 
-	$role->remove_cap('manage_links');
-
+	
 	$role = get_role( 'editor' ); 
 	$role->add_cap( 'unfiltered_html' );
 	$role->remove_cap('manage_categories');
@@ -141,25 +140,18 @@ function hk_review_mail() {
 	//define arguments for WP_Query()
 	$qargs = array(
 		'posts_per_page' => -1,
-        'post_status' => 'published', 
+        'post_status' => 'publish', 
 		'meta_key' => 'hk_next_review',  // which meta to query
-		'meta_value'   => strtotime("+1 week"),  // value for comparison
+		'meta_value'   => strtotime("+1 day"),  // value for comparison
 		'meta_compare' => '<',          // method of comparison
 		'meta_type' => 'numeric',
 		'orderby' => 'meta_value',
 		'order' => 'ASC',
 		'suppress_filters' => true );
-
-	// perform the query
-	//if (function_exists("hk_FilterOrder"))
-	//	remove_filter ('posts_orderby', 'hk_FilterOrder');
 	
 	$q = new WP_Query();
 	$q->query($qargs);
 	
-	//if (function_exists("hk_FilterOrder"))
-	//	add_filter ('posts_orderby', 'hk_FilterOrder');
-
 	// execute the WP loop
 	$log = "";
 	$maillist = Array();

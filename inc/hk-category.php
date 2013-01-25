@@ -53,7 +53,7 @@
 					else {
 						$args["post_type"] = array('post','attachment');
 					}
-					$args['post_status'] = 'all';		
+					$args['post_status'] = 'publish';		
 					
 					if ( !empty($cat) ) {
 						$args["category__and"] = $cat;
@@ -80,7 +80,7 @@
 					else {
 						$args["post_type"] = array('post','attachment');
 					}
-				$args['post_status'] = 'all';		
+				$args['post_status'] = 'publish';		
 
 				if ( !empty($sticky) || !empty($shownPosts)) {
 					$args['post__not_in'] = array_merge($sticky,$shownPosts);
@@ -116,7 +116,7 @@
 							else {
 								$args["post_type"] = array('post','attachment');
 							}
-							$args['post_status'] = 'all';		
+							$args['post_status'] = 'publish';		
 							$args['post__in'] = $sticky;
 							if ( !empty($tag_array) ) {
 								$args["tag_slug__in"] = $tag_array;
@@ -140,7 +140,7 @@
 						else {
 							$args["post_type"] = array('post','attachment');
 						}
-						$args['post_status'] = 'all';
+						$args['post_status'] = 'publish';
 						if ( !empty($sticky) || !empty($shownPosts)) {
 							$args['post__not_in'] = array_merge($sticky,$shownPosts);
 						}

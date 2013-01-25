@@ -151,6 +151,17 @@ if (!is_admin()) {
 			true
 		);
 	}
+	if ($options['readspeaker_id'] != "") {
+		wp_enqueue_script(
+			'readspeaker_js',
+			'http'.$s_when_https.'://f1.eu.readspeaker.com/script/6595/ReadSpeaker.js?cid=' . $options['readspeaker_id'] . '&pids=embhl,exp=',
+			array(),
+			'1.0',
+			true
+		);
+	}
+	
+	
 	wp_enqueue_script(
 		'google_map_js',
 		'http'.$s_when_https.'://maps.google.com/maps/api/js?sensor=false',
