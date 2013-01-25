@@ -627,6 +627,7 @@ article {
 	border: 1px solid #ccc;
 	border-top: 0;
 }
+.addthis_toolbox,
 .hover-side-content {
     box-shadow: 0 1px 4px rgba(100, 100, 100, 0.3);
 	-webkit-box-shadow: 0 1px 4px rgba(100, 100, 100, 0.3);
@@ -2479,7 +2480,7 @@ article:last-child { margin-bottom: 0 }
 }
 .footer-widgets .widget ul,
 .footer-widgets .widget .entry-wrapper {
-	margin-left: 0px;
+	padding-left: 0px;
 }
 
 
