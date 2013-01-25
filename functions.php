@@ -141,7 +141,16 @@ add_action( 'pre_get_posts', 'hk_exclude_category' );
  * add theme javascript file and needed jquery 
  */
 if (!is_admin()) {
-
+	
+	if ($options['addthis_pubid'] != "") {
+		wp_enqueue_script(
+			'addthis_js',
+			'http'.$s_when_https.'://s7.addthis.com/js/300/addthis_widget.js#pubid='.$options['addthis_pubid'],
+			array(),
+			'1.0',
+			true
+		);
+	}
 	wp_enqueue_script(
 		'google_map_js',
 		'http'.$s_when_https.'://maps.google.com/maps/api/js?sensor=false',

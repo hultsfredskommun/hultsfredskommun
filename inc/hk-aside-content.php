@@ -1,6 +1,7 @@
 
 <aside class="side-content">
-	<?php $count = 0; ?>
+	<?php $count = 0; 
+	$options = get_option("hk_theme"); ?>
 	<?php if( function_exists("get_field") && get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
 	<div class="box top contacts summary">
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
@@ -78,7 +79,17 @@
 		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line full'><div class='icon'><img src='" . hk_get_icon_path() . "/pencil.svg' alt='Editera' /></div>", "</div>" ); ?>
 		<div class="print tool-line full"><div class="icon"><img src="<?php hk_icon_path(); ?>/print.svg" alt="Skriv ut" /></div><a class="print" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Funktionen kommer senare">Skriv ut</a></div>
 		<div class="read tool-line full"><div class="icon"><img src="<?php hk_icon_path(); ?>/audio-high.svg" alt="L&auml;s upp artikel" /></div><a class="read" title="Funktionen kommer senare">L&auml;s upp artikel</a></div>
-		<div class="friend tool-line full"><div class="icon"><img src="<?php hk_icon_path(); ?>/speech-bubble-left-4.svg" alt="Tipsa en v&auml;n" /></div><a class="read" title="Funktionen kommer senare">Tipsa</a></div>
+		<?php if ($options['addthis_pubid'] != "") : ?>
+		<div class="friend tool-line full"><div class="icon"><img src="<?php hk_icon_path(); ?>/speech-bubble-left-4.svg" alt="Tipsa en v&auml;n" /></div><a class="friend" href="#" title="Tipsa n&aring;gon om denna sida">Tipsa</a></div>
+		<div class="addthis full">
+			<div class="addthis_toolbox" addthis:url="http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>" addthis:title="<?php the_title(); ?>" addthis:description="Kolla den h&auml;r sidan.">
+				<a class="addthis_button_email"></a>
+				<a class="addthis_button_facebook"></a>
+				<a class="addthis_button_twitter"></a>
+				<a class="addthis_button_compact"></a>
+			</div>
+		</div>
+		<?php endif; ?>
 		<div class="helpus tool-line full"><div class="icon"><img src="<?php hk_icon_path(); ?>/settings-3.svg" alt="Hj&auml;lp oss bli b&auml;ttre" /></div><?php comments_popup_link('Hj&auml;lp oss!','Hj&auml;lp oss!','Hj&auml;lp oss!','','Hj&auml;lp oss!'); ?></div>
 	</div>
 	

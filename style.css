@@ -2367,6 +2367,14 @@ article:last-child { margin-bottom: 0 }
 	width: 100%;
 	height: 100%;
 }
+.addthis_toolbox {
+	display: none;
+	clear: both;
+}
+.addthis a {
+	float: left;
+	margin: 10px;
+}
 /*
 .related_page .icon {
 	background-image: url("images/icons/paragraph-justify-2.svg");

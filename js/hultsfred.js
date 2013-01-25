@@ -441,6 +441,7 @@ function readMoreToggle(el){
 							strings: (haveConf && typeof JQLBSettings.help == 'string') ? JQLBSettings : default_strings
 						});	
 					}
+					
 					//add close-button top right corner
 					var closea = $('<div>').addClass('closeButton top close').html("<div class='icon'></div><a href='#'>Visa mindre</a>").unbind("click").click(function(ev){
 						ev.preventDefault();
@@ -467,7 +468,7 @@ function readMoreToggle(el){
 			var title = $(entry_title).find("a").html().replace("&amp;","&") + " | " + blog_title;
 			var url = $(entry_title).find("a").attr("href");
 			//call pushHistory
-			pushHistory(title, url);
+			//pushHistory(title, url);
 			//History.replaceState(null, title, url);
 		}
 	}
@@ -637,6 +638,13 @@ $(document).ready(function(){
 	},function() {	
 		$(".hover-side-content").remove();
 	});
+	
+	/* add AddThis onclick */
+	$("article .side-content").find(".tool-line.friend").unbind("click").click(function(ev) {
+		ev.preventDefault();
+		$(this).next().find(".addthis_toolbox").fadeToggle();
+	});
+
 	/**
 	 * view-modes 
 	 */

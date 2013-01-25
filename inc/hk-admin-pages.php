@@ -594,7 +594,7 @@ if (is_admin()) {
 	add_action( 'add_meta_boxes', 'hk_change_meta_boxes' );
 	add_action( 'admin_menu', 'change_post_menu_label' );
 }
-/* remove unwanted fields from media library items */
+
 function remove_media_upload_fields( $form_fields, $post ) {
     //unset( $form_fields['image-size'] );
     unset( $form_fields['post_excerpt'] );
@@ -711,10 +711,15 @@ add_shortcode( 'karta', 'hk_map_shortcode_func' );
 
 
 /* add categories and tags to media */
-add_action('init', 'reg_tax');
-function reg_tax() {
-   register_taxonomy_for_object_type('category', 'attachment');
-   register_taxonomy_for_object_type('post_tag', 'attachment');
+add_action('init', 'hk_init');
+function hk_init() {
+	/* register category and tags for attachment */
+	register_taxonomy_for_object_type('category', 'attachment');
+	register_taxonomy_for_object_type('post_tag', 'attachment');
+
+	/* remove unwanted fields from media library items */
+	//remove_post_type_support("attachment","content");
+
 }
 
 
