@@ -11,6 +11,7 @@ get_header(); ?>
 	<div id="top-nav-sidebar">
 		<?php dynamic_sidebar('nav-sidebar'); ?>
 	</div>
+	<aside id='nav' role='navigation'>&nbsp;</aside>
 
 	<div id="primary">
 		<div id="content" role="main">
@@ -19,14 +20,8 @@ get_header(); ?>
 			<div class="content-wrapper">
 			<div class="summary-content">
 				<div class="entry-wrapper">
-					<h1 class="entry-title">H&auml;r finns ingenting</h1>
-					<div class="entry-content">
-						<p>Anv&aumlnd s&ouml;krutan f&ouml;r att hitta.</p>
-						<?php if(function_exists('get_most_viewed')) { ?>
-						<p>Eller v&auml;lj bland de mest bes&ouml;kta sidorna. </p>
-						<?php get_most_viewed('post'); } ?>
-						
-					</div>
+				<?php hk_nothing_found_navigation(); ?>
+
 				</div>
 			</div><!-- .summary-content -->
 			</div>

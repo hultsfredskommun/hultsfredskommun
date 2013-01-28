@@ -1656,12 +1656,9 @@ img {
 /* =firstpage
 ----------------------------------------------- */
 /* wp feed */
-.widget_hk_wp_feed_rss_widget {
+.widget.widget_hk_wp_feed_rss_widget {
 	border-radius: 2px;
 	margin: 0 10px 10px;
-}
-.widget_hk_wp_feed_rss_widget h3 {
-	margin-left: 10px;
 }
 .widget_hk_wp_feed_rss_widget .time {
 	display: block;

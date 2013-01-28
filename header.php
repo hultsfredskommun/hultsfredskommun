@@ -173,6 +173,11 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 				$top_parent = $category_hierarchy[0];
 				$sub_parent = $category_hierarchy[1];
 				$category = $category_hierarchy[2];
+			
+				if (!(($locations = get_nav_menu_locations()) && isset( $locations[$menu_name] ) && $locations[$menu_name] > 0 )) {
+					echo "<div class='important-widget'>&nbsp;Du m&aring;ste s&auml;tta huvudmeny under <i>Utseende -> Menyer</i>.</div>";
+				}
+
 				
 				$topwalker = new topmenu_walker_nav_menu();
 				$args = array(

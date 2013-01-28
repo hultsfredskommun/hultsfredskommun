@@ -556,7 +556,7 @@ $(document).ready(function(){
 	/**
 	 * Expand article if only one
 	 */
-	if ($('.archive #content').find("article").length == 1) {
+	if ($('.archive #content').find("article").length == 1 && $(this).parents(".home").length) {
 		readMoreToggle($('.archive #content').find("article .entry-title a"));
 	}
 

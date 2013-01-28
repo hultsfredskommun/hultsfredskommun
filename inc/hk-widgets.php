@@ -148,7 +148,7 @@ class HK_quickmenu extends WP_Widget {
 				<ul>
 					<?php while ( have_posts() ) : the_post(); ?>
 					<li>
-						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a> <?php the_date("","<span class='time'>","</span>"); ?>
+						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a> <?php echo get_the_date("","<span class='time'>","</span>"); ?>
 					</li>
 				<?php endwhile; ?>
 				</ul>
