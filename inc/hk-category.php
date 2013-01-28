@@ -133,12 +133,14 @@
 						}
 						
 						/* Get all NOT sticky posts children of this category */
-						$args = array( 'category__in' => $children, 'posts_per_page' => $posts_per_page );
+						$args = array( 'category__in' => $children);
 						if ($tag == "") {
+							$args['posts_per_page'] = $posts_per_page;
 							$args["post_type"] = array('post');
 						}
 						else {
 							$args["post_type"] = array('post','attachment');
+							$args['posts_per_page'] = -1;
 						}
 						$args['post_status'] = 'publish';
 						if ( !empty($sticky) || !empty($shownPosts)) {
@@ -166,36 +168,40 @@
 				$shownPosts[] = get_the_ID();
 			endwhile;
 		endif;
-	
-		hk_content_nav( 'nav-below' );
+
+		if (empty($sticky)) {
+			$allposts = $shownPosts;
+		}
+		else if (empty($shownPosts)) {
+			$allposts = $sticky;
+		}
+		else if (empty($shownPosts) && empty($sticky)) {
+			$allposts = array();
+		}
+		else {
+			$allposts = array_merge($sticky,$shownPosts);
+		}
+		if (!empty($allposts))
+			$allposts = implode(",",$allposts);
+		else
+			$allposts = "";
+			
+		echo "<span id='shownposts' class='hidden'>" . $allposts . "</span>";
+
+		//hk_content_nav( 'nav-below' );
 		
 
-	/* if nothing found */
-		if (empty($shownPosts)) : ?>
-
-			<article id="post-nothing">
-			<div class="content-wrapper">
-			<div class="summary-content">
-				<div class="entry-wrapper">
-					<h1 class="entry-title">Här finns ingenting</h1>
-					<div class="entry-content">
-						<p>Ändra ditt urval eller använd sökrutan för att hitta.</p>
-						<?php if(function_exists('get_most_viewed')) { ?>
-						<p>Eller välj bland de mest besökta sidorna. </p>
-						<ul><?php get_most_viewed('post'); } ?></ul>
-						
-					</div>
-				</div>
-				
-			</div><!-- .summary-content -->
-
-			</div>
-		</article><!-- #post-0 -->
-
-		<?php endif; ?>
+		/* if nothing found */
+		if (empty($shownPosts)) {
+			hk_nothing_found_navigation();
+		} ?>
 
 	</div><!-- #content -->
 
-	<?php hk_category_help_navigation(); ?>
+	<?php
+	if (!empty($shownPosts)) {
+		hk_category_help_navigation(); 
+	}
+	?>
 	
 </div><!-- #primary -->

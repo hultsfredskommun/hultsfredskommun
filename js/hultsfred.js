@@ -610,40 +610,6 @@ $(document).ready(function(){
 		History.replaceState(null, title, hultsfred_object["currPageUrl"]);
 	}*/
 
-	/* show all side-content when hover */
-	$("article .side-content").unbind("hover").hover(function() {
-		if ($(this).find("a.contactlink, .related_link a, .related_file a").length > 2) {
-			$(this).append("<div class='hover-side-content'></div>");
-			$(".hover-side-content").html($(this).html()).unbind("mouseout").mouseout(function() {
-				$(this).find("a.contactlink").each(function() {
-					setContactPopupAction($(this));
-				});
-				$(this).find(".related_link a").each(function() {
-					if ($(this).attr("href") !== undefined) {
-						$(this).unbind("click").click(function () {
-							push_google_analytics("#link=" + $(this).attr("href"));
-						});
-					}
-				});
-				$(this).find(".related_file a").each(function() {
-					if ($(this).attr("href") !== undefined) {
-						$(this).unbind("click").click(function () {
-							push_google_analytics("#file=" + $(this).attr("href"));
-						});
-					}
-				});
-			
-			});
-		}
-	},function() {	
-		$(".hover-side-content").remove();
-	});
-	
-	/* add AddThis onclick */
-	$("article .side-content").find(".tool-line.friend").unbind("click").click(function(ev) {
-		ev.preventDefault();
-		$(this).next().find(".addthis_toolbox").fadeToggle();
-	});
 
 	/**
 	 * view-modes 
@@ -708,13 +674,6 @@ $(document).ready(function(){
 		
 		ev.preventDefault();
 	});
-
-	/**
-	 * side-tab toggle
-	 */
-	$("#contact-side-tab .toggle-tab").unbind("click").click(function() {
-		alert("Funktionen kommer snart.");
-	});
 	
 	/* add action to read-more toggle */
 	$("#primary").find("article").each(function(){
@@ -730,7 +689,7 @@ $(document).ready(function(){
 	$(".single .contact-area a.contactlink").each(function() {
 		setContactPopupAction($(this));
 	});
-	$("#firstpage-sidebar, #sidebar-wrapper, #contact-side-tab").find(".contact-wrapper a.contactlink").each(function() {
+	$("#firstpage-sidebar, #sidebar-wrapper").find(".contact-wrapper a.contactlink").each(function() {
 		setContactPopupAction($(this));
 	});
 	
@@ -748,16 +707,12 @@ $(document).ready(function(){
 	$(window).scroll(function () {
 	
 		/* load next pages posts dynamically when reaching bottom of page */
-		if( parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2) ) {
-			/*if (!$(body).hasClass("home")) {*/
-				//$('#dyn-posts-load-posts a').click();
-				/* REMOVED - load more functionality 
+		if( parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2 - $("#colophon").height()) ) {
+	
+			if ($("#dyn-posts-load-posts").length <= 0 && !$("#shownposts").hasClass("loaded")) {
+			
 				dyn_posts_load_posts();
-				*/
-			/*}
-			else {
-				log("Ingen dynamisk laddning p&aring; f&ouml;rstasidan.");
-			}*/
+			}
 		}
 
 		/* show scroll to top icon */
@@ -838,64 +793,6 @@ $(document).ready(function(){
 		});
 	});
 
-
-
-	/**
-	 * load more posts dynamic 
-	 */
-	
-	// The number of the next page to load (/page/x/).
-	settings["pageNum"] = parseInt(hultsfred_object.startPage) + 1;
-	settings["pageNumVisible"] = 1;
-
-	// The maximum number of pages the current query can return.
-	settings["maxPages"] = parseInt(hultsfred_object.maxPages);
-	
-	// The link of the next page of posts.
-	settings["nextLink"] = hultsfred_object.nextLink;
-	
-	/**
-	 * Replace the traditional navigation with our own,
-	 * but only if there is at least one page of new posts to load.
-	 */
-	if(settings["pageNum"] <= settings["maxPages"]) { // && !$(body).hasClass("home")) {
-		// Insert the "More Posts" link.
-		/* REMOVED - load more functionality 
-		$('#content')
-		.append('<div id="dyn-posts-placeholder-'+ settings["pageNum"] +'" class="dyn-posts-placeholder"></div>')
-		.append('<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>');*/
-		// Remove the traditional navigation.
-		$('.navigation').remove();
-		$("#nav-below").remove();
-	}
-	
-	
-	/**
-	 * Show new posts when the link is clicked.
-	 */
-	 /*
-	$('#dyn-posts-load-posts a').unbind("click").click(function(ev) {
-		if(!loading_next_page){
-			settings["pageNumVisible"]++;
-			$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).slideDown("slow",function(){
-				// Update the button message.
-				if(settings["pageNumVisible"] < settings["maxPages"]) {
-					$('#dyn-posts-load-posts a').text('Ladda fler sidor');
-				} else {
-					$('#dyn-posts-load-posts').remove();
-				}
-				$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).children(":first-child").unwrap();
-			});
-			ev.preventDefault();
-		}
-		else{ 
-			$(this).addClass("loading");
-			ev.preventDefault();
-		}	
-	});*/
-
-
-
 	/**
 	 * first simple test of dynamic search 
 	 */
@@ -905,30 +802,58 @@ $(document).ready(function(){
 	/*
 	 * give result in dropdownlist
 	 */
-	$('#s').keyup(function(ev) {
-		if ($('#s').val().length > 2)
-		{
-			if (!$("#searchform").find("#searchresult")[0]) {
-				$('#searchform').append("<div id='searchresult'></div>");				
+	$(this).keydown(function(ev) {
+		select = false;
+		// navigate in search
+/*		if ($("#searchform").find("#searchresult")[0]) {
+			select = true;
+			selected = $("#searchresult a.selected");
+			switch(ev.which) {
+				case 40:
+					if (!selected) 
+						$("#searchresult a").first().addClass("selected");
+					else
+						$("#searchresult a").first().addClass("selected");
+					//alert("down");
+					break;
+				case 38:
+					alert("up");
+					break;
+				case 39:
+					alert("right");
+					break;
+				case 37:
+					alert("left");
+					break;
 			}
-			searchstring = $("#s").val();
-			$("#searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php",
-			{ searchstring: searchstring },
-			function() {
-
-			});
-			//$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sök #content", function() {
-			//	$(this).find('.readMoreToggleButton').each( function(){
-			//		
-			//		initToggleReadMore(this);
-			//	});
-			//});
 		}
-		else {
-			$('#searchresult').remove();
+	*/	
+		// do ajax search
+		if (!select) {
+			if ($('#s').val().length > 2)
+			{
+				if (!$("#searchform").find("#searchresult")[0]) {
+					$('#searchform').append("<div id='searchresult'></div>");				
+				}
+				searchstring = $("#s").val();
+				$("#searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php",
+				{ searchstring: searchstring },
+				function() {
+
+				});
+				//$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sök #content", function() {
+				//	$(this).find('.readMoreToggleButton').each( function(){
+				//		
+				//		initToggleReadMore(this);
+				//	});
+				//});
+			}
+			else {
+				$('#searchresult').remove();
+			}
 		}
 	});
-
+	
 
 	
 	$(".only-widget-title").css("cursor","pointer").each(function() {
@@ -972,9 +897,9 @@ $(document).ready(function(){
 	
 	
 	//Skriver ut skärmens storlek
-	log( "$(window).width = " + $(window).width() + ", " +
+	/*log( "$(window).width = " + $(window).width() + ", " +
 		"MQ Screensize = " + ($(window).width() + scrollbar) 
-	);/*
+	);*//*
 	setTimeout( function(){
 		clearTimeout(hide);
 		$("#log").fadeOut("slow", function() {
@@ -993,6 +918,41 @@ $(document).ready(function(){
 
 /* article actions to be set when ready and when dynamic loading */
 function setArticleActions(el) {
+
+	/* show all side-content when hover */
+	$("article .side-content").unbind("hover").hover(function() {
+		if ($(this).find("a.contactlink, .related_link a, .related_file a").length > 2) {
+			$(this).append("<div class='hover-side-content'></div>");
+			$(".hover-side-content").html($(this).html()).unbind("mouseout").mouseout(function() {
+				$(this).find("a.contactlink").each(function() {
+					setContactPopupAction($(this));
+				});
+				$(this).find(".related_link a").each(function() {
+					if ($(this).attr("href") !== undefined) {
+						$(this).unbind("click").click(function () {
+							push_google_analytics("#link=" + $(this).attr("href"));
+						});
+					}
+				});
+				$(this).find(".related_file a").each(function() {
+					if ($(this).attr("href") !== undefined) {
+						$(this).unbind("click").click(function () {
+							push_google_analytics("#file=" + $(this).attr("href"));
+						});
+					}
+				});
+			
+			});
+		}
+	},function() {	
+		$(".hover-side-content").remove();
+	});
+	
+	/* add AddThis onclick */
+	$("article .side-content").find(".tool-line.friend").unbind("click").click(function(ev) {
+		ev.preventDefault();
+		$(this).next().find(".addthis_toolbox").fadeToggle();
+	});
 
 	//sets click-action on entry-titles
 	$(el).find('.entry-title a, .togglearticle').unbind("click").click(function(ev){
@@ -1091,57 +1051,78 @@ function setContactPopupAction(el) {
 var loading_next_page = false;
 function dyn_posts_load_posts() {
 	filter = hultsfred_object["currentFilter"];
-
-	// Are there more posts to load?
+				
+	if (!loading_next_page) {
 		
-	if(settings["pageNum"] <= settings["pageNumVisible"]+1 && settings["pageNum"] <= settings["maxPages"] && !loading_next_page) {
-		log("Laddar sida " + settings["pageNum"] + " / " + settings["maxPages"])
 		loading_next_page = true;
+		var shownPosts = $("#shownposts").html();
+				
+		$('#primary')
+			.append('<div id="dyn-posts-placeholder" class="dyn-posts-placeholder"></div>')	
 
-
-		var uri = window.location.href.slice(window.location.href.indexOf('?') + 1);
-
-		$('#dyn-posts-placeholder-'+ settings["pageNum"]).hide().load(hultsfred_object["templateDir"]+"/ajax/posts_load.php?" + uri,
-			{ pageNum: settings["pageNum"], filter: filter }, /*settings["nextLink"] + ' .post',*/
+		$('#dyn-posts-placeholder').hide().load(hultsfred_object["templateDir"]+"/ajax/posts_load.php",
+			{ shownPosts: shownPosts, filter: filter }, 
 			function() {
-				//log("ready " + settings["pageNum"] + " " +settings["nextLink"]);
-				
-				if( $("#content").hasClass("viewmode_titles") ){
-					$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('article').addClass("only-title");
+			
+				// do nothing if dyn-posts is empty
+				if ($('#dyn-posts-placeholder').html() == "") {
+					return;
 				}
+				$('#dyn-posts-placeholder').prepend("<p>Du har nu sett de mest bes&ouml;kta artiklarna, men leta g&auml;rna vidare i denna lista med resten av ditt urval.</p>");
 				
-				// read-more toggle
-				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('article').each(function(){
+				// handle viewmode
+				//if( $("#content").hasClass("viewmode_titles") ){
+					$('#dyn-posts-placeholder').find('article').addClass("only-title");
+				//}
+				
+				// read-more toggle actions
+				$('#dyn-posts-placeholder').find('article').each(function(){
 					setArticleActions($(this));
 				});
 			
-				$('#dyn-posts-placeholder-'+ settings["pageNum"]).find('.more-link').addClass('dyn-posts').addClass('dyn-posts-placeholder-'+ settings["pageNum"]).click(function(ev){
-					settings["pageNumVisible"]++;
-					$('#dyn-posts-placeholder-'+ settings["pageNumVisible"]).slideDown("slow");
+				$('#dyn-posts-placeholder').find('.more-link').addClass('dyn-posts').addClass('dyn-posts-placeholder').click(function(ev){
+					$('#dyn-posts-placeholder').slideDown("slow");
 					ev.preventDefault();
 				});
-			
-				// Update page number and nextLink.
-				settings["prevPageNum"] = settings["pageNum"];
-				settings["pageNum"]++;
-				settings["nextLink"] = settings["nextLink"].replace('page/'+settings["prevPageNum"], 'page/'+ settings["pageNum"]);
-				
-				// Add a new placeholder, for when user clicks again.
-				$('#dyn-posts-load-posts')
-					.before('<div id="dyn-posts-placeholder-'+ settings["pageNum"] +'" class="dyn-posts-placeholder"></div>')
-				
-				
-				loading_next_page = false;
+											
+				$("#shownposts").addClass("loaded");
 				if( $('#dyn-posts-load-posts a').hasClass("loading") ){
 					$('#dyn-posts-load-posts a').removeClass("loading").click();
+				}
+				
+				
+				// show list when loaded, change to false to show button instead
+				if (true) {
+					$('#dyn-posts-placeholder').slideDown("slow",function(){
+						$('#dyn-posts-placeholder').children(":first-child").unwrap();
+						$('#dyn-posts-load-posts').remove();
+					});
+				} else {
+						
+					// add button to show more
+					$('#dyn-posts-placeholder')
+					.before('<p id="dyn-posts-load-posts"><a href="#">Lista alla artiklar fr&aring;n underkategorier</a></p>');
+
+					// Show new posts when the link is clicked.
+					$('#dyn-posts-load-posts a').unbind("click").click(function(ev) {
+						if($("#shownposts").hasClass("loaded")) {
+							$('#dyn-posts-placeholder').slideDown("slow",function(){
+								$('#dyn-posts-placeholder').children(":first-child").unwrap();
+								$('#dyn-posts-load-posts').remove();
+							});
+							ev.preventDefault();
+						}
+						else{ 
+							$(this).addClass("loading");
+							ev.preventDefault();
+						}	
+					});
 				}
 				
 			}
 
 		);
-	} else {
-		// 	$('#dyn-posts-load-posts a').append('.');
-	}	
+	} 	
 	
 	return false;
 };
@@ -1158,9 +1139,9 @@ $(window).resize(function() {
 	if( oldWidth != $(window).width() ) {
 
 		//Skriver ut skärmens storlek
-		log( $(window).height() + " $(window).width = " + $(window).width() + ", " +
+		/*log( $(window).height() + " $(window).width = " + $(window).width() + ", " +
 			"MQ Screensize = " + ($(window).width() + scrollbar) 
-		);
+		);*/
 		
 		if( $(window).width()+scrollbar > dropdown_max_width ){
 			$("ul.main-menu, ul.main-sub-menu").show();
@@ -1178,7 +1159,7 @@ function log(logtext) {
 	//Reset timer hide
 	//clearTimeout(hide);
 
-	//$("#log").fadeIn("slow");
+	$("#log").fadeIn("slow");
 	$("#log").html(logtext);
 	//Fading out in 5s.
 	//hide = setTimeout( function(){

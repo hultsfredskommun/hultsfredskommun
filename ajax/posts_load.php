@@ -20,9 +20,9 @@
 	$tag_array = "";
 	if ($tags != "")
 		$tag_array = split(",", $tags);
-	$pageNum = $_POST['pageNum'];
+	$shownPosts = explode(",",$_POST['shownPosts']);
 	$dyn_query = new WP_Query();
-	$posts_per_page = get_option('posts_per_page');
+	$posts_per_page = -1;//get_option('posts_per_page');
 	
 	if ($orderby == "") {
 
@@ -31,17 +31,20 @@
 			$children =  hk_getChildrenIdArray($cat);
 			if ( !empty($children) ) {
 				/* Get all NOT sticky posts children of this category */
-				$args = array( 'category__in' => $children, 'posts_per_page' => $posts_per_page, 'paged' => $pageNum );
+				$args = array( 'category__in' => $children, 'posts_per_page' => $posts_per_page );
 				$sticky = get_option( 'sticky_posts' );
 				if (!empty($sticky)) {
 					$args['post__not_in'] = $sticky;
 				}
 				if (!empty($tag_array)) {
-					$query['tag_slug__and'] = $tag_array;
+					$args['tag_slug__and'] = $tag_array;
 				}				
 				// add search to query
 				if ($search != "") {
-					$query["s"] = $search;
+					$args["s"] = $search;
+				}
+				if (!empty($shownPosts)) {
+					$args['post__not_in'] = $shownPosts;
 				}
 				query_posts( $args );
 				if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -54,25 +57,27 @@
 	
 	/* do standard query if orderby is set */
 	else {
-		$query = array( 'posts_per_page' => $posts_per_page,
-						'paged' => $pageNum);
+		$args = array( 'posts_per_page' => $posts_per_page);
 		
 		if ($cat != "") {
 			$children[] = $cat;
 		}
 		if (!empty($children)) {
-			$query['category__in'] = $children;
+			$args['category__in'] = $children;
 		}
 		if (!empty($tag_array)) {
-			$query['tag_slug__and'] = $tag_array;
+			$args['tag_slug__and'] = $tag_array;
+		}
+		if (!empty($shownPosts)) {
+			$args['post__not_in'] = $shownPosts;
 		}
 		
 		// add search to query
 		if ($search != "") {
-			$query["s"] = $search;
+			$args["s"] = $search;
 		}
 
-		$dyn_query->query($query);
+		$dyn_query->query($args);
 
 		/* Start the Loop */
 		while ( $dyn_query->have_posts() ) : $dyn_query->the_post();

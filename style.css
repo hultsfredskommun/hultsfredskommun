@@ -435,7 +435,7 @@ hr/*,
 #nav .children .current-cat > a,
 #nav ul.parent li a:hover,
 #nav ul.parent li a:focus,
-#contact-side-tab a.toggle-tab,
+#contact-side-tab a,
 .ui-tabs li.ui-state-default:hover,
 .ui-tabs li.ui-state-default:focus {
 	background-color: #06435A; /* deep blue */
@@ -643,8 +643,7 @@ article {
 .important-widget,
 #comment-side-tab a,
 .contact-popup.box,
-#contact-side-tab .content-wrapper,
-#contact-side-tab a.toggle-tab {
+#contact-side-tab a {
 	box-shadow: 0 2px 10px rgba(100, 100, 100, 0.7);
 	-webkit-box-shadow: 0 2px 10px rgba(100, 100, 100, 0.7);
 	-moz-box-shadow: 0 2px 10px rgba(100, 100, 100, 0.7);
@@ -1072,18 +1071,23 @@ a:hover {
 }
 #searchresult ul li {
 	list-style: none;
+}
+#searchresult ul li.search-title {
 	padding: 2px 8px;
 }
-#searchresult ul li:hover,
-#searchresult ul li:focus {
+#searchresult ul li a.selected,
+#searchresult ul li a:hover,
+#searchresult ul li a:focus {
 	background-color: #eee;
 }
 #searchresult ul li a {
 	display: block;
 	text-decoration: none;
+	padding: 2px 8px;
 }
-#searchresult ul li:first-child {
+#searchresult ul li.search-title {
 	font-style: italic;
+	font-weight: bold;
 }
 
 /* =Menus and tools
@@ -1938,6 +1942,10 @@ a.map_link {
 	overflow: hidden;
 	margin-bottom: 0 !important;
 }
+.full.only-title .side-content {
+	display: block;
+}
+.full.only-title .more-content .side-content,
 .only-title .side-content {
 	display: none;
 }
@@ -2116,30 +2124,25 @@ article:last-child { margin-bottom: 0 }
 	background-image: url("images/sprite-white.png");
 	background-position: -40px -469px;
 }
-#contact-side-tab {
-	position: fixed;
-	top: 15%;
-	right: 0px;
-}
 #comment-side-tab a {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 	z-index: 5000;
 }
-#contact-side-tab {
-	background-color: transparent;
-	z-index: 5000;
-}
-#contact-side-tab a.toggle-tab {
-	cursor: pointer;
-	float: left;
+#contact-side-tab a {
+	position: fixed;
+	top: 15%;
+	right: 0px;
+	margin-left: -69px;
 	width: 40px;
 	height: 174px;
 	background-image: url("images/sprite-white.png");
 	background-position: 1px -436px;
-	z-index: 10000;
+}
+#contact-side-tab a {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
+	z-index: 5001;
 }
 
 /* =Widgets
@@ -2971,6 +2974,8 @@ p.comment-form-comment {
 	}
 	
 	/* aside content */
+	.full.only-title .single-content .side-content,
+	.full.only-title .more-content .side-content,
 	.full .single-content .side-content,
 	.full .more-content .side-content {
 		display: block;
@@ -2980,6 +2985,8 @@ p.comment-form-comment {
 	.full .more-content .side-content .box {
 		border-left: 0;
 	}
+	.full.only-title .side-content,
+	article.single.only-title .side-content,
 	.full .side-content,
 	article.single .side-content {
 		display: none;

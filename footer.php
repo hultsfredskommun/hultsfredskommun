@@ -16,8 +16,11 @@ global $default_settings;
 	<div class="clear"></div>
 	</div><!-- #main -->
 
-	<?php hk_contact_tab(); ?>
-
+	<?php //hk_contact_tab(); ?>
+	<?php if ($hk_options["contact_side_link"] != "") : ?>
+		<div id="contact-side-tab"><a href="<?php echo $hk_options["contact_side_link"]; ?>" title="L&auml;mna din synpunkt eller felanm&auml;lan"></a></div>
+	<?php endif; ?>
+	
 	<?php if ($hk_options["comment_side_link"] != "") : ?>
 		<div id="comment-side-tab"><a href="<?php echo $hk_options["comment_side_link"]; ?>" title="Hj&auml;lp oss att bli b&auml;ttre"></a></div>
 	<?php endif; ?>

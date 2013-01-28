@@ -21,6 +21,29 @@ function hk_breadcrumb() {
 	echo rtrim($retValue," |");
 }
 
+function hk_nothing_found_navigation() { ?>
+		<article id="post-nothing">
+			<div class="content-wrapper">
+			<div class="summary-content">
+				<div class="entry-wrapper">
+					<h1 class="entry-title">Hittade du inte den information du s&ouml;kte?</h1>
+					<div class="entry-content">
+						<p>Du kan forts&auml;tta genom att &auml;ndra i ditt urval eller s&ouml;ka fritt i s&ouml;krutan ovan.</p>
+						<?php if(function_exists('get_most_viewed')) { ?>
+						<p>Kanske finns informationen du s&ouml;ker bland v&aring;ra mest bes&ouml;kta sidor?</p>
+						<ul><?php get_most_viewed('post'); } ?></ul>
+						
+					</div>
+				</div>
+				
+			</div><!-- .summary-content -->
+
+			</div>
+		</article><!-- #post-0 -->
+<?php
+}
+
+
 function hk_category_help_navigation() {
 	global $post, $default_settings;
 	
@@ -44,7 +67,7 @@ function hk_category_help_navigation() {
 
 		if (is_sub_category()) {
 			
-			echo "<hr><p>Om du inte hittar det du s&ouml;ker s&aring; kan du klicka dig vidare h&auml;r.</p>";
+			echo "<hr><p>Om du inte hittade den information du letade efter, kan du f&ouml;rfina din s&ouml;kning h&auml;r.</p>";
 			
 			$hk_cat_walker = new hk_Category_Walker();
 			
@@ -67,7 +90,7 @@ function hk_category_help_navigation() {
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
-			echo "<p>Eller v&auml;lj att g&ouml;ra ett alternativt urval h&auml;r.</p>";
+			echo "<p>Du kan &auml;ven s&ouml;ka vidare p&aring; vilken typ av information det &auml;r du letar efter.</p>";
 
 			$hk_tag_walker = new hk_Tag_Walker();
 			$args = array(
@@ -192,7 +215,7 @@ function hk_navigation() {
 		echo "</ul>";
 		
 		if( function_exists('displayTagFilter') ){
-			displayTagFilter("more-in-navigation", "Visa bara inneh&aring;ll av typen");
+			displayTagFilter("more-in-navigation", "Visa bara typ av information");
 		}
 	}
 
@@ -229,7 +252,7 @@ function hk_navigation() {
 			echo "</ul>"; 
 
 			if( function_exists('displayTagFilter') ){
-				displayTagFilter("more-in-navigation", "Visa bara inneh&aring;ll av typen");
+				displayTagFilter("more-in-navigation", "Visa bara typ av information");
 			}
 	
 		}

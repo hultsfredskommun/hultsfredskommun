@@ -265,9 +265,9 @@ function setup_javascript_settings() {
 	
 	// Add some parameters for the dynamic load more posts JS.
 	$hultsfred_array = array(
-			'startPage' => 1,
-			'maxPages' => $max,
-			'nextLink' => str_replace(curBaseURL(), "", next_posts($max, false)),
+			//'startPage' => 1,
+			//'maxPages' => $max,
+			//'nextLink' => str_replace(curBaseURL(), "", next_posts($max, false)),
 			'templateDir' => get_template_directory_uri(),
 			'blogId' => $blog_id,
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
