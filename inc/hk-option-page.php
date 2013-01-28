@@ -109,6 +109,7 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options['show_tags']; ?>" /></p>
 			<p><label for="hk_theme[comment_side_link]">Kontakta-oss-l&auml;nk</label><br/><input size="80" type="text" name="hk_theme[contact_side_link]" value="<?php echo $options['contact_side_link']; ?>" /></p>
 			<p><label for="hk_theme[comment_side_link]">Hjälp-oss-l&auml;nk</label><br/><input size="80" type="text" name="hk_theme[comment_side_link]" value="<?php echo $options['comment_side_link']; ?>" /></p>
+			<p><label for="hk_theme[search_watermark]">Vattenst&auml;mpel i s&ouml;k</label><br/><input size="80" type="text" name="hk_theme[search_watermark]" value="<?php echo $options['search_watermark']; ?>" /></p>
 
 			<h3>Till&auml;gg</h3>
 			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. </label><br/><input type="text" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>

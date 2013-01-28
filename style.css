@@ -1087,7 +1087,7 @@ a:hover {
 	padding: 2px 8px;
 }
 #searchresult ul li span {
-	margin-right: 8px;
+	margin-left: 8px;
 	float: left;
 }
 #searchresult ul li span.name,
