@@ -1092,8 +1092,8 @@ a:hover {
 #searchresult ul li span.workplace {
 	padding-bottom: 0px;
 }
-#searchresult ul li span.workplace {
-	clear: right;
+#searchresult ul li span.phone {
+	clear: left;
 }
 #searchresult ul li a {
 	display: block;
