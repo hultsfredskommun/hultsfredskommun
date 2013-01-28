@@ -1080,7 +1080,9 @@ a:hover {
 #searchresult ul li a:focus {
 	background-color: #eee;
 }
-#searchresult ul li span,
+#searchresult ul li span {
+	padding: 0;
+}
 #searchresult ul li a {
 	padding: 2px 8px;
 }
