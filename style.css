@@ -1080,10 +1080,24 @@ a:hover {
 #searchresult ul li a:focus {
 	background-color: #eee;
 }
+#searchresult ul li span,
+#searchresult ul li a {
+	padding: 2px 8px;
+}
+#searchresult ul li span {
+	margin-right: 8px;
+	float: left;
+}
+#searchresult ul li span.name,
+#searchresult ul li span.workplace {
+	padding-bottom: 0px;
+}
+#searchresult ul li span.workplace {
+	clear: right;
+}
 #searchresult ul li a {
 	display: block;
 	text-decoration: none;
-	padding: 2px 8px;
 }
 #searchresult ul li.search-title {
 	font-style: italic;
