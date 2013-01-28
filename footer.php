@@ -105,7 +105,7 @@ _gaq.push(['_trackPageview']);
 
 </script>
 <?php endif; ?>
-
+<div id="scrollTo_top"><a href="#"></a></div>
 <div id="log">mylog</div>
 </body>
 </html>

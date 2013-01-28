@@ -703,24 +703,25 @@ $(document).ready(function(){
 	/**
 	 * scroll to top actions 
 	 */
-	$('.scrollTo_top').hide();
+	$('#scrollTo_top').hide();
 	$(window).scroll(function () {
 	
 		/* load next pages posts dynamically when reaching bottom of page */
-		if( parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2 - $("#colophon").height()) ) {
+		/*if( !$(body).hasClass("home") && parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2 - $("#colophon").height()) ) {
 	
 			if ($("#dyn-posts-load-posts").length <= 0 && !$("#shownposts").hasClass("loaded")) {
 			
 				dyn_posts_load_posts();
 			}
 		}
-
+		*/
+		
 		/* show scroll to top icon */
 		if( $(this).scrollTop() > 1000 ) {
-			$('.scrollTo_top').fadeIn(300);
+			$('#scrollTo_top').fadeIn(300);
 		}
 		else {
-			$('.scrollTo_top').fadeOut(300);
+			$('#scrollTo_top').fadeOut(300);
 		}
 
 		
@@ -742,7 +743,7 @@ $(document).ready(function(){
 		}
 		*/
 	});
-	$('.scrollTo_top a').unbind("click").click(function(){
+	$('#scrollTo_top a').unbind("click").click(function(){
 		$('html, body').animate({scrollTop:0}, 500 );
 		return false;
 	});
@@ -1071,7 +1072,7 @@ function dyn_posts_load_posts() {
 				$('#dyn-posts-placeholder').prepend("<p>Du har nu sett de mest bes&ouml;kta artiklarna, men leta g&auml;rna vidare i denna lista med resten av ditt urval.</p>");
 				
 				// handle viewmode
-				//if( $("#content").hasClass("viewmode_titles") ){
+				//if( $("#content").hasClass("viewmode_titles") ) {
 					$('#dyn-posts-placeholder').find('article').addClass("only-title");
 				//}
 				
