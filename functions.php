@@ -83,6 +83,48 @@ require( get_template_directory() . '/inc/hk-acf-fields.php' );
 // Grab hk widgets function containing general widgets
 require( get_template_directory() . '/inc/hk-widgets.php' );
 
+// shortcodes
+/*
+ * shortcode [aditrorecruit], showing all available jobs with descriptions
+ */
+function hk_category_tree_func( $atts ){
+	global $default_settings;
+	$retValue = "";
+
+	// full category tree
+	$retValue .= "<div id='categorytree' class='shortcode'>";
+	$retValue .= wp_list_categories( 
+		array(
+			'show_option_all'    => '',
+			'style'              => 'list',
+			'show_count'         => 1,
+			'hide_empty'         => 1,
+			'use_desc_for_title' => 1,
+			'child_of'           => 0,
+			'feed'               => '',
+			'feed_type'          => '',
+			'feed_image'         => '',
+			'exclude'            => $default_settings["hidden_cat"],
+			'exclude_tree'       => '',
+			'include'            => '',
+			'hierarchical'       => 1,
+			'title_li'           => '',
+			'show_option_none'   => __('No categories'),
+			'number'             => null,
+			'echo'               => 0,
+			'depth'              => 0,
+			'current_category'   => 0,
+			'pad_counts'         => 0,
+			'taxonomy'           => 'category',
+			'walker'             => null
+	) );
+	$retValue .= "</div>";
+
+	return $retValue;
+}
+add_shortcode( 'categorytree', 'hk_category_tree_func' );
+
+
 /**
  * Tell WordPress to run hk_setup() when the 'after_setup_theme' hook is run.
  */
