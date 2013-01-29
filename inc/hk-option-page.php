@@ -114,6 +114,7 @@ function hk_theme_options_do_page() {
 			<h3>Till&auml;gg</h3>
 			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. </label><br/><input type="text" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
 			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. </label><br/><input type="text" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>
+			<p><label for="hk_theme[typekit_url]">Typekit js url. </label><br/><input type="text" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
 
 			<h3>Statistik och cookies</h3>
 			<p><input type="checkbox" name="hk_theme[cookie_accept_enable]" value="1"<?php checked( 1 == $options['cookie_accept_enable'] ); ?> /> <label for="hk_theme[cookie_accept_enable]">St&auml;ll fr&aring;ga om cookies f&aring;r anv&auml;ndas.</label></p>

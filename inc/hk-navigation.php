@@ -190,7 +190,7 @@ function hk_navigation() {
 
 	// if in tag
 	else if ($tags != "") {
-		echo "<a class='dropdown-nav'>Etiketter</a>";
+		//echo "<a class='dropdown-nav'>Etiketter</a>";
 
 		$hk_cat_walker = new hk_Category_Walker();
 		$parentCat = hk_getMenuParent($cat);
@@ -245,7 +245,7 @@ function hk_navigation() {
 				'walker'			 => $hk_cat_walker
 			);
 			
-			echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
+			//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
 
 			echo "<ul class='parent'>"; 
 			wp_list_categories( $args );

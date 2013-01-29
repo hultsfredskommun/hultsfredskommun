@@ -73,6 +73,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 		echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
 
 	?></title>
+
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -136,6 +137,13 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</hgroup>
 				
+			<?php /* responsive navigation */ ?>
+			<div id="responsivenavigation">
+				<a href="#" class="icon menu"><img src="<?php hk_icon_path(); ?>/menu-2.svg" alt="Meny" /></a>
+				<a href="#" class="icon search"><img src="<?php hk_icon_path(); ?>/search.svg" alt="S&ouml;k" /></a>
+			</div>
+
+			<?php /* top right navigation */ ?>
 			<?php 
 				if (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) {
 					echo "<div id='topmenu'><aside><nav>";
@@ -157,7 +165,6 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 			</div>
 			<div class="clear"></div>
 		</div>		
-		<a class="dropdown-menu">Meny</a>
 		<nav id="menu" role="navigation">
 			<?php 
 
@@ -202,6 +209,33 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 				
 				echo "<li class='clear'></li></ul>";
 				
+				echo "<div id='responsive-sub-menu-dropdown'>";
+				$parent = hk_getParent($cat);
+				if ($sub_parent > 0 && $parent > 0) { 
+					echo "<a class='menu-up' href='" . get_category_link($parent) . "'>&lt;</a>";
+				}
+				
+				$top_name = get_cat_name($top_parent);
+				$sub_name = get_cat_name($sub_parent);
+				$cat_name = get_cat_name($category);
+				if ($sub_name == $cat_name)
+					$cat_name = "";
+				if ($top_name == $sub_name)
+					$sub_name = "";
+					
+				if ($cat_name != "")
+					$menu_title = $cat_name;
+				else if ($sub_name != "")
+					$menu_title = $sub_name;
+				else if ($top_name != "")
+					$menu_title = $top_name;
+				else
+					$menu_title = "Meny";
+				$class = (is_sub_category())?"category":"submenu";
+				echo "<a class='dropdown-menu $class'>";
+				echo $menu_title;
+				echo "</a>";
+				echo "</div>";
 				
 				if ($nav_menu_sub_parent > 0) {
 					

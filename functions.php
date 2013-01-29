@@ -184,6 +184,16 @@ add_action( 'pre_get_posts', 'hk_exclude_category' );
  */
 if (!is_admin()) {
 	
+	if ($options['typekit_url'] != "") {
+	//  //use.typekit.net/xpx0dap.js
+		wp_enqueue_script(
+			'addthis_js',
+			'http'.$s_when_https.':'.$options['typekit_url'],
+			array(),
+			'1.0',
+			true
+		);
+	}
 	if ($options['addthis_pubid'] != "") {
 		wp_enqueue_script(
 			'addthis_js',
@@ -674,6 +684,14 @@ function hk_countParents($cat) {
 	$cats_array = explode('%#%', $cats_str);
 	$cat_depth = sizeof($cats_array)-1;
 	return $cat_depth;
+}
+// get parent of category
+function hk_getParent($cat) {
+	if (empty($cat)) return 0;
+	$category = get_category($cat);
+	if (!empty($category))
+		return $category->parent;
+	return 0;
 }
 // return the parents of argument category $cat in slug array form
 function hk_getParentsSlugArray($cat) {
