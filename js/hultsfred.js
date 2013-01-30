@@ -560,9 +560,19 @@ $(document).ready(function(){
 	oldWidth = $(window).width();
 
 	
-	// load typekit if any
+	/*
+	 * load typekit if any
+	 */
 	try { Typekit.load(); } catch(e) {}
 	
+	/*
+	 * open print dialog if on print page
+	 */
+	if ($("body").hasClass("print")) {
+		window.print();
+		window.close();
+	}
+
 	
 	
 	/**
@@ -815,7 +825,7 @@ $(document).ready(function(){
 	/* 
 	* give result in dropdownlist 
 	*/ 
-	$('form#searchform input#s').keydown(function(ev) { 
+	$('form#searchform input#s').keyup(function(ev) { 
 		
 		select = false; 
 		// do ajax search 
@@ -826,7 +836,7 @@ $(document).ready(function(){
 			case 40: 
 				if($("#searchresult a").first().length > 0) 
 				{ 
-				$("#searchresult a").first().focus(); 
+					$("#searchresult a").first().focus(); 
 				} 
 				event.preventDefault(); 
 				select = true; 
@@ -854,11 +864,8 @@ $(document).ready(function(){
 
 		}
 
-
-
+		// don't search if pressing special keys
 		if (!select) {
-
-
 
 			if ($('#s').val().length > 2)  {
 
@@ -1047,6 +1054,14 @@ function erase_and_refocus_on_search_input()
 /* article actions to be set when ready and when dynamic loading */
 function setArticleActions(el) {
 
+	/* add print dialog */
+	$("article .side-content").find(".tool-line.print").unbind("click").click(function(ev) {
+		if ($(this).parents("body").hasClass("single")) {
+			ev.preventDefault();
+			window.print();
+		}
+	});
+	
 	/* show all side-content when hover */
 	$("article .side-content").unbind("hover").hover(function() {
 		if ($(this).find("a.contactlink, .related_link a, .related_file a").length > 2) {
@@ -1272,14 +1287,11 @@ $(window).resize(function() {
 		);*/
 		
 		/* reset responsive stuff */
-		
 		if( $(window).width()+scrollbar > responsive_small_size ){
 			$("ul.main-menu, ul.main-sub-menu").show();
 		}
 		else {
-			if( $("ul.main-menu").is(":visible") ){
-				$("ul.main-menu, ul.main-sub-menu").hide();
-			}
+			$("ul.main-menu, ul.main-sub-menu").hide();
 		}
 		
 		if( $(window).width()+scrollbar > responsive_mobil_size ){

@@ -114,8 +114,12 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 	wp_head();
 ?>
 </head>
-
-<body <?php body_class((is_sub_category_firstpage() && get_query_var("tag") == "") ? "home":""); ?>>
+<?php
+$firstpageClass =(is_sub_category_firstpage() && get_query_var("tag") == "") ? "home":"";
+$printpageClass = ($_REQUEST["print"] == 1) ? "print":"";
+$subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
+?>
+<body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass ); ?>>
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
 	<header id="branding" role="banner">
@@ -229,8 +233,11 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 					$menu_title = $sub_name;
 				else if ($top_name != "")
 					$menu_title = $top_name;
-				else
-					$menu_title = "Meny";
+				else if (get_query_var("s") != "")
+					$menu_title = "Du s&ouml;kte p&aring; " . get_query_var("s");
+				else 
+					$menu_title = "";
+					
 				$class = (is_sub_category())?"category":"submenu";
 				echo "<a class='dropdown-menu $class'>";
 				echo $menu_title;

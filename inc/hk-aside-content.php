@@ -15,9 +15,17 @@
 					<?php echo $alt_title; ?>
 				</div>
 				<?php else : ?>
+				<?php if (get_field('hk_contact_titel',$value->ID)) : ?>
 				<div class="content">
 					<?php echo get_field('hk_contact_titel',$value->ID); ?>
 				</div>
+				<?php endif; /*
+				if( get_field('hk_contact_phones',$value->ID) ): while( has_sub_field('hk_contact_phones',$value->ID) ): 
+					echo "<div class='phone full'>";
+					echo (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
+					echo get_sub_field('number') . " </div>";
+				endwhile; endif;*/				
+				?>
 				<?php endif; ?>
 			<span class="contact_id hidden"><?php echo $value->ID; ?></span></div></div>
 		<?php endwhile; ?>			 
@@ -90,7 +98,6 @@
 			</div>
 		</div>
 		<?php endif; ?>
-		<div class="helpus tool-line full"><div class="icon"><img src="<?php hk_icon_path(); ?>/settings-3.svg" alt="Hj&auml;lp oss bli b&auml;ttre" /></div><?php comments_popup_link('Hj&auml;lp oss!','Hj&auml;lp oss!','Hj&auml;lp oss!','','Hj&auml;lp oss!'); ?></div>
 	</div>
 	
 
