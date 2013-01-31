@@ -276,6 +276,7 @@ add_filter('post_mime_types', 'filterPostMimeTypes');
 // add mime extensions 
 function custom_upload_mimes ( $existing_mimes=array() ) {
 	// add your extension to the array
+	$existing_mimes['eps'] = 'image/eps';
 	if (current_user_can('manage_options')) {
 		$existing_mimes['exe'] = 'application/exe';
 	}
