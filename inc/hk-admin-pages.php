@@ -286,6 +286,8 @@ function custom_upload_mimes ( $existing_mimes=array() ) {
 	$existing_mimes['pot'] = 'application/vnd.ms-powerpoint';
 	$existing_mimes['pptx'] = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
 	$existing_mimes['potx'] = 'application/vnd.openxmlformats-officedocument.presentationml.template';
+	$existing_mimes['eps'] = 'image/eps';
+	
 	if (current_user_can('manage_options')) {
 		$existing_mimes['exe'] = 'application/exe';
 	}
