@@ -645,7 +645,6 @@ article {
 
 /* shadows */
 #branding #searchresult {
-	border: 1px solid #ccc;
 	border-top: 0;
 }
 .addthis_toolbox,
@@ -1116,7 +1115,7 @@ div#searchnavigation a#clearbutton {
 #searchresult ul li a.selected,
 #searchresult ul li a:hover,
 #searchresult ul li a:focus {
-	background-color: #eee;
+	background-color: #fff;
 }
 #searchresult ul li span {
 	padding: 0;
