@@ -1063,6 +1063,7 @@ function setArticleActions(el) {
 	});
 	
 	/* show all side-content when hover */
+	/*
 	$("article .side-content").unbind("hover").hover(function() {
 		if ($(this).find("a.contactlink, .related_link a, .related_file a").length > 2) {
 			$(this).append("<div class='hover-side-content'></div>");
@@ -1090,6 +1091,7 @@ function setArticleActions(el) {
 	},function() {	
 		$(".hover-side-content").remove();
 	});
+	*/
 	
 	/* add AddThis onclick */
 	$("article .side-content").find(".tool-line.friend").unbind("click").click(function(ev) {
