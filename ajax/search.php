@@ -2,7 +2,7 @@
 	define('WP_USE_THEMES', false);
 	require('../../../../wp-blog-header.php');
 	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-	$searchstring = $_POST['searchstring'];
+	$searchstring = $_REQUEST['searchstring'];
 	if ($searchstring != "") :
 		$retString = "<ul>";
 		$retString .= "<li><a href='" . site_url() . "/?s=" . $searchstring . "'>S&ouml;k efter " . $searchstring . "</a></li>";

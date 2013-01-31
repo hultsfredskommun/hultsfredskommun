@@ -276,7 +276,7 @@ add_filter('post_mime_types', 'filterPostMimeTypes');
 // add mime extensions 
 function custom_upload_mimes ( $existing_mimes=array() ) {
 	// add your extension to the array
-	$existing_mimes['doc'] = 'application/msword';
+	/*$existing_mimes['doc'] = 'application/msword';
 	$existing_mimes['dot'] = 'application/msword';
 	$existing_mimes['docx'] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 	$existing_mimes['dotx'] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.template';
@@ -286,6 +286,7 @@ function custom_upload_mimes ( $existing_mimes=array() ) {
 	$existing_mimes['pot'] = 'application/vnd.ms-powerpoint';
 	$existing_mimes['pptx'] = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
 	$existing_mimes['potx'] = 'application/vnd.openxmlformats-officedocument.presentationml.template';
+	*/
 	if (current_user_can('manage_options')) {
 		$existing_mimes['exe'] = 'application/exe';
 	}

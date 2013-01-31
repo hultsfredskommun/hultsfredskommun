@@ -9,7 +9,6 @@
 			$(".inline-edit-tags").remove(); // hide add tags in quick edit
 		}
 
-
 		//$("#attachment_caption").parent().remove(); // hide media caption
 		$(".compat-field-post_tag").remove();
 		//$("#content-add_media").attr("href",$("#content-add_media").attr("href") + "&tab=library");
