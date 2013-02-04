@@ -25,6 +25,7 @@
  
  
  
+/* UI IMPORTS */
 @import "ui/general";
 @import "ui/header";
 @import "ui/menu";
@@ -34,6 +35,10 @@
 @import "ui/print";
 
 
+/* GRAYBOXES */
+.widget {
+	@extend .graybox;
+}
 
 
 
@@ -52,26 +57,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
+/* HELP MEDIA QUERY INFO */		
 @include media-query(deskwide) {
 	#responsive-info:after {
 		content: "DESKWIDE";

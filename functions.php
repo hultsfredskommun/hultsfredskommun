@@ -187,8 +187,8 @@ if (!is_admin()) {
 	if ($options['typekit_url'] != "") {
 	//  //use.typekit.net/xpx0dap.js
 		wp_enqueue_script(
-			'addthis_js',
-			'http'.$s_when_https.':'.$options['typekit_url'],
+			'typekit_js',
+			'http'.$s_when_https.'://'.$options['typekit_url'],
 			array(),
 			'1.0',
 			true

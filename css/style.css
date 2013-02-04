@@ -2985,7 +2985,8 @@ html.flexbox {
  * 
  */
 .greybox,
-.graybox {
+.graybox,
+.widget {
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 2;
@@ -2996,7 +2997,8 @@ html.flexbox {
 }
 
 .greybox a,
-.graybox a {
+.graybox a,
+.widget a {
   color: #fff;
   text-decoration: underline;
 }
@@ -4157,7 +4159,7 @@ html.flexbox {
   margin-right: 0!important;
 }
 
-.flush--bottom, .main-menu {
+.flush--bottom, #responsive-info, .main-menu {
   margin-bottom: 0!important;
 }
 
@@ -4280,6 +4282,7 @@ html.flexbox {
 /**
  * She’s all yours, cap’n... Begin importing your stuff here.
  */
+/* UI IMPORTS */
 html {
   font-family: "myriad-pro", Arial, sans-serif;
 }
@@ -4436,6 +4439,7 @@ html {
     display: none;
   }
 }
+/* GRAYBOXES */
 /* to un- .hide element */
 .unhide {
   position: initial;
@@ -4446,6 +4450,7 @@ html {
   display: none;
 }
 
+/* HELP MEDIA QUERY INFO */
 @media only screen and (min-width: 1024px) {
   #responsive-info:after {
     content: "DESK";

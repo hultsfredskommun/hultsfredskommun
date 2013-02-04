@@ -114,7 +114,7 @@ function hk_theme_options_do_page() {
 			<h3>Till&auml;gg</h3>
 			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. </label><br/><input type="text" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
 			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. </label><br/><input type="text" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>
-			<p><label for="hk_theme[typekit_url]">Typekit js url. </label><br/><input type="text" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
+			<p><label for="hk_theme[typekit_url]">Typekit js url - http://&lt;v&auml;rde&gt; </label><br/><input type="text" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
 			<p><label for="hk_theme[translate_url]">&Ouml;vers&auml;tt url (ex. google-translate). </label><br/><input type="text" name="hk_theme[translate_url]" value="<?php echo $options['translate_url']; ?>" /></p>
 
 			<h3>Statistik och cookies</h3>
