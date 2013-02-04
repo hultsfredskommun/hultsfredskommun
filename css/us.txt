@@ -1,0 +1,10 @@
+.top-menu {
+	@extend .nav;
+	@extend .nav--block;
+	.menu-item {
+		@extend .flyout;
+	}
+	.sub-menu {
+		@extend .flyout__content;
+	}
+}

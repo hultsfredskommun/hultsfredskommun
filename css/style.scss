@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/*------------------------------------*\
+    STYLE.CSS
+\*------------------------------------*/
+/**
+ * 
+ * sass --watch style.scss:style.min.css --style compressed
+ * 
+ * Here we pull in some variables, include the inuit.css framework, then add our
+ * project-specific components afterwards.
+ */
+
+
+/**
+ * Setup
+ */
+@import "vars";
+@import "inuit.css/inuit";
+
+
+/**
+ * She’s all yours, cap’n... Begin importing your stuff here.
+ */
+
+ 
+ 
+ 
+@import "ui/general";
+@import "ui/header";
+@import "ui/menu";
+@import "ui/ui-tabs";
+@import "ui/footer";
+@import "ui/floating";
+@import "ui/print";
+
+
+
+
+
+/* to un- .hide element */ 
+.unhide {
+	position: initial;
+	left: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+@include media-query(deskwide) {
+	#responsive-info:after {
+		content: "DESKWIDE";
+	}
+}
+@include media-query(desk) {
+	#responsive-info:after {
+		content: "DESK";
+	}
+}
+@include media-query(lap) {
+	#responsive-info:after {
+		content: "LAP & PORTABLE";
+	}
+}
+@include media-query(palm) {
+	#responsive-info:after {
+		content: "PALM & PORTABLE";
+	}
+}

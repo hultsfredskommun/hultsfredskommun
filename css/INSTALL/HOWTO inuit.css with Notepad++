@@ -1,0 +1,14 @@
+SET SASS (i.e. inuit.css) TO AUTOCOMPILE IN NOTEPAD++
+
+- INSTALL RUBY
+1. Install ruby with windows installer - http://rubyinstaller.org/downloads/
+2. Start command prompt and install sass/scss with commant "gem install sass"
+
+- PLUGIN IN NOTEPAD++
+Follow these steps:
+1. Install the plugin jN by downloading from http://sourceforge.net/apps/mediawiki/notepad-plus/index.php?title=Plugin_Central#jN
+2. Copy the Sass-Auto-Compile.js to ...\Notepad++\plugins\jN\includes directory 
+3. Edit the pathToRubyBinDir in Sass-Auto-Compile.js to point to your install, in my case it is C:\Ruby193\bin
+4. Restart Notepad++, I get an error when starting, but it's working anyway.
+
+OR check http://deekaysblog.wordpress.com/2012/08/12/notepad-series-3-sass-highlighting-and-auto-compile/

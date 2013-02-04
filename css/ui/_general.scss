@@ -1,0 +1,23 @@
+
+html {
+	font-family: "myriad-pro", Arial, sans-serif;
+}
+.content--center {
+	margin: 0 auto;
+	max-width: 1100px;
+}
+
+
+ /*
+ * Responsive helper
+ */
+#responsive-info
+{
+	@extend .position-fixed--bottom-right;
+	@extend .islet;
+	background: black;
+	color: white;
+	font-weight: bold;
+	z-index: 10000;
+	border-top-left-radius: 0.4em;
+}

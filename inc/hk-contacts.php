@@ -40,7 +40,7 @@ class Hk_Contacts extends WP_Widget {
 		else
 		{
 		*/
-			echo hk_contacts_generate_cache();
+			echo hk_contacts_generate_cache($args);
     		//}
 	}
 
@@ -115,7 +115,8 @@ function hk_contacts_save($postID) {
 }
 
 // outputs the content of the widget
-function hk_contacts_generate_cache() {
+function hk_contacts_generate_cache($args) {
+	extract( $args );
 
 	$retValue = "";
 	
@@ -147,10 +148,13 @@ function hk_contacts_generate_cache() {
 		// search in all posts (ignore filters)
 		$the_query = new WP_Query( $args );
 
+		
+
 		if ($the_query->have_posts())
 		{ 
-  	        $retValue .= "<aside class='widget hk_kontakter'>";
-			$retValue .= "<h3 class='widget-title'>Kontakta oss</h3><div class='content-wrapper'>";
+			$retValue .= $before_widget;
+			$retValue .= $before_title . "Kontakta oss" . $after_title;
+			$retValue .= "<div class='content-wrapper'>";
 	      	
 	      	// The Loop
 	   		while ( $the_query->have_posts() ) : $the_query->the_post();
@@ -197,7 +201,7 @@ function hk_contacts_generate_cache() {
 	    	endwhile;
 	    	// Reset Post Data
 	    	wp_reset_postdata();
-			$retValue .= "</div></aside>";
+			$retValue .= "</div>" . $after_widget;
 		}
 	}
 

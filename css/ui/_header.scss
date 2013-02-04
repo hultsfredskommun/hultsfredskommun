@@ -1,0 +1,56 @@
+/* hide title */
+.site-title {
+	@extend .hide;
+}
+.top-wrapper {
+	@extend .one-whole;
+}
+.logo {
+	@extend .one-half;
+}
+.top-menu-wrapper {
+	@extend .one-half;
+	@extend .float--right;
+}
+
+/* set top menu icons */
+.top-menu {
+	@extend .text--right;
+	@extend .nav;
+	@extend .nav--block;
+
+	.menu-item {
+		@extend .flyout;
+	}
+	.sub-menu {
+		@extend .flyout__content;
+		@extend .nav--stacked;
+		@extend .text--right;
+	}
+
+	/* add <i class=i data-icon="&#xF143;"></i> in menu item title */
+	.sites {
+		@extend .hide--palm;
+	}
+	/* add <i class=i data-icon="&#xF0A9;"></i> in menu item title */
+	.menu {
+		@extend .hide--lap;
+		@extend .hide--desk;
+	}
+	/* add <i class=i data-icon="&#xF097;"></i> in menu item title */
+	.search {
+		@extend .hide--lap;
+		@extend .hide--desk;
+	}
+	/* add <i class=i data-icon="&#xF063;"></i> in menu item title */
+	.translate {
+		@extend .hide--palm;
+	}
+}
+
+.searchnavigation {
+	
+	@extend .hide--palm;
+	@extend .one-half;
+}
+

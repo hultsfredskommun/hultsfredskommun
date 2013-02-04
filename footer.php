@@ -13,7 +13,7 @@
 $hk_options = get_option('hk_theme');
 global $default_settings;
 ?>
-	<div class="clear"></div>
+
 	</div><!-- #main -->
 
 	<?php //hk_contact_tab(); ?>
@@ -26,7 +26,7 @@ global $default_settings;
 	<?php endif; ?>
 
 	<?php if ( $hk_options["logo_footer_image"] || is_active_sidebar( 'footer-sidebar' ) || is_active_sidebar( 'footer-sidebar-2' ) || is_active_sidebar( 'footer-sidebar-3' ) || is_active_sidebar( 'footer-sidebar-4' ) ) : ?>
-	<footer id="colophon" role="contentinfo">
+	<footer id="colophon" class="one--whole  content--center" role="contentinfo">
 		<div id="supplementary">
 			<?php if ($hk_options["footer_image"] != "") : ?>
 					<div id="footer-image"><img src="<?php echo $hk_options["footer_image"]; ?>"/></div>
@@ -55,24 +55,24 @@ global $default_settings;
 			}
 		
 			if ( $footers > 0 ) :
-				echo "<div id='footer-sidebar' class='widget-area $footerclass'>";
+				echo "<div id='footer-sidebar' class='gw  footer-sidebar widget-area $footerclass'>";
 				if ( is_active_sidebar( 'footer-sidebar' ) ) { 
-					echo "<div class='footer-widgets first'>";
+					echo "<div class='g  footer-widgets first'>";
 					dynamic_sidebar( 'footer-sidebar' ); 
 					echo "</div>";
 				}
 				if ( is_active_sidebar( 'footer-sidebar-2' ) ) {  
-					echo "<div class='footer-widgets second'>";
+					echo "<div class='g  footer-widgets second'>";
 					dynamic_sidebar( 'footer-sidebar-2' ); 
 					echo "</div>";
 				}
 				if ( is_active_sidebar( 'footer-sidebar-3' ) ) {  
-					echo "<div class='footer-widgets third'>";
+					echo "<div class='g  footer-widgets third'>";
 					dynamic_sidebar( 'footer-sidebar-3' ); 
 					echo "</div>";
 				}
 				if ( is_active_sidebar( 'footer-sidebar-4' ) ) {  
-					echo "<div class='footer-widgets fourth'>";
+					echo "<div class='g  footer-widgets fourth'>";
 					dynamic_sidebar( 'footer-sidebar-4' ); 
 					echo "</div>";
 				}
@@ -105,7 +105,7 @@ _gaq.push(['_trackPageview']);
 
 </script>
 <?php endif; ?>
-<div id="scrollTo_top"><a href="#"></a></div>
-<div id="log">mylog</div>
+<div id="scrollTo_top" class="position-fixed--bottom-right  island"><a href="#"></a></div>
+<div id="log" class="position-fixed--bottom-left  island">mylog</div>
 </body>
 </html>

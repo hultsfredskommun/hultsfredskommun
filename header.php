@@ -122,7 +122,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 <body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass ); ?>>
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
-	<header id="branding" role="banner">
+	<header id="branding" class="content--center" role="banner">
 		<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>	
 		<?php dynamic_sidebar('important-top-content'); ?>
 		
@@ -134,40 +134,49 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			</div></div>
 		<?php endif; ?>
 
-		<div id="topwrapper">
-			<span id="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span>
-			<hgroup>
+		<div id="topwrapper" class="top-wrapper">
+			<span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span>
+			<hgroup class="site-title">
 				<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</hgroup>
 				
 			<?php /* responsive navigation */ ?>
+			<?php /* REMOVED MENU
 			<div id="responsivenavigation">
 				<a href="#" class="icon menu"><img src="<?php hk_icon_path(); ?>/menu-2.svg" alt="Meny" /></a>
 				<a href="#" class="icon search"><img src="<?php hk_icon_path(); ?>/search.svg" alt="S&ouml;k" /></a>
 			</div>
-
+			*/ ?>
 			<?php /* top right navigation */ ?>
 			<?php 
+			
 				if (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) {
-					echo "<div id='topmenu'><aside><nav>";
+					echo "<aside id='topmenu' class='top-menu-wrapper'><nav><ul class='top-menu'>";
 					wp_nav_menu( array(
 						'theme_location' => 'topmenu', 
-						'container' 	=> '',							
-						'items_wrap'	=> '<ul>%3$s</ul>',
+						'container' 	=> '',
+						'items_wrap'	=> '%3$s',
 						'depth' 		=> 2,
 						'echo' 			=> true
 					)); 
-					echo "</nav></aside></div>";
+					if (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") {
+						echo "<li class='translate menu-item menu-item-type-custom menu-item-object-custom menu-item-translate  hide--palm'><a href='#'><i class='i' data-icon='&#xF063;'></i><span>Translate</span></a></li>";
+					}
+					if (!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") {
+						echo "<li class='readspeaker js-readspeaker menu-item menu-item-type-custom menu-item-object-custom menu-item-readspeaker  hide--palm'><a href='#'><i class='i' data-icon='&#xF03B;'></i><span>L&auml;s upp</span></a></li>";
+					}
+					echo "<li class='menu js-show-main-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-menu'><a href='#'><i class='i' data-icon='&#xF0A9;'></i><span class='hide--palm'>Meny</span></a></li>";
+					echo "<li class='search js-show-search menu-item menu-item-type-custom menu-item-object-custom menu-item-search'><a href='#'><i class='i' data-icon='&#xF097;'></i><span class='hide--palm'>S&ouml;k</span></a></li>";
+					echo "</ul></nav></aside>";
 				}
 			?>
 			<?php if ($hk_options["logo2_image"] != "") : ?>
 			<span id="logo2"><a target="_blank" href="<?php echo $hk_options["logo2_link"]; ?>" title="<?php echo $hk_options["logo2_descr"]; ?>"><img src="<?php echo $hk_options["logo2_image"]; ?>" alt="<?php echo $hk_options["logo2_descr"]; ?>" /></a></span>
 			<?php endif; ?>
-			<div id="searchnavigation" role="search">			
+			<div id="searchnavigation" class="searchnavigation" role="search">			
 				<?php get_search_form(); ?>
 			</div>
-			<div class="clear"></div>
 		</div>		
 		<nav id="menu" role="navigation">
 			<?php 
@@ -209,11 +218,9 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				if ( is_active_sidebar( 'right-top-menu-item-sidebar' ) ) { 
 					dynamic_sidebar( 'right-top-menu-item-sidebar' ); 
 				}
-
+				echo "</ul>";
 				
-				echo "<li class='clear'></li></ul>";
-				
-				echo "<div id='responsive-sub-menu-dropdown'>";
+				echo "<div class='responsive-menu'>";
 				$parent = hk_getParent($cat);
 				if ($sub_parent > 0 && $parent > 0) { 
 					echo "<a class='menu-up' href='" . get_category_link($parent) . "'>&lt;</a>";
@@ -239,7 +246,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 					$menu_title = "";
 					
 				$class = (is_sub_category())?"category":"submenu";
-				echo "<a class='dropdown-menu $class'>";
+				echo "<a class='dropdown-menu-button $class'>";
 				echo $menu_title;
 				echo "</a>";
 				echo "</div>";
@@ -272,5 +279,5 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 		</nav><!-- #access -->
 	</header><!-- #branding -->
 
-	<div id="main">
-		<div id="breadcrumb"><?php hk_breadcrumb(); ?></div>
+	<div id="main" class="content--center  gw">
+		<div id="breadcrumb  g  one--whole  hide"><?php hk_breadcrumb(); ?></div>

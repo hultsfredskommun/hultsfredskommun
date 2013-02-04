@@ -1,0 +1,32 @@
+/* =firstpage ui-tabs
+----------------------------------------------- */
+.ui-tabs-nav {
+	@extend .nav;
+	@extend .nav--block;
+}
+.ui-tabs article
+{
+}
+.ui-tabs ul.post_tabs_title
+{
+    overflow: hidden;
+}
+ 
+.ui-tabs li.ui-state-default
+{
+    float: left;
+    cursor: pointer;
+	font-weight: bold;
+}
+.widget .widget-title span
+{
+	font-weight: bold;
+}
+.ui-tabs .ui-tabs-panel
+{
+    display: block;
+}
+.ui-tabs .ui-tabs-hide
+{
+    display: none !important;
+}

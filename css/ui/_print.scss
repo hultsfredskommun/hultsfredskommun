@@ -1,0 +1,23 @@
+@media print {
+
+#topmenu,
+#searchnavigation,
+#menu,
+#breadcrumb,
+#nav,
+.page-header,
+.closeButton,
+.related,
+.tools,
+#comments,
+.more-from-heading,
+#related_posts,
+#contact-side-tab,
+#comment-side-tab,
+#colophon,
+#scrollTo_top
+{
+	display: none;
+}
+
+}

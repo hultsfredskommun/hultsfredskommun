@@ -1,0 +1,20 @@
+.footer-sidebar.one .footer-widgets {
+	@extend .one-whole;
+}
+
+.footer-sidebar.two .footer-widgets {
+	@extend .lap-one-half;
+	@extend .desk-one-half;
+}
+
+.footer-sidebar.three .footer-widgets {
+	@extend .lap-one-third;
+	@extend .desk-one-third;
+	@extend .float--left;
+}
+
+.footer-sidebar.four .footer-widgets {
+	@extend .lap-one-half;
+	@extend .desk-one-quarter;
+	@extend .float--left;
+}

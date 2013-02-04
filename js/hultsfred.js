@@ -775,13 +775,12 @@ $(document).ready(function(){
 	/**
 	 * Responsive top navigation bar
 	 */
-	$("#responsivenavigation a.search").click(function(ev) {
-		$("#searchnavigation").slideToggle('fast');
+	$(".js-show-search").click(function(ev) {
+		$(".searchnavigation").toggleClass("unhide");
 		ev.preventDefault();
 	});
-	$("#responsivenavigation a.menu").click(function(ev) {
-		$("ul.main-menu").slideToggle('fast');
-		
+	$(".js-show-main-menu").click(function(ev) {
+		$(".main-menu").toggleClass("unhide");
 		ev.preventDefault();
 	});
 	
@@ -789,7 +788,7 @@ $(document).ready(function(){
 	 * responsive dropdown menu
 	 */
 	// set click action	on responsive dropdown-menu
-	$(".dropdown-menu").unbind("click").click( function(){
+	$(".dropdown-menu-button").unbind("click").click( function(){
 		if ($(this).hasClass("submenu")) {
 			$("ul.main-sub-menu").slideToggle('fast');
 		}
@@ -1280,7 +1279,6 @@ $(window).resize(function() {
 	$(".map_canvas").height($(".contact-popup").height());
 
 	
-	/* CSS GRID */
 	if( oldWidth != $(window).width() ) {
 
 		//Skriver ut skärmens storlek
@@ -1289,6 +1287,7 @@ $(window).resize(function() {
 		);*/
 		
 		/* reset responsive stuff */
+		/*
 		if( $(window).width()+scrollbar > responsive_small_size ){
 			$("ul.main-menu, ul.main-sub-menu").show();
 		}
@@ -1302,6 +1301,7 @@ $(window).resize(function() {
 		else {
 			$("#searchnavigation").slideUp("fast");
 		}
+		*/
 	}
 	oldWidth = $(window).width();
 });

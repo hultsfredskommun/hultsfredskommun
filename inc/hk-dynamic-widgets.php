@@ -12,8 +12,8 @@ function hk_widgets_init() {
 		'description' => 'Inneh&aring;ll h&ouml;gst upp p&aring; startsidan',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
 	) );
 
 	register_sidebar( array(
@@ -22,8 +22,8 @@ function hk_widgets_init() {
 		'description' => 'Inneh&aring;ll under sticky-posts p&aring; startsidan',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
 	) );
 	
 	register_sidebar( array(
@@ -32,8 +32,8 @@ function hk_widgets_init() {
 		'description' => 'Startsidans sidof&auml;lt',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title"><span>',
-		'after_title' => '</span></h3>',
+		'before_title' => '<h1 class="widget-title"><span>',
+		'after_title' => '</span></h1>',
 	) );
 
 	register_sidebar( array(
@@ -42,8 +42,8 @@ function hk_widgets_init() {
 		'description' => "Widgetyta som visas p&aring; startsidan f&ouml;re sidfoten.",
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
 	) );
 
 	register_sidebar( array(
@@ -52,8 +52,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
 	) );
 	register_sidebar( array(
 		'name' => "Sidfot 2",
@@ -61,8 +61,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
 	) );
 	register_sidebar( array(
 		'name' => "Sidfot 3",
@@ -70,8 +70,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
 	) );
 	register_sidebar( array(
 		'name' => "Sidfot 4",
@@ -79,8 +79,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
 	) );
 
 	register_sidebar( array(
@@ -89,8 +89,8 @@ function hk_widgets_init() {
 		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp p&aring; alla sidor',
 		'before_widget' => '<aside id="%1$s" class="important-widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
 	) );
 	
 	register_sidebar( array(
@@ -99,8 +99,8 @@ function hk_widgets_init() {
 		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i toppmenyn',
 		'before_widget' => '<li id="%1$s" class="right-nav-menu-item %2$s">',
 		'after_widget' => "</li>",
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
 	) );
 	
 }

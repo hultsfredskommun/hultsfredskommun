@@ -1,0 +1,28 @@
+
+.position-fixed {
+	position: fixed;
+}
+
+.position-fixed--top-left {
+	@extend .position-fixed;
+	top: 0;
+	left: 0;
+}
+
+.position-fixed--top-right {
+	@extend .position-fixed;
+	top: 0;
+	right: 0;
+}
+
+.position-fixed--bottom-right {
+	@extend .position-fixed;
+	bottom: 0;
+	right: 0;
+}
+
+.position-fixed--bottom-left {
+	@extend .position-fixed;
+	bottom: 0;
+	left: 0;
+}

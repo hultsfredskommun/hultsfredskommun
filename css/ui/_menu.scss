@@ -1,0 +1,72 @@
+.responsive-menu {
+	@extend .hide--lap;
+	@extend .hide--desk;
+}
+
+.main-menu,
+.main-sub-menu {
+	@extend .nav;
+	@extend .hide--palm;
+}
+.main-menu {
+	@extend .flush--bottom;
+}
+
+@include media-query(palm) {
+.main-menu,
+.main-sub-menu {
+	/* manually copied instead of @extend .nav--stacked */    
+    > li{
+        display:list-item;
+
+        > a{
+            display:block;
+        }
+    }
+}
+}
+/* TODO ADD DESK WITHOUT COPY PASTE!! */
+@include media-query(desk) {
+.main-menu,
+.main-sub-menu {
+	/* manually copied instead of @extend .nav--block */
+    line-height:1;
+    /**
+     * Remove whitespace caused by `inline-block`.
+     */
+    letter-spacing:-0.31em;
+    word-spacing:-0.43em;
+    white-space:nowrap;
+    
+    > li{
+        letter-spacing:normal;
+        word-spacing:normal;
+        
+        > a{
+            padding:$half-spacing-unit;
+        }
+    }
+}
+}
+@include media-query(lap) {
+.main-menu,
+.main-sub-menu {
+	/* manually copied instead of @extend .nav--block */
+    line-height:1;
+    /**
+     * Remove whitespace caused by `inline-block`.
+     */
+    letter-spacing:-0.31em;
+    word-spacing:-0.43em;
+    white-space:nowrap;
+    
+    > li{
+        letter-spacing:normal;
+        word-spacing:normal;
+        
+        > a{
+            padding:$half-spacing-unit;
+        }
+    }
+}
+}
