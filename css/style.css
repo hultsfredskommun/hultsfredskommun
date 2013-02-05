@@ -761,27 +761,39 @@ textarea:focus {
  * and over in your markup.
  */
 .cf, .gw,
-.grid-wrapper, .nav, .top-menu, .main-menu,
-.main-sub-menu, .ui-tabs-nav, .media, .island,
+.grid-wrapper, .nav, .contacts,
+.related-wrapper,
+.tools, .top-menu, .main-menu,
+.main-sub-menu, .tags-wrapper ul,
+.category-navigation ul, .page-header .sort-order ul, .ui-tabs-nav, .media, .island,
 .islet,
 #responsive-info, .matrix, .multi-list, .stat-group {
   zoom: 1;
 }
 .cf:before, .gw:before,
-.grid-wrapper:before, .nav:before, .top-menu:before, .main-menu:before,
-.main-sub-menu:before, .ui-tabs-nav:before, .media:before, .island:before,
+.grid-wrapper:before, .nav:before, .contacts:before,
+.related-wrapper:before,
+.tools:before, .top-menu:before, .main-menu:before,
+.main-sub-menu:before, .tags-wrapper ul:before,
+.category-navigation ul:before, .page-header .sort-order ul:before, .ui-tabs-nav:before, .media:before, .island:before,
 .islet:before,
 #responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .cf:after, .gw:after,
-.grid-wrapper:after, .nav:after, .top-menu:after, .main-menu:after,
-.main-sub-menu:after, .ui-tabs-nav:after, .media:after, .island:after,
+.grid-wrapper:after, .nav:after, .contacts:after,
+.related-wrapper:after,
+.tools:after, .top-menu:after, .main-menu:after,
+.main-sub-menu:after, .tags-wrapper ul:after,
+.category-navigation ul:after, .page-header .sort-order ul:after, .ui-tabs-nav:after, .media:after, .island:after,
 .islet:after,
 #responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after {
   content: " ";
   display: table;
 }
 .cf:after, .gw:after,
-.grid-wrapper:after, .nav:after, .top-menu:after, .main-menu:after,
-.main-sub-menu:after, .ui-tabs-nav:after, .media:after, .island:after,
+.grid-wrapper:after, .nav:after, .contacts:after,
+.related-wrapper:after,
+.tools:after, .top-menu:after, .main-menu:after,
+.main-sub-menu:after, .tags-wrapper ul:after,
+.category-navigation ul:after, .page-header .sort-order ul:after, .ui-tabs-nav:after, .media:after, .island:after,
 .islet:after,
 #responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after {
   clear: both;
@@ -1807,7 +1819,7 @@ label,
  * Demo: jsfiddle.net/inuitcss/ufUh2
  * 
  */
-.flexbox {
+.flexbox, #searchform, .page-header {
   display: table;
   width: 100%;
 }
@@ -1815,12 +1827,12 @@ label,
 /**
  * Nasty hack to circumvent Modernizr conflicts.
  */
-html.flexbox {
+html.flexbox, html#searchform, html.page-header {
   display: block;
   width: auto;
 }
 
-.flexbox__item {
+.flexbox__item, #searchform .input-wrapper, #searchform .submit, .page-header .sort-order ul, .page-header .view-mode {
   display: table-cell;
   vertical-align: middle;
 }
@@ -1894,17 +1906,29 @@ html.flexbox {
  * Demo: jsfiddle.net/inuitcss/Vnph4
  * 
  */
-.nav, .top-menu, .main-menu,
-.main-sub-menu, .ui-tabs-nav {
+.nav, .contacts,
+.related-wrapper,
+.tools, .top-menu, .main-menu,
+.main-sub-menu, .tags-wrapper ul,
+.category-navigation ul, .page-header .sort-order ul, .ui-tabs-nav {
   list-style: none;
   margin-left: 0;
 }
-.nav > li, .top-menu > li, .main-menu > li,
-.main-sub-menu > li, .ui-tabs-nav > li,
+.nav > li, .contacts > li,
+.related-wrapper > li,
+.tools > li, .top-menu > li, .main-menu > li,
+.main-sub-menu > li, .tags-wrapper ul > li,
+.category-navigation ul > li, .page-header .sort-order ul > li, .ui-tabs-nav > li,
 .nav > li > a,
+.contacts > li > a,
+.related-wrapper > li > a,
+.tools > li > a,
 .top-menu > li > a,
 .main-menu > li > a,
 .main-sub-menu > li > a,
+.tags-wrapper ul > li > a,
+.category-navigation ul > li > a,
+.page-header .sort-order ul > li > a,
 .ui-tabs-nav > li > a {
   display: inline-block;
   *display: inline;
@@ -1922,10 +1946,16 @@ html.flexbox {
    </ul>
  * 
  */
-.nav--stacked > li, .top-menu .sub-menu > li {
+.nav--stacked > li, .contacts > li,
+.related-wrapper > li,
+.tools > li, .top-menu .sub-menu > li, .tags-wrapper ul > li,
+.category-navigation ul > li {
   display: list-item;
 }
-.nav--stacked > li > a, .top-menu .sub-menu > li > a {
+.nav--stacked > li > a, .contacts > li > a,
+.related-wrapper > li > a,
+.tools > li > a, .top-menu .sub-menu > li > a, .tags-wrapper ul > li > a,
+.category-navigation ul > li > a {
   display: block;
 }
 
@@ -1955,7 +1985,7 @@ html.flexbox {
    </ul>
  * 
  */
-.nav--block, .options, .top-menu, .ui-tabs-nav {
+.nav--block, .options, .top-menu, .page-header .sort-order ul, .ui-tabs-nav {
   line-height: 1;
   /**
    * Remove whitespace caused by `inline-block`.
@@ -1964,11 +1994,11 @@ html.flexbox {
   word-spacing: -0.43em;
   white-space: nowrap;
 }
-.nav--block > li, .options > li, .top-menu > li, .ui-tabs-nav > li {
+.nav--block > li, .options > li, .top-menu > li, .page-header .sort-order ul > li, .ui-tabs-nav > li {
   letter-spacing: normal;
   word-spacing: normal;
 }
-.nav--block > li > a, .options > li > a, .top-menu > li > a, .ui-tabs-nav > li > a {
+.nav--block > li > a, .options > li > a, .top-menu > li > a, .page-header .sort-order ul > li > a, .ui-tabs-nav > li > a {
   padding: 12px;
 }
 
@@ -2985,8 +3015,7 @@ html.flexbox {
  * 
  */
 .greybox,
-.graybox,
-.widget {
+.graybox {
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 2;
@@ -2997,8 +3026,7 @@ html.flexbox {
 }
 
 .greybox a,
-.graybox a,
-.widget a {
+.graybox a {
   color: #fff;
   text-decoration: underline;
 }
@@ -3060,14 +3088,14 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .top-wrapper, .footer-sidebar.one .footer-widgets {
+.one-whole, .firstpage-pre-footer-sidebar, .top-wrapper, #searchform .input-wrapper .field, .footer-sidebar.one .footer-widgets {
   width: 100%;
 }
 
 /**
 * Halves
 */
-.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths, .logo, .top-menu-wrapper, .searchnavigation {
+.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths, .logo, .top-menu-wrapper {
   width: 50%;
 }
 
@@ -3078,7 +3106,7 @@ html.flexbox {
   width: 33.333%;
 }
 
-.two-thirds, .four-sixths, .eight-twelfths {
+.two-thirds, .four-sixths, .eight-twelfths, .entry-meta {
   width: 66.666%;
 }
 
@@ -3145,7 +3173,7 @@ html.flexbox {
 /**
 * Tenths
 */
-.one-tenth {
+.one-tenth, .aside-icon-left, #searchform .submit {
   width: 10%;
 }
 
@@ -3157,7 +3185,7 @@ html.flexbox {
   width: 70%;
 }
 
-.nine-tenths {
+.nine-tenths, .aside-icon-right, #searchform .input-wrapper {
   width: 90%;
 }
 
@@ -3198,7 +3226,7 @@ html.flexbox {
   /**
   * Whole
   */
-  .palm-one-whole {
+  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .category-navigation, .category-primary, .help-navigation, .side-content, .searchnavigation {
     width: 100%;
   }
 
@@ -3322,14 +3350,15 @@ html.flexbox {
   /**
   * Whole
   */
-  .lap-one-whole {
+  .lap-one-whole, .closeButton,
+  .content-wrapper, .side-content {
     width: 100%;
   }
 
   /**
   * Halves
   */
-  .lap-one-half, .lap-two-quarters, .lap-three-sixths, .lap-four-eighths, .lap-five-tenths, .lap-six-twelfths, .footer-sidebar.two .footer-widgets, .footer-sidebar.four .footer-widgets {
+  .lap-one-half, .lap-two-quarters, .lap-three-sixths, .lap-four-eighths, .lap-five-tenths, .lap-six-twelfths, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .searchnavigation, .footer-sidebar.two .footer-widgets, .footer-sidebar.four .footer-widgets {
     width: 50%;
   }
 
@@ -3340,18 +3369,18 @@ html.flexbox {
     width: 33.333%;
   }
 
-  .lap-two-thirds, .lap-four-sixths, .lap-eight-twelfths {
+  .lap-two-thirds, .lap-four-sixths, .lap-eight-twelfths, .help-navigation {
     width: 66.666%;
   }
 
   /**
   * Quarters
   */
-  .lap-one-quarter, .lap-two-eighths, .lap-three-twelfths {
+  .lap-one-quarter, .lap-two-eighths, .lap-three-twelfths, .category-navigation {
     width: 25%;
   }
 
-  .lap-three-quarters, .lap-six-eighths, .lap-nine-twelfths {
+  .lap-three-quarters, .lap-six-eighths, .lap-nine-twelfths, .category-primary {
     width: 75%;
   }
 
@@ -3577,29 +3606,30 @@ html.flexbox {
   /**
   * Halves
   */
-  .desk-one-half, .desk-two-quarters, .desk-three-sixths, .desk-four-eighths, .desk-five-tenths, .desk-six-twelfths, .footer-sidebar.two .footer-widgets {
+  .desk-one-half, .desk-two-quarters, .desk-three-sixths, .desk-four-eighths, .desk-five-tenths, .desk-six-twelfths, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .searchnavigation, .footer-sidebar.two .footer-widgets {
     width: 50%;
   }
 
   /**
   * Thirds
   */
-  .desk-one-third, .desk-two-sixths, .desk-four-twelfths, .footer-sidebar.three .footer-widgets {
+  .desk-one-third, .desk-two-sixths, .desk-four-twelfths, .side-content, .footer-sidebar.three .footer-widgets {
     width: 33.333%;
   }
 
-  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths {
+  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths, .help-navigation, .closeButton,
+  .content-wrapper {
     width: 66.666%;
   }
 
   /**
   * Quarters
   */
-  .desk-one-quarter, .desk-two-eighths, .desk-three-twelfths, .footer-sidebar.four .footer-widgets {
+  .desk-one-quarter, .desk-two-eighths, .desk-three-twelfths, .category-navigation, .footer-sidebar.four .footer-widgets {
     width: 25%;
   }
 
-  .desk-three-quarters, .desk-six-eighths, .desk-nine-twelfths {
+  .desk-three-quarters, .desk-six-eighths, .desk-nine-twelfths, .category-primary {
     width: 75%;
   }
 
@@ -4127,15 +4157,16 @@ html.flexbox {
  * A lot of these classes carry `!important` as you will always want them to win
  * out over other selectors.
  */
-.float--right, .top-menu-wrapper {
+.float--right, .firstpage-sidebar, .top-menu-wrapper {
   float: right!important;
 }
 
-.float--left, .footer-sidebar.three .footer-widgets, .footer-sidebar.four .footer-widgets {
+.float--left, .firstpage-top-content, .firstpage-content, .firstpage-pre-footer-sidebar, .category-navigation, .category-primary, .help-navigation, .closeButton,
+.content-wrapper, .side-content, .entry-meta, .aside-icon-left, .aside-icon-right, .addthis_toolbox a, .footer-sidebar.three .footer-widgets, .footer-sidebar.four .footer-widgets {
   float: left !important;
 }
 
-.text--left {
+.text--left, .top-menu .sub-menu {
   text-align: left !important;
 }
 
@@ -4143,7 +4174,7 @@ html.flexbox {
   text-align: center!important;
 }
 
-.text--right, .top-menu, .top-menu .sub-menu {
+.text--right, .top-menu {
   text-align: right !important;
 }
 
@@ -4255,7 +4286,7 @@ html.flexbox {
 
 @media only screen and (max-width: 480px) {
   .hide--palm, .top-menu .sites, .top-menu .translate, .searchnavigation, .main-menu,
-  .main-sub-menu {
+  .main-sub-menu, .page-header .view-mode {
     position: absolute;
     left: -9999px;
   }
@@ -4289,7 +4320,7 @@ html {
 
 .content--center {
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 1000px;
 }
 
 /*
@@ -4303,6 +4334,19 @@ html {
   border-top-left-radius: 0.4em;
 }
 
+/* category structure */
+@media only screen and (min-width: 1024px) {
+  .side-content {
+    float: right!important;
+  }
+}
+/*
+ * aside content
+ */
+.addthis_toolbox a {
+  margin-left: 12px;
+}
+
 /* hide title */
 /* set top menu icons */
 .top-menu {
@@ -4312,6 +4356,39 @@ html {
   /* add <i class=i data-icon="&#xF063;"></i> in menu item title */
 }
 
+/* SEARCH */
+@media only screen and (min-width: 481px) and (max-width: 1023px) {
+  .searchnavigation {
+    position: relative;
+    left: 25%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .searchnavigation {
+    position: relative;
+    left: 25%;
+  }
+}
+.assistive-text {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+#searchform .input-wrapper {
+  display: inline-block;
+}
+
+/*
+ * top navigation 
+ */
+/*
+ * sort-order 
+ */
+/*
+ * category navigation
+ */
+/* TODO ADD DESK WITHOUT COPY PASTE!! */
 @media only screen and (max-width: 480px) {
   .main-menu,
   .main-sub-menu {
@@ -4326,7 +4403,6 @@ html {
     display: block;
   }
 }
-/* TODO ADD DESK WITHOUT COPY PASTE!! */
 @media only screen and (min-width: 1024px) {
   .main-menu,
   .main-sub-menu {
@@ -4446,10 +4522,17 @@ html {
   left: 0;
 }
 
-.hidden {
+.hidden, .summary .entry-meta, .addthis_toolbox a, .summary .full {
   display: none;
 }
 
+@media only screen and (max-width: 480px) {
+  .hidden--palm, .more-in-navigation,
+  .sort-order,
+  .category-navigation {
+    display: none;
+  }
+}
 /* HELP MEDIA QUERY INFO */
 @media only screen and (min-width: 1024px) {
   #responsive-info:after {

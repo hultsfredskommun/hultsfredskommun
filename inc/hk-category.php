@@ -1,4 +1,4 @@
-<div id="primary">
+<div id="primary" class="category-primary">
 
 	<div id="content" role="main">
 
@@ -14,13 +14,13 @@
 
 			<?php 
 				if( function_exists('displayTagFilter') ){
-					displayTagFilter();
+					//displayTagFilter();
 				}
 			?>
 			
-			<div id="viewmode">
-				<a id="viewmode_summary" title="Listvisning" href="#">Sammanfattning</a>
-				<a id="viewmode_titles" title="Rubrikvisning" href="#">Rubriker</a>
+			<div id="viewmode" class="view-mode">
+				<a class="viewmode_summary js-view-summary" title="Listvisning" href="#">Sammanfattning</a>
+				<a class="viewmode_titles js-view-titles" title="Rubrikvisning" href="#">Rubriker</a>
 			</div>
 			<div class="clear"></div>
 		</header>
@@ -101,6 +101,7 @@
 				
 				
 				/* Get posts from children of this category */
+				if (false) : // DISABLE GET FROM CHILDREN
 				if ($cat != "") {
 					$children =  hk_getChildrenIdArray($cat);
 					if ( !empty($children) ) {
@@ -157,6 +158,7 @@
 						wp_reset_query(); // Reset Query
 					}
 				}
+				endif; // END DISABLED
 			endif;
 			/****Default order END***/
 

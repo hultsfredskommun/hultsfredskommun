@@ -7,7 +7,7 @@
 	 */
 
 	function displaySortOrderButtons() { ?>
-		<div id="sort-order"><ul>
+		<div id="sort-order" class="sort-order"><ul>
 			<?php
 				//init
 				$tags = get_query_var("tag");
@@ -26,6 +26,20 @@
 				}
 			?>
 			
+			<?php if (function_exists( 'views_orderby' )) : ?>
+			<?php if ($_REQUEST["orderby"] == "popular" || $_REQUEST["orderby"] == "") { ?>
+				<li class='current-menu-item'>Mest bes&ouml;kt</li>
+			<?php } else { ?>
+				<li><a href="?orderby=popular<?php echo $tags.$search; ?>">Mest bes&ouml;kt</a></li>
+			<?php } ?>
+			<?php endif; ?>
+			
+			<?php if ($_REQUEST["orderby"] == "latest") { ?>
+				<li class='current-menu-item'>Senast</li>
+			<?php } else { ?>
+				<li><a href="?orderby=latest&amp;<?php echo $tags.$search; ?>">Senast</a></li>
+			<?php } ?>
+
 			<?php if ($_REQUEST["orderby"] == "alpha") { ?>
 				<li class='current-menu-item'>A - &Ouml;</li>
 			<?php } else { ?>
@@ -38,27 +52,13 @@
 				<li><a href="?orderby=alpha_desc<?php echo $tags.$search; ?>">&Ouml; - A</a></li>
 			<?php } ?>
 
-			<?php if ($_REQUEST["orderby"] == "latest") { ?>
-				<li class='current-menu-item'>Senast</li>
-			<?php } else { ?>
-				<li><a href="?orderby=latest&amp;<?php echo $tags.$search; ?>">Senast</a></li>
-			<?php } ?>
 
-			<?php if ($_REQUEST["orderby"] == "oldest") { ?>
+			<?php /*if ($_REQUEST["orderby"] == "oldest") { ?>
 				<li class='current-menu-item'>&Auml;ldst</li>
 			<?php } else { ?>
 				<li><a href="?orderby=oldest<?php echo $tags.$search; ?>">&Auml;ldst</a></li>
-			<?php } ?>
+			<?php }*/ ?>
 			
-			<?php if (function_exists( 'views_orderby' )) : ?>
-
-			<?php if ($_REQUEST["orderby"] == "popular" || $_REQUEST["orderby"] == "") { ?>
-				<li class='current-menu-item'>Mest bes&ouml;kt</li>
-			<?php } else { ?>
-				<li><a href="?orderby=popular<?php echo $tags.$search; ?>">Mest bes&ouml;kt</a></li>
-			<?php } ?>
-			
-			<?php endif; ?>
 		</ul></div>
 
 	<?php }

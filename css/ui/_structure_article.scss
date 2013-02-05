@@ -1,0 +1,53 @@
+.closeButton,
+.content-wrapper {
+	@extend .float--left;
+	@extend .desk-two-thirds;
+	@extend .lap-one-whole;
+}
+
+
+.side-content {
+	@extend .desk-one-third;
+	@extend .lap-one-whole;
+	@extend .palm-one-whole;
+	@extend .float--left;
+}
+@include media-query(desk) {
+.side-content {
+	float: right!important;
+}
+}
+
+.summary .entry-meta {
+	@extend .hidden;
+}
+.entry-meta {
+	@extend .two-thirds;
+	@extend .float--left;
+}
+
+/*
+ * aside content
+ */
+.aside-icon-left {
+	@extend .float--left;
+	@extend .one-tenth;
+}
+.aside-icon-right {
+	@extend .float--left;
+	@extend .nine-tenths;
+}
+.contacts,
+.related-wrapper,
+.tools {
+	@extend .nav;
+	@extend .nav--stacked;
+}
+.addthis_toolbox a {
+	@extend .float--left;
+	@extend .hidden;
+	margin-left: $base-spacing-unit/2;
+}
+.summary .full {
+	@extend .hidden;
+}

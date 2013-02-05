@@ -1,3 +1,6 @@
+/*
+ * top navigation 
+ */
 .responsive-menu {
 	@extend .hide--lap;
 	@extend .hide--desk;
@@ -12,6 +15,41 @@
 	@extend .flush--bottom;
 }
 
+.tags-wrapper ul,
+.category-navigation ul {
+	@extend .nav;
+	@extend .nav--stacked;
+}
+
+/*
+ * sort-order 
+ */
+.page-header {
+	@extend .flexbox;
+	.sort-order ul {
+		@extend .flexbox__item;
+		@extend .nav;
+		@extend .nav--block;
+	}
+	.view-mode {
+		@extend .flexbox__item;
+		@extend .hide--palm;
+	}
+}
+
+
+
+/*
+ * category navigation
+ */
+
+.more-in-navigation,
+.sort-order,
+.category-navigation {
+	@extend .hidden--palm;
+}
+
+/* TODO ADD DESK WITHOUT COPY PASTE!! */
 @include media-query(palm) {
 .main-menu,
 .main-sub-menu {
@@ -25,7 +63,6 @@
     }
 }
 }
-/* TODO ADD DESK WITHOUT COPY PASTE!! */
 @include media-query(desk) {
 .main-menu,
 .main-sub-menu {

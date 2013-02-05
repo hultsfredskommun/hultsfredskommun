@@ -25,19 +25,47 @@
  
  
  
+ 
+ 
+ 
+ 
 /* UI IMPORTS */
-@import "ui/general";
+@import "ui/structure";
+@import "ui/structure_firstpage";
+@import "ui/structure_category";
+@import "ui/structure_article";
 @import "ui/header";
 @import "ui/menu";
 @import "ui/ui-tabs";
 @import "ui/footer";
-@import "ui/floating";
+@import "ui/helpers/fixed";
+@import "ui/helpers/margins";
 @import "ui/print";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* GRAYBOXES */
 .widget {
-	@extend .graybox;
+
 }
 
 
@@ -48,12 +76,17 @@
 	left: 0;
 }
 
+
+
 .hidden {
 	display: none;
 }
 
-
-
+@include media-query(palm) {
+	.hidden--palm {
+		display: none;
+	}
+}
 
 
 

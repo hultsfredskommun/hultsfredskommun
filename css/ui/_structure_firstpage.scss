@@ -1,0 +1,22 @@
+.firstpage-top-content {
+	@extend .desk-one-half;
+	@extend .lap-one-half;
+	@extend .palm-one-whole;
+	@extend .float--left;
+}
+.firstpage-sidebar {
+	@extend .desk-one-half;
+	@extend .lap-one-half;
+	@extend .palm-one-whole;
+	@extend .float--right;
+}
+.firstpage-content {
+	@extend .desk-one-half;
+	@extend .lap-one-half;
+	@extend .palm-one-whole;
+	@extend .float--left;
+}
+.firstpage-pre-footer-sidebar {
+	@extend .one-whole;
+	@extend .float--left;
+}

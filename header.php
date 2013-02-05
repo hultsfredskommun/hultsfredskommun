@@ -279,5 +279,5 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 		</nav><!-- #access -->
 	</header><!-- #branding -->
 
-	<div id="main" class="content--center  gw">
-		<div id="breadcrumb  g  one--whole  hide"><?php hk_breadcrumb(); ?></div>
+	<div id="main" class="content--center">
+		<div id="breadcrumb  one--whole  hide"><?php hk_breadcrumb(); ?></div>

@@ -51,7 +51,7 @@ function hk_category_help_navigation() {
 	$cat = get_query_var("cat");
 	$tags = get_query_var("tag");
 
-	echo "<aside><nav>";
+	echo "<aside class='help-navigation'><nav>";
 	if ($search != "") {
 		echo "Du s&ouml;kte p&aring; " . $search . ".";
 	}
@@ -124,7 +124,7 @@ function hk_navigation() {
 	$cat = get_query_var("cat");
 	$tags = get_query_var("tag");
 
-	echo "<aside id='nav' role='navigation'><nav>";
+	echo "<aside id='nav' class='category-navigation' role='navigation'><nav>";
 	if ($search != "") {
 		echo "Du s&ouml;kte p&aring; " . $search . ".";
 	}
@@ -259,7 +259,7 @@ function hk_navigation() {
 		
 	}
 	
-	echo "</nav>&nbsp;</aside>";
+	echo "</nav></aside>";
 }
 	
 

@@ -384,7 +384,7 @@ function readMoreToggle(el){
 				$(article).find('.summary-content').slideDown(0, function(){
 					
 					// remove full class to track article state
-					$(article).removeClass("full");
+					$(article).removeClass("full").addClass("summary");
 					// scroll to top of post 
 					
 				});
@@ -405,7 +405,7 @@ function readMoreToggle(el){
 					$(article).removeClass("only-title");
 				}
 				// add full class to track article state
-				$(article).addClass("full");
+				$(article).addClass("full").removeClass("summary");
 				$(article).find('.more-content').slideDown(0, function(){
 					// get plugin WP Lightbox 2 by Pankaj Jha to work with dynamical click
 					var haveConf = (typeof JQLBSettings == 'object');
@@ -637,7 +637,7 @@ $(document).ready(function(){
 	 * view-modes 
 	 */
 	// show framed articles click action
-	$("#viewmode").unbind("hover").hover(function() {
+	/*$("#viewmode").unbind("hover").hover(function() {
 		$(this).append("<div id='all_title_div'></div>");
 		$("#content article .entry-title").each(function() {
 			if ($(this).find("a").length > 1) {
@@ -647,7 +647,7 @@ $(document).ready(function(){
 		$("#all_title_div a.post-edit-link").remove(); // cleanup if edit links added
 	}, function() {
 		$("#all_title_div").remove();
-	});
+	});*/
 	$("#viewmode_summary").unbind("click").click(function(ev){
 		$("#content").removeClass("viewmode_titles");
 		$("#content").find('article').removeClass("only-title");
@@ -679,7 +679,7 @@ $(document).ready(function(){
 				$(item).find('.summary-content').show();
 			
 				// remove full class to track article state
-				$(item).removeClass("full");
+				$(item).removeClass("full").addClass("summary");
 			}
 			
 			if(is_last_item){
@@ -793,7 +793,7 @@ $(document).ready(function(){
 			$("ul.main-sub-menu").slideToggle('fast');
 		}
 		else if ($(this).hasClass("category")) {
-			$("#nav ul.parent").slideToggle('fast');
+			$(".category-navigation").slideToggle('fast');
 		}		
 	});  
 

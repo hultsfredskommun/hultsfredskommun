@@ -3,11 +3,11 @@
 	<?php $count = 0; 
 	$options = get_option("hk_theme"); ?>
 	<?php if( function_exists("get_field") && get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
-	<div class="box top contacts summary">
+	<ul class="box top contacts summary">
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
-			<div class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
+			<li class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
 				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>
-				<a title="Kontaktinformation"><div class="icon"><img src="<?php hk_icon_path(); ?>/user-4.svg" alt="Kontaktinformation" /></div></a><div class="contact-<?php echo $value->ID; ?>"><a class="contactlink" href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
+				<a title="Kontaktinformation" class="aside-icon-left"><i class='i' data-icon='&#xF170;'></i></a><div class="aside-icon-right  contact-<?php echo $value->ID; ?>"><a class="contactlink" href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
 				
 				<?php $alt_title = get_sub_field('hk_contact_extra',get_the_ID());
 				if (!empty($alt_title)) : ?>
@@ -27,16 +27,17 @@
 				endwhile; endif;*/				
 				?>
 				<?php endif; ?>
-			<span class="contact_id hidden"><?php echo $value->ID; ?></span></div></div>
+			<span class="contact_id hidden"><?php echo $value->ID; ?></span></div></li>
 		<?php endwhile; ?>			 
-	</div>
+	</ul>
 	<?php endif; ?>
 	<?php //print_r($post); ?>
 	<?php if ( get_post_type() == "attachment" ) : // if view of attachment ?>
 	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo ($count < 2)?"summary":"full"; ?>">
 		<ul class="related-wrapper <?php echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
-			<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Ladda ner dokument"><div class="icon"><img src="<?php hk_icon_path(); ?>/inbox.svg" alt="Ladda ner dokument" /></div></a>
-				<a target="_blank" href="<?php echo wp_get_attachment_url(get_the_ID()); ?>" title="Direktl&auml;nk till filen<?php //echo get_the_content(); ?>"><?php the_title(); ?></a>
+			<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>">
+				<a title="Ladda ner dokument" class="aside-icon-left"><i class='i' data-icon='&#xF170;'></i></a>
+				<a target="_blank" href="<?php echo wp_get_attachment_url(get_the_ID()); ?>" class="aside-icon-right" title="Direktl&auml;nk till filen<?php //echo get_the_content(); ?>"><?php the_title(); ?></a>
 			</li>
 		</ul>
 	</div>
@@ -48,12 +49,12 @@
 		<?php while ( has_sub_field('hk_related') ) : ?>
 			<?php if (!$summary || $count++ < 2) : ?>
 				<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
-					<li class="related_page <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Relaterat inl&auml;gg"><div class="icon"><img src="<?php hk_icon_path(); ?>/paragraph-justify-2.svg" alt="Relaterat inl&auml;gg" /></div></a>
+					<li class="related_page <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Relaterat inl&auml;gg" class="aside-icon-left"><i class='i' data-icon='&#xF170;'></i></a>
 						<?php $value = get_sub_field('hk_related_post');?>
-						<a href="<?php echo get_permalink($value->ID); ?>" title="<?php echo get_sub_field('hk_related_post_description'); ?>"><?php echo $value->post_title; ?></a>
+						<a href="<?php echo get_permalink($value->ID); ?>" class="aside-icon-right" title="<?php echo get_sub_field('hk_related_post_description'); ?>"><?php echo $value->post_title; ?></a>
 					</li>			 
 				<?php elseif ( get_row_layout() == 'hk_related_links' ) : ?>
-					<li class="related_link <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="L&auml;nk till annan webbsida"><div class="icon"><img src="<?php hk_icon_path(); ?>/outgoing.svg" alt="L&auml;nk till annan webbsida" /></div></a>
+					<li class="related_link <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="L&auml;nk till annan webbsida" class="aside-icon-left"><i class='i' data-icon='&#xF170;'></i></a>
 						<?php 
 							// prepend http:// if not there already
 							$relate_link_url = get_sub_field('hk_relate_link_url');
@@ -61,13 +62,13 @@
 								$relate_link_url = "http://" . $relate_link_url;
 							}
 						?>
-						<a target="_blank" href="<?php echo $relate_link_url; ?>" title="<?php echo get_sub_field('hk_related_link_description'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
+						<a target="_blank" class="aside-icon-right" href="<?php echo $relate_link_url; ?>" title="<?php echo get_sub_field('hk_related_link_description'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
 					</li>
 				<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
 					<?php $link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
 						$link_name = get_the_title(get_sub_field('hk_related_file')); ?>
-					<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Ladda ner dokument"><div class="icon"><img src="<?php hk_icon_path(); ?>/inbox.svg" alt="Ladda ner dokument" /></div></a>
-						<a target="_blank" href="<?php echo $link; ?>" title="<?php echo get_sub_field('hk_related_file_description'); ?>"><?php echo $link_name; ?></a>
+					<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Ladda ner dokument" class="aside-icon-left"><i class='i' data-icon='&#xF170;'></i></a>
+						<a target="_blank" class="aside-icon-right" href="<?php echo $link; ?>" title="<?php echo get_sub_field('hk_related_file_description'); ?>"><?php echo $link_name; ?></a>
 					</li>			 
 				<?php endif; ?> 
 			<?php endif; ?> 
@@ -83,22 +84,22 @@
 	<?php endif; ?>
 
 	<?php endif; ?>	
-	<div class="box tools">
-		<?php edit_post_link( "Redigera inl&auml;gg", "<div class='editlink tool-line full'><div class='icon'><img src='" . hk_get_icon_path() . "/pencil.svg' alt='Editera' /></div>", "</div>" ); ?>
-		<div class="print tool-line full"><div class="icon"><img src="<?php hk_icon_path(); ?>/print.svg" alt="Skriv ut" /></div><a class="print" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Funktionen kommer senare">Skriv ut</a></div>
-		<div class="read tool-line full"><div class="icon"><img src="<?php hk_icon_path(); ?>/audio-high.svg" alt="L&auml;s upp artikel" /></div><a class="read" title="Funktionen kommer senare">L&auml;s upp artikel</a></div>
+	<ul class="box tools">
+		<?php edit_post_link( "Redigera inl&auml;gg", "<li><a title='Redigera inl&auml;gg' class='aside-icon-left  editlink tool-line full' class='aside-icon-left'><i class='i' data-icon='&#xF170;'></i></a><span>", "</span></li>" ); ?>
+		<li class="print tool-line full"><a title='Skriv ut' class='aside-icon-left'><i class='i' data-icon='&#xF170;'></i></a><a class="print  aside-icon-right" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Funktionen kommer senare">Skriv ut</a></li>
+		<li class="read tool-line full"><a title='L&auml;s upp' class='aside-icon-left'><i class='i' data-icon='&#xF170;'></i></a><a class="read" title="Funktionen kommer senare">L&auml;s upp artikel</a></li>
 		<?php if ($options['addthis_pubid'] != "") : ?>
-		<div class="friend tool-line full"><div class="icon"><img src="<?php hk_icon_path(); ?>/speech-bubble-left-4.svg" alt="Tipsa en v&auml;n" /></div><a class="friend" href="#" title="Tipsa n&aring;gon om denna sida">Tipsa</a></div>
-		<div class="addthis full">
+		<li class="friend tool-line full"><a title='Redigera inl&auml;gg' class='aside-icon-left'><i class='i' data-icon='&#xF170;'></i></a><a class="friend" href="#" title="Tipsa n&aring;gon om denna sida">Tipsa</a></li>
+		<li class="addthis full">
 			<div class="addthis_toolbox" addthis:url="http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>" addthis:title="<?php the_title(); ?>" addthis:description="Kolla den h&auml;r sidan.">
 				<a class="addthis_button_email"></a>
 				<a class="addthis_button_facebook"></a>
 				<a class="addthis_button_twitter"></a>
 				<a class="addthis_button_compact"></a>
 			</div>
-		</div>
+		</li>
 		<?php endif; ?>
-	</div>
+	</ul>
 	
 
 </aside>

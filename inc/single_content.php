@@ -6,14 +6,14 @@
 		// featured image ?>
 
 
-		<?php //the_post_thumbnail('featured-image'); 
-			echo hk_get_the_post_thumbnail(get_the_ID(),'featured-image');
-		?>
 		
 			<div class="entry-wrapper content">
 				<h1 class="entry-title">
 					<?php echo get_the_title(); ?>
 				</h1>
+				<?php //the_post_thumbnail('featured-image'); 
+					echo hk_get_the_post_thumbnail(get_the_ID(),'featured-image');
+				?>
 			
 				<?php
 				if (function_exists("get_field")) { $optionaltext = get_field('hk_optional_text'); }
@@ -34,6 +34,6 @@
 			
 			</div><!-- .entry-wrapper -->			
 
-			<?php require("hk-aside-content.php"); ?>
+			<?php //require("hk-aside-content.php"); ?>
 			
-			<?php require("single_footer_content.php"); ?>
+			<?php //require("single_footer_content.php"); ?>
