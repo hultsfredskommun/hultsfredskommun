@@ -1,25 +1,40 @@
+/* the article content */
 article.post {
 	@extend .landmark;
 	@extend .one-whole;
-	@extend .float--left;
 }
 
-.closeButton,
+.article-wrapper {
+	@extend .gw;
+	@extend .one-whole;
+}
 .content-wrapper {
-	@extend .float--left;
+	@extend .g;
 	@extend .desk-two-thirds;
 	@extend .lap-one-whole;
+	@extend .palm-one-whole;
 }
 .side-content {
+	@extend .g;
 	@extend .desk-one-third;
 	@extend .lap-one-whole;
 	@extend .palm-one-whole;
-	@extend .float--left;
 }
 @include media-query(desk) {
 .side-content {
 	float: right!important;
 }
+}
+.entry-meta {
+	@extend .g;
+	@extend .desk-two-thirds;
+	@extend .lap-one-whole;
+	@extend .palm-one-whole;
+}
+.closeButton {
+	@extend .desk-two-thirds;
+	@extend .lap-one-whole;
+	@extend .palm-one-whole;
 }
 
 /* article footer*/
@@ -27,6 +42,7 @@ article.post {
 	@extend .hidden;
 }
 .entry-title,
+.content-wrapper,
 .entry-meta {
 	@extend .two-thirds;
 	@extend .float--left;
@@ -34,7 +50,8 @@ article.post {
 
 /* featured images */
 .summary .img-wrapper {
-	@extend .float--left;
+	@extend .img--left;
+	@extend .flush--bottom;
 	@extend .one-half;
 }
 img.slide {
@@ -49,6 +66,7 @@ img.slide {
 }
 @include media-query(palm) {
 .entry-title,
+.content-wrapper,
 .entry-meta,
 .summary .img-wrapper {
 	width: 100%;

@@ -760,7 +760,7 @@ textarea:focus {
  * Extend the clearfix class with Sass to avoid the `.cf` class appearing over
  * and over in your markup.
  */
-.cf, .gw,
+.cf, .gw, .main, .article-wrapper,
 .grid-wrapper, .nav, .pager, .contacts,
 .related-wrapper,
 .tools, .top-menu, .main-menu,
@@ -770,14 +770,14 @@ textarea:focus {
 #responsive-info, .matrix, .multi-list, .stat-group {
   zoom: 1;
 }
-.cf:before, .gw:before,
+.cf:before, .gw:before, .main:before, .article-wrapper:before,
 .grid-wrapper:before, .nav:before, .pager:before, .contacts:before,
 .related-wrapper:before,
 .tools:before, .top-menu:before, .main-menu:before,
 .main-sub-menu:before, .tags-wrapper ul:before,
 .category-navigation ul:before, .page-header .sort-order ul:before, .ui-tabs-nav:before, .media:before, .island:before,
 .islet:before,
-#responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .cf:after, .gw:after,
+#responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .cf:after, .gw:after, .main:after, .article-wrapper:after,
 .grid-wrapper:after, .nav:after, .pager:after, .contacts:after,
 .related-wrapper:after,
 .tools:after, .top-menu:after, .main-menu:after,
@@ -788,7 +788,7 @@ textarea:focus {
   content: " ";
   display: table;
 }
-.cf:after, .gw:after,
+.cf:after, .gw:after, .main:after, .article-wrapper:after,
 .grid-wrapper:after, .nav:after, .pager:after, .contacts:after,
 .related-wrapper:after,
 .tools:after, .top-menu:after, .main-menu:after,
@@ -1229,7 +1229,7 @@ img[height] {
   margin-left: 24px;
 }
 
-.img--left {
+.img--left, .summary .img-wrapper {
   float: left;
   margin-right: 24px;
   margin-bottom: 24px;
@@ -1745,7 +1745,7 @@ label,
  * 
  * Shorthand and verbose
  */
-.gw,
+.gw, .main, .article-wrapper,
 .grid-wrapper {
   /**
    * Negative margin to negate the padding on the first grid child. 
@@ -1774,7 +1774,7 @@ label,
    </div>
  * 
  */
-.gw--rev > .g,
+.gw--rev > .g, .gw--rev > .breadcrumb, .gw--rev > .category-navigation, .gw--rev > .category-primary, .gw--rev > .content-wrapper, .gw--rev > .side-content, .gw--rev > .entry-meta,
 .grid-wrapper--rev > .grid {
   float: right;
 }
@@ -1782,7 +1782,7 @@ label,
 /**
  * Very infrequently occuring grid wrappers as children of grid wrappers.
  */
-.gw > .gw,
+.gw > .gw, .main > .gw, .article-wrapper > .gw, .gw > .main, .main > .main, .article-wrapper > .main, .gw > .article-wrapper, .main > .article-wrapper, .article-wrapper > .article-wrapper,
 .grid-wrapper > .grid-wrapper {
   margin-left: 0;
 }
@@ -1792,7 +1792,7 @@ label,
  * 
  * Shorthand and verbose
  */
-.g,
+.g, .breadcrumb, .category-navigation, .category-primary, .content-wrapper, .side-content, .entry-meta,
 .grid {
   float: left;
   padding-left: 24px;
@@ -3104,7 +3104,7 @@ html.flexbox, html#searchform, html.page-header {
 /**
 * Whole
 */
-.one-whole, .firstpage-pre-footer-sidebar, article.post, img.slide, .top-wrapper, #searchform .input-wrapper .field, .footer-sidebar.one .footer-widgets {
+.one-whole, .breadcrumb, .firstpage-pre-footer-sidebar, article.post, .article-wrapper, img.slide, .top-wrapper, #searchform .input-wrapper .field, .footer-sidebar.one .footer-widgets {
   width: 100%;
 }
 
@@ -3123,6 +3123,7 @@ html.flexbox, html#searchform, html.page-header {
 }
 
 .two-thirds, .four-sixths, .eight-twelfths, .entry-title,
+.content-wrapper,
 .entry-meta {
   width: 66.666%;
 }
@@ -3243,7 +3244,7 @@ html.flexbox, html#searchform, html.page-header {
   /**
   * Whole
   */
-  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .category-navigation, .category-primary, .help-navigation, .side-content, .searchnavigation {
+  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .category-navigation, .category-primary, .help-navigation, .content-wrapper, .side-content, .entry-meta, .closeButton, .searchnavigation {
     width: 100%;
   }
 
@@ -3367,8 +3368,7 @@ html.flexbox, html#searchform, html.page-header {
   /**
   * Whole
   */
-  .lap-one-whole, .closeButton,
-  .content-wrapper, .side-content {
+  .lap-one-whole, .content-wrapper, .side-content, .entry-meta, .closeButton {
     width: 100%;
   }
 
@@ -3634,8 +3634,7 @@ html.flexbox, html#searchform, html.page-header {
     width: 33.333%;
   }
 
-  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths, .help-navigation, .closeButton,
-  .content-wrapper {
+  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths, .help-navigation, .content-wrapper, .entry-meta, .closeButton {
     width: 66.666%;
   }
 
@@ -4178,9 +4177,9 @@ html.flexbox, html#searchform, html.page-header {
   float: right!important;
 }
 
-.float--left, .firstpage-top-content, .firstpage-content, .firstpage-pre-footer-sidebar, .category-navigation, .category-primary, .help-navigation, article.post, .closeButton,
-.content-wrapper, .side-content, .entry-title,
-.entry-meta, .summary .img-wrapper, .contact-area .img-wrapper, .aside-icon-left, .aside-icon-right, .addthis_toolbox a, .footer-sidebar.three .footer-widgets, .footer-sidebar.four .footer-widgets {
+.float--left, .firstpage-top-content, .firstpage-content, .firstpage-pre-footer-sidebar, .help-navigation, .entry-title,
+.content-wrapper,
+.entry-meta, .contact-area .img-wrapper, .aside-icon-left, .aside-icon-right, .addthis_toolbox a, .footer-sidebar.three .footer-widgets, .footer-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4208,7 +4207,7 @@ html.flexbox, html#searchform, html.page-header {
   margin-right: 0!important;
 }
 
-.flush--bottom, #responsive-info, .main-menu {
+.flush--bottom, #responsive-info, .summary .img-wrapper, .main-menu {
   margin-bottom: 0!important;
 }
 
@@ -4297,7 +4296,7 @@ html.flexbox, html#searchform, html.page-header {
 /**
  * Hide content based on breakpoint
  */
-.hide, .site-title {
+.hide, .breadcrumb, .site-title {
   position: absolute;
   left: -9999px;
 }
@@ -4343,7 +4342,7 @@ html {
   font-family: "myriad-pro", Arial, sans-serif;
 }
 
-.content--center {
+.content--center, .main {
   margin: 0 auto;
   max-width: 1000px;
 }
@@ -4360,6 +4359,7 @@ html {
 }
 
 /* category structure */
+/* the article content */
 @media only screen and (min-width: 1024px) {
   .side-content {
     float: right!important;
@@ -4373,6 +4373,7 @@ html {
 
 @media only screen and (max-width: 480px) {
   .entry-title,
+  .content-wrapper,
   .entry-meta,
   .summary .img-wrapper {
     width: 100%;
@@ -4622,7 +4623,7 @@ html {
   left: 0;
 }
 
-.hidden, .summary .entry-meta, .addthis_toolbox a, .summary .full {
+.hidden, .breadcrumb, .summary .entry-meta, .addthis_toolbox a, .summary .full {
   display: none;
 }
 

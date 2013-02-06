@@ -1,12 +1,17 @@
 /* category structure */
+.breadcrumb {
+	@extend .g;
+	@extend .one-whole;
+	@extend .hidden;
+}
 .category-navigation {
-	@extend .float--left;
+	@extend .g;
 	@extend .palm-one-whole;
 	@extend .lap-one-quarter;
 	@extend .desk-one-quarter;
 }
 .category-primary {
-	@extend .float--left;
+	@extend .g;
 	@extend .palm-one-whole;
 	@extend .lap-three-quarters;
 	@extend .desk-three-quarters;

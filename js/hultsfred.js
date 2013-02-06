@@ -578,8 +578,8 @@ $(document).ready(function(){
 	/**
 	 * Expand article if only one, not on home page
 	 */
-	if ($('.archive #content').find("article").length == 1 && $(this).parents(".home").length) {
-		readMoreToggle($('.archive #content').find("article .entry-title a"));
+	if ($('.archive').find("article").length == 1 && $(this).parents(".home").length) {
+		readMoreToggle($('.archive').find("article .entry-title a"));
 	}
 
 
@@ -1118,7 +1118,7 @@ function setArticleActions(el) {
 	
 	
 	//triggers articles click-action entry-title clicked
-	$(el).find(".summary-content .entry-wrapper, .summary-content .img-wrapper").unbind("click").click(function(){
+	$(el).find(".summary-content .entry-content, .summary-content .img-wrapper").unbind("click").click(function(){
 		readMoreToggle( $(this).parents("article").find('.entry-title a') );
 	});
 	$(el).find(".contact-wrapper a.contactlink").each(function() {
