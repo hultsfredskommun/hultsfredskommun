@@ -1,0 +1,28 @@
+
+.position-relative {
+	position: relative;
+}
+
+.position-relative--top-left {
+	@extend .position-relative;
+	top: 0;
+	left: 0;
+}
+
+.position-relative--top-right {
+	@extend .position-relative;
+	top: 0;
+	right: 0;
+}
+
+.position-relative--bottom-right {
+	@extend .position-relative;
+	bottom: 0;
+	right: 0;
+}
+
+.position-relative--bottom-left {
+	@extend .position-relative;
+	bottom: 0;
+	left: 0;
+}

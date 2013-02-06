@@ -1,0 +1,28 @@
+
+.position-absolute {
+	position: absolute;
+}
+
+.position-absolute--top-left {
+	@extend .position-absolute;
+	top: 0;
+	left: 0;
+}
+
+.position-absolute--top-right {
+	@extend .position-absolute;
+	top: 0;
+	right: 0;
+}
+
+.position-absolute--bottom-right {
+	@extend .position-absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.position-absolute--bottom-left {
+	@extend .position-absolute;
+	bottom: 0;
+	left: 0;
+}

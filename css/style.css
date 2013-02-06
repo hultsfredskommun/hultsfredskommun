@@ -761,7 +761,7 @@ textarea:focus {
  * and over in your markup.
  */
 .cf, .gw,
-.grid-wrapper, .nav, .contacts,
+.grid-wrapper, .nav, .pager, .contacts,
 .related-wrapper,
 .tools, .top-menu, .main-menu,
 .main-sub-menu, .tags-wrapper ul,
@@ -771,14 +771,14 @@ textarea:focus {
   zoom: 1;
 }
 .cf:before, .gw:before,
-.grid-wrapper:before, .nav:before, .contacts:before,
+.grid-wrapper:before, .nav:before, .pager:before, .contacts:before,
 .related-wrapper:before,
 .tools:before, .top-menu:before, .main-menu:before,
 .main-sub-menu:before, .tags-wrapper ul:before,
 .category-navigation ul:before, .page-header .sort-order ul:before, .ui-tabs-nav:before, .media:before, .island:before,
 .islet:before,
 #responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .cf:after, .gw:after,
-.grid-wrapper:after, .nav:after, .contacts:after,
+.grid-wrapper:after, .nav:after, .pager:after, .contacts:after,
 .related-wrapper:after,
 .tools:after, .top-menu:after, .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
@@ -789,7 +789,7 @@ textarea:focus {
   display: table;
 }
 .cf:after, .gw:after,
-.grid-wrapper:after, .nav:after, .contacts:after,
+.grid-wrapper:after, .nav:after, .pager:after, .contacts:after,
 .related-wrapper:after,
 .tools:after, .top-menu:after, .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
@@ -820,29 +820,42 @@ pre,
 .media,
 .island,
 .islet,
-#responsive-info {
+#responsive-info,
+.pager {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
 }
-.islet h1, #responsive-info h1, .islet h2, #responsive-info h2, .islet h3, #responsive-info h3, .islet h4, #responsive-info h4, .islet h5, #responsive-info h5, .islet h6, #responsive-info h6, .islet hgroup, #responsive-info hgroup, .islet
+.islet h1, #responsive-info h1, .pager h1, .islet h2, #responsive-info h2, .pager h2, .islet h3, #responsive-info h3, .pager h3, .islet h4, #responsive-info h4, .pager h4, .islet h5, #responsive-info h5, .pager h5, .islet h6, #responsive-info h6, .pager h6, .islet hgroup, #responsive-info hgroup, .pager hgroup, .islet
 ul, #responsive-info
-ul, .islet ol, #responsive-info ol, .islet dl, #responsive-info dl, .islet
+ul, .pager
+ul, .islet ol, #responsive-info ol, .pager ol, .islet dl, #responsive-info dl, .pager dl, .islet
 blockquote, #responsive-info
-blockquote, .islet p, #responsive-info p, .islet address, #responsive-info address, .islet
+blockquote, .pager
+blockquote, .islet p, #responsive-info p, .pager p, .islet address, #responsive-info address, .pager address, .islet
 table, #responsive-info
+table, .pager
 table, .islet
 fieldset, #responsive-info
-fieldset, .islet figure, #responsive-info figure, .islet
+fieldset, .pager
+fieldset, .islet figure, #responsive-info figure, .pager figure, .islet
 pre, #responsive-info
-pre, .islet .form-fields > li, #responsive-info .form-fields > li, .islet
+pre, .pager
+pre, .islet .form-fields > li, #responsive-info .form-fields > li, .pager .form-fields > li, .islet
 .media, #responsive-info
+.media, .pager
 .media, .islet
 .island, #responsive-info
+.island, .pager
 .island, .islet
 .islet, #responsive-info
+.islet, .pager
 .islet, .islet
 #responsive-info, #responsive-info
-#responsive-info {
+#responsive-info, .pager
+#responsive-info, .islet
+.pager, #responsive-info
+.pager, .pager
+.pager {
   margin-bottom: 12px;
   margin-bottom: 0.75rem;
 }
@@ -850,7 +863,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .islet
 /**
  * Doubled up `margin-bottom` helper class.
  */
-.landmark {
+.landmark, article.post {
   margin-bottom: 48px;
   margin-bottom: 3rem;
 }
@@ -1906,7 +1919,7 @@ html.flexbox, html#searchform, html.page-header {
  * Demo: jsfiddle.net/inuitcss/Vnph4
  * 
  */
-.nav, .contacts,
+.nav, .pager, .contacts,
 .related-wrapper,
 .tools, .top-menu, .main-menu,
 .main-sub-menu, .tags-wrapper ul,
@@ -1914,12 +1927,13 @@ html.flexbox, html#searchform, html.page-header {
   list-style: none;
   margin-left: 0;
 }
-.nav > li, .contacts > li,
+.nav > li, .pager > li, .contacts > li,
 .related-wrapper > li,
 .tools > li, .top-menu > li, .main-menu > li,
 .main-sub-menu > li, .tags-wrapper ul > li,
 .category-navigation ul > li, .page-header .sort-order ul > li, .ui-tabs-nav > li,
 .nav > li > a,
+.pager > li > a,
 .contacts > li > a,
 .related-wrapper > li > a,
 .tools > li > a,
@@ -1985,7 +1999,7 @@ html.flexbox, html#searchform, html.page-header {
    </ul>
  * 
  */
-.nav--block, .options, .top-menu, .page-header .sort-order ul, .ui-tabs-nav {
+.nav--block, .options, .pager, .top-menu, .page-header .sort-order ul, .ui-tabs-nav {
   line-height: 1;
   /**
    * Remove whitespace caused by `inline-block`.
@@ -1994,11 +2008,11 @@ html.flexbox, html#searchform, html.page-header {
   word-spacing: -0.43em;
   white-space: nowrap;
 }
-.nav--block > li, .options > li, .top-menu > li, .page-header .sort-order ul > li, .ui-tabs-nav > li {
+.nav--block > li, .options > li, .pager > li, .top-menu > li, .page-header .sort-order ul > li, .ui-tabs-nav > li {
   letter-spacing: normal;
   word-spacing: normal;
 }
-.nav--block > li > a, .options > li > a, .top-menu > li > a, .page-header .sort-order ul > li > a, .ui-tabs-nav > li > a {
+.nav--block > li > a, .options > li > a, .pager > li > a, .top-menu > li > a, .page-header .sort-order ul > li > a, .ui-tabs-nav > li > a {
   padding: 12px;
 }
 
@@ -2232,11 +2246,11 @@ html.flexbox, html#searchform, html.page-header {
 /**
  * `.img`s in `.islet`s need an appropriately sized margin.
  */
-.islet .media__img, #responsive-info .media__img {
+.islet .media__img, #responsive-info .media__img, .pager .media__img {
   margin-right: 12px;
 }
 
-.islet .media__img--rev, #responsive-info .media__img--rev {
+.islet .media__img--rev, #responsive-info .media__img--rev, .pager .media__img--rev {
   margin-left: 12px;
 }
 
@@ -2306,7 +2320,8 @@ html.flexbox, html#searchform, html.page-header {
  */
 .island,
 .islet,
-#responsive-info {
+#responsive-info,
+.pager {
   display: block;
 }
 
@@ -2316,14 +2331,15 @@ html.flexbox, html#searchform, html.page-header {
 
 .island > :last-child,
 .islet > :last-child,
-#responsive-info > :last-child {
+#responsive-info > :last-child,
+.pager > :last-child {
   margin-bottom: 0;
 }
 
 /**
  * Just like `.island`, only smaller.
  */
-.islet, #responsive-info {
+.islet, #responsive-info, .pager {
   padding: 12px;
 }
 
@@ -3088,7 +3104,7 @@ html.flexbox, html#searchform, html.page-header {
 /**
 * Whole
 */
-.one-whole, .firstpage-pre-footer-sidebar, .top-wrapper, #searchform .input-wrapper .field, .footer-sidebar.one .footer-widgets {
+.one-whole, .firstpage-pre-footer-sidebar, article.post, .top-wrapper, #searchform .input-wrapper .field, .footer-sidebar.one .footer-widgets {
   width: 100%;
 }
 
@@ -4161,8 +4177,8 @@ html.flexbox, html#searchform, html.page-header {
   float: right!important;
 }
 
-.float--left, .firstpage-top-content, .firstpage-content, .firstpage-pre-footer-sidebar, .category-navigation, .category-primary, .help-navigation, .closeButton,
-.content-wrapper, .side-content, .entry-meta, .aside-icon-left, .aside-icon-right, .addthis_toolbox a, .footer-sidebar.three .footer-widgets, .footer-sidebar.four .footer-widgets {
+.float--left, .firstpage-top-content, .firstpage-content, .firstpage-pre-footer-sidebar, .category-navigation, .category-primary, .help-navigation, article.post, .closeButton,
+.content-wrapper, .side-content, .entry-meta, .summary .img-wrapper, .aside-icon-left, .aside-icon-right, .addthis_toolbox a, .footer-sidebar.three .footer-widgets, .footer-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4215,7 +4231,7 @@ html.flexbox, html#searchform, html.page-header {
   margin-right: -24px !important;
   margin-left: -24px !important;
 }
-.islet .full-bleed, #responsive-info .full-bleed {
+.islet .full-bleed, #responsive-info .full-bleed, .pager .full-bleed {
   margin-right: -12px !important;
   margin-left: -12px !important;
 }
@@ -4314,6 +4330,13 @@ html.flexbox, html#searchform, html.page-header {
  * She’s all yours, cap’n... Begin importing your stuff here.
  */
 /* UI IMPORTS */
+/**
+ * basic color and stuff
+ */
+.border-left {
+  border-left: 1px dotted #454545;
+}
+
 html {
   font-family: "myriad-pro", Arial, sans-serif;
 }
@@ -4340,13 +4363,40 @@ html {
     float: right!important;
   }
 }
-/*
- * aside content
- */
+/* article footer*/
+/* featured images */
+.summary .img-wrapper {
+  width: 50%;
+}
+
+img.slide {
+  width: 100%;
+}
+
+.pager {
+  z-index: 10;
+}
+
+@media only screen and (max-width: 480px) {
+  .summary .img-wrapper {
+    width: 100%;
+  }
+}
+/* aside content */
 .addthis_toolbox a {
   margin-left: 12px;
 }
 
+@media only screen and (max-width: 480px) {
+  .summary .summary {
+    display: none;
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 1023px) {
+  .summary .summary {
+    display: none;
+  }
+}
 /* hide title */
 /* set top menu icons */
 .top-menu {
@@ -4495,6 +4545,54 @@ html {
   left: 0;
 }
 
+.position-relative, .position-relative--top-left, .position-relative--top-right, .position-relative--bottom-right, .position-relative--bottom-left {
+  position: relative;
+}
+
+.position-relative--top-left {
+  top: 0;
+  left: 0;
+}
+
+.position-relative--top-right {
+  top: 0;
+  right: 0;
+}
+
+.position-relative--bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.position-relative--bottom-left {
+  bottom: 0;
+  left: 0;
+}
+
+.position-absolute, .position-absolute--top-left, .pager, .position-absolute--top-right, .position-absolute--bottom-right, .position-absolute--bottom-left {
+  position: absolute;
+}
+
+.position-absolute--top-left, .pager {
+  top: 0;
+  left: 0;
+}
+
+.position-absolute--top-right {
+  top: 0;
+  right: 0;
+}
+
+.position-absolute--bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.position-absolute--bottom-left {
+  bottom: 0;
+  left: 0;
+}
+
 @media print {
   #topmenu,
   #searchnavigation,
@@ -4516,6 +4614,11 @@ html {
   }
 }
 /* GRAYBOXES */
+.widget {
+  background-color: #454545;
+  color: #222222;
+}
+
 /* to un- .hide element */
 .unhide {
   position: initial;

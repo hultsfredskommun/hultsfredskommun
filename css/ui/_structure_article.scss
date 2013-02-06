@@ -1,11 +1,15 @@
+article.post {
+	@extend .landmark;
+	@extend .one-whole;
+	@extend .float--left;
+}
+
 .closeButton,
 .content-wrapper {
 	@extend .float--left;
 	@extend .desk-two-thirds;
 	@extend .lap-one-whole;
 }
-
-
 .side-content {
 	@extend .desk-one-third;
 	@extend .lap-one-whole;
@@ -18,6 +22,7 @@
 }
 }
 
+/* article footer*/
 .summary .entry-meta {
 	@extend .hidden;
 }
@@ -26,9 +31,28 @@
 	@extend .float--left;
 }
 
-/*
- * aside content
- */
+/* featured images */
+.summary .img-wrapper {
+	@extend .float--left;
+	width: 50%;
+}
+img.slide {
+	width: 100%;
+}
+.pager {
+	@extend .nav;
+	@extend .nav--block;
+	@extend .position-absolute--top-left;
+	@extend .islet;
+	z-index: 10;
+}
+@include media-query(palm) {
+.summary .img-wrapper {
+	width: 100%;
+}
+}
+
+/* aside content */
 .aside-icon-left {
 	@extend .float--left;
 	@extend .one-tenth;
@@ -50,4 +74,14 @@
 }
 .summary .full {
 	@extend .hidden;
+}
+@include media-query(palm) {
+.summary .summary {
+	display: none;
+}
+}
+@include media-query(lap) {
+.summary .summary {
+	display: none;
+}
 }
