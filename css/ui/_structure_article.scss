@@ -26,6 +26,7 @@ article.post {
 .summary .entry-meta {
 	@extend .hidden;
 }
+.entry-title,
 .entry-meta {
 	@extend .two-thirds;
 	@extend .float--left;
@@ -47,6 +48,8 @@ img.slide {
 	z-index: 10;
 }
 @include media-query(palm) {
+.entry-title,
+.entry-meta,
 .summary .img-wrapper {
 	width: 100%;
 }

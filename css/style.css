@@ -3122,7 +3122,8 @@ html.flexbox, html#searchform, html.page-header {
   width: 33.333%;
 }
 
-.two-thirds, .four-sixths, .eight-twelfths, .entry-meta {
+.two-thirds, .four-sixths, .eight-twelfths, .entry-title,
+.entry-meta {
   width: 66.666%;
 }
 
@@ -4178,7 +4179,8 @@ html.flexbox, html#searchform, html.page-header {
 }
 
 .float--left, .firstpage-top-content, .firstpage-content, .firstpage-pre-footer-sidebar, .category-navigation, .category-primary, .help-navigation, article.post, .closeButton,
-.content-wrapper, .side-content, .entry-meta, .summary .img-wrapper, .contact-area .img-wrapper, .aside-icon-left, .aside-icon-right, .addthis_toolbox a, .footer-sidebar.three .footer-widgets, .footer-sidebar.four .footer-widgets {
+.content-wrapper, .side-content, .entry-title,
+.entry-meta, .summary .img-wrapper, .contact-area .img-wrapper, .aside-icon-left, .aside-icon-right, .addthis_toolbox a, .footer-sidebar.three .footer-widgets, .footer-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4370,6 +4372,8 @@ html {
 }
 
 @media only screen and (max-width: 480px) {
+  .entry-title,
+  .entry-meta,
   .summary .img-wrapper {
     width: 100%;
   }
