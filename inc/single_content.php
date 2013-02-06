@@ -8,9 +8,6 @@
 
 		
 			<div class="entry-wrapper content">
-				<h1 class="entry-title">
-					<?php echo get_the_title(); ?>
-				</h1>
 				<?php //the_post_thumbnail('featured-image'); 
 					echo hk_get_the_post_thumbnail(get_the_ID(),'featured-image');
 				?>

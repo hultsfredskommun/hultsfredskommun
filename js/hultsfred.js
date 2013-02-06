@@ -371,7 +371,7 @@ function readMoreToggle(el){
 			// alter close-buttons
 			$(article).find('.closeButton').remove();
 			
-			$(article).find('.more-content').slideUp(0, function(){
+			$(article).find('.more-content').slideUp(200, function(){
 				
 				if( $("#content").hasClass("viewmode_titles") ){
 					$(article).addClass("only-title");
@@ -381,7 +381,7 @@ function readMoreToggle(el){
 				if ($(article).position().top +130 + $("html,body").position().top < 0) {
 					$("html,body").animate({scrollTop: $(article).position().top +130}, 0);
 				}
-				$(article).find('.summary-content').slideDown(0, function(){
+				$(article).find('.summary-content').slideDown(400, function(){
 					
 					// remove full class to track article state
 					$(article).removeClass("full").addClass("summary");
@@ -399,14 +399,14 @@ function readMoreToggle(el){
 		// show full content
 		else {
 			// toggle visibility
-			$(article).find('.summary-content').slideUp(0, function(){
+			$(article).find('.summary-content').slideUp(200, function(){
 				
 				if( $("#content").hasClass("viewmode_titles") ){
 					$(article).removeClass("only-title");
 				}
 				// add full class to track article state
 				$(article).addClass("full").removeClass("summary");
-				$(article).find('.more-content').slideDown(0, function(){
+				$(article).find('.more-content').slideDown(400, function(){
 					// get plugin WP Lightbox 2 by Pankaj Jha to work with dynamical click
 					var haveConf = (typeof JQLBSettings == 'object');
 					if (haveConf && !$(this).attr("jqlbloaded")) {
@@ -451,7 +451,7 @@ function readMoreToggle(el){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(this).parents("article").find(".article-wrapper").prepend(closea).after(closeb);
+					$(this).parents("article")./*prepend(closea).*/append(closeb);
 					
 					// scroll to top of post 
 					//$("html,body").animate({scrollTop: $(article).position().top}, 150);
@@ -493,7 +493,8 @@ function readMoreToggle(el){
 		$(article).find('.summary-content').after(morediv);
 
 		$.ajaxSetup({cache:false});
-		$(article).find('.summary-content').css("cursor","wait");
+		$(article).addClass("muted").css("cursor","wait");
+		
 		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 		{
 			// google analytics
@@ -508,7 +509,7 @@ function readMoreToggle(el){
 				setContactPopupAction($(this));
 			});
 
-			$(this).parents("article").find('.summary-content').css("cursor","pointer");
+			$(this).parents("article").removeClass("muted").css("cursor","pointer");
 			
 			//****** click-actions START *******
 			

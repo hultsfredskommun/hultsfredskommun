@@ -34,10 +34,10 @@ article.post {
 /* featured images */
 .summary .img-wrapper {
 	@extend .float--left;
-	width: 50%;
+	@extend .one-half;
 }
 img.slide {
-	width: 100%;
+	@extend .one-whole;
 }
 .pager {
 	@extend .nav;
@@ -51,6 +51,13 @@ img.slide {
 	width: 100%;
 }
 }
+
+/* embedded contact image */
+.contact-area .img-wrapper {
+	@extend .float--left;
+	@extend .one-quarter;
+}
+
 
 /* aside content */
 .aside-icon-left {
