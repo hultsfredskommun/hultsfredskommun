@@ -381,11 +381,10 @@ function readMoreToggle(el){
 				if ($(article).position().top +130 + $("html,body").position().top < 0) {
 					$("html,body").animate({scrollTop: $(article).position().top +130}, 0);
 				}
-				$(article).find('.summary-content').slideDown(400, function(){
-					
-					// remove full class to track article state
-					$(article).removeClass("full").addClass("summary");
-					// scroll to top of post 
+				// remove full class to track article state
+				$(article).removeClass("full").addClass("summary");
+
+				$(article).find('.summary-content').slideDown(200, function(){
 					
 				});
 
@@ -406,7 +405,7 @@ function readMoreToggle(el){
 				}
 				// add full class to track article state
 				$(article).addClass("full").removeClass("summary");
-				$(article).find('.more-content').slideDown(400, function(){
+				$(article).find('.more-content').slideDown(200, function(){
 					// get plugin WP Lightbox 2 by Pankaj Jha to work with dynamical click
 					var haveConf = (typeof JQLBSettings == 'object');
 					if (haveConf && !$(this).attr("jqlbloaded")) {
