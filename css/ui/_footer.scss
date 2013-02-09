@@ -1,19 +1,39 @@
-.footer-sidebar.one .footer-widgets {
+.footer-wrapper {
+	@extend .gray-image-background;
+}
+.footer2-wrapper,
+.footer2-wrapper a,
+.footer-image-wrapper {
+	@extend .main-background;
+	@extend .white-text;
+}
+.footer-widget-wrapper {
+	@extend .padding--top;
+	@extend .border--top;
+}
+
+.footer-widget-sidebar h1 {
+	@extend .caps;
+	@extend .epsilon;
+	@extend .border--bottom;
+}
+
+.footer-widget-sidebar.one .footer-widgets {
 	@extend .one-whole;
 }
 
-.footer-sidebar.two .footer-widgets {
+.footer-widget-sidebar.two .footer-widgets {
 	@extend .lap-one-half;
 	@extend .desk-one-half;
 }
 
-.footer-sidebar.three .footer-widgets {
+.footer-widget-sidebar.three .footer-widgets {
 	@extend .lap-one-third;
 	@extend .desk-one-third;
 	@extend .float--left;
 }
 
-.footer-sidebar.four .footer-widgets {
+.footer-widget-sidebar.four .footer-widgets {
 	@extend .lap-one-half;
 	@extend .desk-one-quarter;
 	@extend .float--left;

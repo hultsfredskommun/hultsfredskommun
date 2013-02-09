@@ -1,3 +1,18 @@
+/* text colors */
+html {
+	@extend .default-text;
+}
+a,
+a:active,
+a:focus {
+	@extend .main-text;
+}
+a:hover {
+	@extend .hover-text;
+	text-decoration: none;
+}
+
+
 html {
 	font-family: $face;
 }
@@ -7,16 +22,16 @@ html {
 	max-width: 1000px;
 }
 
-.main {
-	@extend .gw;
+.branding,
+.main,
+.footer-widget-sidebar,
+.footer-image {
 	@extend .content--center;
 }
-
-.breadcrumb {
-	@extend .g;
-	@extend .one-whole;
-	@extend .hide;
+.main-wrapper {
+	@extend .gw;
 }
+
 
  /*
  * Responsive helper

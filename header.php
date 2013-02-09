@@ -122,7 +122,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 <body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass ); ?>>
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
-	<header id="branding" class="content--center" role="banner">
+	<header id="branding" class="branding" role="banner">
 		<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>	
 		<?php dynamic_sidebar('important-top-content'); ?>
 		
@@ -142,12 +142,20 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			</hgroup>
 				
 			<?php /* responsive navigation */ ?>
-			<?php /* REMOVED MENU
-			<div id="responsivenavigation">
-				<a href="#" class="icon menu"><img src="<?php hk_icon_path(); ?>/menu-2.svg" alt="Meny" /></a>
-				<a href="#" class="icon search"><img src="<?php hk_icon_path(); ?>/search.svg" alt="S&ouml;k" /></a>
+			<ul class="responsive-navigation">
+				<li class="menu js-show-main-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-menu">
+					<a href="#"><i class="i" data-icon="&#xF0A9;"></i><span class="hide--palm">Meny</span></a>
+				</li>
+				<li class="search js-show-search menu-item menu-item-type-custom menu-item-object-custom menu-item-search">
+					<a href="#"><i class="i" data-icon="&#xF097;"></i><span class="hide--palm">Sök</span></a>
+				</li>
+			</ul>
+
+			<?php /* search form*/ ?>
+			<div id="searchnavigation" class="searchnavigation" role="search">			
+				<?php get_search_form(); ?>
 			</div>
-			*/ ?>
+
 			<?php /* top right navigation */ ?>
 			<?php 
 			
@@ -171,12 +179,17 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 					echo "</ul></nav></aside>";
 				}
 			?>
-			<?php if ($hk_options["logo2_image"] != "") : ?>
-			<span id="logo2"><a target="_blank" href="<?php echo $hk_options["logo2_link"]; ?>" title="<?php echo $hk_options["logo2_descr"]; ?>"><img src="<?php echo $hk_options["logo2_image"]; ?>" alt="<?php echo $hk_options["logo2_descr"]; ?>" /></a></span>
-			<?php endif; ?>
-			<div id="searchnavigation" class="searchnavigation" role="search">			
-				<?php get_search_form(); ?>
+			<?php if (($hk_options["logo2_image"] != "") || ($hk_options["logo3_image"] != "")) : ?>
+			<div id="logo2" class="logo2">
+				<?php if ($hk_options["logo2_image"] != "") : ?>
+				<a target="_blank" href="<?php echo $hk_options["logo2_link"]; ?>" title="<?php echo $hk_options["logo2_descr"]; ?>"><img src="<?php echo $hk_options["logo2_image"]; ?>" alt="<?php echo $hk_options["logo2_descr"]; ?>" /></a>
+				<?php endif; ?>
+				<?php if ($hk_options["logo3_image"] != "") : ?>
+				<a target="_blank" href="<?php echo $hk_options["logo3_link"]; ?>" title="<?php echo $hk_options["logo3_descr"]; ?>"><img src="<?php echo $hk_options["logo3_image"]; ?>" alt="<?php echo $hk_options["logo3_descr"]; ?>" /></a>
+				<?php endif; ?>
 			</div>
+			<?php endif; ?>
+
 		</div>		
 		<nav id="menu" role="navigation">
 			<?php 
@@ -280,4 +293,5 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 	</header><!-- #branding -->
 
 	<div id="main" class="main">
+	<div class="main-wrapper">
 		<div id="breadcrumb" class="breadcrumb"><?php hk_breadcrumb(); ?></div>

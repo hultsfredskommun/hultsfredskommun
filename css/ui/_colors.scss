@@ -1,11 +1,75 @@
 /**
  * basic color and stuff
  */
-$color:				#454545!default;
-$color-light:		$color * 0.5; 
-$bg-color:			#454545!default;
-$bg-color-light:	$bg-color * 0.5; 
-$face:	        	"myriad-pro", Arial, sans-serif!default;
+ 
+$hover-color:				#005BAA!default;
+$default-color:				#3f3f3f!default;
+$main-color:				#5C85B1!default;
+$complement-color:			#644C20!default;
+$complement-light-color:	$complement-color * 1.5;
+
+$gray-color:				#C6CACB!default;
+$gray-light-color:			#E5E6E7!default;
+$face:	        			"myriad-pro", Arial, sans-serif!default;
+
+.hover-text {
+	color: $hover-color;
+}
+.default-text {
+	color: $default-color;
+}
+.main-text {
+	color: $main-color;
+}
+.complement-text {
+	color: $complement-color;
+}
+.complement-light-text {
+	color: $complement-light-color;
+}
+.gray-text {
+	color: $gray-color;
+}
+.gray-light-text {
+	color: $gray-light-color;
+}
+.force-gray-text {
+	color: $gray-color!important;
+}
+.black-text {
+	color: black;
+}
+.white-text {
+	color: white;
+}
+.black-text-shadow {
+	text-shadow: -1px -1px 0px #666;
+}
+.white-text-shadow {
+	text-shadow: 1px 1px 0px #fff;
+}
 
 
-$border-color:		#454545!default;
+.transparent-background {
+	background-color: transparent;
+}
+.hover-background {
+	background-color: $hover-color;
+}
+.default-background {
+	background-color: $default-color;
+}
+.main-background {
+	background-color: $main-color;
+}
+.gray-background {
+	background-color: $gray-color;
+}
+.gray-light-background {
+	background-color: $gray-light-color;
+}
+.gray-image-background {
+	@extend .gray-light-background;
+	background-image: url(images/greyTile24bit.png);
+	background-repeat: repeat;
+}

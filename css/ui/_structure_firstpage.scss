@@ -1,22 +1,23 @@
 .firstpage-top-content {
+	@extend .g;
 	@extend .desk-one-half;
 	@extend .lap-one-half;
 	@extend .palm-one-whole;
-	@extend .float--left;
 }
 .firstpage-sidebar {
+	@extend .g;
 	@extend .desk-one-half;
 	@extend .lap-one-half;
 	@extend .palm-one-whole;
 	@extend .float--right;
 }
 .firstpage-content {
+	@extend .g;
 	@extend .desk-one-half;
 	@extend .lap-one-half;
 	@extend .palm-one-whole;
-	@extend .float--left;
 }
 .firstpage-pre-footer-sidebar {
+	@extend .g;
 	@extend .one-whole;
-	@extend .float--left;
 }

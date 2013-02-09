@@ -7,7 +7,7 @@
 	 */
 
 	function displaySortOrderButtons() { ?>
-		<div id="sort-order" class="sort-order"><ul>
+		<ul class="sort-order">
 			<?php
 				//init
 				$tags = get_query_var("tag");
@@ -28,38 +28,25 @@
 			
 			<?php if (function_exists( 'views_orderby' )) : ?>
 			<?php if ($_REQUEST["orderby"] == "popular" || $_REQUEST["orderby"] == "") { ?>
-				<li class='current-menu-item'>Mest bes&ouml;kt</li>
+				<li class='current-menu-item'><a class="active">Mest bes&ouml;kt</a></li>
 			<?php } else { ?>
 				<li><a href="?orderby=popular<?php echo $tags.$search; ?>">Mest bes&ouml;kt</a></li>
 			<?php } ?>
 			<?php endif; ?>
 			
 			<?php if ($_REQUEST["orderby"] == "latest") { ?>
-				<li class='current-menu-item'>Senast</li>
+				<li><a href="?orderby=oldest&amp;<?php echo $tags.$search; ?>">&Auml;ldst</a></li>
 			<?php } else { ?>
 				<li><a href="?orderby=latest&amp;<?php echo $tags.$search; ?>">Senast</a></li>
 			<?php } ?>
 
 			<?php if ($_REQUEST["orderby"] == "alpha") { ?>
-				<li class='current-menu-item'>A - &Ouml;</li>
+				<li><a href="?orderby=alpha_desc<?php echo $tags.$search; ?>">&Ouml; - A</a></li>
 			<?php } else { ?>
 				<li><a href="?orderby=alpha<?php echo $tags.$search; ?>">A - &Ouml;</a></li>
 			<?php } ?>
 
-			<?php if ($_REQUEST["orderby"] == "alpha_desc") { ?>
-				<li class='current-menu-item'>&Ouml; - A</li>
-			<?php } else { ?>
-				<li><a href="?orderby=alpha_desc<?php echo $tags.$search; ?>">&Ouml; - A</a></li>
-			<?php } ?>
-
-
-			<?php /*if ($_REQUEST["orderby"] == "oldest") { ?>
-				<li class='current-menu-item'>&Auml;ldst</li>
-			<?php } else { ?>
-				<li><a href="?orderby=oldest<?php echo $tags.$search; ?>">&Auml;ldst</a></li>
-			<?php }*/ ?>
-			
-		</ul></div>
+		</ul>
 
 	<?php }
 	

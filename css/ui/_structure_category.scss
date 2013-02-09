@@ -22,3 +22,32 @@
 	@extend .lap-two-thirds;
 	@extend .palm-one-whole;
 }
+/*
+ * sort-order 
+ */
+.page-header {
+	@extend .milli;
+	@extend .one-whole;
+	@extend .float--left;
+	@extend .border;
+	@extend .border-radius;
+	@extend .margin--bottom;
+	
+	.sort-order {
+		@extend .float--left;
+		@extend .nav;
+		@extend .nav--block;
+		@extend .flush--bottom;
+		.active {
+			@extend .font-weight-bold;
+		}
+	}
+	.category-tools {
+		@extend .float--right;
+		@extend .nav;
+		@extend .nav--block;
+		@extend .flush--bottom;
+		@extend .hide--palm;
+	}
+}
+

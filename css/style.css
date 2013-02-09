@@ -760,40 +760,44 @@ textarea:focus {
  * Extend the clearfix class with Sass to avoid the `.cf` class appearing over
  * and over in your markup.
  */
-.cf, .gw, .main, .article-wrapper,
-.grid-wrapper, .nav, .pager, .contacts,
+.cf, .gw, .main-wrapper, .top-wrapper,
+.grid-wrapper, .nav, .page-header .sort-order, .page-header .category-tools, .article-wrapper .footer-wrapper, .pager, .contacts,
 .related-wrapper,
-.tools, .top-menu, .main-menu,
+.tools, .menu-item .sub-menu, .responsive-navigation,
+.top-menu, .main-menu,
 .main-sub-menu, .tags-wrapper ul,
-.category-navigation ul, .page-header .sort-order ul, .ui-tabs-nav, .media, .island,
+.category-navigation ul, .ui-tabs-nav, .media, .island, .article-wrapper .side-content,
 .islet,
 #responsive-info, .matrix, .multi-list, .stat-group {
   zoom: 1;
 }
-.cf:before, .gw:before, .main:before, .article-wrapper:before,
-.grid-wrapper:before, .nav:before, .pager:before, .contacts:before,
+.cf:before, .gw:before, .main-wrapper:before, .top-wrapper:before,
+.grid-wrapper:before, .nav:before, .page-header .sort-order:before, .page-header .category-tools:before, .article-wrapper .footer-wrapper:before, .pager:before, .contacts:before,
 .related-wrapper:before,
-.tools:before, .top-menu:before, .main-menu:before,
+.tools:before, .menu-item .sub-menu:before, .responsive-navigation:before,
+.top-menu:before, .main-menu:before,
 .main-sub-menu:before, .tags-wrapper ul:before,
-.category-navigation ul:before, .page-header .sort-order ul:before, .ui-tabs-nav:before, .media:before, .island:before,
+.category-navigation ul:before, .ui-tabs-nav:before, .media:before, .island:before, .article-wrapper .side-content:before,
 .islet:before,
-#responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .cf:after, .gw:after, .main:after, .article-wrapper:after,
-.grid-wrapper:after, .nav:after, .pager:after, .contacts:after,
+#responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
+.grid-wrapper:after, .nav:after, .page-header .sort-order:after, .page-header .category-tools:after, .article-wrapper .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
-.tools:after, .top-menu:after, .main-menu:after,
+.tools:after, .menu-item .sub-menu:after, .responsive-navigation:after,
+.top-menu:after, .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .page-header .sort-order ul:after, .ui-tabs-nav:after, .media:after, .island:after,
+.category-navigation ul:after, .ui-tabs-nav:after, .media:after, .island:after, .article-wrapper .side-content:after,
 .islet:after,
 #responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after {
   content: " ";
   display: table;
 }
-.cf:after, .gw:after, .main:after, .article-wrapper:after,
-.grid-wrapper:after, .nav:after, .pager:after, .contacts:after,
+.cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
+.grid-wrapper:after, .nav:after, .page-header .sort-order:after, .page-header .category-tools:after, .article-wrapper .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
-.tools:after, .top-menu:after, .main-menu:after,
+.tools:after, .menu-item .sub-menu:after, .responsive-navigation:after,
+.top-menu:after, .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .page-header .sort-order ul:after, .ui-tabs-nav:after, .media:after, .island:after,
+.category-navigation ul:after, .ui-tabs-nav:after, .media:after, .island:after, .article-wrapper .side-content:after,
 .islet:after,
 #responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after {
   clear: both;
@@ -819,6 +823,7 @@ pre,
 .form-fields > li,
 .media,
 .island,
+.article-wrapper .side-content,
 .islet,
 #responsive-info,
 .pager {
@@ -846,7 +851,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .pager .form-
 .media, .islet
 .island, #responsive-info
 .island, .pager
-.island, .islet
+.island, .islet .article-wrapper .side-content, .article-wrapper .islet .side-content, #responsive-info .article-wrapper .side-content, .article-wrapper #responsive-info .side-content, .pager .article-wrapper .side-content, .article-wrapper .pager .side-content, .islet
 .islet, #responsive-info
 .islet, .pager
 .islet, .islet
@@ -863,7 +868,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .pager .form-
 /**
  * Doubled up `margin-bottom` helper class.
  */
-.landmark, article.post {
+.landmark, article.post, .article-border-wrapper {
   margin-bottom: 48px;
   margin-bottom: 3rem;
 }
@@ -909,36 +914,37 @@ html {
  * heading hierarchy.
  */
 h1, .alpha {
-  font-size: 36px;
-  font-size: 2.25rem;
-  line-height: 1.33333;
+  font-size: 28px;
+  font-size: 1.75rem;
+  line-height: 1.71429;
 }
 
 h2, .beta {
-  font-size: 30px;
-  font-size: 1.875rem;
-  line-height: 1.6;
-}
-
-h3, .gamma {
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 1;
 }
 
-h4, .delta {
+h3, .gamma {
   font-size: 20px;
   font-size: 1.25rem;
   line-height: 1.2;
 }
 
-h5, .epsilon {
+h4, .delta, .main-menu {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.33333;
+}
+
+h5, .epsilon, .main-sub-menu, .category-navigation a, .footer-widget-sidebar h1 {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
 }
 
-h6, .zeta {
+h6, .zeta, .complement-italic-text, .contact-wrapper .content, .article-wrapper .side-content, .top-menu-wrapper,
+.logo2 {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.71429;
@@ -1001,16 +1007,17 @@ hgroup .hN {
  * A series of classes for setting tiny type; for use in smallprint etc.
  */
 .smallprint,
-.milli {
-  font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 2;
+.milli,
+.page-header {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.84615;
 }
 
 .micro {
-  font-size: 10px;
-  font-size: 0.625rem;
-  line-height: 2.4;
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 2;
 }
 
 /*------------------------------------*\
@@ -1745,7 +1752,7 @@ label,
  * 
  * Shorthand and verbose
  */
-.gw, .main, .article-wrapper,
+.gw, .main-wrapper, .top-wrapper,
 .grid-wrapper {
   /**
    * Negative margin to negate the padding on the first grid child. 
@@ -1774,7 +1781,8 @@ label,
    </div>
  * 
  */
-.gw--rev > .g, .gw--rev > .breadcrumb, .gw--rev > .category-navigation, .gw--rev > .category-primary, .gw--rev > .content-wrapper, .gw--rev > .side-content, .gw--rev > .entry-meta,
+.gw--rev > .g, .gw--rev > .firstpage-top-content, .gw--rev > .firstpage-sidebar, .gw--rev > .firstpage-content, .gw--rev > .firstpage-pre-footer-sidebar, .gw--rev > .breadcrumb, .gw--rev > .category-navigation, .gw--rev > .category-primary, .gw--rev > .logo, .gw--rev > .responsive-navigation, .gw--rev > .searchnavigation, .gw--rev > .top-menu-wrapper,
+.gw--rev > .logo2,
 .grid-wrapper--rev > .grid {
   float: right;
 }
@@ -1782,7 +1790,7 @@ label,
 /**
  * Very infrequently occuring grid wrappers as children of grid wrappers.
  */
-.gw > .gw, .main > .gw, .article-wrapper > .gw, .gw > .main, .main > .main, .article-wrapper > .main, .gw > .article-wrapper, .main > .article-wrapper, .article-wrapper > .article-wrapper,
+.gw > .gw, .main-wrapper > .gw, .top-wrapper > .gw, .gw > .main-wrapper, .main-wrapper > .main-wrapper, .top-wrapper > .main-wrapper, .gw > .top-wrapper, .main-wrapper > .top-wrapper, .top-wrapper > .top-wrapper,
 .grid-wrapper > .grid-wrapper {
   margin-left: 0;
 }
@@ -1792,7 +1800,8 @@ label,
  * 
  * Shorthand and verbose
  */
-.g, .breadcrumb, .category-navigation, .category-primary, .content-wrapper, .side-content, .entry-meta,
+.g, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .firstpage-pre-footer-sidebar, .breadcrumb, .category-navigation, .category-primary, .logo, .responsive-navigation, .searchnavigation, .top-menu-wrapper,
+.logo2,
 .grid {
   float: left;
   padding-left: 24px;
@@ -1832,7 +1841,7 @@ label,
  * Demo: jsfiddle.net/inuitcss/ufUh2
  * 
  */
-.flexbox, #searchform, .page-header {
+.flexbox, .searchnavigation .form {
   display: table;
   width: 100%;
 }
@@ -1840,12 +1849,12 @@ label,
 /**
  * Nasty hack to circumvent Modernizr conflicts.
  */
-html.flexbox, html#searchform, html.page-header {
+html.flexbox, .searchnavigation html.form {
   display: block;
   width: auto;
 }
 
-.flexbox__item, #searchform .input-wrapper, #searchform .submit, .page-header .sort-order ul, .page-header .view-mode {
+.flexbox__item, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit {
   display: table-cell;
   vertical-align: middle;
 }
@@ -1919,30 +1928,36 @@ html.flexbox, html#searchform, html.page-header {
  * Demo: jsfiddle.net/inuitcss/Vnph4
  * 
  */
-.nav, .pager, .contacts,
+.nav, .page-header .sort-order, .page-header .category-tools, .article-wrapper .footer-wrapper, .pager, .contacts,
 .related-wrapper,
-.tools, .top-menu, .main-menu,
+.tools, .menu-item .sub-menu, .responsive-navigation,
+.top-menu, .main-menu,
 .main-sub-menu, .tags-wrapper ul,
-.category-navigation ul, .page-header .sort-order ul, .ui-tabs-nav {
+.category-navigation ul, .ui-tabs-nav {
   list-style: none;
   margin-left: 0;
 }
-.nav > li, .pager > li, .contacts > li,
+.nav > li, .page-header .sort-order > li, .page-header .category-tools > li, .article-wrapper .footer-wrapper > li, .pager > li, .contacts > li,
 .related-wrapper > li,
-.tools > li, .top-menu > li, .main-menu > li,
+.tools > li, .menu-item .sub-menu > li, .responsive-navigation > li,
+.top-menu > li, .main-menu > li,
 .main-sub-menu > li, .tags-wrapper ul > li,
-.category-navigation ul > li, .page-header .sort-order ul > li, .ui-tabs-nav > li,
+.category-navigation ul > li, .ui-tabs-nav > li,
 .nav > li > a,
+.page-header .sort-order > li > a,
+.page-header .category-tools > li > a,
+.article-wrapper .footer-wrapper > li > a,
 .pager > li > a,
 .contacts > li > a,
 .related-wrapper > li > a,
 .tools > li > a,
+.menu-item .sub-menu > li > a,
+.responsive-navigation > li > a,
 .top-menu > li > a,
 .main-menu > li > a,
 .main-sub-menu > li > a,
 .tags-wrapper ul > li > a,
 .category-navigation ul > li > a,
-.page-header .sort-order ul > li > a,
 .ui-tabs-nav > li > a {
   display: inline-block;
   *display: inline;
@@ -1962,13 +1977,15 @@ html.flexbox, html#searchform, html.page-header {
  */
 .nav--stacked > li, .contacts > li,
 .related-wrapper > li,
-.tools > li, .top-menu .sub-menu > li, .tags-wrapper ul > li,
+.tools > li, .menu-item .sub-menu > li, .responsive-navigation .sub-menu > li,
+.top-menu .sub-menu > li, .tags-wrapper ul > li,
 .category-navigation ul > li {
   display: list-item;
 }
 .nav--stacked > li > a, .contacts > li > a,
 .related-wrapper > li > a,
-.tools > li > a, .top-menu .sub-menu > li > a, .tags-wrapper ul > li > a,
+.tools > li > a, .menu-item .sub-menu > li > a, .responsive-navigation .sub-menu > li > a,
+.top-menu .sub-menu > li > a, .tags-wrapper ul > li > a,
 .category-navigation ul > li > a {
   display: block;
 }
@@ -1999,7 +2016,9 @@ html.flexbox, html#searchform, html.page-header {
    </ul>
  * 
  */
-.nav--block, .options, .pager, .top-menu, .page-header .sort-order ul, .ui-tabs-nav {
+.nav--block, .options, .page-header .sort-order, .page-header .category-tools, .pager, .menu-item .sub-menu, .responsive-navigation,
+.top-menu, .main-menu,
+.main-sub-menu, .ui-tabs-nav {
   line-height: 1;
   /**
    * Remove whitespace caused by `inline-block`.
@@ -2008,11 +2027,15 @@ html.flexbox, html#searchform, html.page-header {
   word-spacing: -0.43em;
   white-space: nowrap;
 }
-.nav--block > li, .options > li, .pager > li, .top-menu > li, .page-header .sort-order ul > li, .ui-tabs-nav > li {
+.nav--block > li, .options > li, .page-header .sort-order > li, .page-header .category-tools > li, .pager > li, .menu-item .sub-menu > li, .responsive-navigation > li,
+.top-menu > li, .main-menu > li,
+.main-sub-menu > li, .ui-tabs-nav > li {
   letter-spacing: normal;
   word-spacing: normal;
 }
-.nav--block > li > a, .options > li > a, .pager > li > a, .top-menu > li > a, .page-header .sort-order ul > li > a, .ui-tabs-nav > li > a {
+.nav--block > li > a, .options > li > a, .page-header .sort-order > li > a, .page-header .category-tools > li > a, .pager > li > a, .menu-item .sub-menu > li > a, .responsive-navigation > li > a,
+.top-menu > li > a, .main-menu > li > a,
+.main-sub-menu > li > a, .ui-tabs-nav > li > a {
   padding: 12px;
 }
 
@@ -2079,12 +2102,12 @@ html.flexbox, html#searchform, html.page-header {
 }
 .options > li:first-child > a {
   border-left-width: 1px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 .options > li:last-child > a {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 /*------------------------------------*\
@@ -2270,9 +2293,9 @@ html.flexbox, html#searchform, html.page-header {
  *
  */
 .marginalia {
-  font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 2;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.84615;
 }
 
 /**
@@ -2318,18 +2341,18 @@ html.flexbox, html#searchform, html.page-header {
  * Demo: jsfiddle.net/inuitcss/u8pV3
  * 
  */
-.island,
+.island, .article-wrapper .side-content,
 .islet,
 #responsive-info,
 .pager {
   display: block;
 }
 
-.island {
+.island, .article-wrapper .side-content {
   padding: 24px;
 }
 
-.island > :last-child,
+.island > :last-child, .article-wrapper .side-content > :last-child,
 .islet > :last-child,
 #responsive-info > :last-child,
 .pager > :last-child {
@@ -2602,13 +2625,15 @@ html.flexbox, html#searchform, html.page-header {
  * Demo: jsfiddle.net/inuitcss/B52HG
  * 
  */
-.flyout, .top-menu .menu-item,
+.flyout, .responsive-navigation .menu-item,
+.top-menu .menu-item,
 .flyout--alt {
   position: relative;
   overflow: hidden;
 }
 
-.flyout__content, .top-menu .sub-menu {
+.flyout__content, .responsive-navigation .sub-menu,
+.top-menu .sub-menu {
   /**
    * Position the flyouts off-screen. This is typically better than
    * `display:none;`.
@@ -2623,7 +2648,8 @@ html.flexbox, html#searchform, html.page-header {
  * Two different types of flyout; ÔÇÿregularÔÇÖ (`.flyout`) and ÔÇÿalternativeÔÇÖ
  * (`.flyout--alt`).
  */
-.flyout:hover, .top-menu .menu-item:hover,
+.flyout:hover, .responsive-navigation .menu-item:hover,
+.top-menu .menu-item:hover,
 .flyout--alt:hover {
   overflow: visible;
 }
@@ -2631,14 +2657,22 @@ html.flexbox, html#searchform, html.page-header {
 /**
  * Regular flyouts sit all the way from the top, flush left.
  */
-.flyout:hover > .flyout__content, .top-menu .menu-item:hover > .flyout__content, .top-menu .flyout:hover > .sub-menu, .top-menu .menu-item:hover > .sub-menu {
+.flyout:hover > .flyout__content, .responsive-navigation .menu-item:hover > .flyout__content,
+.top-menu .menu-item:hover > .flyout__content, .responsive-navigation .flyout:hover > .sub-menu, .responsive-navigation .menu-item:hover > .sub-menu,
+.top-menu .responsive-navigation .menu-item:hover > .sub-menu,
+.responsive-navigation .top-menu .menu-item:hover > .sub-menu,
+.top-menu .flyout:hover > .sub-menu,
+.responsive-navigation .top-menu .menu-item:hover > .sub-menu,
+.top-menu .responsive-navigation .menu-item:hover > .sub-menu,
+.top-menu .menu-item:hover > .sub-menu {
   left: 0;
 }
 
 /**
  * Alternative flyouts sit all the way from the left, flush top.
  */
-.flyout--alt:hover > .flyout__content, .top-menu .flyout--alt:hover > .sub-menu {
+.flyout--alt:hover > .flyout__content, .responsive-navigation .flyout--alt:hover > .sub-menu,
+.top-menu .flyout--alt:hover > .sub-menu {
   top: 0;
   left: 100%;
 }
@@ -2684,7 +2718,8 @@ html.flexbox, html#searchform, html.page-header {
  * 
  */
 .s,
-.i {
+.i,
+.searchnavigation .submit {
   display: inline-block;
   line-height: 1;
   position: relative;
@@ -2726,7 +2761,7 @@ html.flexbox, html#searchform, html.page-header {
 /**
  * Set up Batch icon font
  */
-.i {
+.i, .searchnavigation .submit {
   font-family: Batch;
   font-size: 16px;
   /**
@@ -2735,7 +2770,7 @@ html.flexbox, html#searchform, html.page-header {
   width: 1em;
   height: 1em;
 }
-.i:before {
+.i:before, .searchnavigation .submit:before {
   content: attr(data-icon);
 }
 
@@ -2881,7 +2916,7 @@ html.flexbox, html#searchform, html.page-header {
 }
 
 .loz {
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 /*------------------------------------*\
@@ -3104,14 +3139,14 @@ html.flexbox, html#searchform, html.page-header {
 /**
 * Whole
 */
-.one-whole, .breadcrumb, .firstpage-pre-footer-sidebar, article.post, .article-wrapper, img.slide, .top-wrapper, #searchform .input-wrapper .field, .footer-sidebar.one .footer-widgets {
+.one-whole, .firstpage-pre-footer-sidebar, .breadcrumb, .page-header, article.post, .article-border-wrapper, .article-wrapper, img.slide, .aside-icon-right, .searchnavigation .form .input-wrapper .field, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
 
 /**
 * Halves
 */
-.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths, .summary .img-wrapper, .logo, .top-menu-wrapper {
+.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths, .summary .img-wrapper {
   width: 50%;
 }
 
@@ -3122,9 +3157,7 @@ html.flexbox, html#searchform, html.page-header {
   width: 33.333%;
 }
 
-.two-thirds, .four-sixths, .eight-twelfths, .entry-title,
-.content-wrapper,
-.entry-meta {
+.two-thirds, .four-sixths, .eight-twelfths, h1.entry-title {
   width: 66.666%;
 }
 
@@ -3191,7 +3224,7 @@ html.flexbox, html#searchform, html.page-header {
 /**
 * Tenths
 */
-.one-tenth, .aside-icon-left, #searchform .submit {
+.one-tenth, .searchnavigation .form .submit {
   width: 10%;
 }
 
@@ -3203,7 +3236,7 @@ html.flexbox, html#searchform, html.page-header {
   width: 70%;
 }
 
-.nine-tenths, .aside-icon-right, #searchform .input-wrapper {
+.nine-tenths, .searchnavigation .form .input-wrapper {
   width: 90%;
 }
 
@@ -3244,14 +3277,14 @@ html.flexbox, html#searchform, html.page-header {
   /**
   * Whole
   */
-  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .category-navigation, .category-primary, .help-navigation, .content-wrapper, .side-content, .entry-meta, .closeButton, .searchnavigation {
+  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .category-navigation, .category-primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .article-wrapper .closeButton, .searchnavigation {
     width: 100%;
   }
 
   /**
   * Halves
   */
-  .palm-one-half, .palm-two-quarters, .palm-three-sixths, .palm-four-eighths, .palm-five-tenths, .palm-six-twelfths {
+  .palm-one-half, .palm-two-quarters, .palm-three-sixths, .palm-four-eighths, .palm-five-tenths, .palm-six-twelfths, .logo, .responsive-navigation {
     width: 50%;
   }
 
@@ -3368,21 +3401,21 @@ html.flexbox, html#searchform, html.page-header {
   /**
   * Whole
   */
-  .lap-one-whole, .content-wrapper, .side-content, .entry-meta, .closeButton {
+  .lap-one-whole, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .article-wrapper .closeButton {
     width: 100%;
   }
 
   /**
   * Halves
   */
-  .lap-one-half, .lap-two-quarters, .lap-three-sixths, .lap-four-eighths, .lap-five-tenths, .lap-six-twelfths, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .searchnavigation, .footer-sidebar.two .footer-widgets, .footer-sidebar.four .footer-widgets {
+  .lap-one-half, .lap-two-quarters, .searchnavigation, .lap-three-sixths, .lap-four-eighths, .lap-five-tenths, .lap-six-twelfths, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
     width: 50%;
   }
 
   /**
   * Thirds
   */
-  .lap-one-third, .lap-two-sixths, .lap-four-twelfths, .footer-sidebar.three .footer-widgets {
+  .lap-one-third, .lap-two-sixths, .lap-four-twelfths, .footer-widget-sidebar.three .footer-widgets {
     width: 33.333%;
   }
 
@@ -3393,7 +3426,8 @@ html.flexbox, html#searchform, html.page-header {
   /**
   * Quarters
   */
-  .lap-one-quarter, .lap-two-eighths, .lap-three-twelfths, .category-navigation {
+  .lap-one-quarter, .lap-two-eighths, .lap-three-twelfths, .category-navigation, .logo, .top-menu-wrapper,
+  .logo2 {
     width: 25%;
   }
 
@@ -3623,25 +3657,26 @@ html.flexbox, html#searchform, html.page-header {
   /**
   * Halves
   */
-  .desk-one-half, .desk-two-quarters, .desk-three-sixths, .desk-four-eighths, .desk-five-tenths, .desk-six-twelfths, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .searchnavigation, .footer-sidebar.two .footer-widgets {
+  .desk-one-half, .desk-two-quarters, .searchnavigation, .desk-three-sixths, .desk-four-eighths, .desk-five-tenths, .desk-six-twelfths, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .footer-widget-sidebar.two .footer-widgets {
     width: 50%;
   }
 
   /**
   * Thirds
   */
-  .desk-one-third, .desk-two-sixths, .desk-four-twelfths, .side-content, .footer-sidebar.three .footer-widgets {
+  .desk-one-third, .desk-two-sixths, .desk-four-twelfths, .article-wrapper .side-content, .footer-widget-sidebar.three .footer-widgets {
     width: 33.333%;
   }
 
-  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths, .help-navigation, .content-wrapper, .entry-meta, .closeButton {
+  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .entry-meta, .article-wrapper .closeButton {
     width: 66.666%;
   }
 
   /**
   * Quarters
   */
-  .desk-one-quarter, .desk-two-eighths, .desk-three-twelfths, .category-navigation, .footer-sidebar.four .footer-widgets {
+  .desk-one-quarter, .desk-two-eighths, .desk-three-twelfths, .category-navigation, .logo, .top-menu-wrapper,
+  .logo2, .footer-widget-sidebar.four .footer-widgets {
     width: 25%;
   }
 
@@ -4173,17 +4208,19 @@ html.flexbox, html#searchform, html.page-header {
  * A lot of these classes carry `!important` as you will always want them to win
  * out over other selectors.
  */
-.float--right, .firstpage-sidebar, .top-menu-wrapper {
+.float--right, .firstpage-sidebar, .page-header .category-tools, .responsive-navigation {
   float: right!important;
 }
 
-.float--left, .firstpage-top-content, .firstpage-content, .firstpage-pre-footer-sidebar, .help-navigation, .entry-title,
-.content-wrapper,
-.entry-meta, .contact-area .img-wrapper, .aside-icon-left, .aside-icon-right, .addthis_toolbox a, .footer-sidebar.three .footer-widgets, .footer-sidebar.four .footer-widgets {
+.float--left, .help-navigation, .page-header, .page-header .sort-order, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .contact-area .img-wrapper, .aside-icon-left, .addthis_toolbox a, .top-menu-wrapper .i, .top-menu-wrapper .searchnavigation .submit, .searchnavigation .top-menu-wrapper .submit,
+.logo2 .i,
+.logo2 .searchnavigation .submit,
+.searchnavigation .logo2 .submit, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
-.text--left, .top-menu .sub-menu {
+.text--left, .responsive-navigation .sub-menu,
+.top-menu .sub-menu {
   text-align: left !important;
 }
 
@@ -4191,7 +4228,8 @@ html.flexbox, html#searchform, html.page-header {
   text-align: center!important;
 }
 
-.text--right, .top-menu {
+.text--right, .responsive-navigation,
+.top-menu {
   text-align: right !important;
 }
 
@@ -4207,7 +4245,7 @@ html.flexbox, html#searchform, html.page-header {
   margin-right: 0!important;
 }
 
-.flush--bottom, #responsive-info, .summary .img-wrapper, .main-menu {
+.flush--bottom, #responsive-info, .page-header .sort-order, .page-header .category-tools, h1.entry-title, .summary .img-wrapper, .main-menu {
   margin-bottom: 0!important;
 }
 
@@ -4276,7 +4314,7 @@ html.flexbox, html#searchform, html.page-header {
 /**
  * Apply capital case to an element (usually a `strong`).
  */
-.caps {
+.caps, .footer-widget-sidebar h1 {
   text-transform: uppercase;
 }
 
@@ -4296,20 +4334,21 @@ html.flexbox, html#searchform, html.page-header {
 /**
  * Hide content based on breakpoint
  */
-.hide, .breadcrumb, .site-title {
+.hide, .site-title {
   position: absolute;
   left: -9999px;
 }
 
 @media only screen and (max-width: 480px) {
-  .hide--palm, .top-menu .sites, .top-menu .translate, .searchnavigation, .main-menu,
-  .main-sub-menu, .page-header .view-mode {
+  .hide--palm, .page-header .category-tools, .searchnavigation, .top-menu-wrapper,
+  .logo2, .main-menu,
+  .main-sub-menu {
     position: absolute;
     left: -9999px;
   }
 }
 @media only screen and (min-width: 481px) and (max-width: 1023px) {
-  .hide--lap, .top-menu .menu, .top-menu .search, .responsive-menu {
+  .hide--lap, .responsive-navigation, .responsive-menu {
     position: absolute;
     left: -9999px;
   }
@@ -4321,7 +4360,7 @@ html.flexbox, html#searchform, html.page-header {
   }
 }
 @media only screen and (min-width: 1024px) {
-  .hide--desk, .top-menu .menu, .top-menu .search, .responsive-menu {
+  .hide--desk, .responsive-navigation, .responsive-menu {
     position: absolute;
     left: -9999px;
   }
@@ -4334,15 +4373,198 @@ html.flexbox, html#searchform, html.page-header {
 /**
  * basic color and stuff
  */
-.border-left {
-  border-left: 1px dotted #454545;
+.hover-text, a:hover {
+  color: #005baa;
+}
+
+.default-text, html, .searchnavigation .submit, .main-menu a, .category-navigation a {
+  color: #3f3f3f;
+}
+
+.main-text, a,
+a:active,
+a:focus {
+  color: #5c85b1;
+}
+
+.complement-text, .complement-italic-text, .contact-wrapper .content {
+  color: #644c20;
+}
+
+.complement-light-text {
+  color: #967230;
+}
+
+.gray-text, .article-wrapper .footer-wrapper {
+  color: #c6cacb;
+}
+
+.gray-light-text {
+  color: #e5e6e7;
+}
+
+.force-gray-text, .aside-icon-left .i, .aside-icon-left .searchnavigation .submit, .searchnavigation .aside-icon-left .submit {
+  color: #c6cacb !important;
+}
+
+.black-text, h1.entry-title a, .main-sub-menu a:hover,
+.main-sub-menu .current-category-ancestor a,
+.main-sub-menu .current-menu-item a {
+  color: black;
+}
+
+.white-text, .main-menu a:hover,
+.main-menu .current-category-ancestor a,
+.main-menu .current-menu-item a, .footer2-wrapper,
+.footer2-wrapper a,
+.footer-image-wrapper {
+  color: white;
+}
+
+.black-text-shadow, .main-menu a:hover,
+.main-menu .current-category-ancestor a,
+.main-menu .current-menu-item a {
+  text-shadow: -1px -1px 0px #666666;
+}
+
+.white-text-shadow, .searchnavigation .submit, .main-sub-menu a:hover,
+.main-sub-menu .current-category-ancestor a,
+.main-sub-menu .current-menu-item a {
+  text-shadow: 1px 1px 0px white;
+}
+
+.transparent-background, .searchnavigation .field,
+.searchnavigation .submit {
+  background-color: transparent;
+}
+
+.hover-background {
+  background-color: #005baa;
+}
+
+.default-background {
+  background-color: #3f3f3f;
+}
+
+.main-background, .main-menu a:hover,
+.main-menu .current-category-ancestor a,
+.main-menu .current-menu-item a, .footer2-wrapper,
+.footer2-wrapper a,
+.footer-image-wrapper {
+  background-color: #5c85b1;
+}
+
+.gray-background, .searchnavigation .submit {
+  background-color: #c6cacb;
+}
+
+.gray-light-background, .gray-image-background, .article-wrapper .side-content, .footer-wrapper, .searchnavigation, .menu-item:hover, .menu-item .sub-menu, .main-sub-menu a:hover,
+.main-sub-menu .current-category-ancestor a,
+.main-sub-menu .current-menu-item a {
+  background-color: #e5e6e7;
+}
+
+.gray-image-background, .article-wrapper .side-content, .footer-wrapper {
+  background-image: url(images/greyTile24bit.png);
+  background-repeat: repeat;
+}
+
+.border, .page-header {
+  border: 2px dotted #e5e6e7;
+}
+
+.border--top, .article-border-wrapper, .footer-widget-wrapper {
+  border-top: 2px dotted #e5e6e7;
+}
+
+.border--right {
+  border-right: 2px dotted #e5e6e7;
+}
+
+.border--bottom, .article-border-wrapper, .footer-widget-sidebar h1 {
+  border-bottom: 2px dotted #e5e6e7;
+}
+
+.border--left {
+  border-left: 2px dotted #e5e6e7;
+}
+
+.border-radius, .page-header, .searchnavigation {
+  border-radius: 3px;
+}
+
+.noborder, .searchnavigation .field,
+.searchnavigation .submit {
+  border: 0;
+}
+
+.border-radius--top, .main-menu a:hover,
+.main-menu .current-category-ancestor a,
+.main-menu .current-menu-item a {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.border-radius--right, .searchnavigation .submit {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.border-radius--bottom, .main-sub-menu a:hover,
+.main-sub-menu .current-category-ancestor a,
+.main-sub-menu .current-menu-item a {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.border-radius--left {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.font-weight-bold, .page-header .sort-order .active, .article-wrapper a {
+  font-weight: bold;
+}
+
+.force-font-style-normal, .article-wrapper a {
+  font-style: normal!important;
+}
+
+.font-style-italic, .complement-italic-text, .contact-wrapper .content, .article-wrapper .footer-wrapper {
+  font-style: italic;
+}
+
+.milli, .page-header {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  line-height: 1.84615;
+}
+
+.micro {
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 2;
+}
+
+.nano {
+  font-size: 10px;
+  font-size: 0.625rem;
+  line-height: 2.4;
+}
+
+/* text colors */
+a:hover {
+  text-decoration: none;
 }
 
 html {
   font-family: "myriad-pro", Arial, sans-serif;
 }
 
-.content--center, .main {
+.content--center, .branding,
+.main,
+.footer-widget-sidebar,
+.footer-image {
   margin: 0 auto;
   max-width: 1000px;
 }
@@ -4359,12 +4581,31 @@ html {
 }
 
 /* category structure */
+/*
+ * sort-order 
+ */
 /* the article content */
+.article-wrapper {
+  overflow: hidden;
+}
+.article-wrapper .summary-content a,
+.article-wrapper .more-content a {
+  border-bottom: 1px dotted #5c85b1;
+}
+.article-wrapper .side-content {
+  padding-bottom: 100%;
+  margin-bottom: -100%;
+}
 @media only screen and (min-width: 1024px) {
-  .side-content {
+  .article-wrapper .side-content {
     float: right!important;
   }
 }
+.article-wrapper .footer-wrapper {
+  border-left: 4px solid #644c20;
+  padding-left: 20px;
+}
+
 /* article footer*/
 /* featured images */
 .pager {
@@ -4381,8 +4622,8 @@ html {
 }
 /* embedded contact image */
 /* aside content */
-.addthis_toolbox a {
-  margin-left: 12px;
+.aside-icon-left {
+  width: 24px;
 }
 
 @media only screen and (max-width: 480px) {
@@ -4395,44 +4636,71 @@ html {
     display: none;
   }
 }
-/* hide title */
-/* set top menu icons */
-.top-menu {
-  /* add <i class=i data-icon="&#xF143;"></i> in menu item title */
-  /* add <i class=i data-icon="&#xF0A9;"></i> in menu item title */
-  /* add <i class=i data-icon="&#xF097;"></i> in menu item title */
-  /* add <i class=i data-icon="&#xF063;"></i> in menu item title */
-}
-
-/* SEARCH */
-@media only screen and (min-width: 481px) and (max-width: 1023px) {
-  .searchnavigation {
-    position: relative;
-    left: 25%;
-  }
-}
 @media only screen and (min-width: 1024px) {
-  .searchnavigation {
-    position: relative;
-    left: 25%;
+  .summary-content,
+  .more-content {
+    padding-right: 24px;
   }
 }
-.assistive-text {
+/* hide title */
+/* header structure */
+/* SEARCH */
+.searchnavigation {
+  height: 24px;
+}
+.searchnavigation .form {
+  line-height: 0;
+  height: 100%;
+}
+.searchnavigation .form .input-wrapper {
+  display: inline-block;
+}
+.searchnavigation .input-wrapper,
+.searchnavigation .field,
+.searchnavigation .submit {
+  height: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.searchnavigation .assistive-text {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-#searchform .input-wrapper {
-  display: inline-block;
+.menu-item .sub-menu {
+  border-radius: 0 3px 3px 3px;
 }
 
+/* top right menu */
+.top-menu-wrapper .i, .top-menu-wrapper .searchnavigation .submit, .searchnavigation .top-menu-wrapper .submit,
+.logo2 .i,
+.logo2 .searchnavigation .submit,
+.searchnavigation .logo2 .submit {
+  width: 24px;
+}
+
+/* set top menu icons */
+/* add <i class=i data-icon="&#xF143;"></i> in sites item title */
+/* add <i class=i data-icon="&#xF063;"></i> in translate item title */
+/* text colors */
 /*
  * top navigation 
  */
-/*
- * sort-order 
- */
+.main-menu {
+  border-bottom: 1px solid #e5e6e7;
+}
+
+@media only screen and (max-width: 781px) and (min-width: 481px) {
+  .main-sub-menu > li > a {
+    white-space: normal!important;
+  }
+}
+@media only screen and (max-width: 941px) and (min-width: 781px) {
+  .main-sub-menu > li > a {
+    white-space: normal!important;
+  }
+}
 /*
  * category navigation
  */
@@ -4451,50 +4719,7 @@ html {
     display: block;
   }
 }
-@media only screen and (min-width: 1024px) {
-  .main-menu,
-  .main-sub-menu {
-    /* manually copied instead of @extend .nav--block */
-    line-height: 1;
-    /**
-     * Remove whitespace caused by `inline-block`.
-     */
-    letter-spacing: -0.31em;
-    word-spacing: -0.43em;
-    white-space: nowrap;
-  }
-  .main-menu > li,
-  .main-sub-menu > li {
-    letter-spacing: normal;
-    word-spacing: normal;
-  }
-  .main-menu > li > a,
-  .main-sub-menu > li > a {
-    padding: 12px;
-  }
-}
-@media only screen and (min-width: 481px) and (max-width: 1023px) {
-  .main-menu,
-  .main-sub-menu {
-    /* manually copied instead of @extend .nav--block */
-    line-height: 1;
-    /**
-     * Remove whitespace caused by `inline-block`.
-     */
-    letter-spacing: -0.31em;
-    word-spacing: -0.43em;
-    white-space: nowrap;
-  }
-  .main-menu > li,
-  .main-sub-menu > li {
-    letter-spacing: normal;
-    word-spacing: normal;
-  }
-  .main-menu > li > a,
-  .main-sub-menu > li > a {
-    padding: 12px;
-  }
-}
+/* text colors */
 /* =firstpage ui-tabs
 ----------------------------------------------- */
 .ui-tabs ul.post_tabs_title {
@@ -4591,6 +4816,46 @@ html {
   left: 0;
 }
 
+.margin--top, .article-wrapper .content-wrapper {
+  margin-top: 24px;
+}
+
+.margin--right {
+  margin-right: 24px;
+}
+
+.margin--bottom, .page-header, .top-wrapper {
+  margin-bottom: 24px;
+}
+
+.margin--left, .aside-icon-right {
+  margin-left: 24px;
+}
+
+.half-margin--top, .logo, .searchnavigation, .logo2 {
+  margin-top: 12px;
+}
+
+.half-margin--left, .addthis_toolbox a {
+  margin-left: 12px;
+}
+
+.padding--top, .footer-widget-wrapper {
+  padding-top: 24px;
+}
+
+.padding--right, .aside-icon-right {
+  padding-right: 24px;
+}
+
+.padding--bottom {
+  padding-bottom: 24px;
+}
+
+.padding--left {
+  padding-left: 24px;
+}
+
 @media print {
   #topmenu,
   #searchnavigation,
@@ -4611,12 +4876,6 @@ html {
     display: none;
   }
 }
-/* GRAYBOXES */
-.widget {
-  background-color: #454545;
-  color: #222222;
-}
-
 /* to un- .hide element */
 .unhide {
   position: initial;

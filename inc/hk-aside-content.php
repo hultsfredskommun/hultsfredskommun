@@ -84,13 +84,13 @@
 	<?php endif; ?>
 
 	<?php endif; ?>	
-	<ul class="box tools">
+	<ul class="box tools full">
 		<?php edit_post_link( "Redigera inl&auml;gg", "<li><a title='Redigera inl&auml;gg' class='aside-icon-left  editlink tool-line full' class='aside-icon-left'><i class='i' data-icon='&#xF13A;'></i></a><span>", "</span></li>" ); ?>
-		<li class="print tool-line full"><a title='Skriv ut' class='aside-icon-left'><i class='i' data-icon='&#xF130;'></i></a><a class="print  aside-icon-right" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Funktionen kommer senare">Skriv ut</a></li>
-		<li class="read tool-line full"><a title='L&auml;s upp' class='aside-icon-left'><i class='i' data-icon='&#xF03B;'></i></a><a class="read" title="Funktionen kommer senare">L&auml;s upp artikel</a></li>
+		<li class="print tool-line"><a title='Skriv ut' class='aside-icon-left'><i class='i' data-icon='&#xF130;'></i></a><a class="print  aside-icon-right" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Funktionen kommer senare">Skriv ut</a></li>
+		<li class="read tool-line"><a title='L&auml;s upp' class='aside-icon-left'><i class='i' data-icon='&#xF03B;'></i></a><a class="read" title="Funktionen kommer senare">L&auml;s upp artikel</a></li>
 		<?php if ($options['addthis_pubid'] != "") : ?>
-		<li class="friend tool-line full"><a title='Tipsa n&aring;gon om denna sida' class='aside-icon-left'><i class='i' data-icon='&#xF009;'></i></a><a class="friend" href="#" title="Tipsa n&aring;gon om denna sida">Tipsa</a></li>
-		<li class="addthis full">
+		<li class="friend tool-line"><a title='Tipsa n&aring;gon om denna sida' class='aside-icon-left'><i class='i' data-icon='&#xF009;'></i></a><a class="friend" href="#" title="Tipsa n&aring;gon om denna sida">Tipsa</a></li>
+		<li class="addthis">
 			<div class="addthis_toolbox" addthis:url="http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>" addthis:title="<?php the_title(); ?>" addthis:description="Kolla den h&auml;r sidan.">
 				<a class="addthis_button_email"></a>
 				<a class="addthis_button_facebook"></a>

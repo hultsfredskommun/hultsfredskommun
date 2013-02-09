@@ -18,11 +18,18 @@
 				}
 			?>
 			
-			<div id="viewmode" class="view-mode">
-				<a class="viewmode_summary js-view-summary" title="Listvisning" href="#">Sammanfattning</a>
-				<a class="viewmode_titles js-view-titles" title="Rubrikvisning" href="#">Rubriker</a>
-			</div>
-			<div class="clear"></div>
+			<ul id="viewmode" class="category-tools">
+				<li class="view-mode"><a class="viewmode_summary js-view-summary hide" title="Listvisning" href="#">Sammanfattning</a>
+				<a class="viewmode_titles js-view-titles" title="Rubrikvisning" href="#">Rubriker</a></li>
+				<?php /* if (related stuff ($cat)) : */ ?>
+				<li class="quick-menu"><a class="" title="Hitta snabbt" href="#">Hitta snabbt</a>
+				<ul class="quick-sub-menu">
+				</ul>
+				</li>
+				<?php /* endif; */ ?>
+				
+			</ul>
+
 		</header>
 		
 	<?php
@@ -59,7 +66,11 @@
 						$args["category__and"] = $cat;
 					}
 					if ( !empty($tag_array) ) {
-						$args["tag_slug__in"] = $tag_array;
+						if ($_REQUEST["tag_logic"] == "and") {
+							$args["tag_slug__and"] = $tag_array;
+						} else {
+							$args["tag_slug__in"] = $tag_array;
+						}
 					}
 					query_posts( $args );
 					if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -89,7 +100,11 @@
 					$args["category__and"] = $cat;
 				}
 				if ( !empty($tag_array) ) {
-					$args["tag_slug__in"] = $tag_array;
+					if ($_REQUEST["tag_logic"] == "and") {
+						$args["tag_slug__and"] = $tag_array;
+					} else {
+						$args["tag_slug__in"] = $tag_array;
+					}
 				}
 				
 				query_posts( $args );
@@ -120,7 +135,11 @@
 							$args['post_status'] = 'publish';		
 							$args['post__in'] = $sticky;
 							if ( !empty($tag_array) ) {
-								$args["tag_slug__in"] = $tag_array;
+								if ($_REQUEST["tag_logic"] == "and") {
+									$args["tag_slug__and"] = $tag_array;
+								} else {
+									$args["tag_slug__in"] = $tag_array;
+								}
 							}
 							if (!empty($shownPosts)) {
 								$args['post__not_in'] = $shownPosts;
@@ -148,7 +167,11 @@
 							$args['post__not_in'] = array_merge($sticky,$shownPosts);
 						}
 						if ( !empty($tag_array) ) {
-							$args["tag_slug__in"] = $tag_array;
+							if ($_REQUEST["tag_logic"] == "and") {
+								$args["tag_slug__and"] = $tag_array;
+							} else {
+								$args["tag_slug__in"] = $tag_array;
+							}
 						}
 						query_posts( $args );
 						if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -171,6 +194,8 @@
 			endwhile;
 		endif;
 
+		
+		/* helper array to know which posts is shown if loading more dynamically */
 		if (empty($sticky)) {
 			$allposts = $shownPosts;
 		}
@@ -193,7 +218,7 @@
 		//hk_content_nav( 'nav-below' );
 		
 
-		/* if nothing found */
+		/* help text if nothing is found */
 		if (empty($shownPosts)) {
 			hk_nothing_found_navigation();
 		} ?>
@@ -201,8 +226,9 @@
 	</div><!-- #content -->
 
 	<?php
+	/* help text anyway if something is found */
 	if (!empty($shownPosts)) {
-		hk_category_help_navigation(); 
+		//hk_category_help_navigation(); 
 	}
 	?>
 	

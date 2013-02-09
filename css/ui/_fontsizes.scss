@@ -1,0 +1,29 @@
+.font-weight-bold {
+	font-weight: bold;
+}
+.force-font-style-normal {
+	font-style: normal!important;
+}
+.font-style-italic {
+	font-style: italic;
+}
+.milli {
+	@include font-size($milli-size);
+}
+.micro {
+	@include font-size($micro-size);
+}
+.nano {
+	@include font-size($nano-size);
+}
+
+
+.complement-italic-text {
+	@extend .complement-text;
+	@extend .font-style-italic;
+	@extend .zeta;
+}
+
+
+
+

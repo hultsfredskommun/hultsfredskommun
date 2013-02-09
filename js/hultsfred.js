@@ -648,17 +648,17 @@ $(document).ready(function(){
 	}, function() {
 		$("#all_title_div").remove();
 	});*/
-	$("#viewmode_summary").unbind("click").click(function(ev){
+	$(".js-view-summary").unbind("click").click(function(ev){
 		$("#content").removeClass("viewmode_titles");
 		$("#content").find('article').removeClass("only-title");
-		$("#viewmode_titles").show();
-		$("#viewmode_summary").hide();
+		$(".viewmode_titles").removeClass("hide");
+		$(".viewmode_summary").addClass("hide");
 		ev.preventDefault();
 	});
 	// show only title click action
-	$("#viewmode_titles").unbind("click").click(function(ev){
-		$("#viewmode_titles").hide();
-		$("#viewmode_summary").show();
+	$(".js-view-titles").unbind("click").click(function(ev){
+		$(".viewmode_titles").addClass("hide");
+		$(".viewmode_summary").removeClass("hide");
 		
 		//get all articles in #content and store in arr
 		var arr = $("#content").find('article');
@@ -790,7 +790,7 @@ $(document).ready(function(){
 	// set click action	on responsive dropdown-menu
 	$(".dropdown-menu-button").unbind("click").click( function(){
 		if ($(this).hasClass("submenu")) {
-			$("ul.main-sub-menu").slideToggle('fast');
+			$("ul.main-sub-menu").toggleClass("unhide");
 		}
 		else if ($(this).hasClass("category")) {
 			$(".category-navigation").slideToggle('fast');
@@ -801,6 +801,7 @@ $(document).ready(function(){
 	/**
 	 * nav-sidebar collapsing and expand filters on category and tags
 	 */
+	 /* TODO TEMP REMOVED
 	$(".children").each(function() {
 	 	if ($(this).parent().parent().hasClass("parent") && !$(this).parent().hasClass("current-cat") && $(this).parent().find(".current-cat").length == 0) {
 			$(this).prev().append("<span class='more-children'>+</span>");
@@ -813,7 +814,7 @@ $(document).ready(function(){
 			ev.stopPropagation();
 			$(this).parent().parent().find(".children:first").toggle();
 		});
-	});
+	});*/
 
 	/**
 	 * first simple test of dynamic search 

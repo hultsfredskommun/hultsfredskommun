@@ -1,6 +1,6 @@
 	<footer class="entry-meta">
-		<div class="footer-wrapper">
-			<div class="tag-cloud">Tillh&ouml;r: 
+		<ul class="footer-wrapper">
+			<li class="tag-cloud">Tillh&ouml;r: 
 				<?php
 					$categories_list = get_the_category_list( ' | ' );
 					if ( $categories_list ):
@@ -22,13 +22,13 @@
 
 				<?php endif; // End if $tags_list ?>
 
-			</div>
+			</li>
 
-			<div class="editor">Sidansvarig: <?php comments_popup_link(get_the_author(),get_the_author(),get_the_author(),'',get_the_author()); ?><?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></div>
-			<div class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></div>
+			<li class="editor">Sidansvarig: <?php comments_popup_link(get_the_author(),get_the_author(),get_the_author(),'',get_the_author()); ?><?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
+			<li class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></li>
 
-			<div class="permalink">Direktl&auml;nk: <a href="http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>">http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?></a></div>
+			<li class="permalink">Direktl&auml;nk: <a href="http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>">http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?></a></li>
 
 
-		</div>
+		</ul>
 	</footer><!-- .entry-meta -->

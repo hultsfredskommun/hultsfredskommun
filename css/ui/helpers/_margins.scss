@@ -1,0 +1,32 @@
+.margin--top {
+	margin-top: $base-spacing-unit;
+}
+.margin--right {
+	margin-right: $base-spacing-unit;
+}
+.margin--bottom {
+	margin-bottom: $base-spacing-unit;
+}
+.margin--left {
+	margin-left: $base-spacing-unit;
+}
+
+.half-margin--top {
+	margin-top: $half-spacing-unit;
+}
+.half-margin--left {
+	margin-left: $half-spacing-unit;
+}
+
+.padding--top {
+	padding-top: $base-spacing-unit;
+}
+.padding--right {
+	padding-right: $base-spacing-unit;
+}
+.padding--bottom {
+	padding-bottom: $base-spacing-unit;
+}
+.padding--left {
+	padding-left: $base-spacing-unit;
+}
