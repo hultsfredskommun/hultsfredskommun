@@ -4458,13 +4458,13 @@ a:focus {
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .article-wrapper .side-content, .footer-wrapper, .searchnavigation, .menu-item:hover, .menu-item .sub-menu, .main-sub-menu a:hover,
+.gray-light-background, .gray-image-background, .article-wrapper .side-content, .footer-wrapper.footer-widget-wrapper, .searchnavigation, .menu-item:hover, .menu-item .sub-menu, .main-sub-menu a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   background-color: #e5e6e7;
 }
 
-.gray-image-background, .article-wrapper .side-content, .footer-wrapper {
+.gray-image-background, .article-wrapper .side-content, .footer-wrapper.footer-widget-wrapper {
   background-image: url(images/greyTile24bit.png);
   background-repeat: repeat;
 }
