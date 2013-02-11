@@ -761,45 +761,41 @@ textarea:focus {
  * and over in your markup.
  */
 .cf, .gw, .main-wrapper, .top-wrapper,
-.grid-wrapper, .nav, .page-header .sort-order, .page-header .category-tools, .article-wrapper .footer-wrapper, .pager, .contacts,
+.grid-wrapper, .nav, .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .article-wrapper .footer-wrapper, .pager, .contacts,
 .related-wrapper,
-.tools, .menu-item .sub-menu, .responsive-navigation,
-.top-menu, .main-menu,
+.tools, .responsive-navigation, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-menu,
 .main-sub-menu, .tags-wrapper ul,
-.category-navigation ul, .ui-tabs-nav, .media, .island, .article-wrapper .side-content,
+.category-navigation ul, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav, .media, .island, .article-wrapper .side-content,
 .islet,
-#responsive-info, .matrix, .multi-list, .stat-group {
+#responsive-info, .matrix, .multi-list, .stat-group, .page-header, article.post {
   zoom: 1;
 }
 .cf:before, .gw:before, .main-wrapper:before, .top-wrapper:before,
-.grid-wrapper:before, .nav:before, .page-header .sort-order:before, .page-header .category-tools:before, .article-wrapper .footer-wrapper:before, .pager:before, .contacts:before,
+.grid-wrapper:before, .nav:before, .page-header .sort-order:before, .page-header .category-tools:before, .page-header .category-tools .menu-item .sub-menu:before, .article-wrapper .footer-wrapper:before, .pager:before, .contacts:before,
 .related-wrapper:before,
-.tools:before, .menu-item .sub-menu:before, .responsive-navigation:before,
-.top-menu:before, .main-menu:before,
+.tools:before, .responsive-navigation:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .main-menu:before,
 .main-sub-menu:before, .tags-wrapper ul:before,
-.category-navigation ul:before, .ui-tabs-nav:before, .media:before, .island:before, .article-wrapper .side-content:before,
+.category-navigation ul:before, .category-navigation .parent:before, .category-navigation .parent .children:before, .ui-tabs-nav:before, .media:before, .island:before, .article-wrapper .side-content:before,
 .islet:before,
-#responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
-.grid-wrapper:after, .nav:after, .page-header .sort-order:after, .page-header .category-tools:after, .article-wrapper .footer-wrapper:after, .pager:after, .contacts:after,
+#responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .page-header:before, article.post:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
+.grid-wrapper:after, .nav:after, .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
-.tools:after, .menu-item .sub-menu:after, .responsive-navigation:after,
-.top-menu:after, .main-menu:after,
+.tools:after, .responsive-navigation:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .ui-tabs-nav:after, .media:after, .island:after, .article-wrapper .side-content:after,
+.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent .children:after, .ui-tabs-nav:after, .media:after, .island:after, .article-wrapper .side-content:after,
 .islet:after,
-#responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after {
+#responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after, .page-header:after, article.post:after {
   content: " ";
   display: table;
 }
 .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
-.grid-wrapper:after, .nav:after, .page-header .sort-order:after, .page-header .category-tools:after, .article-wrapper .footer-wrapper:after, .pager:after, .contacts:after,
+.grid-wrapper:after, .nav:after, .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
-.tools:after, .menu-item .sub-menu:after, .responsive-navigation:after,
-.top-menu:after, .main-menu:after,
+.tools:after, .responsive-navigation:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .ui-tabs-nav:after, .media:after, .island:after, .article-wrapper .side-content:after,
+.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent .children:after, .ui-tabs-nav:after, .media:after, .island:after, .article-wrapper .side-content:after,
 .islet:after,
-#responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after {
+#responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after, .page-header:after, article.post:after {
   clear: both;
 }
 
@@ -937,14 +933,13 @@ h4, .delta, .main-menu {
   line-height: 1.33333;
 }
 
-h5, .epsilon, .main-sub-menu, .category-navigation a, .footer-widget-sidebar h1 {
+h5, .epsilon, .viewmode-only-titles h1.entry-title, .main-sub-menu, .category-navigation .parent a, .footer-widget-sidebar h1 {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
 }
 
-h6, .zeta, .complement-italic-text, .contact-wrapper .content, .article-wrapper .side-content, .top-menu-wrapper,
-.logo2 {
+h6, .zeta, .complement-italic-text, .contact-wrapper .content, .article-wrapper .side-content, .article-wrapper .footer-wrapper, .top-menu-wrapper {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.71429;
@@ -1781,8 +1776,7 @@ label,
    </div>
  * 
  */
-.gw--rev > .g, .gw--rev > .firstpage-top-content, .gw--rev > .firstpage-sidebar, .gw--rev > .firstpage-content, .gw--rev > .firstpage-pre-footer-sidebar, .gw--rev > .breadcrumb, .gw--rev > .category-navigation, .gw--rev > .category-primary, .gw--rev > .logo, .gw--rev > .responsive-navigation, .gw--rev > .searchnavigation, .gw--rev > .top-menu-wrapper,
-.gw--rev > .logo2,
+.gw--rev > .g, .gw--rev > .firstpage-top-content, .gw--rev > .firstpage-sidebar, .gw--rev > .firstpage-content, .gw--rev > .firstpage-pre-footer-sidebar, .gw--rev > .breadcrumb, .gw--rev > .category-navigation, .gw--rev > .category-primary, .gw--rev > .logo, .gw--rev > .responsive-navigation, .gw--rev > .searchnavigation, .gw--rev > .top-menu-wrapper, .gw--rev > .logo2,
 .grid-wrapper--rev > .grid {
   float: right;
 }
@@ -1800,8 +1794,7 @@ label,
  * 
  * Shorthand and verbose
  */
-.g, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .firstpage-pre-footer-sidebar, .breadcrumb, .category-navigation, .category-primary, .logo, .responsive-navigation, .searchnavigation, .top-menu-wrapper,
-.logo2,
+.g, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .firstpage-pre-footer-sidebar, .breadcrumb, .category-navigation, .category-primary, .logo, .responsive-navigation, .searchnavigation, .top-menu-wrapper, .logo2,
 .grid {
   float: left;
   padding-left: 24px;
@@ -1841,7 +1834,7 @@ label,
  * Demo: jsfiddle.net/inuitcss/ufUh2
  * 
  */
-.flexbox, .searchnavigation .form {
+.flexbox {
   display: table;
   width: 100%;
 }
@@ -1849,12 +1842,12 @@ label,
 /**
  * Nasty hack to circumvent Modernizr conflicts.
  */
-html.flexbox, .searchnavigation html.form {
+html.flexbox {
   display: block;
   width: auto;
 }
 
-.flexbox__item, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit {
+.flexbox__item {
   display: table-cell;
   vertical-align: middle;
 }
@@ -1928,36 +1921,37 @@ html.flexbox, .searchnavigation html.form {
  * Demo: jsfiddle.net/inuitcss/Vnph4
  * 
  */
-.nav, .page-header .sort-order, .page-header .category-tools, .article-wrapper .footer-wrapper, .pager, .contacts,
+.nav, .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .article-wrapper .footer-wrapper, .pager, .contacts,
 .related-wrapper,
-.tools, .menu-item .sub-menu, .responsive-navigation,
-.top-menu, .main-menu,
+.tools, .responsive-navigation, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-menu,
 .main-sub-menu, .tags-wrapper ul,
-.category-navigation ul, .ui-tabs-nav {
+.category-navigation ul, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav {
   list-style: none;
   margin-left: 0;
 }
-.nav > li, .page-header .sort-order > li, .page-header .category-tools > li, .article-wrapper .footer-wrapper > li, .pager > li, .contacts > li,
+.nav > li, .page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .article-wrapper .footer-wrapper > li, .pager > li, .contacts > li,
 .related-wrapper > li,
-.tools > li, .menu-item .sub-menu > li, .responsive-navigation > li,
-.top-menu > li, .main-menu > li,
+.tools > li, .responsive-navigation > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .main-menu > li,
 .main-sub-menu > li, .tags-wrapper ul > li,
-.category-navigation ul > li, .ui-tabs-nav > li,
+.category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent .children > li, .ui-tabs-nav > li,
 .nav > li > a,
 .page-header .sort-order > li > a,
 .page-header .category-tools > li > a,
+.page-header .category-tools .menu-item .sub-menu > li > a,
 .article-wrapper .footer-wrapper > li > a,
 .pager > li > a,
 .contacts > li > a,
 .related-wrapper > li > a,
 .tools > li > a,
-.menu-item .sub-menu > li > a,
 .responsive-navigation > li > a,
-.top-menu > li > a,
+.top-menu-wrapper .top-menu > li > a,
+.top-menu-wrapper .top-menu .menu-item .sub-menu > li > a,
 .main-menu > li > a,
 .main-sub-menu > li > a,
 .tags-wrapper ul > li > a,
 .category-navigation ul > li > a,
+.category-navigation .parent > li > a,
+.category-navigation .parent .children > li > a,
 .ui-tabs-nav > li > a {
   display: inline-block;
   *display: inline;
@@ -1975,18 +1969,16 @@ html.flexbox, .searchnavigation html.form {
    </ul>
  * 
  */
-.nav--stacked > li, .contacts > li,
+.nav--stacked > li, .page-header .category-tools .menu-item .sub-menu > li, .contacts > li,
 .related-wrapper > li,
-.tools > li, .menu-item .sub-menu > li, .responsive-navigation .sub-menu > li,
-.top-menu .sub-menu > li, .tags-wrapper ul > li,
-.category-navigation ul > li {
+.tools > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .tags-wrapper ul > li,
+.category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent .children > li {
   display: list-item;
 }
-.nav--stacked > li > a, .contacts > li > a,
+.nav--stacked > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .contacts > li > a,
 .related-wrapper > li > a,
-.tools > li > a, .menu-item .sub-menu > li > a, .responsive-navigation .sub-menu > li > a,
-.top-menu .sub-menu > li > a, .tags-wrapper ul > li > a,
-.category-navigation ul > li > a {
+.tools > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .tags-wrapper ul > li > a,
+.category-navigation ul > li > a, .category-navigation .parent > li > a, .category-navigation .parent .children > li > a {
   display: block;
 }
 
@@ -2016,9 +2008,8 @@ html.flexbox, .searchnavigation html.form {
    </ul>
  * 
  */
-.nav--block, .options, .page-header .sort-order, .page-header .category-tools, .pager, .menu-item .sub-menu, .responsive-navigation,
-.top-menu, .main-menu,
-.main-sub-menu, .ui-tabs-nav {
+.nav--block, .options, .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .pager, .responsive-navigation, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-menu,
+.main-sub-menu, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav {
   line-height: 1;
   /**
    * Remove whitespace caused by `inline-block`.
@@ -2027,15 +2018,13 @@ html.flexbox, .searchnavigation html.form {
   word-spacing: -0.43em;
   white-space: nowrap;
 }
-.nav--block > li, .options > li, .page-header .sort-order > li, .page-header .category-tools > li, .pager > li, .menu-item .sub-menu > li, .responsive-navigation > li,
-.top-menu > li, .main-menu > li,
-.main-sub-menu > li, .ui-tabs-nav > li {
+.nav--block > li, .options > li, .page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .pager > li, .responsive-navigation > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .main-menu > li,
+.main-sub-menu > li, .category-navigation .parent > li, .category-navigation .parent .children > li, .ui-tabs-nav > li {
   letter-spacing: normal;
   word-spacing: normal;
 }
-.nav--block > li > a, .options > li > a, .page-header .sort-order > li > a, .page-header .category-tools > li > a, .pager > li > a, .menu-item .sub-menu > li > a, .responsive-navigation > li > a,
-.top-menu > li > a, .main-menu > li > a,
-.main-sub-menu > li > a, .ui-tabs-nav > li > a {
+.nav--block > li > a, .options > li > a, .page-header .sort-order > li > a, .page-header .category-tools > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .pager > li > a, .responsive-navigation > li > a, .top-menu-wrapper .top-menu > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .main-menu > li > a,
+.main-sub-menu > li > a, .category-navigation .parent > li > a, .category-navigation .parent .children > li > a, .ui-tabs-nav > li > a {
   padding: 12px;
 }
 
@@ -2625,15 +2614,13 @@ html.flexbox, .searchnavigation html.form {
  * Demo: jsfiddle.net/inuitcss/B52HG
  * 
  */
-.flyout, .responsive-navigation .menu-item,
-.top-menu .menu-item,
+.flyout,
 .flyout--alt {
   position: relative;
   overflow: hidden;
 }
 
-.flyout__content, .responsive-navigation .sub-menu,
-.top-menu .sub-menu {
+.flyout__content {
   /**
    * Position the flyouts off-screen. This is typically better than
    * `display:none;`.
@@ -2648,8 +2635,7 @@ html.flexbox, .searchnavigation html.form {
  * Two different types of flyout; ÔÇÿregularÔÇÖ (`.flyout`) and ÔÇÿalternativeÔÇÖ
  * (`.flyout--alt`).
  */
-.flyout:hover, .responsive-navigation .menu-item:hover,
-.top-menu .menu-item:hover,
+.flyout:hover,
 .flyout--alt:hover {
   overflow: visible;
 }
@@ -2657,22 +2643,14 @@ html.flexbox, .searchnavigation html.form {
 /**
  * Regular flyouts sit all the way from the top, flush left.
  */
-.flyout:hover > .flyout__content, .responsive-navigation .menu-item:hover > .flyout__content,
-.top-menu .menu-item:hover > .flyout__content, .responsive-navigation .flyout:hover > .sub-menu, .responsive-navigation .menu-item:hover > .sub-menu,
-.top-menu .responsive-navigation .menu-item:hover > .sub-menu,
-.responsive-navigation .top-menu .menu-item:hover > .sub-menu,
-.top-menu .flyout:hover > .sub-menu,
-.responsive-navigation .top-menu .menu-item:hover > .sub-menu,
-.top-menu .responsive-navigation .menu-item:hover > .sub-menu,
-.top-menu .menu-item:hover > .sub-menu {
+.flyout:hover > .flyout__content {
   left: 0;
 }
 
 /**
  * Alternative flyouts sit all the way from the left, flush top.
  */
-.flyout--alt:hover > .flyout__content, .responsive-navigation .flyout--alt:hover > .sub-menu,
-.top-menu .flyout--alt:hover > .sub-menu {
+.flyout--alt:hover > .flyout__content {
   top: 0;
   left: 100%;
 }
@@ -2719,7 +2697,7 @@ html.flexbox, .searchnavigation html.form {
  */
 .s,
 .i,
-.searchnavigation .submit {
+.searchnavigation .form .submit {
   display: inline-block;
   line-height: 1;
   position: relative;
@@ -2761,7 +2739,7 @@ html.flexbox, .searchnavigation html.form {
 /**
  * Set up Batch icon font
  */
-.i, .searchnavigation .submit {
+.i, .searchnavigation .form .submit {
   font-family: Batch;
   font-size: 16px;
   /**
@@ -2770,7 +2748,7 @@ html.flexbox, .searchnavigation html.form {
   width: 1em;
   height: 1em;
 }
-.i:before, .searchnavigation .submit:before {
+.i:before, .searchnavigation .form .submit:before {
   content: attr(data-icon);
 }
 
@@ -3408,14 +3386,14 @@ html.flexbox, .searchnavigation html.form {
   /**
   * Halves
   */
-  .lap-one-half, .lap-two-quarters, .searchnavigation, .lap-three-sixths, .lap-four-eighths, .lap-five-tenths, .lap-six-twelfths, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+  .lap-one-half, .lap-two-quarters, .lap-three-sixths, .lap-four-eighths, .lap-five-tenths, .lap-six-twelfths, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
     width: 50%;
   }
 
   /**
   * Thirds
   */
-  .lap-one-third, .lap-two-sixths, .lap-four-twelfths, .footer-widget-sidebar.three .footer-widgets {
+  .lap-one-third, .lap-two-sixths, .lap-four-twelfths, .logo, .searchnavigation, .top-menu-wrapper, .logo2, .footer-widget-sidebar.three .footer-widgets {
     width: 33.333%;
   }
 
@@ -3426,8 +3404,7 @@ html.flexbox, .searchnavigation html.form {
   /**
   * Quarters
   */
-  .lap-one-quarter, .lap-two-eighths, .lap-three-twelfths, .category-navigation, .logo, .top-menu-wrapper,
-  .logo2 {
+  .lap-one-quarter, .lap-two-eighths, .lap-three-twelfths, .category-navigation {
     width: 25%;
   }
 
@@ -3657,14 +3634,14 @@ html.flexbox, .searchnavigation html.form {
   /**
   * Halves
   */
-  .desk-one-half, .desk-two-quarters, .searchnavigation, .desk-three-sixths, .desk-four-eighths, .desk-five-tenths, .desk-six-twelfths, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .footer-widget-sidebar.two .footer-widgets {
+  .desk-one-half, .desk-two-quarters, .desk-three-sixths, .desk-four-eighths, .desk-five-tenths, .desk-six-twelfths, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .footer-widget-sidebar.two .footer-widgets {
     width: 50%;
   }
 
   /**
   * Thirds
   */
-  .desk-one-third, .desk-two-sixths, .desk-four-twelfths, .article-wrapper .side-content, .footer-widget-sidebar.three .footer-widgets {
+  .desk-one-third, .desk-two-sixths, .desk-four-twelfths, .article-wrapper .side-content, .logo, .searchnavigation, .top-menu-wrapper, .logo2, .footer-widget-sidebar.three .footer-widgets {
     width: 33.333%;
   }
 
@@ -3675,8 +3652,7 @@ html.flexbox, .searchnavigation html.form {
   /**
   * Quarters
   */
-  .desk-one-quarter, .desk-two-eighths, .desk-three-twelfths, .category-navigation, .logo, .top-menu-wrapper,
-  .logo2, .footer-widget-sidebar.four .footer-widgets {
+  .desk-one-quarter, .desk-two-eighths, .desk-three-twelfths, .category-navigation, .footer-widget-sidebar.four .footer-widgets {
     width: 25%;
   }
 
@@ -4208,19 +4184,15 @@ html.flexbox, .searchnavigation html.form {
  * A lot of these classes carry `!important` as you will always want them to win
  * out over other selectors.
  */
-.float--right, .firstpage-sidebar, .page-header .category-tools, .responsive-navigation {
+.float--right, .firstpage-sidebar, .responsive-navigation {
   float: right!important;
 }
 
-.float--left, .help-navigation, .page-header, .page-header .sort-order, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .contact-area .img-wrapper, .aside-icon-left, .addthis_toolbox a, .top-menu-wrapper .i, .top-menu-wrapper .searchnavigation .submit, .searchnavigation .top-menu-wrapper .submit,
-.logo2 .i,
-.logo2 .searchnavigation .submit,
-.searchnavigation .logo2 .submit, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.float--left, .help-navigation, .page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .contact-area .img-wrapper, .aside-icon-left, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
-.text--left, .responsive-navigation .sub-menu,
-.top-menu .sub-menu {
+.text--left, .page-header .category-tools .menu-item .sub-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu {
   text-align: left !important;
 }
 
@@ -4228,8 +4200,7 @@ html.flexbox, .searchnavigation html.form {
   text-align: center!important;
 }
 
-.text--right, .responsive-navigation,
-.top-menu {
+.text--right, .page-header .category-tools, .top-menu-wrapper .top-menu {
   text-align: right !important;
 }
 
@@ -4245,7 +4216,7 @@ html.flexbox, .searchnavigation html.form {
   margin-right: 0!important;
 }
 
-.flush--bottom, #responsive-info, .page-header .sort-order, .page-header .category-tools, h1.entry-title, .summary .img-wrapper, .main-menu {
+.flush--bottom, #responsive-info, .page-header .sort-order, .page-header .category-tools, h1.entry-title, .viewmode-only-titles article.post, .summary .img-wrapper, .main-menu {
   margin-bottom: 0!important;
 }
 
@@ -4340,8 +4311,7 @@ html.flexbox, .searchnavigation html.form {
 }
 
 @media only screen and (max-width: 480px) {
-  .hide--palm, .page-header .category-tools, .searchnavigation, .top-menu-wrapper,
-  .logo2, .main-menu,
+  .hide--palm, .searchnavigation, .top-menu-wrapper, .logo2, .main-menu,
   .main-sub-menu {
     position: absolute;
     left: -9999px;
@@ -4377,7 +4347,7 @@ html.flexbox, .searchnavigation html.form {
   color: #005baa;
 }
 
-.default-text, html, .searchnavigation .submit, .main-menu a, .category-navigation a {
+.default-text, html, .searchnavigation .form .submit, .main-menu a, .category-navigation .parent a {
   color: #3f3f3f;
 }
 
@@ -4403,7 +4373,7 @@ a:focus {
   color: #e5e6e7;
 }
 
-.force-gray-text, .aside-icon-left .i, .aside-icon-left .searchnavigation .submit, .searchnavigation .aside-icon-left .submit {
+.force-gray-text, .aside-icon-left .i, .aside-icon-left .searchnavigation .form .submit, .searchnavigation .form .aside-icon-left .submit {
   color: #c6cacb !important;
 }
 
@@ -4427,14 +4397,13 @@ a:focus {
   text-shadow: -1px -1px 0px #666666;
 }
 
-.white-text-shadow, .searchnavigation .submit, .main-sub-menu a:hover,
+.white-text-shadow, .searchnavigation .form .submit, .main-sub-menu a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   text-shadow: 1px 1px 0px white;
 }
 
-.transparent-background, .searchnavigation .field,
-.searchnavigation .submit {
+.transparent-background {
   background-color: transparent;
 }
 
@@ -4454,17 +4423,17 @@ a:focus {
   background-color: #5c85b1;
 }
 
-.gray-background, .searchnavigation .submit {
+.gray-background, .searchnavigation .form .submit {
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .article-wrapper .side-content, .footer-wrapper.footer-widget-wrapper, .searchnavigation, .menu-item:hover, .menu-item .sub-menu, .main-sub-menu a:hover,
+.gray-light-background, .gray-image-background, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .footer-wrapper.footer-widget-wrapper, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .main-sub-menu a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   background-color: #e5e6e7;
 }
 
-.gray-image-background, .article-wrapper .side-content, .footer-wrapper.footer-widget-wrapper {
+.gray-image-background, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .footer-wrapper.footer-widget-wrapper {
   background-image: url(images/greyTile24bit.png);
   background-repeat: repeat;
 }
@@ -4489,12 +4458,11 @@ a:focus {
   border-left: 2px dotted #e5e6e7;
 }
 
-.border-radius, .page-header, .searchnavigation {
+.border-radius, .page-header {
   border-radius: 3px;
 }
 
-.noborder, .searchnavigation .field,
-.searchnavigation .submit {
+.noborder, .searchnavigation .form .input-wrapper .field, .searchnavigation .form .submit {
   border: 0;
 }
 
@@ -4505,7 +4473,7 @@ a:focus {
   border-top-right-radius: 3px;
 }
 
-.border-radius--right, .searchnavigation .submit {
+.border-radius--right, .searchnavigation .form .submit {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -4517,7 +4485,7 @@ a:focus {
   border-bottom-right-radius: 3px;
 }
 
-.border-radius--left {
+.border-radius--left, .searchnavigation .form .input-wrapper .field {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -4569,6 +4537,11 @@ html {
   max-width: 1000px;
 }
 
+/* extend nav--block with breaking white-space */
+.nav--block-break, .category-navigation .parent, .category-navigation .parent .children {
+  white-space: normal!important;
+}
+
 /*
 * Responsive helper
 */
@@ -4584,7 +4557,20 @@ html {
 /*
  * sort-order 
  */
+.page-header .category-tools .menu-item .aside-icon-left {
+  padding-bottom: 0!important;
+}
+.page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit {
+  width: 24px;
+}
+.page-header .category-tools .menu-item .sub-menu {
+  border-radius: 0 3px 3px 3px;
+  z-index: 100;
+}
+
 /* the article content */
+/* hide article-wrapper if only titles */
+/* article style */
 .article-wrapper {
   overflow: hidden;
 }
@@ -4644,43 +4630,72 @@ html {
 }
 /* hide title */
 /* header structure */
+.responsive-navigation {
+  text-align: right;
+}
+
 /* SEARCH */
-.searchnavigation {
-  height: 24px;
-}
-.searchnavigation .form {
-  line-height: 0;
-  height: 100%;
-}
-.searchnavigation .form .input-wrapper {
-  display: inline-block;
-}
-.searchnavigation .input-wrapper,
-.searchnavigation .field,
-.searchnavigation .submit {
-  height: 100%;
-  padding-top: 0;
-  padding-bottom: 0;
-}
 .searchnavigation .assistive-text {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
 }
-
-.menu-item .sub-menu {
-  border-radius: 0 3px 3px 3px;
+.searchnavigation .form .field,
+.searchnavigation .form .submit {
+  height: 24px;
 }
 
 /* top right menu */
-.top-menu-wrapper .i, .top-menu-wrapper .searchnavigation .submit, .searchnavigation .top-menu-wrapper .submit,
-.logo2 .i,
-.logo2 .searchnavigation .submit,
-.searchnavigation .logo2 .submit {
+.top-menu-wrapper {
+  /* set top menu icons */
+}
+.top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit {
   width: 24px;
 }
+.top-menu-wrapper .top-menu .menu-item .sub-menu {
+  border-radius: 3px 0 3px 3px;
+  z-index: 100;
+}
 
-/* set top menu icons */
+/*
+.top-menu-wrapper {
+	@extend .g;
+	@extend .zeta;
+	@extend .desk-one-third;
+	@extend .lap-one-third;
+	@extend .hide--palm;
+	// set top menu icons 
+	.responsive-navigation,
+	.top-menu {
+		@extend .text--right;
+		@extend .nav;
+		@extend .nav--block;
+		@extend .nav--block-break;
+
+		.menu-item {
+			@extend .flyout;
+			.i {
+				@extend .float--left;
+				width: $base-spacing-unit;
+			}
+			&:hover {
+				@extend .gray-light-background;
+			}
+			.sub-menu {
+				@extend .nav;
+				@extend .nav--stacked;
+				@extend .nav--block;
+				@extend .gray-light-background;
+				@extend .flyout__content;
+				@extend .nav--stacked;
+				@extend .text--left;
+				border-radius: 0 $border-radius $border-radius $border-radius;
+				z-index: 100;
+			}
+		}
+	}
+}
+*/
 /* add <i class=i data-icon="&#xF143;"></i> in sites item title */
 /* add <i class=i data-icon="&#xF063;"></i> in translate item title */
 /* text colors */
@@ -4828,7 +4843,7 @@ html {
   margin-bottom: 24px;
 }
 
-.margin--left, .aside-icon-right {
+.margin--left, .aside-icon-right, .category-navigation .parent .children {
   margin-left: 24px;
 }
 
@@ -4852,8 +4867,49 @@ html {
   padding-bottom: 24px;
 }
 
-.padding--left {
+.padding--left, .searchnavigation .form .input-wrapper .field {
   padding-left: 24px;
+}
+
+.dropdown, .page-header .category-tools .menu-item, .top-menu-wrapper .top-menu .menu-item,
+.dropdown--alt {
+  position: relative;
+  _verflow: hidden;
+}
+
+.dropdown__content, .page-header .category-tools .menu-item .sub-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu {
+  /**
+   * Position the dropdowns off-screen. This is typically better than
+   * `display:none;`.
+   */
+  position: absolute;
+  top: 100%;
+  right: -99999px;
+}
+
+/**
+ * Bring the dropdowns into view when you hover their parents.
+ * Two different types of dropdown; æregularÆ (`.dropdown`) and æalternativeÆ
+ * (`.dropdown--alt`).
+ */
+.dropdown:hover, .page-header .category-tools .menu-item:hover, .top-menu-wrapper .top-menu .menu-item:hover,
+.dropdown--alt:hover {
+  overflow: visible;
+}
+
+/**
+ * Regular dropdowns sit all the way from the top, flush left.
+ */
+.dropdown:hover > .dropdown__content, .page-header .category-tools .menu-item:hover > .dropdown__content, .top-menu-wrapper .top-menu .menu-item:hover > .dropdown__content, .page-header .category-tools .menu-item .dropdown:hover > .sub-menu, .page-header .category-tools .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .page-header .category-tools .menu-item:hover > .sub-menu, .page-header .category-tools .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item .dropdown:hover > .sub-menu, .page-header .category-tools .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .page-header .category-tools .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu {
+  right: 0;
+}
+
+/**
+ * Alternative dropdowns sit all the way from the left, flush top.
+ */
+.dropdown--alt:hover > .dropdown__content, .page-header .category-tools .menu-item .dropdown--alt:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item .dropdown--alt:hover > .sub-menu {
+  top: 0;
+  right: 100%;
 }
 
 @media print {
@@ -4882,8 +4938,12 @@ html {
   left: 0;
 }
 
-.hidden, .breadcrumb, .summary .entry-meta, .addthis_toolbox a, .summary .full {
+.hidden, .breadcrumb, .viewmode-only-titles .summary .article-border-wrapper, .summary .entry-meta, .addthis_toolbox a, .summary .full {
   display: none;
+}
+
+.unhidden {
+  display: block;
 }
 
 @media only screen and (max-width: 480px) {

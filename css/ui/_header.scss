@@ -12,8 +12,8 @@
 .logo {
 	@extend .half-margin--top;
 	@extend .g;
-	@extend .desk-one-quarter;
-	@extend .lap-one-quarter;
+	@extend .desk-one-third;
+	@extend .lap-one-third;
 	@extend .palm-one-half;
 }
 .responsive-navigation {
@@ -22,6 +22,9 @@
 	@extend .hide--lap;
 	@extend .palm-one-half;
 	@extend .float--right;
+	@extend .nav;
+	@extend .nav--block;
+	text-align:right;
 }
 
 
@@ -30,110 +33,135 @@
 .searchnavigation {
 	@extend .g;
 	@extend .hide--palm;
-	@extend .desk-two-quarters;
-	@extend .lap-two-quarters;
+	@extend .desk-one-third;
+	@extend .lap-one-third;
 	@extend .palm-one-whole;	
 	@extend .half-margin--top;
-	@extend .border-radius;
-	@extend .gray-light-background;
-	height: $base-spacing-unit;
-
-	.form {
-		line-height: 0;
-		height: 100%;
-		@extend .flexbox;
-		.input-wrapper {
-			@extend .flexbox__item;
-			@extend .nine-tenths;
-			display: inline-block;
-			.field {
-				@extend .one-whole;
-			}
-		}
-		.submit {
-			@extend .flexbox__item;
-			@extend .one-tenth;
-		}
-	}
-	.input-wrapper,
-	.field,
-	.submit {
-		height: 100%;
-		padding-top: 0;
-		padding-bottom: 0;
-	}
-	.field,
-	.submit {
-		@extend .transparent-background;
-		@extend .noborder;
-	}
-	.submit {
-		@extend .i;
-		@extend .gray-background;
-		@extend .default-text;
-		@extend .white-text-shadow;
-		@extend .border-radius--right;
-	}
-	
 	.assistive-text {
 		position: absolute !important;
 		clip: rect(1px 1px 1px 1px);
 		clip: rect(1px, 1px, 1px, 1px);
 	}
-
+	.form {
+		.input-wrapper {
+			@extend .nine-tenths;
+			@extend .float--left;
+			.field {
+				@extend .padding--left;
+				@extend .one-whole;
+				@extend .noborder;
+				@extend .border-radius--left;
+				@extend .gray-image-background;
+			}
+		}
+		.submit {
+			@extend .one-tenth;
+			@extend .float--left;
+			@extend .i;
+			@extend .gray-background;
+			@extend .default-text;
+			@extend .white-text-shadow;
+			@extend .border-radius--right;
+			@extend .noborder;
+		}
+		
+		.field,
+		.submit {
+			height: $base-spacing-unit;
+		}
+	}
+	
 
 }
 
-
-.menu-item:hover {
-	@extend .gray-light-background;
-}
-.menu-item .sub-menu {
-	@extend .nav;
-	@extend .nav--stacked;
-	@extend .nav--block;
-	@extend .gray-light-background;
-	border-radius: 0 $border-radius $border-radius $border-radius;
-}
 
 /* top right menu */
-.top-menu-wrapper,
-.logo2 {
+.top-menu-wrapper {
 	@extend .g;
 	@extend .zeta;
-	@extend .desk-one-quarter;
-	@extend .lap-one-quarter;
+	@extend .desk-one-third;
+	@extend .lap-one-third;
 	@extend .hide--palm;
-	.i {
-		@extend .float--left;
-		width: $base-spacing-unit;
+	/* set top menu icons */
+	.top-menu {
+		@extend .text--right;
+		@extend .nav;
+		@extend .nav--block;
+		.menu-item {
+			@extend .dropdown;
+			.i {
+				@extend .float--left;
+				width: $base-spacing-unit;
+			}
+			&:hover {
+				@extend .gray-image-background;
+			}
+			.sub-menu {
+				@extend .dropdown__content;
+				@extend .nav;
+				@extend .nav--stacked;
+				@extend .nav--block;
+				@extend .gray-image-background;
+				@extend .nav--stacked;
+				@extend .text--left;
+				border-radius: $border-radius 0 $border-radius $border-radius;
+				z-index: 100;
+			}
+		}
 	}
 }
+
+/*
+.top-menu-wrapper {
+	@extend .g;
+	@extend .zeta;
+	@extend .desk-one-third;
+	@extend .lap-one-third;
+	@extend .hide--palm;
+	// set top menu icons 
+	.responsive-navigation,
+	.top-menu {
+		@extend .text--right;
+		@extend .nav;
+		@extend .nav--block;
+		@extend .nav--block-break;
+
+		.menu-item {
+			@extend .flyout;
+			.i {
+				@extend .float--left;
+				width: $base-spacing-unit;
+			}
+			&:hover {
+				@extend .gray-light-background;
+			}
+			.sub-menu {
+				@extend .nav;
+				@extend .nav--stacked;
+				@extend .nav--block;
+				@extend .gray-light-background;
+				@extend .flyout__content;
+				@extend .nav--stacked;
+				@extend .text--left;
+				border-radius: 0 $border-radius $border-radius $border-radius;
+				z-index: 100;
+			}
+		}
+	}
+}
+*/
 .logo2 {
 	@extend .half-margin--top;
-}
-
-
-
-
-/* set top menu icons */
-.responsive-navigation,
-.top-menu {
-	@extend .text--right;
-	@extend .nav;
-	@extend .nav--block;
-
-	.menu-item {
-		@extend .flyout;
-	}
-	.sub-menu {
-		@extend .flyout__content;
-		@extend .nav--stacked;
-		@extend .text--left;
-	}
-
+	@extend .g;
+	@extend .desk-one-third;
+	@extend .lap-one-third;
+	@extend .hide--palm;
 
 }
+
+
+
+
 	/* add <i class=i data-icon="&#xF143;"></i> in sites item title */
 	/* add <i class=i data-icon="&#xF063;"></i> in translate item title */
 

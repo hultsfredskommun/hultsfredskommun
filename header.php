@@ -172,10 +172,8 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 						echo "<li class='translate menu-item menu-item-type-custom menu-item-object-custom menu-item-translate  hide--palm'><a href='#'><i class='i' data-icon='&#xF063;'></i><span>Translate</span></a></li>";
 					}
 					if (!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") {
-						echo "<li class='readspeaker js-readspeaker menu-item menu-item-type-custom menu-item-object-custom menu-item-readspeaker  hide--palm'><a href='#'><i class='i' data-icon='&#xF03B;'></i><span>L&auml;s upp</span></a></li>";
+						//echo "<li class='readspeaker js-readspeaker menu-item menu-item-type-custom menu-item-object-custom menu-item-readspeaker  hide--palm'><a href='#'><i class='i' data-icon='&#xF03B;'></i><span>L&auml;s upp</span></a></li>";
 					}
-					echo "<li class='menu js-show-main-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-menu'><a href='#'><i class='i' data-icon='&#xF0A9;'></i><span class='hide--palm'>Meny</span></a></li>";
-					echo "<li class='search js-show-search menu-item menu-item-type-custom menu-item-object-custom menu-item-search'><a href='#'><i class='i' data-icon='&#xF097;'></i><span class='hide--palm'>S&ouml;k</span></a></li>";
 					echo "</ul></nav></aside>";
 				}
 			?>

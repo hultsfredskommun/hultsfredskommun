@@ -33,6 +33,11 @@ html {
 }
 
 
+/* extend nav--block with breaking white-space */
+.nav--block-break {
+	white-space:normal!important;
+}
+
  /*
  * Responsive helper
  */

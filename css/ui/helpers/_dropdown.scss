@@ -1,0 +1,39 @@
+.dropdown,
+.dropdown--alt{
+    position:relative;
+    _verflow:hidden;
+}
+    .dropdown__content{
+        /**
+         * Position the dropdowns off-screen. This is typically better than
+         * `display:none;`.
+         */
+        position:absolute;
+        top:100%;
+        right:-99999px;
+    }
+    
+    /**
+     * Bring the dropdowns into view when you hover their parents.
+     * Two different types of dropdown; ‘regular’ (`.dropdown`) and ‘alternative’
+     * (`.dropdown--alt`).
+     */
+    .dropdown:hover,
+    .dropdown--alt:hover{
+        overflow:visible;
+    }
+    
+    /**
+     * Regular dropdowns sit all the way from the top, flush left.
+     */
+    .dropdown:hover > .dropdown__content{
+        right:0;
+    }
+    
+    /**
+     * Alternative dropdowns sit all the way from the left, flush top.
+     */
+    .dropdown--alt:hover > .dropdown__content{
+        top:0;
+        right:100%;
+    }

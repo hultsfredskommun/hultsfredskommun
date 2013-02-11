@@ -1,6 +1,20 @@
 /* text colors */
-.category-navigation a {
-	@extend .default-text;
-	@extend .epsilon;
+.category-navigation {
+	.parent {
+		@extend .nav;
+		@extend .nav--block;
+		@extend .nav--block-break;
+		@extend .nav--stacked;
+		a {
+			@extend .default-text;
+			@extend .epsilon;
+		}
+		.children {
+			@extend .margin--left;
+			@extend .nav;
+			@extend .nav--block;
+			@extend .nav--block-break;
+			@extend .nav--stacked;
+		}
+	}
 }
-

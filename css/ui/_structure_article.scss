@@ -9,6 +9,7 @@
 article.post {
 	@extend .landmark;
 	@extend .one-whole;
+	@extend .cf;
 }
 .article-border-wrapper {
 	@extend .landmark;
@@ -24,6 +25,21 @@ h1.entry-title {
 		@extend .black-text;
 	}
 }
+
+/* hide article-wrapper if only titles */
+.viewmode-only-titles {
+	.summary .article-border-wrapper {
+		@extend .hidden;
+	}
+	h1.entry-title {
+		@extend .epsilon;
+	}
+	article.post {
+		@extend .flush--bottom;
+	}
+}
+
+/* article style */
 .article-wrapper {
 	@extend .float--left;
 	@extend .one-whole;
@@ -77,6 +93,8 @@ h1.entry-title {
 		@extend .nav;
 		@extend .gray-text;
 		@extend .font-style-italic;
+		@extend .zeta;
+
 	}
 
 }

@@ -373,14 +373,10 @@ function readMoreToggle(el){
 			
 			$(article).find('.more-content').slideUp(200, function(){
 				
-				if( $("#content").hasClass("viewmode_titles") ){
-					$(article).addClass("only-title");
-				}
 				
 				// toggle visibility
-				if ($(article).position().top +130 + $("html,body").position().top < 0) {
-					$("html,body").animate({scrollTop: $(article).position().top +130}, 0);
-				}
+				$("html,body").animate({scrollTop: $(article).position().top}, 200);
+				
 				// remove full class to track article state
 				$(article).removeClass("full").addClass("summary");
 
@@ -399,13 +395,10 @@ function readMoreToggle(el){
 		else {
 			// toggle visibility
 			$(article).find('.summary-content').slideUp(200, function(){
-				
-				if( $("#content").hasClass("viewmode_titles") ){
-					$(article).removeClass("only-title");
-				}
+	
 				// add full class to track article state
-				$(article).addClass("full").removeClass("summary");
-				$(article).find('.more-content').slideDown(200, function(){
+				$(this).parents("article").addClass("full").removeClass("summary");
+				$(this).parents("article").find('.more-content').slideDown(200, function(){
 					// get plugin WP Lightbox 2 by Pankaj Jha to work with dynamical click
 					var haveConf = (typeof JQLBSettings == 'object');
 					if (haveConf && !$(this).attr("jqlbloaded")) {
@@ -453,7 +446,7 @@ function readMoreToggle(el){
 					$(this).parents("article")./*prepend(closea).*/append(closeb);
 					
 					// scroll to top of post 
-					//$("html,body").animate({scrollTop: $(article).position().top}, 150);
+					$("html,body").animate({scrollTop: $(this).parents("article").position().top}, 150);
 
 					// articles slideshow
 					$(this).slideshow();
@@ -649,55 +642,20 @@ $(document).ready(function(){
 		$("#all_title_div").remove();
 	});*/
 	$(".js-view-summary").unbind("click").click(function(ev){
-		$("#content").removeClass("viewmode_titles");
-		$("#content").find('article').removeClass("only-title");
-		$(".viewmode_titles").removeClass("hide");
-		$(".viewmode_summary").addClass("hide");
+		$("#content").removeClass("viewmode-only-titles");
+		$(".js-view-titles").removeClass("hide");
+		$(".js-view-summary").addClass("hide");
 		ev.preventDefault();
 	});
 	// show only title click action
 	$(".js-view-titles").unbind("click").click(function(ev){
-		$(".viewmode_titles").addClass("hide");
-		$(".viewmode_summary").removeClass("hide");
-		
-		//get all articles in #content and store in arr
-		var arr = $("#content").find('article');
-		
-		//for each article in arr
-		arr.each(function(index, item) {
-			var is_last_item = (index == (arr.length - 1));
-			
-			if( $(item).hasClass("full") ){
-				
-				// remove close-button
-				$(item).find('.closeButton').remove();
-				
-				//hide more-content
-				$(item).find('.more-content').hide();				
-				
-				//show summary-content
-				$(item).find('.summary-content').show();
-			
-				// remove full class to track article state
-				$(item).removeClass("full").addClass("summary");
-			}
-			
-			if(is_last_item){
-				$("#content").addClass("viewmode_titles");	
-				$("#content").find('article').addClass("only-title");
-			}
-		});
-		ev.preventDefault();
-	});
-	// show only title click action
-	$(".dropdown-tags .toggle-tags").unbind("click").click(function(ev){
-		$(this).toggleClass("open");
-		$(this).parent().find("ul").toggle();
-		
+		$("#content").addClass("viewmode-only-titles");
+		$(".js-view-titles").addClass("hide");
+		$(".js-view-summary").removeClass("hide");
 		ev.preventDefault();
 	});
 	
-	/* add action to read-more toggle */
+	/* add action to read-more toggle, if in .home go to article */
 	$("#primary").find("article").each(function(){
 		if (!$(this).parents(".home").length) {
 			setArticleActions($(this));
@@ -1215,10 +1173,6 @@ function dyn_posts_load_posts() {
 				}
 				$('#dyn-posts-placeholder').prepend("<p>Du har nu sett de mest bes&ouml;kta artiklarna, men leta g&auml;rna vidare i denna lista med resten av ditt urval.</p>");
 				
-				// handle viewmode
-				//if( $("#content").hasClass("viewmode_titles") ) {
-					$('#dyn-posts-placeholder').find('article').addClass("only-title");
-				//}
 				
 				// read-more toggle actions
 				$('#dyn-posts-placeholder').find('article').each(function(){

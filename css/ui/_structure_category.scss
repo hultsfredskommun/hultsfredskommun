@@ -28,10 +28,10 @@
 .page-header {
 	@extend .milli;
 	@extend .one-whole;
-	@extend .float--left;
 	@extend .border;
 	@extend .border-radius;
 	@extend .margin--bottom;
+	@extend .cf;
 	
 	.sort-order {
 		@extend .float--left;
@@ -42,12 +42,36 @@
 			@extend .font-weight-bold;
 		}
 	}
+	
 	.category-tools {
-		@extend .float--right;
+		@extend .text--right;
 		@extend .nav;
 		@extend .nav--block;
 		@extend .flush--bottom;
-		@extend .hide--palm;
+		.menu-item {
+			@extend .dropdown;
+			.aside-icon-left {
+				padding-bottom: 0!important;
+			}
+			.i {
+				@extend .float--left;
+				width: $base-spacing-unit;
+			}
+			&:hover {
+				@extend .gray-light-background;
+			}
+			.sub-menu {
+				@extend .nav;
+				@extend .nav--stacked;
+				@extend .nav--block;
+				@extend .gray-light-background;
+				@extend .dropdown__content;
+				@extend .nav--stacked;
+				@extend .text--left;
+				border-radius: 0 $border-radius $border-radius $border-radius;
+				z-index: 100;
+			}
+		}
 	}
 }
 

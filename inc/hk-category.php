@@ -18,14 +18,11 @@
 				}
 			?>
 			
-			<ul id="viewmode" class="category-tools">
-				<li class="view-mode"><a class="viewmode_summary js-view-summary hide" title="Listvisning" href="#">Sammanfattning</a>
+			<ul class="category-tools">
+				<li class="menu-item view-mode"><a class="viewmode_summary js-view-summary hide" title="Listvisning" href="#">Sammanfattning</a>
 				<a class="viewmode_titles js-view-titles" title="Rubrikvisning" href="#">Rubriker</a></li>
 				<?php /* if (related stuff ($cat)) : */ ?>
-				<li class="quick-menu"><a class="" title="Hitta snabbt" href="#">Hitta snabbt</a>
-				<ul class="quick-sub-menu">
-				</ul>
-				</li>
+				<?php echo hk_related_output();	?>
 				<?php /* endif; */ ?>
 				
 			</ul>
