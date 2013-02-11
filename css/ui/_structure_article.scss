@@ -91,9 +91,9 @@ h1.entry-title {
 		border-left: 4px solid $complement-color;	
 		padding-left: $base-spacing-unit - 4px;
 		@extend .nav;
-		@extend .gray-text;
+		@extend .complement-text;
 		@extend .font-style-italic;
-		@extend .zeta;
+		@extend .milli;
 
 	}
 

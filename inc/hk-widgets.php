@@ -182,7 +182,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 	public function __construct() {
 		parent::__construct(
 	 		'HK_firstpagecontact', // Base ID
-			'HK kontakt', // Name
+			'HK f&ouml;rstasidans kontakt', // Name
 			array( 'description' => "Widget som visar kontakter kopplade till aktiv kategori" ) // Args
 		);
 
@@ -222,7 +222,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 	public function __construct() {
 		parent::__construct(
 	 		'HK_firstpagecontent', // Base ID
-			'HK f&ouml;rstasida', // Name
+			'HK f&ouml;rstasidans inneh&aring;ll', // Name
 			array( 'description' => "Widget som visar huvudinneh&aring; som aktuellt och nyheter kopplat till aktiv kategori samt protokoll i flikar" ) // Args
 		);
 		$this->vars["show_protocol"] = "";
@@ -360,7 +360,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 				}
 			?>
 		
-			<div class="clear"></div>
+			
 		</div>
 
 
@@ -401,7 +401,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 					?>			
 					</ul>
 				</div>
-			<div class="clear"></div>
+			
 		</div>	
 		<?php endif; ?>
 		
@@ -414,6 +414,85 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 
 
+
+
+
+
+/* 
+ * MENU IN WIDGET 
+ */ 
+ class HK_menuwidget extends WP_Widget {
+	protected $vars = array();
+
+	public function __construct() {
+		parent::__construct(
+	 		'HK_menuwidget', // Base ID
+			'HK meny i widget', // Name
+			array( 'description' => "Widget som vald meny" ) // Args
+		);
+		
+
+	}
+
+ 	public function form( $instance ) {		
+		if ( isset( $instance[ 'title' ] ) ) {	$title = $instance[ 'title' ];
+		} else { $title = ""; }
+		if ( isset( $instance[ 'menu' ] ) ) {	$menu = $instance[ 'menu' ];
+		} else {$menu = ""; }
+		
+		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Meny rubrik</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'menu' ); ?>">V&auml;lj menu.</label> 
+		<?php $locations = wp_get_nav_menus(); ?>
+		<select class="widefat" id="<?php echo $this->get_field_id( 'menu' ); ?>" name="<?php echo $this->get_field_name( 'menu' ); ?>">
+		<?php foreach($locations as $key => $value) : ?>
+			<option <?php echo ($value->name == $menu)?"selected='selected'":""; ?>><?php echo $value->name; ?></option>
+		<?php endforeach; ?>
+		</select>
+		</p>
+		
+		
+		<?php
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['menu'] = strip_tags( $new_instance['menu'] );
+		
+		return $instance;
+	}
+
+	public function widget( $args, $instance ) {
+	    extract( $args );
+		
+		
+		if ( isset($instance["menu"]) ) {
+			$title = apply_filters( 'widget_title', $instance['title'] );
+			
+			echo $before_widget;
+			if ( ! empty( $title ) ) {
+				echo $before_title . $title . $after_title;
+			}
+			
+			wp_nav_menu( array(
+				'menu' => $instance["menu"],
+				'container' 	=> 'ul',
+				'items_wrap'	=> '%3$s',
+				'depth' 		=> -1,
+				'echo' 			=> true
+			)); 
+			echo $after_widget;
+		}
+
+	}
+}
+/* add the widget  */
+add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidget" );' ) );
 
 
 

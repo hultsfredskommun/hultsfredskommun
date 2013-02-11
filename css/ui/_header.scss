@@ -111,45 +111,7 @@
 	}
 }
 
-/*
-.top-menu-wrapper {
-	@extend .g;
-	@extend .zeta;
-	@extend .desk-one-third;
-	@extend .lap-one-third;
-	@extend .hide--palm;
-	// set top menu icons 
-	.responsive-navigation,
-	.top-menu {
-		@extend .text--right;
-		@extend .nav;
-		@extend .nav--block;
-		@extend .nav--block-break;
 
-		.menu-item {
-			@extend .flyout;
-			.i {
-				@extend .float--left;
-				width: $base-spacing-unit;
-			}
-			&:hover {
-				@extend .gray-light-background;
-			}
-			.sub-menu {
-				@extend .nav;
-				@extend .nav--stacked;
-				@extend .nav--block;
-				@extend .gray-light-background;
-				@extend .flyout__content;
-				@extend .nav--stacked;
-				@extend .text--left;
-				border-radius: 0 $border-radius $border-radius $border-radius;
-				z-index: 100;
-			}
-		}
-	}
-}
-*/
 .logo2 {
 	@extend .half-margin--top;
 	@extend .g;
