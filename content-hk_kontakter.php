@@ -13,5 +13,4 @@ global $default_settings;
 			<?php require("inc/hk_kontakter_content.php"); ?>
 		</div><!-- .summary-content -->
 		<span class='hidden article_id'><?php the_ID(); ?></span>
-		<div class="clear"></div>
 	</article><!-- #post-<?php the_ID(); ?> -->

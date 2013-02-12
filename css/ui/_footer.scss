@@ -1,6 +1,7 @@
 .footer-wrapper.footer-widget-wrapper {
 	@extend .gray-image-background;
 }
+
 .footer2-wrapper,
 .footer2-wrapper a,
 .footer-image-wrapper {
@@ -8,14 +9,21 @@
 	@extend .white-text;
 }
 .footer-widget-wrapper {
+	@extend .zeta;
 	@extend .padding--top;
-	@extend .border--top;
-}
-
-.footer-widget-sidebar h1 {
-	@extend .caps;
-	@extend .epsilon;
-	@extend .border--bottom;
+	@extend .padding--bottom;
+	//@extend .border--top;
+	ul {
+		@extend .nav;
+		@extend .nav--stacked;
+		@extend .nav--block;
+		@extend .nav--block-half-margin;
+		@extend .half-margin--left;
+	}
+	.content {
+		@extend .margin--left;
+	}
+	
 }
 
 .footer-widget-sidebar.one .footer-widgets {
@@ -37,4 +45,11 @@
 	@extend .lap-one-half;
 	@extend .desk-one-quarter;
 	@extend .float--left;
+}
+.footer-image-wrapper .logo-footer-image {
+	@extend .cf;
+	img {
+		@extend .float--right;
+		@extend .island;
+	}
 }

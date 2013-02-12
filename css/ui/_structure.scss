@@ -19,13 +19,11 @@ html {
 
 .content--center {
 	margin: 0 auto;
-	max-width: 1000px;
+	max-width: 1200px;
 }
 
 .branding,
-.main,
-.footer-widget-sidebar,
-.footer-image {
+.main {
 	@extend .content--center;
 }
 .main-wrapper {
@@ -33,9 +31,40 @@ html {
 }
 
 
+.widget {
+	@extend .margin--bottom;
+	@extend .epsilon;
+	h1 {
+		@extend .one-whole;
+		@extend .epsilon;
+		@extend .border--bottom;
+	}
+}
+
 /* extend nav--block with breaking white-space */
 .nav--block-break {
 	white-space:normal!important;
+}
+
+.nav--block-half-margin li a {
+	padding-top: $half-spacing-unit/2;
+	padding-bottom: $half-spacing-unit/2;
+}
+
+.nav--block-double-margin li a {
+	padding-left: $base-spacing-unit;
+	padding-right: $base-spacing-unit;
+}
+
+.icon-left {
+	@extend .float--left;
+	@extend .milli;
+	width: $base-spacing-unit;
+}
+.icon-right {
+	@extend .margin--left;
+	@extend .padding--right;
+	@extend .one-whole;
 }
 
  /*

@@ -10,7 +10,7 @@
 	@extend .lap-one-quarter;
 	@extend .desk-one-quarter;
 }
-.category-primary {
+.primary {
 	@extend .g;
 	@extend .palm-one-whole;
 	@extend .lap-three-quarters;
@@ -50,7 +50,7 @@
 		@extend .flush--bottom;
 		.menu-item {
 			@extend .dropdown;
-			.aside-icon-left {
+			.icon-left {
 				padding-bottom: 0!important;
 			}
 			.i {

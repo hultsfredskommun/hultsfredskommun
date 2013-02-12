@@ -206,7 +206,7 @@ if (!is_admin()) {
 	if ($options['readspeaker_id'] != "") {
 		wp_enqueue_script(
 			'readspeaker_js',
-			'http'.$s_when_https.'://f1.eu.readspeaker.com/script/6595/ReadSpeaker.js?cid=' . $options['readspeaker_id'] . '&pids=embhl,exp=',
+			'http'.$s_when_https.'://f1.eu.readspeaker.com/script/'.$options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl',
 			array(),
 			'1.0',
 			true

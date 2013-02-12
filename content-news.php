@@ -30,6 +30,5 @@
 
 			</div><!-- .content-wrapper -->
 			<span class='hidden article_id'><?php the_ID(); ?></span>
-			<div class="clear"></div>
 		</div>
 	</article><!-- #post-<?php the_ID(); ?> -->

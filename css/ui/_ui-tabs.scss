@@ -3,6 +3,13 @@
 .ui-tabs-nav {
 	@extend .nav;
 	@extend .nav--block;
+	@extend .flush--bottom;
+	@extend .border--bottom;
+	.ui-state-active,
+	.ui-state-hover {
+		@extend .border-radius--top;
+		@extend .gray-image-background;
+	}
 }
 .ui-tabs article
 {
@@ -14,13 +21,13 @@
  
 .ui-tabs li.ui-state-default
 {
-    float: left;
+    @extend .float--left;
     cursor: pointer;
-	font-weight: bold;
+	@extend .font-weight-bold;
 }
 .widget .widget-title span
 {
-	font-weight: bold;
+	@extend .font-weight-bold;
 }
 .ui-tabs .ui-tabs-panel
 {
@@ -28,5 +35,13 @@
 }
 .ui-tabs .ui-tabs-hide
 {
-    display: none !important;
+    @extend .hidden;
+}
+
+.ui-widget-content ul {
+	@extend .nav;
+	@extend .nav--block;
+	@extend .nav--stacked;
+	@extend .nav--block-half-margin;
+	@extend .nav--block-double-margin;
 }

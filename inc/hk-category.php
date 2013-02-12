@@ -1,4 +1,4 @@
-<div id="primary" class="category-primary">
+<div id="primary" class="primary">
 
 	<div id="content" role="main">
 

@@ -452,7 +452,7 @@ function readMoreToggle(el){
 					$(this).slideshow();
 					
 					// set article contact to popup
-					$(this).find("a.contactlink").each(function() {
+					$(this).find(".js-contact-link").each(function() {
 						setContactPopupAction($(this));
 					});
 
@@ -497,7 +497,7 @@ function readMoreToggle(el){
 			$(this).parents("article").find(".map_link").googlemaplink();
 			
 			// contact popup
-			$(this).find(".contact-area a.contactlink").each(function() {
+			$(this).find(".js-contact-link").each(function() {
 				setContactPopupAction($(this));
 			});
 
@@ -666,10 +666,7 @@ $(document).ready(function(){
 		}
 	});
 	// contact popup
-	$(".single .contact-area a.contactlink").each(function() {
-		setContactPopupAction($(this));
-	});
-	$("#firstpage-sidebar, #sidebar-wrapper").find(".contact-wrapper a.contactlink").each(function() {
+	$(".js-contact-link").each(function() {
 		setContactPopupAction($(this));
 	});
 	
@@ -1080,7 +1077,7 @@ function setArticleActions(el) {
 	$(el).find(".summary-content .entry-content, .summary-content .img-wrapper").unbind("click").click(function(){
 		readMoreToggle( $(this).parents("article").find('.entry-title a') );
 	});
-	$(el).find(".contact-wrapper a.contactlink").each(function() {
+	$(el).find(".js-contact-link").each(function() {
 		setContactPopupAction($(this));
 	});
 	

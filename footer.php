@@ -55,7 +55,7 @@ global $default_settings;
 				}
 			
 				if ( $footers > 0 ) :
-					echo "<div class='$prefix-wrapper  footer-widget-wrapper'><div class='gw  $prefix-sidebar  footer-widget-sidebar  widget-area  $footerclass'>";
+					echo "<div class='$prefix-wrapper  footer-widget-wrapper'><div class='content--center'><div class='gw  $prefix-sidebar  footer-widget-sidebar  widget-area  $footerclass'>";
 					if ( is_active_sidebar( $prefix . '-sidebar' ) ) { 
 						echo "<div class='g  footer-widgets  first'>";
 						dynamic_sidebar( $prefix . '-sidebar' ); 
@@ -76,7 +76,7 @@ global $default_settings;
 						dynamic_sidebar( $prefix . '-sidebar-4' ); 
 						echo "</div>";
 					}
-					echo "</div></div>";
+					echo "</div></div></div>";
 				endif;
 			}
 			/* create the two footers */
@@ -87,12 +87,12 @@ global $default_settings;
 		<div class="footer-image-wrapper">
 			<?php /* footer image */
 			if ($hk_options["footer_image"] != "") : ?>
-				<div class="footer-image"><img src="<?php echo $hk_options["footer_image"]; ?>" /></div>
+				<div class="footer-image"><div class='content--center'><img src="<?php echo $hk_options["footer_image"]; ?>" /></div></div>
 			<?php endif;
 			
 			if ( $hk_options["logo_footer_image"] ) :
 			?>
-				<div class="logo-footer-image"><img src="<?php echo $hk_options["logo_footer_image"]; ?>" /></div>
+				<div class="logo-footer-image"><div class='content--center'><img src="<?php echo $hk_options["logo_footer_image"]; ?>" /></div></div>
 			<?php endif; ?>	
 		</div><!-- .footer-image-wrapper -->
 		<?php endif; ?>	

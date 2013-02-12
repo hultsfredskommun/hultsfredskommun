@@ -1,6 +1,7 @@
 /* text colors */
 .main-menu {
 	@extend .delta;
+	@extend .nav--block-double-margin;
 	a {
 		@extend .default-text;
 	}
@@ -15,6 +16,7 @@
 }
 .main-sub-menu {
 	@extend .epsilon;
+	@extend .nav--block-double-margin;
 	a:hover,
 	.current-category-ancestor a,
 	.current-menu-item a {

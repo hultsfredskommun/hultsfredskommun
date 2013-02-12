@@ -21,3 +21,50 @@
 	@extend .g;
 	@extend .one-whole;
 }
+
+.time {
+	@extend .cf;
+	@extend .complement-text;
+	@extend .font-style-italic;
+	@extend .zeta;
+	display: block;
+}
+
+.img-wrapper {
+		line-height: 0;
+}
+.slideshow {
+	@extend .margin--bottom;
+	.slideshow_bg {
+		@extend .one-whole;
+	}
+	.slide {
+		img {
+			@extend .one-whole;
+		}
+		.caption-area {
+			@extend .float--left;
+			@extend .position-absolute--bottom-left;
+			@extend .one-whole;
+			z-index: 1000;
+			.transparent {
+				@extend .position-absolute;
+				@extend .border-radius--bottom;
+				@extend .one-whole;
+				@extend .complement-background;
+				height: 100%;
+				opacity: 0.75;
+				z-index: 1050;
+			}
+			.caption {
+				@extend .white-text;
+				@extend .position-relative;
+				@extend .island;
+				@extend .flush--bottom;
+				display: block;
+				z-index: 1100;
+				
+			}
+		}
+	}
+}

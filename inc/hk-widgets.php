@@ -199,7 +199,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 ?>
 	<div class="contact-area">
 		<?php hk_contact_firstpage(); ?>
-		<div class="clear"></div>
 	</div>
 
 <?php
@@ -344,7 +343,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 					query_posts( $query );		
 
 					if ( have_posts() ) : ?>
-					<div id='news'>
+					<div id='news' class="widget">
 						<h1 class='entry-title'>Fler nyheter</h1>
 
 						<?php while ( have_posts() ) : the_post(); ?>
@@ -437,6 +436,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
  	public function form( $instance ) {		
 		if ( isset( $instance[ 'title' ] ) ) {	$title = $instance[ 'title' ];
 		} else { $title = ""; }
+		if ( isset( $instance[ 'icon' ] ) ) {	$icon = $instance[ 'icon' ];
+		} else { $icon = ""; }
 		if ( isset( $instance[ 'menu' ] ) ) {	$menu = $instance[ 'menu' ];
 		} else {$menu = ""; }
 		
@@ -444,6 +445,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Meny rubrik</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'icon' ); ?>">Meny ikon</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'icon' ); ?>" name="<?php echo $this->get_field_name( 'icon' ); ?>" type="text" value="<?php echo esc_attr( $icon); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'menu' ); ?>">V&auml;lj menu.</label> 
@@ -462,6 +467,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['icon'] = strip_tags( $new_instance['icon'] );
 		$instance['menu'] = strip_tags( $new_instance['menu'] );
 		
 		return $instance;
@@ -476,13 +482,13 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 			
 			echo $before_widget;
 			if ( ! empty( $title ) ) {
-				echo $before_title . $title . $after_title;
+				echo $before_title . "<i class='i' data-icon='" . $instance['icon'] . "'></i>" . $title . $after_title;
 			}
 			
 			wp_nav_menu( array(
 				'menu' => $instance["menu"],
-				'container' 	=> 'ul',
-				'items_wrap'	=> '%3$s',
+				'container' 	=> '',
+				'items_wrap'	=> '<ul>%3$s</ul>',
 				'depth' 		=> -1,
 				'echo' 			=> true
 			)); 
@@ -493,6 +499,80 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 }
 /* add the widget  */
 add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidget" );' ) );
+
+
+
+/* 
+ * TEXT IN WIDGET 
+ */ 
+ class HK_textwidget extends WP_Widget {
+	protected $vars = array();
+
+	public function __construct() {
+		parent::__construct(
+	 		'HK_textwidget', // Base ID
+			'HK text i widget', // Name
+			array( 'description' => "Widget med fri text och html" ) // Args
+		);
+		
+
+	}
+
+ 	public function form( $instance ) {		
+		if ( isset( $instance[ 'title' ] ) ) {	$title = $instance[ 'title' ];
+		} else { $title = ""; }
+		if ( isset( $instance[ 'icon' ] ) ) {	$icon = $instance[ 'icon' ];
+		} else { $icon = ""; }
+		if ( isset( $instance[ 'text' ] ) ) {	$text = $instance[ 'text' ];
+		} else {$menu = ""; }
+		
+		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Rubrik</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'icon' ); ?>">Ikon</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'icon' ); ?>" name="<?php echo $this->get_field_name( 'icon' ); ?>" type="text" value="<?php echo esc_attr( $icon); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'text' ); ?>">Text</label> 
+		<textarea class="widefat" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $text; ?></textarea>
+		</p>
+		
+		
+		<?php
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['icon'] = strip_tags( $new_instance['icon'] );
+		$instance['text'] =  $new_instance['text'];
+		
+		return $instance;
+	}
+
+	public function widget( $args, $instance ) {
+	    extract( $args );
+		
+		
+		if ( isset($instance["text"]) ) {
+			$title = apply_filters( 'widget_title', $instance['title'] );
+			
+			echo $before_widget;
+			if ( ! empty( $title ) ) {
+				echo $before_title . "<i class='i' data-icon='" . $instance['icon'] . "'></i>" . $title . $after_title;
+			}
+			
+			echo "<div class='content'>" . $instance["text"] . "</div>";
+			echo $after_widget;
+		}
+
+	}
+}
+/* add the widget  */
+add_action( 'widgets_init', create_function( '', 'register_widget( "HK_textwidget" );' ) );
 
 
 

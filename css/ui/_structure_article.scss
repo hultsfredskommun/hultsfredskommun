@@ -1,7 +1,7 @@
 .contact-wrapper .content {
 	@extend .complement-italic-text;
 }
-.aside-icon-left .i {
+.icon-left .i {
 	@extend .force-gray-text;
 }
 
@@ -12,18 +12,13 @@ article.post {
 	@extend .cf;
 }
 .article-border-wrapper {
-	@extend .landmark;
 	@extend .float--left;
 	@extend .one-whole;
 	@extend .border--top;
 	@extend .border--bottom;
 }
-h1.entry-title {
+.post h1.entry-title {
 	@extend .two-thirds;
-	@extend .flush--bottom;
-	a {
-		@extend .black-text;
-	}
 }
 
 /* hide article-wrapper if only titles */
@@ -94,7 +89,9 @@ h1.entry-title {
 		@extend .complement-text;
 		@extend .font-style-italic;
 		@extend .milli;
-
+		li {
+			display: block;
+		}
 	}
 
 }
@@ -110,7 +107,14 @@ h1.entry-title {
 	@extend .flush--bottom;
 	@extend .one-half;
 }
-img.slide {
+.content,
+.post .img-wrapper {
+	@extend .float--left;
+	@extend .padding--right;
+	@extend .padding--bottom;
+	@extend .one-whole;
+}
+.slide {
 	@extend .one-whole;
 }
 .pager {
@@ -138,15 +142,6 @@ img.slide {
 
 /* aside content */
 .box li {
-}
-.aside-icon-left {
-	@extend .float--left;
-	width: $base-spacing-unit;
-}
-.aside-icon-right {
-	@extend .margin--left;
-	@extend .padding--right;
-	@extend .one-whole;
 }
 .contacts,
 .related-wrapper,

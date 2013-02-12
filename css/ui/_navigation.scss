@@ -1,19 +1,24 @@
 /* text colors */
 .category-navigation {
 	.parent {
+		// add icon..
 		@extend .nav;
 		@extend .nav--block;
 		@extend .nav--block-break;
+		@extend .nav--block-half-margin;
+		@extend .nav--block-double-margin;
 		@extend .nav--stacked;
 		a {
 			@extend .default-text;
-			@extend .epsilon;
+			@extend .zeta;
 		}
 		.children {
 			@extend .margin--left;
 			@extend .nav;
 			@extend .nav--block;
 			@extend .nav--block-break;
+			@extend .nav--block-half-margin;
+			@extend .nav--block-double-margin;
 			@extend .nav--stacked;
 		}
 	}

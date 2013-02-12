@@ -396,7 +396,7 @@ function hk_contact_firstpage() {
 	$org_post = $post;
 
 	$retValue = "";
-	$retValue .= "<aside class='hk_kontakter'><div class='contact-wrapper'>";
+	$retValue .= "<aside class='hk_kontakter widget'><div class='contact-wrapper'>";
 	
 	// set startpage category if on startpage
 	$category_in = array();
@@ -487,7 +487,7 @@ function hk_get_the_contact($args = array()) {
 			$retValue .= "<h1 class='entry-title " . $hidden['name'] . "'>";
 			// add link to title
 			if ($default['title_link']) { 
-				$retValue .= "<a class='contactlink' href='" . get_permalink(get_the_ID()) . "'>"; 
+				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'>"; 
 			}
 			// title
 			$retValue .= get_the_title();

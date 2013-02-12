@@ -1,0 +1,28 @@
+.contact-popup.overlay {
+	@extend .position-fixed;
+	height: 100%;
+	background: rgba(0, 0, 0, .3);
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1999;
+}
+.contact-popup.box {
+	@extend .position-fixed;
+	width: 40%;
+	height: 40%;
+	z-index: 2000;
+	top: 30%;
+	left: 30%;
+	@extend .border-radius;
+}
+.contact-popup.box .entry-wrapper {
+	@extend .position-relative;
+	height: 100%;
+	width: 100%;
+}
+.contact-popup.box .entry-content {
+	overflow: auto;
+	height: 100%;
+}
+/* TODO !!!!!*/

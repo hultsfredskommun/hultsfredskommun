@@ -50,6 +50,9 @@ $face:	        			"myriad-pro", Arial, sans-serif!default;
 }
 
 
+.complement-background {
+	background-color: $complement-color;
+}
 .transparent-background {
 	background-color: transparent;
 }
@@ -70,6 +73,6 @@ $face:	        			"myriad-pro", Arial, sans-serif!default;
 }
 .gray-image-background {
 	@extend .gray-light-background;
-	background-image: url(images/greyTile24bit.png);
 	background-repeat: repeat;
+	background-image: url(images/greyTile24bit.png);
 }

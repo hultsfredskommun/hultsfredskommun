@@ -11,7 +11,7 @@ get_header(); ?>
 
 	<?php hk_navigation(); ?>
 	
-	<div id="primary">
+	<div id="primary" class="primary">
 		<div id="content" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>

@@ -26,4 +26,19 @@
 
 
 
+/* default settings */
+h1 {
+	@extend .flush--bottom;
+	a {
+		@extend .black-text;
+	}
+}
+h1.widget-title {
+	@extend .epsilon;
+	@extend .border--bottom;
+	.i {
+		@extend .icon-left;
+	}
+}
+
 

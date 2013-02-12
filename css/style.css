@@ -765,9 +765,9 @@ textarea:focus {
 .related-wrapper,
 .tools, .responsive-navigation, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-menu,
 .main-sub-menu, .tags-wrapper ul,
-.category-navigation ul, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav, .media, .island, .article-wrapper .side-content,
+.category-navigation ul, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav, .ui-widget-content ul, .footer-widget-wrapper ul, .media, .island, .slideshow .slide .caption-area .caption, .article-wrapper .side-content, .footer-image-wrapper .logo-footer-image img,
 .islet,
-#responsive-info, .matrix, .multi-list, .stat-group, .page-header, article.post {
+#responsive-info, .matrix, .multi-list, .stat-group, .time, .page-header, article.post, .footer-image-wrapper .logo-footer-image {
   zoom: 1;
 }
 .cf:before, .gw:before, .main-wrapper:before, .top-wrapper:before,
@@ -775,16 +775,16 @@ textarea:focus {
 .related-wrapper:before,
 .tools:before, .responsive-navigation:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .main-menu:before,
 .main-sub-menu:before, .tags-wrapper ul:before,
-.category-navigation ul:before, .category-navigation .parent:before, .category-navigation .parent .children:before, .ui-tabs-nav:before, .media:before, .island:before, .article-wrapper .side-content:before,
+.category-navigation ul:before, .category-navigation .parent:before, .category-navigation .parent .children:before, .ui-tabs-nav:before, .ui-widget-content ul:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .slideshow .slide .caption-area .caption:before, .article-wrapper .side-content:before, .footer-image-wrapper .logo-footer-image img:before,
 .islet:before,
-#responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .page-header:before, article.post:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
+#responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .time:before, .page-header:before, article.post:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
 .grid-wrapper:after, .nav:after, .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
 .tools:after, .responsive-navigation:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent .children:after, .ui-tabs-nav:after, .media:after, .island:after, .article-wrapper .side-content:after,
+.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent .children:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .slideshow .slide .caption-area .caption:after, .article-wrapper .side-content:after, .footer-image-wrapper .logo-footer-image img:after,
 .islet:after,
-#responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after, .page-header:after, article.post:after {
+#responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .footer-image-wrapper .logo-footer-image:after {
   content: " ";
   display: table;
 }
@@ -793,9 +793,9 @@ textarea:focus {
 .related-wrapper:after,
 .tools:after, .responsive-navigation:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent .children:after, .ui-tabs-nav:after, .media:after, .island:after, .article-wrapper .side-content:after,
+.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent .children:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .slideshow .slide .caption-area .caption:after, .article-wrapper .side-content:after, .footer-image-wrapper .logo-footer-image img:after,
 .islet:after,
-#responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after, .page-header:after, article.post:after {
+#responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .footer-image-wrapper .logo-footer-image:after {
   clear: both;
 }
 
@@ -819,7 +819,9 @@ pre,
 .form-fields > li,
 .media,
 .island,
+.slideshow .slide .caption-area .caption,
 .article-wrapper .side-content,
+.footer-image-wrapper .logo-footer-image img,
 .islet,
 #responsive-info,
 .pager {
@@ -847,7 +849,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .pager .form-
 .media, .islet
 .island, #responsive-info
 .island, .pager
-.island, .islet .article-wrapper .side-content, .article-wrapper .islet .side-content, #responsive-info .article-wrapper .side-content, .article-wrapper #responsive-info .side-content, .pager .article-wrapper .side-content, .article-wrapper .pager .side-content, .islet
+.island, .islet .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .islet .caption, #responsive-info .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area #responsive-info .caption, .pager .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .pager .caption, .islet .article-wrapper .side-content, .article-wrapper .islet .side-content, #responsive-info .article-wrapper .side-content, .article-wrapper #responsive-info .side-content, .pager .article-wrapper .side-content, .article-wrapper .pager .side-content, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .islet
 .islet, #responsive-info
 .islet, .pager
 .islet, .islet
@@ -864,7 +866,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .pager .form-
 /**
  * Doubled up `margin-bottom` helper class.
  */
-.landmark, article.post, .article-border-wrapper {
+.landmark, article.post {
   margin-bottom: 48px;
   margin-bottom: 3rem;
 }
@@ -933,13 +935,13 @@ h4, .delta, .main-menu {
   line-height: 1.33333;
 }
 
-h5, .epsilon, .viewmode-only-titles h1.entry-title, .main-sub-menu, .category-navigation .parent a, .footer-widget-sidebar h1 {
+h5, .epsilon, h1.widget-title, .widget, .widget h1, .viewmode-only-titles h1.entry-title, .main-sub-menu {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
 }
 
-h6, .zeta, .complement-italic-text, .contact-wrapper .content, .article-wrapper .side-content, .top-menu-wrapper {
+h6, .zeta, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .side-content, .top-menu-wrapper, .category-navigation .parent a, .footer-widget-wrapper {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.71429;
@@ -1003,6 +1005,10 @@ hgroup .hN {
  */
 .smallprint,
 .milli,
+.icon-left,
+h1.widget-title .i,
+h1.widget-title .searchnavigation .form .submit,
+.searchnavigation .form h1.widget-title .submit,
 .page-header,
 .article-wrapper .footer-wrapper {
   font-size: 13px;
@@ -1777,7 +1783,7 @@ label,
    </div>
  * 
  */
-.gw--rev > .g, .gw--rev > .firstpage-top-content, .gw--rev > .firstpage-sidebar, .gw--rev > .firstpage-content, .gw--rev > .firstpage-pre-footer-sidebar, .gw--rev > .breadcrumb, .gw--rev > .category-navigation, .gw--rev > .category-primary, .gw--rev > .logo, .gw--rev > .responsive-navigation, .gw--rev > .searchnavigation, .gw--rev > .top-menu-wrapper, .gw--rev > .logo2,
+.gw--rev > .g, .gw--rev > .firstpage-top-content, .gw--rev > .firstpage-sidebar, .gw--rev > .firstpage-content, .gw--rev > .firstpage-pre-footer-sidebar, .gw--rev > .breadcrumb, .gw--rev > .category-navigation, .gw--rev > .primary, .gw--rev > .logo, .gw--rev > .responsive-navigation, .gw--rev > .searchnavigation, .gw--rev > .top-menu-wrapper, .gw--rev > .logo2,
 .grid-wrapper--rev > .grid {
   float: right;
 }
@@ -1795,7 +1801,7 @@ label,
  * 
  * Shorthand and verbose
  */
-.g, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .firstpage-pre-footer-sidebar, .breadcrumb, .category-navigation, .category-primary, .logo, .responsive-navigation, .searchnavigation, .top-menu-wrapper, .logo2,
+.g, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .firstpage-pre-footer-sidebar, .breadcrumb, .category-navigation, .primary, .logo, .responsive-navigation, .searchnavigation, .top-menu-wrapper, .logo2,
 .grid {
   float: left;
   padding-left: 24px;
@@ -1926,7 +1932,7 @@ html.flexbox {
 .related-wrapper,
 .tools, .responsive-navigation, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-menu,
 .main-sub-menu, .tags-wrapper ul,
-.category-navigation ul, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav {
+.category-navigation ul, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav, .ui-widget-content ul, .footer-widget-wrapper ul {
   list-style: none;
   margin-left: 0;
 }
@@ -1934,7 +1940,7 @@ html.flexbox {
 .related-wrapper > li,
 .tools > li, .responsive-navigation > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .main-menu > li,
 .main-sub-menu > li, .tags-wrapper ul > li,
-.category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent .children > li, .ui-tabs-nav > li,
+.category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent .children > li, .ui-tabs-nav > li, .ui-widget-content ul > li, .footer-widget-wrapper ul > li,
 .nav > li > a,
 .page-header .sort-order > li > a,
 .page-header .category-tools > li > a,
@@ -1953,7 +1959,9 @@ html.flexbox {
 .category-navigation ul > li > a,
 .category-navigation .parent > li > a,
 .category-navigation .parent .children > li > a,
-.ui-tabs-nav > li > a {
+.ui-tabs-nav > li > a,
+.ui-widget-content ul > li > a,
+.footer-widget-wrapper ul > li > a {
   display: inline-block;
   *display: inline;
   zoom: 1;
@@ -1973,13 +1981,13 @@ html.flexbox {
 .nav--stacked > li, .page-header .category-tools .menu-item .sub-menu > li, .contacts > li,
 .related-wrapper > li,
 .tools > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .tags-wrapper ul > li,
-.category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent .children > li {
+.category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent .children > li, .ui-widget-content ul > li, .footer-widget-wrapper ul > li {
   display: list-item;
 }
 .nav--stacked > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .contacts > li > a,
 .related-wrapper > li > a,
 .tools > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .tags-wrapper ul > li > a,
-.category-navigation ul > li > a, .category-navigation .parent > li > a, .category-navigation .parent .children > li > a {
+.category-navigation ul > li > a, .category-navigation .parent > li > a, .category-navigation .parent .children > li > a, .ui-widget-content ul > li > a, .footer-widget-wrapper ul > li > a {
   display: block;
 }
 
@@ -2010,7 +2018,7 @@ html.flexbox {
  * 
  */
 .nav--block, .options, .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .pager, .responsive-navigation, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-menu,
-.main-sub-menu, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav {
+.main-sub-menu, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav, .ui-widget-content ul, .footer-widget-wrapper ul {
   line-height: 1;
   /**
    * Remove whitespace caused by `inline-block`.
@@ -2020,12 +2028,12 @@ html.flexbox {
   white-space: nowrap;
 }
 .nav--block > li, .options > li, .page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .pager > li, .responsive-navigation > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .main-menu > li,
-.main-sub-menu > li, .category-navigation .parent > li, .category-navigation .parent .children > li, .ui-tabs-nav > li {
+.main-sub-menu > li, .category-navigation .parent > li, .category-navigation .parent .children > li, .ui-tabs-nav > li, .ui-widget-content ul > li, .footer-widget-wrapper ul > li {
   letter-spacing: normal;
   word-spacing: normal;
 }
 .nav--block > li > a, .options > li > a, .page-header .sort-order > li > a, .page-header .category-tools > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .pager > li > a, .responsive-navigation > li > a, .top-menu-wrapper .top-menu > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .main-menu > li > a,
-.main-sub-menu > li > a, .category-navigation .parent > li > a, .category-navigation .parent .children > li > a, .ui-tabs-nav > li > a {
+.main-sub-menu > li > a, .category-navigation .parent > li > a, .category-navigation .parent .children > li > a, .ui-tabs-nav > li > a, .ui-widget-content ul > li > a, .footer-widget-wrapper ul > li > a {
   padding: 12px;
 }
 
@@ -2331,18 +2339,18 @@ html.flexbox {
  * Demo: jsfiddle.net/inuitcss/u8pV3
  * 
  */
-.island, .article-wrapper .side-content,
+.island, .slideshow .slide .caption-area .caption, .article-wrapper .side-content, .footer-image-wrapper .logo-footer-image img,
 .islet,
 #responsive-info,
 .pager {
   display: block;
 }
 
-.island, .article-wrapper .side-content {
+.island, .slideshow .slide .caption-area .caption, .article-wrapper .side-content, .footer-image-wrapper .logo-footer-image img {
   padding: 24px;
 }
 
-.island > :last-child, .article-wrapper .side-content > :last-child,
+.island > :last-child, .slideshow .slide .caption-area .caption > :last-child, .article-wrapper .side-content > :last-child, .footer-image-wrapper .logo-footer-image img > :last-child,
 .islet > :last-child,
 #responsive-info > :last-child,
 .pager > :last-child {
@@ -3118,7 +3126,8 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .firstpage-pre-footer-sidebar, .breadcrumb, .page-header, article.post, .article-border-wrapper, .article-wrapper, img.slide, .aside-icon-right, .searchnavigation .form .input-wrapper .field, .footer-widget-sidebar.one .footer-widgets {
+.one-whole, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .breadcrumb, .page-header, article.post, .article-border-wrapper, .article-wrapper, .content,
+.post .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
 
@@ -3136,7 +3145,7 @@ html.flexbox {
   width: 33.333%;
 }
 
-.two-thirds, .four-sixths, .eight-twelfths, h1.entry-title {
+.two-thirds, .four-sixths, .eight-twelfths, .post h1.entry-title {
   width: 66.666%;
 }
 
@@ -3256,7 +3265,7 @@ html.flexbox {
   /**
   * Whole
   */
-  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .category-navigation, .category-primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .article-wrapper .closeButton, .searchnavigation {
+  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .category-navigation, .primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .article-wrapper .closeButton, .searchnavigation {
     width: 100%;
   }
 
@@ -3409,7 +3418,7 @@ html.flexbox {
     width: 25%;
   }
 
-  .lap-three-quarters, .lap-six-eighths, .lap-nine-twelfths, .category-primary {
+  .lap-three-quarters, .lap-six-eighths, .lap-nine-twelfths, .primary {
     width: 75%;
   }
 
@@ -3657,7 +3666,7 @@ html.flexbox {
     width: 25%;
   }
 
-  .desk-three-quarters, .desk-six-eighths, .desk-nine-twelfths, .category-primary {
+  .desk-three-quarters, .desk-six-eighths, .desk-nine-twelfths, .primary {
     width: 75%;
   }
 
@@ -4185,11 +4194,12 @@ html.flexbox {
  * A lot of these classes carry `!important` as you will always want them to win
  * out over other selectors.
  */
-.float--right, .firstpage-sidebar, .responsive-navigation {
+.float--right, .firstpage-sidebar, .responsive-navigation, .footer-image-wrapper .logo-footer-image img {
   float: right!important;
 }
 
-.float--left, .help-navigation, .page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .contact-area .img-wrapper, .aside-icon-left, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.float--left, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .slideshow .slide .caption-area, .help-navigation, .page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .content,
+.post .img-wrapper, .contact-area .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4217,7 +4227,7 @@ html.flexbox {
   margin-right: 0!important;
 }
 
-.flush--bottom, #responsive-info, .page-header .sort-order, .page-header .category-tools, h1.entry-title, .viewmode-only-titles article.post, .summary .img-wrapper, .main-menu {
+.flush--bottom, h1, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .sort-order, .page-header .category-tools, .viewmode-only-titles article.post, .summary .img-wrapper, .main-menu, .ui-tabs-nav {
   margin-bottom: 0!important;
 }
 
@@ -4286,7 +4296,7 @@ html.flexbox {
 /**
  * Apply capital case to an element (usually a `strong`).
  */
-.caps, .footer-widget-sidebar h1 {
+.caps {
   text-transform: uppercase;
 }
 
@@ -4358,7 +4368,7 @@ a:focus {
   color: #5c85b1;
 }
 
-.complement-text, .complement-italic-text, .contact-wrapper .content, .article-wrapper .footer-wrapper {
+.complement-text, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .footer-wrapper {
   color: #644c20;
 }
 
@@ -4374,17 +4384,17 @@ a:focus {
   color: #e5e6e7;
 }
 
-.force-gray-text, .aside-icon-left .i, .aside-icon-left .searchnavigation .form .submit, .searchnavigation .form .aside-icon-left .submit {
+.force-gray-text, .icon-left .i, h1.widget-title .i .i, h1.widget-title .searchnavigation .form .submit .i, .searchnavigation .form h1.widget-title .submit .i, .icon-left .searchnavigation .form .submit, .searchnavigation .form .icon-left .submit, h1.widget-title .i .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .i .submit, h1.widget-title .searchnavigation .form .submit .submit, .searchnavigation .form h1.widget-title .submit .submit {
   color: #c6cacb !important;
 }
 
-.black-text, h1.entry-title a, .main-sub-menu a:hover,
+.black-text, h1 a, .main-sub-menu a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   color: black;
 }
 
-.white-text, .main-menu a:hover,
+.white-text, .slideshow .slide .caption-area .caption, .main-menu a:hover,
 .main-menu .current-category-ancestor a,
 .main-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
@@ -4402,6 +4412,10 @@ a:focus {
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   text-shadow: 1px 1px 0px white;
+}
+
+.complement-background, .slideshow .slide .caption-area .transparent {
+  background-color: #644c20;
 }
 
 .transparent-background {
@@ -4430,22 +4444,24 @@ a:focus {
 
 .gray-light-background, .gray-image-background, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-sub-menu a:hover,
 .main-sub-menu .current-category-ancestor a,
-.main-sub-menu .current-menu-item a, .footer-wrapper.footer-widget-wrapper, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu {
+.main-sub-menu .current-menu-item a, .ui-tabs-nav .ui-state-active,
+.ui-tabs-nav .ui-state-hover, .footer-wrapper.footer-widget-wrapper, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu {
   background-color: #e5e6e7;
 }
 
 .gray-image-background, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-sub-menu a:hover,
 .main-sub-menu .current-category-ancestor a,
-.main-sub-menu .current-menu-item a, .footer-wrapper.footer-widget-wrapper {
-  background-image: url(images/greyTile24bit.png);
+.main-sub-menu .current-menu-item a, .ui-tabs-nav .ui-state-active,
+.ui-tabs-nav .ui-state-hover, .footer-wrapper.footer-widget-wrapper {
   background-repeat: repeat;
+  background-image: url(images/greyTile24bit.png);
 }
 
 .border, .page-header {
   border: 2px dotted #e5e6e7;
 }
 
-.border--top, .article-border-wrapper, .footer-widget-wrapper {
+.border--top, .article-border-wrapper {
   border-top: 2px dotted #e5e6e7;
 }
 
@@ -4453,7 +4469,7 @@ a:focus {
   border-right: 2px dotted #e5e6e7;
 }
 
-.border--bottom, .article-border-wrapper, .footer-widget-sidebar h1 {
+.border--bottom, h1.widget-title, .widget h1, .article-border-wrapper, .ui-tabs-nav {
   border-bottom: 2px dotted #e5e6e7;
 }
 
@@ -4461,7 +4477,7 @@ a:focus {
   border-left: 2px dotted #e5e6e7;
 }
 
-.border-radius, .page-header {
+.border-radius, .page-header, .contact-popup.box {
   border-radius: 3px;
 }
 
@@ -4471,7 +4487,8 @@ a:focus {
 
 .border-radius--top, .main-menu a:hover,
 .main-menu .current-category-ancestor a,
-.main-menu .current-menu-item a {
+.main-menu .current-menu-item a, .ui-tabs-nav .ui-state-active,
+.ui-tabs-nav .ui-state-hover {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
@@ -4481,7 +4498,7 @@ a:focus {
   border-bottom-right-radius: 3px;
 }
 
-.border-radius--bottom, .main-sub-menu a:hover,
+.border-radius--bottom, .slideshow .slide .caption-area .transparent, .main-sub-menu a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   border-bottom-left-radius: 3px;
@@ -4493,7 +4510,7 @@ a:focus {
   border-bottom-left-radius: 3px;
 }
 
-.font-weight-bold, .page-header .sort-order .active, .article-wrapper a {
+.font-weight-bold, .page-header .sort-order .active, .article-wrapper a, .ui-tabs li.ui-state-default, .widget .widget-title span {
   font-weight: bold;
 }
 
@@ -4501,11 +4518,11 @@ a:focus {
   font-style: normal!important;
 }
 
-.font-style-italic, .complement-italic-text, .contact-wrapper .content, .article-wrapper .footer-wrapper {
+.font-style-italic, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .footer-wrapper {
   font-style: italic;
 }
 
-.milli, .page-header, .article-wrapper .footer-wrapper {
+.milli, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .page-header, .article-wrapper .footer-wrapper {
   font-size: 13px;
   font-size: 0.8125rem;
   line-height: 1.84615;
@@ -4523,6 +4540,7 @@ a:focus {
   line-height: 2.4;
 }
 
+/* default settings */
 /* text colors */
 a:hover {
   text-decoration: none;
@@ -4533,16 +4551,28 @@ html {
 }
 
 .content--center, .branding,
-.main,
-.footer-widget-sidebar,
-.footer-image {
+.main {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
 /* extend nav--block with breaking white-space */
 .nav--block-break, .category-navigation .parent, .category-navigation .parent .children {
   white-space: normal!important;
+}
+
+.nav--block-half-margin li a, .category-navigation .parent li a, .category-navigation .parent .children li a, .ui-widget-content ul li a, .footer-widget-wrapper ul li a {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.nav--block-double-margin li a, .main-menu li a, .main-sub-menu li a, .category-navigation .parent li a, .category-navigation .parent .children li a, .ui-widget-content ul li a {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit {
+  width: 24px;
 }
 
 /*
@@ -4556,11 +4586,32 @@ html {
   border-top-left-radius: 0.4em;
 }
 
+.time {
+  display: block;
+}
+
+.img-wrapper {
+  line-height: 0;
+}
+
+.slideshow .slide .caption-area {
+  z-index: 1000;
+}
+.slideshow .slide .caption-area .transparent {
+  height: 100%;
+  opacity: 0.75;
+  z-index: 1050;
+}
+.slideshow .slide .caption-area .caption {
+  display: block;
+  z-index: 1100;
+}
+
 /* category structure */
 /*
  * sort-order 
  */
-.page-header .category-tools .menu-item .aside-icon-left {
+.page-header .category-tools .menu-item .icon-left, .page-header .category-tools .menu-item h1.widget-title .i, h1.widget-title .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .page-header .category-tools .menu-item .submit, .page-header .category-tools .menu-item .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .page-header .category-tools .menu-item .submit {
   padding-bottom: 0!important;
 }
 .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit {
@@ -4594,6 +4645,9 @@ html {
   border-left: 4px solid #644c20;
   padding-left: 20px;
 }
+.article-wrapper .footer-wrapper li {
+  display: block;
+}
 
 /* article footer*/
 /* featured images */
@@ -4611,10 +4665,6 @@ html {
 }
 /* embedded contact image */
 /* aside content */
-.aside-icon-left {
-  width: 24px;
-}
-
 @media only screen and (max-width: 480px) {
   .summary .summary {
     display: none;
@@ -4706,24 +4756,14 @@ html {
 }
 
 .ui-tabs li.ui-state-default {
-  float: left;
   cursor: pointer;
-  font-weight: bold;
-}
-
-.widget .widget-title span {
-  font-weight: bold;
 }
 
 .ui-tabs .ui-tabs-panel {
   display: block;
 }
 
-.ui-tabs .ui-tabs-hide {
-  display: none !important;
-}
-
-.position-fixed, .position-fixed--top-left, .position-fixed--top-right, .position-fixed--bottom-right, #responsive-info, .position-fixed--bottom-left {
+.position-fixed, .position-fixed--top-left, .position-fixed--top-right, .position-fixed--bottom-right, #responsive-info, .position-fixed--bottom-left, .contact-popup.overlay, .contact-popup.box {
   position: fixed;
 }
 
@@ -4747,7 +4787,7 @@ html {
   left: 0;
 }
 
-.position-relative, .position-relative--top-left, .position-relative--top-right, .position-relative--bottom-right, .position-relative--bottom-left {
+.position-relative, .slideshow .slide .caption-area .caption, .position-relative--top-left, .position-relative--top-right, .position-relative--bottom-right, .position-relative--bottom-left, .contact-popup.box .entry-wrapper {
   position: relative;
 }
 
@@ -4771,7 +4811,7 @@ html {
   left: 0;
 }
 
-.position-absolute, .position-absolute--top-left, .pager, .position-absolute--top-right, .position-absolute--bottom-right, .position-absolute--bottom-left {
+.position-absolute, .slideshow .slide .caption-area .transparent, .position-absolute--top-left, .pager, .position-absolute--top-right, .position-absolute--bottom-right, .position-absolute--bottom-left, .slideshow .slide .caption-area {
   position: absolute;
 }
 
@@ -4790,7 +4830,7 @@ html {
   right: 0;
 }
 
-.position-absolute--bottom-left {
+.position-absolute--bottom-left, .slideshow .slide .caption-area {
   bottom: 0;
   left: 0;
 }
@@ -4803,11 +4843,11 @@ html {
   margin-right: 24px;
 }
 
-.margin--bottom, .page-header, .top-wrapper {
+.margin--bottom, .widget, .slideshow, .page-header, .top-wrapper {
   margin-bottom: 24px;
 }
 
-.margin--left, .aside-icon-right, .category-navigation .parent .children {
+.margin--left, .icon-right, .category-navigation .parent .children, .footer-widget-wrapper .content {
   margin-left: 24px;
 }
 
@@ -4815,7 +4855,7 @@ html {
   margin-top: 12px;
 }
 
-.half-margin--left, .addthis_toolbox a {
+.half-margin--left, .addthis_toolbox a, .footer-widget-wrapper ul {
   margin-left: 12px;
 }
 
@@ -4823,11 +4863,13 @@ html {
   padding-top: 24px;
 }
 
-.padding--right, .aside-icon-right {
+.padding--right, .icon-right, .content,
+.post .img-wrapper {
   padding-right: 24px;
 }
 
-.padding--bottom {
+.padding--bottom, .content,
+.post .img-wrapper, .footer-widget-wrapper {
   padding-bottom: 24px;
 }
 
@@ -4835,10 +4877,8 @@ html {
   padding-left: 24px;
 }
 
-.dropdown, .page-header .category-tools .menu-item, .top-menu-wrapper .top-menu .menu-item,
-.dropdown--alt {
+.dropdown, .page-header .category-tools .menu-item, .top-menu-wrapper .top-menu .menu-item {
   position: relative;
-  _verflow: hidden;
 }
 
 .dropdown__content, .page-header .category-tools .menu-item .sub-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu {
@@ -4847,8 +4887,8 @@ html {
    * `display:none;`.
    */
   position: absolute;
-  top: 100%;
-  right: -99999px;
+  right: 0;
+  display: none;
 }
 
 /**
@@ -4856,26 +4896,41 @@ html {
  * Two different types of dropdown; æregularÆ (`.dropdown`) and æalternativeÆ
  * (`.dropdown--alt`).
  */
-.dropdown:hover, .page-header .category-tools .menu-item:hover, .top-menu-wrapper .top-menu .menu-item:hover,
-.dropdown--alt:hover {
-  overflow: visible;
-}
-
 /**
  * Regular dropdowns sit all the way from the top, flush left.
  */
 .dropdown:hover > .dropdown__content, .page-header .category-tools .menu-item:hover > .dropdown__content, .top-menu-wrapper .top-menu .menu-item:hover > .dropdown__content, .page-header .category-tools .menu-item .dropdown:hover > .sub-menu, .page-header .category-tools .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .page-header .category-tools .menu-item:hover > .sub-menu, .page-header .category-tools .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item .dropdown:hover > .sub-menu, .page-header .category-tools .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .page-header .category-tools .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu {
-  right: 0;
+  display: block;
 }
 
-/**
- * Alternative dropdowns sit all the way from the left, flush top.
- */
-.dropdown--alt:hover > .dropdown__content, .page-header .category-tools .menu-item .dropdown--alt:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item .dropdown--alt:hover > .sub-menu {
+.contact-popup.overlay {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
   top: 0;
-  right: 100%;
+  left: 0;
+  z-index: 1999;
 }
 
+.contact-popup.box {
+  width: 40%;
+  height: 40%;
+  z-index: 2000;
+  top: 30%;
+  left: 30%;
+}
+
+.contact-popup.box .entry-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.contact-popup.box .entry-content {
+  overflow: auto;
+  height: 100%;
+}
+
+/* TODO !!!!!*/
 @media print {
   #topmenu,
   #searchnavigation,
@@ -4902,7 +4957,7 @@ html {
   left: 0;
 }
 
-.hidden, .breadcrumb, .viewmode-only-titles .summary .article-border-wrapper, .summary .entry-meta, .addthis_toolbox a, .summary .full {
+.hidden, .breadcrumb, .viewmode-only-titles .summary .article-border-wrapper, .summary .entry-meta, .addthis_toolbox a, .summary .full, .ui-tabs .ui-tabs-hide {
   display: none;
 }
 

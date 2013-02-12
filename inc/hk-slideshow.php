@@ -109,12 +109,10 @@ function hk_slideshow_generate_output($vars) {
 							$retValue .= implode(" ",get_post_class()) . "'>";
 							$retValue .= 	"<img src='$src' class='attachment-slideshow-image wp-post-image' alt='$alt' title='$alt' />";
 							if (get_the_content() != "") {
-								$retValue .= 	"<div class='text-area'>";
-								$retValue .= 		"<div class='text-content'>";
-								$retValue .= 			"<div class='transp-background'></div>";
-								$retValue .= 			"<a>" . get_the_content() . "</a>";
+								$retValue .= 	"<div class='caption-area'>";
+								$retValue .= 			"<div class='transparent'></div>";
+								$retValue .= 			"<a class='caption'>" . get_the_content() . "</a>";
 								//$retValue .= 			"<a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_content() . "</a>";
-								$retValue .=		"</div>";
 								$retValue .= 	"</div>";
 							}
 							$retValue .= "</article>";

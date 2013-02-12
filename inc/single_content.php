@@ -19,7 +19,7 @@
 				</div><!-- .misc-ctrl -->
 			<?php endif; ?>
 		
-			<div class="content">
+			<div id="content-<?php the_ID(); ?>" class="content">
 				<?php
 					$more = 1;       // Set (inside the loop) to display all content, including text below more. 
 					if ( get_post_type() != "attachment" ) : // if not an attachment
