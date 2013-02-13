@@ -44,8 +44,11 @@ article.post {
 		@extend .force-font-style-normal;
 		@extend .font-weight-bold;
 	}
+	.summary-content {
+		@extend .hand;
+	}
 	.summary-content a,
-	.more-content a {
+	.more-content .content a {
 		border-bottom: 1px dotted $main-color;
 	}
 	.content-wrapper {
@@ -107,11 +110,14 @@ article.post {
 	@extend .flush--bottom;
 	@extend .one-half;
 }
-.content,
-.post .img-wrapper {
+.content {
 	@extend .float--left;
 	@extend .padding--right;
 	@extend .padding--bottom;
+	@extend .one-whole;
+}
+.post .img-wrapper {
+	@extend .float--left;
 	@extend .one-whole;
 }
 .slide {

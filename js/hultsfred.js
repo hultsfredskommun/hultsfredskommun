@@ -780,7 +780,7 @@ $(document).ready(function(){
 	/* 
 	* give result in dropdownlist 
 	*/ 
-	$('form#searchform input#s').keyup(function(ev) { 
+	$('#s').keyup(function(ev) { 
 		
 		select = false; 
 		// do ajax search 
@@ -789,9 +789,9 @@ $(document).ready(function(){
 
 		switch(key) { 
 			case 40: 
-				if($("#searchresult a").first().length > 0) 
+				if($(".searchresult a").first().length > 0) 
 				{ 
-					$("#searchresult a").first().focus(); 
+					$(".searchresult a").first().focus(); 
 				} 
 				event.preventDefault(); 
 				select = true; 
@@ -824,29 +824,29 @@ $(document).ready(function(){
 
 			if ($('#s').val().length > 2)  {
 
-				if (!$("#searchform").find("#searchresult")[0]) 
+				if (!$("#searchform").find(".searchresult")[0]) 
 				{ 
-					$('#searchform').append("<div id='searchresult'></div>"); 
+					$('#searchform').append("<div class='searchresult'></div>"); 
 				} 
 				searchstring = $("#s").val(); 
 				
-				$("#searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
+				$(".searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
 				{ searchstring: searchstring }, 
 				function() { 
 
-					var link_objects = $('div#searchresult li a');
+					var link_objects = $('.searchresult li a');
 
-					var first_index = 0;   var last_index = $('div#searchresult li a').length-1;
+					var first_index = 0;   var last_index = $('.searchresult li a').length-1;
 
 					var first_link = $(link_objects).first();  var last_link = $(link_objects).last();
 
 
 
-					var clearbutton = $('form#searchform a#clearbutton'); 
+					var clearbutton = $('.clearbutton'); 
 
 					if($(clearbutton).length == 0) 
 					{ 
-						clearbutton = $('form#searchform input#s').parent().prepend('<a href="#" id="clearbutton">Rensa</a>'); 
+						clearbutton = $('#s').parent().prepend('<a href="#" class="clearbutton">Rensa</a>'); 
 					} 
 
 					// Erase search... 
@@ -886,7 +886,7 @@ $(document).ready(function(){
 
 									if(prev_index <= first_index) 
 									{ 
-										$('form#searchform input#s').focus(); 
+										$('#s').focus(); 
 									} 
 									else 
 									{ 
@@ -919,14 +919,14 @@ $(document).ready(function(){
 			else 
 			{ 
 
-				var erase_button = $('a#clearbutton');
+				var erase_button = $('.clearbutton');
 
 				if($(erase_button).length > 0) 
 				{ 
 					$(erase_button).remove(); 
 				} 
 
-				$('#searchresult').remove(); 
+				$('.searchresult').remove(); 
 			} 
 		} 
 	}); 
@@ -988,16 +988,16 @@ $(document).ready(function(){
 /* helper to ajax search */
 function erase_and_refocus_on_search_input() 
 { 
-	$('form#searchform input#s').val(''); 
-	$('form#searchform input#s').focus(); 
+	$('#s').val(''); 
+	$('#s').focus(); 
 
-	var dropdown = $('#searchresult'); 
+	var dropdown = $('.searchresult'); 
 
 	if($(dropdown).length > 0) { 
 		$(dropdown).remove(); 
 	} 
 
-	var erase_button = $('a#clearbutton');
+	var erase_button = $('.clearbutton');
 
 	if($(erase_button).length > 0) { 
 		$(erase_button).remove(); 

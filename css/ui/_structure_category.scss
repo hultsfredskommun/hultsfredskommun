@@ -33,6 +33,7 @@
 	@extend .margin--bottom;
 	@extend .cf;
 	
+	.view-tools,
 	.sort-order {
 		@extend .float--left;
 		@extend .nav;
@@ -42,6 +43,7 @@
 			@extend .font-weight-bold;
 		}
 	}
+	
 	
 	.category-tools {
 		@extend .text--right;

@@ -57,6 +57,7 @@
 	}
 	.form {
 		.input-wrapper {
+			@extend .position-relative--top-left;
 			@extend .nine-tenths;
 			@extend .float--left;
 			.field {
@@ -65,6 +66,9 @@
 				@extend .noborder;
 				@extend .border-radius--left;
 				@extend .gray-image-background;
+			}
+			.clearbutton {
+				@extend .position-absolute--top-right;
 			}
 		}
 		.submit {
@@ -76,17 +80,22 @@
 			@extend .white-text-shadow;
 			@extend .border-radius--right;
 			@extend .noborder;
+			@extend .cf;
 		}
 		
 		.field,
 		.submit {
 			height: $base-spacing-unit;
 		}
+		.searchresult {
+			@extend .position-absolute;
+			@extend .content--center;
+			
+		}
 	}
 	
 
 }
-
 
 /* top right menu */
 .top-menu-wrapper {
