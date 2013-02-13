@@ -765,7 +765,7 @@ textarea:focus {
 .related-wrapper,
 .tools, .responsive-navigation, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-menu,
 .main-sub-menu, .tags-wrapper ul,
-.category-navigation ul, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav, .ui-widget-content ul, .footer-widget-wrapper ul, .media, .island, .slideshow .slide .caption-area .caption, .article-wrapper .side-content, .footer-image-wrapper .logo-footer-image img,
+.category-navigation ul, .category-navigation .parent, .category-navigation .parent .children, .ui-tabs-nav, .ui-widget-content ul, .footer-widget-wrapper ul, .media, .island, .slideshow .slide .caption-area .caption, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img,
 .islet,
 #responsive-info, .matrix, .multi-list, .stat-group, .time, .page-header, article.post, .footer-image-wrapper .logo-footer-image {
   zoom: 1;
@@ -775,14 +775,14 @@ textarea:focus {
 .related-wrapper:before,
 .tools:before, .responsive-navigation:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .main-menu:before,
 .main-sub-menu:before, .tags-wrapper ul:before,
-.category-navigation ul:before, .category-navigation .parent:before, .category-navigation .parent .children:before, .ui-tabs-nav:before, .ui-widget-content ul:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .slideshow .slide .caption-area .caption:before, .article-wrapper .side-content:before, .footer-image-wrapper .logo-footer-image img:before,
+.category-navigation ul:before, .category-navigation .parent:before, .category-navigation .parent .children:before, .ui-tabs-nav:before, .ui-widget-content ul:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .slideshow .slide .caption-area .caption:before, .article-wrapper .side-content:before, .important-widget:before, .footer-image-wrapper .logo-footer-image img:before,
 .islet:before,
 #responsive-info:before, .matrix:before, .multi-list:before, .stat-group:before, .time:before, .page-header:before, article.post:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
 .grid-wrapper:after, .nav:after, .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
 .tools:after, .responsive-navigation:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent .children:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .slideshow .slide .caption-area .caption:after, .article-wrapper .side-content:after, .footer-image-wrapper .logo-footer-image img:after,
+.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent .children:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .slideshow .slide .caption-area .caption:after, .article-wrapper .side-content:after, .important-widget:after, .footer-image-wrapper .logo-footer-image img:after,
 .islet:after,
 #responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .footer-image-wrapper .logo-footer-image:after {
   content: " ";
@@ -793,7 +793,7 @@ textarea:focus {
 .related-wrapper:after,
 .tools:after, .responsive-navigation:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent .children:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .slideshow .slide .caption-area .caption:after, .article-wrapper .side-content:after, .footer-image-wrapper .logo-footer-image img:after,
+.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent .children:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .slideshow .slide .caption-area .caption:after, .article-wrapper .side-content:after, .important-widget:after, .footer-image-wrapper .logo-footer-image img:after,
 .islet:after,
 #responsive-info:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .footer-image-wrapper .logo-footer-image:after {
   clear: both;
@@ -821,6 +821,7 @@ pre,
 .island,
 .slideshow .slide .caption-area .caption,
 .article-wrapper .side-content,
+.important-widget,
 .footer-image-wrapper .logo-footer-image img,
 .islet,
 #responsive-info,
@@ -849,7 +850,10 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .pager .form-
 .media, .islet
 .island, #responsive-info
 .island, .pager
-.island, .islet .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .islet .caption, #responsive-info .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area #responsive-info .caption, .pager .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .pager .caption, .islet .article-wrapper .side-content, .article-wrapper .islet .side-content, #responsive-info .article-wrapper .side-content, .article-wrapper #responsive-info .side-content, .pager .article-wrapper .side-content, .article-wrapper .pager .side-content, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .islet
+.island, .islet .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .islet .caption, #responsive-info .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area #responsive-info .caption, .pager .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .pager .caption, .islet .article-wrapper .side-content, .article-wrapper .islet .side-content, #responsive-info .article-wrapper .side-content, .article-wrapper #responsive-info .side-content, .pager .article-wrapper .side-content, .article-wrapper .pager .side-content, .islet
+.important-widget, #responsive-info
+.important-widget, .pager
+.important-widget, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .islet
 .islet, #responsive-info
 .islet, .pager
 .islet, .islet
@@ -2339,18 +2343,18 @@ html.flexbox {
  * Demo: jsfiddle.net/inuitcss/u8pV3
  * 
  */
-.island, .slideshow .slide .caption-area .caption, .article-wrapper .side-content, .footer-image-wrapper .logo-footer-image img,
+.island, .slideshow .slide .caption-area .caption, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img,
 .islet,
 #responsive-info,
 .pager {
   display: block;
 }
 
-.island, .slideshow .slide .caption-area .caption, .article-wrapper .side-content, .footer-image-wrapper .logo-footer-image img {
+.island, .slideshow .slide .caption-area .caption, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img {
   padding: 24px;
 }
 
-.island > :last-child, .slideshow .slide .caption-area .caption > :last-child, .article-wrapper .side-content > :last-child, .footer-image-wrapper .logo-footer-image img > :last-child,
+.island > :last-child, .slideshow .slide .caption-area .caption > :last-child, .article-wrapper .side-content > :last-child, .important-widget > :last-child, .footer-image-wrapper .logo-footer-image img > :last-child,
 .islet > :last-child,
 #responsive-info > :last-child,
 .pager > :last-child {
@@ -4450,16 +4454,14 @@ a:focus {
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-sub-menu a:hover,
+.gray-light-background, .gray-image-background, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .ui-tabs-nav .ui-state-active,
+.ui-tabs-nav .ui-state-hover, .footer-wrapper.footer-widget-wrapper, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .main-sub-menu a:hover,
 .main-sub-menu .current-category-ancestor a,
-.main-sub-menu .current-menu-item a, .ui-tabs-nav .ui-state-active,
-.ui-tabs-nav .ui-state-hover, .footer-wrapper.footer-widget-wrapper, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu {
+.main-sub-menu .current-menu-item a {
   background-color: #e5e6e7;
 }
 
-.gray-image-background, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-sub-menu a:hover,
-.main-sub-menu .current-category-ancestor a,
-.main-sub-menu .current-menu-item a, .ui-tabs-nav .ui-state-active,
+.gray-image-background, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover, .footer-wrapper.footer-widget-wrapper {
   background-repeat: repeat;
   background-image: url(images/greyTile24bit.png);
@@ -4485,7 +4487,7 @@ a:focus {
   border-left: 2px dotted #e5e6e7;
 }
 
-.border-radius, .page-header, .contact-popup.box {
+.border-radius, img, .page-header, .contact-popup.box {
   border-radius: 3px;
 }
 
