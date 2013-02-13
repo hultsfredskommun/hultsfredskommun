@@ -21,7 +21,7 @@
 	.current-category-ancestor a,
 	.current-menu-item a {
 		@extend .border-radius--bottom;
-		@extend .gray-image-background;
+		@extend .gray-light-background;
 		@extend .black-text;
 		@extend .white-text-shadow;
 	}

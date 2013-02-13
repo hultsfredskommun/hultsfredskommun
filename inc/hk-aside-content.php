@@ -99,7 +99,7 @@
 		<li class="read tool-line rs_skip rsbtn rs_preserve">
 			<a title='L&auml;s upp' class='icon-left'>
 				<i class='i' data-icon='&#xF03B;'></i></a>
-			<a class="read  rsbtn_play" accesskey="L" title="L&auml;s upp artikel" href="http://app.eu.readspeaker.com/cgi-bin/rsent?customerid=<?php echo $options['readspeaker_id']; ?>&amp;lang=sv_se&amp;readid=content-<?php the_ID(); ?>&amp;url=<?php the_permalink(); ?>">
+			<a class="read  rsbtn_play" accesskey="L" title="L&auml;s upp artikel" href="http://app.eu.readspeaker.com/cgi-bin/rsent?customerid=<?php echo $options['readspeaker_id']; ?>&amp;lang=sv_se&amp;readid=content-<?php the_ID(); ?>&amp;url=<?php echo get_the_permalink(); ?>">
 			<span class="rsbtn_left rsimg rspart"><span class="rsbtn_text"><span>L&auml;s upp artikel</span></span></span>
 			<span class="rsbtn_right rsimg rsplay rspart"></span></a>
 		</li>

@@ -30,7 +30,9 @@ html {
 	@extend .gw;
 }
 
-
+img {
+	@extend .border-radius;
+}
 .widget {
 	@extend .margin--bottom;
 	@extend .epsilon;
