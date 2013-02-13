@@ -1,4 +1,16 @@
 /* hide title */
+.important-widget {
+	@extend .content--center;
+	@extend .important-background;
+	@extend .white-text;
+	@extend .border-radius--bottom;
+	position: relative;
+	z-index: 2;
+	a {
+		@extend .white-text;
+	}
+}
+
 .site-title {
 	@extend .hide;
 }
@@ -110,6 +122,7 @@
 		}
 	}
 }
+
 
 
 .logo2 {

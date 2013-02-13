@@ -4394,12 +4394,16 @@ a:focus {
   color: black;
 }
 
-.white-text, .slideshow .slide .caption-area .caption, .main-menu a:hover,
+.white-text, .slideshow .slide .caption-area .caption, .important-widget, .important-widget a, .main-menu a:hover,
 .main-menu .current-category-ancestor a,
 .main-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
 .footer-image-wrapper {
   color: white;
+}
+
+.important-text {
+  color: #ed1651;
 }
 
 .black-text-shadow, .main-menu a:hover,
@@ -4412,6 +4416,10 @@ a:focus {
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   text-shadow: 1px 1px 0px white;
+}
+
+.important-background, .important-widget {
+  background-color: #ed1651;
 }
 
 .complement-background, .slideshow .slide .caption-area .transparent {
@@ -4498,7 +4506,7 @@ a:focus {
   border-bottom-right-radius: 3px;
 }
 
-.border-radius--bottom, .slideshow .slide .caption-area .transparent, .main-sub-menu a:hover,
+.border-radius--bottom, .slideshow .slide .caption-area .transparent, .important-widget, .main-sub-menu a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   border-bottom-left-radius: 3px;
@@ -4551,7 +4559,7 @@ html {
 }
 
 .content--center, .branding,
-.main {
+.main, .important-widget {
   margin: 0 auto;
   max-width: 1200px;
 }
@@ -4682,6 +4690,11 @@ html {
   }
 }
 /* hide title */
+.important-widget {
+  position: relative;
+  z-index: 2;
+}
+
 /* header structure */
 .responsive-navigation {
   text-align: right;

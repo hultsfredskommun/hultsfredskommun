@@ -7,6 +7,7 @@ $default-color:				#3f3f3f!default;
 $main-color:				#5C85B1!default;
 $complement-color:			#644C20!default;
 $complement-light-color:	$complement-color * 1.5;
+$important-color:			#ED1651!default;
 
 $gray-color:				#C6CACB!default;
 $gray-light-color:			#E5E6E7!default;
@@ -42,6 +43,9 @@ $face:	        			"myriad-pro", Arial, sans-serif!default;
 .white-text {
 	color: white;
 }
+.important-text {
+	color: $important-color;
+}
 .black-text-shadow {
 	text-shadow: -1px -1px 0px #666;
 }
@@ -50,6 +54,9 @@ $face:	        			"myriad-pro", Arial, sans-serif!default;
 }
 
 
+.important-background {
+	background-color: $important-color;
+}
 .complement-background {
 	background-color: $complement-color;
 }
