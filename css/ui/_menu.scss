@@ -6,22 +6,34 @@
 		@extend .default-text;
 	}
 	a:hover,
+	&:hover a:hover,
 	.current-category-ancestor a,
 	.current-menu-item a {
 		@extend .border-radius--top;
 		@extend .main-background;
 		@extend .white-text;
 	}
+	&:hover > .current-category-ancestor a,
+	&:hover > .current-menu-item a {
+		@extend .white-background;
+		@extend .default-text;
+	}
 }
 .main-sub-menu {
 	@extend .epsilon;
 	@extend .nav--block-double-margin;
 	a:hover,
+	&:hover a:hover,
 	.current-category-ancestor a,
 	.current-menu-item a {
 		@extend .border-radius--bottom;
 		@extend .gray-light-background;
 		@extend .black-text;
+	}
+	&:hover > .current-category-ancestor a,
+	&:hover > .current-menu-item a {
+		@extend .white-background;
+		@extend .default-text;
 	}
 }
 

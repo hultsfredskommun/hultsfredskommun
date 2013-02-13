@@ -38,10 +38,10 @@ $face:	        			"myriad-pro", Arial, sans-serif!default;
 	color: $gray-color!important;
 }
 .black-text {
-	color: black;
+	color: #000;
 }
 .white-text {
-	color: white;
+	color: #fff;
 }
 .important-text {
 	color: $important-color;
@@ -68,6 +68,9 @@ $face:	        			"myriad-pro", Arial, sans-serif!default;
 }
 .default-background {
 	background-color: $default-color;
+}
+.white-background {
+	background-color: #fff;
 }
 .main-background {
 	background-color: $main-color;
