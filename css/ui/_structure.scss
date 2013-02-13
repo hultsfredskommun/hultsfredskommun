@@ -30,6 +30,9 @@ html {
 	@extend .gw;
 }
 
+.wait {
+	cursor:pointer;
+}
 img {
 	@extend .border-radius;
 }

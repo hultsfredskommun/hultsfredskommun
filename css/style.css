@@ -4410,15 +4410,11 @@ a:focus {
   color: #ed1651;
 }
 
-.black-text-shadow, .main-menu a:hover,
-.main-menu .current-category-ancestor a,
-.main-menu .current-menu-item a {
+.black-text-shadow {
   text-shadow: -1px -1px 0px #666666;
 }
 
-.white-text-shadow, .searchnavigation .form .submit, .main-sub-menu a:hover,
-.main-sub-menu .current-category-ancestor a,
-.main-sub-menu .current-menu-item a {
+.white-text-shadow, .searchnavigation .form .submit {
   text-shadow: 1px 1px 0px white;
 }
 
@@ -4564,6 +4560,10 @@ html {
 .main, .important-widget {
   margin: 0 auto;
   max-width: 1200px;
+}
+
+.wait {
+  cursor: pointer;
 }
 
 /* extend nav--block with breaking white-space */

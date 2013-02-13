@@ -11,7 +11,6 @@
 		@extend .border-radius--top;
 		@extend .main-background;
 		@extend .white-text;
-		@extend .black-text-shadow;
 	}
 }
 .main-sub-menu {
@@ -23,7 +22,6 @@
 		@extend .border-radius--bottom;
 		@extend .gray-light-background;
 		@extend .black-text;
-		@extend .white-text-shadow;
 	}
 }
 

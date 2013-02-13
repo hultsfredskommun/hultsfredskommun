@@ -485,7 +485,7 @@ function readMoreToggle(el){
 		$(article).find('.summary-content').after(morediv);
 
 		$.ajaxSetup({cache:false});
-		$(article).addClass("muted").css("cursor","wait");
+		$(article).addClass("muted wait");
 		
 		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 		{
@@ -501,7 +501,7 @@ function readMoreToggle(el){
 				setContactPopupAction($(this));
 			});
 
-			$(this).parents("article").removeClass("muted").css("cursor","pointer");
+			$(this).parents("article").removeClass("muted wait");
 			
 			//****** click-actions START *******
 			
