@@ -18,8 +18,13 @@ html {
 }
 
 .content--center {
+	margin: 0 $half-spacing-unit;
+}
+@include media-query(desk-wide) {
+.content--center {
 	margin: 0 auto;
-	max-width: 1200px;
+	max-width: $desk-wide-start - $base-spacing-unit;
+}
 }
 
 .branding,
@@ -43,6 +48,8 @@ img {
 	@extend .margin--bottom;
 	@extend .epsilon;
 	h1 {
+		padding-top: 2px;
+		padding-bottom: 2px;
 		@extend .one-whole;
 		@extend .epsilon;
 		@extend .border--bottom;

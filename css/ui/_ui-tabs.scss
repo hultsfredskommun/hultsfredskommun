@@ -4,12 +4,18 @@
 	@extend .nav;
 	@extend .nav--block;
 	@extend .flush--bottom;
-	@extend .border--bottom;
+	a {
+		@extend .default-text;
+	}
 	.ui-state-active,
 	.ui-state-hover {
 		@extend .border-radius--top;
 		@extend .gray-image-background;
+		border-bottom: $border-width solid $default-color;
 	}
+	.ui-state-default {
+	}
+	@extend .border-image--bottom;
 }
 .ui-tabs article
 {

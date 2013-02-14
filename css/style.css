@@ -4336,8 +4336,7 @@ html.flexbox {
 }
 
 @media only screen and (max-width: 480px) {
-  .hide--palm, .searchnavigation, .top-menu-wrapper, .logo2, .main-menu,
-  .main-sub-menu {
+  .hide--palm, .searchnavigation, .top-menu-wrapper, .logo2, .responsive-menu {
     position: absolute;
     left: -9999px;
   }
@@ -4372,7 +4371,7 @@ html.flexbox {
   color: #005baa;
 }
 
-.default-text, html, .searchnavigation .form .submit, .main-menu a, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .category-navigation .parent a {
+.default-text, html, .searchnavigation .form .submit, .main-menu a, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .category-navigation .parent a, .ui-tabs-nav a {
   color: #3f3f3f;
 }
 
@@ -4489,12 +4488,22 @@ a:focus {
   border-right: 2px dotted #e5e6e7;
 }
 
-.border--bottom, h1.widget-title, .widget h1, .article-border-wrapper, .ui-tabs-nav {
+.border--bottom, h1.widget-title, .widget h1, .article-border-wrapper {
   border-bottom: 2px dotted #e5e6e7;
 }
 
 .border--left {
   border-left: 2px dotted #e5e6e7;
+}
+
+.border-image--left {
+  background-image: url(images/border.png);
+}
+
+.border-image--bottom, .ui-tabs-nav {
+  background-image: url(images/border.png);
+  background-repeat: repeat-x;
+  background-position: left bottom;
 }
 
 .border-radius, img, .page-header, .contact-popup.box {
@@ -4573,16 +4582,27 @@ html {
 
 .content--center, .branding,
 .main, .important-widget, .searchnavigation .form .searchresult {
-  margin: 0 auto;
-  max-width: 1200px;
+  margin: 0 12px;
 }
 
+@media only screen and (min-width: 1200px) {
+  .content--center, .branding,
+  .main, .important-widget, .searchnavigation .form .searchresult {
+    margin: 0 auto;
+    max-width: 1176px;
+  }
+}
 .wait {
   cursor: wait;
 }
 
 .hand, .article-wrapper .summary-content {
   cursor: pointer;
+}
+
+.widget h1 {
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 /* extend nav--block with breaking white-space */
@@ -4750,41 +4770,65 @@ html {
 /*
  * top navigation 
  */
+.main-menu,
+.main-sub-menu {
+  font-size: 90%;
+}
+.main-menu a,
+.main-sub-menu a {
+  padding: 6px 12px !important;
+}
+
 .main-menu {
   border-bottom: 1px solid #e5e6e7;
 }
 
-@media only screen and (max-width: 781px) and (min-width: 481px) {
-  .main-sub-menu > li > a {
-    white-space: normal!important;
-  }
+/*@media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
+.main-sub-menu > li > a {
+	white-space: normal!important;
 }
-@media only screen and (max-width: 941px) and (min-width: 781px) {
-  .main-sub-menu > li > a {
-    white-space: normal!important;
+}
+@media only screen and (max-width: $desk-small-start) and (min-width: $lap-large-start) {
+.main-sub-menu > li > a {
+	white-space: normal!important;
+}
+}*/
+@media only screen and (min-width: 1200px) {
+  .main-menu,
+  .main-sub-menu {
+    font-size: 100%;
+  }
+  .main-menu a,
+  .main-sub-menu a {
+    padding: 12px 24px !important;
   }
 }
 /*
  * category navigation
  */
 /* TODO ADD DESK WITHOUT COPY PASTE!! */
-@media only screen and (max-width: 480px) {
-  .main-menu,
-  .main-sub-menu {
-    /* manually copied instead of @extend .nav--stacked */
-  }
-  .main-menu > li,
-  .main-sub-menu > li {
-    display: list-item;
-  }
-  .main-menu > li > a,
-  .main-sub-menu > li > a {
-    display: block;
-  }
+/*@include media-query(palm) {
+.main-menu,
+.main-sub-menu {
+	// manually copied instead of @extend .nav--stacked
+    > li{
+        display:list-item;
+
+        > a{
+            display:block;
+        }
+    }
 }
+}
+*/
 /* text colors */
 /* =firstpage ui-tabs
 ----------------------------------------------- */
+.ui-tabs-nav .ui-state-active,
+.ui-tabs-nav .ui-state-hover {
+  border-bottom: 2px solid #3f3f3f;
+}
+
 .ui-tabs ul.post_tabs_title {
   overflow: hidden;
 }
@@ -5008,6 +5052,11 @@ html {
 @media only screen and (min-width: 1024px) {
   #responsive-info:after {
     content: "DESK";
+  }
+}
+@media only screen and (min-width: 1200px) {
+  #responsive-info:after {
+    content: "DESKWIDE";
   }
 }
 @media only screen and (min-width: 481px) and (max-width: 1023px) {

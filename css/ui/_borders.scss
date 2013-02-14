@@ -19,6 +19,15 @@ $border-radius:		$brand-round;
 	border-left: $border-width $border-style $border-color;
 }
 
+.border-image--left {
+	background-image: url(images/border.png);
+}
+.border-image--bottom {
+	background-image: url(images/border.png);
+	background-repeat: repeat-x;
+	background-position: left bottom;
+}
+
 .border-radius {
 	border-radius: $border-radius;
 }

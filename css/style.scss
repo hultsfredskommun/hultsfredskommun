@@ -69,6 +69,22 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* to un- .hide element */ 
 .unhide {
 	position: initial;
@@ -92,15 +108,18 @@
 
 
 
+
+
+
 /* HELP MEDIA QUERY INFO */		
-@include media-query(deskwide) {
-	#responsive-info:after {
-		content: "DESKWIDE";
-	}
-}
 @include media-query(desk) {
 	#responsive-info:after {
 		content: "DESK";
+	}
+}
+@include media-query(desk-wide) {
+	#responsive-info:after {
+		content: "DESKWIDE";
 	}
 }
 @include media-query(lap) {

@@ -41,15 +41,20 @@
  * top navigation 
  */
 .responsive-menu {
+	@extend .hide--palm; //TEMPORARY!!!
 	@extend .hide--lap;
 	@extend .hide--desk;
 }
 
 .main-menu,
 .main-sub-menu {
+	font-size: 90%;
+	a {
+		padding: $half-spacing-unit/2 $half-spacing-unit!important;
+	}
 	@extend .nav;
 	@extend .nav--block;
-	@extend .hide--palm;
+	//@extend .hide--palm;
 }
 .main-menu {
 	@extend .flush--bottom;
@@ -62,7 +67,7 @@
 	@extend .nav--stacked;
 }
 
-@media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
+/*@media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
 .main-sub-menu > li > a {
 	white-space: normal!important;
 }
@@ -71,6 +76,15 @@
 .main-sub-menu > li > a {
 	white-space: normal!important;
 }
+}*/
+@include media-query(desk-wide) {
+	.main-menu,
+	.main-sub-menu {
+		font-size: 100%;
+		a {
+			padding: $half-spacing-unit $base-spacing-unit!important;
+		}
+	}
 }
 
 
@@ -86,10 +100,10 @@
 }
 
 /* TODO ADD DESK WITHOUT COPY PASTE!! */
-@include media-query(palm) {
+/*@include media-query(palm) {
 .main-menu,
 .main-sub-menu {
-	/* manually copied instead of @extend .nav--stacked */    
+	// manually copied instead of @extend .nav--stacked
     > li{
         display:list-item;
 
@@ -99,3 +113,4 @@
     }
 }
 }
+*/
