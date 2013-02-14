@@ -109,6 +109,7 @@
 		@extend .text--right;
 		@extend .nav;
 		@extend .nav--block;
+		@extend .flush--bottom;
 		.menu-item {
 			@extend .dropdown;
 			.i {

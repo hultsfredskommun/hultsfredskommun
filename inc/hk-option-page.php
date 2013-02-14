@@ -25,8 +25,38 @@ function hk_theme_options_do_page() {
 			<?php settings_fields('hk_theme_options_options'); ?>
 			<?php $options = get_option('hk_theme'); ?>
 
+			
+			<h2>Sidhuvud</h2>
+			<p><label for="hk_theme[logo_image]">Logga</label><br/>
+				<img width=150  src="<?php echo $options["logo_image"]; ?>" />
+				<input class="upload-url" type="text" size="36" name="hk_theme[logo_image]" value="<?php echo $options["logo_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[top_image]">Toppbild (inte klar att anv&auml;ndas)</label><br/>
+				<img width=150 src="<?php echo $options["top_image"]; ?>" />
+				<input class="upload-url" type="text" size="36" name="hk_theme[top_image]" value="<?php echo $options["top_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[search_watermark]">Vattenst&auml;mpel i s&ouml;k</label><br/><input size="80" type="text" name="hk_theme[search_watermark]" value="<?php echo $options['search_watermark']; ?>" /></p>
+			<p><label for="hk_theme[pre_topmenu_html]">HTML f&ouml;re topmenu</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[pre_topmenu_html]"><?php echo $options['pre_topmenu_html']; ?></textarea></p>
+			<p><label for="hk_theme[post_topmenu_html]">HTML efter topmenu</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[post_topmenu_html]"><?php echo $options['post_topmenu_html']; ?></textarea></p>
+			<h3>Extra loggor</h3>
+			<p><label for="hk_theme[logo2_image]">Logga 2 - till h&ouml;ger i huvudet</label><br/>
+				<img width=150  src="<?php echo $options["logo2_image"]; ?>" />
+				<input class="upload-url" type="text" size="36" name="hk_theme[logo2_image]" value="<?php echo $options["logo2_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[logo2_link]">Logga 2 l&auml;nk. </label><br/><input size="80" type="text" name="hk_theme[logo2_link]" value="<?php echo $options['logo2_link']; ?>" /></p>
+			<p><label for="hk_theme[logo2_descr]">Logga 2 beskrivning. </label><br/><input size="80" type="text" name="hk_theme[logo2_descr]" value="<?php echo $options['logo2_descr']; ?>" /></p>
+			<p><label for="hk_theme[logo3_image]">Logga 3 - till h&ouml;ger i huvudet</label><br/>
+				<img width=150  src="<?php echo $options["logo3_image"]; ?>" />
+				<input class="upload-url" type="text" size="36" name="hk_theme[logo3_image]" value="<?php echo $options["logo3_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[logo3_link]">Logga 3 l&auml;nk. </label><br/><input size="80" type="text" name="hk_theme[logo3_link]" value="<?php echo $options['logo3_link']; ?>" /></p>
+			<p><label for="hk_theme[logo3_descr]">Logga 3 beskrivning. </label><br/><input size="80" type="text" name="hk_theme[logo3_descr]" value="<?php echo $options['logo3_descr']; ?>" /></p>
 
-			<h3>Kategorier och menyer</h3>
+			<h2>Kategorier och menyer</h2>
 			
 			<p><label for="hk_theme[startpage_cat]">Välj kategori som är startsida.</label><br/>
 							<?php 
@@ -107,17 +137,18 @@ function hk_theme_options_do_page() {
 
 			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input size="8" type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo (!isset($options["num_levels_in_menu"]) || $options["num_levels_in_menu"] == "")?2:$options['num_levels_in_menu']; ?>" /></p>
 			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options['show_tags']; ?>" /></p>
+			
+			<h2>Kontakta-oss flikar - l&auml;nkar</h2>
 			<p><label for="hk_theme[comment_side_link]">Kontakta-oss-l&auml;nk</label><br/><input size="80" type="text" name="hk_theme[contact_side_link]" value="<?php echo $options['contact_side_link']; ?>" /></p>
 			<p><label for="hk_theme[comment_side_link]">Hjälp-oss-l&auml;nk</label><br/><input size="80" type="text" name="hk_theme[comment_side_link]" value="<?php echo $options['comment_side_link']; ?>" /></p>
-			<p><label for="hk_theme[search_watermark]">Vattenst&auml;mpel i s&ouml;k</label><br/><input size="80" type="text" name="hk_theme[search_watermark]" value="<?php echo $options['search_watermark']; ?>" /></p>
 
-			<h3>Till&auml;gg</h3>
-			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. </label><br/><input type="text" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
-			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. </label><br/><input type="text" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>
-			<p><label for="hk_theme[typekit_url]">Typekit js url - http://&lt;v&auml;rde&gt; </label><br/><input type="text" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
-			<p><label for="hk_theme[translate_url]">&Ouml;vers&auml;tt url (ex. google-translate). </label><br/><input type="text" name="hk_theme[translate_url]" value="<?php echo $options['translate_url']; ?>" /></p>
+			<h2>Till&auml;gg</h2>
+			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. L&auml;gger till lyssna i artikel.</label><br/><input type="text" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
+			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. L&auml;gger till lyssna i topmenu i sidhuvud och artikel.</label><br/><input type="text" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>			
+			<p><label for="hk_theme[translate_url]">&Ouml;vers&auml;tt url (ex. google-translate). L&auml;gger till lyssna i topmenu i sidhuvud.</label><br/><input type="text" name="hk_theme[translate_url]" value="<?php echo $options['translate_url']; ?>" /></p>
+			<p><label for="hk_theme[typekit_url]">Typekit js url - http://&lt;resten av url&gt; f&ouml;r att l&auml;gga till typsnitt.</label><br/><input type="text" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
 
-			<h3>Statistik och cookies</h3>
+			<h2>Statistik och cookies</h2>
 			<p><input type="checkbox" name="hk_theme[cookie_accept_enable]" value="1"<?php checked( 1 == $options['cookie_accept_enable'] ); ?> /> <label for="hk_theme[cookie_accept_enable]">St&auml;ll fr&aring;ga om cookies f&aring;r anv&auml;ndas.</label></p>
 			<p><label for="hk_theme[cookie_text]">Förklarande text för att godkänna cookies. </label><br/><input size="80" type="text" name="hk_theme[cookie_text]" value="<?php echo $options['cookie_text']; ?>" /></p>
 			<p><label for="hk_theme[cookie_link]">Länk till mer information om cookies. </label><br/><input size="80" type="text" name="hk_theme[cookie_link]" value="<?php echo $options['cookie_link']; ?>" /></p>
@@ -126,43 +157,18 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[google_analytics_domain]">Google Analytics topp dom&auml;n (ex. mindom&auml;n.se). </label><br/><input type="text" name="hk_theme[google_analytics_domain]" value="<?php echo $options['google_analytics_domain']; ?>" /></p>
 			<p><input type="checkbox" name="hk_theme[google_analytics_disable_if_no_cookies]" value="1"<?php checked( 1 == $options['google_analytics_disable_if_no_cookies'] ); ?> /> <label for="hk_theme[google_analytics_disable_if_no_cookies]">Anv&auml;nd inte Google Analytics om cookies inte &auml;r accepterade (p&aring;verkar bara om "fr&aring;ga om cookies" &auml;r p&aring).</label</p>
 						
-			<h3>Utseende</h3>
+			<h2>Utseende</h2>
 			
-			<h3>Cron</h3>
+			<h2>Cron</h2>
 			<p><label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label><br/><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?> Kördes senast <?php echo Date("Y-m-d H:i:s",$options["hk_review_mail_check_time"]); ?><br/><?php echo $options["hk_review_mail_log"]; ?></p>
 			<p>Normaliserade räknare <?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?>: <br><?php echo $options["hk_normalize_count_log"]; ?></p>
 
-			<h3>Bilder</h3>
-			<p><label for="hk_theme[top_image]">Toppbild</label><br/>
-				<img width=150 src="<?php echo $options["top_image"]; ?>" />
-				<input class="upload-url" type="text" size="36" name="hk_theme[top_image]" value="<?php echo $options["top_image"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
+			<h2>Sidfot</h2>
 			<p><label for="hk_theme[footer_image]">Sidfot</label><br/>
 				<img width=150 src="<?php echo $options["footer_image"]; ?>" />
 				<input class="upload-url" type="text" size="36" name="hk_theme[footer_image]" value="<?php echo $options["footer_image"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
-			<p><label for="hk_theme[logo_image]">Logga</label><br/>
-				<img width=150  src="<?php echo $options["logo_image"]; ?>" />
-				<input class="upload-url" type="text" size="36" name="hk_theme[logo_image]" value="<?php echo $options["logo_image"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[logo2_image]">Logga 2 - till h&ouml;ger i huvudet</label><br/>
-				<img width=150  src="<?php echo $options["logo2_image"]; ?>" />
-				<input class="upload-url" type="text" size="36" name="hk_theme[logo2_image]" value="<?php echo $options["logo2_image"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[logo2_link]">Logga 2 l&auml;nk. </label><br/><input size="80" type="text" name="hk_theme[logo2_link]" value="<?php echo $options['logo2_link']; ?>" /></p>
-			<p><label for="hk_theme[logo2_descr]">Logga 2 beskrivning. </label><br/><input size="80" type="text" name="hk_theme[logo2_descr]" value="<?php echo $options['logo2_descr']; ?>" /></p>
-			<p><label for="hk_theme[logo3_image]">Logga 3 - till h&ouml;ger i huvudet</label><br/>
-				<img width=150  src="<?php echo $options["logo3_image"]; ?>" />
-				<input class="upload-url" type="text" size="36" name="hk_theme[logo3_image]" value="<?php echo $options["logo3_image"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[logo3_link]">Logga 3 l&auml;nk. </label><br/><input size="80" type="text" name="hk_theme[logo3_link]" value="<?php echo $options['logo3_link']; ?>" /></p>
-			<p><label for="hk_theme[logo3_descr]">Logga 3 beskrivning. </label><br/><input size="80" type="text" name="hk_theme[logo3_descr]" value="<?php echo $options['logo3_descr']; ?>" /></p>
-
 			<p><label for="hk_theme[logo_footer_image]">Logga i sidfot</label><br/>
 				<img width=150  src="<?php echo $options["logo_footer_image"]; ?>" />
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_footer_image]" value="<?php echo $options["logo_footer_image"]; ?>" />
@@ -172,7 +178,7 @@ function hk_theme_options_do_page() {
 			<?php /* hook to be able to add options from child theme */ 
 			echo do_action('hk_options_hook', $options); ?>			
 			
-			<h3>Anv&auml;nds inte just nu:</h3>
+			<h2>Anv&auml;nds inte just nu:</h2>
 			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
 				<tr valign="top">
 					<th style="width: 120px">Namn:</td>

@@ -159,24 +159,51 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			<?php /* top right navigation */ ?>
 			<?php 
 			
-				if (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) {
-					echo "<aside id='topmenu' class='top-menu-wrapper'><nav><ul class='top-menu'>";
-					wp_nav_menu( array(
-						'theme_location' => 'topmenu', 
-						'container' 	=> '',
-						'items_wrap'	=> '%3$s',
-						'depth' 		=> 2,
-						'echo' 			=> true
-					)); 
-					if (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") {
-						echo "<li class='translate menu-item menu-item-type-custom menu-item-object-custom menu-item-translate  hide--palm'><a href='#'><i class='i' data-icon='&#xF063;'></i><span>Translate</span></a></li>";
-					}
-					if (!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") {
-						//echo "<li class='readspeaker js-readspeaker menu-item menu-item-type-custom menu-item-object-custom menu-item-readspeaker  hide--palm'><a href='#'><i class='i' data-icon='&#xF03B;'></i><span>L&auml;s upp</span></a></li>";
-					}
-					echo "</ul></nav></aside>";
-				}
-			?>
+				if ((($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0) || 
+					(!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") || 
+					(!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") ||
+					(!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") ||
+					(!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") ) : ?>
+					<aside id='topmenu' class='top-menu-wrapper'>
+						<?php /* pre html if any in options */ ?>
+						<?php if (!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") : ?>
+							<?php echo $hk_options["pre_topmenu_html"]; ?>
+						<?php endif; ?>
+						
+						<?php if ( (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) || 
+								 (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") || 
+								 (!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") ) : ?>
+							<nav class="float--right"><ul class='top-menu'>
+							<?php
+							wp_nav_menu( array(
+								'theme_location' => 'topmenu', 
+								'container' 	=> '',
+								'items_wrap'	=> '%3$s',
+								'depth' 		=> 2,
+								'echo' 			=> true
+							)); 
+						
+							/* add translatelink if specified */
+							if (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") : ?>
+								<li class='translate menu-item menu-item-type-custom menu-item-object-custom menu-item-translate  hide--palm'><a href='#'><i class='i' data-icon='&#xF063;'></i><span>Translate</span></a></li>
+							<?php endif;
+							
+							/* add readspeaker listen if specified */
+							if (!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") : 
+								//echo "<li class='readspeaker js-readspeaker menu-item menu-item-type-custom menu-item-object-custom menu-item-readspeaker  hide--palm'><a href='#'><i class='i' data-icon='&#xF03B;'></i><span>L&auml;s upp</span></a></li>";
+							endif; ?>
+							</ul></nav>
+						<?php endif; ?>
+							
+						<?php /* post html if any in options */ ?>
+						<?php if (!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") : ?>
+							<?php echo $hk_options["post_topmenu_html"]; ?>
+						<?php endif; ?>
+					</aside>
+				<?php endif; ?>
+
+			
+			
 			<?php if (($hk_options["logo2_image"] != "") || ($hk_options["logo3_image"] != "")) : ?>
 			<div id="logo2" class="logo2">
 				<?php if ($hk_options["logo2_image"] != "") : ?>
