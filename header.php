@@ -173,8 +173,9 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 						<?php if ( (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) || 
 								 (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") || 
 								 (!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") ) : ?>
-							<nav class="float--right"><ul class='top-menu'>
+							<nav><ul class='top-menu'>
 							<?php
+							if (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) :
 							wp_nav_menu( array(
 								'theme_location' => 'topmenu', 
 								'container' 	=> '',
@@ -182,7 +183,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 								'depth' 		=> 2,
 								'echo' 			=> true
 							)); 
-						
+							endif;
 							/* add translatelink if specified */
 							if (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") : ?>
 								<li class='translate menu-item menu-item-type-custom menu-item-object-custom menu-item-translate  hide--palm'><a href='#'><i class='i' data-icon='&#xF063;'></i><span>Translate</span></a></li>
