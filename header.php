@@ -113,7 +113,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 	 */
 	 
 	/* option to be able to add scipts or other from setting */ 
-	echo $hk_options('in_head_section');
+	echo $hk_options['in_head_section'];
 	
 	/* wp_head last in <head> */
 	wp_head();
