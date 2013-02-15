@@ -147,6 +147,7 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. L&auml;gger till lyssna i topmenu i sidhuvud och artikel.</label><br/><input type="text" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>			
 			<p><label for="hk_theme[translate_url]">&Ouml;vers&auml;tt url (ex. google-translate). L&auml;gger till lyssna i topmenu i sidhuvud.</label><br/><input type="text" name="hk_theme[translate_url]" value="<?php echo $options['translate_url']; ?>" /></p>
 			<p><label for="hk_theme[typekit_url]">Typekit js url - http://&lt;resten av url&gt; f&ouml;r att l&auml;gga till typsnitt.</label><br/><input type="text" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
+			<p><label for="hk_theme[in_head_section]">script or other in &lt;head&gt;-section</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[in_head_section]"><?php echo $options['in_head_section']; ?></textarea></p>
 
 			<h2>Statistik och cookies</h2>
 			<p><input type="checkbox" name="hk_theme[cookie_accept_enable]" value="1"<?php checked( 1 == $options['cookie_accept_enable'] ); ?> /> <label for="hk_theme[cookie_accept_enable]">St&auml;ll fr&aring;ga om cookies f&aring;r anv&auml;ndas.</label></p>

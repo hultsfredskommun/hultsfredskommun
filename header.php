@@ -111,6 +111,11 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 	 * generally use this hook to add elements to <head> such
 	 * as styles, scripts, and meta tags.
 	 */
+	 
+	/* option to be able to add scipts or other from setting */ 
+	echo $hk_options('in_head_section');
+	
+	/* wp_head last in <head> */
 	wp_head();
 ?>
 </head>
