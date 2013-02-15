@@ -1223,15 +1223,65 @@ function dyn_posts_load_posts() {
 	return false;
 };
 
+$.fn.sumWidth = function() {
+	totalWidth = 0;
+	$(this).each(function(index) {
+		totalWidth += $(this).width();
+	});
+	return totalWidth;
+}
+function responsive_menu() {
+	wrapperwidth = $(".menu-wrapper").width();
+	$(".main-menu").find(".menu-item").removeClass("hidden");
+	$(".main-menu").find(".more-menu").remove();
+	if ($(".main-menu").children(".menu-item").sumWidth() > wrapperwidth) {
+		$(".main-menu").append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='hidden more-menu-ul'></ul></li>");
+		while ($(".main-menu").children(".menu-item").not(".more-menu").sumWidth() + $(".main-menu").find(".more-menu-a").width() + 16 > wrapperwidth) {
+		log ($(".main-menu").children(".menu-item").not(".more-menu").sumWidth() + " " + $(".main-menu").find(".more-menu-a").width() + " " + wrapperwidth);
+	// while .main-menu.children(".menu-item").width > wrapperwidth
+		//if ($(".main-menu").find(".more-menu").length < 1) {
+	//   if not exist: create <li class="more-menu menu-item"><a class="js-more-menu-click" href="#"><i class="i" data-icon="&#xF09B;"></i>Mer</a><ul class='more-menu-ul'></ul></li>
+			
+		//}
+		// HOWTO MOVE?? 
+		
+			$(".main-menu").find(".more-menu-ul").append($(".main-menu").children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html());
+		//$(".main-menu").last(".menu-item").addClass("hidden");
+		//   move last child into ul
+		}
+	}
+	
+	// then same with .main-sub-menu
+	
+	
+	
+	// OLD
+	if ($(".main-menu")[0].scrollWidth > wrapperwidth || ($(".main-sub-menu")[0].clientWidth) > wrapperwidth) {
+		
+		if ($(".scrollmenuright").length < 1) {
+			$(".menu-wrapper").append("<div class='scrollmenuright'>right</div");
+			$(".scrollmenuright").click(function() {
+				$(".main-menu").css("margin-left", "-25px");
+			});
+		}
+	}
+	else {
+		if ($(".scrollmenuright").length > 1) {
+			$(".scrollmenuright").remove();
+		}
+	}
+	//log($(".menu-wrapper").width() + " " + $(".main-menu")[0].scrollWidth + " " + $(".main-sub-menu")[0].clientWidth);
+}
 
 //om webbläsaren ändrar storlek
 $(window).resize(function() {
-
+	
 	/* scale map */
 	$(".map_canvas").height($(".contact-popup").height());
 
 	
 	if( oldWidth != $(window).width() ) {
+		responsive_menu();
 
 		//Skriver ut skärmens storlek
 		/*log( $(window).height() + " $(window).width = " + $(window).width() + ", " +

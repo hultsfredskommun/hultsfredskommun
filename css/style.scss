@@ -85,6 +85,12 @@
 
 
 
+
+
+
+
+
+
 /* to un- .hide element */ 
 .unhide {
 	position: initial;
@@ -92,10 +98,10 @@
 }
 
 .hidden {
-	display: none;
+	display: none!important;
 }
 .unhidden {
-	display: block;
+	display: block!important;
 }
 
 @include media-query(palm) {

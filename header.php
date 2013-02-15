@@ -217,7 +217,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			<?php endif; ?>
 
 		</div>		
-		<nav id="menu" role="navigation">
+		<nav id="menu" class="menu-wrapper" role="navigation">
 			<?php 
 
 				// get nav_menu_parent id
@@ -229,6 +229,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 
 				$nav_menu_top_parent = hk_getNavMenuId($category_hierarchy[0], $menu_name);
 				$nav_menu_sub_parent = hk_getNavMenuId($category_hierarchy[1], $menu_name);
+				$top_parent = $category_hierarchy[0];
 				$top_parent = $category_hierarchy[0];
 				$sub_parent = $category_hierarchy[1];
 				$category = $category_hierarchy[2];
@@ -254,9 +255,6 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				}
 				echo "<ul class='main-menu'>";
 				wp_nav_menu( $args ); 
-				if ( is_active_sidebar( 'right-top-menu-item-sidebar' ) ) { 
-					dynamic_sidebar( 'right-top-menu-item-sidebar' ); 
-				}
 				echo "</ul>";
 				
 				echo "<div class='responsive-menu'>";
@@ -292,13 +290,13 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				
 				if ($nav_menu_sub_parent > 0) {
 					
-					
 					if ($default_settings['num_levels_in_menu'] > 1) {
+						echo "<ul class='main-sub-menu'>";
 						$submenu = new submenu_walker_nav_menu();
 						$args = array(
 							'theme_location'	=> $menu_name, 
 							'container' 		=> '',							
-							'items_wrap' 		=> '<ul class="main-sub-menu">%3$s<li class="clear"></li></ul>',
+							'items_wrap' 		=> '%3$s',
 							'before' 			=> '',
 							'after'				=> '',
 							'depth' 			=> $default_settings['num_levels_in_menu'],
@@ -310,6 +308,10 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 							$args["current_category"] = $sub_parent;
 						}
 						wp_nav_menu( $args ); 
+						if ( is_active_sidebar( 'right-top-menu-item-sidebar' ) ) { 
+							dynamic_sidebar( 'right-top-menu-item-sidebar' ); 
+						}
+						echo "</ul>";
 					}
 				}
 			?>

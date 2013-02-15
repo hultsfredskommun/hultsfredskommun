@@ -4207,7 +4207,7 @@ html.flexbox {
  * A lot of these classes carry `!important` as you will always want them to win
  * out over other selectors.
  */
-.float--right, .firstpage-sidebar, .responsive-navigation, .footer-image-wrapper .logo-footer-image img {
+.float--right, .firstpage-sidebar, .responsive-navigation, .right-nav-menu-item, .footer-image-wrapper .logo-footer-image img {
   float: right!important;
 }
 
@@ -4582,14 +4582,14 @@ html {
 
 .content--center, .branding,
 .main, .important-widget, .searchnavigation .form .searchresult {
-  margin: 0 12px;
+  margin: 0 6px;
 }
 
 @media only screen and (min-width: 1200px) {
   .content--center, .branding,
   .main, .important-widget, .searchnavigation .form .searchresult {
     margin: 0 auto;
-    max-width: 1176px;
+    max-width: 1188px;
   }
 }
 .wait {
@@ -4770,6 +4770,10 @@ html {
 /*
  * top navigation 
  */
+.menu-wrapper {
+  overflow: hidden;
+}
+
 .main-menu,
 .main-sub-menu {
   font-size: 90%;
@@ -4781,6 +4785,11 @@ html {
 
 .main-menu {
   border-bottom: 1px solid #e5e6e7;
+}
+
+.more-menu-a i {
+  font-size: 85%;
+  margin-right: 6px;
 }
 
 /*@media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
@@ -5034,11 +5043,11 @@ html {
 }
 
 .hidden, .breadcrumb, .viewmode-only-titles .summary .article-border-wrapper, .summary .entry-meta, .addthis_toolbox a, .summary .full, .ui-tabs .ui-tabs-hide {
-  display: none;
+  display: none!important;
 }
 
 .unhidden {
-  display: block;
+  display: block!important;
 }
 
 @media only screen and (max-width: 480px) {

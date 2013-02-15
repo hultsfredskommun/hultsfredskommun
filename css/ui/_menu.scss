@@ -46,6 +46,9 @@
 	@extend .hide--desk;
 }
 
+.menu-wrapper {
+	overflow: hidden;
+}
 .main-menu,
 .main-sub-menu {
 	font-size: 90%;
@@ -60,13 +63,19 @@
 	@extend .flush--bottom;
 	border-bottom: 1px solid $border-color;
 }
-
+.right-nav-menu-item {
+	@extend .float--right;
+}
 .tags-wrapper ul,
 .category-navigation ul {
 	@extend .nav;
 	@extend .nav--stacked;
 }
 
+.more-menu-a i {
+	font-size: 85%;
+	margin-right: $half-spacing-unit/2;
+}
 /*@media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
 .main-sub-menu > li > a {
 	white-space: normal!important;
