@@ -1237,26 +1237,31 @@ function responsive_menu() {
 	$(".main-menu").find(".menu-item").removeClass("hidden");
 	$(".main-menu").find(".more-menu").remove();
 	if ($(".main-menu").children(".menu-item").sumWidth() > wrapperwidth) {
-		$(".main-menu").append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='hidden more-menu-ul'></ul></li>");
+		$(".main-menu").append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
 		while ($(".main-menu").children(".menu-item").not(".more-menu").sumWidth() + $(".main-menu").find(".more-menu-a").width() + 16 > wrapperwidth) {
 			//log ($(".main-menu").children(".menu-item").not(".more-menu").sumWidth() + " " + $(".main-menu").find(".more-menu-a").width() + " " + wrapperwidth);
-			$(".main-menu").find(".more-menu-ul").append($(".main-menu").children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html());
+			$(".main-menu").find(".more-menu-ul").append("<li>"+$(".main-menu").children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html()+"</li>");
 		}
 	}
+	
 
 	// main-sub-menu
 	$(".main-sub-menu").find(".menu-item").removeClass("hidden");
 	$(".main-sub-menu").find(".more-menu").remove();
 	if ($(".main-sub-menu").children(".menu-item").sumWidth() > wrapperwidth) {
-		$(".main-sub-menu").append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='hidden more-menu-ul'></ul></li>");
+		$(".main-sub-menu").append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
 		while ($(".main-sub-menu").children(".menu-item").not(".more-menu").sumWidth() + $(".main-sub-menu").find(".more-menu-a").width() + 16 > wrapperwidth) {
-			//log ($(".main-menu").children(".menu-item").not(".more-menu").sumWidth() + " " + $(".main-menu").find(".more-menu-a").width() + " " + wrapperwidth);
-			$(".main-sub-menu").find(".more-menu-ul").append($(".main-sub-menu").children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html());
+			//log ($(".main-sub-menu").children(".menu-item").not(".more-menu").sumWidth() + " " + $(".main-menu").find(".more-menu-a").width() + " " + wrapperwidth);
+			$(".main-sub-menu").find(".more-menu-ul").append("<li>"+$(".main-sub-menu").children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html()+"</li>");
 		}
 	}
 
+	$(".more-menu-ul").hide();
 	
-	// then same with .main-sub-menu
+	$(".js-more-menu-click").unbind("click").click(function() {
+		//log($(this).parents("ul").find("more-menu-ul"));
+		$(this).parents("ul").find(".more-menu-ul").toggle();
+	});
 	
 	
 	

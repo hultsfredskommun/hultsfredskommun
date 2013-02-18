@@ -92,3 +92,9 @@ $face:	        			"myriad-pro", Arial, sans-serif!default;
 	background-image: -webkit-linear-gradient(left, #fff 66.6%, $gray-light-color 66.6%, $gray-light-color 100%);
 	background-image: linear-gradient(left, #fff 66.6%, $gray-light-color 66.6%, $gray-light-color 100%);
 }
+.one-half-gray-background {
+	background-image: -moz-linear-gradient(left, #fff 50%, $gray-light-color 50%, $gray-light-color 100%);
+	background-image: -o-linear-gradient(left, #fff 50%, $gray-light-color 50%, $gray-light-color 100%);
+	background-image: -webkit-linear-gradient(left, #fff 50%, $gray-light-color 50%, $gray-light-color 100%);
+	background-image: linear-gradient(left, #fff 50%, $gray-light-color 50%, $gray-light-color 100%);
+}

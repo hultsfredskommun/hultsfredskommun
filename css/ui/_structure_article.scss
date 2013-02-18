@@ -35,10 +35,12 @@ article.post {
 }
 
 /* article style */
+.archive .article-wrapper {
+	@extend .one-third-gray-background;
+}
 .article-wrapper {
 	@extend .float--left;
 	@extend .one-whole;
-	@extend .one-third-gray-background;
 	overflow: hidden;
 
 	a {
@@ -98,7 +100,16 @@ article.post {
 	}
 
 }
-
+@include media-query(palm) {
+.article-wrapper {
+	background: transparent;
+}
+}
+@include media-query(lap) {
+.article-wrapper {
+	background: transparent;
+}
+}
 /* article footer*/
 .summary .entry-meta {
 	@extend .hidden;

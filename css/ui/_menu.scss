@@ -49,6 +49,7 @@
 .menu-wrapper {
 	overflow: hidden;
 }
+.more-menu-ul,
 .main-menu,
 .main-sub-menu {
 	font-size: 90%;
@@ -58,6 +59,9 @@
 	@extend .nav;
 	@extend .nav--block;
 	//@extend .hide--palm;
+}
+.more-menu-ul {
+	@extend .nav--stacked;
 }
 .main-menu {
 	@extend .flush--bottom;
