@@ -10,7 +10,7 @@
 	.ui-state-active,
 	.ui-state-hover {
 		@extend .border-radius--top;
-		@extend .gray-image-background;
+		@extend .gray-light-background;
 		border-bottom: $border-width solid $default-color;
 	}
 	.ui-state-default {

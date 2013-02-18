@@ -65,7 +65,7 @@
 				@extend .one-whole;
 				@extend .noborder;
 				@extend .border-radius--left;
-				@extend .gray-image-background;
+				@extend .gray-light-background;
 			}
 			.clearbutton {
 				@extend .position-absolute--top-right;
@@ -117,14 +117,14 @@
 				width: $base-spacing-unit;
 			}
 			&:hover {
-				@extend .gray-image-background;
+				@extend .gray-light-background;
 			}
 			.sub-menu {
 				@extend .dropdown__content;
 				@extend .nav;
 				@extend .nav--stacked;
 				@extend .nav--block;
-				@extend .gray-image-background;
+				@extend .gray-light-background;
 				@extend .nav--stacked;
 				@extend .text--left;
 				border-radius: $border-radius 0 $border-radius $border-radius;

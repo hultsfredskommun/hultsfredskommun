@@ -38,6 +38,7 @@ article.post {
 .article-wrapper {
 	@extend .float--left;
 	@extend .one-whole;
+	@extend .one-third-gray-background;
 	overflow: hidden;
 
 	a {
@@ -59,7 +60,6 @@ article.post {
 		@extend .palm-one-whole;
 	}
 	.side-content {
-		@extend .gray-image-background;
 		@extend .float--left;
 		@extend .desk-one-third;
 		@extend .lap-one-whole;

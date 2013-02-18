@@ -4463,17 +4463,23 @@ a:focus {
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .ui-tabs-nav .ui-state-active,
-.ui-tabs-nav .ui-state-hover, .footer-wrapper.footer-widget-wrapper, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+.gray-light-background, .gray-image-background, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
-.main-sub-menu .current-menu-item a {
+.main-sub-menu .current-menu-item a, .ui-tabs-nav .ui-state-active,
+.ui-tabs-nav .ui-state-hover, .footer-wrapper.footer-widget-wrapper {
   background-color: #e5e6e7;
 }
 
-.gray-image-background, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .ui-tabs-nav .ui-state-active,
-.ui-tabs-nav .ui-state-hover, .footer-wrapper.footer-widget-wrapper {
+.gray-image-background {
   background-repeat: repeat;
   background-image: url(images/greyTile24bit.png);
+}
+
+.one-third-gray-background, .article-wrapper {
+  background-image: -moz-linear-gradient(left, white 66.6%, #e5e6e7 66.6%, #e5e6e7 100%);
+  background-image: -o-linear-gradient(left, white 66.6%, #e5e6e7 66.6%, #e5e6e7 100%);
+  background-image: -webkit-linear-gradient(left, white 66.6%, #e5e6e7 66.6%, #e5e6e7 100%);
+  background-image: linear-gradient(left, white 66.6%, #e5e6e7 66.6%, #e5e6e7 100%);
 }
 
 .border, .page-header {
