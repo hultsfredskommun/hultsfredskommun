@@ -130,10 +130,19 @@ function hk_widgets_init() {
 	) );
 	
 	register_sidebar( array(
-		'name' => 'H&ouml;gerst&auml;ld i toppmeny',
-		'id' => 'right-top-menu-item-sidebar',
-		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i toppmenyn',
-		'before_widget' => '<li id="%1$s" class="right-nav-menu-item %2$s">',
+		'name' => 'H&ouml;gerst&auml;ld i huvudmeny',
+		'id' => 'right-main-menu-item-sidebar',
+		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i huvudmenyn',
+		'before_widget' => '<li id="%1$s" class="right-nav-menu-item menu-item %2$s">',
+		'after_widget' => "</li>",
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
+	) );
+	register_sidebar( array(
+		'name' => 'H&ouml;gerst&auml;ld i huvudmenyns andra niv&aring;',
+		'id' => 'right-main-sub-menu-item-sidebar',
+		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i huvudmenyns andra niv&aring;',
+		'before_widget' => '<li id="%1$s" class="right-nav-menu-item menu-item %2$s">',
 		'after_widget' => "</li>",
 		'before_title' => '<h1 class="widget-title">',
 		'after_title' => '</h1>',

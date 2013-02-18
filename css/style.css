@@ -4372,7 +4372,7 @@ html.flexbox {
 }
 
 .default-text, html, .searchnavigation .form .submit, .main-menu a, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .category-navigation .parent a, .ui-tabs-nav a {
-  color: #3f3f3f;
+  color: #3e3e3f;
 }
 
 .main-text, a,
@@ -4386,7 +4386,7 @@ a:focus {
 }
 
 .complement-light-text {
-  color: #967230;
+  color: #8e7042;
 }
 
 .gray-text {
@@ -4444,7 +4444,7 @@ a:focus {
 }
 
 .default-background {
-  background-color: #3f3f3f;
+  background-color: #3e3e3f;
 }
 
 .white-background, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a {
@@ -4835,7 +4835,7 @@ html {
 ----------------------------------------------- */
 .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover {
-  border-bottom: 2px solid #3f3f3f;
+  border-bottom: 2px solid #3e3e3f;
 }
 
 .ui-tabs ul.post_tabs_title {

@@ -260,6 +260,10 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				}
 				echo "<ul class='main-menu'>";
 				wp_nav_menu( $args ); 
+				if ( is_active_sidebar( 'right-main-menu-item-sidebar' ) ) { 
+					dynamic_sidebar( 'right-main-menu-item-sidebar' ); 
+				}
+
 				echo "</ul>";
 				
 				echo "<div class='responsive-menu'>";
@@ -313,8 +317,8 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 							$args["current_category"] = $sub_parent;
 						}
 						wp_nav_menu( $args ); 
-						if ( is_active_sidebar( 'right-top-menu-item-sidebar' ) ) { 
-							dynamic_sidebar( 'right-top-menu-item-sidebar' ); 
+						if ( is_active_sidebar( 'right-main-sub-menu-item-sidebar' ) ) { 
+							dynamic_sidebar( 'right-main-sub-menu-item-sidebar' ); 
 						}
 						echo "</ul>";
 					}
