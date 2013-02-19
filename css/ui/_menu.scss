@@ -75,7 +75,9 @@
 }
 .right-nav-menu-item {
 	@extend .float--right;
+	padding: $half-spacing-unit/2 $half-spacing-unit!important;
 }
+
 .tags-wrapper ul,
 .category-navigation ul {
 	@extend .nav;
@@ -97,6 +99,9 @@
 }
 }*/
 @include media-query(desk-wide) {
+	.right-nav-menu-item {
+		padding: $half-spacing-unit $base-spacing-unit!important;
+	}
 	.main-menu,
 	.main-sub-menu {
 		font-size: 100%;

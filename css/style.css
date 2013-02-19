@@ -4836,6 +4836,10 @@ html {
   z-index: 5000;
 }
 
+.right-nav-menu-item {
+  padding: 6px 12px !important;
+}
+
 .more-menu-a i {
   font-size: 85%;
   margin-right: 6px;
@@ -4852,6 +4856,10 @@ html {
 }
 }*/
 @media only screen and (min-width: 1200px) {
+  .right-nav-menu-item {
+    padding: 12px 24px !important;
+  }
+
   .main-menu,
   .main-sub-menu {
     font-size: 100%;
