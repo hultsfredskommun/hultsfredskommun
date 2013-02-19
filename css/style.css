@@ -4989,7 +4989,7 @@ html {
   margin-right: 1.5rem;
 }
 
-.margin--bottom, .widget, .slideshow, .page-header, .top-wrapper {
+.margin--bottom, .widget, .slideshow, .page-header, .top-wrapper, .menu-wrapper {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
 }

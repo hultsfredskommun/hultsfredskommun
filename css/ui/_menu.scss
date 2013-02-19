@@ -47,6 +47,7 @@
 }
 
 .menu-wrapper {
+	@extend .margin--bottom;
 	_verflow: hidden;
 }
 .more-menu-ul,
