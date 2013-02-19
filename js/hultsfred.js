@@ -197,7 +197,7 @@ function pushHistory(title, url){
  */
 if (typeof $.fn.googlemap != 'function') {
 	$.fn.googlemap = function() {
-		if (google !== undefined) {
+		if (typeof google != 'undefined') {
 			$(this).each(function() {
 				var coordinates = $(this).find(".coordinates").html();
 				var address = $(this).find(".address").html();
