@@ -13,6 +13,12 @@ a:hover {
 }
 
 
+ul,ol,dd{
+    margin-left:$base-spacing-unit;
+    margin-left:($base-spacing-unit / $base-font-size)*1rem;
+}
+
+
 html {
 	font-family: $face;
 }
@@ -62,13 +68,17 @@ img {
 }
 
 .nav--block-half-margin li a {
-	padding-top: $half-spacing-unit/2;
+	padding-top:$half-spacing-unit/2;
+	padding-top:($half-spacing-unit / 2 / $base-font-size)*1rem;
 	padding-bottom: $half-spacing-unit/2;
+	padding-bottom:($half-spacing-unit / 2 / $base-font-size)*1rem;
 }
 
 .nav--block-double-margin li a {
-	padding-left: $base-spacing-unit;
+	padding-left:$base-spacing-unit;
+	padding-left:($base-spacing-unit / $base-font-size)*1rem;
 	padding-right: $base-spacing-unit;
+	padding-right:($base-spacing-unit / $base-font-size)*1rem;
 }
 
 .icon-left {

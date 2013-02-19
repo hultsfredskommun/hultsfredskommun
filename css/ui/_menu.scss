@@ -47,7 +47,7 @@
 }
 
 .menu-wrapper {
-	overflow: hidden;
+	_verflow: hidden;
 }
 .more-menu-ul,
 .main-menu,
@@ -60,12 +60,17 @@
 	@extend .nav--block;
 	//@extend .hide--palm;
 }
-.more-menu-ul {
-	@extend .nav--stacked;
-}
 .main-menu {
 	@extend .flush--bottom;
 	border-bottom: 1px solid $border-color;
+}
+.more-menu {
+	@extend .position-relative;
+	.more-menu-ul {
+		@extend .nav--stacked;
+		@extend .position-absolute;
+		z-index: 5000;
+	}
 }
 .right-nav-menu-item {
 	@extend .float--right;

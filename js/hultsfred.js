@@ -566,7 +566,8 @@ $(document).ready(function(){
 		window.close();
 	}
 
-	
+	/* add responsive menu */
+	responsive_menu()
 	
 	/**
 	 * Expand article if only one, not on home page
@@ -1233,28 +1234,27 @@ $.fn.sumWidth = function() {
 function responsive_menu() {
 	wrapperwidth = $(".menu-wrapper").width();
 
-	// main-menu
-	$(".main-menu").find(".menu-item").removeClass("hidden");
-	$(".main-menu").find(".more-menu").remove();
-	if ($(".main-menu").children(".menu-item").sumWidth() > wrapperwidth) {
-		$(".main-menu").append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
-		while ($(".main-menu").children(".menu-item").not(".more-menu").sumWidth() + $(".main-menu").find(".more-menu-a").width() + 16 > wrapperwidth) {
-			//log ($(".main-menu").children(".menu-item").not(".more-menu").sumWidth() + " " + $(".main-menu").find(".more-menu-a").width() + " " + wrapperwidth);
-			$(".main-menu").find(".more-menu-ul").append("<li>"+$(".main-menu").children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html()+"</li>");
+	function do_responsive_menu(classname) {
+		// main-menu
+		$(classname).find(".menu-item").removeClass("hidden");
+		$(classname).find(".more-menu").remove();
+		if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
+			$(classname).find(".right-nav-menu-item").addClass("hidden");
+		}		
+		if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
+			$(classname).append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
+			while ($(classname).children(".menu-item").not(".more-menu").sumWidth() + $(classname).find(".more-menu-a").width() + 16 > wrapperwidth) {
+				//log ($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu-a").width() + " " + wrapperwidth);
+				$(classname).find(".more-menu-ul").append("<li>"+$(classname).children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html()+"</li>");
+			}
 		}
 	}
+
+	do_responsive_menu(".main-menu");
+	do_responsive_menu(".main-sub-menu");
+	
 	
 
-	// main-sub-menu
-	$(".main-sub-menu").find(".menu-item").removeClass("hidden");
-	$(".main-sub-menu").find(".more-menu").remove();
-	if ($(".main-sub-menu").children(".menu-item").sumWidth() > wrapperwidth) {
-		$(".main-sub-menu").append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
-		while ($(".main-sub-menu").children(".menu-item").not(".more-menu").sumWidth() + $(".main-sub-menu").find(".more-menu-a").width() + 16 > wrapperwidth) {
-			//log ($(".main-sub-menu").children(".menu-item").not(".more-menu").sumWidth() + " " + $(".main-menu").find(".more-menu-a").width() + " " + wrapperwidth);
-			$(".main-sub-menu").find(".more-menu-ul").append("<li>"+$(".main-sub-menu").children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html()+"</li>");
-		}
-	}
 
 	$(".more-menu-ul").hide();
 	
@@ -1262,24 +1262,7 @@ function responsive_menu() {
 		//log($(this).parents("ul").find("more-menu-ul"));
 		$(this).parents("ul").find(".more-menu-ul").toggle();
 	});
-	
-	
-	
-	// OLD
-	if ($(".main-menu")[0].scrollWidth > wrapperwidth || ($(".main-sub-menu")[0].clientWidth) > wrapperwidth) {
-		
-		if ($(".scrollmenuright").length < 1) {
-			$(".menu-wrapper").append("<div class='scrollmenuright'>right</div");
-			$(".scrollmenuright").click(function() {
-				$(".main-menu").css("margin-left", "-25px");
-			});
-		}
-	}
-	else {
-		if ($(".scrollmenuright").length > 1) {
-			$(".scrollmenuright").remove();
-		}
-	}
+
 	//log($(".menu-wrapper").width() + " " + $(".main-menu")[0].scrollWidth + " " + $(".main-sub-menu")[0].clientWidth);
 }
 

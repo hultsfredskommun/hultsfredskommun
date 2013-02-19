@@ -57,15 +57,16 @@
 	}
 	.form {
 		.input-wrapper {
-			@extend .position-relative--top-left;
+			@extend .position-relative;
 			@extend .nine-tenths;
 			@extend .float--left;
+			@extend .gray-light-background;
+			@extend .border-radius--left;
 			.field {
+				@extend .transparent-background;
 				@extend .padding--left;
 				@extend .one-whole;
 				@extend .noborder;
-				@extend .border-radius--left;
-				@extend .gray-light-background;
 			}
 			.clearbutton {
 				@extend .position-absolute--top-right;
@@ -77,7 +78,6 @@
 			@extend .i;
 			@extend .gray-background;
 			@extend .default-text;
-			@extend .white-text-shadow;
 			@extend .border-radius--right;
 			@extend .noborder;
 			@extend .cf;
@@ -85,7 +85,7 @@
 		
 		.field,
 		.submit {
-			height: $base-spacing-unit;
+			height: $base-spacing-unit+$half-spacing-unit/2;
 		}
 		.searchresult {
 			@extend .position-absolute;

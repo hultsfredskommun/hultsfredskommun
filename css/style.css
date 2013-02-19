@@ -1998,13 +1998,13 @@ html.flexbox {
  */
 .nav--stacked > li, .page-header .category-tools .menu-item .sub-menu > li, .contacts > li,
 .related-wrapper > li,
-.tools > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu-ul > li, .tags-wrapper ul > li,
+.tools > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu .more-menu-ul > li, .tags-wrapper ul > li,
 .category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent .children > li, .ui-widget-content ul > li, .footer-widget-wrapper ul > li {
   display: list-item;
 }
 .nav--stacked > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .contacts > li > a,
 .related-wrapper > li > a,
-.tools > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .more-menu-ul > li > a, .tags-wrapper ul > li > a,
+.tools > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .more-menu .more-menu-ul > li > a, .tags-wrapper ul > li > a,
 .category-navigation ul > li > a, .category-navigation .parent > li > a, .category-navigation .parent .children > li > a, .ui-widget-content ul > li > a, .footer-widget-wrapper ul > li > a {
   display: block;
 }
@@ -4433,7 +4433,7 @@ a:focus {
   text-shadow: -1px -1px 0px #666666;
 }
 
-.white-text-shadow, .searchnavigation .form .submit {
+.white-text-shadow {
   text-shadow: 1px 1px 0px white;
 }
 
@@ -4445,7 +4445,7 @@ a:focus {
   background-color: #644c20;
 }
 
-.transparent-background {
+.transparent-background, .searchnavigation .form .input-wrapper .field {
   background-color: transparent;
 }
 
@@ -4473,7 +4473,7 @@ a:focus {
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+.gray-light-background, .gray-image-background, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .searchnavigation .form .input-wrapper, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover, .footer-wrapper.footer-widget-wrapper {
@@ -4485,7 +4485,7 @@ a:focus {
   background-image: url(images/greyTile24bit.png);
 }
 
-.one-third-gray-background, .archive .article-wrapper {
+.one-third-gray-background, .primary .article-wrapper {
   background-image: -moz-linear-gradient(left, white 66.6%, #e5e6e7 66.6%, #e5e6e7 100%);
   background-image: -o-linear-gradient(left, white 66.6%, #e5e6e7 66.6%, #e5e6e7 100%);
   background-image: -webkit-linear-gradient(left, white 66.6%, #e5e6e7 66.6%, #e5e6e7 100%);
@@ -4557,7 +4557,7 @@ a:focus {
   border-bottom-right-radius: 3px;
 }
 
-.border-radius--left, .searchnavigation .form .input-wrapper .field {
+.border-radius--left, .searchnavigation .form .input-wrapper {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -4599,6 +4599,11 @@ a:hover {
   text-decoration: none;
 }
 
+ul, ol, dd {
+  margin-left: 24px;
+  margin-left: 1.5rem;
+}
+
 html {
   font-family: "myriad-pro", Arial, sans-serif;
 }
@@ -4635,12 +4640,16 @@ html {
 
 .nav--block-half-margin li a, .category-navigation .parent li a, .category-navigation .parent .children li a, .ui-widget-content ul li a, .footer-widget-wrapper ul li a {
   padding-top: 6px;
+  padding-top: 0.375rem;
   padding-bottom: 6px;
+  padding-bottom: 0.375rem;
 }
 
 .nav--block-double-margin li a, .main-menu li a, .main-sub-menu li a, .category-navigation .parent li a, .category-navigation .parent .children li a, .ui-widget-content ul li a {
   padding-left: 24px;
+  padding-left: 1.5rem;
   padding-right: 24px;
+  padding-right: 1.5rem;
 }
 
 .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit {
@@ -4782,7 +4791,7 @@ html {
 }
 .searchnavigation .form .field,
 .searchnavigation .form .submit {
-  height: 24px;
+  height: 30px;
 }
 
 /* top right menu */
@@ -4804,7 +4813,7 @@ html {
  * top navigation 
  */
 .menu-wrapper {
-  overflow: hidden;
+  _verflow: hidden;
 }
 
 .more-menu-ul,
@@ -4820,6 +4829,10 @@ html {
 
 .main-menu {
   border-bottom: 1px solid #e5e6e7;
+}
+
+.more-menu .more-menu-ul {
+  z-index: 5000;
 }
 
 .more-menu-a i {
@@ -4909,11 +4922,11 @@ html {
   left: 0;
 }
 
-.position-relative, .slideshow .slide .caption-area .caption, .position-relative--top-left, .searchnavigation .form .input-wrapper, .position-relative--top-right, .position-relative--bottom-right, .position-relative--bottom-left, .contact-popup.box .entry-wrapper {
+.position-relative, .slideshow .slide .caption-area .caption, .searchnavigation .form .input-wrapper, .more-menu, .position-relative--top-left, .position-relative--top-right, .position-relative--bottom-right, .position-relative--bottom-left, .contact-popup.box .entry-wrapper {
   position: relative;
 }
 
-.position-relative--top-left, .searchnavigation .form .input-wrapper {
+.position-relative--top-left {
   top: 0;
   left: 0;
 }
@@ -4933,7 +4946,7 @@ html {
   left: 0;
 }
 
-.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .form .searchresult, .position-absolute--top-left, .pager, .position-absolute--top-right, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .slideshow .slide .caption-area {
+.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .form .searchresult, .more-menu .more-menu-ul, .position-absolute--top-left, .pager, .position-absolute--top-right, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .slideshow .slide .caption-area {
   position: absolute;
 }
 
@@ -4959,42 +4972,52 @@ html {
 
 .margin--top, .article-wrapper .content-wrapper {
   margin-top: 24px;
+  margin-top: 1.5rem;
 }
 
 .margin--right {
   margin-right: 24px;
+  margin-right: 1.5rem;
 }
 
 .margin--bottom, .widget, .slideshow, .page-header, .top-wrapper {
   margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .margin--left, .icon-right, .category-navigation .parent .children, .footer-widget-wrapper .content {
   margin-left: 24px;
+  margin-left: 1.5rem;
 }
 
 .half-margin--top, .logo, .searchnavigation, .logo2 {
   margin-top: 12px;
+  margin-top: 0.75rem;
 }
 
 .half-margin--left, .addthis_toolbox a, .footer-widget-wrapper ul {
   margin-left: 12px;
+  margin-left: 0.75rem;
 }
 
 .padding--top, .footer-widget-wrapper {
   padding-top: 24px;
+  padding-top: 1.5rem;
 }
 
 .padding--right, .icon-right, .content {
   padding-right: 24px;
+  padding-right: 1.5rem;
 }
 
 .padding--bottom, .content, .footer-widget-wrapper {
   padding-bottom: 24px;
+  padding-bottom: 1.5rem;
 }
 
 .padding--left, .searchnavigation .form .input-wrapper .field {
   padding-left: 24px;
+  padding-left: 1.5rem;
 }
 
 .dropdown, .page-header .category-tools .menu-item, .top-menu-wrapper .top-menu .menu-item {
