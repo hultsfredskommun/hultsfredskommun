@@ -324,8 +324,6 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 					}
 				}
 			?>
-			
-			<div class="clear"></div>
 		</nav><!-- #access -->
 	</header><!-- #branding -->
 

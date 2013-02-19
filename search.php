@@ -26,7 +26,6 @@ get_header(); ?>
 						<a id="viewmode_summary" title="Listvisning" href="#"></a>
 						<a id="viewmode_titles" title="Rubrikvisning" href="#"></a>
 					</div>
-					<div class="clear"></div>
 				</header>
 
 				<?php /* hook to be able to add other search result */ 

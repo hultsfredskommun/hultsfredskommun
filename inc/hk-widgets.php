@@ -100,7 +100,6 @@ class HK_quickmenu extends WP_Widget {
 			<?php
 			displayTagFilter("dropdown", false);			
 			?>				
-			<div class="clear"></div>
 		</div>
 		<?php endif; ?>
 		
@@ -128,7 +127,6 @@ class HK_quickmenu extends WP_Widget {
 				wp_reset_query(); 				
 			}
 			?>				
-			<div class="clear"></div>
 		</div>
 
 		<?php endif; ?>
@@ -157,7 +155,6 @@ class HK_quickmenu extends WP_Widget {
 				wp_reset_query();
 			} 				
 			?>				
-			<div class="clear"></div>
 		</div>
 		
 	</div>
@@ -606,7 +603,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_textwidge
 ?>
 	<div class="content-area">
 		H&auml;r ska det visas evenemang.
-		<div class="clear"></div>
 	</div>
 
 <?php
