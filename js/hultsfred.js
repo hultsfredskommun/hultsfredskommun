@@ -1243,7 +1243,9 @@ function responsive_menu() {
 		}		
 		if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
 			$(classname).append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
-			while ($(classname).children(".menu-item").not(".more-menu").sumWidth() + $(classname).find(".more-menu-a").width() + 16 > wrapperwidth) {
+			count=0; // to avoid infinit loop
+			while (($(classname).children(".menu-item").not(".more-menu").sumWidth() + $(classname).find(".more-menu-a").width() + 16 > wrapperwidth) && count < 20) {
+				count++;
 				//log ($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu-a").width() + " " + wrapperwidth);
 				$(classname).find(".more-menu-ul").append("<li>"+$(classname).children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html()+"</li>");
 			}

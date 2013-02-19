@@ -69,6 +69,7 @@
 	.more-menu-ul {
 		@extend .nav--stacked;
 		@extend .position-absolute;
+		right: 0;
 		z-index: 5000;
 	}
 }

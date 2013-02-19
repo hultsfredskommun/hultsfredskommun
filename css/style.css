@@ -4832,6 +4832,7 @@ html {
 }
 
 .more-menu .more-menu-ul {
+  right: 0;
   z-index: 5000;
 }
 
@@ -5015,7 +5016,7 @@ html {
   padding-bottom: 1.5rem;
 }
 
-.padding--left, .widget h1, .searchnavigation .form .input-wrapper .field {
+.padding--left, .searchnavigation .form .input-wrapper .field {
   padding-left: 24px;
   padding-left: 1.5rem;
 }
