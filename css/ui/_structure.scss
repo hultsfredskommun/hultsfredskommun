@@ -56,6 +56,7 @@ img {
 	h1 {
 		padding-top: 2px;
 		padding-bottom: 2px;
+		@extend .padding--left;
 		@extend .one-whole;
 		@extend .epsilon;
 		@extend .border--bottom;

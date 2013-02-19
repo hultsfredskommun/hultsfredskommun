@@ -5015,7 +5015,7 @@ html {
   padding-bottom: 1.5rem;
 }
 
-.padding--left, .searchnavigation .form .input-wrapper .field {
+.padding--left, .widget h1, .searchnavigation .form .input-wrapper .field {
   padding-left: 24px;
   padding-left: 1.5rem;
 }
