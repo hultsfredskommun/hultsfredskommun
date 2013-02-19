@@ -586,8 +586,9 @@ $(document).ready(function(){
 	/**
 	 * tabs action
 	 */
+	if (typeof $.fn.tabs != 'function') {
 	$(".home #content,.home #quickmenus").tabs();
-
+	}
 
 	/**
 	 * click-actions on single/page
