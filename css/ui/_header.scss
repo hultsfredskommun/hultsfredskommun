@@ -56,6 +56,7 @@
 		clip: rect(1px, 1px, 1px, 1px);
 	}
 	.form {
+		@extend .cf;
 		.input-wrapper {
 			@extend .position-relative;
 			@extend .nine-tenths;
@@ -87,13 +88,33 @@
 		.submit {
 			height: $base-spacing-unit+$half-spacing-unit/2;
 		}
+	}
+	.searchresult-wrapper {
+		@extend .position-relative;
+		
+		
 		.searchresult {
+			@include arrow(top, left, $gray-light-color, transparent);
+			@extend .margin--top;
 			@extend .position-absolute;
-			@extend .content--center;
+			z-index: 6000;
+			@extend .border-radius;
+			@extend .gray-light-background;
 			
+			ul {
+				@extend .nav;
+				@extend .nav--block;
+				@extend .nav--block-half-margin;
+				@extend .nav--stacked;
+				@extend .islet;
+				@extend .float--left;
+				@extend .one-half;
+				a, span {
+					white-space: normal!important;
+				}
+			}
 		}
 	}
-	
 
 }
 

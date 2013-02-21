@@ -1,25 +1,106 @@
 /* text colors */
 .category-navigation {
+	.heading {
+		@extend .font-weight-bold;
+		@extend .force-noborder;
+	}
+	a {
+		@extend .default-text;
+	}
 	.parent {
 		// add icon..
+		@extend .half-margin--left;
 		@extend .nav;
 		@extend .nav--block;
 		@extend .nav--block-break;
 		@extend .nav--block-half-margin;
-		@extend .nav--block-double-margin;
+		@extend .nav--stacked;
+
+		li {
+			&.current-cat > a {
+				@extend .gray-light-background;
+			}
+			&.current-cat,
+			&:hover {
+				@extend .border-line-main--left;
+				& > a > i,
+				& > a {
+					@extend .hover-text;
+				}
+			}
+			&.cat-has-children {
+				@extend .noborder;
+			}
+			&.current-cat,
+			&.current-cat-parent {
+				.children {
+					@extend .unhidden;
+				}
+			}
+			@extend .default-text;
+			@extend .zeta;
+			@extend .border-line--left;
+			.icon-left {
+				i {
+					font-size: 90%;
+				}
+				padding-left: 0!important;
+				padding-right: $half-spacing-unit!important;
+				width: $half-spacing-unit!important;
+				margin-left: -$half-spacing-unit/2!important;
+			}	
+			.children {
+				@extend .hidden;
+				@extend .half-padding--left;
+				@extend .nav;
+				@extend .nav--block;
+				@extend .nav--block-break;
+				@extend .nav--block-half-margin;
+				@extend .nav--stacked;
+			}
+		}
+	}
+
+
+	.more-navigation {
+		@extend .half-margin--left;
+		@extend .nav;
+		@extend .nav--block;
+		@extend .nav--block-break;
+		@extend .nav--block-half-margin;
 		@extend .nav--stacked;
 		a {
 			@extend .default-text;
 			@extend .zeta;
 		}
-		.children {
-			@extend .margin--left;
-			@extend .nav;
-			@extend .nav--block;
-			@extend .nav--block-break;
-			@extend .nav--block-half-margin;
-			@extend .nav--block-double-margin;
-			@extend .nav--stacked;
+		li {
+			@extend .default-text;
+			@extend .zeta;
+			@extend .border-line--left;
+			.icon-left {
+				i {
+					font-size: 90%;
+				}
+				padding-left: 0!important;
+				padding-right: $half-spacing-unit!important;
+				width: $half-spacing-unit!important;
+				margin-left: -$half-spacing-unit/2!important;
+			}	
+			&.current-tag .icon-left {
+				@extend .float--right;
+				@extend .half-margin--right;
+			}
+			&.current-tag {
+				@extend .gray-light-background;
+			}
+			&.current-tag,
+			&:hover {
+				@extend .border-line-main--left;
+				& > a > i,
+				& > a {
+					@extend .hover-text;
+				}
+			}
 		}
 	}
 }

@@ -3,6 +3,11 @@ $border-style:		dotted;
 $border-width:		2px;
 $border-radius:		$brand-round;
 
+$border-line-color:		$gray-light-color;
+$border-line-style:		solid;
+$border-line-width:		1px;
+
+
 .border {
 	border: $border-width $border-style $border-color;
 }
@@ -19,13 +24,24 @@ $border-radius:		$brand-round;
 	border-left: $border-width $border-style $border-color;
 }
 
+.border-line--left {
+	border-left: $border-line-width $border-line-style $border-line-color;
+}
+.border-line-main--left {
+	border-left: $border-line-width $border-line-style $main-color;
+}
+
 .border-image--left {
 	background-image: url(images/border.png);
+	background-repeat: repeat-y;
+	background-position: left top;
+	background-color: white;
 }
 .border-image--bottom {
 	background-image: url(images/border.png);
 	background-repeat: repeat-x;
 	background-position: left bottom;
+	background-color: white;
 }
 
 .border-radius {
@@ -33,6 +49,9 @@ $border-radius:		$brand-round;
 }
 .noborder {
 	border: 0;
+}
+.force-noborder {
+	border: 0!important;
 }
 .border-radius--top {
 	border-top-left-radius: $border-radius;

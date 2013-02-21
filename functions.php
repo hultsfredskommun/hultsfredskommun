@@ -685,6 +685,11 @@ function hk_countParents($cat) {
 	$cat_depth = sizeof($cats_array)-1;
 	return $cat_depth;
 }
+function hk_isParentOf($cat,$parent) {
+	if (empty($cat)) return 0;
+	$child_array = hk_getChildrenIdArray($parent);
+	return in_array($cat, $child_array);
+}
 // get parent of category
 function hk_getParent($cat) {
 	if (empty($cat)) return 0;

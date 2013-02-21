@@ -59,8 +59,9 @@
 			.caption {
 				@extend .white-text;
 				@extend .position-relative;
-				@extend .island;
+				@extend .islet;
 				@extend .flush--bottom;
+				line-height: 1.5;
 				display: block;
 				z-index: 1100;
 				

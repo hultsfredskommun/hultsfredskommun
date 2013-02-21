@@ -23,6 +23,10 @@
 	margin-left:$half-spacing-unit;
 	margin-left:($half-spacing-unit / $base-font-size)*1rem;
 }
+.half-margin--right {
+	margin-right:$half-spacing-unit;
+	margin-right:($half-spacing-unit / $base-font-size)*1rem;
+}
 
 .padding--top {
 	padding-top:$base-spacing-unit;
@@ -39,4 +43,8 @@
 .padding--left {
 	padding-left:$base-spacing-unit;
 	padding-left:($base-spacing-unit / $base-font-size)*1rem;
+}
+.half-padding--left {
+	padding-left:$half-spacing-unit;
+	padding-left:($half-spacing-unit / $base-font-size)*1rem;
 }

@@ -229,7 +229,7 @@ if (typeof $.fn.googlemaplink != 'function') {
 					// google analytics
 					push_google_analytics("#googlemap=" + address + " " + coordinates);
 
-					$(".contact-popup").prepend("<div class='close-contact'><div class='icon'></div></div>");
+					$(".contact-popup.box").prepend("<div class='close-contact'><i class='i' data-icon='&xF14E;'></div></div>");
 					$(".close-contact").unbind("click").click(function() {
 						$(".contact-popup").remove();
 					});
@@ -826,9 +826,9 @@ $(document).ready(function(){
 
 			if ($('#s').val().length > 2)  {
 
-				if (!$("#searchform").find(".searchresult")[0]) 
+				if (!$(".searchresult-wrapper")[0]) 
 				{ 
-					$('#searchform').append("<div class='searchresult'></div>"); 
+					$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult'></div></div>"); 
 				} 
 				searchstring = $("#s").val(); 
 				
@@ -928,7 +928,7 @@ $(document).ready(function(){
 					$(erase_button).remove(); 
 				} 
 
-				$('.searchresult').remove(); 
+				$('.searchresult-wrapper').remove(); 
 			} 
 		} 
 	}); 
@@ -1050,10 +1050,14 @@ function setArticleActions(el) {
 	});
 	*/
 	
-	/* add AddThis onclick */
-	$("article .side-content").find(".tool-line.friend").unbind("click").click(function(ev) {
+	$(".js-read-click").unbind("click").click(function(ev) {
 		ev.preventDefault();
-		$(this).next().find(".addthis_toolbox").fadeToggle();
+		$(this).parent().next().find(".readspeaker_toolbox").fadeToggle();
+	});
+	/* add AddThis onclick */
+	$(".js-friend-click").unbind("click").click(function(ev) {
+		ev.preventDefault();
+		$(this).parent().next().find(".addthis_toolbox").fadeToggle();
 	});
 
 	//sets click-action on entry-titles
@@ -1245,9 +1249,9 @@ function responsive_menu() {
 		if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
 			$(classname).append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
 			count=0; // to avoid infinit loop
-			while (($(classname).children(".menu-item").not(".more-menu").sumWidth() + $(classname).find(".more-menu-a").width() + 16 > wrapperwidth) && count < 20) {
+			while (($(classname).children(".menu-item").sumWidth() > wrapperwidth) && count < 20) {
 				count++;
-				//log ($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu-a").width() + " " + wrapperwidth);
+				log ($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu").width() + " " + wrapperwidth);
 				$(classname).find(".more-menu-ul").append("<li>"+$(classname).children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html()+"</li>");
 			}
 		}

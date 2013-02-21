@@ -50,6 +50,9 @@ html {
 img {
 	@extend .border-radius;
 }
+td, th {
+	border: 1px solid $complement-color;
+}
 .widget {
 	@extend .margin--bottom;
 	@extend .epsilon;

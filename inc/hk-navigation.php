@@ -44,78 +44,6 @@ function hk_nothing_found_navigation() { ?>
 }
 
 
-function hk_category_help_navigation() {
-	global $post, $default_settings;
-	
-	$search = get_query_var("s");
-	$cat = get_query_var("cat");
-	$tags = get_query_var("tag");
-
-	echo "<aside class='help-navigation'><nav>";
-	if ($search != "") {
-		echo "Du s&ouml;kte p&aring; " . $search . ".";
-	}
-
-	
-	// if in tag and no category
-	if ($tags != "" && $cat == "") {
-
-	}
-
-	// if in category
-	if ($cat != "") {
-
-		if (is_sub_category()) {
-			
-			echo "<hr><p>Om du inte hittade den information du letade efter, kan du f&ouml;rfina din s&ouml;kning h&auml;r.</p>";
-			
-			$hk_cat_walker = new hk_Category_Walker();
-			
-			$args = array(
-				'orderby'            => 'name',
-				'order'              => 'ASC',
-				'style'              => 'list',
-				'hide_empty'         => 0,
-				'use_desc_for_title' => 1,
-				'child_of'           => $cat,
-				'hierarchical'       => true,
-				'title_li'           => '',
-				'show_option_none'   => '',
-				'echo'               => 1,
-				'depth'              => 1,
-				'taxonomy'           => 'category',
-				'walker'			 => $hk_cat_walker
-			);
-			echo "<ul class=''>"; 
-			wp_list_categories( $args );
-			echo "</ul>"; 
-
-			echo "<p>Du kan &auml;ven s&ouml;ka vidare p&aring; vilken typ av information det &auml;r du letar efter.</p>";
-
-			$hk_tag_walker = new hk_Tag_Walker();
-			$args = array(
-				'orderby'            => 'name',
-				'order'              => 'ASC',
-				'style'              => 'list',
-				'hide_empty'         => 0,
-				'use_desc_for_title' => 1,
-				'title_li'           => '',
-				'show_option_none'   => '',
-				'echo'               => 1,
-				'taxonomy'           => 'post_tag',
-				'walker'			 => $hk_tag_walker
-			);
-
-			echo "<ul>"; 
-			wp_list_categories( $args );
-			echo "</ul>";
-		}
-		
-	}
-	
-	
-	echo "</nav></aside>";
-}
 
 function hk_navigation() {
 	global $post, $default_settings;
@@ -164,7 +92,6 @@ function hk_navigation() {
 			'current_category'	 => $category
 		);
 		//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($category) . "</a>";
-
 		echo "<ul class='parent'>"; 
 		wp_list_categories( $args );
 		echo "</ul>"; 
@@ -174,7 +101,7 @@ function hk_navigation() {
 		
 		if (!empty($rest_categories)) {
 			echo "<div class='more-in-navigation'><div class='nav-sub-title'>Artikeln ing&aring;r &auml;ven i kategorierna</div>";
-			echo "<ul id='more_categories'>";
+			echo "<ul class='more-navigation'>";
 				foreach($rest_categories as $item) {
 					$cat = get_term( $item, "category");
 					if (!empty($cat)) {
@@ -188,36 +115,6 @@ function hk_navigation() {
 		}
 	}
 
-	// if in tag
-	else if ($tags != "") {
-		//echo "<a class='dropdown-nav'>Etiketter</a>";
-
-		$hk_cat_walker = new hk_Category_Walker();
-		$parentCat = hk_getMenuParent($cat);
-		$args = array(
-			'orderby'            => 'name',
-			'order'              => 'ASC',
-			'style'              => 'list',
-			'hide_empty'         => 0,
-			'use_desc_for_title' => 1,
-			'child_of'           => $parentCat,
-			'hierarchical'       => true,
-			'title_li'           => '',
-			'show_option_none'   => '',
-			'echo'               => 1,
-			'depth'              => 2,
-			'taxonomy'           => 'category',
-			'exclude'			 => $default_settings["hidden_cat"],
-			'walker'			 => $hk_cat_walker
-		);
-		echo "<ul>"; 
-		wp_list_categories( $args );
-		echo "</ul>";
-		
-		if( function_exists('displayTagFilter') ){
-			displayTagFilter("more-in-navigation", "Visa bara typ av information");
-		}
-	}
 
 	// if in category
 	else if ($cat != "") {
@@ -248,15 +145,48 @@ function hk_navigation() {
 			//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
 
 			echo "<ul class='parent'>"; 
+			echo "<li class='heading cat-item current-cat-parent cat-has-children'><a href='#' class='icon-left'><i class='i' data-icon='&#xF09B;'></i></a><a href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."</a></li>";
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
 			if( function_exists('displayTagFilter') ){
-				displayTagFilter("more-in-navigation", "Visa bara typ av information");
+				displayTagFilter();
 			}
 	
 		}
 		
+	}
+	
+	
+	// if in tag
+	else if ($tags != "") {
+		//echo "<a class='dropdown-nav'>Etiketter</a>";
+
+		$hk_cat_walker = new hk_Category_Walker();
+		$parentCat = hk_getMenuParent($cat);
+		$args = array(
+			'orderby'            => 'name',
+			'order'              => 'ASC',
+			'style'              => 'list',
+			'hide_empty'         => 0,
+			'use_desc_for_title' => 1,
+			'child_of'           => $parentCat,
+			'hierarchical'       => true,
+			'title_li'           => '',
+			'show_option_none'   => '',
+			'echo'               => 1,
+			'depth'              => 2,
+			'taxonomy'           => 'category',
+			'exclude'			 => $default_settings["hidden_cat"],
+			'walker'			 => $hk_cat_walker
+		);
+		echo "<ul>"; 
+		wp_list_categories( $args );
+		echo "</ul>";
+		
+		if( function_exists('displayTagFilter') ){
+			displayTagFilter();
+		}
 	}
 	
 	echo "</nav></aside>";
@@ -316,16 +246,29 @@ class hk_Category_Walker extends Walker_Category {
 
         if ( isset($current_category) && $current_category ) 
             $_current_category = get_category( $current_category ); 
-
+			
         if ( 'list' == $args['style'] ) { 
+			$haschildclass = "";
+			$icon = "";
+			if (count(get_term_children($category->term_id,"category")) > 0) {
+				$haschildclass = " cat-has-children";
+				$icon = "<a href='#' class='icon-left'><i class='i' data-icon='&#xF14C;'></i></a>";
+			}
             $output .= "\t<li"; 
-            $class = 'cat-item cat-item-'.$category->term_id; 
+            $class = 'cat-item cat-item-'.$category->term_id.$haschildclass; 
             if ( isset($current_category) && $current_category && ($category->term_id == $current_category) ) 
                 $class .=  ' current-cat'; 
             elseif ( isset($_current_category) && $_current_category && ($category->term_id == $_current_category->parent) ) 
                 $class .=  ' current-cat-parent'; 
+			elseif ( hk_isParentOf($_current_category->term_id, $category->term_id) ) 
+                $class .=  ' current-cat-parent current-cat-grandparent'; 
+			
+			// other icon if in current-cat
+			if (strstr($class,"current-cat")) {
+				$icon = str_replace("xF14C","xF14D", $icon);
+			}
             $output .=  ' class="'.$class.'"'; 
-            $output .= ">$link\n"; 
+            $output .= ">$icon$link\n"; 
         } else { 
             $output .= "\t$link<br />\n"; 
         } 
@@ -417,62 +360,32 @@ class hk_Tag_Walker extends Walker_Category {
             $link .= ' ' . gmdate('Y-m-d', $tag->last_update_timestamp); 
         } 
 		
-		// if style == list
-		if ($current_tag) {
-			$output .= "<li class='hidden'>";
+
+		if ( 'list' == $args['style'] ) { 
+			$output .= "\t<li"; 
+			$class = 'tag-item tag-item-'.$tag->term_id; 
+			$icon = "";
+			if ($current_tag) {
+				$class .=  ' current-tag'; 
+				$icon = "<a href='#' class='icon-left'><i class='i' data-icon='&#xF14E;'></i></a>";
+			}
+			$output .=  ' class="'.$class.'"'; 
+			$output .= ">$icon$link</li>\n"; 
+		} else { 
+			$output .= "\t$link\n"; 
 		} 
-		else {
-			if ( 'list' == $args['style'] ) { 
-				$output .= "\t<li"; 
-				$class = 'tag-item tag-item-'.$tag->term_id; 
-				
-				if ( isset($current_tag) && $current_tag && ($tag->term_id == $current_tag) ) 
-					$class .=  ' current-tag'; 
-				$output .=  ' class="'.$class.'"'; 
-				$output .= ">$link\n"; 
-			} else { 
-				$output .= "\t$link</li>\n"; 
-			} 
-		}
+
 	} 
 
 }
 
 
 // show tag filter list
-function displayTagFilter($class = "dropdown-tags", $title_text = "Visa bara") {
+function displayTagFilter() {
 	global $default_settings;
 	if ($default_settings["show_tags"] != 0) :
-		echo "<div class='$class'>";
 		
-		
-		if ($_REQUEST["tag"] != "") {
-			$tag_array = split(",",$_REQUEST["tag"]);
-			$orderby = $_REQUEST["orderby"];
-			if ($orderby != "") {
-				$orderby = "&orderby=$orderby";
-			}
-			foreach ($tag_array as $value) {
-				$tag_name = get_term_by('slug',$value,'post_tag');
-				if (!empty($tag_name )) {
-					$tag_name = $tag_name->name;
-				}
-				else {
-					$tag_name = $value;
-				}
-				$new_tags = "?tag=" . rtrim(str_replace($value . ",", "", $_REQUEST["tag"] . ","), ",");
-				
-				echo "<a title='Ta bort filtrera p&aring; $value' href='" . $new_tags . $orderby . "' class='selected-tags'>$tag_name<div class='icon'></div></a>";
-			}
-		}
 
-		echo "<div class='toggle-tags nav-sub-title'>";
-		if ($_REQUEST["tag"] == "") {
-			echo $title_text;
-		}
-		echo "</div>";
-		
-		
 		$hk_tag_walker = new hk_Tag_Walker();
 		$args = array(
 			'orderby'            => 'name',
@@ -487,10 +400,10 @@ function displayTagFilter($class = "dropdown-tags", $title_text = "Visa bara") {
 			'walker'			 => $hk_tag_walker
 		);
 
-		echo "<div class='tags-wrapper'><ul>"; 
+		echo "<ul class='more-navigation'>"; 
+		echo "<li class='heading cat-item'><a href='#' class='icon-left'><i class='i' data-icon='&#xF09B;'></i></a><a href='#'>Typ av information</a></li>";
 		wp_list_categories( $args );
-		echo "</ul></div>";
-		echo "</div>";
+		echo "</ul>";
 	endif;
 }
 
