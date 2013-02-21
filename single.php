@@ -67,8 +67,7 @@ get_header(); ?>
 					echo "</aside>";
 				endif; 
 				
-				// help navigation
-				hk_category_help_navigation();
+
 				
 				?>
 				<?php wp_reset_query(); ?>

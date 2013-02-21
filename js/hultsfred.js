@@ -451,10 +451,6 @@ function readMoreToggle(el){
 					// articles slideshow
 					$(this).slideshow();
 					
-					// set article contact to popup
-					$(this).find(".js-contact-link").each(function() {
-						setContactPopupAction($(this));
-					});
 
 				});
 			});
@@ -497,7 +493,7 @@ function readMoreToggle(el){
 			$(this).parents("article").find(".map_link").googlemaplink();
 			
 			// contact popup
-			$(this).find(".js-contact-link").each(function() {
+			$(this).find(".js-contact-click").each(function() {
 				setContactPopupAction($(this));
 			});
 
@@ -1050,12 +1046,12 @@ function setArticleActions(el) {
 	});
 	*/
 	
-	$(".js-read-click").unbind("click").click(function(ev) {
+	$(el).find(".js-read-click").unbind("click").click(function(ev) {
 		ev.preventDefault();
 		$(this).parent().next().find(".readspeaker_toolbox").fadeToggle();
 	});
 	/* add AddThis onclick */
-	$(".js-friend-click").unbind("click").click(function(ev) {
+	$(el).find(".js-friend-click").unbind("click").click(function(ev) {
 		ev.preventDefault();
 		$(this).parent().next().find(".addthis_toolbox").fadeToggle();
 	});
@@ -1071,19 +1067,19 @@ function setArticleActions(el) {
 	});
 	
 	// edit links
-	if ($(el).find(".post-edit-link").attr("href") !== undefined) {
+/*	if ($(el).find(".post-edit-link").attr("href") !== undefined) {
 		$(el).find(".entry-title").append("<a title='Redigera inl&auml;gg' class='post-edit-link' href='"+$(el).find(".post-edit-link").attr("href")+"'><span class='icon'></span></a>");
 	}
 	$(el).find('.post-edit-link').unbind("click").click(function(ev){
 		ev.stopPropagation();
 	});
-	
+	*/
 	
 	//triggers articles click-action entry-title clicked
-	$(el).find(".summary-content .entry-content, .summary-content .img-wrapper").unbind("click").click(function(){
+	$(el).find(".summary-content").unbind("click").click(function(){
 		readMoreToggle( $(this).parents("article").find('.entry-title a') );
 	});
-	$(el).find(".js-contact-link").each(function() {
+	$(el).find(".js-contact-click").each(function() {
 		setContactPopupAction($(this));
 	});
 	

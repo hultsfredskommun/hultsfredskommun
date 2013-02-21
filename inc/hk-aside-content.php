@@ -7,7 +7,7 @@
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
 			<li class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
 				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>
-				<a title="Kontaktinformation" class="icon-left"><i class='i' data-icon='&#xF170;'></i></a><div class="icon-right  contact-<?php echo $value->ID; ?>"><a class="contactlink" href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
+				<a title="Kontaktinformation" class="icon-left"><i class='i' data-icon='&#xF170;'></i></a><div class="icon-right  contact-<?php echo $value->ID; ?>"><a class="js-contact-click" href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
 				
 				<?php $alt_title = get_sub_field('hk_contact_extra',get_the_ID());
 				if (!empty($alt_title)) : ?>
@@ -36,7 +36,7 @@
 	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo ($count < 2)?"summary":"full"; ?>">
 		<ul class="related-wrapper <?php echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
 			<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>">
-				<a title="Ladda ner dokument" class="icon-left"><i class='i' data-icon='&#xF02C;'></i></a>
+				<a title="Ladda ner dokument" class="icon-left"><i class='i' data-icon='&#xF019;'></i></a>
 				<a target="_blank" href="<?php echo wp_get_attachment_url(get_the_ID()); ?>" class="icon-right" title="Direktl&auml;nk till filen<?php //echo get_the_content(); ?>"><?php the_title(); ?></a>
 			</li>
 		</ul>
@@ -49,12 +49,12 @@
 		<?php while ( has_sub_field('hk_related') ) : ?>
 			<?php if (!$summary || $count++ < 2) : ?>
 				<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
-					<li class="related_page <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Relaterat inl&auml;gg" class="icon-left"><i class='i' data-icon='&#xF179;'></i></a>
+					<li class="related_page <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Relaterat inl&auml;gg" class="icon-left"><i class='i' data-icon='&#xF035;'></i></a>
 						<?php $value = get_sub_field('hk_related_post');?>
 						<a href="<?php echo get_permalink($value->ID); ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_post_description'); ?>"><?php echo $value->post_title; ?></a>
 					</li>			 
 				<?php elseif ( get_row_layout() == 'hk_related_links' ) : ?>
-					<li class="related_link <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="L&auml;nk till annan webbsida" class="icon-left"><i class='i' data-icon='&#xF02E;'></i></a>
+					<li class="related_link <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="L&auml;nk till annan webbsida" class="icon-left"><i class='i' data-icon='&#xF143;'></i></a>
 						<?php 
 							// prepend http:// if not there already
 							$relate_link_url = get_sub_field('hk_relate_link_url');
@@ -67,7 +67,7 @@
 				<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
 					<?php $link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
 						$link_name = get_the_title(get_sub_field('hk_related_file')); ?>
-					<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Ladda ner dokument" class="icon-left"><i class='i' data-icon='&#xF02C;'></i></a>
+					<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Ladda ner dokument" class="icon-left"><i class='i' data-icon='&#xF019;'></i></a>
 						<a target="_blank" class="icon-right" href="<?php echo $link; ?>" title="<?php echo get_sub_field('hk_related_file_description'); ?>"><?php echo $link_name; ?></a>
 					</li>			 
 				<?php endif; ?> 

@@ -89,7 +89,11 @@ td, th {
 	@extend .float--left;
 	@extend .milli;
 	width: $base-spacing-unit;
+	.i {
+		@extend .force-default-text;
+	}
 }
+
 .icon-right {
 	@extend .margin--left;
 	@extend .padding--right;

@@ -100,8 +100,8 @@ function hk_navigation() {
 		//print_r($rest_categories);
 		
 		if (!empty($rest_categories)) {
-			echo "<div class='more-in-navigation'><div class='nav-sub-title'>Artikeln ing&aring;r &auml;ven i kategorierna</div>";
 			echo "<ul class='more-navigation'>";
+			echo "<li class='heading cat-item current-cat-parent cat-has-children'><a href='#' class='icon-left'><i class='i' data-icon='&#xF09B;'></i></a><a href='#'>Artikeln ing&aring;r &auml;ven i kategorierna</a></li>";
 				foreach($rest_categories as $item) {
 					$cat = get_term( $item, "category");
 					if (!empty($cat)) {
@@ -111,7 +111,7 @@ function hk_navigation() {
 						$cat->name. "</a></li>";
 					}
 				}
-			echo "</ul></div>"; 
+			echo "</ul>"; 
 		}
 	}
 
@@ -401,7 +401,7 @@ function displayTagFilter() {
 		);
 
 		echo "<ul class='more-navigation'>"; 
-		echo "<li class='heading cat-item'><a href='#' class='icon-left'><i class='i' data-icon='&#xF09B;'></i></a><a href='#'>Typ av information</a></li>";
+		echo "<li class='heading cat-item'><a href='#' class='icon-left'><i class='i' data-icon='&#xF0AD;'></i></a><a href='#'>Typ av information</a></li>";
 		wp_list_categories( $args );
 		echo "</ul>";
 	endif;

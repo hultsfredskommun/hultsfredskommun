@@ -16,6 +16,9 @@ $face:	        			"myriad-pro", Arial, sans-serif!default;
 .hover-text {
 	color: $hover-color;
 }
+.force-default-text {
+	color: $default-color!important;
+}
 .default-text {
 	color: $default-color;
 }

@@ -4440,6 +4440,10 @@ html.flexbox {
   color: #005baa;
 }
 
+.force-default-text, .icon-left .i, h1.widget-title .i .i, h1.widget-title .searchnavigation .form .submit .i, .searchnavigation .form h1.widget-title .submit .i, .icon-left .searchnavigation .form .submit, .searchnavigation .form .icon-left .submit, h1.widget-title .i .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .i .submit, h1.widget-title .searchnavigation .form .submit .submit, .searchnavigation .form h1.widget-title .submit .submit {
+  color: #3e3e3f !important;
+}
+
 .default-text, html, .searchnavigation .form .submit, .main-menu a, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .category-navigation a, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .ui-tabs-nav a {
   color: #3e3e3f;
 }
@@ -4466,7 +4470,7 @@ a:focus {
   color: #e5e6e7;
 }
 
-.force-gray-text, .icon-left .i, h1.widget-title .i .i, h1.widget-title .searchnavigation .form .submit .i, .searchnavigation .form h1.widget-title .submit .i, .icon-left .searchnavigation .form .submit, .searchnavigation .form .icon-left .submit, h1.widget-title .i .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .i .submit, h1.widget-title .searchnavigation .form .submit .submit, .searchnavigation .form h1.widget-title .submit .submit {
+.force-gray-text {
   color: #c6cacb !important;
 }
 
@@ -5009,6 +5013,24 @@ td, th {
 
 .ui-tabs .ui-tabs-panel {
   display: block;
+}
+
+.main-menu a:hover,
+.main-sub-menu a:hover {
+  -moz-transition: color 0.3s linear, background-color 0.3s linear;
+  -webkit-transition: color 0.3s linear, background-color 0.3s linear;
+  -o-transition: color 0.3s linear, background-color 0.3s linear;
+  -ms-transition: color 0.3s linear, background-color 0.3s linear;
+  transition: color 0.3s linear, background-color 0.3s linear;
+}
+
+.main-menu a,
+.main-sub-menu a {
+  -moz-transition: color 1s linear, background-color 1s linear;
+  -webkit-transition: color 1s linear, background-color 1s linear;
+  -o-transition: color 1s linear, background-color 1s linear;
+  -ms-transition: color 1s linear, background-color 1s linear;
+  transition: color 1s linear, background-color 1s linear;
 }
 
 .position-fixed, .position-fixed--top-left, .position-fixed--top-right, .position-fixed--bottom-right, #responsive-info, .position-fixed--bottom-left, .contact-popup.overlay, .contact-popup.box {
