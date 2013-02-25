@@ -17,6 +17,7 @@ article.post {
 }
 .post h1.entry-title {
 	@extend .two-thirds;
+	@extend .float--left;
 }
 
 /* hide article-wrapper if only titles */
@@ -75,11 +76,6 @@ article.post {
 		@extend .lap-one-whole;
 		@extend .palm-one-whole;
 	}
-	.closeButton {
-		@extend .desk-two-thirds;
-		@extend .lap-one-whole;
-		@extend .palm-one-whole;
-	}
 	.footer-wrapper {
 		border-left: 4px solid $complement-color;	
 		padding-left: $base-spacing-unit - 4px;
@@ -93,6 +89,32 @@ article.post {
 	}
 
 }
+.map_link {
+	@extend .cursor-pointer;
+}
+article.summary.post:hover > .openButton {
+	display: block!important;
+}
+.button {
+	@extend .cursor-pointer;
+	&.top {	
+		@extend .float--right;
+		margin: 6px 12px;
+	}
+	&.bottom {
+		@extend .border;
+		@extend .border-radius;
+		@extend .float--left;
+		@extend .white-background;
+		margin: -$half-spacing-unit*1.5 0 0 $base-spacing-unit;
+		padding: 6px 12px;
+	}
+	i {
+		width: $base-spacing-unit;
+		text-align: left;
+	}
+}
+
 @include media-query(desk) {
 .primary .article-wrapper {
 	background-image: -moz-linear-gradient(left, #fff 66.6%, $gray-light-color 66.6%, $gray-light-color 100%);
@@ -172,12 +194,12 @@ article.post {
 	@extend .hidden;
 }
 @include media-query(palm) {
-.summary .summary {
+article.summary .summary {
 	display: none;
 }
 }
 @include media-query(lap) {
-.summary .summary {
+article.summary .summary {
 	display: none;
 }
 }

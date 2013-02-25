@@ -499,11 +499,11 @@ function hk_get_the_contact($args = array()) {
 			
 		
 			$retValue .= "<div class='contact-" . get_the_ID() . " " . implode(" ",get_post_class()) ."'>";
-				$retValue .= "<div class='content " . $hidden['title'] . "'>" . get_field("hk_contact_titel") . "</div>";
+				$retValue .= "<div class='hk_contact_titel " . $hidden['title'] . "'>" . get_field("hk_contact_titel") . "</div>";
 				
 				// workplace
 				if( get_field('hk_contact_workplaces') ): while( has_sub_field('hk_contact_workplaces') ):
-					$retValue .= "<div class='" . $hidden['workplace'] . "'>" . get_sub_field('hk_contact_workplace') . "</div>";
+					$retValue .= "<div class='hk_contact_workplaces " . $hidden['workplace'] . "'>" . get_sub_field('hk_contact_workplace') . "</div>";
 				endwhile; endif;
 				
 				if( (get_field('hk_contact_phones') && $hidden['phone'] == "visible") || (get_field('hk_contact_emails') && $hidden['email'] == "visible") ) {
@@ -511,12 +511,12 @@ function hk_get_the_contact($args = array()) {
 				}
 				// email
 				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
-					$retValue .= "<div class='" . $hidden['email'] . "'><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></div>";
+					$retValue .= "<div class='hk_contact_emails " . $hidden['email'] . "'><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></div>";
 				endwhile; endif;
 
 				// phone
 				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
-					$retValue .= "<div class='" . $hidden['phone'] . "'>";
+					$retValue .= "<div class='hk_contact_phones " . $hidden['phone'] . "'>";
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 					$retValue .= get_sub_field('number') . " </div>";
 				endwhile; endif;				
@@ -526,16 +526,16 @@ function hk_get_the_contact($args = array()) {
 				}
 				// description
 				if (get_field("hk_contact_description")) {
-					$retValue .= "<p class='" . $hidden['description'] . "'>" . get_field("hk_contact_description") . "</p>";
+					$retValue .= "<p class='hk_contact_description " . $hidden['description'] . "'>" . get_field("hk_contact_description") . "</p>";
 				}				
 				// address
 				if (get_field("hk_contact_address")) {
-					$retValue .= "<p class='" . $hidden['address'] . "'>" . get_field("hk_contact_address") . "</p>";
+					$retValue .= "<p class='hk_contact_address " . $hidden['address'] . "'>" . get_field("hk_contact_address") . "</p>";
 				}
 				
 				// visit hours
 				if (get_field("hk_contact_visit_hours")) {
-					$retValue .= "<p class='" . $hidden['visit_hours'] . "'>" . get_field("hk_contact_visit_hours") . "</p>";
+					$retValue .= "<p class='hk_contact_visit_hours " . $hidden['visit_hours'] . "'>" . get_field("hk_contact_visit_hours") . "</p>";
 				}
 								
 			$retValue .= "</div>";
@@ -547,7 +547,7 @@ function hk_get_the_contact($args = array()) {
 		endif;
 		
 
-	$retValue .= "<div class='clear'></div></div>";
+	$retValue .= "</div>";
 
 	return $retValue;
 }

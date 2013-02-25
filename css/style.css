@@ -767,7 +767,7 @@ textarea:focus {
 .tools, .responsive-navigation, .searchnavigation .searchresult-wrapper .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
 .main-menu,
 .main-sub-menu, .tags-wrapper ul,
-.category-navigation ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .ui-widget-content ul, .footer-widget-wrapper ul, .media, .island, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img,
+.category-navigation ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .ui-widget-content ul, .footer-widget-wrapper ul, .media, .island, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
 .islet,
 #responsive-info,
 .slideshow .slide .caption-area .caption, .matrix, .multi-list, .stat-group, .time, .page-header, article.post, .searchnavigation .form, .searchnavigation .form .submit, .footer-image-wrapper .logo-footer-image {
@@ -780,7 +780,7 @@ textarea:focus {
 .tools:before, .responsive-navigation:before, .searchnavigation .searchresult-wrapper .searchresult ul:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .more-menu-ul:before,
 .main-menu:before,
 .main-sub-menu:before, .tags-wrapper ul:before,
-.category-navigation ul:before, .category-navigation .parent:before, .category-navigation .parent li .children:before, .category-navigation .more-navigation:before, .ui-tabs-nav:before, .ui-widget-content ul:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .article-wrapper .side-content:before, .important-widget:before, .footer-image-wrapper .logo-footer-image img:before,
+.category-navigation ul:before, .category-navigation .parent:before, .category-navigation .parent li .children:before, .category-navigation .more-navigation:before, .ui-tabs-nav:before, .ui-widget-content ul:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .article-wrapper .side-content:before, .important-widget:before, .footer-image-wrapper .logo-footer-image img:before, .contact-popup.box .entry-wrapper .entry-content:before,
 .islet:before,
 #responsive-info:before,
 .slideshow .slide .caption-area .caption:before, .matrix:before, .multi-list:before, .stat-group:before, .time:before, .page-header:before, article.post:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
@@ -790,7 +790,7 @@ textarea:focus {
 .tools:after, .responsive-navigation:after, .searchnavigation .searchresult-wrapper .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
 .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .article-wrapper .side-content:after, .important-widget:after, .footer-image-wrapper .logo-footer-image img:after,
+.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .article-wrapper .side-content:after, .important-widget:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
 .islet:after,
 #responsive-info:after,
 .slideshow .slide .caption-area .caption:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .footer-image-wrapper .logo-footer-image:after {
@@ -804,7 +804,7 @@ textarea:focus {
 .tools:after, .responsive-navigation:after, .searchnavigation .searchresult-wrapper .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
 .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .article-wrapper .side-content:after, .important-widget:after, .footer-image-wrapper .logo-footer-image img:after,
+.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .article-wrapper .side-content:after, .important-widget:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
 .islet:after,
 #responsive-info:after,
 .slideshow .slide .caption-area .caption:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .footer-image-wrapper .logo-footer-image:after {
@@ -834,6 +834,7 @@ pre,
 .article-wrapper .side-content,
 .important-widget,
 .footer-image-wrapper .logo-footer-image img,
+.contact-popup.box .entry-wrapper .entry-content,
 .islet,
 #responsive-info,
 .slideshow .slide .caption-area .caption,
@@ -882,7 +883,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .slideshow .s
 .important-widget, .slideshow .slide .caption-area .caption
 .important-widget, .pager
 .important-widget, .searchnavigation .searchresult-wrapper .searchresult ul
-.important-widget, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .slideshow .slide .caption-area .caption .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .slideshow .slide .caption-area .caption img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .searchnavigation .searchresult-wrapper .searchresult ul .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult-wrapper .searchresult ul img, .islet
+.important-widget, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .slideshow .slide .caption-area .caption .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .slideshow .slide .caption-area .caption img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .searchnavigation .searchresult-wrapper .searchresult ul .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult-wrapper .searchresult ul img, .islet .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .islet .entry-content, #responsive-info .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper #responsive-info .entry-content, .slideshow .slide .caption-area .caption .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .slideshow .slide .caption-area .caption .entry-content, .pager .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .pager .entry-content, .searchnavigation .searchresult-wrapper .searchresult ul .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .searchnavigation .searchresult-wrapper .searchresult ul .entry-content, .islet
 .islet, #responsive-info
 .islet, .slideshow .slide .caption-area .caption
 .islet, .pager
@@ -1277,7 +1278,7 @@ img[height] {
   margin-left: 24px;
 }
 
-.img--left, .summary .img-wrapper {
+.img--left, .summary .img-wrapper, .contact-popup.box .entry-wrapper .img-wrapper {
   float: left;
   margin-right: 24px;
   margin-bottom: 24px;
@@ -2392,7 +2393,7 @@ html.flexbox {
  * Demo: jsfiddle.net/inuitcss/u8pV3
  * 
  */
-.island, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img,
+.island, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
 .islet,
 #responsive-info,
 .slideshow .slide .caption-area .caption,
@@ -2401,11 +2402,11 @@ html.flexbox {
   display: block;
 }
 
-.island, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img {
+.island, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content {
   padding: 24px;
 }
 
-.island > :last-child, .article-wrapper .side-content > :last-child, .important-widget > :last-child, .footer-image-wrapper .logo-footer-image img > :last-child,
+.island > :last-child, .article-wrapper .side-content > :last-child, .important-widget > :last-child, .footer-image-wrapper .logo-footer-image img > :last-child, .contact-popup.box .entry-wrapper .entry-content > :last-child,
 .islet > :last-child,
 #responsive-info > :last-child,
 .slideshow .slide .caption-area .caption > :last-child,
@@ -3347,7 +3348,7 @@ html.flexbox {
   /**
   * Whole
   */
-  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .category-navigation, .primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .article-wrapper .closeButton, .searchnavigation {
+  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .category-navigation, .primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .searchnavigation {
     width: 100%;
   }
 
@@ -3471,7 +3472,7 @@ html.flexbox {
   /**
   * Whole
   */
-  .lap-one-whole, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .article-wrapper .closeButton {
+  .lap-one-whole, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta {
     width: 100%;
   }
 
@@ -3737,7 +3738,7 @@ html.flexbox {
     width: 33.333%;
   }
 
-  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .entry-meta, .article-wrapper .closeButton {
+  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .entry-meta {
     width: 66.666%;
   }
 
@@ -4276,12 +4277,12 @@ html.flexbox {
  * A lot of these classes carry `!important` as you will always want them to win
  * out over other selectors.
  */
-.float--right, .firstpage-sidebar, .responsive-navigation, .right-nav-menu-item, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .category-navigation .more-navigation li.current-tag h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li.current-tag .submit, .category-navigation .more-navigation li.current-tag .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li.current-tag .submit, .footer-image-wrapper .logo-footer-image img {
+.float--right, .firstpage-sidebar, .button.top, .responsive-navigation, .right-nav-menu-item, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .category-navigation .more-navigation li.current-tag h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li.current-tag .submit, .category-navigation .more-navigation li.current-tag .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li.current-tag .submit, .footer-image-wrapper .logo-footer-image img {
   float: right!important;
 }
 
 .float--left, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .slideshow .slide .caption-area, .help-navigation, .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .content, .post .img-wrapper, .contact-area .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult-wrapper .searchresult ul, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .post h1.entry-title, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper, .contact-area .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult-wrapper .searchresult ul, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4310,7 +4311,7 @@ html.flexbox {
 }
 
 .flush--bottom, h1, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .viewmode-only-titles article.post, .summary .img-wrapper, .top-menu-wrapper .top-menu, .main-menu, .ui-tabs-nav {
+.page-header .sort-order, .page-header .category-tools, .viewmode-only-titles article.post, .summary .img-wrapper, .top-menu-wrapper .top-menu, .main-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0!important;
 }
 
@@ -4520,7 +4521,7 @@ a:focus {
   background-color: #3e3e3f;
 }
 
-.white-background, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a {
+.white-background, .button.bottom, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .contact-popup.box, .contact-popup.box .close-contact {
   background-color: #fff;
 }
 
@@ -4548,7 +4549,7 @@ a:focus {
   background-image: url(images/greyTile24bit.png);
 }
 
-.border, .page-header {
+.border, .page-header, .button.bottom {
   border: 2px dotted #e5e6e7;
 }
 
@@ -4590,7 +4591,7 @@ a:focus {
   background-color: white;
 }
 
-.border-radius, img, .page-header, .searchnavigation .searchresult-wrapper .searchresult, .contact-popup.box {
+.border-radius, img, .page-header, .button.bottom, .searchnavigation .searchresult-wrapper .searchresult, .contact-popup.box {
   border-radius: 3px;
 }
 
@@ -4638,6 +4639,10 @@ a:focus {
 
 .font-style-italic, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .footer-wrapper {
   font-style: italic;
+}
+
+.cursor-pointer, .map_link, .button, .contact-popup.box .close-contact {
+  cursor: pointer;
 }
 
 .milli, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .page-header, .article-wrapper .footer-wrapper {
@@ -4800,6 +4805,22 @@ td, th {
   display: block;
 }
 
+article.summary.post:hover > .openButton {
+  display: block!important;
+}
+
+.button.top {
+  margin: 6px 12px;
+}
+.button.bottom {
+  margin: -18px 0 0 24px;
+  padding: 6px 12px;
+}
+.button i {
+  width: 24px;
+  text-align: left;
+}
+
 @media only screen and (min-width: 1024px) {
   .primary .article-wrapper {
     background-image: -moz-linear-gradient(left, white 66.6%, #e5e6e7 66.6%, #e5e6e7 100%);
@@ -4833,12 +4854,12 @@ td, th {
 }
 
 @media only screen and (max-width: 480px) {
-  .summary .summary {
+  article.summary .summary {
     display: none;
   }
 }
 @media only screen and (min-width: 481px) and (max-width: 1023px) {
-  .summary .summary {
+  article.summary .summary {
     display: none;
   }
 }
@@ -5016,7 +5037,8 @@ td, th {
 }
 
 .main-menu a:hover,
-.main-sub-menu a:hover {
+.main-sub-menu a:hover,
+.ui-tabs-nav .ui-state-hover {
   -moz-transition: color 0.3s linear, background-color 0.3s linear;
   -webkit-transition: color 0.3s linear, background-color 0.3s linear;
   -o-transition: color 0.3s linear, background-color 0.3s linear;
@@ -5025,7 +5047,8 @@ td, th {
 }
 
 .main-menu a,
-.main-sub-menu a {
+.main-sub-menu a,
+.ui-tabs li.ui-state-default {
   -moz-transition: color 1s linear, background-color 1s linear;
   -webkit-transition: color 1s linear, background-color 1s linear;
   -o-transition: color 1s linear, background-color 1s linear;
@@ -5081,7 +5104,7 @@ td, th {
   left: 0;
 }
 
-.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .more-menu .more-menu-ul, .position-absolute--top-left, .pager, .position-absolute--top-right, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .slideshow .slide .caption-area {
+.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .more-menu .more-menu-ul, .position-absolute--top-left, .pager, .position-absolute--top-right, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .slideshow .slide .caption-area, .contact-popup.box .close-contact {
   position: absolute;
 }
 
@@ -5201,30 +5224,55 @@ td, th {
 }
 
 .contact-popup.box {
-  width: 40%;
-  height: 40%;
+  width: 80%;
+  height: 80%;
   z-index: 2000;
-  top: 30%;
-  left: 30%;
+  top: 10%;
+  left: 10%;
 }
-
+.contact-popup.box .close-contact {
+  top: -12px;
+  right: -12px;
+  line-height: 0;
+  border-radius: 24px;
+  z-index: 6000;
+}
+.contact-popup.box .close-contact .i, .contact-popup.box .close-contact .searchnavigation .form .submit, .searchnavigation .form .contact-popup.box .close-contact .submit {
+  font-size: 150%;
+}
 .contact-popup.box .entry-wrapper {
+  overflow: auto;
   height: 100%;
   width: 100%;
 }
-
-.contact-popup.box .entry-content {
-  overflow: auto;
-  height: 100%;
+.contact-popup.box .entry-wrapper .entry-content {
+  overflow: initial;
+}
+.contact-popup.box .entry-wrapper .img-wrapper {
+  width: 150px;
 }
 
-/* TODO !!!!!*/
+@media only screen and (min-width: 1024px) {
+  .contact-popup.box .entry-wrapper.hasmap {
+    overflow: initial;
+  }
+  .contact-popup.box .entry-wrapper.hasmap .entry-content {
+    overflow: auto;
+    float: left !important;
+    width: 50%;
+  }
+  .contact-popup.box .entry-wrapper.hasmap .side-map {
+    float: right !important;
+    width: 50%;
+  }
+}
 @media print {
-  #topmenu,
-  #searchnavigation,
-  #menu,
+  .top-menu-wrapper,
+  .searchnavigation,
+  .responsive-navigation,
+  .menu-wrapper,
   #breadcrumb,
-  #nav,
+  .category-navigation,
   .page-header,
   .closeButton,
   .related,

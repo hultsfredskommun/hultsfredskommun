@@ -7,6 +7,9 @@
 .font-style-italic {
 	font-style: italic;
 }
+.cursor-pointer {
+	cursor: pointer;
+}
 .milli {
 	@include font-size($milli-size);
 }

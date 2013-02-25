@@ -1,5 +1,6 @@
 .main-menu a:hover,
-.main-sub-menu a:hover {
+.main-sub-menu a:hover,
+.ui-tabs-nav .ui-state-hover {
 	-moz-transition: color .3s linear, background-color .3s linear;
 	-webkit-transition: color .3s linear, background-color .3s linear;
 	-o-transition: color .3s linear, background-color .3s linear;
@@ -7,7 +8,8 @@
 	transition: color .3s linear, background-color .3s linear;
 }
 .main-menu a,
-.main-sub-menu a {
+.main-sub-menu a,
+.ui-tabs li.ui-state-default {
 	-moz-transition: color 1s linear, background-color 1s linear;
 	-webkit-transition: color 1s linear, background-color 1s linear;
 	-o-transition: color 1s linear, background-color 1s linear;

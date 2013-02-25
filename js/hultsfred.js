@@ -229,7 +229,7 @@ if (typeof $.fn.googlemaplink != 'function') {
 					// google analytics
 					push_google_analytics("#googlemap=" + address + " " + coordinates);
 
-					$(".contact-popup.box").prepend("<div class='close-contact'><i class='i' data-icon='&xF14E;'></div></div>");
+					$(".contact-popup.box").prepend("<div class='close-contact'><i class='i' data-icon='&#xF14E;'></div></div>");
 					$(".close-contact").unbind("click").click(function() {
 						$(".contact-popup").remove();
 					});
@@ -370,7 +370,7 @@ function readMoreToggle(el){
 		{			
 			// alter close-buttons
 			$(article).find('.closeButton').remove();
-			
+			$(article).find('.openButton').show();
 			$(article).find('.more-content').slideUp(200, function(){
 				
 				
@@ -434,16 +434,17 @@ function readMoreToggle(el){
 						});	
 					}
 					
+					$(article).find('.openButton').hide();
 					//add close-button top right corner
-					var closea = $('<div>').addClass('closeButton top close').html("<div class='icon'></div><a href='#'>Visa mindre</a>").unbind("click").click(function(ev){
+					var closea = $('<div>').addClass('closeButton button top').html("<i class='i' data-icon='&#xF148;'></i><a href='#'>Visa mindre</a>").unbind("click").click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					var closeb = $('<div>').addClass('closeButton bottom close white').html("<div class='icon'></div><a href='#'>Visa mindre</a>").unbind("click").click(function(ev){
+					var closeb = $('<div>').addClass('closeButton button bottom').html("<i class='i' data-icon='&#xF148;'></i><a href='#'>Visa mindre</a>").unbind("click").click(function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(this).parents("article")./*prepend(closea).*/append(closeb);
+					$(this).parents("article").prepend(closea).append(closeb);
 					
 					// scroll to top of post 
 					$("html,body").animate({scrollTop: $(this).parents("article").position().top}, 150);
@@ -562,8 +563,11 @@ $(document).ready(function(){
 		window.close();
 	}
 
-	/* add responsive menu */
+	/* 
+	 * add responsive menu 
+	 */
 	responsive_menu()
+	
 	
 	/**
 	 * Expand article if only one, not on home page
@@ -586,23 +590,7 @@ $(document).ready(function(){
 		$(".home #content,.home #quickmenus").tabs();
 	}
 
-	/**
-	 * click-actions on single/page
-	 */
-	if( $('body').hasClass("single") || $('body').hasClass("page") ){
-		
-		var article = $("#content").find('article');
-		
-		//****** click-actions START *******
-		//set click-action on print-post-link
-		var print_link = $(article).find(".print-post");
-		$(print_link).unbind("click").click(function(ev){
-			PrintElem( article );
-			ev.preventDefault();
-		});
-		
-		//***** click-actions END ******
-	}
+	
 	
 	/**
 	 * history url handling
@@ -652,6 +640,7 @@ $(document).ready(function(){
 		$(".js-view-summary").removeClass("hide");
 		ev.preventDefault();
 	});
+	
 	
 	/* add action to read-more toggle, if in .home go to article */
 	$("#primary").find("article").each(function(){
@@ -1057,7 +1046,9 @@ function setArticleActions(el) {
 	});
 
 	//sets click-action on entry-titles
-	$(el).find('.entry-title a, .togglearticle').unbind("click").click(function(ev){
+	$(el).find('.entry-title').after("<div class='openButton button top hidden'><i class='i' data-icon='&#xF149;'></i>Visa mer</div>");
+	
+	$(el).find('.entry-title a, .togglearticle, .openButton').unbind("click").click(function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
 		if( !$(this).parents('article').hasClass('loading') ){
@@ -1111,7 +1102,7 @@ function setContactPopupAction(el) {
 			if (post_id == null) return true;
 			
 			ev.preventDefault();
-			$("#page").append("<div class='contact-popup box'>H&auml;mtar kontaktuppgifter...</div>").append("<div class='contact-popup overlay'></div>");
+			$("#page").append("<div class='contact-popup box'><div class='entry-content'>H&auml;mtar kontaktuppgifter...</div></div>").append("<div class='contact-popup overlay'></div>");
 	
 			$(".contact-popup.overlay").unbind("click").click(function() {
 				$(".contact-popup").remove();
@@ -1127,7 +1118,7 @@ function setContactPopupAction(el) {
 					push_google_analytics(thepage);
 				}
 
-				$(this).find(".entry-wrapper").prepend("<div class='close-contact'><div class='icon'></div></div>");
+				$(this).find(".entry-wrapper").before("<div class='close-contact'><i class='i' data-icon='&#xF14E;'></i></div>");
 				$(".close-contact").unbind("click").click(function() {
 					$(".contact-popup").remove();
 				});
