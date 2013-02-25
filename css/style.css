@@ -3210,7 +3210,7 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .breadcrumb, .page-header, article.post, .article-border-wrapper, .article-wrapper, .content, .post .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .footer-widget-sidebar.one .footer-widgets {
+.one-whole, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .breadcrumb, .page-header, article.post, .article-border-wrapper, .home .post .content-wrapper, .home .post h1.entry-title, .article-wrapper, .content, .post .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
 
@@ -4282,7 +4282,7 @@ html.flexbox {
 }
 
 .float--left, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .slideshow .slide .caption-area, .help-navigation, .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .post h1.entry-title, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper, .contact-area .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult-wrapper .searchresult ul, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .post h1.entry-title, .home .post .content-wrapper, .home .post h1.entry-title, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper, .contact-area .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult-wrapper .searchresult ul, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4784,11 +4784,11 @@ td, th {
 
 /* the article content */
 /* hide article-wrapper if only titles */
+/* firstpage article style */
 /* article style */
 .article-wrapper {
   overflow: hidden;
 }
-.article-wrapper .summary-content a,
 .article-wrapper .more-content .content a {
   border-bottom: 1px dotted #5c85b1;
 }
@@ -5128,7 +5128,7 @@ article.summary.post:hover > .openButton {
   left: 0;
 }
 
-.margin--top, .article-wrapper .content-wrapper, .searchnavigation .searchresult-wrapper .searchresult {
+.margin--top, .home .post .content-wrapper, .article-wrapper .content-wrapper, .searchnavigation .searchresult-wrapper .searchresult {
   margin-top: 24px;
   margin-top: 1.5rem;
 }

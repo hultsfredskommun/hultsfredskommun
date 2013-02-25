@@ -33,6 +33,18 @@ article.post {
 	}
 }
 
+/* firstpage article style */
+.home .post {
+	.content-wrapper {
+		@extend .margin--top;
+		@extend .float--left;
+		@extend .one-whole;
+	}
+	h1.entry-title {
+		@extend .float--left;
+		@extend .one-whole;
+	}
+}
 /* article style */
 .article-wrapper {
 	@extend .float--left;
@@ -46,7 +58,6 @@ article.post {
 	.summary-content {
 		@extend .hand;
 	}
-	.summary-content a,
 	.more-content .content a {
 		border-bottom: 1px dotted $main-color;
 	}
