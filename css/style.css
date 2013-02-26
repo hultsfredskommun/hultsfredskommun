@@ -4309,7 +4309,7 @@ html.flexbox {
   margin-right: 0!important;
 }
 
-.flush--bottom, h1, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .view-tools,
+.flush--bottom, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools, .viewmode-only-titles article.post, .summary .img-wrapper, .top-menu-wrapper .top-menu, .main-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0!important;
 }
