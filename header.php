@@ -185,7 +185,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 					<?php endif; ?>
 				</div></aside>
 			<?php endif; ?>
-		<div id="topwrapper" class="top-wrapper">
+		<div id="topwrapper" class="content--center"><div class="top-wrapper">
 			<span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span>
 			<hgroup class="site-title">
 				<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
@@ -221,7 +221,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			</div>
 			<?php endif; ?>
 
-		</div>		
+		</div></div>		
 		<nav id="menu" class="menu-wrapper" role="navigation">
 			<?php 
 

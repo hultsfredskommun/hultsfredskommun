@@ -963,7 +963,7 @@ h2, .beta {
   line-height: 1.09091;
 }
 
-h3, .gamma {
+h3, .gamma, .main-menu {
   font-size: 20px;
   font-size: 1.25rem;
   line-height: 1.2;
@@ -4689,16 +4689,14 @@ html {
   font-family: "myriad-pro", Arial, sans-serif;
 }
 
-.content--center, .top-wrapper,
-.menu-wrapper,
-.main, .important-widget {
+.content--center, .menu-wrapper,
+.main {
   margin: 0 6px;
 }
 
 @media only screen and (min-width: 1200px) {
-  .content--center, .top-wrapper,
-  .menu-wrapper,
-  .main, .important-widget {
+  .content--center, .menu-wrapper,
+  .main {
     margin: 0 auto;
     max-width: 1188px;
   }
@@ -4976,6 +4974,12 @@ article.summary.post:hover > .openButton {
   border-bottom: 1px solid #e5e6e7;
 }
 
+.main-sub-menu {
+  font-size: 17px;
+  font-size: 1.0625rem;
+  line-height: 1.41176;
+}
+
 .more-menu .more-menu-ul {
   right: 0;
   z-index: 5000;
@@ -5184,7 +5188,7 @@ article.summary.post:hover > .openButton {
   margin-right: 1.5rem;
 }
 
-.margin--bottom, .widget, .slideshow, .page-header, .top-wrapper, .menu-wrapper {
+.margin--bottom, .widget, .slideshow, .page-header, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
 }

@@ -1,6 +1,5 @@
 /* hide title */
 .important-widget {
-	@extend .content--center;
 	@extend .important-background;
 	@extend .white-text;
 	@extend .border-radius--bottom;
@@ -124,6 +123,7 @@
 	@extend .zeta;
 	@extend .one-whole;
 	@extend .white-text;
+	@extend .margin--bottom;
 	a {
 		@extend .white-text;
 	}

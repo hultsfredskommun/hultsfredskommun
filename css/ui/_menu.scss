@@ -62,8 +62,12 @@
 	//@extend .hide--palm;
 }
 .main-menu {
+	@extend .gamma;
 	@extend .flush--bottom;
 	border-bottom: 1px solid $border-color;
+}
+.main-sub-menu {
+	@include font-size(17px);
 }
 .more-menu {
 	@extend .position-relative;
