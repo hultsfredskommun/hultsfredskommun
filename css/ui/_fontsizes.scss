@@ -1,6 +1,9 @@
 .font-weight-bold {
 	font-weight: bold;
 }
+.font-weight-normal {
+	font-weight: normal;
+}
 .force-font-style-normal {
 	font-style: normal!important;
 }
@@ -31,6 +34,7 @@
 
 /* default settings */
 h1 {
+	margin-bottom: $half-spacing-unit!important;
 	a {
 		@extend .black-text;
 	}

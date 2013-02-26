@@ -4632,6 +4632,10 @@ a:focus {
   font-weight: bold;
 }
 
+.font-weight-normal, .article-wrapper .footer-wrapper a {
+  font-weight: normal;
+}
+
 .force-font-style-normal, .article-wrapper a {
   font-style: normal!important;
 }
@@ -4663,6 +4667,10 @@ a:focus {
 }
 
 /* default settings */
+h1 {
+  margin-bottom: 12px !important;
+}
+
 /* text colors */
 a:hover {
   text-decoration: none;

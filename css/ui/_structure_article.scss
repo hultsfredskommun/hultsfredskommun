@@ -97,6 +97,9 @@ article.post {
 		li {
 			display: block;
 		}
+		a {
+			@extend .font-weight-normal;
+		}
 	}
 
 }
