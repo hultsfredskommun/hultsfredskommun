@@ -5048,6 +5048,9 @@ article.summary.post:hover > .openButton {
 
 /* =firstpage ui-tabs
 ----------------------------------------------- */
+.ui-tabs-nav {
+  margin-bottom: 12px;
+}
 .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover {
   border-bottom: 2px solid #3e3e3f;

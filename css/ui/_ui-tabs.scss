@@ -5,6 +5,7 @@
 	@extend .nav--block;
 	@extend .nav--block-double-margin;
 	@extend .flush--bottom;
+	margin-bottom: $half-spacing-unit;
 	a {
 		@extend .default-text;
 	}
