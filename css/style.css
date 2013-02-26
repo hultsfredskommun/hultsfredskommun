@@ -952,15 +952,15 @@ html {
  * heading hierarchy.
  */
 h1, .alpha {
-  font-size: 28px;
-  font-size: 1.75rem;
-  line-height: 1.71429;
-}
-
-h2, .beta {
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 1;
+}
+
+h2, .beta {
+  font-size: 22px;
+  font-size: 1.375rem;
+  line-height: 1.09091;
 }
 
 h3, .gamma {
@@ -4520,7 +4520,7 @@ a:focus {
   background-color: #3e3e3f;
 }
 
-.white-background, .button.bottom, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .contact-popup.box, .contact-popup.box .close-contact {
+.white-background, .button.bottom, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .more-menu .more-menu-ul, .contact-popup.box, .contact-popup.box .close-contact {
   background-color: #fff;
 }
 
@@ -4936,7 +4936,7 @@ article.summary.post:hover > .openButton {
 .more-menu-ul a,
 .main-menu a,
 .main-sub-menu a {
-  padding: 6px 12px !important;
+  padding: 12px 12px !important;
 }
 
 .main-menu {

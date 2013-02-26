@@ -55,7 +55,7 @@
 .main-sub-menu {
 	font-size: 90%;
 	a {
-		padding: $half-spacing-unit/2 $half-spacing-unit!important;
+		padding: $half-spacing-unit $half-spacing-unit!important;
 	}
 	@extend .nav;
 	@extend .nav--block;
@@ -70,6 +70,7 @@
 	.more-menu-ul {
 		@extend .nav--stacked;
 		@extend .position-absolute;
+		@extend .white-background;
 		right: 0;
 		z-index: 5000;
 	}
