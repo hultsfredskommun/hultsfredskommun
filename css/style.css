@@ -4796,6 +4796,21 @@ td, th {
 /* hide article-wrapper if only titles */
 /* firstpage article style */
 /* article style */
+.summary .article-wrapper .side-content {
+  display: none;
+}
+@media only screen and (min-width: 1024px) {
+  .summary .article-wrapper .side-content {
+    display: block;
+  }
+}
+
+.full .article-wrapper .side-content {
+  border-left: 4px solid #e5e6e7;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .article-wrapper {
   overflow: hidden;
 }
@@ -4832,6 +4847,10 @@ article.summary.post:hover > .openButton {
 }
 
 @media only screen and (min-width: 1024px) {
+  .side-content {
+    border-left: 0;
+  }
+
   .primary .article-wrapper {
     background-image: -moz-linear-gradient(left, white 66.6%, #e5e6e7 66.6%, #e5e6e7 100%);
     background-image: -o-linear-gradient(left, white 66.6%, #e5e6e7 66.6%, #e5e6e7 100%);
@@ -5311,7 +5330,7 @@ article.summary.post:hover > .openButton {
   left: 0;
 }
 
-.hidden, .breadcrumb, .viewmode-only-titles .summary .article-border-wrapper, .summary .entry-meta, .summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
+.hidden, .breadcrumb, .viewmode-only-titles .summary .article-border-wrapper, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
   display: none!important;
 }
 
