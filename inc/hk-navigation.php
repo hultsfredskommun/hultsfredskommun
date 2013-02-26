@@ -381,7 +381,7 @@ class hk_Tag_Walker extends Walker_Category {
 
 
 // show tag filter list
-function displayTagFilter() {
+function displayTagFilter($show_title = true) {
 	global $default_settings;
 	if ($default_settings["show_tags"] != 0) :
 		
@@ -401,7 +401,9 @@ function displayTagFilter() {
 		);
 
 		echo "<ul class='more-navigation'>"; 
-		echo "<li class='heading cat-item'><a href='#' class='icon-left'><i class='i' data-icon='&#xF0AD;'></i></a><a href='#'>Typ av information</a></li>";
+		if ($show_title) {
+			echo "<li class='heading cat-item'><a href='#' class='icon-left'><i class='i' data-icon='&#xF0AD;'></i></a><a href='#'>Typ av information</a></li>";
+		}
 		wp_list_categories( $args );
 		echo "</ul>";
 	endif;

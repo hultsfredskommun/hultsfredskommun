@@ -767,7 +767,7 @@ textarea:focus {
 .tools, .responsive-navigation, .searchnavigation .searchresult-wrapper .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
 .main-menu,
 .main-sub-menu, .tags-wrapper ul,
-.category-navigation ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .ui-widget-content ul, .footer-widget-wrapper ul, .media, .island, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
+.category-navigation ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul, .media, .island, .article-wrapper .side-content, .important-widget, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
 .islet,
 #responsive-info,
 .slideshow .slide .caption-area .caption, .matrix, .multi-list, .stat-group, .time, .page-header, article.post, .searchnavigation .form, .searchnavigation .form .submit, .footer-image-wrapper .logo-footer-image {
@@ -780,7 +780,7 @@ textarea:focus {
 .tools:before, .responsive-navigation:before, .searchnavigation .searchresult-wrapper .searchresult ul:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .more-menu-ul:before,
 .main-menu:before,
 .main-sub-menu:before, .tags-wrapper ul:before,
-.category-navigation ul:before, .category-navigation .parent:before, .category-navigation .parent li .children:before, .category-navigation .more-navigation:before, .ui-tabs-nav:before, .ui-widget-content ul:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .article-wrapper .side-content:before, .important-widget:before, .footer-image-wrapper .logo-footer-image img:before, .contact-popup.box .entry-wrapper .entry-content:before,
+.category-navigation ul:before, .category-navigation .parent:before, .category-navigation .parent li .children:before, .category-navigation .more-navigation:before, .ui-tabs-nav:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .article-wrapper .side-content:before, .important-widget:before, .footer-image-wrapper .logo-footer-image img:before, .contact-popup.box .entry-wrapper .entry-content:before,
 .islet:before,
 #responsive-info:before,
 .slideshow .slide .caption-area .caption:before, .matrix:before, .multi-list:before, .stat-group:before, .time:before, .page-header:before, article.post:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
@@ -790,7 +790,7 @@ textarea:focus {
 .tools:after, .responsive-navigation:after, .searchnavigation .searchresult-wrapper .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
 .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .article-wrapper .side-content:after, .important-widget:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
+.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .article-wrapper .side-content:after, .important-widget:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
 .islet:after,
 #responsive-info:after,
 .slideshow .slide .caption-area .caption:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .footer-image-wrapper .logo-footer-image:after {
@@ -804,7 +804,7 @@ textarea:focus {
 .tools:after, .responsive-navigation:after, .searchnavigation .searchresult-wrapper .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
 .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
-.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .ui-widget-content ul:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .article-wrapper .side-content:after, .important-widget:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
+.category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .article-wrapper .side-content:after, .important-widget:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
 .islet:after,
 #responsive-info:after,
 .slideshow .slide .caption-area .caption:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .footer-image-wrapper .logo-footer-image:after {
@@ -1974,7 +1974,7 @@ html.flexbox {
 .tools, .responsive-navigation, .searchnavigation .searchresult-wrapper .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
 .main-menu,
 .main-sub-menu, .tags-wrapper ul,
-.category-navigation ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .ui-widget-content ul, .footer-widget-wrapper ul {
+.category-navigation ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul {
   list-style: none;
   margin-left: 0;
 }
@@ -1984,7 +1984,7 @@ html.flexbox {
 .tools > li, .responsive-navigation > li, .searchnavigation .searchresult-wrapper .searchresult ul > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu-ul > li,
 .main-menu > li,
 .main-sub-menu > li, .tags-wrapper ul > li,
-.category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .ui-tabs-nav > li, .ui-widget-content ul > li, .footer-widget-wrapper ul > li,
+.category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .ui-tabs-nav > li, .footer-widget-wrapper ul > li,
 .nav > li > a,
 .page-header .view-tools > li > a,
 .page-header .sort-order > li > a,
@@ -2008,7 +2008,6 @@ html.flexbox {
 .category-navigation .parent li .children > li > a,
 .category-navigation .more-navigation > li > a,
 .ui-tabs-nav > li > a,
-.ui-widget-content ul > li > a,
 .footer-widget-wrapper ul > li > a {
   display: inline-block;
   *display: inline;
@@ -2029,13 +2028,13 @@ html.flexbox {
 .nav--stacked > li, .page-header .category-tools .menu-item .sub-menu > li, .contacts > li,
 .related-wrapper > li,
 .tools > li, .searchnavigation .searchresult-wrapper .searchresult ul > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu .more-menu-ul > li, .tags-wrapper ul > li,
-.category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .ui-widget-content ul > li, .footer-widget-wrapper ul > li {
+.category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .footer-widget-wrapper ul > li {
   display: list-item;
 }
 .nav--stacked > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .contacts > li > a,
 .related-wrapper > li > a,
 .tools > li > a, .searchnavigation .searchresult-wrapper .searchresult ul > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .more-menu .more-menu-ul > li > a, .tags-wrapper ul > li > a,
-.category-navigation ul > li > a, .category-navigation .parent > li > a, .category-navigation .parent li .children > li > a, .category-navigation .more-navigation > li > a, .ui-widget-content ul > li > a, .footer-widget-wrapper ul > li > a {
+.category-navigation ul > li > a, .category-navigation .parent > li > a, .category-navigation .parent li .children > li > a, .category-navigation .more-navigation > li > a, .footer-widget-wrapper ul > li > a {
   display: block;
 }
 
@@ -2068,7 +2067,7 @@ html.flexbox {
 .nav--block, .options, .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .pager, .responsive-navigation, .searchnavigation .searchresult-wrapper .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
 .main-menu,
-.main-sub-menu, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .ui-widget-content ul, .footer-widget-wrapper ul {
+.main-sub-menu, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul {
   line-height: 1;
   /**
    * Remove whitespace caused by `inline-block`.
@@ -2080,14 +2079,14 @@ html.flexbox {
 .nav--block > li, .options > li, .page-header .view-tools > li,
 .page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .pager > li, .responsive-navigation > li, .searchnavigation .searchresult-wrapper .searchresult ul > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu-ul > li,
 .main-menu > li,
-.main-sub-menu > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .ui-tabs-nav > li, .ui-widget-content ul > li, .footer-widget-wrapper ul > li {
+.main-sub-menu > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .ui-tabs-nav > li, .footer-widget-wrapper ul > li {
   letter-spacing: normal;
   word-spacing: normal;
 }
 .nav--block > li > a, .options > li > a, .page-header .view-tools > li > a,
 .page-header .sort-order > li > a, .page-header .category-tools > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .pager > li > a, .responsive-navigation > li > a, .searchnavigation .searchresult-wrapper .searchresult ul > li > a, .top-menu-wrapper .top-menu > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .more-menu-ul > li > a,
 .main-menu > li > a,
-.main-sub-menu > li > a, .category-navigation .parent > li > a, .category-navigation .parent li .children > li > a, .category-navigation .more-navigation > li > a, .ui-tabs-nav > li > a, .ui-widget-content ul > li > a, .footer-widget-wrapper ul > li > a {
+.main-sub-menu > li > a, .category-navigation .parent > li > a, .category-navigation .parent li .children > li > a, .category-navigation .more-navigation > li > a, .ui-tabs-nav > li > a, .footer-widget-wrapper ul > li > a {
   padding: 12px;
 }
 
@@ -4539,7 +4538,7 @@ a:focus {
 
 .gray-light-background, .gray-image-background, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .searchnavigation .form .input-wrapper, .searchnavigation .searchresult-wrapper .searchresult, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
-.main-sub-menu .current-menu-item a, .category-navigation .parent li.current-cat > a, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
+.main-sub-menu .current-menu-item a, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover, .footer-wrapper.footer-widget-wrapper {
   background-color: #e5e6e7;
 }
@@ -4629,7 +4628,7 @@ a:focus {
 }
 
 .font-weight-bold, .page-header .view-tools .active,
-.page-header .sort-order .active, .article-wrapper a, .category-navigation .heading, .ui-tabs li.ui-state-default, .widget .widget-title span {
+.page-header .sort-order .active, .article-wrapper a, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .ui-tabs li.ui-state-default, .widget .widget-title span {
   font-weight: bold;
 }
 
@@ -4712,14 +4711,14 @@ td, th {
   white-space: normal!important;
 }
 
-.nav--block-half-margin li a, .searchnavigation .searchresult-wrapper .searchresult ul li a, .category-navigation .parent li a, .category-navigation .parent li .children li a, .category-navigation .more-navigation li a, .ui-widget-content ul li a, .footer-widget-wrapper ul li a {
+.nav--block-half-margin li a, .searchnavigation .searchresult-wrapper .searchresult ul li a, .category-navigation .parent li a, .category-navigation .parent li .children li a, .category-navigation .more-navigation li a, .footer-widget-wrapper ul li a {
   padding-top: 6px;
   padding-top: 0.375rem;
   padding-bottom: 6px;
   padding-bottom: 0.375rem;
 }
 
-.nav--block-double-margin li a, .main-menu li a, .main-sub-menu li a, .ui-widget-content ul li a {
+.nav--block-double-margin li a, .main-menu li a, .main-sub-menu li a {
   padding-left: 24px;
   padding-left: 1.5rem;
   padding-right: 24px;
@@ -5034,6 +5033,14 @@ article.summary.post:hover > .openButton {
 
 .ui-tabs .ui-tabs-panel {
   display: block;
+}
+
+.ui-widget-content ul {
+  /*	@extend .nav;
+  	@extend .nav--block;
+  	@extend .nav--stacked;
+  	@extend .nav--block-half-margin;
+  	@extend .nav--block-double-margin;*/
 }
 
 .main-menu a:hover,

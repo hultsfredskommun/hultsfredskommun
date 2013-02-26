@@ -18,7 +18,8 @@
 
 		li {
 			&.current-cat > a {
-				@extend .gray-light-background;
+				//@extend .gray-light-background;
+				@extend .font-weight-bold;
 			}
 			&.current-cat,
 			&:hover {
