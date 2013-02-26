@@ -7,7 +7,7 @@
  * @since Twenty Eleven 1.0
  */
 ?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky news":"news"); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky news summary":"news summary"); ?>>
 		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 		<div class="time"><?php echo get_the_date(); ?></div>
 		<div class="article-border-wrapper">

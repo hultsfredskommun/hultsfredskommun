@@ -33,7 +33,11 @@ html {
 }
 }
 
-.branding,
+.branding {
+	@extend .one-whole;
+}
+.top-wrapper,
+.menu-wrapper,
 .main {
 	@extend .content--center;
 }
@@ -57,9 +61,8 @@ td, th {
 	@extend .margin--bottom;
 	@extend .epsilon;
 	h1 {
-		padding-top: 2px;
-		padding-bottom: 2px;
-
+		padding: $half-spacing-unit 0;
+		line-height: 1;
 		@extend .one-whole;
 		@extend .epsilon;
 		@extend .border--bottom;

@@ -120,11 +120,13 @@
 
 /* top right menu */
 .top-menu-wrapper {
-	@extend .g;
+	@extend .main-background;
 	@extend .zeta;
-	@extend .desk-one-quarter;
-	@extend .lap-one-quarter;
-	@extend .hide--palm;
+	@extend .one-whole;
+	@extend .white-text;
+	a {
+		@extend .white-text;
+	}
 	/* set top menu icons */
 	.top-menu {
 		@extend .text--right;
@@ -139,6 +141,9 @@
 			}
 			&:hover {
 				@extend .gray-light-background;
+				a {
+					@extend .main-text;
+				}
 			}
 			.sub-menu {
 				@extend .dropdown__content;
