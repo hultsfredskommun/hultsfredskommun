@@ -671,14 +671,14 @@ $(document).ready(function(){
 	$(window).scroll(function () {
 	
 		/* load next pages posts dynamically when reaching bottom of page */
-		/*if( !$(body).hasClass("home") && parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2 - $("#colophon").height()) ) {
+		if( !$("body").hasClass("home") && parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2 - $("#colophon").height()) ) {
 	
 			if ($("#dyn-posts-load-posts").length <= 0 && !$("#shownposts").hasClass("loaded")) {
 			
 				dyn_posts_load_posts();
 			}
 		}
-		*/
+		
 		
 		/* show scroll to top icon */
 		if( $(this).scrollTop() > 1000 ) {

@@ -3344,7 +3344,7 @@ html.flexbox {
  * Demo: jsfiddle.net/inuitcss/WS4Ge
  *
  */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 540px) {
   /**
   * Whole
   */
@@ -3468,7 +3468,7 @@ html.flexbox {
     width: 91.666%;
   }
 }
-@media only screen and (min-width: 481px) and (max-width: 1023px) {
+@media only screen and (min-width: 541px) and (max-width: 1023px) {
   /**
   * Whole
   */
@@ -4405,13 +4405,13 @@ html.flexbox {
   left: -9999px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 540px) {
   .hide--palm, .searchnavigation, .top-menu-wrapper, .logo2, .responsive-menu {
     position: absolute;
     left: -9999px;
   }
 }
-@media only screen and (min-width: 481px) and (max-width: 1023px) {
+@media only screen and (min-width: 541px) and (max-width: 1023px) {
   .hide--lap, .responsive-navigation, .responsive-menu {
     position: absolute;
     left: -9999px;
@@ -4835,7 +4835,7 @@ article.summary.post:hover > .openButton {
   z-index: 10;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 540px) {
   .entry-title,
   .content-wrapper,
   .entry-meta,
@@ -4853,12 +4853,12 @@ article.summary.post:hover > .openButton {
   display: none;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 540px) {
   article.summary .summary {
     display: none;
   }
 }
-@media only screen and (min-width: 481px) and (max-width: 1023px) {
+@media only screen and (min-width: 541px) and (max-width: 1023px) {
   article.summary .summary {
     display: none;
   }
@@ -5301,7 +5301,7 @@ article.summary.post:hover > .openButton {
   display: block!important;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 540px) {
   .hidden--palm, .more-in-navigation,
   .sort-order,
   .category-navigation {
@@ -5319,12 +5319,12 @@ article.summary.post:hover > .openButton {
     content: "DESKWIDE";
   }
 }
-@media only screen and (min-width: 481px) and (max-width: 1023px) {
+@media only screen and (min-width: 541px) and (max-width: 1023px) {
   #responsive-info:after {
     content: "LAP & PORTABLE";
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 540px) {
   #responsive-info:after {
     content: "PALM & PORTABLE";
   }
