@@ -49,7 +49,7 @@
 		<?php while ( has_sub_field('hk_related') ) : ?>
 			<?php if (!$summary || $count++ < 2) : ?>
 				<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
-					<li class="related_page <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Relaterat inl&auml;gg" class="icon-left"><i class='i' data-icon='&#xF035;'></i></a>
+					<li class="related_page <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Relaterat inl&auml;gg" class="icon-left"><i class='i' data-icon='&#xF143;'></i></a>
 						<?php $value = get_sub_field('hk_related_post');?>
 						<a href="<?php echo get_permalink($value->ID); ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_post_description'); ?>"><?php echo $value->post_title; ?></a>
 					</li>			 

@@ -4718,7 +4718,7 @@ td, th {
   padding-bottom: 0.375rem;
 }
 
-.nav--block-double-margin li a, .main-menu li a, .main-sub-menu li a {
+.nav--block-double-margin li a, .main-menu li a, .main-sub-menu li a, .ui-tabs-nav li a {
   padding-left: 24px;
   padding-left: 1.5rem;
   padding-right: 24px;
@@ -4774,6 +4774,9 @@ td, th {
 }
 .page-header .category-tools .menu-item .sub-menu {
   border-radius: 0 3px 3px 3px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
   z-index: 100;
 }
 

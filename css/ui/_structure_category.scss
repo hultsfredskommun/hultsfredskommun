@@ -71,6 +71,9 @@
 				@extend .nav--stacked;
 				@extend .text--left;
 				border-radius: 0 $border-radius $border-radius $border-radius;
+				border-left: 1px solid white;
+				border-right: 1px solid white;
+				border-bottom: 1px solid white;
 				z-index: 100;
 			}
 		}

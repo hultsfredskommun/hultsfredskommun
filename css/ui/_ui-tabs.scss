@@ -3,6 +3,7 @@
 .ui-tabs-nav {
 	@extend .nav;
 	@extend .nav--block;
+	@extend .nav--block-double-margin;
 	@extend .flush--bottom;
 	a {
 		@extend .default-text;

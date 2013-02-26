@@ -109,12 +109,12 @@ function hk_related_output($wrapping_li = true) {
 				if (get_field('hk_related')) :
 					while (has_sub_field('hk_related')) : 
 						if ( get_row_layout() == 'hk_related_posts' ) : 
-							$retValue .= "<li class='related_page'><a title='Relaterat inl&auml;gg' class='icon-left'><i class='i' data-icon='&#xF179;'></i></a>";
+							$retValue .= "<li class='related_page'><a title='Relaterat inl&auml;gg' class='icon-left'><i class='i' data-icon='&#xF143;'></i></a>";
 							$value = get_sub_field('hk_related_post');
 							$retValue .= "<a href='" . get_permalink($value->ID) . "' class='icon-right' title='" . get_sub_field('hk_related_post_description') . "'>" . $value->post_title . "</a>";
 							$retValue .= "</li>";		 
 						elseif ( get_row_layout() == 'hk_related_links' ) : 
-							$retValue .= "<li class='related_link'><a title='L&auml;nk till annan webbsida' class='icon-left'><i class='i' data-icon='&#xF02E;'></i></a>";
+							$retValue .= "<li class='related_link'><a title='L&auml;nk till annan webbsida' class='icon-left'><i class='i' data-icon='&#xF143;'></i></a>";
 							// prepend http:// if not there already
 							$relate_link_url = get_sub_field('hk_relate_link_url');
 							if (substr_compare($relate_link_url, 'http', 0, 4) != 0) {
@@ -125,7 +125,7 @@ function hk_related_output($wrapping_li = true) {
 						elseif ( get_row_layout() == 'hk_related_files' ) :
 							$link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
 							$link_name = get_the_title(get_sub_field('hk_related_file'));
-							$retValue .= "<li class='related_file'><a title='Ladda ner dokument' class='icon-left'><i class='i' data-icon='&#xF02C;'></i></a>";
+							$retValue .= "<li class='related_file'><a title='Ladda ner dokument' class='icon-left'><i class='i' data-icon='&#xF019;'></i></a>";
 								$retValue .= "<a target='_blank' class='icon-right' href='" . $link . "' title='" . get_sub_field('hk_related_file_description') . "'>" . $link_name . "</a>";
 							$retValue .= "</li>";
 						endif;
