@@ -4514,7 +4514,7 @@ a:focus, .top-menu-wrapper .top-menu .menu-item:hover a {
   background-color: #3e3e3f;
 }
 
-.white-background, .button.bottom, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .more-menu .more-menu-ul, .contact-popup.box, .contact-popup.box .close-contact {
+.white-background, .button.bottom, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .more-menu .more-menu-ul, .contact-popup.box, .contact-popup.box .close-contact {
   background-color: #fff;
 }
 
@@ -4530,7 +4530,7 @@ a:focus, .top-menu-wrapper .top-menu .menu-item:hover a {
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .footer-wrapper.footer-widget-wrapper, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .searchnavigation .form .input-wrapper, .searchnavigation .searchresult-wrapper .searchresult, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+.gray-light-background, .gray-image-background, .footer-wrapper.footer-widget-wrapper, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .searchnavigation .form .input-wrapper, .searchnavigation .searchresult-wrapper .searchresult, .top-menu-wrapper .top-menu .menu-item .sub-menu .menu-item:hover, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover {
@@ -4609,7 +4609,7 @@ a:focus, .top-menu-wrapper .top-menu .menu-item:hover a {
   border-bottom-right-radius: 3px;
 }
 
-.border-radius--bottom, .slideshow .slide .caption-area .transparent, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+.border-radius--bottom, .slideshow .slide .caption-area .transparent, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   border-bottom-left-radius: 3px;
@@ -4889,7 +4889,7 @@ article.summary.post:hover > .openButton {
 }
 
 .rsbtn .rsbtn_left .rsbtn_text {
-  padding-left: 0;
+  padding-left: 0!important;
 }
 
 .addthis_toolbox {
@@ -4953,13 +4953,17 @@ article.summary.post:hover > .openButton {
 }
 .top-menu-wrapper .top-menu .right.menu-item .sub-menu {
   left: initial;
+  margin-right: -1px;
 }
 .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit {
   width: 24px;
 }
 .top-menu-wrapper .top-menu .menu-item .sub-menu {
-  border-radius: 3px 0 3px 3px;
+  border-right: 1px solid #5c85b1;
+  border-bottom: 1px solid #5c85b1;
+  border-left: 1px solid #5c85b1;
   z-index: 100;
+  margin-left: -1px;
 }
 
 /* add <i class=i data-icon="&#xF143;"></i> in sites item title */

@@ -139,6 +139,7 @@
 		.right.menu-item .sub-menu {
 			@extend .dropdown__content--right;
 			left: initial;
+			margin-right: -1px;
 		}
 		.menu-item {
 			@extend .dropdown;
@@ -147,21 +148,28 @@
 				width: $base-spacing-unit;
 			}
 			&:hover {
-				@extend .gray-light-background;
+				@extend .white-background;
 				a {
 					@extend .main-text;
 				}
 			}
 			.sub-menu {
+				.menu-item:hover {
+					@extend .gray-light-background;
+				}
 				@extend .dropdown__content;
 				@extend .nav;
 				@extend .nav--stacked;
 				@extend .nav--block;
-				@extend .gray-light-background;
+				@extend .white-background;
 				@extend .nav--stacked;
 				@extend .text--left;
-				border-radius: $border-radius 0 $border-radius $border-radius;
+				@extend .border-radius--bottom;
+				border-right: $border-line-width $border-line-style $main-color;
+				border-bottom: $border-line-width $border-line-style $main-color;
+				border-left: $border-line-width $border-line-style $main-color;
 				z-index: 100;
+				margin-left: -1px;
 			}
 		}
 	}
