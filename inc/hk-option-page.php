@@ -40,7 +40,10 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[search_watermark]">Vattenst&auml;mpel i s&ouml;k</label><br/><input size="80" type="text" name="hk_theme[search_watermark]" value="<?php echo $options['search_watermark']; ?>" /></p>
 			<p><label for="hk_theme[pre_topmenu_html]">HTML f&ouml;re topmenu</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[pre_topmenu_html]"><?php echo $options['pre_topmenu_html']; ?></textarea></p>
 			<p><label for="hk_theme[post_topmenu_html]">HTML efter topmenu</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[post_topmenu_html]"><?php echo $options['post_topmenu_html']; ?></textarea></p>
+
+			
 			<h3>Extra loggor</h3>
+			<p><label for="hk_theme[right_logo_html]">HTML vid eller ist&auml;llet för logo2</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[right_logo_html]"><?php echo $options['right_logo_html']; ?></textarea></p>
 			<p><label for="hk_theme[logo2_image]">Logga 2 - till h&ouml;ger i huvudet</label><br/>
 				<img width=150  src="<?php echo $options["logo2_image"]; ?>" />
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo2_image]" value="<?php echo $options["logo2_image"]; ?>" />
@@ -56,6 +59,14 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[logo3_link]">Logga 3 l&auml;nk. </label><br/><input size="80" type="text" name="hk_theme[logo3_link]" value="<?php echo $options['logo3_link']; ?>" /></p>
 			<p><label for="hk_theme[logo3_descr]">Logga 3 beskrivning. </label><br/><input size="80" type="text" name="hk_theme[logo3_descr]" value="<?php echo $options['logo3_descr']; ?>" /></p>
 
+			<h2>404</h2>
+			<p><label for="hk_theme[404title]">Titel</label><br/><input size="80" type="text" name="hk_theme[404title]" value="<?php echo $options['404title']; ?>" /></p>
+			<p><label for="hk_theme[404message]">Meddelande</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[404message]"><?php echo $options['404message']; ?></textarea></p>
+			<?php if(function_exists('get_most_viewed')) { ?>
+			<p><label for="hk_theme[404message2]">Meddelande2 (innan mest bes&ouml;kta)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[404message2]"><?php echo $options['404message2']; ?></textarea></p>
+			<?php } ?>
+			
+			
 			<h2>Kategorier och menyer</h2>
 			
 			<p><label for="hk_theme[startpage_cat]">Välj kategori som är startsida.</label><br/>

@@ -21,16 +21,27 @@ function hk_breadcrumb() {
 	echo rtrim($retValue," |");
 }
 
-function hk_nothing_found_navigation() { ?>
+function hk_nothing_found_navigation() { 
+	$options = get_option('hk_theme'); 
+	$title = "Hittade du inte den information du s&ouml;kte?";
+	$message = "Du kan forts&auml;tta genom att &auml;ndra i ditt urval eller s&ouml;ka fritt i s&ouml;krutan ovan.";
+	$message2 = "Kanske finns informationen du s&ouml;ker bland v&aring;ra mest bes&ouml;kta sidor?";
+	if ($options["404title"] != "")
+		$title = $options["404title"];
+	if ($options["404message"] != "")
+		$message = $options["404message"];
+	if ($options["404message2"] != "")
+		$message2 = $options["404message2"];
+	?>
 		<article id="post-nothing">
 			<div class="content-wrapper">
 			<div class="summary-content">
 				<div class="entry-wrapper">
-					<h1 class="entry-title">Hittade du inte den information du s&ouml;kte?</h1>
+					<h1 class="entry-title"><?php echo $title; ?></h1>
 					<div class="entry-content">
-						<p>Du kan forts&auml;tta genom att &auml;ndra i ditt urval eller s&ouml;ka fritt i s&ouml;krutan ovan.</p>
+						<p><?php echo $message; ?></p>
 						<?php if(function_exists('get_most_viewed')) { ?>
-						<p>Kanske finns informationen du s&ouml;ker bland v&aring;ra mest bes&ouml;kta sidor?</p>
+						<p><?php echo $message2; ?></p>
 						<ul><?php get_most_viewed('post'); } ?></ul>
 						
 					</div>

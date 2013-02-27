@@ -2,13 +2,16 @@
 .important-widget {
 	@extend .important-background;
 	@extend .white-text;
-	@extend .border-radius--bottom;
-	@extend .island;
 	position: relative;
 	z-index: 2;
 	a {
 		@extend .white-text;
 	}
+	.widget-title,
+	.textwidget {
+		@extend .content--center;
+	}
+	@extend .padding--bottom;
 }
 
 .site-title {

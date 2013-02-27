@@ -85,6 +85,7 @@ article.post {
 		@extend .desk-two-thirds;
 		@extend .lap-one-whole;
 		@extend .palm-one-whole;
+		margin-top: $half-spacing-unit!important;
 	}
 	.side-content {
 		@extend .float--left;
@@ -93,6 +94,7 @@ article.post {
 		@extend .palm-one-whole;
 		@extend .island;
 		@extend .zeta;
+		margin-top: $half-spacing-unit!important;
 	}
 	@include media-query(desk) {
 	.side-content {
@@ -148,14 +150,19 @@ article.summary.post:hover > .openButton {
 }
 
 @include media-query(desk) {
-.side-content {
+.full .article-wrapper .side-content {
 	border-left: 0;
 }
 .primary .article-wrapper {
+	background-size: 100%;
+	background-image: url(images/greyTile24bit-one-third.png);
+	
+/*
 	background-image: -moz-linear-gradient(left, #fff 66.6%, $gray-light-color 66.6%, $gray-light-color 100%);
 	background-image: -o-linear-gradient(left, #fff 66.6%, $gray-light-color 66.6%, $gray-light-color 100%);
 	background-image: -webkit-linear-gradient(left, #fff 66.6%, $gray-light-color 66.6%, $gray-light-color 100%);
 	background-image: linear-gradient(left, #fff 66.6%, $gray-light-color 66.6%, $gray-light-color 100%);
+*/
 }
 }
 

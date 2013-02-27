@@ -209,9 +209,13 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 
 
 			
-			
-			<?php if (($hk_options["logo2_image"] != "") || ($hk_options["logo3_image"] != "")) : ?>
+
+			<?php if (($hk_options["logo2_image"] != "") || ($hk_options["logo3_image"] != "") || (!empty($hk_options["right_logo_html"]) && $hk_options["right_logo_html"] != "")) : ?>
 			<div id="logo2" class="logo2">
+				<?php /* right logo html if any in options */ ?>
+				<?php if (!empty($hk_options["right_logo_html"]) && $hk_options["right_logo_html"] != "") : ?>
+					<?php echo $hk_options["right_logo_html"]; ?>
+				<?php endif; ?>
 				<?php if ($hk_options["logo2_image"] != "") : ?>
 				<a target="_blank" href="<?php echo $hk_options["logo2_link"]; ?>" title="<?php echo $hk_options["logo2_descr"]; ?>"><img src="<?php echo $hk_options["logo2_image"]; ?>" alt="<?php echo $hk_options["logo2_descr"]; ?>" /></a>
 				<?php endif; ?>
