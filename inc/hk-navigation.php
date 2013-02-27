@@ -25,7 +25,7 @@ function hk_nothing_found_navigation() {
 	$options = get_option('hk_theme'); 
 	$title = "Hittade du inte den information du s&ouml;kte?";
 	$message = "Du kan forts&auml;tta genom att &auml;ndra i ditt urval eller s&ouml;ka fritt i s&ouml;krutan ovan.";
-	$message2 = "Kanske finns informationen du s&ouml;ker bland v&aring;ra mest bes&ouml;kta sidor?";
+	$message2 = "";
 	if ($options["404title"] != "")
 		$title = $options["404title"];
 	if ($options["404message"] != "")
@@ -40,9 +40,11 @@ function hk_nothing_found_navigation() {
 					<h1 class="entry-title"><?php echo $title; ?></h1>
 					<div class="entry-content">
 						<p><?php echo $message; ?></p>
-						<?php if(function_exists('get_most_viewed')) { ?>
+						
+						<?php if($message2 != "" && function_exists('get_most_viewed')) : ?>
 						<p><?php echo $message2; ?></p>
-						<ul><?php get_most_viewed('post'); } ?></ul>
+						<ul><?php get_most_viewed('post'); ?></ul>
+						<?php endif; ?>
 						
 					</div>
 				</div>

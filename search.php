@@ -10,7 +10,7 @@
 get_header(); ?>
 		<?php hk_navigation(); ?>
 		
-		<section id="primary">
+		<div id="primary" class="primary">
 			<div id="content" role="main">
 
 			<?php if ( have_posts() ) : ?>
@@ -22,10 +22,10 @@ get_header(); ?>
 						} 
 					?>
 					
-					<div id="viewmode">
-						<a id="viewmode_summary" title="Listvisning" href="#"></a>
-						<a id="viewmode_titles" title="Rubrikvisning" href="#"></a>
-					</div>
+					<ul class="view-tools">
+						<li class="menu-item view-mode"><a class="viewmode_summary js-view-summary hide" title="Listvisning" href="#">Sammanfattning</a>
+						<a class="viewmode_titles js-view-titles" title="Rubrikvisning" href="#">Rubriker</a></li>
+					</ul>
 				</header>
 
 				<?php /* hook to be able to add other search result */ 
@@ -44,7 +44,7 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 
-				<?php hk_content_nav( 'nav-below' ); ?>
+				<?php //hk_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 
@@ -53,6 +53,6 @@ get_header(); ?>
 			<?php endif; ?>
 
 			</div><!-- #content -->
-		</section><!-- #primary -->
+		</div><!-- #primary -->
 
 <?php get_footer(); ?>

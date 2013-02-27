@@ -216,7 +216,7 @@ if (typeof $.fn.googlemap != 'function') {
 }	
 if (typeof $.fn.googlemaplink != 'function') {
 	$.fn.googlemaplink = function() {
-		if (google !== undefined) {
+		if (typeof google != 'undefined') {
 			$(this).each(function() {
 				$(this).find(".coordinates, .address").hide();
 				$(this).unbind("click").click( function(ev) {

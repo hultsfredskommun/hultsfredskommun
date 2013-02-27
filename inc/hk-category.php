@@ -10,14 +10,6 @@
 				} 
 			?>
 			
-			
-
-			<?php 
-				if( function_exists('displayTagFilter') ){
-					//displayTagFilter();
-				}
-			?>
-			
 			<ul class="view-tools">
 				<li class="menu-item view-mode"><a class="viewmode_summary js-view-summary hide" title="Listvisning" href="#">Sammanfattning</a>
 				<a class="viewmode_titles js-view-titles" title="Rubrikvisning" href="#">Rubriker</a></li>
