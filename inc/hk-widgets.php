@@ -296,7 +296,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 			<?php endif; ?>
 		</ul>
 		<?php endif; ?>
-		<div id="newscontent">
+		<div id="newscontent" class="newscontent firstpage-tab-content">
 			<?php 
 				/* Query all posts with selected startpage category */
 				$cat = get_query_var("cat");
@@ -316,15 +316,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 				// Reset Query
 				wp_reset_query(); 
 			?>
-			<!--div id='wrapper-sHys'>
-				<span id='h2-sHys'><a id='url-sHys' href="http://www.vackertvader.se/hultsfred"> Hultsfred</a></span>
-				<div id='load-sHys'></div>
-				<a id='url_detail-sHys' href="http://www.vackertvader.se/hultsfred">Detaljerad prognos</a>
-			</div>
-			<script type="text/javascript" 
-					src="http://widget.vackertvader.se/widgetv3/widget_request/2704398?bgcolor=ffffff&border=none&days=1&key=-sHys&lang=&maxtemp=no&size=x120&textcolor=363636&wind=no" 
-					charset="utf-8">
-			</script-->
+			
 
 			<?php
 				/* Query all posts with news tag */
@@ -361,7 +353,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 
 		<?php if ($showprotocol) : ?>
-		<div id="protocolcontent">
+		<div id="protocolcontent" class="protocolcontent firstpage-tab-content">
 			<?php 
 				/* Query all posts with selected startpage category */
 					$children =  hk_getChildrenIdArray($default_settings["protocol_cat"]);

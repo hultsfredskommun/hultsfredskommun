@@ -5082,6 +5082,10 @@ article.summary.post:hover > .openButton {
   	@extend .nav--block-double-margin;*/
 }
 
+.firstpage-tab-content {
+  padding-top: 24px;
+}
+
 .top-menu a:hover,
 .top-menu .menu-item:hover,
 .main-menu a:hover,
