@@ -77,9 +77,15 @@
 	left: 0;
 }
 .hidden {
+	display: none;
+}
+.force-hidden {
 	display: none!important;
 }
 .unhidden {
+	display: block;
+}
+.force-unhidden {
 	display: block!important;
 }
 @include media-query(palm) {

@@ -299,6 +299,7 @@ if (typeof $.fn.doslideshow != 'function') {
 				
 				/* set up slideshow first time */
 				if (!$(this).hasClass("initialized")) {
+					$(this).show("fast");
 					rand = Math.floor((Math.random()*1000)+1);
 					$(this).find(".prevslide").addClass("prev"+rand);
 					$(this).find(".nextslide").addClass("next"+rand);
@@ -1228,18 +1229,18 @@ function responsive_menu() {
 
 	function do_responsive_menu(classname) {
 		// main-menu
-		$(classname).find(".menu-item").removeClass("hidden");
+		$(classname).find(".menu-item").removeClass("force-hidden");
 		$(classname).find(".more-menu").remove();
 		if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
-			$(classname).find(".right-nav-menu-item").addClass("hidden");
+			$(classname).find(".right-nav-menu-item").addClass("force-hidden");
 		}		
 		if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
 			$(classname).append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
 			count=0; // to avoid infinit loop
 			while (($(classname).children(".menu-item").sumWidth() > wrapperwidth) && count < 20) {
 				count++;
-				log ($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu").width() + " " + wrapperwidth);
-				$(classname).find(".more-menu-ul").append("<li>"+$(classname).children(".menu-item").not(".hidden").not(".more-menu").last().addClass("hidden").html()+"</li>");
+				//log($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu").width() + " " + wrapperwidth);
+				$(classname).find(".more-menu-ul").append("<li>"+$(classname).children(".menu-item").not(".force-hidden").not(".more-menu").last().addClass("force-hidden").html()+"</li>");
 			}
 		}
 	}
@@ -1252,9 +1253,10 @@ function responsive_menu() {
 
 	$(".more-menu-ul").hide();
 	
-	$(".js-more-menu-click").unbind("click").click(function() {
+	$(".js-more-menu-click").unbind("click").click(function(ev) {
 		//log($(this).parents("ul").find("more-menu-ul"));
 		$(this).parents("ul").find(".more-menu-ul").toggle();
+		ev.preventDefault();
 	});
 
 	//log($(".menu-wrapper").width() + " " + $(".main-menu")[0].scrollWidth + " " + $(".main-sub-menu")[0].clientWidth);

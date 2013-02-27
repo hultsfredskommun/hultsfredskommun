@@ -136,6 +136,10 @@
 		@extend .nav;
 		@extend .nav--block;
 		@extend .flush--bottom;
+		.right.menu-item .sub-menu {
+			@extend .dropdown__content--right;
+			left: initial;
+		}
 		.menu-item {
 			@extend .dropdown;
 			.i {
