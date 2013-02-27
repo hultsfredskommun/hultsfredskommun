@@ -4884,6 +4884,10 @@ article.summary.post:hover > .openButton {
 }
 /* embedded contact image */
 /* aside content */
+.readspeaker_toolbox {
+  display: none;
+}
+
 .addthis_toolbox {
   display: none;
 }
