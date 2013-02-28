@@ -533,8 +533,8 @@ function readMoreToggle(el){
 //Webkit använder sig av ett annat sätt att mäta brädden på skärmen,
 //om inte webbläsaren använder webkit så kompenseras det med värdet 17
 var scrollbar = $.browser.webkit ? 0 : 17;
-var responsive_mobil_size = 480;
-var responsive_small_size = 650;
+var responsive_palm_size = 541;
+var responsive_small_size = 781;
 
 var hide; //used by Timeout to hide #log
 var oldWidth; //used to check if window-width have changed
@@ -1230,19 +1230,24 @@ function responsive_menu() {
 	wrapperwidth = $(".menu-wrapper").width();
 
 	function do_responsive_menu(classname) {
-		// main-menu
+		// reset
 		$(classname).find(".menu-item").removeClass("force-hidden");
 		$(classname).find(".more-menu").remove();
-		if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
-			$(classname).find(".right-nav-menu-item").addClass("force-hidden");
-		}		
-		if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
-			$(classname).append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
-			count=0; // to avoid infinit loop
-			while (($(classname).children(".menu-item").sumWidth() > wrapperwidth) && count < 20) {
-				count++;
-				//log($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu").width() + " " + wrapperwidth);
-				$(classname).find(".more-menu-ul").append("<li>"+$(classname).children(".menu-item").not(".force-hidden").not(".more-menu").last().addClass("force-hidden").html()+"</li>");
+		// if not palm
+		if( $(window).width()+scrollbar > responsive_palm_size ){
+			
+			// main-menu
+			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
+				$(classname).find(".right-nav-menu-item").addClass("force-hidden");
+			}		
+			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
+				$(classname).append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
+				count=0; // to avoid infinit loop
+				while (($(classname).children(".menu-item").sumWidth() > wrapperwidth) && count < 20) {
+					count++;
+					//log($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu").width() + " " + wrapperwidth);
+					$(classname).find(".more-menu-ul").append("<li>"+$(classname).children(".menu-item").not(".force-hidden").not(".more-menu").last().addClass("force-hidden").html()+"</li>");
+				}
 			}
 		}
 	}
@@ -1280,21 +1285,21 @@ $(window).resize(function() {
 		);*/
 		
 		/* reset responsive stuff */
-		/*
-		if( $(window).width()+scrollbar > responsive_small_size ){
-			$("ul.main-menu, ul.main-sub-menu").show();
+		
+		if( $(window).width()+scrollbar > responsive_palm_size ){
+			$("ul.main-menu, ul.main-sub-menu").addClass("unhide");
 		}
 		else {
-			$("ul.main-menu, ul.main-sub-menu").hide();
+			$("ul.main-menu, ul.main-sub-menu").removeClass("unhide");
 		}
 		
-		if( $(window).width()+scrollbar > responsive_mobil_size ){
-			$("#searchnavigation").slideDown("fast");
+		if( $(window).width()+scrollbar > responsive_palm_size ){
+			$("#searchnavigation").addClass("unhide");
 		} 
 		else {
-			$("#searchnavigation").slideUp("fast");
+			$("#searchnavigation").removeClass("unhide");
 		}
-		*/
+		
 	}
 	oldWidth = $(window).width();
 });

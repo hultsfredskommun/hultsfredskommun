@@ -5,9 +5,12 @@
  * top navigation 
  */
 .responsive-menu {
-	//@extend .hide--palm; //TEMPORARY!!!
 	@extend .hide--lap;
 	@extend .hide--desk;
+}
+.main-menu,
+.main-sub-menu {
+	@extend .hide--palm;
 }
 
 .menu-wrapper {
@@ -123,8 +126,7 @@
 	@extend .hidden--palm;
 }
 
-/* TODO ADD DESK WITHOUT COPY PASTE!! */
-/*@include media-query(palm) {
+@include media-query(palm) {
 .main-menu,
 .main-sub-menu {
 	// manually copied instead of @extend .nav--stacked
@@ -137,4 +139,3 @@
     }
 }
 }
-*/

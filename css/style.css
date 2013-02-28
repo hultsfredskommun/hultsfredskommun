@@ -4416,7 +4416,8 @@ html.flexbox {
 }
 
 @media only screen and (max-width: 540px) {
-  .hide--palm, .searchnavigation, .logo2 {
+  .hide--palm, .searchnavigation, .logo2, .main-menu,
+  .main-sub-menu {
     position: absolute;
     left: -9999px;
   }
@@ -5048,21 +5049,16 @@ article.summary.post:hover > .openButton {
 /*
  * category navigation
  */
-/* TODO ADD DESK WITHOUT COPY PASTE!! */
-/*@include media-query(palm) {
-.main-menu,
-.main-sub-menu {
-	// manually copied instead of @extend .nav--stacked
-    > li{
-        display:list-item;
-
-        > a{
-            display:block;
-        }
-    }
+@media only screen and (max-width: 540px) {
+  .main-menu > li,
+  .main-sub-menu > li {
+    display: list-item;
+  }
+  .main-menu > li > a,
+  .main-sub-menu > li > a {
+    display: block;
+  }
 }
-}
-*/
 /* text colors */
 .category-navigation .parent li .icon-left, .category-navigation .parent li h1.widget-title .i, h1.widget-title .category-navigation .parent li .i, .category-navigation .parent li h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .parent li .submit, .category-navigation .parent li .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .parent li .submit {
   padding-left: 0!important;
