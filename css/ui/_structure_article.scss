@@ -15,10 +15,6 @@ article.post {
 	@extend .border--top;
 	@extend .border--bottom;
 }
-.post h1.entry-title {
-	@extend .two-thirds;
-	@extend .float--left;
-}
 
 /* hide article-wrapper if only titles */
 .viewmode-only-titles {
@@ -57,6 +53,11 @@ article.post {
 	}
 }
 
+.post h1.entry-title {
+	@extend .two-thirds;
+	@extend .float--left;
+}
+
 .full .article-wrapper {
 	.side-content {
 		border-left: 4px solid $gray-light-color;
@@ -86,7 +87,20 @@ article.post {
 		@extend .lap-one-whole;
 		@extend .palm-one-whole;
 		margin-top: $half-spacing-unit!important;
-		/* TODO contact-wrapper */
+		.contact-area {
+			@extend .cf;
+			.img-wrapper {
+				@extend .float--left;
+				@extend .one-quarter;
+				@extend .margin--right;
+			}
+			h3.entry-title {
+				@extend .half-margin--bottom;
+			}
+			.hk_kontakter {
+				@extend .padding--bottom;
+			}
+		}
 	}
 	.side-content {
 		@extend .float--left;
@@ -208,11 +222,6 @@ article.summary.post:hover > .openButton {
 }
 }
 
-/* embedded contact image */
-.contact-area .img-wrapper {
-	@extend .float--left;
-	@extend .one-quarter;
-}
 
 
 /* aside content */

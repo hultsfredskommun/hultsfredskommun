@@ -176,7 +176,6 @@
 				.menu-item:hover {
 					@extend .gray-light-background;
 				}
-				@extend .dropdown__content;
 				@extend .nav;
 				@extend .nav--stacked;
 				@extend .nav--block;
@@ -184,6 +183,7 @@
 				@extend .nav--stacked;
 				@extend .text--left;
 				@extend .border-radius--bottom;
+				@extend .dropdown__content;
 				border-right: $border-line-width $border-line-style $main-color;
 				border-bottom: $border-line-width $border-line-style $main-color;
 				border-left: $border-line-width $border-line-style $main-color;

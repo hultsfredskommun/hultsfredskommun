@@ -2,17 +2,18 @@
     position:relative;
 }
     .dropdown__content{
-        /**
-         * Position the dropdowns off-screen. This is typically better than
-         * `display:none;`.
-         */
+        position:absolute;
+        display: none;
+    }
+    .dropdown__content--left{
         position:absolute;
         left: 0;
         display: none;
     }
     .dropdown__content--right{
+        position:absolute;
         right: 0;
-		left: initial!important;
+        display: none;
     }
     
     /**
@@ -27,7 +28,9 @@
     /**
      * Regular dropdowns sit all the way from the top, flush left.
      */
-    .dropdown:hover > .dropdown__content{
+    .dropdown:hover > .dropdown__content,
+    .dropdown:hover > .dropdown__content--left,
+    .dropdown:hover > .dropdown__content--right{
         display: block;
     }
     

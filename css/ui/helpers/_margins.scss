@@ -23,6 +23,10 @@
 	margin-left:$half-spacing-unit;
 	margin-left:($half-spacing-unit / $base-font-size)*1rem;
 }
+.half-margin--bottom {
+	margin-bottom:$half-spacing-unit;
+	margin-bottom:($half-spacing-unit / $base-font-size)*1rem;
+}
 .half-margin--right {
 	margin-right:$half-spacing-unit;
 	margin-right:($half-spacing-unit / $base-font-size)*1rem;

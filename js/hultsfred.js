@@ -1049,7 +1049,7 @@ function setArticleActions(el) {
 	});
 
 	//sets click-action on entry-titles
-	$(el).find('.entry-title').after("<div class='openButton button top hidden'><i class='i' data-icon='&#xF149;'></i>Visa mer</div>");
+	$(el).find('h1.entry-title').after("<div class='openButton button top hidden'><i class='i' data-icon='&#xF149;'></i>Visa mer</div>");
 	
 	$(el).find('.entry-title a, .togglearticle, .openButton').unbind("click").click(function(ev){
 		ev.stopPropagation();

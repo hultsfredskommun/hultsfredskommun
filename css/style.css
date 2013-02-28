@@ -771,7 +771,7 @@ textarea:focus {
 .islet,
 #responsive-info,
 .slideshow .slide .caption-area .caption,
-.cookieinformation .textwidget, .matrix, .multi-list, .stat-group, .time, .page-header, article.post, .searchnavigation .form, .searchnavigation .form .submit, .footer-image-wrapper .logo-footer-image {
+.cookieinformation .textwidget, .matrix, .multi-list, .stat-group, .time, .page-header, article.post, .article-wrapper .content-wrapper .contact-area, .searchnavigation .form, .searchnavigation .form .submit, .footer-image-wrapper .logo-footer-image {
   zoom: 1;
 }
 .cf:before, .gw:before, .main-wrapper:before, .top-wrapper:before,
@@ -785,7 +785,7 @@ textarea:focus {
 .islet:before,
 #responsive-info:before,
 .slideshow .slide .caption-area .caption:before,
-.cookieinformation .textwidget:before, .matrix:before, .multi-list:before, .stat-group:before, .time:before, .page-header:before, article.post:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
+.cookieinformation .textwidget:before, .matrix:before, .multi-list:before, .stat-group:before, .time:before, .page-header:before, article.post:before, .article-wrapper .content-wrapper .contact-area:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
 .grid-wrapper:after, .nav:after, .page-header .view-tools:after,
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
@@ -796,7 +796,7 @@ textarea:focus {
 .islet:after,
 #responsive-info:after,
 .slideshow .slide .caption-area .caption:after,
-.cookieinformation .textwidget:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .footer-image-wrapper .logo-footer-image:after {
+.cookieinformation .textwidget:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .footer-image-wrapper .logo-footer-image:after {
   content: " ";
   display: table;
 }
@@ -811,7 +811,7 @@ textarea:focus {
 .islet:after,
 #responsive-info:after,
 .slideshow .slide .caption-area .caption:after,
-.cookieinformation .textwidget:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .footer-image-wrapper .logo-footer-image:after {
+.cookieinformation .textwidget:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .footer-image-wrapper .logo-footer-image:after {
   clear: both;
 }
 
@@ -3245,7 +3245,7 @@ html.flexbox {
 /**
 * Quarters
 */
-.one-quarter, .two-eighths, .three-twelfths, .contact-area .img-wrapper {
+.one-quarter, .two-eighths, .three-twelfths, .article-wrapper .content-wrapper .contact-area .img-wrapper {
   width: 25%;
 }
 
@@ -4292,7 +4292,7 @@ html.flexbox {
 }
 
 .float--left, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .slideshow .slide .caption-area, .help-navigation, .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .post h1.entry-title, .home .post .content-wrapper, .home .post h1.entry-title, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper, .contact-area .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult-wrapper .searchresult ul, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .home .post .content-wrapper, .home .post h1.entry-title, .post h1.entry-title, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult-wrapper .searchresult ul, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4695,11 +4695,6 @@ a:hover {
   text-decoration: none;
 }
 
-ul, ol, dd {
-  margin-left: 24px;
-  margin-left: 1.5rem;
-}
-
 html {
   font-family: "myriad-pro", Arial, sans-serif;
 }
@@ -4844,7 +4839,6 @@ td, th {
 }
 .article-wrapper .content-wrapper {
   margin-top: 12px !important;
-  /* TODO contact-wrapper */
 }
 .article-wrapper .side-content {
   margin-top: 12px !important;
@@ -4908,7 +4902,6 @@ article.summary.post:hover > .openButton {
     width: 100%;
   }
 }
-/* embedded contact image */
 /* aside content */
 .readspeaker_toolbox {
   display: none;
@@ -5224,7 +5217,7 @@ article.summary.post:hover > .openButton {
   margin-top: 1.5rem;
 }
 
-.margin--right {
+.margin--right, .article-wrapper .content-wrapper .contact-area .img-wrapper {
   margin-right: 24px;
   margin-right: 1.5rem;
 }
@@ -5244,9 +5237,14 @@ article.summary.post:hover > .openButton {
   margin-top: 0.75rem;
 }
 
-.half-margin--left, .addthis_toolbox a, .category-navigation .parent, .category-navigation .more-navigation, .footer-widget-wrapper ul {
+.half-margin--left, ul, ol, dd, .addthis_toolbox a, .category-navigation .parent, .category-navigation .more-navigation, .footer-widget-wrapper ul {
   margin-left: 12px;
   margin-left: 0.75rem;
+}
+
+.half-margin--bottom, .article-wrapper .content-wrapper .contact-area h3.entry-title {
+  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 .half-margin--right, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .category-navigation .more-navigation li.current-tag h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li.current-tag .submit, .category-navigation .more-navigation li.current-tag .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li.current-tag .submit {
@@ -5264,7 +5262,7 @@ article.summary.post:hover > .openButton {
   padding-right: 1.5rem;
 }
 
-.padding--bottom, .content, .cookieinformation,
+.padding--bottom, .article-wrapper .content-wrapper .contact-area .hk_kontakter, .content, .cookieinformation,
 .important-widget, .footer-widget-wrapper {
   padding-bottom: 24px;
   padding-bottom: 1.5rem;
@@ -5284,19 +5282,21 @@ article.summary.post:hover > .openButton {
   position: relative;
 }
 
-.dropdown__content, .page-header .category-tools .menu-item .sub-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu {
-  /**
-   * Position the dropdowns off-screen. This is typically better than
-   * `display:none;`.
-   */
+.dropdown__content, .top-menu-wrapper .top-menu .menu-item .sub-menu {
+  position: absolute;
+  display: none;
+}
+
+.dropdown__content--left {
   position: absolute;
   left: 0;
   display: none;
 }
 
 .dropdown__content--right, .page-header .category-tools .menu-item .sub-menu, .top-menu-wrapper .top-menu .right.menu-item .sub-menu {
+  position: absolute;
   right: 0;
-  left: initial!important;
+  display: none;
 }
 
 /**
@@ -5307,7 +5307,21 @@ article.summary.post:hover > .openButton {
 /**
  * Regular dropdowns sit all the way from the top, flush left.
  */
-.dropdown:hover > .dropdown__content, .page-header .category-tools .menu-item:hover > .dropdown__content, .top-menu-wrapper .top-menu .menu-item:hover > .dropdown__content, .page-header .category-tools .menu-item .dropdown:hover > .sub-menu, .page-header .category-tools .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .page-header .category-tools .menu-item:hover > .sub-menu, .page-header .category-tools .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item .dropdown:hover > .sub-menu, .page-header .category-tools .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .page-header .category-tools .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu {
+.dropdown:hover > .dropdown__content, .page-header .category-tools .menu-item:hover > .dropdown__content, .top-menu-wrapper .top-menu .menu-item:hover > .dropdown__content, .top-menu-wrapper .top-menu .menu-item .dropdown:hover > .sub-menu, .page-header .category-tools .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .page-header .category-tools .menu-item:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu,
+.dropdown:hover > .dropdown__content--left,
+.page-header .category-tools .menu-item:hover > .dropdown__content--left,
+.top-menu-wrapper .top-menu .menu-item:hover > .dropdown__content--left,
+.dropdown:hover > .dropdown__content--right,
+.page-header .category-tools .menu-item:hover > .dropdown__content--right,
+.top-menu-wrapper .top-menu .menu-item:hover > .dropdown__content--right,
+.page-header .category-tools .menu-item .dropdown:hover > .sub-menu,
+.page-header .category-tools .menu-item:hover > .sub-menu,
+.top-menu-wrapper .top-menu .page-header .category-tools .menu-item:hover > .sub-menu,
+.page-header .category-tools .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu,
+.top-menu-wrapper .top-menu .right.menu-item .dropdown:hover > .sub-menu,
+.page-header .category-tools .top-menu-wrapper .top-menu .right.menu-item .menu-item:hover > .sub-menu,
+.top-menu-wrapper .top-menu .right.menu-item .page-header .category-tools .menu-item:hover > .sub-menu,
+.top-menu-wrapper .top-menu .right.menu-item .menu-item:hover > .sub-menu {
   display: block;
 }
 
@@ -5357,6 +5371,7 @@ article.summary.post:hover > .openButton {
     overflow: auto;
     float: left !important;
     width: 50%;
+    height: 100%;
   }
   .contact-popup.box .entry-wrapper.hasmap .side-map {
     float: right !important;

@@ -250,25 +250,26 @@ function hk_contact_shortcode_func( $atts ) {
 		'adress' => 'address',
 		'besokstid' => 'visit_hours',
 		'karta' => 'map');
-	$tranlated_atts = array();
+	$translated_atts = array();
 	foreach ($atts as $key => $value) {
-		$tranlated_atts[$translate[$key]] = $value;
+		$translated_atts[$translate[$key]] = $value;
 	}
+	$translated_atts["heading_element"] = "h3";
 	/* if id is set */
-	if ($tranlated_atts["id"] > 0) {
-		return hk_get_contact_by_id($tranlated_atts["id"], $tranlated_atts);
+	if ($translated_atts["id"] > 0) {
+		return hk_get_contact_by_id($translated_atts["id"], $translated_atts);
 	}
 	/* if contact slug or slugs */
-	if ($tranlated_atts["contactslug"] != "") {
-		return hk_get_contact_by_name($tranlated_atts["contactslug"], $tranlated_atts);
+	if ($translated_atts["contactslug"] != "") {
+		return hk_get_contact_by_name($translated_atts["contactslug"], $translated_atts);
 	}
 	/* if category id or ids */
-	if ($tranlated_atts["cat"] != "") {
-		return hk_get_contact_by_cat($tranlated_atts["cat"], $tranlated_atts);
+	if ($translated_atts["cat"] != "") {
+		return hk_get_contact_by_cat($translated_atts["cat"], $translated_atts);
 	}
 	/* if category slug or slugs */
-	if ($tranlated_atts["cat_slug"] != "") {
-		return hk_get_contact_by_cat_slug($tranlated_atts["cat_slug"], $tranlated_atts);
+	if ($translated_atts["cat_slug"] != "") {
+		return hk_get_contact_by_cat_slug($translated_atts["cat_slug"], $translated_atts);
 	}
 	if ($retValue == "") {
 		return "<p>Hittade ingen kontakt.</p>";
@@ -460,7 +461,8 @@ function hk_get_the_contact($args = array()) {
 		'address' => false,
 		'visit_hours' => false,
 		'map' => false,
-		'title_link' => true
+		'title_link' => true,
+		'heading_element' => "h1"
 		);
 
 	if (isset($args)) {
@@ -483,8 +485,7 @@ function hk_get_the_contact($args = array()) {
 
 			// image
 			$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
-
-			$retValue .= "<h1 class='entry-title " . $hidden['name'] . "'>";
+			$retValue .= "<" . $default["heading_element"] . " class='entry-title " . $hidden['name'] . "'>";
 			// add link to title
 			if ($default['title_link']) { 
 				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'>"; 
@@ -495,7 +496,7 @@ function hk_get_the_contact($args = array()) {
 				$retValue .= "</a>"; 
 				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
 			}
-			$retValue .= "</h1>";
+			$retValue .= "</".$default["heading_element"].">";
 			
 		
 			$retValue .= "<div class='contact-" . get_the_ID() . " " . implode(" ",get_post_class()) ."'>";
