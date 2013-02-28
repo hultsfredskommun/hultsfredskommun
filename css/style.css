@@ -4939,6 +4939,10 @@ article.summary.post:hover > .openButton {
   }
 }
 /* hide title */
+.cookieinformation .textwidget a {
+  margin-left: 12px;
+}
+
 .cookieinformation,
 .important-widget {
   position: relative;

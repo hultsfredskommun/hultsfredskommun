@@ -10,6 +10,7 @@
 		a {
 			@extend .main-text;
 			@extend .font-weight-bold;
+			margin-left: $half-spacing-unit;
 		}
 		@extend .islet;
 		@extend .white-background;
