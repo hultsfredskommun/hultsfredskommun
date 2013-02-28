@@ -193,7 +193,7 @@ if (!is_admin()) {
 			true
 		);
 	}
-	if ($options['addthis_pubid'] != "") {
+	if ($options['addthis_pubid'] != "" && ($_REQUEST["cookies"] == "true" || $default_settings['allow_cookies'])) {
 		wp_enqueue_script(
 			'addthis_js',
 			'http'.$s_when_https.'://s7.addthis.com/js/300/addthis_widget.js#pubid='.$options['addthis_pubid'],

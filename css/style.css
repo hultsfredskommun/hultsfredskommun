@@ -5296,7 +5296,7 @@ article.summary.post:hover > .openButton {
 
 .dropdown__content--right, .page-header .category-tools .menu-item .sub-menu, .top-menu-wrapper .top-menu .right.menu-item .sub-menu {
   right: 0;
-  left: initial;
+  left: initial!important;
 }
 
 /**
