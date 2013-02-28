@@ -2,6 +2,24 @@
 .important-widget {
 	@extend .important-background;
 	@extend .white-text;
+}
+.cookieinformation {
+	@extend .main-background;
+	@extend .padding--top;
+	.textwidget {
+		a {
+			@extend .default-text;
+		}
+		@extend .islet;
+		@extend .white-background;
+		@extend .default-text;
+		@extend .border-radius;
+	}
+}
+.cookieinformation,
+.important-widget {
+	@extend .important-background;
+	@extend .white-text;
 	position: relative;
 	z-index: 2;
 	a {

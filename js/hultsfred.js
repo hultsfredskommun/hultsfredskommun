@@ -581,7 +581,7 @@ $(document).ready(function(){
 	/**
 	 * Fix scroll to top on single and page
 	 */
-	$('html, body').animate({scrollTop:0}, 0);
+	//REMOVED $('html, body').animate({scrollTop:0}, 0);
 
 
 	/**

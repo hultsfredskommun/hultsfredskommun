@@ -163,6 +163,7 @@ function hk_theme_options_do_page() {
 			<h2>Statistik och cookies</h2>
 			<p><input type="checkbox" name="hk_theme[cookie_accept_enable]" value="1"<?php checked( 1 == $options['cookie_accept_enable'] ); ?> /> <label for="hk_theme[cookie_accept_enable]">St&auml;ll fr&aring;ga om cookies f&aring;r anv&auml;ndas.</label></p>
 			<p><label for="hk_theme[cookie_text]">Förklarande text för att godkänna cookies. </label><br/><input size="80" type="text" name="hk_theme[cookie_text]" value="<?php echo $options['cookie_text']; ?>" /></p>
+			<p><label for="hk_theme[cookie_button_text]">Text på godkänn cookies knapp. </label><br/><input size="80" type="text" name="hk_theme[cookie_button_text]" value="<?php echo $options['cookie_button_text']; ?>" /></p>
 			<p><label for="hk_theme[cookie_link]">Länk till mer information om cookies. </label><br/><input size="80" type="text" name="hk_theme[cookie_link]" value="<?php echo $options['cookie_link']; ?>" /></p>
 
 			<p><label for="hk_theme[google_analytics]">Google Analytics id (enligt UA-XXXXX-X). </label><br/><input type="text" name="hk_theme[google_analytics]" value="<?php echo $options['google_analytics']; ?>" /></p>

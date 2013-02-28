@@ -133,9 +133,12 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 		<?php dynamic_sidebar('important-top-content'); ?>
 		
 		<?php if(!$default_settings['allow_cookies'] && $hk_options["cookie_accept_enable"] == "1") : ?>
-			<div class="important-widget"><div class="textwidget"><?php echo $hk_options["cookie_text"]; ?>
+			<div class="cookieinformation"><div class="textwidget"><?php echo $hk_options["cookie_text"]; ?>
+			<?php $cookie_button_text = "Forts&auml;tt"; 
+			if ($hk_options["cookie_button_text"] != "") { $cookie_button_text = $hk_options["cookie_button_text"];  } ?>
+			<a href="?cookies=true"><?php echo $cookie_button_text; ?></a>
 			<?php if ($hk_options["cookie_link"] != "") : ?>
-			<a href="?cookies=true">Forts&auml;tt</a> <a href="<?php echo $hk_options["cookie_link"]; ?>">Mer information</a>
+			 <a href="<?php echo $hk_options["cookie_link"]; ?>">Mer information</a>
 			<?php endif; ?>
 			</div></div>
 		<?php endif; ?>
