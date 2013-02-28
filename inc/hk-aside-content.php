@@ -98,7 +98,7 @@
 		</li>
 		
 		<?php endif; ?>
-		<?php if ($options['addthis_pubid'] != "" && $options["cookie_accept_enable"] == "1") : ?>
+		<?php if ($options['addthis_pubid'] != "" && (!$default_settings['allow_cookies'] && $hk_options["cookie_accept_enable"] == "1")) : ?>
 		<li class="friend tool-line"><a title='Tipsa n&aring;gon om denna sida' class='icon-left  js-friend-click'><i class='i' data-icon='&#xF152;'></i></a><a class="friend  js-friend-click" href="#" title="Tipsa n&aring;gon om denna sida">Tipsa</a></li>
 		<li class="addthis">
 			<div class="addthis_toolbox" addthis:url="http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>" addthis:title="<?php the_title(); ?>" addthis:description="Kolla den h&auml;r sidan.">
