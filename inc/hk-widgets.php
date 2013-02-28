@@ -340,7 +340,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						<?php the_date("","<span class='time'>","</span>"); ?> <a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
 						</div>
 						<?php endwhile; ?>
-						<span class="read-more-link"><a href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Fler nyheter</a></span>
+						<span class="read-more-link"><a href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Nyhetsarkiv</a></span>
 					</div>					
 					<?php endif; ?> 
 					<?php // Reset Query

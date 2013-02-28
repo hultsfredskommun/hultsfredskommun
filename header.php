@@ -129,15 +129,17 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
 <div class="hidden"><?php
-echo "cookie: ".$_COOKIE['allow_cookies'] . "<br>";
+echo "allow_cookies: (cookie)".$_COOKIE['allow_cookies'] . "<br>";
+echo "allow_cookies: (default_settings) ".$default_settings['allow_cookies'] . "<br>";
 echo "request cookie: " . $_REQUEST["cookies"] . "<br>";
 echo "cookie_accept_enable: " . $options["cookie_accept_enable"] . "<br>";?>
+
 </div>
 	<header id="branding" class="branding" role="banner">
 		<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>	
 		<?php dynamic_sidebar('important-top-content'); ?>
-		
-		<?php if(!$default_settings['allow_cookies'] && $hk_options["cookie_accept_enable"] == "1") : ?>
+		<?php if(!($_REQUEST["cookies"] == "true" || $default_settings['allow_cookies'])) : ?>
+		<?php //if(!$default_settings['allow_cookies'] && $hk_options["cookie_accept_enable"] == "1") : ?>
 			<div class="cookieinformation"><div class="textwidget"><?php echo $hk_options["cookie_text"]; ?>
 			<?php $cookie_button_text = "Forts&auml;tt"; 
 			if ($hk_options["cookie_button_text"] != "") { $cookie_button_text = $hk_options["cookie_button_text"];  } ?>

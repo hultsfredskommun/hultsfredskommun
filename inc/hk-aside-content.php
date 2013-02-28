@@ -88,7 +88,7 @@
 		<?php edit_post_link( "Redigera inl&auml;gg", "<li><a title='Redigera inl&auml;gg' class='icon-left  editlink tool-line full' class='icon-left'><i class='i' data-icon='&#xF13A;'></i></a><span>", "</span></li>" ); ?>
 		<li class="print tool-line"><a title='Skriv ut' class='icon-left'><i class='i' data-icon='&#xF130;'></i></a><a class="print  icon-right" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Skriv ut">Skriv ut</a></li>
 		<?php if (isset($options['readspeaker_id'])) : ?>
-		<li class="read tool-line"><a title='Lyssna p&aring; artikel' class='icon-left  js-read-click'><i class='i' data-icon='&#xF03B;'></i></a><a class="read  icon-right  js-read-click" href="#" title="Lyssna p&aring; artikel">Lyssna</a></li>
+		<li class="read tool-line"><a title='Lyssna p&aring; artikel' class='icon-left  js-read-click'><i class='i' data-icon='&#xF03B;'></i></a><a class="read  icon-right  js-read-click" href="#" title="Lyssna p&aring; artikel">Lyssna p&aring; artikel</a></li>
 		<li class="readspeaker">
 		<div id="readspeaker_button1" class="readspeaker_toolbox rs_skip rsbtn rs_preserve">
 			<a class="rsbtn_play" accesskey="L" title="Lyssna p&aring; artikel" href="http://app.eu.readspeaker.com/cgi-bin/rsent?customerid=<?php echo $options['readspeaker_id']; ?>&amp;lang=sv_se&amp;readid=content-<?php the_ID(); ?>&amp;url=<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>">
@@ -98,7 +98,7 @@
 		</li>
 		
 		<?php endif; ?>
-		<?php if ($options['addthis_pubid'] != "" && (!$default_settings['allow_cookies'] && $hk_options["cookie_accept_enable"] == "1")) : ?>
+		<?php if ($options['addthis_pubid'] != "" && ($_REQUEST["cookies"] == "true" || $default_settings['allow_cookies'])) : ?>
 		<li class="friend tool-line"><a title='Tipsa n&aring;gon om denna sida' class='icon-left  js-friend-click'><i class='i' data-icon='&#xF152;'></i></a><a class="friend  js-friend-click" href="#" title="Tipsa n&aring;gon om denna sida">Tipsa</a></li>
 		<li class="addthis">
 			<div class="addthis_toolbox" addthis:url="http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>" addthis:title="<?php the_title(); ?>" addthis:description="Kolla den h&auml;r sidan.">
