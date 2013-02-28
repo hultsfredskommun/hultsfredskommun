@@ -1,73 +1,120 @@
-/*
-.icon img {
-	display: none;
+.content--center, .menu-wrapper, .main, .important-widget .widget-title, .important-widget .textwidget {
+	margin: 0 auto;
+	width: 1188px;
 }
-.white .icon {
-	background-image: url("images/sprite-white.png");
-}
-
-.contact-wrapper .icon {
-	background-image: url("images/sprite.png");
-	background-position: -226px 0px;
-}
-.related_page .icon {
-	background-image: url("images/sprite.png");
-	background-position: -256px -193px;
-}
-.related_link .icon {
-	background-image: url("images/sprite.png");
-	background-position: -2px -322px;
-}
-.related_file .icon {
-	background-image: url("images/sprite.png");
-	background-position: -288px -290px;
-}
-.editlink .icon {
-	background-image: url("images/sprite.png");
-	background-position: -98px -65px;
-}
-.print .icon {
-	background-image: url("images/sprite.png");
-	background-position: -31px -65px;
-}
-.read .icon {
-	background-image: url("images/sprite.png");
-	background-position: -130px -354px;
-}
-.friend .icon {
-	background-image: url("images/sprite.png");
-	background-position: -287px 0px;
-}
-.helpus .icon {
-	background-image: url("images/sprite.png");
-	background-position: -256px -32px;
+.searchnavigation {
+	width: 600px;
+	margin-left: 100px;
 }
 
-.dropdown-tags a.selected-tags .icon,
-.tags a.selected-tags .icon {
-	background-image: url("images/sprite-white.png");
-	background-position: -159px -290px;
+.slideshow {
+	width:570px;
 }
-.dropdown-tags a.selected-tags .icon:hover,
-.dropdown-tags a.selected-tags .icon:focus,
-.tags a.selected-tags .icon:hover,
-.tags a.selected-tags .icon:focus {
-	background-image: url("images/sprite.png");
-	background-color: white;
-	border-radius: 8px;
+.logo2 {
+	width: 250px;
+	float: right;
+	margin: -60px 0 0 800px;
 }
 
-.contact-popup .close-contact .icon {
-	background-image: url("images/sprite.png");
-	background-position: -163px -290px;
-	width:9px;
-	height: 16px;
-	margin: 5px 9px;
+
+
+.firstpage-content {
+	width: 582px;
+}
+.summary-content {
+	width: 550px;
 }
 
-#searchsubmit {
-	background: transparent;
-	background-image: url("images/sprite.png");
-	background-position: -26px 0px;
+
+.summary .img-wrapper {
+	width: 282px;
+	z-index: 0;
 }
-*/
+
+.article-wrapper {
+	width: 885px;
+}
+.article-wrapper .content-wrapper {
+	width: 620px;
+}
+
+.side-content {
+	margin-left: 15px;
+	width: 190px;
+	background-color: #EEF0F1;	
+	border-top: 2px solid #9EBDDF;
+}
+
+
+.article-wrapper .entry-meta {
+	width: 588px;
+}
+
+
+.icon-left {
+	visibility: hidden;
+}
+.icon-right {
+	margin-left: -10px;
+}
+
+.category-navigation .parent li.cat-has-children {
+	margin-left: -18px;
+}
+.category-navigation {
+	width: 267px;
+}
+
+
+.parent {
+	border-left: 1px solid #EEF0F1;
+}
+.responsive-menu {
+	margin: -12px 0;
+	visibility: hidden;
+}
+.responsive-navigation {
+	visibility: hidden;
+}
+.input-wrapper {
+	height: 30px;
+}
+
+
+.searchnavigation .form .input-wrapper {
+	background-color: #DDD;
+	z-index: 10000;
+}
+.searchnavigation .form .input-wrapper .field {
+	padding: 4px 0 0 15px; 
+}
+.clearbutton {
+	padding: 3px 13px 0 0; 
+}
+.searchnavigation .searchresult-wrapper .searchresult ul {
+	width: 255px;
+	z-index: 10000;
+
+}
+
+
+.searchnavigation .searchresult-wrapper {
+	z-index: 6000;
+}
+.firstpage-top-content{
+	z-index: 1;
+}
+
+
+.main-menu {
+	height: 43px;
+	border-bottom: 1px solid #AAA;
+}
+.main-sub-menu {
+	height: 48px;
+	margin-bottom: 24px;
+}
+
+.right-nav-menu-item {
+	margin-top: -35px;
+}

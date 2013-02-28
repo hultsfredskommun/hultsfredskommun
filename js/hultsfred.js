@@ -448,7 +448,7 @@ function readMoreToggle(el){
 					$(this).parents("article").prepend(closea).append(closeb);
 					
 					// scroll to top of post 
-					$("html,body").animate({scrollTop: $(this).parents("article").position().top}, 150);
+					$("html,body").animate({scrollTop: $(this).parents("article").position().top - $('#wpadminbar').height() || 0}, 150);
 
 					// articles slideshow
 					$(this).slideshow();
