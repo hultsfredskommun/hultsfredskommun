@@ -331,7 +331,9 @@ class hk_Tag_Walker extends Walker_Category {
 		
 		// generate tag link
         $cat_name = esc_attr( $tag->name); 
-        $link = '<a href="' . get_category_link( $term_id ) . $tags_filter. $orderby  . '" '; 
+		$href = get_category_link( $term_id ) . $tags_filter. $orderby;
+
+        $link = '<a href="' . $href  . '" '; 
         $cat_name = apply_filters( 'list_cats', $cat_name, $tag ); 
         if ( $use_desc_for_title == 0 || empty($tag->description) ) 
             $link .= 'title="Filtrera med nyckelordet ' .  $cat_name . '"'; 
@@ -345,7 +347,8 @@ class hk_Tag_Walker extends Walker_Category {
             $link .= ' '; 
             if ( empty($feed_image) ) 
                 $link .= '('; 
-            $link .= '<a href="' . get_category_feed_link($term_id, $feed_type) . $tags_filter . $orderby . '"'; 
+			$href = get_category_feed_link($term_id, $feed_type) . $tags_filter . $orderby;
+            $link .= '<a href="' . $href . '"'; 
             if ( empty($feed) ) 
                 $alt = ' alt="' . sprintf(__( 'Feed for all posts filed under %s' ), $cat_name ) . '"'; 
             else { 
@@ -380,7 +383,7 @@ class hk_Tag_Walker extends Walker_Category {
 			$icon = "";
 			if ($current_tag) {
 				$class .=  ' current-tag'; 
-				$icon = "<a href='#' class='icon-left'><i class='i' data-icon='&#xF14E;'></i></a>";
+				$icon = "<a href='$href' class='icon-left'><i class='i' data-icon='&#xF14E;'></i></a>";
 			}
 			$output .=  ' class="'.$class.'"'; 
 			$output .= ">$icon$link</li>\n"; 
