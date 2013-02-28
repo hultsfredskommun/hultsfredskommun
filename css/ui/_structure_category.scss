@@ -68,6 +68,7 @@
 				@extend .nav--block;
 				@extend .gray-light-background;
 				@extend .dropdown__content;
+				@extend .dropdown__content--right;
 				@extend .nav--stacked;
 				@extend .text--left;
 				border-radius: 0 $border-radius $border-radius $border-radius;

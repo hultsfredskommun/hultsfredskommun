@@ -34,11 +34,12 @@
 
 /* default settings */
 h1 {
-	margin-bottom: $half-spacing-unit!important;
+	margin-bottom: 0!important;
 	a {
 		@extend .black-text;
+		line-height: 1.3;
 	}
-	line-height: initial;
+	
 }
 h1.widget-title {
 	@extend .epsilon;

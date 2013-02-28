@@ -8,7 +8,8 @@
 	@extend .padding--top;
 	.textwidget {
 		a {
-			@extend .default-text;
+			@extend .main-text;
+			@extend .font-weight-bold;
 		}
 		@extend .islet;
 		@extend .white-background;
@@ -156,7 +157,6 @@
 		@extend .flush--bottom;
 		.right.menu-item .sub-menu {
 			@extend .dropdown__content--right;
-			left: initial;
 			margin-right: -1px;
 		}
 		.menu-item {

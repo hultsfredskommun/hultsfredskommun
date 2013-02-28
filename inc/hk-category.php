@@ -12,7 +12,7 @@
 			
 			<ul class="view-tools">
 				<li class="menu-item view-mode"><a class="viewmode_summary js-view-summary hide" title="Listvisning" href="#">Sammanfattning</a>
-				<a class="viewmode_titles js-view-titles" title="Rubrikvisning" href="#">Rubriker</a></li>
+				<a class="viewmode_titles js-view-titles" title="Rubrikvisning" href="#">Bara rubriker</a></li>
 			</ul>
 			<ul class="category-tools">
 				<?php /* if (related stuff ($cat)) : */ ?>

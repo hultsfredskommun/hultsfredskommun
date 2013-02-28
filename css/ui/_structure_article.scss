@@ -106,22 +106,23 @@ article.post {
 		@extend .desk-two-thirds;
 		@extend .lap-one-whole;
 		@extend .palm-one-whole;
-	}
-	.footer-wrapper {
-		border-left: 4px solid $complement-color;	
-		padding-left: $base-spacing-unit - 4px;
-		@extend .nav;
-		@extend .complement-text;
-		@extend .font-style-italic;
-		@extend .milli;
-		li {
-			display: block;
+		@extend .margin--bottom;
+	
+		.footer-wrapper {
+			border-left: 4px solid $complement-color;	
+			padding-left: $base-spacing-unit - 4px;
+			@extend .nav;
+			@extend .complement-text;
+			@extend .font-style-italic;
+			@extend .milli;
+			li {
+				display: block;
+			}
+			a {
+				@extend .font-weight-normal;
+			}
 		}
-		a {
-			@extend .font-weight-normal;
-		}
 	}
-
 }
 .map_link {
 	@extend .cursor-pointer;
@@ -133,7 +134,7 @@ article.summary.post:hover > .openButton {
 	@extend .cursor-pointer;
 	&.top {	
 		@extend .float--right;
-		margin: 6px 12px;
+		margin: 0px $half-spacing-unit;
 	}
 	&.bottom {
 		@extend .border;
@@ -141,7 +142,7 @@ article.summary.post:hover > .openButton {
 		@extend .float--left;
 		@extend .white-background;
 		margin: -$half-spacing-unit*1.5 0 0 $base-spacing-unit;
-		padding: 6px 12px;
+		padding: $half-spacing-unit/2 $half-spacing-unit;
 	}
 	i {
 		width: $base-spacing-unit;
