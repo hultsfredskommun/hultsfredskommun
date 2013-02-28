@@ -376,7 +376,7 @@ function readMoreToggle(el){
 				
 				
 				// toggle visibility
-				$("html,body").animate({scrollTop: $(article).position().top}, 200);
+				$("html,body").animate({scrollTop: $(article).position().top - $('#wpadminbar').height() || 0}, 200);
 				
 				// remove full class to track article state
 				$(article).removeClass("full").addClass("summary");
@@ -554,7 +554,10 @@ $(document).ready(function(){
 	/*
 	 * load typekit if any
 	 */
-	try { Typekit.load(); } catch(e) {}
+	 
+	if ( !($.browser.msie && parseInt($.browser.version, 10) < 9)) {
+		try { Typekit.load(); } catch(e) {}
+	}
 	
 	/*
 	 * open print dialog if on print page

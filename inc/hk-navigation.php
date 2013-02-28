@@ -193,7 +193,7 @@ function hk_navigation() {
 			'exclude'			 => $default_settings["hidden_cat"],
 			'walker'			 => $hk_cat_walker
 		);
-		echo "<ul>"; 
+		echo "<ul class='parent'>"; 
 		wp_list_categories( $args );
 		echo "</ul>";
 		
@@ -202,7 +202,7 @@ function hk_navigation() {
 		}
 	}
 	
-	echo "</nav></aside>";
+	echo "&nbsp;</nav></aside>";
 }
 	
 

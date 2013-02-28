@@ -19,17 +19,16 @@ if ( ! isset( $content_width ) )
 /* help variable */	
 $s_when_https = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 's' : '');
 /* get hk_options */
-$hk_options = get_option('hk_theme');
+$options = get_option('hk_theme');
 	
 /* set allow cookie */
-if ($_REQUEST["cookies"] && $hk_options["cookie_accept_enable"] == "1") {
+if ($_REQUEST["cookies"] && $options["cookie_accept_enable"] == "1") {
 	// allow cookies for 10 years
 	setcookie("allow_cookies", "true", time()+3600*24*3650, "/");
 }
 	
 /* SET DEFAULT SETTINGS */
 if ( ! isset( $default_settings ) ) {
-	$options = get_option('hk_theme');
 	$default_settings = array(	'thumbnail-image' => array(200, 113, true),
 								'featured-image' => array(532, 311, true), /* array(660, 396, true) */
 								'slideshow-image' => array(980, 551, true),
@@ -40,8 +39,8 @@ if ( ! isset( $default_settings ) ) {
 								'protocol_cat' => $options["protocol_cat"],
 								'num_levels_in_menu' => (!isset($options["num_levels_in_menu"]) || $options["num_levels_in_menu"] == "")?2:$options["num_levels_in_menu"],
 								'show_tags' => (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options["show_tags"],
-								'allow_cookies' => $_REQUEST["cookies"] || $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "",
-								'allow_google_analytics' => $_REQUEST["cookies"] || $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "" || $hk_options['google_analytics_disable_if_no_cookies'] != "1",
+								'allow_cookies' => $_REQUEST["cookies"] || $_COOKIE['allow_cookies'] || $options["cookie_accept_enable"] == "",
+								'allow_google_analytics' => $_REQUEST["cookies"] || $_COOKIE['allow_cookies'] || $options["cookie_accept_enable"] == "" || $options['google_analytics_disable_if_no_cookies'] != "1",
 								);
 }
 
@@ -300,7 +299,7 @@ function curBaseURL() {
 	return $pageURL;
 }
 function setup_javascript_settings() {
-	global $wp_query, $hk_options, $default_settings;
+	global $wp_query, $options, $default_settings;
 	// What page are we on? And what is the pages limit?
 	if (is_home()) {
 		$max = 0;
@@ -325,8 +324,8 @@ function setup_javascript_settings() {
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
 			'currentFilter' => json_encode($filter),
 			'allow_google_analytics' => $default_settings['allow_google_analytics'],
-			'google_analytics' => $hk_options['google_analytics'],
-			'google_analytics_domain' => $hk_options['google_analytics_domain'],
+			'google_analytics' => $options['google_analytics'],
+			'google_analytics_domain' => $options['google_analytics_domain'],
 		);
 	wp_localize_script(
 		'hultsfred_js',

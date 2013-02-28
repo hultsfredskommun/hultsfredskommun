@@ -38,6 +38,7 @@ h1 {
 	a {
 		@extend .black-text;
 	}
+	line-height: initial;
 }
 h1.widget-title {
 	@extend .epsilon;
