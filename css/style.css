@@ -4844,6 +4844,7 @@ td, th {
 }
 .article-wrapper .content-wrapper {
   margin-top: 12px !important;
+  /* TODO contact-wrapper */
 }
 .article-wrapper .side-content {
   margin-top: 12px !important;
@@ -5389,7 +5390,7 @@ article.summary.post:hover > .openButton {
   left: 0;
 }
 
-.hidden, .breadcrumb, .viewmode-only-titles .summary .article-border-wrapper, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
+.hidden, #responsive-info, .breadcrumb, .viewmode-only-titles .summary .article-border-wrapper, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
   display: none;
 }
 

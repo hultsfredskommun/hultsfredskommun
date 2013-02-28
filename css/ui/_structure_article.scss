@@ -86,6 +86,7 @@ article.post {
 		@extend .lap-one-whole;
 		@extend .palm-one-whole;
 		margin-top: $half-spacing-unit!important;
+		/* TODO contact-wrapper */
 	}
 	.side-content {
 		@extend .float--left;

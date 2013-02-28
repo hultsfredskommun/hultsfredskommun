@@ -553,8 +553,7 @@ $(document).ready(function(){
 	
 	/*
 	 * load typekit if any
-	 */
-	 
+	 */	 
 	if ( !($.browser.msie && parseInt($.browser.version, 10) < 9)) {
 		try { Typekit.load(); } catch(e) {}
 	}

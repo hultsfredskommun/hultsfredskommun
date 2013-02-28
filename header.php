@@ -128,6 +128,11 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 <body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass ); ?>>
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
+<div class="hidden"><?php
+echo "cookie: ".$_COOKIE['allow_cookies'] . "<br>";
+echo "request cookie: " . $_REQUEST["cookies"] . "<br>";
+echo "cookie_accept_enable: " . $options["cookie_accept_enable"] . "<br>";?>
+</div>
 	<header id="branding" class="branding" role="banner">
 		<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>	
 		<?php dynamic_sidebar('important-top-content'); ?>

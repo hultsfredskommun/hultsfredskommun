@@ -107,6 +107,7 @@ td, th {
  */
 #responsive-info
 {
+	@extend .hidden;
 	@extend .position-fixed--bottom-left;
 	@extend .islet;
 	@extend .flush--bottom;
