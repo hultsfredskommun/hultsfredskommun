@@ -299,7 +299,7 @@ if (typeof $.fn.doslideshow != 'function') {
 				
 				/* set up slideshow first time */
 				if (!$(this).hasClass("initialized")) {
-					$(this).show("fast");
+					$(this).show();
 					rand = Math.floor((Math.random()*1000)+1);
 					$(this).find(".prevslide").addClass("prev"+rand);
 					$(this).find(".nextslide").addClass("next"+rand);
