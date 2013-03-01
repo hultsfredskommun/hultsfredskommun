@@ -32,17 +32,20 @@
 }
 
 .footer-widget-sidebar.two .footer-widgets {
+	@extend .palm-one-whole;
 	@extend .lap-one-half;
 	@extend .desk-one-half;
 }
 
 .footer-widget-sidebar.three .footer-widgets {
+	@extend .palm-one-whole;
 	@extend .lap-one-third;
 	@extend .desk-one-third;
 	@extend .float--left;
 }
 
 .footer-widget-sidebar.four .footer-widgets {
+	@extend .palm-one-whole;
 	@extend .lap-one-half;
 	@extend .desk-one-quarter;
 	@extend .float--left;

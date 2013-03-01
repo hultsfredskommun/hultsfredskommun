@@ -590,7 +590,7 @@ $(document).ready(function(){
 	 * tabs action
 	 */
 	if (typeof $.fn.tabs == 'function') {
-		$(".home #content,.home #quickmenus").tabs();
+		$(".js-tabs").removeClass("hidden").tabs();
 	}
 
 	

@@ -71,7 +71,7 @@ class HK_quickmenu extends WP_Widget {
 		// get quickmenu
 		$quickmenu = hk_related_output(false,false);
 		?>
-	<div id="quickmenus" class="widget">
+	<div id="quickmenus" class="widget  js-tabs  hidden">
 		<ul class="post_tabs_title">
 			<?php if ($quickmenu != "") : ?>
 			<li title="Hitta snabbt"><a href="#quickmenu">Hitta snabbt</a></li>
@@ -284,7 +284,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && in_array(get_query_var("cat"), split(",",$instance["show_protocol"]));
 		?>
 
-	<div id="content" role="main">
+	<div id="content" role="main" class="js-tabs  hidden">
 		<?php if ($showprotocol) : ?>
 		<ul class="post_tabs_title">
 			<li title="Aktuellt"><a href="#newscontent">Aktuellt</a></li>
