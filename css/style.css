@@ -4696,6 +4696,11 @@ a:hover {
   text-decoration: none;
 }
 
+ul, ol, dd {
+  margin-left: 24px;
+  margin-left: 1.5rem;
+}
+
 html {
   font-family: "myriad-pro", Arial, sans-serif;
 }
@@ -5233,7 +5238,7 @@ article.summary.post:hover > .openButton {
   margin-top: 0.75rem;
 }
 
-.half-margin--left, ul, ol, dd, .addthis_toolbox a, .category-navigation .parent, .category-navigation .more-navigation, .footer-widget-wrapper ul {
+.half-margin--left, .addthis_toolbox a, .category-navigation .parent, .category-navigation .more-navigation, .footer-widget-wrapper ul {
   margin-left: 12px;
   margin-left: 0.75rem;
 }

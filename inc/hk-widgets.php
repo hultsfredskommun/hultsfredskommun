@@ -67,10 +67,13 @@ class HK_quickmenu extends WP_Widget {
 			$show_tags = $instance['show_tags'];
 		else
 			$show_tags = $default_settings["show_tags"];
+		
+		// get quickmenu
+		$quickmenu = hk_related_output(false,false);
 		?>
 	<div id="quickmenus" class="widget">
 		<ul class="post_tabs_title">
-			<?php if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) : ?>
+			<?php if ($quickmenu != "") : ?>
 			<li title="Hitta snabbt"><a href="#quickmenu">Hitta snabbt</a></li>
 			<?php endif; ?>
 			<?php if (function_exists( 'views_orderby' )) : ?>
@@ -82,15 +85,9 @@ class HK_quickmenu extends WP_Widget {
 			<?php endif; ?>
 		</ul>
 		<?php 
-		if (($locations = get_nav_menu_locations()) && isset( $locations['quickmenu'] ) && $locations['quickmenu'] > 0 ) :
+		if ($quickmenu != "") :
 			echo "<div id='quickmenu'>";
-			wp_nav_menu( array(
-				'theme_location' => 'quickmenu', 
-				'container' 	=> '',							
-				'items_wrap'	=> '<ul>%3$s</ul>',
-				'depth' 		=> 1,
-				'echo' 			=> true
-			)); 
+			echo $quickmenu;
 			echo "</div>";
 		endif;
 		?>
@@ -146,7 +143,7 @@ class HK_quickmenu extends WP_Widget {
 				<ul>
 					<?php while ( have_posts() ) : the_post(); ?>
 					<li>
-						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a> <?php echo get_the_date("","<span class='time'>","</span>"); ?>
+						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
 					</li>
 				<?php endwhile; ?>
 				</ul>
