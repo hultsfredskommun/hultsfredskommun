@@ -481,12 +481,8 @@ function hk_contact_firstpage($contactargs) {
 				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
 					$number = get_sub_field('number');
 					$link = explode('[',$number,2);
-					$retValue .= "<span class='hidden'>";
-					$retValue .= print_r($link,1);
-					$retValue .= "</span>";
 					if (count($link) > 0) {
 						$link = str_replace(" ","",$link[0]);
-					
 					} else {
 						$link = $number;
 					}

@@ -83,6 +83,9 @@
 		@extend .one-whole;
 	}
 	.content-wrapper {
+		.complement-italic-text {
+			line-height: 0;
+		}
 		@extend .position-absolute--top-left;
 		h1 {
 			@extend .float--left;

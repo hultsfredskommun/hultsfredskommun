@@ -31,6 +31,7 @@ article.post {
 
 /* firstpage article style */
 .home .post {
+	.side-content,
 	.content-wrapper {
 		@extend .margin--top;
 		@extend .float--left;
