@@ -480,12 +480,11 @@ function hk_contact_firstpage($contactargs) {
 				// phone
 				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
 					$number = get_sub_field('number');
-					//$link = str_replace(" ","",explode("[",$number)[0]);
-					$link = $number;
+					$link = str_replace(" ","",explode('[',$number)[0]);
 					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
 					$number = str_replace("]",")</span>", $number);
 
-					$retValue .= "<li class='hk_contact_phones'><a href='tel:$link'>";
+					$retValue .= "<li class='hk_contact_phones'><a href='tel:$link'></i>";
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 					$retValue .= $number . "</a></li>";
 				endwhile; endif;				

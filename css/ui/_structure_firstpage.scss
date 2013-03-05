@@ -69,12 +69,14 @@
 		}
 	}
 }
+.widget .contact-wrapper {
+	line-height: 0;
+}
 .contact-wrapper {
 	
 	@extend .gray-image-background;
 	@extend .cf;
 	@extend .position-relative;
-	line-height: 0;
 	overflow: hidden;
 	img {
 		@extend .one-whole;
@@ -86,7 +88,9 @@
 			@extend .one-whole;
 			@extend .noborder;
 			a {
-				@extend .margin;
+				@extend .margin--top;
+				@extend .margin--right;
+				@extend .margin--left;
 				@extend .half-padding--bottom;
 				@extend .border--bottom;
 				display: block;

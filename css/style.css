@@ -4802,8 +4802,11 @@ td, th {
   z-index: 1100;
 }
 
-.contact-wrapper {
+.widget .contact-wrapper {
   line-height: 0;
+}
+
+.contact-wrapper {
   overflow: hidden;
 }
 .contact-wrapper .content-wrapper h1 a {
@@ -5232,17 +5235,17 @@ article.summary.post:hover > .openButton {
   left: 0;
 }
 
-.margin, .contact-wrapper .content-wrapper h1 a {
+.margin {
   margin: 24px;
   margin: 1.5rem;
 }
 
-.margin--top, .home .post .content-wrapper, .article-wrapper .content-wrapper, .searchnavigation .searchresult-wrapper .searchresult {
+.margin--top, .contact-wrapper .content-wrapper h1 a, .home .post .content-wrapper, .article-wrapper .content-wrapper, .searchnavigation .searchresult-wrapper .searchresult {
   margin-top: 24px;
   margin-top: 1.5rem;
 }
 
-.margin--right, .article-wrapper .content-wrapper .contact-area .img-wrapper {
+.margin--right, .contact-wrapper .content-wrapper h1 a, .article-wrapper .content-wrapper .contact-area .img-wrapper {
   margin-right: 24px;
   margin-right: 1.5rem;
 }
@@ -5252,7 +5255,7 @@ article.summary.post:hover > .openButton {
   margin-bottom: 1.5rem;
 }
 
-.margin--left, .icon-right, .footer-widget-wrapper .content {
+.margin--left, .icon-right, .contact-wrapper .content-wrapper h1 a, .footer-widget-wrapper .content {
   margin-left: 24px;
   margin-left: 1.5rem;
 }

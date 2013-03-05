@@ -203,7 +203,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 		<h3>Direktl&auml;nk 2</h3>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'direct_link2_title' ); ?>">Namn</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link2_title' ); ?>" name="<?php echo $this->get_field_name( 'direct_link2_title' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link1_title"]); ?>" />
+		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link2_title' ); ?>" name="<?php echo $this->get_field_name( 'direct_link2_title' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link2_title"]); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'direct_link2_url' ); ?>">L&auml;nk</label> 
