@@ -50,8 +50,8 @@
 	}
 }
 .main-sub-menu {
-	@extend .delta;
-	@extend .nav--block-double-margin;
+	@extend .epsilon;
+	/*@extend .nav--block-double-margin;*/
 	a:hover,
 	&:hover a:hover,
 	.current-category-ancestor a,

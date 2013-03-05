@@ -43,7 +43,7 @@ h1 {
 }
 h1.widget-title {
 	@extend .epsilon;
-	@extend .border--bottom;
+	@extend .border-light--bottom;
 	.i {
 		@extend .icon-left;
 		line-height: 1;

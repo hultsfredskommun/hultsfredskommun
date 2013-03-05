@@ -68,7 +68,7 @@ td, th {
 		line-height: 1;
 		@extend .one-whole;
 		@extend .epsilon;
-		@extend .border--bottom;
+		@extend .border-light--bottom;
 	}
 }
 
@@ -117,7 +117,6 @@ td, th {
 	@extend .flush--bottom;
 	background: black;
 	color: white;
-	font-weight: bold;
 	z-index: 10000;
 	border-top-right-radius: $border-radius;
 }

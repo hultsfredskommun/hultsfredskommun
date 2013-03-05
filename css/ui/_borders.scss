@@ -20,6 +20,9 @@ $border-line-width:		1px;
 .border--bottom {
 	border-bottom: $border-width $border-style $border-color;
 }
+.border-light--bottom {
+	border-bottom: $border-width $border-style $gray-light-color;
+}
 .border--left {
 	border-left: $border-width $border-style $border-color;
 }

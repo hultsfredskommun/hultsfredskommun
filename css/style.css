@@ -978,13 +978,13 @@ h3, .gamma, .main-menu {
   line-height: 1.2;
 }
 
-h4, .delta, .main-sub-menu {
+h4, .delta {
   font-size: 17px;
   font-size: 1.0625rem;
   line-height: 1.41176;
 }
 
-h5, .epsilon, h1.widget-title, .widget, .widget h1, .viewmode-only-titles h1.entry-title {
+h5, .epsilon, h1.widget-title, .widget, .widget h1, .viewmode-only-titles h1.entry-title, .main-sub-menu {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5;
@@ -2363,7 +2363,7 @@ html.flexbox {
  * Wait for a certain breakpoint to trigger ÔÇÿproper' marginalia. Up to this point,
  * marginalia are inline with the other text.
  */
-@media (min-width: 1024px) {
+@media (min-width: 970px) {
   .marginalia {
     position: relative;
   }
@@ -3480,7 +3480,7 @@ html.flexbox {
     width: 91.666%;
   }
 }
-@media only screen and (min-width: 541px) and (max-width: 1023px) {
+@media only screen and (min-width: 541px) and (max-width: 969px) {
   /**
   * Whole
   */
@@ -3604,7 +3604,7 @@ html.flexbox {
     width: 91.666%;
   }
 }
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 969px) {
   /**
   * Whole
   */
@@ -3728,7 +3728,7 @@ html.flexbox {
     width: 91.666%;
   }
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 970px) {
   /**
   * Whole
   */
@@ -3857,7 +3857,7 @@ html.flexbox {
  * `_vars.scss` then you now have access to the following class available to
  * accomodate much larger screen resolutions.
  */
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1150px) {
   /**
   * Whole
   */
@@ -4425,19 +4425,19 @@ html.flexbox {
     left: -9999px;
   }
 }
-@media only screen and (min-width: 541px) and (max-width: 1023px) {
+@media only screen and (min-width: 541px) and (max-width: 969px) {
   .hide--lap, .contact-wrapper .content-wrapper ul.right-content, .responsive-navigation, .responsive-menu {
     position: absolute;
     left: -9999px;
   }
 }
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 969px) {
   .hide--portable {
     position: absolute;
     left: -9999px;
   }
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 970px) {
   .hide--desk, .responsive-navigation, .responsive-menu {
     position: absolute;
     left: -9999px;
@@ -4576,8 +4576,12 @@ a:focus, .cookieinformation .textwidget a, .top-menu-wrapper .top-menu .menu-ite
   border-right: 2px dotted #c6cacb;
 }
 
-.border--bottom, h1.widget-title, .widget h1, .contact-wrapper .content-wrapper h1 a, .article-border-wrapper {
+.border--bottom, .contact-wrapper .content-wrapper h1 a {
   border-bottom: 2px dotted #c6cacb;
+}
+
+.border-light--bottom, h1.widget-title, .widget h1, .article-border-wrapper {
+  border-bottom: 2px dotted #eef0f1;
 }
 
 .border--left, .contact-wrapper .content-wrapper ul.right-content {
@@ -4644,7 +4648,7 @@ a:focus, .cookieinformation .textwidget a, .top-menu-wrapper .top-menu .menu-ite
 }
 
 .font-weight-bold, .page-header .view-tools .active,
-.page-header .sort-order .active, .article-wrapper a, .cookieinformation .textwidget a, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .ui-tabs li.ui-state-default, .widget .widget-title span {
+.page-header .sort-order .active, .article-wrapper a, .cookieinformation .textwidget a, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .widget .widget-title span {
   font-weight: bold;
 }
 
@@ -4716,14 +4720,14 @@ html {
   margin: 0 6px;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1150px) {
   .content--center, .menu-wrapper,
   .main, .cookieinformation .widget-title,
   .cookieinformation .textwidget,
   .important-widget .widget-title,
   .important-widget .textwidget {
     margin: 0 auto;
-    max-width: 1188px;
+    max-width: 1138px;
   }
 }
 .wait {
@@ -4760,7 +4764,7 @@ td, th {
   padding-bottom: 0.375rem;
 }
 
-.nav--block-double-margin li a, .contact-wrapper .content-wrapper ul li a, .main-menu li a, .main-sub-menu li a, .ui-tabs-nav li a {
+.nav--block-double-margin li a, .contact-wrapper .content-wrapper ul li a, .main-menu li a, .ui-tabs-nav li a {
   padding-left: 24px;
   padding-left: 1.5rem;
   padding-right: 24px;
@@ -4777,7 +4781,6 @@ td, th {
 #responsive-info {
   background: black;
   color: white;
-  font-weight: bold;
   z-index: 10000;
   border-top-right-radius: 3px;
 }
@@ -4852,7 +4855,7 @@ td, th {
 .summary .article-wrapper .side-content {
   display: none;
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 970px) {
   .summary .article-wrapper .side-content {
     display: block;
   }
@@ -4876,7 +4879,7 @@ td, th {
 .article-wrapper .side-content {
   margin-top: 12px !important;
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 970px) {
   .article-wrapper .side-content {
     float: right!important;
   }
@@ -4905,7 +4908,7 @@ article.summary.post:hover > .openButton {
   text-align: left;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 970px) {
   .full .article-wrapper .side-content {
     border-left: 0;
   }
@@ -4953,12 +4956,12 @@ article.summary.post:hover > .openButton {
     display: none;
   }
 }
-@media only screen and (min-width: 541px) and (max-width: 1023px) {
+@media only screen and (min-width: 541px) and (max-width: 969px) {
   article.summary .summary {
     display: none;
   }
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 970px) {
   .summary-content,
   .more-content,
   .single-content {
@@ -5039,6 +5042,10 @@ article.summary.post:hover > .openButton {
 
 .main-menu {
   border-bottom: 1px solid #c6cacb;
+}
+
+.main-sub-menu {
+  /*@extend .nav--block-double-margin;*/
 }
 
 .more-menu .more-menu-ul {
@@ -5127,6 +5134,7 @@ article.summary.post:hover > .openButton {
 
 .ui-tabs li.ui-state-default {
   cursor: pointer;
+  /*@extend .font-weight-bold;*/
 }
 
 .ui-tabs .ui-tabs-panel {
@@ -5402,7 +5410,7 @@ article.summary.post:hover > .openButton {
   width: 150px;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 970px) {
   .contact-popup.box .entry-wrapper.hasmap {
     overflow: initial;
   }
@@ -5468,17 +5476,17 @@ article.summary.post:hover > .openButton {
   }
 }
 /* HELP MEDIA QUERY INFO */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 970px) {
   #responsive-info:after {
     content: "DESK";
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1150px) {
   #responsive-info:after {
     content: "DESKWIDE";
   }
 }
-@media only screen and (min-width: 541px) and (max-width: 1023px) {
+@media only screen and (min-width: 541px) and (max-width: 969px) {
   #responsive-info:after {
     content: "LAP & PORTABLE";
   }

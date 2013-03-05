@@ -21,7 +21,7 @@ if (is_single() && in_category($default_settings["hidden_cat"])) {
 if ($_REQUEST["cookies"]) {
 	// allow cookies for 10 years
 	setcookie("allow_cookies", "true", time()+3600*24*3650, "/");
-	header("Location: http" . (empty($_SERVER['HTTPS'])?'':'s').'://'.$_SERVER['SERVER_NAME'] . $_SERVER["REDIRECT_URL"]);
+	header("Location: http://".$_SERVER['SERVER_NAME'] . $_SERVER["REDIRECT_URL"]);
 	die();
 }
 

@@ -13,7 +13,7 @@ article.post {
 	@extend .float--left;
 	@extend .one-whole;
 	@extend .border--top;
-	@extend .border--bottom;
+	@extend .border-light--bottom;
 }
 
 /* hide article-wrapper if only titles */
