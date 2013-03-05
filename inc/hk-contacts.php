@@ -480,7 +480,8 @@ function hk_contact_firstpage($contactargs) {
 				// phone
 				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
 					$number = get_sub_field('number');
-					$link = str_replace(" ","",explode("[",$number)[0]);
+					//$link = str_replace(" ","",explode("[",$number)[0]);
+					$link = $number;
 					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
 					$number = str_replace("]",")</span>", $number);
 
