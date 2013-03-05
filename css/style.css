@@ -3221,7 +3221,7 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .branding, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .contact-wrapper img, .contact-wrapper .content-wrapper h1, .breadcrumb, .page-header, article.post, .article-border-wrapper, .home .post .content-wrapper, .home .post h1.entry-title, .article-wrapper, .content, .post .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .footer-widget-sidebar.one .footer-widgets {
+.one-whole, .branding, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .contact-wrapper, .contact-wrapper img, .contact-wrapper .content-wrapper h1, .breadcrumb, .page-header, article.post, .article-border-wrapper, .home .post .content-wrapper, .home .post h1.entry-title, .article-wrapper, .content, .post .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
 
