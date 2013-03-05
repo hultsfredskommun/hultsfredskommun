@@ -5508,3 +5508,44 @@ article.summary.post:hover > .openButton {
     content: "PALM & PORTABLE";
   }
 }
+
+
+
+/* Style for the Search bar */
+/* Left content */
+.searchnavigation .searchresult-wrapper .searchresult .search-tele li {
+  padding: 9px 12px;
+  line-height: 1.3em;
+}
+
+.searchnavigation .searchresult-wrapper .searchresult .search-tele li:nth-child(even) {
+  background: #FAFDFF;
+}
+
+.searchnavigation .searchresult-wrapper .searchresult ul {
+  padding: 6px 10px 0 0 !important
+}
+
+.searchnavigation .searchresult-wrapper .searchresult .search-tele .search-title {
+  font-weight: bold;
+  padding: 2px 9px;
+  margin: 3px 0 2px 4px;
+  border-bottom: 2px solid #55869E;
+}
+
+
+/* Right content */
+.searchnavigation .searchresult-wrapper .searchresult .search-posts li {
+  line-height: 1.3em;
+}
+
+.searchnavigation .searchresult-wrapper .searchresult .search-posts li {
+  border-bottom: 1px dotted;
+}
+
+.searchnavigation .searchresult-wrapper .searchresult .search-posts .search-title {
+  font-weight: bold;
+  padding: 2px 9px;
+  margin: 3px 0 2px 4px;
+  border-bottom: 2px solid #55869E;
+}
