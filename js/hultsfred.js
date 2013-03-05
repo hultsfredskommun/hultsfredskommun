@@ -1105,7 +1105,7 @@ function setContactPopupAction(el) {
 			if (post_id == null) return true;
 			
 			ev.preventDefault();
-			$("#page").append("<div class='contact-popup box'><div class='entry-content'>H&auml;mtar kontaktuppgifter...</div></div>").append("<div class='contact-popup overlay'></div>");
+			$("#page").append("<div class='contact-popup box'><div class='entry-content islet'>H&auml;mtar kontaktuppgifter...</div></div>").append("<div class='contact-popup overlay'></div>");
 	
 			$(".contact-popup.overlay").unbind("click").click(function() {
 				$(".contact-popup").remove();

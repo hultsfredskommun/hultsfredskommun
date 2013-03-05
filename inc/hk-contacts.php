@@ -177,7 +177,10 @@ function hk_contacts_generate_cache($args) {
 				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
 					$retValue .= "<p>";
 					if(get_row_layout() == "hk_contact_fax"): $retValue .= "fax "; endif;
-					$retValue .= get_sub_field('number') . "</p>";
+					$number = get_sub_field('number');
+					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
+					$number = str_replace("]",")</span>", $number);
+					$retValue .= $number . "</p>";
 				endwhile; endif; 
 				// email
 				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ): 
@@ -392,57 +395,149 @@ function hk_get_contact_by_id($contact_id, $args) {
 
 
 // outputs the content of first page contact
-function hk_contact_firstpage() {
-	global $post;
+function hk_contact_firstpage($contactargs) {
+	global $post, $default_settings;
 	$org_post = $post;
 
 	$retValue = "";
-	$retValue .= "<aside class='hk_kontakter widget'><div class='contact-wrapper'>";
 	
 	// set startpage category if on startpage
 	$category_in = array();
 	if (get_query_var("cat") != "") {
-			// query arguments
-			$args = array(
-				'posts_per_page' => -1,
-				'paged' => 1,
-				'more' => $more = 0,
-				'post_type' => 'hk_kontakter',
-				'order' => 'ASC', 
-				'suppress_filters' => 1
-			);
-				
-			$args['category__and'] = get_query_var("cat");
 
-			// search in all posts (ignore filters)
-			$the_query = new WP_Query( $args );
-
-			if ($the_query->have_posts())
-			{ 
-				// The Loop
-				while ( $the_query->have_posts() ) : $the_query->the_post();
-					$retValue .= hk_get_the_contact(array('image' => false,
-													'name' => true,
-													'title' => false,
-													'workplace' => false,
-													'phone' => true,
-													'email' => true,
-													'description' => false,
-													'address' => false,
-													'visit_hours' => false,
-													'map' => false,
-													'title_link' => true));
-				endwhile;
-			}
+		// query arguments
+		$args = array(
+			'posts_per_page' => -1,
+			'paged' => 1,
+			'more' => $more = 0,
+			'post_type' => 'hk_kontakter',
+			'order' => 'ASC', 
+			'suppress_filters' => 1
+		);
 			
-			// Reset Post Data
-			wp_reset_postdata();
-			wp_reset_query();
-			$post = $org_post;
+		$args['category__and'] = get_query_var("cat");
+
+		// search in all posts (ignore filters)
+		$the_query = new WP_Query( $args );
+
+		if ($the_query->have_posts())
+		{ 
+		
+		
+		
+/*
+<div class='contact-wrapper'>
+	<a class='contactlink' href='/artikel/kontakt/hultsfreds-kommun/'>Kontakta Hultsfreds kommun</a>
+
+		<div class='left-content'>
+			<ul>
+				<li><a href="#">kommunen@hultsfred.se</a></li>
+				<li><a href="#">0495-24 00 01</a><i>(talstyrd telefonist)</i></li>
+				<li><a href="#">0495-24 00 00</a><i>(växel)</i></li>
+			</ul>
+		</div> <!-- End of left-content -->
+		<div class='right-content'>
+			<ul>
+				<li><a href="#">Prenumerera på nyheter</a><i>(RSS)</i></li>
+				<li><a href="#">Synpunkter</a></li>
+				<li><a href="#">Felanmälan</a></li>
+			</ul>
+		</div> <!-- End of right-content -->
+
+	<img class='contacts-image' src="panorama.png">
+</div> <!-- End of contact-wrapper -->*/
+			
+			$retValue .= "<aside class='hk_kontakter widget'><div class='contact-wrapper'>";
+			$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings['featured-image'][0]."&amp;h=".($default_settings['featured-image'][1])."'/>";
+			$retValue .= "<div class='content-wrapper'>";
+				
+			// The Loop
+			while ( $the_query->have_posts() ) : $the_query->the_post();
+				
+				$rightcontent = false;
+				if (($contactargs['direct_link1_url'] != "" && $contactargs['direct_link1_title'] != "") ||
+					($contactargs['direct_link2_url'] != "" && $contactargs['direct_link2_title'] != "") ||
+					($contactargs['direct_link3_url'] != "" && $contactargs['direct_link3_title'] != "")
+					) :
+					$rightcontent = true;
+					$halfcss = "two";
+				endif;
+				// add link and title
+				$retValue .= "<h1 class='entry-title'>";
+				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><i class='i' data-icon='&#xF170;'></i>Kontakta "; 
+				$retValue .= get_the_title();
+				$retValue .= "</a>"; 
+				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
+				$retValue .= "</h1>";
+				
+				$retValue .= "<ul class='left-content  $halfcss'>";
+				
+				// email
+				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
+					$retValue .= "<li class='hk_contact_emails'><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></li>";
+				endwhile; endif;
+
+				// phone
+				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
+					$number = get_sub_field('number');
+					$link = str_replace(" ","",explode("[",$number)[0]);
+					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
+					$number = str_replace("]",")</span>", $number);
+
+					$retValue .= "<li class='hk_contact_phones'><a href='tel:$link'>";
+					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
+					$retValue .= $number . "</a></li>";
+				endwhile; endif;				
+
+				$retValue .= "</ul>";
+				if ($rightcontent) :
+
+					$retValue .= "<ul class='right-content  $halfcss'>";
+					
+					if ($contactargs['direct_link1_url'] != "" && $contactargs['direct_link1_title'] != "") :
+						$retValue .= "<li class='direct_link direct_link1'>";
+						$retValue .= "<a href='" . $contactargs['direct_link1_url'] . "'>";
+						if ($contactargs['direct_link1_icon'] != "") : $retValue .= "<i class='i' data-icon='" . $contactargs['direct_link1_icon'] . "'></i>"; endif;
+						$title = $contactargs['direct_link1_title'];
+						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+						$title = str_replace("]",")</span>", $title);
+						$retValue .= $title . "</a></li>";
+					endif;
+					if ($contactargs['direct_link2_url'] != "" && $contactargs['direct_link2_title'] != "") :
+						$retValue .= "<li class='direct_link direct_link2'>";
+						$retValue .= "<a href='" . $contactargs['direct_link2_url'] . "'>";
+						if ($contactargs['direct_link2_icon'] != "") : $retValue .= "<i class='i' data-icon='" . $contactargs['direct_link2_icon'] . "'></i>"; endif;
+						$title = $contactargs['direct_link2_title'];
+						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+						$title = str_replace("]",")</span>", $title);
+						$retValue .= $title . "</a></li>";
+					endif;
+					if ($contactargs['direct_link3_url'] != "" && $contactargs['direct_link3_title'] != "") :
+						$retValue .= "<li class='direct_link direct_link3'>";
+						$retValue .= "<a href='" . $contactargs['direct_link3_url'] . "'>";
+						if ($contactargs['direct_link3_icon'] != "") : $retValue .= "<i class='i' data-icon='" . $contactargs['direct_link3_icon'] . "'></i>"; endif;
+						$title = $contactargs['direct_link3_title'];
+						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+						$title = str_replace("]",")</span>", $title);
+						$retValue .= $title . "</a></li>";
+					endif;
+				
+				
+					$retValue .= "</ul>";
+				endif;
+			endwhile;
+			
+			$retValue .= "</div></div></aside>";
+		}
+		
+		// Reset Post Data
+		wp_reset_postdata();
+		wp_reset_query();
+		$post = $org_post;
+		
 
 	}
 		
-	$retValue .= "</div></aside>";
 	echo $retValue;
 
 }
@@ -485,6 +580,7 @@ function hk_get_the_contact($args = array()) {
 
 			// image
 			$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
+			
 			$retValue .= "<" . $default["heading_element"] . " class='entry-title " . $hidden['name'] . "'>";
 			// add link to title
 			if ($default['title_link']) { 
@@ -519,7 +615,10 @@ function hk_get_the_contact($args = array()) {
 				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
 					$retValue .= "<div class='hk_contact_phones " . $hidden['phone'] . "'>";
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
-					$retValue .= get_sub_field('number') . " </div>";
+					$number = get_sub_field('number');
+					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
+					$number = str_replace("]",")</span>", $number);
+					$retValue .= $number . " </div>";
 				endwhile; endif;				
 				
 				if( (get_field('hk_contact_phones') && $hidden['phone'] == "visible") || (get_field('hk_contact_emails') && $hidden['email'] == "visible") ) {

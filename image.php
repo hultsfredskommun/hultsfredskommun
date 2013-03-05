@@ -6,21 +6,22 @@ exit();
 function create_image($width = 150, $height = 150) 
 {   
     //Create the image resource 
-    $image = ImageCreate($width, $height);  
+    $image = imagecreatetruecolor($width, $height);  
 
     //We are making three colors, white, black and gray 
-    $white = ImageColorAllocate($image, 255, 255, 255); 
+    $white = imagecolorallocate($image, 255, 255, 255); 
 
     //Make the background black 
     ImageFill($image, 0, 0, $white); 
+	imagecolortransparent($image, $white);
   
     //Tell the browser what kind of file is come in 
-    header("Content-Type: image/jpeg"); 
+    header("Content-Type: image/png"); 
 
     //Output the newly created image in jpeg format 
-    ImageJpeg($image); 
+    imagepng($image); 
     
     //Free up resources
-    ImageDestroy($image); 
+    imagedestroy($image); 
 } 
 ?>

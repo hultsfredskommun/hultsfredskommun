@@ -1,3 +1,7 @@
+.margin {
+	margin:$base-spacing-unit;
+    margin:($base-spacing-unit / $base-font-size)*1rem;
+}
 .margin--top {
 	margin-top:$base-spacing-unit;
     margin-top:($base-spacing-unit / $base-font-size)*1rem;
@@ -51,4 +55,8 @@
 .half-padding--left {
 	padding-left:$half-spacing-unit;
 	padding-left:($half-spacing-unit / $base-font-size)*1rem;
+}
+.half-padding--bottom {
+	padding-bottom:$half-spacing-unit;
+	padding-bottom:($half-spacing-unit / $base-font-size)*1rem;
 }

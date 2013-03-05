@@ -18,14 +18,9 @@ if ( ! isset( $content_width ) )
 
 /* help variable */	
 $s_when_https = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 's' : '');
-/* get hk_options */
-$options = get_option('hk_theme');
+/* get hk_hk_options */
+$hk_options = get_option('hk_theme');
 	
-/* set allow cookie */
-if ($_REQUEST["cookies"] && $options["cookie_accept_enable"] == "1") {
-	// allow cookies for 10 years
-	setcookie("allow_cookies", "true", time()+3600*24*3650, "/");
-}
 	
 /* SET DEFAULT SETTINGS */
 if ( ! isset( $default_settings ) ) {
@@ -33,14 +28,14 @@ if ( ! isset( $default_settings ) ) {
 								'featured-image' => array(532, 311, true), /* array(660, 396, true) */
 								'slideshow-image' => array(980, 551, true),
 								'contact-image' => array(150, 190, true),
-								'startpage_cat' => $options["startpage_cat"],
-								'news_tag' => $options["news_tag"],
-								'hidden_cat' => $options["hidden_cat"],
-								'protocol_cat' => $options["protocol_cat"],
-								'num_levels_in_menu' => (!isset($options["num_levels_in_menu"]) || $options["num_levels_in_menu"] == "")?2:$options["num_levels_in_menu"],
-								'show_tags' => (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options["show_tags"],
-								'allow_cookies' => $_REQUEST["cookies"] || $_COOKIE['allow_cookies'] || $options["cookie_accept_enable"] == "",
-								'allow_google_analytics' => $_REQUEST["cookies"] || $_COOKIE['allow_cookies'] || $options["cookie_accept_enable"] == "" || $options['google_analytics_disable_if_no_cookies'] != "1",
+								'startpage_cat' => $hk_options["startpage_cat"],
+								'news_tag' => $hk_options["news_tag"],
+								'hidden_cat' => $hk_options["hidden_cat"],
+								'protocol_cat' => $hk_options["protocol_cat"],
+								'num_levels_in_menu' => (!isset($hk_options["num_levels_in_menu"]) || $hk_options["num_levels_in_menu"] == "")?2:$hk_options["num_levels_in_menu"],
+								'show_tags' => (!isset($hk_options["show_tags"]) || $hk_options["show_tags"] == "")?1:$hk_options["show_tags"],
+								'allow_cookies' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "",
+								'allow_google_analytics' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "" || $hk_options['google_analytics_disable_if_no_cookies'] != "1",
 								);
 }
 
@@ -183,29 +178,29 @@ add_action( 'pre_get_posts', 'hk_exclude_category' );
  */
 if (!is_admin()) {
 	
-	if ($options['typekit_url'] != "") {
+	if ($hk_options['typekit_url'] != "") {
 	//  //use.typekit.net/xpx0dap.js
 		wp_enqueue_script(
 			'typekit_js',
-			'http'.$s_when_https.'://'.$options['typekit_url'],
+			'http'.$s_when_https.'://'.$hk_options['typekit_url'],
 			array(),
 			'1.0',
 			true
 		);
 	}
-	if ($options['addthis_pubid'] != "" && ($_REQUEST["cookies"] == "true" || $default_settings['allow_cookies'])) {
+	if ($hk_options['addthis_pubid'] != "" && $default_settings['allow_cookies']) {
 		wp_enqueue_script(
 			'addthis_js',
-			'http'.$s_when_https.'://s7.addthis.com/js/300/addthis_widget.js#pubid='.$options['addthis_pubid'],
+			'http'.$s_when_https.'://s7.addthis.com/js/300/addthis_widget.js#pubid='.$hk_options['addthis_pubid'],
 			array(),
 			'1.0',
 			true
 		);
 	}
-	if ($options['readspeaker_id'] != "") {
+	if ($hk_options['readspeaker_id'] != "") {
 		wp_enqueue_script(
 			'readspeaker_js',
-			'http'.$s_when_https.'://f1.eu.readspeaker.com/script/'.$options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl',
+			'http'.$s_when_https.'://f1.eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl',
 			array(),
 			'1.0',
 			true
@@ -299,7 +294,7 @@ function curBaseURL() {
 	return $pageURL;
 }
 function setup_javascript_settings() {
-	global $wp_query, $options, $default_settings;
+	global $wp_query, $hk_options, $default_settings;
 	// What page are we on? And what is the pages limit?
 	if (is_home()) {
 		$max = 0;
@@ -324,8 +319,8 @@ function setup_javascript_settings() {
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
 			'currentFilter' => json_encode($filter),
 			'allow_google_analytics' => $default_settings['allow_google_analytics'],
-			'google_analytics' => $options['google_analytics'],
-			'google_analytics_domain' => $options['google_analytics_domain'],
+			'google_analytics' => $hk_options['google_analytics'],
+			'google_analytics_domain' => $hk_options['google_analytics_domain'],
 		);
 	wp_localize_script(
 		'hultsfred_js',

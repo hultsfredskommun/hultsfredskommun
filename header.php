@@ -8,13 +8,23 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
-
 global $default_settings;
+
+/* hide if single and not visible */
 if (is_single() && in_category($default_settings["hidden_cat"])) {
 	header("HTTP/1.0 404 Not Found");
 	//TODO print 404 error - include("404.php");?
 	die("Inte synlig.");
 }
+ 
+/* first of all set allow cookie if any */
+if ($_REQUEST["cookies"]) {
+	// allow cookies for 10 years
+	setcookie("allow_cookies", "true", time()+3600*24*3650, "/");
+	header("Location: http" . (empty($_SERVER['HTTPS'])?'':'s').'://'.$_SERVER['SERVER_NAME'] . $_SERVER["REDIRECT_URL"]);
+	die();
+}
+
 
 // redirect to first menu item in 'primary'-menu 
 // if on startpage, there are a 'primary' menu set and more than one top menu level
@@ -77,10 +87,10 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<link href="http://localhost/wm_local_css/style.css" rel="stylesheet">
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri() . "/style-lt-ie9.css"; ?>" />
-<link href="http://localhost/wm_local_css/style.css" rel="stylesheet">
 <![endif]-->
 <?php
 	/* We add some JavaScript to pages with the comment form
@@ -128,13 +138,6 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 <body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass ); ?>>
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
-<div class="hidden"><?php
-echo "allow_cookies: (cookie)".$_COOKIE['allow_cookies'] . "<br>";
-echo "allow_cookies: (default_settings) ".$default_settings['allow_cookies'] . "<br>";
-echo "request cookie: " . $_REQUEST["cookies"] . "<br>";
-echo "cookie_accept_enable: " . $options["cookie_accept_enable"] . "<br>";?>
-
-</div>
 	<header id="branding" class="branding" role="banner">
 		<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>	
 		<?php dynamic_sidebar('important-top-content'); ?>

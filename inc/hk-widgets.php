@@ -177,22 +177,87 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 		parent::__construct(
 	 		'HK_firstpagecontact', // Base ID
 			'HK f&ouml;rstasidans kontakt', // Name
-			array( 'description' => "Widget som visar kontakter kopplade till aktiv kategori" ) // Args
+			array( 'description' => "Widget som visar kontakt kopplad till aktiv kategori p&aring; startsidan." ) // Args
 		);
 
 	}
 
+ 	
  	public function form( $instance ) {
+	
+		?>
+		<h3>Direktl&auml;nk 1</h3>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'direct_link1_title' ); ?>">Namn</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link1_title' ); ?>" name="<?php echo $this->get_field_name( 'direct_link1_title' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link1_title"]); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'direct_link1_url' ); ?>">L&auml;nk</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link1_url' ); ?>" name="<?php echo $this->get_field_name( 'direct_link1_url' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link1_url"]); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'direct_link1_icon' ); ?>">Ikon</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link1_icon' ); ?>" name="<?php echo $this->get_field_name( 'direct_link1_icon' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link1_icon"]); ?>" />
+		</p>
+
+		<h3>Direktl&auml;nk 2</h3>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'direct_link2_title' ); ?>">Namn</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link2_title' ); ?>" name="<?php echo $this->get_field_name( 'direct_link2_title' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link1_title"]); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'direct_link2_url' ); ?>">L&auml;nk</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link2_url' ); ?>" name="<?php echo $this->get_field_name( 'direct_link2_url' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link2_url"]); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'direct_link2_icon' ); ?>">Ikon</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link2_icon' ); ?>" name="<?php echo $this->get_field_name( 'direct_link2_icon' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link2_icon"]); ?>" />
+		</p>
+
+		<h3>Direktl&auml;nk 3</h3>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'direct_link3_title' ); ?>">Namn</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link3_title' ); ?>" name="<?php echo $this->get_field_name( 'direct_link3_title' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link3_title"]); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'direct_link3_url' ); ?>">L&auml;nk</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link3_url' ); ?>" name="<?php echo $this->get_field_name( 'direct_link3_url' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link3_url"]); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'direct_link3_icon' ); ?>">Ikon</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link3_icon' ); ?>" name="<?php echo $this->get_field_name( 'direct_link3_icon' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link3_icon"]); ?>" />
+		</p>
+		
+	<?php
 	}
 
 	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['direct_link1_url'] = strip_tags( $new_instance['direct_link1_url'] );
+		$instance['direct_link1_title'] = strip_tags( $new_instance['direct_link1_title'] );
+		$instance['direct_link1_icon'] = strip_tags( $new_instance['direct_link1_icon'] );
+		$instance['direct_link2_url'] = strip_tags( $new_instance['direct_link2_url'] );
+		$instance['direct_link2_title'] = strip_tags( $new_instance['direct_link2_title'] );
+		$instance['direct_link2_icon'] = strip_tags( $new_instance['direct_link2_icon'] );
+		$instance['direct_link3_url'] = strip_tags( $new_instance['direct_link3_url'] );
+		$instance['direct_link3_title'] = strip_tags( $new_instance['direct_link3_title'] );
+		$instance['direct_link3_icon'] = strip_tags( $new_instance['direct_link3_icon'] );
+		return $instance;
 	}
 
 	public function widget( $args, $instance ) {
 	    extract( $args );
 ?>
 	<div class="contact-area">
-		<?php hk_contact_firstpage(); ?>
+		<?php hk_contact_firstpage(array('direct_link1_url' => $instance["direct_link1_url"], 
+										'direct_link1_title' => $instance["direct_link1_title"],
+										'direct_link1_icon' => $instance["direct_link1_icon"],
+										'direct_link2_url' => $instance["direct_link2_url"],
+										'direct_link2_title' => $instance["direct_link2_title"],
+										'direct_link2_icon' => $instance["direct_link2_icon"],
+										'direct_link3_url' => $instance["direct_link3_url"],
+										'direct_link3_title' => $instance["direct_link3_title"],
+										'direct_link3_icon' => $instance["direct_link3_icon"])); ?>
 	</div>
 
 <?php
