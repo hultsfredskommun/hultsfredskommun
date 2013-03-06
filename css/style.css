@@ -5527,10 +5527,11 @@ article.summary.post:hover > .openButton {
 }
 
 .searchnavigation .searchresult-wrapper .searchresult .search-tele .search-title {
-  font-weight: bold;
+  font-family: arial;
+  font-size: 1.2em;
   padding: 2px 9px;
   margin: 3px 0 2px 4px;
-  border-bottom: 2px solid #55869E;
+  border-bottom: 1px solid #55869E;
 }
 
 
@@ -5544,8 +5545,9 @@ article.summary.post:hover > .openButton {
 }
 
 .searchnavigation .searchresult-wrapper .searchresult .search-posts .search-title {
-  font-weight: bold;
+  font-family: arial;
+  font-size: 1.2em;
   padding: 2px 9px;
   margin: 3px 0 2px 4px;
-  border-bottom: 2px solid #55869E;
+  border-bottom: 1px solid #55869E;
 }
