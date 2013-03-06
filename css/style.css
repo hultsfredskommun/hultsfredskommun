@@ -4776,6 +4776,18 @@ td, th {
 }
 
 /*
+ * citybreak reset
+ */
+#cb_init_bookingengine *,
+.Citybreak_engine * {
+  -webkit-box-sizing: initial !important;
+  -moz-box-sizing: initial !important;
+  -ms-box-sizing: initial !important;
+  -o-box-sizing: initial !important;
+  box-sizing: initial !important;
+}
+
+/*
 * Responsive helper
 */
 #responsive-info {
