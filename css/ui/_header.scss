@@ -116,14 +116,19 @@
 		
 		
 		.searchresult {
-			@include arrow(top, left, $gray-light-color, transparent);
+			@include arrow(top, left, $main-color, transparent);
 			@extend .margin--top;
 			@extend .position-absolute;
 			z-index: 6000;
 			@extend .border-radius;
-			@extend .gray-light-background;
+			@extend .white-background;
+			@extend .main-border;
 			
 			ul {
+				.search-title {
+					@extend .font-weight-bold;
+					margin-left: $half-spacing-unit;
+				}
 				@extend .nav;
 				@extend .nav--block;
 				@extend .nav--block-half-margin;
@@ -133,6 +138,15 @@
 				@extend .one-half;
 				a, span {
 					white-space: normal!important;
+				}
+			}
+			ul.search-tele {
+				li {
+					margin-bottom: $half-spacing-unit;
+					span {
+						display: block;
+						padding-bottom: $half-spacing-unit/2;
+					}
 				}
 			}
 		}
