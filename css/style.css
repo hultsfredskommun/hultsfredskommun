@@ -764,7 +764,7 @@ textarea:focus {
 .grid-wrapper, .nav, .home .contact-wrapper .content-wrapper ul, .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .article-wrapper .entry-meta .footer-wrapper, .pager, .contacts,
 .related-wrapper,
-.tools, .responsive-navigation, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
+.tools, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .responsive-navigation, .responsive-menu, .more-menu-ul,
 .main-menu,
 .main-sub-menu, .tags-wrapper ul,
 .category-navigation ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul, .media, .island, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
@@ -778,7 +778,7 @@ textarea:focus {
 .grid-wrapper:before, .nav:before, .home .contact-wrapper .content-wrapper ul:before, .page-header .view-tools:before,
 .page-header .sort-order:before, .page-header .category-tools:before, .page-header .category-tools .menu-item .sub-menu:before, .article-wrapper .entry-meta .footer-wrapper:before, .pager:before, .contacts:before,
 .related-wrapper:before,
-.tools:before, .responsive-navigation:before, .searchnavigation .searchresult ul:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .more-menu-ul:before,
+.tools:before, .searchnavigation .searchresult ul:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .responsive-navigation:before, .responsive-menu:before, .more-menu-ul:before,
 .main-menu:before,
 .main-sub-menu:before, .tags-wrapper ul:before,
 .category-navigation ul:before, .category-navigation .parent:before, .category-navigation .parent li .children:before, .category-navigation .more-navigation:before, .ui-tabs-nav:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .footer-image-wrapper .logo-footer-image img:before, .contact-popup.box .entry-wrapper .entry-content:before,
@@ -789,7 +789,7 @@ textarea:focus {
 .grid-wrapper:after, .nav:after, .home .contact-wrapper .content-wrapper ul:after, .page-header .view-tools:after,
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
-.tools:after, .responsive-navigation:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
+.tools:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .responsive-navigation:after, .responsive-menu:after, .more-menu-ul:after,
 .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
 .category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
@@ -804,7 +804,7 @@ textarea:focus {
 .grid-wrapper:after, .nav:after, .home .contact-wrapper .content-wrapper ul:after, .page-header .view-tools:after,
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
-.tools:after, .responsive-navigation:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
+.tools:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .responsive-navigation:after, .responsive-menu:after, .more-menu-ul:after,
 .main-menu:after,
 .main-sub-menu:after, .tags-wrapper ul:after,
 .category-navigation ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
@@ -1831,7 +1831,7 @@ label,
    </div>
  * 
  */
-.gw--rev > .g, .gw--rev > .firstpage-top-content, .gw--rev > .firstpage-sidebar, .gw--rev > .firstpage-content, .gw--rev > .firstpage-pre-footer-sidebar, .gw--rev > .breadcrumb, .gw--rev > .category-navigation, .gw--rev > .primary, .gw--rev > .logo, .gw--rev > .responsive-navigation, .gw--rev > .searchnavigation, .gw--rev > .logo2,
+.gw--rev > .g, .gw--rev > .firstpage-top-content, .gw--rev > .firstpage-sidebar, .gw--rev > .firstpage-content, .gw--rev > .firstpage-pre-footer-sidebar, .gw--rev > .breadcrumb, .gw--rev > .category-navigation, .gw--rev > .primary, .gw--rev > .logo, .gw--rev > .searchnavigation, .gw--rev > .logo2,
 .grid-wrapper--rev > .grid {
   float: right;
 }
@@ -1849,7 +1849,7 @@ label,
  * 
  * Shorthand and verbose
  */
-.g, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .firstpage-pre-footer-sidebar, .breadcrumb, .category-navigation, .primary, .logo, .responsive-navigation, .searchnavigation, .logo2,
+.g, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .firstpage-pre-footer-sidebar, .breadcrumb, .category-navigation, .primary, .logo, .searchnavigation, .logo2,
 .grid {
   float: left;
   padding-left: 24px;
@@ -1979,7 +1979,7 @@ html.flexbox {
 .nav, .home .contact-wrapper .content-wrapper ul, .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .article-wrapper .entry-meta .footer-wrapper, .pager, .contacts,
 .related-wrapper,
-.tools, .responsive-navigation, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
+.tools, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .responsive-navigation, .responsive-menu, .more-menu-ul,
 .main-menu,
 .main-sub-menu, .tags-wrapper ul,
 .category-navigation ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul {
@@ -1989,7 +1989,7 @@ html.flexbox {
 .nav > li, .home .contact-wrapper .content-wrapper ul > li, .page-header .view-tools > li,
 .page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .article-wrapper .entry-meta .footer-wrapper > li, .pager > li, .contacts > li,
 .related-wrapper > li,
-.tools > li, .responsive-navigation > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu-ul > li,
+.tools > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .responsive-navigation > li, .responsive-menu > li, .more-menu-ul > li,
 .main-menu > li,
 .main-sub-menu > li, .tags-wrapper ul > li,
 .category-navigation ul > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .ui-tabs-nav > li, .footer-widget-wrapper ul > li,
@@ -2004,10 +2004,11 @@ html.flexbox {
 .contacts > li > a,
 .related-wrapper > li > a,
 .tools > li > a,
-.responsive-navigation > li > a,
 .searchnavigation .searchresult ul > li > a,
 .top-menu-wrapper .top-menu > li > a,
 .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a,
+.responsive-navigation > li > a,
+.responsive-menu > li > a,
 .more-menu-ul > li > a,
 .main-menu > li > a,
 .main-sub-menu > li > a,
@@ -2074,7 +2075,7 @@ html.flexbox {
  * 
  */
 .nav--block, .options, .home .contact-wrapper .content-wrapper ul, .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .pager, .responsive-navigation, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
+.page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .pager, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .responsive-navigation, .responsive-menu, .more-menu-ul,
 .main-menu,
 .main-sub-menu, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul {
   line-height: 1;
@@ -2086,14 +2087,14 @@ html.flexbox {
   white-space: nowrap;
 }
 .nav--block > li, .options > li, .home .contact-wrapper .content-wrapper ul > li, .page-header .view-tools > li,
-.page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .pager > li, .responsive-navigation > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu-ul > li,
+.page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .pager > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .responsive-navigation > li, .responsive-menu > li, .more-menu-ul > li,
 .main-menu > li,
 .main-sub-menu > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .ui-tabs-nav > li, .footer-widget-wrapper ul > li {
   letter-spacing: normal;
   word-spacing: normal;
 }
 .nav--block > li > a, .options > li > a, .home .contact-wrapper .content-wrapper ul > li > a, .page-header .view-tools > li > a,
-.page-header .sort-order > li > a, .page-header .category-tools > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .pager > li > a, .responsive-navigation > li > a, .searchnavigation .searchresult ul > li > a, .top-menu-wrapper .top-menu > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .more-menu-ul > li > a,
+.page-header .sort-order > li > a, .page-header .category-tools > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .pager > li > a, .searchnavigation .searchresult ul > li > a, .top-menu-wrapper .top-menu > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .responsive-navigation > li > a, .responsive-menu > li > a, .more-menu-ul > li > a,
 .main-menu > li > a,
 .main-sub-menu > li > a, .category-navigation .parent > li > a, .category-navigation .parent li .children > li > a, .category-navigation .more-navigation > li > a, .ui-tabs-nav > li > a, .footer-widget-wrapper ul > li > a {
   padding: 12px;
@@ -3221,7 +3222,7 @@ html.flexbox {
 * Whole
 */
 .one-whole, .branding, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .home .contact-wrapper, .home .contact-wrapper img, .home .contact-wrapper .content-wrapper h1, .breadcrumb, .page-header, article.post, .article-border-wrapper, .home .post .side-content,
-.home .post .content-wrapper, .home .post h1.entry-title, .article-wrapper, .content, .post .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .footer-widget-sidebar.one .footer-widgets {
+.home .post .content-wrapper, .home .post h1.entry-title, .article-wrapper, .content, .post .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .responsive-navigation, .responsive-menu, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
 
@@ -3306,7 +3307,7 @@ html.flexbox {
 /**
 * Tenths
 */
-.one-tenth, .searchnavigation .form .submit {
+.one-tenth {
   width: 10%;
 }
 
@@ -3318,7 +3319,7 @@ html.flexbox {
   width: 70%;
 }
 
-.nine-tenths, .searchnavigation .form .input-wrapper {
+.nine-tenths {
   width: 90%;
 }
 
@@ -3366,7 +3367,7 @@ html.flexbox {
   /**
   * Halves
   */
-  .palm-one-half, .palm-two-quarters, .palm-three-sixths, .palm-four-eighths, .palm-five-tenths, .palm-six-twelfths, .logo, .responsive-navigation {
+  .palm-one-half, .palm-two-quarters, .palm-three-sixths, .palm-four-eighths, .palm-five-tenths, .palm-six-twelfths, .logo, .searchnavigation {
     width: 50%;
   }
 
@@ -3395,7 +3396,7 @@ html.flexbox {
   /**
   * Fifths
   */
-  .palm-one-fifth, .palm-two-tenths {
+  .palm-one-fifth, .palm-two-tenths, .searchnavigation .form .submit {
     width: 20%;
   }
 
@@ -3407,7 +3408,7 @@ html.flexbox {
     width: 60%;
   }
 
-  .palm-four-fifths, .palm-eight-tenths {
+  .palm-four-fifths, .palm-eight-tenths, .searchnavigation .form .input-wrapper {
     width: 80%;
   }
 
@@ -3568,7 +3569,7 @@ html.flexbox {
   /**
   * Tenths
   */
-  .lap-one-tenth {
+  .lap-one-tenth, .searchnavigation .form .submit {
     width: 10%;
   }
 
@@ -3580,7 +3581,7 @@ html.flexbox {
     width: 70%;
   }
 
-  .lap-nine-tenths {
+  .lap-nine-tenths, .searchnavigation .form .input-wrapper {
     width: 90%;
   }
 
@@ -3816,7 +3817,7 @@ html.flexbox {
   /**
   * Tenths
   */
-  .desk-one-tenth {
+  .desk-one-tenth, .searchnavigation .form .submit {
     width: 10%;
   }
 
@@ -3828,7 +3829,7 @@ html.flexbox {
     width: 70%;
   }
 
-  .desk-nine-tenths {
+  .desk-nine-tenths, .searchnavigation .form .input-wrapper {
     width: 90%;
   }
 
@@ -4288,13 +4289,13 @@ html.flexbox {
  * A lot of these classes carry `!important` as you will always want them to win
  * out over other selectors.
  */
-.float--right, .firstpage-sidebar, .button.top, .responsive-navigation, .right-nav-menu-item, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .category-navigation .more-navigation li.current-tag h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li.current-tag .submit, .category-navigation .more-navigation li.current-tag .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li.current-tag .submit, .footer-image-wrapper .logo-footer-image img {
+.float--right, .firstpage-sidebar, .button.top, .right-nav-menu-item, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .category-navigation .more-navigation li.current-tag h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li.current-tag .submit, .category-navigation .more-navigation li.current-tag .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li.current-tag .submit, .footer-image-wrapper .logo-footer-image img {
   float: right!important;
 }
 
 .float--left, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .slideshow .slide .caption-area, .home .contact-wrapper .content-wrapper h1, .home .contact-wrapper .content-wrapper ul, .help-navigation, .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .home .post .side-content,
-.home .post .content-wrapper, .home .post h1.entry-title, .post h1.entry-title, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.home .post .content-wrapper, .home .post h1.entry-title, .post h1.entry-title, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .responsive-navigation .i, .responsive-navigation .searchnavigation .form .submit, .searchnavigation .form .responsive-navigation .submit, .responsive-menu .i, .responsive-menu .searchnavigation .form .submit, .searchnavigation .form .responsive-menu .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4323,7 +4324,7 @@ html.flexbox {
 }
 
 .flush--bottom, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .viewmode-only-titles article.post, .summary .img-wrapper, .tools, .top-menu-wrapper .top-menu, .main-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
+.page-header .sort-order, .page-header .category-tools, .viewmode-only-titles article.post, .summary .img-wrapper, .tools, .top-menu-wrapper .top-menu, .responsive-navigation, .main-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0!important;
 }
 
@@ -4418,7 +4419,7 @@ html.flexbox {
 }
 
 @media only screen and (max-width: 540px) {
-  .hide--palm, .home .contact-wrapper .content-wrapper ul.right-content, .searchnavigation, .logo2, .main-menu,
+  .hide--palm, .home .contact-wrapper .content-wrapper ul.right-content, .top-menu-wrapper, .logo2, .main-menu,
   .main-sub-menu {
     position: absolute;
     left: -9999px;
@@ -4495,7 +4496,7 @@ a:focus, .cookieinformation .textwidget a, .top-menu-wrapper .top-menu .menu-ite
 }
 
 .white-text, .slideshow .slide .caption-area .caption, .important-widget, .cookieinformation, .cookieinformation a,
-.important-widget a, .top-menu-wrapper, .top-menu-wrapper a, .main-menu a:hover, .main-menu:hover a:hover,
+.important-widget a, .top-menu-wrapper, .top-menu-wrapper a, .responsive-navigation li a, .main-menu a:hover, .main-menu:hover a:hover,
 .main-menu .current-category-ancestor a,
 .main-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
@@ -4539,7 +4540,7 @@ a:focus, .cookieinformation .textwidget a, .top-menu-wrapper .top-menu .menu-ite
   background-color: #fff;
 }
 
-.main-background, .cookieinformation, .top-menu-wrapper, .main-menu a:hover, .main-menu:hover a:hover,
+.main-background, .cookieinformation, .top-menu-wrapper, .responsive-navigation, .main-menu a:hover, .main-menu:hover a:hover,
 .main-menu .current-category-ancestor a,
 .main-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
@@ -4986,10 +4987,11 @@ article.summary.post:hover > .openButton {
 }
 
 /* header structure */
-.responsive-navigation {
-  text-align: right;
+@media only screen and (min-width: 970px) {
+  .top-wrapper {
+    margin: 0;
+  }
 }
-
 /* SEARCH */
 .searchnavigation .assistive-text {
   position: absolute !important;
@@ -5048,6 +5050,27 @@ article.summary.post:hover > .openButton {
 
 /* add <i class=i data-icon="&#xF143;"></i> in sites item title */
 /* add <i class=i data-icon="&#xF063;"></i> in translate item title */
+/* main-menu toggle in responsive */
+.responsive-navigation li {
+  display: block;
+}
+.responsive-navigation li a {
+  margin-left: 0;
+  margin-right: 0;
+}
+.responsive-navigation .i, .responsive-navigation .searchnavigation .form .submit, .searchnavigation .form .responsive-navigation .submit {
+  width: 24px;
+}
+
+/* main-sub-menu toggle in responsive */
+.responsive-menu li a {
+  margin-left: 0;
+  margin-right: 0;
+}
+.responsive-menu .i, .responsive-menu .searchnavigation .form .submit, .searchnavigation .form .responsive-menu .submit {
+  width: 24px;
+}
+
 /*
  * top navigation 
  */
@@ -5058,16 +5081,37 @@ article.summary.post:hover > .openButton {
 .more-menu-ul a,
 .main-menu a,
 .main-sub-menu a {
-  margin-right: 6px;
   padding: 12px 24px !important;
 }
 
 .main-menu {
   border-bottom: 1px solid #c6cacb;
 }
+@media only screen and (max-width: 540px) {
+  .main-menu {
+    /* .epsilon */
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 0.6;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .main-menu a:hover, .main-menu:hover a:hover,
+  .main-menu .current-category-ancestor a,
+  .main-menu .current-menu-item a {
+    border-radius: 0;
+  }
+}
 
 .main-sub-menu {
   /*@extend .nav--block-double-margin;*/
+}
+@media only screen and (max-width: 540px) {
+  .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+  .main-sub-menu .current-category-ancestor a,
+  .main-sub-menu .current-menu-item a {
+    border-radius: 0;
+  }
 }
 
 .more-menu .more-menu-ul {

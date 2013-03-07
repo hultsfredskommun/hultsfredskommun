@@ -533,8 +533,8 @@ function readMoreToggle(el){
 //Webkit använder sig av ett annat sätt att mäta brädden på skärmen,
 //om inte webbläsaren använder webkit så kompenseras det med värdet 17
 var scrollbar = $.browser.webkit ? 0 : 17;
-var responsive_palm_size = 541;
-var responsive_small_size = 781;
+var responsive_lap_start = 541;
+var responsive_desk_start = 970;
 
 var hide; //used by Timeout to hide #log
 var oldWidth; //used to check if window-width have changed
@@ -771,154 +771,155 @@ $(document).ready(function(){
 	* give result in dropdownlist 
 	*/ 
 	$('#s').keyup(function(ev) { 
-		
-		select = false; 
-		// do ajax search 
+		if( $(window).width()+scrollbar > responsive_lap_start ){
+			select = false; 
+			// do ajax search 
 
-		var key = event.keyCode || event.which;
+			var key = event.keyCode || event.which;
 
-		switch(key) { 
-			case 40: 
-				if($(".searchresult a").first().length > 0) 
-				{ 
-					$(".searchresult a").first().focus(); 
-				} 
-				event.preventDefault(); 
-				select = true; 
-				break; 
-			case 38: 
-				select = true; 
-				event.preventDefault(); 
-				break; 
-			case 39: 
-				select = true; 
-				event.preventDefault(); 
-				break; 
-			case 37: 
-				select = true; 
-				event.preventDefault(); 
-				break; 
-			case 27: 
-				erase_and_refocus_on_search_input(); 
-				event.preventDefault(); 
-				select = true; 
-				break; 
-			case 50: 
-				select = true; 
-				break; 
-
-		}
-
-		// don't search if pressing special keys
-		if (!select) {
-
-			if ($('#s').val().length > 2)  {
-
-				if (!$(".searchresult-wrapper")[0]) 
-				{ 
-					$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'></div></div>"); 
-				} 
-				searchstring = $("#s").val(); 
-				
-				$(".searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
-				{ searchstring: searchstring }, 
-				function() { 
-
-					var link_objects = $('.searchresult li a');
-
-					var first_index = 0;   var last_index = $('.searchresult li a').length-1;
-
-					var first_link = $(link_objects).first();  var last_link = $(link_objects).last();
-
-
-
-					var clearbutton = $('.clearbutton'); 
-
-					if($(clearbutton).length == 0) 
+			switch(key) { 
+				case 40: 
+					if($(".searchresult a").first().length > 0) 
 					{ 
-						clearbutton = $('#s').parent().prepend('<a href="#" class="clearbutton">Rensa</a>'); 
+						$(".searchresult a").first().focus(); 
 					} 
+					event.preventDefault(); 
+					select = true; 
+					break; 
+				case 38: 
+					select = true; 
+					event.preventDefault(); 
+					break; 
+				case 39: 
+					select = true; 
+					event.preventDefault(); 
+					break; 
+				case 37: 
+					select = true; 
+					event.preventDefault(); 
+					break; 
+				case 27: 
+					erase_and_refocus_on_search_input(); 
+					event.preventDefault(); 
+					select = true; 
+					break; 
+				case 50: 
+					select = true; 
+					break; 
 
-					// Erase search... 
-					$(clearbutton).click(function(){ 
-						event.preventDefault(); 
-						erase_and_refocus_on_search_input(); 
-					}); 
+			}
 
-					$(link_objects).each(function(index, value) {  
+			// don't search if pressing special keys
+			if (!select) {
+
+				if ($('#s').val().length > 2)  {
+
+					if (!$(".searchresult-wrapper")[0]) 
+					{ 
+						$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'></div></div>"); 
+					} 
+					searchstring = $("#s").val(); 
 					
-						var link = this;
+					$(".searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
+					{ searchstring: searchstring }, 
+					function() { 
 
-						$(this).keydown(function(){  var key = event.keyCode || event.which;
+						var link_objects = $('.searchresult li a');
 
+						var first_index = 0;   var last_index = $('.searchresult li a').length-1;
+
+						var first_link = $(link_objects).first();  var last_link = $(link_objects).last();
+
+
+
+						var clearbutton = $('.clearbutton'); 
+
+						if($(clearbutton).length == 0) 
+						{ 
+							clearbutton = $('#s').parent().prepend('<a href="#" class="clearbutton">Rensa</a>'); 
+						} 
+
+						// Erase search... 
+						$(clearbutton).click(function(){ 
 							event.preventDefault(); 
+							erase_and_refocus_on_search_input(); 
+						}); 
 
-							switch(key) 
-							{ 
-								case 40: 
+						$(link_objects).each(function(index, value) {  
+						
+							var link = this;
 
-									var next_index = index+1; 
+							$(this).keydown(function(){  var key = event.keyCode || event.which;
 
-									if(next_index > last_index) 
-									{ 
-										$(first_link).focus(); 
-									} 
-									else 
-									{ 
-										$(link_objects)[next_index].focus(); 
-									} 
+								event.preventDefault(); 
 
-									break;  
-								case 38:
+								switch(key) 
+								{ 
+									case 40: 
 
-									var prev_index = index-1;
+										var next_index = index+1; 
+
+										if(next_index > last_index) 
+										{ 
+											$(first_link).focus(); 
+										} 
+										else 
+										{ 
+											$(link_objects)[next_index].focus(); 
+										} 
+
+										break;  
+									case 38:
+
+										var prev_index = index-1;
 
 
-									if(prev_index <= first_index) 
-									{ 
-										$('#s').focus(); 
-									} 
-									else 
-									{ 
-										$(link_objects)[prev_index].focus(); 
-									} 
-									break; 
+										if(prev_index <= first_index) 
+										{ 
+											$('#s').focus(); 
+										} 
+										else 
+										{ 
+											$(link_objects)[prev_index].focus(); 
+										} 
+										break; 
 
-								case 27: 
-									erase_and_refocus_on_search_input(); 
-									break; 
+									case 27: 
+										erase_and_refocus_on_search_input(); 
+										break; 
 
-								case 13: 
-									window.location = $(this).attr('href'); 
-									break; 
+									case 13: 
+										window.location = $(this).attr('href'); 
+										break; 
 
-							}
+								}
+
+							});
 
 						});
 
-					});
-
-				}); 
-				 //$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sök #content", function() { 
-				 // $(this).find('.readMoreToggleButton').each( function(){ 
-				 // 
-				 // initToggleReadMore(this); 
-				 // }); 
-				 //}); 
-			} 
-			else 
-			{ 
-
-				var erase_button = $('.clearbutton');
-
-				if($(erase_button).length > 0) 
-				{ 
-					$(erase_button).remove(); 
+					}); 
+					 //$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sök #content", function() { 
+					 // $(this).find('.readMoreToggleButton').each( function(){ 
+					 // 
+					 // initToggleReadMore(this); 
+					 // }); 
+					 //}); 
 				} 
+				else 
+				{ 
 
-				$('.searchresult-wrapper').remove(); 
+					var erase_button = $('.clearbutton');
+
+					if($(erase_button).length > 0) 
+					{ 
+						$(erase_button).remove(); 
+					} 
+
+					$('.searchresult-wrapper').remove(); 
+				} 
 			} 
-		} 
+		} // if not on palm
 	}); 
 
 	
@@ -932,7 +933,7 @@ $(document).ready(function(){
 	 /*
 	$('#menu li').each(function() {
 		$(this).unbind("mouseenter").mouseenter(function() {
-			if( $(window).width()+scrollbar > responsive_small_size ) {
+			if( $(window).width()+scrollbar > responsive_desk_start ) {
 				if ($(this).attr("dropdown-id") === undefined) {
 					rand = Math.floor(Math.random()*100000);
 					$(this).attr("dropdown-id", rand);
@@ -1234,7 +1235,7 @@ function responsive_menu() {
 		$(classname).find(".menu-item").removeClass("force-hidden");
 		$(classname).find(".more-menu").remove();
 		// if not palm
-		if( $(window).width()+scrollbar > responsive_palm_size ){
+		if( $(window).width()+scrollbar > responsive_lap_start ){
 			
 			// main-menu
 			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
@@ -1286,20 +1287,20 @@ $(window).resize(function() {
 		
 		/* reset responsive stuff */
 		
-		if( $(window).width()+scrollbar > responsive_palm_size ){
+		if( $(window).width()+scrollbar > responsive_lap_start ){
 			$("ul.main-menu, ul.main-sub-menu").addClass("unhide");
 		}
 		else {
 			$("ul.main-menu, ul.main-sub-menu").removeClass("unhide");
 		}
-		
-		if( $(window).width()+scrollbar > responsive_palm_size ){
+		/*
+		if( $(window).width()+scrollbar > responsive_lap_start ){
 			$("#searchnavigation").addClass("unhide");
 		} 
 		else {
 			$("#searchnavigation").removeClass("unhide");
 		}
-		
+		*/
 	}
 	oldWidth = $(window).width();
 });

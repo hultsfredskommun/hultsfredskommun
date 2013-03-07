@@ -206,15 +206,6 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</hgroup>
 				
-			<?php /* responsive navigation */ ?>
-			<ul class="responsive-navigation">
-				<li class="menu js-show-main-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-menu">
-					<a href="#"><i class="i" data-icon="&#xF0A9;"></i><span class="hide--palm">Meny</span></a>
-				</li>
-				<li class="search js-show-search menu-item menu-item-type-custom menu-item-object-custom menu-item-search">
-					<a href="#"><i class="i" data-icon="&#xF097;"></i><span class="hide--palm">Sök</span></a>
-				</li>
-			</ul>
 
 			<?php /* search form*/ ?>
 			<div id="searchnavigation" class="searchnavigation" role="search">			
@@ -265,7 +256,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				$topwalker = new topmenu_walker_nav_menu();
 				$args = array(
 					'theme_location'	=> $menu_name, 
-					'container' 		=> '',							
+					'container' 		=> '',
 					'items_wrap' 		=> '%3$s',
 					'before' 			=> '',
 					'after'				=> '',
@@ -275,7 +266,14 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				);
 				if ($top_parent > 0) {
 					$args["current_category"] = $top_parent;
-				}
+				} ?>
+				<ul class="responsive-navigation">
+					<li class="menu js-show-main-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-menu">
+						<a href="#"><i class="i" data-icon="&#xF0A9;"></i>Meny</a>
+					</li>
+				</ul>
+				<?php
+
 				echo "<ul class='main-menu'>";
 				wp_nav_menu( $args ); 
 				if ( is_active_sidebar( 'right-main-menu-item-sidebar' ) ) { 
@@ -286,9 +284,6 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				
 				echo "<div class='responsive-menu'>";
 				$parent = hk_getParent($cat);
-				if ($sub_parent > 0 && $parent > 0) { 
-					echo "<a class='menu-up' href='" . get_category_link($parent) . "'>&lt;</a>";
-				}
 				
 				$top_name = get_cat_name($top_parent);
 				$sub_name = get_cat_name($sub_parent);
@@ -310,9 +305,12 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 					$menu_title = "";
 					
 				$class = (is_sub_category())?"category":"submenu";
-				echo "<a class='dropdown-menu-button $class'>";
+				echo "<li><a class='dropdown-menu-button $class'><i class='i' data-icon='&#xF0A9;'></i>";
 				echo $menu_title;
-				echo "</a>";
+				echo "</a></li>";
+				if ($sub_parent > 0 && $parent > 0) { 
+					echo "<li class='float--right'><a class='menu-up' href='" . get_category_link($parent) . "'><i class='i' data-icon='&#xF148;'></i></a></li>";
+				}
 				echo "</div>";
 				
 				if ($nav_menu_sub_parent > 0) {

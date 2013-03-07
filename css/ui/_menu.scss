@@ -1,13 +1,48 @@
 
-
+/* main-menu toggle in responsive */
+.responsive-navigation {
+	@extend .hide--desk;
+	@extend .hide--lap;
+	@extend .one-whole;
+	@extend .nav;
+	@extend .nav--block;
+	@extend .main-background;
+	@extend .flush--bottom;
+	li {
+		display: block;
+		a {
+			@extend .white-text;
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+	.i {
+		@extend .float--left;
+		width: $base-spacing-unit;
+	}
+}
+/* main-sub-menu toggle in responsive */
+.responsive-menu {
+	@extend .hide--lap;
+	@extend .hide--desk;
+	@extend .one-whole;
+	@extend .nav;
+	@extend .nav--block;
+	li {
+		a {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+	.i {
+		@extend .float--left;
+		width: $base-spacing-unit;
+	}
+}
 
 /*
  * top navigation 
  */
-.responsive-menu {
-	@extend .hide--lap;
-	@extend .hide--desk;
-}
 .main-menu,
 .main-sub-menu {
 	@extend .hide--palm;
@@ -29,6 +64,12 @@
 }
 .main-menu {
 	@extend .gamma;
+	@include media-query(palm){
+		/* .epsilon */
+		font-size: 16px;
+		font-size: 1rem;
+		line-height: 0.6;
+	}
 	@extend .nav--block-double-margin;
 	@extend .flush--bottom;
 	border-bottom: 1px solid $border-color;
@@ -40,6 +81,9 @@
 	.current-category-ancestor a,
 	.current-menu-item a {
 		@extend .border-radius--top;
+		@include media-query(palm){
+			border-radius: 0;
+		}
 		@extend .main-background;
 		@extend .white-text;
 	}
@@ -57,6 +101,9 @@
 	.current-category-ancestor a,
 	.current-menu-item a {
 		@extend .border-radius--bottom;
+		@include media-query(palm){
+			border-radius: 0;
+		}
 		@extend .gray-light-background;
 		@extend .black-text;
 	}

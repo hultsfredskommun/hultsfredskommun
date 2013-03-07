@@ -44,6 +44,11 @@
 	@extend .gw;
 	@extend .margin--bottom;
 }
+@include media-query(desk){
+.top-wrapper {
+	margin: 0;
+}
+}
 .logo {
 	@extend .half-margin--top;
 	@extend .g;
@@ -51,23 +56,12 @@
 	@extend .lap-one-quarter;
 	@extend .palm-one-half;
 }
-.responsive-navigation {
-	@extend .g;
-	@extend .hide--desk;
-	@extend .hide--lap;
-	@extend .palm-one-half;
-	@extend .float--right;
-	@extend .nav;
-	@extend .nav--block;
-	text-align:right;
-}
-
 
 /* SEARCH */
 
 .searchnavigation {
 	@extend .g;
-	@extend .hide--palm;
+	@extend .palm-one-half;
 	@extend .desk-two-quarters;
 	@extend .lap-two-quarters;
 	@extend .palm-one-whole;	
@@ -81,7 +75,9 @@
 		@extend .cf;
 		.input-wrapper {
 			@extend .position-relative;
-			@extend .nine-tenths;
+			@extend .desk-nine-tenths;
+			@extend .lap-nine-tenths;
+			@extend .palm-eight-tenths;
 			@extend .float--left;
 			@extend .gray-light-background;
 			@extend .border-radius--left;
@@ -97,7 +93,9 @@
 			}
 		}
 		.submit {
-			@extend .one-tenth;
+			@extend .desk-one-tenth;
+			@extend .lap-one-tenth;
+			@extend .palm-two-tenths;
 			@extend .float--left;
 			@extend .i;
 			@extend .gray-background;
@@ -161,6 +159,7 @@
 
 /* top right menu */
 .top-menu-wrapper {
+	@extend .hide--palm;
 	@extend .main-background;
 	@extend .zeta;
 	@extend .one-whole;
