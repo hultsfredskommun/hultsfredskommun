@@ -5049,6 +5049,7 @@ article.summary.post:hover > .openButton {
 .more-menu-ul a,
 .main-menu a,
 .main-sub-menu a {
+  margin-right: 6px;
   padding: 12px 24px !important;
 }
 
