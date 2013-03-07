@@ -10,7 +10,7 @@
 get_header(); ?>
 		<?php hk_navigation(); ?>
 		
-		<div id="primary" class="primary">
+		<div id="primary" class="primary  searchresult">
 			<div id="content" role="main">
 
 			<?php if ( have_posts() ) : ?>

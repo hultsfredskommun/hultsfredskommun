@@ -93,6 +93,7 @@
 			}
 			.clearbutton {
 				@extend .position-absolute--top-right;
+				margin-right: $half-spacing-unit;
 			}
 		}
 		.submit {
@@ -114,20 +115,23 @@
 	.searchresult-wrapper {
 		@extend .position-relative;
 		
-		
 		.searchresult {
 			@include arrow(top, left, $main-color, transparent);
-			@extend .margin--top;
 			@extend .position-absolute;
 			z-index: 6000;
 			@extend .border-radius;
 			@extend .white-background;
 			@extend .main-border;
+		}		
+	}
+		.searchresult {
+			@extend .margin--top;
 			
 			ul {
 				.search-title {
 					@extend .font-weight-bold;
 					margin-left: $half-spacing-unit;
+					margin-bottom: $half-spacing-unit;
 				}
 				@extend .nav;
 				@extend .nav--block;
@@ -145,12 +149,13 @@
 					margin-bottom: $half-spacing-unit;
 					span {
 						display: block;
-						padding-bottom: $half-spacing-unit/2;
+						margin-bottom: $half-spacing-unit/3;
+						margin-left: $half-spacing-unit;
+
 					}
 				}
 			}
 		}
-	}
 
 }
 
