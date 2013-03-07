@@ -28,17 +28,27 @@ class HK_quickmenu extends WP_Widget {
 		} else {
 			$show_tags = 1;
 		}
+		if ( isset( $instance[ 'show_widget_in_cat' ] ) ) {
+			$show_widget_in_cat = $instance[ 'show_widget_in_cat' ];
+		} else {
+			$show_widget_in_cat = "";
+		}
 
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>"><?php _e( 'Antal poster i senaste och mest bes&ouml;kta:' ); ?></label> 
+		<label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>">Antal poster i senaste och mest bes&ouml;kta:</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" type="text" value="<?php echo esc_attr( $posts_per_page); ?>" />
 		</p>
 		<?php if ($default_settings["show_tags"] != 0) : ?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'show_tags' ); ?>"><?php _e( 'Visa etiketter som flik:' ); ?></label> 
+		<label for="<?php echo $this->get_field_id( 'show_tags' ); ?>">Visa etiketter som flik:</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'show_tags' ); ?>" name="<?php echo $this->get_field_name( 'show_tags' ); ?>" type="text" value="<?php echo esc_attr( $show_tags); ?>" />
-		</p>		
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'show_wp_feed' ); ?>">Visa bara i kategori (i formen 23,42,19)</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>" name="<?php echo $this->get_field_name( 'show_widget_in_cat' ); ?>" type="text" value="<?php echo esc_attr( $show_widget_in_cat); ?>" />
+		</p>
+
 		<?php endif; ?>
 
 		<?php
@@ -48,115 +58,119 @@ class HK_quickmenu extends WP_Widget {
 		$instance = array();
 		$instance['posts_per_page'] = strip_tags( $new_instance['posts_per_page'] );
 		$instance['show_tags'] = strip_tags( $new_instance['show_tags'] );
+		$instance['show_widget_in_cat'] = strip_tags( $new_instance['show_widget_in_cat'] );
+		
 		return $instance;
 	}
 
 	public function widget( $args, $instance ) {
 		global $default_settings;
 	    extract( $args );
+		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
 
-		/* get all sub categories to use in queries */
-		$cat = get_query_var("cat");
-		$all_categories = hk_getChildrenIdArray($cat);
-		$all_categories[] = $cat;
+			/* get all sub categories to use in queries */
+			$cat = get_query_var("cat");
+			$all_categories = hk_getChildrenIdArray($cat);
+			$all_categories[] = $cat;
 
-		// set number of posts
-		if (isset($instance['posts_per_page']))
-			$this->vars['posts_per_page'] = $instance['posts_per_page'];
-		if (isset($instance['show_tags']))
-			$show_tags = $instance['show_tags'];
-		else
-			$show_tags = $default_settings["show_tags"];
-		
-		// get quickmenu
-		$quickmenu = hk_related_output(false,false);
-		?>
-	<div id="quickmenus" class="widget  js-tabs  hidden">
-		<ul class="post_tabs_title">
-			<?php if ($quickmenu != "") : ?>
-			<li title="Hitta snabbt"><a href="#quickmenu">Hitta snabbt</a></li>
-			<?php endif; ?>
-			<?php if (function_exists( 'views_orderby' )) : ?>
-			<li title="Popul&auml;ra"><a href="#mostvisited">Popul&auml;ra</a></li>
-			<?php endif; ?>
-			<li title="Senaste"><a href="#latest">Senaste</a></li>
+			// set number of posts
+			if (isset($instance['posts_per_page']))
+				$this->vars['posts_per_page'] = $instance['posts_per_page'];
+			if (isset($instance['show_tags']))
+				$show_tags = $instance['show_tags'];
+			else
+				$show_tags = $default_settings["show_tags"];
+			
+			// get quickmenu
+			$quickmenu = hk_related_output(false,false);
+			?>
+		<div id="quickmenus" class="widget  js-tabs  hidden">
+			<ul class="post_tabs_title">
+				<?php if ($quickmenu != "") : ?>
+				<li title="Hitta snabbt"><a href="#quickmenu">Hitta snabbt</a></li>
+				<?php endif; ?>
+				<?php if (function_exists( 'views_orderby' )) : ?>
+				<li title="Popul&auml;ra"><a href="#mostvisited">Popul&auml;ra</a></li>
+				<?php endif; ?>
+				<li title="Senaste" class="hide--palm  hide--lap"><a href="#latest">Senaste</a></li>
+				<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
+				<li title="Visa bara"><a href="#onlytag">Visa bara</a></li>
+				<?php endif; ?>
+			</ul>
+			<?php 
+			if ($quickmenu != "") :
+				echo "<div id='quickmenu'>";
+				echo $quickmenu;
+				echo "</div>";
+			endif;
+			?>
+			
 			<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
-			<li title="Visa bara"><a href="#onlytag">Visa bara</a></li>
+			<div id="onlytag">
+				<?php
+				displayTagFilter(false);
+				?>				
+			</div>
 			<?php endif; ?>
-		</ul>
-		<?php 
-		if ($quickmenu != "") :
-			echo "<div id='quickmenu'>";
-			echo $quickmenu;
-			echo "</div>";
-		endif;
-		?>
-		
-		<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
-		<div id="onlytag">
-			<?php
-			displayTagFilter(false);
-			?>				
-		</div>
-		<?php endif; ?>
-		
-		<?php if (function_exists( 'views_orderby' )) : ?>
-		<div id="mostvisited">
-			<?php
-			if ($all_categories != "") {
-				/* Query all posts */
-				$query = array( 'posts_per_page' => $this->vars['posts_per_page'], 
-								'category__in' => $all_categories,
-								'ignore_sticky_posts' => 'true'
-								) ;
-				
-				query_posts( $query );
-				if ( have_posts() ) : ?>
-				<ul>
-					<?php while ( have_posts() ) : the_post(); ?>
-					<li>
-						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
-					</li>
-				<?php endwhile; ?>
-				</ul>
-				<?php endif;
-				// Reset Query
-				wp_reset_query(); 				
-			}
-			?>				
-		</div>
+			
+			<?php if (function_exists( 'views_orderby' )) : ?>
+			<div id="mostvisited">
+				<?php
+				if ($all_categories != "") {
+					/* Query all posts */
+					$query = array( 'posts_per_page' => $this->vars['posts_per_page'], 
+									'category__in' => $all_categories,
+									'ignore_sticky_posts' => 'true'
+									) ;
+					
+					query_posts( $query );
+					if ( have_posts() ) : ?>
+					<ul>
+						<?php while ( have_posts() ) : the_post(); ?>
+						<li>
+							<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
+						</li>
+					<?php endwhile; ?>
+					</ul>
+					<?php endif;
+					// Reset Query
+					wp_reset_query(); 				
+				}
+				?>				
+			</div>
 
-		<?php endif; ?>
-		
-		<div id="latest">
-			<?php
-			if ($all_categories != "") {
-				/* Query all posts */
-				$query = array( 'posts_per_page' => $this->vars['posts_per_page'], 
-								'category__in' => $all_categories,
-								'ignore_sticky_posts' => 'true',
-								'suppress_filters' => 'true'
-								) ;
-				
-				query_posts( $query );
-				if ( have_posts() ) : ?>
-				<ul>
-					<?php while ( have_posts() ) : the_post(); ?>
-					<li>
-						<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
-					</li>
-				<?php endwhile; ?>
-				</ul>
-				<?php endif;
-				// Reset Query
-				wp_reset_query();
-			} 				
-			?>				
+			<?php endif; ?>
+			
+			<div id="latest">
+				<?php
+				if ($all_categories != "") {
+					/* Query all posts */
+					$query = array( 'posts_per_page' => $this->vars['posts_per_page'], 
+									'category__in' => $all_categories,
+									'ignore_sticky_posts' => 'true',
+									'suppress_filters' => 'true'
+									) ;
+					
+					query_posts( $query );
+					if ( have_posts() ) : ?>
+					<ul>
+						<?php while ( have_posts() ) : the_post(); ?>
+						<li>
+							<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
+						</li>
+					<?php endwhile; ?>
+					</ul>
+					<?php endif;
+					// Reset Query
+					wp_reset_query();
+				} 				
+				?>				
+			</div>
+			
 		</div>
-		
-	</div>
-<?php
-	}
+	<?php
+		} //end if show in category
+	} //end widget()
 }
 /* add the widget  */
 add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu" );' ) );
@@ -587,7 +601,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		} else { $icon = ""; }
 		if ( isset( $instance[ 'text' ] ) ) {	$text = $instance[ 'text' ];
 		} else {$menu = ""; }
-		
+		if ( isset( $instance[ 'show_widget_in_cat' ] ) ) {	$show_widget_in_cat = $instance[ 'show_widget_in_cat' ];
+		} else { $show_widget_in_cat = ""; }
+
 		?>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Rubrik</label> 
@@ -601,7 +617,11 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		<label for="<?php echo $this->get_field_id( 'text' ); ?>">Text</label> 
 		<textarea class="widefat" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $text; ?></textarea>
 		</p>
-		
+		<p>
+		<label for="<?php echo $this->get_field_id( 'show_wp_feed' ); ?>">Visa bara i kategori (i formen 23,42,19)</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>" name="<?php echo $this->get_field_name( 'show_widget_in_cat' ); ?>" type="text" value="<?php echo esc_attr( $show_widget_in_cat); ?>" />
+		</p>
+
 		
 		<?php
 	}
@@ -611,24 +631,26 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['icon'] = strip_tags( $new_instance['icon'] );
 		$instance['text'] =  $new_instance['text'];
+		$instance['show_widget_in_cat'] = strip_tags( $new_instance['show_widget_in_cat'] );
 		
 		return $instance;
 	}
 
 	public function widget( $args, $instance ) {
 	    extract( $args );
+		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
 		
-		
-		if ( isset($instance["text"]) ) {
-			$title = apply_filters( 'widget_title', $instance['title'] );
-			
-			echo $before_widget;
-			if ( ! empty( $title ) ) {
-				echo $before_title . "<i class='i' data-icon='" . $instance['icon'] . "'></i>" . $title . $after_title;
+			if ( isset($instance["text"]) ) {
+				$title = apply_filters( 'widget_title', $instance['title'] );
+				
+				echo $before_widget;
+				if ( ! empty( $title ) ) {
+					echo $before_title . "<i class='i' data-icon='" . $instance['icon'] . "'></i>" . $title . $after_title;
+				}
+				
+				echo "<div class='content'>" . $instance["text"] . "</div>";
+				echo $after_widget;
 			}
-			
-			echo "<div class='content'>" . $instance["text"] . "</div>";
-			echo $after_widget;
 		}
 
 	}

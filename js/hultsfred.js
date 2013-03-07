@@ -816,7 +816,7 @@ $(document).ready(function(){
 
 				if (!$(".searchresult-wrapper")[0]) 
 				{ 
-					$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult'></div></div>"); 
+					$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'></div></div>"); 
 				} 
 				searchstring = $("#s").val(); 
 				

@@ -28,7 +28,7 @@
 			
 			<?php if (function_exists( 'views_orderby' )) : ?>
 			<?php if ($_REQUEST["orderby"] == "popular" || $_REQUEST["orderby"] == "") { ?>
-				<li class='current-menu-item'><a class="active">Mest bes&ouml;kt</a></li>
+				<li class='current-menu-item'><a class="active">Popul&auml;ra</a></li>
 			<?php } else { ?>
 				<li><a href="?orderby=popular<?php echo $tags.$search; ?>">Mest bes&ouml;kt</a></li>
 			<?php } ?>

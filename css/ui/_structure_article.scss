@@ -13,7 +13,7 @@ article.post {
 	@extend .float--left;
 	@extend .one-whole;
 	@extend .border--top;
-	@extend .border-light--bottom;
+	@extend .border--bottom;
 }
 
 /* hide article-wrapper if only titles */
@@ -59,11 +59,10 @@ article.post {
 	@extend .float--left;
 }
 
-.full .article-wrapper {
+.article-wrapper {
 	.side-content {
 		border-left: 4px solid $gray-light-color;
-		margin-top: 0;
-		margin-bottom: 0;
+		@extend .margin--top;
 	}
 }
 .article-wrapper {
@@ -108,9 +107,11 @@ article.post {
 		@extend .desk-one-third;
 		@extend .lap-one-whole;
 		@extend .palm-one-whole;
-		@extend .island;
+		
 		@extend .zeta;
-		margin-top: $half-spacing-unit!important;
+		@extend .padding--left;
+		@extend .padding--right;
+		
 	}
 	@include media-query(desk) {
 	.side-content {
@@ -122,6 +123,7 @@ article.post {
 		@extend .desk-two-thirds;
 		@extend .lap-one-whole;
 		@extend .palm-one-whole;
+		@extend .margin--top;
 		@extend .margin--bottom;
 	
 		.footer-wrapper {
@@ -233,6 +235,9 @@ article.summary.post:hover > .openButton {
 .tools {
 	@extend .nav;
 	@extend .nav--stacked;
+}
+.tools {
+	@extend .flush--bottom;
 }
 .readspeaker_toolbox {
 	display: none;

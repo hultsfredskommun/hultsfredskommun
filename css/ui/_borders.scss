@@ -8,6 +8,9 @@ $border-line-style:		solid;
 $border-line-width:		1px;
 
 
+.main-border {
+	border: $border-line-width $border-line-style $main-color;
+}
 .border {
 	border: $border-width $border-style $border-color;
 }

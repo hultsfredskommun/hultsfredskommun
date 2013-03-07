@@ -24,7 +24,7 @@ $hk_options = get_option('hk_theme');
 	
 /* SET DEFAULT SETTINGS */
 if ( ! isset( $default_settings ) ) {
-	$default_settings = array(	'thumbnail-image' => array(200, 113, true),
+	$default_settings = array(	'thumbnail-image' => array(270, 153, true),
 								'featured-image' => array(532, 311, true), /* array(660, 396, true) */
 								'slideshow-image' => array(980, 551, true),
 								'contact-image' => array(150, 190, true),
