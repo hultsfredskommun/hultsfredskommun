@@ -302,6 +302,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		if ( isset( $instance[ 'num_protocol' ] ) ) { $num_protocol = $instance[ 'num_protocol' ];
 		} else { $num_protocol = $this->vars['num_protocol']; }
 
+		if ( isset( $instance[ 'content_type' ] ) ) { $content_type = $instance[ 'content_type' ];
+		} else { $content_type = ''; }
+
 
 		$options = get_option('hk_theme');
 
@@ -322,6 +325,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		<label for="<?php echo $this->get_field_id( 'num_protocol' ); ?>">Antal protokoll.</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'num_protocol' ); ?>" name="<?php echo $this->get_field_name( 'num_protocol' ); ?>" type="text" value="<?php echo esc_attr( $num_protocol); ?>" />
 		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'content_type' ); ?>">Aktuellt typ (news som standard).</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'content_type' ); ?>" name="<?php echo $this->get_field_name( 'content_type' ); ?>" type="text" value="<?php echo esc_attr( $content_type); ?>" />
+		</p>
 		
 		<?php
 	}
@@ -333,6 +340,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$instance['num_news'] = strip_tags( $new_instance['num_news'] );
 		$instance['num_protocol'] = strip_tags( $new_instance['num_protocol'] );
 		$instance['num_days_new'] = strip_tags( $new_instance['num_days_new'] );
+		$instance['content_type'] = strip_tags( $new_instance['content_type'] );
 		
 		return $instance;
 	}
@@ -373,7 +381,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 				$shownposts = array();
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 					$shownposts[] = get_the_ID(); 
-					get_template_part( 'content', 'news' ); 
+					if ($instance["content_type"] != "")
+						get_template_part( 'content', $instance["content_type"] ); 
+					else
+						get_template_part( 'content', 'news' ); 
 				endwhile; endif; 
 				// Reset Query
 				wp_reset_query(); 
