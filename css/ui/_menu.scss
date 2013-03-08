@@ -1,8 +1,8 @@
 
 /* main-menu toggle in responsive */
 .responsive-navigation {
-	@extend .hide--desk;
-	@extend .hide--lap;
+	@extend .hidden--lap;
+	@extend .hidden--desk;
 	@extend .one-whole;
 	@extend .nav;
 	@extend .nav--block;
@@ -23,8 +23,8 @@
 }
 /* main-sub-menu toggle in responsive */
 .responsive-menu {
-	@extend .hide--lap;
-	@extend .hide--desk;
+	@extend .hidden--lap;
+	@extend .hidden--desk;
 	@extend .one-whole;
 	@extend .nav;
 	@extend .nav--block;
@@ -45,7 +45,7 @@
  */
 .main-menu,
 .main-sub-menu {
-	@extend .hide--palm;
+	@extend .hidden--palm;
 }
 
 .menu-wrapper {
@@ -60,7 +60,6 @@
 	}
 	@extend .nav;
 	@extend .nav--block;
-	//@extend .hide--palm;
 }
 .main-menu {
 	@extend .gamma;

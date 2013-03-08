@@ -1,4 +1,8 @@
-<div id="primary" class="primary">
+	<?php if (!is_sub_category_firstpage()) :?>
+	<div id="breadcrumb" class="breadcrumb"><?php hk_breadcrumb(); ?></div>
+	<?php endif; ?>
+
+	<div id="primary" class="primary">
 
 	<div id="content" role="main">
 

@@ -68,9 +68,6 @@
 
 
 
-
-
-
 /* to un- .hide element */ 
 .unhide {
 	position: initial;
@@ -79,12 +76,28 @@
 .hidden {
 	display: none;
 }
+@each $state in palm, lap, portable, desk{
+    @include media-query(#{$state}){
+        .hidden--#{$state}{
+			display: none;
+        }
+    }
+}
+
 .force-hidden {
 	display: none!important;
 }
 .unhidden {
-	display: block;
+	display: block!important;
 }
+@each $state in palm, lap, portable, desk{
+    @include media-query(#{$state}){
+        .unhidden--#{$state}{
+			display: block!important;
+        }
+    }
+}
+
 .force-unhidden {
 	display: block!important;
 }

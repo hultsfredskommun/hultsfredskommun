@@ -294,19 +294,19 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 					$sub_name = "";
 					
 				if ($cat_name != "")
-					$menu_title = $cat_name;
-				else if ($sub_name != "")
-					$menu_title = $sub_name;
+					$cat_title = $cat_name;
+				if ($sub_name != "")
+					$sub_title = $sub_name;
 				else if ($top_name != "")
-					$menu_title = $top_name;
+					$sub_title = $top_name;
 				else if (get_query_var("s") != "")
-					$menu_title = "Du s&ouml;kte p&aring; " . get_query_var("s");
+					$sub_title = "Du s&ouml;kte p&aring; " . get_query_var("s");
 				else 
-					$menu_title = "";
+					$sub_title = "";
 					
 				$class = (is_sub_category())?"category":"submenu";
-				echo "<li><a class='dropdown-menu-button $class'><i class='i' data-icon='&#xF0A9;'></i>";
-				echo $menu_title;
+				echo "<li><a class='js-show-main-sub-menu  $class'><i class='i' data-icon='&#xF0A9;'></i>";
+				echo $sub_title;
 				echo "</a></li>";
 				if ($sub_parent > 0 && $parent > 0) { 
 					echo "<li class='float--right'><a class='menu-up' href='" . get_category_link($parent) . "'><i class='i' data-icon='&#xF148;'></i></a></li>";
@@ -339,10 +339,13 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 						echo "</ul>";
 					}
 				}
+				//echo "<li><a class='js-show-category-menu'><i class='i' data-icon='&#xF0A9;'></i>";
+				//echo $cat_title;
+				//echo "</a></li>";
+
 			?>
 		</nav>
 	</header><!-- #branding -->
 
 	<div id="main" class="main">
 	<div class="main-wrapper">
-		<div id="breadcrumb" class="breadcrumb"><?php hk_breadcrumb(); ?></div>

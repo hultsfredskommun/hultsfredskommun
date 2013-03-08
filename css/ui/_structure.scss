@@ -53,10 +53,10 @@ html {
 img {
 	@extend .border-radius;
 }
-.Citybreak_engine td, 
+/*.Citybreak_engine td, 
 .Citybreak_engine th {
 	border: 0;
-}
+}*/
 td, th {
 	border: 1px solid $complement-color;
 }

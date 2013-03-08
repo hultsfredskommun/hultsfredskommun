@@ -6,19 +6,24 @@
 
 function hk_breadcrumb() {
 	$search = get_query_var("s");
+	$cat = get_query_var("cat");
+
+	if (!is_home() ) {
+		if ($cat != "")
+			echo get_category_parents($cat, TRUE, ' &raquo; ');
+	}
+	//$categories_list = get_the_category();
 	
-	$categories_list = get_the_category();
-	$retValue = "";
-/*	if (!empty($categories_list)) : foreach ( $categories_list as $list):
+	/*if (!empty($categories_list)) : foreach ( $categories_list as $list):
 		$retValue .= "<a href='".get_category_link($list->term_id)."'>" . $list->name . "</a> | ";
 	endforeach; endif; // End if categories
-
-	$tags_list = get_the_terms(get_the_ID(),"post_tag");
+	*/
+	/*$tags_list = get_the_terms(get_the_ID(),"post_tag");
 	if (!empty($tags_list)) : foreach ( $tags_list as $list):
 		$retValue .= "<a href='".get_tag_link($list->term_id)."'>" . $list->name . "</a> | ";
 	endforeach; endif; // End if tags
-*/
-	echo rtrim($retValue," |");
+	*/
+
 }
 
 function hk_nothing_found_navigation() { 

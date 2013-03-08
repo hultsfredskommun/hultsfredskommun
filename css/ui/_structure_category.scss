@@ -2,7 +2,10 @@
 .breadcrumb {
 	@extend .g;
 	@extend .one-whole;
-	@extend .hidden;
+	@extend .milli;
+	@extend .hidden--desk;
+	@extend .hidden--lap;
+	@extend .margin--bottom;
 }
 .category-navigation {
 	@extend .g;
