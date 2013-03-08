@@ -730,8 +730,7 @@ $(document).ready(function(){
 		}
 		else if ($(this).hasClass("category")) {
 			$(".category-navigation").toggleClass("unhidden");
-		}		
-
+		}
 		ev.preventDefault();
 	});
 	/*$(".js-show-category-menu").unbind("click").click( function(){
