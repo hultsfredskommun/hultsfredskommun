@@ -4746,7 +4746,7 @@ html {
 .Citybreak_engine th {
 	border: 0;
 }*/
-td, th {
+.primary td, .primary th {
   border: 1px solid #644c20;
 }
 
