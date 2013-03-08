@@ -575,8 +575,9 @@ $(document).ready(function(){
 	/**
 	 * Expand article if only one, not on home page
 	 */
-	if ($('.archive').find("article").length == 1 && $(this).parents(".home").length) {
+	if ($('.archive').find("article").length == 1 && !$(this).parents(".home").length) {
 		readMoreToggle($('.archive').find("article .entry-title a"));
+		$(".page-header").hide();
 	}
 
 
