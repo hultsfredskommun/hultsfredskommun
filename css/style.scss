@@ -87,9 +87,18 @@
 .force-hidden {
 	display: none!important;
 }
+@each $state in palm, lap, portable, desk{
+    @include media-query(#{$state}){
+        .force-hidden--#{$state}{
+			display: none!important;
+        }
+    }
+}
+
 .unhidden {
 	display: block!important;
 }
+
 @each $state in palm, lap, portable, desk{
     @include media-query(#{$state}){
         .unhidden--#{$state}{
@@ -97,14 +106,8 @@
         }
     }
 }
-
 .force-unhidden {
 	display: block!important;
-}
-@include media-query(palm) {
-	.hidden--palm {
-		display: none;
-	}
 }
 
 

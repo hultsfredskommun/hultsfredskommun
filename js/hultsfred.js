@@ -1226,6 +1226,8 @@ $.fn.sumWidth = function() {
 function responsive_menu() {
 	wrapperwidth = $(".menu-wrapper").width();
 
+	/* checks if the menu-items total width is greater than wrapper div. 
+	Also have special support for 'force-hidden--lap' class to be able to force hide some menu-items when lap */
 	function do_responsive_menu(classname) {
 		// reset
 		$(classname).find(".menu-item").removeClass("force-hidden");
@@ -1236,14 +1238,20 @@ function responsive_menu() {
 			// main-menu
 			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
 				$(classname).find(".right-nav-menu-item").addClass("force-hidden");
-			}		
-			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
+			}
+			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth || $(classname).children(".force-hidden--lap").length > 0) {
 				$(classname).append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
 				count=0; // to avoid infinit loop
+				$(classname).children(".force-hidden--lap").each(function() {
+					if ($(window).width()+scrollbar < responsive_desk_start) {
+						//log($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu").width() + " " + wrapperwidth);
+						$(classname).find(".more-menu-ul").append("<li>"+$(this).html()+"</li>");
+					}
+				});
 				while (($(classname).children(".menu-item").sumWidth() > wrapperwidth) && count < 20) {
 					count++;
 					//log($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu").width() + " " + wrapperwidth);
-					$(classname).find(".more-menu-ul").append("<li>"+$(classname).children(".menu-item").not(".force-hidden").not(".more-menu").last().addClass("force-hidden").html()+"</li>");
+					$(classname).find(".more-menu-ul").append("<li>"+$(classname).children(".menu-item").not(".force-hidden").not(".force-hidden--lap").not(".more-menu").last().addClass("force-hidden").html()+"</li>");
 				}
 			}
 		}
