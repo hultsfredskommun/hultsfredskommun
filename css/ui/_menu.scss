@@ -58,17 +58,17 @@
 	a {
 		padding: $half-spacing-unit $base-spacing-unit!important;
 	}
+	@include media-query(portable){
+	a {
+		padding: $half-spacing-unit*0.5 $half-spacing-unit!important;
+	}
+	}
+
 	@extend .nav;
 	@extend .nav--block;
 }
 .main-menu {
 	@extend .gamma;
-	@include media-query(palm){
-		/* .epsilon */
-		font-size: 16px;
-		font-size: 1rem;
-		line-height: 0.6;
-	}
 	@extend .nav--block-double-margin;
 	@extend .flush--bottom;
 	border-bottom: 1px solid $border-color;

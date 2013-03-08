@@ -44,11 +44,6 @@
 	@extend .gw;
 	@extend .margin--bottom;
 }
-@include media-query(desk){
-.top-wrapper {
-	margin: 0;
-}
-}
 .logo {
 	@extend .half-margin--top;
 	@extend .g;
