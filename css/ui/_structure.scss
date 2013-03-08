@@ -105,6 +105,11 @@ img {
 	@extend .padding--right;
 	@extend .one-whole;
 }
+@include media-query(portable){
+.icon-right {
+	height: $base-spacing-unit;
+}
+}
 /*
  * citybreak reset
  */

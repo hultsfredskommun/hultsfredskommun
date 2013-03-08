@@ -85,7 +85,7 @@
 
 	<?php endif; ?>	
 	<ul class="box tools full">
-		<?php edit_post_link( "Redigera inl&auml;gg", "<li><a title='Redigera inl&auml;gg' class='icon-left  editlink tool-line full' class='icon-left'><i class='i' data-icon='&#xF13A;'></i></a><span>", "</span></li>" ); ?>
+		<?php edit_post_link( "Redigera inl&auml;gg", "<li><a title='Redigera inl&auml;gg' class='icon-left  editlink tool-line full' class='icon-left'><i class='i' data-icon='&#xF13A;'></i></a>", "</li>" ); ?>
 		<li class="print tool-line"><a title='Skriv ut' class='icon-left'><i class='i' data-icon='&#xF130;'></i></a><a class="print  icon-right" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Skriv ut">Skriv ut</a></li>
 		<?php if (isset($options['readspeaker_id'])) : ?>
 		<li class="read tool-line"><a title='Lyssna p&aring; artikel' class='icon-left  js-read-click'><i class='i' data-icon='&#xF03B;'></i></a><a class="read  icon-right  js-read-click" href="#" title="Lyssna p&aring; artikel">Lyssna p&aring; artikel</a></li>
