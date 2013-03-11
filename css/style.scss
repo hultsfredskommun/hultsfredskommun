@@ -64,8 +64,10 @@
 
 
 
-
-
+.cb_init_bookingengine img,
+.map_canvas img {
+	max-width: none;
+}
 
 
 /* to un- .hide element */ 
