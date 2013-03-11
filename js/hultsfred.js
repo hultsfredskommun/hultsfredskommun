@@ -400,40 +400,7 @@ function readMoreToggle(el){
 				// add full class to track article state
 				$(this).parents("article").addClass("full").removeClass("summary");
 				$(this).parents("article").find('.more-content').slideDown(200, function(){
-					// get plugin WP Lightbox 2 by Pankaj Jha to work with dynamical click
-					var haveConf = (typeof JQLBSettings == 'object');
-					if (haveConf && !$(this).attr("jqlbloaded")) {
-						$(this).attr("jqlbloaded",true);
-						if(haveConf && JQLBSettings.resizeSpeed) {
-							JQLBSettings.resizeSpeed = parseInt(JQLBSettings.resizeSpeed);
-						}
-						if(haveConf && JQLBSettings.marginSize){
-							JQLBSettings.marginSize = parseInt(JQLBSettings.marginSize);
-						}
-						var default_strings = {
-							help: ' Browse images with your keyboard: Arrows or P(revious)/N(ext) and X/C/ESC for close.',
-							prevLinkTitle: 'previous image',
-							nextLinkTitle: 'next image',
-							prevLinkText:  '&laquo; Previous',
-							nextLinkText:  'Next &raquo;',
-							closeTitle: 'close image gallery',
-							image: 'Image ',
-							of: ' of ',
-							download: 'Download'
-						};
-						$(this).find('a[rel^="lightbox"]').lightbox({
-							adminBarHeight: $('#wpadminbar').height() || 0,
-							linkTarget: (haveConf && JQLBSettings.linkTarget.length) ? JQLBSettings.linkTarget : '_self',
-							displayHelp: (haveConf && JQLBSettings.help.length) ? true : false,
-							marginSize: (haveConf && JQLBSettings.marginSize) ? JQLBSettings.marginSize : 0,
-							fitToScreen: (haveConf && JQLBSettings.fitToScreen == '1') ? true : false,
-							resizeSpeed: (haveConf && JQLBSettings.resizeSpeed >= 0) ? JQLBSettings.resizeSpeed : 400,
-							displayDownloadLink: (haveConf && JQLBSettings.displayDownloadLink == '0') ? false : true,
-							navbarOnTop: (haveConf && JQLBSettings.navbarOnTop == '0') ? false : true,
-							//followScroll: (haveConf && JQLBSettings.followScroll == '0') ? false : true,
-							strings: (haveConf && typeof JQLBSettings.help == 'string') ? JQLBSettings : default_strings
-						});	
-					}
+					
 					
 					$(article).find('.openButton').hide();
 					//add close-button top right corner
@@ -487,6 +454,41 @@ function readMoreToggle(el){
 		
 		$(morediv).load(hultsfred_object["templateDir"]+"/ajax/single_post_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 		{
+			// get plugin WP Lightbox 2 by Pankaj Jha to work with dynamical click
+			var haveConf = (typeof JQLBSettings == 'object');
+			if (haveConf && !$(this).attr("jqlbloaded")) {
+				$(this).attr("jqlbloaded",true);
+				if(haveConf && JQLBSettings.resizeSpeed) {
+					JQLBSettings.resizeSpeed = parseInt(JQLBSettings.resizeSpeed);
+				}
+				if(haveConf && JQLBSettings.marginSize){
+					JQLBSettings.marginSize = parseInt(JQLBSettings.marginSize);
+				}
+				var default_strings = {
+					help: ' Browse images with your keyboard: Arrows or P(revious)/N(ext) and X/C/ESC for close.',
+					prevLinkTitle: 'previous image',
+					nextLinkTitle: 'next image',
+					prevLinkText:  '&laquo; Previous',
+					nextLinkText:  'Next &raquo;',
+					closeTitle: 'close image gallery',
+					image: 'Image ',
+					of: ' of ',
+					download: 'Download'
+				};
+				$(this).find('a[rel^="lightbox"]').lightbox({
+					adminBarHeight: $('#wpadminbar').height() || 0,
+					linkTarget: (haveConf && JQLBSettings.linkTarget.length) ? JQLBSettings.linkTarget : '_self',
+					displayHelp: (haveConf && JQLBSettings.help.length) ? true : false,
+					marginSize: (haveConf && JQLBSettings.marginSize) ? JQLBSettings.marginSize : 0,
+					fitToScreen: (haveConf && JQLBSettings.fitToScreen == '1') ? true : false,
+					resizeSpeed: (haveConf && JQLBSettings.resizeSpeed >= 0) ? JQLBSettings.resizeSpeed : 400,
+					displayDownloadLink: (haveConf && JQLBSettings.displayDownloadLink == '0') ? false : true,
+					navbarOnTop: (haveConf && JQLBSettings.navbarOnTop == '0') ? false : true,
+					//followScroll: (haveConf && JQLBSettings.followScroll == '0') ? false : true,
+					strings: (haveConf && typeof JQLBSettings.help == 'string') ? JQLBSettings : default_strings
+				});	
+			}
+			
 			// google analytics
 			$(this).parents("article").find(".entry-title a").push_google_analytics();
 			
@@ -495,7 +497,7 @@ function readMoreToggle(el){
 			$(this).parents("article").find(".map_link").googlemaplink();
 			
 			// contact popup
-			$(this).find(".js-contact-click").each(function() {
+			$(this).parents("article").find(".js-contact-link").each(function() {
 				setContactPopupAction($(this));
 			});
 
@@ -1005,37 +1007,7 @@ function setArticleActions(el) {
 		}
 	});
 	
-	/* show all side-content when hover */
-	/*
-	$("article .side-content").unbind("hover").hover(function() {
-		if ($(this).find("a.contactlink, .related_link a, .related_file a").length > 2) {
-			$(this).append("<div class='hover-side-content'></div>");
-			$(".hover-side-content").html($(this).html()).unbind("mouseout").mouseout(function() {
-				$(this).find("a.contactlink").each(function() {
-					setContactPopupAction($(this));
-				});
-				$(this).find(".related_link a").each(function() {
-					if ($(this).attr("href") !== undefined) {
-						$(this).unbind("click").click(function () {
-							push_google_analytics("#link=" + $(this).attr("href"));
-						});
-					}
-				});
-				$(this).find(".related_file a").each(function() {
-					if ($(this).attr("href") !== undefined) {
-						$(this).unbind("click").click(function () {
-							push_google_analytics("#file=" + $(this).attr("href"));
-						});
-					}
-				});
-			
-			});
-		}
-	},function() {	
-		$(".hover-side-content").remove();
-	});
-	*/
-	
+		
 	$(el).find(".js-read-click").unbind("click").click(function(ev) {
 		ev.preventDefault();
 		$(this).parent().next().find(".readspeaker_toolbox").fadeToggle();
@@ -1058,20 +1030,15 @@ function setArticleActions(el) {
 		else{ return false; }
 	});
 	
-	// edit links
-/*	if ($(el).find(".post-edit-link").attr("href") !== undefined) {
-		$(el).find(".entry-title").append("<a title='Redigera inl&auml;gg' class='post-edit-link' href='"+$(el).find(".post-edit-link").attr("href")+"'><span class='icon'></span></a>");
-	}
-	$(el).find('.post-edit-link').unbind("click").click(function(ev){
-		ev.stopPropagation();
-	});
-	*/
 	
 	//triggers articles click-action entry-title clicked
 	$(el).find(".summary-content").unbind("click").click(function(){
 		readMoreToggle( $(this).parents("article").find('.entry-title a') );
 	});
-	$(el).find(".js-contact-click").each(function() {
+	
+	
+	//triggers contact click-action 
+	$(el).find(".js-contact-link").each(function() {
 		setContactPopupAction($(this));
 	});
 	
