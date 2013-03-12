@@ -430,10 +430,10 @@ function readMoreToggle(el){
 			
 			//change webbrowser url
 			//find and store post-title and post-url
-			var entry_title = $(article).find(".entry-title");
-			var blog_title = $("#logo").find('img').attr('alt');
-			var title = $(entry_title).find("a").html().replace("&amp;","&") + " | " + blog_title;
-			var url = $(entry_title).find("a").attr("href");
+			//var entry_title = $(article).find(".entry-title");
+			//var blog_title = $("#logo").find('img').attr('alt');
+			//var title = $(entry_title).find("a").html().replace("&amp;","&") + " | " + blog_title;
+			//var url = $(entry_title).find("a").attr("href");
 			//call pushHistory
 			//pushHistory(title, url);
 			//History.replaceState(null, title, url);
@@ -1216,7 +1216,8 @@ function responsive_menu() {
 			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
 				$(classname).find(".right-nav-menu-item").addClass("force-hidden");
 			}
-			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth || $(classname).children(".force-hidden--lap").length > 0) {
+			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth || 
+				(($(classname).children(".force-hidden--lap").length > 0) && $(window).width()+scrollbar < responsive_desk_start)) {
 				$(classname).append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
 				count=0; // to avoid infinit loop
 				$(classname).children(".force-hidden--lap").each(function() {

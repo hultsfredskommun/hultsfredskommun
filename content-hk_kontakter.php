@@ -15,7 +15,18 @@ global $default_settings;
 			<div class="content-wrapper">
 
 				<div class="summary-content"></div><div>
-					<?php require("inc/hk_kontakter_content.php"); ?>
+					<?php hk_the_contact(array(
+						'image' => true,
+						'name' => false,
+						'title' => true,
+						'workplace' => true,
+						'phone' => true,
+						'email' => true,
+						'description' => true,
+						'address' => true,
+						'visit_hours' => true,
+						'map' => true,
+						'title_link' => false)); ?>
 				</div><!-- .summary-content -->
 
 			</div><!-- .content-wrapper -->
