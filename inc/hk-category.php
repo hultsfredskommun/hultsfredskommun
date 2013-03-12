@@ -58,7 +58,7 @@
 					$args['post_status'] = 'publish';		
 					
 					if ( !empty($cat) ) {
-						$args["category__and"] = $cat;
+						$args["category__and"] = array($cat);
 					}
 					if ( !empty($tag_array) ) {
 						if ($_REQUEST["tag_logic"] == "and") {
@@ -72,7 +72,7 @@
 						get_template_part( 'content', get_post_format() );
 						$shownPosts[] = get_the_ID();
 					endwhile; endif;
-					echo "<span class='hidden debug'>".print_r($args,true)."</span>";
+					echo "<span class='hidden debug'>sticky from this category . <br>".print_r($args,true)."</span>";
 
 				}
 				wp_reset_query(); // Reset Query
@@ -94,7 +94,7 @@
 					$args['post__not_in'] = array_merge($sticky,$shownPosts);
 				}
 				if ( !empty($cat) ) {
-					$args["category__and"] = $cat;
+					$args["category__and"] = array($cat);
 				}
 				if ( !empty($tag_array) ) {
 					if ($_REQUEST["tag_logic"] == "and") {
@@ -110,7 +110,7 @@
 					$shownPosts[] = get_the_ID();
 				endwhile; endif;
 				wp_reset_query(); // Reset Query
-				echo "<span class='hidden debug'>".print_r($args,true)."</span>";
+				echo "<span class='hidden debug'>not sticky from this category . <br>".print_r($args,true)."</span>";
 
 				
 				/* Get posts from children of this category */
@@ -155,7 +155,7 @@
 							$shownPosts[] = get_the_ID();
 						endwhile; endif;
 						wp_reset_query(); // Reset Query
-						echo "<span class='hidden debug'>".print_r($args,true)."</span>";
+						echo "<span class='hidden debug'>sticky from children category . <br>".print_r($args,true)."</span>";
 					}
 					
 					/* Get all NOT sticky posts children of this category */
@@ -185,7 +185,7 @@
 						$shownPosts[] = get_the_ID();
 					endwhile; endif;
 					wp_reset_query(); // Reset Query
-					echo "<span class='hidden debug'>".print_r($args,true)."</span>";
+					echo "<span class='hidden debug'>not sticky from children category . <br>".print_r($args,true)."</span>";
 
 				
 				endif; 
