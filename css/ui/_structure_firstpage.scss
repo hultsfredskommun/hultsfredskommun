@@ -69,11 +69,8 @@
 		}
 	}
 }
-.widget .contact-wrapper {
+.home .contact-area .contact-wrapper {
 	line-height: 0;
-}
-.home .contact-wrapper {
-	
 	@extend .gray-image-background;
 	@extend .cf;
 	@extend .position-relative;

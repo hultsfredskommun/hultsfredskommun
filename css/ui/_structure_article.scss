@@ -1,6 +1,11 @@
-.contact-wrapper .content {
-	@extend .complement-italic-text;
-	padding-bottom: 0;
+.contact-wrapper {
+	.pager {
+		@extend .force-hidden;
+	}
+	.content {
+		@extend .complement-italic-text;
+		padding-bottom: 0;
+	}
 }
 
 /* the article content */
@@ -12,8 +17,8 @@ article.post {
 .article-border-wrapper {
 	@extend .float--left;
 	@extend .one-whole;
-	@extend .border--top;
-	@extend .border--bottom;
+	@extend .border-light--top;
+	@extend .border-light--bottom;
 }
 
 /* hide article-wrapper if only titles */

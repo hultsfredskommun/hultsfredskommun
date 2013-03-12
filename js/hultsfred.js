@@ -1074,7 +1074,7 @@ function setContactPopupAction(el) {
 }
 function contactAction(el,ev) {
 	if ($(".contact-popup").length == 0) {
-		var post_id = $(el).parents("article").find(".contact_id").html();
+		var post_id = $(el).parents(".contact-wrapper").find(".contact_id").html();
 		
 		// follow link if post_id not found
 		if (post_id == null) return true;
