@@ -229,7 +229,7 @@
 
 		/* help text if nothing is found */
 		if (empty($shownPosts)) {
-			hk_nothing_found_navigation();
+			hk_empty_navigation();
 		} ?>
 
 	</div><!-- #content -->

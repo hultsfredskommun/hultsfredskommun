@@ -16,7 +16,7 @@ get_header(); ?>
 	<div id="primary" class="primary">
 		<div id="content" role="main">
 
-		<?php hk_nothing_found_navigation(); ?>
+		<?php hk_404(); ?>
 
 
 		</div><!-- #content -->

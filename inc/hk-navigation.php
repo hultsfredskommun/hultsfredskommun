@@ -26,7 +26,7 @@ function hk_breadcrumb() {
 
 }
 
-function hk_nothing_found_navigation() { 
+function hk_404() { 
 	$options = get_option('hk_theme'); 
 	$title = "Hittade du inte den information du s&ouml;kte?";
 	$message = "Du kan forts&auml;tta genom att &auml;ndra i ditt urval eller s&ouml;ka fritt i s&ouml;krutan ovan.";
@@ -60,7 +60,40 @@ function hk_nothing_found_navigation() {
 		</article><!-- #post-0 -->
 <?php
 }
+function hk_empty_navigation() { 
+	$options = get_option('hk_theme'); 
+	$title = "Hittade du inte den information du s&ouml;kte?";
+	$message = "Du kan forts&auml;tta genom att &auml;ndra i ditt urval eller s&ouml;ka fritt i s&ouml;krutan ovan.";
+	$message2 = "";
+	if ($options["emptytitle"] != "")
+		$title = $options["emptytitle"];
+	if ($options["emptymessage"] != "")
+		$message = $options["emptymessage"];
+	if ($options["emptymessage2"] != "")
+		$message2 = $options["emptymessage2"];
+	?>
+		<article id="post-nothing">
+			<div class="content-wrapper">
+			<div class="summary-content">
+				<div class="entry-wrapper">
+					<h1 class="entry-title"><?php echo $title; ?></h1>
+					<div class="entry-content">
+						<p><?php echo $message; ?></p>
+						
+						<?php if($message2 != "" && function_exists('get_most_viewed')) : ?>
+						<p><?php echo $message2; ?></p>
+						<ul><?php get_most_viewed('post'); ?></ul>
+						<?php endif; ?>
+						
+					</div>
+				</div>
+				
+			</div><!-- .summary-content -->
 
+			</div>
+		</article><!-- #post-0 -->
+<?php
+}
 
 
 function hk_navigation() {

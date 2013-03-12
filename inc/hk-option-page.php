@@ -59,11 +59,18 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[logo3_link]">Logga 3 l&auml;nk. </label><br/><input size="80" type="text" name="hk_theme[logo3_link]" value="<?php echo $options['logo3_link']; ?>" /></p>
 			<p><label for="hk_theme[logo3_descr]">Logga 3 beskrivning. </label><br/><input size="80" type="text" name="hk_theme[logo3_descr]" value="<?php echo $options['logo3_descr']; ?>" /></p>
 
-			<h2>404</h2>
+			<h2>Meddelande vid 404</h2>
 			<p><label for="hk_theme[404title]">Titel</label><br/><input size="80" type="text" name="hk_theme[404title]" value="<?php echo $options['404title']; ?>" /></p>
 			<p><label for="hk_theme[404message]">Meddelande</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[404message]"><?php echo $options['404message']; ?></textarea></p>
 			<?php if(function_exists('get_most_viewed')) { ?>
 			<p><label for="hk_theme[404message2]">Meddelande2 (innan mest bes&ouml;kta)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[404message2]"><?php echo $options['404message2']; ?></textarea></p>
+			<?php } ?>
+
+			<h2>Meddelande vid tom kategorilistning</h2>
+			<p><label for="hk_theme[emptytitle]">Titel</label><br/><input size="80" type="text" name="hk_theme[emptytitle]" value="<?php echo $options['emptytitle']; ?>" /></p>
+			<p><label for="hk_theme[emptymessage]">Meddelande</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptymessage]"><?php echo $options['emptymessage']; ?></textarea></p>
+			<?php if(function_exists('get_most_viewed')) { ?>
+			<p><label for="hk_theme[emptymessage2]">Meddelande2 (innan mest bes&ouml;kta)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptymessage2]"><?php echo $options['emptymessage2']; ?></textarea></p>
 			<?php } ?>
 			
 			

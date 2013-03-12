@@ -48,7 +48,7 @@ get_header(); ?>
 
 			<?php else : ?>
 
-				<?php hk_nothing_found_navigation(); ?>
+				<?php hk_empty_navigation(); ?>
 				
 			<?php endif; ?>
 
