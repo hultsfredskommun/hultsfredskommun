@@ -8,9 +8,18 @@
  */
 global $default_settings;
 ?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky":""); ?>>
-		<div class="summary-content">
-			<?php require("inc/hk_kontakter_content.php"); ?>
-		</div><!-- .summary-content -->
-		<span class='hidden article_id'><?php the_ID(); ?></span>
+	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky  post":"post"); ?>>
+		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+		<div class="article-border-wrapper">
+		<div class="article-wrapper">
+			<div class="content-wrapper">
+
+				<div class="summary-content"></div><div>
+					<?php require("inc/hk_kontakter_content.php"); ?>
+				</div><!-- .summary-content -->
+
+			</div><!-- .content-wrapper -->
+		</div>
+		</div>
+		<span class='hidden contact_id'><?php the_ID(); ?></span>
 	</article><!-- #post-<?php the_ID(); ?> -->

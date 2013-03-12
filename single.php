@@ -33,15 +33,14 @@ get_header(); ?>
 				<?php comments_template( '', true ); ?>
 			<?php endwhile; // end of the loop. ?>
 			
-			<?php /* only show related if post_type is post */
+			<?php /* show related posts */
 			if (empty($_REQUEST["print"]) && !empty($cat_array)) : ?>
 			
 				<?php 
 				
 				// check for all taxonomies in this query
 				$query = array( 'category__in' => $cat_array,
-								'post__not_in' => array(get_the_ID()),
-								'post_type' => $post_type
+								'post__not_in' => array(get_the_ID())
 								);
 				
 				// loop related posts  

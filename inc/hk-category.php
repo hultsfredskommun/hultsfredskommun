@@ -72,6 +72,8 @@
 						get_template_part( 'content', get_post_format() );
 						$shownPosts[] = get_the_ID();
 					endwhile; endif;
+					echo "<span class='hidden debug'>".print_r($args,true)."</span>";
+
 				}
 				wp_reset_query(); // Reset Query
 				
@@ -108,7 +110,8 @@
 					$shownPosts[] = get_the_ID();
 				endwhile; endif;
 				wp_reset_query(); // Reset Query
-				
+				echo "<span class='hidden debug'>".print_r($args,true)."</span>";
+
 				
 				/* Get posts from children of this category */
 				if ($tag != "") : // show from children when tag is selected
@@ -152,6 +155,7 @@
 							$shownPosts[] = get_the_ID();
 						endwhile; endif;
 						wp_reset_query(); // Reset Query
+						echo "<span class='hidden debug'>".print_r($args,true)."</span>";
 					}
 					
 					/* Get all NOT sticky posts children of this category */
@@ -181,7 +185,8 @@
 						$shownPosts[] = get_the_ID();
 					endwhile; endif;
 					wp_reset_query(); // Reset Query
-				
+					echo "<span class='hidden debug'>".print_r($args,true)."</span>";
+
 				
 				endif; 
 			endif;

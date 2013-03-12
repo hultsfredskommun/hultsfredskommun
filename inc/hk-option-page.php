@@ -172,7 +172,16 @@ function hk_theme_options_do_page() {
 			
 			<h2>Cron</h2>
 			<p><label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label><br/><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?> Kördes senast <?php echo Date("Y-m-d H:i:s",$options["hk_review_mail_check_time"]); ?><br/><?php echo $options["hk_review_mail_log"]; ?></p>
-			<p>Normaliserade räknare <?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?>: <br><?php echo $options["hk_normalize_count_log"]; ?></p>
+			<p>Normaliserade räknare <?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?>: <br><?php echo $options["hk_normalize_count_log"]; ?>. Automatisk normalisering aktiverad? <?php echo (wp_next_scheduled( 'hk_normalize_count_event' ))?"Aktiverat.":"Inaktiverat."; ?></p>
+			<p><input type="checkbox" name="hk_theme[force_normalize]" value="1" /> <label for="hk_theme[force_normalize]">Tvinga normalisera!.</label</p>
+			<?php
+				if ($options["force_normalize"] == "1") {
+					echo "F&ouml;rs&ouml;ker normalisera visningar.";
+					hk_normalize_count();
+					echo "F&ouml;rs&ouml;ker aktivera automatisk normalisering.";
+					hk_normalize_activation();
+				}
+			?>
 
 			<h2>Sidfot</h2>
 			<p><label for="hk_theme[footer_image]">Sidfot</label><br/>

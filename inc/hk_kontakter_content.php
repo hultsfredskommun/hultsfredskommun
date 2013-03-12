@@ -1,7 +1,7 @@
 <?php
 	hk_the_contact(array(
 		'image' => true,
-		'name' => true,
+		'name' => false,
 		'title' => true,
 		'workplace' => true,
 		'phone' => true,

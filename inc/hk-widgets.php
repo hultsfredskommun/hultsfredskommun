@@ -90,7 +90,7 @@ class HK_quickmenu extends WP_Widget {
 				<li title="Hitta snabbt"><a href="#quickmenu">Hitta snabbt</a></li>
 				<?php endif; ?>
 				<?php if (function_exists( 'views_orderby' )) : ?>
-				<li title="Popul&auml;ra"><a href="#mostvisited">Popul&auml;ra</a></li>
+				<li title="Popul&auml;ra" class="hide--palm"><a href="#mostvisited">Popul&auml;ra</a></li>
 				<?php endif; ?>
 				<li title="Senaste" class="hide--palm  hide--lap"><a href="#latest">Senaste</a></li>
 				<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>

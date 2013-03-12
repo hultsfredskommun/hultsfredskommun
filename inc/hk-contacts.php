@@ -163,7 +163,7 @@ function hk_contacts_generate_cache($args) {
 				$retValue .= "<div class='icon'>&nbsp;</div>";
 				$retValue .= "<div class='img-wrapper' style='display:none'>" . hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false) . "</div>";
 				$retValue .= "<div id='contact-" . get_the_ID() . "' class='" . implode(" ",get_post_class()) . "'>";
-				$retValue .= "<a class='js-contact-click' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
+				$retValue .= "<a class='js-contact-link' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
 				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "'</span>";
 				if (function_exists("get_field")) :
 					$retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>";

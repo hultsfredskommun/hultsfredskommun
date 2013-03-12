@@ -209,7 +209,7 @@ add_action('wp', 'hk_visit_activation');
  */
 if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled
 
-// check which posts to be reviewed and send mail to remind author
+// normalize view count
 function hk_normalize_count() {
 	$options = get_option('hk_theme');
 	$hk_normalize_count_time = time();
