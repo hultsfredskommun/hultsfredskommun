@@ -4949,6 +4949,7 @@ html {
 }
 @media only screen and (min-width: 970px) {
   .article-wrapper .side-content {
+    border-left: 0;
     float: right!important;
   }
 }
@@ -4977,10 +4978,6 @@ article.summary.post:hover > .openButton {
 }
 
 @media only screen and (min-width: 970px) {
-  .full .article-wrapper .side-content {
-    border-left: 0;
-  }
-
   .primary .article-wrapper {
     background-size: 100%;
     background-image: url(images/greyTile24bit-one-third.png);

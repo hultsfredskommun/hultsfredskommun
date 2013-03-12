@@ -120,6 +120,7 @@ article.post {
 	}
 	@include media-query(desk) {
 	.side-content {
+		border-left: 0;
 		float: right!important;
 	}
 	}
@@ -174,9 +175,6 @@ article.summary.post:hover > .openButton {
 }
 
 @include media-query(desk) {
-.full .article-wrapper .side-content {
-	border-left: 0;
-}
 .primary .article-wrapper {
 	background-size: 100%;
 	background-image: url(images/greyTile24bit-one-third.png);
