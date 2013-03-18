@@ -32,7 +32,78 @@
 		 * Default order in orderby no set
 		 */
 		$shownPosts = array();
-		if ($_REQUEST["orderby"] == "") :
+		if (false) : //working on this!
+			$sticky_posts = get_option( 'sticky_posts' );
+
+			// get not sticky
+			if ($sticky_posts) :
+				print_r($sticky_posts);	
+				$args = array( 'posts_per_page' => -1, 'post_in' => $sticky_posts);
+				
+				if ($tag == "") {
+					$args["post_type"] = array('post');
+				}
+				else {
+					$args["post_type"] = array('post','attachment');
+				}
+				$args['post_status'] = 'publish';
+				
+				if ( !empty($cat) ) {
+					$args["category__and"] = array($cat);
+				}
+				if ( !empty($tag_array) ) {
+					if ($_REQUEST["tag_logic"] == "and") {
+						$args["tag_slug__and"] = $tag_array;
+					} else {
+						$args["tag_slug__in"] = $tag_array;
+					}
+				}
+				print_r($args);
+				query_posts( $args );
+				if ( have_posts() ) : while ( have_posts() ) : the_post();
+					echo 'tesst';
+					get_template_part( 'content', get_post_format() );
+					$shownPosts[] = get_the_ID();
+				endwhile; endif;
+				echo "<span class='hidden debug'>sticky from this category . <br>".print_r($args,true)."</span>";
+				wp_reset_query(); // Reset Query
+			endif;
+			
+			
+			// get not sticky
+			$args = array( 'posts_per_page' => $posts_per_page);
+			$args['post__not_in'] = $shownPosts;
+			if ($paged) {
+				$args["paged"] = $paged;
+			}
+			if ($tag == "") {
+				$args["post_type"] = array('post');
+			}
+			else {
+				$args["post_type"] = array('post','attachment');
+			}
+			$args['post_status'] = 'publish';
+			
+			if ( !empty($cat) ) {
+				$args["category__and"] = array($cat);
+			}
+			if ( !empty($tag_array) ) {
+				if ($_REQUEST["tag_logic"] == "and") {
+					$args["tag_slug__and"] = $tag_array;
+				} else {
+					$args["tag_slug__in"] = $tag_array;
+				}
+			}
+			query_posts( $args );
+			if ( have_posts() ) : while ( have_posts() ) : the_post();
+				get_template_part( 'content', get_post_format() );
+				$shownPosts[] = get_the_ID();
+			endwhile; endif;
+			echo "<span class='hidden debug'>all from this category . <br>".print_r($args,true)."</span>";
+
+			wp_reset_query(); // Reset Query
+		
+		elseif ($_REQUEST["orderby"] == "") :
 			$posts_per_page = get_option('posts_per_page');
 			
 			/* Get category id */
@@ -82,12 +153,12 @@
 
 				$args = array( 'posts_per_page' => -1 );
 
-					if ($tag == "") {
-						$args["post_type"] = array('post');
-					}
-					else {
-						$args["post_type"] = array('post','attachment');
-					}
+				if ($tag == "") {
+					$args["post_type"] = array('post');
+				}
+				else {
+					$args["post_type"] = array('post','attachment');
+				}
 				$args['post_status'] = 'publish';		
 
 				if ( !empty($sticky) || !empty($shownPosts)) {
@@ -225,7 +296,7 @@
 		echo "<span id='shownposts' class='hidden'>" . $allposts . "</span>";
 
 		//hk_content_nav( 'nav-below' );
-		
+		//print_r($wp_query);
 
 		/* help text if nothing is found */
 		if (empty($shownPosts)) {

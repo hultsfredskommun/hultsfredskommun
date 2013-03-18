@@ -204,7 +204,7 @@ if (typeof $.fn.googlemap != 'function') {
 				height = $(".contact-popup").height();
 				$(this).height(height).gmap({scrollwheel: false, center: coordinates, zoom: 15, callback: function() {
 					var self = this;
-					self.addMarker({'position': this.get('map').getCenter()}).unbind("click").click(function() {
+					self.addMarker({'position': this.get('map').getCenter()}).unbind("click").bind("click",function() {
 						self.openInfoWindow({ 'content': address}, this);
 					});
 				}});
@@ -219,7 +219,7 @@ if (typeof $.fn.googlemaplink != 'function') {
 		if (typeof google != 'undefined') {
 			$(this).each(function() {
 				$(this).find(".coordinates, .address").hide();
-				$(this).unbind("click").click( function(ev) {
+				$(this).unbind("click").bind("click", function(ev) {
 					ev.preventDefault();
 					var coordinates = $(this).find(".coordinates").html();
 					var address = $(this).find(".address").html();
@@ -230,18 +230,18 @@ if (typeof $.fn.googlemaplink != 'function') {
 					push_google_analytics("#googlemap=" + address + " " + coordinates);
 
 					$(".contact-popup.box").prepend("<div class='close-contact'><i class='i' data-icon='&#xF14E;'></div></div>");
-					$(".close-contact").unbind("click").click(function() {
+					$(".close-contact").unbind("click").bind("click",function() {
 						$(".contact-popup").remove();
 					});
 
-					$(".contact-popup.overlay").unbind("click").click(function() {
+					$(".contact-popup.overlay").unbind("click").bind("click",function() {
 						$(".contact-popup").remove();
 					});
 
 					height = $(".contact-popup").height();
 					$(".contact-popup .map_canvas").height(height).gmap({scrollwheel: false, center: coordinates, zoom: 15, callback: function() {
 						var self = this;
-						self.addMarker({'position': this.get('map').getCenter()}).unbind("click").click(function() {
+						self.addMarker({'position': this.get('map').getCenter()}).unbind("click").bind("click",function() {
 							self.openInfoWindow({ 'content': address}, this);
 						});
 					}});
@@ -408,11 +408,11 @@ function readMoreToggle(el){
 					
 					$(article).find('.openButton').hide();
 					//add close-button top right corner
-					var closea = $('<div>').addClass('closeButton button top').html("<i class='i' data-icon='&#xF148;'></i><a href='#'>Visa mindre</a>").unbind("click").click(function(ev){
+					var closea = $('<div>').addClass('closeButton button top').html("<i class='i' data-icon='&#xF148;'></i><a href='#'>Visa mindre</a>").unbind("click").bind("click",function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					var closeb = $('<div>').addClass('closeButton button bottom').html("<i class='i' data-icon='&#xF148;'></i><a href='#'>Visa mindre</a>").unbind("click").click(function(ev){
+					var closeb = $('<div>').addClass('closeButton button bottom').html("<i class='i' data-icon='&#xF148;'></i><a href='#'>Visa mindre</a>").unbind("click").bind("click",function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
@@ -511,7 +511,7 @@ function readMoreToggle(el){
 			
 			//set click-action on print-post-link
 			var print_link = $(this).find(".print-post");
-			$(print_link).unbind("click").click(function(ev){
+			$(print_link).unbind("click").bind("click",function(ev){
 				PrintElem( $(this).attr("elem-id") );
 				ev.preventDefault();
 			});
@@ -637,14 +637,14 @@ $(document).ready(function(){
 	}, function() {
 		$("#all_title_div").remove();
 	});*/
-	$(".js-view-summary").unbind("click").click(function(ev){
+	$(".js-view-summary").unbind("click").bind("click",function(ev){
 		$("#content").removeClass("viewmode-only-titles");
 		$(".js-view-titles").removeClass("hide");
 		$(".js-view-summary").addClass("hide");
 		ev.preventDefault();
 	});
 	// show only title click action
-	$(".js-view-titles").unbind("click").click(function(ev){
+	$(".js-view-titles").unbind("click").bind("click",function(ev){
 		$("#content").addClass("viewmode-only-titles");
 		$(".js-view-titles").addClass("hide");
 		$(".js-view-summary").removeClass("hide");
@@ -657,7 +657,7 @@ $(document).ready(function(){
 		if (!$(this).parents(".home").length) {
 			setArticleActions($(this));
 		} else {
-			$(this).unbind("click").click(function() {
+			$(this).unbind("click").bind("click",function() {
 				location.href = $(this).find(".entry-title a").attr("href");
 			});
 		}
@@ -717,7 +717,7 @@ $(document).ready(function(){
 		}
 		*/
 	});
-	$('#scrollTo_top a').unbind("click").click(function(){
+	$('#scrollTo_top a').unbind("click").bind("click",function(){
 		$('html, body').animate({scrollTop:0}, 500 );
 		return false;
 	});
@@ -727,11 +727,11 @@ $(document).ready(function(){
 	/**
 	 * Responsive top navigation bar
 	 */
-	$(".js-show-main-menu").unbind("click").click(function(ev) {
+	$(".js-show-main-menu").unbind("click").bind("click",function(ev) {
 		$(".main-menu").toggleClass("unhidden");
 		ev.preventDefault();
 	});
-	$(".js-show-main-sub-menu").unbind("click").click(function(ev) {
+	$(".js-show-main-sub-menu").unbind("click").bind("click",function(ev) {
 		if ($(this).hasClass("submenu")) {
 			$(".main-sub-menu").toggleClass("unhidden");
 		}
@@ -740,7 +740,7 @@ $(document).ready(function(){
 		}
 		ev.preventDefault();
 	});
-	/*$(".js-show-category-menu").unbind("click").click( function(){
+	/*$(".js-show-category-menu").unbind("click").bind("click", function(){
 		$(".category-navigation").toggleClass("unhidden");
 		ev.preventDefault();
 	});*/  
@@ -757,7 +757,7 @@ $(document).ready(function(){
 	 	}
 	});
 	$(".more-children").each(function() {
-		$(this).unbind("click").click(function(ev) {
+		$(this).unbind("click").bind("click",function(ev) {
 			ev.preventDefault();
 			ev.stopPropagation();
 			$(this).parent().parent().find(".children:first").toggle();
@@ -1004,7 +1004,7 @@ function erase_and_refocus_on_search_input()
 function setArticleActions(el) {
 
 	/* add print dialog */
-	$("article .side-content").find(".tool-line.print").unbind("click").click(function(ev) {
+	$("article .side-content").find(".tool-line.print").unbind("click").bind("click",function(ev) {
 		if ($(this).parents("body").hasClass("single")) {
 			ev.preventDefault();
 			window.print();
@@ -1012,12 +1012,12 @@ function setArticleActions(el) {
 	});
 	
 		
-	$(el).find(".js-read-click").unbind("click").click(function(ev) {
+	$(el).find(".js-read-click").unbind("click").bind("click",function(ev) {
 		ev.preventDefault();
 		$(this).parent().next().find(".readspeaker_toolbox").fadeToggle();
 	});
 	/* add AddThis onclick */
-	$(el).find(".js-friend-click").unbind("click").click(function(ev) {
+	$(el).find(".js-friend-click").unbind("click").bind("click",function(ev) {
 		ev.preventDefault();
 		$(this).parent().next().find(".addthis_toolbox").fadeToggle();
 	});
@@ -1025,7 +1025,7 @@ function setArticleActions(el) {
 	//sets click-action on entry-titles
 	$(el).find('h1.entry-title').after("<div class='openButton button top hidden'><i class='i' data-icon='&#xF149;'></i>Visa mer</div>");
 	
-	$(el).find('.entry-title a, .togglearticle, .openButton').unbind("click").click(function(ev){
+	$(el).find('.entry-title a, .togglearticle, .openButton').unbind("click").bind("click",function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
 		if( !$(this).parents('article').hasClass('loading') ){
@@ -1036,7 +1036,7 @@ function setArticleActions(el) {
 	
 	
 	//triggers articles click-action entry-title clicked
-	$(el).find(".summary-content").unbind("click").click(function(){
+	$(el).find(".summary-content").unbind("click").bind("click",function(){
 		readMoreToggle( $(this).parents("article").find('.entry-title a') );
 	});
 	
@@ -1050,14 +1050,14 @@ function setArticleActions(el) {
 	//google analytics
 	$(el).find(".related_link a").each(function() {
 		if ($(this).attr("href") !== undefined) {
-			$(this).unbind("click").click(function () {
+			$(this).unbind("click").bind("click",function () {
 				push_google_analytics("#link=" + $(this).attr("href"));
 			});
 		}
 	});
 	$(el).find(".related_file a").each(function() {
 		if ($(this).attr("href") !== undefined) {
-			$(this).unbind("click").click(function () {
+			$(this).unbind("click").bind("click",function () {
 				push_google_analytics("#file=" + $(this).attr("href"));
 			});
 		}
@@ -1066,7 +1066,7 @@ function setArticleActions(el) {
 
 /* set contact popup action */
 function setContactPopupAction(el) {
-	$(el).unbind("click").click(function(ev) {
+	$(el).unbind("click").bind("click",function(ev) {
 		contactAction(el,ev);
 		return false;
 	});
@@ -1084,7 +1084,7 @@ function contactAction(el,ev) {
 			
 		$("#page").append("<div class='contact-popup box'><div class='entry-content islet'>H&auml;mtar kontaktuppgifter...</div></div>").append("<div class='contact-popup overlay'></div>");
 
-		$(".contact-popup.overlay").unbind("click").click(function() {
+		$(".contact-popup.overlay").unbind("click").bind("click",function() {
 			$(".contact-popup").remove();
 		});
 		
@@ -1099,7 +1099,7 @@ function contactAction(el,ev) {
 			}
 
 			$(this).find(".entry-wrapper").before("<div class='close-contact'><i class='i' data-icon='&#xF14E;'></i></div>");
-			$(".close-contact").unbind("click").click(function() {
+			$(".close-contact").unbind("click").bind("click",function() {
 				$(".contact-popup").remove();
 			});
 			/* load google maps */
@@ -1170,7 +1170,7 @@ function dyn_posts_load_posts() {
 					.before('<p id="dyn-posts-load-posts"><a href="#">Lista alla artiklar fr&aring;n underkategorier</a></p>');
 
 					// Show new posts when the link is clicked.
-					$('#dyn-posts-load-posts a').unbind("click").click(function(ev) {
+					$('#dyn-posts-load-posts a').unbind("click").bind("click",function(ev) {
 						if($("#shownposts").hasClass("loaded")) {
 							$('#dyn-posts-placeholder').slideDown("slow",function(){
 								$('#dyn-posts-placeholder').children(":first-child").unwrap();
@@ -1243,7 +1243,7 @@ function responsive_menu() {
 
 	$(".more-menu-ul").hide();
 	
-	$(".js-more-menu-click").unbind("click").click(function(ev) {
+	$(".js-more-menu-click").unbind("click").bind("click",function(ev) {
 		//log($(this).parents("ul").find("more-menu-ul"));
 		$(this).parents("ul").find(".more-menu-ul").toggle();
 		ev.preventDefault();

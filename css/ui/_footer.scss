@@ -57,3 +57,14 @@
 		@extend .island;
 	}
 }
+.scrolltotop {
+	@extend .white-background;
+	@extend .position-fixed--bottom-right;
+	@extend .islet;
+	@extend .margin--right;
+	//@extend .border-radius;
+	border-radius: 15px;
+	.i {
+		font-size: 150%;
+	}
+}

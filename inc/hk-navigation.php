@@ -196,7 +196,11 @@ function hk_navigation() {
 			//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
 
 			echo "<ul class='parent'>"; 
-			echo "<li class='heading cat-item current-cat-parent cat-has-children'><a href='#' class='icon-left'><i class='i' data-icon='&#xF09B;'></i></a><a href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."</a></li>";
+			$currentcat = '';
+			if ($parentCat == $cat) {
+				$currentcat = 'current-cat';
+			}
+			echo "<li class='heading cat-item $currentcat current-cat-parent cat-has-children'><a href='#' class='icon-left'><i class='i' data-icon='&#xF09B;'></i></a><a href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."</a></li>";
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
