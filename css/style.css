@@ -5117,6 +5117,19 @@ article.summary.post:hover > .openButton {
   margin-left: 12px;
 }
 
+/* Search results styling */
+.search-tele {
+  margin-left: 0;
+}
+.search-tele > li {
+  list-style: none;
+  padding: 7px;
+  line-height: 1.3em;
+}
+.search-tele > li:nth-child(2n+2) {
+  background: rgb(236, 236, 236);
+}
+
 /* top right menu */
 .top-menu-wrapper {
   /* set top menu icons */
