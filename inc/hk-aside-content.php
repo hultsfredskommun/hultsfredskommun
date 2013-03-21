@@ -91,7 +91,7 @@
 		<li class="read tool-line"><a title='Lyssna p&aring; artikel' class='icon-left  js-read-click'><i class='i' data-icon='&#xF03B;'></i></a><a class="read  icon-right  js-read-click" href="#" title="Lyssna p&aring; artikel">Lyssna p&aring; artikel</a></li>
 		<li class="readspeaker">
 		<div id="readspeaker_button1" class="readspeaker_toolbox rs_skip rsbtn rs_preserve">
-			<a class="rsbtn_play" accesskey="L" title="Lyssna p&aring; artikel" href="http://app.eu.readspeaker.com/cgi-bin/rsent?customerid=<?php echo $options['readspeaker_id']; ?>&amp;lang=sv_se&amp;readid=content-<?php the_ID(); ?>&amp;url=<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>">
+			<a class="rsbtn_play" accesskey="L" title="Lyssna p&aring; artikel" href="http://app.eu.readspeaker.com/cgi-bin/rsent?customerid=<?php echo $options['readspeaker_id']; ?>&amp;lang=sv_se&amp;readid=content-<?php the_ID(); ?>&amp;url=<?php the_permalink(); ?>">
 			<span class="rsbtn_left rsimg rspart"><span class="rsbtn_text"><span></span></span></span>
 			<span class="rsbtn_right rsimg rsplay rspart"></span></a>
 		</div>
@@ -101,7 +101,7 @@
 		<?php if ($options['addthis_pubid'] != "" && ($_REQUEST["cookies"] == "true" || $default_settings['allow_cookies'])) : ?>
 		<li class="friend tool-line"><a title='Tipsa n&aring;gon om denna sida' class='icon-left  js-friend-click'><i class='i' data-icon='&#xF152;'></i></a><a class="friend  js-friend-click" href="#" title="Tipsa n&aring;gon om denna sida">Tipsa</a></li>
 		<li class="addthis">
-			<div class="addthis_toolbox" addthis:url="http://<?php echo $_SERVER['SERVER_NAME'] . get_permalink(); ?>" addthis:title="<?php the_title(); ?>" addthis:description="Kolla den h&auml;r sidan.">
+			<div class="addthis_toolbox" addthis:url="<?php echo the_permalink(); ?>" addthis:title="<?php the_title(); ?>" addthis:description="Kolla den h&auml;r sidan.">
 				<a class="addthis_button_email"></a>
 				<a class="addthis_button_facebook"></a>
 				<a class="addthis_button_twitter"></a>
