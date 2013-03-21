@@ -4863,6 +4863,16 @@ html {
 }
 
 @media only screen and (max-width: 969px) {
+  /* Lap-size side-menu correction */
+  .page-header .category-tools .menu-item .sub-menu > li {
+    display: table !important;
+  }
+  .main-sub-menu {
+    word-spacing: 0;
+  }
+  .icon-left {
+    line-height: 1.7em !important;
+  }
   .icon-right {
     height: 24px;
   }
