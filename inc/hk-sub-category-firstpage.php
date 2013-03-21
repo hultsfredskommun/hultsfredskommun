@@ -16,6 +16,12 @@
 </div><!-- #primary -->
 <?php endif; ?>
 
+<?php if (is_active_sidebar('firstpage-sidebar-2')) : ?>
+<aside id="firstpage-sidebar-2" role="complementary" class="firstpage-sidebar-2 firstpage-sidebar">
+	<?php dynamic_sidebar('firstpage-sidebar-2'); ?>
+</aside><!-- #firstpage-sidebar-2 -->
+<?php endif; ?>
+
 <?php if (is_active_sidebar('firstpage-pre-footer-sidebar')) : ?>
 <div id="firstpage-pre-footer-sidebar" class="firstpage-pre-footer-sidebar">
 <?php dynamic_sidebar('firstpage-pre-footer-sidebar'); ?>
