@@ -5181,6 +5181,7 @@ article.summary.post:hover > .openButton {
 
 .main-sub-menu {
   /*@extend .nav--block-double-margin;*/
+  word-spacing: 0;
 }
 @media only screen and (max-width: 540px) {
   .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
