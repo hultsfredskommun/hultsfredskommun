@@ -4863,16 +4863,6 @@ html {
 }
 
 @media only screen and (max-width: 969px) {
-  /* Lap-size side-menu correction */
-  .page-header .category-tools .menu-item .sub-menu > li {
-    display: table !important;
-  }
-  .main-sub-menu {
-    word-spacing: 0;
-  }
-  .icon-left {
-    line-height: 1.7em !important;
-  }
   .icon-right {
     height: 24px;
   }
@@ -5115,19 +5105,6 @@ article.summary.post:hover > .openButton {
   display: block;
   margin-bottom: 4px;
   margin-left: 12px;
-}
-
-/* Search results styling */
-.search-tele {
-  margin-left: 0;
-}
-.search-tele > li {
-  list-style: none;
-  padding: 7px;
-  line-height: 1.3em;
-}
-.search-tele > li:nth-child(2n+2) {
-  background: rgb(236, 236, 236);
 }
 
 /* top right menu */
