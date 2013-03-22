@@ -9,6 +9,31 @@
 		$retString = "</ul>";
 
 		
+		
+		/* get new posts */
+		//$query = array(	'posts_per_page' => get_option('posts_per_page') );
+		$query = array(	'posts_per_page' => 15 );
+		
+		// add search to query
+		$query["s"] = $searchstring;
+		$dyn_query = new WP_Query();
+		$dyn_query->query($query);
+
+		$retArray = array();
+
+		/* Start the Loop of posts search */
+		if ($dyn_query->have_posts()):
+			$retString .= "<ul class='search-posts'>";
+			$retString .= "<li class='search-title'>Artiklar</li>";
+			while ( $dyn_query->have_posts() ) : $dyn_query->the_post();
+				$retString .= "<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a></li>"; //<i>" . get_the_category_list(', ') . "</i>
+			endwhile;
+			$retString .= "</ul>";
+		endif;
+
+		echo $retString;
+		
+		
 		/* hook to be able to add other search result */ 
 		do_action('hk_pre_ajax_search', $searchstring);
 
@@ -57,28 +82,6 @@
 			$retString .= "</ul>";
 		}
 
-		/* get new posts */
-		//$query = array(	'posts_per_page' => get_option('posts_per_page') );
-		$query = array(	'posts_per_page' => 15 );
-		
-		// add search to query
-		$query["s"] = $searchstring;
-		$dyn_query = new WP_Query();
-		$dyn_query->query($query);
-
-		$retArray = array();
-
-		/* Start the Loop of posts search */
-		if ($dyn_query->have_posts()):
-			$retString .= "<ul class='search-posts'>";
-			$retString .= "<li class='search-title'>Artiklar</li>";
-			while ( $dyn_query->have_posts() ) : $dyn_query->the_post();
-				$retString .= "<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a></li>"; //<i>" . get_the_category_list(', ') . "</i>
-			endwhile;
-			$retString .= "</ul>";
-		endif;
-
-		echo $retString;
 
 	endif;
 ?>

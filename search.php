@@ -13,6 +13,9 @@ get_header(); ?>
 		<div id="primary" class="primary  searchresult">
 			<div id="content" role="main">
 
+			<?php /* hook to be able to add other search result */ 
+			do_action('hk_pre_search', get_query_var("s")); ?>
+
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
@@ -28,8 +31,6 @@ get_header(); ?>
 					</ul>
 				</header>
 
-				<?php /* hook to be able to add other search result */ 
-				do_action('hk_pre_search', get_query_var("s")); ?>
 				
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
