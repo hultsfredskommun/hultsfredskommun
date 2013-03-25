@@ -118,7 +118,7 @@ _gaq.push(['_trackPageview']);
 
 </script>
 <?php endif; ?>
-<div id="scrollTo_top" class="scrolltotop"><a href="#"><i class="i" data-icon="&#xF148;"></i></a></div>
+<div id="scrollTo_top" class="scrolltotop"><a href="#"><i class="i" data-icon="&#xF010;"></i></a></div>
 <div id="log" class="flush--bottom  position-fixed--bottom-right  island  hidden"></div>
 </body>
 </html>

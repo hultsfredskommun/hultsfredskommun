@@ -23,8 +23,7 @@
 				<?php endif; // End if $tags_list ?>
 
 			</li>
-
-			<li class="editor">Sidansvarig: <a href="<?php echo get_permalink() . "?respond=1"; ?>">
+			<li class="editor">Sidansvarig: <a href="<?php echo get_permalink() . "?respond=".get_the_ID()."#respond"; ?>">
 			<?php echo get_the_author(); ?></a> <?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
 			<li class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></li>
 
@@ -32,4 +31,6 @@
 
 
 		</ul>
+		<?php comments_template( '', true ); ?>
 	</footer><!-- .entry-meta -->
+
