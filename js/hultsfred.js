@@ -823,7 +823,7 @@ $(document).ready(function(){
 					} 
 					searchstring = $("#s").val(); 
 					
-					$(".searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
+					$(".searchresult-wrapper .searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
 					{ searchstring: searchstring }, 
 					function() { 
 
@@ -985,7 +985,7 @@ function erase_and_refocus_on_search_input()
 	$('#s').val(''); 
 	$('#s').focus(); 
 
-	var dropdown = $('.searchresult'); 
+	var dropdown = $('.searchresult-wrapper'); 
 
 	if($(dropdown).length > 0) { 
 		$(dropdown).remove(); 
