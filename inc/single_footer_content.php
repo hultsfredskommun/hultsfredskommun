@@ -24,7 +24,8 @@
 
 			</li>
 
-			<li class="editor">Sidansvarig: <?php comments_popup_link(get_the_author(),get_the_author(),get_the_author(),'',get_the_author()); ?><?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
+			<li class="editor">Sidansvarig: <a href="<?php echo get_permalink() . "?respond=1"; ?>">
+			<?php echo get_the_author(); ?></a> <?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
 			<li class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></li>
 
 			<li class="permalink">Direktl&auml;nk: <a href="<?php echo get_permalink(); ?>"><?php echo get_permalink(); ?></a></li>

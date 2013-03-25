@@ -12,6 +12,8 @@
  * @since Twenty Eleven 1.0
  */
 ?>
+<?php if ( $_REQUEST["respond"] != "") : ?>
+
 	<div id="comments">
 	<?php if ( post_password_required() ) : ?>
 		<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'twentyeleven' ); ?></p>
@@ -73,6 +75,16 @@
 		<p class="nocomments"><?php _e( 'Comments are closed.', 'twentyeleven' ); ?></p>
 	<?php endif; ?>
 
-	<?php comment_form(); ?>
+	<?php comment_form(array('title_reply' => "Kontakta sidansvarig",
+	'fields' => apply_filters( 'comment_form_default_fields', array(
+		'author' => '<p class="comment-form-author">' . '<label for="author">Namn ' . ( $req ? '<span class="required">*</span>' : '' ) . '</label><input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>',
+		'email' => '<p class="comment-form-email"><label for="email">E-post ' . ( $req ? '<span class="required">*</span>' : '' ) . '</label><input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>',
+		) ), 
+	'comment_notes_before' => '',
+	'comment_field' => '<p class="comment-form-comment"><label for="comment">Meddelande</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
+	'label_submit' => 'Skicka meddelande',
+	'comment_notes_after' => '',
+	)); ?>
 
 </div><!-- #comments -->
+<?php endif; // end if request respond != "" ?>
