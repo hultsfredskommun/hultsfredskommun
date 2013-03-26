@@ -5001,10 +5001,10 @@ html {
   display: block;
 }
 
+/*
 article.summary.post:hover > .openButton {
-  display: block!important;
-}
-
+	display: block!important;
+}*/
 .button.top {
   margin: 0px 12px;
 }
