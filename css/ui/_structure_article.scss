@@ -151,10 +151,7 @@ article.post {
 .map_link {
 	@extend .cursor-pointer;
 }
-/*
-article.summary.post:hover > .openButton {
-	display: block!important;
-}*/
+
 .button {
 	@extend .cursor-pointer;
 	&.top {	

@@ -6,6 +6,26 @@ var settings = new Array();
 
 var currPageTitle = $("head").find("title").html();
 var havePushed = false;
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
 
 /**
  * print element (TODO not working in IE)
@@ -1022,9 +1042,15 @@ function setArticleActions(el) {
 		$(this).parent().next().find(".addthis_toolbox").fadeToggle();
 	});
 
-	//sets click-action on entry-titles
-	$(el).find('h1.entry-title').after("<div class='openButton button top hidden'><i class='i' data-icon='&#xF149;'></i>Visa mer</div>");
 	
+	
+	// set hover button if not mobile
+	if (!isMobile.any()) {
+		$(el).find('h1.entry-title').after("<div class='openButton button top hidden'><i class='i' data-icon='&#xF149;'></i>Visa mer</div>");
+		$("article.summary.post").hover(function() { $(this).find(".openButton").removeClass("hidden");},function() { $(this).find(".openButton").addClass("hidden");} );
+	}
+	
+	//sets click-action on entry-titles
 	$(el).find('.entry-title a, .togglearticle, .openButton').unbind("click").bind("click",function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
@@ -1193,6 +1219,8 @@ function dyn_posts_load_posts() {
 	return false;
 };
 
+
+/* helpers */
 $.fn.sumWidth = function() {
 	totalWidth = 0;
 	$(this).each(function(index) {
