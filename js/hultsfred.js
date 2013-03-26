@@ -440,7 +440,7 @@ function readMoreToggle(el){
 		}
 	}
 
-	if( !$(article).hasClass("loaded") ){
+	if( !$(article).hasClass("loaded") && !$(article).hasClass("loading") ) {
 		//add class loading
 		$(article).addClass("loading"); //.html("Laddar...");
 		
@@ -525,10 +525,10 @@ function readMoreToggle(el){
 			toggleShow();
 		});
 	}
-	else{
+	else if( $(article).hasClass("loaded") ){
 		toggleShow();
-		return false;
 	}
+	return false;
 }
 
 
