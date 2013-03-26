@@ -4787,6 +4787,10 @@ h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavi
 }
 
 /* text colors */
+a {
+  cursor: pointer;
+}
+
 a:hover {
   text-decoration: none;
 }

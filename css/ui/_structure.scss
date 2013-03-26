@@ -2,6 +2,9 @@
 html {
 	@extend .default-text;
 }
+a {
+	cursor: pointer;
+}
 a,
 a:active,
 a:focus {
@@ -53,6 +56,7 @@ html {
 img {
 	@extend .border-radius;
 }
+
 /*.Citybreak_engine td, 
 .Citybreak_engine th {
 	border: 0;
