@@ -102,22 +102,6 @@ global $default_settings;
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-<?php if ($hk_options["google_analytics"] != "" && $default_settings['allow_google_analytics']) : ?>
-<script type="text/javascript">
-
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', '<?php echo $hk_options["google_analytics"]; ?>']); 
-_gaq.push(['_setDomainName', '<?php echo $hk_options['google_analytics_domain'];  ?>']);
-_gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-<?php endif; ?>
 <div id="scrollTo_top" class="scrolltotop"><a href="#"><i class="i" data-icon="&#xF010;"></i></a></div>
 <div id="log" class="flush--bottom  position-fixed--bottom-right  island  hidden"></div>
 </body>
