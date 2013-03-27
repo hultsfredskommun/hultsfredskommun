@@ -3,7 +3,10 @@
 	require('../../../../wp-blog-header.php');
 	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 	$searchstring = $_REQUEST['searchstring'];
+	
 	if ($searchstring != "") :
+	
+	
 		$retString = "<ul>";
 		$retString .= "<li><a href='" . site_url() . "/?s=" . $searchstring . "'>S&ouml;k efter " . $searchstring . "</a></li>";
 		$retString = "</ul>";
@@ -17,8 +20,14 @@
 		// add search to query
 		$query["s"] = $searchstring;
 		$dyn_query = new WP_Query();
+		
 		$dyn_query->query($query);
-
+		
+		// do relevanssi
+		if (function_exists('relevanssi_do_query')) {
+			relevanssi_do_query($dyn_query);
+		}
+		
 		$retArray = array();
 
 		/* Start the Loop of posts search */
@@ -31,6 +40,12 @@
 			$retString .= "</ul>";
 		endif;
 
+		
+		// suggestions
+		if (function_exists('relevanssi_didyoumean')) {
+			relevanssi_didyoumean($searchstring, "<div class='one-whole float--left island flush--bottom'>Menade du ",".</div>");
+		}
+		
 		echo $retString;
 		
 		

@@ -178,6 +178,19 @@ add_action( 'pre_get_posts', 'hk_exclude_category' );
  */
 if (!is_admin()) {
 	
+	/*
+	 * Loads special google font CSS file.
+	 */
+	
+	if ($hk_options['google_font'] != "") {
+		$protocol = is_ssl() ? 'https' : 'http';
+		$query_args = array(
+			'family' => $hk_options['google_font'],
+			'subset' => '',
+		);
+		wp_enqueue_style( 'hk-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
+	}
+	
 	if ($hk_options['typekit_url'] != "") {
 	//  //use.typekit.net/xpx0dap.js
 		wp_enqueue_script(
@@ -993,5 +1006,6 @@ function hk_attachments_in_query($local_wp_query) {
 if (!is_admin()) {
 //	add_action('pre_get_posts', 'hk_attachments_in_query');
 }
+
 
 ?>
