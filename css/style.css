@@ -3272,7 +3272,7 @@ html.flexbox {
 /**
 * Quarters
 */
-.one-quarter, .two-eighths, .three-twelfths, .article-wrapper .content-wrapper .contact-area .img-wrapper {
+.one-quarter, .two-eighths, .three-twelfths, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper {
   width: 25%;
 }
 
@@ -5027,6 +5027,10 @@ html {
 }
 /* article footer*/
 /* featured images */
+.side-map, .map_canvas {
+  height: 200px;
+}
+
 .pager {
   z-index: 10;
 }
@@ -5421,7 +5425,7 @@ html {
   margin-top: 1.5rem;
 }
 
-.margin--right, .home .contact-area .contact-wrapper .content-wrapper h1 a, .article-wrapper .content-wrapper .contact-area .img-wrapper, .scrolltotop {
+.margin--right, .home .contact-area .contact-wrapper .content-wrapper h1 a, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper, .map_canvas, .scrolltotop {
   margin-right: 24px;
   margin-right: 1.5rem;
 }

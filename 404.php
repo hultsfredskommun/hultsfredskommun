@@ -16,7 +16,7 @@ get_header(); ?>
 	<div id="primary" class="primary">
 		<div id="content" role="main">
 
-		<?php hk_404(); ?>
+		<?php if (function_exists("hk_404")) hk_404(); ?>
 
 
 		</div><!-- #content -->

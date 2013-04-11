@@ -691,7 +691,7 @@ $(document).ready(function(){
 	$('.img-wrapper').slideshow();
 	
 	/* init google maps on ready */
-	$(".contact-area .map_canvas, article.single .map_canvas").googlemap();
+	$(".contact-area .map_canvas, article.post .map_canvas").googlemap();
 	$("article.single .map_link").googlemaplink();
 	
 	/**

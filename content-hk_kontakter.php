@@ -13,7 +13,6 @@ global $default_settings;
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
 			<div class="content-wrapper">
-
 				<div class="summary-content"></div><div>
 					<?php hk_the_contact(array(
 						'image' => true,
@@ -30,6 +29,7 @@ global $default_settings;
 				</div><!-- .summary-content -->
 
 			</div><!-- .content-wrapper -->
+			<?php require("inc/single_footer_content.php"); ?>
 		</div>
 		</div>
 		<span class='hidden contact_id'><?php the_ID(); ?></span>
