@@ -4801,7 +4801,7 @@ ul, ol, dd {
 }
 
 html {
-  font-family: 'Oxygen', "myriad-pro", Arial, sans-serif;
+  font-family: "Oxygen", "myriad-pro", Arial, sans-serif;
 }
 
 .content--center, .menu-wrapper,
@@ -5001,10 +5001,6 @@ html {
   display: block;
 }
 
-/*
-article.summary.post:hover > .openButton {
-	display: block!important;
-}*/
 .button.top {
   margin: 0px 12px;
 }
@@ -5174,7 +5170,7 @@ article.summary.post:hover > .openButton {
 .more-menu-ul a,
 .main-menu a,
 .main-sub-menu a {
-  padding: 12px 24px !important;
+  padding: 12px 18px !important;
 }
 @media only screen and (max-width: 969px) {
   .more-menu-ul a,

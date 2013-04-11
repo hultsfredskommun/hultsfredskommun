@@ -56,7 +56,7 @@
 .main-menu,
 .main-sub-menu {
 	a {
-		padding: $half-spacing-unit $base-spacing-unit!important;
+		padding: $half-spacing-unit $half-spacing-unit*1.5!important;
 	}
 	@include media-query(portable){
 	a {
