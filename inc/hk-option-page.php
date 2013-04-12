@@ -191,7 +191,8 @@ function hk_theme_options_do_page() {
 			<?php if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled ?>
 			<h3>Normalisera klickräknare</h3>
 			<p><input type="checkbox" name="hk_theme[force_normalize]" value="1" /> <label for="hk_theme[force_normalize]">Tvinga normalisera!</label> <br>
-			Normaliserar räknare <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_normalize_count_event' )); ?></b> nästa gång. <br><?php echo $options["hk_normalize_count_log"]; ?> </p>
+			Normaliserar räknare <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_normalize_count_event' )); ?></b> nästa gång. <br>
+			Kördes senast <b><?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?></b><br>LOG: <?php echo $options["hk_normalize_count_log"]; ?> </p>
 			
 			<?php
 				if ($options["force_normalize"] == "1") {

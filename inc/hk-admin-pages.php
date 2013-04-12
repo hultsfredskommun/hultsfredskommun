@@ -211,11 +211,9 @@ if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled
 
 // normalize view count
 function hk_normalize_count() {
-	$options = get_option('hk_theme');
-	$hk_normalize_count_time = time();
-	$options["hk_normalize_count_time"] = $hk_normalize_count_time;
 	//define arguments for WP_Query()
 	$qargs = array(
+		'post_type' => array("post","hk_kontakter"),
 		'posts_per_page' => -1,
         'post_status' => 'published',
 		'suppress_filters' => true);
@@ -233,16 +231,25 @@ function hk_normalize_count() {
 		$count++;
 		$post_id = get_the_ID();
 		$views = get_post_meta($post_id, "views", true);
-		$new_views = floor(sqrt($views));
-		add_post_meta($post_id, "views", $new_views, $views) || update_post_meta($post_id, "views", $new_views, $views); 
 		
-		//$log .= $id . " " . $views . " " . $new_views . "<br>";
+		if (empty($views)) {
+			add_post_meta($post_id, "views", 0);
+		}
+		else {
+			$new_views = floor(sqrt($views));
+			add_post_meta($post_id, "views", $new_views. $views) || update_post_meta($post_id, "views", $new_views, $views); 
+		}
+		
+		$log .= $post_id . " " . $views . " " . $new_views . "a<br>";
 	endwhile;
 
 	$log .= "Normaliserade $count artiklar " . date("d M", strtotime("now"));
-	$options["hk_normalize_count_log"] = $log;
-
-
+	
+	$options = get_option('hk_theme');
+	$hk_normalize_count_time = time();
+	$options["hk_normalize_count_time"] = $hk_normalize_count_time;
+	if ($log != "")
+		$options["hk_normalize_count_log"] = $log;
 	update_option("hk_theme", $options);
 }
 add_action("hk_normalize_count_event", "hk_normalize_count");
