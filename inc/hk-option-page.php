@@ -160,6 +160,13 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[comment_side_link]">Kontakta-oss-l&auml;nk</label><br/><input size="80" type="text" name="hk_theme[contact_side_link]" value="<?php echo $options['contact_side_link']; ?>" /></p>
 			<p><label for="hk_theme[comment_side_link]">Hjälp-oss-l&auml;nk</label><br/><input size="80" type="text" name="hk_theme[comment_side_link]" value="<?php echo $options['comment_side_link']; ?>" /></p>
 
+			<h2>Permal&auml;nkar</h2>
+			<p><label for="hk_theme[permalinkstructure]">Permal&auml;nkstruktur f&ouml;r kontakter, om n&aring;gon fast struktur under Inst&auml;llningar -&gt; Permal&auml;nkar &auml;r satt (ex. om anpassad struktur &auml;r <b>/artikel/</b>%postname%/, s&aring; s&auml;tt <b>/artikel/</b>kontakter i denna inst&auml;llning).</label><br/><input type="text" name="hk_theme[permalinkstructure]" value="<?php echo $options['permalinkstructure']; ?>" /></p>
+			<?php echo "<i>Flushing rewrite rules.</i> "; 
+			flush_rewrite_rules(); 
+			echo "<i>Done.</i>";?>
+
+			
 			<h2>Till&auml;gg</h2>
 			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. L&auml;gger till Tipsa i artikel.</label><br/><input type="text" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
 			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. L&auml;gger till Lyssna i artikel.</label><br/><input type="text" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>			
