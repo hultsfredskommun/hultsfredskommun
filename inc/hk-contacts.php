@@ -74,7 +74,7 @@ function hk_contacts_init() {
 				'hierarchical' => false,
 				'publicly_queryable' => true,
 				'query_var' => true,
-				'supports' => array('title','editor','comments','revisions','author'),
+				'supports' => array('title','editor','comments','revisions','author','custom-fields'),
 				'taxonomies' => array('category'),
 				// there are a lot more available arguments, but the above is plenty for now
 			));

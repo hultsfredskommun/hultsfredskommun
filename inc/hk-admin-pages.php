@@ -234,7 +234,7 @@ function hk_normalize_count() {
 		$post_id = get_the_ID();
 		$views = get_post_meta($post_id, "views", true);
 		$new_views = floor(sqrt($views));
-		update_post_meta($post_id, "views", $new_views, $views); 
+		add_post_meta($post_id, "views", $new_views, $views) || update_post_meta($post_id, "views", $new_views, $views); 
 		
 		//$log .= $id . " " . $views . " " . $new_views . "<br>";
 	endwhile;

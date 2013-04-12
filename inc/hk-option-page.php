@@ -186,10 +186,13 @@ function hk_theme_options_do_page() {
 			<p><input type="checkbox" name="hk_theme[google_analytics_disable_if_no_cookies]" value="1"<?php checked( 1 == $options['google_analytics_disable_if_no_cookies'] ); ?> /> <label for="hk_theme[google_analytics_disable_if_no_cookies]">Anv&auml;nd inte Google Analytics om cookies inte &auml;r accepterade (p&aring;verkar bara om "fr&aring;ga om cookies" &auml;r p&aring).</label</p>
 			
 			<h2>Cron</h2>
-			<p><label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label><br/><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?> Kördes senast <?php echo Date("Y-m-d H:i:s",$options["hk_review_mail_check_time"]); ?><br/><?php echo $options["hk_review_mail_log"]; ?></p>
+			<h3>Granskningsmail</h3>
+			<p><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> <label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?> <br>Granskningsmail körs <b><?php echo  Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_review_mail_event' )); ?></b> nästa gång.<br/><?php echo $options["hk_review_mail_log"]; ?></p>
 			<?php if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled ?>
-			<p>Normaliserade räknare <?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?>: <br><?php echo $options["hk_normalize_count_log"]; ?>. Automatisk normalisering aktiverad? <?php echo (wp_next_scheduled( 'hk_normalize_count_event' ))?"Aktiverat.":"Inaktiverat."; ?></p>
-			<p><input type="checkbox" name="hk_theme[force_normalize]" value="1" /> <label for="hk_theme[force_normalize]">Tvinga normalisera!.</label</p>
+			<h3>Normalisera klickräknare</h3>
+			<p><input type="checkbox" name="hk_theme[force_normalize]" value="1" /> <label for="hk_theme[force_normalize]">Tvinga normalisera!</label> <br>
+			Normaliserar räknare <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_normalize_count_event' )); ?></b> nästa gång. <br><?php echo $options["hk_normalize_count_log"]; ?> </p>
+			
 			<?php
 				if ($options["force_normalize"] == "1") {
 					echo "F&ouml;rs&ouml;ker normalisera visningar.";

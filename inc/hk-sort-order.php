@@ -117,7 +117,9 @@
 			$orderby = $_REQUEST["orderby"];
 		else if( !function_exists( 'views_orderby' ))
 			$orderby = "latest"; // alphabetical to be standard if no set
-
+		else
+			$orderby = "";
+			
 		if ($orderby == "latest") {
 			// wordress blog standard
 			$order = ' (' . $wpdb->posts . '.post_date ) DESC';
@@ -171,6 +173,9 @@
 		add_action('add_attachment', 'hk_add_views_fields');
 		add_action('edit_attachment', 'hk_add_views_fields');
 		add_action('delete_attachment', 'hk_delete_views_fields');
+		add_action('add_post', 'hk_add_views_fields');
+		add_action('edit_post', 'hk_add_views_fields');
+		add_action('delete_post', 'hk_delete_views_fields');
 	}
 
 ?>
