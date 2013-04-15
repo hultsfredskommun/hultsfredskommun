@@ -30,21 +30,26 @@
 			<?php if ($_REQUEST["orderby"] == "popular" || $_REQUEST["orderby"] == "") { ?>
 				<li class='current-menu-item'><a class="active">Popul&auml;ra</a></li>
 			<?php } else { ?>
-				<li><a href="?orderby=popular<?php echo $tags.$search; ?>">Mest bes&ouml;kt</a></li>
+				<li><a href="?orderby=popular<?php echo $tags.$search; ?>">Popul&auml;ra</a></li>
 			<?php } ?>
 			<?php endif; ?>
 			
+			<?php if ($_REQUEST["orderby"] == "latest" || $_REQUEST["orderby"] == "oldest") {
+				$active_class = "class='active'";
+			} ?>
 			<?php if ($_REQUEST["orderby"] == "latest") { ?>
-				<li><a href="?orderby=oldest&amp;<?php echo $tags.$search; ?>">&Auml;ldst</a></li>
+				<li class="asc"><a <?php echo $active_class; ?> href="?orderby=oldest&amp;<?php echo $tags.$search; ?>">Datum <span class="arrow"></span></a></li>
 			<?php } else { ?>
-				<li><a href="?orderby=latest&amp;<?php echo $tags.$search; ?>">Senast</a></li>
+				<li <?php echo ($_REQUEST["orderby"] == "oldest")?"class='desc'":""; ?>><a <?php echo $active_class; ?> href="?orderby=latest&amp;<?php echo $tags.$search; ?>">Datum <span class="arrow"></span></a></li>
 			<?php } ?>
 
+			<?php if (false) : // removed alpha sorting ?>
 			<?php if ($_REQUEST["orderby"] == "alpha") { ?>
-				<li><a href="?orderby=alpha_desc<?php echo $tags.$search; ?>">&Ouml; - A</a></li>
+				<li class="desc"><a href="?orderby=alpha_desc<?php echo $tags.$search; ?>">A - &Ouml; <span class="arrow"></span></a></li>
 			<?php } else { ?>
-				<li><a href="?orderby=alpha<?php echo $tags.$search; ?>">A - &Ouml;</a></li>
+				<li <?php echo ($_REQUEST["orderby"] == "alpha_desc")?"class='asc'":""; ?>><a href="?orderby=alpha<?php echo $tags.$search; ?>">A - &Ouml; <span class="arrow"></span></a></li>
 			<?php } ?>
+			<?php endif; ?>
 
 		</ul>
 

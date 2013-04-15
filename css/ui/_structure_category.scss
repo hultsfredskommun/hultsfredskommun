@@ -45,6 +45,23 @@
 		.active {
 			@extend .font-weight-bold;
 		}
+		.desc .arrow {
+			width: 0px;
+			height: 0px;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-bottom: 5px solid $main-color;
+			display: inline-block;
+		}
+		.asc .arrow {
+			width: 0px;
+			height: 0px;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-top: 5px solid $main-color;
+			display: inline-block;
+		}
+		
 	}
 	
 	

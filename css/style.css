@@ -4937,6 +4937,16 @@ html {
 .home .contact-area .contact-wrapper .content-wrapper .complement-italic-text, .home .contact-area .contact-wrapper .content-wrapper .content {
   line-height: 0;
 }
+@media only screen and (max-width: 540px) {
+  .home .contact-area .contact-wrapper .content-wrapper h1 {
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 541px) and (max-width: 969px) {
+  .home .contact-area .contact-wrapper .content-wrapper h1 {
+    padding: 0;
+  }
+}
 .home .contact-area .contact-wrapper .content-wrapper h1 a {
   display: block;
 }
@@ -4950,6 +4960,24 @@ html {
 /*
  * sort-order 
  */
+.page-header .view-tools .desc .arrow,
+.page-header .sort-order .desc .arrow {
+  width: 0px;
+  height: 0px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #5c85b1;
+  display: inline-block;
+}
+.page-header .view-tools .asc .arrow,
+.page-header .sort-order .asc .arrow {
+  width: 0px;
+  height: 0px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #5c85b1;
+  display: inline-block;
+}
 .page-header .category-tools .menu-item .icon-left, .page-header .category-tools .menu-item h1.widget-title .i, h1.widget-title .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .page-header .category-tools .menu-item .submit, .page-header .category-tools .menu-item .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .page-header .category-tools .menu-item .submit {
   padding-bottom: 0!important;
 }

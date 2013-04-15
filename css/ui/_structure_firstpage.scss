@@ -85,6 +85,12 @@
 		}
 		@extend .position-absolute--top-left;
 		h1 {
+			@include media-query(palm){
+				padding: 0;
+			}
+			@include media-query(lap){
+				padding: 0;
+			}
 			@extend .float--left;
 			@extend .one-whole;
 			@extend .noborder;

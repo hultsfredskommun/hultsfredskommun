@@ -1047,7 +1047,7 @@ function setArticleActions(el) {
 	// set hover button if not mobile
 	if (!isMobile.any()) {
 		$(el).find('h1.entry-title').not(":hidden").after("<div class='openButton button top hidden'><i class='i' data-icon='&#xF149;'></i>Visa mer</div>");
-		$("article.summary.post").hover(function() { $(this).find(".openButton").removeClass("hidden");},function() { $(this).find(".openButton").addClass("hidden");} );
+		$("article.summary.post").hover(function() { if ($(this).hasClass("summary")) { $(this).find(".openButton").removeClass("hidden").show(); } },function() { if ($(this).hasClass("summary")) { $(this).find(".openButton").addClass("hidden").hide(); }} );
 	}
 	
 	//sets click-action on entry-titles
