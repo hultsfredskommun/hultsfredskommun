@@ -585,7 +585,7 @@ function hk_get_the_contact($args = array()) {
 		$mapclass = "hasmap";
 	}
 		
-	$retValue = "<div class='entry-wrapper contact-wrapper $mapclass'>";
+	$retValue = "<div id='content-" . get_the_ID() ."' class='entry-wrapper contact-wrapper $mapclass'>";
 		$retValue .= "<div class='entry-content'>";
 
 			// image
