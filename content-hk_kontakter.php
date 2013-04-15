@@ -8,12 +8,12 @@
  */
 global $default_settings;
 ?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky  post":"post"); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky  post  summary":"post  summary"); ?>>
 		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
 			<div class="content-wrapper">
-				<div class="summary-content"></div><div>
+				<div class="summary-content">
 					<?php hk_the_contact(array(
 						'image' => true,
 						'name' => false,
@@ -22,9 +22,9 @@ global $default_settings;
 						'phone' => true,
 						'email' => true,
 						'description' => true,
-						'address' => true,
-						'visit_hours' => true,
-						'map' => true,
+						'address' => false,
+						'visit_hours' => false,
+						'map' => false,
 						'title_link' => false)); ?>
 				</div><!-- .summary-content -->
 
@@ -32,5 +32,5 @@ global $default_settings;
 			<?php require("inc/single_footer_content.php"); ?>
 		</div>
 		</div>
-		<span class='hidden contact_id'><?php the_ID(); ?></span>
+		<span class='hidden article_id'><?php the_ID(); ?></span>
 	</article><!-- #post-<?php the_ID(); ?> -->

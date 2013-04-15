@@ -203,17 +203,19 @@ article.post {
 	@extend .padding--bottom;
 	@extend .one-whole;
 }
-.post.hk_kontakter .img-wrapper {
+.post.hk_kontakter .img-wrapper,
+.single.hk_kontakter .img-wrapper {
 	@extend .one-quarter;
 	@extend .margin--right;
 }
 .side-map, .map_canvas {
 	height: 200px;
 }
-.map_canvas {
+.single .map_canvas {
 	@extend .margin--right;
 }
-.post .img-wrapper {
+.post .img-wrapper,
+.single .img-wrapper {
 	@extend .float--left;
 	@extend .one-whole;
 }

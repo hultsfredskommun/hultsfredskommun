@@ -496,6 +496,8 @@ function hk_contact_firstpage($contactargs) {
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 					$retValue .= $number . "</a></li>";
 				endwhile; endif;				
+				$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'></i>";
+				$retValue .= "Fler kontaktuppgifter...</a></li>";
 
 				$retValue .= "</ul>";
 				if ($rightcontent) :
@@ -651,7 +653,7 @@ function hk_get_the_contact($args = array()) {
 	
 		// position
 		if (!empty($contact_position) && $contact_position["coordinates"] != "") :
-			$retValue .= "<div class='side-map'><div class='map_canvas " . $hidden['map'] . "'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div></div>";
+			$retValue .= "<div class='side-map " . $hidden['map'] . "'><div class='map_canvas'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div></div>";
 		endif;
 		
 

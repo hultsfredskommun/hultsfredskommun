@@ -56,6 +56,9 @@ html {
 img {
 	@extend .border-radius;
 }
+.logo img {
+	border-radius: 0;
+}
 
 /*.Citybreak_engine td, 
 .Citybreak_engine th {

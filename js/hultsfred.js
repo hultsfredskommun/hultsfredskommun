@@ -691,7 +691,7 @@ $(document).ready(function(){
 	$('.img-wrapper').slideshow();
 	
 	/* init google maps on ready */
-	$(".contact-area .map_canvas, article.post .map_canvas").googlemap();
+	$(".contact-area .map_canvas, article.post .map_canvas, article.single .map_canvas").googlemap();
 	$("article.single .map_link").googlemaplink();
 	
 	/**
@@ -1046,7 +1046,7 @@ function setArticleActions(el) {
 	
 	// set hover button if not mobile
 	if (!isMobile.any()) {
-		$(el).find('h1.entry-title').after("<div class='openButton button top hidden'><i class='i' data-icon='&#xF149;'></i>Visa mer</div>");
+		$(el).find('h1.entry-title').not(":hidden").after("<div class='openButton button top hidden'><i class='i' data-icon='&#xF149;'></i>Visa mer</div>");
 		$("article.summary.post").hover(function() { $(this).find(".openButton").removeClass("hidden");},function() { $(this).find(".openButton").addClass("hidden");} );
 	}
 	
@@ -1101,6 +1101,8 @@ function setContactPopupAction(el) {
 function contactAction(el,ev) {
 	if ($(".contact-popup").length == 0) {
 		var post_id = $(el).parents(".contact-wrapper").find(".contact_id").html();
+		if (post_id === undefined)
+			post_id = $(el).parents("article").find(".article_id").html();
 		
 		// follow link if post_id not found
 		if (post_id == null) return true;

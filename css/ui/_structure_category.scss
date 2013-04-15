@@ -53,6 +53,15 @@
 		@extend .nav;
 		@extend .nav--block;
 		@extend .flush--bottom;
+		.related-menu {
+			@extend .main-background;
+			a {
+				@extend .white-text;
+			}
+			a:hover {
+				@extend .main-text;
+			}
+		}
 		.menu-item {
 			@extend .dropdown;
 			.icon-left {
@@ -63,20 +72,23 @@
 				width: $base-spacing-unit;
 			}
 			&:hover {
-				@extend .gray-light-background;
+				@extend .white-background;
+				a {
+					@extend .main-text;
+				}
 			}
 			.sub-menu {
 				@extend .nav;
 				@extend .nav--stacked;
 				@extend .nav--block;
-				@extend .gray-light-background;
+				@extend .white-background;
 				@extend .dropdown__content--right;
 				@extend .nav--stacked;
 				@extend .text--left;
-				border-radius: 0 $border-radius $border-radius $border-radius;
-				border-left: 1px solid white;
-				border-right: 1px solid white;
-				border-bottom: 1px solid white;
+				border-radius: 0 0 $border-radius $border-radius;
+				border-left: $border-width $border-style $border-color;
+				border-right: $border-width $border-style $border-color;
+				border-bottom: $border-width $border-style $border-color;
 				z-index: 100;
 			}
 		}

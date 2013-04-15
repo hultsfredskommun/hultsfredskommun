@@ -165,6 +165,7 @@
 	}
 	/* set top menu icons */
 	.top-menu {
+		word-spacing: 0;
 		@extend .text--right;
 		@extend .nav;
 		@extend .nav--block;

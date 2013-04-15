@@ -14,7 +14,7 @@ get_header(); ?>
 	<div id="primary" class="primary">
 		<div id="content" role="main">
 
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php if ( have_posts() ) : the_post(); ?>
 				<?php
 					$cat_array = array();
 					$from_string = "" ;
@@ -28,9 +28,9 @@ get_header(); ?>
 					// get post type
 					$post_type = get_post_type();
 				?>
-				<?php get_template_part( 'content', ($post_type == 'post')?'single':$post_type ); ?>
+				<?php get_template_part( 'content', 'single' ); ?>
 
-			<?php endwhile; // end of the loop. ?>
+			<?php endif; // end of the loop. ?>
 			
 			<?php /* show related posts */
 			if (empty($_REQUEST["print"]) && !empty($cat_array)) : ?>

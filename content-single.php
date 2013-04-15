@@ -10,7 +10,25 @@
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
 			<div class="single-content content-wrapper">
+				<?php 
+					if (get_post_type() == "hk_kontakter") {
+						hk_the_contact(array(
+							'image' => true,
+							'name' => false,
+							'title' => true,
+							'workplace' => true,
+							'phone' => true,
+							'email' => true,
+							'description' => true,
+							'address' => true,
+							'visit_hours' => true,
+							'map' => true,
+							'title_link' => false)); 
+					}
+				?>
+
 				<?php require("inc/single_content.php"); ?>
+				
 			</div><!-- .single-content .content-wrapper -->
 			<?php require("inc/hk-aside-content.php"); ?>
 			<?php require("inc/single_footer_content.php"); ?>

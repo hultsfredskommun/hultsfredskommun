@@ -62,7 +62,7 @@
 				query_posts( $args );
 				if ( have_posts() ) : while ( have_posts() ) : the_post();
 					echo 'tesst';
-					get_template_part( 'content', get_post_format() );
+					get_template_part( 'content', get_post_type() );
 					$shownPosts[] = get_the_ID();
 				endwhile; endif;
 				echo "<span class='hidden debug'>sticky from this category . <br>".print_r($args,true)."</span>";
@@ -96,7 +96,7 @@
 			}
 			query_posts( $args );
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
-				get_template_part( 'content', get_post_format() );
+				get_template_part( 'content', get_post_type() );
 				$shownPosts[] = get_the_ID();
 			endwhile; endif;
 			echo "<span class='hidden debug'>all from this category . <br>".print_r($args,true)."</span>";
@@ -140,7 +140,7 @@
 					}
 					query_posts( $args );
 					if ( have_posts() ) : while ( have_posts() ) : the_post();
-						get_template_part( 'content', get_post_format() );
+						get_template_part( 'content', get_post_type() );
 						$shownPosts[] = get_the_ID();
 					endwhile; endif;
 					echo "<span class='hidden debug'>sticky from this category . <br>".print_r($args,true)."</span>";
@@ -177,7 +177,7 @@
 				
 				query_posts( $args );
 				if ( have_posts() ) : while ( have_posts() ) : the_post();
-					get_template_part( 'content', get_post_format() );
+					get_template_part( 'content', get_post_type() );
 					$shownPosts[] = get_the_ID();
 				endwhile; endif;
 				wp_reset_query(); // Reset Query
@@ -224,7 +224,7 @@
 							}
 							query_posts( $args );
 							if ( have_posts() ) : while ( have_posts() ) : the_post();
-								get_template_part( 'content', get_post_format());
+								get_template_part( 'content', get_post_type());
 								$shownPosts[] = get_the_ID();
 							endwhile; endif;
 							wp_reset_query(); // Reset Query
@@ -254,7 +254,7 @@
 						}
 						query_posts( $args );
 						if ( have_posts() ) : while ( have_posts() ) : the_post();
-							get_template_part( 'content', get_post_format() );
+							get_template_part( 'content', get_post_type() );
 							$shownPosts[] = get_the_ID();
 						endwhile; endif;
 						wp_reset_query(); // Reset Query
@@ -269,7 +269,7 @@
 
 			/* otherwise start standard Loop if orderby is set */ 
 			while ( have_posts() ) : the_post();
-				get_template_part( 'content', get_post_format() );
+				get_template_part( 'content', get_post_type() );
 				$shownPosts[] = get_the_ID();
 			endwhile;
 		endif;

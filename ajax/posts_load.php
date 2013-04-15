@@ -48,7 +48,7 @@
 				}
 				query_posts( $args );
 				if ( have_posts() ) : while ( have_posts() ) : the_post();
-					get_template_part( 'content', get_post_format() );
+					get_template_part( 'content', get_post_type() );
 				endwhile; endif;
 				wp_reset_query(); // Reset Query
 			}
@@ -81,7 +81,7 @@
 
 		/* Start the Loop */
 		while ( $dyn_query->have_posts() ) : $dyn_query->the_post();
-			get_template_part( 'content', get_post_format());
+			get_template_part( 'content', get_post_type());
 
 		endwhile;
 	}
