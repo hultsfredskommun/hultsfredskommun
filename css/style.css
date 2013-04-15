@@ -5436,7 +5436,7 @@ html {
 }
 
 .margin--right, .home .contact-area .contact-wrapper .content-wrapper h1 a, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper,
-.single.hk_kontakter .img-wrapper, .single .map_canvas, .scrolltotop {
+.single.hk_kontakter .img-wrapper, article.single .map_canvas, .scrolltotop {
   margin-right: 24px;
   margin-right: 1.5rem;
 }

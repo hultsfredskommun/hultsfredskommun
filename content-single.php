@@ -25,9 +25,10 @@
 							'map' => true,
 							'title_link' => false)); 
 					}
+					else {
+						require("inc/single_content.php"); 
+					}
 				?>
-
-				<?php require("inc/single_content.php"); ?>
 				
 			</div><!-- .single-content .content-wrapper -->
 			<?php require("inc/hk-aside-content.php"); ?>

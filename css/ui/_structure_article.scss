@@ -211,7 +211,7 @@ article.post {
 .side-map, .map_canvas {
 	height: 200px;
 }
-.single .map_canvas {
+article.single .map_canvas {
 	@extend .margin--right;
 }
 .post .img-wrapper,
