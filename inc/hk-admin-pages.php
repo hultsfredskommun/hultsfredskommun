@@ -240,7 +240,8 @@ function hk_normalize_count() {
 			add_post_meta($post_id, "views", $new_views. $views) || update_post_meta($post_id, "views", $new_views, $views); 
 		}
 		
-		$log .= $post_id . " " . $views . " " . $new_views . "a<br>";
+		//$log .= $post_id . " " . $views . " " . $new_views . "<br>";
+		$log .= ". ";
 	endwhile;
 
 	$log .= "Normaliserade $count artiklar " . date("d M", strtotime("now"));

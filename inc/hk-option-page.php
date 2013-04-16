@@ -200,6 +200,8 @@ function hk_theme_options_do_page() {
 					hk_normalize_count();
 					echo "F&ouml;rs&ouml;ker aktivera automatisk normalisering.";
 					hk_normalize_activation();
+					$options["force_normalize"] = 0;
+					update_option("hk_theme", $options);
 				}
 			?>
 			<?php endif; // endif (function_exists( 'views_orderby' ))?>
