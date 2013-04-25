@@ -7,10 +7,18 @@
 function hk_breadcrumb() {
 	$search = get_query_var("s");
 	$cat = get_query_var("cat");
+	$tag = get_query_var("tag");
 
 	if (!is_home() ) {
 		if ($cat != "")
 			echo get_category_parents($cat, TRUE, ' &raquo; ');
+		if ($tag != "") {
+			echo '<br>';
+			foreach (split(',',$tag) as $t) {
+				$t = get_term_by( 'slug', $t, 'post_tag');
+				//echo "<a href='" . get_tag_link($t->term_id) . "'>" . $t->name . "</a> &raquo; ";
+			}
+		}
 	}
 	//$categories_list = get_the_category();
 	
@@ -60,7 +68,7 @@ function hk_404() {
 		</article><!-- #post-0 -->
 <?php
 }
-function hk_empty_navigation() { 
+function hk_empty_search() { 
 	$options = get_option('hk_theme'); 
 	$title = "Hittade du inte den information du s&ouml;kte?";
 	$message = "Du kan forts&auml;tta genom att &auml;ndra i ditt urval eller s&ouml;ka fritt i s&ouml;krutan ovan.";
@@ -94,7 +102,48 @@ function hk_empty_navigation() {
 		</article><!-- #post-0 -->
 <?php
 }
+function hk_empty_navigation() { 
+	$options = get_option('hk_theme'); 
+	$title = "H&auml;r finns inga artiklar.";
+	$message = "Du kan forts&auml;tta genom att v&auml;lja en underkategori eller s&ouml;ka fritt i s&ouml;krutan ovan.";
+	$message2 = "";
+	if ($options["emptycattitle"] != "")
+		$title = $options["emptycattitle"];
+	if ($options["emptycatmessage"] != "")
+		$message = $options["emptycatmessage"];
+	if ($options["emptycatmessage2"] != "")
+		$message2 = $options["emptycatmessage2"];
+	if ($options["emptycatmessage3"] != "")
+		$message3 = $options["emptycatmessage3"];
+	?>
+		<article id="post-nothing">
+			<div class="content-wrapper">
+			<div class="summary-content">
+				<div class="entry-wrapper">
+					<h1 class="entry-title"><?php echo $title; ?></h1>
+					<div class="entry-content">
+						<p><?php echo $message; ?></p>
+						
+						<?php if($message2 != "" && function_exists('get_most_viewed')) : ?>
+						<p><?php echo $message2; ?></p>
+						<ul><?php get_most_viewed('post'); ?></ul>
+						<?php endif; ?>
 
+						<?php if($message3 != "" && get_query_var("cat") != "") : ?>
+						<p><?php echo $message3; ?></p>
+						<ul><?php wp_list_categories(array(
+										'title_li' => "", 'child_of' => get_query_var("cat"))); ?></ul>
+						<?php endif; ?>
+						
+					</div>
+				</div>
+				
+			</div><!-- .summary-content -->
+
+			</div>
+		</article><!-- #post-0 -->
+<?php
+}
 
 function hk_navigation() {
 	global $post, $default_settings;
@@ -247,7 +296,27 @@ function hk_navigation() {
 	echo "&nbsp;</nav></aside>";
 }
 	
+function hk_tag_navigation() {
+	global $post, $default_settings;
+	
+	$search = get_query_var("s");
+	$cat = get_query_var("cat");
+	$tags = get_query_var("tag");
 
+	echo "<aside id='nav' class='category-navigation' role='navigation'><nav>";
+	
+	//echo "<a class='dropdown-nav'>Etiketter</a>";
+
+	
+	
+	if( function_exists('displayTagFilter') ){
+		displayTagFilter();
+	}
+
+	
+	echo "&nbsp;</nav></aside>";
+}
+	
 // Walker class: Show which category and tag is selected
 class hk_Category_Walker extends Walker_Category {
 	function start_el(&$output, $category, $depth, $args) { 

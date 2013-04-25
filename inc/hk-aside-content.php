@@ -49,26 +49,29 @@
 		<?php while ( has_sub_field('hk_related') ) : ?>
 			<?php if (!$summary || $count++ < 2) : ?>
 				<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
-					<li class="related_page <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Relaterat inl&auml;gg" class="icon-left"><i class='i' data-icon='&#xF143;'></i></a>
+					<li class="related_page <?php echo ($count++ < 2)?"summary":"full"; ?>">
 						<?php $value = get_sub_field('hk_related_post');?>
+						<a href="<?php echo get_permalink($value->ID); ?>" class="icon-left" title="Relaterat inl&auml;gg"><i class='i' data-icon='&#xF143;'></i></a>
 						<a href="<?php echo get_permalink($value->ID); ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_post_description'); ?>"><?php echo $value->post_title; ?></a>
 					</li>			 
 				<?php elseif ( get_row_layout() == 'hk_related_links' ) : ?>
-					<li class="related_link <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="L&auml;nk till annan webbsida" class="icon-left"><i class='i' data-icon='&#xF143;'></i></a>
+					<li class="related_link <?php echo ($count++ < 2)?"summary":"full"; ?>">
 						<?php 
 							// prepend http:// if not there already
 							$relate_link_url = get_sub_field('hk_relate_link_url');
-							if (substr_compare($relate_link_url, "http", 0, 4) != 0) {
+							if ($relate_link_url != "" && substr_compare($relate_link_url, "http", 0, 4) != 0) {
 								$relate_link_url = "http://" . $relate_link_url;
 							}
 						?>
-						<a target="_blank" class="icon-right" href="<?php echo $relate_link_url; ?>" title="<?php echo get_sub_field('hk_related_link_description'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
+						<a target="_blank" href="<?php echo $relate_link_url; ?>" class="icon-left" title="L&auml;nk till annan webbsida"><i class='i' data-icon='&#xF143;'></i></a>
+						<a target="_blank" href="<?php echo $relate_link_url; ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_link_description'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
 					</li>
 				<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
 					<?php $link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
 						$link_name = get_the_title(get_sub_field('hk_related_file')); ?>
-					<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>"><a title="Ladda ner dokument" class="icon-left"><i class='i' data-icon='&#xF019;'></i></a>
-						<a target="_blank" class="icon-right" href="<?php echo $link; ?>" title="<?php echo get_sub_field('hk_related_file_description'); ?>"><?php echo $link_name; ?></a>
+					<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>">
+						<a target="_blank" href="<?php echo $link; ?>" class="icon-left" title="Ladda ner dokument"><i class='i' data-icon='&#xF019;'></i></a>
+						<a target="_blank" href="<?php echo $link; ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_file_description'); ?>"><?php echo $link_name; ?></a>
 					</li>			 
 				<?php endif; ?> 
 			<?php endif; ?> 

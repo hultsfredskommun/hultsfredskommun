@@ -1,0 +1,14 @@
+.tag-listing {
+	h1 {
+		@extend .padding--bottom;
+	}
+	.content-area {
+		@extend .hidden;
+		@extend .islet;
+		ul {
+			@extend .nav;
+			//@extend .nav--block;
+			@extend .nav--stacked;
+		}
+	}
+}

@@ -49,7 +49,7 @@ get_header(); ?>
 
 			<?php else : ?>
 
-				<?php hk_empty_navigation(); ?>
+				<?php hk_empty_search(); ?>
 				
 			<?php endif; ?>
 

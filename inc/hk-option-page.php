@@ -66,12 +66,20 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[404message2]">Meddelande2 (innan mest bes&ouml;kta)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[404message2]"><?php echo $options['404message2']; ?></textarea></p>
 			<?php } ?>
 
-			<h2>Meddelande vid tom kategorilistning</h2>
+			<h2>Meddelande vid tom s&ouml;kning</h2>
 			<p><label for="hk_theme[emptytitle]">Titel</label><br/><input size="80" type="text" name="hk_theme[emptytitle]" value="<?php echo $options['emptytitle']; ?>" /></p>
 			<p><label for="hk_theme[emptymessage]">Meddelande</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptymessage]"><?php echo $options['emptymessage']; ?></textarea></p>
 			<?php if(function_exists('get_most_viewed')) { ?>
 			<p><label for="hk_theme[emptymessage2]">Meddelande2 (innan mest bes&ouml;kta)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptymessage2]"><?php echo $options['emptymessage2']; ?></textarea></p>
 			<?php } ?>
+
+			<h2>Meddelande vid tom kategorilistning</h2>
+			<p><label for="hk_theme[emptycattitle]">Titel</label><br/><input size="80" type="text" name="hk_theme[emptycattitle]" value="<?php echo $options['emptycattitle']; ?>" /></p>
+			<p><label for="hk_theme[emptycatmessage]">Meddelande</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptycatmessage]"><?php echo $options['emptycatmessage']; ?></textarea></p>
+			<?php if(function_exists('get_most_viewed')) { ?>
+			<p><label for="hk_theme[emptycatmessage2]">Meddelande2 (innan mest bes&ouml;kta)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptycatmessage2]"><?php echo $options['emptycatmessage2']; ?></textarea></p>
+			<?php } ?>
+			<p><label for="hk_theme[emptycatmessage3]">Meddelande3 (innan listning av underkategori)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptycatmessage3]"><?php echo $options['emptycatmessage3']; ?></textarea></p>
 			
 			
 			<h2>Kategorier och menyer</h2>

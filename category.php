@@ -7,7 +7,10 @@
 get_header(); 
 
 ?>
-		<?php if ( !is_sub_category_firstpage() || get_query_var("tag") != "" ) : ?>
+		<?php if ( get_query_var("tag") != "" ) : ?>
+			<?php hk_tag_navigation(); ?>
+			<?php require("inc/hk-tag.php"); ?>			
+		<?php elseif ( !is_sub_category_firstpage() ) : ?>
 			<?php hk_navigation(); ?>
 			<?php require("inc/hk-category.php"); ?>
 		<?php else : ?>

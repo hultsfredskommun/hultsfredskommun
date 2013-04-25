@@ -1,10 +1,13 @@
 /* category structure */
 .breadcrumb {
 	@extend .g;
-	@extend .one-whole;
+	@extend .palm-one-whole;
+	@extend .lap-three-quarters;
+	@extend .desk-three-quarters;
+	
 	@extend .milli;
-	@extend .hidden--desk;
-	@extend .hidden--lap;
+//	@extend .hidden--desk;
+//	@extend .hidden--lap;
 	@extend .margin--bottom;
 }
 .category-navigation {
