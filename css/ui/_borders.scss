@@ -23,6 +23,9 @@ $border-line-width:		1px;
 .border--right {
 	border-right: $border-width $border-style $border-color;
 }
+.border-light--right {
+	border-right: $border-width $border-style $gray-light-color;
+}
 .border--bottom {
 	border-bottom: $border-width $border-style $border-color;
 }
@@ -31,6 +34,9 @@ $border-line-width:		1px;
 }
 .border--left {
 	border-left: $border-width $border-style $border-color;
+}
+.border-light--left {
+	border-left: $border-width $border-style $gray-light-color;
 }
 
 .border-line--left {

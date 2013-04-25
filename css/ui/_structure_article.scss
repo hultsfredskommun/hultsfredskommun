@@ -20,7 +20,9 @@ article.post {
 	//@extend .border-light--top;
 	@extend .border-light--bottom;
 }
-
+.full .article-border-wrapper {
+	@extend .border-light--right;
+}
 /* hide article-wrapper if only titles */
 .viewmode-only-titles {
 	.summary .article-border-wrapper {
@@ -60,8 +62,9 @@ article.post {
 }
 
 .post h1.entry-title {
+	@extend .font-weight-normal;
 	@extend .half-margin--top;
-	@extend .one-whole;
+	@extend .two-thirds;
 	@extend .float--left;
 }
 
@@ -78,10 +81,14 @@ article.post {
 
 	a {
 		@extend .force-font-style-normal;
-		@extend .font-weight-bold;
+		//@extend .font-weight-bold;
 	}
 	.summary-content {
 		@extend .hand;
+		@extend .margin--bottom;
+		.entry-content p {
+			@extend .flush--bottom;
+		}
 	}
 	.more-content .content a {
 		border-bottom: 1px dotted $main-color;
@@ -143,9 +150,9 @@ article.post {
 			li {
 				display: block;
 			}
-			a {
+			/*a {
 				@extend .font-weight-normal;
-			}
+			}*/
 		}
 	}
 }

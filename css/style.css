@@ -998,21 +998,21 @@ html {
  * heading hierarchy.
  */
 h1, .alpha {
-  font-size: 24px;
-  font-size: 1.71429rem;
-  line-height: 1;
-}
-
-h2, .beta {
   font-size: 22px;
   font-size: 1.57143rem;
   line-height: 1.09091;
 }
 
-h3, .gamma, .main-menu {
+h2, .beta {
   font-size: 20px;
   font-size: 1.42857rem;
   line-height: 1.2;
+}
+
+h3, .gamma, .main-menu {
+  font-size: 18px;
+  font-size: 1.28571rem;
+  line-height: 1.33333;
 }
 
 h4, .delta {
@@ -3266,7 +3266,7 @@ html.flexbox {
 * Whole
 */
 .one-whole, .branding, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, article.post, .article-border-wrapper, .home .post .side-content,
-.home .post .content-wrapper, .home .post h1.entry-title, .post h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
+.home .post .content-wrapper, .home .post h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
 .single .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .responsive-navigation, .responsive-menu, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
@@ -3285,7 +3285,7 @@ html.flexbox {
   width: 33.333%;
 }
 
-.two-thirds, .four-sixths, .eight-twelfths {
+.two-thirds, .four-sixths, .eight-twelfths, .post h1.entry-title {
   width: 66.666%;
 }
 
@@ -4371,7 +4371,7 @@ html.flexbox {
 }
 
 .flush--bottom, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .viewmode-only-titles article.post, .summary .img-wrapper, .tools, .top-menu-wrapper .top-menu, .responsive-navigation, .main-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
+.page-header .sort-order, .page-header .category-tools, .viewmode-only-titles article.post, .article-wrapper .summary-content .entry-content p, .summary .img-wrapper, .tools, .top-menu-wrapper .top-menu, .responsive-navigation, .main-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0!important;
 }
 
@@ -4630,6 +4630,10 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
   border-right: 2px dotted #c6cacb;
 }
 
+.border-light--right, .full .article-border-wrapper {
+  border-right: 2px dotted #e5e6e7;
+}
+
 .border--bottom, .home .contact-area .contact-wrapper .content-wrapper h1 a {
   border-bottom: 2px dotted #c6cacb;
 }
@@ -4640,6 +4644,10 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
 
 .border--left, .home .contact-area .contact-wrapper .content-wrapper ul.right-content {
   border-left: 2px dotted #c6cacb;
+}
+
+.border-light--left {
+  border-left: 2px dotted #e5e6e7;
 }
 
 .border-line--left, .category-navigation .parent li, .category-navigation .more-navigation li {
@@ -4702,11 +4710,11 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
 }
 
 .font-weight-bold, .page-header .view-tools .active,
-.page-header .sort-order .active, .article-wrapper a, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .widget .widget-title span {
+.page-header .sort-order .active, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .widget .widget-title span {
   font-weight: bold;
 }
 
-.font-weight-normal, .article-wrapper .entry-meta .footer-wrapper a {
+.font-weight-normal, .post h1.entry-title {
   font-weight: normal;
 }
 
@@ -4742,15 +4750,15 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
 
 @media only screen and (max-width: 969px) {
   h1, .alpha {
-    font-size: 22px;
-    font-size: 1.57143rem;
-    line-height: 1.09091;
-  }
-
-  h2, .beta {
     font-size: 20px;
     font-size: 1.42857rem;
     line-height: 1.2;
+  }
+
+  h2, .beta {
+    font-size: 18px;
+    font-size: 1.28571rem;
+    line-height: 1.33333;
   }
 
   h3, .gamma, .main-menu {
@@ -4785,16 +4793,20 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
 }
 /*
 	@include font-size($nano-size);
-$h1-size:           24px!default; // .alpha
-$h2-size:           22px!default; // .beta
-$h3-size:           20px!default; // .gamma
-$h4-size:           17px!default; // .delta
-$h5-size:           16px!default; // .epsilon
-$h6-size:           14px!default; // .zeta
+	$giga-size:         96px!default;
+	$mega-size:         72px!default;
+	$kilo-size:         48px!default;
 
-$milli-size:        13px!default; // .milli
-$micro-size:        12px!default; // .micro
-$nano-size:        	10px!default; // .nano
+	$h1-size:           22px!default; // .alpha
+	$h2-size:           20px!default; // .beta
+	$h3-size:           18px!default; // .gamma
+	$h4-size:           17px!default; // .delta
+	$h5-size:           16px!default; // .epsilon
+	$h6-size:           14px!default; // .zeta
+
+	$milli-size:        13px!default; // .milli
+	$micro-size:        12px!default; // .micro
+	$nano-size:        	10px!default; // .nano
 */
 /* default settings */
 h1 {
@@ -5047,6 +5059,9 @@ html {
 .article-wrapper .entry-meta .footer-wrapper {
   border-left: 4px solid #644c20;
   padding-left: 20px;
+  /*a {
+  	@extend .font-weight-normal;
+  }*/
 }
 .article-wrapper .entry-meta .footer-wrapper li {
   display: block;
@@ -5483,7 +5498,7 @@ html {
   margin-right: 1.71429rem;
 }
 
-.margin--bottom, .widget, .slideshow, .breadcrumb, .page-header, .article-wrapper .entry-meta, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
+.margin--bottom, .widget, .slideshow, .breadcrumb, .page-header, .article-wrapper .summary-content, .article-wrapper .entry-meta, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
   margin-bottom: 24px;
   margin-bottom: 1.71429rem;
 }
