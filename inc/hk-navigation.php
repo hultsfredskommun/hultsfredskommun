@@ -10,8 +10,22 @@ function hk_breadcrumb() {
 	$tag = get_query_var("tag");
 
 	if (!is_home() ) {
-		if ($cat != "")
-			echo get_category_parents($cat, TRUE, ' &raquo; ');
+		if ($cat != "") {
+			$cats_str = get_category_parents($cat, false, '%#%', true);
+			$cats_array = explode('%#%', $cats_str);
+			$tag_link = "";
+			if ($tag != "") {
+				$tag_link = "?tag=".$tag; 
+			}
+			foreach  ($cats_array as $c) {
+				if ($c != "") {
+					$c = get_category_by_slug($c);
+					echo "<a href='" . get_category_link($c->term_id) . $tag_link . "'>" . $c->name . "</a> &raquo; ";
+				}
+			}
+			//echo get_category_parents($cat, TRUE, ' &raquo; ');
+		}
+	
 		if ($tag != "") {
 			echo '<br>';
 			foreach (split(',',$tag) as $t) {
@@ -376,7 +390,7 @@ class hk_Category_Walker extends Walker_Category {
 			$icon = "";
 			if (count(get_term_children($category->term_id,"category")) > 0) {
 				$haschildclass = " cat-has-children";
-				$icon = "<a href='#' class='icon-left'><i class='i' data-icon='&#xF14C;'></i></a>";
+				$icon = "<a href='#' class='hide icon-left'><i class='i' data-icon='&#xF14C;'></i></a>";
 			}
             $output .= "\t<li"; 
             $class = 'cat-item cat-item-'.$category->term_id.$haschildclass; 

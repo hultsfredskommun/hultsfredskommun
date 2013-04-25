@@ -854,7 +854,7 @@ pre,
 .searchnavigation .searchresult ul,
 .scrolltotop {
   margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.71429rem;
 }
 .islet h1, #responsive-info h1, .slideshow .slide .caption-area .caption h1, .tag-listing .content-area h1, .pager h1, .cookieinformation .textwidget h1, .searchnavigation .searchresult ul h1, .scrolltotop h1, .islet h2, #responsive-info h2, .slideshow .slide .caption-area .caption h2, .tag-listing .content-area h2, .pager h2, .cookieinformation .textwidget h2, .searchnavigation .searchresult ul h2, .scrolltotop h2, .islet h3, #responsive-info h3, .slideshow .slide .caption-area .caption h3, .tag-listing .content-area h3, .pager h3, .cookieinformation .textwidget h3, .searchnavigation .searchresult ul h3, .scrolltotop h3, .islet h4, #responsive-info h4, .slideshow .slide .caption-area .caption h4, .tag-listing .content-area h4, .pager h4, .cookieinformation .textwidget h4, .searchnavigation .searchresult ul h4, .scrolltotop h4, .islet h5, #responsive-info h5, .slideshow .slide .caption-area .caption h5, .tag-listing .content-area h5, .pager h5, .cookieinformation .textwidget h5, .searchnavigation .searchresult ul h5, .scrolltotop h5, .islet h6, #responsive-info h6, .slideshow .slide .caption-area .caption h6, .tag-listing .content-area h6, .pager h6, .cookieinformation .textwidget h6, .searchnavigation .searchresult ul h6, .scrolltotop h6, .islet hgroup, #responsive-info hgroup, .slideshow .slide .caption-area .caption hgroup, .tag-listing .content-area hgroup, .pager hgroup, .cookieinformation .textwidget hgroup, .searchnavigation .searchresult ul hgroup, .scrolltotop hgroup, .islet
 ul, #responsive-info
@@ -946,15 +946,15 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .slideshow .s
 .scrolltotop, .scrolltotop
 .scrolltotop {
   margin-bottom: 12px;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85714rem;
 }
 
 /**
  * Doubled up `margin-bottom` helper class.
  */
-.landmark, article.post {
+.landmark {
   margin-bottom: 48px;
-  margin-bottom: 3rem;
+  margin-bottom: 3.42857rem;
 }
 
 /**
@@ -963,7 +963,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .slideshow .s
  */
 hr {
   margin-bottom: 22px;
-  margin-bottom: 1.375rem;
+  margin-bottom: 1.57143rem;
 }
 
 /**
@@ -972,7 +972,7 @@ hr {
  */
 ul, ol, dd {
   margin-left: 48px;
-  margin-left: 3rem;
+  margin-left: 3.42857rem;
 }
 
 /**
@@ -982,7 +982,7 @@ ul, ol, dd {
     $MAIN
 \*------------------------------------*/
 html {
-  font: 1em/1.5 serif;
+  font: 0.875em/1.71429 serif;
   overflow-y: scroll;
   min-height: 100%;
 }
@@ -999,37 +999,37 @@ html {
  */
 h1, .alpha {
   font-size: 24px;
-  font-size: 1.5rem;
+  font-size: 1.71429rem;
   line-height: 1;
 }
 
 h2, .beta {
   font-size: 22px;
-  font-size: 1.375rem;
+  font-size: 1.57143rem;
   line-height: 1.09091;
 }
 
 h3, .gamma, .main-menu {
   font-size: 20px;
-  font-size: 1.25rem;
+  font-size: 1.42857rem;
   line-height: 1.2;
 }
 
 h4, .delta {
   font-size: 17px;
-  font-size: 1.0625rem;
+  font-size: 1.21429rem;
   line-height: 1.41176;
 }
 
 h5, .epsilon, h1.widget-title, .widget, .widget h1, .viewmode-only-titles h1.entry-title, .main-sub-menu {
   font-size: 16px;
-  font-size: 1rem;
+  font-size: 1.14286rem;
   line-height: 1.5;
 }
 
-h6, .zeta, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .side-content, .top-menu-wrapper, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .footer-widget-wrapper {
+h6, .zeta, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .side-content, .top-menu-wrapper, .footer-widget-wrapper {
   font-size: 14px;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.71429;
 }
 
@@ -1053,19 +1053,19 @@ hgroup .hN {
  */
 .giga {
   font-size: 96px;
-  font-size: 6rem;
+  font-size: 6.85714rem;
   line-height: 1;
 }
 
 .mega {
   font-size: 72px;
-  font-size: 4.5rem;
+  font-size: 5.14286rem;
   line-height: 1;
 }
 
 .kilo {
   font-size: 48px;
-  font-size: 3rem;
+  font-size: 3.42857rem;
   line-height: 1;
 }
 
@@ -1078,9 +1078,9 @@ hgroup .hN {
  */
 .lede,
 .lead {
-  font-size: 18px;
+  font-size: 15.75px;
   font-size: 1.125rem;
-  line-height: 1.33333;
+  line-height: 1.52381;
 }
 
 /*------------------------------------*\
@@ -1099,13 +1099,13 @@ h1.widget-title .searchnavigation .form .submit,
 .page-header,
 .article-wrapper .entry-meta .footer-wrapper {
   font-size: 13px;
-  font-size: 0.8125rem;
+  font-size: 0.92857rem;
   line-height: 1.84615;
 }
 
 .micro {
   font-size: 12px;
-  font-size: 0.75rem;
+  font-size: 0.85714rem;
   line-height: 2;
 }
 
@@ -2395,7 +2395,7 @@ html.flexbox {
  */
 .marginalia {
   font-size: 13px;
-  font-size: 0.8125rem;
+  font-size: 0.92857rem;
   line-height: 1.84615;
 }
 
@@ -3024,9 +3024,9 @@ html.flexbox {
    * the same width as the `line-height` set on the `html` element.
    * This allows us to use the `.loz` in almost any `font-size` we wish.
    */
-  min-width: 1.0em;
-  padding-right: 0.25em;
-  padding-left: 0.25em;
+  min-width: 1.14286em;
+  padding-right: 0.28571em;
+  padding-left: 0.28571em;
   /* =1.50em */
   text-align: center;
   background-color: #ccc;
@@ -3061,7 +3061,7 @@ html.flexbox {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   margin-bottom: 23px;
-  margin-bottom: 1.4375rem;
+  margin-bottom: 1.64286rem;
 }
 
 /**
@@ -3194,7 +3194,7 @@ html.flexbox {
 .greybox,
 .graybox {
   font-size: 12px;
-  font-size: 0.75rem;
+  font-size: 0.85714rem;
   line-height: 2;
   font-family: sans-serif;
   text-align: center;
@@ -3266,7 +3266,7 @@ html.flexbox {
 * Whole
 */
 .one-whole, .branding, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, article.post, .article-border-wrapper, .home .post .side-content,
-.home .post .content-wrapper, .home .post h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
+.home .post .content-wrapper, .home .post h1.entry-title, .post h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
 .single .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .responsive-navigation, .responsive-menu, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
@@ -3274,7 +3274,7 @@ html.flexbox {
 /**
 * Halves
 */
-.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths, .summary .img-wrapper, .searchnavigation .searchresult ul {
+.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths, .searchnavigation .searchresult ul {
   width: 50%;
 }
 
@@ -3285,14 +3285,14 @@ html.flexbox {
   width: 33.333%;
 }
 
-.two-thirds, .four-sixths, .eight-twelfths, .post h1.entry-title {
+.two-thirds, .four-sixths, .eight-twelfths {
   width: 66.666%;
 }
 
 /**
 * Quarters
 */
-.one-quarter, .two-eighths, .three-twelfths, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper,
+.one-quarter, .two-eighths, .three-twelfths, .article-wrapper .content-wrapper .contact-area .img-wrapper, .summary .img-wrapper, .post.hk_kontakter .img-wrapper,
 .single.hk_kontakter .img-wrapper {
   width: 25%;
 }
@@ -4622,7 +4622,7 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
   border-top: 2px dotted #c6cacb;
 }
 
-.border-light--top, .article-border-wrapper {
+.border-light--top {
   border-top: 2px dotted #e5e6e7;
 }
 
@@ -4668,7 +4668,7 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
   border-radius: 3px;
 }
 
-.noborder, .home .contact-area .contact-wrapper .content-wrapper h1, .searchnavigation .form .input-wrapper .field, .searchnavigation .form .submit, .category-navigation .parent li.cat-has-children {
+.noborder, .home .contact-area .contact-wrapper .content-wrapper h1, .searchnavigation .form .input-wrapper .field, .searchnavigation .form .submit {
   border: 0;
 }
 
@@ -4724,62 +4724,62 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
 
 .milli, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .breadcrumb, .page-header, .article-wrapper .entry-meta .footer-wrapper {
   font-size: 13px;
-  font-size: 0.8125rem;
+  font-size: 0.92857rem;
   line-height: 1.84615;
 }
 
 .micro {
   font-size: 12px;
-  font-size: 0.75rem;
+  font-size: 0.85714rem;
   line-height: 2;
 }
 
 .nano {
   font-size: 10px;
-  font-size: 0.625rem;
+  font-size: 0.71429rem;
   line-height: 2.4;
 }
 
 @media only screen and (max-width: 969px) {
   h1, .alpha {
     font-size: 22px;
-    font-size: 1.375rem;
+    font-size: 1.57143rem;
     line-height: 1.09091;
   }
 
   h2, .beta {
     font-size: 20px;
-    font-size: 1.25rem;
+    font-size: 1.42857rem;
     line-height: 1.2;
   }
 
   h3, .gamma, .main-menu {
     font-size: 17px;
-    font-size: 1.0625rem;
+    font-size: 1.21429rem;
     line-height: 1.41176;
   }
 
   h4, .delta {
     font-size: 16px;
-    font-size: 1rem;
+    font-size: 1.14286rem;
     line-height: 1.5;
   }
 
   h5, body, .epsilon, h1.widget-title, .widget, .widget h1, .viewmode-only-titles h1.entry-title, .main-sub-menu {
     font-size: 14px;
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.71429;
   }
 
-  h6, .zeta, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .side-content, .top-menu-wrapper, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .footer-widget-wrapper {
+  h6, .zeta, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .side-content, .top-menu-wrapper, .footer-widget-wrapper {
     font-size: 13px;
-    font-size: 0.8125rem;
+    font-size: 0.92857rem;
     line-height: 1.84615;
   }
 
   .milli, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .breadcrumb, .page-header, .article-wrapper .entry-meta .footer-wrapper {
     font-size: 12px;
-    font-size: 0.75rem;
+    font-size: 0.85714rem;
     line-height: 2;
   }
 }
@@ -4819,7 +4819,7 @@ a:hover {
 
 ul, ol, dd {
   margin-left: 24px;
-  margin-left: 1.5rem;
+  margin-left: 1.71429rem;
 }
 
 html {
@@ -4876,16 +4876,16 @@ html {
 
 .nav--block-half-margin li a, .home .contact-area .contact-wrapper .content-wrapper ul li a, .searchnavigation .searchresult ul li a, .category-navigation .parent li a, .category-navigation .parent li .children li a, .category-navigation .more-navigation li a, .footer-widget-wrapper ul li a {
   padding-top: 6px;
-  padding-top: 0.375rem;
+  padding-top: 0.42857rem;
   padding-bottom: 6px;
-  padding-bottom: 0.375rem;
+  padding-bottom: 0.42857rem;
 }
 
 .nav--block-double-margin li a, .home .contact-area .contact-wrapper .content-wrapper ul li a, .main-menu li a, .ui-tabs-nav li a {
   padding-left: 24px;
-  padding-left: 1.5rem;
+  padding-left: 1.71429rem;
   padding-right: 24px;
-  padding-right: 1.5rem;
+  padding-right: 1.71429rem;
 }
 
 .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit {
@@ -5038,9 +5038,6 @@ html {
 .article-wrapper .more-content .content a {
   border-bottom: 1px dotted #5c85b1;
 }
-.article-wrapper .content-wrapper {
-  margin-top: 12px !important;
-}
 @media only screen and (min-width: 970px) {
   .article-wrapper .side-content {
     border-left: 0;
@@ -5069,8 +5066,6 @@ html {
 
 @media only screen and (min-width: 970px) {
   .primary .article-wrapper {
-    background-size: 100%;
-    background-image: url(images/greyTile24bit-one-third.png);
     /*
     	background-image: -moz-linear-gradient(left, #fff 66.6%, $gray-light-color 66.6%, $gray-light-color 100%);
     	background-image: -o-linear-gradient(left, #fff 66.6%, $gray-light-color 66.6%, $gray-light-color 100%);
@@ -5473,80 +5468,80 @@ html {
 
 .margin {
   margin: 24px;
-  margin: 1.5rem;
+  margin: 1.71429rem;
 }
 
 .margin--top, .home .contact-area .contact-wrapper .content-wrapper h1 a, .home .post .side-content,
-.home .post .content-wrapper, .article-wrapper .side-content, .article-wrapper .content-wrapper, .article-wrapper .entry-meta, .searchnavigation .searchresult {
+.home .post .content-wrapper, .article-wrapper .entry-meta, .searchnavigation .searchresult {
   margin-top: 24px;
-  margin-top: 1.5rem;
+  margin-top: 1.71429rem;
 }
 
 .margin--right, .home .contact-area .contact-wrapper .content-wrapper h1 a, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper,
 .single.hk_kontakter .img-wrapper, article.single .map_canvas, .scrolltotop {
   margin-right: 24px;
-  margin-right: 1.5rem;
+  margin-right: 1.71429rem;
 }
 
 .margin--bottom, .widget, .slideshow, .breadcrumb, .page-header, .article-wrapper .entry-meta, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
   margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.71429rem;
 }
 
 .margin--left, .icon-right, .home .contact-area .contact-wrapper .content-wrapper h1 a, .footer-widget-wrapper .content {
   margin-left: 24px;
-  margin-left: 1.5rem;
+  margin-left: 1.71429rem;
 }
 
-.half-margin--top, .home .contact-area .contact-wrapper .content-wrapper ul, .logo, .searchnavigation, .logo2 {
+.half-margin--top, .home .contact-area .contact-wrapper .content-wrapper ul, .post h1.entry-title, .logo, .searchnavigation, .logo2 {
   margin-top: 12px;
-  margin-top: 0.75rem;
+  margin-top: 0.85714rem;
 }
 
 .half-margin--left, .addthis_toolbox a, .category-navigation .parent, .category-navigation .more-navigation, .footer-widget-wrapper ul {
   margin-left: 12px;
-  margin-left: 0.75rem;
+  margin-left: 0.85714rem;
 }
 
 .half-margin--bottom, .article-wrapper .content-wrapper .contact-area h3.entry-title {
   margin-bottom: 12px;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85714rem;
 }
 
-.half-margin--right, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .category-navigation .more-navigation li.current-tag h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li.current-tag .submit, .category-navigation .more-navigation li.current-tag .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li.current-tag .submit {
+.half-margin--right, .summary .img-wrapper, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .category-navigation .more-navigation li.current-tag h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li.current-tag .submit, .category-navigation .more-navigation li.current-tag .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li.current-tag .submit {
   margin-right: 12px;
-  margin-right: 0.75rem;
+  margin-right: 0.85714rem;
 }
 
 .padding--top, .cookieinformation, .footer-widget-wrapper {
   padding-top: 24px;
-  padding-top: 1.5rem;
+  padding-top: 1.71429rem;
 }
 
 .padding--right, .icon-right, .article-wrapper .side-content, .content {
   padding-right: 24px;
-  padding-right: 1.5rem;
+  padding-right: 1.71429rem;
 }
 
 .padding--bottom, .tag-listing h1, .article-wrapper .content-wrapper .contact-area .hk_kontakter, .content, .cookieinformation,
 .important-widget, .footer-widget-wrapper {
   padding-bottom: 24px;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.71429rem;
 }
 
 .padding--left, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field {
   padding-left: 24px;
-  padding-left: 1.5rem;
+  padding-left: 1.71429rem;
 }
 
 .half-padding--left, .category-navigation .parent li .children {
   padding-left: 12px;
-  padding-left: 0.75rem;
+  padding-left: 0.85714rem;
 }
 
 .half-padding--bottom, .home .contact-area .contact-wrapper .content-wrapper h1 a {
   padding-bottom: 12px;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.85714rem;
 }
 
 .dropdown, .page-header .category-tools .menu-item, .top-menu-wrapper .top-menu .menu-item {

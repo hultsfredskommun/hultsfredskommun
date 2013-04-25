@@ -10,14 +10,14 @@
 
 /* the article content */
 article.post {
-	@extend .landmark;
+	//@extend .landmark;
 	@extend .one-whole;
 	@extend .cf;
 }
 .article-border-wrapper {
 	@extend .float--left;
 	@extend .one-whole;
-	@extend .border-light--top;
+	//@extend .border-light--top;
 	@extend .border-light--bottom;
 }
 
@@ -60,14 +60,15 @@ article.post {
 }
 
 .post h1.entry-title {
-	@extend .two-thirds;
+	@extend .half-margin--top;
+	@extend .one-whole;
 	@extend .float--left;
 }
 
 .article-wrapper {
 	.side-content {
 		border-left: 4px solid $gray-light-color;
-		@extend .margin--top;
+		//@extend .margin--top;
 	}
 }
 .article-wrapper {
@@ -86,12 +87,12 @@ article.post {
 		border-bottom: 1px dotted $main-color;
 	}
 	.content-wrapper {
-		@extend .margin--top;
+		//@extend .margin--top;
 		@extend .float--left;
 		@extend .desk-two-thirds;
 		@extend .lap-one-whole;
 		@extend .palm-one-whole;
-		margin-top: $half-spacing-unit!important;
+		//margin-top: $half-spacing-unit!important;
 		.contact-area {
 			@extend .cf;
 			.img-wrapper {
@@ -174,8 +175,8 @@ article.post {
 
 @include media-query(desk) {
 .primary .article-wrapper {
-	background-size: 100%;
-	background-image: url(images/greyTile24bit-one-third.png);
+	//background-size: 100%;
+	//background-image: url(images/greyTile24bit-one-third.png);
 	
 /*
 	background-image: -moz-linear-gradient(left, #fff 66.6%, $gray-light-color 66.6%, $gray-light-color 100%);
@@ -193,9 +194,10 @@ article.post {
 
 /* featured images */
 .summary .img-wrapper {
+	@extend .half-margin--right;
 	@extend .img--left;
 	@extend .flush--bottom;
-	@extend .one-half;
+	@extend .one-quarter;
 }
 .content {
 	@extend .float--left;

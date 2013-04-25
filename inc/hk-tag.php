@@ -26,7 +26,7 @@
 			if ($tag != "")
 				$args["tag_slug__in"] = split(",",$tag);
 				
-			echo "<h1>Etiketter fr&aring;n " . single_tag_title("",false) . "</h1>";
+			echo "<h1>Inneh&aring;ll fr&aring;n " . $tag . " i kategorin " . single_tag_title("",false) . "</h1>";
 			
 			query_posts( $args );
 			

@@ -30,7 +30,7 @@
 				}
 			}
 			&.cat-has-children {
-				@extend .noborder;
+				//@extend .noborder;
 			}
 			&.current-cat,
 			&.current-cat-parent {
@@ -39,7 +39,7 @@
 				}
 			}
 			@extend .default-text;
-			@extend .zeta;
+			
 			@extend .border-line--left;
 			.icon-left {
 				i {
@@ -72,11 +72,9 @@
 		@extend .nav--stacked;
 		a {
 			@extend .default-text;
-			@extend .zeta;
 		}
 		li {
 			@extend .default-text;
-			@extend .zeta;
 			@extend .border-line--left;
 			.icon-left {
 				i {
