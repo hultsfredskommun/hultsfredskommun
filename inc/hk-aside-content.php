@@ -1,6 +1,6 @@
 
 <aside class="side-content">
-	<?php $count = 0; 
+	<?php $count = 1; 
 	$options = get_option("hk_theme"); ?>
 	<?php if( function_exists("get_field") && get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
 	<ul class="box top contacts summary">
