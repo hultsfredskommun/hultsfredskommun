@@ -1,8 +1,9 @@
 /**
  * basic color and stuff
  */
- 
-$hover-color:				#005BAA!default;
+
+$link-color:				#005BAA!default; 
+$hover-color:				#5C85B1!default;
 $default-color:				#3e3e3f!default;
 $main-color:				#5C85B1!default;
 $complement-color:			#644C20!default;
@@ -11,10 +12,13 @@ $important-color:			#ED1651!default;
 
 $gray-color:				#C6CACB!default;
 $gray-light-color:			#E5E6E7!default; //#EEF0F1!default; //E5E6E7
-$face:	        			"Oxygen", "myriad-pro", Arial, sans-serif!default;
+$face:	        			/*"Oxygen", "myriad-pro", */ 'Segoe UI', Arial, sans-serif!default;
 
 .hover-text {
 	color: $hover-color;
+}
+.link-text {
+	color: $link-color;
 }
 .force-default-text {
 	color: $default-color!important;

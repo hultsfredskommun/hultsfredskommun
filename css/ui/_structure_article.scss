@@ -64,8 +64,6 @@ article.post {
 .post h1.entry-title {
 	@extend .font-weight-normal;
 	@extend .half-margin--top;
-	@extend .two-thirds;
-	@extend .float--left;
 }
 
 .article-wrapper {
@@ -73,8 +71,6 @@ article.post {
 		border-left: 4px solid $gray-light-color;
 		//@extend .margin--top;
 	}
-}
-.article-wrapper {
 	@extend .float--left;
 	@extend .one-whole;
 	overflow: hidden;
@@ -85,9 +81,12 @@ article.post {
 	}
 	.summary-content {
 		@extend .hand;
-		@extend .margin--bottom;
-		.entry-content p {
-			@extend .flush--bottom;
+		.entry-content .introwords {
+			@extend .main-text;
+			@extend .font-weight-bold;
+		}
+		.entry-content:hover {
+			@extend .text-decoration-underline;
 		}
 	}
 	.more-content .content a {
@@ -100,6 +99,7 @@ article.post {
 		@extend .lap-one-whole;
 		@extend .palm-one-whole;
 		//margin-top: $half-spacing-unit!important;
+		@extend .half-margin--bottom;
 		.contact-area {
 			@extend .cf;
 			.img-wrapper {

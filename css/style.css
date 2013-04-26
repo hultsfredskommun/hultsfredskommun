@@ -854,7 +854,7 @@ pre,
 .searchnavigation .searchresult ul,
 .scrolltotop {
   margin-bottom: 24px;
-  margin-bottom: 1.71429rem;
+  margin-bottom: 1.6rem;
 }
 .islet h1, #responsive-info h1, .slideshow .slide .caption-area .caption h1, .tag-listing .content-area h1, .pager h1, .cookieinformation .textwidget h1, .searchnavigation .searchresult ul h1, .scrolltotop h1, .islet h2, #responsive-info h2, .slideshow .slide .caption-area .caption h2, .tag-listing .content-area h2, .pager h2, .cookieinformation .textwidget h2, .searchnavigation .searchresult ul h2, .scrolltotop h2, .islet h3, #responsive-info h3, .slideshow .slide .caption-area .caption h3, .tag-listing .content-area h3, .pager h3, .cookieinformation .textwidget h3, .searchnavigation .searchresult ul h3, .scrolltotop h3, .islet h4, #responsive-info h4, .slideshow .slide .caption-area .caption h4, .tag-listing .content-area h4, .pager h4, .cookieinformation .textwidget h4, .searchnavigation .searchresult ul h4, .scrolltotop h4, .islet h5, #responsive-info h5, .slideshow .slide .caption-area .caption h5, .tag-listing .content-area h5, .pager h5, .cookieinformation .textwidget h5, .searchnavigation .searchresult ul h5, .scrolltotop h5, .islet h6, #responsive-info h6, .slideshow .slide .caption-area .caption h6, .tag-listing .content-area h6, .pager h6, .cookieinformation .textwidget h6, .searchnavigation .searchresult ul h6, .scrolltotop h6, .islet hgroup, #responsive-info hgroup, .slideshow .slide .caption-area .caption hgroup, .tag-listing .content-area hgroup, .pager hgroup, .cookieinformation .textwidget hgroup, .searchnavigation .searchresult ul hgroup, .scrolltotop hgroup, .islet
 ul, #responsive-info
@@ -946,7 +946,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .slideshow .s
 .scrolltotop, .scrolltotop
 .scrolltotop {
   margin-bottom: 12px;
-  margin-bottom: 0.85714rem;
+  margin-bottom: 0.8rem;
 }
 
 /**
@@ -954,7 +954,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .slideshow .s
  */
 .landmark {
   margin-bottom: 48px;
-  margin-bottom: 3.42857rem;
+  margin-bottom: 3.2rem;
 }
 
 /**
@@ -963,7 +963,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .slideshow .s
  */
 hr {
   margin-bottom: 22px;
-  margin-bottom: 1.57143rem;
+  margin-bottom: 1.46667rem;
 }
 
 /**
@@ -972,7 +972,7 @@ hr {
  */
 ul, ol, dd {
   margin-left: 48px;
-  margin-left: 3.42857rem;
+  margin-left: 3.2rem;
 }
 
 /**
@@ -982,7 +982,7 @@ ul, ol, dd {
     $MAIN
 \*------------------------------------*/
 html {
-  font: 0.875em/1.71429 serif;
+  font: 0.9375em/1.6 serif;
   overflow-y: scroll;
   min-height: 100%;
 }
@@ -999,37 +999,37 @@ html {
  */
 h1, .alpha {
   font-size: 22px;
-  font-size: 1.57143rem;
+  font-size: 1.46667rem;
   line-height: 1.09091;
 }
 
 h2, .beta {
   font-size: 20px;
-  font-size: 1.42857rem;
+  font-size: 1.33333rem;
   line-height: 1.2;
 }
 
 h3, .gamma, .main-menu {
   font-size: 18px;
-  font-size: 1.28571rem;
+  font-size: 1.2rem;
   line-height: 1.33333;
 }
 
 h4, .delta {
   font-size: 17px;
-  font-size: 1.21429rem;
+  font-size: 1.13333rem;
   line-height: 1.41176;
 }
 
 h5, .epsilon, h1.widget-title, .widget, .widget h1, .viewmode-only-titles h1.entry-title, .main-sub-menu {
   font-size: 16px;
-  font-size: 1.14286rem;
+  font-size: 1.06667rem;
   line-height: 1.5;
 }
 
 h6, .zeta, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .side-content, .top-menu-wrapper, .footer-widget-wrapper {
   font-size: 14px;
-  font-size: 1rem;
+  font-size: 0.93333rem;
   line-height: 1.71429;
 }
 
@@ -1053,19 +1053,19 @@ hgroup .hN {
  */
 .giga {
   font-size: 96px;
-  font-size: 6.85714rem;
+  font-size: 6.4rem;
   line-height: 1;
 }
 
 .mega {
   font-size: 72px;
-  font-size: 5.14286rem;
+  font-size: 4.8rem;
   line-height: 1;
 }
 
 .kilo {
   font-size: 48px;
-  font-size: 3.42857rem;
+  font-size: 3.2rem;
   line-height: 1;
 }
 
@@ -1078,9 +1078,9 @@ hgroup .hN {
  */
 .lede,
 .lead {
-  font-size: 15.75px;
+  font-size: 16.875px;
   font-size: 1.125rem;
-  line-height: 1.52381;
+  line-height: 1.42222;
 }
 
 /*------------------------------------*\
@@ -1099,13 +1099,13 @@ h1.widget-title .searchnavigation .form .submit,
 .page-header,
 .article-wrapper .entry-meta .footer-wrapper {
   font-size: 13px;
-  font-size: 0.92857rem;
+  font-size: 0.86667rem;
   line-height: 1.84615;
 }
 
 .micro {
   font-size: 12px;
-  font-size: 0.85714rem;
+  font-size: 0.8rem;
   line-height: 2;
 }
 
@@ -2395,7 +2395,7 @@ html.flexbox {
  */
 .marginalia {
   font-size: 13px;
-  font-size: 0.92857rem;
+  font-size: 0.86667rem;
   line-height: 1.84615;
 }
 
@@ -3024,9 +3024,9 @@ html.flexbox {
    * the same width as the `line-height` set on the `html` element.
    * This allows us to use the `.loz` in almost any `font-size` we wish.
    */
-  min-width: 1.14286em;
-  padding-right: 0.28571em;
-  padding-left: 0.28571em;
+  min-width: 1.06667em;
+  padding-right: 0.26667em;
+  padding-left: 0.26667em;
   /* =1.50em */
   text-align: center;
   background-color: #ccc;
@@ -3061,7 +3061,7 @@ html.flexbox {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   margin-bottom: 23px;
-  margin-bottom: 1.64286rem;
+  margin-bottom: 1.53333rem;
 }
 
 /**
@@ -3194,7 +3194,7 @@ html.flexbox {
 .greybox,
 .graybox {
   font-size: 12px;
-  font-size: 0.85714rem;
+  font-size: 0.8rem;
   line-height: 2;
   font-family: sans-serif;
   text-align: center;
@@ -3285,7 +3285,7 @@ html.flexbox {
   width: 33.333%;
 }
 
-.two-thirds, .four-sixths, .eight-twelfths, .post h1.entry-title {
+.two-thirds, .four-sixths, .eight-twelfths {
   width: 66.666%;
 }
 
@@ -4341,7 +4341,7 @@ html.flexbox {
 
 .float--left, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .help-navigation, .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .home .post .side-content,
-.home .post .content-wrapper, .home .post h1.entry-title, .post h1.entry-title, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
+.home .post .content-wrapper, .home .post h1.entry-title, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
 .single .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu .menu-item .i, .top-menu-wrapper .top-menu .menu-item .searchnavigation .form .submit, .searchnavigation .form .top-menu-wrapper .top-menu .menu-item .submit, .responsive-navigation .i, .responsive-navigation .searchnavigation .form .submit, .searchnavigation .form .responsive-navigation .submit, .responsive-menu .i, .responsive-menu .searchnavigation .form .submit, .searchnavigation .form .responsive-menu .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
@@ -4371,7 +4371,7 @@ html.flexbox {
 }
 
 .flush--bottom, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .viewmode-only-titles article.post, .article-wrapper .summary-content .entry-content p, .summary .img-wrapper, .tools, .top-menu-wrapper .top-menu, .responsive-navigation, .main-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
+.page-header .sort-order, .page-header .category-tools, .viewmode-only-titles article.post, .summary .img-wrapper, .tools, .top-menu-wrapper .top-menu, .responsive-navigation, .main-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0!important;
 }
 
@@ -4497,7 +4497,13 @@ html.flexbox {
 /**
  * basic color and stuff
  */
-.hover-text, a:hover, .category-navigation .parent li.current-cat > a > i, .category-navigation .parent li.current-cat > a, .category-navigation .parent li:hover > a > i, .category-navigation .parent li:hover > a, .category-navigation .more-navigation li.current-tag > a > i, .category-navigation .more-navigation li.current-tag > a, .category-navigation .more-navigation li:hover > a > i, .category-navigation .more-navigation li:hover > a {
+.hover-text, a:hover, .category-navigation .parent li.current-cat > a > i, .category-navigation .parent li.current-cat > a, .category-navigation .more-navigation li.current-tag > a > i, .category-navigation .more-navigation li.current-tag > a, .category-navigation .more-navigation li:hover > a > i, .category-navigation .more-navigation li:hover > a {
+  color: #5c85b1;
+}
+
+.link-text, a,
+a:active,
+a:focus {
   color: #005baa;
 }
 
@@ -4505,13 +4511,11 @@ html.flexbox {
   color: #3e3e3f !important;
 }
 
-.default-text, html, .cookieinformation .textwidget, .searchnavigation .form .submit, .main-menu a, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .category-navigation a, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .ui-tabs-nav a {
+.default-text, html, .cookieinformation .textwidget, .searchnavigation .form .submit, .main-menu a, .main-menu a:hover, .main-menu:hover a:hover, .category-navigation a, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .ui-tabs-nav a {
   color: #3e3e3f;
 }
 
-.main-text, a,
-a:active,
-a:focus, .page-header .category-tools .related-menu a:hover, .page-header .category-tools .menu-item:hover a, .cookieinformation .textwidget a, .top-menu-wrapper .top-menu .menu-item:hover a {
+.main-text, .page-header .category-tools .related-menu a:hover, .page-header .category-tools .menu-item:hover a, .article-wrapper .summary-content .entry-content .introwords, .cookieinformation .textwidget a, .top-menu-wrapper .top-menu .menu-item:hover a {
   color: #5c85b1;
 }
 
@@ -4542,8 +4546,7 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
 }
 
 .white-text, .slideshow .slide .caption-area .caption, .page-header .category-tools .related-menu a, .important-widget, .cookieinformation, .cookieinformation a,
-.important-widget a, .top-menu-wrapper, .top-menu-wrapper a, .responsive-navigation li a, .main-menu a:hover, .main-menu:hover a:hover,
-.main-menu .current-category-ancestor a,
+.important-widget a, .top-menu-wrapper, .top-menu-wrapper a, .responsive-navigation li a, .main-menu .current-category-ancestor a,
 .main-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
 .footer-image-wrapper {
@@ -4575,19 +4578,18 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
 }
 
 .hover-background {
-  background-color: #005baa;
+  background-color: #5c85b1;
 }
 
 .default-background {
   background-color: #3e3e3f;
 }
 
-.white-background, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .button.bottom, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .main-menu:hover > .current-category-ancestor a, .main-menu:hover > .current-menu-item a, .main-sub-menu:hover > .current-category-ancestor a, .main-sub-menu:hover > .current-menu-item a, .more-menu .more-menu-ul, .scrolltotop, .contact-popup.box, .contact-popup.box .close-contact {
+.white-background, .page-header .category-tools .menu-item:hover, .page-header .category-tools .menu-item .sub-menu, .button.bottom, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .top-menu-wrapper .top-menu .menu-item:hover, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu .more-menu-ul, .scrolltotop, .contact-popup.box, .contact-popup.box .close-contact {
   background-color: #fff;
 }
 
-.main-background, .page-header .category-tools .related-menu, .cookieinformation, .top-menu-wrapper, .responsive-navigation, .main-menu a:hover, .main-menu:hover a:hover,
-.main-menu .current-category-ancestor a,
+.main-background, .page-header .category-tools .related-menu, .cookieinformation, .top-menu-wrapper, .responsive-navigation, .main-menu .current-category-ancestor a,
 .main-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
 .footer-image-wrapper {
@@ -4598,8 +4600,7 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .home .contact-area .contact-wrapper, .footer-wrapper.footer-widget-wrapper, .searchnavigation .form .input-wrapper, .top-menu-wrapper .top-menu .menu-item .sub-menu .menu-item:hover, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
-.main-sub-menu .current-category-ancestor a,
+.gray-light-background, .gray-image-background, .home .contact-area .contact-wrapper, .footer-wrapper.footer-widget-wrapper, .searchnavigation .form .input-wrapper, .top-menu-wrapper .top-menu .menu-item .sub-menu .menu-item:hover, .main-menu a:hover, .main-menu:hover a:hover, .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover {
   background-color: #e5e6e7;
@@ -4654,7 +4655,7 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
   border-left: 1px solid #e5e6e7;
 }
 
-.border-line-main--left, .category-navigation .parent li.current-cat, .category-navigation .parent li:hover, .category-navigation .more-navigation li.current-tag, .category-navigation .more-navigation li:hover {
+.border-line-main--left, .category-navigation .parent li.current-cat > .children > li, .category-navigation .more-navigation li.current-tag, .category-navigation .more-navigation li:hover {
   border-left: 1px solid #5c85b1;
 }
 
@@ -4710,12 +4711,16 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
 }
 
 .font-weight-bold, .page-header .view-tools .active,
-.page-header .sort-order .active, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .widget .widget-title span {
+.page-header .sort-order .active, .article-wrapper .summary-content .entry-content .introwords, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .widget .widget-title span {
   font-weight: bold;
 }
 
 .font-weight-normal, .post h1.entry-title {
   font-weight: normal;
+}
+
+.text-decoration-underline, a:hover, .article-wrapper .summary-content .entry-content:hover {
+  text-decoration: underline;
 }
 
 .force-font-style-normal, .article-wrapper a {
@@ -4732,62 +4737,62 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
 
 .milli, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .breadcrumb, .page-header, .article-wrapper .entry-meta .footer-wrapper {
   font-size: 13px;
-  font-size: 0.92857rem;
+  font-size: 0.86667rem;
   line-height: 1.84615;
 }
 
 .micro {
   font-size: 12px;
-  font-size: 0.85714rem;
+  font-size: 0.8rem;
   line-height: 2;
 }
 
 .nano {
   font-size: 10px;
-  font-size: 0.71429rem;
+  font-size: 0.66667rem;
   line-height: 2.4;
 }
 
 @media only screen and (max-width: 969px) {
   h1, .alpha {
     font-size: 20px;
-    font-size: 1.42857rem;
+    font-size: 1.33333rem;
     line-height: 1.2;
   }
 
   h2, .beta {
     font-size: 18px;
-    font-size: 1.28571rem;
+    font-size: 1.2rem;
     line-height: 1.33333;
   }
 
   h3, .gamma, .main-menu {
     font-size: 17px;
-    font-size: 1.21429rem;
+    font-size: 1.13333rem;
     line-height: 1.41176;
   }
 
   h4, .delta {
     font-size: 16px;
-    font-size: 1.14286rem;
+    font-size: 1.06667rem;
     line-height: 1.5;
   }
 
   h5, body, .epsilon, h1.widget-title, .widget, .widget h1, .viewmode-only-titles h1.entry-title, .main-sub-menu {
     font-size: 14px;
-    font-size: 1rem;
+    font-size: 0.93333rem;
     line-height: 1.71429;
   }
 
   h6, .zeta, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .side-content, .top-menu-wrapper, .footer-widget-wrapper {
     font-size: 13px;
-    font-size: 0.92857rem;
+    font-size: 0.86667rem;
     line-height: 1.84615;
   }
 
   .milli, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .breadcrumb, .page-header, .article-wrapper .entry-meta .footer-wrapper {
     font-size: 12px;
-    font-size: 0.85714rem;
+    font-size: 0.8rem;
     line-height: 2;
   }
 }
@@ -4810,7 +4815,7 @@ a:focus, .page-header .category-tools .related-menu a:hover, .page-header .categ
 */
 /* default settings */
 h1 {
-  margin-bottom: 0!important;
+  margin-bottom: 6px !important;
 }
 h1 a {
   line-height: 1.3;
@@ -4825,17 +4830,13 @@ a {
   cursor: pointer;
 }
 
-a:hover {
-  text-decoration: none;
-}
-
 ul, ol, dd {
   margin-left: 24px;
-  margin-left: 1.71429rem;
+  margin-left: 1.6rem;
 }
 
 html {
-  font-family: "Oxygen", "myriad-pro", Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 .content--center, .menu-wrapper,
@@ -4888,16 +4889,16 @@ html {
 
 .nav--block-half-margin li a, .home .contact-area .contact-wrapper .content-wrapper ul li a, .searchnavigation .searchresult ul li a, .category-navigation .parent li a, .category-navigation .parent li .children li a, .category-navigation .more-navigation li a, .footer-widget-wrapper ul li a {
   padding-top: 6px;
-  padding-top: 0.42857rem;
+  padding-top: 0.4rem;
   padding-bottom: 6px;
-  padding-bottom: 0.42857rem;
+  padding-bottom: 0.4rem;
 }
 
 .nav--block-double-margin li a, .home .contact-area .contact-wrapper .content-wrapper ul li a, .main-menu li a, .ui-tabs-nav li a {
   padding-left: 24px;
-  padding-left: 1.71429rem;
+  padding-left: 1.6rem;
   padding-right: 24px;
-  padding-right: 1.71429rem;
+  padding-right: 1.6rem;
 }
 
 .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit {
@@ -5040,12 +5041,11 @@ html {
   }
 }
 
-.article-wrapper .side-content {
-  border-left: 4px solid #e5e6e7;
-}
-
 .article-wrapper {
   overflow: hidden;
+}
+.article-wrapper .side-content {
+  border-left: 4px solid #e5e6e7;
 }
 .article-wrapper .more-content .content a {
   border-bottom: 1px dotted #5c85b1;
@@ -5253,6 +5253,12 @@ html {
 
 .main-menu {
   border-bottom: 1px solid #c6cacb;
+  /*
+  &:hover > .current-category-ancestor a,
+  &:hover > .current-menu-item a {
+  	@extend .white-background;
+  	@extend .default-text;
+  }*/
 }
 @media only screen and (max-width: 540px) {
   .main-menu a:hover, .main-menu:hover a:hover,
@@ -5265,6 +5271,12 @@ html {
 .main-sub-menu {
   /*@extend .nav--block-double-margin;*/
   word-spacing: 0;
+  /*
+  &:hover > .current-category-ancestor a,
+  &:hover > .current-menu-item a {
+  	@extend .white-background;
+  	@extend .default-text;
+  }*/
 }
 @media only screen and (max-width: 540px) {
   .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
@@ -5325,7 +5337,19 @@ html {
   }
 }
 /* text colors */
+.category-navigation .parent li {
+  /*
+  &.current-cat,
+  &:hover {
+  	@extend .border-line-main--left;
+  	& > a > i,
+  	& > a {
+  		@extend .hover-text;
+  	}
+  }*/
+}
 .category-navigation .parent li .icon-left, .category-navigation .parent li h1.widget-title .i, h1.widget-title .category-navigation .parent li .i, .category-navigation .parent li h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .parent li .submit, .category-navigation .parent li .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .parent li .submit {
+  padding-top: 0!important;
   padding-left: 0!important;
   padding-right: 12px !important;
   width: 12px !important;
@@ -5335,6 +5359,8 @@ html {
   font-size: 90%;
 }
 .category-navigation .more-navigation li .icon-left, .category-navigation .more-navigation li h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li .i, .category-navigation .more-navigation li h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li .submit, .category-navigation .more-navigation li .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li .submit {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
   padding-left: 0!important;
   padding-right: 12px !important;
   width: 12px !important;
@@ -5386,29 +5412,27 @@ html {
   font-size: 150%;
 }
 
-.top-menu a:hover,
+/*.top-menu a:hover,
 .top-menu .menu-item:hover,
 .main-menu a:hover,
 .main-sub-menu a:hover,
 .ui-tabs-nav .ui-state-hover {
-  -moz-transition: color 0.2s linear, background-color 0.2s linear;
-  -webkit-transition: color 0.2s linear, background-color 0.2s linear;
-  -o-transition: color 0.2s linear, background-color 0.2s linear;
-  -ms-transition: color 0.2s linear, background-color 0.2s linear;
-  transition: color 0.2s linear, background-color 0.2s linear;
+	-moz-transition: color .2s linear, background-color .2s linear;
+	-webkit-transition: color .2s linear, background-color .2s linear;
+	-o-transition: color .2s linear, background-color .2s linear;
+	-ms-transition: color .2s linear, background-color .2s linear;
+	transition: color .2s linear, background-color .2s linear;
 }
-
 .top-menu a,
 .main-menu a,
 .main-sub-menu a,
 .ui-tabs li.ui-state-default {
-  -moz-transition: color 0.6s linear, background-color 0.6s linear;
-  -webkit-transition: color 0.6s linear, background-color 0.6s linear;
-  -o-transition: color 0.6s linear, background-color 0.6s linear;
-  -ms-transition: color 0.6s linear, background-color 0.6s linear;
-  transition: color 0.6s linear, background-color 0.6s linear;
-}
-
+	-moz-transition: color .6s linear, background-color .6s linear;
+	-webkit-transition: color .6s linear, background-color .6s linear;
+	-o-transition: color .6s linear, background-color .6s linear;
+	-ms-transition: color .6s linear, background-color .6s linear;
+	transition: color .6s linear, background-color .6s linear;
+}*/
 .position-fixed, .position-fixed--top-left, .position-fixed--top-right, .position-fixed--bottom-right, .scrolltotop, .position-fixed--bottom-left, #responsive-info, .contact-popup.overlay, .contact-popup.box {
   position: fixed;
 }
@@ -5483,80 +5507,80 @@ html {
 
 .margin {
   margin: 24px;
-  margin: 1.71429rem;
+  margin: 1.6rem;
 }
 
 .margin--top, .home .contact-area .contact-wrapper .content-wrapper h1 a, .home .post .side-content,
 .home .post .content-wrapper, .article-wrapper .entry-meta, .searchnavigation .searchresult {
   margin-top: 24px;
-  margin-top: 1.71429rem;
+  margin-top: 1.6rem;
 }
 
 .margin--right, .home .contact-area .contact-wrapper .content-wrapper h1 a, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper,
 .single.hk_kontakter .img-wrapper, article.single .map_canvas, .scrolltotop {
   margin-right: 24px;
-  margin-right: 1.71429rem;
+  margin-right: 1.6rem;
 }
 
-.margin--bottom, .widget, .slideshow, .breadcrumb, .page-header, .article-wrapper .summary-content, .article-wrapper .entry-meta, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
+.margin--bottom, .widget, .slideshow, .breadcrumb, .page-header, .article-wrapper .entry-meta, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
   margin-bottom: 24px;
-  margin-bottom: 1.71429rem;
+  margin-bottom: 1.6rem;
 }
 
 .margin--left, .icon-right, .home .contact-area .contact-wrapper .content-wrapper h1 a, .footer-widget-wrapper .content {
   margin-left: 24px;
-  margin-left: 1.71429rem;
+  margin-left: 1.6rem;
 }
 
 .half-margin--top, .home .contact-area .contact-wrapper .content-wrapper ul, .post h1.entry-title, .logo, .searchnavigation, .logo2 {
   margin-top: 12px;
-  margin-top: 0.85714rem;
+  margin-top: 0.8rem;
 }
 
 .half-margin--left, .addthis_toolbox a, .category-navigation .parent, .category-navigation .more-navigation, .footer-widget-wrapper ul {
   margin-left: 12px;
-  margin-left: 0.85714rem;
+  margin-left: 0.8rem;
 }
 
-.half-margin--bottom, .article-wrapper .content-wrapper .contact-area h3.entry-title {
+.half-margin--bottom, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area h3.entry-title {
   margin-bottom: 12px;
-  margin-bottom: 0.85714rem;
+  margin-bottom: 0.8rem;
 }
 
 .half-margin--right, .summary .img-wrapper, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .category-navigation .more-navigation li.current-tag h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li.current-tag .submit, .category-navigation .more-navigation li.current-tag .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li.current-tag .submit {
   margin-right: 12px;
-  margin-right: 0.85714rem;
+  margin-right: 0.8rem;
 }
 
 .padding--top, .cookieinformation, .footer-widget-wrapper {
   padding-top: 24px;
-  padding-top: 1.71429rem;
+  padding-top: 1.6rem;
 }
 
 .padding--right, .icon-right, .article-wrapper .side-content, .content {
   padding-right: 24px;
-  padding-right: 1.71429rem;
+  padding-right: 1.6rem;
 }
 
 .padding--bottom, .tag-listing h1, .article-wrapper .content-wrapper .contact-area .hk_kontakter, .content, .cookieinformation,
 .important-widget, .footer-widget-wrapper {
   padding-bottom: 24px;
-  padding-bottom: 1.71429rem;
+  padding-bottom: 1.6rem;
 }
 
 .padding--left, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field {
   padding-left: 24px;
-  padding-left: 1.71429rem;
+  padding-left: 1.6rem;
 }
 
 .half-padding--left, .category-navigation .parent li .children {
   padding-left: 12px;
-  padding-left: 0.85714rem;
+  padding-left: 0.8rem;
 }
 
 .half-padding--bottom, .home .contact-area .contact-wrapper .content-wrapper h1 a {
   padding-bottom: 12px;
-  padding-bottom: 0.85714rem;
+  padding-bottom: 0.8rem;
 }
 
 .dropdown, .page-header .category-tools .menu-item, .top-menu-wrapper .top-menu .menu-item {
@@ -5744,7 +5768,7 @@ html {
     display: none!important;
   }
 }
-.unhidden, .category-navigation .parent li.current-cat .children, .category-navigation .parent li.current-cat-parent .children {
+.unhidden, .category-navigation .parent li.current-cat > .children, .category-navigation .parent li.current-cat-parent > .children {
   display: block!important;
 }
 

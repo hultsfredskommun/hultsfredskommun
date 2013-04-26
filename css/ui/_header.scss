@@ -117,38 +117,38 @@
 			@extend .main-border;
 		}		
 	}
-		.searchresult {
-			@extend .margin--top;
-			
-			ul {
-				.search-title {
-					@extend .font-weight-bold;
-					margin-left: $half-spacing-unit;
-					margin-bottom: $half-spacing-unit;
-				}
-				@extend .nav;
-				@extend .nav--block;
-				@extend .nav--block-half-margin;
-				@extend .nav--stacked;
-				@extend .islet;
-				@extend .float--left;
-				@extend .one-half;
-				a, span {
-					white-space: normal!important;
-				}
+	.searchresult {
+		@extend .margin--top;
+		
+		ul {
+			.search-title {
+				@extend .font-weight-bold;
+				margin-left: $half-spacing-unit;
+				margin-bottom: $half-spacing-unit;
 			}
-			ul.search-tele {
-				li {
-					margin-bottom: $half-spacing-unit;
-					span {
-						display: block;
-						margin-bottom: $half-spacing-unit/3;
-						margin-left: $half-spacing-unit;
+			@extend .nav;
+			@extend .nav--block;
+			@extend .nav--block-half-margin;
+			@extend .nav--stacked;
+			@extend .islet;
+			@extend .float--left;
+			@extend .one-half;
+			a, span {
+				white-space: normal!important;
+			}
+		}
+		ul.search-tele {
+			li {
+				margin-bottom: $half-spacing-unit;
+				span {
+					display: block;
+					margin-bottom: $half-spacing-unit/3;
+					margin-left: $half-spacing-unit;
 
-					}
 				}
 			}
 		}
+	}
 
 }
 

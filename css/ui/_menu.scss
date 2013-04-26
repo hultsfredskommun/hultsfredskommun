@@ -83,14 +83,23 @@
 		@include media-query(palm){
 			border-radius: 0;
 		}
+	}
+	a:hover,
+	&:hover a:hover {
+		@extend .gray-light-background;
+		@extend .default-text;
+	}
+	.current-category-ancestor a,
+	.current-menu-item a {
 		@extend .main-background;
 		@extend .white-text;
 	}
+	/*
 	&:hover > .current-category-ancestor a,
 	&:hover > .current-menu-item a {
 		@extend .white-background;
 		@extend .default-text;
-	}
+	}*/
 }
 .main-sub-menu {
 	@extend .epsilon;
@@ -104,14 +113,22 @@
 		@include media-query(palm){
 			border-radius: 0;
 		}
-		@extend .gray-light-background;
 		@extend .black-text;
 	}
+	a:hover,
+	&:hover a:hover {
+		//@extend .gray-background;
+	}
+	.current-category-ancestor a,
+	.current-menu-item a {
+		@extend .gray-light-background;
+	}
+	/*
 	&:hover > .current-category-ancestor a,
 	&:hover > .current-menu-item a {
 		@extend .white-background;
 		@extend .default-text;
-	}
+	}*/
 }
 .more-menu {
 	@extend .position-relative;

@@ -8,11 +8,11 @@ a {
 a,
 a:active,
 a:focus {
-	@extend .main-text;
+	@extend .link-text;
 }
 a:hover {
 	@extend .hover-text;
-	text-decoration: none;
+	@extend .text-decoration-underline;
 }
 
 

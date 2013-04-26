@@ -33,9 +33,9 @@
 	<?php endif; ?>
 	<?php //print_r($post); ?>
 	<?php if ( get_post_type() == "attachment" ) : // if view of attachment ?>
-	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo ($count < 2)?"summary":"full"; ?>">
-		<ul class="related-wrapper <?php echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
-			<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>">
+	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo "full"; //TEMP REMOVED echo ($count < 2)?"summary":"full"; ?>">
+		<ul class="related-wrapper <?php echo "full"; //TEMP REMOVED echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
+			<li class="related_file <?php echo "full"; //TEMP REMOVED echo ($count++ < 2)?"summary":"full"; ?>">
 				<a title="Ladda ner dokument" class="icon-left"><i class='i' data-icon='&#xF019;'></i></a>
 				<a target="_blank" href="<?php echo wp_get_attachment_url(get_the_ID()); ?>" class="icon-right" title="Direktl&auml;nk till filen<?php //echo get_the_content(); ?>"><?php the_title(); ?></a>
 			</li>
@@ -44,18 +44,18 @@
 	<?php endif; ?>
 
 	<?php if ( function_exists("get_field") && get_field('hk_related') ) : // related docs and links ?>
-	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo ($count < 2)?"summary":"full"; ?>">
-		<ul class="related-wrapper <?php echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
+	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo "full"; //TEMP REMOVED echo ($count < 2)?"summary":"full"; ?>">
+		<ul class="related-wrapper <?php echo "full"; //TEMP REMOVED echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
 		<?php while ( has_sub_field('hk_related') ) : ?>
 			<?php if (!$summary || $count++ < 2) : ?>
 				<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
-					<li class="related_page <?php echo ($count++ < 2)?"summary":"full"; ?>">
+					<li class="related_page <?php echo "full"; //TEMP REMOVED echo ($count++ < 2)?"summary":"full"; ?>">
 						<?php $value = get_sub_field('hk_related_post');?>
 						<a href="<?php echo get_permalink($value->ID); ?>" class="icon-left" title="Relaterat inl&auml;gg"><i class='i' data-icon='&#xF143;'></i></a>
 						<a href="<?php echo get_permalink($value->ID); ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_post_description'); ?>"><?php echo $value->post_title; ?></a>
 					</li>			 
 				<?php elseif ( get_row_layout() == 'hk_related_links' ) : ?>
-					<li class="related_link <?php echo ($count++ < 2)?"summary":"full"; ?>">
+					<li class="related_link <?php echo "full"; //TEMP REMOVED echo ($count++ < 2)?"summary":"full"; ?>">
 						<?php 
 							// prepend http:// if not there already
 							$relate_link_url = get_sub_field('hk_relate_link_url');
@@ -69,7 +69,7 @@
 				<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
 					<?php $link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
 						$link_name = get_the_title(get_sub_field('hk_related_file')); ?>
-					<li class="related_file <?php echo ($count++ < 2)?"summary":"full"; ?>">
+					<li class="related_file <?php echo "full"; //TEMP REMOVED echo ($count++ < 2)?"summary":"full"; ?>">
 						<a target="_blank" href="<?php echo $link; ?>" class="icon-left" title="Ladda ner dokument"><i class='i' data-icon='&#xF019;'></i></a>
 						<a target="_blank" href="<?php echo $link; ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_file_description'); ?>"><?php echo $link_name; ?></a>
 					</li>			 

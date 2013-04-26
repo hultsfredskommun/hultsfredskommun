@@ -49,7 +49,7 @@
 					get_template_part( 'content', get_post_type() );
 					$shownPosts[] = get_the_ID();
 				endwhile; endif;
-				echo "<span class='hidden debug'>sticky from this category . <br>".print_r($args,true)."</span>";
+				//echo "<span class='hidden debug'>sticky from this category . <br>".print_r($args,true)."</span>";
 
 				wp_reset_query(); // Reset Query
 			}
@@ -71,7 +71,7 @@
 				get_template_part( 'content', get_post_type() );
 				$shownPosts[] = get_the_ID();
 			endwhile; endif;
-			echo "<span class='hidden debug'>all from this category . <br>".print_r($args,true)."</span>";
+			//echo "<span class='hidden debug'>all from this category . <br>".print_r($args,true)."</span>";
 
 			wp_reset_query(); // Reset Query
 			

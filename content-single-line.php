@@ -10,7 +10,7 @@ global $default_settings;
 ?>
 	<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<a href="<?php the_permalink(); ?>" class="link" title="<?php echo get_the_excerpt(); // printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
-		<?php if ( function_exists("get_field") ) : // related docs and links ?>
+		<?php if (false) :// TEMP REMOVED //if ( function_exists("get_field") ) : // related docs and links ?>
 		<aside class="content-area">
 			<ul>
 				<?php $count = 0; while ( has_sub_field('hk_related') ) : ?>

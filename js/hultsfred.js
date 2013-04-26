@@ -683,13 +683,13 @@ $(document).ready(function(){
 		}
 	});
 	/* add action to expand tag listing */
-	$(".tag-listing").find("li").each(function(){
+	/*$(".tag-listing").find("li").each(function(){
 		$(this).find(".link").click(function(ev) {
 			$(this).next(".content-area").toggle();
 			ev.preventDefault();
 			ev.stopPropagation();			
 		});
-	});
+	});*/
 	// contact popup
 	$(".js-contact-link").each(function() {
 		setContactPopupAction($(this));

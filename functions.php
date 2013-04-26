@@ -363,6 +363,26 @@ add_filter('gallery_style',
 		)
 	);
 
+/*
+ * Alter excerpt - add link on three first words
+ */
+add_filter('the_excerpt', 'hk_excerpt');
+function hk_excerpt($content) {
+	$content = strip_tags($content);
+	$content_array = explode(" ",$content);
+	$content = "<span class='introwords'>";
+	$count = 1;
+	
+	foreach ($content_array as $c) {
+		
+		if ($count++ == 3)
+			$content .= $c . "</span> ";
+		else
+			$content .= $c . " ";
+	}
+    return $content;
+}
+
 /**
  * Sets the post excerpt length to 30 words.
  */

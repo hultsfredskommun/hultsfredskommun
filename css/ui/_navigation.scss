@@ -17,10 +17,24 @@
 		@extend .nav--stacked;
 
 		li {
+			@extend .default-text;
+			@extend .border-line--left;
+
 			&.current-cat > a {
 				//@extend .gray-light-background;
 				@extend .font-weight-bold;
 			}
+			
+			&.current-cat > .children > li {
+				@extend .border-line-main--left;
+			}
+			&.current-cat {
+				& > a > i,
+				& > a {
+					@extend .hover-text;
+				}
+			}
+			/*
 			&.current-cat,
 			&:hover {
 				@extend .border-line-main--left;
@@ -28,23 +42,21 @@
 				& > a {
 					@extend .hover-text;
 				}
-			}
+			}*/
 			&.cat-has-children {
 				//@extend .noborder;
 			}
 			&.current-cat,
 			&.current-cat-parent {
-				.children {
+				> .children {
 					@extend .unhidden;
 				}
 			}
-			@extend .default-text;
-			
-			@extend .border-line--left;
 			.icon-left {
 				i {
 					font-size: 90%;
 				}
+				padding-top: 0!important;
 				padding-left: 0!important;
 				padding-right: $half-spacing-unit!important;
 				width: $half-spacing-unit!important;
@@ -80,6 +92,8 @@
 				i {
 					font-size: 90%;
 				}
+				padding-top: 0!important;
+				padding-bottom: 0!important;
 				padding-left: 0!important;
 				padding-right: $half-spacing-unit!important;
 				width: $half-spacing-unit!important;

@@ -17,6 +17,8 @@ function hk_breadcrumb() {
 			if ($tag != "") {
 				$tag_link = "?tag=".$tag; 
 			}
+			if ($tag != "")
+				echo 'Visar kategori: ';
 			foreach  ($cats_array as $c) {
 				if ($c != "") {
 					$c = get_category_by_slug($c);
@@ -27,11 +29,12 @@ function hk_breadcrumb() {
 		}
 	
 		if ($tag != "") {
-			echo '<br>';
+			echo '<br>Typ av information: ';
 			foreach (split(',',$tag) as $t) {
 				$t = get_term_by( 'slug', $t, 'post_tag');
-				//echo "<a href='" . get_tag_link($t->term_id) . "'>" . $t->name . "</a> &raquo; ";
+				echo "<a href='" . get_tag_link($t->term_id) . "'>" . $t->name . "</a> | ";
 			}
+			echo "<a class='important-text' href='" . get_category_link($cat) . "'>Rensa alla</a>";
 		}
 	}
 	//$categories_list = get_the_category();
@@ -342,6 +345,31 @@ class hk_Category_Walker extends Walker_Category {
 		}
 				
         $cat_name = esc_attr( $category->name); 
+		
+		
+		// set classes
+		$haschildclass = "";
+		if (count(get_term_children($category->term_id,"category")) > 0)
+			$haschildclass = " cat-has-children";
+        if ( isset($current_category) && $current_category ) 
+            $_current_category = get_category( $current_category ); 
+		$class = 'cat-item cat-item-'.$category->term_id.$haschildclass; 
+		if ( isset($current_category) && $current_category && ($category->term_id == $current_category) ) 
+			$class .=  ' current-cat'; 
+		elseif ( isset($_current_category) && $_current_category && ($category->term_id == $_current_category->parent) ) 
+			$class .=  ' current-cat-parent'; 
+		elseif ( hk_isParentOf($_current_category->term_id, $category->term_id) ) 
+			$class .=  ' current-cat-parent current-cat-grandparent'; 
+		
+		
+		// set expandable icon
+		$icon = "";
+		if (count(get_term_children($category->term_id,"category")) > 0) {
+			if (!strstr($class,"current-cat")) {//count(get_term_children(,"category")) > 0) {
+				$icon = " +";
+			}
+		}
+		
         $link = '<a href="' . get_category_link( $category->term_id ) . $tags_filter . '" '; 
         $cat_name = apply_filters( 'list_cats', $cat_name, $category ); 
         if ( $use_desc_for_title == 0 || empty($category->description) ) 
@@ -350,30 +378,8 @@ class hk_Category_Walker extends Walker_Category {
             $link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"'; 
         $link .= '>'; 
 
-        $link .= $cat_name . '</a>'; 
-        if ( (! empty($feed_image)) || (! empty($feed)) ) { 
-            $link .= ' '; 
-            if ( empty($feed_image) ) 
-                $link .= '('; 
-            $link .= '<a href="' . get_category_feed_link($category->term_id, $feed_type) . $tags_filter . '"'; 
-            if ( empty($feed) ) 
-                $alt = ' alt="' . sprintf(__( 'Feed for all posts filed under %s' ), $cat_name ) . '"'; 
-            else { 
-                $title = ' title="' . $feed . '"'; 
-                $alt = ' alt="' . $feed . '"'; 
-                $name = $feed; 
-                $link .= $title; 
-            } 
-
-            $link .= '>'; 
-            if ( empty($feed_image) ) 
-                $link .= $name; 
-            else 
-                $link .= "<img src='$feed_image'$alt$title" . ' />'; 
-            $link .= '</a>'; 
-            if ( empty($feed_image) ) 
-                $link .= ')'; 
-        } 
+        $link .= $cat_name . $icon . '</a>'; 
+        
 
         if ( isset($show_count) && $show_count ) 
             $link .= ' (' . intval($category->count) . ')'; 
@@ -382,31 +388,13 @@ class hk_Category_Walker extends Walker_Category {
             $link .= ' ' . gmdate('Y-m-d', $category->last_update_timestamp); 
         } 
 
-        if ( isset($current_category) && $current_category ) 
-            $_current_category = get_category( $current_category ); 
-			
         if ( 'list' == $args['style'] ) { 
-			$haschildclass = "";
-			$icon = "";
-			if (count(get_term_children($category->term_id,"category")) > 0) {
-				$haschildclass = " cat-has-children";
-				$icon = "<a href='#' class='hide icon-left'><i class='i' data-icon='&#xF14C;'></i></a>";
-			}
-            $output .= "\t<li"; 
-            $class = 'cat-item cat-item-'.$category->term_id.$haschildclass; 
-            if ( isset($current_category) && $current_category && ($category->term_id == $current_category) ) 
-                $class .=  ' current-cat'; 
-            elseif ( isset($_current_category) && $_current_category && ($category->term_id == $_current_category->parent) ) 
-                $class .=  ' current-cat-parent'; 
-			elseif ( hk_isParentOf($_current_category->term_id, $category->term_id) ) 
-                $class .=  ' current-cat-parent current-cat-grandparent'; 
 			
-			// other icon if in current-cat
-			if (strstr($class,"current-cat")) {
-				$icon = str_replace("xF14C","xF14D", $icon);
-			}
+
+            $output .= "\t<li"; 
+            
             $output .=  ' class="'.$class.'"'; 
-            $output .= ">$icon$link\n"; 
+            $output .= ">$link\n"; 
         } else { 
             $output .= "\t$link<br />\n"; 
         } 
