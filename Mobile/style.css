@@ -1,0 +1,56 @@
+.hk_mobile_logo {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	margin-top: 15px;
+	width: 180px;
+}
+.HK_mobile_nav ul {
+	margin: 0 auto;
+	padding:0;
+	width: 95%;
+	/*background-color:#b0e0e6;*/
+}
+.HK_mobile_nav ul li {
+	list-style-type: none;
+}
+.HK_mobile_nav a {
+	display: block;
+}
+#HK_lang {
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+}
+#HK_lang a {
+	margin-top: 10px;
+	display: inline-block;
+}
+.exc_button {
+	border-color: #A41D30;
+	background-color: #A41D30;
+	font-family: "myriad-pro",Arial,sans-serif;
+	font-size: 1.4em;
+	color: #fff;
+	font-weight: normal;
+	text-transform: none;
+	height: 25px;
+/*	border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;*/
+}
+.exc_button {
+	text-align: center;
+	display: block;
+	padding: 5px 0px;
+	margin-bottom: 3px;
+	cursor: pointer;
+	border-style: solid;
+	border-width: 1px;
+	background-image: url(spr_bgButtons.png);
+	background-position: 0 0;
+	text-decoration: none;
+}
+.exc_button:hover {
+	background-color: #C4233B;
+}
