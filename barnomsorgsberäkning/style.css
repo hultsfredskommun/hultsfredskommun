@@ -1,0 +1,17 @@
+#cc_wrapper {
+	width: 400px;
+	margin: 0 auto;
+	font-family: Arial;
+}
+.nChild {
+	color: rgb(75, 75, 75);
+	font-weight: bold;
+	margin-right: 49px;
+}
+#cc_wrapper h4, h3 {
+	color: rgb(75, 75, 75);
+}
+#errMsg {
+	font-weight: bold;
+	color: rgb(213, 0, 0);
+}
