@@ -3285,7 +3285,7 @@ html.flexbox {
   width: 33.333%;
 }
 
-.two-thirds, .four-sixths, .eight-twelfths {
+.two-thirds, .four-sixths, .eight-twelfths, .post h1.entry-title {
   width: 66.666%;
 }
 

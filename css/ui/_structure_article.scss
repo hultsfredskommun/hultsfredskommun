@@ -64,6 +64,7 @@ article.post {
 .post h1.entry-title {
 	@extend .font-weight-normal;
 	@extend .half-margin--top;
+	@extend .two-thirds;
 }
 
 .article-wrapper {
