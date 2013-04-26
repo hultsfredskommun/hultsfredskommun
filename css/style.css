@@ -3285,7 +3285,7 @@ html.flexbox {
   width: 33.333%;
 }
 
-.two-thirds, .four-sixths, .eight-twelfths, .post h1.entry-title {
+.two-thirds, .four-sixths, .eight-twelfths {
   width: 66.666%;
 }
 
@@ -3406,7 +3406,7 @@ html.flexbox {
   /**
   * Whole
   */
-  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .home .contact-area .contact-wrapper .content-wrapper ul.two, .breadcrumb, .category-navigation, .primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .searchnavigation, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .home .contact-area .contact-wrapper .content-wrapper ul.two, .breadcrumb, .category-navigation, .primary, .help-navigation, .post h1.entry-title, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .searchnavigation, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
     width: 100%;
   }
 
@@ -3530,7 +3530,7 @@ html.flexbox {
   /**
   * Whole
   */
-  .lap-one-whole, .home .contact-area .contact-wrapper .content-wrapper ul.two, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta {
+  .lap-one-whole, .home .contact-area .contact-wrapper .content-wrapper ul.two, .post h1.entry-title, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta {
     width: 100%;
   }
 
@@ -3796,7 +3796,7 @@ html.flexbox {
     width: 33.333%;
   }
 
-  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .entry-meta {
+  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths, .help-navigation, .post h1.entry-title, .article-wrapper .content-wrapper, .article-wrapper .entry-meta {
     width: 66.666%;
   }
 
