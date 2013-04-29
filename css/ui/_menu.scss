@@ -46,8 +46,8 @@
 .main-menu,
 .main-sub-menu {
 	@extend .hidden--palm;
+	@extend .header-font;
 }
-
 .menu-wrapper {
 	@extend .margin--bottom;
 	_verflow: hidden;
@@ -68,7 +68,7 @@
 	@extend .nav--block;
 }
 .main-menu {
-	@extend .gamma;
+	@extend .beta;
 	@extend .nav--block-double-margin;
 	@extend .flush--bottom;
 	border-bottom: 1px solid $border-color;
@@ -102,7 +102,7 @@
 	}*/
 }
 .main-sub-menu {
-	@extend .epsilon;
+	@extend .gamma;
 	/*@extend .nav--block-double-margin;*/
 	word-spacing: 0;
 	a:hover,

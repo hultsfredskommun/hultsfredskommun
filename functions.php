@@ -387,7 +387,7 @@ function hk_excerpt($content) {
  * Sets the post excerpt length to 30 words.
  */
 function hk_excerpt_length( $length ) {
-	return 20;
+	return 10;
 }
 add_filter( 'excerpt_length', 'hk_excerpt_length' );
 
