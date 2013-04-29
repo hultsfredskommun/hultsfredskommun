@@ -4711,7 +4711,7 @@ a:focus {
 }
 
 .header-font, h1, h2, h3, h4, h5, h6, .main-menu,
-.main-sub-menu {
+.main-sub-menu, .category-navigation {
   font-family: Arial, sans-serif;
 }
 

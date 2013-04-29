@@ -1,5 +1,6 @@
 /* text colors */
 .category-navigation {
+	@extend .header-font;
 	.heading {
 		@extend .font-weight-bold;
 		@extend .force-noborder;
