@@ -6,7 +6,8 @@
 		// featured image ?>
 
 
-		
+			<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+
 			<?php //the_post_thumbnail('featured-image'); 
 				echo hk_get_the_post_thumbnail(get_the_ID(),'featured-image');
 			?>

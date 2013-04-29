@@ -17,8 +17,6 @@ function hk_breadcrumb() {
 			if ($tag != "") {
 				$tag_link = "?tag=".$tag; 
 			}
-			if ($tag != "")
-				echo 'Visar kategori: ';
 			foreach  ($cats_array as $c) {
 				if ($c != "") {
 					$c = get_category_by_slug($c);
@@ -28,14 +26,14 @@ function hk_breadcrumb() {
 			//echo get_category_parents($cat, TRUE, ' &raquo; ');
 		}
 	
-		if ($tag != "") {
+		/*if ($tag != "") {
 			echo '<br>Typ av information: ';
 			foreach (split(',',$tag) as $t) {
 				$t = get_term_by( 'slug', $t, 'post_tag');
 				echo "<a href='" . get_tag_link($t->term_id) . "'>" . $t->name . "</a> | ";
 			}
 			echo "<a class='important-text' href='" . get_category_link($cat) . "'>Rensa alla</a>";
-		}
+		}*/
 	}
 	//$categories_list = get_the_category();
 	

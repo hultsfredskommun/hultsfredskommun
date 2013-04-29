@@ -11,7 +11,6 @@ global $default_settings;
 	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky summary":"summary"); ?>>
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
-			<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 			<div class="content-wrapper">
 
 				<div class="summary-content">
@@ -21,6 +20,7 @@ global $default_settings;
 								echo $thumb;
 							//the_post_thumbnail('thumbnail-image'); ?>
 					<?php endif;/*endif;*/ ?>
+					<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 					
 					<?php if ( get_post_type() != "attachment" ) : // if not an attachment ?>
 					<div class="entry-content">

@@ -437,7 +437,7 @@ function readMoreToggle(el){
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
 					$(this).parents("article")/*.prepend(closea)*/.append(closeb);
-					
+
 					// scroll to top of post 
 					$("html,body").animate({scrollTop: $(this).parents("article").position().top - $('#wpadminbar').height() || 0}, 150);
 
@@ -523,6 +523,12 @@ function readMoreToggle(el){
 			// contact popup
 			$(this).parents("article").find(".js-contact-link").each(function() {
 				setContactPopupAction($(this));
+			});
+
+			// set click on full header
+			$(this).parents("article").find(".more-content .entry-title a").unbind("click").bind("click",function(ev){
+				ev.preventDefault();
+				readMoreToggle( $(this).parents("article").find(".entry-title a") );
 			});
 
 			$(this).parents("article").removeClass("muted wait");
