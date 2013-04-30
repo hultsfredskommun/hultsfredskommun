@@ -91,7 +91,7 @@ article.post {
 		@extend .hand;
 		.entry-content .introwords {
 			@extend .link-text;
-			@extend .font-weight-bold;
+			//@extend .font-weight-bold;
 		}
 		.entry-content:hover {
 			@extend .text-decoration-underline;

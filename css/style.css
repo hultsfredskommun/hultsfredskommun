@@ -4728,7 +4728,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 
 .font-weight-bold, .page-header .num-posts .active,
 .page-header .view-tools .active,
-.page-header .sort-order .active, .article-wrapper .summary-content .entry-content .introwords, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .widget .widget-title span {
+.page-header .sort-order .active, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .widget .widget-title span {
   font-weight: bold;
 }
 
