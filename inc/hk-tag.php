@@ -26,8 +26,20 @@
 			if ($tag != "")
 				$args["tag_slug__in"] = split(",",$tag);
 				
-			echo "<h1>Inneh&aring;ll fr&aring;n " . $tag . " i kategorin " . single_tag_title("",false) . "</h1>";
-			
+			//echo "<h1>Inneh&aring;ll fr&aring;n " . $tag . " i kategorin " . single_tag_title("",false) . "</h1>";
+			?>
+			<header class="page-header">
+				
+				<ul class="num-posts">
+					<?php  			
+						echo "<li><a class='nolink'>Inneh&aring;ll fr&aring;n <span class='font-weight-bold'>" . $tag . "</span> i kategorin <span class='font-weight-bold'>" . single_tag_title("",false) . "</span></a></li>";
+					?>
+					<?php //print_r($wp_query); ?>
+				</ul>
+
+
+			</header>
+		<?php
 			query_posts( $args );
 			
 			if ( have_posts() ) : ?>

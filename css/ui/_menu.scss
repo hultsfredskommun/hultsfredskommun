@@ -54,6 +54,7 @@
 .main-sub-menu {
 	@extend .hidden--palm;
 	@extend .header-font;
+	word-spacing: 0;
 }
 .menu-wrapper {
 	@extend .margin--bottom;
@@ -127,15 +128,15 @@
 	@extend .gray-light-background;
 	@extend .border-radius;
 	margin-bottom: $base-spacing-unit*1.5;
-	ul li {
-		word-spacing: 0;
-	}
+	
 	/*@extend .nav--block-double-margin;*/
 	a {
 		@extend .default-text;
 	}
 	.menu-item:first-child a {
+		//@extend .half-margin--left;
 		@extend .border-radius--left;
+		//margin-left: $base-spacing-unit/8;
 	}
 	a:hover,
 	&:hover a:hover,

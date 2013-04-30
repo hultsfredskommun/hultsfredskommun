@@ -5278,6 +5278,11 @@ html {
 /*
  * top navigation 
  */
+.main-menu,
+.main-sub-menu {
+  word-spacing: 0;
+}
+
 .menu-wrapper {
   _verflow: hidden;
 }
@@ -5339,9 +5344,6 @@ html {
   	@extend .white-background;
   	@extend .default-text;
   }*/
-}
-.main-sub-menu ul li {
-  word-spacing: 0;
 }
 @media only screen and (max-width: 540px) {
   .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
@@ -5576,7 +5578,7 @@ html {
 }
 
 .margin--top, .home .contact-area .contact-wrapper .content-wrapper h1 a, .pagenav, .home .post .side-content,
-.home .post .content-wrapper, .article-wrapper .entry-meta, .searchnavigation .searchresult {
+.home .post .content-wrapper, .article-wrapper .entry-meta, .searchnavigation .searchresult, .colophon {
   margin-top: 24px;
   margin-top: 1.6rem;
 }
