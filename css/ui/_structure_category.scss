@@ -8,7 +8,8 @@
 	@extend .milli;
 //	@extend .hidden--desk;
 //	@extend .hidden--lap;
-	@extend .margin--bottom;
+	padding-bottom: $base-spacing-unit*0.25;
+	padding-left: $base-spacing-unit*1.5;
 }
 .category-navigation {
 	@extend .g;
@@ -31,17 +32,27 @@
 /*
  * sort-order 
  */
+ @include media-query(portable){
+.page-header .category-tools .menu-item .sub-menu > li {
+	display: table !important;
+}
+}
+
 .page-header {
 	@extend .milli;
 	@extend .one-whole;
-	@extend .border;
+	//@extend .border;
+	@extend .gray-light-background;
 	@extend .border-radius;
-	@extend .margin--bottom;
+	@extend .half-margin--bottom;
 	@extend .cf;
-	
+	@extend .default-text;
+	a {
+		@extend .default-text;
+	}
+	.num-posts,
 	.view-tools,
 	.sort-order {
-		@extend .float--left;
 		@extend .nav;
 		@extend .nav--block;
 		@extend .flush--bottom;
@@ -68,18 +79,28 @@
 	}
 	
 	
+	.num-posts {
+		@extend .float--left;
+	}
+	.view-tools,
+	.sort-order {
+		@extend .float--right;
+	}
 	.category-tools {
+		word-spacing: 0;
+		@extend .float--right;
 		@extend .text--right;
 		@extend .nav;
 		@extend .nav--block;
 		@extend .flush--bottom;
 		.related-menu {
-			@extend .main-background;
+			@extend .border-radius--right;
+			@extend .default-background;
+			&:hover {
+				border-radius: 0 $border-radius 0 0;
+			}
 			a {
 				@extend .white-text;
-			}
-			a:hover {
-				@extend .main-text;
 			}
 		}
 		.menu-item {
@@ -89,29 +110,28 @@
 			}
 			.i {
 				@extend .float--left;
+				color: #fff!important;
 				width: $base-spacing-unit;
-			}
-			&:hover {
-				@extend .white-background;
-				a {
-					@extend .main-text;
-				}
 			}
 			.sub-menu {
 				@extend .nav;
 				@extend .nav--stacked;
 				@extend .nav--block;
-				@extend .white-background;
+				@extend .default-background;
+				//@extend .white-background;
 				@extend .dropdown__content--right;
 				@extend .nav--stacked;
 				@extend .text--left;
-				border-radius: 0 0 $border-radius $border-radius;
-				border-left: $border-width $border-style $border-color;
-				border-right: $border-width $border-style $border-color;
-				border-bottom: $border-width $border-style $border-color;
+				@extend .border-radius--bottom;
+				//border-left: $border-width $border-style $border-color;
+				//border-right: $border-width $border-style $border-color;
+				//border-bottom: $border-width $border-style $border-color;
 				z-index: 100;
 			}
 		}
 	}
+}
+.pagenav {
+	@extend .margin--top;
 }
 

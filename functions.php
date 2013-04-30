@@ -431,11 +431,19 @@ if ( ! function_exists( 'hk_content_nav' ) ) :
  */
 function hk_content_nav( $nav_id ) {
 	global $wp_query;
-
 	if ( $wp_query->max_num_pages > 1 ) : ?>
-		<nav id="<?php echo $nav_id; ?>">
-			<div class="nav-previous"><?php next_posts_link( __( 'Fler <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
-			<div class="nav-next"><?php previous_posts_link( __( '<span class="meta-nav">&larr;</span> Tillbaka', 'twentyeleven' ) ); ?></div>
+		<nav class='pagenav' id="<?php echo $nav_id; ?>">
+			<?php $big = 999999999; // need an unlikely integer
+
+			echo paginate_links( array(
+				'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'format' => '?paged=%#%',
+				'current' => max( 1, get_query_var('paged') ),
+				'total' => $wp_query->max_num_pages
+			) ); ?>
+
+			<div class="nav-previous"><?php //next_posts_link( __( 'Fler <span class="meta-nav">&rarr;</span>', 'twentyeleven' ) ); ?></div>
+			<div class="nav-next"><?php //previous_posts_link( __( '<span class="meta-nav">&larr;</span> Tillbaka', 'twentyeleven' ) ); ?></div>
 		</nav><!-- #nav-above -->
 	<?php endif;
 }

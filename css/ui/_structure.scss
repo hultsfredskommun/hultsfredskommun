@@ -47,6 +47,11 @@ html {
 	@extend .gw;
 }
 
+.nolink,
+.nolink:hover {
+	cursor:default;
+	text-decoration:none;
+}
 .wait {
 	cursor:wait;
 }
@@ -113,12 +118,6 @@ img {
 	@extend .one-whole;
 }
 @include media-query(portable){
-.page-header .category-tools .menu-item .sub-menu > li {
-	display: table !important;
-}
-.main-sub-menu {
-    word-spacing: 0;
-}
 .icon-left {
     line-height: 1.7em !important;
 }

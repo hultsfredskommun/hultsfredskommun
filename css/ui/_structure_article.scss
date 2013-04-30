@@ -90,7 +90,7 @@ article.post {
 	.summary-content {
 		@extend .hand;
 		.entry-content .introwords {
-			@extend .main-text;
+			@extend .link-text;
 			@extend .font-weight-bold;
 		}
 		.entry-content:hover {

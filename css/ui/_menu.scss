@@ -1,4 +1,11 @@
-
+.small-words {
+	@extend .main-text;
+	@extend .float--left;
+	@extend .font-style-italic;
+	font-family: times;
+	@extend .zeta;
+	padding: $half-spacing-unit 0 0 $half-spacing-unit*1.5!important;
+}
 /* main-menu toggle in responsive */
 .responsive-navigation {
 	@extend .hidden--lap;
@@ -53,7 +60,6 @@
 	_verflow: hidden;
 }
 .more-menu-ul,
-.main-menu,
 .main-sub-menu {
 	a {
 		padding: $half-spacing-unit $half-spacing-unit*1.5!important;
@@ -68,14 +74,21 @@
 	@extend .nav--block;
 }
 .main-menu {
-	@extend .beta;
-	@extend .nav--block-double-margin;
-	@extend .flush--bottom;
-	border-bottom: 1px solid $border-color;
+	@extend .epsilon;
+	@extend .one-whole;
+	margin: 0 0 $base-spacing-unit/2 0;
+	text-align: right;
+	li {
+		display: inline-block;
+		padding: $base-spacing-unit/8 $base-spacing-unit/4;
+	}
+	//@extend .flush--bottom;
+	//border-bottom: 1px solid $border-color;
 	a {
 		@extend .default-text;
+		padding: $base-spacing-unit/8 $base-spacing-unit/4;
 	}
-	a:hover,
+	/*a:hover,
 	&:hover a:hover,
 	.current-category-ancestor a,
 	.current-menu-item a {
@@ -83,17 +96,25 @@
 		@include media-query(palm){
 			border-radius: 0;
 		}
-	}
+	}*/
+	/*
 	a:hover,
 	&:hover a:hover {
 		@extend .gray-light-background;
 		@extend .default-text;
+	}*/
+	.current-category-ancestor a:hover,
+	.current-menu-item a:hover {
+		text-decoration: none;
 	}
 	.current-category-ancestor a,
 	.current-menu-item a {
-		@extend .main-background;
-		@extend .white-text;
+		//@extend .main-background;
+		//@extend .white-text;
+		//@extend .border-main-menu--bottom;
+		@extend .border-default-menu--bottom;
 	}
+
 	/*
 	&:hover > .current-category-ancestor a,
 	&:hover > .current-menu-item a {
@@ -103,17 +124,28 @@
 }
 .main-sub-menu {
 	@extend .gamma;
+	@extend .gray-light-background;
+	@extend .border-radius;
+	margin-bottom: $base-spacing-unit*1.5;
+	ul li {
+		word-spacing: 0;
+	}
 	/*@extend .nav--block-double-margin;*/
-	word-spacing: 0;
+	a {
+		@extend .default-text;
+	}
+	.menu-item:first-child a {
+		@extend .border-radius--left;
+	}
 	a:hover,
 	&:hover a:hover,
 	.current-category-ancestor a,
 	.current-menu-item a {
-		@extend .border-radius--bottom;
+		//@extend .border-radius--bottom;
 		@include media-query(palm){
 			border-radius: 0;
 		}
-		@extend .black-text;
+		//@extend .white-text;
 	}
 	a:hover,
 	&:hover a:hover {
@@ -121,7 +153,9 @@
 	}
 	.current-category-ancestor a,
 	.current-menu-item a {
-		@extend .gray-light-background;
+		//@extend .gray-light-background;
+		@extend .default-background;
+		@extend .white-text;
 	}
 	/*
 	&:hover > .current-category-ancestor a,
@@ -135,7 +169,7 @@
 	.more-menu-ul {
 		@extend .nav--stacked;
 		@extend .position-absolute;
-		@extend .white-background;
+		@extend .gray-light-background;
 		right: 0;
 		z-index: 5000;
 	}

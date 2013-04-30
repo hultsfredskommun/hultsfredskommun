@@ -294,6 +294,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				<?php
 
 				echo "<ul class='main-menu'>";
+				echo "<li class='small-words'>Initiativtagande, aktivt bem&ouml;tande, ideer blir verklighet.</li>";
 				wp_nav_menu( $args ); 
 				if ( is_active_sidebar( 'right-main-menu-item-sidebar' ) ) { 
 					dynamic_sidebar( 'right-main-menu-item-sidebar' ); 

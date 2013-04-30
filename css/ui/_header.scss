@@ -8,7 +8,7 @@
 	@extend .padding--top;
 	.textwidget {
 		a {
-			@extend .main-text;
+			@extend .link-text;
 			@extend .font-weight-bold;
 			margin-left: $half-spacing-unit;
 		}
@@ -42,7 +42,7 @@
 /* header structure */
 .top-wrapper {
 	@extend .gw;
-	@extend .margin--bottom;
+	//@extend .margin--bottom;
 }
 .logo {
 	@extend .half-margin--top;
@@ -93,8 +93,10 @@
 			@extend .palm-two-tenths;
 			@extend .float--left;
 			@extend .i;
-			@extend .gray-background;
-			@extend .default-text;
+			//@extend .gray-background;
+			@extend .main-background;
+			//@extend .default-text;
+			@extend .white-text;
 			@extend .border-radius--right;
 			@extend .noborder;
 			@extend .cf;
@@ -154,6 +156,7 @@
 
 /* top right menu */
 .top-menu-wrapper {
+	@extend .border-default-menu--top;
 	@extend .hide--palm;
 	@extend .main-background;
 	@extend .zeta;
@@ -183,7 +186,7 @@
 			&:hover {
 				@extend .white-background;
 				a {
-					@extend .main-text;
+					@extend .link-text;
 				}
 			}
 			.sub-menu {

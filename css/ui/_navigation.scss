@@ -32,7 +32,7 @@
 			&.current-cat {
 				& > a > i,
 				& > a {
-					@extend .hover-text;
+					@extend .link-text;
 				}
 			}
 			/*

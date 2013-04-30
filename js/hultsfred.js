@@ -400,7 +400,7 @@ function readMoreToggle(el){
 				
 				
 				// toggle visibility
-				$("html,body").animate({scrollTop: $(article).position().top - $('#wpadminbar').height() || 0}, 200);
+				//$("html,body").animate({scrollTop: $(article).position().top - $('#wpadminbar').height() || 0}, 200);
 				
 				// remove full class to track article state
 				$(article).removeClass("full").addClass("summary");
@@ -439,7 +439,7 @@ function readMoreToggle(el){
 					$(this).parents("article")/*.prepend(closea)*/.append(closeb);
 
 					// scroll to top of post 
-					$("html,body").animate({scrollTop: $(this).parents("article").position().top - $('#wpadminbar').height() || 0}, 150);
+					//$("html,body").animate({scrollTop: $(this).parents("article").position().top - $('#wpadminbar').height() || 0}, 150);
 
 					// articles slideshow
 					$(this).slideshow();
@@ -607,10 +607,10 @@ $(document).ready(function(){
 	/**
 	 * Expand article if only one, not on home page
 	 */
-	if ($('.archive').find("article").length == 1 && !$(this).parents(".home").length) {
+	/*if ($('.archive').find("article").length == 1 && !$(this).parents(".home").length) {
 		readMoreToggle($('.archive').find("article .entry-title a"));
 		$(".page-header").hide();
-	}
+	}*/
 
 
 	/**

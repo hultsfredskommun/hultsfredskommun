@@ -1,3 +1,6 @@
+.colophon {
+	@extend .border-default-menu--bottom;
+}
 .footer-wrapper.footer-widget-wrapper {
 	//@extend .gray-light-background;
 	@extend .gray-image-background;

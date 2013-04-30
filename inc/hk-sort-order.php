@@ -25,7 +25,7 @@
 						$orderby = "latest";
 				}
 			?>
-			
+			<li><a class="nolink">Sortera p&aring;: </a></li>
 			<?php if (function_exists( 'views_orderby' )) : ?>
 			<?php if ($_REQUEST["orderby"] == "popular" || $_REQUEST["orderby"] == "") { ?>
 				<li class='current-menu-item'><a class="active">Popul&auml;ra</a></li>

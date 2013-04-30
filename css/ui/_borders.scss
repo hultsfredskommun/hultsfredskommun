@@ -45,6 +45,18 @@ $border-line-width:		1px;
 .border-line-main--left {
 	border-left: $border-line-width $border-line-style $main-color;
 }
+.border-line-main--bottom {
+	border-bottom: $border-line-width $border-line-style $main-color;
+}
+.border-main-menu--bottom {
+	border-bottom: 4px $border-line-style $main-color;
+}
+.border-default-menu--bottom {
+	border-bottom: 4px $border-line-style $default-color;
+}
+.border-default-menu--top {
+	border-top: 4px $border-line-style $default-color;
+}
 
 .border-image--left {
 	background-image: url(images/border.png);
