@@ -76,7 +76,7 @@
 .main-menu {
 	@extend .epsilon;
 	@extend .one-whole;
-	margin: 0 0 $base-spacing-unit/2 0;
+	margin: $half-spacing-unit*1.5 0;
 	text-align: right;
 	li {
 		display: inline-block;
