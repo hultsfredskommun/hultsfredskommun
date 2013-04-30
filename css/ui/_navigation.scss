@@ -1,5 +1,11 @@
 /* text colors */
 .category-navigation {
+	@extend .hidden--palm;
+	@extend .g;
+	//@extend .palm-one-whole;
+	@extend .lap-one-quarter;
+	@extend .desk-one-quarter;
+
 	@extend .header-font;
 	.heading {
 		@extend .font-weight-bold;
@@ -8,6 +14,10 @@
 	a {
 		@extend .default-text;
 	}
+	/*ul {
+		@extend .nav;
+		@extend .nav--stacked;
+	}*/
 	.parent {
 		// add icon..
 		@extend .half-margin--left;

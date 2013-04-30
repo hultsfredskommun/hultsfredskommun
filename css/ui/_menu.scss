@@ -180,8 +180,7 @@
 	padding: $half-spacing-unit $base-spacing-unit!important;
 }
 
-.tags-wrapper ul,
-.category-navigation ul {
+.tags-wrapper ul {
 	@extend .nav;
 	@extend .nav--stacked;
 }
@@ -220,8 +219,7 @@
  */
 
 .more-in-navigation,
-.sort-order,
-.category-navigation {
+.sort-order {
 	@extend .hidden--palm;
 }
 

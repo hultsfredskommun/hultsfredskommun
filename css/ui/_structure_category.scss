@@ -11,12 +11,7 @@
 	padding-bottom: $base-spacing-unit*0.25;
 	padding-left: $base-spacing-unit*1.5;
 }
-.category-navigation {
-	@extend .g;
-	@extend .palm-one-whole;
-	@extend .lap-one-quarter;
-	@extend .desk-one-quarter;
-}
+
 .primary {
 	@extend .g;
 	@extend .palm-one-whole;
@@ -135,3 +130,10 @@
 	@extend .margin--top;
 }
 
+
+/* search */
+.search-hook {
+	@extend .lap-one-quarter;
+	@extend .desk-one-quarter;
+	@extend .g;
+}

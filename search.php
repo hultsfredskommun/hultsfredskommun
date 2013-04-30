@@ -8,13 +8,15 @@
  */
 
 get_header(); ?>
-		<?php hk_navigation(); ?>
+		<?php //hk_navigation(); ?>
+		<aside class="search-hook">
+			<?php /* hook to be able to add other search result */ 
+			do_action('hk_pre_search', get_query_var("s")); ?>
+		</aside>
 		
 		<div id="primary" class="primary  searchresult">
 			<div id="content" role="main">
-
-			<?php /* hook to be able to add other search result */ 
-			do_action('hk_pre_search', get_query_var("s")); ?>
+			
 
 			<?php if ( have_posts() ) : ?>
 
