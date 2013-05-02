@@ -601,8 +601,10 @@ $(document).ready(function(){
 	/* 
 	 * add responsive menu 
 	 */
-	responsive_menu()
-	
+	// do if not mobile and not ie 6, 7 & 8
+	if (!isMobile.any() && $.support.leadingWhitespace) {
+		responsive_menu()
+	}
 	
 	/**
 	 * Expand article if only one, not on home page
@@ -678,9 +680,9 @@ $(document).ready(function(){
 	});
 	
 	
-	/* add action to read-more toggle, if in .home go to article */
+	/* add action to read-more toggle, if in .home or in lt ie8, go to article */
 	$("#primary").find("article").each(function(){
-		if (!$(this).parents(".home").length) {
+		if (!$(this).parents(".home").length && $.support.leadingWhitespace) {
 			setArticleActions($(this));
 		} else {
 			$(this).unbind("click").bind("click",function() {
@@ -1304,8 +1306,19 @@ $(window).resize(function() {
 
 	
 	if( oldWidth != $(window).width() ) {
-		responsive_menu();
+		/*alert($.browser);
+		alert($.browser.version <= 9);
+		alert(isMobile.any());
+		if(($.browser.msie && $.browser.version <= 9) && !isMobile.any()) {
+			alert("test");
+			responsive_menu();
+		}*/
 
+		// do if not mobile and not ie 6, 7 & 8
+		if (!isMobile.any() && $.support.leadingWhitespace) {
+			responsive_menu();
+		}
+		
 		//Skriver ut skärmens storlek
 		/*log( $(window).height() + " $(window).width = " + $(window).width() + ", " +
 			"MQ Screensize = " + ($(window).width() + scrollbar) 

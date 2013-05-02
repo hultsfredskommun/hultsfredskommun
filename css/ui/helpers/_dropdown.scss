@@ -30,7 +30,13 @@
      */
     .dropdown:hover > .dropdown__content,
     .dropdown:hover > .dropdown__content--left,
-    .dropdown:hover > .dropdown__content--right{
+    .dropdown:hover > .dropdown__content--right,
+    .dropdown:active > .dropdown__content,
+    .dropdown:active > .dropdown__content--left,
+    .dropdown:active > .dropdown__content--right,
+    .dropdown:focus > .dropdown__content,
+    .dropdown:focus > .dropdown__content--left,
+    .dropdown:focus > .dropdown__content--right {
         display: block;
     }
     

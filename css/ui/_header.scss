@@ -175,7 +175,6 @@
 		@extend .flush--bottom;
 		.right.menu-item .sub-menu {
 			@extend .dropdown__content--right;
-			margin-right: -1px;
 		}
 		.menu-item {
 			@extend .dropdown;
