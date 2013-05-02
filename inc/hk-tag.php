@@ -46,6 +46,7 @@
 				query_posts( $args );
 			
 				if ( have_posts() ) : ?>
+					<h1><?php echo get_cat_name($cat) ?></h1>
 					<ul>
 					<?php while ( have_posts() ) : the_post(); ?>
 						<?php get_template_part( 'content', 'single-line' ); ?>
