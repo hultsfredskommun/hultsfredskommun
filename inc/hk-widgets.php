@@ -492,14 +492,16 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						$children[] =  $default_settings["protocol_cat"];
 						$query = array( 'posts_per_page' => $instance["num_protocol"], 
 										'category__in' => $children,
+										
 										'orderby' => 'date',
-										'order' => 'desc'  );
+										'order' => 'desc',
+										'suppress_filters' => 1);
 						
 						query_posts( $query );
-				
-						if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+						
+						if ( have_posts() ) : echo "<ul>"; while ( have_posts() ) : the_post(); 
 							get_template_part( 'content', 'single-line' ); 
-						endwhile; endif; 
+						endwhile; echo "</ul>"; endif; 
 						// Reset Query
 						wp_reset_query(); 
 				?>
