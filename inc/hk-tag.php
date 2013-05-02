@@ -42,18 +42,20 @@
 
 			</header>
 		<?php
-			query_posts( $args );
+			if ($cat != "") :
+				query_posts( $args );
 			
-			if ( have_posts() ) : ?>
-				<ul>
-				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'content', 'single-line' ); ?>
-					<?php $shownPosts[] = get_the_ID(); ?>
-				<?php endwhile; ?>
-				</ul>
-			<?php endif; ?>
-
-			<?php wp_reset_query(); // Reset Query ?>
+				if ( have_posts() ) : ?>
+					<ul>
+					<?php while ( have_posts() ) : the_post(); ?>
+						<?php get_template_part( 'content', 'single-line' ); ?>
+						<?php $shownPosts[] = get_the_ID(); ?>
+					<?php endwhile; ?>
+					</ul>
+				<?php endif;
+				wp_reset_query(); // Reset Query 
+			endif; 
+			?>
 			
 
 			<?php // get category child posts
