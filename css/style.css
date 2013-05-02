@@ -4361,7 +4361,7 @@ html.flexbox {
 
 .flush--bottom, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .num-posts,
 .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .summary .img-wrapper, .tools, .top-menu-wrapper .top-menu, .responsive-navigation, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
+.page-header .sort-order, .page-header .category-tools, .tag-listing h2, .summary .img-wrapper, .tools, .top-menu-wrapper .top-menu, .responsive-navigation, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0!important;
 }
 
@@ -5659,7 +5659,7 @@ html {
   padding-right: 1.6rem;
 }
 
-.padding--bottom, .tag-listing h1, .article-wrapper .content-wrapper .contact-area .hk_kontakter, .content, .cookieinformation,
+.padding--bottom, .article-wrapper .content-wrapper .contact-area .hk_kontakter, .content, .cookieinformation,
 .important-widget, .footer-widget-wrapper {
   padding-bottom: 24px;
   padding-bottom: 1.6rem;
