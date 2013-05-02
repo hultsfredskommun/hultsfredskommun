@@ -22,6 +22,10 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
+					<ul class="num-posts">
+						<li><a class='nolink'>Du s&ouml;kte p&aring; <strong><?php echo get_query_var("s"); ?></strong></a></li>
+					</ul>
+
 					<ul class="view-tools">
 						<li class="menu-item view-mode"> 
 						<a class="viewmode_titles js-view-titles active" title="Listvisning" href="#"></a>

@@ -50,9 +50,11 @@ article.post {
 
 /* firstpage article style */
 .home .post .content-wrapper {
-		@extend .one-whole;
+	@extend .one-whole;
 }
-	
+.home .post:first-child .article-wrapper {
+	margin-top: 0;
+}
 /*.home .post {
 	.side-content,
 	.content-wrapper {

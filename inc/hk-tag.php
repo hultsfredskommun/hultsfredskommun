@@ -13,11 +13,11 @@
 		if ($tag != "") : 
 			if ($cat != "") {
 				$children =  get_categories(array('child_of' => $cat, 'hide_empty' => true));
-				$cat_title = "kategorin <span class='font-weight-bold'>" . single_tag_title("",false) . "</span>";
+				$cat_title = "kategorin <strong>" . single_tag_title("",false) . "</strong>";
 			}
 			else {
 				$children =  get_categories(array('hide_empty' => true));
-				$cat_title = "<span class='font-weight-bold'>hela webbplatsen</span>";
+				$cat_title = "<strong>hela webbplatsen</strong>";
 			}
 			
 			
@@ -34,7 +34,7 @@
 				
 				<ul class="num-posts">
 					<?php
-						echo "<li><a class='nolink'>Inneh&aring;ll av typen <span class='font-weight-bold'>" . $tag . "</span> i " . $cat_title . "</a></li>";
+						echo "<li><a class='nolink'>Inneh&aring;ll av typen <b>" . $tag . "</b> i " . $cat_title . "</a></li>";
 					?>
 					<?php //print_r($wp_query); ?>
 				</ul>

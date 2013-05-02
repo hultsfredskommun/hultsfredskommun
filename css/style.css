@@ -5061,6 +5061,10 @@ html {
 }
 
 /* firstpage article style */
+.home .post:first-child .article-wrapper {
+  margin-top: 0;
+}
+
 /*.home .post {
 	.side-content,
 	.content-wrapper {
@@ -5791,7 +5795,7 @@ html {
 }
 
 .clip, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_12x12, .top-menu .dropdown-icon, .related-menu .dropdown-icon {
-  background-image: url("../images/icons/icon2.png");
+  background-image: url("../images/icons/icon2.svg");
   display: inline-block;
 }
 
