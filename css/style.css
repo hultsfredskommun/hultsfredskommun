@@ -3256,7 +3256,7 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .branding, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, article.post, .article-border-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
+.one-whole, .branding, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
 .single .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .responsive-navigation, .responsive-menu, .main-menu, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
