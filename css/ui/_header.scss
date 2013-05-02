@@ -183,20 +183,20 @@
 				@extend .float--left;
 				width: $base-spacing-unit;
 			}
-			&:hover {
+			/*&:hover {
 				@extend .white-background;
 				a {
 					@extend .link-text;
 				}
-			}
+			}*/
 			.sub-menu {
-				.menu-item:hover {
+				/*.menu-item:hover {
 					@extend .gray-light-background;
-				}
+				}*/
 				@extend .nav;
 				@extend .nav--stacked;
 				@extend .nav--block;
-				@extend .white-background;
+				@extend .main-background;
 				@extend .nav--stacked;
 				@extend .text--left;
 				@extend .border-radius--bottom;

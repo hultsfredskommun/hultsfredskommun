@@ -664,16 +664,16 @@ $(document).ready(function(){
 		$("#all_title_div").remove();
 	});*/
 	$(".js-view-summary").unbind("click").bind("click",function(ev){
-		$("#content").removeClass("viewmode-only-titles");
-		$(".js-view-titles").removeClass("hide");
-		$(".js-view-summary").addClass("hide");
+		$("#content").addClass("viewmode-only-titles");
+		$(".js-view-titles").removeClass("active");
+		$(".js-view-summary").addClass("active");
 		ev.preventDefault();
 	});
 	// show only title click action
 	$(".js-view-titles").unbind("click").bind("click",function(ev){
-		$("#content").addClass("viewmode-only-titles");
-		$(".js-view-titles").addClass("hide");
-		$(".js-view-summary").removeClass("hide");
+		$("#content").removeClass("viewmode-only-titles");
+		$(".js-view-titles").addClass("active");
+		$(".js-view-summary").removeClass("active");
 		ev.preventDefault();
 	});
 	

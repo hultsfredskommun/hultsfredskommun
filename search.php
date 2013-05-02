@@ -12,6 +12,7 @@ get_header(); ?>
 		<aside class="search-hook">
 			<?php /* hook to be able to add other search result */ 
 			do_action('hk_pre_search', get_query_var("s")); ?>
+			&nbsp;
 		</aside>
 		
 		<div id="primary" class="primary  searchresult">

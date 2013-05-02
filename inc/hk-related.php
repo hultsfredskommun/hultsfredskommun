@@ -99,7 +99,7 @@ function hk_related_output($wrapping_li = true, $show_icons = true) {
 		if ($the_query->have_posts())
 		{ 
 			if ($wrapping_li) {
-				$retValue .= "<li class='related-menu menu-item'><a class='' title='Hitta snabbt' href='#'>Hitta snabbt</a>";
+				$retValue .= "<li class='related-menu menu-item'><a class='' title='Hitta snabbt' href='#'>Hitta snabbt<span class='dropdown-icon'></span></a>";
 			}
 			$retValue .= "<ul class='hk_related sub-menu'>";
 			// The Loop

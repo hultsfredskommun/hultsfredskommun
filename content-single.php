@@ -4,9 +4,6 @@
  */
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky single full":"single full"); ?>>
-		<h1 class="entry-title">
-			<?php echo get_the_title(); ?>
-		</h1>
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
 			<div class="single-content content-wrapper">

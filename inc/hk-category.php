@@ -43,8 +43,8 @@
 			</ul>
 			<ul class="view-tools">
 				<li class="menu-item view-mode"> 
-				<a class="viewmode_titles js-view-titles active" title="Rubrikvisning" href="#">N</a>
-				<a class="viewmode_summary js-view-summary" title="Listvisning" href="#">K</a>
+				<a class="viewmode_titles js-view-titles active" title="Listvisning" href="#"></a>
+				<a class="viewmode_summary js-view-summary" title="Kompakt visning" href="#"></a>
 				</li>
 			</ul>
 			<?php 

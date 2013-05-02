@@ -1,9 +1,11 @@
 .small-words {
+	@extend .hide--lap;
+	@extend .hide--palm;
 	@extend .main-text;
 	@extend .float--left;
 	@extend .font-style-italic;
-	font-family: times;
 	@extend .zeta;
+	font-family: times;
 	padding: $half-spacing-unit 0 0 $half-spacing-unit*1.5!important;
 }
 /* main-menu toggle in responsive */

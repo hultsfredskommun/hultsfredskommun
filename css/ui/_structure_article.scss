@@ -30,14 +30,21 @@ article.post {
 }
 /* hide article-wrapper if only titles */
 .viewmode-only-titles {
-	.summary .article-border-wrapper {
+	.summary .entry-content,
+	.summary .img-wrapper,
+	.summary .side-content {
 		@extend .hidden;
 	}
-	h1.entry-title {
-		@extend .epsilon;
+	.summary h1.entry-title {
+		@extend .zeta;
 	}
-	article.post {
-		@extend .flush--bottom;
+	.summary .article-border-wrapper {
+		@extend .noborder;
+	
+	}
+	.summary .article-wrapper,
+	.summary .content-wrapper {
+		margin: 0;
 	}
 }
 

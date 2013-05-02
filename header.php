@@ -177,9 +177,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 		
 			if ((($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0) || 
 				(!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") || 
-				(!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") ||
-				(!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") ||
-				(!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") ) : ?>
+				(!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") ) : ?>
 				<aside id='topmenu' class='top-menu-wrapper'><div class='content--center'>
 					<?php /* pre html if any in options */ ?>
 					<?php if (!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") : ?>
@@ -200,15 +198,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 							'echo' 			=> true
 						)); 
 						endif;
-						/* add translatelink if specified */
-						/*if (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") : ?>
-							<li class='translate menu-item menu-item-type-custom menu-item-object-custom menu-item-translate'><a href='#'>Google translate</a></li>
-						<?php endif;*/
-						
-						/* add readspeaker listen if specified */
-						/*if (!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") : 
-							echo "<li class='readspeaker js-readspeaker menu-item menu-item-type-custom menu-item-object-custom menu-item-readspeaker'><a href='#'>Lyssna</a></li>";
-						endif; */ ?>
+						 ?>
 						</ul></nav>
 					<?php endif; ?>
 						
@@ -294,7 +284,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				<?php
 
 				echo "<ul class='main-menu'>";
-				echo "<li class='small-words'>Initiativtagande, aktivt bem&ouml;tande, ideer blir verklighet.</li>";
+				echo "<li class='small-words'>Hultsfred &auml;r en kommun d&auml;r vi ser varandra</li>";
 				wp_nav_menu( $args ); 
 				if ( is_active_sidebar( 'right-main-menu-item-sidebar' ) ) { 
 					dynamic_sidebar( 'right-main-menu-item-sidebar' ); 
