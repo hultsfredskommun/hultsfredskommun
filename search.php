@@ -22,15 +22,11 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
-					<?php 
-						if( function_exists('displaySortOrderButtons') ){
-							displaySortOrderButtons();
-						} 
-					?>
-					
 					<ul class="view-tools">
-						<li class="menu-item view-mode"><a class="viewmode_summary js-view-summary hide" title="Listvisning" href="#">Sammanfattning</a>
-						<a class="viewmode_titles js-view-titles" title="Rubrikvisning" href="#">Bara rubriker</a></li>
+						<li class="menu-item view-mode"> 
+						<a class="viewmode_titles js-view-titles active" title="Listvisning" href="#"></a>
+						<a class="viewmode_summary js-view-summary" title="Kompakt visning" href="#"></a>
+						</li>
 					</ul>
 				</header>
 

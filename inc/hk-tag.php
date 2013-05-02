@@ -13,9 +13,11 @@
 		if ($tag != "") : 
 			if ($cat != "") {
 				$children =  get_categories(array('child_of' => $cat, 'hide_empty' => true));
+				$cat_title = "kategorin <span class='font-weight-bold'>" . single_tag_title("",false) . "</span>";
 			}
 			else {
 				$children =  get_categories(array('hide_empty' => true));
+				$cat_title = "<span class='font-weight-bold'>hela webbplatsen</span>";
 			}
 			
 			
@@ -31,8 +33,8 @@
 			<header class="page-header">
 				
 				<ul class="num-posts">
-					<?php  			
-						echo "<li><a class='nolink'>Inneh&aring;ll fr&aring;n <span class='font-weight-bold'>" . $tag . "</span> i kategorin <span class='font-weight-bold'>" . single_tag_title("",false) . "</span></a></li>";
+					<?php
+						echo "<li><a class='nolink'>Inneh&aring;ll av typen <span class='font-weight-bold'>" . $tag . "</span> i " . $cat_title . "</a></li>";
 					?>
 					<?php //print_r($wp_query); ?>
 				</ul>
@@ -50,7 +52,6 @@
 				<?php endwhile; ?>
 				</ul>
 			<?php endif; ?>
-			<span class='hidden debug'>all from this category<br><?php print_r($args); ?></span>
 
 			<?php wp_reset_query(); // Reset Query ?>
 			
@@ -75,7 +76,6 @@
 				<?php endwhile; ?>
 				</ul>
 				<?php endif; ?>
-				<span class='hidden debug'>all from this category<br><?php print_r($args); ?></span>
 
 				<?php wp_reset_query(); // Reset Query
 

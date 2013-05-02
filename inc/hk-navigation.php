@@ -16,6 +16,7 @@ function hk_breadcrumb() {
 			$tag_link = "";
 			if ($tag != "") {
 				$tag_link = "?tag=".$tag; 
+				echo "<a href='" . get_site_url() . $tag_link . "'>Alla</a> &raquo; ";
 			}
 			foreach  ($cats_array as $c) {
 				if ($c != "") {
