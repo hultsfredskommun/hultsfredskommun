@@ -295,26 +295,18 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		parent::__construct(
 	 		'HK_firstpagecontent', // Base ID
 			'HK f&ouml;rstasidans inneh&aring;ll', // Name
-			array( 'description' => "Widget som visar huvudinneh&aring; som aktuellt och nyheter kopplat till aktiv kategori samt protokoll i flikar" ) // Args
+			array( 'description' => "Widget som visar huvudinneh&aring; som aktuellt och nyheter kopplat till aktiv kategori" ) // Args
 		);
-		$this->vars["show_protocol"] = "";
 		$this->vars["num_aktuellt"] = "4";
 		$this->vars["num_news"] = "10";
-		$this->vars["num_protocol"] = "4";
 	}
 
- 	public function form( $instance ) {		
-		if ( isset( $instance[ 'show_protocol' ] ) ) {	$show_protocol = $instance[ 'show_protocol' ];
-		} else {$show_protocol = $this->vars['show_protocol']; }
-		
+ 	public function form( $instance ) {	
 		if ( isset( $instance[ 'num_aktuellt' ] ) ) { $num_aktuellt = $instance[ 'num_aktuellt' ];
 		} else { $num_aktuellt = $this->vars['num_aktuellt']; }
 
 		if ( isset( $instance[ 'num_news' ] ) ) { $num_news = $instance[ 'num_news' ];
 		} else { $num_news = $this->vars['num_news']; }
-
-		if ( isset( $instance[ 'num_protocol' ] ) ) { $num_protocol = $instance[ 'num_protocol' ];
-		} else { $num_protocol = $this->vars['num_protocol']; }
 
 		if ( isset( $instance[ 'content_type' ] ) ) { $content_type = $instance[ 'content_type' ];
 		} else { $content_type = ''; }
@@ -324,20 +316,12 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'show_protocol' ); ?>">Visa protokollflik i kategorier (exempel 23,42,19).</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'show_protocol' ); ?>" name="<?php echo $this->get_field_name( 'show_protocol' ); ?>" type="text" value="<?php echo esc_attr( $show_protocol); ?>" />
-		</p>
-		<p>
 		<label for="<?php echo $this->get_field_id( 'num_aktuellt' ); ?>">Antal inl&auml;gg i aktuellt.</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'num_aktuellt' ); ?>" name="<?php echo $this->get_field_name( 'num_aktuellt' ); ?>" type="text" value="<?php echo esc_attr( $num_aktuellt); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'num_news' ); ?>">Antal i nyhetslistan.</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'num_news' ); ?>" name="<?php echo $this->get_field_name( 'num_news' ); ?>" type="text" value="<?php echo esc_attr( $num_news); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'num_protocol' ); ?>">Antal protokoll.</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'num_protocol' ); ?>" name="<?php echo $this->get_field_name( 'num_protocol' ); ?>" type="text" value="<?php echo esc_attr( $num_protocol); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'content_type' ); ?>">Aktuellt typ (news som standard).</label> 
@@ -349,10 +333,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		$instance['show_protocol'] = strip_tags( $new_instance['show_protocol'] );
 		$instance['num_aktuellt'] = strip_tags( $new_instance['num_aktuellt'] );
 		$instance['num_news'] = strip_tags( $new_instance['num_news'] );
-		$instance['num_protocol'] = strip_tags( $new_instance['num_protocol'] );
 		$instance['num_days_new'] = strip_tags( $new_instance['num_days_new'] );
 		$instance['content_type'] = strip_tags( $new_instance['content_type'] );
 		
@@ -368,19 +350,11 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$cat = get_query_var("cat");
 		$all_categories = hk_getChildrenIdArray($cat);
 		$all_categories[] = $cat;
-		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && in_array(get_query_var("cat"), split(",",$instance["show_protocol"]));
 		?>
 
-	<div id="content" role="main" class="js-tabs  hidden">
-		<?php if ($showprotocol) : ?>
-		<ul class="post_tabs_title">
-			<li title="Aktuellt"><a href="#newscontent">Aktuellt</a></li>
-			<?php if ($showprotocol) : ?>
-			<li title="Protokoll"><a href="#protocolcontent">Protokoll, kallelser &amp; handlingar</a></li>
-			<?php endif; ?>
-		</ul>
-		<?php endif; ?>
-		<div id="newscontent" class="newscontent firstpage-tab-content">
+	<div id="content" role="main">
+		
+		<div id="newscontent" class="newscontent">
 			<?php 
 				/* Query all posts with selected startpage category */
 				$cat = get_query_var("cat");
@@ -439,46 +413,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		</div>
 
 
-		<?php if ($showprotocol) : ?>
-		<div id="protocolcontent" class="protocolcontent firstpage-tab-content">
-			<?php 
-				/* Query all posts with selected startpage category */
-					$children =  hk_getChildrenIdArray($default_settings["protocol_cat"]);
-					$children[] =  $default_settings["protocol_cat"];
-					$query = array( 'posts_per_page' => $instance["num_protocol"], 
-									'category__in' => $children,
-									'orderby' => 'date',
-									'order' => 'desc'  );
-					
-					query_posts( $query );
-			
-					if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-						get_template_part( 'content' ); 
-					endwhile; endif; 
-					// Reset Query
-					wp_reset_query(); 
-			?>
-				<div id="protocolcategories">
-					<div class="entry-title">Visa protokoll fr&aring;n</div><ul>
-					<?php 
-					 $args = array(
-						'hide_empty'         => 0,
-						'orderby'            => 'name',
-						'order'              => 'ASC',
-						'style'              => 'list',
-						'child_of'           => $default_settings["protocol_cat"],
-						'hierarchical'       => true,
-						'title_li'           => "",
-						'echo'               => 1,
-						'taxonomy'           => 'category',
-						);
-						wp_list_categories($args);	
-					?>			
-					</ul>
-				</div>
-			
-		</div>	
-		<?php endif; ?>
+		
 		
 	</div><!-- #content -->
 <?php
@@ -488,6 +423,112 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpagecontent" );' ) );
 
 
+
+
+
+/* 
+ * PROTOCOL WIDGET 
+ */ 
+ class HK_protocol extends WP_Widget {
+	protected $vars = array();
+
+	public function __construct() {
+		parent::__construct(
+	 		'HK_protocol', // Base ID
+			'HK protocol', // Name
+			array( 'description' => "Widget som visar protokoll" ) // Args
+		);
+		$this->vars["show_protocol"] = "";
+		$this->vars["num_protocol"] = "4";
+	}
+
+ 	public function form( $instance ) {		
+		if ( isset( $instance[ 'show_protocol' ] ) ) {	$show_protocol = $instance[ 'show_protocol' ];
+		} else {$show_protocol = $this->vars['show_protocol']; }
+		
+		if ( isset( $instance[ 'num_protocol' ] ) ) { $num_protocol = $instance[ 'num_protocol' ];
+		} else { $num_protocol = $this->vars['num_protocol']; }
+
+		$options = get_option('hk_theme');
+
+		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'show_protocol' ); ?>">Visa protokollflik i kategorier (exempel 23,42,19).</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_protocol' ); ?>" name="<?php echo $this->get_field_name( 'show_protocol' ); ?>" type="text" value="<?php echo esc_attr( $show_protocol); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'num_protocol' ); ?>">Antal protokoll.</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'num_protocol' ); ?>" name="<?php echo $this->get_field_name( 'num_protocol' ); ?>" type="text" value="<?php echo esc_attr( $num_protocol); ?>" />
+		</p>
+		
+		<?php
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['show_protocol'] = strip_tags( $new_instance['show_protocol'] );
+		$instance['num_protocol'] = strip_tags( $new_instance['num_protocol'] );
+		return $instance;
+	}
+
+	public function widget( $args, $instance ) {
+	    extract( $args );
+		global $default_settings;
+		$options = get_option('hk_theme');
+		
+		/* get all sub categories to use in queries */
+		$cat = get_query_var("cat");
+		$all_categories = hk_getChildrenIdArray($cat);
+		$all_categories[] = $cat;
+		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && (in_array(get_query_var("cat"), split(",",$instance["show_protocol"])) || $instance["show_protocol"] == "");
+		?>
+		
+		<?php if ($showprotocol) : ?>
+			<h1 class="widget-title"><span>Protokoll</span></h1>
+			<div id="protocolwidget" class="protocolwidget">
+				<?php 
+					/* Query all posts with selected startpage category */
+						$children =  hk_getChildrenIdArray($default_settings["protocol_cat"]);
+						$children[] =  $default_settings["protocol_cat"];
+						$query = array( 'posts_per_page' => $instance["num_protocol"], 
+										'category__in' => $children,
+										'orderby' => 'date',
+										'order' => 'desc'  );
+						
+						query_posts( $query );
+				
+						if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+							get_template_part( 'content', 'single-line' ); 
+						endwhile; endif; 
+						// Reset Query
+						wp_reset_query(); 
+				?>
+					<div id="protocolcategories">
+						<div class="entry-title">Visa protokoll fr&aring;n</div><ul>
+						<?php 
+						 $args = array(
+							'hide_empty'         => 0,
+							'orderby'            => 'name',
+							'order'              => 'asc',
+							'style'              => 'list',
+							'child_of'           => $default_settings["protocol_cat"],
+							'hierarchical'       => true,
+							'title_li'           => "",
+							'echo'               => 1,
+							'taxonomy'           => 'category',
+							);
+							wp_list_categories($args);	
+						?>			
+						</ul>
+					</div>
+				
+			</div>	
+		<?php endif; ?>
+<?php
+	}
+}
+/* add the widget  */
+add_action( 'widgets_init', create_function( '', 'register_widget( "HK_protocol" );' ) );
 
 
 

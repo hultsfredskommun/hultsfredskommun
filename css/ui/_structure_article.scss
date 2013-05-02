@@ -49,7 +49,7 @@ article.post {
 }
 
 /* firstpage article style */
-.home .post {
+/*.home .post {
 	.side-content,
 	.content-wrapper {
 		@extend .margin--top;
@@ -60,7 +60,7 @@ article.post {
 		@extend .float--left;
 		@extend .one-whole;
 	}
-}
+}*/
 /* article style */
 .summary .article-wrapper {
 	.side-content {
@@ -255,6 +255,7 @@ article.single .map_canvas {
 	@extend .islet;
 	z-index: 10;
 }
+/*
 @include media-query(palm) {
 .entry-title,
 .content-wrapper,
@@ -263,7 +264,7 @@ article.single .map_canvas {
 	width: 100%;
 }
 }
-
+*/
 
 
 /* aside content */
