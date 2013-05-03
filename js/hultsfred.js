@@ -6,6 +6,9 @@ var settings = new Array();
 
 var currPageTitle = $("head").find("title").html();
 var havePushed = false;
+
+var isiOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );
+var isLessThenIE9 = !$.support.leadingWhitespace;
 var isMobile = {
     Android: function() {
         return navigator.userAgent.match(/Android/i);
@@ -602,7 +605,7 @@ $(document).ready(function(){
 	 * add responsive menu 
 	 */
 	// do if not mobile and not ie 6, 7 & 8
-	if (!isMobile.any() && $.support.leadingWhitespace) {
+	if (!isMobile.any() && !isLessThenIE9) {
 		responsive_menu()
 	}
 	
@@ -679,10 +682,21 @@ $(document).ready(function(){
 		ev.preventDefault();
 	});
 	
+	if (isiOS) {
+		$(".js-ios-goto-footer").parent().unbind("hover").bind("hover",function(ev){
+			ev.preventDefault();
+			$(".js-ios-goto-footer").find(".sub-menu").hide();
+		});
+		$(".js-ios-goto-footer").unbind("click").bind("click",function(ev){
+			var aTag = $("a[name='footer']");
+			$('html,body').animate({scrollTop: aTag.offset().top},'slow');
+			ev.preventDefault();
+		});
+	}
 	
-	/* add action to read-more toggle, if in .home or in lt ie8, go to article */
+	/* add action to read-more toggle, if in .home or in lt ie9, go to article */
 	$("#primary").find("article").each(function(){
-		if (!$(this).parents(".home").length && $.support.leadingWhitespace) {
+		if (!$(this).parents(".home").length && !isLessThenIE9) {
 			setArticleActions($(this));
 		} else {
 			$(this).unbind("click").bind("click",function() {
