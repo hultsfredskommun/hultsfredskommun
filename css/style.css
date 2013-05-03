@@ -5510,7 +5510,7 @@ html {
 }
 
 .footer-widget-wrapper ul {
-  white-space: wrap!important;
+  white-space: normal;
 }
 
 .scrolltotop {
