@@ -8,8 +8,13 @@ a {
 a,
 a:active,
 a:focus {
+	outline: none;
 	@extend .link-text;
 }
+input:focus {
+	outline: none;
+}
+
 a:hover {
 	@extend .hover-text;
 	@extend .text-decoration-underline;

@@ -4836,6 +4836,16 @@ a {
   cursor: pointer;
 }
 
+a,
+a:active,
+a:focus {
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+}
+
 ul, ol, dd {
   margin-left: 24px;
   margin-left: 1.6rem;
