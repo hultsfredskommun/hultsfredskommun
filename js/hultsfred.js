@@ -683,9 +683,11 @@ $(document).ready(function(){
 	});
 	
 	if (isiOS) {
-		$(".js-ios-goto-footer").parent().unbind("hover").bind("hover",function(ev){
+		$(".js-ios-goto-footer").unbind("hover").bind("hover",function(ev){
 			ev.preventDefault();
 			$(".js-ios-goto-footer").find(".sub-menu").hide();
+			var aTag = $("a[name='footer']");
+			$('html,body').animate({scrollTop: aTag.offset().top},'slow');
 		});
 		$(".js-ios-goto-footer").unbind("click").bind("click",function(ev){
 			var aTag = $("a[name='footer']");
