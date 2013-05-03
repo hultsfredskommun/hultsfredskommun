@@ -58,8 +58,19 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <![endif]-->
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<?php if ($ipad || $_REQUEST["viewport"] == "desk") : ?>
-<meta name="viewport" content="width=1160;initial-scale: 1.0;maximum-scale: 1.0" />
+
+<?php /* SET VIEWPORT */
+session_start();
+if ($_REQUEST["viewport"] == "desk" || $_REQUEST["viewport"] == "palm") :
+	$_SESSION["viewport"] = $_REQUEST["viewport"];
+elseif ($_REQUEST["viewport"] == "reset") :
+	$_SESSION["viewport"] = "";
+endif; ?>
+<?php 
+if ($default_settings["ipad"] || $_SESSION["viewport"] == "desk") : ?>
+<meta name="viewport" content="width=1150, initial-scale: 1, maximum-scale: 1" />
+<?php elseif ($_SESSION["viewport"] == "palm") : ?>
+<meta name="viewport" content="width=540, initial-scale: 1" />
 <?php else: ?>
 <meta name="viewport" content="width=device-width" />
 <?php endif; ?>
