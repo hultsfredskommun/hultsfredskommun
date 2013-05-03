@@ -16,10 +16,10 @@ var isMobile = {
         return navigator.userAgent.match(/BlackBerry/i);
     },
     iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        return navigator.userAgent.match(/iPhone|iPad|iPod/g);
     },
     iPhone: function() {
-        return navigator.userAgent.match(/iPhone|iPod/i);
+        return navigator.userAgent.match(/iPhone|iPod/g);
     },
     Opera: function() {
         return navigator.userAgent.match(/Opera Mini/i);

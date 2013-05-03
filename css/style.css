@@ -5509,6 +5509,10 @@ html {
   padding-top: 24px;
 }
 
+.footer-widget-wrapper ul {
+  white-space: wrap!important;
+}
+
 .scrolltotop {
   border-radius: 15px;
 }

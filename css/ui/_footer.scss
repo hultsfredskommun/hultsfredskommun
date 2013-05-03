@@ -24,6 +24,7 @@
 		@extend .nav--block;
 		@extend .nav--block-half-margin;
 		@extend .half-margin--left;
+		white-space: wrap!important;
 	}
 	.content {
 		@extend .margin--left;
