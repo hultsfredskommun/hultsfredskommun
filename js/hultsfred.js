@@ -684,7 +684,7 @@ $(document).ready(function(){
 		ev.preventDefault();
 	});
 	
-	if (isMobile.iOS) {
+	if (isMobile.iOS()) {
 		$(".js-ios-goto-footer").unbind("hover").bind("hover",function(ev){
 			ev.preventDefault();
 			$(".js-ios-goto-footer").find(".sub-menu").hide();
