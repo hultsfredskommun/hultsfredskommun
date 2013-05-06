@@ -104,7 +104,7 @@ if ($default_settings["ipad"] || $_SESSION["viewport"] == "desk") : ?>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php if ($_REQUEST["style"] != "") : ?>
-<link href="<?php echo $_REQUEST["style"]?>" rel="stylesheet">
+<link href="<?php echo $_REQUEST["style"]; ?>" rel="stylesheet">
 <?php endif; ?>
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
