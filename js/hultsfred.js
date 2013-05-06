@@ -405,7 +405,7 @@ function readMoreToggle(el){
 				
 				
 				// toggle visibility
-				//$("html,body").animate({scrollTop: $(article).position().top - $('#wpadminbar').height() || 0}, 200);
+				$("html,body").animate({scrollTop: $(article).position().top - $('#wpadminbar').height() || 0}, 200);
 				
 				// remove full class to track article state
 				$(article).removeClass("full").addClass("summary");
@@ -433,10 +433,11 @@ function readMoreToggle(el){
 					
 					$(article).find('.openButton').hide();
 					//add close-button top right corner
+					/*
 					var closea = $('<div>').addClass('closeButton button top').html("<i class='i' data-icon='&#xF148;'></i><a href='#'>Visa mindre</a>").unbind("click").bind("click",function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
-					});
+					});*/
 					var closeb = $('<div>').addClass('closeButton button bottom').html("<i class='i' data-icon='&#xF148;'></i><a href='#'>Visa mindre</a>").unbind("click").bind("click",function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
