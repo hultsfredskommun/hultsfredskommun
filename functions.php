@@ -261,14 +261,13 @@ if (!is_admin()) {
 		'1.0',
 		true
 	);
-	/*
 	wp_enqueue_script(
 		'hultsfred_js',
 		get_template_directory_uri() . '/js/hultsfred.js',
 		array('jquery','jquery-ui-core','history_js','jquery-ui-widget','jquery-ui-tabs'),
 		'1.0',
 		true
-	);*/
+	);
 	wp_enqueue_script(
 		'cycle_all_js',
 		get_template_directory_uri() . '/js/jquery.cycle.all.js',

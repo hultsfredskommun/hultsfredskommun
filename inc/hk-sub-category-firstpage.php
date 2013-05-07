@@ -14,7 +14,6 @@
 	<?php dynamic_sidebar('firstpage-content'); ?>
 </div><!-- #primary -->
 <?php endif; ?>
-<?php //die("</div></body></html>"); ?>
 
 <?php if (is_active_sidebar('firstpage-sidebar-2')) : ?>
 <aside id="firstpage-sidebar-2" role="complementary" class="firstpage-sidebar-2 firstpage-sidebar">
@@ -27,3 +26,4 @@
 <?php dynamic_sidebar('firstpage-pre-footer-sidebar'); ?>
 </div><!-- #firstpage-pre-footer-sidebar -->
 <?php endif; ?>
+<?php die("</div></body></html>"); ?>
