@@ -196,35 +196,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			if ((($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0) || 
 				(!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") || 
 				(!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") ) : ?>
-				<aside id='topmenu' class='top-menu-wrapper'><div class='content--center'>
-					<?php /* pre html if any in options */ ?>
-					<?php if (!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") : ?>
-						<?php echo $hk_options["pre_topmenu_html"]; ?>
-					<?php endif; ?>
-					
-					<?php if ( (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) || 
-							 (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") || 
-							 (!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") ) : ?>
-						<nav><ul class='top-menu'>
-						<?php
-						if (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) :
-						wp_nav_menu( array(
-							'theme_location' => 'topmenu', 
-							'container' 	=> '',
-							'items_wrap'	=> '%3$s',
-							'depth' 		=> 2,
-							'echo' 			=> true
-						)); 
-						endif;
-						 ?>
-						</ul></nav>
-					<?php endif; ?>
-						
-					<?php /* post html if any in options */ ?>
-					<?php if (!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") : ?>
-						<?php echo $hk_options["post_topmenu_html"]; ?>
-					<?php endif; ?>
-				</div></aside>
+				
 			<?php endif; ?>
 		<div id="topwrapper" class="content--center"><div class="top-wrapper">
 			<span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span>
