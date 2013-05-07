@@ -225,7 +225,6 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 						<?php echo $hk_options["post_topmenu_html"]; ?>
 					<?php endif; ?>
 				</div></aside>
-				<?php die("</header></div></body></html>"); ?>
 			<?php endif; ?>
 		<div id="topwrapper" class="content--center"><div class="top-wrapper">
 			<span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span>
@@ -258,7 +257,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			</div>
 			<?php endif; ?>
 
-		</div></div>		
+		</div></div>			
 		<nav id="menu" class="menu-wrapper" role="navigation">
 			<?php 
 
@@ -378,6 +377,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			?>
 		</nav>
 	</header><!-- #branding -->
+	<?php die("</div></body></html>"); ?>
 
 	<div id="main" class="main">
 	<div class="main-wrapper">
