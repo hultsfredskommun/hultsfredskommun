@@ -18,4 +18,4 @@ get_header();
 		<?php endif;  /* END ELSE is_sub_category_firstpage */ ?>
 		
 
-<?php get_footer(); ?>
+<?php //get_footer(); ?>
