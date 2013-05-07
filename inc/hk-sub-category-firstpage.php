@@ -3,7 +3,6 @@
 		<?php dynamic_sidebar('firstpage-top-content'); ?>
 	</div><!-- #firstpage-top-sidebar -->
 <?php endif; ?>
-<?php die("</div></body></html>"); ?>
 <?php if (is_active_sidebar('firstpage-sidebar')) : ?>
 <aside id="firstpage-sidebar" role="complementary" class="firstpage-sidebar">
 	<?php dynamic_sidebar('firstpage-sidebar'); ?>
@@ -15,6 +14,7 @@
 	<?php dynamic_sidebar('firstpage-content'); ?>
 </div><!-- #primary -->
 <?php endif; ?>
+<?php die("</div></body></html>"); ?>
 
 <?php if (is_active_sidebar('firstpage-sidebar-2')) : ?>
 <aside id="firstpage-sidebar-2" role="complementary" class="firstpage-sidebar-2 firstpage-sidebar">
