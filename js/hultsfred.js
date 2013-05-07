@@ -685,7 +685,7 @@ $(document).ready(function(){
 		$(".js-view-summary").removeClass("active");
 		ev.preventDefault();
 	});
-	
+/*	
 	if (isMobile.iOS()) {
 		$(".js-ios-goto-footer").unbind("hover").bind("hover",function(ev){
 			ev.preventDefault();
@@ -699,7 +699,7 @@ $(document).ready(function(){
 			ev.preventDefault();
 		});
 	}
-	
+*/	
 	/* add action to read-more toggle, if in .home or in lt ie9, go to article */
 	$("#primary").find("article").each(function(){
 		if (!$(this).parents(".home").length && !isLessThenIE9) {
