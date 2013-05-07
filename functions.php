@@ -222,7 +222,7 @@ if (!is_admin()) {
 	if ($hk_options['readspeaker_id'] != "") {
 		wp_enqueue_script(
 			'readspeaker_js',
-			'http'.$s_when_https.'://f1.eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl',
+			'http'.$s_when_https.'://f1.eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin',
 			array(),
 			'1.0',
 			true

@@ -257,7 +257,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			</div>
 			<?php endif; ?>
 
-		</div></div>		
+		</div></div>			
 		<nav id="menu" class="menu-wrapper" role="navigation">
 			<?php 
 
