@@ -20,9 +20,8 @@
 	<?php dynamic_sidebar('firstpage-sidebar-2'); ?>
 </aside><!-- #firstpage-sidebar-2 -->
 <?php endif; ?>
-<?php die("</div></body></html>"); ?>
 <?php if (is_active_sidebar('firstpage-pre-footer-sidebar')) : ?>
 <div id="firstpage-pre-footer-sidebar" class="firstpage-pre-footer-sidebar">
-<?php dynamic_sidebar('firstpage-pre-footer-sidebar'); ?>
+<?php //dynamic_sidebar('firstpage-pre-footer-sidebar'); ?>
 </div><!-- #firstpage-pre-footer-sidebar -->
 <?php endif; ?>
