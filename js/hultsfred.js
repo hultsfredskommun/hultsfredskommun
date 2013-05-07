@@ -583,6 +583,7 @@ var oldWidth; //used to check if window-width have changed
 
 
 $(document).ready(function(){
+
 	var wpadminbarheight = $("#wpadminbar").height();
 		
 	//Stores the window-width for later use
