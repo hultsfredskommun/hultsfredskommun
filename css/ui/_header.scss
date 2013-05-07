@@ -158,6 +158,7 @@
 	li {
 		@extend .dropdown;
 		display: inline-block;
+		@extend .float--left;
 		a {
 			display: inline-block;
 			margin: $half-spacing-unit/2;
@@ -173,6 +174,8 @@
 }
 /* top right menu */
 .top-menu-wrapper {
+	@extend .float--left;
+	@extend .cf;
 	@extend .border-default-menu--top;
 	@extend .hide--palm;
 	@extend .main-background;
@@ -184,8 +187,9 @@
 		@extend .white-text;
 	}
 	.top-menu {
+		@extend .float--right;
 		@extend .horizontal-menu;
-		text-align: right;
+		@extend .flush--bottom;
 		.sub-menu {
 			@extend .main-background;
 			@extend .border-radius--bottom;

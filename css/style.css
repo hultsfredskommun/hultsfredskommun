@@ -772,7 +772,7 @@ textarea:focus {
 .slideshow .slide .caption-area .caption,
 .tag-listing .content-area,
 .cookieinformation .textwidget,
-.scrolltotop, .matrix, .multi-list, .stat-group, .time, .home .contact-area .contact-wrapper, .page-header, article.post, .article-wrapper .content-wrapper .contact-area, .searchnavigation .form, .searchnavigation .form .submit, .footer-image-wrapper .logo-footer-image {
+.scrolltotop, .matrix, .multi-list, .stat-group, .time, .home .contact-area .contact-wrapper, .page-header, article.post, .article-wrapper .content-wrapper .contact-area, .searchnavigation .form, .searchnavigation .form .submit, .top-menu-wrapper, .footer-image-wrapper .logo-footer-image {
   zoom: 1;
 }
 .cf:before, .gw:before, .main-wrapper:before, .top-wrapper:before,
@@ -787,7 +787,7 @@ textarea:focus {
 .slideshow .slide .caption-area .caption:before,
 .tag-listing .content-area:before,
 .cookieinformation .textwidget:before,
-.scrolltotop:before, .matrix:before, .multi-list:before, .stat-group:before, .time:before, .home .contact-area .contact-wrapper:before, .page-header:before, article.post:before, .article-wrapper .content-wrapper .contact-area:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
+.scrolltotop:before, .matrix:before, .multi-list:before, .stat-group:before, .time:before, .home .contact-area .contact-wrapper:before, .page-header:before, article.post:before, .article-wrapper .content-wrapper .contact-area:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .top-menu-wrapper:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
 .grid-wrapper:after, .nav:after, .home .contact-area .contact-wrapper .content-wrapper ul:after, .page-header .num-posts:after,
 .page-header .view-tools:after,
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .tag-listing .content-area ul:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
@@ -799,7 +799,7 @@ textarea:focus {
 .slideshow .slide .caption-area .caption:after,
 .tag-listing .content-area:after,
 .cookieinformation .textwidget:after,
-.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .footer-image-wrapper .logo-footer-image:after {
+.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .top-menu-wrapper:after, .footer-image-wrapper .logo-footer-image:after {
   content: " ";
   display: table;
 }
@@ -815,7 +815,7 @@ textarea:focus {
 .slideshow .slide .caption-area .caption:after,
 .tag-listing .content-area:after,
 .cookieinformation .textwidget:after,
-.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .footer-image-wrapper .logo-footer-image:after {
+.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .top-menu-wrapper:after, .footer-image-wrapper .logo-footer-image:after {
   clear: both;
 }
 
@@ -4324,12 +4324,12 @@ html.flexbox {
  * out over other selectors.
  */
 .float--right, .firstpage-sidebar, .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .button.top, .right-nav-menu-item, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .category-navigation .more-navigation li.current-tag h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li.current-tag .submit, .category-navigation .more-navigation li.current-tag .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li.current-tag .submit, .footer-image-wrapper .logo-footer-image img {
+.page-header .sort-order, .page-header .category-tools, .button.top, .top-menu-wrapper .top-menu, .right-nav-menu-item, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .category-navigation .more-navigation li.current-tag h1.widget-title .searchnavigation .form .submit, h1.widget-title .searchnavigation .form .category-navigation .more-navigation li.current-tag .submit, .category-navigation .more-navigation li.current-tag .searchnavigation .form h1.widget-title .submit, .searchnavigation .form h1.widget-title .category-navigation .more-navigation li.current-tag .submit, .footer-image-wrapper .logo-footer-image img {
   float: right!important;
 }
 
 .float--left, .icon-left, h1.widget-title .i, h1.widget-title .searchnavigation .form .submit, .searchnavigation .form h1.widget-title .submit, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .help-navigation, .page-header .num-posts, .page-header .category-tools .menu-item .i, .page-header .category-tools .menu-item .searchnavigation .form .submit, .searchnavigation .form .page-header .category-tools .menu-item .submit, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
-.single .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .small-words, .responsive-navigation .i, .responsive-navigation .searchnavigation .form .submit, .searchnavigation .form .responsive-navigation .submit, .responsive-menu .i, .responsive-menu .searchnavigation .form .submit, .searchnavigation .form .responsive-menu .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.single .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .horizontal-menu li, .top-menu-wrapper .top-menu li, .top-menu-wrapper, .small-words, .responsive-navigation .i, .responsive-navigation .searchnavigation .form .submit, .searchnavigation .form .responsive-navigation .submit, .responsive-menu .i, .responsive-menu .searchnavigation .form .submit, .searchnavigation .form .responsive-menu .submit, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4359,7 +4359,7 @@ html.flexbox {
 
 .flush--bottom, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .num-posts,
 .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .tag-listing h2, .summary .img-wrapper, .tools, .responsive-navigation, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
+.page-header .sort-order, .page-header .category-tools, .tag-listing h2, .summary .img-wrapper, .tools, .top-menu-wrapper .top-menu, .responsive-navigation, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0!important;
 }
 
@@ -5306,9 +5306,6 @@ html {
   		}
   	}
   }*/
-}
-.top-menu-wrapper .top-menu {
-  text-align: right;
 }
 .top-menu-wrapper .top-menu .sub-menu {
   text-align: left;
