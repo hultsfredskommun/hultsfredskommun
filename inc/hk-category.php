@@ -37,7 +37,7 @@
 
 			<ul class="category-tools">
 				<?php /* if (related stuff ($cat)) : */ ?>
-				<?php echo hk_related_output();	?>
+				<?php echo hk_related_output(true,false);	?>
 				<?php /* endif; */ ?>
 				
 			</ul>
