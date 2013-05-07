@@ -3,7 +3,7 @@
 		<?php dynamic_sidebar('firstpage-top-content'); ?>
 	</div><!-- #firstpage-top-sidebar -->
 <?php endif; ?>
-
+<?php die("</div></body></html>"); ?>
 <?php if (is_active_sidebar('firstpage-sidebar')) : ?>
 <aside id="firstpage-sidebar" role="complementary" class="firstpage-sidebar">
 	<?php dynamic_sidebar('firstpage-sidebar'); ?>

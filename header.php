@@ -377,7 +377,6 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			?>
 		</nav>
 	</header><!-- #branding -->
-	<?php die("</div></body></html>"); ?>
 
 	<div id="main" class="main">
 	<div class="main-wrapper">
