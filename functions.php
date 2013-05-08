@@ -229,7 +229,6 @@ if (!is_admin()) {
 		);
 	}
 	
-	
 	wp_enqueue_script(
 		'google_map_js',
 		'http'.$s_when_https.'://maps.google.com/maps/api/js?sensor=false',
@@ -245,15 +244,15 @@ if (!is_admin()) {
 		true
 	);
 
-	
-/*
+	/*
 	wp_enqueue_script(
 		'google_maps_js',
 		'https://maps.googleapis.com/maps/api/js?key=AIzaSyBwAFyJDPO82hjRyCAmt-8-if6r6rrzlcE&sensor=false',
 		array('jquery'),
 		'1.0',
 		true
-	);*/    
+	);*/
+	/*
 	wp_enqueue_script(
 		'history_js',
 		get_template_directory_uri() . '/js/native.history.js',
@@ -261,10 +260,11 @@ if (!is_admin()) {
 		'1.0',
 		true
 	);
+	*/
 	wp_enqueue_script(
 		'hultsfred_js',
 		get_template_directory_uri() . '/js/hultsfred.js',
-		array('jquery','jquery-ui-core','history_js','jquery-ui-widget','jquery-ui-tabs'),
+		array('jquery','jquery-ui-core','jquery-ui-widget','jquery-ui-tabs'),
 		'1.0',
 		true
 	);
@@ -377,6 +377,9 @@ add_filter('gallery_style',
  */
 add_filter('the_excerpt', 'hk_excerpt');
 function hk_excerpt($content) {
+	if (is_search())
+		return $content;
+		
 	$content = strip_tags($content);
 	$content_array = explode(" ",$content);
 	$content = "<span class='introwords'>";

@@ -33,45 +33,6 @@ var isMobile = {
 };
 
 /**
- * print element (TODO not working in IE)
- */
-function PrintElem(elem)
-{
-	Popup($(elem));
-}
-function Popup(data) 
-{
-	var a = $(data).find(".entry-title > a");
-	var url = $(a).attr("href");
-	var printData = $(data).clone( true );
-	
-	$(printData).find(".readMoreContainer").attr("style", "height: 100%");
-	$(printData).find(".readMoreContent").attr("style", "height: 100%");
-	$(printData).find("#misc-ctrl").remove();
-	$(printData).find(".readMoreContent > footer").remove();
-	$(printData).find(".readMoreToggleButton").remove();
-	$(printData).find(".closeButton").remove();
-	
-	$(printData).css({
-		"height": "100%",
-		"width": "100%",
-		"margin": "0"
-	});
-	
-	var mywindow = window.open('', url, 'height=400,width=600');
-	mywindow.document.write('<html><head><title>'+ url +'</title>');
-	//mywindow.document.write('<link rel="stylesheet" href="'+templateDir+'/style.css" type="text/css" />');
-	mywindow.document.write('</head><body >');
-	mywindow.document.write( $(printData).html() );
-	mywindow.document.write('</body></html>');
-	
-	mywindow.print();
-	mywindow.close();
-
-	return true;
-}
-
-/**
  * search suggest 
  */
  /*
@@ -539,16 +500,6 @@ function readMoreToggle(el){
 
 			$(this).parents("article").removeClass("muted wait");
 			
-			//****** click-actions START *******
-			
-			//set click-action on print-post-link
-			var print_link = $(this).find(".print-post");
-			$(print_link).unbind("click").bind("click",function(ev){
-				PrintElem( $(this).attr("elem-id") );
-				ev.preventDefault();
-			});
-			
-			//***** click-actions END ******
 			
 			// All is loaded
 			$(this).parents("article").removeClass("loading").addClass("loaded");
