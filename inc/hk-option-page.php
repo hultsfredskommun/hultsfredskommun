@@ -194,14 +194,46 @@ function hk_theme_options_do_page() {
 			
 			<h2>Cron</h2>
 			<h3>Granskningsmail</h3>
-			<p><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> <label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?> <br>Granskningsmail körs <b><?php echo  Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_review_mail_event' )); ?></b> nästa gång.<br/><?php echo $options["hk_review_mail_log"]; ?></p>
-			<?php if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled ?>
+			<p><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> <label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?></p>
+			<p><label for="hk_theme[review_send_only_mail_to]">Skicka bara e-post till denna adress.</label><br/><input type="text" name="hk_theme[review_send_only_mail_to]" value="<?php echo $options['review_send_only_mail_to']; ?>" /></p>
+			<?php 
+			// review mail
+			if ($options['enable_cron_review_mail']) {
+				if ( !wp_next_scheduled( 'hk_review_mail_event' ) ) {
+					wp_schedule_event( time(), 'daily', 'hk_review_mail_event');
+				}
+			}
+			else
+			{
+				if ( wp_next_scheduled( 'hk_review_mail_event' ) ) {
+					wp_clear_scheduled_hook('hk_review_mail_event');
+				}
+			}
+			?>
+			Skickar granska mail <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_review_mail_event' )); ?></b> nästa gång. <br> 
+			LOG: <?php echo $options["hk_review_mail_log"]; ?>
+			
+			
+			<?php
+			if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled 
+			?>
 			<h3>Normalisera klickräknare</h3>
+			<p><input type="checkbox" name="hk_theme[enable_cron_normalize]" <?php echo ($options['enable_cron_normalize'])?"checked":""; ?> /> <label for="hk_theme[enable_cron_normalize]">Aktivera granskningsmail.</label> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?> <br>Granskningsmail körs <b><?php echo  Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_review_mail_event' )); ?></b> nästa gång.<br/><?php echo $options["hk_review_mail_log"]; ?></p>
 			<p><input type="checkbox" name="hk_theme[force_normalize]" value="1" /> <label for="hk_theme[force_normalize]">Tvinga normalisera!</label> <br>
 			Normaliserar räknare <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_normalize_count_event' )); ?></b> nästa gång. <br>
 			Kördes senast <b><?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?></b><br>LOG: <?php echo $options["hk_normalize_count_log"]; ?> </p>
 			
 			<?php
+				if ($options["enable_cron_normalize"] == "1") {
+					if ( !wp_next_scheduled( 'hk_normalize_count_event' ) ) {
+						wp_schedule_event( time(), 'daily', 'hk_normalize_count_event');
+					}
+				}
+				else {
+					if ( !wp_next_scheduled( 'hk_normalize_count_event' ) ) {
+						wp_clear_scheduled_hook( 'hk_normalize_count_event');
+					}
+				}
 				if ($options["force_normalize"] == "1") {
 					echo "F&ouml;rs&ouml;ker normalisera visningar.";
 					hk_normalize_count();

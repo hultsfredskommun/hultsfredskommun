@@ -54,9 +54,7 @@ if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
-<!--[if lt IE 9]>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 
 <?php /* SET VIEWPORT */

@@ -147,7 +147,9 @@ function hk_review_mail() {
 		'meta_type' => 'numeric',
 		'orderby' => 'meta_value',
 		'order' => 'ASC',
-		'suppress_filters' => true );
+		'suppress_filters' => true,	
+		'ignore_sticky_posts' => 1,
+		);
 	
 	$q = new WP_Query();
 	$q->query($qargs);
@@ -177,7 +179,10 @@ function hk_review_mail() {
 		}
 		$message .= "</ul>";
 		$count_mail++;
-		wp_mail($mailaddress, $subject, $message); 
+		if ($options["review_send_only_mail_to"] != "")
+			wp_mail($options["review_send_only_mail_to"], $subject, "Should be sent to: " . $mailaddress . "\n\n" . $message); 		
+		else
+			wp_mail($mailaddress, $subject, $message); 
 	} 
 	$log .= "Skickade $count_mail påminnelser den " . date("Y-m-d H:i:s", strtotime("now"));
 	$options["hk_review_mail_log"] = $log;
@@ -187,21 +192,7 @@ function hk_review_mail() {
 }
 add_action("hk_review_mail_event","hk_review_mail");
 
-function hk_visit_activation() {
-	$options = get_option('hk_theme');
-	if ($options['enable_cron_review_mail']) {
-		if ( !wp_next_scheduled( 'hk_review_mail_event' ) ) {
-			wp_schedule_event( time(), 'daily', 'hk_review_mail_event');
-		}
-	}
-	else
-	{
-		if ( wp_next_scheduled( 'hk_review_mail_event' ) ) {
-			wp_clear_scheduled_hook('hk_review_mail_event');
-		}
-	}
-}
-add_action('wp', 'hk_visit_activation');
+
 
 
 /*
@@ -237,6 +228,8 @@ function hk_normalize_count() {
 		}
 		else {
 			$new_views = floor(sqrt($views));
+			if ($q->is_sticky()) 
+				$new_views += 100; // instead of sticky first in loop
 			add_post_meta($post_id, "views", $new_views. $views) || update_post_meta($post_id, "views", $new_views, $views); 
 		}
 		
@@ -255,13 +248,6 @@ function hk_normalize_count() {
 }
 add_action("hk_normalize_count_event", "hk_normalize_count");
 
-
-function hk_normalize_activation() {
-	if ( !wp_next_scheduled( 'hk_normalize_count_event' ) ) {
-		wp_schedule_event( time(), 'daily', 'hk_normalize_count_event');
-	}
-}
-add_action('wp', 'hk_normalize_activation');
 
 endif; // endif (function_exists( 'views_orderby' ))
 
