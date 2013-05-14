@@ -228,7 +228,7 @@ function hk_normalize_count() {
 		}
 		else {
 			$new_views = floor(sqrt($views));
-			if ($q->is_sticky()) 
+			if (is_sticky()) 
 				$new_views += 100; // instead of sticky first in loop
 			add_post_meta($post_id, "views", $new_views. $views) || update_post_meta($post_id, "views", $new_views, $views); 
 		}
