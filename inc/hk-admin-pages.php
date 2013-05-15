@@ -206,6 +206,11 @@ if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled
 
 // normalize view count
 function hk_normalize_count($echolog = false) {
+
+	if (!function_exists( 'views_orderby' )) // don't do if plugin WP-PostViews not is enabled 
+		return;
+	
+
 	//define arguments for WP_Query()
 	$qargs = array(
 		'post_type' => array("post","hk_kontakter"),
