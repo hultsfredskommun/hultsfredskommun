@@ -257,7 +257,7 @@ function hk_theme_options_do_page() {
 					}
 				}
 				else {
-					if ( !wp_next_scheduled( 'hk_normalize_count_event' ) ) {
+					if ( wp_next_scheduled( 'hk_normalize_count_event' ) ) {
 						wp_clear_scheduled_hook( 'hk_normalize_count_event');
 					}
 				}
