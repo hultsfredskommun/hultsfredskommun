@@ -8,13 +8,13 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
-global $default_settings;
+global $default_settings, $uagent_info;
 /* get hk_options */
 $hk_options = get_option('hk_theme');
 
 /* hide if single and not visible */
-if ($hk_options["mobile_rewrite"] != "" && DetectMobileQuick()) {
-	header("Location: ". $hk_options["mobile_rewrite"]);
+if ($hk_options["mobile_rewrite"] != "" && $uagent_info->DetectMobileQuick()) {
+	wp_redirect($hk_options["mobile_rewrite"]); exit;
 }
 
 /* hide if single and not visible */
@@ -72,7 +72,7 @@ elseif ($_REQUEST["viewport"] == "reset") :
 	$_SESSION["viewport"] = "";
 endif; ?>
 <?php 
-if (DetectIpad() || $_SESSION["viewport"] == "desk") : ?>
+if ($uagent_info->DetectIpad() || $_SESSION["viewport"] == "desk") : ?>
 <meta name="viewport" content="width=1150, initial-scale: 1, maximum-scale: 1" />
 <?php elseif ($_SESSION["viewport"] == "palm") : ?>
 <meta name="viewport" content="width=540, initial-scale: 1" />

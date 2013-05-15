@@ -49,6 +49,7 @@ if ( ! isset( $default_settings ) ) {
 
 // check mobile helper
 require( get_template_directory() . '/inc/mdetect.php' );
+$uagent_info = new uagent_info();
 
 // Grab hk option page.
 require( get_template_directory() . '/inc/hk-option-page.php' );
