@@ -226,18 +226,22 @@ function hk_normalize_count($echolog = false) {
 		$count++;
 		$post_id = get_the_ID();
 		$views = get_post_meta($post_id, "views", true);
-		
+		$new_views = 1;
 		if (empty($views)) {
-			add_post_meta($post_id, "views", 0);
+			if (is_sticky()) 
+				add_post_meta($post_id, "views", 100);
+			else
+				add_post_meta($post_id, "views", 0);
 		}
 		else {
 			$new_views = floor(sqrt($views));
 			if (is_sticky()) 
-				$new_views += 100; // instead of sticky first in loop
-			add_post_meta($post_id, "views", $new_views. $views) || update_post_meta($post_id, "views", $new_views, $views); 
+				$new_views = 100; // instead of sticky first in loop
+			//delete_post_meta($post_id, "views");
+			update_post_meta($post_id, "views", $new_views, $views); 
 		}
 		
-		//$log .= $post_id . " " . $views . " " . $new_views . "<br>";
+		$log .= $post_id . " " . $views . " " . $new_views . " sticky: " . is_sticky() . "\n";
 		//$log .= ". ";
 	endwhile;
 
