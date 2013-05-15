@@ -225,7 +225,8 @@ function hk_normalize_count($echolog = false) {
 	while ($q->have_posts()) : $q->the_post();
 		$count++;
 		$post_id = get_the_ID();
-		$views = get_post_meta($post_id, "views", true);
+		$views = get_post_meta($post_id, "views");
+		
 		$new_views = 1;
 		if (empty($views)) {
 			if (is_sticky()) 
@@ -234,14 +235,21 @@ function hk_normalize_count($echolog = false) {
 				add_post_meta($post_id, "views", 0);
 		}
 		else {
-			$new_views = floor(sqrt($views));
+			$new_views = floor(sqrt($views[0]));
 			if (is_sticky()) 
 				$new_views = 100; // instead of sticky first in loop
-			//delete_post_meta($post_id, "views");
-			update_post_meta($post_id, "views", $new_views, $views); 
+			
+			if (count($views) > 1)
+			{
+				delete_post_meta($post_id, "views");
+				add_post_meta($post_id, "views", $new_views); 
+			}
+			else {
+				update_post_meta($post_id, "views", $new_views, $views); 
+			}
 		}
 		
-		$log .= $post_id . " " . $views . " " . $new_views . " sticky: " . is_sticky() . "\n";
+		$log .= $post_id . " " . $views[0] . " " . $new_views . " sticky: " . is_sticky() . " count: " . count($views) . "\n";
 		//$log .= ". ";
 	endwhile;
 

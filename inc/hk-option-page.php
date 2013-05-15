@@ -237,7 +237,7 @@ function hk_theme_options_do_page() {
 			}
 			?>
 			Skickar granska mail <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_review_mail_event' )); ?></b> nästa gång. <br> 
-			LOG: <br><textarea cols=60 rows=10><?php echo $options["hk_review_mail_log"]; ?></textarea>
+			LOG: <br><textarea name="hk_theme[hk_review_mail_log]" cols=60 rows=3><?php echo $options["hk_review_mail_log"]; ?></textarea>
 			
 			
 			<?php
@@ -269,7 +269,7 @@ function hk_theme_options_do_page() {
 					update_option("hk_theme", $opt);
 				}
 			?>
-			LOG:<br> <textarea cols=60 rows=10><?php echo $log . $options["hk_normalize_count_log"]; ?></textarea> </p>
+			LOG:<br> <textarea name="hk_theme[hk_normalize_count_log]" cols=60 rows=3><?php echo $log . $options["hk_normalize_count_log"]; ?></textarea> </p>
 			<?php endif; // endif (function_exists( 'views_orderby' ))?>
 			<?php submit_button(); ?>
 
