@@ -9,6 +9,13 @@
  * @since Twenty Eleven 1.0
  */
 global $default_settings;
+/* get hk_options */
+$hk_options = get_option('hk_theme');
+
+/* hide if single and not visible */
+if ($hk_options["mobile_rewrite"] != "" && DetectMobileQuick()) {
+	header("Location: ". $hk_options["mobile_rewrite"]);
+}
 
 /* hide if single and not visible */
 if (is_single() && in_category($default_settings["hidden_cat"])) {
@@ -65,7 +72,7 @@ elseif ($_REQUEST["viewport"] == "reset") :
 	$_SESSION["viewport"] = "";
 endif; ?>
 <?php 
-if ($default_settings["ipad"] || $_SESSION["viewport"] == "desk") : ?>
+if (DetectIpad() || $_SESSION["viewport"] == "desk") : ?>
 <meta name="viewport" content="width=1150, initial-scale: 1, maximum-scale: 1" />
 <?php elseif ($_SESSION["viewport"] == "palm") : ?>
 <meta name="viewport" content="width=540, initial-scale: 1" />
@@ -74,8 +81,6 @@ if ($default_settings["ipad"] || $_SESSION["viewport"] == "desk") : ?>
 <?php endif; ?>
 
 <title><?php
-	/* get hk_options */
-	$hk_options = get_option('hk_theme');
 
 	/*
 	 * Print the <title> tag based on what is being viewed.

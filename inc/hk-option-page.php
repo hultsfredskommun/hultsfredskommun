@@ -27,6 +27,7 @@ function hk_theme_options_do_page() {
 
 			
 
+			<a href="#mobil">Mobil</a>
 			<a href="#sidhuvud">Sidhuvud</a>
 			<a href="#meddelande">Meddelande</a>
 			<a href="#kategorier">Kategorier</a>
@@ -35,6 +36,12 @@ function hk_theme_options_do_page() {
 			<a href="#tillagg">Tillägg</a>
 			<a href="#statistik">Statistik och cookies</a>
 			<a href="#cron">Cron</a>
+			<a href="#sidfot">Sidfot</a>
+			<a href="#barntema">Barntema</a>
+
+			<a name="mobil"></a>
+			<hr/><h2>Mobil</h2>
+			<p><label for="hk_theme[mobile_rewrite]">Skicka till denna sida om mobil:</label><br/><input size="80" type="text" name="hk_theme[mobile_rewrite]" value="<?php echo $options['mobile_rewrite']; ?>" /></p>
 
 			<a name="sidhuvud"></a>
 			<hr/><h2>Sidhuvud</h2>
@@ -273,6 +280,7 @@ function hk_theme_options_do_page() {
 			<?php endif; // endif (function_exists( 'views_orderby' ))?>
 			<?php submit_button(); ?>
 
+			<a name="sidfot"></a>
 			<hr/><h2>Sidfot</h2>
 			<p><label for="hk_theme[footer_image]">Sidfot</label><br/>
 				<img width=150 src="<?php echo $options["footer_image"]; ?>" />
@@ -286,9 +294,13 @@ function hk_theme_options_do_page() {
 			</p>
 			<?php submit_button(); ?>
 
-			<?php /* hook to be able to add options from child theme */ 
-			echo do_action('hk_options_hook', $options); ?>			
+			<?php /* hook to be able to add options from child theme */ ?>
 			
+			<a name="barntema"></a>
+			<hr/><h2>Extra inst&auml;llningar fr&aring;n barntema</h2>
+			<?php echo do_action('hk_options_hook', $options); ?>			
+			<?php submit_button(); ?>
+
 			<hr/><h2>Anv&auml;nds inte just nu:</h2>
 			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
 				<tr valign="top">

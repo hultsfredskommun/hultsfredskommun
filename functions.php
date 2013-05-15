@@ -38,9 +38,6 @@ if ( ! isset( $default_settings ) ) {
 								);
 								/* browser check */
 	$ua = $_SERVER["HTTP_USER_AGENT"];
-	$default_settings["android"] = (strpos($ua, 'Android') === true) ? true : false;// Android
-	$default_settings["iphone"] = (strpos($ua, 'iPhone') === true) ? true : false;// iPhone
-	$default_settings["ipad"] = (strpos($ua, 'iPad') === true) ? true : false;// iPad
 	$default_settings["msie"] = (strpos($ua, 'MSIE') === true) ? true : false; // All Internet Explorer
 	$default_settings["msie_6"] = (strpos($ua, 'MSIE 6.0') === true) ? true : false; // Internet Explorer 6
 	$default_settings["msie_7"] = (strpos($ua, 'MSIE 7.0') === true) ? true : false; // Internet Explorer 7
@@ -49,6 +46,9 @@ if ( ! isset( $default_settings ) ) {
 }
 
 
+
+// check mobile helper
+require( get_template_directory() . '/inc/mdetect.php' );
 
 // Grab hk option page.
 require( get_template_directory() . '/inc/hk-option-page.php' );
