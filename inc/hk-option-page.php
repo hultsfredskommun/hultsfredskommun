@@ -26,7 +26,18 @@ function hk_theme_options_do_page() {
 			<?php $options = get_option('hk_theme'); ?>
 
 			
-			<h2>Sidhuvud</h2>
+
+			<a href="#sidhuvud">Sidhuvud</a>
+			<a href="#meddelande">Meddelande</a>
+			<a href="#kategorier">Kategorier</a>
+			<a href="#kontakta-oss">Kontakta-oss</a>
+			<a href="#permalänkar">Permalänkar</a>
+			<a href="#tillagg">Tillägg</a>
+			<a href="#statistik">Statistik och cookies</a>
+			<a href="#cron">Cron</a>
+
+			<a name="sidhuvud"></a>
+			<hr/><h2>Sidhuvud</h2>
 			<p><label for="hk_theme[logo_image]">Logga</label><br/>
 				<img width=150  src="<?php echo $options["logo_image"]; ?>" />
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_image]" value="<?php echo $options["logo_image"]; ?>" />
@@ -58,31 +69,36 @@ function hk_theme_options_do_page() {
 			</p>
 			<p><label for="hk_theme[logo3_link]">Logga 3 l&auml;nk. </label><br/><input size="80" type="text" name="hk_theme[logo3_link]" value="<?php echo $options['logo3_link']; ?>" /></p>
 			<p><label for="hk_theme[logo3_descr]">Logga 3 beskrivning. </label><br/><input size="80" type="text" name="hk_theme[logo3_descr]" value="<?php echo $options['logo3_descr']; ?>" /></p>
+			<?php submit_button(); ?>
 
-			<h2>Meddelande vid 404</h2>
+			<hr/><h2>Meddelande</h2>
+			<a name="meddelande"></a>
+			<h3>Meddelande vid 404</h3>
 			<p><label for="hk_theme[404title]">Titel</label><br/><input size="80" type="text" name="hk_theme[404title]" value="<?php echo $options['404title']; ?>" /></p>
 			<p><label for="hk_theme[404message]">Meddelande</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[404message]"><?php echo $options['404message']; ?></textarea></p>
 			<?php if(function_exists('get_most_viewed')) { ?>
 			<p><label for="hk_theme[404message2]">Meddelande2 (innan mest bes&ouml;kta)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[404message2]"><?php echo $options['404message2']; ?></textarea></p>
 			<?php } ?>
 
-			<h2>Meddelande vid tom s&ouml;kning</h2>
+			<h3>Meddelande vid tom s&ouml;kning</h3>
 			<p><label for="hk_theme[emptytitle]">Titel</label><br/><input size="80" type="text" name="hk_theme[emptytitle]" value="<?php echo $options['emptytitle']; ?>" /></p>
 			<p><label for="hk_theme[emptymessage]">Meddelande</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptymessage]"><?php echo $options['emptymessage']; ?></textarea></p>
 			<?php if(function_exists('get_most_viewed')) { ?>
 			<p><label for="hk_theme[emptymessage2]">Meddelande2 (innan mest bes&ouml;kta)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptymessage2]"><?php echo $options['emptymessage2']; ?></textarea></p>
 			<?php } ?>
 
-			<h2>Meddelande vid tom kategorilistning</h2>
+			<h3>Meddelande vid tom kategorilistning</h3>
 			<p><label for="hk_theme[emptycattitle]">Titel</label><br/><input size="80" type="text" name="hk_theme[emptycattitle]" value="<?php echo $options['emptycattitle']; ?>" /></p>
 			<p><label for="hk_theme[emptycatmessage]">Meddelande</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptycatmessage]"><?php echo $options['emptycatmessage']; ?></textarea></p>
 			<?php if(function_exists('get_most_viewed')) { ?>
 			<p><label for="hk_theme[emptycatmessage2]">Meddelande2 (innan mest bes&ouml;kta)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptycatmessage2]"><?php echo $options['emptycatmessage2']; ?></textarea></p>
 			<?php } ?>
 			<p><label for="hk_theme[emptycatmessage3]">Meddelande3 (innan listning av underkategori)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptycatmessage3]"><?php echo $options['emptycatmessage3']; ?></textarea></p>
+			<?php submit_button(); ?>
 			
 			
-			<h2>Kategorier och menyer</h2>
+			<a name="kategorier"></a>
+			<hr/><h2>Kategorier och menyer</h2>
 			
 			<p><label for="hk_theme[startpage_cat]">Välj kategori som är startsida.</label><br/>
 							<?php 
@@ -163,26 +179,34 @@ function hk_theme_options_do_page() {
 
 			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input size="8" type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo (!isset($options["num_levels_in_menu"]) || $options["num_levels_in_menu"] == "")?2:$options['num_levels_in_menu']; ?>" /></p>
 			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options['show_tags']; ?>" /></p>
+			<?php submit_button(); ?>
 			
-			<h2>Kontakta-oss flikar - l&auml;nkar</h2>
+			<a name="kontakta-oss"></a>
+			<hr/><h2>Kontakta-oss flikar - l&auml;nkar</h2>
 			<p><label for="hk_theme[comment_side_link]">Kontakta-oss-l&auml;nk</label><br/><input size="80" type="text" name="hk_theme[contact_side_link]" value="<?php echo $options['contact_side_link']; ?>" /></p>
 			<p><label for="hk_theme[comment_side_link]">Hjälp-oss-l&auml;nk</label><br/><input size="80" type="text" name="hk_theme[comment_side_link]" value="<?php echo $options['comment_side_link']; ?>" /></p>
+			<?php submit_button(); ?>
 
-			<h2>Permal&auml;nkar</h2>
+			<a name="permalänkar"></a>
+			<hr/><h2>Permal&auml;nkar</h2>
 			<p><label for="hk_theme[permalinkstructure]">Permal&auml;nkstruktur f&ouml;r kontakter, om n&aring;gon fast struktur under Inst&auml;llningar -&gt; Permal&auml;nkar &auml;r satt (ex. om anpassad struktur &auml;r <b>/artikel/</b>%postname%/, s&aring; s&auml;tt <b>/artikel/</b>kontakter i denna inst&auml;llning).</label><br/><input type="text" name="hk_theme[permalinkstructure]" value="<?php echo $options['permalinkstructure']; ?>" /></p>
 			<?php echo "<i>Flushing rewrite rules.</i> "; 
 			flush_rewrite_rules(); 
 			echo "<i>Done.</i>";?>
+			<?php submit_button(); ?>
 
 			
-			<h2>Till&auml;gg</h2>
+			<a name="tillagg"></a>
+			<hr/><h2>Till&auml;gg</h2>
 			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. L&auml;gger till Tipsa i artikel.</label><br/><input type="text" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
 			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. L&auml;gger till Lyssna i artikel.</label><br/><input type="text" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>			
 			<p><label for="hk_theme[typekit_url]">Typekit js url - http://&lt;resten av url&gt; f&ouml;r att l&auml;gga till typsnitt.</label><br/><input type="text" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
 			<p><label for="hk_theme[google_font]">Load google font - ex. <i>Oxygen:300,400,700</i> f&ouml;r att l&aumlgga till typsnitt.</label><br/><input type="text" name="hk_theme[google_font]" value="<?php echo $options['google_font']; ?>" /></p>
 			<p><label for="hk_theme[in_head_section]">script or other in &lt;head&gt;-section</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[in_head_section]"><?php echo $options['in_head_section']; ?></textarea></p>
+			<?php submit_button(); ?>
 
-			<h2>Statistik och cookies</h2>
+			<a name="statistik"></a>
+			<hr/><h2>Statistik och cookies</h2>
 			<p><input type="checkbox" name="hk_theme[cookie_accept_enable]" value="1"<?php checked( 1 == $options['cookie_accept_enable'] ); ?> /> <label for="hk_theme[cookie_accept_enable]">St&auml;ll fr&aring;ga om cookies f&aring;r anv&auml;ndas.</label></p>
 			<p><label for="hk_theme[cookie_text]">Förklarande text för att godkänna cookies. </label><br/><input size="80" type="text" name="hk_theme[cookie_text]" value="<?php echo $options['cookie_text']; ?>" /></p>
 			<p><label for="hk_theme[cookie_button_text]">Text på godkänn cookies knapp. </label><br/><input size="80" type="text" name="hk_theme[cookie_button_text]" value="<?php echo $options['cookie_button_text']; ?>" /></p>
@@ -191,8 +215,10 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[google_analytics]">Google Analytics id (enligt UA-XXXXX-X). </label><br/><input type="text" name="hk_theme[google_analytics]" value="<?php echo $options['google_analytics']; ?>" /></p>
 			<p><label for="hk_theme[google_analytics_domain]">Google Analytics topp dom&auml;n (ex. mindom&auml;n.se). </label><br/><input type="text" name="hk_theme[google_analytics_domain]" value="<?php echo $options['google_analytics_domain']; ?>" /></p>
 			<p><input type="checkbox" name="hk_theme[google_analytics_disable_if_no_cookies]" value="1"<?php checked( 1 == $options['google_analytics_disable_if_no_cookies'] ); ?> /> <label for="hk_theme[google_analytics_disable_if_no_cookies]">Anv&auml;nd inte Google Analytics om cookies inte &auml;r accepterade (p&aring;verkar bara om "fr&aring;ga om cookies" &auml;r p&aring).</label</p>
-			
-			<h2>Cron</h2>
+			<?php submit_button(); ?>
+
+			<a name="cron"></a>
+			<hr/><h2>Cron</h2>
 			<h3>Granskningsmail</h3>
 			<p><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> <label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?></p>
 			<p><label for="hk_theme[review_send_only_mail_to]">Skicka bara e-post till denna adress.</label><br/><input type="text" name="hk_theme[review_send_only_mail_to]" value="<?php echo $options['review_send_only_mail_to']; ?>" /></p>
@@ -211,17 +237,18 @@ function hk_theme_options_do_page() {
 			}
 			?>
 			Skickar granska mail <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_review_mail_event' )); ?></b> nästa gång. <br> 
-			LOG: <?php echo $options["hk_review_mail_log"]; ?>
+			LOG: <br><textarea cols=60 rows=10><?php echo $options["hk_review_mail_log"]; ?></textarea>
 			
 			
 			<?php
 			if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled 
 			?>
+
 			<h3>Normalisera klickräknare</h3>
-			<p><input type="checkbox" name="hk_theme[enable_cron_normalize]" <?php echo ($options['enable_cron_normalize'])?"checked":""; ?> /> <label for="hk_theme[enable_cron_normalize]">Aktivera granskningsmail.</label> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?> <br>Granskningsmail körs <b><?php echo  Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_review_mail_event' )); ?></b> nästa gång.<br/><?php echo $options["hk_review_mail_log"]; ?></p>
+			<p><input type="checkbox" name="hk_theme[enable_cron_normalize]" <?php echo ($options['enable_cron_normalize'])?"checked":""; ?> /> <label for="hk_theme[enable_cron_normalize]">Aktivera granskningsmail.</label> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?> <br>Granskningsmail körs <b><?php echo  Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_review_mail_event' )); ?></b> nästa gång.</p>
 			<p><input type="checkbox" name="hk_theme[force_normalize]" value="1" /> <label for="hk_theme[force_normalize]">Tvinga normalisera!</label> <br>
 			Normaliserar räknare <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_normalize_count_event' )); ?></b> nästa gång. <br>
-			Kördes senast <b><?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?></b><br>LOG: <?php echo $options["hk_normalize_count_log"]; ?> </p>
+			Kördes senast <b><?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?></b><br>
 			
 			<?php
 				if ($options["enable_cron_normalize"] == "1") {
@@ -236,16 +263,17 @@ function hk_theme_options_do_page() {
 				}
 				if ($options["force_normalize"] == "1") {
 					echo "F&ouml;rs&ouml;ker normalisera visningar.";
-					hk_normalize_count();
-					echo "F&ouml;rs&ouml;ker aktivera automatisk normalisering.";
-					hk_normalize_activation();
-					$options["force_normalize"] = 0;
-					update_option("hk_theme", $options);
+					$log = hk_normalize_count(true);
+					$opt = get_option("hk_theme");
+					$opt["force_normalize"] = 0;
+					update_option("hk_theme", $opt);
 				}
 			?>
+			LOG:<br> <textarea cols=60 rows=10><?php echo $log . $options["hk_normalize_count_log"]; ?></textarea> </p>
 			<?php endif; // endif (function_exists( 'views_orderby' ))?>
-			
-			<h2>Sidfot</h2>
+			<?php submit_button(); ?>
+
+			<hr/><h2>Sidfot</h2>
 			<p><label for="hk_theme[footer_image]">Sidfot</label><br/>
 				<img width=150 src="<?php echo $options["footer_image"]; ?>" />
 				<input class="upload-url" type="text" size="36" name="hk_theme[footer_image]" value="<?php echo $options["footer_image"]; ?>" />
@@ -256,11 +284,12 @@ function hk_theme_options_do_page() {
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_footer_image]" value="<?php echo $options["logo_footer_image"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
+			<?php submit_button(); ?>
 
 			<?php /* hook to be able to add options from child theme */ 
 			echo do_action('hk_options_hook', $options); ?>			
 			
-			<h2>Anv&auml;nds inte just nu:</h2>
+			<hr/><h2>Anv&auml;nds inte just nu:</h2>
 			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
 				<tr valign="top">
 					<th style="width: 120px">Namn:</td>

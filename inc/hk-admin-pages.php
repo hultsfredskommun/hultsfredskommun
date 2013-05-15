@@ -179,10 +179,14 @@ function hk_review_mail() {
 		}
 		$message .= "</ul>";
 		$count_mail++;
-		if ($options["review_send_only_mail_to"] != "")
-			wp_mail($options["review_send_only_mail_to"], $subject, "Should be sent to: " . $mailaddress . "\n\n" . $message); 		
-		else
-			wp_mail($mailaddress, $subject, $message); 
+		if ($options["review_send_only_mail_to"] != "") {
+			wp_mail($options["review_send_only_mail_to"], $subject, "Should be sent to: " . $mailaddress . "\n\n" . $message);
+			$log .= "Har skickat $count_mail påminnelser, senast till " . $options["review_send_only_mail_to"] . " DEBUG: skulle skickats till $mailaddress\n";
+		}
+		else {
+			wp_mail($mailaddress, $subject, $message);
+			$log .= "Har skickat $count_mail påminnelser, senast till $mailaddress\n";
+		}
 	} 
 	$log .= "Skickade $count_mail påminnelser den " . date("Y-m-d H:i:s", strtotime("now"));
 	$options["hk_review_mail_log"] = $log;
@@ -201,7 +205,7 @@ add_action("hk_review_mail_event","hk_review_mail");
 if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled
 
 // normalize view count
-function hk_normalize_count() {
+function hk_normalize_count($echolog = false) {
 	//define arguments for WP_Query()
 	$qargs = array(
 		'post_type' => array("post","hk_kontakter"),
@@ -234,10 +238,10 @@ function hk_normalize_count() {
 		}
 		
 		//$log .= $post_id . " " . $views . " " . $new_views . "<br>";
-		$log .= ". ";
+		//$log .= ". ";
 	endwhile;
 
-	$log .= "Normaliserade $count artiklar " . date("d M", strtotime("now"));
+	$log .= "Normaliserade $count artiklar " . date("Y-m-d H:i:s", strtotime("now"));
 	
 	$options = get_option('hk_theme');
 	$hk_normalize_count_time = time();
@@ -245,6 +249,10 @@ function hk_normalize_count() {
 	if ($log != "")
 		$options["hk_normalize_count_log"] = $log;
 	update_option("hk_theme", $options);
+	if ($echolog)
+		return $log;
+	else
+		return;
 }
 add_action("hk_normalize_count_event", "hk_normalize_count");
 
