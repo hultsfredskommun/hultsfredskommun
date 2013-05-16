@@ -1866,7 +1866,7 @@ label,
    </div>
  * 
  */
-.gw--rev > .g, .gw--rev > .firstpage-top-content, .gw--rev > .firstpage-sidebar, .gw--rev > .firstpage-content, .gw--rev > .firstpage-pre-footer-sidebar, .gw--rev > .breadcrumb, .gw--rev > .primary, .gw--rev > .search-hook, .gw--rev > .logo, .gw--rev > .searchnavigation, .gw--rev > .logo2, .gw--rev > .category-navigation,
+.gw--rev > .g, .gw--rev > .firstpage-top-content, .gw--rev > .firstpage-sidebar, .gw--rev > .firstpage-content, .gw--rev > .firstpage-pre-footer-sidebar, .gw--rev > .breadcrumb, .gw--rev > .primary, .gw--rev > .search-hook, .gw--rev > .post-search-hook, .gw--rev > .logo, .gw--rev > .searchnavigation, .gw--rev > .logo2, .gw--rev > .category-navigation,
 .grid-wrapper--rev > .grid {
   float: right;
 }
@@ -1884,7 +1884,7 @@ label,
  * 
  * Shorthand and verbose
  */
-.g, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .firstpage-pre-footer-sidebar, .breadcrumb, .primary, .search-hook, .logo, .searchnavigation, .logo2, .category-navigation,
+.g, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .firstpage-pre-footer-sidebar, .breadcrumb, .primary, .search-hook, .post-search-hook, .logo, .searchnavigation, .logo2, .category-navigation,
 .grid {
   float: left;
   padding-left: 24px;
@@ -3256,7 +3256,7 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .branding, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
+.one-whole, .branding, .widget h1, .icon-right, .firstpage-pre-footer-sidebar, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
 .single .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .responsive-navigation, .responsive-menu, .main-menu, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
