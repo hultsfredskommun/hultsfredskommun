@@ -59,7 +59,7 @@ get_header(); ?>
 		
 		<?php /* hook to be able to add other search result */ 
 		do_action('hk_post_search', get_query_var("s")); ?>
-		</aside>
+		
 
 
 <?php get_footer(); ?>
