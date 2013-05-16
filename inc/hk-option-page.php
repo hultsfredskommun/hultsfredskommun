@@ -256,9 +256,8 @@ function hk_theme_options_do_page() {
 			<h3>Normalisera klickräknare</h3>
 			<p><input type="checkbox" name="hk_theme[enable_cron_normalize]" <?php echo ($options['enable_cron_normalize'])?"checked":""; ?> /> 
 			<label for="hk_theme[enable_cron_normalize]">Aktivera normalisera räknare.</label> <?php echo (wp_next_scheduled( 'hk_normalize_count_event' ))?"Aktiverat.":"Inaktiverat."; ?> 
-			<br>Granskningsmail körs <b><?php echo  Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_normalize_count_event' )); ?></b> nästa gång.</p>
+			<br>Normalisering körs <b><?php echo  Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_normalize_count_event' )); ?></b> nästa gång.</p>
 			<p><input type="checkbox" name="hk_theme[force_normalize]" value="1" /> <label for="hk_theme[force_normalize]">Tvinga normalisera!</label> <br>
-			Normaliserar räknare <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_normalize_count_event' )); ?></b> nästa gång. <br>
 			Kördes senast <b><?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?></b><br>
 			
 			<?php
