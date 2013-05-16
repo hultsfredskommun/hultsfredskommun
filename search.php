@@ -9,11 +9,9 @@
 
 get_header(); ?>
 		<?php //hk_navigation(); ?>
-		<aside class="search-hook">
-			<?php /* hook to be able to add other search result */ 
-			do_action('hk_pre_search', get_query_var("s")); ?>
-			&nbsp;
-		</aside>
+		
+		<?php /* hook to be able to add other search result */ 
+		do_action('hk_pre_search', get_query_var("s")); ?>
 		
 		<div id="primary" class="primary  searchresult">
 			<div id="content" role="main">
@@ -58,5 +56,10 @@ get_header(); ?>
 
 			</div><!-- #content -->
 		</div><!-- #primary -->
+		
+		<?php /* hook to be able to add other search result */ 
+		do_action('hk_post_search', get_query_var("s")); ?>
+		</aside>
+
 
 <?php get_footer(); ?>

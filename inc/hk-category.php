@@ -3,6 +3,15 @@
 				// do query
 				$args = array(	paged => $paged,
 								category__and => array($cat));
+				/*$args['meta_query'] = array(
+				   array(
+					   'key' => 'hide_from_category',
+					   'compare' => '==',
+					   'value' => '1',
+					   //'compare' => '=',
+					   //'type' => 'NUMERIC',
+				   )
+				);*/
 				query_posts( $args );
 			endif;
 	?>
@@ -32,8 +41,8 @@
 					}
 					echo "</a></li>";
 				?>
-				<?php //print_r($wp_query); ?>
 			</ul>
+				<?php //echo "<pre>"; print_r($wp_query); echo "</pre>"; ?>
 
 			<ul class="category-tools">
 				<?php /* if (related stuff ($cat)) : */ ?>

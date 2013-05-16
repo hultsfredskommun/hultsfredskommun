@@ -36,7 +36,7 @@
  * Footer-4 (dynamic width set depend of how many footers are active)
  * Important (placed on top of all pages)
  * Right-top-menu-item
-* hk_pre_search and hk_pre_ajax_search action hooks to add extra search in child theme
+* hk_pre_search, hk_post_search, hk_pre_ajax_search and hk_post_ajax_search action hooks to add extra search in child theme
 * hk_icon_path action hook to set other icons in child theme
  
 === Optional functionality ===

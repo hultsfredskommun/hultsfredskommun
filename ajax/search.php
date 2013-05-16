@@ -46,15 +46,10 @@
 			relevanssi_didyoumean($searchstring, "<div class='one-whole float--left island flush--bottom'>Menade du ",".</div>");
 		}
 		
-		echo $retString;
 		
-		
-		/* hook to be able to add other search result */ 
-		do_action('hk_pre_ajax_search', $searchstring);
-
 		
 		/* get categories */
-		$sql = "SELECT $wpdb->terms.name as name, $wpdb->terms.term_id as term_id ".
+		/*$sql = "SELECT $wpdb->terms.name as name, $wpdb->terms.term_id as term_id ".
 		"FROM $wpdb->terms, $wpdb->term_taxonomy ".
 		"WHERE $wpdb->term_taxonomy.term_taxonomy_id = $wpdb->terms.term_id ".
 		"AND $wpdb->term_taxonomy.taxonomy = 'category' AND $wpdb->terms.name LIKE '%" . $searchstring . "%';";
@@ -72,11 +67,11 @@
 				$retString .= "<li><a href='$link'>$name</a></li>";
 			}
 			$retString .= "</ul>";
-		}
+		}*/
 
 
 		/* get post_tag */
-		$sql = "SELECT $wpdb->terms.name as name, $wpdb->terms.term_id as term_id ".
+		/*$sql = "SELECT $wpdb->terms.name as name, $wpdb->terms.term_id as term_id ".
 		"FROM $wpdb->terms, $wpdb->term_taxonomy ".
 		"WHERE $wpdb->term_taxonomy.term_taxonomy_id = $wpdb->terms.term_id ".
 		"AND $wpdb->term_taxonomy.taxonomy = 'post_tag' AND $wpdb->terms.name LIKE '%" . $searchstring . "%';";
@@ -95,8 +90,17 @@
 				$retString .= "<li><a href='$link'>$name</a></li>";
 			}
 			$retString .= "</ul>";
-		}
+		}*/
 
+		
+
+		/* hook to be able to add other search result */ 
+		do_action('hk_pre_ajax_search', $searchstring);
+
+		echo $retString;
+		
+		/* hook to be able to add other search result */ 
+		do_action('hk_post_ajax_search', $searchstring);
 
 	endif;
 ?>
