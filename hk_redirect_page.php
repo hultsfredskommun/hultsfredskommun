@@ -18,4 +18,4 @@ if ($post) {
 	}
 } 
 /*if ($url != "") : ?><meta http-equiv="refresh" content="0;url=<?php echo $url; ?>"><?php else : echo "Ingen enkel adress hittades."; endif;?>*/
-if ($url != "") : wp_redirect( $url ); exit; else : echo "Ingen enkel adress hittades."; endif;?>
+if ($url != "") : wp_redirect( $url, 301 ); exit; else : echo "Ingen enkel adress hittades."; endif;?>
