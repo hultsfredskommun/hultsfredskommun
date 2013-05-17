@@ -1,13 +1,17 @@
 <?php 
 //Send a generated image to the browser 
 create_image($_REQUEST["w"],$_REQUEST["h"]); 
-exit(); 
+exit; 
 
 function create_image($width = 150, $height = 150) 
 {   
     //Create the image resource 
     $image = imagecreatetruecolor($width, $height);  
-
+	
+	// exit if fails to create
+	if (!$image)
+		exit;
+		
     //We are making three colors, white, black and gray 
     $white = imagecolorallocate($image, 255, 255, 255); 
 
