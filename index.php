@@ -12,8 +12,6 @@
  * @subpackage Twenty_Eleven
  */
 
-get_header(); ?>
-
-<!-- NOT USED //-->
-
-<?php get_footer(); ?>
+get_header();
+require("inc/hk-sub-category-firstpage.php");
+get_footer();

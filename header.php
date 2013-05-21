@@ -8,44 +8,21 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
-global $default_settings, $uagent_info;
+ 
+
+global $default_settings, $uagent_info, $wp_query;
 /* get hk_options */
 $hk_options = get_option('hk_theme');
 
-/* hide if single and not visible */
-if ($hk_options["mobile_rewrite"] != "" && $uagent_info->DetectMobileQuick()) {
-	wp_redirect($hk_options["mobile_rewrite"]); exit;
-}
 
-/* hide if single and not visible */
-if (is_single() && in_category($default_settings["hidden_cat"])) {
-	header("HTTP/1.0 404 Not Found");
-	//TODO print 404 error - include("404.php");?
-	die("Inte synlig.");
-}
  
-/* first of all set allow cookie if any */
-if ($_REQUEST["cookies"]) {
-	// allow cookies for 10 years
-	setcookie("allow_cookies", "true", time()+3600*24*3650, "/");
-	header("Location: http://".$_SERVER['SERVER_NAME'] . $_SERVER["REDIRECT_URL"]);
-	die();
-}
 
 
 // redirect to first menu item in 'primary'-menu 
 // if on startpage, there are a 'primary' menu set and more than one top menu level
-$menu_name = 'primary';
-if ( is_home() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) && $default_settings["num_levels_in_menu"] > 1 ) {
-	if ($default_settings["startpage_cat"] != "" && $default_settings["startpage_cat"] != "0") {
-		wp_redirect(get_category_link($default_settings["startpage_cat"]),301); exit;
-	}
-	else {
-		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-		$menu_items = wp_get_nav_menu_items( $menu );
-		wp_redirect($menu_items[0]->url,301); exit;
-	}
-}
+
+
+//print_r($wp_query);
 
 ?><!DOCTYPE html>
 <!--[if IE 6]>
@@ -263,7 +240,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 		</div></div>			
 		<nav id="menu" class="menu-wrapper" role="navigation">
 			<?php 
-
+				$menu_name = 'primary';
 				// get nav_menu_parent id
 				if (is_single()) {
 					$category_hierarchy = hk_get_parent_categories_from_id(get_the_ID(), $menu_name);

@@ -240,7 +240,10 @@ function hk_normalize_count($echolog = false) {
 				add_post_meta($post_id, "views", 0);
 		}
 		else {
-			$new_views = floor(sqrt($views[0]));
+			$new_views = $views[0];
+			if (is_sticky()) 
+				$new_views -= 100; // instead of sticky first in loop
+			$new_views = floor(sqrt($new_views));
 			if (is_sticky()) 
 				$new_views = 100; // instead of sticky first in loop
 			
@@ -376,24 +379,6 @@ function hk_cleanup_dashboard()
 {
 	global $wp_meta_boxes, $current_user;
 
-	// remove incoming links info for authors or editors
-	if (in_array('author', $current_user->roles) || in_array('editor', $current_user->roles))
-	{
-		//Incoming Links
-		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
-		//Plugins - Popular, New and Recently updated Wordpress Plugins
-		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
-		//Recent Comments
-		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
-	}
-    else if (in_array('administrator', $current_user->roles)) {
-		//All posts to review
-		wp_add_dashboard_widget('hk_allcomingreviews_dashboard_widget', 'Alla kommande granskningar', 'hk_display_allcomingreviews_dashboard_widget' );
-		//All latest modified posts
-		wp_add_dashboard_widget('hk_alllatestposts_dashboard_widget', 'Alla senaste ändringar', 'hk_display_alllatestposts_dashboard_widget' );
-		//All hidden posts
-		wp_add_dashboard_widget('hk_allhidden_dashboard_widget', 'Alla ej synliga sidor', 'hk_display_allhidden_dashboard_widget' );
-    }
 	//Right Now - Comments, Posts, Pages at a glance
 	//unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
 	//Wordpress Development Blog Feed
@@ -412,6 +397,26 @@ function hk_cleanup_dashboard()
 	wp_add_dashboard_widget('hk_mylatestposts_dashboard_widget', 'Mina senaste ändringar', 'hk_display_mylatestposts_dashboard_widget' );
 	//All my hidden posts
 	wp_add_dashboard_widget('hk_myhidden_dashboard_widget', 'Mina ej synliga sidor', 'hk_display_myhidden_dashboard_widget' );
+
+	
+	// remove incoming links info for authors or editors
+	if (in_array('author', $current_user->roles) || in_array('editor', $current_user->roles))
+	{
+		//Incoming Links
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+		//Plugins - Popular, New and Recently updated Wordpress Plugins
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+		//Recent Comments
+		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+	}
+    else if (in_array('administrator', $current_user->roles)) {
+		//All posts to review
+		wp_add_dashboard_widget('hk_allcomingreviews_dashboard_widget', 'Alla kommande granskningar', 'hk_display_allcomingreviews_dashboard_widget' );
+		//All latest modified posts
+		wp_add_dashboard_widget('hk_alllatestposts_dashboard_widget', 'Alla senaste ändringar', 'hk_display_alllatestposts_dashboard_widget' );
+		//All hidden posts
+		wp_add_dashboard_widget('hk_allhidden_dashboard_widget', 'Alla ej synliga sidor', 'hk_display_allhidden_dashboard_widget' );
+    }
 
 }
 // function to display my coming reviews dashboard widget
@@ -714,9 +719,35 @@ add_shortcode( 'karta', 'hk_map_shortcode_func' );
 
 
 
-/* add categories and tags to media */
+/* checks before headers is sent, also add categories and tags to media */
 add_action('init', 'hk_init');
 function hk_init() {
+	global $uagent_info;
+	$hk_options = get_option('hk_theme');
+	
+	/* send to mobile page if detectmobile */
+	if ($hk_options["mobile_rewrite"] != "" && $uagent_info->DetectMobileQuick()) {
+		wp_redirect($hk_options["mobile_rewrite"]); exit;
+	}
+
+	/* hide if single and not visible */
+	if (is_single() && in_category($default_settings["hidden_cat"])) {
+		header("HTTP/1.0 404 Not Found");
+		//TODO print 404 error - include("404.php");?
+		die("Inte synlig.");
+	}
+
+	/* first of all set allow cookie if any */
+	if ($_REQUEST["cookies"]) {
+		// allow cookies for 10 years
+		setcookie("allow_cookies", "true", time()+3600*24*3650, "/");
+		header("Location: http://".$_SERVER['SERVER_NAME'] . $_SERVER["REDIRECT_URL"]);
+		die();
+	}
+
+	
+	
+	
 	/* register category and tags for attachment */
 	register_taxonomy_for_object_type('category', 'attachment');
 	register_taxonomy_for_object_type('post_tag', 'attachment');

@@ -105,7 +105,12 @@ function hk_theme_options_do_page() {
 			
 			
 			<a name="kategorier"></a>
-			<hr/><h2>Kategorier och menyer</h2>
+			<hr/><h2>Kategorier, fl&ouml;de och menyer</h2>
+			<p><label for="hk_theme[default_thumbnail_image]">Defaulttumnagel som visas om artikel inte har någon utvald bild (bör ha storlek 177x100px)</label><br/>
+				<img width=150 src="<?php echo $options["default_thumbnail_image"]; ?>" />
+				<input class="upload-url" type="text" size="36" name="hk_theme[default_thumbnail_image]" value="<?php echo $options["default_thumbnail_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
 			
 			<p><label for="hk_theme[startpage_cat]">Välj kategori som är startsida.</label><br/>
 							<?php 

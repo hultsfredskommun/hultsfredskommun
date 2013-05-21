@@ -129,6 +129,28 @@ function hk_category_tree_func( $atts ){
 add_shortcode( 'categorytree', 'hk_category_tree_func' );
 
 
+/* 
+ * Set startpage to startpage_cat
+ */
+function hk_pre_get_posts( $query ) {
+	global $default_settings;
+	$options = get_option("hk_theme");
+	
+	if ($query->is_home() && $query->is_main_query() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'primary' ] ) && $default_settings["num_levels_in_menu"] > 1 ) {
+		$cat = $options["startpage_cat"];
+		if ($cat != "" && $cat != "0" ) {
+			$query->set( 'cat', $cat );
+		}
+		else {
+			$menu = wp_get_nav_menu_object( $locations[ 'primary' ] );
+			$menu_items = wp_get_nav_menu_items( $menu );
+			$wp_query->set("cat",$menu_items[0]->term_id);
+		}
+    }
+}
+add_action( 'pre_get_posts', 'hk_pre_get_posts' );
+
+
 /**
  * Tell WordPress to run hk_setup() when the 'after_setup_theme' hook is run.
  */
