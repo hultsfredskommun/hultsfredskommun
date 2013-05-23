@@ -3396,7 +3396,7 @@ html.flexbox {
   /**
   * Whole
   */
-  .palm-one-whole, .firstpage-sidebar, .firstpage-content, .home .contact-area .contact-wrapper .content-wrapper ul.two, .breadcrumb, .primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .searchnavigation, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+  .palm-one-whole, .firstpage-top-content, .firstpage-sidebar, .firstpage-content, .home .contact-area .contact-wrapper .content-wrapper ul.two, .breadcrumb, .primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .searchnavigation, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
     width: 100%;
   }
 
@@ -5917,14 +5917,14 @@ html {
   left: 0;
 }
 
-.hidden, #responsive-info, .tag-listing .content-area, .viewmode-only-titles .summary .entry-content,
+.hidden, #responsive-info, .home .img-wrapper, .tag-listing .content-area, .viewmode-only-titles .summary .entry-content,
 .viewmode-only-titles .summary .img-wrapper,
 .viewmode-only-titles .summary .side-content, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
   display: none;
 }
 
 @media only screen and (max-width: 540px) {
-  .hidden--palm, .firstpage-top-content, .main-menu,
+  .hidden--palm, .main-menu,
   .main-sub-menu, .more-in-navigation,
   .sort-order, .category-navigation {
     display: none;

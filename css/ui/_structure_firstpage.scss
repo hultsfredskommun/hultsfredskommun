@@ -2,7 +2,7 @@
 	@extend .g;
 	@extend .desk-one-half;
 	@extend .lap-one-half;
-	@extend .hidden--palm;
+	@extend .palm-one-whole;
 }
 .firstpage-sidebar {
 	@extend .g;
@@ -68,6 +68,9 @@
 			}
 		}
 	}
+}
+.home .img-wrapper {
+	@extend .hidden;
 }
 .home .contact-area .contact-wrapper {
 	line-height: 0;
