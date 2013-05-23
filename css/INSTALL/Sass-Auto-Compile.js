@@ -11,7 +11,7 @@
 /**
  * This value has to be the absolute path to the ruby-bin directory, with a trailing slash!
  */
-var pathToRubyBinDir = "C:/Ruby193/bin/";
+var pathToRubyBinDir = "C:\\Ruby200-x64\\bin\\";
 
 /**
  * If anything doesn't work, you can enable the debugMode.

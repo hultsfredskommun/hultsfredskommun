@@ -561,7 +561,7 @@ $(document).ready(function(){
 	 */
 	// do if not mobile and not ie 6, 7 & 8
 	if (!isLessThenIE9) {
-		responsive_menu()
+		//responsive_menu()
 	}
 	
 	/**
@@ -1287,7 +1287,7 @@ $(window).resize(function() {
 
 		// do if not mobile and not ie 6, 7 & 8
 		if (!isLessThenIE9) {
-			responsive_menu();
+			//responsive_menu();
 		}
 		
 		//Skriver ut skärmens storlek

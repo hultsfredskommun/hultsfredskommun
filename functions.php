@@ -133,7 +133,7 @@ add_shortcode( 'categorytree', 'hk_category_tree_func' );
  * Set startpage to startpage_cat
  */
 function hk_pre_get_posts( $query ) {
-	global $default_settings;
+	global $default_settings, $wp_query;
 	$options = get_option("hk_theme");
 	
 	if ($query->is_home() && $query->is_main_query() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'primary' ] ) && $default_settings["num_levels_in_menu"] > 1 ) {
@@ -144,7 +144,8 @@ function hk_pre_get_posts( $query ) {
 		else {
 			$menu = wp_get_nav_menu_object( $locations[ 'primary' ] );
 			$menu_items = wp_get_nav_menu_items( $menu );
-			$wp_query->set("cat",$menu_items[0]->term_id);
+			if (!empty($menu_items[0]) && $menu_items[0]->object_id != "" && $menu_items[0]->object_id != 0)
+				$wp_query->set("cat",$menu_items[0]->object_id);
 		}
     }
 }
@@ -339,7 +340,7 @@ function curBaseURL() {
 	return $pageURL;
 }
 function setup_javascript_settings() {
-	global $wp_query, $hk_options, $default_settings;
+	global $wp_query, $hk_options, $default_settings, $blog_id;
 	// What page are we on? And what is the pages limit?
 	if (is_home()) {
 		$max = 0;
@@ -353,7 +354,7 @@ function setup_javascript_settings() {
 	$search = get_query_var("s");
 	$orderby = get_query_var("orderby");
 	$filter = array("cat" => $cat, "tags" => $tags, "s" => $search, "orderby" => $orderby);
-	
+	//id 381 blog_id 2
 	// Add some parameters for the dynamic load more posts JS.
 	$hultsfred_array = array(
 			//'startPage' => 1,

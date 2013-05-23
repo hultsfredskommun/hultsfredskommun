@@ -30,15 +30,37 @@
  * Startpage content
  * Startpage sidebar
  * Startpage pre-footer
- * Footer
- * Footer-2
- * Footer-3
- * Footer-4 (dynamic width set depend of how many footers are active)
+ * Footer 1-4 (dynamic width set depend of how many footers are active)
+ * Second Footer 1-4 (dynamic width set depend of how many footers are active)
  * Important (placed on top of all pages)
  * Right-top-menu-item
 * hk_pre_search, hk_post_search, hk_pre_ajax_search and hk_post_ajax_search action hooks to add extra search in child theme
 * hk_icon_path action hook to set other icons in child theme
- 
+
+=== Recommended widget setup ===
+* Startsida toppinnehåll
+ * hk_slideshow
+* Startsida sidofält
+ * hk förstasidans kontakt
+ * hk genväg widget
+* Startsida innehåll
+ * hk förstasidans innehåll
+* Startsida sidofält 2
+ * övriga widgets, i.e. hk protocol, aditrorecruit
+* Startsidan före sidfot
+ * T.ex. extra ingångar med bildlänkar
+* Sidfot 1-4
+ * Valfria widgets i sidfot
+* Andra sidfot 1-4
+ * Valfria widgets i sidfot (underst, med annan bakgrundsfärg)
+* Viktigt toppinnehåll
+ * Valfria widgets som hamnar högst upp på alla sidor.
+* Högerställd i huvudmeny
+ * Widget som hamnar till höger i menyn
+* Högerställd i huvudmenyns andra nivå
+ * Widget som hamnar till höger i menyns andranivå
+
+
 === Optional functionality ===
 Use WP-PostViews by Lester 'GaMerZ' Chan to enable most viewed sort order in theme, is default sort order when enabled.
 Use Tag Select Meta Box by Jacob Buck to get a nice tag handling.

@@ -141,7 +141,7 @@ function hk_widgets_init() {
 	) );
 	
 	register_sidebar( array(
-		'name' => 'H&ouml;gerst&auml;ld i huvudmeny',
+		'name' => 'H&ouml;gerst&auml;lld i huvudmeny',
 		'id' => 'right-main-menu-item-sidebar',
 		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i huvudmenyn',
 		'before_widget' => '<li id="%1$s" class="right-nav-menu-item menu-item %2$s">',
@@ -150,7 +150,7 @@ function hk_widgets_init() {
 		'after_title' => '</h1>',
 	) );
 	register_sidebar( array(
-		'name' => 'H&ouml;gerst&auml;ld i huvudmenyns andra niv&aring;',
+		'name' => 'H&ouml;gerst&auml;lld i huvudmenyns andra niv&aring;',
 		'id' => 'right-main-sub-menu-item-sidebar',
 		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i huvudmenyns andra niv&aring;',
 		'before_widget' => '<li id="%1$s" class="right-nav-menu-item menu-item %2$s">',

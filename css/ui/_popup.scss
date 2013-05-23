@@ -50,7 +50,7 @@
 	
 }
 
-@include media-query("desk") {
+@include media-query(desk) {
 .contact-popup.box {
 	.entry-wrapper.hasmap {
 		overflow: initial;

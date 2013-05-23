@@ -97,11 +97,11 @@
 	/*border-left: 1px solid #EEF0F1;*/
 }
 
-.responsive-menu {
+.responsive-sub-menu {
 	margin: -12px 0;
 	visibility: hidden;
 }
-.responsive-navigation {
+.responsive-sub-menu {
 	visibility: hidden;
 }
 .input-wrapper {
@@ -151,7 +151,7 @@
 .small-words {
 	display: none!important;
 }
-.responsive-menu {
+.responsive-sub-menu {
 	display: none;
 	visibility: hidden;
 	margin: 0 !important;

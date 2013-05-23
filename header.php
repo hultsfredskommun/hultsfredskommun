@@ -219,6 +219,11 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				<?php get_search_form(); ?>
 			</div>
 
+			<ul class="responsive-menu">
+				<li class="menu js-show-main-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-menu">
+					<a href="#"><span class="menu-icon"></span></a>
+				</li>
+			</ul>
 
 			
 
@@ -274,11 +279,6 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				if ($top_parent > 0) {
 					$args["current_category"] = $top_parent;
 				} ?>
-				<ul class="responsive-navigation">
-					<li class="menu js-show-main-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-menu">
-						<a href="#"><i class="i" data-icon="&#xF0A9;"></i>Meny</a>
-					</li>
-				</ul>
 				<?php
 
 				echo "<ul class='main-menu'>";
@@ -290,7 +290,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 
 				echo "</ul>";
 				
-				echo "<div class='responsive-menu'>";
+				echo "<div class='responsive-sub-menu'>";
 				$parent = hk_getParent($cat);
 				
 				$top_name = get_cat_name($top_parent);

@@ -9,20 +9,19 @@
 	padding: $half-spacing-unit 0 0 $half-spacing-unit*1.5!important;
 }
 /* main-menu toggle in responsive */
-.responsive-navigation {
+.responsive-menu {
 	@extend .hidden--lap;
 	@extend .hidden--desk;
-	@extend .one-whole;
+	@extend .palm-one-tenth;
+	@extend .float--left;
 	@extend .nav;
 	@extend .nav--block;
-	@extend .main-background;
+	@extend .white-background;
 	@extend .flush--bottom;
 	li {
-		display: block;
 		a {
-			@extend .white-text;
-			margin-left: 0;
-			margin-right: 0;
+			@extend .main-text;
+			padding: $half-spacing-unit 0 0;
 		}
 	}
 	.i {
@@ -31,7 +30,7 @@
 	}
 }
 /* main-sub-menu toggle in responsive */
-.responsive-menu {
+.responsive-sub-menu {
 	@extend .hidden--lap;
 	@extend .hidden--desk;
 	@extend .one-whole;
@@ -191,6 +190,41 @@
 	font-size: 85%;
 	margin-right: $half-spacing-unit/2;
 }
+
+/* make responsive */
+//@include media-query(desk-wide) {
+
+@media only screen and (max-width: $desk-wide-start) and (min-width: $desk-start) {
+	.main-sub-menu {
+		a {
+			font-size: 90%;
+		}
+	}
+}
+@media only screen and (max-width: $desk-wide-start) {
+	.main-sub-menu {
+		li {
+			border-radius: $border-radius;
+			background: $gray-light-color;
+			margin: 0 $half-spacing-unit $half-spacing-unit 0;
+		}
+		white-space: normal;
+		background: white;
+	}
+}
+@media only screen and (max-width: $desk-start) and (min-width: $lap-large-start) {
+	.main-sub-menu {
+		a {
+		}
+	}
+}
+@media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
+	.main-sub-menu {
+		a {
+		}
+	}
+}
+
 /*@media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
 .main-sub-menu > li > a {
 	white-space: normal!important;

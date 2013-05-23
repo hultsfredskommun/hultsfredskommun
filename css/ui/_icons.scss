@@ -23,6 +23,11 @@
 	background-position: -32px -23px;
 }
 
+.menu-icon {
+	@extend .clip_24x24;
+	background-position: -120px -74px;
+}
+
 .viewmode_titles {
 	@extend .clip_24x24;
 	padding: 0!important;
