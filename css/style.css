@@ -4891,12 +4891,8 @@ html {
   border-radius: 0;
 }
 
-/*.Citybreak_engine td, 
-.Citybreak_engine th {
-	border: 0;
-}*/
 .primary td, .primary th {
-  border: 1px solid #644c20;
+  border: 1px solid #e5e6e7;
 }
 
 .widget h1 {
@@ -5877,7 +5873,7 @@ html {
   left: 0;
 }
 
-.hidden, #responsive-info, .home .img-wrapper .slideshow, .tag-listing .content-area, .viewmode-only-titles .summary .entry-content,
+.hidden, #responsive-info, .tag-listing .content-area, .viewmode-only-titles .summary .entry-content,
 .viewmode-only-titles .summary .img-wrapper,
 .viewmode-only-titles .summary .side-content, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
   display: none;
@@ -5910,7 +5906,7 @@ html {
 }
 
 @media only screen and (max-width: 540px) {
-  .force-hidden--palm {
+  .force-hidden--palm, .home .img-wrapper .slideshow {
     display: none !important;
   }
 }

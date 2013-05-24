@@ -70,13 +70,10 @@ img {
 	border-radius: 0;
 }
 
-/*.Citybreak_engine td, 
-.Citybreak_engine th {
-	border: 0;
-}*/
 .primary td, .primary th {
-	border: 1px solid $complement-color;
+	border: 1px solid $gray-light-color;
 }
+
 .widget {
 	@extend .margin--bottom;
 	@extend .epsilon;

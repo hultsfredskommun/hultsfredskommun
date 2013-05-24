@@ -70,7 +70,7 @@
 	}
 }
 .home .img-wrapper .slideshow {
-	@extend .hidden;
+	@extend .force-hidden--palm;
 }
 .home .contact-area .contact-wrapper {
 	line-height: 0;
