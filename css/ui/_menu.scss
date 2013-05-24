@@ -66,12 +66,6 @@
 	a {
 		padding: $half-spacing-unit $half-spacing-unit*1.5!important;
 	}
-	@include media-query(portable){
-	a {
-		padding: $half-spacing-unit*0.5 $half-spacing-unit!important;
-	}
-	}
-
 	@extend .nav;
 	@extend .nav--block;
 }
@@ -125,13 +119,14 @@
 	}*/
 }
 .main-sub-menu {
-	@extend .gamma;
+	
 	@extend .gray-light-background;
 	@extend .border-radius;
 	margin-bottom: $base-spacing-unit*1.5;
 	
 	/*@extend .nav--block-double-margin;*/
 	a {
+		@extend .gamma;
 		@extend .default-text;
 	}
 	.menu-item:first-child a {
@@ -166,16 +161,6 @@
 		@extend .default-text;
 	}*/
 }
-.more-menu {
-	@extend .position-relative;
-	.more-menu-ul {
-		@extend .nav--stacked;
-		@extend .position-absolute;
-		@extend .gray-light-background;
-		right: 0;
-		z-index: 5000;
-	}
-}
 .right-nav-menu-item {
 	@extend .float--right;
 	padding: $half-spacing-unit $base-spacing-unit!important;
@@ -186,23 +171,12 @@
 	@extend .nav--stacked;
 }
 
-.more-menu-a i {
-	font-size: 85%;
-	margin-right: $half-spacing-unit/2;
-}
-
-/* make responsive */
-//@include media-query(desk-wide) {
-
-@media only screen and (max-width: $desk-wide-start) and (min-width: $desk-start) {
-	.main-sub-menu {
-		a {
-			font-size: 90%;
-		}
-	}
-}
+/* make main-sub-menu responsive */
 @media only screen and (max-width: $desk-wide-start) {
 	.main-sub-menu {
+		a {
+			padding: $half-spacing-unit*0.5 $half-spacing-unit!important;
+		}
 		li {
 			border-radius: $border-radius;
 			background: $gray-light-color;
@@ -212,12 +186,6 @@
 		background: white;
 	}
 }
-@media only screen and (max-width: $desk-start) and (min-width: $lap-large-start) {
-	.main-sub-menu {
-		a {
-		}
-	}
-}
 @media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
 	.main-sub-menu {
 		a {
@@ -225,29 +193,6 @@
 	}
 }
 
-/*@media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
-.main-sub-menu > li > a {
-	white-space: normal!important;
-}
-}
-@media only screen and (max-width: $desk-small-start) and (min-width: $lap-large-start) {
-.main-sub-menu > li > a {
-	white-space: normal!important;
-}
-}*/
-/*
-@include media-query(desk-wide) {
-	.right-nav-menu-item {
-		padding: $half-spacing-unit $base-spacing-unit!important;
-	}
-	.main-menu,
-	.main-sub-menu {
-		a {
-			padding: $half-spacing-unit $base-spacing-unit!important;
-		}
-	}
-}
-*/
 
 
 /*

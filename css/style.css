@@ -1005,7 +1005,7 @@ h2, .beta {
   line-height: 1.14286;
 }
 
-h3, .gamma, .post .summary-content h1.entry-title, .main-sub-menu {
+h3, .gamma, .post .summary-content h1.entry-title, .main-sub-menu a {
   font-size: 18px;
   font-size: 1.2rem;
   line-height: 1.33333;
@@ -2070,12 +2070,12 @@ html.flexbox {
  */
 .nav--stacked > li, .home .contact-area .contact-wrapper .content-wrapper ul > li, .page-header .category-tools .menu-item .sub-menu > li, .tag-listing .content-area ul > li, .contacts > li,
 .related-wrapper > li,
-.tools > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu .more-menu-ul > li, .tags-wrapper ul > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .footer-widget-wrapper ul > li {
+.tools > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .tags-wrapper ul > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .footer-widget-wrapper ul > li {
   display: list-item;
 }
 .nav--stacked > li > a, .home .contact-area .contact-wrapper .content-wrapper ul > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .tag-listing .content-area ul > li > a, .contacts > li > a,
 .related-wrapper > li > a,
-.tools > li > a, .searchnavigation .searchresult ul > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .more-menu .more-menu-ul > li > a, .tags-wrapper ul > li > a, .category-navigation .parent > li > a, .category-navigation .parent li .children > li > a, .category-navigation .more-navigation > li > a, .footer-widget-wrapper ul > li > a {
+.tools > li > a, .searchnavigation .searchresult ul > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .tags-wrapper ul > li > a, .category-navigation .parent > li > a, .category-navigation .parent li .children > li > a, .category-navigation .more-navigation > li > a, .footer-widget-wrapper ul > li > a {
   display: block;
 }
 
@@ -4588,7 +4588,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .home .contact-area .contact-wrapper, .footer-wrapper.footer-widget-wrapper, .page-header, .searchnavigation .form .input-wrapper, .main-sub-menu, .more-menu .more-menu-ul, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
+.gray-light-background, .gray-image-background, .home .contact-area .contact-wrapper, .footer-wrapper.footer-widget-wrapper, .page-header, .searchnavigation .form .input-wrapper, .main-sub-menu, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover {
   background-color: #e5e6e7;
 }
@@ -4772,7 +4772,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.33333;
   }
 
-  h3, .gamma, .post .summary-content h1.entry-title, .main-sub-menu {
+  h3, .gamma, .post .summary-content h1.entry-title, .main-sub-menu a {
     font-size: 17px;
     font-size: 1.13333rem;
     line-height: 1.41176;
@@ -5318,12 +5318,6 @@ html {
 .main-sub-menu a {
   padding: 12px 18px !important;
 }
-@media only screen and (max-width: 969px) {
-  .more-menu-ul a,
-  .main-sub-menu a {
-    padding: 6px 12px !important;
-  }
-}
 
 .main-menu {
   margin: 18px 0;
@@ -5380,30 +5374,18 @@ html {
   }
 }
 
-.more-menu .more-menu-ul {
-  right: 0;
-  z-index: 5000;
-}
-
 .right-nav-menu-item {
   padding: 12px 24px !important;
 }
 
-.more-menu-a i {
-  font-size: 85%;
-  margin-right: 6px;
-}
-
-/* make responsive */
-@media only screen and (max-width: 1150px) and (min-width: 970px) {
-  .main-sub-menu a {
-    font-size: 90%;
-  }
-}
+/* make main-sub-menu responsive */
 @media only screen and (max-width: 1150px) {
   .main-sub-menu {
     white-space: normal;
     background: white;
+  }
+  .main-sub-menu a {
+    padding: 6px 12px !important;
   }
   .main-sub-menu li {
     border-radius: 3px;
@@ -5411,29 +5393,6 @@ html {
     margin: 0 12px 12px 0;
   }
 }
-/*@media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
-.main-sub-menu > li > a {
-	white-space: normal!important;
-}
-}
-@media only screen and (max-width: $desk-small-start) and (min-width: $lap-large-start) {
-.main-sub-menu > li > a {
-	white-space: normal!important;
-}
-}*/
-/*
-@include media-query(desk-wide) {
-	.right-nav-menu-item {
-		padding: $half-spacing-unit $base-spacing-unit!important;
-	}
-	.main-menu,
-	.main-sub-menu {
-		a {
-			padding: $half-spacing-unit $base-spacing-unit!important;
-		}
-	}
-}
-*/
 /*
  * category navigation
  */
@@ -5578,7 +5537,7 @@ html {
   left: 0;
 }
 
-.position-relative, .slideshow .slide .caption-area .caption, .home .contact-area .contact-wrapper, .searchnavigation .form .input-wrapper, .searchnavigation .searchresult-wrapper, .more-menu, .position-relative--top-left, .position-relative--top-right, .position-relative--bottom-right, .position-relative--bottom-left, .contact-popup.box .entry-wrapper {
+.position-relative, .slideshow .slide .caption-area .caption, .home .contact-area .contact-wrapper, .searchnavigation .form .input-wrapper, .searchnavigation .searchresult-wrapper, .position-relative--top-left, .position-relative--top-right, .position-relative--bottom-right, .position-relative--bottom-left, .contact-popup.box .entry-wrapper {
   position: relative;
 }
 
@@ -5602,7 +5561,7 @@ html {
   left: 0;
 }
 
-.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .more-menu .more-menu-ul, .position-absolute--top-left, .home .contact-area .contact-wrapper .content-wrapper, .pager, .position-absolute--top-right, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .slideshow .slide .caption-area, .contact-popup.box .close-contact {
+.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .home .contact-area .contact-wrapper .content-wrapper, .pager, .position-absolute--top-right, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .slideshow .slide .caption-area, .contact-popup.box .close-contact {
   position: absolute;
 }
 

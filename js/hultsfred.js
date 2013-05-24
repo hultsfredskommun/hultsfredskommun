@@ -555,14 +555,6 @@ $(document).ready(function(){
 		window.print();
 		window.close();
 	}
-
-	/* 
-	 * add responsive menu 
-	 */
-	// do if not mobile and not ie 6, 7 & 8
-	if (!isLessThenIE9) {
-		//responsive_menu()
-	}
 	
 	/**
 	 * Expand article if only one, not on home page
@@ -1217,57 +1209,7 @@ $.fn.sumWidth = function() {
 	});
 	return totalWidth;
 }
-function responsive_menu() {
-	wrapperwidth = $(".menu-wrapper").width();
 
-	/* checks if the menu-items total width is greater than wrapper div. 
-	Also have special support for 'force-hidden--lap' class to be able to force hide some menu-items when lap */
-	function do_responsive_menu(classname) {
-		// reset
-		$(classname).find(".menu-item").removeClass("force-hidden");
-		$(classname).find(".more-menu").remove();
-		// if not palm
-		if( $(window).width()+scrollbar > responsive_lap_start ){
-			
-			// main-menu
-			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth) {
-				$(classname).find(".right-nav-menu-item").addClass("force-hidden");
-			}
-			if ($(classname).children(".menu-item").sumWidth() > wrapperwidth || 
-				(($(classname).children(".force-hidden--lap").length > 0) && $(window).width()+scrollbar < responsive_desk_start)) {
-				$(classname).append("<li class='more-menu menu-item'><a class='more-menu-a  js-more-menu-click' href='#'><i class='i' data-icon='&#xF149;'></i>Mer</a><ul class='more-menu-ul'></ul></li>");
-				count=0; // to avoid infinit loop
-				$(classname).children(".force-hidden--lap").each(function() {
-					if ($(window).width()+scrollbar < responsive_desk_start) {
-						//log($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu").width() + " " + wrapperwidth);
-						$(classname).find(".more-menu-ul").append("<li>"+$(this).html()+"</li>");
-					}
-				});
-				while (($(classname).children(".menu-item").sumWidth() > wrapperwidth) && count < 20) {
-					count++;
-					//log($(classname).children(".menu-item").not(".more-menu").sumWidth() + " " + $(classname).find(".more-menu").width() + " " + wrapperwidth);
-					$(classname).find(".more-menu-ul").append("<li>"+$(classname).children(".menu-item").not(".force-hidden").not(".force-hidden--lap").not(".more-menu").last().addClass("force-hidden").html()+"</li>");
-				}
-			}
-		}
-	}
-
-	do_responsive_menu(".main-menu");
-	do_responsive_menu(".main-sub-menu");
-	
-	
-
-
-	$(".more-menu-ul").hide();
-	
-	$(".js-more-menu-click").unbind("click").bind("click",function(ev) {
-		//log($(this).parents("ul").find("more-menu-ul"));
-		$(this).parents("ul").find(".more-menu-ul").toggle();
-		ev.preventDefault();
-	});
-
-	//log($(".menu-wrapper").width() + " " + $(".main-menu")[0].scrollWidth + " " + $(".main-sub-menu")[0].clientWidth);
-}
 
 //om webbläsaren ändrar storlek
 $(window).resize(function() {
@@ -1282,13 +1224,7 @@ $(window).resize(function() {
 		alert(isMobile.any());
 		if(($.browser.msie && $.browser.version <= 9) && !isMobile.any()) {
 			alert("test");
-			responsive_menu();
 		}*/
-
-		// do if not mobile and not ie 6, 7 & 8
-		if (!isLessThenIE9) {
-			//responsive_menu();
-		}
 		
 		//Skriver ut skärmens storlek
 		/*log( $(window).height() + " $(window).width = " + $(window).width() + ", " +
