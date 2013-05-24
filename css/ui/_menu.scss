@@ -176,6 +176,7 @@
 	.main-sub-menu {
 		a {
 			padding: $half-spacing-unit*0.5 $half-spacing-unit!important;
+			font-size: $h4-size;
 		}
 		li {
 			border-radius: $border-radius;
@@ -184,12 +185,6 @@
 		}
 		white-space: normal;
 		background: white;
-	}
-}
-@media only screen and (max-width: $lap-large-start) and (min-width: $lap-start) {
-	.main-sub-menu {
-		a {
-		}
 	}
 }
 

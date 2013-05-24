@@ -5386,6 +5386,7 @@ html {
   }
   .main-sub-menu a {
     padding: 6px 12px !important;
+    font-size: 17px;
   }
   .main-sub-menu li {
     border-radius: 3px;
@@ -5876,7 +5877,7 @@ html {
   left: 0;
 }
 
-.hidden, #responsive-info, .home .img-wrapper, .tag-listing .content-area, .viewmode-only-titles .summary .entry-content,
+.hidden, #responsive-info, .home .img-wrapper .slideshow, .tag-listing .content-area, .viewmode-only-titles .summary .entry-content,
 .viewmode-only-titles .summary .img-wrapper,
 .viewmode-only-titles .summary .side-content, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
   display: none;
