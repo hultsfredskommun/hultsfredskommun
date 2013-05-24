@@ -532,6 +532,11 @@ function displayTagFilter($show_title = true) {
 		if ($show_title) {
 			echo "<li class='heading cat-item'><a href='#' class='icon-left'><i class='i' data-icon='&#xF0AD;'></i></a><a href='#'>Typ av information</a></li>";
 		}
+		if ($_REQUEST["tag"] != "" && get_query_var("cat") != "")
+		{
+			$href = get_category_link( $_REQUEST["cat"] ) . "?cat=";
+			echo "<li class='tag-item complement-italic-text'><a href='$href' title='Rensa typ av information'>Rensa typ av information</a></li>";
+		}
 		wp_list_categories( $args );
 		echo "</ul>";
 	endif;

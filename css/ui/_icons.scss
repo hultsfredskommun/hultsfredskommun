@@ -3,6 +3,11 @@
 	width: 24px;
 	height: 24px;
 }
+.clip_16x16 {
+	@extend .clip;
+	width: 16px;
+	height: 16px;
+}
 .clip_12x12 {
 	@extend .clip;
 	width: 12px;
@@ -24,9 +29,21 @@
 }
 
 .menu-icon {
-	@extend .clip_24x24;
-	background-position: -120px -74px;
+	@extend .clip_16x16;
+	background-position: -125px -80px;
 }
+
+.menu-icon.up {
+	background-position: -66px -272px;
+}
+.eye {
+	background-position: -21px -161px;
+}
+.flag {
+	background-position: -41px -161px;
+}
+
+
 
 .viewmode_titles {
 	@extend .clip_24x24;

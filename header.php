@@ -313,11 +313,11 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 					$sub_title = "";
 					
 				$class = (is_sub_category())?"category":"submenu";
-				echo "<li><a class='js-show-main-sub-menu  $class'><i class='i' data-icon='&#xF0A9;'></i>";
+				echo "<li><a class='js-show-main-sub-menu  $class'><span class='menu-icon'></span>";
 				echo $sub_title;
 				echo "</a></li>";
 				if ($sub_parent > 0 && $parent > 0) { 
-					echo "<li class='float--right'><a class='menu-up' href='" . get_category_link($parent) . "'><i class='i' data-icon='&#xF148;'></i></a></li>";
+					echo "<li class='float--right'><a class='menu-up' href='" . get_category_link($parent) . "'><span class='menu-icon up'></span></a></li>";
 				}
 				echo "</div>";
 				
