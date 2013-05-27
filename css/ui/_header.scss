@@ -42,7 +42,7 @@
 /* header structure */
 .top-wrapper {
 	@extend .gw;
-	//@extend .margin--bottom;
+	@extend .margin--bottom;
 }
 .logo {
 	@extend .half-margin--top;
@@ -56,10 +56,10 @@
 
 .searchnavigation {
 	@extend .g;
-	@extend .palm-five-tenths;
 	@extend .desk-two-quarters;
 	@extend .lap-two-quarters;
-	@extend .palm-one-whole;	
+	@extend .palm-one-whole;
+	@extend .hidden--palm;
 	@extend .half-margin--top;
 	.assistive-text {
 		position: absolute !important;
@@ -70,9 +70,9 @@
 		@extend .cf;
 		.input-wrapper {
 			@extend .position-relative;
-			@extend .desk-nine-tenths;
-			@extend .lap-nine-tenths;
-			@extend .palm-eight-tenths;
+			@extend .desk-eight-tenths;
+			@extend .lap-eight-tenths;
+			@extend .palm-nine-tenths;
 			@extend .float--left;
 			@extend .gray-light-background;
 			@extend .border-radius--left;
@@ -88,14 +88,11 @@
 			}
 		}
 		.submit {
-			@extend .desk-one-tenth;
-			@extend .lap-one-tenth;
-			@extend .palm-two-tenths;
+			/*@extend .desk-two-tenths;
+			@extend .lap-two-tenths;
+			@extend .palm-one-tenth;*/
 			@extend .float--left;
-			@extend .i;
-			//@extend .gray-background;
 			@extend .main-background;
-			//@extend .default-text;
 			@extend .white-text;
 			@extend .border-radius--right;
 			@extend .noborder;
@@ -178,20 +175,7 @@
 		}
 		.menu-item {
 			@extend .dropdown;
-			.i {
-				@extend .float--left;
-				width: $base-spacing-unit;
-			}
-			/*&:hover {
-				@extend .white-background;
-				a {
-					@extend .link-text;
-				}
-			}*/
 			.sub-menu {
-				/*.menu-item:hover {
-					@extend .gray-light-background;
-				}*/
 				@extend .nav;
 				@extend .nav--stacked;
 				@extend .nav--block;

@@ -14,16 +14,16 @@
 	@extend .half-margin--top;
 	@extend .hidden--lap;
 	@extend .hidden--desk;
-	@extend .palm-one-tenth;
-	
-	@extend .nav;
-	@extend .nav--block;
-	@extend .white-background;
+	@extend .palm-six-tenths;
 	@extend .flush--bottom;
-	li {
-		a {
-			padding: 0;
-			@extend .main-text;
+	a {
+		@extend .float--right;
+		@extend .main-background;
+		@extend .border-radius;
+		line-height: 0;
+		margin-left: 4px;
+		span {
+			margin: 4px;
 		}
 	}
 }
@@ -32,17 +32,20 @@
 	@extend .hidden--lap;
 	@extend .hidden--desk;
 	@extend .one-whole;
-	@extend .nav;
-	@extend .nav--block;
-	li {
-		a {
-			margin-left: 0;
-			margin-right: 0;
-		}
-	}
-	.i {
+	@extend .gray-light-background;
+	@extend .border-radius;
+	@extend .cf;
+	padding: $half-spacing-unit/2 0;
+	a {
 		@extend .float--left;
-		width: $base-spacing-unit;
+		@extend .default-text;
+		span {
+			@extend .float--left;
+			margin-right: $half-spacing-unit/2;
+			&.dropdown-icon {
+				margin-top: 5px;
+			}
+		}
 	}
 }
 
@@ -134,21 +137,42 @@
 		}
 		li {
 			border-radius: $border-radius;
-			background: $gray-light-color;
+			background-color: $gray-light-color;
 			margin: 0 $half-spacing-unit $half-spacing-unit 0;
+			background-image: url(../images/spr_bgButtons.png);
+			background-position: 0 0;
+			border: 1px solid $gray-color;
 		}
 		white-space: normal;
-		background: white;
+		background-color: white;
 	}
 }
 
 @include media-query(palm){
 /* make main-menu phone */
+.home .responsive-sub-menu {
+	display: none;
+}
+.home .main-sub-menu {
+	display: block;
+	li {
+		margin: 0 0 $half-spacing-unit/2 0;
+	}
+}
 .main-menu {
 	text-align: left;
+	background-color: $gray-light-color;
+	border-radius: $border-radius;
 	.current-category-ancestor a, .current-menu-item a {
 		border: 0;
-		background: $gray-light-color;
+		font-weight: bold;
+	}
+}
+.category-navigation {
+	width: 100%;
+	nav {
+		background-color: $gray-light-color;
+		border-radius: $border-radius;
 	}
 }
 /* make main-sub-menu phone */

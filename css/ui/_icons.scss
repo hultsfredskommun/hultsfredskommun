@@ -1,7 +1,16 @@
+.clip {
+	background-image: url("../images/icons/ikoner.svg");
+	display: inline-block;
+}
 .clip_24x24 {
 	@extend .clip;
 	width: 24px;
 	height: 24px;
+}
+.clip_20x20 {
+	@extend .clip;
+	width: 20px;
+	height: 20px;
 }
 .clip_16x16 {
 	@extend .clip;
@@ -13,29 +22,43 @@
 	width: 12px;
 	height: 12px;
 }
-.clip {
-	background-image: url("../images/icons/icon2.svg");
-	display: inline-block;
+.dropdown-icon {
+	@extend .clip_12x12;
+	margin-left: 2px;
+	background-position: -25px -30px;
 }
 .top-menu .dropdown-icon {
-	@extend .clip_12x12;
-	margin-left: 2px;
-	background-position: -32px -23px;
-}
-.related-menu .dropdown-icon {
-	@extend .clip_12x12;
-	margin-left: 2px;
-	background-position: -32px -23px;
+	background-position: -55px -30px;
 }
 
 .menu-icon {
-	@extend .clip_16x16;
-	background-position: -125px -80px;
+	@extend .clip_20x20;
+	margin: 2px;
+	background-position: -156px -470px;
+}
+.responsive-menu .menu-icon {
+	background-position: -207px -470px;
 }
 
 .menu-icon.up {
-	background-position: -66px -272px;
+	background-position: -22px -61px;
 }
+
+.search-icon {
+	@extend .clip_20x20;
+	margin: 2px;
+	background-position: -207px -502px;	
+}
+.searchnavigation .submit { /* search-icon */
+	@extend .clip;
+	width: 45px;
+	background-position: -194px -498px;
+	@include media-query(palm) {
+		width: 10%;
+		background-position: -203px -498px;
+	}	
+}
+
 .eye {
 	background-position: -21px -161px;
 }
@@ -49,18 +72,18 @@
 	@extend .clip_24x24;
 	padding: 0!important;
 	margin: $half-spacing-unit/2 0!important;
-	background-position: -59px -44px;
+	background-position: -99px -469px;
 	&.active {
-		background-position: 0px -44px;
+		background-position: -28px -469px;
 	}
 }
 .viewmode_summary {
 	@extend .clip_24x24;
 	padding: 0!important;
 	margin: $half-spacing-unit/2 0!important;
-	background-position: -59px -74px;
+	background-position: -99px -505px;
 	&.active {
-		background-position: 0px -74px;
+		background-position: -28px -505px;
 	}
 }
 

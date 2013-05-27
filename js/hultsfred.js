@@ -731,18 +731,13 @@ $(document).ready(function(){
 		ev.preventDefault();
 	});
 	$(".js-show-main-sub-menu").unbind("click").bind("click",function(ev) {
-		if ($(this).hasClass("submenu")) {
-			$(".main-sub-menu").toggleClass("unhidden");
-		}
-		else if ($(this).hasClass("category")) {
-			$(".category-navigation").toggleClass("unhidden");
-		}
-		ev.preventDefault();
-	});
-	/*$(".js-show-category-menu").unbind("click").bind("click", function(){
 		$(".category-navigation").toggleClass("unhidden");
 		ev.preventDefault();
-	});*/  
+	});
+	$(".js-show-search").unbind("click").bind("click",function(ev) {
+		$(".searchnavigation").toggleClass("unhidden");
+		ev.preventDefault();
+	});
 
 	
 	/**

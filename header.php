@@ -214,16 +214,16 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			</hgroup>
 				
 
+			<div class="responsive-menu">
+				<a class="js-show-main-menu" href="#"><span class="menu-icon"></span></a>
+				<a class="js-show-search" href="#"><span class="search-icon"></span></a>
+			</div>
+
 			<?php /* search form*/ ?>
 			<div id="searchnavigation" class="searchnavigation" role="search">			
 				<?php get_search_form(); ?>
 			</div>
 
-			<ul class="responsive-menu">
-				<li class="menu js-show-main-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-menu">
-					<a href="#"><span class="menu-icon"></span></a>
-				</li>
-			</ul>
 
 			
 
@@ -312,13 +312,14 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				else 
 					$sub_title = "";
 					
-				$class = (is_sub_category())?"category":"submenu";
-				echo "<li><a class='js-show-main-sub-menu  $class'><span class='menu-icon'></span>";
-				echo $sub_title;
-				echo "</a></li>";
 				if ($sub_parent > 0 && $parent > 0) { 
-					echo "<li class='float--right'><a class='menu-up' href='" . get_category_link($parent) . "'><span class='menu-icon up'></span></a></li>";
+					echo "<a class='menu-up' href='" . get_category_link($parent) . "'><span class='menu-icon up'></span></a>";
 				}
+
+				echo "<a class='js-show-main-sub-menu menu'><span class='menu-icon'></span>";
+				echo "<span class='title'>Meny</span>";//<span class='dropdown-icon'></span>";
+
+				echo "</a>";
 				echo "</div>";
 				
 				if ($nav_menu_sub_parent > 0) {
