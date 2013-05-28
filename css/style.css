@@ -3431,11 +3431,11 @@ html.flexbox {
     width: 20%;
   }
 
-  .palm-two-fifths, .palm-four-tenths, .logo {
+  .palm-two-fifths, .palm-four-tenths, .responsive-menu {
     width: 40%;
   }
 
-  .palm-three-fifths, .palm-six-tenths, .responsive-menu {
+  .palm-three-fifths, .palm-six-tenths, .logo {
     width: 60%;
   }
 
@@ -5279,7 +5279,7 @@ html {
 }
 
 /* main-sub-menu toggle in responsive */
-.responsive-sub-menu {
+.responsive-sub-menu a {
   padding: 6px 0;
 }
 .responsive-sub-menu a span {
@@ -5287,6 +5287,14 @@ html {
 }
 .responsive-sub-menu a span.dropdown-icon {
   margin-top: 5px;
+}
+.responsive-sub-menu a.menu-up {
+  width: 10%;
+  border-right: 1px solid #c6cacb;
+  margin-right: 2%;
+}
+.responsive-sub-menu a.menu {
+  width: 88%;
 }
 
 /*
@@ -5341,6 +5349,15 @@ html {
     font-size: 17px;
   }
   .main-sub-menu li {
+    border-radius: 3px;
+    background-color: #e5e6e7;
+    margin: 0 12px 12px 0;
+    background-image: url(../images/spr_bgButtons.png);
+    background-position: 0 0;
+    border: 1px solid #c6cacb;
+  }
+
+  .responsive-sub-menu {
     border-radius: 3px;
     background-color: #e5e6e7;
     margin: 0 12px 12px 0;

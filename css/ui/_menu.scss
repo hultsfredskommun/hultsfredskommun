@@ -14,7 +14,7 @@
 	@extend .half-margin--top;
 	@extend .hidden--lap;
 	@extend .hidden--desk;
-	@extend .palm-six-tenths;
+	@extend .palm-four-tenths;
 	@extend .flush--bottom;
 	a {
 		@extend .float--right;
@@ -27,6 +27,7 @@
 		}
 	}
 }
+
 /* main-sub-menu toggle in responsive */
 .responsive-sub-menu {
 	@extend .hidden--lap;
@@ -35,10 +36,10 @@
 	@extend .gray-light-background;
 	@extend .border-radius;
 	@extend .cf;
-	padding: $half-spacing-unit/2 0;
 	a {
 		@extend .float--left;
 		@extend .default-text;
+		padding: $half-spacing-unit/2 0;
 		span {
 			@extend .float--left;
 			margin-right: $half-spacing-unit/2;
@@ -46,6 +47,18 @@
 				margin-top: 5px;
 			}
 		}
+		&.menu-up {
+			width: 10%;
+			border-right: 1px solid $gray-color;
+			margin-right: 2%;
+			span {
+			
+			}
+		}
+		&.menu {
+			width: 88%;
+		}
+
 	}
 }
 
@@ -145,6 +158,14 @@
 		}
 		white-space: normal;
 		background-color: white;
+	}
+	.responsive-sub-menu {
+		border-radius: $border-radius;
+		background-color: $gray-light-color;
+		margin: 0 $half-spacing-unit $half-spacing-unit 0;
+		background-image: url(../images/spr_bgButtons.png);
+		background-position: 0 0;
+		border: 1px solid $gray-color;
 	}
 }
 

@@ -9,6 +9,18 @@
 	 xml:space="preserve">
 <defs>
 </defs>
+<text transform="matrix(1 0 0 1 182.2422 136.0942)" fill="#005BAA" font-family="'MyriadPro-BoldCond'" font-size="9.4451">JPG</text>
+<text transform="matrix(1 0 0 1 182.2427 121.0308)" fill="#005BAA" font-family="'MyriadPro-BoldCond'" font-size="9.4451">XLS</text>
+<text transform="matrix(1 0 0 1 182.2422 106.3325)" fill="#005BAA" font-family="'MyriadPro-BoldCond'" font-size="9.4451">DOC</text>
+<text transform="matrix(1 0 0 1 182.2422 91.1479)" fill="#005BAA" font-family="'MyriadPro-BoldCond'" font-size="9.4451">PDF</text>
+<text transform="matrix(1 0 0 1 150.2417 136.0942)" fill="#5C85B1" font-family="'MyriadPro-BoldCond'" font-size="9.4451">JPG</text>
+<text transform="matrix(1 0 0 1 150.2422 121.0308)" fill="#5C85B1" font-family="'MyriadPro-BoldCond'" font-size="9.4451">XLS</text>
+<text transform="matrix(1 0 0 1 150.2417 106.3325)" fill="#5C85B1" font-family="'MyriadPro-BoldCond'" font-size="9.4451">DOC</text>
+<text transform="matrix(1 0 0 1 150.2417 91.1479)" fill="#5C85B1" font-family="'MyriadPro-BoldCond'" font-size="9.4451">PDF</text>
+<text transform="matrix(1 0 0 1 119.2788 136.0942)" fill="#3E3E3F" font-family="'MyriadPro-BoldCond'" font-size="9.4451">JPG</text>
+<text transform="matrix(1 0 0 1 119.2793 121.0308)" fill="#3E3E3F" font-family="'MyriadPro-BoldCond'" font-size="9.4451">XLS</text>
+<text transform="matrix(1 0 0 1 119.2788 106.3325)" fill="#3E3E3F" font-family="'MyriadPro-BoldCond'" font-size="9.4451">DOC</text>
+<text transform="matrix(1 0 0 1 119.2788 91.1479)" fill="#3E3E3F" font-family="'MyriadPro-BoldCond'" font-size="9.4451">PDF</text>
 <path fill="#B0B0B0" d="M95.929,504.865v1.169c0,0.157-0.076,0.294-0.229,0.409c-0.151,0.117-0.331,0.174-0.54,0.174H78.248
 	c-0.207,0-0.389-0.057-0.54-0.174c-0.151-0.115-0.229-0.252-0.229-0.409v-1.169c0-0.157,0.077-0.293,0.229-0.41
 	c0.151-0.114,0.333-0.173,0.54-0.173H95.16c0.209,0,0.389,0.059,0.54,0.173C95.853,504.572,95.929,504.708,95.929,504.865z
