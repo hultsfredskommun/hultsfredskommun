@@ -40,21 +40,9 @@ $hk_options = get_option('hk_theme');
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<?php /* SET VIEWPORT */
-session_start();
-if ($_REQUEST["viewport"] == "desk" || $_REQUEST["viewport"] == "palm") :
-	$_SESSION["viewport"] = $_REQUEST["viewport"];
-elseif ($_REQUEST["viewport"] == "reset") :
-	$_SESSION["viewport"] = "";
-endif; ?>
-<?php 
-if ($uagent_info->DetectIpad() || $_SESSION["viewport"] == "desk") : ?>
-<meta name="viewport" content="width=1150, initial-scale: 1, maximum-scale: 1" />
-<?php elseif ($_SESSION["viewport"] == "palm") : ?>
-<meta name="viewport" content="width=540, initial-scale: 1" />
-<?php else: ?>
+
+<?php /* SET VIEWPORT */ ?>
 <meta name="viewport" content="width=device-width" />
-<?php endif; ?>
 
 <title><?php
 

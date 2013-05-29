@@ -45,12 +45,6 @@ class HK_slideshow extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-		global $uagent_info;
-		
-		/* show nothing if detectmobile */
-		if ($uagent_info->DetectMobileQuick()) {
-			echo ""; return;
-		}
 	    extract( $args );
 
 		if (isset($instance['thumbnail-size']))

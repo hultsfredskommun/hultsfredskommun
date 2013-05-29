@@ -722,7 +722,6 @@ add_shortcode( 'karta', 'hk_map_shortcode_func' );
 /* checks before headers is sent, also add categories and tags to media */
 add_action('init', 'hk_init');
 function hk_init() {
-	global $uagent_info;
 	$hk_options = get_option('hk_theme');
 	
 	/* hide if single and not visible */
