@@ -2,7 +2,6 @@
 var settings = new Array();
 
 (function($) {
-// JavaScript Document
 
 var currPageTitle = $("head").find("title").html();
 var havePushed = false;
@@ -31,6 +30,12 @@ var isMobile = {
         return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
     }
 };
+
+// redirect if mobile_rewrite is set
+if (hultsfred_object["mobile_rewrite"] != "") {
+	window.location = hultsfred_object["mobile_rewrite"];
+}
+
 
 /**
  * search suggest 

@@ -367,6 +367,7 @@ function setup_javascript_settings() {
 			'allow_google_analytics' => $default_settings['allow_google_analytics'],
 			'google_analytics' => $hk_options['google_analytics'],
 			'google_analytics_domain' => $hk_options['google_analytics_domain'],
+			'mobile_rewrite' => $hk_options["mobile_rewrite"],
 		);
 	wp_localize_script(
 		'hultsfred_js',
