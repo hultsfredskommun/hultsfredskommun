@@ -44,8 +44,8 @@ $hk_options = get_option('hk_theme');
 	if ($hk_options["mobile_rewrite"] != "" && $uagent_info->DetectMobileQuick()) :
 		//wp_redirect($hk_options["mobile_rewrite"]); exit; ?>
 		<meta http-equiv="refresh" content="0;url=<?php echo $hk_options["mobile_rewrite"]; ?>" />
-		<?php die("</head><body>Du skickas till en mobilanpassad sida " . $hk_options["mobile_rewrite"] . ".</body></html>");
-	<? endif; ?>
+		<?php die("</head><body>Du skickas till en mobilanpassad sida " . $hk_options["mobile_rewrite"] . ".</body></html>"); 
+	endif; ?>
 <?php /* SET VIEWPORT */
 session_start();
 if ($_REQUEST["viewport"] == "desk" || $_REQUEST["viewport"] == "palm") :
