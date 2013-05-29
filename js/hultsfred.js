@@ -32,7 +32,7 @@ var isMobile = {
 };
 
 // redirect if mobile_rewrite is set
-if (hultsfred_object["mobile_rewrite"] != "") {
+if (isMobile.any() && hultsfred_object["mobile_rewrite"] != undefined && hultsfred_object["mobile_rewrite"] != "") {
 	window.location = hultsfred_object["mobile_rewrite"];
 }
 
