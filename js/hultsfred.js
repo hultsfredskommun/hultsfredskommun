@@ -32,9 +32,12 @@ var isMobile = {
 };
 
 // redirect if mobile_rewrite is set
-if (isMobile.any() && (hultsfred_object["mobile_rewrite"] != undefined || hultsfred_object["mobile_rewrite"] != "")) {
-	window.location = hultsfred_object["mobile_rewrite"];
-}
+window.onload = function(event) {
+    event.stopPropagation(true);
+	if (isMobile.any() && (hultsfred_object["mobile_rewrite"] != undefined || hultsfred_object["mobile_rewrite"] != "")) {
+		window.location.href = hultsfred_object["mobile_rewrite"];
+	}
+};
 
 
 /**

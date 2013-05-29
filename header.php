@@ -10,7 +10,7 @@
  */
  
 
-global $default_settings, $uagent_info, $wp_query;
+global $default_settings, $wp_query;
 /* get hk_options */
 $hk_options = get_option('hk_theme');
 
@@ -164,15 +164,17 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				(!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") || 
 				(!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") ) : ?>
 				<aside id='topmenu' class='top-menu-wrapper'><div class='content--center'>
-					<?php /* pre html if any in options */ ?>
-					<?php if (!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") : ?>
-						<?php echo $hk_options["pre_topmenu_html"]; ?>
-					<?php endif; ?>
 					
 					<?php if ( (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) || 
 							 (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") || 
 							 (!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") ) : ?>
-						<nav><ul class='top-menu'>
+						<nav>
+						
+						<ul class='top-menu'>
+						<?php /* pre html if any in options */ ?>
+						<?php if (!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") : ?>
+							<li class="pre-top-menu"><?php echo $hk_options["pre_topmenu_html"]; ?></li>
+						<?php endif; ?>
 						<?php
 						if (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) :
 						wp_nav_menu( array(
@@ -184,13 +186,13 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 						)); 
 						endif;
 						 ?>
+						<?php /* post html if any in options */ ?>
+						<?php if (!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") : ?>
+							<li class="post-top-menu"><?php echo $hk_options["post_topmenu_html"]; ?></li>
+						<?php endif; ?>
 						</ul></nav>
 					<?php endif; ?>
 						
-					<?php /* post html if any in options */ ?>
-					<?php if (!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") : ?>
-						<?php echo $hk_options["post_topmenu_html"]; ?>
-					<?php endif; ?>
 				</div></aside>
 			<?php endif; ?>
 		<div id="topwrapper" class="content--center"><div class="top-wrapper">
