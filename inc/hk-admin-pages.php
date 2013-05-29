@@ -725,11 +725,6 @@ function hk_init() {
 	global $uagent_info;
 	$hk_options = get_option('hk_theme');
 	
-	/* send to mobile page if detectmobile */
-	if ($hk_options["mobile_rewrite"] != "" && $uagent_info->DetectMobileQuick()) {
-		wp_redirect($hk_options["mobile_rewrite"]); exit;
-	}
-
 	/* hide if single and not visible */
 	if (is_single() && in_category($default_settings["hidden_cat"])) {
 		header("HTTP/1.0 404 Not Found");
