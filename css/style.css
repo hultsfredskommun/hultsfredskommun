@@ -5830,8 +5830,18 @@ html {
   background-position: -25px -30px;
 }
 
+.dropdown-icon.up {
+  background-position: -25px -10px;
+}
+
+.category-tools .dropdown-icon,
 .top-menu .dropdown-icon {
   background-position: -55px -30px;
+}
+
+.category-tools .dropdown-icon.up,
+.top-menu .dropdown-icon.up {
+  background-position: -55px -10px;
 }
 
 .menu-icon {

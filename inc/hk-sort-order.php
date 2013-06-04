@@ -6,7 +6,8 @@
 	 * orderby == popular depends on the plugin WP-PostViews by Lester 'GaMerZ' Chan 
 	 */
 
-	function displaySortOrderButtons() { ?>
+	function displaySortOrderButtons() { 
+		$options = get_option("hk_theme");?>
 		<ul class="sort-order">
 			<?php
 				//init
@@ -27,9 +28,8 @@
 			?>
 			<li><a class="nolink">Sortera p&aring;: </a></li>
 			<?php if (function_exists( 'views_orderby' )) : ?>
-			<?php $force_date = (get_query_var("cat") != "" && in_array(get_query_var("cat"), split(",",$options["order_by_date"])) ); 
-?>
-			
+			<?php $force_date = (get_query_var("cat") != "" && in_array(get_query_var("cat"), split(",",$options["order_by_date"])) ); ?>
+
 			<?php if ($_REQUEST["orderby"] == "popular" || ($_REQUEST["orderby"] == "" && !$force_date)) { ?>
 				<li class='current-menu-item'><a class="active">Popul&auml;ra</a></li>
 			<?php } else { ?>
@@ -39,18 +39,20 @@
 			
 			<?php if ($_REQUEST["orderby"] == "latest" || $_REQUEST["orderby"] == "oldest" || ($_REQUEST["orderby"] == "" && $force_date)) {
 				$active_class = "class='active'";
+				} else {
+				$hidden = "hidden ";
 			} ?>
 			<?php if ($_REQUEST["orderby"] == "latest" || ($_REQUEST["orderby"] == "" && $force_date)) { ?>
-				<li class="asc"><a <?php echo $active_class; ?> href="?orderby=oldest&amp;<?php echo $tags.$search; ?>">Datum <span class="arrow"></span></a></li>
+				<li class="asc"><a <?php echo $active_class; ?> href="?orderby=oldest&amp;<?php echo $tags.$search; ?>">Datum <span class="<?php echo $hidden; ?>dropdown-icon"></span></a></li>
 			<?php } else { ?>
-				<li <?php echo ($_REQUEST["orderby"] == "oldest")?"class='desc'":""; ?>><a <?php echo $active_class; ?> href="?orderby=latest&amp;<?php echo $tags.$search; ?>">Datum <span class="arrow"></span></a></li>
+				<li <?php echo ($_REQUEST["orderby"] == "oldest")?"class='desc'":""; ?>><a <?php echo $active_class; ?> href="?orderby=latest&amp;<?php echo $tags.$search; ?>">Datum <span class="<?php echo $hidden; ?>dropdown-icon up"></span></a></li>
 			<?php } ?>
 
 			<?php if (false) : // removed alpha sorting ?>
 			<?php if ($_REQUEST["orderby"] == "alpha") { ?>
-				<li class="desc"><a href="?orderby=alpha_desc<?php echo $tags.$search; ?>">A - &Ouml; <span class="arrow"></span></a></li>
+				<li class="desc"><a href="?orderby=alpha_desc<?php echo $tags.$search; ?>">A - &Ouml; <span class="<?php echo $hidden; ?>dropdown-icon"></span></a></li>
 			<?php } else { ?>
-				<li <?php echo ($_REQUEST["orderby"] == "alpha_desc")?"class='asc'":""; ?>><a href="?orderby=alpha<?php echo $tags.$search; ?>">A - &Ouml; <span class="arrow"></span></a></li>
+				<li <?php echo ($_REQUEST["orderby"] == "alpha_desc")?"class='asc'":""; ?>><a href="?orderby=alpha<?php echo $tags.$search; ?>">A - &Ouml; <span class="<?php echo $hidden; ?>dropdown-icon up"></span></a></li>
 			<?php } ?>
 			<?php endif; ?>
 
