@@ -106,6 +106,8 @@ function hk_theme_options_do_page() {
 			
 			<a name="kategorier"></a>
 			<hr/><h2>Kategorier, fl&ouml;de och menyer</h2>
+			<p><label for="hk_theme[smallwords]">Värdeord över huvudmeny</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[smallwords]"><?php echo $options['smallwords']; ?></textarea></p>
+			
 			<p><label for="hk_theme[default_thumbnail_image]">Defaulttumnagel som visas om artikel inte har någon utvald bild (bör ha storlek 177x100px)</label><br/>
 				<img width=150 src="<?php echo $options["default_thumbnail_image"]; ?>" />
 				<input class="upload-url" type="text" size="36" name="hk_theme[default_thumbnail_image]" value="<?php echo $options["default_thumbnail_image"]; ?>" />
@@ -237,9 +239,9 @@ function hk_theme_options_do_page() {
 			<h3>Granskningsmail</h3>
 			<p><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> 
 			<label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?></p>
-			<p><label for="hk_theme[no_reviews_to_cat]">Skicka inte granskningsmail om inlägget tillhör dessa kategorier.</label><br/><input size="8" type="text" name="hk_theme[no_reviews_to_cat]" value="<?php echo $options['no_reviews_to_cat']; ?>" /></p>
+			<p><label for="hk_theme[no_reviews_to_cat]">Skicka inte granskningsmail om inlägget tillhör dessa kategorier.</label><br/><input size="40" type="text" name="hk_theme[no_reviews_to_cat]" value="<?php echo $options['no_reviews_to_cat']; ?>" /></p>
 			<p><label for="hk_theme[review_send_only_mail_to]">Skicka bara e-post till denna adress.</label>
-			<br/><input type="text" name="hk_theme[review_send_only_mail_to]" value="<?php echo $options['review_send_only_mail_to']; ?>" /></p>
+			<br/><input size=40 type="text" name="hk_theme[review_send_only_mail_to]" value="<?php echo $options['review_send_only_mail_to']; ?>" /></p>
 			<?php 
 			// review mail
 			if ($options['enable_cron_review_mail']) {

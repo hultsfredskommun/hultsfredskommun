@@ -921,20 +921,20 @@ function hk_get_parent_categories_from_cat($cat) {
 	return array($parent_category, $sub_parent_category, $cat);
 }
 
+function getSmallWords($smallwords) {
+	$smallwords = trim($smallwords);
+	if (empty($smallwords)) return "";
 
-// get iconpath, to be able to add hk_icon_path action hook in child theme
-function hk_icon_path() {
-	echo hk_get_icon_path();
-}
-function hk_get_icon_path() {
-	if (has_filter( "hk_icon_path")) {
-		return apply_filters("hk_icon_path" , "");
-	}
-	else {
-		return get_template_directory_uri() . "/images/icons";
-	}
-}
+	$arr = split("\n",$smallwords);
+	if (empty($arr) || count($arr) == 0) return "";
 
+	$count = count($arr);
+	if ($count == 1) return $arr[0];
+
+	$rand = rand(0,$count-1);
+	if ($rand < 0) return "";
+	return $arr[$rand];
+}
 
 // submenu walker to get second row of top menu
 class submenu_walker_nav_menu extends Walker_Nav_Menu {
