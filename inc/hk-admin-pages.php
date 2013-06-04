@@ -159,12 +159,24 @@ function hk_review_mail() {
 	$maillist = Array();
 	while ($q->have_posts()) : $q->the_post();
 		$mail = get_the_author_email();
-		if ($mail == "") {
-			$log .= "Saknar e-postadress på användare ". get_the_author() . ".<br>";
+		// dont send mail if in no_reviews_to_cat list
+		$dont_send = false;
+		foreach ( split(",",$options["no_reviews_to_cat"]) as $c ) {
+			if (in_category($c)) 
+				$dont_send = true;
+		}
+		
+		if ( !$dont_send ) {
+			if ($mail == "") {
+				$log .= "Saknar e-postadress på användare ". get_the_author() . ".<br>";
 
-		} else
-		{
-			$maillist[$mail][] = array(get_the_ID(), get_the_title(), get_the_next_review_date(get_the_ID() ) );
+			} else
+			{
+				$maillist[$mail][] = array(get_the_ID(), get_the_title(), get_the_next_review_date(get_the_ID() ) );
+			}
+		}
+		else {
+			$log .= "Blocked review of post " . get_the_ID() . " " . get_the_title() . " because in 'no reviews cat'\n";
 		}
 	endwhile;
 
@@ -181,11 +193,11 @@ function hk_review_mail() {
 		$count_mail++;
 		if ($options["review_send_only_mail_to"] != "") {
 			wp_mail($options["review_send_only_mail_to"], $subject, "Should be sent to: " . $mailaddress . "\n\n" . $message);
-			$log .= "Har skickat $count_mail påminnelser, senast till " . $options["review_send_only_mail_to"] . " DEBUG: skulle skickats till $mailaddress\n";
+			$log .= "Har skickat påminnelser, till " . $options["review_send_only_mail_to"] . " DEBUG: skulle skickats till $mailaddress\n";
 		}
 		else {
 			wp_mail($mailaddress, $subject, $message);
-			$log .= "Har skickat $count_mail påminnelser, senast till $mailaddress\n";
+			$log .= "Har skickat påminnelser, till $mailaddress\n";
 		}
 	} 
 	$log .= "Skickade $count_mail påminnelser den " . date("Y-m-d H:i:s", strtotime("now"));
@@ -245,7 +257,7 @@ function hk_normalize_count($echolog = false) {
 				$new_views -= 100; // instead of sticky first in loop
 			$new_views = floor(sqrt($new_views));
 			if (is_sticky()) 
-				$new_views = 100; // instead of sticky first in loop
+				$new_views += 100; // instead of sticky first in loop
 			
 			if (count($views) > 1)
 			{
@@ -257,7 +269,7 @@ function hk_normalize_count($echolog = false) {
 			}
 		}
 		
-		$log .= $post_id . " " . $views[0] . " " . $new_views . " sticky: " . is_sticky() . " count: " . count($views) . "\n";
+		$log .= $post_id . " \told_views: " . $views[0] . " \tnew_views: " . $new_views . " \tis_sticky: " . is_sticky() . "\n";
 		//$log .= ". ";
 	endwhile;
 

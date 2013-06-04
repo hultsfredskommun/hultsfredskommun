@@ -5,6 +5,7 @@ exit;
 
 function create_image($width = 150, $height = 150) 
 {   
+	if (empty($width) || empty($height)) exit;
     //Create the image resource 
     $image = imagecreatetruecolor($width, $height);  
 	

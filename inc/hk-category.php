@@ -3,6 +3,14 @@
 				// do query
 				$args = array(	paged => $paged,
 								category__and => array($cat));
+				$options = get_option("hk_theme");
+				if ($_REQUEST["orderby"] == "" && get_query_var("cat") != "" && in_array(get_query_var("cat"), split(",",$options["order_by_date"])) ) {
+					echo "dateorder";
+					$args['suppress_filters'] = 'true';
+					$args['orderby'] = 'date';
+					$args['order'] = 'desc';
+				}
+	
 				/*$args['meta_query'] = array(
 				   array(
 					   'key' => 'hide_from_category',
@@ -70,10 +78,11 @@
 		 */
 		$shownPosts = array();
 		if ($cat != "") : 
-			
-			//print_r($wp_query);
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
-				get_template_part( 'content', get_post_type() );
+				if ($wp_query->post_count == 1)
+					get_template_part( 'content', 'single' );
+				else
+					get_template_part( 'content', get_post_type() );
 				$shownPosts[] = get_the_ID();
 			endwhile; endif;
 			//echo "<span class='hidden debug'>all from this category . <br>".print_r($args,true)."</span>";

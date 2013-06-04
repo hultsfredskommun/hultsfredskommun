@@ -237,6 +237,7 @@ function hk_theme_options_do_page() {
 			<h3>Granskningsmail</h3>
 			<p><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> 
 			<label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?></p>
+			<p><label for="hk_theme[no_reviews_to_cat]">Skicka inte granskningsmail om inlägget tillhör dessa kategorier.</label><br/><input size="8" type="text" name="hk_theme[no_reviews_to_cat]" value="<?php echo $options['no_reviews_to_cat']; ?>" /></p>
 			<p><label for="hk_theme[review_send_only_mail_to]">Skicka bara e-post till denna adress.</label>
 			<br/><input type="text" name="hk_theme[review_send_only_mail_to]" value="<?php echo $options['review_send_only_mail_to']; ?>" /></p>
 			<?php 

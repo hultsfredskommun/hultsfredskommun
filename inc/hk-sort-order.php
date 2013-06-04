@@ -27,17 +27,20 @@
 			?>
 			<li><a class="nolink">Sortera p&aring;: </a></li>
 			<?php if (function_exists( 'views_orderby' )) : ?>
-			<?php if ($_REQUEST["orderby"] == "popular" || $_REQUEST["orderby"] == "") { ?>
+			<?php $force_date = (get_query_var("cat") != "" && in_array(get_query_var("cat"), split(",",$options["order_by_date"])) ); 
+?>
+			
+			<?php if ($_REQUEST["orderby"] == "popular" || ($_REQUEST["orderby"] == "" && !$force_date)) { ?>
 				<li class='current-menu-item'><a class="active">Popul&auml;ra</a></li>
 			<?php } else { ?>
 				<li><a href="?orderby=popular<?php echo $tags.$search; ?>">Popul&auml;ra</a></li>
 			<?php } ?>
 			<?php endif; ?>
 			
-			<?php if ($_REQUEST["orderby"] == "latest" || $_REQUEST["orderby"] == "oldest") {
+			<?php if ($_REQUEST["orderby"] == "latest" || $_REQUEST["orderby"] == "oldest" || ($_REQUEST["orderby"] == "" && $force_date)) {
 				$active_class = "class='active'";
 			} ?>
-			<?php if ($_REQUEST["orderby"] == "latest") { ?>
+			<?php if ($_REQUEST["orderby"] == "latest" || ($_REQUEST["orderby"] == "" && $force_date)) { ?>
 				<li class="asc"><a <?php echo $active_class; ?> href="?orderby=oldest&amp;<?php echo $tags.$search; ?>">Datum <span class="arrow"></span></a></li>
 			<?php } else { ?>
 				<li <?php echo ($_REQUEST["orderby"] == "oldest")?"class='desc'":""; ?>><a <?php echo $active_class; ?> href="?orderby=latest&amp;<?php echo $tags.$search; ?>">Datum <span class="arrow"></span></a></li>
