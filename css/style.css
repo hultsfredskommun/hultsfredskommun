@@ -4896,6 +4896,11 @@ html {
   background-position: 0 0;
 }
 
+.button:hover {
+  background-position: 0 -100px;
+  text-decoration: none;
+}
+
 .logo img {
   border-radius: 0;
 }
