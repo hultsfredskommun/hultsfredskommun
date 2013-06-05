@@ -22,8 +22,24 @@
 						?>
 						<div class="img-wrapper "><div><img class="slide" src="<?php echo $src; ?>" alt=""></div></div>
 					<?php endif; endif;/*endif;*/ ?>
+					<?php
+					$externalclass = "";
+					if (function_exists("get_field")) { 
+						$href = get_field('hk_external_link_url'); 
+						$name = get_field('hk_external_link_name'); 
+						if (!empty($href))
+						{
+							$externalclass = "class='externallink'";
+							$title = "Extern länk till " . the_title_attribute( 'echo=0' );
+						}
+					}
+					if (empty($href)) {
+						$href = get_permalink(); 
+						$title = "Länk till " . the_title_attribute( 'echo=0' );
+					}
 					
-					<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+					?>
+					<h1 class="entry-title"><a <?php echo $externalclass; ?> href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 					<div class="entry-content">
 						<?php the_excerpt(); ?>
 					</div>

@@ -356,6 +356,13 @@ else {
 function readMoreToggle(el){
 	//global var to article
 	article = $(el).parents("article");
+	if ($(article).hasClass("single")) {
+		return false;
+	}
+	if ($(article).find(".externallink").length > 0) {
+		location.href = $(article).find(".externallink").attr("href");
+		return false;
+	}
 	if ($(article).hasClass("hk_kontakter")) {
 		contactAction(el,null);
 		return false;

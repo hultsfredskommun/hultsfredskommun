@@ -39,6 +39,9 @@ $border-line-width:		1px;
 	border-left: $border-width $border-style $gray-light-color;
 }
 
+.border-line {
+	border: $border-line-width $border-line-style $border-line-color;
+}
 .border-line--left {
 	border-left: $border-line-width $border-line-style $border-line-color;
 }

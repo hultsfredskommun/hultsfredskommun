@@ -240,6 +240,12 @@ article.post {
 	@extend .one-quarter;
 	@extend .margin--right;
 }
+.entry-title .dropdown-icon {
+	margin-left: 4px;
+}
+.single.full .dropdown-icon {
+	background-image: none;
+}
 .side-map, .map_canvas {
 	height: 200px;
 }

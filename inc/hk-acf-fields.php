@@ -394,6 +394,56 @@ if(function_exists("register_field_group"))
 		'menu_order' => 1,
 	));
 	
+	register_field_group(array (
+		'id' => '5048edc032150',
+		'title' => 'Extern länk',
+		'fields' => 
+		array (
+			0 => 
+			array (
+				'key' => 'field_5046fe5d332c8',
+				'label' => 'Namn',
+				'name' => 'hk_external_link_name',
+				'type' => 'text',
+				'instructions' => 'Namn på knappen, lämna tom om bara artikellänken ska bli en extern länk',
+				'required' => '0',
+				'order_no' => '0',
+			),
+			1 => 
+			array (
+				'key' => 'field_5046fe5d332c9',
+				'label' => 'URL',
+				'name' => 'hk_external_link_url',
+				'type' => 'text',
+				'instructions' => 'Url till en extern sida, detta kommer göra att inläggets innehåll inte blir åtkomligt från listningar, utan bara via direktlänk.',
+				'required' => '0',
+				'order_no' => '0',
+			),
+		),
+		'location' => 
+		array (
+			'rules' => 
+			array (
+				0 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => '0',
+				),
+			),
+			'allorany' => 'all',
+		),
+		'options' => 
+		array (
+			'position' => 'side',
+			'layout' => 'default',
+			'hide_on_screen' => 
+			array (
+			),
+		),
+		'menu_order' => 10,
+	));
 	
 	/* POST EXTRA INFO */
 	register_field_group(array (

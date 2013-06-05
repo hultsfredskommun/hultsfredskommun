@@ -1000,9 +1000,9 @@ h1, .alpha {
 }
 
 h2, .beta {
-  font-size: 21px;
-  font-size: 1.4rem;
-  line-height: 1.14286;
+  font-size: 20px;
+  font-size: 1.33333rem;
+  line-height: 1.2;
 }
 
 h3, .gamma, .post .summary-content h1.entry-title, .main-sub-menu a {
@@ -4496,7 +4496,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   color: #3e3e3f !important;
 }
 
-.default-text, h1 a, html, .page-header, .page-header a, .cookieinformation .textwidget, .responsive-sub-menu a, .main-menu a, .main-sub-menu a, .category-navigation a, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .ui-tabs-nav a {
+.default-text, h1 a, html, .button, .page-header, .page-header a, .cookieinformation .textwidget, .responsive-sub-menu a, .main-menu a, .main-sub-menu a, .category-navigation a, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .ui-tabs-nav a {
   color: #3e3e3f;
 }
 
@@ -4583,7 +4583,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .home .contact-area .contact-wrapper, .footer-wrapper.footer-widget-wrapper, .page-header, .searchnavigation .form .input-wrapper, .responsive-sub-menu, .main-sub-menu, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
+.gray-light-background, .gray-image-background, .home .contact-area .contact-wrapper, .footer-wrapper.footer-widget-wrapper, .button, .page-header, .searchnavigation .form .input-wrapper, .responsive-sub-menu, .main-sub-menu, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover {
   background-color: #e5e6e7;
 }
@@ -4633,6 +4633,10 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   border-left: 2px dotted #e5e6e7;
 }
 
+.border-line, .button {
+  border: 1px solid #c6cacb;
+}
+
 .border-line--left, .category-navigation .parent li, .category-navigation .more-navigation li {
   border-left: 1px solid #c6cacb;
 }
@@ -4672,7 +4676,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: transparent;
 }
 
-.border-radius, img, .page-header, .button.bottom, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+.border-radius, .button, img, .page-header, .button.bottom, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .contact-popup.box {
   border-radius: 3px;
@@ -4758,9 +4762,9 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 
 @media only screen and (max-width: 969px) {
   h1, .alpha {
-    font-size: 21px;
-    font-size: 1.4rem;
-    line-height: 1.14286;
+    font-size: 20px;
+    font-size: 1.33333rem;
+    line-height: 1.2;
   }
 
   h2, .beta {
@@ -4882,6 +4886,14 @@ html {
 
 .hand, .article-wrapper .summary-content {
   cursor: pointer;
+}
+
+.button {
+  float: right;
+  cursor: pointer;
+  padding: 0 6px 0;
+  background-image: url(../images/spr_bgButtons.png);
+  background-position: 0 0;
 }
 
 .logo img {
@@ -5144,6 +5156,14 @@ html {
 }
 /* article footer*/
 /* featured images */
+.entry-title .dropdown-icon {
+  margin-left: 4px;
+}
+
+.single.full .dropdown-icon {
+  background-image: none;
+}
+
 .side-map, .map_canvas {
   height: 200px;
 }
@@ -5262,8 +5282,6 @@ html {
   margin-left: -1px;
 }
 
-/* add <i class=i data-icon="&#xF143;"></i> in sites item title */
-/* add <i class=i data-icon="&#xF063;"></i> in translate item title */
 .small-words {
   font-family: times;
   padding: 12px 0 0 18px !important;
