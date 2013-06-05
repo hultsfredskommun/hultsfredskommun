@@ -15,7 +15,6 @@
 					<?php $thumb = hk_get_the_post_thumbnail(get_the_ID(),'thumbnail-image', false, false); 
 					if ($thumb) :  					
 						echo $thumb;
-						//the_post_thumbnail('thumbnail-image'); 
 					else : /* else default thumb; */
 						$options = get_option("hk_theme");
 						$src = $options["default_thumbnail_image"]; 

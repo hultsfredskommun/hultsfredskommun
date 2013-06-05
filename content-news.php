@@ -12,12 +12,16 @@
 		<div class="article-wrapper">
 			<div class="content-wrapper">
 				<div class="summary-content">
-					<?php $thumb = hk_get_the_post_thumbnail(get_the_ID(),'thumbnail-image', false); 
-					if ($thumb) : ?>
-							<?php 					
-								echo $thumb;
-							//the_post_thumbnail('thumbnail-image'); ?>
-					<?php endif;/*endif;*/ ?>
+					<?php $thumb = hk_get_the_post_thumbnail(get_the_ID(),'thumbnail-image', false, false); 
+					if ($thumb) :  					
+						echo $thumb;
+					else : /* else default thumb; */
+						$options = get_option("hk_theme");
+						$src = $options["default_thumbnail_image"]; 
+						if (!empty($src)) :
+						?>
+						<div class="img-wrapper "><div><img class="slide" src="<?php echo $src; ?>" alt=""></div></div>
+					<?php endif; endif;/*endif;*/ ?>
 					
 					<h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 					<div class="entry-content">

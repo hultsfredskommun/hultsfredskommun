@@ -338,7 +338,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 					}
 				}
 				else {
-					echo "<ul class='main-sub-menu'><li class='menu-item'><a>&nbsp;</a></li></ul>";
+					echo "<ul class='main-sub-menu'><li class='menu-item one-whole'><a>&nbsp;</a></li></ul>";
 				}
 				//echo "<li><a class='js-show-category-menu'><i class='i' data-icon='&#xF0A9;'></i>";
 				//echo $cat_title;

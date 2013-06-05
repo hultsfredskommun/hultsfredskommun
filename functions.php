@@ -175,6 +175,16 @@ function hk_setup() {
 	 */
 	load_theme_textdomain( 'twentyeleven', get_template_directory() . '/languages' );
 
+	remove_action( 'wp_head', 'feed_links', 2 ); 
+	add_action('wp_head', 'addBackPostFeed');
+	function addBackPostFeed() {
+		global $default_settings;
+		if (empty($default_settings["news_tag"])) return;
+		
+		$url = get_tag_link($default_settings["news_tag"]) . "feed/";
+		echo '<link rel="alternate" type="application/rss+xml" title="Nyhetsflöde" href="'.$url.'" />'; 
+	}
+	
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
 
