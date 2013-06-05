@@ -74,6 +74,10 @@ html {
 	background-image: url(../images/spr_bgButtons.png);
 	background-position: 0 0;	
 }
+.button:hover {
+	background-position: 0 -100px;	
+	text-decoration: none;
+}
 img {
 	@extend .border-radius;
 }
