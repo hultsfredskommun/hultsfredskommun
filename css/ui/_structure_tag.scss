@@ -1,14 +1,16 @@
 .tag-listing {
-	h2 {
-		@extend .flush--bottom;
+
+	.indent2 { padding-left: 12px; }
+	.indent3 { padding-left: 24px; }
+	.indent4 { padding-left: 36px; }
+	.indent5 { padding-left: 48px; }
+	.indent6 { padding-left: 60px; }
+	.indent7 { padding-left: 72px; }
+	h2,h3,h4,h5,h6 {
+		margin-bottom: 6px;
 	}
-	.content-area {
-		@extend .hidden;
-		@extend .islet;
-		ul {
-			@extend .nav;
-			//@extend .nav--block;
-			@extend .nav--stacked;
-		}
+	ul {
+		list-style-type: none;
+		margin-left: 0;
 	}
 }

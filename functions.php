@@ -791,19 +791,6 @@ function hk_getMenuParent($cat) {
 	}
 	return $cat;
 }
-// return the top parent id found in the menu
-function hk_getMenuTopParent($cat) {
-	global $default_settings;
-	if (empty($cat)) return array();
-	
-	$cats_str = get_category_parents($cat, false, '%#%', true);
-	$cats_array = explode('%#%', $cats_str);
-	$cat_depth = sizeof($cats_array)-1;
-	if ($cat_depth > 0) {
-		return get_category_by_slug($cats_array[0])->term_id;
-	}
-	return $cat;
-}
 // return nav menu id of category
 function hk_getNavMenuId($cat_id, $menu_name) {
 	if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
@@ -861,6 +848,20 @@ function hk_getTopMenuParent($cat) {
 	}
 	return $cat;
 }
+
+// return the top parent id found in the menu
+/*function hk_getMenuTopParent($cat) {
+	global $default_settings;
+	if (empty($cat)) return array();
+	
+	$cats_str = get_category_parents($cat, false, '%#%', true);
+	$cats_array = explode('%#%', $cats_str);
+	$cat_depth = sizeof($cats_array)-1;
+	if ($cat_depth > 0) {
+		return get_category_by_slug($cats_array[0])->term_id;
+	}
+	return $cat;
+}*/
 // return all the category children of category $cat in id array form
 function hk_getChildrenIdArray($cat) {
 	if (empty($cat)) return array();
@@ -879,7 +880,7 @@ function hk_get_parent_categories_from_id($id, $menu_name) {
 	// get current posts top menus
 	$topparentsarr = array();
 	foreach($categories_list as $item) {
-		$parent = hk_getMenuTopParent($item->term_id);
+		$parent = hk_getTopMenuParent($item->term_id);
 		if (!in_array($parent, $topparentsarr)) {
 			$topparentsarr[] = $parent;
 		}
@@ -926,7 +927,7 @@ function hk_get_parent_categories_from_id($id, $menu_name) {
 
 // get parents from category, returns array(topmenucategory, submenucategory, the category)
 function hk_get_parent_categories_from_cat($cat) {
-	$parent_category = hk_getMenuTopParent($cat);
+	$parent_category = hk_getTopMenuParent($cat);
 	$sub_parent_category = hk_getMenuParent($cat);
 	return array($parent_category, $sub_parent_category, $cat);
 }
