@@ -769,6 +769,18 @@ function hk_getParent($cat) {
 		return $category->parent;
 	return 0;
 }
+// return the top parent id found in the menu
+function hk_getTopMenuParent($cat) {
+	global $default_settings;
+	if (empty($cat)) return array();
+	$cats_str = get_category_parents($cat, false, '%#%', true);
+	$cats_array = explode('%#%', $cats_str);
+	$cat_depth = sizeof($cats_array)-1;
+	if ($cat_depth > 0) {
+		return get_category_by_slug($cats_array[0])->term_id;
+	}
+	return $cat;
+}
 // return the parents of argument category $cat in slug array form
 function hk_getParentsSlugArray($cat) {
 	if (empty($cat)) return array();
@@ -836,18 +848,7 @@ function hk_getSubNavMenuIdArray($topmenu, $menu_name) {
 	} 
 	return $menu_array;
 }	
-// return the top parent id found in the menu
-function hk_getTopMenuParent($cat) {
-	global $default_settings;
-	if (empty($cat)) return array();
-	$cats_str = get_category_parents($cat, false, '%#%', true);
-	$cats_array = explode('%#%', $cats_str);
-	$cat_depth = sizeof($cats_array)-1;
-	if ($cat_depth > 0) {
-		return get_category_by_slug($cats_array[0])->term_id;
-	}
-	return $cat;
-}
+
 
 // return the top parent id found in the menu
 /*function hk_getMenuTopParent($cat) {

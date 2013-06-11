@@ -407,7 +407,7 @@ class hk_Tag_Walker extends Walker_Category {
         extract($args);
 		$currtagslug = $tag->slug;
 		$tags_filter = get_query_var("tag");
-		$term_id = get_query_var("cat");
+		$term_id = hk_getTopMenuParent(get_query_var("cat"));
 		$orderby = $_REQUEST["orderby"];
 		if ($orderby != "") {
 			$orderby = "&orderby=$orderby";
@@ -422,32 +422,7 @@ class hk_Tag_Walker extends Walker_Category {
 		else { 
 			$tags_filter = "?tag=".$currtagslug;
 		}
-/*
-		// check if tag is selected, 
-		if(!empty($tag_array) && in_array($currtagslug, $tag_array)) {
-			$current_tag = true;
-			$tag_array = array_values(array_diff($tag_array, array($currtagslug)));
-		}
-		else { 
-			$tag_array[] = $currtagslug;
-		}
-		
-		// set new tag filter
-		if (count($tag_array) == 1) {
-			$tags_filter = $tag_array[0];
-		}
-		else if (count($tag_array) > 1) {
-			$tags_filter = implode(",",$tag_array);
-		}
-		else {
-			$tags_filter = "";
-		}
-		if (!empty($tags_filter)) {
-			$tags_filter = "?tag=" . $tags_filter;
-		}
-		else {
-			$tags_filter = "?tag=";
-		}*/
+
 		
 		// generate tag link
         $cat_name = esc_attr( $tag->name); 

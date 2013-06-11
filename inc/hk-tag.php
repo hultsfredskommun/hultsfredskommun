@@ -39,7 +39,7 @@
 			foreach($top_cat_arr as $cat) :
 				
 				$children =  get_categories(array('child_of' => $cat, 'hide_empty' => true));
-				
+				/*
 				$args = array( 'posts_per_page' => -1,
 				'ignore_sticky_posts' => 1,
 				'orderby' => 'title',
@@ -47,12 +47,10 @@
 				if ($cat != "")
 					$args["category__and"] = array($cat);
 				if ($tag != "")
-					$args["tag_slug__in"] = split(",",$tag);
-					
-				//echo "<h1>Inneh&aring;ll fr&aring;n " . $tag . " i kategorin " . single_tag_title("",false) . "</h1>";
+					$args["tag_slug__in"] = split(",",$tag);*/
 				?>
 			<?php
-				$catarr = array();
+				/*$catarr = array();
 				if ($cat != "") :
 					query_posts( $args ); ?>
 					<?php if ( have_posts() ) : 
@@ -67,7 +65,7 @@
 						</ul>
 					<?php endif;
 					wp_reset_query(); // Reset Query 
-				endif; 
+				endif;*/ 
 				?>
 				
 
