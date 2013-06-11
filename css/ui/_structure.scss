@@ -31,6 +31,24 @@ html {
 	font-family: $face;
 }
 
+/* Alignment */
+.alignleft {
+	@extend .margin--right;
+	@extend .float--left;
+	display: inline;
+}
+.alignright {
+	@extend .margin--left;
+	@extend .float--right;
+	display: inline;
+}
+.aligncenter {
+	@extend .cf;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .content--center {
 	margin: 0 $half-spacing-unit/2;
 }

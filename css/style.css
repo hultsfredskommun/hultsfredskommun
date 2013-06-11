@@ -771,7 +771,7 @@ textarea:focus {
 #responsive-info,
 .slideshow .slide .caption-area .caption,
 .cookieinformation .textwidget,
-.scrolltotop, .matrix, .multi-list, .stat-group, .time, .home .contact-area .contact-wrapper, .page-header, article.post, .article-wrapper .content-wrapper .contact-area, .searchnavigation .form, .searchnavigation .form .submit, .responsive-sub-menu, .footer-image-wrapper .logo-footer-image {
+.scrolltotop, .matrix, .multi-list, .stat-group, .aligncenter, .time, .home .contact-area .contact-wrapper, .page-header, article.post, .article-wrapper .content-wrapper .contact-area, .searchnavigation .form, .searchnavigation .form .submit, .responsive-sub-menu, .footer-image-wrapper .logo-footer-image {
   zoom: 1;
 }
 .cf:before, .gw:before, .main-wrapper:before, .top-wrapper:before,
@@ -785,7 +785,7 @@ textarea:focus {
 #responsive-info:before,
 .slideshow .slide .caption-area .caption:before,
 .cookieinformation .textwidget:before,
-.scrolltotop:before, .matrix:before, .multi-list:before, .stat-group:before, .time:before, .home .contact-area .contact-wrapper:before, .page-header:before, article.post:before, .article-wrapper .content-wrapper .contact-area:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .responsive-sub-menu:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
+.scrolltotop:before, .matrix:before, .multi-list:before, .stat-group:before, .aligncenter:before, .time:before, .home .contact-area .contact-wrapper:before, .page-header:before, article.post:before, .article-wrapper .content-wrapper .contact-area:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .responsive-sub-menu:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
 .grid-wrapper:after, .nav:after, .home .contact-area .contact-wrapper .content-wrapper ul:after, .page-header .num-posts:after,
 .page-header .view-tools:after,
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
@@ -796,7 +796,7 @@ textarea:focus {
 #responsive-info:after,
 .slideshow .slide .caption-area .caption:after,
 .cookieinformation .textwidget:after,
-.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .responsive-sub-menu:after, .footer-image-wrapper .logo-footer-image:after {
+.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .aligncenter:after, .time:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .responsive-sub-menu:after, .footer-image-wrapper .logo-footer-image:after {
   content: " ";
   display: table;
 }
@@ -811,7 +811,7 @@ textarea:focus {
 #responsive-info:after,
 .slideshow .slide .caption-area .caption:after,
 .cookieinformation .textwidget:after,
-.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .time:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .responsive-sub-menu:after, .footer-image-wrapper .logo-footer-image:after {
+.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .aligncenter:after, .time:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .responsive-sub-menu:after, .footer-image-wrapper .logo-footer-image:after {
   clear: both;
 }
 
@@ -1007,7 +1007,7 @@ h5, .epsilon, h1.widget-title, .widget, .widget h1, .main-menu {
   line-height: 1.5;
 }
 
-h6, .zeta, .complement-italic-text, .contact-wrapper .content, .time, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
+h6, .zeta, .time, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
   font-size: 14px;
   font-size: 0.93333rem;
   line-height: 1.71429;
@@ -4301,12 +4301,12 @@ html.flexbox {
  * A lot of these classes carry `!important` as you will always want them to win
  * out over other selectors.
  */
-.float--right, .firstpage-sidebar, .page-header .view-tools,
+.float--right, .alignright, .firstpage-sidebar, .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools, .button.top, .responsive-menu a, .right-nav-menu-item, .category-navigation .more-navigation li.current-tag .icon-left, .category-navigation .more-navigation li.current-tag h1.widget-title .i, h1.widget-title .category-navigation .more-navigation li.current-tag .i, .footer-image-wrapper .logo-footer-image img {
   float: right !important;
 }
 
-.float--left, .icon-left, h1.widget-title .i, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .help-navigation, .page-header .num-posts, .page-header .category-tools .menu-item .i, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
+.float--left, .alignleft, .icon-left, h1.widget-title .i, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .help-navigation, .page-header .num-posts, .page-header .category-tools .menu-item .i, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
 .single .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
@@ -4772,7 +4772,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.71429;
   }
 
-  h6, .zeta, .complement-italic-text, .contact-wrapper .content, .time, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
+  h6, .zeta, .time, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
     font-size: 13px;
     font-size: 0.86667rem;
     line-height: 1.84615;
@@ -4835,6 +4835,21 @@ ul, ol, dd {
 
 html {
   font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Alignment */
+.alignleft {
+  display: inline;
+}
+
+.alignright {
+  display: inline;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .content--center, .menu-wrapper,
@@ -5631,7 +5646,7 @@ html {
   margin-top: 1.6rem;
 }
 
-.margin--right, .home .contact-area .contact-wrapper .content-wrapper h1 a, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper,
+.margin--right, .alignleft, .home .contact-area .contact-wrapper .content-wrapper h1 a, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper,
 .single.hk_kontakter .img-wrapper, article.single .map_canvas, .scrolltotop {
   margin-right: 24px;
   margin-right: 1.6rem;
@@ -5642,7 +5657,7 @@ html {
   margin-bottom: 1.6rem;
 }
 
-.margin--left, .icon-right, .home .contact-area .contact-wrapper .content-wrapper h1 a, .footer-widget-wrapper .content {
+.margin--left, .alignright, .icon-right, .home .contact-area .contact-wrapper .content-wrapper h1 a, .footer-widget-wrapper .content {
   margin-left: 24px;
   margin-left: 1.6rem;
 }

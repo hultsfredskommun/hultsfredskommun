@@ -209,6 +209,7 @@ function hk_navigation() {
 		);
 		//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($category) . "</a>";
 		echo "<ul class='parent'>"; 
+		echo "<li class='heading cat-item $sub_parent current-cat-parent cat-has-children'><a href='#' class='icon-left'><i class='i' data-icon='&#xF09B;'></i></a><a href='".get_category_link($sub_parent)."'>".get_the_category_by_ID($sub_parent)."</a></li>";
 		wp_list_categories( $args );
 		echo "</ul>"; 
 		//print_r($all_categories);
@@ -407,7 +408,8 @@ class hk_Tag_Walker extends Walker_Category {
         extract($args);
 		$currtagslug = $tag->slug;
 		$tags_filter = get_query_var("tag");
-		$term_id = hk_getTopMenuParent(get_query_var("cat"));
+		//$term_id = hk_getTopMenuParent(get_query_var("cat"));
+		$term_id = get_query_var("cat");
 		$orderby = $_REQUEST["orderby"];
 		if ($orderby != "") {
 			$orderby = "&orderby=$orderby";
@@ -517,7 +519,11 @@ function displayTagFilter($show_title = true) {
 		}
 		if ($_REQUEST["tag"] != "" && get_query_var("cat") != "")
 		{
-			$href = get_category_link( $_REQUEST["cat"] ) . "?tag=";
+			if( hk_getParent(get_query_var("cat")) > 0) {
+				$href = get_category_link( hk_getParent(get_query_var("cat")) ) . "?tag=".$_REQUEST["tag"];
+				echo "<li class='tag-item complement-italic-text'><a href='$href' title='Rensa typ av information'>Gå upp en nivå</a></li>";
+			}
+			$href = get_category_link( get_query_var("cat") ) . "?tag=";
 			echo "<li class='tag-item complement-italic-text'><a href='$href' title='Rensa typ av information'>Rensa typ av information</a></li>";
 		}
 		wp_list_categories( $args );
