@@ -44,7 +44,7 @@
 						<?php the_excerpt(); 
 						if (!empty($href) && !empty($name))
 						{
-							echo "<a class='button' href='$src' title='$name'>$name</a>";
+							echo "<a class='button' href='$href' title='$name'>$name</a>";
 						}
 						?>
 					</div>

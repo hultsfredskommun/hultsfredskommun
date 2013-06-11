@@ -16,7 +16,7 @@
 				$cat_title = "kategorin <strong>" . single_tag_title("",false) . "</strong>";
 			}
 			else {
-				foreach(get_categories(array('parent' => 0, 'hide_empty' => true)) as $c) :
+				foreach(get_categories(array('parent' => 0, 'hide_empty' => true, 'exclude' => $default_settings["hidden_cat"])) as $c) :
 					$top_cat_arr[] = $c->cat_ID;
 				endforeach;
 				$cat_title = "<strong>hela webbplatsen</strong>";

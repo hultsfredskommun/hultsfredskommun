@@ -415,7 +415,15 @@ class hk_Tag_Walker extends Walker_Category {
 		if (!empty($tags_filter))
 			$tag_array = explode(",",$tags_filter);
 		
-		// check if tag i selected, 
+		if(!empty($tag_array) && in_array($currtagslug, $tag_array)) {
+			$current_tag = true;
+			$tags_filter = "?tag=";
+		}
+		else { 
+			$tags_filter = "?tag=".$currtagslug;
+		}
+/*
+		// check if tag is selected, 
 		if(!empty($tag_array) && in_array($currtagslug, $tag_array)) {
 			$current_tag = true;
 			$tag_array = array_values(array_diff($tag_array, array($currtagslug)));
@@ -439,7 +447,7 @@ class hk_Tag_Walker extends Walker_Category {
 		}
 		else {
 			$tags_filter = "?tag=";
-		}
+		}*/
 		
 		// generate tag link
         $cat_name = esc_attr( $tag->name); 
@@ -534,7 +542,7 @@ function displayTagFilter($show_title = true) {
 		}
 		if ($_REQUEST["tag"] != "" && get_query_var("cat") != "")
 		{
-			$href = get_category_link( $_REQUEST["cat"] ) . "?cat=";
+			$href = get_category_link( $_REQUEST["cat"] ) . "?tag=";
 			echo "<li class='tag-item complement-italic-text'><a href='$href' title='Rensa typ av information'>Rensa typ av information</a></li>";
 		}
 		wp_list_categories( $args );
