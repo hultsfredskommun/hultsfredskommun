@@ -41,7 +41,9 @@
 				$children =  get_categories(array('child_of' => $cat, 'hide_empty' => true));
 				
 				$args = array( 'posts_per_page' => -1,
-				'ignore_sticky_posts' => 1);
+				'ignore_sticky_posts' => 1,
+				'orderby' => 'title',
+				'order' => 'ASC',);
 				if ($cat != "")
 					$args["category__and"] = array($cat);
 				if ($tag != "")
@@ -52,11 +54,11 @@
 			<?php
 				$catarr = array();
 				if ($cat != "") :
-					$cslug = &get_category($cat);
-					$catarr[] = $cslug->slug;
 					query_posts( $args ); ?>
+					<?php if ( have_posts() ) : 
+					$cslug = &get_category($cat);
+					$catarr[] = $cslug->slug; ?>
 					<h1><?php echo get_cat_name($cat) ?></h1>
-					<?php if ( have_posts() ) : ?>
 						<ul>
 						<?php while ( have_posts() ) : the_post(); ?>
 							<?php get_template_part( 'content', 'single-line' ); ?>
@@ -73,7 +75,9 @@
 				
 				foreach ($children as $childcat) :
 					$args = array( 'posts_per_page' => -1,
-					'ignore_sticky_posts' => 1);
+					'ignore_sticky_posts' => 1,
+					'orderby' => 'title',
+					'order' => 'ASC',);
 					if ($childcat->cat_ID != "")
 						$args["category__and"] = array($childcat->cat_ID);
 					if ($tag != "")

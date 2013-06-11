@@ -120,7 +120,10 @@ class HK_quickmenu extends WP_Widget {
 					/* Query all posts */
 					$query = array( 'posts_per_page' => $this->vars['posts_per_page'], 
 									'category__in' => $all_categories,
-									'ignore_sticky_posts' => 'true'
+									'ignore_sticky_posts' => 'true',
+									'meta_key' => 'views', 
+									'orderby' => 'meta_value_num',
+									'order' => 'DESC',
 									) ;
 					
 					query_posts( $query );

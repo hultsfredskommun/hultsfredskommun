@@ -119,54 +119,6 @@
 	}
 
 
-
-	function hk_FilterOrder ($order = '') {
-		global $wpdb;
-
-		if (isset($_REQUEST["orderby"]))
-			$orderby = $_REQUEST["orderby"];
-		else if( !function_exists( 'views_orderby' ))
-			$orderby = "latest"; // alphabetical to be standard if no set
-		else
-			$orderby = "";
-			
-		if ($orderby == "latest") {
-			// wordress blog standard
-			$order = ' (' . $wpdb->posts . '.post_date ) DESC';
-		}
-		else if ($orderby == "oldest") {
-			$order = ' (' . $wpdb->posts . '.post_date ) ASC';
-		}
-		else if ($orderby == "alpha") {
-			$order = ' (' . $wpdb->posts . '.post_title ) ASC';
-		}
-		else if ($orderby == "alpha_desc") {
-			$order = ' (' . $wpdb->posts . '.post_title ) DESC';
-		}
-		return $order;
-	}
-	if (!is_admin()) {
-		add_filter ('posts_orderby', 'hk_FilterOrder');
-	}
-	// Sets sort-order most viewed as default or if orderby == popular and plugin WP-PostViews is loaded
-	function hk_views_sorting($local_wp_query) {
-		if(function_exists( 'views_orderby' )) {
-			if ( !isset($_REQUEST["orderby"]) or (isset($_REQUEST["orderby"]) and $_REQUEST["orderby"] == 'popular') ) {
-				add_filter('posts_fields', 'views_fields');
-				add_filter('posts_join', 'views_join');
-				add_filter('posts_where', 'views_where');
-				add_filter('posts_orderby', 'views_orderby');
-			} else {
-				remove_filter('posts_fields', 'views_fields');
-				remove_filter('posts_join', 'views_join');
-				remove_filter('posts_where', 'views_where');
-				remove_filter('posts_orderby', 'views_orderby');
-			}
-		}
-	}
-	if (!is_admin()) {
-		add_action('pre_get_posts', 'hk_views_sorting');
-	}
 	if( function_exists( 'views_orderby' )) {
 		function hk_add_views_fields($post_ID) {
 			global $wpdb;

@@ -1,25 +1,43 @@
 	<?php if (!is_sub_category_firstpage()) :
 			if ($cat != "") : 
 				// do query
-				$args = array(	paged => $paged,
-								category__and => array($cat));
+				$args = array(	'paged' => $paged,
+								'category__and' => array($cat),
+								'meta_query' => array(
+													//'relation' => 'OR',
+													array(
+														'key' => 'hk_hide_from_category',
+														'compare' => 'NOT EXISTS',
+													),
+
+												)
+												);
 				$options = get_option("hk_theme");
 				if ($_REQUEST["orderby"] == "" && get_query_var("cat") != "" && in_array(get_query_var("cat"), split(",",$options["order_by_date"])) ) {
-					$args['suppress_filters'] = 'true';
+					//$args['suppress_filters'] = 'true';
 					$args['orderby'] = 'date';
-					$args['order'] = 'desc';
+					$args['order'] = 'DESC';
 				}
-	
-				/*$args['meta_query'] = array(
-				   array(
-					   'key' => 'hide_from_category',
-					   'compare' => '==',
-					   'value' => '1',
-					   //'compare' => '=',
-					   //'type' => 'NUMERIC',
-				   )
-				);*/
+				else if ($_REQUEST["orderby"] == "latest") {
+					$args['orderby'] = 'date';
+					$args['order'] = 'DESC';				
+				}
+				else if ($_REQUEST["orderby"] == "oldest") {
+					$args['orderby'] = 'date';
+					$args['order'] = 'ASC';				
+				}
+				else if (function_exists( 'views_orderby' )) {
+					$args['meta_key'] = 'views'; 
+					$args['orderby'] = 'meta_value_num';
+					$args['order'] = 'DESC';	
+				}
+				else {
+					$args['orderby'] = 'date';
+					$args['order'] = 'DESC';				
+				}
+
 				query_posts( $args );
+
 			endif;
 	?>
 	<div id="breadcrumb" class="breadcrumb"><?php hk_breadcrumb(); ?></div>
@@ -52,9 +70,7 @@
 				<?php //echo "<pre>"; print_r($wp_query); echo "</pre>"; ?>
 
 			<ul class="category-tools">
-				<?php /* if (related stuff ($cat)) : */ ?>
 				<?php echo hk_related_output(true,false);	?>
-				<?php /* endif; */ ?>
 				
 			</ul>
 			<ul class="view-tools">
@@ -78,41 +94,18 @@
 		$shownPosts = array();
 		if ($cat != "") : 
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
+				/*echo get_field('hk_hide_from_category'); 
+				echo "-";
+				echo get_post_meta(get_the_ID(),'views',true); */
 				if ($wp_query->post_count == 1)
 					get_template_part( 'content', 'single' );
 				else
 					get_template_part( 'content', get_post_type() );
 				$shownPosts[] = get_the_ID();
 			endwhile; endif;
-			//echo "<span class='hidden debug'>all from this category . <br>".print_r($args,true)."</span>";
-
-			//wp_reset_query(); // Reset Query
-			
-			
 		endif;
 		
 		
-		
-		/* helper array to know which posts is shown if loading more dynamically */
-		/*if (empty($sticky)) {
-			$allposts = $shownPosts;
-		}
-		else if (empty($shownPosts)) {
-			$allposts = $sticky;
-		}
-		else if (empty($shownPosts) && empty($sticky)) {
-			$allposts = array();
-		}
-		else {
-			$allposts = array_merge($sticky,$shownPosts);
-		}
-		if (!empty($allposts))
-			$allposts = implode(",",$allposts);
-		else
-			$allposts = "";
-			
-		echo "<span id='shownposts' class='hidden'>" . $allposts . "</span>";
-		*/
 		hk_content_nav( 'nav-below' );
 
 		/* help text if nothing is found */

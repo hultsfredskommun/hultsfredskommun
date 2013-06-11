@@ -393,7 +393,8 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 1,
 	));
-	
+		
+	/* POST EXTERNAL LINK */
 	register_field_group(array (
 		'id' => '5048edc032150',
 		'title' => 'Extern länk',
@@ -430,6 +431,47 @@ if(function_exists("register_field_group"))
 					'operator' => '==',
 					'value' => 'post',
 					'order_no' => '0',
+				),
+			),
+			'allorany' => 'all',
+		),
+		'options' => 
+		array (
+			'position' => 'side',
+			'layout' => 'default',
+			'hide_on_screen' => 
+			array (
+			),
+		),
+		'menu_order' => 10,
+	));
+	
+	/* HIDE POST FROM CATEGORY LIST */
+	register_field_group(array (
+		'id' => '5048edc032160',
+		'title' => 'Visa bara i etikettlista',
+		'fields' => 
+		array (
+			0 => 
+			array (
+				'key' => 'field_5046fe5d332d8',
+				'label' => 'Visa bara när etikett är vald',
+				'name' => 'hk_hide_from_category',
+				'type' => 'true_false',
+				'message' => 'Göm inlägget från kategorielistan',
+			),
+		),
+		'location' => 
+		array (
+			'rules' => 
+			array (
+				0 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => 0,
+					'group_no' => 0,
 				),
 			),
 			'allorany' => 'all',
