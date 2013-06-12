@@ -1,16 +1,31 @@
 	<?php if (!is_sub_category_firstpage()) :
 			if ($cat != "") : 
+				/* check if there are posts to be hidden */
+				$args = array(	'posts_per_page' => -1,
+								'category__and' => array($cat),
+								'meta_query' => array(
+													array(
+														'key' => 'hk_hide_from_category',
+														'compare' => '=',
+														'value' => '1'
+													)
+												)
+						);
+
+				$dyn_query = new WP_Query();
+				$dyn_query->query($args);
+
+				/* Start the Loop */
+				$hiddenarr = array();
+				while ( $dyn_query->have_posts() ) : $dyn_query->the_post();
+					$hiddenarr[] = get_the_ID();
+				endwhile;
+
 				// do query
 				$args = array(	'paged' => $paged,
 								'category__and' => array($cat),
-								/*'meta_query' => array(
-													array(
-														'key' => 'hk_hide_from_category',
-														'compare' => '!=',
-														'value' => '1',
-													)
-												)*/
-												);
+								'post__not_in' => $hiddenarr,
+								);
 				$options = get_option("hk_theme");
 				if ($_REQUEST["orderby"] == "" && get_query_var("cat") != "" && in_array(get_query_var("cat"), split(",",$options["order_by_date"])) ) {
 					//$args['suppress_filters'] = 'true';
@@ -93,9 +108,9 @@
 		$shownPosts = array();
 		if ($cat != "") : 
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
-				/*echo get_field('hk_hide_from_category'); 
-				echo "-";
-				echo get_post_meta(get_the_ID(),'views',true); */
+				//echo get_field('hk_hide_from_category'); 
+				//echo "-";
+				//echo get_post_meta(get_the_ID(),'views',true); 
 				if ($wp_query->post_count == 1)
 					get_template_part( 'content', 'single' );
 				else
