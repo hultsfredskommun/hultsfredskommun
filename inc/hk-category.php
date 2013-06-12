@@ -3,14 +3,13 @@
 				// do query
 				$args = array(	'paged' => $paged,
 								'category__and' => array($cat),
-								'meta_query' => array(
-													//'relation' => 'OR',
+								/*'meta_query' => array(
 													array(
 														'key' => 'hk_hide_from_category',
-														'compare' => 'NOT EXISTS',
-													),
-
-												)
+														'compare' => '!=',
+														'value' => '1',
+													)
+												)*/
 												);
 				$options = get_option("hk_theme");
 				if ($_REQUEST["orderby"] == "" && get_query_var("cat") != "" && in_array(get_query_var("cat"), split(",",$options["order_by_date"])) ) {
