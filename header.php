@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Header for our theme.
  *
@@ -15,11 +16,15 @@ global $default_settings, $wp_query;
 $hk_options = get_option('hk_theme');
 
 
+/* hide if single and not visible */
+if (in_category($hk_options["hidden_cat"])) {
+	header("HTTP/1.0 404 Not Found");
+	//TODO print 404 error - include("404.php");?
+	die("Inte synlig.");
+}
  
 
 
-// redirect to first menu item in 'primary'-menu 
-// if on startpage, there are a 'primary' menu set and more than one top menu level
 
 
 //print_r($wp_query);

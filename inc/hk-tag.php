@@ -16,7 +16,7 @@
 				$cat_title = "kategorin <strong>" . single_tag_title("",false) . "</strong>";
 			}
 			else {
-				foreach(get_categories(array('parent' => 0, 'hide_empty' => true, 'exclude' => $default_settings["hidden_cat"])) as $c) :
+				foreach(get_categories(array('parent' => 0, 'hide_empty' => true)) as $c) :
 					$top_cat_arr[] = $c->cat_ID;
 				endforeach;
 				$cat_title = "<strong>hela webbplatsen</strong>";
@@ -38,40 +38,19 @@
 
 			foreach($top_cat_arr as $cat) :
 				
-				$children =  get_categories(array('child_of' => $cat, 'hide_empty' => true));
-				/*
-				$args = array( 'posts_per_page' => -1,
-				'ignore_sticky_posts' => 1,
-				'orderby' => 'title',
-				'order' => 'ASC',);
-				if ($cat != "")
-					$args["category__and"] = array($cat);
-				if ($tag != "")
-					$args["tag_slug__in"] = split(",",$tag);*/
-				?>
-			<?php
-				/*$catarr = array();
-				if ($cat != "") :
-					query_posts( $args ); ?>
-					<?php if ( have_posts() ) : 
-					$cslug = &get_category($cat);
-					$catarr[] = $cslug->slug; ?>
-					<h1><?php echo get_cat_name($cat) ?></h1>
-						<ul>
-						<?php while ( have_posts() ) : the_post(); ?>
-							<?php get_template_part( 'content', 'single-line' ); ?>
-							<?php $shownPosts[] = get_the_ID(); ?>
-						<?php endwhile; ?>
-						</ul>
-					<?php endif;
-					wp_reset_query(); // Reset Query 
-				endif;*/ 
-				?>
+				$childrenarr =  get_categories(array('child_of' => $cat, 'hide_empty' => true));
 				
-
-				<?php // get category child posts
+				// include parent cat in children array
+				$children = array();
+				$children[] = $cat;
+				foreach($childrenarr as $child) :
+					$children[] = $child->cat_ID;
+				endforeach;
 				
-				foreach ($children as $childcat) :
+				
+				// get category child posts
+				foreach ($children as $childcatid) :
+					$childcat = get_category($childcatid);
 					$args = array( 'posts_per_page' => -1,
 					'ignore_sticky_posts' => 1,
 					'orderby' => 'title',

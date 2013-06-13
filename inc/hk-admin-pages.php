@@ -218,7 +218,7 @@ if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled
 
 // normalize view count
 function hk_normalize_count($echolog = false) {
-
+	global $default_settings;
 	if (!function_exists( 'views_orderby' )) // don't do if plugin WP-PostViews not is enabled 
 		return;
 	
@@ -247,17 +247,17 @@ function hk_normalize_count($echolog = false) {
 		$new_views = 1;
 		if (empty($views)) {
 			if (is_sticky()) 
-				add_post_meta($post_id, "views", 100);
+				add_post_meta($post_id, "views", $default_settings["sticky_number"]);
 			else
 				add_post_meta($post_id, "views", 0);
 		}
 		else {
 			$new_views = $views[0];
-			if (is_sticky()) 
-				$new_views -= 100; // instead of sticky first in loop
+			if (is_sticky() && $new_views > $default_settings["sticky_number"]) 
+				$new_views -= $default_settings["sticky_number"]; // instead of sticky first in loop
 			$new_views = floor(sqrt($new_views));
 			if (is_sticky()) 
-				$new_views += 100; // instead of sticky first in loop
+				$new_views += $default_settings["sticky_number"]; // instead of sticky first in loop
 			
 			if (count($views) > 1)
 			{
@@ -404,7 +404,7 @@ function hk_cleanup_dashboard()
 
 
 	//My posts to review
-	wp_add_dashboard_widget('hk_mycomingreviews_dashboard_widget', 'Kommande granskningar', 'hk_display_mycomingreviews_dashboard_widget' );
+	wp_add_dashboard_widget('hk_mycomingreviews_dashboard_widget', 'Mina granskningar', 'hk_display_mycomingreviews_dashboard_widget' );
 	//My latest modified posts
 	wp_add_dashboard_widget('hk_mylatestposts_dashboard_widget', 'Mina senaste ändringar', 'hk_display_mylatestposts_dashboard_widget' );
 	//All my hidden posts
@@ -412,7 +412,7 @@ function hk_cleanup_dashboard()
 
 	
 	// remove incoming links info for authors or editors
-	if (in_array('author', $current_user->roles) || in_array('editor', $current_user->roles))
+	if (!current_user_can('administrator'))
 	{
 		//Incoming Links
 		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
@@ -421,7 +421,7 @@ function hk_cleanup_dashboard()
 		//Recent Comments
 		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
 	}
-    else if (in_array('administrator', $current_user->roles)) {
+    if (current_user_can('administrator')) {
 		//All posts to review
 		wp_add_dashboard_widget('hk_allcomingreviews_dashboard_widget', 'Alla kommande granskningar', 'hk_display_allcomingreviews_dashboard_widget' );
 		//All latest modified posts
@@ -510,12 +510,16 @@ function hk_display_allhidden_dashboard_widget ()
 // function to display my coming reviews dashboard widget
 function hk_display_mycomingreviews_dashboard_widget ()
 {
+	global $default_settings;
 	//define arguments for WP_Query()
 	$qargs = array(
+		'category__not_in' => array($default_settings["hidden_cat"]),
 		'author'=> get_current_user_id(),
+		'posts_per_page' => 10,
 		'orderby' => 'meta_value',
 		'meta_key' => 'hk_next_review',
-		'order' => 'ASC'	);
+		'order' => 'ASC' );
+		
 	// perform the query
 	$q = new WP_Query();
 	$q->query($qargs);
@@ -532,8 +536,11 @@ function hk_display_mycomingreviews_dashboard_widget ()
 // function to display my latest dashboard widget
 function hk_display_mylatestposts_dashboard_widget() 
 {
+	global $default_settings;
+
 	//define arguments for WP_Query()
 	$qargs = array(
+		'category__not_in' => array($default_settings["hidden_cat"]),
 		'author'=> get_current_user_id(),
 		'posts_per_page' => 10, 
 		'orderby' => 'modified_date', 
@@ -734,14 +741,7 @@ add_shortcode( 'karta', 'hk_map_shortcode_func' );
 /* checks before headers is sent, also add categories and tags to media */
 add_action('init', 'hk_init');
 function hk_init() {
-	$hk_options = get_option('hk_theme');
 	
-	/* hide if single and not visible */
-	if (is_single() && in_category($default_settings["hidden_cat"])) {
-		header("HTTP/1.0 404 Not Found");
-		//TODO print 404 error - include("404.php");?
-		die("Inte synlig.");
-	}
 
 	/* first of all set allow cookie if any */
 	if ($_REQUEST["cookies"]) {

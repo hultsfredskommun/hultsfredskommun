@@ -35,8 +35,10 @@ if ( ! isset( $default_settings ) ) {
 								'show_tags' => (!isset($hk_options["show_tags"]) || $hk_options["show_tags"] == "")?1:$hk_options["show_tags"],
 								'allow_cookies' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "",
 								'allow_google_analytics' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "" || $hk_options['google_analytics_disable_if_no_cookies'] != "1",
+								'sticky_number' => 100,
 								);
-								/* browser check */
+								
+	/* browser check */
 	$ua = $_SERVER["HTTP_USER_AGENT"];
 	$default_settings["msie"] = (strpos($ua, 'MSIE') === true) ? true : false; // All Internet Explorer
 	$default_settings["msie_6"] = (strpos($ua, 'MSIE 6.0') === true) ? true : false; // Internet Explorer 6
@@ -205,8 +207,8 @@ endif; // hk_setup
 
 function hk_exclude_category( $query ) {
 	global $default_settings;
-    if ( !is_admin() ) {
-        $query->set( 'category__not_in', $default_settings["hidden_cat"] );
+    if ( !is_admin() && !empty($default_settings["hidden_cat"]) && $default_settings["hidden_cat"] > 0) {
+        $query->set( 'cat', "-".$default_settings["hidden_cat"]);
     }
 }
 add_action( 'pre_get_posts', 'hk_exclude_category' );
