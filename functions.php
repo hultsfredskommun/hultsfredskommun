@@ -133,19 +133,22 @@ add_shortcode( 'categorytree', 'hk_category_tree_func' );
 function hk_pre_get_posts( $query ) {
 	global $default_settings, $wp_query;
 	$options = get_option("hk_theme");
-	
-	if ($query->is_home() && $query->is_main_query() && ( $locations = get_nav_menu_locations() ) && isset( $locations[ 'primary' ] ) && $default_settings["num_levels_in_menu"] > 1 ) {
+
+	$newcatarr = array();
+    if ( !is_admin() && !empty($default_settings["hidden_cat"]) && $default_settings["hidden_cat"] > 0) {
+        $newcatarr[] = "-".$default_settings["hidden_cat"];
+    }
+
+	if ($query->is_home()) {
 		$cat = $options["startpage_cat"];
 		if ($cat != "" && $cat != "0" ) {
-			$query->set( 'cat', $cat );
-		}
-		else {
-			$menu = wp_get_nav_menu_object( $locations[ 'primary' ] );
-			$menu_items = wp_get_nav_menu_items( $menu );
-			if (!empty($menu_items[0]) && $menu_items[0]->object_id != "" && $menu_items[0]->object_id != 0)
-				$wp_query->set("cat",$menu_items[0]->object_id);
+			//$query->set( 'cat', $cat );
+			$newcatarr[] = $cat;
 		}
     }
+	if (!empty($newcatarr)) {
+		$query->set( 'cat', implode(",",$newcatarr));
+	}
 }
 add_action( 'pre_get_posts', 'hk_pre_get_posts' );
 
@@ -204,14 +207,6 @@ function hk_setup() {
 }
 endif; // hk_setup
 
-
-function hk_exclude_category( $query ) {
-	global $default_settings;
-    if ( !is_admin() && !empty($default_settings["hidden_cat"]) && $default_settings["hidden_cat"] > 0) {
-        $query->set( 'cat', "-".$default_settings["hidden_cat"]);
-    }
-}
-add_action( 'pre_get_posts', 'hk_exclude_category' );
 
 
 /**
