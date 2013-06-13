@@ -134,21 +134,16 @@ function hk_pre_get_posts( $query ) {
 	global $default_settings, $wp_query;
 	$options = get_option("hk_theme");
 
-	$newcatarr = array();
     if ( !is_admin() && !empty($default_settings["hidden_cat"]) && $default_settings["hidden_cat"] > 0) {
-        $newcatarr[] = "-".$default_settings["hidden_cat"];
+		$query->set( 'category__not_in', array($default_settings["hidden_cat"]));
     }
 
-	if ($query->is_home()) {
+	if ($wp_query->is_home()) {
 		$cat = $options["startpage_cat"];
 		if ($cat != "" && $cat != "0" ) {
-			//$query->set( 'cat', $cat );
-			$newcatarr[] = $cat;
+			$wp_query->set( 'cat', $cat);
 		}
     }
-	if (!empty($newcatarr)) {
-		$query->set( 'cat', implode(",",$newcatarr));
-	}
 }
 add_action( 'pre_get_posts', 'hk_pre_get_posts' );
 
@@ -1027,7 +1022,7 @@ class topmenu_walker_nav_menu extends Walker_Nav_Menu {
 		global $wp_query;
 		
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
-	  
+
 		// depth dependent classes
 		$depth_classes = array(
 			( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
