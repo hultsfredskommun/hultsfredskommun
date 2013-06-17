@@ -21,15 +21,15 @@ if ($post) {
 
 } ?>
 <?php if ($url != "") : 
-	header("Location: $url");
+	//header("Location: $url");
 	//echo "<meta http-equiv='refresh' content='0;url=$url'>";
 endif;
-?><html><head></head><body><?php
-if ($url != "") :
-	echo "Skickas vidare till $url."; 
-else : 
-	echo "Ingen enkel adress hittades."; 
+
+if ($url != "") : ?>
+<html><head><?php echo "<meta http-equiv='refresh' content='0;url=$url'>"; ?></head><body>Du skickas nu vidare till <?php echo $url; ?>.</body></html>
+<?php else : ?>
+<html><head></head><body>Ingen enkel adress hittades.</body></html>
+<?php
 endif;
 
 /*if ($url != "") : wp_redirect( $url, 301 ); exit; else : echo "Ingen enkel adress hittades."; endif;*/?>
-</body></html>
