@@ -35,7 +35,7 @@ if ( ! isset( $default_settings ) ) {
 								'show_tags' => (!isset($hk_options["show_tags"]) || $hk_options["show_tags"] == "")?1:$hk_options["show_tags"],
 								'allow_cookies' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "",
 								'allow_google_analytics' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "" || $hk_options['google_analytics_disable_if_no_cookies'] != "1",
-								'sticky_number' => 100,
+								'sticky_number' => 1000,
 								);
 								
 	/* browser check */
@@ -78,6 +78,9 @@ require( get_template_directory() . '/inc/hk-sort-order.php' );
 
 // Grab hk admin-page to alter admin/edit pages
 require( get_template_directory() . '/inc/hk-admin-pages.php' );
+
+// Grab cron jobs
+require( get_template_directory() . '/inc/hk-cron.php' );
 
 // Grab hk sort-order function
 require( get_template_directory() . '/inc/hk-acf-fields.php' );

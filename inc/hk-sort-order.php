@@ -121,10 +121,30 @@
 
 	if( function_exists( 'views_orderby' )) {
 		function hk_add_views_fields($post_ID) {
-			global $wpdb;
+			global $wpdb, $default_settings;
 
-			if ( get_post_meta($post_ID, 'views', true) == "" ) {
-				add_post_meta($post_ID, 'views', 0, true);
+			
+			$views = get_post_meta($post_ID, 'views', false); // get views array
+
+			
+			$new_views = 0;
+			if (is_sticky()) 
+				$new_views = $default_settings["sticky_number"]; // instead of sticky in loop
+
+			if ( count($views) == 0  ) {
+				add_post_meta($post_ID, 'views', $new_views, true);
+			}
+			else if ( count($views) == 1  ) {
+				$new_views = $views[0];
+				if (is_sticky() && $new_views < $default_settings["sticky_number"]) 
+					$new_views += $default_settings["sticky_number"]; // instead of sticky in loop
+				if (!is_sticky() && $new_views >= $default_settings["sticky_number"]) 
+					$new_views -= $default_settings["sticky_number"]; // instead of sticky in loop
+				update_post_meta($post_ID, 'views', $new_views);
+			}
+			else {
+				delete_post_meta($post_ID, 'views');
+				add_post_meta($post_ID, 'views', $new_views, true);
 			}
 		}
 		function hk_delete_views_fields($post_ID) {
@@ -132,11 +152,12 @@
 			delete_post_meta($post_ID, 'views');
 		}
 
-		add_action('add_attachment', 'hk_add_views_fields');
-		add_action('edit_attachment', 'hk_add_views_fields');
+		//add_action('add_attachment', 'hk_add_views_fields');
+		//add_action('edit_attachment', 'hk_add_views_fields');
 		add_action('delete_attachment', 'hk_delete_views_fields');
 		add_action('add_post', 'hk_add_views_fields');
-		add_action('edit_post', 'hk_add_views_fields');
+		//add_action('edit_post', 'hk_add_views_fields');
+		add_action('save_post', 'hk_add_views_fields');
 		add_action('delete_post', 'hk_delete_views_fields');
 	}
 

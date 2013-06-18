@@ -219,7 +219,7 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. L&auml;gger till Lyssna i artikel.</label><br/><input type="text" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>			
 			<p><label for="hk_theme[typekit_url]">Typekit js url - http://&lt;resten av url&gt; f&ouml;r att l&auml;gga till typsnitt.</label><br/><input type="text" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
 			<p><label for="hk_theme[google_font]">Load google font - ex. <i>Oxygen:300,400,700</i> f&ouml;r att l&aumlgga till typsnitt.</label><br/><input type="text" name="hk_theme[google_font]" value="<?php echo $options['google_font']; ?>" /></p>
-			<p><label for="hk_theme[in_head_section]">script or other in &lt;head&gt;-section</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[in_head_section]"><?php echo $options['in_head_section']; ?></textarea></p>
+			<p><label for="hk_theme[in_head_section]">script or other in &lt;head&gt;-section</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[in_head_section]"><?php echo $options['in_head_section']; ?></textarea></p>
 			<?php submit_button(); ?>
 
 			<a name="statistik"></a>
@@ -236,6 +236,28 @@ function hk_theme_options_do_page() {
 
 			<a name="cron"></a>
 			<hr/><h2>Cron</h2>
+			
+			<?php if(function_exists("register_field_group")) : // if acf plugin enabled ?>
+			<h3>Sluta publicera</h3>
+			<p><input type="checkbox" name="hk_theme[enable_cron_stop_publish]" <?php echo ($options['enable_cron_stop_publish'])?"checked":""; ?> /> 
+			<label for="hk_theme[enable_cron_stop_publish]">Aktivera sluta publicera.</label> <?php echo (wp_next_scheduled( 'hk_stop_publish_event' ))?"Aktiverat.":"Inaktiverat."; ?></p>
+			<?php 
+			if ($options['enable_cron_stop_publish']) {
+				if ( !wp_next_scheduled( 'hk_stop_publish_event' ) ) {
+					wp_schedule_event( time(), 'hk_five_minutes', 'hk_stop_publish_event');
+				}
+			}
+			else
+			{
+				if ( wp_next_scheduled( 'hk_stop_publish_event' ) ) {
+					wp_clear_scheduled_hook('hk_stop_publish_event');
+				}
+			}
+			?>
+			Kollar "sluta publicera" <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_stop_publish_event' )); ?></b> nästa gång. <br> 
+			LOG: <br><textarea name="hk_theme[hk_stop_publish_log]" cols=100 rows=5><?php echo $options["hk_stop_publish_log"]; ?></textarea>
+			<?php endif; ?>
+			
 			<h3>Granskningsmail</h3>
 			<p><input type="checkbox" name="hk_theme[enable_cron_review_mail]" <?php echo ($options['enable_cron_review_mail'])?"checked":""; ?> /> 
 			<label for="hk_theme[enable_cron_review_mail]">Aktivera granskningsmail.</label> <?php echo (wp_next_scheduled( 'hk_review_mail_event' ))?"Aktiverat.":"Inaktiverat."; ?></p>
@@ -257,7 +279,7 @@ function hk_theme_options_do_page() {
 			}
 			?>
 			Skickar granska mail <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_review_mail_event' )); ?></b> nästa gång. <br> 
-			LOG: <br><textarea name="hk_theme[hk_review_mail_log]" cols=60 rows=3><?php echo $options["hk_review_mail_log"]; ?></textarea>
+			LOG: <br><textarea name="hk_theme[hk_review_mail_log]" cols=100 rows=5><?php echo $options["hk_review_mail_log"]; ?></textarea>
 			
 			
 			<?php
@@ -290,7 +312,7 @@ function hk_theme_options_do_page() {
 					update_option("hk_theme", $opt);
 				}
 			?>
-			LOG:<br> <textarea name="hk_theme[hk_normalize_count_log]" cols=60 rows=3><?php echo $log . $options["hk_normalize_count_log"]; ?></textarea> </p>
+			LOG:<br> <textarea name="hk_theme[hk_normalize_count_log]" cols=100 rows=5><?php echo $log . $options["hk_normalize_count_log"]; ?></textarea> </p>
 			<?php endif; // endif (function_exists( 'views_orderby' ))?>
 			<?php submit_button(); ?>
 

@@ -351,48 +351,70 @@ if(function_exists("register_field_group"))
 
 	
 	/* POST STOP PUBLISH */
-	register_field_group(array (
-		'id' => '5048edc032149',
-		'title' => 'Sluta publicera',
-		'fields' => 
-		array (
-			0 => 
-			array (
-				'key' => 'field_5046fe5d332c7',
-				'label' => 'Datum',
-				'name' => 'hk_stop_publish',
-				'type' => 'date_picker',
-				'instructions' => '',
-				'required' => '0',
-				'date_format' => 'yymmdd',
-				'display_format' => 'dd/mm/yy',
-				'order_no' => '0',
-			),
-		),
-		'location' => 
-		array (
-			'rules' => 
-			array (
-				0 => 
+	$options = get_option("hk_theme");
+	if ($options['enable_cron_stop_publish']) {
+		register_field_group(array (
+			'id' => 'acf_sluta-publicera',
+			'title' => 'Sluta publicera',
+			'fields' => array (
 				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-					'order_no' => '0',
+					'date_format' => 'yymmdd',
+					'display_format' => 'yy-mm-dd',
+					'first_day' => 1,
+					'key' => 'field_51bffccf1a73f',
+					'label' => 'Datum',
+					'name' => 'hk_stop_publish_date',
+					'type' => 'date_picker',
+				),
+				array (
+					'multiple' => 0,
+					'allow_null' => 0,
+					'choices' => array (
+						7 => '7:00',
+						8 => '8:00',
+						9 => '9:00',
+						10 => '10:00',
+						11 => '11:00',
+						12 => '12:00',
+						13 => '13:00',
+						14 => '14:00',
+						15 => '15:00',
+						16 => '16:00',
+						17 => '17:00',
+						18 => '18:00',
+						19 => '19:00',
+						20 => '20:00',
+						21 => '21:00',
+						22 => '22:00',
+					),
+					'default_value' => 12,
+					'key' => 'field_51bffe875ccc4',
+					'label' => 'Tid',
+					'name' => 'hk_stop_publish_hour',
+					'type' => 'select',
 				),
 			),
-			'allorany' => 'all',
-		),
-		'options' => 
-		array (
-			'position' => 'side',
-			'layout' => 'default',
-			'hide_on_screen' => 
-			array (
+			'location' => array (
+				array (
+					array (
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'post',
+						'order_no' => 0,
+						'group_no' => 0,
+					),
+				),
 			),
-		),
-		'menu_order' => 1,
-	));
+			'options' => array (
+				'position' => 'side',
+				'layout' => 'default',
+				'hide_on_screen' => array (
+				),
+			),
+			'menu_order' => 10,
+		));
+
+	}
 		
 	/* POST EXTERNAL LINK */
 	register_field_group(array (

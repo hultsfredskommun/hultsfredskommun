@@ -15,16 +15,17 @@
 				$dyn_query = new WP_Query();
 				$dyn_query->query($args);
 
-				/* Start the Loop */
+				/* Start the hidden posts Loop */
 				$hiddenarr = array();
 				while ( $dyn_query->have_posts() ) : $dyn_query->the_post();
 					$hiddenarr[] = get_the_ID();
 				endwhile;
 
-				// do query
+				// do category list query
 				$args = array(	'paged' => $paged,
 								'category__and' => array($cat),
 								'post__not_in' => $hiddenarr,
+								
 								);
 				$options = get_option("hk_theme");
 				if ($_REQUEST["orderby"] == "" && get_query_var("cat") != "" && in_array(get_query_var("cat"), split(",",$options["order_by_date"])) ) {
@@ -110,7 +111,9 @@
 			if ( have_posts() ) : while ( have_posts() ) : the_post();
 				//echo get_field('hk_hide_from_category'); 
 				//echo "-";
-				//echo get_post_meta(get_the_ID(),'views',true); 
+				/*echo get_post_meta(get_the_ID(),'views',true); 
+				if (is_sticky())
+					echo "sticky";*/
 				if ($wp_query->post_count == 1)
 					get_template_part( 'content', 'single' );
 				else
