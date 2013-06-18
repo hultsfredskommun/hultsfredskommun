@@ -44,7 +44,7 @@ function hk_save_post($postID) {
 	
 	// set to hidden_cat if stop publish date and time has past
 	if(function_exists("register_field_group")) : // if acf plugin enabled 
-		if (get_field("hk_stop_publish_date") <= date("Ymd")) {
+		if (get_field("hk_stop_publish_date") != "" && get_field("hk_stop_publish_date") <= date("Ymd")) {
 			if (get_field("hk_stop_publish_hour") <= date("G")) {
 				$arr = wp_get_post_categories(get_the_ID());
 				$arr[] = $options["hidden_cat"];
