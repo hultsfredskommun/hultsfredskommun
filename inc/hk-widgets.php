@@ -616,7 +616,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_protocol"
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['icon'] = strip_tags( $new_instance['icon'] );
+		$instance['icon'] = $new_instance['icon'];
 		$instance['menu'] = strip_tags( $new_instance['menu'] );
 		
 		return $instance;
