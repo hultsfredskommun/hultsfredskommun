@@ -342,6 +342,8 @@ function hk_theme_options_do_page() {
 			<a name="info"></a>
 			<hr/><h2>Information om standardinställningar</h2>
 			date_default_timezone_get() : <?php echo date_default_timezone_get(); ?><br>
+			dag och tid (current_time): <?php echo date("Y-m-d H:i:s",current_time('timestamp',0)); ?>
+			dag och tid: <?php echo date("Y-m-d H:i:s"); ?>
 
 			
 			
