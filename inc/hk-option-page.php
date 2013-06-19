@@ -38,6 +38,8 @@ function hk_theme_options_do_page() {
 			<a href="#cron">Cron</a>
 			<a href="#sidfot">Sidfot</a>
 			<a href="#barntema">Barntema</a>
+			<a href="#info">Standardinställningar</a>
+			
 
 			<a name="mobil"></a>
 			<hr/><h2>Mobil</h2>
@@ -337,6 +339,12 @@ function hk_theme_options_do_page() {
 			<?php echo do_action('hk_options_hook', $options); ?>			
 			<?php submit_button(); ?>
 
+			<a name="info"></a>
+			<hr/><h2>Information om standardinställningar</h2>
+			date_default_timezone_get() : <?php echo date_default_timezone_get(); ?><br>
+
+			
+			
 			<hr/><h2>Anv&auml;nds inte just nu:</h2>
 			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
 				<tr valign="top">
