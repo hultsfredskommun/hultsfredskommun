@@ -350,6 +350,7 @@ if(function_exists("register_field_group"))
 
 	
 	/* POST STOP PUBLISH */
+	$options = get_option("hk_theme");
 	if ($options['enable_cron_stop_publish']) {
 		register_field_group(array (
 			'id' => 'acf_sluta-publicera',
