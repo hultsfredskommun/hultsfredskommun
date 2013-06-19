@@ -18,13 +18,20 @@
 	@extend .padding--top;
 	@extend .padding--bottom;
 	//@extend .border--top;
+	h1 {
+		@extend .noborder;
+		padding: 12px 0 0;
+	}
 	ul {
 		@extend .nav;
 		@extend .nav--stacked;
 		@extend .nav--block;
 		@extend .nav--block-half-margin;
-		@extend .half-margin--left;
 		white-space: normal;
+		li a {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 	.content {
 		@extend .margin--left;

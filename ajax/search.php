@@ -104,7 +104,7 @@
 		do_action('hk_post_ajax_search', $searchstring);
 		
 		if ($options["external_search_title"] != "" && $options["external_search_url"] != "")
-			echo "<a href='" . $options["external_search_url"] . $searchstring . " ' title='" . $options["external_search_title"] . "'>" . $options["external_search_title"] . "</a>";
+			echo "<a class='islet' href='" . $options["external_search_url"] . $searchstring . " ' title='" . $options["external_search_title"] . "'>" . $options["external_search_title"] . "</a>";
 
 	endif;
 ?>
