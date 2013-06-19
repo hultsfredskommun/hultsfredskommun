@@ -2,6 +2,11 @@
 	background-image: url("../images/icons/ikoner.svg");
 	display: inline-block;
 }
+.clip_30x30 {
+	@extend .clip;
+	width: 30px;
+	height: 30px;
+}
 .clip_24x24 {
 	@extend .clip;
 	width: 24px;
@@ -22,6 +27,78 @@
 	width: 12px;
 	height: 12px;
 }
+/* aside icons */
+.aside_icon {
+	@extend .clip_16x16;
+	margin-top: 3px;
+}
+.contact-icon {
+	@extend .aside_icon;
+	background-position: -26px -229px;
+}
+.related-file-icon {
+	@extend .aside_icon;
+	background-position: -25px -165px;
+}
+.related-post-icon {
+	@extend .aside_icon;
+	background-position: -26px -198px;
+}
+.related-link-icon {
+	@extend .aside_icon;
+	background-position: -133px -198px;
+}
+.print-icon {
+	@extend .aside_icon;
+	background-position: -26px -263px;
+}
+.speak-icon {
+	@extend .aside_icon;
+	background-position: -27px -305px;
+}
+.friend-icon {
+	@extend .aside_icon;
+	background-position: -29px -422px;
+}
+.edit-icon {
+	@extend .aside_icon;
+	background-position: -25px -94px;
+}
+
+/* menu */
+.navigation-icon {
+	@extend .clip_20x20;
+	margin: 4px 0 0 -8px;
+	padding: 0!important;
+	float: left;
+}
+.cat-icon {
+	@extend .navigation-icon;
+	background-position: -28px -334px;
+}
+.tag-icon {
+	@extend .navigation-icon;
+	background-position: -28px -366px;
+}
+.delete-icon {
+	@extend .clip_20x20;
+	background-position: -183px -49px;
+	float: right;
+	margin: 4px 4px 0 0;
+}
+
+
+.close-button {
+	@extend .clip_20x20;
+	background-position: -183px -49px;
+}
+.totop-icon {
+	@extend .clip_30x30;
+	background-position: -30px -767px;
+}
+
+
+
 .dropdown-icon {
 	@extend .clip_12x12;
 	margin-left: 2px;

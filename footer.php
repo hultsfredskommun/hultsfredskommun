@@ -103,7 +103,7 @@ global $default_settings;
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-<div id="scrollTo_top" class="scrolltotop"><a href="#"><i class="i" data-icon="&#xF010;"></i></a></div>
+<div id="scrollTo_top" class="scrolltotop"><a href="#"></a></div>
 <div id="log" class="flush--bottom  position-fixed--bottom-right  island  hidden"></div>
 </body>
 </html>

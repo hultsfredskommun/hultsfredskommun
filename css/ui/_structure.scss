@@ -148,11 +148,6 @@ img {
 
 .icon-left {
 	@extend .float--left;
-	@extend .milli;
-	width: $base-spacing-unit;
-	.i {
-		@extend .force-default-text;
-	}
 }
 
 .icon-right {
@@ -160,6 +155,16 @@ img {
 	@extend .padding--right;
 	@extend .one-whole;
 }
+
+.scrolltotop {
+	@extend .flush--bottom;
+	@extend .position-fixed--bottom-right;
+	@extend .island;
+	a {
+		@extend .totop-icon;
+	}
+}
+	
 @include media-query(portable){
 .icon-left {
     line-height: 1.7em !important;

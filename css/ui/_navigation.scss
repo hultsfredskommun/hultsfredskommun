@@ -63,16 +63,6 @@
 					@extend .unhidden;
 				}
 			}
-			.icon-left {
-				i {
-					font-size: 90%;
-				}
-				padding-top: 0!important;
-				padding-left: 0!important;
-				padding-right: $half-spacing-unit!important;
-				width: $half-spacing-unit!important;
-				margin-left: -$half-spacing-unit/2!important;
-			}	
 			.children {
 				@extend .hidden;
 				@extend .half-padding--left;
@@ -99,21 +89,6 @@
 		li {
 			@extend .default-text;
 			@extend .border-line--left;
-			.icon-left {
-				i {
-					font-size: 90%;
-				}
-				padding-top: 0!important;
-				padding-bottom: 0!important;
-				padding-left: 0!important;
-				padding-right: $half-spacing-unit!important;
-				width: $half-spacing-unit!important;
-				margin-left: -$half-spacing-unit/2!important;
-			}	
-			&.current-tag .icon-left {
-				@extend .float--right;
-				@extend .half-margin--right;
-			}
 			&.current-tag {
 				@extend .gray-light-background;
 			}

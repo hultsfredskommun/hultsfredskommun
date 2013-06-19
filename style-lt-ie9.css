@@ -1,5 +1,5 @@
 /* sprite png */
-.clip, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .menu-icon, .search-icon, .clip_16x16, .clip_12x12, .dropdown-icon, .searchnavigation .submit {
+.clip, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .cat-icon, .tag-icon, .delete-icon, .close-button, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .dropdown-icon, .searchnavigation .submit {
 	background-image: url("images/icons/ikoner.png");
 }
 /* hide */

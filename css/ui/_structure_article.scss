@@ -280,6 +280,9 @@ article.single .map_canvas {
 
 
 /* aside content */
+.side-content ul li {
+	@extend .cf;
+}
 .box li {
 }
 .contacts,
@@ -290,6 +293,9 @@ article.single .map_canvas {
 }
 .tools {
 	@extend .flush--bottom;
+}
+.side-content .post-edit-link {
+	@extend .icon-right;
 }
 .readspeaker_toolbox {
 	display: none;

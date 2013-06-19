@@ -67,7 +67,7 @@ function hk_related_init() {
 }
 
 // generates the output of the content to the widget
-function hk_related_output($wrapping_li = true, $show_icons = true) {
+function hk_related_output($wrapping_li = true) {
 
 	if (!function_exists("get_field"))
 		return "You need to install ACF to get this widget to work, read more in readme.txt.";
@@ -110,37 +110,25 @@ function hk_related_output($wrapping_li = true, $show_icons = true) {
 					while (has_sub_field('hk_related')) : 
 						if ( get_row_layout() == 'hk_related_posts' ) : 
 							$retValue .= "<li class='related_page'>";
-							if ($show_icons)
-								$retValue .= "<a title='Relaterat inl&auml;gg' class='icon-left'><i class='i' data-icon='&#xF143;'></i></a>";
 							$value = get_sub_field('hk_related_post');
 							$retValue .= "<a href='" . get_permalink($value->ID) . "'";
-							if ($show_icons)
-								$retValue .= " class='icon-right'";
 							$retValue .= " title='" . get_sub_field('hk_related_post_description') . "'>" . $value->post_title . "</a>";
 							$retValue .= "</li>";		 
 						elseif ( get_row_layout() == 'hk_related_links' ) : 
 							$retValue .= "<li class='related_link'>";
-							if ($show_icons)
-								$retValue .= "<a title='L&auml;nk till annan webbsida' class='icon-left'><i class='i' data-icon='&#xF143;'></i></a>";
 							// prepend http:// if not there already
 							$relate_link_url = get_sub_field('hk_relate_link_url');
 							if (substr_compare($relate_link_url, 'http', 0, 4) != 0) {
 								$relate_link_url = 'http://' . $relate_link_url;
 							}
 							$retValue .= "<a target='_blank'";
-							if ($show_icons)
-								$retValue .= " class='icon-right'";
 							$retValue .= " href='" . $relate_link_url . "' title='" . get_sub_field('hk_related_link_description') . "'>" . get_sub_field('hk_related_link_name') . "</a>";
 							$retValue .= "</li>";
 						elseif ( get_row_layout() == 'hk_related_files' ) :
 							$link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
 							$link_name = get_the_title(get_sub_field('hk_related_file'));
 							$retValue .= "<li class='related_file'>";
-							if ($show_icons)
-								$retValue .= "<a title='Ladda ner dokument' class='icon-left'><i class='i' data-icon='&#xF019;'></i></a>";
 							$retValue .= "<a target='_blank'";
-							if ($show_icons)
-								$retValue .= " class='icon-right'";
 							$retValue .= " href='" . $link . "' title='" . get_sub_field('hk_related_file_description') . "'>" . $link_name . "</a>";
 							$retValue .= "</li>";
 						endif;

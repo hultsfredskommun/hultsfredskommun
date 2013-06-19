@@ -223,7 +223,7 @@ if (typeof $.fn.googlemaplink != 'function') {
 					// google analytics
 					push_google_analytics("#googlemap=" + address + " " + coordinates);
 
-					$(".contact-popup.box").prepend("<div class='close-contact'><i class='i' data-icon='&#xF14E;'></div></div>");
+					$(".contact-popup.box").prepend("<div class='close-contact close-button'></div>");
 					$(".close-contact").unbind("click").bind("click",function() {
 						$(".contact-popup").remove();
 					});
@@ -409,23 +409,14 @@ function readMoreToggle(el){
 					
 					$(article).find('.openButton').hide();
 					//add close-button top right corner
-					/*
-					var closea = $('<div>').addClass('closeButton button top').html("<i class='i' data-icon='&#xF148;'></i><a href='#'>Visa mindre</a>").unbind("click").bind("click",function(ev){
-						ev.preventDefault();
-						readMoreToggle( $(this).parents("article").find(".entry-title a") );
-					});*/
-					var closeb = $('<div>').addClass('closeButton button bottom').html("<i class='i' data-icon='&#xF148;'></i><a href='#'>Visa mindre</a>").unbind("click").bind("click",function(ev){
+					var closeb = $('<div>').addClass('closeButton button bottom').html("<a href='#'>Visa mindre</a>").unbind("click").bind("click",function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(this).parents("article")/*.prepend(closea)*/.append(closeb);
-
-					// scroll to top of post 
-					//$("html,body").animate({scrollTop: $(this).parents("article").position().top - $('#wpadminbar').height() || 0}, 150);
+					$(this).parents("article").append(closeb);
 
 					// articles slideshow
-					$(this).slideshow();
-					
+					$(this).slideshow();					
 
 				});
 			});
@@ -619,17 +610,6 @@ $(document).ready(function(){
 	 * view-modes 
 	 */
 	// show framed articles click action
-	/*$("#viewmode").unbind("hover").hover(function() {
-		$(this).append("<div id='all_title_div'></div>");
-		$("#content article .entry-title").each(function() {
-			if ($(this).find("a").length > 1) {
-				$("#all_title_div").append($(this).html());	
-			}
-		});
-		$("#all_title_div a.post-edit-link").remove(); // cleanup if edit links added
-	}, function() {
-		$("#all_title_div").remove();
-	});*/
 	$(".js-view-summary").unbind("click").bind("click",function(ev){
 		$("#content").addClass("viewmode-only-titles");
 		$(".js-view-titles").removeClass("active");
@@ -643,21 +623,6 @@ $(document).ready(function(){
 		$(".js-view-summary").removeClass("active");
 		ev.preventDefault();
 	});
-/*	
-	if (isMobile.iOS()) {
-		$(".js-ios-goto-footer").unbind("hover").bind("hover",function(ev){
-			ev.preventDefault();
-			$(".js-ios-goto-footer").find(".sub-menu").hide();
-			var aTag = $("a[name='footer']");
-			$('html,body').animate({scrollTop: aTag.offset().top},'slow');
-		});
-		$(".js-ios-goto-footer").unbind("click").bind("click",function(ev){
-			var aTag = $("a[name='footer']");
-			$('html,body').animate({scrollTop: aTag.offset().top},'slow');
-			ev.preventDefault();
-		});
-	}
-*/	
 	/* add action to read-more toggle, if in .home or in lt ie9, go to article */
 	$("#primary").find("article").each(function(){
 		if (!$(this).parents(".home").length && !isLessThenIE9) {
@@ -668,14 +633,6 @@ $(document).ready(function(){
 			});
 		}
 	});
-	/* add action to expand tag listing */
-	/*$(".tag-listing").find("li").each(function(){
-		$(this).find(".link").click(function(ev) {
-			$(this).next(".content-area").toggle();
-			ev.preventDefault();
-			ev.stopPropagation();			
-		});
-	});*/
 	// contact popup
 	$(".js-contact-link").each(function() {
 		setContactPopupAction($(this));
@@ -705,7 +662,7 @@ $(document).ready(function(){
 		
 		
 		/* show scroll to top icon */
-		if( $(this).scrollTop() > 1000 ) {
+		if( $(this).scrollTop() > 300 ) {
 			$('#scrollTo_top').fadeIn(300);
 		}
 		else {
@@ -1115,7 +1072,7 @@ function contactAction(el,ev) {
 				push_google_analytics(thepage);
 			}
 
-			$(this).find(".entry-wrapper").before("<div class='close-contact'><i class='i' data-icon='&#xF14E;'></i></div>");
+			$(this).find(".entry-wrapper").before("<div class='close-contact close-button'></div>");
 			$(".close-contact").unbind("click").bind("click",function() {
 				$(".contact-popup").remove();
 			});

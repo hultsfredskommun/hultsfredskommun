@@ -209,7 +209,9 @@ function hk_navigation() {
 		);
 		//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($category) . "</a>";
 		echo "<ul class='parent'>"; 
-		echo "<li class='heading cat-item $sub_parent current-cat-parent cat-has-children'><a href='#' class='icon-left'><i class='i' data-icon='&#xF09B;'></i></a><a href='".get_category_link($sub_parent)."'>".get_the_category_by_ID($sub_parent)."</a></li>";
+		$p = get_the_category_by_ID($sub_parent);
+		if (!empty($p))
+			echo "<li class='heading cat-item $sub_parent current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='".get_category_link($sub_parent)."'>".$p."</a></li>";
 		wp_list_categories( $args );
 		echo "</ul>"; 
 		//print_r($all_categories);
@@ -218,7 +220,7 @@ function hk_navigation() {
 		
 		if (!empty($rest_categories)) {
 			echo "<ul class='more-navigation'>";
-			echo "<li class='heading cat-item current-cat-parent cat-has-children'><a href='#' class='icon-left'><i class='i' data-icon='&#xF09B;'></i></a><a href='#'>Artikeln ing&aring;r &auml;ven i kategorierna</a></li>";
+			echo "<li class='heading cat-item current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='#'>Artikeln ing&aring;r &auml;ven i kategorierna</a></li>";
 				foreach($rest_categories as $item) {
 					$cat = get_term( $item, "category");
 					if (!empty($cat)) {
@@ -266,7 +268,7 @@ function hk_navigation() {
 			if ($parentCat == $cat) {
 				$currentcat = 'current-cat';
 			}
-			echo "<li class='heading cat-item $currentcat current-cat-parent cat-has-children'><a href='#' class='icon-left'><i class='i' data-icon='&#xF09B;'></i></a><a href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."</a></li>";
+			echo "<li class='heading cat-item $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."</a></li>";
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
@@ -480,7 +482,7 @@ class hk_Tag_Walker extends Walker_Category {
 			$icon = "";
 			if ($current_tag) {
 				$class .=  ' current-tag'; 
-				$icon = "<a href='$href' class='icon-left'><i class='i' data-icon='&#xF14E;'></i></a>";
+				$icon = "<a href='$href' class='delete-icon'></a>";
 			}
 			$output .=  ' class="'.$class.'"'; 
 			$output .= ">$icon$link</li>\n"; 
@@ -515,7 +517,7 @@ function displayTagFilter($show_title = true) {
 
 		echo "<ul class='more-navigation'>"; 
 		if ($show_title) {
-			echo "<li class='heading cat-item'><a href='#' class='icon-left'><i class='i' data-icon='&#xF0AD;'></i></a><a href='#'>Typ av information</a></li>";
+			echo "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Typ av information</a></li>";
 		}
 		if ($_REQUEST["tag"] != "" && get_query_var("cat") != "")
 		{

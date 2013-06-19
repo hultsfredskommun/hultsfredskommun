@@ -82,7 +82,7 @@ class HK_quickmenu extends WP_Widget {
 				$show_tags = $default_settings["show_tags"];
 			
 			// get quickmenu
-			$quickmenu = hk_related_output(false,false);
+			$quickmenu = hk_related_output(false);
 			?>
 		<div id="quickmenus" class="widget  js-tabs  hidden">
 			<ul class="post_tabs_title">

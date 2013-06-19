@@ -85,7 +85,7 @@
 				<?php //echo "<pre>"; print_r($wp_query); echo "</pre>"; ?>
 
 			<ul class="category-tools">
-				<?php echo hk_related_output(true,false);	?>
+				<?php echo hk_related_output(true);	?>
 				
 			</ul>
 			<ul class="view-tools">
