@@ -252,13 +252,13 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 		$instance = array();
 		$instance['direct_link1_url'] = strip_tags( $new_instance['direct_link1_url'] );
 		$instance['direct_link1_title'] = strip_tags( $new_instance['direct_link1_title'] );
-		$instance['direct_link1_icon'] = strip_tags( $new_instance['direct_link1_icon'] );
+		$instance['direct_link1_icon'] = $new_instance['direct_link1_icon'];
 		$instance['direct_link2_url'] = strip_tags( $new_instance['direct_link2_url'] );
 		$instance['direct_link2_title'] = strip_tags( $new_instance['direct_link2_title'] );
-		$instance['direct_link2_icon'] = strip_tags( $new_instance['direct_link2_icon'] );
+		$instance['direct_link2_icon'] = $new_instance['direct_link2_icon'];
 		$instance['direct_link3_url'] = strip_tags( $new_instance['direct_link3_url'] );
 		$instance['direct_link3_title'] = strip_tags( $new_instance['direct_link3_title'] );
-		$instance['direct_link3_icon'] = strip_tags( $new_instance['direct_link3_icon'] );
+		$instance['direct_link3_icon'] = $new_instance['direct_link3_icon'];
 		return $instance;
 	}
 
@@ -452,6 +452,12 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		if ( isset( $instance[ 'num_protocol' ] ) ) { $num_protocol = $instance[ 'num_protocol' ];
 		} else { $num_protocol = $this->vars['num_protocol']; }
 
+		if ( isset( $instance[ 'show_more_link' ] ) ) { $show_more_link = $instance[ 'show_more_link' ];
+		} else { $show_more_link = ""; }
+
+		if ( isset( $instance[ 'show_all_categories' ] ) ) { $show_all_categories = $instance[ 'show_all_categories' ];
+		} else { $show_all_categories = ""; }
+
 		$options = get_option('hk_theme');
 
 		?>
@@ -463,6 +469,14 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		<label for="<?php echo $this->get_field_id( 'num_protocol' ); ?>">Antal protokoll.</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'num_protocol' ); ?>" name="<?php echo $this->get_field_name( 'num_protocol' ); ?>" type="text" value="<?php echo esc_attr( $num_protocol); ?>" />
 		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'show_more_link' ); ?>">"Visa mer"-länk, ange text för vad det ska stå i länken.</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_more_link' ); ?>" name="<?php echo $this->get_field_name( 'show_more_link' ); ?>" type="text" value="<?php echo esc_attr( $show_more_link); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'show_all_categories' ); ?>">"Visa protokoll från"-lista, ange text för vad som ska stå som rubrik .</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_all_categories' ); ?>" name="<?php echo $this->get_field_name( 'show_all_categories' ); ?>" type="text" value="<?php echo esc_attr( $show_all_categories); ?>" />
+		</p>
 		
 		<?php
 	}
@@ -471,6 +485,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$instance = array();
 		$instance['show_protocol'] = strip_tags( $new_instance['show_protocol'] );
 		$instance['num_protocol'] = strip_tags( $new_instance['num_protocol'] );
+		$instance['show_more_link'] = strip_tags( $new_instance['show_more_link'] );
+		$instance['show_all_categories'] = strip_tags( $new_instance['show_all_categories'] );
 		return $instance;
 	}
 
@@ -508,8 +524,18 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						// Reset Query
 						wp_reset_query(); 
 				?>
+				<?php if ($instance["show_more_link"] == "") : 
+					$cat_link = esc_url(get_category_link($default_settings["protocol_cat"]));
+					$show_more_link = $instance["show_more_link"];
+					?>
+					<div id="protocollink">
+						<?php echo "<a href='$cat_link title='$show_more_link'>$show_more_link</a>"; ?>
+					</div>
+				<?php endif; ?>
+				
+				<?php if ($instance["show_all_categories"] == "") : ?>
 					<div id="protocolcategories">
-						<div class="entry-title">Visa protokoll fr&aring;n</div><ul>
+						<div class="entry-title"><?php echo $instance["show_all_categories"]; ?></div><ul>
 						<?php 
 						 $args = array(
 							'hide_empty'         => 0,
@@ -526,6 +552,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						?>			
 						</ul>
 					</div>
+				<?php endif; ?>
 				
 			</div>	
 		<?php endif; ?>
@@ -604,7 +631,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_protocol"
 			
 			echo $before_widget;
 			if ( ! empty( $title ) ) {
-				echo $before_title . "<i class='i' data-icon='" . $instance['icon'] . "'></i>" . $title . $after_title;
+				echo $before_title . $instance['icon'] . $title . $after_title;
 			}
 			
 			wp_nav_menu( array(
@@ -675,7 +702,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['icon'] = strip_tags( $new_instance['icon'] );
+		$instance['icon'] = $new_instance['icon'];
 		$instance['text'] =  $new_instance['text'];
 		$instance['show_widget_in_cat'] = strip_tags( $new_instance['show_widget_in_cat'] );
 		
@@ -691,7 +718,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 				
 				echo $before_widget;
 				if ( ! empty( $title ) ) {
-					echo $before_title . "<i class='i' data-icon='" . $instance['icon'] . "'></i>" . $title . $after_title;
+					echo $before_title . $instance['icon'] . $title . $after_title;
 				}
 				
 				echo "<div class='content'>" . $instance["text"] . "</div>";

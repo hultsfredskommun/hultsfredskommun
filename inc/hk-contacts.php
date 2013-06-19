@@ -303,7 +303,7 @@ function hk_contact_firstpage($contactargs) {
 				endif;
 				// add link and title
 				$retValue .= "<h1 class='entry-title'>";
-				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><i class='i' data-icon='&#xF170;'></i>Kontakta "; 
+				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='half-margin--right contact-icon'></span>Kontakta "; 
 				$retValue .= get_the_title();
 				$retValue .= "</a>"; 
 				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
@@ -343,7 +343,7 @@ function hk_contact_firstpage($contactargs) {
 					if ($contactargs['direct_link1_url'] != "" && $contactargs['direct_link1_title'] != "") :
 						$retValue .= "<li class='direct_link direct_link1'>";
 						$retValue .= "<a href='" . $contactargs['direct_link1_url'] . "'>";
-						if ($contactargs['direct_link1_icon'] != "") : $retValue .= "<i class='i' data-icon='" . $contactargs['direct_link1_icon'] . "'></i>"; endif;
+						if ($contactargs['direct_link1_icon'] != "") : $retValue .= $contactargs['direct_link1_icon']; endif;
 						$title = $contactargs['direct_link1_title'];
 						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
 						$title = str_replace("]",")</span>", $title);
@@ -352,7 +352,7 @@ function hk_contact_firstpage($contactargs) {
 					if ($contactargs['direct_link2_url'] != "" && $contactargs['direct_link2_title'] != "") :
 						$retValue .= "<li class='direct_link direct_link2'>";
 						$retValue .= "<a href='" . $contactargs['direct_link2_url'] . "'>";
-						if ($contactargs['direct_link2_icon'] != "") : $retValue .= "<i class='i' data-icon='" . $contactargs['direct_link2_icon'] . "'></i>"; endif;
+						if ($contactargs['direct_link2_icon'] != "") : $retValue .=  $contactargs['direct_link2_icon']; endif;
 						$title = $contactargs['direct_link2_title'];
 						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
 						$title = str_replace("]",")</span>", $title);
@@ -361,7 +361,7 @@ function hk_contact_firstpage($contactargs) {
 					if ($contactargs['direct_link3_url'] != "" && $contactargs['direct_link3_title'] != "") :
 						$retValue .= "<li class='direct_link direct_link3'>";
 						$retValue .= "<a href='" . $contactargs['direct_link3_url'] . "'>";
-						if ($contactargs['direct_link3_icon'] != "") : $retValue .= "<i class='i' data-icon='" . $contactargs['direct_link3_icon'] . "'></i>"; endif;
+						if ($contactargs['direct_link3_icon'] != "") : $retValue .= $contactargs['direct_link3_icon']; endif;
 						$title = $contactargs['direct_link3_title'];
 						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
 						$title = str_replace("]",")</span>", $title);

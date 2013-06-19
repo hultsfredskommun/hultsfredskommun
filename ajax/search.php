@@ -3,6 +3,7 @@
 	require('../../../../wp-blog-header.php');
 	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 	$searchstring = $_REQUEST['searchstring'];
+	$options = get_option("hk_theme");
 	
 	if ($searchstring != "") :
 	
@@ -101,6 +102,9 @@
 		
 		/* hook to be able to add other search result */ 
 		do_action('hk_post_ajax_search', $searchstring);
+		
+		if ($options["external_search_title"] != "" && $options["external_search_url"] != "")
+			echo "<a href='" . $options["external_search_url"] . $searchstring . " ' title='" . $options["external_search_title"] . "'>" . $options["external_search_title"] . "</a>";
 
 	endif;
 ?>

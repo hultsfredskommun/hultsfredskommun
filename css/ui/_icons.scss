@@ -27,6 +27,11 @@
 	width: 12px;
 	height: 12px;
 }
+
+.contactlink .contact-icon {
+	margin: 0 8px 0 0;
+}
+
 /* aside icons */
 .aside_icon {
 	@extend .clip_16x16;
@@ -76,6 +81,7 @@
 	@extend .navigation-icon;
 	background-position: -28px -334px;
 }
+.decoration-icon,
 .tag-icon {
 	@extend .navigation-icon;
 	background-position: -28px -366px;

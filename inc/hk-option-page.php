@@ -222,6 +222,10 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[typekit_url]">Typekit js url - http://&lt;resten av url&gt; f&ouml;r att l&auml;gga till typsnitt.</label><br/><input type="text" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
 			<p><label for="hk_theme[google_font]">Load google font - ex. <i>Oxygen:300,400,700</i> f&ouml;r att l&aumlgga till typsnitt.</label><br/><input type="text" name="hk_theme[google_font]" value="<?php echo $options['google_font']; ?>" /></p>
 			<p><label for="hk_theme[in_head_section]">script or other in &lt;head&gt;-section</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[in_head_section]"><?php echo $options['in_head_section']; ?></textarea></p>
+			<h3>Extern sökning</h3>
+			<p><label for="hk_theme[external_search_title]">Länktext till extern sökning</label><br/><input type="text" name="hk_theme[external_search_title]" value="<?php echo $options['external_search_title']; ?>" /></p>
+			<p><label for="hk_theme[external_search_url]">URL till extern sökning (lägger till sökordet direkt efter URL)</label><br/><input type="text" name="hk_theme[external_search_url]" value="<?php echo $options['external_search_url']; ?>" /></p>
+			
 			<?php submit_button(); ?>
 
 			<a name="statistik"></a>

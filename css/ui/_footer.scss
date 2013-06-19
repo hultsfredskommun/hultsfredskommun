@@ -64,12 +64,12 @@
 }
 .scrolltotop {
 	@extend .white-background;
-	@extend .position-fixed--bottom-right;
 	@extend .islet;
 	@extend .margin--right;
-	//@extend .border-radius;
+	@extend .position-fixed--bottom-right;
 	border-radius: 15px;
-	.i {
-		font-size: 150%;
+	a {
+		@extend .totop-icon;
+		line-height: 0;
 	}
 }
