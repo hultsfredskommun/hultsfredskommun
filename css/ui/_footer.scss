@@ -68,8 +68,8 @@
 	@extend .margin--right;
 	@extend .position-fixed--bottom-right;
 	border-radius: 15px;
+	line-height: 0;
 	a {
 		@extend .totop-icon;
-		line-height: 0;
 	}
 }

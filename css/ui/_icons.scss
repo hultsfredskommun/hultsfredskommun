@@ -97,6 +97,14 @@
 	background-position: -28px -334px;
 	vertical-align: middle;
 }
+.decoration-icon.gray {
+	@extend .decoration-icon;
+	background-position: -105px -331px;
+}
+.decoration-icon.white {
+	@extend .decoration-icon;
+	background-position: -63px -331px;
+}
 
 
 .close-button {

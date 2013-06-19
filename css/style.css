@@ -5503,8 +5503,6 @@ html {
 
 .scrolltotop {
   border-radius: 15px;
-}
-.scrolltotop a {
   line-height: 0;
 }
 
@@ -5842,6 +5840,7 @@ html {
 
 .contactlink .contact-icon {
   margin: 0 8px 0 0;
+  vertical-align: middle;
 }
 
 /* aside icons */
@@ -5902,8 +5901,17 @@ html {
   margin: 4px 4px 0 0;
 }
 
-.decoration-icon {
+.decoration-icon, .decoration-icon.gray, .decoration-icon.white {
   background-position: -28px -334px;
+  vertical-align: middle;
+}
+
+.gray.decoration-icon {
+  background-position: -105px -331px;
+}
+
+.white.decoration-icon {
+  background-position: -63px -331px;
 }
 
 .close-button {
