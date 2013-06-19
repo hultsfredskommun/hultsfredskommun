@@ -5810,8 +5810,7 @@ html {
     width: 50%;
   }
 }
-.clip, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .cat-icon, .decoration-icon,
-.tag-icon, .delete-icon, .close-button, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .dropdown-icon, .searchnavigation .submit {
+.clip, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .cat-icon, .tag-icon, .delete-icon, .decoration-icon, .close-button, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .dropdown-icon, .searchnavigation .submit {
   background-image: url("../images/icons/ikoner.svg");
   display: inline-block;
 }
@@ -5826,8 +5825,7 @@ html {
   height: 24px;
 }
 
-.clip_20x20, .navigation-icon, .cat-icon, .decoration-icon,
-.tag-icon, .delete-icon, .close-button, .menu-icon, .search-icon {
+.clip_20x20, .navigation-icon, .cat-icon, .tag-icon, .delete-icon, .decoration-icon, .close-button, .menu-icon, .search-icon {
   width: 20px;
   height: 20px;
 }
@@ -5884,8 +5882,7 @@ html {
 }
 
 /* menu */
-.navigation-icon, .cat-icon, .decoration-icon,
-.tag-icon {
+.navigation-icon, .cat-icon, .tag-icon {
   margin: 4px 0 0 -8px;
   padding: 0 !important;
   float: left;
@@ -5895,7 +5892,6 @@ html {
   background-position: -28px -334px;
 }
 
-.decoration-icon,
 .tag-icon {
   background-position: -28px -366px;
 }
@@ -5904,6 +5900,10 @@ html {
   background-position: -183px -49px;
   float: right;
   margin: 4px 4px 0 0;
+}
+
+.decoration-icon {
+  background-position: -28px -334px;
 }
 
 .close-button {

@@ -81,7 +81,6 @@
 	@extend .navigation-icon;
 	background-position: -28px -334px;
 }
-.decoration-icon,
 .tag-icon {
 	@extend .navigation-icon;
 	background-position: -28px -366px;
@@ -91,6 +90,10 @@
 	background-position: -183px -49px;
 	float: right;
 	margin: 4px 4px 0 0;
+}
+.decoration-icon {
+	@extend .clip_20x20;
+	background-position: -28px -334px;
 }
 
 
