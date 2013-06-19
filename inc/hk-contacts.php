@@ -303,7 +303,7 @@ function hk_contact_firstpage($contactargs) {
 				endif;
 				// add link and title
 				$retValue .= "<h1 class='entry-title'>";
-				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='half-margin--right contact-icon'></span>Kontakta "; 
+				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>Kontakta "; 
 				$retValue .= get_the_title();
 				$retValue .= "</a>"; 
 				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";

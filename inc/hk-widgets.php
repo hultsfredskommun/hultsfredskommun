@@ -496,14 +496,13 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$options = get_option('hk_theme');
 		
 		/* get all sub categories to use in queries */
-		$cat = get_query_var("cat");
-		$all_categories = hk_getChildrenIdArray($cat);
-		$all_categories[] = $cat;
-		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && (in_array(get_query_var("cat"), split(",",$instance["show_protocol"])) || $instance["show_protocol"] == "");
+		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && (!isset($instance["show_protocol"]) || in_array(get_query_var("cat"), split(",",$instance["show_protocol"])));
 		?>
 		
 		<?php if ($showprotocol) : ?>
-			<h1 class="widget-title"><span>Protokoll</span></h1>
+		
+			<?php echo $before_widget; ?>
+			<?php echo $before_title . "Protokoll" . $after_title; ?>
 			<div id="protocolwidget" class="protocolwidget">
 				<?php 
 					/* Query all posts with selected startpage category */
@@ -524,7 +523,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						// Reset Query
 						wp_reset_query(); 
 				?>
-				<?php if ($instance["show_more_link"] == "") : 
+				<?php if (isset($instance["show_more_link"])) : 
 					$cat_link = esc_url(get_category_link($default_settings["protocol_cat"]));
 					$show_more_link = $instance["show_more_link"];
 					?>
@@ -533,7 +532,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 					</div>
 				<?php endif; ?>
 				
-				<?php if ($instance["show_all_categories"] == "") : ?>
+				<?php if (isset($instance["show_all_categories"])) : ?>
 					<div id="protocolcategories">
 						<div class="entry-title"><?php echo $instance["show_all_categories"]; ?></div><ul>
 						<?php 
@@ -555,6 +554,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 				<?php endif; ?>
 				
 			</div>	
+			<?php echo $after_widget; ?>
 		<?php endif; ?>
 <?php
 	}
@@ -628,7 +628,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_protocol"
 		
 		if ( isset($instance["menu"]) ) {
 			$title = apply_filters( 'widget_title', $instance['title'] );
-			
 			echo $before_widget;
 			if ( ! empty( $title ) ) {
 				echo $before_title . $instance['icon'] . $title . $after_title;
@@ -760,12 +759,14 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_textwidge
 
 	public function widget( $args, $instance ) {
 	    extract( $args );
+		echo $before_widget;
+		echo $before_title."Evenemang".$after_title;
 ?>
 	<div class="content-area">
 		H&auml;r ska det visas evenemang.
 	</div>
-
 <?php
+		echo $after_widget;
 	}
 }
 /* add the widget  */
