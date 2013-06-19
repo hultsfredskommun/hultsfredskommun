@@ -496,7 +496,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$options = get_option('hk_theme');
 		
 		/* get all sub categories to use in queries */
-		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && (!isset($instance["show_protocol"]) || in_array(get_query_var("cat"), split(",",$instance["show_protocol"])));
+		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && (!isset($instance["show_protocol"]) || $instance["show_protocol"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_protocol"])));
 		?>
 		
 		<?php if ($showprotocol) : ?>
