@@ -33,8 +33,10 @@ var isMobile = {
 
 // redirect if mobile_rewrite is set
 window.onload = function(event) {
-    event.stopPropagation(true);
-	if (isMobile.any() && (hultsfred_object["mobile_rewrite"] != undefined && hultsfred_object["mobile_rewrite"] != "")) {
+	if (event !== undefined) {
+		event.stopPropagation(true);
+	}
+	if (isMobile.any() && (hultsfred_object["mobile_rewrite"] != undefined && hultsfred_object["mobile_rewrite"] != "" && window !== undefined)) {
 		window.location.href = hultsfred_object["mobile_rewrite"];
 	}
 };

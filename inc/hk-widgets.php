@@ -494,7 +494,11 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 	    extract( $args );
 		global $default_settings;
 		$options = get_option('hk_theme');
-		
+		if ( isset( $instance[ 'show_all_categories' ] ) ) { $show_all_categories = $instance[ 'show_all_categories' ];
+		} else {$show_all_categories = ""; }
+		if ( isset( $instance[ 'show_more_link' ] ) ) { $show_more_link = $instance[ 'show_more_link' ];
+		} else {$show_more_link = ""; }
+
 		/* get all sub categories to use in queries */
 		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && (!isset($instance["show_protocol"]) || $instance["show_protocol"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_protocol"])));
 		?>
@@ -522,16 +526,16 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						// Reset Query
 						wp_reset_query(); 
 				?>
-				<?php if (isset($instance["show_more_link"]) || $instance["show_more_link"] != "") : 
+				<?php if ($show_more_link != "") : 
 					$cat_link = esc_url(get_category_link($default_settings["protocol_cat"]));
-					$show_more_link = $instance["show_more_link"];
+					
 					?>
 					<div id="protocollink">
 						<?php echo "<a href='$cat_link' title='$show_more_link'>$show_more_link</a>"; ?>
 					</div>
 				<?php endif; ?>
 				
-				<?php if (isset($instance["show_all_categories"]) || $instance["show_all_categories"] != "") : ?>
+				<?php if ($show_all_categories != "") : ?>
 					<div id="protocolcategories">
 						<div class="entry-title"><?php echo $instance["show_all_categories"]; ?></div><ul>
 						<?php 
