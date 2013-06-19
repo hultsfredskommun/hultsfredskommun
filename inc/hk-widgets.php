@@ -510,7 +510,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						$children[] =  $default_settings["protocol_cat"];
 						$query = array( 'posts_per_page' => $instance["num_protocol"], 
 										'category__in' => $children,
-										
 										'orderby' => 'date',
 										'order' => 'desc',
 										'suppress_filters' => 1);
@@ -523,16 +522,16 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						// Reset Query
 						wp_reset_query(); 
 				?>
-				<?php if (isset($instance["show_more_link"])) : 
+				<?php if (isset($instance["show_more_link"]) || $instance["show_more_link"] != "") : 
 					$cat_link = esc_url(get_category_link($default_settings["protocol_cat"]));
 					$show_more_link = $instance["show_more_link"];
 					?>
 					<div id="protocollink">
-						<?php echo "<a href='$cat_link title='$show_more_link'>$show_more_link</a>"; ?>
+						<?php echo "<a href='$cat_link' title='$show_more_link'>$show_more_link</a>"; ?>
 					</div>
 				<?php endif; ?>
 				
-				<?php if (isset($instance["show_all_categories"])) : ?>
+				<?php if (isset($instance["show_all_categories"]) || $instance["show_all_categories"] != "") : ?>
 					<div id="protocolcategories">
 						<div class="entry-title"><?php echo $instance["show_all_categories"]; ?></div><ul>
 						<?php 
