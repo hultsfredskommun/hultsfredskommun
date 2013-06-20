@@ -158,7 +158,7 @@ if(function_exists("register_field_group"))
 								'multiple' => 0,
 								'allow_null' => 0,
 								'choices' => array (
-									'Dokument' => 'Dokument',
+									'Blanketter' => 'Blanketter',
 									'Se även' => 'Se även',
 								),
 								'default_value' => '',
