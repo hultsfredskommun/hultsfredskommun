@@ -29,7 +29,14 @@
 	@extend .zeta;
 	display: block;
 }
-
+.read-more-link {
+	@extend .half-margin--top;
+	@extend .cf;
+	display: inline-block;
+}
+.read-more-widget {
+	@extend .half-margin--top;
+}
 .img-wrapper {
 	line-height: 0;
 }

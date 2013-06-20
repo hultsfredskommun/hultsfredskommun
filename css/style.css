@@ -771,7 +771,8 @@ textarea:focus {
 #responsive-info,
 .slideshow .slide .caption-area .caption,
 .cookieinformation .textwidget,
-.scrolltotop, .matrix, .multi-list, .stat-group, .aligncenter, .time, .home .contact-area .contact-wrapper, .page-header, article.post, .article-wrapper .content-wrapper .contact-area, .side-content ul li, .searchnavigation .form, .searchnavigation .form .submit, .responsive-sub-menu, .footer-image-wrapper .logo-footer-image {
+.searchnavigation .searchresult .external_more_link,
+.scrolltotop, .matrix, .multi-list, .stat-group, .aligncenter, .time, .read-more-link, .home .contact-area .contact-wrapper, .page-header, article.post, .article-wrapper .content-wrapper .contact-area, .side-content ul li, .searchnavigation .form, .searchnavigation .form .submit, .responsive-sub-menu, .footer-image-wrapper .logo-footer-image {
   zoom: 1;
 }
 .cf:before, .gw:before, .main-wrapper:before, .top-wrapper:before,
@@ -785,7 +786,8 @@ textarea:focus {
 #responsive-info:before,
 .slideshow .slide .caption-area .caption:before,
 .cookieinformation .textwidget:before,
-.scrolltotop:before, .matrix:before, .multi-list:before, .stat-group:before, .aligncenter:before, .time:before, .home .contact-area .contact-wrapper:before, .page-header:before, article.post:before, .article-wrapper .content-wrapper .contact-area:before, .side-content ul li:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .responsive-sub-menu:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
+.searchnavigation .searchresult .external_more_link:before,
+.scrolltotop:before, .matrix:before, .multi-list:before, .stat-group:before, .aligncenter:before, .time:before, .read-more-link:before, .home .contact-area .contact-wrapper:before, .page-header:before, article.post:before, .article-wrapper .content-wrapper .contact-area:before, .side-content ul li:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .responsive-sub-menu:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
 .grid-wrapper:after, .nav:after, .home .contact-area .contact-wrapper .content-wrapper ul:after, .page-header .num-posts:after,
 .page-header .view-tools:after,
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
@@ -796,7 +798,8 @@ textarea:focus {
 #responsive-info:after,
 .slideshow .slide .caption-area .caption:after,
 .cookieinformation .textwidget:after,
-.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .aligncenter:after, .time:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .side-content ul li:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .responsive-sub-menu:after, .footer-image-wrapper .logo-footer-image:after {
+.searchnavigation .searchresult .external_more_link:after,
+.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .aligncenter:after, .time:after, .read-more-link:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .side-content ul li:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .responsive-sub-menu:after, .footer-image-wrapper .logo-footer-image:after {
   content: " ";
   display: table;
 }
@@ -811,7 +814,8 @@ textarea:focus {
 #responsive-info:after,
 .slideshow .slide .caption-area .caption:after,
 .cookieinformation .textwidget:after,
-.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .aligncenter:after, .time:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .side-content ul li:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .responsive-sub-menu:after, .footer-image-wrapper .logo-footer-image:after {
+.searchnavigation .searchresult .external_more_link:after,
+.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .aligncenter:after, .time:after, .read-more-link:after, .home .contact-area .contact-wrapper:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .side-content ul li:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .responsive-sub-menu:after, .footer-image-wrapper .logo-footer-image:after {
   clear: both;
 }
 
@@ -843,30 +847,34 @@ pre,
 .pager,
 .cookieinformation .textwidget,
 .searchnavigation .searchresult ul,
+.searchnavigation .searchresult .external_more_link,
 .scrolltotop {
   margin-bottom: 24px;
   margin-bottom: 1.6rem;
 }
-.islet h1, #responsive-info h1, .slideshow .slide .caption-area .caption h1, .pager h1, .cookieinformation .textwidget h1, .searchnavigation .searchresult ul h1, .scrolltotop h1, .islet h2, #responsive-info h2, .slideshow .slide .caption-area .caption h2, .pager h2, .cookieinformation .textwidget h2, .searchnavigation .searchresult ul h2, .scrolltotop h2, .islet h3, #responsive-info h3, .slideshow .slide .caption-area .caption h3, .pager h3, .cookieinformation .textwidget h3, .searchnavigation .searchresult ul h3, .scrolltotop h3, .islet h4, #responsive-info h4, .slideshow .slide .caption-area .caption h4, .pager h4, .cookieinformation .textwidget h4, .searchnavigation .searchresult ul h4, .scrolltotop h4, .islet h5, #responsive-info h5, .slideshow .slide .caption-area .caption h5, .pager h5, .cookieinformation .textwidget h5, .searchnavigation .searchresult ul h5, .scrolltotop h5, .islet h6, #responsive-info h6, .slideshow .slide .caption-area .caption h6, .pager h6, .cookieinformation .textwidget h6, .searchnavigation .searchresult ul h6, .scrolltotop h6, .islet hgroup, #responsive-info hgroup, .slideshow .slide .caption-area .caption hgroup, .pager hgroup, .cookieinformation .textwidget hgroup, .searchnavigation .searchresult ul hgroup, .scrolltotop hgroup, .islet
+.islet h1, #responsive-info h1, .slideshow .slide .caption-area .caption h1, .pager h1, .cookieinformation .textwidget h1, .searchnavigation .searchresult ul h1, .searchnavigation .searchresult .external_more_link h1, .scrolltotop h1, .islet h2, #responsive-info h2, .slideshow .slide .caption-area .caption h2, .pager h2, .cookieinformation .textwidget h2, .searchnavigation .searchresult ul h2, .searchnavigation .searchresult .external_more_link h2, .scrolltotop h2, .islet h3, #responsive-info h3, .slideshow .slide .caption-area .caption h3, .pager h3, .cookieinformation .textwidget h3, .searchnavigation .searchresult ul h3, .searchnavigation .searchresult .external_more_link h3, .scrolltotop h3, .islet h4, #responsive-info h4, .slideshow .slide .caption-area .caption h4, .pager h4, .cookieinformation .textwidget h4, .searchnavigation .searchresult ul h4, .searchnavigation .searchresult .external_more_link h4, .scrolltotop h4, .islet h5, #responsive-info h5, .slideshow .slide .caption-area .caption h5, .pager h5, .cookieinformation .textwidget h5, .searchnavigation .searchresult ul h5, .searchnavigation .searchresult .external_more_link h5, .scrolltotop h5, .islet h6, #responsive-info h6, .slideshow .slide .caption-area .caption h6, .pager h6, .cookieinformation .textwidget h6, .searchnavigation .searchresult ul h6, .searchnavigation .searchresult .external_more_link h6, .scrolltotop h6, .islet hgroup, #responsive-info hgroup, .slideshow .slide .caption-area .caption hgroup, .pager hgroup, .cookieinformation .textwidget hgroup, .searchnavigation .searchresult ul hgroup, .searchnavigation .searchresult .external_more_link hgroup, .scrolltotop hgroup, .islet
 ul, #responsive-info
 ul, .slideshow .slide .caption-area .caption
 ul, .pager
 ul, .cookieinformation .textwidget
 ul, .searchnavigation .searchresult ul
+ul, .searchnavigation .searchresult .external_more_link
 ul, .scrolltotop
-ul, .islet ol, #responsive-info ol, .slideshow .slide .caption-area .caption ol, .pager ol, .cookieinformation .textwidget ol, .searchnavigation .searchresult ul ol, .scrolltotop ol, .islet dl, #responsive-info dl, .slideshow .slide .caption-area .caption dl, .pager dl, .cookieinformation .textwidget dl, .searchnavigation .searchresult ul dl, .scrolltotop dl, .islet
+ul, .islet ol, #responsive-info ol, .slideshow .slide .caption-area .caption ol, .pager ol, .cookieinformation .textwidget ol, .searchnavigation .searchresult ul ol, .searchnavigation .searchresult .external_more_link ol, .scrolltotop ol, .islet dl, #responsive-info dl, .slideshow .slide .caption-area .caption dl, .pager dl, .cookieinformation .textwidget dl, .searchnavigation .searchresult ul dl, .searchnavigation .searchresult .external_more_link dl, .scrolltotop dl, .islet
 blockquote, #responsive-info
 blockquote, .slideshow .slide .caption-area .caption
 blockquote, .pager
 blockquote, .cookieinformation .textwidget
 blockquote, .searchnavigation .searchresult ul
+blockquote, .searchnavigation .searchresult .external_more_link
 blockquote, .scrolltotop
-blockquote, .islet p, #responsive-info p, .slideshow .slide .caption-area .caption p, .pager p, .cookieinformation .textwidget p, .searchnavigation .searchresult ul p, .scrolltotop p, .islet address, #responsive-info address, .slideshow .slide .caption-area .caption address, .pager address, .cookieinformation .textwidget address, .searchnavigation .searchresult ul address, .scrolltotop address, .islet
+blockquote, .islet p, #responsive-info p, .slideshow .slide .caption-area .caption p, .pager p, .cookieinformation .textwidget p, .searchnavigation .searchresult ul p, .searchnavigation .searchresult .external_more_link p, .scrolltotop p, .islet address, #responsive-info address, .slideshow .slide .caption-area .caption address, .pager address, .cookieinformation .textwidget address, .searchnavigation .searchresult ul address, .searchnavigation .searchresult .external_more_link address, .scrolltotop address, .islet
 table, #responsive-info
 table, .slideshow .slide .caption-area .caption
 table, .pager
 table, .cookieinformation .textwidget
 table, .searchnavigation .searchresult ul
+table, .searchnavigation .searchresult .external_more_link
 table, .scrolltotop
 table, .islet
 fieldset, #responsive-info
@@ -874,20 +882,23 @@ fieldset, .slideshow .slide .caption-area .caption
 fieldset, .pager
 fieldset, .cookieinformation .textwidget
 fieldset, .searchnavigation .searchresult ul
+fieldset, .searchnavigation .searchresult .external_more_link
 fieldset, .scrolltotop
-fieldset, .islet figure, #responsive-info figure, .slideshow .slide .caption-area .caption figure, .pager figure, .cookieinformation .textwidget figure, .searchnavigation .searchresult ul figure, .scrolltotop figure, .islet
+fieldset, .islet figure, #responsive-info figure, .slideshow .slide .caption-area .caption figure, .pager figure, .cookieinformation .textwidget figure, .searchnavigation .searchresult ul figure, .searchnavigation .searchresult .external_more_link figure, .scrolltotop figure, .islet
 pre, #responsive-info
 pre, .slideshow .slide .caption-area .caption
 pre, .pager
 pre, .cookieinformation .textwidget
 pre, .searchnavigation .searchresult ul
+pre, .searchnavigation .searchresult .external_more_link
 pre, .scrolltotop
-pre, .islet .form-fields > li, #responsive-info .form-fields > li, .slideshow .slide .caption-area .caption .form-fields > li, .pager .form-fields > li, .cookieinformation .textwidget .form-fields > li, .searchnavigation .searchresult ul .form-fields > li, .scrolltotop .form-fields > li, .islet
+pre, .islet .form-fields > li, #responsive-info .form-fields > li, .slideshow .slide .caption-area .caption .form-fields > li, .pager .form-fields > li, .cookieinformation .textwidget .form-fields > li, .searchnavigation .searchresult ul .form-fields > li, .searchnavigation .searchresult .external_more_link .form-fields > li, .scrolltotop .form-fields > li, .islet
 .media, #responsive-info
 .media, .slideshow .slide .caption-area .caption
 .media, .pager
 .media, .cookieinformation .textwidget
 .media, .searchnavigation .searchresult ul
+.media, .searchnavigation .searchresult .external_more_link
 .media, .scrolltotop
 .media, .islet
 .island, #responsive-info
@@ -895,13 +906,15 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .slideshow .s
 .island, .pager
 .island, .cookieinformation .textwidget
 .island, .searchnavigation .searchresult ul
+.island, .searchnavigation .searchresult .external_more_link
 .island, .scrolltotop
-.island, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .slideshow .slide .caption-area .caption .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .slideshow .slide .caption-area .caption img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .cookieinformation .textwidget .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .cookieinformation .textwidget img, .searchnavigation .searchresult ul .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult ul img, .scrolltotop .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .scrolltotop img, .islet .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .islet .entry-content, #responsive-info .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper #responsive-info .entry-content, .slideshow .slide .caption-area .caption .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .slideshow .slide .caption-area .caption .entry-content, .pager .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .pager .entry-content, .cookieinformation .textwidget .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .cookieinformation .textwidget .entry-content, .searchnavigation .searchresult ul .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .searchnavigation .searchresult ul .entry-content, .scrolltotop .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .scrolltotop .entry-content, .islet
+.island, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .slideshow .slide .caption-area .caption .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .slideshow .slide .caption-area .caption img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .cookieinformation .textwidget .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .cookieinformation .textwidget img, .searchnavigation .searchresult ul .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult ul img, .searchnavigation .searchresult .external_more_link .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult .external_more_link img, .scrolltotop .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .scrolltotop img, .islet .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .islet .entry-content, #responsive-info .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper #responsive-info .entry-content, .slideshow .slide .caption-area .caption .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .slideshow .slide .caption-area .caption .entry-content, .pager .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .pager .entry-content, .cookieinformation .textwidget .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .cookieinformation .textwidget .entry-content, .searchnavigation .searchresult ul .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .searchnavigation .searchresult ul .entry-content, .searchnavigation .searchresult .external_more_link .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .searchnavigation .searchresult .external_more_link .entry-content, .scrolltotop .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .scrolltotop .entry-content, .islet
 .islet, #responsive-info
 .islet, .slideshow .slide .caption-area .caption
 .islet, .pager
 .islet, .cookieinformation .textwidget
 .islet, .searchnavigation .searchresult ul
+.islet, .searchnavigation .searchresult .external_more_link
 .islet, .scrolltotop
 .islet, .islet
 #responsive-info, #responsive-info
@@ -909,20 +922,23 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .slideshow .s
 #responsive-info, .pager
 #responsive-info, .cookieinformation .textwidget
 #responsive-info, .searchnavigation .searchresult ul
+#responsive-info, .searchnavigation .searchresult .external_more_link
 #responsive-info, .scrolltotop
-#responsive-info, .islet .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .islet .caption, #responsive-info .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area #responsive-info .caption, .slideshow .slide .caption-area .caption .caption, .pager .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .pager .caption, .cookieinformation .textwidget .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .cookieinformation .textwidget .caption, .searchnavigation .searchresult ul .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .searchnavigation .searchresult ul .caption, .scrolltotop .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .scrolltotop .caption, .islet
+#responsive-info, .islet .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .islet .caption, #responsive-info .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area #responsive-info .caption, .slideshow .slide .caption-area .caption .caption, .pager .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .pager .caption, .cookieinformation .textwidget .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .cookieinformation .textwidget .caption, .searchnavigation .searchresult ul .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .searchnavigation .searchresult ul .caption, .searchnavigation .searchresult .external_more_link .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .searchnavigation .searchresult .external_more_link .caption, .scrolltotop .slideshow .slide .caption-area .caption, .slideshow .slide .caption-area .scrolltotop .caption, .islet
 .pager, #responsive-info
 .pager, .slideshow .slide .caption-area .caption
 .pager, .pager
 .pager, .cookieinformation .textwidget
 .pager, .searchnavigation .searchresult ul
+.pager, .searchnavigation .searchresult .external_more_link
 .pager, .scrolltotop
-.pager, .islet .cookieinformation .textwidget, .cookieinformation .islet .textwidget, #responsive-info .cookieinformation .textwidget, .cookieinformation #responsive-info .textwidget, .slideshow .slide .caption-area .caption .cookieinformation .textwidget, .cookieinformation .slideshow .slide .caption-area .caption .textwidget, .pager .cookieinformation .textwidget, .cookieinformation .pager .textwidget, .cookieinformation .textwidget .textwidget, .searchnavigation .searchresult ul .cookieinformation .textwidget, .cookieinformation .searchnavigation .searchresult ul .textwidget, .scrolltotop .cookieinformation .textwidget, .cookieinformation .scrolltotop .textwidget, .islet .searchnavigation .searchresult ul, .searchnavigation .searchresult .islet ul, #responsive-info .searchnavigation .searchresult ul, .searchnavigation .searchresult #responsive-info ul, .slideshow .slide .caption-area .caption .searchnavigation .searchresult ul, .searchnavigation .searchresult .slideshow .slide .caption-area .caption ul, .pager .searchnavigation .searchresult ul, .searchnavigation .searchresult .pager ul, .cookieinformation .textwidget .searchnavigation .searchresult ul, .searchnavigation .searchresult .cookieinformation .textwidget ul, .searchnavigation .searchresult ul ul, .scrolltotop .searchnavigation .searchresult ul, .searchnavigation .searchresult .scrolltotop ul, .islet
+.pager, .islet .cookieinformation .textwidget, .cookieinformation .islet .textwidget, #responsive-info .cookieinformation .textwidget, .cookieinformation #responsive-info .textwidget, .slideshow .slide .caption-area .caption .cookieinformation .textwidget, .cookieinformation .slideshow .slide .caption-area .caption .textwidget, .pager .cookieinformation .textwidget, .cookieinformation .pager .textwidget, .cookieinformation .textwidget .textwidget, .searchnavigation .searchresult ul .cookieinformation .textwidget, .cookieinformation .searchnavigation .searchresult ul .textwidget, .searchnavigation .searchresult .external_more_link .cookieinformation .textwidget, .cookieinformation .searchnavigation .searchresult .external_more_link .textwidget, .scrolltotop .cookieinformation .textwidget, .cookieinformation .scrolltotop .textwidget, .islet .searchnavigation .searchresult ul, .searchnavigation .searchresult .islet ul, #responsive-info .searchnavigation .searchresult ul, .searchnavigation .searchresult #responsive-info ul, .slideshow .slide .caption-area .caption .searchnavigation .searchresult ul, .searchnavigation .searchresult .slideshow .slide .caption-area .caption ul, .pager .searchnavigation .searchresult ul, .searchnavigation .searchresult .pager ul, .cookieinformation .textwidget .searchnavigation .searchresult ul, .searchnavigation .searchresult .cookieinformation .textwidget ul, .searchnavigation .searchresult ul ul, .searchnavigation .searchresult .external_more_link ul, .scrolltotop .searchnavigation .searchresult ul, .searchnavigation .searchresult .scrolltotop ul, .islet .searchnavigation .searchresult .external_more_link, .searchnavigation .searchresult .islet .external_more_link, #responsive-info .searchnavigation .searchresult .external_more_link, .searchnavigation .searchresult #responsive-info .external_more_link, .slideshow .slide .caption-area .caption .searchnavigation .searchresult .external_more_link, .searchnavigation .searchresult .slideshow .slide .caption-area .caption .external_more_link, .pager .searchnavigation .searchresult .external_more_link, .searchnavigation .searchresult .pager .external_more_link, .cookieinformation .textwidget .searchnavigation .searchresult .external_more_link, .searchnavigation .searchresult .cookieinformation .textwidget .external_more_link, .searchnavigation .searchresult ul .external_more_link, .searchnavigation .searchresult .external_more_link .external_more_link, .scrolltotop .searchnavigation .searchresult .external_more_link, .searchnavigation .searchresult .scrolltotop .external_more_link, .islet
 .scrolltotop, #responsive-info
 .scrolltotop, .slideshow .slide .caption-area .caption
 .scrolltotop, .pager
 .scrolltotop, .cookieinformation .textwidget
 .scrolltotop, .searchnavigation .searchresult ul
+.scrolltotop, .searchnavigation .searchresult .external_more_link
 .scrolltotop, .scrolltotop
 .scrolltotop {
   margin-bottom: 12px;
@@ -2338,11 +2354,11 @@ html.flexbox {
 /**
  * `.img`s in `.islet`s need an appropriately sized margin.
  */
-.islet .media__img, #responsive-info .media__img, .slideshow .slide .caption-area .caption .media__img, .pager .media__img, .cookieinformation .textwidget .media__img, .searchnavigation .searchresult ul .media__img, .scrolltotop .media__img {
+.islet .media__img, #responsive-info .media__img, .slideshow .slide .caption-area .caption .media__img, .pager .media__img, .cookieinformation .textwidget .media__img, .searchnavigation .searchresult ul .media__img, .searchnavigation .searchresult .external_more_link .media__img, .scrolltotop .media__img {
   margin-right: 12px;
 }
 
-.islet .media__img--rev, #responsive-info .media__img--rev, .slideshow .slide .caption-area .caption .media__img--rev, .pager .media__img--rev, .cookieinformation .textwidget .media__img--rev, .searchnavigation .searchresult ul .media__img--rev, .scrolltotop .media__img--rev {
+.islet .media__img--rev, #responsive-info .media__img--rev, .slideshow .slide .caption-area .caption .media__img--rev, .pager .media__img--rev, .cookieinformation .textwidget .media__img--rev, .searchnavigation .searchresult ul .media__img--rev, .searchnavigation .searchresult .external_more_link .media__img--rev, .scrolltotop .media__img--rev {
   margin-left: 12px;
 }
 
@@ -2417,6 +2433,7 @@ html.flexbox {
 .pager,
 .cookieinformation .textwidget,
 .searchnavigation .searchresult ul,
+.searchnavigation .searchresult .external_more_link,
 .scrolltotop {
   display: block;
 }
@@ -2432,6 +2449,7 @@ html.flexbox {
 .pager > :last-child,
 .cookieinformation .textwidget > :last-child,
 .searchnavigation .searchresult ul > :last-child,
+.searchnavigation .searchresult .external_more_link > :last-child,
 .scrolltotop > :last-child {
   margin-bottom: 0;
 }
@@ -2439,7 +2457,7 @@ html.flexbox {
 /**
  * Just like `.island`, only smaller.
  */
-.islet, #responsive-info, .slideshow .slide .caption-area .caption, .pager, .cookieinformation .textwidget, .searchnavigation .searchresult ul, .scrolltotop {
+.islet, #responsive-info, .slideshow .slide .caption-area .caption, .pager, .cookieinformation .textwidget, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .scrolltotop {
   padding: 12px;
 }
 
@@ -4296,7 +4314,7 @@ html.flexbox {
 }
 
 .float--left, .alignleft, .icon-left, h1.widget-title .i, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .help-navigation, .page-header .num-posts, .page-header .category-tools .menu-item .i, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
-.single .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.single .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4326,7 +4344,7 @@ html.flexbox {
 
 .flush--bottom, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .num-posts,
 .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .summary .img-wrapper, .tools, .top-menu-wrapper .top-menu, .responsive-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
+.page-header .sort-order, .page-header .category-tools, .summary .img-wrapper, .tools, .searchnavigation .searchresult .external_more_link, .top-menu-wrapper .top-menu, .responsive-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0 !important;
 }
 
@@ -4351,7 +4369,7 @@ html.flexbox {
   margin-right: -24px !important;
   margin-left: -24px !important;
 }
-.islet .full-bleed, #responsive-info .full-bleed, .slideshow .slide .caption-area .caption .full-bleed, .pager .full-bleed, .cookieinformation .textwidget .full-bleed, .searchnavigation .searchresult ul .full-bleed, .scrolltotop .full-bleed {
+.islet .full-bleed, #responsive-info .full-bleed, .slideshow .slide .caption-area .caption .full-bleed, .pager .full-bleed, .cookieinformation .textwidget .full-bleed, .searchnavigation .searchresult ul .full-bleed, .searchnavigation .searchresult .external_more_link .full-bleed, .scrolltotop .full-bleed {
   margin-right: -12px !important;
   margin-left: -12px !important;
 }
@@ -4948,6 +4966,10 @@ html {
 
 .time {
   display: block;
+}
+
+.read-more-link {
+  display: inline-block;
 }
 
 .img-wrapper {
@@ -5637,7 +5659,7 @@ html {
   margin: 0.8rem;
 }
 
-.half-margin--top, .home .contact-area .contact-wrapper .content-wrapper ul, .post .summary-content h1.entry-title, .article-wrapper, .logo, .searchnavigation, .logo2, .responsive-menu {
+.half-margin--top, .read-more-link, .read-more-widget, .home .contact-area .contact-wrapper .content-wrapper ul, .post .summary-content h1.entry-title, .article-wrapper, .logo, .searchnavigation, .logo2, .responsive-menu {
   margin-top: 12px;
   margin-top: 0.8rem;
 }
@@ -5815,7 +5837,7 @@ html {
     width: 50%;
   }
 }
-.clip, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .cat-icon, .tag-icon, .delete-icon, .decoration-icon, .close-button, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .dropdown-icon, .searchnavigation .submit {
+.clip, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .cat-icon, .tag-icon, .delete-icon, .decoration-icon, .close-button, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .dropdown-icon, .right-icon, .searchnavigation .submit {
   background-image: url("../images/icons/ikoner.svg");
   display: inline-block;
 }
@@ -5840,7 +5862,7 @@ html {
   height: 16px;
 }
 
-.clip_12x12, .dropdown-icon {
+.clip_12x12, .dropdown-icon, .right-icon {
   width: 12px;
   height: 12px;
 }
@@ -5936,6 +5958,11 @@ html {
 
 .dropdown-icon.up {
   background-position: -25px -10px;
+}
+
+.right-icon {
+  margin-left: 2px;
+  background-position: -25px -30px;
 }
 
 .category-tools .dropdown-icon,

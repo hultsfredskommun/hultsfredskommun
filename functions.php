@@ -90,7 +90,7 @@ require( get_template_directory() . '/inc/hk-widgets.php' );
 
 // shortcodes
 /*
- * shortcode [aditrorecruit], showing all available jobs with descriptions
+ * shortcode [categorytree], show category tree
  */
 function hk_category_tree_func( $atts ){
 	global $default_settings;
@@ -103,7 +103,7 @@ function hk_category_tree_func( $atts ){
 			'show_option_all'    => '',
 			'style'              => 'list',
 			'show_count'         => 1,
-			'hide_empty'         => 1,
+			'hide_empty'         => 0,
 			'use_desc_for_title' => 1,
 			'child_of'           => 0,
 			'feed'               => '',

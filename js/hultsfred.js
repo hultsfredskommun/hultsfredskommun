@@ -639,7 +639,14 @@ $(document).ready(function(){
 	$(".js-contact-link").each(function() {
 		setContactPopupAction($(this));
 	});
-	
+	// read-more-links
+	$(".js-read-more-link").each(function() {
+		$(this).unbind("click").bind("click", function(ev) {
+			ev.preventDefault();
+			$(this).next(".js-read-more-widget").toggle();
+			$(this).hide();
+		});
+	});
 	/* init slideshows */
 	$('.img-wrapper').slideshow();
 	

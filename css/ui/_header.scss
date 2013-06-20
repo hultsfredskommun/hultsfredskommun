@@ -147,6 +147,11 @@
 				}
 			}
 		}
+		.external_more_link {
+			@extend .islet;
+			@extend .float--left;
+			@extend .flush--bottom;
+		}
 	}
 
 }

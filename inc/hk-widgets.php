@@ -319,16 +319,20 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'num_aktuellt' ); ?>">Antal inl&auml;gg i aktuellt.</label> 
+		<label for="<?php echo $this->get_field_id( 'num_aktuellt' ); ?>">Antal inl&auml;gg i aktuellt (5 om tom).</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'num_aktuellt' ); ?>" name="<?php echo $this->get_field_name( 'num_aktuellt' ); ?>" type="text" value="<?php echo esc_attr( $num_aktuellt); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'num_news' ); ?>">Antal i nyhetslistan.</label> 
+		<label for="<?php echo $this->get_field_id( 'num_news' ); ?>">Antal i nyhetslistan (10 om tom).</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'num_news' ); ?>" name="<?php echo $this->get_field_name( 'num_news' ); ?>" type="text" value="<?php echo esc_attr( $num_news); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'content_type' ); ?>">Aktuellt typ (news som standard).</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'content_type' ); ?>" name="<?php echo $this->get_field_name( 'content_type' ); ?>" type="text" value="<?php echo esc_attr( $content_type); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'hide_more_news' ); ?>">Göm nyhetslistan, och visa en "Visa fler"-länk istället (ange namnet på länken).</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'hide_more_news' ); ?>" name="<?php echo $this->get_field_name( 'hide_more_news' ); ?>" type="text" value="<?php echo esc_attr( $hide_more_news); ?>" />
 		</p>
 		
 		<?php
@@ -340,6 +344,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$instance['num_news'] = strip_tags( $new_instance['num_news'] );
 		$instance['num_days_new'] = strip_tags( $new_instance['num_days_new'] );
 		$instance['content_type'] = strip_tags( $new_instance['content_type'] );
+		$instance['hide_more_news'] = strip_tags( $new_instance['hide_more_news'] );
 		
 		return $instance;
 	}
@@ -348,7 +353,15 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 	    extract( $args );
 		global $default_settings;
 		$options = get_option('hk_theme');
-		
+		if (isset($instance["num_aktuellt"])) $num_aktuellt = $instance["num_aktuellt"];
+		else $num_aktuellt = 5;
+		if (isset($instance["num_news"])) $num_news = $instance["num_news"];
+		else $num_news = 10;
+		if (isset($instance["content_type"])) $content_type = $instance["content_type"];
+		else $content_type = "";
+		if (isset($instance["hide_more_news"])) $hide_more_news = $instance["hide_more_news"];
+		else $hide_more_news = "";
+
 		/* get all sub categories to use in queries */
 		$cat = get_query_var("cat");
 		$all_categories = hk_getChildrenIdArray($cat);
@@ -361,7 +374,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 			<?php 
 				/* Query all posts with selected startpage category */
 				$cat = get_query_var("cat");
-				$query = array( 'posts_per_page' => $instance["num_aktuellt"], 
+				$query = array( 'posts_per_page' => $num_aktuellt, 
 								'category__and' => $cat,
 								'tag__and' => $default_settings["news_tag"],
 								'suppress_filters' => 'true',
@@ -372,8 +385,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 				$shownposts = array();
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 					$shownposts[] = get_the_ID(); 
-					if ($instance["content_type"] != "")
-						get_template_part( 'content', $instance["content_type"] ); 
+					if ($content_type != "")
+						get_template_part( 'content', $content_type ); 
 					else
 						get_template_part( 'content', 'news' ); 
 				endwhile; endif; 
@@ -385,7 +398,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 			<?php
 				/* Query all posts with news tag */
 				if ($default_settings["news_tag"] != "" && $default_settings["news_tag"] != "0") {
-					$query = array( 'posts_per_page' => $instance["num_news"], 
+					$query = array( 'posts_per_page' => $num_news, 
 									'category__in' => $all_categories,
 									'post__not_in' => $shownposts,
 									'tag__and' => $default_settings["news_tag"],
@@ -395,16 +408,20 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 					query_posts( $query );		
 
-					if ( have_posts() ) : ?>
-					<div id='news' class="widget">
-						<h1 class='entry-title'>Fler nyheter</h1>
-
+					if ( have_posts() ) : 
+					$hiddenclass = "";
+					if ($hide_more_news != "") {
+						$hiddenclass = "hidden";
+						echo "<a href='#' class='read-more-link js-read-more-link'>$hide_more_news<span class='dropdown-icon'></span></a>";
+					} ?>
+					<div id='news' class="widget read-more-widget js-read-more-widget <?php echo $hiddenclass; ?>">
+						<?php if ($hide_more_news == "") { ?><h1 class='entry-title'>Fler nyheter</h1><?php } ?>
 						<?php while ( have_posts() ) : the_post(); ?>
 						<div class="entry-wrapper">
 						<?php the_date("","<span class='time'>","</span>"); ?> <a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
 						</div>
 						<?php endwhile; ?>
-						<span class="read-more-link"><a href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Nyhetsarkiv</a></span>
+						<span class="read-more-link"><a href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Nyhetsarkiv<span class="right-icon"></span></a></span>
 					</div>					
 					<?php endif; ?> 
 					<?php // Reset Query
