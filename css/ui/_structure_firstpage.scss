@@ -37,6 +37,12 @@
 .read-more-widget {
 	@extend .half-margin--top;
 }
+.newscontent {
+	@extend .margin--bottom;
+}
+.newscontent .widget {
+	@extend .flush--bottom;
+}
 .img-wrapper {
 	line-height: 0;
 }

@@ -4342,7 +4342,7 @@ html.flexbox {
   margin-right: 0 !important;
 }
 
-.flush--bottom, #responsive-info, .slideshow .slide .caption-area .caption, .page-header .num-posts,
+.flush--bottom, #responsive-info, .newscontent .widget, .slideshow .slide .caption-area .caption, .page-header .num-posts,
 .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools, .summary .img-wrapper, .tools, .searchnavigation .searchresult .external_more_link, .top-menu-wrapper .top-menu, .responsive-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0 !important;
@@ -5644,7 +5644,7 @@ html {
   margin-right: 1.6rem;
 }
 
-.margin--bottom, .widget, .slideshow, .article-wrapper .entry-meta, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
+.margin--bottom, .widget, .newscontent, .slideshow, .article-wrapper .entry-meta, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
   margin-bottom: 24px;
   margin-bottom: 1.6rem;
 }
