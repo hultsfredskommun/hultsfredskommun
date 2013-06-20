@@ -359,6 +359,7 @@ function readMoreToggle(el){
 	//global var to article
 	article = $(el).parents("article");
 	if ($(article).hasClass("single")) {
+		ev.preventDefault();
 		return false;
 	}
 	if ($(article).find(".externallink").length > 0) {
