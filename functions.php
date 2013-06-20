@@ -423,6 +423,9 @@ function hk_excerpt($content) {
 		else
 			$content .= $c . " ";
 	}
+	if ($count < 4)
+		$content .= "</span>";
+		
     return $content;
 }
 

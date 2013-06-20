@@ -25,6 +25,9 @@
 .searchnavigation .form .input-wrapper .field {
 	padding: 4px 0 0 15px; 
 }
+.searchnavigation .form  .submit {
+	height: 36px;
+}
 .clearbutton {
 	padding: 3px 13px 0 0; 
 }

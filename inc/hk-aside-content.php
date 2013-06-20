@@ -73,6 +73,12 @@
 						<a target="_blank" href="<?php echo $link; ?>" class="icon-left related-file-icon" title="Ladda ner dokument"></a>
 						<a target="_blank" href="<?php echo $link; ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_file_description'); ?>"><?php echo $link_name; ?></a>
 					</li>			 
+				<?php elseif ( get_row_layout() == 'hk_related_titles' ) : ?>
+					<?php
+						$title = get_sub_field('hk_related_title'); ?>
+					<li class="related_title full">
+						<span><?php echo $title; ?></a>
+					</li>			 
 				<?php endif; ?> 
 			<?php endif; ?> 
 			

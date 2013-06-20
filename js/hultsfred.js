@@ -574,12 +574,6 @@ $(document).ready(function(){
 
 
 	/**
-	 * Fix scroll to top on single and page
-	 */
-	//REMOVED $('html, body').animate({scrollTop:0}, 0);
-
-
-	/**
 	 * tabs action
 	 */
 	if (typeof $.fn.tabs == 'function') {
@@ -627,7 +621,10 @@ $(document).ready(function(){
 	});
 	/* add action to read-more toggle, if in .home or in lt ie9, go to article */
 	$("#primary").find("article").each(function(){
-		if (!$(this).parents(".home").length && !isLessThenIE9) {
+		if ($(this).hasClass("single") && $(this).hasClass("full")) {
+			// do nothing
+		}
+		else if (!$(this).parents(".home").length && !isLessThenIE9) {
 			setArticleActions($(this));
 		} else {
 			$(this).unbind("click").bind("click",function() {

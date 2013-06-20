@@ -478,14 +478,14 @@ class hk_Tag_Walker extends Walker_Category {
 
 		if ( 'list' == $args['style'] ) { 
 			$output .= "\t<li"; 
-			$class = 'tag-item tag-item-'.$tag->term_id; 
+			$class = 'atag-item tag-item-'.$tag->term_id; 
 			$icon = "";
 			if ($current_tag) {
 				$class .=  ' current-tag'; 
 				$icon = "<a href='$href' class='delete-icon'></a>";
 			}
 			$output .=  ' class="'.$class.'"'; 
-			$output .= ">$icon$link</li>\n"; 
+			$output .= ">$icon$link\n"; 
 		} else { 
 			$output .= "\t$link\n"; 
 		} 

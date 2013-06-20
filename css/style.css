@@ -4706,7 +4706,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 
 .font-weight-bold, .page-header .num-posts .active,
 .page-header .view-tools .active,
-.page-header .sort-order .active, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .widget .widget-title span {
+.page-header .sort-order .active, .related_title, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .widget .widget-title span {
   font-weight: bold;
 }
 
@@ -5659,7 +5659,7 @@ html {
   margin: 0.8rem;
 }
 
-.half-margin--top, .read-more-link, .read-more-widget, .home .contact-area .contact-wrapper .content-wrapper ul, .post .summary-content h1.entry-title, .article-wrapper, .logo, .searchnavigation, .logo2, .responsive-menu {
+.half-margin--top, .read-more-link, .read-more-widget, .home .contact-area .contact-wrapper .content-wrapper ul, .post .summary-content h1.entry-title, .article-wrapper, .related_title, .logo, .searchnavigation, .logo2, .responsive-menu {
   margin-top: 12px;
   margin-top: 0.8rem;
 }

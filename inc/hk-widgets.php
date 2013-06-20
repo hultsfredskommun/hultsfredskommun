@@ -458,14 +458,18 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 	public function __construct() {
 		parent::__construct(
 	 		'HK_protocol', // Base ID
-			'HK protocol', // Name
+			'HK protokoll', // Name
 			array( 'description' => "Widget som visar protokoll" ) // Args
 		);
 		$this->vars["show_protocol"] = "";
 		$this->vars["num_protocol"] = "4";
+		$this->vars["title"] = "Protokoll";
 	}
 
  	public function form( $instance ) {		
+		if ( isset( $instance[ 'title' ] ) ) {	$title = $instance[ 'title' ];
+		} else {$show_protocol = $this->vars['title']; }
+
 		if ( isset( $instance[ 'show_protocol' ] ) ) {	$show_protocol = $instance[ 'show_protocol' ];
 		} else {$show_protocol = $this->vars['show_protocol']; }
 		
@@ -481,6 +485,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$options = get_option('hk_theme');
 
 		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Rubrik i widgeten.</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title); ?>" />
+		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'show_protocol' ); ?>">Visa protokollflik i kategorier (exempel 23,42,19).</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'show_protocol' ); ?>" name="<?php echo $this->get_field_name( 'show_protocol' ); ?>" type="text" value="<?php echo esc_attr( $show_protocol); ?>" />
@@ -503,6 +511,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
+		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['show_protocol'] = strip_tags( $new_instance['show_protocol'] );
 		$instance['num_protocol'] = strip_tags( $new_instance['num_protocol'] );
 		$instance['show_more_link'] = $new_instance['show_more_link'];
@@ -514,6 +523,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 	    extract( $args );
 		global $default_settings;
 		$options = get_option('hk_theme');
+		if ( isset( $instance[ 'title' ] ) ) { $title = $instance[ 'title' ];
+		} else {$title = $this->vars['title']; }
 		if ( isset( $instance[ 'show_all_categories' ] ) ) { $show_all_categories = $instance[ 'show_all_categories' ];
 		} else {$show_all_categories = ""; }
 		if ( isset( $instance[ 'show_more_link' ] ) ) { $show_more_link = $instance[ 'show_more_link' ];
@@ -526,7 +537,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		<?php if ($showprotocol) : ?>
 		
 			<?php echo $before_widget; ?>
-			<?php echo $before_title . "Protokoll" . $after_title; ?>
+			<?php echo $before_title . $title . $after_title; ?>
 			<div id="protocolwidget" class="protocolwidget">
 				<?php 
 					/* Query all posts with selected startpage category */

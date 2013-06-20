@@ -294,6 +294,10 @@ article.single .map_canvas {
 .tools {
 	@extend .flush--bottom;
 }
+.related_title {
+	@extend .font-weight-bold;
+	@extend .half-margin--top;
+}
 .side-content .post-edit-link {
 	@extend .icon-right;
 }

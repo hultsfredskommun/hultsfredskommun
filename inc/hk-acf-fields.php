@@ -146,6 +146,31 @@ if(function_exists("register_field_group"))
 							),
 						),
 					),
+					3 => 
+					array (
+						'label' => 'Rubriker',
+						'name' => 'hk_related_titles',
+						'display' => 'table',
+						'sub_fields' => 
+						array (
+							0 => 
+							array (
+								'multiple' => 0,
+								'allow_null' => 0,
+								'choices' => array (
+									'Dokument' => 'Dokument',
+									'Se även' => 'Se även',
+								),
+								'default_value' => '',
+								'key' => 'field_51c2c40ba83ff',
+								'label' => 'Rubrik',
+								'name' => 'hk_related_title',
+								'type' => 'select',
+								'column_width' => '',
+							),
+
+						),
+					),
 				),
 				'sub_fields' => 
 				array (
