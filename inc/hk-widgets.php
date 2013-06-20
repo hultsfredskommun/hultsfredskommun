@@ -314,6 +314,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		if ( isset( $instance[ 'content_type' ] ) ) { $content_type = $instance[ 'content_type' ];
 		} else { $content_type = ''; }
 
+		if ( isset( $instance[ 'hide_more_news' ] ) ) { $hide_more_news = $instance[ 'hide_more_news' ];
+		} else { $hide_more_news = ''; }
+
 
 		$options = get_option('hk_theme');
 
