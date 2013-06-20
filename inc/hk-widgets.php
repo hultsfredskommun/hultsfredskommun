@@ -502,7 +502,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$instance = array();
 		$instance['show_protocol'] = strip_tags( $new_instance['show_protocol'] );
 		$instance['num_protocol'] = strip_tags( $new_instance['num_protocol'] );
-		$instance['show_more_link'] = strip_tags( $new_instance['show_more_link'] );
+		$instance['show_more_link'] = $new_instance['show_more_link'];
 		$instance['show_all_categories'] = strip_tags( $new_instance['show_all_categories'] );
 		return $instance;
 	}
