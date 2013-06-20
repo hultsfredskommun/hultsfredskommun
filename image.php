@@ -1,6 +1,7 @@
 <?php 
 //Send a generated image to the browser 
-create_image($_REQUEST["w"],$_REQUEST["h"]); 
+if (isset($_REQUEST["w"]) && isset($_REQUEST["h"]))
+	create_image($_REQUEST["w"],$_REQUEST["h"]); 
 exit; 
 
 function create_image($width = 150, $height = 150) 
