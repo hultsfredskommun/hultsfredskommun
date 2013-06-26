@@ -136,11 +136,24 @@ add_shortcode( 'categorytree', 'hk_category_tree_func' );
 function hk_pre_get_posts( $query ) {
 	global $default_settings, $wp_query;
 	$options = get_option("hk_theme");
-
+	$not_in_cat = array();
+	$not_in_tag = array();
     if ( !is_admin() && !empty($default_settings["hidden_cat"]) && $default_settings["hidden_cat"] > 0) {
-		$query->set( 'category__not_in', array($default_settings["hidden_cat"]));
+		$not_in_cat[] = $default_settings["hidden_cat"];
     }
-
+    if ( !is_admin() && !empty($_REQUEST["ignore_cat"]) && $_REQUEST["ignore_cat"] > 0) {
+		$not_in_cat[] = $_REQUEST["ignore_cat"];
+    }
+    if ( !is_admin() && !empty($_REQUEST["ignore_tag"]) && $_REQUEST["ignore_tag"] > 0) {
+		$not_in_tag[] = $_REQUEST["ignore_tag"];
+    }
+	if ( !empty($not_in_cat) ) {
+		$query->set( 'category__not_in', $not_in_cat);
+	}
+	if ( !empty($not_in_tag) ) {
+		$query->set( 'tag__not_in', $not_in_tag);
+	}
+	
 	if ($wp_query->is_home()) {
 		$cat = $options["startpage_cat"];
 		if ($cat != "" && $cat != "0" ) {

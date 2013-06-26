@@ -35,7 +35,7 @@
  * Important (placed on top of all pages)
  * Right-top-menu-item
 * hk_pre_search, hk_post_search, hk_pre_ajax_search and hk_post_ajax_search action hooks to add extra search in child theme
-
+* ignore_cat and ignore_tag added as html get variable, i.e. http://yourdomain/category/the_category/?ignore_cat=12 to ignore the category with id 12
 
 === Recommended widget setup ===
 * Startsida toppinnehåll

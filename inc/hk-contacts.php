@@ -328,11 +328,11 @@ function hk_contact_firstpage($contactargs) {
 					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
 					$number = str_replace("]",")</span>", $number);
 
-					$retValue .= "<li class='hk_contact_phones'><a href='tel:$link'></i>";
+					$retValue .= "<li class='hk_contact_phones'><a href='tel:$link'>";
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 					$retValue .= $number . "</a></li>";
 				endwhile; endif;				
-				$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'></i>";
+				$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'>";
 				$retValue .= "Fler kontaktuppgifter...</a></li>";
 
 				$retValue .= "</ul>";
