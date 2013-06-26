@@ -138,6 +138,7 @@ function hk_pre_get_posts( $query ) {
 	$options = get_option("hk_theme");
 	$not_in_cat = array();
 	$not_in_tag = array();
+	$in_tag = array();
     if ( !is_admin() && !empty($default_settings["hidden_cat"]) && $default_settings["hidden_cat"] > 0) {
 		$not_in_cat[] = $default_settings["hidden_cat"];
     }
@@ -147,11 +148,17 @@ function hk_pre_get_posts( $query ) {
     if ( !is_admin() && !empty($_REQUEST["ignore_tag"]) && $_REQUEST["ignore_tag"] > 0) {
 		$not_in_tag[] = $_REQUEST["ignore_tag"];
     }
+    if ( !is_admin() && !empty($_REQUEST["include_tag"]) && $_REQUEST["include_tag"] > 0) {
+		$in_tag[] = $_REQUEST["include_tag"];
+    }
 	if ( !empty($not_in_cat) ) {
 		$query->set( 'category__not_in', $not_in_cat);
 	}
 	if ( !empty($not_in_tag) ) {
 		$query->set( 'tag__not_in', $not_in_tag);
+	}
+	if ( !empty($in_tag) ) {
+		$query->set( 'tag__in', $in_tag);
 	}
 	
 	if ($wp_query->is_home()) {
