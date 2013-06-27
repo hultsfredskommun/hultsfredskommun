@@ -1030,7 +1030,7 @@ h2, .beta {
   line-height: 1.2;
 }
 
-h3, .gamma, .post .summary-content h1.entry-title, .main-sub-menu a {
+h3, .gamma, .widget h1, .post .summary-content h1.entry-title, .main-sub-menu a {
   font-size: 18px;
   font-size: 1.2rem;
   line-height: 1.33333;
@@ -1042,7 +1042,7 @@ h4, .delta {
   line-height: 1.41176;
 }
 
-h5, .epsilon, h1.widget-title, .widget, .widget h1, .main-menu {
+h5, .epsilon, .widget, .main-menu {
   font-size: 16px;
   font-size: 1.06667rem;
   line-height: 1.5;
@@ -4733,7 +4733,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 
 .font-weight-bold, .page-header .num-posts .active,
 .page-header .view-tools .active,
-.page-header .sort-order .active, .related_title, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a, .widget .widget-title span {
+.page-header .sort-order .active, .related_title, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a {
   font-weight: bold;
 }
 
@@ -4788,7 +4788,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.33333;
   }
 
-  h3, .gamma, .post .summary-content h1.entry-title, .main-sub-menu a {
+  h3, .gamma, .widget h1, .post .summary-content h1.entry-title, .main-sub-menu a {
     font-size: 17px;
     font-size: 1.13333rem;
     line-height: 1.41176;
@@ -4800,7 +4800,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.5;
   }
 
-  h5, body, .epsilon, h1.widget-title, .widget, .widget h1, .main-menu {
+  h5, body, .epsilon, .widget, .main-menu {
     font-size: 14px;
     font-size: 0.93333rem;
     line-height: 1.71429;
@@ -4939,6 +4939,7 @@ html {
 .widget h1 {
   padding: 12px 0;
   line-height: 1;
+  font-weight: normal;
 }
 
 /* extend nav--block with breaking white-space */
@@ -4997,7 +4998,7 @@ html {
 
 /* driftinfo - widget_hk_wp_feed_rss_widget */
 .widget_hk_wp_feed_rss_widget h1 {
-  padding: 0;
+  padding-top: 0;
 }
 
 .img-wrapper {

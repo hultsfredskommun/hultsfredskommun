@@ -119,10 +119,11 @@ img {
 	@extend .margin--bottom;
 	@extend .epsilon;
 	h1 {
+		@extend .one-whole;
+		@extend .gamma;
 		padding: $half-spacing-unit 0;
 		line-height: 1;
-		@extend .one-whole;
-		@extend .epsilon;
+		font-weight: normal;
 	}
 }
 
