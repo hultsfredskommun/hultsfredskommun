@@ -43,6 +43,25 @@
 .newscontent .widget {
 	@extend .flush--bottom;
 }
+
+.main .widget {
+	.entry-wrapper {
+		@extend .half-margin--bottom;
+	}
+}
+/* driftinfo - widget_hk_wp_feed_rss_widget */
+.widget_hk_wp_feed_rss_widget {
+	@extend .islet;
+	@extend .border-radius;
+	@extend .important-background;
+	a, span, h1 {
+		@extend .white-text;
+	}
+	h1 {
+		padding: 0;
+	}
+}
+
 .img-wrapper {
 	line-height: 0;
 }
@@ -115,7 +134,6 @@
 				@extend .margin--right;
 				@extend .margin--left;
 				@extend .half-padding--bottom;
-				@extend .border--bottom;
 				display: block;
 			}
 		}

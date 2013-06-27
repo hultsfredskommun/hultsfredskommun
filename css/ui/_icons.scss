@@ -2,6 +2,11 @@
 	background-image: url("../images/icons/ikoner.svg");
 	display: inline-block;
 }
+.clip_48x48 {
+	@extend .clip;
+	width: 48px;
+	height: 48px;
+}
 .clip_30x30 {
 	@extend .clip;
 	width: 30px;
@@ -114,6 +119,13 @@
 .totop-icon {
 	@extend .clip_30x30;
 	background-position: -30px -767px;
+}
+
+.info-icon {
+	@extend .clip_48x48;
+	background-position: -24px -696px;
+	vertical-align: middle;
+	margin-right: 6px;
 }
 
 
