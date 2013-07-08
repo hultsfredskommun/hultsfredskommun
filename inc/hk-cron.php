@@ -26,7 +26,14 @@ function cron_add_quarter( $schedules ) {
  	return $schedules;
 }
 add_filter( 'cron_schedules', 'cron_add_quarter' );
-
+function cron_add_week( $schedules ) {
+ 	$schedules['hk_week'] = array(
+ 		'interval' => 604800,
+ 		'display' => __( 'Every week' )
+ 	);
+ 	return $schedules;
+}
+add_filter( 'cron_schedules', 'cron_add_week' );
  
  
 /*

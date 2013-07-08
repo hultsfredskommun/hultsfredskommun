@@ -302,7 +302,7 @@ function hk_theme_options_do_page() {
 			<?php
 				if ($options["enable_cron_normalize"]) {
 					if ( !wp_next_scheduled( 'hk_normalize_count_event' ) ) {
-						wp_schedule_event( time(), 'daily', 'hk_normalize_count_event');
+						wp_schedule_event( time(), 'hk_week', 'hk_normalize_count_event');
 					}
 				}
 				else {
