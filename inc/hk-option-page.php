@@ -245,6 +245,10 @@ function hk_theme_options_do_page() {
 			
 			<?php if(function_exists("register_field_group")) : // if acf plugin enabled ?>
 			<h3>Sluta publicera</h3>
+			<?php if ($options["hidden_cat"] == "" || $options["hidden_cat"] == "0") : ?>
+			<b>Ej synlig kategori måste sättas för att sluta publicera ska fungera.</b>
+			<?php else: ?>
+
 			<p><input type="checkbox" name="hk_theme[enable_cron_stop_publish]" <?php echo ($options['enable_cron_stop_publish'])?"checked":""; ?> /> 
 			<label for="hk_theme[enable_cron_stop_publish]">Aktivera sluta publicera.</label> <?php echo (wp_next_scheduled( 'hk_stop_publish_event' ))?"Aktiverat.":"Inaktiverat."; ?></p>
 			<?php 
@@ -262,6 +266,7 @@ function hk_theme_options_do_page() {
 			?>
 			Kollar "sluta publicera" <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_stop_publish_event' )); ?></b> nästa gång. <br> 
 			LOG: <br><textarea name="hk_theme[hk_stop_publish_log]" cols=100 rows=5><?php echo $options["hk_stop_publish_log"]; ?></textarea>
+			<?php endif; // hidden_cat ?>
 			<?php endif; ?>
 			
 			<h3>Granskningsmail</h3>

@@ -215,6 +215,9 @@ endif; // endif (function_exists( 'views_orderby' ))
  */
 function hk_stop_publish_job() {
 	$options = get_option('hk_theme');
+	if ($options["hidden_cat"] == "" || $options["hidden_cat"] == "0")
+		return;
+		
 	$hk_stop_publish_check_time = time();
 	$options["hk_stop_publish_check_time"] = $hk_stop_publish_check_time;
 	
@@ -223,6 +226,7 @@ function hk_stop_publish_job() {
 		'posts_per_page' => -1,
 		'category__not_in' => array($options["hidden_cat"]),
         'post_status' => 'publish', 
+		'post_type' => 'post', 
 		'meta_key' => 'hk_stop_publish_date',  // which meta to query
 		'meta_value'   => date("Ymd"),  // value for comparison
 		'meta_compare' => '<=',          // method of comparison

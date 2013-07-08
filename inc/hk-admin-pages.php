@@ -590,8 +590,8 @@ function hk_init() {
 	
 	
 	/* register category and tags for attachment */
-	register_taxonomy_for_object_type('category', 'attachment');
-	register_taxonomy_for_object_type('post_tag', 'attachment');
+	//register_taxonomy_for_object_type('category', 'attachment');
+	//register_taxonomy_for_object_type('post_tag', 'attachment');
 
 	/* remove unwanted fields from media library items */
 	//remove_post_type_support("attachment","content");
