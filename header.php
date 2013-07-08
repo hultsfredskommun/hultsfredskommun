@@ -259,7 +259,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				}
 
 				
-				$topwalker = new topmenu_walker_nav_menu();
+				$topwalker = new hk_topmenu_walker_nav_menu();
 				$args = array(
 					'theme_location'	=> $menu_name, 
 					'container' 		=> '',
@@ -276,7 +276,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				<?php
 
 				echo "<ul class='main-menu'>";
-				echo "<li class='small-words'>".getSmallWords($hk_options["smallwords"])."</li>";
+				echo "<li class='small-words'>".hk_getSmallWords($hk_options["smallwords"])."</li>";
 				wp_nav_menu( $args ); 
 				if ( is_active_sidebar( 'right-main-menu-item-sidebar' ) ) { 
 					dynamic_sidebar( 'right-main-menu-item-sidebar' ); 
@@ -320,7 +320,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 					
 					if ($default_settings['num_levels_in_menu'] > 1) {
 						echo "<ul class='main-sub-menu'>";
-						$submenu = new submenu_walker_nav_menu();
+						$submenu = new hk_submenu_walker_nav_menu();
 						$args = array(
 							'theme_location'	=> $menu_name, 
 							'container' 		=> '',							

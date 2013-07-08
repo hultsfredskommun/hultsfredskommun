@@ -951,7 +951,7 @@ function hk_get_parent_categories_from_cat($cat) {
 	return array($parent_category, $sub_parent_category, $cat);
 }
 
-function getSmallWords($smallwords) {
+function hk_getSmallWords($smallwords) {
 	$smallwords = trim($smallwords);
 	if (empty($smallwords)) return "";
 
@@ -967,7 +967,7 @@ function getSmallWords($smallwords) {
 }
 
 // submenu walker to get second row of top menu
-class submenu_walker_nav_menu extends Walker_Nav_Menu {
+class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
 	  
 	// add classes to ul sub-menus
 	function start_lvl( &$output, $depth ) {
@@ -998,10 +998,9 @@ class submenu_walker_nav_menu extends Walker_Nav_Menu {
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
 		  
-			// current category classes
-			$cat_class = ($item->object_id == $args->current_category) ? "current-menu-item" : "";
+			// current category classesq
+			$cat_class = ($item->object == "category" && $item->object_id == $args->current_category) ? "current-menu-item" : "";
 
-			// build html
 			$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . ' ' . $cat_class . '">';
 		  
 			// link attributes
@@ -1033,7 +1032,7 @@ class submenu_walker_nav_menu extends Walker_Nav_Menu {
 }
 
 // topmenu walker to get second row of top menu
-class topmenu_walker_nav_menu extends Walker_Nav_Menu {
+class hk_topmenu_walker_nav_menu extends Walker_Nav_Menu {
 	  
 	// add classes to ul sub-menus
 	function start_lvl( &$output, $depth ) {
@@ -1063,7 +1062,7 @@ class topmenu_walker_nav_menu extends Walker_Nav_Menu {
 		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
 	  
 		// current category classes
-		$cat_class = ($item->object_id == $args->current_category) ? "current-menu-item" : "";
+		$cat_class = ($item->object == "category" && $item->object_id == $args->current_category) ? "current-menu-item" : "";
 
 		// build html
 		$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . ' ' . $cat_class . '">';
