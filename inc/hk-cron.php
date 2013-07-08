@@ -27,13 +27,21 @@ function cron_add_quarter( $schedules ) {
 }
 add_filter( 'cron_schedules', 'cron_add_quarter' );
 function cron_add_week( $schedules ) {
- 	$schedules['hk_week'] = array(
+ 	$schedules['hk_weekly'] = array(
  		'interval' => 604800,
  		'display' => __( 'Every week' )
  	);
  	return $schedules;
 }
 add_filter( 'cron_schedules', 'cron_add_week' );
+function cron_add_month( $schedules ) {
+ 	$schedules['hk_monthly'] = array(
+ 		'interval' => 2592000,
+ 		'display' => __( 'Every month' )
+ 	);
+ 	return $schedules;
+}
+add_filter( 'cron_schedules', 'cron_add_month' );
  
  
 /*

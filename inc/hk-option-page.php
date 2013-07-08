@@ -274,7 +274,7 @@ function hk_theme_options_do_page() {
 			// review mail
 			if ($options['enable_cron_review_mail']) {
 				if ( !wp_next_scheduled( 'hk_review_mail_event' ) ) {
-					wp_schedule_event( time(), 'daily', 'hk_review_mail_event');
+					wp_schedule_event( time(), 'hk_weekly', 'hk_review_mail_event');
 				}
 			}
 			else
@@ -302,7 +302,7 @@ function hk_theme_options_do_page() {
 			<?php
 				if ($options["enable_cron_normalize"]) {
 					if ( !wp_next_scheduled( 'hk_normalize_count_event' ) ) {
-						wp_schedule_event( time(), 'hk_week', 'hk_normalize_count_event');
+						wp_schedule_event( time(), 'hk_monthly', 'hk_normalize_count_event');
 					}
 				}
 				else {
