@@ -43,7 +43,7 @@
 				}
 				else if (function_exists( 'views_orderby' )) {
 					$args['meta_key'] = 'views'; 
-					$args['orderby'] = 'meta_value_num';
+					$args['orderby'] = 'meta_value_num date';
 					$args['order'] = 'DESC';	
 				}
 				else {
@@ -114,7 +114,7 @@
 				/*echo get_post_meta(get_the_ID(),'views',true); 
 				if (is_sticky())
 					echo "sticky";*/
-				if ($wp_query->post_count == 1)
+				if ($wp_query->post_count == 1 && $wp_query->max_num_pages == 1)
 					get_template_part( 'content', 'single' );
 				else
 					get_template_part( 'content', get_post_type() );
