@@ -43,7 +43,7 @@
 				}
 				else if (function_exists( 'views_orderby' )) {
 					$args['meta_key'] = 'views'; 
-					$args['orderby'] = 'meta_value_num date';
+					$args['orderby'] = 'meta_value_num';
 					$args['order'] = 'DESC';	
 				}
 				else {
