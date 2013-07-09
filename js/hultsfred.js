@@ -361,8 +361,8 @@ function readMoreToggle(el){
 	if ($(article).hasClass("single")) {
 		return false;
 	}
-	if ($(article).find(".externallink").length > 0) {
-		location.href = $(article).find(".externallink").attr("href");
+	if ($(article).find(".js-external-link").length > 0) {
+		location.href = $(article).find(".js-external-link").attr("href");
 		return false;
 	}
 	if ($(article).hasClass("hk_kontakter")) {
@@ -377,8 +377,7 @@ function readMoreToggle(el){
 		if ( $(article).hasClass("full") )
 		{			
 			// alter close-buttons
-			$(article).find('.closeButton').remove();
-			$(article).find('.openButton').show();
+			$(article).find('.js-close-button').remove();
 			$(article).find('.more-content').slideUp(200, function(){
 				
 				
@@ -409,9 +408,8 @@ function readMoreToggle(el){
 				$(this).parents("article").find('.more-content').slideDown(200, function(){
 					
 					
-					$(article).find('.openButton').hide();
 					//add close-button top right corner
-					var closeb = $('<div>').addClass('closeButton button bottom').html("<a href='#'>Visa mindre</a>").unbind("click").bind("click",function(ev){
+					var closeb = $('<div>').addClass('js-close-button closeButton button bottom').html("<a href='#'>Visa mindre</a>").unbind("click").bind("click",function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
@@ -501,7 +499,7 @@ function readMoreToggle(el){
 			});
 
 			// set click on full header
-			$(this).parents("article").find(".more-content .entry-title a").unbind("click").bind("click",function(ev){
+			$(this).parents("article").find(".js-toggle-article").unbind("click").bind("click",function(ev){
 				ev.preventDefault();
 				readMoreToggle( $(this).parents("article").find(".entry-title a") );
 			});
@@ -996,7 +994,7 @@ function setArticleActions(el) {
 
 	
 	//sets click-action on entry-titles
-	$(el).find('.entry-title a, .togglearticle, .openButton').unbind("click").bind("click",function(ev){
+	$(el).find('.js-toggle-article').unbind("click").bind("click",function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
 		if( !$(this).parents('article').hasClass('loading') ){

@@ -29,7 +29,7 @@
 						$name = get_field('hk_external_link_name'); 
 						if (!empty($href))
 						{
-							$externalclass = "class='externallink'";
+							$externalclass = "js-external-link";
 							$title = "Extern länk till " . the_title_attribute( 'echo=0' );
 						}
 					}
@@ -39,7 +39,7 @@
 					}
 					
 					?>
-					<h1 class="entry-title"><a <?php echo $externalclass; ?> href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+					<h1 class="entry-title"><a class="<?php echo $externalclass; ?> js-toggle-article" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 					<div class="entry-content">
 						<?php the_excerpt(); ?>
 					</div>

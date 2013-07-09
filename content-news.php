@@ -29,7 +29,7 @@
 						$name = get_field('hk_external_link_name'); 
 						if (!empty($href))
 						{
-							$externalclass = "class='externallink'";
+							$externalclass = "class='js-external-link'";
 							$title = "Extern länk till " . the_title_attribute( 'echo=0' );
 						}
 					}
