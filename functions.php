@@ -1103,8 +1103,15 @@ function wp_rss_img_do_feed($for_comments){
 	}
 }
 function wp_rss_img_include (){
-	if (get_the_date("YmdHi") != get_the_modified_date("YmdHi")) //check if same as pubdate
-		the_modified_date(DateTime::RSS,"<modDate>","</modDate>");
+	if (get_the_date("YmdHis") != get_the_modified_date("YmdHis")) //check if same as pubdate
+	{
+		echo "\t<modDate>";
+		$date = get_the_modified_date("Y-m-d H:i:s");
+		$timezone = timezone_open(get_option('timezone_string'));
+		$date = new DateTime($date,$timezone);
+		echo $date->format(DateTime::RSS);
+		echo "</modDate>\n\t";
+	}
 }
 
 
