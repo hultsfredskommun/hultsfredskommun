@@ -1092,6 +1092,20 @@ class hk_topmenu_walker_nav_menu extends Walker_Nav_Menu {
 }
 
 
+/* add modified date to feed */
+add_action("do_feed_rss","wp_rss_img_do_feed",5,1);
+add_action("do_feed_rss2","wp_rss_img_do_feed",5,1); 
+
+function wp_rss_img_do_feed($for_comments){
+	if(!$for_comments) {
+		add_action('rss_item', 'wp_rss_img_include');
+		add_action('rss2_item', 'wp_rss_img_include');
+	}
+}
+function wp_rss_img_include (){
+	if (get_the_date("YmdHi") != get_the_modified_date("YmdHi")) //check if same as pubdate
+		the_modified_date(DateTime::RSS,"<modDate>","</modDate>");
+}
 
 
 // show attachments in post flow
