@@ -8,7 +8,8 @@
  */
 
 get_header(); ?>
-		<?php //hk_navigation(); ?>
+		<?php $options = get_option("hk_theme");
+			//hk_navigation(); ?>
 		
 		<?php /* hook to be able to add other search result */ 
 		do_action('hk_pre_search', get_query_var("s")); ?>
@@ -33,15 +34,27 @@ get_header(); ?>
 				</header>
 
 				
+				<?php if (function_exists('relevanssi_didyoumean')) { relevanssi_didyoumean(get_search_query(), "<div class='didyoumean'>Menade du: ", "</div>", 5);
+				}?>
+				
 				<?php /* Start the Loop */ ?>
+				
 				<?php while ( have_posts() ) : the_post(); ?>
-
 					<?php
+						$external_blog = false; 
+						if ($blog_id != $post->blog_id){ 
+							$external_blog = true; 
+							switch_to_blog($post->blog_id);
+						}
+						
 						/* Include the Post-Format-specific template for the content.
 						 * If you want to overload this in a child theme then include a file
 						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 						 */
 						get_template_part( 'content', get_post_type() );
+						if ($external_blog) { 
+							restore_current_blog();
+						}
 					?>
 
 				<?php endwhile; ?>
@@ -58,8 +71,11 @@ get_header(); ?>
 		</div><!-- #primary -->
 		
 		<?php /* hook to be able to add other search result */ 
-		do_action('hk_post_search', get_query_var("s")); ?>
+		do_action('hk_post_search', get_query_var("s")); 
 		
-
-
+		/* add external link search */
+		if ($options["external_search_title"] != "" && $options["external_search_url"] != "")
+			echo "<a class='external_more_link' href='" . $options["external_search_url"] . get_query_var("s") . " ' title='" . $options["external_search_title"] . "'>" . $options["external_search_title"] . "</a>";
+		?>
+		
 <?php get_footer(); ?>

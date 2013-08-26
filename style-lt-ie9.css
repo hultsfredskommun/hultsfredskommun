@@ -60,6 +60,9 @@
 	width: 885px;
 }
 /* Slider & Pictures */
+.contact-wrapper .slideshow {
+	width: 100%;
+}
 .slideshow {
 	width:570px;
 }

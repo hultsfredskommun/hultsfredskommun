@@ -12,4 +12,7 @@
 		<label for="s" class="assistive-text"><?php _e( 'Search', 'twentyeleven' ); ?></label>
 		<div class="input-wrapper"><input type="text" class="field" name="s" id="s" autocomplete="off" placeholder="<?php echo $options["search_watermark"]; ?>" /></div>
 		<input type="submit" class="submit" name="submit" id="searchsubmit" value="" />
+		<?php if ($options['relevanssi_multisite'] != "") { ?>
+		<input type="hidden" name="searchblogs" value="<?php echo $options['relevanssi_multisite']; ?>" />
+		<?php } ?>
 	</form>

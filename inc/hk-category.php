@@ -1,3 +1,9 @@
+	<?php /* if is sub start page */ 
+
+	
+	?>
+
+
 	<?php if (!is_sub_category_firstpage()) :
 			if ($cat != "") : 
 				/* check if there are posts to be hidden */
@@ -53,10 +59,10 @@
 
 				query_posts( $args );
 
-			endif;
+			endif; // end if cat is set
 	?>
 	<div id="breadcrumb" class="breadcrumb"><?php hk_breadcrumb(); ?></div>
-	<?php endif; ?>
+	<?php endif; // end if !is_sub_category_firstpage ?>
 
 	<div id="primary" class="primary">
 

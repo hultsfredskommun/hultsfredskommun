@@ -36,16 +36,13 @@
 			$retString .= "<ul class='search-posts'>";
 			$retString .= "<li class='search-title'>Artiklar</li>";
 			while ( $dyn_query->have_posts() ) : $dyn_query->the_post();
+				if ($options['relevanssi_multisite'] != "") { switch_to_blog($dyn_query->blog_id); }
 				$retString .= "<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a></li>"; //<i>" . get_the_category_list(', ') . "</i>
 			endwhile;
 			$retString .= "</ul>";
 		endif;
 
 		
-		// suggestions
-		if (function_exists('relevanssi_didyoumean')) {
-			relevanssi_didyoumean($searchstring, "<div class='one-whole float--left island flush--bottom'>Menade du ",".</div>");
-		}
 		
 		
 		
@@ -94,6 +91,11 @@
 		}*/
 
 		
+
+		// suggestions
+		if (function_exists('relevanssi_didyoumean')) {
+			relevanssi_didyoumean($searchstring, "<div class='didyoumean'>Menade du ",".</div>");
+		}
 
 		/* hook to be able to add other search result */ 
 		do_action('hk_pre_ajax_search', $searchstring);

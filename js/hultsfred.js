@@ -1006,7 +1006,9 @@ function setArticleActions(el) {
 	
 	//triggers articles click-action entry-title clicked
 	$(el).find(".summary-content").unbind("click").bind("click",function(){
-		readMoreToggle( $(this).parents("article").find('.entry-title a') );
+		if ($(this).parents("article").find('.entry-title a').hasClass('js-toggle-article')) {
+			readMoreToggle( $(this).parents("article").find('.entry-title a') );
+		}
 	});
 	
 	

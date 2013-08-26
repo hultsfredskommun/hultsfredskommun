@@ -67,6 +67,9 @@ require( get_template_directory() . '/inc/hk-contacts.php' );
 // Grab hk related.
 require( get_template_directory() . '/inc/hk-related.php' );
 
+// Grab hk push.
+//require( get_template_directory() . '/inc/hk-push.php' );
+
 // Grab hk events.
 //require( get_template_directory() . '/inc/hk-events.php' );
 
@@ -667,14 +670,6 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 }
 
 
-// add filter to get ACF field stop publish to work
-function filter_where( $where = '' ) {
-    //$where .= " AND hk_stop_publish < '" . strtotime("now") . "'";
-    return $where;
-}
-add_filter( 'posts_where', 'filter_where' );
-
-
 // help function to display when next review date is
 function get_the_reviewed_date($id) {
 	global $post;
@@ -691,8 +686,8 @@ if (!function_exists("hk_nicedate")) {
 		$mo = array('januari' => 'January',
 				'februari' => 'February',
 				'mars' => 'March',
-				'april' => 'Aprli',
-				'maj' => 'Mey',
+				'april' => 'April',
+				'maj' => 'May',
 				'juni' => 'June',
 				'juli' => 'July',
 				'augusti' => 'August',

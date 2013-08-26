@@ -6,8 +6,13 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
-?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky summary":"summary"); ?>>
+
+global $blog_id, $external_blog;
+$classes = "summary";
+$classes .= (is_sticky())?" sticky":"";
+$classes .= ($external_blog)?" externalblog":"";
+ ?>
+	<article id="post-<?php the_ID(); ?>" <?php post_class($classes); ?>>
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
 			<div class="content-wrapper">
@@ -24,22 +29,29 @@
 					<?php endif; endif;/*endif;*/ ?>
 					<?php
 					$externalclass = "";
-					if (function_exists("get_field")) { 
-						$href = get_field('hk_external_link_url'); 
-						$name = get_field('hk_external_link_name'); 
-						if (!empty($href))
-						{
-							$externalclass = "js-external-link  ";
-							$title = "Extern länk till " . the_title_attribute( 'echo=0' );
+					$jstoggle = "js-toggle-article";
+					if ($external_blog) {
+						$jstoggle = "";
+						$href = get_permalink(); 
+						$title = "Länk till annan webbplats " . the_title_attribute( 'echo=0' );
+					} 
+					else {
+						if (function_exists("get_field")) { 
+							$href = get_field('hk_external_link_url'); 
+							$name = get_field('hk_external_link_name'); 
+							if (!empty($href))
+							{
+								$externalclass = "js-external-link  ";
+								$title = "Extern länk till " . the_title_attribute( 'echo=0' );
+							}
+						}
+						if (empty($href)) {
+							$href = get_permalink(); 
+							$title = "Länk till " . the_title_attribute( 'echo=0' );
 						}
 					}
-					if (empty($href)) {
-						$href = get_permalink(); 
-						$title = "Länk till " . the_title_attribute( 'echo=0' );
-					}
-					
 					?>
-					<h1 class="entry-title"><a class="<?php echo $externalclass; ?>js-toggle-article" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+					<h1 class="entry-title"><a class="<?php echo $externalclass.$jstoggle; ?>" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 					<div class="entry-content">
 						<?php the_excerpt(); ?>
 					</div>

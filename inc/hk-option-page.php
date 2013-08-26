@@ -192,6 +192,7 @@ function hk_theme_options_do_page() {
 				wp_dropdown_categories( $args ); 
 			?>
 			</p>
+
 			<?php if ( function_exists( 'views_orderby' ) ) : ?>
 			<p><label for="hk_theme[order_by_date]">Välj vilka kategorier som ska sorteras på datum istället för mest besökt.</label><br/><input size="8" type="text" name="hk_theme[order_by_date]" value="<?php echo $options['order_by_date']; ?>" /></p>
 			<?php endif; ?>
@@ -217,14 +218,20 @@ function hk_theme_options_do_page() {
 			
 			<a name="tillagg"></a>
 			<hr/><h2>Till&auml;gg</h2>
-			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. L&auml;gger till Tipsa i artikel.</label><br/><input type="text" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
-			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. L&auml;gger till Lyssna i artikel.</label><br/><input type="text" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>			
-			<p><label for="hk_theme[typekit_url]">Typekit js url - http://&lt;resten av url&gt; f&ouml;r att l&auml;gga till typsnitt.</label><br/><input type="text" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
-			<p><label for="hk_theme[google_font]">Load google font - ex. <i>Oxygen:300,400,700</i> f&ouml;r att l&aumlgga till typsnitt.</label><br/><input type="text" name="hk_theme[google_font]" value="<?php echo $options['google_font']; ?>" /></p>
+			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. L&auml;gger till Tipsa i artikel.</label><br/><input type="text" size="80" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
+			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. L&auml;gger till Lyssna i artikel.</label><br/><input type="text" size="80" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>			
+			<p><label for="hk_theme[typekit_url]">Typekit js url - http://&lt;resten av url&gt; f&ouml;r att l&auml;gga till typsnitt.</label><br/><input type="text" size="80" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
+			<p><label for="hk_theme[google_font]">Load google font - ex. <i>Oxygen:300,400,700</i> f&ouml;r att l&aumlgga till typsnitt.</label><br/><input type="text" size="80" name="hk_theme[google_font]" value="<?php echo $options['google_font']; ?>" /></p>
 			<p><label for="hk_theme[in_head_section]">script or other in &lt;head&gt;-section</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[in_head_section]"><?php echo $options['in_head_section']; ?></textarea></p>
+			
+			<?php if (function_exists('relevanssi_do_query')) { ?>
+			<h3>Relevanssi - Multisajt sökning</h3>
+			<p><label for="hk_theme[relevanssi_multisite]">Kommaseparerad lista med ID på de sajter som ska sökas på (Relevanssi måste vara aktiverat på de sajter som ska vara sökbara). Sök bara på denna sajt genom att lämna inställningen tom.</label><br/><input type="text" size="80" name="hk_theme[relevanssi_multisite]" value="<?php echo $options['relevanssi_multisite']; ?>" /></p>			
+			<?php } ?>
+			
 			<h3>Extern sökning</h3>
-			<p><label for="hk_theme[external_search_title]">Länktext till extern sökning</label><br/><input type="text" name="hk_theme[external_search_title]" value="<?php echo $options['external_search_title']; ?>" /></p>
-			<p><label for="hk_theme[external_search_url]">URL till extern sökning (lägger till sökordet direkt efter URL)</label><br/><input type="text" name="hk_theme[external_search_url]" value="<?php echo $options['external_search_url']; ?>" /></p>
+			<p><label for="hk_theme[external_search_title]">Länktext till extern sökning</label><br/><input type="text" size="80" name="hk_theme[external_search_title]" value="<?php echo $options['external_search_title']; ?>" /></p>
+			<p><label for="hk_theme[external_search_url]">URL till extern sökning (lägger till sökordet direkt efter URL)</label><br/><input type="text" size="80" name="hk_theme[external_search_url]" value="<?php echo $options['external_search_url']; ?>" /></p>
 			
 			<?php submit_button(); ?>
 

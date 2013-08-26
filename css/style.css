@@ -4733,7 +4733,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 
 .font-weight-bold, .page-header .num-posts .active,
 .page-header .view-tools .active,
-.page-header .sort-order .active, .related_title, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a {
+.page-header .sort-order .active, .related_title, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .searchnavigation .searchresult .external_more_link, .category-navigation .heading, .category-navigation .parent li.current-cat > a {
   font-weight: bold;
 }
 
