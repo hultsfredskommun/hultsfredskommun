@@ -1024,7 +1024,7 @@ h1, .alpha {
   line-height: 1.09091;
 }
 
-h2, .beta {
+h2, .beta, .more-from-heading {
   font-size: 20px;
   font-size: 1.33333rem;
   line-height: 1.2;
@@ -4782,7 +4782,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.2;
   }
 
-  h2, .beta {
+  h2, .beta, .more-from-heading {
     font-size: 18px;
     font-size: 1.2rem;
     line-height: 1.33333;
@@ -5670,7 +5670,7 @@ html {
   margin: 1.6rem;
 }
 
-.margin--top, .home .contact-area .contact-wrapper .content-wrapper h1 a, .pagenav, .article-wrapper .entry-meta, .searchnavigation .searchresult, .colophon {
+.margin--top, .home .contact-area .contact-wrapper .content-wrapper h1 a, .pagenav, .article-wrapper .entry-meta, .more-from-heading, .searchnavigation .searchresult, .colophon {
   margin-top: 24px;
   margin-top: 1.6rem;
 }
@@ -5681,7 +5681,7 @@ html {
   margin-right: 1.6rem;
 }
 
-.margin--bottom, .widget, .newscontent, .slideshow, .article-wrapper .side-content .optional-text, .article-wrapper .entry-meta, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
+.margin--bottom, .widget, .newscontent, .slideshow, .article-wrapper .side-content .optional-text, .article-wrapper .entry-meta, .more-from-heading, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
   margin-bottom: 24px;
   margin-bottom: 1.6rem;
 }

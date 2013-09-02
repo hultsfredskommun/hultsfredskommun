@@ -45,7 +45,7 @@ get_header(); ?>
 				// loop related posts  
 				$wpq = new WP_Query($query);
 				if ($wpq->have_posts()) : 
-					echo "<div class='more-from-heading'><span>Mer fr&aring;n " . $from_string . "</span></div>";
+					echo "<div class='more-from-heading'><span>Se mer fr&aring;n kategorierna " . $from_string . "</span></div>";
 					echo "<aside id='related_posts'>";
 					while ($wpq->have_posts()) : $wpq->the_post();
 						get_template_part( 'content' , get_post_type());

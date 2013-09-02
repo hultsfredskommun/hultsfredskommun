@@ -344,5 +344,9 @@ article.summary .summary {
 	padding-right: $base-spacing-unit;
 }
 }
-
+.more-from-heading {
+	@extend .margin--top;
+	@extend .margin--bottom;
+	@extend .beta;
+}
 

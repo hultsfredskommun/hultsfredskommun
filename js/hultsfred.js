@@ -371,7 +371,7 @@ function readMoreToggle(el){
 	}
 	
 	//toggle function
-	function toggleShow() {
+	function toggleShow(article) {
 		// show summary content
 		
 		if ( $(article).hasClass("full") )
@@ -381,18 +381,16 @@ function readMoreToggle(el){
 			
 			$(article).find('.more-content').slideUp(200, function(){
 				
-				
-				// toggle visibility
-				$("html,body").animate({scrollTop: $(article).position().top - $('#wpadminbar').height() || 0}, 200);
-				
 				// remove full class to track article state
-				$(article).removeClass("full").addClass("summary");
+				$(this).parents("article").removeClass("full").addClass("summary");
 
-				$(article).find('.summary-content').slideDown(200, function(){
-					
+				$(this).parents("article").find('.summary-content').slideDown(200, function(){
+					if ($(document).scrollTop() > $(this).parents("article").position().top - $('#wpadminbar').height() || 0) {
+						$("html,body").animate({scrollTop: $(this).parents("article").position().top - ($('#wpadminbar').height() || 0)}, 200);
+					}								
 				});
 
-				$(article).slideshow('pause');
+				$(this).parents("article").slideshow('pause');
 			});
 			
 			// reset webbrowser history
@@ -402,10 +400,12 @@ function readMoreToggle(el){
 		// show full content
 		else {
 			// toggle visibility
-			// only show one article at a time
-			$("article").removeClass("full").addClass("summary");
-			$("article .more-content").hide();
-			$("article .summary-content").show();
+			// only show one article at a time, i.e. close all first
+			/*$("article").find(".full").each(function() {
+				$(this).removeClass("full").addClass("summary");
+				$(this).find(".more-content").slideUp(200);
+				$(this).find(".summary-content").slideDown(100);
+			});*/
 
 			$(article).find('.summary-content').slideUp(200, function(){
 	
@@ -416,7 +416,7 @@ function readMoreToggle(el){
 					
 					
 					// animate to top of article
-					$("html,body").animate({scrollTop: $(article).position().top - $('#wpadminbar').height() || 0}, 200);
+					$("html,body").animate({scrollTop: $(this).parents("article").position().top - $('#wpadminbar').height() || 0}, 200);
 					
 					if ($(this).parents("article").find(".js-close-button").length >= 1)
 						$(this).parents("article").find(".js-close-button").remove();
@@ -524,11 +524,11 @@ function readMoreToggle(el){
 			$(this).parents("article").removeClass("loading").addClass("loaded");
 
 			//exec toggle function
-			toggleShow();
+			toggleShow($(this).parents("article"));
 		});
 	}
 	else if( $(article).hasClass("loaded") ){
-		toggleShow();
+		toggleShow($(article));
 	}
 	return false;
 }
