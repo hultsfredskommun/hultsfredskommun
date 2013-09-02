@@ -5212,6 +5212,10 @@ html {
   text-align: left;
 }
 
+.summary .button.bottom {
+  display: none;
+}
+
 @media only screen and (min-width: 970px) {
   .primary .article-wrapper {
     /*

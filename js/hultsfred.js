@@ -376,8 +376,9 @@ function readMoreToggle(el){
 		
 		if ( $(article).hasClass("full") )
 		{			
-			// alter close-buttons
+			// remove close-buttons
 			$(article).find('.js-close-button').remove();
+			
 			$(article).find('.more-content').slideUp(200, function(){
 				
 				
@@ -401,15 +402,27 @@ function readMoreToggle(el){
 		// show full content
 		else {
 			// toggle visibility
+			// only show one article at a time
+			$("article").removeClass("full").addClass("summary");
+			$("article .more-content").hide();
+			$("article .summary-content").show();
+
 			$(article).find('.summary-content').slideUp(200, function(){
 	
+				
 				// add full class to track article state
 				$(this).parents("article").addClass("full").removeClass("summary");
 				$(this).parents("article").find('.more-content').slideDown(200, function(){
 					
 					
-					//add close-button top right corner
-					var closeb = $('<div>').addClass('js-close-button closeButton button bottom').html("<a href='#'>Visa mindre</a>").unbind("click").bind("click",function(ev){
+					// animate to top of article
+					$("html,body").animate({scrollTop: $(article).position().top - $('#wpadminbar').height() || 0}, 200);
+					
+					if ($(this).parents("article").find(".js-close-button").length >= 1)
+						$(this).parents("article").find(".js-close-button").remove();
+						
+					//add close-button at bottom
+					var closeb = $('<div>').addClass('js-close-button closeButton button bottom').html("<a href='#'>St&auml;ng</a>").unbind("click").bind("click",function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});

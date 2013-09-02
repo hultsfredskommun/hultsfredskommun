@@ -209,6 +209,9 @@ article.post {
 		text-align: left;
 	}
 }
+.summary .button.bottom {
+	display: none;
+}
 
 @include media-query(desk) {
 .primary .article-wrapper {
