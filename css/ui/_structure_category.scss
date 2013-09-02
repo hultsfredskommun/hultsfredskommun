@@ -11,6 +11,9 @@
 	padding-bottom: $base-spacing-unit*0.25;
 	padding-left: $base-spacing-unit*1.5;
 }
+.one_article.breadcrumb {
+	padding-left: $base-spacing-unit;
+}
 
 .primary {
 	@extend .g;

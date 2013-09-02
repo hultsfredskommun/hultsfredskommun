@@ -60,8 +60,9 @@
 				query_posts( $args );
 
 			endif; // end if cat is set
+			
 	?>
-	<div id="breadcrumb" class="breadcrumb"><?php hk_breadcrumb(); ?></div>
+	<div id="breadcrumb" class="<?php echo ($wp_query->post_count <= 1)?"one_article ":""; ?>breadcrumb"><?php hk_breadcrumb(); ?></div>
 	<?php endif; // end if !is_sub_category_firstpage ?>
 
 	<div id="primary" class="primary">

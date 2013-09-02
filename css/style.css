@@ -5051,6 +5051,10 @@ html {
   padding-left: 36px;
 }
 
+.one_article.breadcrumb {
+  padding-left: 24px;
+}
+
 /*
  * sort-order 
  */
