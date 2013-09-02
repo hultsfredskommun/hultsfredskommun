@@ -537,19 +537,15 @@ if(function_exists("register_field_group"))
 	register_field_group(array (
 		'id' => '5048edc032267',
 		'title' => 'Artikelns extra information',
-		'fields' => 
-		array (
-			0 => 
+		'fields' => array (
 			array (
-				'key' => 'field_5048dc7a43e1a',
+				'key' => 'field_52243a0577cc8',
 				'label' => 'Extra text',
 				'name' => 'hk_optional_text',
-				'type' => 'textarea',
-				'instructions' => '',
-				'required' => '0',
+				'type' => 'wysiwyg',
 				'default_value' => '',
-				'formatting' => 'br',
-				'order_no' => '0',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
 			),
 		),
 		'location' => 

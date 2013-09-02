@@ -56,6 +56,10 @@
 	padding-left:$base-spacing-unit;
 	padding-left:($base-spacing-unit / $base-font-size)*1rem;
 }
+.half-padding {
+	padding:$half-spacing-unit;
+	padding:($half-spacing-unit / $base-font-size)*1rem;
+}
 .half-padding--left {
 	padding-left:$half-spacing-unit;
 	padding-left:($half-spacing-unit / $base-font-size)*1rem;

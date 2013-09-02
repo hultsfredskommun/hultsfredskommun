@@ -68,7 +68,7 @@
 
 	<div id="content" role="main">
 
-
+	<?php if ($wp_query->post_count > 1) : ?>
 		<header class="page-header">
 			
 			<ul class="num-posts">
@@ -107,6 +107,7 @@
 			?>
 
 		</header>
+	<?php endif; ?>
 		
 	<?php
 		/**

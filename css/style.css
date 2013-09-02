@@ -4543,7 +4543,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   color: #000;
 }
 
-.white-text, .widget_hk_wp_feed_rss_widget a, .widget_hk_wp_feed_rss_widget span, .widget_hk_wp_feed_rss_widget h1, .slideshow .slide .caption-area .caption, .page-header .category-tools .related-menu a, .important-widget, .cookieinformation, .cookieinformation a,
+.white-text, .widget_hk_wp_feed_rss_widget a, .widget_hk_wp_feed_rss_widget span, .widget_hk_wp_feed_rss_widget h1, .slideshow .slide .caption-area .caption, .page-header .category-tools .related-menu a, .article-wrapper .side-content .optional-text, .important-widget, .cookieinformation, .cookieinformation a,
 .important-widget a, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper a, .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
@@ -4567,7 +4567,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #a41d30;
 }
 
-.complement-background, .slideshow .slide .caption-area .transparent {
+.complement-background, .slideshow .slide .caption-area .transparent, .article-wrapper .side-content .optional-text {
   background-color: #644c20;
 }
 
@@ -4691,7 +4691,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: transparent;
 }
 
-.border-radius, .button, img, .widget_hk_wp_feed_rss_widget, .page-header, .button.bottom, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+.border-radius, .button, img, .widget_hk_wp_feed_rss_widget, .page-header, .article-wrapper .side-content .optional-text, .button.bottom, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .contact-popup.box {
   border-radius: 3px;
@@ -5673,7 +5673,7 @@ html {
   margin-right: 1.6rem;
 }
 
-.margin--bottom, .widget, .newscontent, .slideshow, .article-wrapper .entry-meta, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
+.margin--bottom, .widget, .newscontent, .slideshow, .article-wrapper .side-content .optional-text, .article-wrapper .entry-meta, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
   margin-bottom: 24px;
   margin-bottom: 1.6rem;
 }
@@ -5727,6 +5727,11 @@ html {
 .padding--left, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field {
   padding-left: 24px;
   padding-left: 1.6rem;
+}
+
+.half-padding, .article-wrapper .side-content .optional-text {
+  padding: 12px;
+  padding: 0.8rem;
 }
 
 .half-padding--left, .category-navigation .parent li .children {

@@ -2,6 +2,10 @@
 <aside class="side-content">
 	<?php $count = 1; 
 	$options = get_option("hk_theme"); ?>
+	<?php if (get_field('hk_optional_text',get_the_ID())){ ?>
+		<div class="box optional-text full"><?php echo get_field('hk_optional_text',get_the_ID()); ?></div>
+	<?php } ?>
+	
 	<?php if( function_exists("get_field") && get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
 	<ul class="box top contacts summary">
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
