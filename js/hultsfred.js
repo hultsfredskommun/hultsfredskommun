@@ -814,7 +814,7 @@ $(document).ready(function(){
 						} 
 
 						// Erase search... 
-						$(clearbutton).click(function(){ 
+						$(clearbutton).click(function(event){ 
 							event.preventDefault(); 
 							erase_and_refocus_on_search_input(); 
 						}); 
@@ -823,7 +823,7 @@ $(document).ready(function(){
 						
 							var link = this;
 
-							$(this).keydown(function(){  var key = event.keyCode || event.which;
+							$(this).keydown(function(event){  var key = event.keyCode || event.which;
 
 								event.preventDefault(); 
 
