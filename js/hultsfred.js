@@ -361,10 +361,10 @@ function closeAllArticles()
 	$("article.full").each(function() {
 		if (!$(this).hasClass("single")) {
 			$(this).removeClass("full").addClass("summary");
-			//$(this).find(".more-content").hide();
-			//$(this).find(".summary-content").show();
-			$(this).find(".more-content").slideUp(200);
-			$(this).find(".summary-content").slideDown(200);
+			$(this).find(".more-content").hide();
+			$(this).find(".summary-content").show();
+			//$(this).find(".more-content").slideUp(200);
+			//$(this).find(".summary-content").slideDown(200);
 		}
 	});
 }
@@ -400,12 +400,12 @@ function readMoreToggle(el){
 			// remove close-buttons
 			$(article).find('.js-close-button').remove();
 			
-			$(article).find('.more-content').slideUp(200, function(){
+			$(article).find('.more-content').slideUp(0, function(){
 				
 				// remove full class to track article state
 				$(this).parents("article").removeClass("full").addClass("summary");
 
-				$(this).parents("article").find('.summary-content').slideDown(200, function(){
+				$(this).parents("article").find('.summary-content').slideDown(0, function(){
 					if ($(document).scrollTop() > $(this).parents("article").position().top - $('#wpadminbar').height() || 0) {
 						$("html,body").animate({scrollTop: -20 + $(this).parents("article").position().top - ($('#wpadminbar').height() || 0)}, 200);
 					}								
@@ -425,12 +425,12 @@ function readMoreToggle(el){
 			// only show one article at a time, i.e. close all first
 			closeAllArticles();
 			
-			$(article).find('.summary-content').slideUp(200, function(){
+			$(article).find('.summary-content').slideUp(0, function(){
 	
 				
 				// add full class to track article state
 				$(this).parents("article").addClass("full").removeClass("summary");
-				$(this).parents("article").find('.more-content').slideDown(200, function(){
+				$(this).parents("article").find('.more-content').slideDown(0, function(){
 					
 					
 					// animate to top of article
