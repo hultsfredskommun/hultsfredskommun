@@ -793,7 +793,16 @@ $(document).ready(function(){
 	/* 
 	* give result in dropdownlist 
 	*/ 
-	$('#s').keyup(function(ev) { 
+	$(document).keyup(function(event) { 
+		var key = event.keyCode || event.which;
+		switch(key) { 
+			case 116: 
+				event.preventDefault();
+				window.location = hultsfred_object["currPageUrl"];
+				break;
+		}
+	});
+	$('#s').keyup(function(event) { 
 		if( $(window).width()+scrollbar > responsive_lap_start ){
 			select = false; 
 			// do ajax search 
@@ -1055,7 +1064,7 @@ function setArticleActions(el) {
 	
 	
 	//triggers articles click-action entry-title clicked
-	$(el).find(".summary-content").unbind("click").bind("click",function(){
+	$(el).find(".summary-content .entry-content").unbind("click").bind("click",function(){
 		if ($(this).parents("article").find('.entry-title a').hasClass('js-toggle-article')) {
 			readMoreToggle( $(this).parents("article").find('.entry-title a') );
 		}
