@@ -798,6 +798,7 @@ $(document).ready(function(){
 		switch(key) { 
 			case 116: 
 				event.preventDefault();
+				resetHistory();
 				window.location = hultsfred_object["currPageUrl"];
 				break;
 		}
