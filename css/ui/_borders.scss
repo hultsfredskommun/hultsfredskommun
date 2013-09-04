@@ -1,6 +1,6 @@
 $border-color:		$gray-color;
-$border-style:		dotted;
-$border-width:		2px;
+$border-style:		solid;
+$border-width:		1px;
 $border-radius:		$brand-round;
 
 $border-line-color:		$gray-color;
@@ -13,6 +13,9 @@ $border-line-width:		1px;
 }
 .border {
 	border: $border-width $border-style $border-color;
+}
+.border-light {
+	border: $border-width $border-style $gray-light-color;
 }
 .border--top {
 	border-top: $border-width $border-style $border-color;
@@ -99,4 +102,3 @@ $border-line-width:		1px;
 	border-top-left-radius: $border-radius;
 	border-bottom-left-radius: $border-radius;
 }
-

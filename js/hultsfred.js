@@ -168,22 +168,25 @@ $.fn.searchSuggest = function()
 /**
  * Initialize function resetHistory
  */
-/*function resetHistory(){
+function resetHistory(){
 	// reset webbrowser history
-	History.replaceState(null, currPageTitle, hultsfred_object["currPageUrl"]);
+	history.replaceState(null, currPageTitle, hultsfred_object["currPageUrl"]);
+	console.log("(reset) history.replaceState(null, "+currPageTitle+", "+hultsfred_object["currPageUrl"]+")");
 	return false;
-}*/
+}
 
 /**
  * Initialize function pushHistory
  */
 function pushHistory(title, url){
 	if( url != hultsfred_object["currPageUrl"] && !havePushed ){
-		History.pushState(null, title, url);
+		history.pushState({}, title, url);
+		console.log("(push if) history.pushState(null, "+title+", "+url+")");
 		havePushed = true;
 	}
 	else if( url != hultsfred_object["currPageUrl"] ){
-		History.replaceState(null, title, url);
+		history.replaceState({}, title, url);
+		console.log("(push else) history.replaceState(null, "+title+", "+url+")");
 	}
 	return false;
 }
@@ -352,6 +355,19 @@ if (typeof $.fn.doslideshow != 'function') {
 else {
 	alert("ERROR: The function $.fn.slideshow already exists");
 }
+
+function closeAllArticles()
+{
+	$("article.full").each(function() {
+		if (!$(this).hasClass("single")) {
+			$(this).removeClass("full").addClass("summary");
+			//$(this).find(".more-content").hide();
+			//$(this).find(".summary-content").show();
+			$(this).find(".more-content").slideUp(200);
+			$(this).find(".summary-content").slideDown(200);
+		}
+	});
+}
 /**
  * Initialize function read-more toggle-button 
  */
@@ -370,12 +386,17 @@ function readMoreToggle(el){
 		return false;
 	}
 	
+	function getHistoryTitle(article)
+	{
+		entry_title = $(article).find(".entry-title a").html();
+		blog_title = $("#logo").find('img').attr('alt');
+		return entry_title + " | " + blog_title;
+	}
 	//toggle function
 	function toggleShow(article) {
-		// show summary content
-		
+		// close article and show summary content
 		if ( $(article).hasClass("full") )
-		{			
+		{
 			// remove close-buttons
 			$(article).find('.js-close-button').remove();
 			
@@ -386,7 +407,7 @@ function readMoreToggle(el){
 
 				$(this).parents("article").find('.summary-content').slideDown(200, function(){
 					if ($(document).scrollTop() > $(this).parents("article").position().top - $('#wpadminbar').height() || 0) {
-						$("html,body").animate({scrollTop: $(this).parents("article").position().top - ($('#wpadminbar').height() || 0)}, 200);
+						$("html,body").animate({scrollTop: -20 + $(this).parents("article").position().top - ($('#wpadminbar').height() || 0)}, 200);
 					}								
 				});
 
@@ -394,19 +415,16 @@ function readMoreToggle(el){
 			});
 			
 			// reset webbrowser history
-			//resetHistory();
-			//History.replaceState(null, title, hultsfred_object["currPageUrl"]);
+			resetHistory();
+			//title = getHistoryTitle($(article));
+			//history.replaceState(null, title, hultsfred_object["currPageUrl"]);
 		}
 		// show full content
 		else {
 			// toggle visibility
 			// only show one article at a time, i.e. close all first
-			/*$("article").find(".full").each(function() {
-				$(this).removeClass("full").addClass("summary");
-				$(this).find(".more-content").slideUp(200);
-				$(this).find(".summary-content").slideDown(100);
-			});*/
-
+			closeAllArticles();
+			
 			$(article).find('.summary-content').slideUp(200, function(){
 	
 				
@@ -416,7 +434,7 @@ function readMoreToggle(el){
 					
 					
 					// animate to top of article
-					$("html,body").animate({scrollTop: $(this).parents("article").position().top - $('#wpadminbar').height() || 0}, 200);
+					$("html,body").animate({scrollTop: -20 + $(this).parents("article").position().top - $('#wpadminbar').height() || 0}, 200);
 					
 					if ($(this).parents("article").find(".js-close-button").length >= 1)
 						$(this).parents("article").find(".js-close-button").remove();
@@ -439,9 +457,14 @@ function readMoreToggle(el){
 			//var entry_title = $(article).find(".entry-title");
 			//var blog_title = $("#logo").find('img').attr('alt');
 			//var title = $(entry_title).find("a").html().replace("&amp;","&") + " | " + blog_title;
-			//var url = $(entry_title).find("a").attr("href");
+			
 			//call pushHistory
-			//pushHistory(title, url);
+			resetHistory();
+			url = $(article).find(".entry-title a").attr("href");
+			title = getHistoryTitle($(article));
+			pushHistory(title, url);
+			
+			
 			//History.replaceState(null, title, url);
 		}
 	}
@@ -550,10 +573,23 @@ var oldWidth; //used to check if window-width have changed
 //$.expander.defaults.slicePoint = 20;
 
 
-
+// reset opened articles when history back button
+$(window).on("popstate", function(e) {
+	console.log("same page: " + window.location != hultsfred_object["currPageUrl"]);
+	console.log(window.location + " " + hultsfred_object["currPageUrl"]);
+	//if( window.location != hultsfred_object["currPageUrl"] )
+	console.log(e.originalEvent);
+	console.log(e.originalEvent.state);
+	console.log(window.history.state);
+	console.log(window.history);
+	if (window.history.state == null) {
+		closeAllArticles();
+	}
+});
 
 $(document).ready(function(){
 
+	
 	var wpadminbarheight = $("#wpadminbar").height();
 		
 	//Stores the window-width for later use

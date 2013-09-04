@@ -67,14 +67,17 @@ function hk_related_init() {
 }
 
 // generates the output of the content to the widget
-function hk_related_output($wrapping_li = true) {
+function hk_related_output($wrapping_li = true, $the_cat = "") {
 
 	if (!function_exists("get_field"))
 		return "You need to install ACF to get this widget to work, read more in readme.txt.";
 
 	$retValue = "";
 
-	$cat = get_query_var("cat");
+	if ($the_cat == "")
+		$cat = get_query_var("cat");
+	else
+		$cat = $the_cat;
  	
  	$category_in = array($cat);
 

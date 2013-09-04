@@ -19,9 +19,20 @@ article.post {
 	@extend .one-whole;
 	//@extend .border-light--top;
 	@extend .border-light--bottom;
+	@extend .half-padding--left;
 }
+.single .article-border-wrapper {
+	@extend .force-noborder;
+	box-shadow: none!important;
+}
+
 .full .article-border-wrapper {
 	@extend .border-light--right;
+	@extend .border-light--left;
+	box-shadow: inset 0px 0px 25px #f3f3f3;
+}
+.article-border-wrapper:hover {
+	box-shadow: inset 0px 0px 25px #f0f0f0;
 }
 @include media-query(palm) {
 .full .article-border-wrapper {
@@ -197,16 +208,16 @@ article.post {
 		margin: 0px $half-spacing-unit;
 	}
 	&.bottom {
-		@extend .border;
+		@extend .force-noborder;
 		@extend .border-radius;
 		@extend .float--left;
-		@extend .white-background;
+		@extend .default-background;
+		background-image: none;
 		margin: -$half-spacing-unit*1.5 0 0 $base-spacing-unit;
 		padding: $half-spacing-unit/2 $half-spacing-unit;
-	}
-	i {
-		width: $base-spacing-unit;
-		text-align: left;
+		a {
+			@extend .white-text;
+		}
 	}
 }
 .summary .button.bottom {

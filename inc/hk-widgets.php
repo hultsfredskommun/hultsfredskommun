@@ -3,6 +3,7 @@
 /* 
  * QUICK MENUS AND MOST VISITED 
  */ 
+
 class HK_quickmenu extends WP_Widget {
 	protected $vars = array();
 
@@ -10,7 +11,7 @@ class HK_quickmenu extends WP_Widget {
 		parent::__construct(
 	 		'HK_quickmenu', // Base ID
 			'HK genv&auml;g widget', // Name
-			array( 'description' => "Widget som visar snabbmeny, senaste och mest bes&oumlt;kt fr&aring;n aktiv kategori i flikar" ) // Args
+			array( 'description' => "Widget som visar snabbmeny, senaste och mest bes&ouml;kt fr&aring;n aktiv kategori i flikar" ) // Args
 		);
 
 		$this->vars['posts_per_page'] = '10';
@@ -45,7 +46,7 @@ class HK_quickmenu extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'show_tags' ); ?>" name="<?php echo $this->get_field_name( 'show_tags' ); ?>" type="text" value="<?php echo esc_attr( $show_tags); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'show_wp_feed' ); ?>">Visa bara i kategori (i formen 23,42,19)</label> 
+		<label for="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>">Visa bara i kategori (i formen 23,42,19)</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>" name="<?php echo $this->get_field_name( 'show_widget_in_cat' ); ?>" type="text" value="<?php echo esc_attr( $show_widget_in_cat); ?>" />
 		</p>
 
@@ -805,6 +806,107 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_textwidge
 }
 /* add the widget  */
 add_action( 'widgets_init', create_function( '', 'register_widget( "HK_event_rss_widget" );' ) );
+
+
+
+
+
+
+
+class HK_related_widget extends WP_Widget {
+	protected $vars = array();
+
+	public function __construct() {
+		parent::__construct(
+	 		'HK_related_widget', // Base ID
+			'HK "Hitta snabbt" widget', // Name
+			array( 'description' => "Widget som visar 'Hitta snabbt'" ) // Args
+		);
+	}
+
+ 	public function form( $instance ) {
+		global $default_settings;
+		if ( isset( $instance[ 'show_related_cat' ] ) ) {
+			$show_related_cat = $instance[ 'show_related_cat' ];
+		} else {
+			$show_related_cat = "";
+		}
+
+		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'show_related_cat' ); ?>">Visa fr&aring;n kategori</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_related_cat' ); ?>" name="<?php echo $this->get_field_name( 'show_related_cat' ); ?>" type="text" value="<?php echo esc_attr( $show_related_cat); ?>" />
+		</p>
+
+		<?php
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['show_related_cat'] = strip_tags( $new_instance['show_related_cat'] );
+		
+		return $instance;
+	}
+
+	public function widget( $args, $instance ) {
+		global $default_settings;
+	    extract( $args );
+		if (isset($instance["show_related_cat"]))
+			$show_related_cat = $instance["show_related_cat"];
+		else
+			$show_related_cat = "";
+			
+		// get quickmenu
+		$quickmenu = hk_related_output(false, $show_related_cat);
+		?>
+		
+		<?php 
+		if ($quickmenu != "") :
+			echo $quickmenu;
+		else :
+			echo "Inga genv&auml;gar.";
+		endif;
+		?>		
+			
+	<?php
+	} //end widget()
+}
+/* add the widget  */
+add_action( 'widgets_init', create_function( '', 'register_widget( "HK_related_widget" );' ) );
+
+
+
+
+class HK_tags_widget extends WP_Widget {
+	protected $vars = array();
+
+	public function __construct() {
+		parent::__construct(
+	 		'HK_tags_widget', // Base ID
+			'HK etikett widget', // Name
+			array( 'description' => "Widget som visar etiketter" ) // Args
+		);
+	}
+
+ 	public function form( $instance ) {
+		global $default_settings;
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		
+		return $instance;
+	}
+
+	public function widget( $args, $instance ) {
+		global $default_settings;
+	    extract( $args );
+		displayTagFilter(false);
+	} //end widget()
+}
+/* add the widget  */
+add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widget" );' ) );
+
 
 
 ?>

@@ -33,13 +33,15 @@ get_header(); ?>
 			<?php endif; // end of the loop. ?>
 			
 			<?php /* show related posts */
+			/*
 			if (empty($_REQUEST["print"]) && !empty($cat_array)) : ?>
 			
 				<?php 
 				
 				// check for all taxonomies in this query
 				$query = array( 'category__in' => $cat_array,
-								'post__not_in' => array(get_the_ID())
+								'post__not_in' => array(get_the_ID()),
+								'posts_per_page' => 5,
 								);
 				
 				// loop related posts  
@@ -50,7 +52,9 @@ get_header(); ?>
 					while ($wpq->have_posts()) : $wpq->the_post();
 						get_template_part( 'content' , get_post_type());
 					endwhile;
-					/*
+					
+					// removed dynamic load more
+					if (false) { 
 					$filter = array("cat" => implode(",",$cat_array));
 					
 					echo "<script type='text/javascript'>setSingleSettings = function () { \n";
@@ -61,7 +65,7 @@ get_header(); ?>
 
 					echo '<div id="dyn-posts-placeholder-2" class="dyn-posts-placeholder"></div>';
 					echo '<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>';
-					*/
+					}
 					echo "</aside>";
 				endif; 
 				
@@ -69,7 +73,7 @@ get_header(); ?>
 				
 				?>
 				<?php wp_reset_query(); ?>
-			<?php endif; ?>
+			<?php endif; */ ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
