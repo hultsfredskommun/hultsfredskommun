@@ -5,7 +5,7 @@ var settings = new Array();
 
 var currPageTitle = $("head").find("title").html();
 var havePushed = false;
-
+var t_ajaxsearch = "";
 var isLessThenIE9 = !$.support.leadingWhitespace;
 var isMobile = {
     Android: function() {
@@ -846,99 +846,105 @@ $(document).ready(function(){
 			if (!select) {
 
 				if ($('#s').val().length > 2)  {
-
-					if (!$(".searchresult-wrapper")[0]) 
-					{ 
-						$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'></div></div>"); 
-					} 
-					searchstring = $("#s").val(); 
+					// wait 400ms before sending request.
+					clearTimeout(t_ajaxsearch);
+					t_ajaxsearch = setTimeout(ajaxsearch,400);
 					
-					$(".searchresult-wrapper .searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
-					{ searchstring: searchstring }, 
-					function() { 
-
-						var link_objects = $('.searchresult li a');
-
-						var first_index = 0;   var last_index = $('.searchresult li a').length-1;
-
-						var first_link = $(link_objects).first();  var last_link = $(link_objects).last();
-
-
-
-						var clearbutton = $('.clearbutton'); 
-
-						if($(clearbutton).length == 0) 
+					function ajaxsearch() {
+						console.log("dosearch " + $('#s').val());
+						if (!$(".searchresult-wrapper")[0]) 
 						{ 
-							clearbutton = $('#s').parent().prepend('<a href="#" class="clearbutton">Rensa</a>'); 
+							$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'></div></div>"); 
 						} 
-
-						// Erase search... 
-						$(clearbutton).click(function(event){ 
-							event.preventDefault(); 
-							erase_and_refocus_on_search_input(); 
-						}); 
-
-						$(link_objects).each(function(index, value) {  
+						searchstring = $("#s").val(); 
 						
-							var link = this;
+						$(".searchresult-wrapper .searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
+						{ searchstring: searchstring }, 
+						function() { 
 
-							$(this).keydown(function(event){  var key = event.keyCode || event.which;
+							var link_objects = $('.searchresult li a');
 
+							var first_index = 0;   var last_index = $('.searchresult li a').length-1;
+
+							var first_link = $(link_objects).first();  var last_link = $(link_objects).last();
+
+
+
+							var clearbutton = $('.clearbutton'); 
+
+							if($(clearbutton).length == 0) 
+							{ 
+								clearbutton = $('#s').parent().prepend('<a href="#" class="clearbutton">Rensa</a>'); 
+							} 
+
+							// Erase search... 
+							$(clearbutton).click(function(event){ 
 								event.preventDefault(); 
+								erase_and_refocus_on_search_input(); 
+							}); 
 
-								switch(key) 
-								{ 
-									case 40: 
+							$(link_objects).each(function(index, value) {  
+							
+								var link = this;
 
-										var next_index = index+1; 
+								$(this).keydown(function(event){  var key = event.keyCode || event.which;
 
-										if(next_index > last_index) 
-										{ 
-											$(first_link).focus(); 
-										} 
-										else 
-										{ 
-											$(link_objects)[next_index].focus(); 
-										} 
+									event.preventDefault(); 
 
-										break;  
-									case 38:
+									switch(key) 
+									{ 
+										case 40: 
 
-										var prev_index = index-1;
+											var next_index = index+1; 
+
+											if(next_index > last_index) 
+											{ 
+												$(first_link).focus(); 
+											} 
+											else 
+											{ 
+												$(link_objects)[next_index].focus(); 
+											} 
+
+											break;  
+										case 38:
+
+											var prev_index = index-1;
 
 
-										if(prev_index <= first_index) 
-										{ 
-											$('#s').focus(); 
-										} 
-										else 
-										{ 
-											$(link_objects)[prev_index].focus(); 
-										} 
-										break; 
+											if(prev_index <= first_index) 
+											{ 
+												$('#s').focus(); 
+											} 
+											else 
+											{ 
+												$(link_objects)[prev_index].focus(); 
+											} 
+											break; 
 
-									case 27: 
-										erase_and_refocus_on_search_input(); 
-										break; 
+										case 27: 
+											erase_and_refocus_on_search_input(); 
+											break; 
 
-									case 13: 
-										window.location = $(this).attr('href'); 
-										break; 
+										case 13: 
+											window.location = $(this).attr('href'); 
+											break; 
 
-								}
+									}
+
+								});
 
 							});
 
-						});
-
-					}); 
-					 //$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sök #content", function() { 
-					 // $(this).find('.readMoreToggleButton').each( function(){ 
-					 // 
-					 // initToggleReadMore(this); 
-					 // }); 
-					 //}); 
-				} 
+						}); 
+						 //$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sök #content", function() { 
+						 // $(this).find('.readMoreToggleButton').each( function(){ 
+						 // 
+						 // initToggleReadMore(this); 
+						 // }); 
+						 //}); 
+					} // end ajaxsearch
+				} // end if more than 2 char
 				else 
 				{ 
 
