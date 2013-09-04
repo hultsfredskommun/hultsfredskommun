@@ -848,7 +848,7 @@ $(document).ready(function(){
 				if ($('#s').val().length > 2)  {
 					// wait 400ms before sending request.
 					clearTimeout(t_ajaxsearch);
-					t_ajaxsearch = setTimeout(ajaxsearch,400);
+					t_ajaxsearch = setTimeout(ajaxsearch,600);
 					
 					function ajaxsearch() {
 						console.log("dosearch " + $('#s').val());
