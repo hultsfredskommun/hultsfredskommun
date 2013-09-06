@@ -761,7 +761,7 @@ textarea:focus {
  * and over in your markup.
  */
 .cf, .gw, .main-wrapper, .top-wrapper,
-.grid-wrapper, .nav, .home .slideshow-contact-puff-area .content-wrapper ul, .home .contact-area .contact-wrapper .content-wrapper ul, .page-header .num-posts,
+.grid-wrapper, .nav, .home .slideshow-contact-puff-area .content-wrapper ul, .home .contact-area .contact-wrapper .content-wrapper ul, .horizontal-list ul, .page-header .num-posts,
 .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .article-wrapper .entry-meta .footer-wrapper, .pager, .contacts,
 .related-wrapper,
@@ -782,7 +782,7 @@ textarea:focus {
   zoom: 1;
 }
 .cf:before, .gw:before, .main-wrapper:before, .top-wrapper:before,
-.grid-wrapper:before, .nav:before, .home .slideshow-contact-puff-area .content-wrapper ul:before, .home .contact-area .contact-wrapper .content-wrapper ul:before, .page-header .num-posts:before,
+.grid-wrapper:before, .nav:before, .home .slideshow-contact-puff-area .content-wrapper ul:before, .home .contact-area .contact-wrapper .content-wrapper ul:before, .horizontal-list ul:before, .page-header .num-posts:before,
 .page-header .view-tools:before,
 .page-header .sort-order:before, .page-header .category-tools:before, .page-header .category-tools .menu-item .sub-menu:before, .article-wrapper .entry-meta .footer-wrapper:before, .pager:before, .contacts:before,
 .related-wrapper:before,
@@ -800,7 +800,7 @@ textarea:focus {
 .cookieinformation .textwidget:before,
 .searchnavigation .searchresult .external_more_link:before,
 .scrolltotop:before, .matrix:before, .multi-list:before, .stat-group:before, .aligncenter:before, .time:before, .read-more-link:before, .home .slideshow-contact-puff-area:before, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link:before, .home .contact-area .contact-wrapper:before, .page-header:before, article.post:before, .article-wrapper .content-wrapper .contact-area:before, .side-content ul li:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .responsive-sub-menu:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
-.grid-wrapper:after, .nav:after, .home .slideshow-contact-puff-area .content-wrapper ul:after, .home .contact-area .contact-wrapper .content-wrapper ul:after, .page-header .num-posts:after,
+.grid-wrapper:after, .nav:after, .home .slideshow-contact-puff-area .content-wrapper ul:after, .home .contact-area .contact-wrapper .content-wrapper ul:after, .horizontal-list ul:after, .page-header .num-posts:after,
 .page-header .view-tools:after,
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
@@ -822,7 +822,7 @@ textarea:focus {
   display: table;
 }
 .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
-.grid-wrapper:after, .nav:after, .home .slideshow-contact-puff-area .content-wrapper ul:after, .home .contact-area .contact-wrapper .content-wrapper ul:after, .page-header .num-posts:after,
+.grid-wrapper:after, .nav:after, .home .slideshow-contact-puff-area .content-wrapper ul:after, .home .contact-area .contact-wrapper .content-wrapper ul:after, .horizontal-list ul:after, .page-header .num-posts:after,
 .page-header .view-tools:after,
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
@@ -2117,7 +2117,7 @@ html.flexbox {
  * Demo: jsfiddle.net/inuitcss/Vnph4
  * 
  */
-.nav, .home .slideshow-contact-puff-area .content-wrapper ul, .home .contact-area .contact-wrapper .content-wrapper ul, .page-header .num-posts,
+.nav, .home .slideshow-contact-puff-area .content-wrapper ul, .home .contact-area .contact-wrapper .content-wrapper ul, .horizontal-list ul, .page-header .num-posts,
 .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .article-wrapper .entry-meta .footer-wrapper, .pager, .contacts,
 .related-wrapper,
@@ -2126,7 +2126,7 @@ html.flexbox {
   list-style: none;
   margin-left: 0;
 }
-.nav > li, .home .slideshow-contact-puff-area .content-wrapper ul > li, .home .contact-area .contact-wrapper .content-wrapper ul > li, .page-header .num-posts > li,
+.nav > li, .home .slideshow-contact-puff-area .content-wrapper ul > li, .home .contact-area .contact-wrapper .content-wrapper ul > li, .horizontal-list ul > li, .page-header .num-posts > li,
 .page-header .view-tools > li,
 .page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .article-wrapper .entry-meta .footer-wrapper > li, .pager > li, .contacts > li,
 .related-wrapper > li,
@@ -2135,6 +2135,7 @@ html.flexbox {
 .nav > li > a,
 .home .slideshow-contact-puff-area .content-wrapper ul > li > a,
 .home .contact-area .contact-wrapper .content-wrapper ul > li > a,
+.horizontal-list ul > li > a,
 .page-header .num-posts > li > a,
 .page-header .view-tools > li > a,
 .page-header .sort-order > li > a,
@@ -2209,7 +2210,7 @@ html.flexbox {
    </ul>
  * 
  */
-.nav--block, .options, .home .slideshow-contact-puff-area .content-wrapper ul, .home .contact-area .contact-wrapper .content-wrapper ul, .page-header .num-posts,
+.nav--block, .options, .home .slideshow-contact-puff-area .content-wrapper ul, .home .contact-area .contact-wrapper .content-wrapper ul, .horizontal-list ul, .page-header .num-posts,
 .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .pager, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
 .main-sub-menu, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul {
@@ -2221,14 +2222,14 @@ html.flexbox {
   word-spacing: -0.43em;
   white-space: nowrap;
 }
-.nav--block > li, .options > li, .home .slideshow-contact-puff-area .content-wrapper ul > li, .home .contact-area .contact-wrapper .content-wrapper ul > li, .page-header .num-posts > li,
+.nav--block > li, .options > li, .home .slideshow-contact-puff-area .content-wrapper ul > li, .home .contact-area .contact-wrapper .content-wrapper ul > li, .horizontal-list ul > li, .page-header .num-posts > li,
 .page-header .view-tools > li,
 .page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .pager > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu-ul > li,
 .main-sub-menu > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .ui-tabs-nav > li, .footer-widget-wrapper ul > li {
   letter-spacing: normal;
   word-spacing: normal;
 }
-.nav--block > li > a, .options > li > a, .home .slideshow-contact-puff-area .content-wrapper ul > li > a, .home .contact-area .contact-wrapper .content-wrapper ul > li > a, .page-header .num-posts > li > a,
+.nav--block > li > a, .options > li > a, .home .slideshow-contact-puff-area .content-wrapper ul > li > a, .home .contact-area .contact-wrapper .content-wrapper ul > li > a, .horizontal-list ul > li > a, .page-header .num-posts > li > a,
 .page-header .view-tools > li > a,
 .page-header .sort-order > li > a, .page-header .category-tools > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .pager > li > a, .searchnavigation .searchresult ul > li > a, .top-menu-wrapper .top-menu > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .more-menu-ul > li > a,
 .main-sub-menu > li > a, .category-navigation .parent > li > a, .category-navigation .parent li .children > li > a, .category-navigation .more-navigation > li > a, .ui-tabs-nav > li > a, .footer-widget-wrapper ul > li > a {
@@ -4436,7 +4437,7 @@ html.flexbox {
   float: right !important;
 }
 
-.float--left, .alignleft, .icon-left, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .slideshow-contact-puff-area .content-wrapper .right-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .help-navigation, .page-header .num-posts, .page-header .category-tools .menu-item .i, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
+.float--left, .alignleft, .icon-left, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .slideshow-contact-puff-area .content-wrapper .right-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .horizontal-list h1, .help-navigation, .page-header .num-posts, .page-header .category-tools .menu-item .i, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
 .single .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
@@ -4639,7 +4640,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   color: #000;
 }
 
-.white-text, .widget_hk_wp_feed_rss_widget a, .widget_hk_wp_feed_rss_widget span, .widget_hk_wp_feed_rss_widget h1, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .slideshow-contact-puff-area .content-wrapper .left-content .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .left-content .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .left-content .content, .home .slideshow-contact-puff-area .content-wrapper .left-content a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 a, .page-header .category-tools .related-menu a, .article-wrapper .side-content .optional-text, .button.bottom a, .important-widget, .cookieinformation, .cookieinformation a,
+.white-text, .widget_hk_wp_feed_rss_widget a, .widget_hk_wp_feed_rss_widget span, .widget_hk_wp_feed_rss_widget h1, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .slideshow-contact-puff-area .content-wrapper .left-content .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .left-content .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .left-content .content, .home .slideshow-contact-puff-area .content-wrapper .left-content a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 a, .horizontal-list a, .horizontal-list h1, .page-header .category-tools .related-menu a, .article-wrapper .side-content .optional-text, .button.bottom a, .important-widget, .cookieinformation, .cookieinformation a,
 .important-widget a, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper a, .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
@@ -4684,7 +4685,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #fff;
 }
 
-.main-background, .home .slideshow-contact-puff-area .content-wrapper .left-content, .page-header .category-tools .related-menu, .page-header .category-tools .menu-item .sub-menu, .cookieinformation, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper .top-menu .menu-item .sub-menu, .responsive-menu a, .footer2-wrapper,
+.main-background, .home .slideshow-contact-puff-area .content-wrapper .left-content, .horizontal-list, .page-header .category-tools .related-menu, .page-header .category-tools .menu-item .sub-menu, .cookieinformation, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper .top-menu .menu-item .sub-menu, .responsive-menu a, .footer2-wrapper,
 .footer2-wrapper a,
 .footer-image-wrapper {
   background-color: #5c85b1;
@@ -4791,7 +4792,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: transparent;
 }
 
-.border-radius, .button, img, .widget_hk_wp_feed_rss_widget, .page-header, .article-wrapper .side-content .optional-text, .button.bottom, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+.border-radius, .button, img, .widget_hk_wp_feed_rss_widget, .horizontal-list, .page-header, .article-wrapper .side-content .optional-text, .button.bottom, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .contact-popup.box {
   border-radius: 3px;
@@ -5043,7 +5044,7 @@ html {
 }
 
 /* extend nav--block with breaking white-space */
-.nav--block-break, .home .slideshow-contact-puff-area .content-wrapper ul, .home .contact-area .contact-wrapper .content-wrapper ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation {
+.nav--block-break, .home .slideshow-contact-puff-area .content-wrapper ul, .home .contact-area .contact-wrapper .content-wrapper ul, .horizontal-list ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation {
   white-space: normal !important;
 }
 
@@ -5054,7 +5055,7 @@ html {
   padding-bottom: 0.4rem;
 }
 
-.nav--block-double-margin li a, .home .slideshow-contact-puff-area .content-wrapper ul li a, .home .contact-area .contact-wrapper .content-wrapper ul li a, .ui-tabs-nav li a {
+.nav--block-double-margin li a, .home .slideshow-contact-puff-area .content-wrapper ul li a, .home .contact-area .contact-wrapper .content-wrapper ul li a, .horizontal-list ul li a, .ui-tabs-nav li a {
   padding-left: 24px;
   padding-left: 1.6rem;
   padding-right: 24px;
@@ -5170,6 +5171,10 @@ html {
 }
 .home .contact-area .contact-wrapper .content-wrapper h1 a {
   display: block;
+}
+
+.horizontal-list h1 {
+  padding: 6px 12px;
 }
 
 /* category structure */

@@ -260,3 +260,22 @@
 		}
 	}
 }
+.horizontal-list {
+	@extend .border-radius;
+	@extend .main-background;
+	a {
+		@extend .white-text;
+	}
+	h1 {
+		@extend .float--left;
+		@extend .white-text;
+		padding: $half-spacing-unit/2 $half-spacing-unit;
+	}
+	ul {
+		@extend .nav;
+		@extend .nav--block;
+		@extend .nav--block-double-margin;
+		@extend .nav--block-break;
+
+	}
+}

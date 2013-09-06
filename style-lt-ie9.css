@@ -136,6 +136,9 @@
 	width: 220px;
 	padding-right: 0;
 }
+.summary .article-wrapper .side-content {
+	display: block;
+}
 .article-wrapper .side-content ul li {
 	width: 100%;
 }

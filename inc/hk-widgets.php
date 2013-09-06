@@ -1002,19 +1002,39 @@ class HK_tags_widget extends WP_Widget {
 	}
 
  	public function form( $instance ) {
-		global $default_settings;
+		global $default_settings; 
+	?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Rubrik</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance["title"]); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'class' ); ?>">CSS_class</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'class' ); ?>" name="<?php echo $this->get_field_name( 'class' ); ?>" type="text" value="<?php echo esc_attr( $instance["class"]); ?>" />
+		</p>
+	<?php
 	}
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		
+		$instance['title'] = $new_instance['title'];
+		$instance['class'] = $new_instance['class'];
 		return $instance;
 	}
 
 	public function widget( $args, $instance ) {
 		global $default_settings;
 	    extract( $args );
+		if ($instance['class'] != "") {
+			echo "<aside class='" . $instance['class'] . "'>";
+		}
+		if ($instance['title'] != "") {
+			echo "<h1 class='widget-title'>" . $instance['title'] . "</h1>";
+		}
 		displayTagFilter(false);
+		if ($instance['class'] != "") {
+			echo "</aside>";
+		}
 	} //end widget()
 }
 /* add the widget  */
@@ -1029,7 +1049,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 
 
 /* 
- * FIRSTPAGE CONTACT WIDGET 
+ * FIRSTPAGE SLIDESHOW/CONTACT/PUFF WIDGET 
  */ 
  class HK_firstpagecontactandpuff extends WP_Widget {
 	protected $vars = array();
