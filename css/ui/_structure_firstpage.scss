@@ -51,7 +51,7 @@
 	}
 }
 /* driftinfo - widget_hk_wp_feed_rss_widget */
-.widget_hk_wp_feed_rss_widget {
+.widget_hk_wp_feed_rss_widget.widget {
 	@extend .islet;
 	@extend .border-radius;
 	@extend .important-background;
@@ -60,7 +60,25 @@
 	}
 	h1 {
 		padding-top: 0;
+		padding-bottom: 0;
+		margin-bottom: 0!important;
+		@extend .float--left;
+		@extend .desk-three-tenths;
+		@extend .lap-four-tenths;
+		@extend .palm-one-whole;
+		@extend .alpha;
 	}
+	.content-wrapper {
+		&.hide_date .entry-wrapper {
+			@extend .flush--bottom;
+		}
+		@extend .float--left;
+		@extend .desk-seven-tenths;
+		@extend .lap-six-tenths;
+		@extend .palm-one-whole;
+		@extend .cf;
+	}
+	
 }
 
 .img-wrapper {
