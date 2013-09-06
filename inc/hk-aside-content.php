@@ -81,7 +81,7 @@
 					<?php
 						$title = get_sub_field('hk_related_title'); ?>
 					<li class="related_title full">
-						<span><?php echo $title; ?></a>
+						<span><?php echo $title; ?></span>
 					</li>			 
 				<?php endif; ?> 
 			<?php endif; ?> 

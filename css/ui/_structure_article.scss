@@ -21,15 +21,14 @@ article.post {
 	@extend .border-light--bottom;
 	@extend .half-padding--left;
 }
-.single .article-border-wrapper {
-	@extend .force-noborder;
-	box-shadow: none!important;
-}
 
 .full .article-border-wrapper {
 	@extend .border-light--right;
 	@extend .border-light--left;
 	box-shadow: inset 0px 0px 25px #f3f3f3;
+}
+.single.full .article-border-wrapper {
+	@extend .border-light--top;
 }
 .article-border-wrapper:hover {
 	box-shadow: inset 0px 0px 25px #f0f0f0;

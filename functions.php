@@ -26,6 +26,7 @@ if ( ! isset( $default_settings ) ) {
 	$default_settings = array(	'thumbnail-image' => array(270, 153, true),
 								'featured-image' => array(532, 311, true), /* array(660, 396, true) */
 								'slideshow-image' => array(980, 551, true),
+								'wide-image' => array(1138, 326, true),
 								'contact-image' => array(150, 190, true),
 								'startpage_cat' => $hk_options["startpage_cat"],
 								'news_tag' => $hk_options["news_tag"],

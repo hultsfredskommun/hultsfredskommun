@@ -844,14 +844,14 @@ $(document).ready(function(){
 
 			// don't search if pressing special keys
 			if (!select) {
-
-				if ($('#s').val().length > 2)  {
-					// wait 400ms before sending request.
+				
+				
+				if ($('#s').val().length >= 2)  {
+					// wait 600ms before sending request.
 					clearTimeout(t_ajaxsearch);
 					t_ajaxsearch = setTimeout(ajaxsearch,600);
 					
 					function ajaxsearch() {
-						console.log("dosearch " + $('#s').val());
 						if (!$(".searchresult-wrapper")[0]) 
 						{ 
 							$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'></div></div>"); 

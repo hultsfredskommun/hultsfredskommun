@@ -47,6 +47,10 @@
 	@extend .aside_icon;
 	background-position: -26px -229px;
 }
+.slideshow-contact-puff-area .contact-icon {
+	@extend .clip_48x48;
+	background-position: -27px -613px;
+}
 .related-file-icon {
 	@extend .aside_icon;
 	background-position: -25px -165px;

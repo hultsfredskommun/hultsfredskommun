@@ -68,7 +68,7 @@
 }
 /* Firstpage content left */
 .firstpage-top-content{
-	width: 570px;
+	width: 100%;
 	z-index: 1;
 }
 .firstpage-content {
@@ -87,7 +87,7 @@
 }
 
 /* Contact widget */
-.contact-area .hk_kontakter .contact-wrapper .content-wrapper {
+.contact-puff-area .contact-area .hk_kontakter .contact-wrapper .content-wrapper {
 	width: 557px;
 }
 
@@ -124,7 +124,7 @@
 }
 /* Articles */
 .article-wrapper .content-wrapper {
-	width: 620px;
+	width: 614px;
 }
 .article-wrapper {
 	padding-bottom: 12px;

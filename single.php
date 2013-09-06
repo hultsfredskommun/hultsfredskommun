@@ -22,7 +22,7 @@ get_header(); ?>
 					$categories = get_the_category();
 					if ($categories) { foreach ($categories as $value) {
 						$cat_array[] = $value->term_id;	
-						$from_string .= $value->name . ", ";
+						$from_string .= "<a href='" . get_category_link( $value->term_id ) . "' title='L&auml;nk till kategorien " . $value->name . "'>" . $value->name . "</a>, ";
 					} } 
 					$from_string = rtrim($from_string, ", ");
 					// get post type
@@ -33,7 +33,7 @@ get_header(); ?>
 			<?php endif; // end of the loop. ?>
 			
 			<?php /* show related posts */
-			/*
+			
 			if (empty($_REQUEST["print"]) && !empty($cat_array)) : ?>
 			
 				<?php 
@@ -73,7 +73,7 @@ get_header(); ?>
 				
 				?>
 				<?php wp_reset_query(); ?>
-			<?php endif; */ ?>
+			<?php endif;  ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
