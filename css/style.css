@@ -5044,7 +5044,7 @@ html {
 }
 
 /* extend nav--block with breaking white-space */
-.nav--block-break, .home .slideshow-contact-puff-area .content-wrapper ul, .home .contact-area .contact-wrapper .content-wrapper ul, .horizontal-list ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation {
+.nav--block-break, .home .slideshow-contact-puff-area .content-wrapper ul, .home .contact-area .contact-wrapper .content-wrapper ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation {
   white-space: normal !important;
 }
 
