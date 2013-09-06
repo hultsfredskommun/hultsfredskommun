@@ -196,7 +196,7 @@
 				@extend .white-text;
 				@extend .one-whole;
 				@extend .islet;
-				@extend .gamma;
+				@extend .beta;
 				@extend .flush;
 				.complement-italic-text, a {
 					@extend .white-text;
@@ -260,20 +260,31 @@
 		}
 	}
 }
-.horizontal-list {
+.widget.horizontal-list.HK_tags_widget {
+	h1 {
+		@extend .float--left;
+		width: auto;
+	}
+	ul {
+		@extend .nav;
+		@extend .nav--block;
+		@extend .nav--block-break;
+	}
+}
+.widget.HK_tags_widget {
 	@extend .border-radius;
 	@extend .main-background;
 	a {
 		@extend .white-text;
 	}
 	h1 {
-		@extend .float--left;
 		@extend .white-text;
+		@extend .gamma;
 		padding: $half-spacing-unit/2 $half-spacing-unit;
 	}
 	ul {
 		@extend .nav;
 		@extend .nav--block;
-		@extend .nav--block-double-margin;
+		@extend .nav--stacked;
 	}
 }

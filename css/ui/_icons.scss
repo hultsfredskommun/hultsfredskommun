@@ -88,10 +88,15 @@
 	float: left;
 }
 .cat-icon {
+	@extend .clip_20x20;
+	background-position: -28px -334px;
+}
+.category-navigation .cat-icon {
 	@extend .navigation-icon;
 	background-position: -28px -334px;
 }
-.tag-icon {
+
+.category-navigation .tag-icon {
 	@extend .navigation-icon;
 	background-position: -28px -366px;
 }
@@ -130,6 +135,18 @@
 	background-position: -24px -696px;
 	vertical-align: middle;
 	margin-right: 6px;
+}
+
+/* firstpage */
+.home .white.tag-icon {
+	@extend .clip_20x20;
+	background-position: -68px -366px;
+	margin-right: 8px;
+}
+.home .tag-icon {
+	@extend .clip_20x20;
+	background-position: -28px -366px;
+	margin-right: 8px;
 }
 
 

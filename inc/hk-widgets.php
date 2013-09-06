@@ -1009,8 +1009,8 @@ class HK_tags_widget extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance["title"]); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'class' ); ?>">CSS_class</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'class' ); ?>" name="<?php echo $this->get_field_name( 'class' ); ?>" type="text" value="<?php echo esc_attr( $instance["class"]); ?>" />
+		<input id="<?php echo $this->get_field_id( 'horizontal-list' ); ?>" name="<?php echo $this->get_field_name( 'horizontal-list' ); ?>" type="checkbox" <?php echo ($instance["horizontal-list"] != "")?"checked":""; ?> />
+		<label for="<?php echo $this->get_field_id( 'horizontal-list' ); ?>">Horisontell lista</label> 
 		</p>
 	<?php
 	}
@@ -1018,23 +1018,24 @@ class HK_tags_widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = $new_instance['title'];
-		$instance['class'] = $new_instance['class'];
+		$instance['horizontal-list'] = $new_instance['horizontal-list'];
 		return $instance;
 	}
 
 	public function widget( $args, $instance ) {
 		global $default_settings;
 	    extract( $args );
-		if ($instance['class'] != "") {
-			echo "<aside class='" . $instance['class'] . "'>";
-		}
+		$horizontal = "";
+		if (isset($instance['horizontal-list'])) 
+			$horizontal = "horizontal-list";
+		echo "<aside class='widget HK_tags_widget $horizontal'>";
+		
 		if ($instance['title'] != "") {
 			echo "<h1 class='widget-title'>" . $instance['title'] . "</h1>";
 		}
 		displayTagFilter(false);
-		if ($instance['class'] != "") {
-			echo "</aside>";
-		}
+		echo "</aside>";
+		
 	} //end widget()
 }
 /* add the widget  */

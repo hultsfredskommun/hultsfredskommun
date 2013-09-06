@@ -517,7 +517,7 @@ function displayTagFilter($show_title = true) {
 
 		echo "<ul class='more-navigation'>"; 
 		if ($show_title) {
-			echo "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Typ av information</a></li>";
+			echo "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Visa bara</a></li>";
 		}
 		if ($_REQUEST["tag"] != "" && get_query_var("cat") != "")
 		{
