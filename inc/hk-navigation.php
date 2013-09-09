@@ -496,7 +496,7 @@ class hk_Tag_Walker extends Walker_Category {
 
 
 // show tag filter list
-function displayTagFilter($show_title = true) {
+function displayTagFilter($show_title = true, $show_selected_tags = true) {
 	global $default_settings;
 	if ($default_settings["show_tags"] != 0) :
 		
@@ -512,14 +512,16 @@ function displayTagFilter($show_title = true) {
 			'show_option_none'   => '',
 			'echo'               => 1,
 			'taxonomy'           => 'post_tag',
-			'walker'			 => $hk_tag_walker
 		);
+		
+		if ($show_selected_tags)
+			$args['walker'] = $hk_tag_walker;
 
 		echo "<ul class='more-navigation'>"; 
 		if ($show_title) {
 			echo "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Visa bara</a></li>";
 		}
-		if ($_REQUEST["tag"] != "" && get_query_var("cat") != "")
+		if ($show_selected_tags && $_REQUEST["tag"] != "" && get_query_var("cat") != "")
 		{
 			if( hk_getParent(get_query_var("cat")) > 0) {
 				$href = get_category_link( hk_getParent(get_query_var("cat")) ) . "?tag=".$_REQUEST["tag"];

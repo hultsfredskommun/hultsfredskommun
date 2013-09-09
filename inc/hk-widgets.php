@@ -1033,7 +1033,7 @@ class HK_tags_widget extends WP_Widget {
 		if ($instance['title'] != "") {
 			echo "<h1 class='widget-title'>" . $instance['title'] . "</h1>";
 		}
-		displayTagFilter(false);
+		displayTagFilter(false,false);
 		echo "</aside>";
 		
 	} //end widget()
