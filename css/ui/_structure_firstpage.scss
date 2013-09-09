@@ -310,6 +310,9 @@
 
 
 .main .widget.widget_hk_textwidget {
+	h1 {
+		@extend .alpha;
+	}
 	.inner-wrapper {
 		@extend .border-radius;
 		@extend .islet;
