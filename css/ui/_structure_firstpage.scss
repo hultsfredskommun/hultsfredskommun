@@ -324,6 +324,17 @@
 		float: none!important;
 	}
 }
+.main .widget.widget_hk_aditro_rss_widget .entry-wrapper {
+	margin-bottom: $half-spacing-unit/2!important;
+	a {
+		padding-bottom: 0!important;
+	}
+	.time {
+		@extend .white-text;
+		padding-bottom: $half-spacing-unit/2!important;
+		padding-left: $half-spacing-unit;
+	}
+}
 .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,
