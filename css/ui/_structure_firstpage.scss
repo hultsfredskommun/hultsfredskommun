@@ -324,6 +324,7 @@
 		float: none!important;
 	}
 }
+.main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,
 .main .widget.HK_tags_widget {
@@ -348,6 +349,7 @@
 	}
 	.subtitle {
 		display: block;
+		@extend .zeta;
 		@extend .font-style-italic;
 	}
 }
