@@ -7,7 +7,7 @@
 }
 .firstpage-sidebar {
 	@extend .g;
-	@extend .desk-one-half;
+	@extend .desk-one-quarter;
 	@extend .lap-one-half;
 	@extend .palm-one-whole;
 	@extend .float--right;
@@ -32,6 +32,7 @@
 }
 .read-more-link {
 	@extend .half-margin--top;
+	@extend .half-margin--bottom;
 	@extend .cf;
 	display: inline-block;
 }
@@ -293,6 +294,7 @@
 		}
 	}
 }
+.main .widget.horizontal-list.widget_hk_related_widget,
 .main .widget.horizontal-list.HK_tags_widget {
 	h1 {
 		@extend .float--left;
@@ -302,11 +304,32 @@
 		@extend .nav;
 		@extend .nav--block;
 		@extend .nav--block-break;
+		@extend .flush--bottom;
 	}
 }
+
+
+.main .widget.widget_hk_textwidget {
+	.inner-wrapper {
+		@extend .border-radius;
+		@extend .islet;
+		img {
+		
+		}
+		.content {
+			padding-bottom: 0;
+		}
+	}
+	.content {
+		float: none!important;
+	}
+}
+.main .widget.widget_hk_related_widget,
+.main .widget.widget_hk_protocol,
 .main .widget.HK_tags_widget {
 	@extend .border-radius;
 	@extend .main-background;
+	@extend .cf;
 	a {
 		@extend .white-text;
 	}
@@ -319,5 +342,12 @@
 		@extend .nav;
 		@extend .nav--block;
 		@extend .nav--stacked;
+		@extend .nav--block-break;
+		@extend .nav--block-half-margin;
+		@extend .flush--bottom;
+	}
+	.subtitle {
+		display: block;
+		@extend .font-style-italic;
 	}
 }

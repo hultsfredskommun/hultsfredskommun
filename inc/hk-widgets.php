@@ -339,7 +339,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 						$retValue .= $number . "</a></li>";
 					endwhile; endif;				
 					$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'>";
-					$retValue .= "Fler kontaktuppgifter...</a></li>";
+					$retValue .= "fler kontaktuppgifter</a></li>";
 
 					$retValue .= "</ul>";
 					if ($rightcontent) :
@@ -625,7 +625,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['title'] = $new_instance['title'];
 		$instance['show_protocol'] = strip_tags( $new_instance['show_protocol'] );
 		$instance['num_protocol'] = strip_tags( $new_instance['num_protocol'] );
 		$instance['show_more_link'] = $new_instance['show_more_link'];
@@ -665,9 +665,31 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						
 						query_posts( $query );
 						
-						if ( have_posts() ) : echo "<ul>"; while ( have_posts() ) : the_post(); 
-							get_template_part( 'content', 'single-line' ); 
-						endwhile; echo "</ul>"; endif; 
+						echo "<ul>";
+						if ( have_posts() ) :  while ( have_posts() ) : the_post();  
+							// get datecheckdate(12, 31, 2000)
+							$title = get_the_title();
+							$date = substr($title,strrpos($title, " ")+1);
+							$datearr = explode("-",$date);
+							$subtitle = "";
+							if (checkdate($datearr[1],$datearr[2],$datearr[0])) {
+								$title = substr($title, 0, strrpos($title, " "));
+								$subtitle = "M&ouml;tesdatum " . $date;
+							}
+							?>
+							<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+							<a href="<?php the_permalink(); ?>" class="link" title="<?php echo get_the_excerpt(); // printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+							<?php 
+								echo $title; 
+								if ($subtitle != "") {
+									echo "<span class='subtitle'>$subtitle</span>"; 
+								} ?>
+							</a>
+							<span class='hidden article_id'><?php the_ID(); ?></span>
+							</li><!-- #post-<?php the_ID(); ?> -->
+
+							<?php //get_template_part( 'content', 'single-line' ); 
+						endwhile; endif; 
 						// Reset Query
 						wp_reset_query(); 
 				?>
@@ -675,9 +697,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 					$cat_link = esc_url(get_category_link($default_settings["protocol_cat"]));
 					
 					?>
-					<div id="protocollink">
-						<?php echo "<a href='$cat_link' title='$show_more_link'>$show_more_link</a>"; ?>
-					</div>
+					<li id="protocollink" class="read-more-link">
+						<?php echo "<a href='$cat_link' title='".strip_tags($show_more_link)."'>$show_more_link</a>"; ?>
+					</li></ul>
 				<?php endif; ?>
 				
 				<?php if ($show_all_categories != "") : ?>
@@ -817,10 +839,16 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
  	public function form( $instance ) {		
 		if ( isset( $instance[ 'title' ] ) ) {	$title = $instance[ 'title' ];
 		} else { $title = ""; }
-		if ( isset( $instance[ 'icon' ] ) ) {	$icon = $instance[ 'icon' ];
-		} else { $icon = ""; }
+		if ( isset( $instance[ 'image' ] ) ) {	$image = $instance[ 'image' ];
+		} else { $image = ""; }
+		if ( isset( $instance[ 'background' ] ) ) {	$background = $instance[ 'background' ];
+		} else { $background = ""; }
+		if ( isset( $instance[ 'color' ] ) ) {	$color = $instance[ 'color' ];
+		} else { $color = ""; }
 		if ( isset( $instance[ 'text' ] ) ) {	$text = $instance[ 'text' ];
 		} else {$menu = ""; }
+		if ( isset( $instance[ 'href' ] ) ) {	$href = $instance[ 'href' ];
+		} else {$href = ""; }
 		if ( isset( $instance[ 'show_widget_in_cat' ] ) ) {	$show_widget_in_cat = $instance[ 'show_widget_in_cat' ];
 		} else { $show_widget_in_cat = ""; }
 
@@ -830,12 +858,24 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'icon' ); ?>">Ikon</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'icon' ); ?>" name="<?php echo $this->get_field_name( 'icon' ); ?>" type="text" value="<?php echo esc_attr( $icon); ?>" />
+		<label for="<?php echo $this->get_field_id( 'image' ); ?>">Bild</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'image' ); ?>" name="<?php echo $this->get_field_name( 'image' ); ?>" type="text" value="<?php echo esc_attr( $image); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'background' ); ?>">Bakgrundsf&auml;rg</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'background' ); ?>" name="<?php echo $this->get_field_name( 'background' ); ?>" type="text" value="<?php echo esc_attr( $background); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'color' ); ?>">Textf&auml;rg</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'color' ); ?>" name="<?php echo $this->get_field_name( 'color' ); ?>" type="text" value="<?php echo esc_attr( $color); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'text' ); ?>">Text</label> 
 		<textarea class="widefat" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $text; ?></textarea>
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'href' ); ?>">L&auml;nk</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'href' ); ?>" name="<?php echo $this->get_field_name( 'href' ); ?>" type="test" value="<?php echo esc_attr($href); ?>" />
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'show_wp_feed' ); ?>">Visa bara i kategori (i formen 23,42,19)</label> 
@@ -848,9 +888,12 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['icon'] = $new_instance['icon'];
+		$instance['title'] = $new_instance['title'];
+		$instance['image'] = $new_instance['image'];
+		$instance['background'] = $new_instance['background'];
+		$instance['color'] = $new_instance['color'];
 		$instance['text'] =  $new_instance['text'];
+		$instance['href'] =  $new_instance['href'];
 		$instance['show_widget_in_cat'] = strip_tags( $new_instance['show_widget_in_cat'] );
 		
 		return $instance;
@@ -860,15 +903,39 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 	    extract( $args );
 		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
 		
-			if ( isset($instance["text"]) ) {
+			if ( $instance["title"] == "" && $instance["text"] == "" && $instance["href"] != "" && $instance["image"] != "" ) {
+				echo "<a style='max-width: 100%; color: $color;' href='".$instance["href"]."'>";
+				echo "<img class='image' src='" .$instance["image"]. "' />";
+				echo "</a>";
+				
+			
+			}
+			else if ( $instance["text"] != "" ) {
 				$title = apply_filters( 'widget_title', $instance['title'] );
-				
+				$background = $instance["background"];
+				$color = $instance["color"];
+
 				echo $before_widget;
-				if ( ! empty( $title ) ) {
-					echo $before_title . $instance['icon'] . $title . $after_title;
+				if ($instance["image"] != "") {
+					$image_style = "background-image: url(" . $instance["image"] . ");";
 				}
-				
-				echo "<div class='content'>" . $instance["text"] . "</div>";
+				echo "<div class='inner-wrapper' style='background-color: $background; color: $color;$image_style'>";
+				if ( ! empty( $title ) ) {
+					if ($instance["href"] != "")
+						echo "<a style='color: $color;' href='".$instance["href"]."'>";
+					echo $before_title . $title . $after_title;
+					if ($instance["href"] != "")
+						echo "</a>";
+				}
+
+				echo "<div class='content'>";					
+					if ($instance["href"] != "")
+						echo "<a style='color: $color;' href='".$instance["href"]."'>";
+					echo $instance["text"];
+					if ($instance["href"] != "")
+						echo "</a>";
+
+				echo "</div></div>";
 				echo $after_widget;
 			}
 		}
@@ -939,6 +1006,11 @@ class HK_related_widget extends WP_Widget {
 
  	public function form( $instance ) {
 		global $default_settings;
+		if ( isset( $instance[ 'title' ] ) ) {
+			$title = $instance[ 'title' ];
+		} else {
+			$title = "";
+		}
 		if ( isset( $instance[ 'show_related_cat' ] ) ) {
 			$show_related_cat = $instance[ 'show_related_cat' ];
 		} else {
@@ -946,6 +1018,14 @@ class HK_related_widget extends WP_Widget {
 		}
 
 		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Rubrik</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance["title"]); ?>" />
+		</p>
+		<p>
+		<input id="<?php echo $this->get_field_id( 'horizontal-list' ); ?>" name="<?php echo $this->get_field_name( 'horizontal-list' ); ?>" type="checkbox" <?php echo ($instance["horizontal-list"] != "")?"checked":""; ?> />
+		<label for="<?php echo $this->get_field_id( 'horizontal-list' ); ?>">Horisontell lista</label> 
+		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'show_related_cat' ); ?>">Visa fr&aring;n kategori</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'show_related_cat' ); ?>" name="<?php echo $this->get_field_name( 'show_related_cat' ); ?>" type="text" value="<?php echo esc_attr( $show_related_cat); ?>" />
@@ -956,6 +1036,8 @@ class HK_related_widget extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
+		$instance['title'] = $new_instance['title'];
+		$instance['horizontal-list'] = $new_instance['horizontal-list'];
 		$instance['show_related_cat'] = strip_tags( $new_instance['show_related_cat'] );
 		
 		return $instance;
@@ -964,6 +1046,13 @@ class HK_related_widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 		global $default_settings;
 	    extract( $args );
+		if (isset($instance["title"]))
+			$title = $instance["title"];
+		else
+			$title = "";
+		$horizontal = "";
+		if (isset($instance['horizontal-list'])) 
+			$horizontal = "horizontal-list";
 		if (isset($instance["show_related_cat"]))
 			$show_related_cat = $instance["show_related_cat"];
 		else
@@ -973,12 +1062,21 @@ class HK_related_widget extends WP_Widget {
 		$quickmenu = hk_related_output(false, $show_related_cat);
 		?>
 		
+		
 		<?php 
+		if ($horizontal != "") {
+			$before_widget = str_replace('class="','class="'.$horizontal.' ',$before_widget);
+		}
+		echo $before_widget;
+		if ( ! empty( $title ) ) {
+			echo $before_title . $title . $after_title;
+		}
 		if ($quickmenu != "") :
 			echo $quickmenu;
 		else :
 			echo "Inga genv&auml;gar.";
 		endif;
+		echo $after_widget;
 		?>		
 			
 	<?php
@@ -1108,7 +1206,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link1_height' ); ?>" name="<?php echo $this->get_field_name( 'direct_link1_height' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link1_height"]); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link1_bg' ); ?>">Bakgrund</label> 
+		<label for="<?php echo $this->get_field_id( 'direct_link1_bg' ); ?>">Bakgrund (css-f&auml;rg)</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link1_bg' ); ?>" name="<?php echo $this->get_field_name( 'direct_link1_bg' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link1_bg"]); ?>" />
 		</p>
 		<p>
@@ -1161,7 +1259,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link3_height' ); ?>" name="<?php echo $this->get_field_name( 'direct_link3_height' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link3_height"]); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link3_bg' ); ?>">Baakgrund</label> 
+		<label for="<?php echo $this->get_field_id( 'direct_link3_bg' ); ?>">Bakgrund</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link3_bg' ); ?>" name="<?php echo $this->get_field_name( 'direct_link3_bg' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link3_bg"]); ?>" />
 		</p>
 		<p>
@@ -1187,7 +1285,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link4_height' ); ?>" name="<?php echo $this->get_field_name( 'direct_link4_height' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link4_height"]); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link4_bg' ); ?>">Baakgrund</label> 
+		<label for="<?php echo $this->get_field_id( 'direct_link4_bg' ); ?>">Bakgrund</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link4_bg' ); ?>" name="<?php echo $this->get_field_name( 'direct_link4_bg' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link4_bg"]); ?>" />
 		</p>
 		<p>
@@ -1213,7 +1311,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link5_height' ); ?>" name="<?php echo $this->get_field_name( 'direct_link5_height' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link5_height"]); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link5_bg' ); ?>">Baakgrund</label> 
+		<label for="<?php echo $this->get_field_id( 'direct_link5_bg' ); ?>">Bakgrund</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link5_bg' ); ?>" name="<?php echo $this->get_field_name( 'direct_link5_bg' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link5_bg"]); ?>" />
 		</p>
 		<p>
