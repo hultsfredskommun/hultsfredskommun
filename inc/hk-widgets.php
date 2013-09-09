@@ -910,8 +910,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 				
 			
 			}
-			else if ( $instance["text"] != "" ) {
-				$title = apply_filters( 'widget_title', $instance['title'] );
+			else if ( $instance["text"] != "" || $instance["title"] != "" ) {
+				$title = $instance['title'];
 				$background = $instance["background"];
 				$color = $instance["color"];
 
