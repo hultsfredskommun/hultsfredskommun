@@ -1451,7 +1451,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 					$retValue .= "<h1 class='entry-title'>";
 					$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>"; 
 					$retValue .= "<span class='main-contact-link'>" . get_the_title() . "";
-					$retValue .= "<span class='more-contact-link'>Fler kontaktuppgifter...</span></span></a></h1>"; 
+					$retValue .= "<span class='more-contact-link'>fler kontaktuppgifter</span></span></a></h1>"; 
 					
 					
 					$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";

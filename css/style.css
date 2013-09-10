@@ -769,7 +769,7 @@ textarea:focus {
 .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .article-wrapper .entry-meta .footer-wrapper, .pager, .contacts,
 .related-wrapper,
 .tools, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
-.main-sub-menu, .tags-wrapper ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul, .media, .island, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
+.main-sub-menu, .tags-wrapper ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul, .media, .island, .slideshow .slide .caption-area, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
 .islet,
 #responsive-info,
 .widget_hk_wp_feed_rss_widget.widget,
@@ -797,7 +797,7 @@ textarea:focus {
 .page-header .sort-order:before, .page-header .category-tools:before, .page-header .category-tools .menu-item .sub-menu:before, .article-wrapper .entry-meta .footer-wrapper:before, .pager:before, .contacts:before,
 .related-wrapper:before,
 .tools:before, .searchnavigation .searchresult ul:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .more-menu-ul:before,
-.main-sub-menu:before, .tags-wrapper ul:before, .category-navigation .parent:before, .category-navigation .parent li .children:before, .category-navigation .more-navigation:before, .ui-tabs-nav:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .footer-image-wrapper .logo-footer-image img:before, .contact-popup.box .entry-wrapper .entry-content:before,
+.main-sub-menu:before, .tags-wrapper ul:before, .category-navigation .parent:before, .category-navigation .parent li .children:before, .category-navigation .more-navigation:before, .ui-tabs-nav:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .slideshow .slide .caption-area:before, .footer-image-wrapper .logo-footer-image img:before, .contact-popup.box .entry-wrapper .entry-content:before,
 .islet:before,
 #responsive-info:before,
 .widget_hk_wp_feed_rss_widget.widget:before,
@@ -822,7 +822,7 @@ textarea:focus {
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
 .tools:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
-.main-sub-menu:after, .tags-wrapper ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
+.main-sub-menu:after, .tags-wrapper ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .slideshow .slide .caption-area:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
 .islet:after,
 #responsive-info:after,
 .widget_hk_wp_feed_rss_widget.widget:after,
@@ -851,7 +851,7 @@ textarea:focus {
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
 .related-wrapper:after,
 .tools:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
-.main-sub-menu:after, .tags-wrapper ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
+.main-sub-menu:after, .tags-wrapper ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .slideshow .slide .caption-area:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
 .islet:after,
 #responsive-info:after,
 .widget_hk_wp_feed_rss_widget.widget:after,
@@ -891,6 +891,7 @@ pre,
 .form-fields > li,
 .media,
 .island,
+.slideshow .slide .caption-area,
 .footer-image-wrapper .logo-footer-image img,
 .contact-popup.box .entry-wrapper .entry-content,
 .islet,
@@ -1016,7 +1017,7 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .widget_hk_wp
 .island, .searchnavigation .searchresult ul
 .island, .searchnavigation .searchresult .external_more_link
 .island, .scrolltotop
-.island, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .widget_hk_wp_feed_rss_widget.widget .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .widget_hk_wp_feed_rss_widget.widget img, .slideshow .slide .caption-area .caption .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .slideshow .slide .caption-area .caption img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 img, .main .widget.widget_hk_textwidget .inner-wrapper .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .main .widget.widget_hk_textwidget .inner-wrapper img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .cookieinformation .textwidget .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .cookieinformation .textwidget img, .searchnavigation .searchresult ul .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult ul img, .searchnavigation .searchresult .external_more_link .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult .external_more_link img, .scrolltotop .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .scrolltotop img, .islet .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .islet .entry-content, #responsive-info .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper #responsive-info .entry-content, .widget_hk_wp_feed_rss_widget.widget .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .widget_hk_wp_feed_rss_widget.widget .entry-content, .slideshow .slide .caption-area .caption .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .slideshow .slide .caption-area .caption .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .entry-content, .main .widget.widget_hk_textwidget .inner-wrapper .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .main .widget.widget_hk_textwidget .inner-wrapper .entry-content, .pager .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .pager .entry-content, .cookieinformation .textwidget .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .cookieinformation .textwidget .entry-content, .searchnavigation .searchresult ul .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .searchnavigation .searchresult ul .entry-content, .searchnavigation .searchresult .external_more_link .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .searchnavigation .searchresult .external_more_link .entry-content, .scrolltotop .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .scrolltotop .entry-content, .islet
+.island, .islet .slideshow .slide .caption-area, .slideshow .slide .islet .caption-area, #responsive-info .slideshow .slide .caption-area, .slideshow .slide #responsive-info .caption-area, .widget_hk_wp_feed_rss_widget.widget .slideshow .slide .caption-area, .slideshow .slide .widget_hk_wp_feed_rss_widget.widget .caption-area, .slideshow .slide .caption-area .caption .caption-area, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .slideshow .slide .caption-area, .slideshow .slide .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .caption-area, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .slideshow .slide .caption-area, .slideshow .slide .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .caption-area, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .slideshow .slide .caption-area, .slideshow .slide .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .caption-area, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .slideshow .slide .caption-area, .slideshow .slide .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .caption-area, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .slideshow .slide .caption-area, .slideshow .slide .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .caption-area, .main .widget.widget_hk_textwidget .inner-wrapper .slideshow .slide .caption-area, .slideshow .slide .main .widget.widget_hk_textwidget .inner-wrapper .caption-area, .pager .slideshow .slide .caption-area, .slideshow .slide .pager .caption-area, .cookieinformation .textwidget .slideshow .slide .caption-area, .slideshow .slide .cookieinformation .textwidget .caption-area, .searchnavigation .searchresult ul .slideshow .slide .caption-area, .slideshow .slide .searchnavigation .searchresult ul .caption-area, .searchnavigation .searchresult .external_more_link .slideshow .slide .caption-area, .slideshow .slide .searchnavigation .searchresult .external_more_link .caption-area, .scrolltotop .slideshow .slide .caption-area, .slideshow .slide .scrolltotop .caption-area, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .widget_hk_wp_feed_rss_widget.widget .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .widget_hk_wp_feed_rss_widget.widget img, .slideshow .slide .caption-area .caption .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .slideshow .slide .caption-area .caption img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 img, .main .widget.widget_hk_textwidget .inner-wrapper .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .main .widget.widget_hk_textwidget .inner-wrapper img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .cookieinformation .textwidget .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .cookieinformation .textwidget img, .searchnavigation .searchresult ul .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult ul img, .searchnavigation .searchresult .external_more_link .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult .external_more_link img, .scrolltotop .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .scrolltotop img, .islet .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .islet .entry-content, #responsive-info .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper #responsive-info .entry-content, .widget_hk_wp_feed_rss_widget.widget .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .widget_hk_wp_feed_rss_widget.widget .entry-content, .slideshow .slide .caption-area .caption .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .slideshow .slide .caption-area .caption .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .entry-content, .main .widget.widget_hk_textwidget .inner-wrapper .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .main .widget.widget_hk_textwidget .inner-wrapper .entry-content, .pager .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .pager .entry-content, .cookieinformation .textwidget .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .cookieinformation .textwidget .entry-content, .searchnavigation .searchresult ul .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .searchnavigation .searchresult ul .entry-content, .searchnavigation .searchresult .external_more_link .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .searchnavigation .searchresult .external_more_link .entry-content, .scrolltotop .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .scrolltotop .entry-content, .islet
 .islet, #responsive-info
 .islet, .widget_hk_wp_feed_rss_widget.widget
 .islet, .slideshow .slide .caption-area .caption
@@ -1144,7 +1145,10 @@ html {
  * This allows us to apply, say, `class=alpha` to a `h3`; a double-stranded
  * heading hierarchy.
  */
-h1, .alpha, .widget_hk_wp_feed_rss_widget.widget h1, .home .slideshow-contact-puff-area .content-wrapper h1, .main .widget.widget_hk_textwidget h1 {
+h1, .alpha, .widget_hk_wp_feed_rss_widget.widget h1, .home .slideshow-contact-puff-area .content-wrapper h1, .main .widget.widget_hk_textwidget h1, .main .widget.widget_hk_aditro_rss_widget h1,
+.main .widget.widget_hk_related_widget h1,
+.main .widget.widget_hk_protocol h1,
+.main .widget.HK_tags_widget h1 {
   font-size: 22px;
   font-size: 1.46667rem;
   line-height: 1.09091;
@@ -1156,10 +1160,7 @@ h2, .beta, .home .slideshow-contact-puff-area .content-wrapper .right-content .d
   line-height: 1.2;
 }
 
-h3, .gamma, .widget h1, .main .widget.widget_hk_aditro_rss_widget h1,
-.main .widget.widget_hk_related_widget h1,
-.main .widget.widget_hk_protocol h1,
-.main .widget.HK_tags_widget h1, .post .summary-content h1.entry-title, .main-sub-menu a {
+h3, .gamma, .widget h1, .post .summary-content h1.entry-title, .main-sub-menu a {
   font-size: 18px;
   font-size: 1.2rem;
   line-height: 1.33333;
@@ -2616,7 +2617,7 @@ html.flexbox {
  * Demo: jsfiddle.net/inuitcss/u8pV3
  * 
  */
-.island, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
+.island, .slideshow .slide .caption-area, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
 .islet,
 #responsive-info,
 .widget_hk_wp_feed_rss_widget.widget,
@@ -2635,11 +2636,11 @@ html.flexbox {
   display: block;
 }
 
-.island, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content {
+.island, .slideshow .slide .caption-area, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content {
   padding: 24px;
 }
 
-.island > :last-child, .footer-image-wrapper .logo-footer-image img > :last-child, .contact-popup.box .entry-wrapper .entry-content > :last-child,
+.island > :last-child, .slideshow .slide .caption-area > :last-child, .footer-image-wrapper .logo-footer-image img > :last-child, .contact-popup.box .entry-wrapper .entry-content > :last-child,
 .islet > :last-child,
 #responsive-info > :last-child,
 .widget_hk_wp_feed_rss_widget.widget > :last-child,
@@ -3443,7 +3444,7 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .page-content, .branding, .widget h1, .icon-right, .side-content .post-edit-link, .firstpage-top-content, .firstpage-pre-footer-sidebar, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area, .slideshow .slide .caption-area .transparent, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area img, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
+.one-whole, .page-content, .branding, .widget h1, .icon-right, .side-content .post-edit-link, .firstpage-top-content, .firstpage-pre-footer-sidebar, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .slideshow .slideshow_bg, .slideshow .slide img, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area img, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
 .single .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .responsive-sub-menu, .main-menu, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
@@ -3451,14 +3452,14 @@ html.flexbox {
 /**
 * Halves
 */
-.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths, .home .slideshow-contact-puff-area .slideshow .caption-area, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .searchresult ul {
+.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths, .searchnavigation .searchresult ul {
   width: 50%;
 }
 
 /**
 * Thirds
 */
-.one-third, .two-sixths, .four-twelfths {
+.one-third, .two-sixths, .four-twelfths, .slideshow .slide .caption-area .transparent, .home .slideshow-contact-puff-area .caption {
   width: 33.333%;
 }
 
@@ -3485,7 +3486,7 @@ html.flexbox {
   width: 20%;
 }
 
-.two-fifths, .four-tenths {
+.two-fifths, .four-tenths, .home .slideshow-contact-puff-area .content-wrapper {
   width: 40%;
 }
 
@@ -4785,6 +4786,15 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #5c85b1;
 }
 
+.main-light-background, .main .widget.widget_hk_aditro_rss_widget,
+.main .widget.widget_hk_protocol {
+  background-color: #849cc3;
+}
+
+.main-lighter-background {
+  background-color: #a3b4d2;
+}
+
 .gray-background {
   background-color: #c6cacb;
 }
@@ -4886,7 +4896,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: transparent;
 }
 
-.border-radius, .button, img, .widget_hk_wp_feed_rss_widget.widget, .main .widget.widget_hk_textwidget .inner-wrapper, .main .widget.widget_hk_aditro_rss_widget,
+.border-radius, .button, img, .widget_hk_wp_feed_rss_widget.widget, .slideshow .slide .caption-area .transparent, .main .widget.widget_hk_textwidget .inner-wrapper, .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,
 .main .widget.HK_tags_widget, .page-header, .article-wrapper .side-content .optional-text, .button.bottom, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
@@ -4977,7 +4987,10 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 }
 
 @media only screen and (max-width: 969px) {
-  h1, .alpha, .widget_hk_wp_feed_rss_widget.widget h1, .home .slideshow-contact-puff-area .content-wrapper h1, .main .widget.widget_hk_textwidget h1 {
+  h1, .alpha, .widget_hk_wp_feed_rss_widget.widget h1, .home .slideshow-contact-puff-area .content-wrapper h1, .main .widget.widget_hk_textwidget h1, .main .widget.widget_hk_aditro_rss_widget h1,
+  .main .widget.widget_hk_related_widget h1,
+  .main .widget.widget_hk_protocol h1,
+  .main .widget.HK_tags_widget h1 {
     font-size: 20px;
     font-size: 1.33333rem;
     line-height: 1.2;
@@ -4989,10 +5002,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.33333;
   }
 
-  h3, .gamma, .widget h1, .main .widget.widget_hk_aditro_rss_widget h1,
-  .main .widget.widget_hk_related_widget h1,
-  .main .widget.widget_hk_protocol h1,
-  .main .widget.HK_tags_widget h1, .post .summary-content h1.entry-title, .main-sub-menu a {
+  h3, .gamma, .widget h1, .post .summary-content h1.entry-title, .main-sub-menu a {
     font-size: 17px;
     font-size: 1.13333rem;
     line-height: 1.41176;
@@ -5224,26 +5234,41 @@ html {
 }
 
 .slideshow .slide .caption-area {
+  padding-bottom: 0;
   z-index: 1000;
 }
 .slideshow .slide .caption-area .transparent {
   height: 100%;
-  opacity: 0.9;
+  opacity: 0.7;
   z-index: 1050;
-  border-bottom-left-radius: 3px;
 }
 .slideshow .slide .caption-area .caption {
+  padding-bottom: 0;
   line-height: 1.5;
   display: block;
   z-index: 1100;
 }
 
+.home .firstpage-top-content .HK_tags_widget {
+  border-radius: 0 0 3px 3px;
+  margin-bottom: 36px;
+}
+
+/* slideshow/contact/puff widget on first page */
 .home .slideshow-contact-puff-area {
   line-height: 0;
   overflow: hidden;
 }
+.home .slideshow-contact-puff-area .widget,
+.home .slideshow-contact-puff-area .slideshow {
+  margin-bottom: 6px;
+}
+.home .slideshow-contact-puff-area img {
+  border-radius: 3px 3px 0 0;
+}
 .home .slideshow-contact-puff-area .content-wrapper {
-  opacity: 0.9;
+  padding-bottom: 6px;
+  opacity: 0.95;
   z-index: 200;
   height: 100%;
 }
@@ -5266,9 +5291,17 @@ html {
   border-top-right-radius: 3px;
 }
 .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link:last-child {
-  border-bottom-right-radius: 3px;
+  /*border-bottom-right-radius: $border-radius;*/
+}
+.home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 {
+  border-top: 0 !important;
+}
+.home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 {
+  border-left: 3px solid white;
+  border-top: 3px solid white;
 }
 
+/* only contact widget on first page */
 .home .contact-area .contact-wrapper {
   line-height: 0;
   overflow: hidden;
@@ -5290,11 +5323,15 @@ html {
   display: block;
 }
 
+/* horizontal widgets (related and tags) */
 .main .widget.horizontal-list.widget_hk_related_widget h1,
 .main .widget.horizontal-list.HK_tags_widget h1 {
+  padding-bottom: 0;
+  padding-top: 6px;
   width: auto;
 }
 
+/* hk_textwidget on firstpage */
 .main .widget.widget_hk_textwidget .inner-wrapper .content {
   padding-bottom: 0;
 }
@@ -5302,6 +5339,7 @@ html {
   float: none !important;
 }
 
+/* aditro widget */
 .main .widget.widget_hk_aditro_rss_widget .entry-wrapper {
   margin-bottom: 6px !important;
 }
@@ -5313,11 +5351,15 @@ html {
   padding-left: 12px;
 }
 
+.main .widget.widget_hk_related_widget ul {
+  padding-bottom: 6px !important;
+}
+
 .main .widget.widget_hk_aditro_rss_widget h1,
 .main .widget.widget_hk_related_widget h1,
 .main .widget.widget_hk_protocol h1,
 .main .widget.HK_tags_widget h1 {
-  padding: 6px 12px;
+  padding: 12px 12px 6px;
 }
 .main .widget.widget_hk_aditro_rss_widget .subtitle,
 .main .widget.widget_hk_related_widget .subtitle,
@@ -5927,11 +5969,11 @@ html {
   left: 0;
 }
 
-.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .home .contact-area .contact-wrapper .content-wrapper, .pager, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .slideshow .slide .caption-area, .contact-popup.box .close-contact {
+.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .pager, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .contact-popup.box .close-contact {
   position: absolute;
 }
 
-.position-absolute--top-left, .home .contact-area .contact-wrapper .content-wrapper, .pager {
+.position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .pager {
   top: 0;
   left: 0;
 }
@@ -5946,7 +5988,7 @@ html {
   right: 0;
 }
 
-.position-absolute--bottom-left, .slideshow .slide .caption-area {
+.position-absolute--bottom-left {
   bottom: 0;
   left: 0;
 }
@@ -6012,7 +6054,7 @@ html {
   padding-right: 1.6rem;
 }
 
-.padding--bottom, .home .slideshow-contact-puff-area .content-wrapper, .article-wrapper .content-wrapper .contact-area .hk_kontakter, .content, .cookieinformation,
+.padding--bottom, .article-wrapper .content-wrapper .contact-area .hk_kontakter, .content, .cookieinformation,
 .important-widget, .footer-widget-wrapper {
   padding-bottom: 24px;
   padding-bottom: 1.6rem;

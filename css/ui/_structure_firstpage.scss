@@ -111,23 +111,25 @@
 		}
 		.caption-area {
 			@extend .float--left;
-			@extend .position-absolute--bottom-left;
-			@extend .one-whole;
+			@extend .position-absolute--top-left;
+			@extend .island;
+			padding-bottom: 0;
 			z-index: 1000;
 			.transparent {
 				@extend .position-absolute;
-				@extend .one-whole;
+				@extend .one-third;
 				@extend .default-background;
+				@extend .border-radius;
 				height: 100%;
-				opacity: 0.9;
+				opacity: 0.7;
 				z-index: 1050;
-				border-bottom-left-radius: $border-radius;
 			}
 			.caption {
 				@extend .white-text;
 				@extend .position-relative;
 				@extend .islet;
 				@extend .flush--bottom;
+				padding-bottom: 0;
 				line-height: 1.5;
 				display: block;
 				z-index: 1100;
@@ -139,24 +141,33 @@
 .home .img-wrapper .slideshow {
 	@extend .force-hidden--palm;
 }
+.home .firstpage-top-content .HK_tags_widget {
+	border-radius: 0 0 $border-radius $border-radius;
+	margin-bottom: $base-spacing-unit*1.5;
+}
+
+/* slideshow/contact/puff widget on first page */
 .home .slideshow-contact-puff-area {
 	line-height: 0;
 	@extend .cf;
 	@extend .position-relative;
 	@extend .one-whole;
 	overflow: hidden;
-	.slideshow {
-		.caption-area {
-			@extend .one-half;
-		}
+	.caption {
+		@extend .one-third;
+	}
+	.widget,
+	.slideshow {	
+		margin-bottom: $half-spacing-unit/2;
 	}
 	img {
 		@extend .one-whole;
+		border-radius: $border-radius $border-radius 0 0;
 	}
 	.content-wrapper {
-		@extend .one-half;
-		@extend .padding--bottom;
-		opacity: 0.9;
+		@extend .four-tenths;
+		padding-bottom: $half-spacing-unit/2;
+		opacity: 0.95;
 		@extend .position-absolute--top-right;
 		z-index: 200;
 		height: 100%;
@@ -223,9 +234,14 @@
 				border-top-right-radius: $border-radius;
 			}
 			.direct_link:last-child {
-				border-bottom-right-radius: $border-radius;
+				/*border-bottom-right-radius: $border-radius;*/
+			}
+			.direct_link1 {
+				border-top: 0!important;
 			}
 			.direct_link1, .direct_link2, .direct_link3, .direct_link4, .direct_link5 {
+				border-left: 3px solid white;
+				border-top: 3px solid white;
 				@extend .default-background;
 				@extend .white-text;
 				@extend .one-whole;
@@ -239,6 +255,7 @@
 		}
 	}
 }
+/* only contact widget on first page */
 .home .contact-area .contact-wrapper {
 	line-height: 0;
 	@extend .gray-image-background;
@@ -294,10 +311,13 @@
 		}
 	}
 }
+/* horizontal widgets (related and tags) */
 .main .widget.horizontal-list.widget_hk_related_widget,
 .main .widget.horizontal-list.HK_tags_widget {
 	h1 {
 		@extend .float--left;
+		padding-bottom: 0;
+		padding-top: $half-spacing-unit/2;
 		width: auto;
 	}
 	ul {
@@ -307,8 +327,7 @@
 		@extend .flush--bottom;
 	}
 }
-
-
+/* hk_textwidget on firstpage */
 .main .widget.widget_hk_textwidget {
 	h1 {
 		@extend .alpha;
@@ -327,6 +346,7 @@
 		float: none!important;
 	}
 }
+/* aditro widget */
 .main .widget.widget_hk_aditro_rss_widget .entry-wrapper {
 	margin-bottom: $half-spacing-unit/2!important;
 	a {
@@ -336,6 +356,16 @@
 		@extend .white-text;
 		padding-bottom: $half-spacing-unit/2!important;
 		padding-left: $half-spacing-unit;
+	}
+}
+.main .widget.widget_hk_aditro_rss_widget,
+.main .widget.widget_hk_protocol {
+	@extend .main-light-background;
+}
+
+.main .widget.widget_hk_related_widget {
+	ul {
+		padding-bottom: $half-spacing-unit/2!important;
 	}
 }
 .main .widget.widget_hk_aditro_rss_widget,
@@ -350,8 +380,8 @@
 	}
 	h1 {
 		@extend .white-text;
-		@extend .gamma;
-		padding: $half-spacing-unit/2 $half-spacing-unit;
+		@extend .alpha;
+		padding: $half-spacing-unit $half-spacing-unit $half-spacing-unit/2;
 	}
 	ul {
 		@extend .nav;

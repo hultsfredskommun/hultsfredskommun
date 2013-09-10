@@ -6,6 +6,8 @@ $link-color:				#005BAA!default;
 $hover-color:				#3e3e3f!default;
 $default-color:				#3e3e3f!default;
 $main-color:				#5C85B1!default;
+$main-light-color:			#849cc3!default;
+$main-lighter-color:		#a3b4d2!default;
 $complement-color:			#644C20!default;
 $complement-light-color:	#8E7042!default;
 $important-color:			#A41D30!default;
@@ -82,6 +84,12 @@ $face:	        			/*"Oxygen", "myriad-pro",  */'Segoe UI', Arial, sans-serif!def
 }
 .main-background {
 	background-color: $main-color;
+}
+.main-light-background {
+	background-color: $main-light-color;
+}
+.main-lighter-background {
+	background-color: $main-lighter-color;
 }
 .gray-background {
 	background-color: $gray-color;
