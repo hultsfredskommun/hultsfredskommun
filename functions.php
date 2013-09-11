@@ -645,6 +645,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 				$alt = $title;
 			}
 			
+			/* TODO bug - if image is exact right size this won't work!! */
 			if (strpos($src,$default_settings[$thumbsize][0] . "x" . $default_settings[$thumbsize][1])) {
 				if (!empty($src)) {
 					if ($countSlides > 0) {

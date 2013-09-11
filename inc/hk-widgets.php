@@ -451,6 +451,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		<label for="<?php echo $this->get_field_id( 'hide_more_news' ); ?>">Göm nyhetslistan, och visa en "Visa fler"-länk istället (ange namnet på länken).</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'hide_more_news' ); ?>" name="<?php echo $this->get_field_name( 'hide_more_news' ); ?>" type="text" value="<?php echo esc_attr( $hide_more_news); ?>" />
 		</p>
+		<p>
+		<input id="<?php echo $this->get_field_id( 'box-list' ); ?>" name="<?php echo $this->get_field_name( 'box-list' ); ?>" type="checkbox" <?php echo ($instance["box-list"] != "")?"checked":""; ?> />
+		<label for="<?php echo $this->get_field_id( 'box-list' ); ?>">Visa i två kolumner</label> 
+		</p>
 		
 		<?php
 	}
@@ -462,6 +466,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$instance['num_days_new'] = strip_tags( $new_instance['num_days_new'] );
 		$instance['content_type'] = strip_tags( $new_instance['content_type'] );
 		$instance['hide_more_news'] = strip_tags( $new_instance['hide_more_news'] );
+		$instance['box-list'] = strip_tags( $new_instance['box-list'] );
 		
 		return $instance;
 	}
@@ -478,6 +483,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		else $content_type = "";
 		if (isset($instance["hide_more_news"])) $hide_more_news = $instance["hide_more_news"];
 		else $hide_more_news = "";
+		$boxclass = "";
+		if (isset($instance['box-list'])) 
+			$boxclass = "box-list ";
 
 		/* get all sub categories to use in queries */
 		$cat = get_query_var("cat");
@@ -487,7 +495,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 	<div id="content" role="main">
 		
-		<div id="newscontent" class="newscontent">
+		<div id="newscontent" class="<?php echo $boxclass; ?>newscontent">
 			<?php 
 				/* Query all posts with selected startpage category */
 				$cat = get_query_var("cat");

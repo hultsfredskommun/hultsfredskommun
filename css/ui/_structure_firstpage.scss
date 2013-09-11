@@ -45,6 +45,42 @@
 .newscontent .widget {
 	@extend .flush--bottom;
 }
+.box-list.newscontent {
+	.post {
+		.article-border-wrapper {
+			@extend .noborder;
+			padding-left: 0;
+			&:hover {
+				box-shadow: none;
+			}
+			.article-wrapper {
+				margin-top: 0;
+				.content-wrapper {
+					@extend .margin--bottom;
+					.summary-content {
+						padding-right: 0;
+					}
+				}
+			}
+		}
+		.img-wrapper {
+			@extend .one-whole;
+			@extend .half-padding--bottom;
+		}
+		.entry-content {
+			display: none;
+		}
+		@extend .one-half;
+		@extend .float--left;
+	}
+	.post:nth-child(odd) {
+		padding-right: $half-spacing-unit;
+	}
+	.post:nth-child(even) {
+		padding-left: $half-spacing-unit;
+	}
+}
+
 
 .main .widget {
 	.entry-wrapper {

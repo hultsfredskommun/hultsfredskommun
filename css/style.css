@@ -3444,7 +3444,7 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .page-content, .branding, .widget h1, .icon-right, .side-content .post-edit-link, .firstpage-top-content, .firstpage-pre-footer-sidebar, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area .transparent, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area img, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
+.one-whole, .page-content, .branding, .widget h1, .icon-right, .side-content .post-edit-link, .firstpage-top-content, .firstpage-pre-footer-sidebar, .box-list.newscontent .post .img-wrapper, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area .transparent, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area img, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
 .single .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .responsive-sub-menu, .main-menu, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
@@ -3452,7 +3452,7 @@ html.flexbox {
 /**
 * Halves
 */
-.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths, .searchnavigation .searchresult ul {
+.one-half, .two-quarters, .three-sixths, .four-eighths, .five-tenths, .six-twelfths, .box-list.newscontent .post, .searchnavigation .searchresult ul {
   width: 50%;
 }
 
@@ -4518,7 +4518,7 @@ html.flexbox {
   float: right !important;
 }
 
-.float--left, .alignleft, .icon-left, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .slideshow-contact-puff-area .content-wrapper .right-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget h1,
+.float--left, .alignleft, .icon-left, .box-list.newscontent .post, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .slideshow-contact-puff-area .content-wrapper .right-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget h1,
 .main .widget.horizontal-list.HK_tags_widget h1, .help-navigation, .page-header .num-posts, .page-header .category-tools .menu-item .i, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
 .single .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
@@ -4903,7 +4903,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   border-radius: 3px;
 }
 
-.noborder, .home .slideshow-contact-puff-area .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper h1, .viewmode-only-titles .summary .article-border-wrapper, .searchnavigation .form .input-wrapper .field, .searchnavigation .form .submit, .footer-widget-wrapper h1 {
+.noborder, .box-list.newscontent .post .article-border-wrapper, .home .slideshow-contact-puff-area .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper h1, .viewmode-only-titles .summary .article-border-wrapper, .searchnavigation .form .input-wrapper .field, .searchnavigation .form .submit, .footer-widget-wrapper h1 {
   border: 0;
 }
 
@@ -5216,6 +5216,28 @@ html {
 
 .read-more-link {
   display: inline-block;
+}
+
+.box-list.newscontent .post .article-border-wrapper {
+  padding-left: 0;
+}
+.box-list.newscontent .post .article-border-wrapper:hover {
+  box-shadow: none;
+}
+.box-list.newscontent .post .article-border-wrapper .article-wrapper {
+  margin-top: 0;
+}
+.box-list.newscontent .post .article-border-wrapper .article-wrapper .content-wrapper .summary-content {
+  padding-right: 0;
+}
+.box-list.newscontent .post .entry-content {
+  display: none;
+}
+.box-list.newscontent .post:nth-child(odd) {
+  padding-right: 12px;
+}
+.box-list.newscontent .post:nth-child(even) {
+  padding-left: 12px;
 }
 
 /* driftinfo - widget_hk_wp_feed_rss_widget */
@@ -6019,7 +6041,7 @@ html {
   margin-right: 1.6rem;
 }
 
-.margin--bottom, .widget, .newscontent, .slideshow, .article-wrapper .side-content .optional-text, .article-wrapper .entry-meta, .more-from-heading, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
+.margin--bottom, .widget, .newscontent, .box-list.newscontent .post .article-border-wrapper .article-wrapper .content-wrapper, .slideshow, .article-wrapper .side-content .optional-text, .article-wrapper .entry-meta, .more-from-heading, .top-wrapper, .top-menu-wrapper, .menu-wrapper {
   margin-bottom: 24px;
   margin-bottom: 1.6rem;
 }
@@ -6085,7 +6107,7 @@ html {
   padding-left: 0.8rem;
 }
 
-.half-padding--bottom, .home .slideshow-contact-puff-area .content-wrapper h1 a, .home .contact-area .contact-wrapper .content-wrapper h1 a {
+.half-padding--bottom, .box-list.newscontent .post .img-wrapper, .home .slideshow-contact-puff-area .content-wrapper h1 a, .home .contact-area .contact-wrapper .content-wrapper h1 a {
   padding-bottom: 12px;
   padding-bottom: 0.8rem;
 }
