@@ -484,7 +484,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		if (isset($instance["hide_more_news"])) $hide_more_news = $instance["hide_more_news"];
 		else $hide_more_news = "";
 		$boxclass = "";
-		if (isset($instance['box-list'])) 
+		if (isset($instance['box-list']) && $instance['box-list'] != "") 
 			$boxclass = "box-list ";
 
 		/* get all sub categories to use in queries */
