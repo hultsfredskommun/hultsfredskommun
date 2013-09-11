@@ -327,9 +327,8 @@ article.single .map_canvas {
 	@extend .flush--bottom;
 }
 .title {
-	@extend .main-background;
+	@extend .default-background;
 	@extend .white-text;
-	@extend .font-weight-bold;
 	@extend .half-padding--left;
 	@extend .half-margin--top;
 	@extend .half-margin--bottom;
