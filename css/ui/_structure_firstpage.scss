@@ -364,7 +364,9 @@
 .main .widget.widget_hk_aditro_rss_widget {
 	@extend .default-background;
 }
-.main .widget.widget_hk_protocol {
+.main .widget.widget_hk_related_widget,
+.main .widget.widget_hk_protocol,
+.main .widget.HK_tags_widget {
 	@extend .main-background;
 }
 
@@ -378,7 +380,6 @@
 .main .widget.widget_hk_protocol,
 .main .widget.HK_tags_widget {
 	@extend .border-radius;
-	@extend .main-background;
 	@extend .cf;
 	a {
 		@extend .white-text;

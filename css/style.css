@@ -4777,8 +4777,8 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #fff;
 }
 
-.main-background, .home .slideshow-contact-puff-area .content-wrapper .left-content, .main .widget.widget_hk_protocol, .main .widget.widget_hk_aditro_rss_widget,
-.main .widget.widget_hk_related_widget,
+.main-background, .home .slideshow-contact-puff-area .content-wrapper .left-content, .main .widget.widget_hk_related_widget,
+.main .widget.widget_hk_protocol,
 .main .widget.HK_tags_widget, .page-header .category-tools .related-menu, .page-header .category-tools .menu-item .sub-menu, .cookieinformation, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper .top-menu .menu-item .sub-menu, .responsive-menu a, .footer2-wrapper,
 .footer2-wrapper a,
 .footer-image-wrapper {
