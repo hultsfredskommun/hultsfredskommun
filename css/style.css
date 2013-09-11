@@ -1181,7 +1181,7 @@ h5, .epsilon, .widget, .main-menu {
 h6, .zeta, .time, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
 .main .widget.widget_hk_related_widget .subtitle,
 .main .widget.widget_hk_protocol .subtitle,
-.main .widget.HK_tags_widget .subtitle, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
+.main .widget.HK_tags_widget .subtitle, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .button.top, .button.bottom, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
   font-size: 14px;
   font-size: 0.93333rem;
   line-height: 1.71429;
@@ -3444,7 +3444,7 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .page-content, .branding, .widget h1, .icon-right, .side-content .post-edit-link, .firstpage-top-content, .firstpage-pre-footer-sidebar, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .slideshow .slideshow_bg, .slideshow .slide img, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area img, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
+.one-whole, .page-content, .branding, .widget h1, .icon-right, .side-content .post-edit-link, .firstpage-top-content, .firstpage-pre-footer-sidebar, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area .transparent, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area img, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
 .single .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .responsive-sub-menu, .main-menu, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
@@ -3459,7 +3459,7 @@ html.flexbox {
 /**
 * Thirds
 */
-.one-third, .two-sixths, .four-twelfths, .slideshow .slide .caption-area .transparent, .home .slideshow-contact-puff-area .caption {
+.one-third, .two-sixths, .four-twelfths, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .caption {
   width: 33.333%;
 }
 
@@ -4514,7 +4514,7 @@ html.flexbox {
  * out over other selectors.
  */
 .float--right, .alignright, .firstpage-sidebar, .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .button.top, .responsive-menu a, .right-nav-menu-item, .footer-image-wrapper .logo-footer-image img {
+.page-header .sort-order, .page-header .category-tools, .responsive-menu a, .right-nav-menu-item, .footer-image-wrapper .logo-footer-image img {
   float: right !important;
 }
 
@@ -4732,7 +4732,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 .main .widget.HK_tags_widget a, .main .widget.widget_hk_aditro_rss_widget h1,
 .main .widget.widget_hk_related_widget h1,
 .main .widget.widget_hk_protocol h1,
-.main .widget.HK_tags_widget h1, .page-header .category-tools .related-menu a, .article-wrapper .side-content .optional-text, .button.bottom a, .important-widget, .cookieinformation, .cookieinformation a,
+.main .widget.HK_tags_widget h1, .page-header .category-tools .related-menu a, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .button.top a, .button.bottom a, .title, .important-widget, .cookieinformation, .cookieinformation a,
 .important-widget a, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper a, .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
@@ -4768,7 +4768,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #3e3e3f;
 }
 
-.default-background, .slideshow .slide .caption-area .transparent, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .button.bottom, .main-sub-menu .current-category-ancestor a,
+.default-background, .slideshow .slide .caption-area .transparent, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .button.top, .button.bottom, .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   background-color: #3e3e3f;
 }
@@ -4780,7 +4780,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 .main-background, .home .slideshow-contact-puff-area .content-wrapper .left-content, .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,
-.main .widget.HK_tags_widget, .page-header .category-tools .related-menu, .page-header .category-tools .menu-item .sub-menu, .cookieinformation, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper .top-menu .menu-item .sub-menu, .responsive-menu a, .footer2-wrapper,
+.main .widget.HK_tags_widget, .page-header .category-tools .related-menu, .page-header .category-tools .menu-item .sub-menu, .title, .cookieinformation, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper .top-menu .menu-item .sub-menu, .responsive-menu a, .footer2-wrapper,
 .footer2-wrapper a,
 .footer-image-wrapper {
   background-color: #5c85b1;
@@ -4899,7 +4899,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 .border-radius, .button, img, .widget_hk_wp_feed_rss_widget.widget, .slideshow .slide .caption-area .transparent, .main .widget.widget_hk_textwidget .inner-wrapper, .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,
-.main .widget.HK_tags_widget, .page-header, .article-wrapper .side-content .optional-text, .button.bottom, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+.main .widget.HK_tags_widget, .page-header, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .title, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .contact-popup.box {
   border-radius: 3px;
@@ -4909,7 +4909,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   border: 0;
 }
 
-.force-noborder, .button.bottom, .category-navigation .heading {
+.force-noborder, .button.top, .button.bottom, .category-navigation .heading {
   border: 0 !important;
 }
 
@@ -4941,7 +4941,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 
 .font-weight-bold, .page-header .num-posts .active,
 .page-header .view-tools .active,
-.page-header .sort-order .active, .related_title, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .searchnavigation .searchresult .external_more_link, .category-navigation .heading, .category-navigation .parent li.current-cat > a {
+.page-header .sort-order .active, .title, .cookieinformation .textwidget a, .searchnavigation .searchresult ul .search-title, .searchnavigation .searchresult .external_more_link, .category-navigation .heading, .category-navigation .parent li.current-cat > a {
   font-weight: bold;
 }
 
@@ -5023,7 +5023,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   h6, .zeta, .time, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
   .main .widget.widget_hk_related_widget .subtitle,
   .main .widget.widget_hk_protocol .subtitle,
-  .main .widget.HK_tags_widget .subtitle, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
+  .main .widget.HK_tags_widget .subtitle, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .button.top, .button.bottom, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
     font-size: 13px;
     font-size: 0.86667rem;
     line-height: 1.84615;
@@ -5233,6 +5233,9 @@ html {
   line-height: 0;
 }
 
+.slideshow .slide img {
+  border-right: 1px solid white;
+}
 .slideshow .slide .caption-area {
   padding-bottom: 0;
   z-index: 1000;
@@ -5505,6 +5508,10 @@ html {
   margin: 0 !important;
 }
 
+.full .hide_full {
+  display: none;
+}
+
 .article-wrapper {
   overflow: hidden;
 }
@@ -5533,13 +5540,17 @@ html {
 
 .button.top {
   margin: 0px 12px;
+  float: none;
 }
-.button.bottom {
+.button.top, .button.bottom {
+  font-weight: normal;
   background-image: none;
   margin: -18px 0 0 24px;
   padding: 6px 12px;
 }
 
+.summary .button.top,
+.single.full .button.top,
 .summary .button.bottom {
   display: none;
 }
@@ -6024,7 +6035,7 @@ html {
   margin: 0.8rem;
 }
 
-.half-margin--top, .read-more-link, .read-more-widget, .home .contact-area .contact-wrapper .content-wrapper ul, .post .summary-content h1.entry-title, .article-wrapper, .related_title, .logo, .searchnavigation, .logo2, .responsive-menu {
+.half-margin--top, .read-more-link, .read-more-widget, .home .contact-area .contact-wrapper .content-wrapper ul, .post .summary-content h1.entry-title, .article-wrapper, .title, .logo, .searchnavigation, .logo2, .responsive-menu {
   margin-top: 12px;
   margin-top: 0.8rem;
 }
@@ -6034,7 +6045,7 @@ html {
   margin-left: 0.8rem;
 }
 
-.half-margin--bottom, .read-more-link, .main .widget .entry-wrapper, .page-header, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area h3.entry-title {
+.half-margin--bottom, .read-more-link, .main .widget .entry-wrapper, .page-header, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area h3.entry-title, .title {
   margin-bottom: 12px;
   margin-bottom: 0.8rem;
 }
@@ -6060,7 +6071,7 @@ html {
   padding-bottom: 1.6rem;
 }
 
-.padding--left, .article-wrapper .side-content, .searchnavigation .form .input-wrapper .field {
+.padding--left, .article-wrapper .side-content, .article-wrapper .side-content .more-contacts, .searchnavigation .form .input-wrapper .field {
   padding-left: 24px;
   padding-left: 1.6rem;
 }
@@ -6070,7 +6081,7 @@ html {
   padding: 0.8rem;
 }
 
-.half-padding--left, .article-border-wrapper, .category-navigation .parent li .children {
+.half-padding--left, .article-border-wrapper, .title, .category-navigation .parent li .children {
   padding-left: 12px;
   padding-left: 0.8rem;
 }

@@ -99,7 +99,9 @@ article.post {
 	@extend .one-whole;
 	@extend .gamma;
 }
-
+.full .hide_full {
+	display: none;
+}
 .article-wrapper {
 	@extend .float--left;
 	@extend .half-margin--top;
@@ -157,7 +159,9 @@ article.post {
 		@extend .zeta;
 		@extend .padding--left;
 		@extend .padding--right;
-		
+		.more-contacts {
+			@extend .padding--left;
+		}
 		.optional-text {
 			@extend .half-padding;
 			@extend .margin--bottom;
@@ -203,14 +207,17 @@ article.post {
 .button {
 	@extend .cursor-pointer;
 	&.top {	
-		@extend .float--right;
 		margin: 0px $half-spacing-unit;
+		float: none;
 	}
+	&.top,
 	&.bottom {
 		@extend .force-noborder;
 		@extend .border-radius;
-		@extend .float--left;
 		@extend .default-background;
+		@extend .white-text;
+		@extend .zeta;
+		font-weight: normal;
 		background-image: none;
 		margin: -$half-spacing-unit*1.5 0 0 $base-spacing-unit;
 		padding: $half-spacing-unit/2 $half-spacing-unit;
@@ -218,7 +225,12 @@ article.post {
 			@extend .white-text;
 		}
 	}
+	&.bottom {
+		@extend .float--left;
+	}
 }
+.summary .button.top,
+.single.full .button.top,
 .summary .button.bottom {
 	display: none;
 }
@@ -314,9 +326,14 @@ article.single .map_canvas {
 .tools {
 	@extend .flush--bottom;
 }
-.related_title {
+.title {
+	@extend .main-background;
+	@extend .white-text;
 	@extend .font-weight-bold;
+	@extend .half-padding--left;
 	@extend .half-margin--top;
+	@extend .half-margin--bottom;
+	@extend .border-radius;
 }
 .side-content .post-edit-link {
 	@extend .icon-right;

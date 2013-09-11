@@ -8,6 +8,10 @@
 	
 	<?php if( function_exists("get_field") && get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
 	<ul class="box top contacts summary">
+		<li class="title full">
+			<span>Kontakt</span>
+		</li>			 
+
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
 			<li class="contact-wrapper <?php echo ($count++ < 2)?"summary":"full"; ?>">
 				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>
@@ -32,7 +36,10 @@
 				?>
 				<?php endif; ?>
 			<span class="contact_id hidden"><?php echo $value->ID; ?></span></div></li>
-		<?php endwhile; ?>			 
+		<?php endwhile; ?>
+		<?php if ($count > 2) {
+			echo "<a class='more-contacts hide_full summary js-toggle-article'>se fler kontakter</a>";
+		} ?>
 	</ul>
 	<?php endif; ?>
 	<?php //print_r($post); ?>
@@ -80,7 +87,7 @@
 				<?php elseif ( get_row_layout() == 'hk_related_titles' ) : ?>
 					<?php
 						$title = get_sub_field('hk_related_title'); ?>
-					<li class="related_title full">
+					<li class="related_title title full">
 						<span><?php echo $title; ?></span>
 					</li>			 
 				<?php endif; ?> 

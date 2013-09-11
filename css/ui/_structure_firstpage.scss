@@ -108,18 +108,20 @@
 	.slide {
 		img {
 			@extend .one-whole;
+			border-right: 1px solid white;
 		}
 		.caption-area {
 			@extend .float--left;
 			@extend .position-absolute--top-left;
 			@extend .island;
+			@extend .one-third;
 			padding-bottom: 0;
 			z-index: 1000;
 			.transparent {
 				@extend .position-absolute;
-				@extend .one-third;
 				@extend .default-background;
 				@extend .border-radius;
+				@extend .one-whole;
 				height: 100%;
 				opacity: 0.7;
 				z-index: 1050;
@@ -129,6 +131,7 @@
 				@extend .position-relative;
 				@extend .islet;
 				@extend .flush--bottom;
+				@extend .one-whole;
 				padding-bottom: 0;
 				line-height: 1.5;
 				display: block;

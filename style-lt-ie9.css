@@ -1,5 +1,5 @@
 /* sprite png */
-.clip, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .cat-icon, .tag-icon, .delete-icon, .decoration-icon, .close-button, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .dropdown-icon, .right-icon, .searchnavigation .submit {
+.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .dropdown-icon, .right-icon, .searchnavigation .submit {
 	background-image: url("images/icons/ikoner.png");
 }
 /* hide */
@@ -10,6 +10,12 @@
 	display: none;
 }
 
+/* full width */
+.widget.HK_tags_widget.horizontal-list,
+.home .slideshow-contact-puff-area,
+.firstpage-top-content{
+	width: 1188px;
+}
 /*Body*/
 .content--center, .menu-wrapper, .main, .important-widget .widget-title, .important-widget .textwidget {
 	margin: 0 auto;
@@ -68,7 +74,6 @@
 }
 /* Firstpage content left */
 .firstpage-top-content{
-	width: 100%;
 	z-index: 1;
 }
 .firstpage-content {
@@ -83,14 +88,25 @@
 
 /* Firstpage content right */
 .firstpage-sidebar {
-	width: 582px;
+	width: 279px;
 }
 
 /* Contact widget */
-.contact-puff-area .contact-area .hk_kontakter .contact-wrapper .content-wrapper {
+.slideshow-contact-puff-area .contact-puffs {
 	width: 557px;
 }
-
+.slideshow-contact-puff-area .contact-puffs .left-content.two {
+	height: 340px;
+	width: 340px;
+}
+.slideshow-contact-puff-area .contact-puffs .right-content.two {
+	height: 340px;
+	width: 135px;
+	background: #5c85b1;
+}
+.slideshow-contact-puff-area .contact-puffs .direct_link {
+	height: auto!important;
+}
  /* Menu */
 .main-menu {
 }

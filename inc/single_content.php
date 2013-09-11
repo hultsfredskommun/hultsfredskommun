@@ -21,7 +21,7 @@
 			}
 
 			?>
-			<h1 class="entry-title"><a class="<?php echo $externalclass; ?>js-toggle-article" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?><span class="dropdown-icon up"></a></span></h1>
+			<h1 class="entry-title"><a class="<?php echo $externalclass; ?>js-toggle-article" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a><a class="js-toggle-article button top">st&auml;ng</a></h1>
 
 			<?php //the_post_thumbnail('featured-image'); 
 				echo hk_get_the_post_thumbnail(get_the_ID(),'featured-image');
