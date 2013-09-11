@@ -3459,7 +3459,7 @@ html.flexbox {
 /**
 * Thirds
 */
-.one-third, .two-sixths, .four-twelfths, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .caption {
+.one-third, .two-sixths, .four-twelfths, .home .slideshow-contact-puff-area .caption {
   width: 33.333%;
 }
 
@@ -4768,7 +4768,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #3e3e3f;
 }
 
-.default-background, .slideshow .slide .caption-area .transparent, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .button.top, .button.bottom, .title, .main-sub-menu .current-category-ancestor a,
+.default-background, .slideshow .slide .caption-area .transparent, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .main .widget.widget_hk_aditro_rss_widget, .button.top, .button.bottom, .title, .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   background-color: #3e3e3f;
 }
@@ -4777,8 +4777,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #fff;
 }
 
-.main-background, .home .slideshow-contact-puff-area .content-wrapper .left-content, .main .widget.widget_hk_aditro_rss_widget,
-.main .widget.widget_hk_protocol,
+.main-background, .home .slideshow-contact-puff-area .content-wrapper .left-content, .main .widget.widget_hk_protocol, .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.HK_tags_widget, .page-header .category-tools .related-menu, .page-header .category-tools .menu-item .sub-menu, .cookieinformation, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper .top-menu .menu-item .sub-menu, .responsive-menu a, .footer2-wrapper,
 .footer2-wrapper a,
@@ -5236,6 +5235,7 @@ html {
   border-right: 1px solid white;
 }
 .slideshow .slide .caption-area {
+  max-width: 40%;
   padding-bottom: 0;
   z-index: 1000;
 }
@@ -6355,11 +6355,13 @@ html {
 .home .white.tag-icon {
   background-position: -68px -366px;
   margin-right: 8px;
+  vertical-align: middle;
 }
 
 .home .tag-icon {
   background-position: -28px -366px;
   margin-right: 8px;
+  vertical-align: middle;
 }
 
 .dropdown-icon,
