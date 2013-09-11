@@ -5215,7 +5215,8 @@ html {
 }
 
 .read-more-link {
-  display: inline-block;
+  display: block;
+  clear: both;
 }
 
 .box-list.newscontent .post .article-border-wrapper {

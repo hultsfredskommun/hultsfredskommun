@@ -34,7 +34,8 @@
 	@extend .half-margin--top;
 	@extend .half-margin--bottom;
 	@extend .cf;
-	display: inline-block;
+	display: block;
+	clear: both;
 }
 .read-more-widget {
 	@extend .half-margin--top;
