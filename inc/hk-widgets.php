@@ -909,20 +909,18 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 	public function widget( $args, $instance ) {
 	    extract( $args );
 		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
-		
+			echo $before_widget;
 			if ( $instance["title"] == "" && $instance["text"] == "" && $instance["href"] != "" && $instance["image"] != "" ) {
 				echo "<a style='max-width: 100%; color: $color;' href='".$instance["href"]."'>";
 				echo "<img class='image' src='" .$instance["image"]. "' />";
 				echo "</a>";
-				
-			
 			}
 			else if ( $instance["text"] != "" || $instance["title"] != "" ) {
 				$title = $instance['title'];
 				$background = $instance["background"];
 				$color = $instance["color"];
 
-				echo $before_widget;
+				
 				if ($instance["image"] != "") {
 					$image_style = "background-image: url(" . $instance["image"] . ");";
 				}
@@ -943,8 +941,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 						echo "</a>";
 
 				echo "</div></div>";
-				echo $after_widget;
+			
 			}
+			echo $after_widget;
 		}
 
 	}
