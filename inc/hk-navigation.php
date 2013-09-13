@@ -435,7 +435,12 @@ class hk_Tag_Walker extends Walker_Category {
 		
 		// generate tag link
         $cat_name = esc_attr( $tag->name); 
-		$href = get_category_link( $term_id ) . $tags_filter. $orderby;
+		if (empty($term_id)) {
+			$href = get_site_url() . $tags_filter. $orderby;
+		}
+		else {
+			$href = get_category_link( $term_id ) . $tags_filter. $orderby;
+		}
 
         $link = '<a href="' . $href  . '" '; 
         $cat_name = apply_filters( 'list_cats', $cat_name, $tag ); 
