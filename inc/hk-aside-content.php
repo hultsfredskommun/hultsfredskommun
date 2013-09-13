@@ -105,6 +105,9 @@
 
 	<?php endif; ?>	
 	<ul class="box tools full">
+		<li class="title">
+			<span>Verktyg</span>
+		</li>			 
 		<?php edit_post_link( "Redigera inl&auml;gg", "<li class='edit-post'><a title='Redigera inl&auml;gg' class='icon-left edit-icon editlink tool-line full icon-left'></a>", "</li>" ); ?>
 		<li class="hide print tool-line"><a title='Skriv ut' class='icon-left print-icon'></a><a class="print  icon-right" target="_blank" href="<?php the_permalink(); ?>?print=1" title="Skriv ut">Skriv ut</a></li>
 		<?php if (isset($options['readspeaker_id'])) : ?>

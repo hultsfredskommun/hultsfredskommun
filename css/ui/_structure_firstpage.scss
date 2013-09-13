@@ -40,6 +40,16 @@
 .read-more-widget {
 	@extend .half-margin--top;
 }
+.sub-title {
+	@extend .font-style-italic;
+	@extend .white-text;
+	@extend .half-margin--left;
+	@extend .half-margin--bottom;
+	@extend .zeta;
+	margin-top: -12px;
+	
+}
+
 .newscontent {
 	@extend .margin--bottom;
 }
@@ -102,6 +112,11 @@
 		@extend .one-whole;
 		@extend .alpha;
 	}
+	.sub-title {
+		@extend .float--left;
+		margin-top: -36px;
+		margin-left: 54px;
+	}
 	.content-wrapper {
 		&.hide_date .entry-wrapper {
 			@extend .flush--bottom;
@@ -131,6 +146,9 @@
 			}
 			@extend .cf;
 		}	
+	}
+	.read-more-link {
+		@extend .flush--bottom;
 	}
 }
 
@@ -387,15 +405,17 @@
 	}
 }
 /* aditro widget */
-.main .widget.widget_hk_aditro_rss_widget .entry-wrapper {
-	margin-bottom: $half-spacing-unit/2!important;
-	a {
-		padding-bottom: 0!important;
-	}
-	.time {
-		@extend .white-text;
-		padding-bottom: $half-spacing-unit/2!important;
-		padding-left: $half-spacing-unit;
+.main .widget.widget_hk_aditro_rss_widget {
+	.entry-wrapper {
+		margin-bottom: $half-spacing-unit/2!important;
+		a {
+			padding-bottom: 0!important;
+		}
+		.time {
+			@extend .white-text;
+			padding-bottom: $half-spacing-unit/2!important;
+			padding-left: $half-spacing-unit;
+		}
 	}
 }
 .main .widget.widget_hk_aditro_rss_widget {

@@ -12,7 +12,7 @@
 			<?php
 			$tags_list = get_the_term_list(get_the_ID(), "post_tag",'',' | ','');
 			if ( $tags_list ):  ?>
-				<li class="tag-cloud">Typ av inneh&aring;ll: 
+				<li class="tag-cloud">Visa bara: 
 					<span class="tag-links">
 					<?php echo $tags_list; ?>
 					</span>

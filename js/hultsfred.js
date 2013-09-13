@@ -587,14 +587,48 @@ $(window).on("popstate", function(e) {
 	}
 });
 
-$(document).ready(function(){
+/* enter the active element in flip array */
+function flipAnimation(active) {
+	var image_width = $(active).width();
+	var margin = image_width / 2 + 'px';
+	var compress_css_properties = {
+		width: 0,
+		marginLeft: margin,
+		opacity: 0.3
+	};
+	var decompress_css_properties = {
+		width: image_width,
+		marginLeft: 0,
+		opacity: 1
+	};
+	if ($(active).next() != "")
+		$(active).next().css(compress_css_properties);
+	else
+		$(active).first().css(compress_css_properties);
 
+	$(active).click(function() {
+		//animate width to 0 and margin-left to 1/2 width
+		$(this).stop().animate(compress_css_properties, 1000, function() {
+			// animate second card to full width and margin-left to 0  
+			$(this).hide();
+			$(this).next().show().animate(decompress_css_properties, 1000);
+			flipAnimation($(this));
+		});
+	});
+}
+
+
+$(document).ready(function(){
 	
 	var wpadminbarheight = $("#wpadminbar").height();
 		
 	//Stores the window-width for later use
 	oldWidth = $(window).width();
 
+	/* 
+	 * aditro scrolling on first page
+	 */
+	//flipAnimation($(".widget_hk_aditro_rss_widget .entry-wrapper:first"));
 	
 	/*
 	 * load typekit if any

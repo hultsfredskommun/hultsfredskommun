@@ -92,8 +92,12 @@
 				<?php //echo "<pre>"; print_r($wp_query); echo "</pre>"; ?>
 
 			<ul class="category-tools">
-				<?php echo hk_related_output(true);	?>
-				
+				<?php $related_output = hk_related_output(true); ?>
+				<li class="tag-menu cat-item<?php echo ($related_output == "")?" rounded":""; ?>">
+					<a href="#">Visa bara</a>
+					<?php displayTagFilter(false, false, "sub-menu"); ?>
+				</li>
+				<?php echo $related_output;	?>
 			</ul>
 			<ul class="view-tools">
 				<li class="menu-item view-mode"> 

@@ -1,7 +1,7 @@
 <?php 
 
 /* 
- * QUICK MENUS AND MOST VISITED 
+ * OLD!! QUICK MENUS AND MOST VISITED 
  */ 
 
 class HK_quickmenu extends WP_Widget {
@@ -186,7 +186,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 
 
 /* 
- * FIRSTPAGE CONTACT WIDGET 
+ * OLD!! FIRSTPAGE CONTACT WIDGET 
  */ 
  class HK_firstpagecontact extends WP_Widget {
 	protected $vars = array();
@@ -675,7 +675,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						
 						echo "<ul>";
 						if ( have_posts() ) :  while ( have_posts() ) : the_post();  
-							// get datecheckdate(12, 31, 2000)
 							$title = get_the_title();
 							$date = substr($title,strrpos($title, " ")+1);
 							$datearr = explode("-",$date);
@@ -1118,6 +1117,10 @@ class HK_tags_widget extends WP_Widget {
 		<input id="<?php echo $this->get_field_id( 'horizontal-list' ); ?>" name="<?php echo $this->get_field_name( 'horizontal-list' ); ?>" type="checkbox" <?php echo ($instance["horizontal-list"] != "")?"checked":""; ?> />
 		<label for="<?php echo $this->get_field_id( 'horizontal-list' ); ?>">Horisontell lista</label> 
 		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'exclude-tags' ); ?>">Exkludera etiketter (på formen etikett1,etikett2)</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'exclude-tags' ); ?>" name="<?php echo $this->get_field_name( 'exclude-tags' ); ?>" type="text" value="<?php echo esc_attr( $instance["exclude-tags"]); ?>" />
+		</p>
 	<?php
 	}
 
@@ -1125,6 +1128,7 @@ class HK_tags_widget extends WP_Widget {
 		$instance = array();
 		$instance['title'] = $new_instance['title'];
 		$instance['horizontal-list'] = $new_instance['horizontal-list'];
+		$instance['exclude-tags'] = $new_instance['exclude-tags'];
 		return $instance;
 	}
 
@@ -1139,7 +1143,7 @@ class HK_tags_widget extends WP_Widget {
 		if ($instance['title'] != "") {
 			echo "<h1 class='widget-title'>" . $instance['title'] . "</h1>";
 		}
-		displayTagFilter(false,false);
+		displayTagFilter(false,false,"",$instance['exclude-tags']);
 		echo "</aside>";
 		
 	} //end widget()
