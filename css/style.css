@@ -4545,7 +4545,9 @@ html.flexbox {
   margin-top: 0 !important;
 }
 
-.flush--right {
+.flush--right, .main-sub-menu .menu-item.one-whole, .main-sub-menu .menu-item.page-content, .main-sub-menu .menu-item.branding, .main-sub-menu .widget h1.menu-item, .widget .main-sub-menu h1.menu-item, .main-sub-menu .menu-item.icon-right, .main-sub-menu .side-content .side-content .menu-item.post-edit-link, .side-content .side-content .main-sub-menu .menu-item.post-edit-link, .main-sub-menu .menu-item.firstpage-top-content, .main-sub-menu .menu-item.firstpage-pre-footer-sidebar, .main-sub-menu .widget_hk_wp_feed_rss_widget.widget .menu-item.content-wrapper, .widget_hk_wp_feed_rss_widget.widget .main-sub-menu .menu-item.content-wrapper, .main-sub-menu .slideshow .menu-item.slideshow_bg, .slideshow .main-sub-menu .menu-item.slideshow_bg, .main-sub-menu .slideshow .slide img.menu-item, .slideshow .slide .main-sub-menu img.menu-item, .main-sub-menu .slideshow .slide .caption-area .menu-item.transparent, .slideshow .slide .caption-area .main-sub-menu .menu-item.transparent, .main-sub-menu .slideshow .slide .caption-area .menu-item.caption, .slideshow .slide .caption-area .main-sub-menu .menu-item.caption, .main-sub-menu .home .menu-item.slideshow-contact-puff-area, .home .main-sub-menu .menu-item.slideshow-contact-puff-area, .main-sub-menu .home .slideshow-contact-puff-area img.menu-item, .home .slideshow-contact-puff-area .main-sub-menu img.menu-item, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper h1.menu-item, .home .slideshow-contact-puff-area .content-wrapper .main-sub-menu h1.menu-item, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link1, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link2, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link3, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link4, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link5, .main-sub-menu .home .contact-area .menu-item.contact-wrapper, .home .contact-area .main-sub-menu .menu-item.contact-wrapper, .main-sub-menu .home .contact-area .contact-wrapper img.menu-item, .home .contact-area .contact-wrapper .main-sub-menu img.menu-item, .main-sub-menu .home .contact-area .contact-wrapper .content-wrapper h1.menu-item, .home .contact-area .contact-wrapper .content-wrapper .main-sub-menu h1.menu-item, .main-sub-menu .menu-item.page-header, .main-sub-menu .menu-item.post-search-hook, .main-sub-menu article.menu-item.post, .main-sub-menu .menu-item.article-border-wrapper, .main-sub-menu .home .post .menu-item.content-wrapper, .home .post .main-sub-menu .menu-item.content-wrapper, .main-sub-menu .post .summary-content h1.menu-item.entry-title, .post .summary-content .main-sub-menu h1.menu-item.entry-title, .main-sub-menu .menu-item.article-wrapper, .main-sub-menu .menu-item.content, .main-sub-menu .post .menu-item.img-wrapper, .post .main-sub-menu .menu-item.img-wrapper,
+.main-sub-menu .single .menu-item.img-wrapper,
+.single .main-sub-menu .menu-item.img-wrapper, .main-sub-menu .menu-item.slide, .main-sub-menu .searchnavigation .form .input-wrapper .menu-item.field, .searchnavigation .form .input-wrapper .main-sub-menu .menu-item.field, .main-sub-menu .menu-item.top-menu-wrapper, .main-sub-menu .menu-item.responsive-sub-menu, .main-sub-menu .menu-item.main-menu, .main-sub-menu .footer-widget-sidebar.one .menu-item.footer-widgets, .footer-widget-sidebar.one .main-sub-menu .menu-item.footer-widgets {
   margin-right: 0 !important;
 }
 
@@ -5557,9 +5559,6 @@ html {
 .article-wrapper .more-content .content a {
   border-bottom: 1px dotted #5c85b1;
 }
-.article-wrapper .side-content {
-  border-left: 4px solid #e5e6e7;
-}
 @media only screen and (min-width: 970px) {
   .article-wrapper .side-content {
     border-left: 0;
@@ -5606,6 +5605,11 @@ html {
 }
 /* article footer*/
 /* featured images */
+@media only screen and (max-width: 969px) {
+  .img-wrapper {
+    padding-right: 12px;
+  }
+}
 .entry-title .dropdown-icon {
   margin-left: 4px;
 }
@@ -5633,6 +5637,9 @@ html {
 }
 */
 /* aside content */
+.side-content .top .title {
+  margin-top: 35px;
+}
 .side-content .readspeaker_toolbox {
   display: none;
 }
@@ -6108,7 +6115,7 @@ html {
   padding-bottom: 1.6rem;
 }
 
-.padding--left, .article-wrapper .side-content, .article-wrapper .side-content .more-contacts, .searchnavigation .form .input-wrapper .field {
+.padding--left, .article-wrapper .side-content .more-contacts, .searchnavigation .form .input-wrapper .field {
   padding-left: 24px;
   padding-left: 1.6rem;
 }

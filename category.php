@@ -8,7 +8,8 @@ get_header();
 
 ?>
 		<?php if ( get_query_var("tag") != "" ) : ?>
-			<?php hk_tag_navigation(); ?>
+			<?php //hk_tag_navigation(); 
+			hk_navigation();?>
 			<?php require("inc/hk-tag.php"); ?>			
 		<?php elseif ( !is_sub_category_firstpage() ) : ?>
 			<?php hk_navigation(); ?>

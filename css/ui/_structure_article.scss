@@ -150,14 +150,12 @@ article.post {
 	}
 	.side-content {
 
-		border-left: 4px solid $gray-light-color;
 		@extend .float--left;
 		@extend .desk-one-third;
 		@extend .lap-one-whole;
 		@extend .palm-one-whole;
 		
 		@extend .zeta;
-		@extend .padding--left;
 		@extend .padding--right;
 		.more-contacts {
 			@extend .padding--left;
@@ -261,6 +259,11 @@ article.post {
 	@extend .flush--bottom;
 	@extend .one-quarter;
 }
+@include media-query(portable) {
+.img-wrapper {
+	padding-right: $half-spacing-unit;
+}
+}
 .content {
 	@extend .float--left;
 	@extend .padding--right;
@@ -325,6 +328,10 @@ article.single .map_canvas {
 	.tools {
 		@extend .flush--bottom;
 	}
+	.top .title {
+		margin-top: 35px;
+	}
+
 	.title {
 		@extend .default-background;
 		@extend .white-text;

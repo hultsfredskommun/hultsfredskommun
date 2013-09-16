@@ -130,6 +130,9 @@
 		@extend .white-text;
 	}
 }
+.main-sub-menu .menu-item.one-whole {
+	@extend .flush--right;
+}
 .right-nav-menu-item {
 	@extend .float--right;
 	padding: $half-spacing-unit $base-spacing-unit!important;
