@@ -26,7 +26,7 @@
 						$orderby = "latest";
 				}
 			?>
-			<li><a class="nolink">Sortera p&aring;: </a></li>
+			<li><a class="nolink helper">Sortera p&aring;: </a></li>
 			<?php if (function_exists( 'views_orderby' )) : ?>
 			<?php $force_date = (get_query_var("cat") != "" && in_array(get_query_var("cat"), split(",",$options["order_by_date"])) ); ?>
 

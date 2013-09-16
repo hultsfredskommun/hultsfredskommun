@@ -179,7 +179,7 @@ img {
  */
 #responsive-info
 {
-	@extend .hidden;
+	//@extend .hidden;
 	@extend .position-fixed--bottom-left;
 	@extend .islet;
 	@extend .flush--bottom;

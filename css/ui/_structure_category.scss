@@ -87,6 +87,9 @@
 	.sort-order {
 		@extend .float--right;
 	}
+	.sort-order {
+		@extend .force-hidden--portable;
+	}
 	.category-tools {
 		word-spacing: 0;
 		@extend .float--right;

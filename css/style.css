@@ -766,9 +766,9 @@ textarea:focus {
 .main .widget.widget_hk_protocol ul,
 .main .widget.HK_tags_widget ul, .page-header .num-posts,
 .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .page-header .category-tools .cat-item .sub-menu, .article-wrapper .entry-meta .footer-wrapper, .pager, .contacts,
-.related-wrapper,
-.tools, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
+.page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .page-header .category-tools .cat-item .sub-menu, .article-wrapper .entry-meta .footer-wrapper, .pager, .side-content .contacts,
+.side-content .related-wrapper,
+.side-content .tools, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
 .main-sub-menu, .tags-wrapper ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul, .media, .island, .slideshow .slide .caption-area, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
 .islet,
 #responsive-info,
@@ -794,9 +794,9 @@ textarea:focus {
 .main .widget.widget_hk_protocol ul:before,
 .main .widget.HK_tags_widget ul:before, .page-header .num-posts:before,
 .page-header .view-tools:before,
-.page-header .sort-order:before, .page-header .category-tools:before, .page-header .category-tools .menu-item .sub-menu:before, .page-header .category-tools .cat-item .sub-menu:before, .article-wrapper .entry-meta .footer-wrapper:before, .pager:before, .contacts:before,
-.related-wrapper:before,
-.tools:before, .searchnavigation .searchresult ul:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .more-menu-ul:before,
+.page-header .sort-order:before, .page-header .category-tools:before, .page-header .category-tools .menu-item .sub-menu:before, .page-header .category-tools .cat-item .sub-menu:before, .article-wrapper .entry-meta .footer-wrapper:before, .pager:before, .side-content .contacts:before,
+.side-content .related-wrapper:before,
+.side-content .tools:before, .searchnavigation .searchresult ul:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .more-menu-ul:before,
 .main-sub-menu:before, .tags-wrapper ul:before, .category-navigation .parent:before, .category-navigation .parent li .children:before, .category-navigation .more-navigation:before, .ui-tabs-nav:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .slideshow .slide .caption-area:before, .footer-image-wrapper .logo-footer-image img:before, .contact-popup.box .entry-wrapper .entry-content:before,
 .islet:before,
 #responsive-info:before,
@@ -819,9 +819,9 @@ textarea:focus {
 .main .widget.widget_hk_protocol ul:after,
 .main .widget.HK_tags_widget ul:after, .page-header .num-posts:after,
 .page-header .view-tools:after,
-.page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .page-header .category-tools .cat-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
-.related-wrapper:after,
-.tools:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
+.page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .page-header .category-tools .cat-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .side-content .contacts:after,
+.side-content .related-wrapper:after,
+.side-content .tools:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
 .main-sub-menu:after, .tags-wrapper ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .slideshow .slide .caption-area:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
 .islet:after,
 #responsive-info:after,
@@ -848,9 +848,9 @@ textarea:focus {
 .main .widget.widget_hk_protocol ul:after,
 .main .widget.HK_tags_widget ul:after, .page-header .num-posts:after,
 .page-header .view-tools:after,
-.page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .page-header .category-tools .cat-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .contacts:after,
-.related-wrapper:after,
-.tools:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
+.page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .page-header .category-tools .cat-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .side-content .contacts:after,
+.side-content .related-wrapper:after,
+.side-content .tools:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
 .main-sub-menu:after, .tags-wrapper ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .slideshow .slide .caption-area:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
 .islet:after,
 #responsive-info:after,
@@ -2171,9 +2171,9 @@ html.flexbox {
 .main .widget.widget_hk_protocol ul,
 .main .widget.HK_tags_widget ul, .page-header .num-posts,
 .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .page-header .category-tools .cat-item .sub-menu, .article-wrapper .entry-meta .footer-wrapper, .pager, .contacts,
-.related-wrapper,
-.tools, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
+.page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .page-header .category-tools .cat-item .sub-menu, .article-wrapper .entry-meta .footer-wrapper, .pager, .side-content .contacts,
+.side-content .related-wrapper,
+.side-content .tools, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
 .main-sub-menu, .tags-wrapper ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul {
   list-style: none;
   margin-left: 0;
@@ -2184,9 +2184,9 @@ html.flexbox {
 .main .widget.widget_hk_protocol ul > li,
 .main .widget.HK_tags_widget ul > li, .page-header .num-posts > li,
 .page-header .view-tools > li,
-.page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .page-header .category-tools .cat-item .sub-menu > li, .article-wrapper .entry-meta .footer-wrapper > li, .pager > li, .contacts > li,
-.related-wrapper > li,
-.tools > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu-ul > li,
+.page-header .sort-order > li, .page-header .category-tools > li, .page-header .category-tools .menu-item .sub-menu > li, .page-header .category-tools .cat-item .sub-menu > li, .article-wrapper .entry-meta .footer-wrapper > li, .pager > li, .side-content .contacts > li,
+.side-content .related-wrapper > li,
+.side-content .tools > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .more-menu-ul > li,
 .main-sub-menu > li, .tags-wrapper ul > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .ui-tabs-nav > li, .footer-widget-wrapper ul > li,
 .nav > li > a,
 .home .slideshow-contact-puff-area .content-wrapper ul > li > a,
@@ -2205,9 +2205,9 @@ html.flexbox {
 .page-header .category-tools .cat-item .sub-menu > li > a,
 .article-wrapper .entry-meta .footer-wrapper > li > a,
 .pager > li > a,
-.contacts > li > a,
-.related-wrapper > li > a,
-.tools > li > a,
+.side-content .contacts > li > a,
+.side-content .related-wrapper > li > a,
+.side-content .tools > li > a,
 .searchnavigation .searchresult ul > li > a,
 .top-menu-wrapper .top-menu > li > a,
 .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a,
@@ -2238,17 +2238,17 @@ html.flexbox {
 .nav--stacked > li, .home .slideshow-contact-puff-area .content-wrapper ul > li, .home .contact-area .contact-wrapper .content-wrapper ul > li, .main .widget.widget_hk_aditro_rss_widget ul > li,
 .main .widget.widget_hk_related_widget ul > li,
 .main .widget.widget_hk_protocol ul > li,
-.main .widget.HK_tags_widget ul > li, .page-header .category-tools .menu-item .sub-menu > li, .page-header .category-tools .cat-item .sub-menu > li, .contacts > li,
-.related-wrapper > li,
-.tools > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .tags-wrapper ul > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .footer-widget-wrapper ul > li {
+.main .widget.HK_tags_widget ul > li, .page-header .category-tools .menu-item .sub-menu > li, .page-header .category-tools .cat-item .sub-menu > li, .side-content .contacts > li,
+.side-content .related-wrapper > li,
+.side-content .tools > li, .searchnavigation .searchresult ul > li, .top-menu-wrapper .top-menu .menu-item .sub-menu > li, .tags-wrapper ul > li, .category-navigation .parent > li, .category-navigation .parent li .children > li, .category-navigation .more-navigation > li, .footer-widget-wrapper ul > li {
   display: list-item;
 }
 .nav--stacked > li > a, .home .slideshow-contact-puff-area .content-wrapper ul > li > a, .home .contact-area .contact-wrapper .content-wrapper ul > li > a, .main .widget.widget_hk_aditro_rss_widget ul > li > a,
 .main .widget.widget_hk_related_widget ul > li > a,
 .main .widget.widget_hk_protocol ul > li > a,
-.main .widget.HK_tags_widget ul > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .page-header .category-tools .cat-item .sub-menu > li > a, .contacts > li > a,
-.related-wrapper > li > a,
-.tools > li > a, .searchnavigation .searchresult ul > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .tags-wrapper ul > li > a, .category-navigation .parent > li > a, .category-navigation .parent li .children > li > a, .category-navigation .more-navigation > li > a, .footer-widget-wrapper ul > li > a {
+.main .widget.HK_tags_widget ul > li > a, .page-header .category-tools .menu-item .sub-menu > li > a, .page-header .category-tools .cat-item .sub-menu > li > a, .side-content .contacts > li > a,
+.side-content .related-wrapper > li > a,
+.side-content .tools > li > a, .searchnavigation .searchresult ul > li > a, .top-menu-wrapper .top-menu .menu-item .sub-menu > li > a, .tags-wrapper ul > li > a, .category-navigation .parent > li > a, .category-navigation .parent li .children > li > a, .category-navigation .more-navigation > li > a, .footer-widget-wrapper ul > li > a {
   display: block;
 }
 
@@ -3445,7 +3445,7 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .page-content, .branding, .widget h1, .icon-right, .side-content .post-edit-link, .firstpage-top-content, .firstpage-pre-footer-sidebar, .box-list.newscontent .post .img-wrapper, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area .transparent, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area img, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
+.one-whole, .page-content, .branding, .widget h1, .icon-right, .side-content .side-content .post-edit-link, .firstpage-top-content, .firstpage-pre-footer-sidebar, .box-list.newscontent .post .img-wrapper, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area .transparent, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area img, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .contact-area .contact-wrapper, .home .contact-area .contact-wrapper img, .home .contact-area .contact-wrapper .content-wrapper h1, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
 .single .img-wrapper, .slide, .searchnavigation .form .input-wrapper .field, .top-menu-wrapper, .responsive-sub-menu, .main-menu, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
@@ -4521,7 +4521,7 @@ html.flexbox {
 
 .float--left, .alignleft, .icon-left, .box-list.newscontent .post, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .sub-title, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .slideshow-contact-puff-area .content-wrapper .right-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget h1,
 .main .widget.horizontal-list.HK_tags_widget h1, .help-navigation, .page-header .num-posts, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
-.single .img-wrapper, .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.single .img-wrapper, .side-content .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -4555,7 +4555,7 @@ html.flexbox {
 .main .widget.widget_hk_protocol ul,
 .main .widget.HK_tags_widget ul, .page-header .num-posts,
 .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .summary .img-wrapper, .tools, .searchnavigation .searchresult .external_more_link, .top-menu-wrapper .top-menu, .responsive-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
+.page-header .sort-order, .page-header .category-tools, .summary .img-wrapper, .side-content .tools, .searchnavigation .searchresult .external_more_link, .top-menu-wrapper .top-menu, .responsive-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0 !important;
 }
 
@@ -4733,7 +4733,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 .main .widget.HK_tags_widget a, .main .widget.widget_hk_aditro_rss_widget h1,
 .main .widget.widget_hk_related_widget h1,
 .main .widget.widget_hk_protocol h1,
-.main .widget.HK_tags_widget h1, .page-header .category-tools .related-menu a, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .button.top a, .button.bottom a, .title, .important-widget, .cookieinformation, .cookieinformation a,
+.main .widget.HK_tags_widget h1, .page-header .category-tools .related-menu a, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .button.top a, .button.bottom a, .side-content .title, .important-widget, .cookieinformation, .cookieinformation a,
 .important-widget a, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper a, .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
@@ -4769,7 +4769,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #3e3e3f;
 }
 
-.default-background, .slideshow .slide .caption-area .transparent, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .main .widget.widget_hk_aditro_rss_widget, .button.top, .button.bottom, .title, .main-sub-menu .current-category-ancestor a,
+.default-background, .slideshow .slide .caption-area .transparent, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .main .widget.widget_hk_aditro_rss_widget, .button.top, .button.bottom, .side-content .title, .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a {
   background-color: #3e3e3f;
 }
@@ -4898,7 +4898,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 .border-radius, .button, img, .widget_hk_wp_feed_rss_widget.widget, .slideshow .slide .caption-area .transparent, .main .widget.widget_hk_textwidget .inner-wrapper, .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,
-.main .widget.HK_tags_widget, .page-header, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .title, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+.main .widget.HK_tags_widget, .page-header, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .side-content .title, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .contact-popup.box {
   border-radius: 3px;
@@ -5189,7 +5189,7 @@ html {
     line-height: 1.7em !important;
   }
 
-  .icon-right, .side-content .post-edit-link {
+  .icon-right, .side-content .side-content .post-edit-link {
     height: 24px;
   }
 }
@@ -5624,15 +5624,13 @@ html {
 }
 */
 /* aside content */
-.readspeaker_toolbox {
+.side-content .readspeaker_toolbox {
   display: none;
 }
-
-.rsbtn .rsbtn_left .rsbtn_text {
+.side-content .rsbtn .rsbtn_left .rsbtn_text {
   padding-left: 0 !important;
 }
-
-.addthis_toolbox {
+.side-content .addthis_toolbox {
   display: none;
 }
 
@@ -6055,7 +6053,7 @@ html {
   margin-bottom: 1.6rem;
 }
 
-.margin--left, .alignright, .icon-right, .side-content .post-edit-link, .home .slideshow-contact-puff-area .content-wrapper h1 a, .home .contact-area .contact-wrapper .content-wrapper h1 a, .footer-widget-wrapper .content {
+.margin--left, .alignright, .icon-right, .side-content .side-content .post-edit-link, .home .slideshow-contact-puff-area .content-wrapper h1 a, .home .contact-area .contact-wrapper .content-wrapper h1 a, .footer-widget-wrapper .content {
   margin-left: 24px;
   margin-left: 1.6rem;
 }
@@ -6065,17 +6063,17 @@ html {
   margin: 0.8rem;
 }
 
-.half-margin--top, .read-more-link, .read-more-widget, .home .contact-area .contact-wrapper .content-wrapper ul, .post .summary-content h1.entry-title, .article-wrapper, .title, .logo, .searchnavigation, .logo2, .responsive-menu {
+.half-margin--top, .read-more-link, .read-more-widget, .home .contact-area .contact-wrapper .content-wrapper ul, .post .summary-content h1.entry-title, .article-wrapper, .side-content .title, .logo, .searchnavigation, .logo2, .responsive-menu {
   margin-top: 12px;
   margin-top: 0.8rem;
 }
 
-.half-margin--left, .sub-title, .addthis_toolbox a, .category-navigation .parent, .category-navigation .more-navigation {
+.half-margin--left, .sub-title, .side-content .addthis_toolbox a, .category-navigation .parent, .category-navigation .more-navigation {
   margin-left: 12px;
   margin-left: 0.8rem;
 }
 
-.half-margin--bottom, .read-more-link, .sub-title, .main .widget .entry-wrapper, .page-header, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area h3.entry-title, .title {
+.half-margin--bottom, .read-more-link, .sub-title, .main .widget .entry-wrapper, .page-header, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area h3.entry-title, .side-content .title {
   margin-bottom: 12px;
   margin-bottom: 0.8rem;
 }
@@ -6090,7 +6088,7 @@ html {
   padding-top: 1.6rem;
 }
 
-.padding--right, .icon-right, .side-content .post-edit-link, .article-wrapper .side-content, .content {
+.padding--right, .icon-right, .side-content .side-content .post-edit-link, .article-wrapper .side-content, .content {
   padding-right: 24px;
   padding-right: 1.6rem;
 }
@@ -6111,7 +6109,7 @@ html {
   padding: 0.8rem;
 }
 
-.half-padding--left, .article-border-wrapper, .title, .category-navigation .parent li .children {
+.half-padding--left, .article-border-wrapper, .side-content .title, .category-navigation .parent li .children {
   padding-left: 12px;
   padding-left: 0.8rem;
 }
@@ -6274,7 +6272,8 @@ html {
     width: 50%;
   }
 }
-.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .dropdown-icon, .right-icon, .searchnavigation .submit {
+.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12,
+.dropdown-icon, .right-icon, .searchnavigation .submit {
   background-image: url("../images/icons/ikoner.svg");
   display: inline-block;
 }
@@ -6304,7 +6303,8 @@ html {
   height: 16px;
 }
 
-.clip_12x12, .dropdown-icon,
+.clip_12x12, .category-tools .tag-menu .dropdown-icon,
+.dropdown-icon,
 .dropdown-icon.black, .right-icon {
   width: 12px;
   height: 12px;
@@ -6421,6 +6421,7 @@ html {
   vertical-align: middle;
 }
 
+.category-tools .tag-menu .dropdown-icon,
 .dropdown-icon,
 .dropdown-icon.black {
   margin-left: 2px;
@@ -6440,11 +6441,6 @@ html {
   background-position: -57px -10px;
 }
 
-.right-icon {
-  margin-left: 2px;
-  background-position: -25px -30px;
-}
-
 .category-tools .dropdown-icon,
 .top-menu .dropdown-icon {
   background-position: -55px -30px;
@@ -6453,6 +6449,11 @@ html {
 .category-tools .dropdown-icon.up,
 .top-menu .dropdown-icon.up {
   background-position: -55px -10px;
+}
+
+.right-icon {
+  margin-left: 2px;
+  background-position: -25px -30px;
 }
 
 .menu-icon {
@@ -6546,9 +6547,7 @@ html {
   left: 0;
 }
 
-.hidden, #responsive-info, .viewmode-only-titles .summary .entry-content,
-.viewmode-only-titles .summary .img-wrapper,
-.viewmode-only-titles .summary .side-content, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
+.hidden, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
   display: none;
 }
 
@@ -6574,7 +6573,9 @@ html {
     display: none;
   }
 }
-.force-hidden, .contact-wrapper .pager {
+.force-hidden, .contact-wrapper .pager, .viewmode-only-titles .summary .entry-content,
+.viewmode-only-titles .summary .img-wrapper,
+.viewmode-only-titles .summary .side-content {
   display: none !important;
 }
 
@@ -6589,7 +6590,7 @@ html {
   }
 }
 @media only screen and (max-width: 969px) {
-  .force-hidden--portable {
+  .force-hidden--portable, .page-header .sort-order {
     display: none !important;
   }
 }

@@ -94,7 +94,7 @@
 			<ul class="category-tools">
 				<?php $related_output = hk_related_output(true); ?>
 				<li class="tag-menu cat-item<?php echo ($related_output == "")?" rounded":""; ?>">
-					<a href="#">Visa bara</a>
+					<a href="#">Visa bara<span class="dropdown-icon"></span></a>
 					<?php displayTagFilter(false, false, "sub-menu"); ?>
 				</li>
 				<?php echo $related_output;	?>

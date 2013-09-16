@@ -1117,7 +1117,7 @@ class HK_tags_widget extends WP_Widget {
 		<label for="<?php echo $this->get_field_id( 'horizontal-list' ); ?>">Horisontell lista</label> 
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'exclude-tags' ); ?>">Exkludera etiketter (på formen etikett1,etikett2)</label> 
+		<label for="<?php echo $this->get_field_id( 'exclude-tags' ); ?>">Exkludera etiketter (på formen 3,42)</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'exclude-tags' ); ?>" name="<?php echo $this->get_field_name( 'exclude-tags' ); ?>" type="text" value="<?php echo esc_attr( $instance["exclude-tags"]); ?>" />
 		</p>
 	<?php

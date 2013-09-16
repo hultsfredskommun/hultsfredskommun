@@ -153,6 +153,7 @@
 
 
 
+.category-tools .tag-menu .dropdown-icon,
 .dropdown-icon,
 .dropdown-icon.black {
 	@extend .clip_12x12;
@@ -169,13 +170,6 @@
 .dropdown-icon.up.white {
 	background-position: -57px -10px;
 }
-
-
-.right-icon {
-	@extend .clip_12x12;
-	margin-left: 2px;
-	background-position: -25px -30px;
-}
 .category-tools .dropdown-icon,
 .top-menu .dropdown-icon {
 	background-position: -55px -30px;
@@ -183,6 +177,13 @@
 .category-tools .dropdown-icon.up,
 .top-menu .dropdown-icon.up {
 	background-position: -55px -10px;
+}
+
+
+.right-icon {
+	@extend .clip_12x12;
+	margin-left: 2px;
+	background-position: -25px -30px;
 }
 .menu-icon {
 	@extend .clip_20x20;
