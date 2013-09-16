@@ -3,16 +3,17 @@
 		<?php dynamic_sidebar('firstpage-top-content'); ?>
 	</div><!-- #firstpage-top-sidebar -->
 <?php endif; ?>
-<?php if (is_active_sidebar('firstpage-sidebar')) : ?>
-<aside id="firstpage-sidebar" role="complementary" class="firstpage-sidebar">
-	<?php dynamic_sidebar('firstpage-sidebar'); ?>
-</aside><!-- #firstpage-sidebar -->
-<?php endif; ?>
 
 <?php if (is_active_sidebar('firstpage-content')) : ?>
 <div id="primary" class="firstpage-content">
 	<?php dynamic_sidebar('firstpage-content'); ?>
 </div><!-- #primary -->
+<?php endif; ?>
+
+<?php if (is_active_sidebar('firstpage-sidebar')) : ?>
+<aside id="firstpage-sidebar" role="complementary" class="firstpage-sidebar">
+	<?php dynamic_sidebar('firstpage-sidebar'); ?>
+</aside><!-- #firstpage-sidebar -->
 <?php endif; ?>
 
 <?php if (is_active_sidebar('firstpage-sidebar-2')) : ?>

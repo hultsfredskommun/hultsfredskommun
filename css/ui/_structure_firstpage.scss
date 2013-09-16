@@ -10,7 +10,6 @@
 	@extend .desk-one-quarter;
 	@extend .lap-one-half;
 	@extend .palm-one-whole;
-	@extend .float--right;
 }
 .firstpage-content {
 	@extend .g;
@@ -202,6 +201,10 @@
 .home .firstpage-top-content .HK_tags_widget {
 	border-radius: 0 0 $border-radius $border-radius;
 	margin-bottom: $base-spacing-unit*1.5;
+
+	a {
+		padding-bottom: $half-spacing-unit/2!important;
+	}
 }
 
 /* slideshow/contact/puff widget on first page */
@@ -223,7 +226,7 @@
 		border-radius: $border-radius $border-radius 0 0;
 	}
 	.content-wrapper {
-		@extend .four-tenths;
+		@extend .five-twelfths;
 		padding-bottom: $half-spacing-unit/2;
 		opacity: 0.95;
 		@extend .position-absolute--top-right;
@@ -240,7 +243,6 @@
 			padding: 0;
 			a {
 				@extend .margin--top;
-				@extend .margin--right;
 				@extend .margin--left;
 				@extend .half-padding--bottom;
 				display: block;
@@ -395,7 +397,7 @@
 		@extend .border-radius;
 		@extend .islet;
 		img {
-		
+			width: 100%;
 		}
 		.content {
 			padding-bottom: 0;
