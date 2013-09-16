@@ -393,12 +393,12 @@
 	h1 {
 		@extend .alpha;
 	}
+	img.image {
+		width: 100%;
+	}
 	.inner-wrapper {
 		@extend .border-radius;
 		@extend .islet;
-		img {
-			width: 100%;
-		}
 		.content {
 			padding-bottom: 0;
 		}
