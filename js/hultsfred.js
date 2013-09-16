@@ -1138,6 +1138,9 @@ function setArticleActions(el) {
 /* set contact popup action */
 function setContactPopupAction(el) {
 	$(el).unbind("click").bind("click",function(ev) {
+		if (isLessThenIE9) {
+			return true;
+		}
 		contactAction(el,ev);
 		return false;
 	});

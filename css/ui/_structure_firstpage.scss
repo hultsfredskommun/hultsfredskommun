@@ -168,7 +168,7 @@
 			@extend .float--left;
 			@extend .position-absolute--top-left;
 			@extend .island;
-			max-width: 40%;
+			max-width: 35%;
 			padding-bottom: 0;
 			z-index: 1000;
 			.transparent {
@@ -226,7 +226,8 @@
 		border-radius: $border-radius $border-radius 0 0;
 	}
 	.content-wrapper {
-		@extend .five-twelfths;
+		@extend .desk-five-twelfths;
+		@extend .lap-seven-twelfths;
 		padding-bottom: $half-spacing-unit/2;
 		opacity: 0.95;
 		@extend .position-absolute--top-right;
@@ -283,14 +284,16 @@
 
 		}
 		.two.left-content {
-			@extend .desk-seven-tenths;
+			//@extend .desk-seven-tenths;
+			@extend .seven-tenths;
 		}
 		.right-content {
 			height: 100%;
 			@extend .float--left;
-			@extend .hide--palm;
-			@extend .hide--lap;
-			@extend .desk-three-tenths;
+			//@extend .hide--palm;
+			//@extend .hide--lap;
+			//@extend .desk-three-tenths;
+			@extend .three-tenths;
 			.direct_link:first-child {
 				border-top-right-radius: $border-radius;
 			}

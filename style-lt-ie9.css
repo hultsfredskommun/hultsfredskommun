@@ -23,8 +23,10 @@
 }
 
 /* top menu */
+.tag-menu > a,
+.related-menu > a,
 .top-menu-wrapper .top-menu > li > a {
-	display: block;
+	display: block!important;
 }
 /* Search menu */
 .searchnavigation .form .input-wrapper {
@@ -92,17 +94,25 @@
 }
 
 /* Contact widget */
+.contact-wrapper.content-wrapper,
 .slideshow-contact-puff-area .contact-puffs {
 	width: 557px;
+	background: #5c85b1;
+}
+.contact-wrapper.content-wrapper {
+	height: 334px!important;
 }
 .slideshow-contact-puff-area .contact-puffs .left-content.two {
-	height: 340px;
+	height: 328px;
 	width: 340px;
 }
 .slideshow-contact-puff-area .contact-puffs .right-content.two {
-	height: 340px;
-	width: 135px;
+	height: 328px;
+	width: 164px;
 	background: #5c85b1;
+}
+.direct_link {
+	padding: 0!important;
 }
  /* Menu */
 .main-menu {

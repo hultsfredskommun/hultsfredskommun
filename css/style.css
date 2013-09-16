@@ -3536,11 +3536,11 @@ html.flexbox {
   width: 10%;
 }
 
-.three-tenths {
+.three-tenths, .home .slideshow-contact-puff-area .content-wrapper .right-content {
   width: 30%;
 }
 
-.seven-tenths {
+.seven-tenths, .home .slideshow-contact-puff-area .content-wrapper .two.left-content {
   width: 70%;
 }
 
@@ -3555,7 +3555,7 @@ html.flexbox {
   width: 8.333%;
 }
 
-.five-twelfths, .home .slideshow-contact-puff-area .content-wrapper {
+.five-twelfths {
   width: 41.666%;
 }
 
@@ -3821,7 +3821,7 @@ html.flexbox {
     width: 41.666%;
   }
 
-  .lap-seven-twelfths {
+  .lap-seven-twelfths, .home .slideshow-contact-puff-area .content-wrapper {
     width: 58.333%;
   }
 
@@ -4046,11 +4046,11 @@ html.flexbox {
     width: 10%;
   }
 
-  .desk-three-tenths, .widget_hk_wp_feed_rss_widget.widget.horizontal h1, .home .slideshow-contact-puff-area .content-wrapper .right-content {
+  .desk-three-tenths, .widget_hk_wp_feed_rss_widget.widget.horizontal h1 {
     width: 30%;
   }
 
-  .desk-seven-tenths, .widget_hk_wp_feed_rss_widget.widget.horizontal .content-wrapper, .home .slideshow-contact-puff-area .content-wrapper .two.left-content {
+  .desk-seven-tenths, .widget_hk_wp_feed_rss_widget.widget.horizontal .content-wrapper {
     width: 70%;
   }
 
@@ -4065,7 +4065,7 @@ html.flexbox {
     width: 8.333%;
   }
 
-  .desk-five-twelfths {
+  .desk-five-twelfths, .home .slideshow-contact-puff-area .content-wrapper {
     width: 41.666%;
   }
 
@@ -4652,13 +4652,13 @@ html.flexbox {
 }
 
 @media only screen and (max-width: 540px) {
-  .hide--palm, .home .slideshow-contact-puff-area .content-wrapper .right-content, .home .contact-area .contact-wrapper .content-wrapper ul.right-content, .top-menu-wrapper, .logo2, .small-words {
+  .hide--palm, .home .contact-area .contact-wrapper .content-wrapper ul.right-content, .top-menu-wrapper, .logo2, .small-words {
     position: absolute;
     left: -9999px;
   }
 }
 @media only screen and (min-width: 541px) and (max-width: 969px) {
-  .hide--lap, .home .slideshow-contact-puff-area .content-wrapper .right-content, .home .contact-area .contact-wrapper .content-wrapper ul.right-content, .small-words {
+  .hide--lap, .home .contact-area .contact-wrapper .content-wrapper ul.right-content, .small-words {
     position: absolute;
     left: -9999px;
   }
@@ -5269,7 +5269,7 @@ html {
   border-right: 1px solid white;
 }
 .slideshow .slide .caption-area {
-  max-width: 40%;
+  max-width: 35%;
   padding-bottom: 0;
   z-index: 1000;
 }
