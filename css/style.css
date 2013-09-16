@@ -5287,8 +5287,8 @@ html {
   border-radius: 0 0 3px 3px;
   margin-bottom: 36px;
 }
-.home .firstpage-top-content .HK_tags_widget a {
-  padding-bottom: 6px !important;
+.home .firstpage-top-content .HK_tags_widget ul {
+  padding-right: 24px;
 }
 
 /* slideshow/contact/puff widget on first page */

@@ -202,8 +202,8 @@
 	border-radius: 0 0 $border-radius $border-radius;
 	margin-bottom: $base-spacing-unit*1.5;
 
-	a {
-		padding-bottom: $half-spacing-unit/2!important;
+	ul {
+		padding-right: $base-spacing-unit;
 	}
 }
 
