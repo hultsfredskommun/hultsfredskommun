@@ -260,7 +260,8 @@ article.post {
 	@extend .one-quarter;
 }
 @include media-query(portable) {
-.img-wrapper {
+.archive .img-wrapper,
+.single .img-wrapper {
 	padding-right: $half-spacing-unit;
 }
 }

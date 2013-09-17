@@ -215,8 +215,7 @@
 	@extend .one-whole;
 	overflow: hidden;
 	@include media-query(palm){
-		height: 300px!important;
-		
+		height: 266px!important;	
 	}
 	.caption {
 		@extend .one-third;
@@ -258,6 +257,9 @@
 			}
 			.main-contact-link {
 				@extend .float--left;
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 			.more-contact-link {
 				@extend .zeta;
