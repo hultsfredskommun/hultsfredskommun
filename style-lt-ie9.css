@@ -13,7 +13,7 @@
 /* full width */
 .widget.HK_tags_widget.horizontal-list,
 .home .slideshow-contact-puff-area,
-.firstpage-top-content{
+.firstpage-top-content {
 	width: 1188px;
 }
 /*Body*/
@@ -23,18 +23,36 @@
 }
 
 /* top menu */
-.tag-menu > a,
-.related-menu > a,
-.top-menu-wrapper .top-menu > li > a {
-	display: block!important;
-}
-.top-menu-wrapper .top-menu > .menu-item {
-	position: static!important; 
-}
-.top-menu-wrapper .top-menu > .menu-item {
+.top-menu-wrapper {
 	height: 43px;
 }
-.top-menu-wrapper .top-menu .menu-item.right .sub-menu {
+.tag-menu > a,
+.related-menu > a,
+.top-menu > li > a {
+	display: block!important;
+}
+.top-menu > .menu-item {
+	position: static!important; 
+}
+.top-menu  {
+	float: right;
+	height: 38px;
+	
+}
+.tag-menu,
+.related-menu,
+.top-menu > .menu-item {
+	float: left;
+}
+.tag-menu > a,
+.tag-menu > a > .dropdown-icon,
+.related-menu > a,
+.related-menu > a > .dropdown-icon,
+.top-menu > .menu-item > a,
+.top-menu > .menu-item > a > .dropdown-icon {
+	vertical-align: middle;
+}
+.top-menu .menu-item.right .sub-menu {
 	right: auto!important;
 }
 
@@ -47,8 +65,9 @@
 .searchnavigation .form .input-wrapper .field {
 	padding: 4px 0 0 15px; 
 }
+.searchnavigation .form  .input-wrapper,
 .searchnavigation .form  .submit {
-	height: 36px;
+	height: 30px;
 }
 .clearbutton {
 	padding: 3px 13px 0 0; 
@@ -167,7 +186,7 @@
 .article-wrapper .side-content {
 	margin-top: 12px;
 	margin-left: 15px;
-	width: 220px;
+	width: 218px;
 	padding-right: 0;
 	border-left: 0;
 }
@@ -178,6 +197,10 @@
 	float: left;
 	width: auto;
 	margin-left: 6px;
+}
+.tools .title,
+.tools .read.tool-line {
+	display: none!important;
 }
 /* Entry-meta, bottom of post */
 .article-wrapper .entry-meta {
