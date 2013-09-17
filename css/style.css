@@ -6634,7 +6634,7 @@ html {
   left: 0;
 }
 
-.hidden, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
+.hidden, #responsive-info, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
   display: none;
 }
 
