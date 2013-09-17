@@ -3585,7 +3585,7 @@ html.flexbox {
   /**
   * Whole
   */
-  .palm-one-whole, .firstpage-sidebar, .firstpage-content, .widget_hk_wp_feed_rss_widget.widget.horizontal h1, .widget_hk_wp_feed_rss_widget.widget.horizontal .content-wrapper, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .contact-area .contact-wrapper .content-wrapper ul.two, .breadcrumb, .primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .searchnavigation, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+  .palm-one-whole, .firstpage-sidebar, .firstpage-content, .widget_hk_wp_feed_rss_widget.widget.horizontal h1, .widget_hk_wp_feed_rss_widget.widget.horizontal .content-wrapper, .home .slideshow-contact-puff-area .content-wrapper, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .contact-area .contact-wrapper .content-wrapper ul.two, .breadcrumb, .primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .searchnavigation, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
     width: 100%;
   }
 
@@ -4930,7 +4930,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   border-bottom-right-radius: 3px;
 }
 
-.border-radius--left, .searchnavigation .form .input-wrapper, .main-sub-menu .menu-item:first-child a {
+.border-radius--left, .searchnavigation .form .input-wrapper {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -5297,6 +5297,11 @@ html {
 .home .slideshow-contact-puff-area {
   line-height: 0;
   overflow: hidden;
+}
+@media only screen and (max-width: 540px) {
+  .home .slideshow-contact-puff-area {
+    height: 300px !important;
+  }
 }
 .home .slideshow-contact-puff-area .widget,
 .home .slideshow-contact-puff-area .slideshow {
@@ -5724,7 +5729,13 @@ html {
 
 /* top right menu */
 .top-menu-wrapper {
+  /* make top-menu responsive */
   /* set top menu icons */
+}
+@media only screen and (max-width: 1150px) {
+  .top-menu-wrapper {
+    margin-bottom: 0 !important;
+  }
 }
 .top-menu-wrapper .top-menu {
   word-spacing: 0;
@@ -5784,7 +5795,7 @@ html {
 
 .more-menu-ul a,
 .main-sub-menu a {
-  padding: 12px 18px !important;
+  padding: 12px 15px !important;
 }
 
 .main-menu {
@@ -5806,6 +5817,15 @@ html {
 .main-sub-menu {
   margin-bottom: 36px;
 }
+.main-sub-menu .menu-item:first-child a {
+  /*@extend .border-radius--left;*/
+}
+.main-sub-menu .menu-item:first-child {
+  border-left: 0;
+}
+.main-sub-menu .menu-item {
+  border-left: 3px solid white;
+}
 
 .right-nav-menu-item {
   padding: 12px 24px !important;
@@ -5813,7 +5833,12 @@ html {
 
 /* make main-sub-menu responsive */
 @media only screen and (max-width: 1150px) {
+  .menu-wrapper {
+    margin-bottom: 12px !important;
+  }
+
   .main-sub-menu {
+    margin-bottom: 0;
     white-space: normal;
     background-color: white;
   }
@@ -5822,21 +5847,26 @@ html {
     font-size: 17px;
   }
   .main-sub-menu li {
-    border-radius: 3px;
     background-color: #e5e6e7;
-    margin: 0 12px 12px 0;
+    /*margin: 0 $half-spacing-unit $half-spacing-unit 0;*/
+    border: 0 !important;
+    margin: 0 3px 3px 0;
+  }
+  .main-sub-menu li a {
+    border-radius: 3px;
     background-image: url(../images/spr_bgButtons.png);
     background-position: 0 0;
     border: 1px solid #c6cacb;
   }
 
   .responsive-sub-menu {
-    border-radius: 3px;
+    /*border-radius: $border-radius;*/
     background-color: #e5e6e7;
-    margin: 0 12px 12px 0;
-    background-image: url(../images/spr_bgButtons.png);
+    /*margin: 0 $half-spacing-unit $half-spacing-unit 0;*/
+    margin: 0 3px 3px 0;
+    /*background-image: url(../images/spr_bgButtons.png);*/
     background-position: 0 0;
-    border: 1px solid #c6cacb;
+    /*border: 1px solid $gray-color;*/
   }
 }
 @media only screen and (max-width: 540px) {

@@ -214,6 +214,10 @@
 	@extend .position-relative;
 	@extend .one-whole;
 	overflow: hidden;
+	@include media-query(palm){
+		height: 300px!important;
+		
+	}
 	.caption {
 		@extend .one-third;
 	}
@@ -228,6 +232,7 @@
 	.content-wrapper {
 		@extend .desk-five-twelfths;
 		@extend .lap-seven-twelfths;
+		@extend .palm-one-whole;
 		padding-bottom: $half-spacing-unit/2;
 		opacity: 0.9;
 		@extend .position-absolute--top-right;

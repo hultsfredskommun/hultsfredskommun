@@ -78,7 +78,7 @@
 .more-menu-ul,
 .main-sub-menu {
 	a {
-		padding: $half-spacing-unit $half-spacing-unit*1.5!important;
+		padding: $half-spacing-unit $half-spacing-unit*1.25!important;
 	}
 	@extend .nav;
 	@extend .nav--block;
@@ -116,7 +116,13 @@
 		@extend .default-text;
 	}
 	.menu-item:first-child a {
-		@extend .border-radius--left;
+		/*@extend .border-radius--left;*/
+	}
+	.menu-item:first-child {
+		border-left: 0;
+	}
+	.menu-item {
+		border-left: 3px solid white;
 	}
 	a:hover,
 	&:hover a:hover,
@@ -146,29 +152,38 @@
 
 /* make main-sub-menu responsive */
 @media only screen and (max-width: $desk-wide-start) {
+	.menu-wrapper {
+		margin-bottom: $half-spacing-unit!important;
+	}
 	.main-sub-menu {
+		margin-bottom: 0;
 		a {
 			padding: $half-spacing-unit*0.5 $half-spacing-unit!important;
 			font-size: $h4-size;
 		}
 		li {
-			border-radius: $border-radius;
 			background-color: $gray-light-color;
-			margin: 0 $half-spacing-unit $half-spacing-unit 0;
-			background-image: url(../images/spr_bgButtons.png);
-			background-position: 0 0;
-			border: 1px solid $gray-color;
+			/*margin: 0 $half-spacing-unit $half-spacing-unit 0;*/
+			border: 0!important;
+			margin: 0 3px 3px 0;
+			a {
+				border-radius: $border-radius;
+				background-image: url(../images/spr_bgButtons.png);
+				background-position: 0 0;
+				border: 1px solid $gray-color;
+			}
 		}
 		white-space: normal;
 		background-color: white;
 	}
 	.responsive-sub-menu {
-		border-radius: $border-radius;
+		/*border-radius: $border-radius;*/
 		background-color: $gray-light-color;
-		margin: 0 $half-spacing-unit $half-spacing-unit 0;
-		background-image: url(../images/spr_bgButtons.png);
+		/*margin: 0 $half-spacing-unit $half-spacing-unit 0;*/
+		margin: 0 3px 3px 0;
+		/*background-image: url(../images/spr_bgButtons.png);*/
 		background-position: 0 0;
-		border: 1px solid $gray-color;
+		/*border: 1px solid $gray-color;*/
 	}
 }
 

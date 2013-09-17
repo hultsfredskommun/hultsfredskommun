@@ -166,6 +166,10 @@
 	@extend .one-whole;
 	@extend .white-text;
 	@extend .margin--bottom;
+	/* make top-menu responsive */
+	@media only screen and (max-width: $desk-wide-start) {
+		margin-bottom: 0!important;
+	}
 	a {
 		@extend .white-text;
 	}
