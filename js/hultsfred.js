@@ -303,13 +303,13 @@ if (typeof $.fn.doslideshow != 'function') {
 					$(this).find(".prevslide").addClass("prev"+rand);
 					$(this).find(".nextslide").addClass("next"+rand);
 					// show slide navigation on hover
-					$(this).unbind("hover").hover(function() {
+					/*$(this).unbind("hover").hover(function() {
 						$(this).find(".nextslide, .prevslide, .pager").fadeIn("fast");
 						return false;
 					},function() {
 						$(this).find(".nextslide, .prevslide, .pager").fadeOut("fast");
 						return false;
-					});
+					});*/
 
 					$(this).find('.slideshow_bg').show();
 					args = {
@@ -330,12 +330,14 @@ if (typeof $.fn.doslideshow != 'function') {
 					if (!$(this).hasClass("nopager")) {
 						$(this).append('<ul class="pager pager'+rand+'">');
 						args['pager'] =  '.pager' + rand;
-						// callback fn that creates a thumbnail to use as pager anchor 
-						args['pagerAnchorBuilder'] = function(idx, slide) {
-							var src = slide.src;
-							if (src == undefined)
-								src = $(slide).find("img").attr("src");
-							return '<li><a href="#"><img src="' + src + '" width="50" height="50" /></a></li>'; 
+						args['pagerEvent'] = 'mouseover';
+						args['fastOnEvent'] = true;
+						//args['pagerAnchorBuilder'] = function(idx, slide) {
+							//return '<li><a href="#"></a></li>'; 
+						//};
+						args['pagerAnchorBuilder'] = function(idx, slide) { 
+							// return selector string for existing anchor 
+							return '<li class="pager-icon"></li>'; 
 						};
 					}
 					

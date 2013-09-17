@@ -4557,7 +4557,7 @@ html.flexbox {
 .main .widget.widget_hk_protocol ul,
 .main .widget.HK_tags_widget ul, .page-header .num-posts,
 .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .summary .img-wrapper, .side-content .tools, .searchnavigation .searchresult .external_more_link, .top-menu-wrapper .top-menu, .responsive-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
+.page-header .sort-order, .page-header .category-tools, .summary .img-wrapper, .pager, .side-content .tools, .searchnavigation .searchresult .external_more_link, .top-menu-wrapper .top-menu, .responsive-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0 !important;
 }
 
@@ -5623,7 +5623,7 @@ html {
 }
 
 .pager {
-  z-index: 10;
+  z-index: 100;
 }
 
 /*
@@ -6024,11 +6024,11 @@ html {
   left: 0;
 }
 
-.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .pager, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .contact-popup.box .close-contact {
+.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .pager, .contact-popup.box .close-contact {
   position: absolute;
 }
 
-.position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .pager {
+.position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper {
   top: 0;
   left: 0;
 }
@@ -6043,7 +6043,7 @@ html {
   right: 0;
 }
 
-.position-absolute--bottom-left {
+.position-absolute--bottom-left, .pager {
   bottom: 0;
   left: 0;
 }
@@ -6288,8 +6288,8 @@ html {
     width: 50%;
   }
 }
-.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12,
-.dropdown-icon, .right-icon, .searchnavigation .submit {
+.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .pager-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .left-icon, .right-icon,
+.dropdown-icon, .searchnavigation .submit {
   background-image: url("../images/icons/ikoner.svg");
   display: inline-block;
 }
@@ -6309,7 +6309,7 @@ html {
   height: 24px;
 }
 
-.clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .white.tag-icon, .home .tag-icon, .menu-icon, .search-icon {
+.clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .white.tag-icon, .home .tag-icon, .pager-icon, .menu-icon, .search-icon {
   width: 20px;
   height: 20px;
 }
@@ -6319,9 +6319,11 @@ html {
   height: 16px;
 }
 
-.clip_12x12, .category-tools .tag-menu .dropdown-icon,
+.clip_12x12, .left-icon,
+.left-icon.gray, .right-icon,
+.right-icon.gray, .category-tools .tag-menu .dropdown-icon,
 .dropdown-icon,
-.dropdown-icon.black, .right-icon {
+.dropdown-icon.black {
   width: 12px;
   height: 12px;
 }
@@ -6397,7 +6399,7 @@ html {
   margin: 4px 4px 0 0;
 }
 
-.decoration-icon, .decoration-icon.gray, .decoration-icon.white {
+.decoration-icon, .decoration-icon.gray, .decoration-icon.white, .pager .decoration-icon.activeSlide {
   background-position: -28px -334px;
   vertical-align: middle;
 }
@@ -6406,7 +6408,7 @@ html {
   background-position: -105px -331px;
 }
 
-.white.decoration-icon {
+.pager .decoration-icon.activeSlide, .white.decoration-icon {
   background-position: -63px -331px;
 }
 
@@ -6425,7 +6427,7 @@ html {
 }
 
 /* firstpage */
-.home .white.tag-icon {
+.home .white.tag-icon, .home .pager .tag-icon.activeSlide, .pager .home .tag-icon.activeSlide {
   background-position: -68px -366px;
   margin-right: 8px;
   vertical-align: middle;
@@ -6437,6 +6439,41 @@ html {
   vertical-align: middle;
 }
 
+.pager-icon {
+  background-position: -238px -95px;
+}
+.pager-icon.activeSlide {
+  background-position: -238px -130px;
+}
+
+.left-icon,
+.left-icon.gray {
+  margin-left: 2px;
+  background-position: -262px -16px;
+}
+
+.left-icon.white, .pager .left-icon.activeSlide {
+  background-position: -262px -38px;
+}
+
+.left-icon.black {
+  background-position: -262px -58px;
+}
+
+.right-icon,
+.right-icon.gray {
+  margin-left: 2px;
+  background-position: -283px -16px;
+}
+
+.right-icon.white, .pager .right-icon.activeSlide {
+  background-position: -283px -38px;
+}
+
+.right-icon.black {
+  background-position: -283px -58px;
+}
+
 .category-tools .tag-menu .dropdown-icon,
 .dropdown-icon,
 .dropdown-icon.black {
@@ -6444,7 +6481,7 @@ html {
   background-position: -25px -30px;
 }
 
-.dropdown-icon.white {
+.dropdown-icon.white, .pager .dropdown-icon.activeSlide {
   background-position: -57px -30px;
 }
 
@@ -6453,7 +6490,7 @@ html {
   background-position: -25px -10px;
 }
 
-.dropdown-icon.up.white {
+.dropdown-icon.up.white, .pager .dropdown-icon.up.activeSlide {
   background-position: -57px -10px;
 }
 

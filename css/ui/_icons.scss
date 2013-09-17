@@ -151,7 +151,39 @@
 	vertical-align: middle;
 }
 
+.pager-icon {
+	@extend .clip_20x20;
+	background-position: -238px -95px;
+	&.activeSlide {
+		background-position: -238px -130px;
+	}
+}
 
+.left-icon,
+.left-icon.gray {
+	@extend .clip_12x12;
+	margin-left: 2px;
+	background-position: -262px -16px;
+}
+.left-icon.white {
+	background-position: -262px -38px;
+}
+.left-icon.black {
+	background-position: -262px -58px;
+}
+
+.right-icon,
+.right-icon.gray {
+	@extend .clip_12x12;
+	margin-left: 2px;
+	background-position: -283px -16px;
+}
+.right-icon.white {
+	background-position: -283px -38px;
+}
+.right-icon.black {
+	background-position: -283px -58px;
+}
 
 .category-tools .tag-menu .dropdown-icon,
 .dropdown-icon,

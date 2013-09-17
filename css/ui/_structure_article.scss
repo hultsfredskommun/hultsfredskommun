@@ -298,9 +298,13 @@ article.single .map_canvas {
 .pager {
 	@extend .nav;
 	@extend .nav--block;
-	@extend .position-absolute--top-left;
+	@extend .position-absolute--bottom-left;
 	@extend .islet;
-	z-index: 10;
+	@extend .flush--bottom;
+	z-index: 100;
+	.activeSlide {
+		@extend .white;
+	}
 }
 /*
 @include media-query(palm) {
