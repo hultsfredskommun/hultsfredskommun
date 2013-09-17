@@ -28,6 +28,13 @@
 .top-menu-wrapper .top-menu > li > a {
 	display: block!important;
 }
+.top-menu-wrapper .top-menu .menu-item {
+	position: static!important; 
+}
+.top-menu-wrapper .top-menu .menu-item.right .sub-menu {
+	right: auto!important;
+}
+
 /* Search menu */
 .searchnavigation .form .input-wrapper {
 	background-color: #DDD;
@@ -109,7 +116,7 @@
 .slideshow-contact-puff-area .contact-puffs .right-content.two {
 	height: 328px;
 	width: 164px;
-	background: #5c85b1;
+	background: #fff;
 }
 .direct_link {
 	padding: 0!important;
