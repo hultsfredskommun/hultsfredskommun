@@ -73,8 +73,16 @@
 		<header class="page-header">
 			
 			<ul class="num-posts">
-				<?php  			
-					echo "<li><a class='nolink'>Visar " . $wp_query->post_count;
+				<?php
+					if ($wp_query->max_num_pages > $paged && $wp_query->max_num_pages > 1) {
+						$url = next_posts(0,false);
+						$class = "";
+					}
+					else {
+						$url = "";
+						$class = "nolink";
+					}
+					echo "<li><a class='$class' href='$url'>Visar " . $wp_query->post_count;
 					if ($wp_query->max_num_pages > 1) {
 						echo " av " . $wp_query->found_posts;
 					}
