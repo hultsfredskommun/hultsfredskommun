@@ -28,8 +28,11 @@
 .top-menu-wrapper .top-menu > li > a {
 	display: block!important;
 }
-.top-menu-wrapper .top-menu .menu-item {
+.top-menu-wrapper .top-menu > .menu-item {
 	position: static!important; 
+}
+.top-menu-wrapper .top-menu > .menu-item {
+	height: 43px;
 }
 .top-menu-wrapper .top-menu .menu-item.right .sub-menu {
 	right: auto!important;
@@ -114,9 +117,10 @@
 	width: 340px;
 }
 .slideshow-contact-puff-area .contact-puffs .right-content.two {
-	height: 328px;
+	height: 332px;
 	width: 164px;
 	background: #fff;
+	border-bottom: 6px solid white;
 }
 .direct_link {
 	padding: 0!important;

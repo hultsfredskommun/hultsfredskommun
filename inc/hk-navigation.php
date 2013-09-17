@@ -237,9 +237,7 @@ function hk_navigation() {
 
 	// if in category
 	else if ($cat != "") {
-
-		if (is_sub_category()) {
-			
+		//if (is_sub_category()) {			
 			$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
 			$currentparent = $cat;
 			
@@ -275,16 +273,13 @@ function hk_navigation() {
 			if( function_exists('displayTagFilter') ){
 				displayTagFilter();
 			}
-	
-		}
-		
+		//}	
 	}
 	
 	
 	// if in tag
 	else if ($tags != "") {
 		//echo "<a class='dropdown-nav'>Etiketter</a>";
-
 		$hk_cat_walker = new hk_Category_Walker();
 		$parentCat = hk_getMenuParent($cat);
 		$args = array(

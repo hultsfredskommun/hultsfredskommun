@@ -13,7 +13,7 @@
 		if ($tag != "") : 
 			if ($cat != "") {
 				$top_cat_arr = array($cat);
-				$cat_title = "kategorin <strong>" . single_tag_title("",false) . "</strong>";
+				$cat_title = "kategori <strong>" . single_tag_title("",false) . "</strong>";
 			}
 			else {
 				foreach(get_categories(array('parent' => 0, 'hide_empty' => true)) as $c) :

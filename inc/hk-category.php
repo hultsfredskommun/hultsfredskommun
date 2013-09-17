@@ -62,14 +62,14 @@
 			endif; // end if cat is set
 			
 	?>
-	<div id="breadcrumb" class="<?php echo ($wp_query->post_count <= 1)?"one_article ":""; ?>breadcrumb"><?php hk_breadcrumb(); ?></div>
+	<div id="breadcrumb" class="<?php echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":""; ?>breadcrumb"><?php hk_breadcrumb(); ?></div>
 	<?php endif; // end if !is_sub_category_firstpage ?>
 
 	<div id="primary" class="primary">
 
 	<div id="content" role="main">
 
-	<?php if ($wp_query->post_count > 1) : ?>
+	<?php if ($wp_query->post_count > 1 || $wp_query->max_num_pages > 1) : ?>
 		<header class="page-header">
 			
 			<ul class="num-posts">
@@ -78,7 +78,7 @@
 					if ($wp_query->max_num_pages > 1) {
 						echo " av " . $wp_query->found_posts;
 					}
-					if ($wp_query->post_count <= 1) 
+					if ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1) 
 						echo " artikel";
 					else
 						echo " artiklar";
@@ -95,7 +95,7 @@
 				<?php $related_output = hk_related_output(true); ?>
 				<li class="tag-menu cat-item<?php echo ($related_output == "")?" rounded":""; ?>">
 					<a href="#">Visa bara<span class="dropdown-icon"></span></a>
-					<?php displayTagFilter(false, false, "sub-menu"); ?>
+					<?php displayTagFilter(false, true, "sub-menu"); ?>
 				</li>
 				<?php echo $related_output;	?>
 			</ul>

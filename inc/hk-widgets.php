@@ -1066,6 +1066,9 @@ class HK_related_widget extends WP_Widget {
 			
 		// get quickmenu
 		$quickmenu = hk_related_output(false, $show_related_cat);
+		if ($quickmenu == "") // return if no related output
+			return;
+
 		?>
 		
 		
@@ -1077,11 +1080,7 @@ class HK_related_widget extends WP_Widget {
 		if ( ! empty( $title ) ) {
 			echo $before_title . $title . $after_title;
 		}
-		if ($quickmenu != "") :
-			echo $quickmenu;
-		else :
-			echo "Inga genv&auml;gar.";
-		endif;
+		echo $quickmenu;
 		echo $after_widget;
 		?>		
 			
@@ -1142,7 +1141,7 @@ class HK_tags_widget extends WP_Widget {
 		if ($instance['title'] != "") {
 			echo "<h1 class='widget-title'>" . $instance['title'] . "</h1>";
 		}
-		displayTagFilter(false,false,"",$instance['exclude-tags']);
+		displayTagFilter(false,true,"",$instance['exclude-tags']);
 		echo "</aside>";
 		
 	} //end widget()
