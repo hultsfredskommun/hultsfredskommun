@@ -3709,14 +3709,14 @@ html.flexbox {
   /**
   * Whole
   */
-  .lap-one-whole, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .contact-area .contact-wrapper .content-wrapper ul.two, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta {
+  .lap-one-whole, .firstpage-content, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .contact-area .contact-wrapper .content-wrapper ul.two, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta {
     width: 100%;
   }
 
   /**
   * Halves
   */
-  .lap-one-half, .lap-two-quarters, .searchnavigation, .lap-three-sixths, .lap-four-eighths, .lap-five-tenths, .lap-six-twelfths, .firstpage-sidebar, .firstpage-content, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+  .lap-one-half, .lap-two-quarters, .searchnavigation, .lap-three-sixths, .lap-four-eighths, .lap-five-tenths, .lap-six-twelfths, .firstpage-sidebar, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
     width: 50%;
   }
 
