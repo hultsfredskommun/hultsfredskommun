@@ -94,15 +94,15 @@ function hk_slideshow_generate_output($vars) {
 	   		while ( $meta_query->have_posts() ) : $meta_query->the_post();
 				if( get_field('hk_featured_images') ) :
 					while( has_sub_field('hk_featured_images') ) : 
+						$thumbsize = $vars["thumbnail-size"];
 						$image = get_sub_field('hk_featured_image');
-						$src = $image["sizes"][$vars["thumbnail-size"]];
+						$src = $image["sizes"][$thumbsize];
 						$title = $image["title"];
 						$alt = $image["alt"];
 						if ($alt == "") {
 							$alt = $title;
 						}
-	
-						if (strpos($src,$default_settings[$vars["thumbnail-size"]][0] . "x" . $default_settings[$vars["thumbnail-size"]][1])) {
+						if ($default_settings[$thumbsize][0] == $image["sizes"][$thumbsize . "-width"] && $default_settings[$thumbsize][1] == $image["sizes"][$thumbsize . "-height"]) {
 							$retValue .= "<article id='post-" . get_the_ID() . "' class='slide ";
 							if ($first){ $retValue .= 'first '; }
 							else { $retValue .= 'img_left '; }
