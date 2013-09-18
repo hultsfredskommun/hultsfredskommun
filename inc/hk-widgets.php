@@ -379,8 +379,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 					endif;
 				endwhile;
 				
-				$retValue .= "</div></div></aside></div>";
+				$retValue .= "</div></div></aside>";
 			}
+			$retValue .= "</div>";
 			
 			// Reset Post Data
 			wp_reset_postdata();
