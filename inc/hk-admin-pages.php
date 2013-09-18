@@ -281,12 +281,13 @@ function hk_display_allcomingreviews_dashboard_widget ()
 	//define arguments for WP_Query()
 	$qargs = array(
         'category__not_in' => $ignore_cats,
-        'post_status' => 'published',
 		'posts_per_page' => -1, 
 		'meta_key' => 'hk_next_review',  // which meta to query
 		'meta_value'   => strtotime("+1 day"),  // value for comparison
 		'meta_compare' => '<',          // method of comparison
 		'meta_type' => 'numeric',
+		'post_status' => 'publish',
+		'post_type' => 'post',
 		'orderby' => 'meta_value',
 		'order' => 'ASC',
 		'ignore_sticky_posts' => 1 
@@ -311,7 +312,9 @@ function hk_display_alllatestposts_dashboard_widget()
 	//define arguments for WP_Query()
 	$qargs = array(
 		'posts_per_page' => 10, 
-		'orderby' => 'modified_date', 
+		'orderby' => 'modified_date',
+		'post_status' => 'publish',
+		'post_type' => 'post',		
 		'order' => 'DESC'
 	);
 	// perform the query
@@ -335,6 +338,8 @@ function hk_display_allhidden_dashboard_widget ()
 	//define arguments for WP_Query()
 	$qargs = array(
 		'category__in' => array($default_settings["hidden_cat"]),
+		'post_status' => 'publish',
+		'post_type' => 'post',
 		'posts_per_page' => -1
 		);
 	// perform the query
@@ -370,6 +375,8 @@ function hk_display_mycomingreviews_dashboard_widget ()
 		'category__not_in' => $ignore_cats,
 		'author'=> get_current_user_id(),
 		'posts_per_page' => 10,
+		'post_status' => 'publish',
+		'post_type' => 'post',
 		'orderby' => 'meta_value',
 		'meta_key' => 'hk_next_review',
 		'order' => 'ASC' );
@@ -397,6 +404,8 @@ function hk_display_mylatestposts_dashboard_widget()
 		'category__not_in' => array($default_settings["hidden_cat"]),
 		'author'=> get_current_user_id(),
 		'posts_per_page' => 10, 
+		'post_status' => 'publish',
+		'post_type' => 'post',
 		'orderby' => 'modified_date', 
 		'order' => 'DESC'
 	);
@@ -422,7 +431,9 @@ function hk_display_myhidden_dashboard_widget ()
 	$qargs = array(
 		'author'=> get_current_user_id(),
 		'category__in' => array($default_settings["hidden_cat"]),
-		'posts_per_page' => -1
+		'posts_per_page' => -1,
+		'post_status' => 'publish',
+		'post_type' => 'post'
 		);
 	// perform the query
 	$q = new WP_Query();
