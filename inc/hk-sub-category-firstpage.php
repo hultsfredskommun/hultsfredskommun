@@ -1,7 +1,7 @@
 <?php if ( is_active_sidebar("firstpage-top-content") ) : ?>
 	<div id="firstpage-top-content" class="firstpage-top-content">
 		<?php dynamic_sidebar('firstpage-top-content'); ?>
-	</div><!-- #firstpage-top-sidebar -->
+	</div><!-- #firstpage-top-content -->
 <?php endif; ?>
 
 <?php if (is_active_sidebar('firstpage-content')) : ?>

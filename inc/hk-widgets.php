@@ -1552,9 +1552,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 					endif;
 				endif;
 				
-				$retValue .= "</div></aside></div>";
+				$retValue .= "</div></aside>";
 			}
-			
+			$retValue .= "</div>";
 			// Reset Post Data
 			wp_reset_postdata();
 			wp_reset_query();
