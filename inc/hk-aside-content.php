@@ -60,9 +60,8 @@
 		<?php 
 		$add_title = true;
 		while ( has_sub_field('hk_related') ) :
-			if ( get_row_layout() == 'hk_related_title' ) :
+			if ( get_row_layout() == 'hk_related_titles' ) :
 				$add_title = false;
-				break;
 			endif;
 		endwhile; 
 		if ($add_title) { ?>

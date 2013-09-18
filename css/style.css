@@ -1154,13 +1154,13 @@ h1, .alpha, .widget_hk_wp_feed_rss_widget.widget h1, .home .slideshow-contact-pu
   line-height: 1.09091;
 }
 
-h2, .beta, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .more-from-heading {
+h2, .beta, .more-from-heading {
   font-size: 20px;
   font-size: 1.33333rem;
   line-height: 1.2;
 }
 
-h3, .gamma, .widget h1, .post .summary-content h1.entry-title, .main-sub-menu a {
+h3, .gamma, .widget h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .post .summary-content h1.entry-title, .main-sub-menu a {
   font-size: 18px;
   font-size: 1.2rem;
   line-height: 1.33333;
@@ -4997,13 +4997,13 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.2;
   }
 
-  h2, .beta, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .more-from-heading {
+  h2, .beta, .more-from-heading {
     font-size: 18px;
     font-size: 1.2rem;
     line-height: 1.33333;
   }
 
-  h3, .gamma, .widget h1, .post .summary-content h1.entry-title, .main-sub-menu a {
+  h3, .gamma, .widget h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .post .summary-content h1.entry-title, .main-sub-menu a {
     font-size: 17px;
     font-size: 1.13333rem;
     line-height: 1.41176;

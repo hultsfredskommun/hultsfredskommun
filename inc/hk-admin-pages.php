@@ -271,9 +271,16 @@ function hk_display_allcomingreviews_dashboard_widget ()
 {
 	$options = get_option('hk_theme');
 
+	if ($options["no_reviews_to_cat"] != "")
+		$ignore_cats = split(",",$options["no_reviews_to_cat"]);
+	else
+		$ignore_cats = array();
+		
+	$ignore_cats[] = $options["hidden_cat"];
+	
 	//define arguments for WP_Query()
 	$qargs = array(
-        'category__not_in' => array($options["hidden_cat"]),
+        'category__not_in' => $ignore_cats,
         'post_status' => 'published',
 		'posts_per_page' => -1, 
 		'meta_key' => 'hk_next_review',  // which meta to query
@@ -347,9 +354,20 @@ function hk_display_allhidden_dashboard_widget ()
 function hk_display_mycomingreviews_dashboard_widget ()
 {
 	global $default_settings;
+	
+	$options = get_option('hk_theme');
+	
+	if ($options["no_reviews_to_cat"] != "")
+		$ignore_cats = split(",",$options["no_reviews_to_cat"]);
+	else
+		$ignore_cats = array();
+		
+	$ignore_cats[] = $options["hidden_cat"];
+	
+
 	//define arguments for WP_Query()
 	$qargs = array(
-		'category__not_in' => array($default_settings["hidden_cat"]),
+		'category__not_in' => $ignore_cats,
 		'author'=> get_current_user_id(),
 		'posts_per_page' => 10,
 		'orderby' => 'meta_value',
