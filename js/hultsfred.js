@@ -409,7 +409,7 @@ function readMoreToggle(el){
 
 				$(this).parents("article").find('.summary-content').slideDown(0, function(){
 					if ($(document).scrollTop() > $(this).parents("article").position().top - $('#wpadminbar').height() || 0) {
-						$("html,body").animate({scrollTop: -20 + $(this).parents("article").position().top - ($('#wpadminbar').height() || 0)}, 200);
+						$("html,body").animate({scrollTop: -30 + $(this).parents("article").position().top - ($('#wpadminbar').height() || 0)}, 200);
 					}								
 				});
 
@@ -436,7 +436,7 @@ function readMoreToggle(el){
 					
 					
 					// animate to top of article
-					$("html,body").animate({scrollTop: -20 + $(this).parents("article").position().top - $('#wpadminbar').height() || 0}, 200);
+					$("html,body").animate({scrollTop: -30 + $(this).parents("article").position().top - $('#wpadminbar').height() || 0}, 200);
 					
 					if ($(this).parents("article").find(".js-close-button").length >= 1)
 						$(this).parents("article").find(".js-close-button").remove();

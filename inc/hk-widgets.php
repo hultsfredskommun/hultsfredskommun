@@ -1195,7 +1195,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		<input class="widefat" id="<?php echo $this->get_field_id( 'thumbnail-size' ); ?>" name="<?php echo $this->get_field_name( 'thumbnail-size' ); ?>" type="text" value="<?php echo esc_attr( $thumbnailsize); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'contacttext' ); ?>">Extra kontakttext</label> 
+		<label for="<?php echo $this->get_field_id( 'contacttext' ); ?>">Extra kontakttext (bara på startsidan)</label> 
 		<textarea class="widefat" id="<?php echo $this->get_field_id( 'contacttext' ); ?>" name="<?php echo $this->get_field_name( 'contacttext' ); ?>"><?php echo $contacttext; ?></textarea>
 		</p>
 
@@ -1376,6 +1376,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 	public function widget( $args, $instance ) {
 	    extract( $args );
 		global $post, $default_settings;
+		$options = get_option("hk_theme");
 		$org_post = $post;
 
 		$retValue = "<div class='slideshow-contact-puff-area'>";
@@ -1490,7 +1491,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 						$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 						$retValue .= $number . "</a></li>";
 					endwhile; endif;
-					if (isset($instance['contacttext'])) {
+					if (isset($instance['contacttext']) && $options["startpage_cat"] == $cat) {
 						foreach(split("\n",$instance['contacttext']) as $contacttext) {
 							$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'>" . $contacttext . "</a></li>";
 						}
