@@ -30,7 +30,7 @@ if (in_category($hk_options["hidden_cat"])) {
 //print_r($wp_query);
 
 ?><!DOCTYPE html>
-<?php /* <!--[if IE 6]>
+<!--[if IE 6]>
 <html id="ie6" <?php language_attributes(); ?>>
 <![endif]-->
 <!--[if IE 7]>
@@ -41,8 +41,7 @@ if (in_category($hk_options["hidden_cat"])) {
 <![endif]-->
 <!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
 <html <?php language_attributes(); ?>>
-<!--<![endif]--> */ ?>
-<html>
+<!--<![endif]-->
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
