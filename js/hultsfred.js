@@ -627,6 +627,28 @@ $(document).ready(function(){
 	//Stores the window-width for later use
 	oldWidth = $(window).width();
 
+	
+	/* 
+	 * fix placeholder text in ie
+	 */
+	 
+	if($.browser.msie) { 
+		var active = document.activeElement;
+		$(':text').focus(function () {
+			if ($(this).attr('placeholder') != '' && $(this).val() == $(this).attr('placeholder')) {
+				$(this).val('').removeClass('hasPlaceholder').css("color","#3f3f3f");
+			}
+			}).blur(function () {
+				if ($(this).attr('placeholder') != '' && ($(this).val() == '' || $(this).val() == $(this).attr('placeholder'))) {
+					$(this).val($(this).attr('placeholder')).addClass('hasPlaceholder').css("color","#999");
+				}
+			});
+			$(':text').blur();
+			$(active).focus();
+			$('form:eq(0)').submit(function () {
+			$(':text.hasPlaceholder').val('');
+		});
+	}
 	/* 
 	 * aditro scrolling on first page
 	 */
