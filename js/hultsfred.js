@@ -629,10 +629,9 @@ $(document).ready(function(){
 
 	
 	/* 
-	 * fix placeholder text in ie
+	 * fix placeholder text in ie9 and lower
 	 */
-	 
-	if($.browser.msie) { 
+	if ($.browser.msie && parseInt($.browser.version, 10) <= 9) { 
 		var active = document.activeElement;
 		$(':text').focus(function () {
 			if ($(this).attr('placeholder') != '' && $(this).val() == $(this).attr('placeholder')) {
