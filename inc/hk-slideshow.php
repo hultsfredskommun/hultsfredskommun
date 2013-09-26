@@ -87,10 +87,10 @@ function hk_slideshow_generate_output($vars) {
 		}
 		$meta_query = new WP_Query($args);
 		if ($meta_query->have_posts()) {
-			$retValue .= "<div class='img-wrapper'><div class='slideshow hidden'><img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&amp;h=".($default_settings[$vars["thumbnail-size"]][1])."'/>";
+			$retValue .= "<div class='img-wrapper'><div class='slideshow'>";
 			
        		// The Loop
-			$first = true;
+			$count = 0;
 	   		while ( $meta_query->have_posts() ) : $meta_query->the_post();
 				if( get_field('hk_featured_images') ) :
 					while( has_sub_field('hk_featured_images') ) : 
@@ -104,8 +104,8 @@ function hk_slideshow_generate_output($vars) {
 						}
 						if ($default_settings[$thumbsize][0] == $image["sizes"][$thumbsize . "-width"] && $default_settings[$thumbsize][1] == $image["sizes"][$thumbsize . "-height"]) {
 							$retValue .= "<article id='post-" . get_the_ID() . "' class='slide ";
-							if ($first){ $retValue .= 'first '; }
-							else { $retValue .= 'img_left '; }
+							if ($count++ == 0){ $retValue .= 'first '; }
+							else { $retValue .= 'hidden '; }
 							$retValue .= implode(" ",get_post_class()) . "'>";
 							$retValue .= 	"<img src='$src' class='attachment-slideshow-image wp-post-image' alt='$alt' title='$alt' />";
 							if (get_the_content() != "") {
@@ -120,6 +120,9 @@ function hk_slideshow_generate_output($vars) {
 					endwhile;
 				endif;
         	endwhile;
+			if ($count > 1) {
+				$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&amp;h=".($default_settings[$vars["thumbnail-size"]][1])."'/>";
+			}
 			$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
 			$retValue .= "</div></div>";
 

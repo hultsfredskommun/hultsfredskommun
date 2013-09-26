@@ -351,9 +351,6 @@ if (typeof $.fn.doslideshow != 'function') {
 				}
 				
 			}
-			else if ($(this).find('.slide').length == 1){
-				//$(this).removeClass("hidden").find(".slide").css("position","absolute").css("top","0px").css("left","0px").css("z-index","4").css("width","100%").css("opacity","1").css("display","block");
-			}
 		}
 	}
 }
@@ -754,6 +751,10 @@ $(document).ready(function(){
 	});
 	/* init slideshows */
 	$('.img-wrapper').slideshow();
+	if ($('.slideshow-contact-puff-area').find('.slide').length == 0 && $('.slideshow-contact-puff-area').find('.contact-puffs').length > 0){
+		$('.slideshow-contact-puff-area').height($('.slideshow-contact-puff-area').width() * 326 / 1138);
+	}
+
 	
 	/* init google maps on ready */
 	$(".contact-area .map_canvas, article.post .map_canvas, article.single .map_canvas").googlemap();
