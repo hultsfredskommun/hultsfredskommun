@@ -167,9 +167,9 @@
 		.caption-area {
 			@extend .float--left;
 			@extend .position-absolute--top-left;
-			@extend .island;
+			padding: 0 0 $half-spacing-unit;
+			margin: $base-spacing-unit 0 0 $base-spacing-unit;
 			max-width: 35%;
-			padding-bottom: 0;
 			z-index: 1000;
 			.transparent {
 				@extend .position-absolute;
