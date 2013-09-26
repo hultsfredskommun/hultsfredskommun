@@ -352,7 +352,7 @@ if (typeof $.fn.doslideshow != 'function') {
 				
 			}
 			else if ($(this).find('.slide').length == 1){
-				$(this).removeClass("hidden").find(".slide").css("position","absolute").css("top","0px").css("left","0px").css("z-index","4").css("width","100%").css("opacity","1").css("display","block");
+				//$(this).removeClass("hidden").find(".slide").css("position","absolute").css("top","0px").css("left","0px").css("z-index","4").css("width","100%").css("opacity","1").css("display","block");
 			}
 		}
 	}
