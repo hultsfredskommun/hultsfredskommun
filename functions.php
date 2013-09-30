@@ -1173,19 +1173,39 @@ endif; // debug == true
 
 
 
+function get_client_ip() {
+     $ipaddress = '';
+     if (getenv('HTTP_CLIENT_IP'))
+         $ipaddress = getenv('HTTP_CLIENT_IP');
+     else if(getenv('HTTP_X_FORWARDED_FOR'))
+         $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+     else if(getenv('HTTP_X_FORWARDED'))
+         $ipaddress = getenv('HTTP_X_FORWARDED');
+     else if(getenv('HTTP_FORWARDED_FOR'))
+         $ipaddress = getenv('HTTP_FORWARDED_FOR');
+     else if(getenv('HTTP_FORWARDED'))
+        $ipaddress = getenv('HTTP_FORWARDED');
+     else if(getenv('REMOTE_ADDR'))
+         $ipaddress = getenv('REMOTE_ADDR');
+     else
+         $ipaddress = 'UNKNOWN';
+
+     return $ipaddress; 
+}
 function hk_count_func(){
 	$version = $_POST["version"];
 	$browser = $_POST["browser"];
 	$hk_options = get_option('hk_theme');
+	$ip = $_POST["ip"] . " - " . get_client_ip();
 	if ($hk_options !== false) {
 		$count = $hk_options["count_version"];
 		if (!is_array($count))
 			$count = Array();
 			
-		if ($count[$version . " - " . $browser . " - " . $_SERVER['REMOTE_ADDR']] != "")
-			$count[$version . " - " . $browser . " - " . $_SERVER['REMOTE_ADDR']]++;
+		if ($count[$version . " - " . $browser . " - " . $ip] != "")
+			$count[$version . " - " . $browser . " - " . $ip]++;
 		else
-			$count[$version . " - " . $browser . " - " . $_SERVER['REMOTE_ADDR']] = 1;
+			$count[$version . " - " . $browser . " - " . $ip] = 1;
 		$hk_options["count_version"] = $count;
 		update_option("hk_theme",$hk_options);
 	}

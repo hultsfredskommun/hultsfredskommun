@@ -623,19 +623,24 @@ $(document).ready(function(){
 
 	
 		function doCount() {
-			data = {action: 'hk_count', version: $("#version-2").length, browser: navigator.appCodeName };
-			jQuery.ajax({
-				type: 'POST',
-				url: hultsfred_object.admin_ajax_url, //"/wp/info/wp-admin/admin-ajax.php", // our PHP handler file
-				data: data,
-				dataType: 'html',
-				success:function(response){
-					log(response);
-				},
-				error:function(response){
-					log("error: " + response);
+			
+			$.getJSON( "http://smart-ip.net/geoip-json?callback=?",
+				function(data){
+					data = {action: 'hk_count', version: $("#version-2").length, browser: navigator.appCodeName, ip: data.host };
+					jQuery.ajax({
+						type: 'POST',
+						url: hultsfred_object.admin_ajax_url, //"/wp/info/wp-admin/admin-ajax.php", // our PHP handler file
+						data: data,
+						dataType: 'html',
+						success:function(response){
+							log(response);
+						},
+						error:function(response){
+							log("error: " + response);
+						}
+					});
 				}
-			});
+			);
 		}
 		doCount();
 	if ($("#version-2").length <= 0) {
