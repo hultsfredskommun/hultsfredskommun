@@ -623,8 +623,7 @@ $(document).ready(function(){
 
 	
 		function doCount() {
-			data = {action: 'hk_count', version: $("#version-2").length };
-		
+			data = {action: 'hk_count', version: $("#version-2").length, browser: navigator.appCodeName };
 			jQuery.ajax({
 				type: 'POST',
 				url: hultsfred_object.admin_ajax_url, //"/wp/info/wp-admin/admin-ajax.php", // our PHP handler file

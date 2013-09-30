@@ -1175,16 +1175,17 @@ endif; // debug == true
 
 function hk_count_func(){
 	$version = $_POST["version"];
+	$browser = $_POST["browser"];
 	$hk_options = get_option('hk_theme');
 	if ($hk_options !== false) {
 		$count = $hk_options["count_version"];
 		if (!is_array($count))
 			$count = Array();
 			
-		if ($count[$version . " - " . $_SERVER['REMOTE_ADDR']] != "")
-			$count[$version . " - " . $_SERVER['REMOTE_ADDR']]++;
+		if ($count[$version . " - " . $browser . " - " . $_SERVER['REMOTE_ADDR']] != "")
+			$count[$version . " - " . $browser . " - " . $_SERVER['REMOTE_ADDR']]++;
 		else
-			$count[$version . " - " . $_SERVER['REMOTE_ADDR']] = 1;
+			$count[$version . " - " . $browser . " - " . $_SERVER['REMOTE_ADDR']] = 1;
 		$hk_options["count_version"] = $count;
 		update_option("hk_theme",$hk_options);
 	}
