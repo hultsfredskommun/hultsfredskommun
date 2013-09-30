@@ -624,9 +624,22 @@ $(document).ready(function(){
 	
 		function doCount() {
 			
+			
 			$.getJSON( "http://smart-ip.net/geoip-json?callback=?",
 				function(data){
-					data = {action: 'hk_count', version: $("#version-2").length, browser: navigator.appCodeName, ip: data.host };
+					browser = "other";
+					if ($.browser.webkit)
+						browser = "webkit";
+					else if ($.browser.msie)
+						browser = "msie";
+					else if ($.browser.opera)
+						browser = "opera";
+					else if ($.browser.mozilla)
+						browser = "mozilla";
+					else if ($.browser.safari)
+						browser = "safari";
+
+					data = {action: 'hk_count', version: $("#version-2").length, browser: browser, ip: data.host };
 					jQuery.ajax({
 						type: 'POST',
 						url: hultsfred_object.admin_ajax_url, //"/wp/info/wp-admin/admin-ajax.php", // our PHP handler file
@@ -645,8 +658,13 @@ $(document).ready(function(){
 		doCount();
 	if ($("#version-2").length <= 0) {
 		function newVersion() {
-			//alert("Det finns en ny version av hultsfred.se. Sidan kommer nu att laddas om. Om du ser denna ruta igen s&aring; tryck F5 efter att du st&auml;ngt den h&auml;r rutan.");
-			//location.reload(true);
+			//alert("Det finns en ny version av hultsfred.se. Sidan kommer nu att laddas om. Om du ser denna ruta igen s&aring; tryck F5 efter att du st&auml;ngt den h&auml;r rutan. ");
+			$(".top-menu-wrapper").before("<div class='wrong-version one-whole island important-background white-text flush--bottom hidden'>Du ser en gammal version av webbplatsen. Klicka <a class='white-text' style='text-decoration:underline' href='#'>h&auml;r</a> f&ouml;r att se den nya.</div>");
+			$(".wrong-version").slideDown("slow").find("a").click(function() {
+				push_google_analytics("#new-version");
+				location.reload(true);
+				return false;
+			});
 		}
 		setTimeout(newVersion,2000);
 	}
