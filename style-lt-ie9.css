@@ -128,16 +128,21 @@
 	width: 557px;
 	background: #5c85b1;
 }
-.contact-wrapper.content-wrapper {
+#ie7 .contact-wrapper.content-wrapper {
 	height: 334px!important;
 }
+.contact-wrapper.content-wrapper {
+	height: 340px!important;
+}
 .slideshow-contact-puff-area .contact-puffs .left-content.two {
-	height: 328px;
 	width: 340px;
 }
+#ie7 .slideshow-contact-puff-area .contact-puffs .right-content.two {
+	height: 334px!important;
+}
 .slideshow-contact-puff-area .contact-puffs .right-content.two {
-	height: 332px;
-	width: 164px;
+	width: 167px;
+	height: 340px!important;
 	background: #fff;
 	border-bottom: 6px solid white;
 }

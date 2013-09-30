@@ -658,8 +658,7 @@ $(document).ready(function(){
 		doCount();
 	if ($("#version-2").length <= 0) {
 		function newVersion() {
-			//alert("Det finns en ny version av hultsfred.se. Sidan kommer nu att laddas om. Om du ser denna ruta igen s&aring; tryck F5 efter att du st&auml;ngt den h&auml;r rutan. ");
-			$(".top-menu-wrapper").before("<div class='wrong-version one-whole island important-background white-text flush--bottom hidden'>Du ser en gammal version av webbplatsen. Klicka <a class='white-text' style='text-decoration:underline' href='#'>h&auml;r</a> f&ouml;r att se den nya.</div>");
+			$(".top-menu-wrapper").before("<div class='wrong-version one-whole island important-background white-text flush--bottom hidden'>Du ser en gammal version av webbplatsen. Klicka <a class='white-text' style='text-decoration:underline' href='#'>h&auml;r</a> eller uppdatera webbl&auml;saren f&ouml;r att se den nya.</div>");
 			$(".wrong-version").slideDown("slow").find("a").click(function() {
 				push_google_analytics("#new-version");
 				location.reload(true);
