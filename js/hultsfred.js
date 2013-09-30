@@ -621,9 +621,8 @@ function flipAnimation(active) {
 
 $(document).ready(function(){
 
-	
+	/* debug count and version log */
 		function doCount() {
-			
 			
 			$.getJSON( "http://smart-ip.net/geoip-json?callback=?",
 				function(data){
@@ -656,6 +655,8 @@ $(document).ready(function(){
 			);
 		}
 		doCount();
+		
+	/* show refresh alert if old/cached html */
 	if ($("#version-2").length <= 0) {
 		function newVersion() {
 			$(".top-menu-wrapper").before("<div class='wrong-version one-whole island important-background white-text flush--bottom hidden'>Du ser en gammal version av webbplatsen. Klicka <a class='white-text' style='text-decoration:underline' href='#'>h&auml;r</a> eller uppdatera webbl&auml;saren f&ouml;r att se den nya.</div>");
@@ -677,7 +678,7 @@ $(document).ready(function(){
 	/* 
 	 * fix placeholder text in ie9 and lower
 	 */
-	if ($.browser.msie && parseInt($.browser.version, 10) <= 9) { 
+	if (!$(body).hasClass(".login") && $.browser.msie && parseInt($.browser.version, 10) <= 9) { 
 		var active = document.activeElement;
 		$(':text').focus(function () {
 			if ($(this).attr('placeholder') != '' && $(this).val() == $(this).attr('placeholder')) {
@@ -694,6 +695,7 @@ $(document).ready(function(){
 			$(':text.hasPlaceholder').val('');
 		});
 	}
+	
 	/* 
 	 * aditro scrolling on first page
 	 */
