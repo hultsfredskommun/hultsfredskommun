@@ -619,8 +619,33 @@ function flipAnimation(active) {
 	});
 }
 
-
 $(document).ready(function(){
+
+	
+		function doCount() {
+			data = {action: 'hk_count', version: $("#version-2").length };
+		
+			jQuery.ajax({
+				type: 'POST',
+				url: hultsfred_object.admin_ajax_url, //"/wp/info/wp-admin/admin-ajax.php", // our PHP handler file
+				data: data,
+				dataType: 'html',
+				success:function(response){
+					log(response);
+				},
+				error:function(response){
+					log("error: " + response);
+				}
+			});
+		}
+		doCount();
+	if ($("#version-2").length <= 0) {
+		function newVersion() {
+			//alert("Det finns en ny version av hultsfred.se. Sidan kommer nu att laddas om. Om du ser denna ruta igen s&aring; tryck F5 efter att du st&auml;ngt den h&auml;r rutan.");
+			//location.reload(true);
+		}
+		setTimeout(newVersion,2000);
+	}
 	
 	var wpadminbarheight = $("#wpadminbar").height();
 		
@@ -1351,7 +1376,7 @@ function log(logtext) {
 	//Reset timer hide
 	//clearTimeout(hide);
 
-	$("#log").fadeIn("slow");
+	//$("#log").fadeIn("slow");
 	$("#log").html(logtext);
 	//Fading out in 5s.
 	//hide = setTimeout( function(){

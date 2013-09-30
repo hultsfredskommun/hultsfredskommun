@@ -39,6 +39,7 @@ function hk_theme_options_do_page() {
 			<a href="#sidfot">Sidfot</a>
 			<a href="#barntema">Barntema</a>
 			<a href="#info">Standardinställningar</a>
+			<a href="#debug">debug</a>
 			
 
 			<a name="mobil"></a>
@@ -362,6 +363,16 @@ function hk_theme_options_do_page() {
 			dag och tid (standard php date): <?php echo date("Y-m-d H:i:s"); ?><br>
 
 			
+			<a name="debug"></a>
+			<hr/><h2>DEBUG</h2>
+			<?php 
+				echo '<h2>Vilka har anslutit?</h2><table cellspacing=4 style="margin-top:24px;border: 1px solid gray;">';
+				echo "<tr><td><b>IP</b></td><td><b>Antal uppdateringar</b></td></tr>";
+				foreach ($options["count_version"] as $ip => $count) {
+					echo "<tr><td>" . $ip . "</td><td>" . $count . "</td></tr>";
+				}
+				echo '</table>';
+			?>
 			
 			<hr/><h2>Anv&auml;nds inte just nu:</h2>
 			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
@@ -395,6 +406,7 @@ function hk_theme_options_do_page() {
 			</table>
 			
 			<?php submit_button(); ?>
+
 		</form>
 	</div>
 	<script>

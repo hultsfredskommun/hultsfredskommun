@@ -398,6 +398,7 @@ function setup_javascript_settings() {
 			'google_analytics' => $hk_options['google_analytics'],
 			'google_analytics_domain' => $hk_options['google_analytics_domain'],
 			'mobile_rewrite' => $hk_options["mobile_rewrite"],
+			'admin_ajax_url' => admin_url('admin-ajax.php'),
 		);
 	wp_localize_script(
 		'hultsfred_js',
@@ -1169,4 +1170,29 @@ function debug_404_template_dump( $template ) {
     exit();
 }
 endif; // debug == true
+
+
+
+function hk_count_func(){
+	$version = $_POST["version"];
+	$hk_options = get_option('hk_theme');
+	if ($hk_options !== false) {
+		$count = $hk_options["count_version"];
+		if (!is_array($count))
+			$count = Array();
+			
+		if ($count[$version . " - " . $_SERVER['REMOTE_ADDR']] != "")
+			$count[$version . " - " . $_SERVER['REMOTE_ADDR']]++;
+		else
+			$count[$version . " - " . $_SERVER['REMOTE_ADDR']] = 1;
+		$hk_options["count_version"] = $count;
+		update_option("hk_theme",$hk_options);
+	}
+	echo "counted";
+	die();
+	
+}
+add_action('wp_ajax_hk_count', 'hk_count_func'); 
+add_action('wp_ajax_nopriv_hk_count', 'hk_count_func'); 
+
 ?>
