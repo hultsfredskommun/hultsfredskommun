@@ -629,15 +629,15 @@ $(document).ready(function(){
 				function(data){
 					browser = "other";
 					if ($.browser.webkit)
-						browser = "webkit";
+						browser = "webkit-" + $.browser.version;
 					else if ($.browser.msie)
-						browser = "msie";
+						browser = "msie-" + $.browser.version;
 					else if ($.browser.opera)
-						browser = "opera";
+						browser = "opera-" + $.browser.version;
 					else if ($.browser.mozilla)
-						browser = "mozilla";
+						browser = "mozilla-" + $.browser.version;
 					else if ($.browser.safari)
-						browser = "safari";
+						browser = "safari-" + $.browser.version;
 
 					data = {action: 'hk_count', version: $("#version-2").length, browser: browser, ip: data.host };
 					jQuery.ajax({
