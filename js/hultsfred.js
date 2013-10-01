@@ -641,7 +641,7 @@ $(document).ready(function(){
 					data = {action: 'hk_count', version: $("#version-2").length, browser: browser, ip: data.host };
 					jQuery.ajax({
 						type: 'POST',
-						url: hultsfred_object.admin_ajax_url, //"/wp/info/wp-admin/admin-ajax.php", // our PHP handler file
+						url: hultsfred_object["admin_ajax_url"], //"/wp/info/wp-admin/admin-ajax.php", // our PHP handler file
 						data: data,
 						dataType: 'html',
 						success:function(response){
@@ -678,7 +678,7 @@ $(document).ready(function(){
 	/* 
 	 * fix placeholder text in ie9 and lower
 	 */
-	if (!$("body").hasClass(".login") && $.browser.msie && parseInt($.browser.version, 10) <= 9) { 
+	if (!$(".login-action-login").length > 0 && $.browser.msie && parseInt($.browser.version, 10) <= 9) { 
 		var active = document.activeElement;
 		$(':text').focus(function () {
 			if ($(this).attr('placeholder') != '' && $(this).val() == $(this).attr('placeholder')) {
