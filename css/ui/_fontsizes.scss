@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* default settings */
 h1 {
-	margin-bottom: 0!important;
+	margin-bottom: $base-spacing-unit/4!important;
 	a {
 		@extend .default-text;
 		line-height: 1.3;
