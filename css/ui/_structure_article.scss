@@ -108,7 +108,7 @@ article.post {
 	@extend .one-whole;
 	overflow: hidden;
 	h2, h3 {
-		margin-bottom: 0;
+		margin-bottom: $half-spacing-unit/2;
 	}
 	a {
 		@extend .force-font-style-normal;
@@ -143,7 +143,7 @@ article.post {
 				@extend .margin--right;
 			}
 			h3.entry-title {
-				@extend .half-margin--bottom;
+				margin-bottom: $half-spacing-unit/2;
 			}
 			.hk_kontakter {
 				@extend .padding--bottom;

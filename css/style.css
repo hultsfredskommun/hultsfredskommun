@@ -5568,10 +5568,13 @@ html {
   overflow: hidden;
 }
 .article-wrapper h2, .article-wrapper h3 {
-  margin-bottom: 0;
+  margin-bottom: 6px;
 }
 .article-wrapper .more-content .content a {
   border-bottom: 1px dotted #5c85b1;
+}
+.article-wrapper .content-wrapper .contact-area h3.entry-title {
+  margin-bottom: 6px;
 }
 @media only screen and (min-width: 970px) {
   .article-wrapper .side-content {
@@ -6129,7 +6132,7 @@ html {
   margin-left: 0.8rem;
 }
 
-.half-margin--bottom, .read-more-link, .sub-title, .main .widget .entry-wrapper, .page-header, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area h3.entry-title, .side-content .title {
+.half-margin--bottom, .read-more-link, .sub-title, .main .widget .entry-wrapper, .page-header, .article-wrapper .content-wrapper, .side-content .title {
   margin-bottom: 12px;
   margin-bottom: 0.8rem;
 }
