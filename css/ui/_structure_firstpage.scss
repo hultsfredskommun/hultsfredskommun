@@ -45,7 +45,7 @@
 	@extend .half-margin--left;
 	@extend .half-margin--bottom;
 	@extend .zeta;
-	margin-top: -12px;
+	margin-top: -6px;
 	
 }
 
@@ -110,6 +110,9 @@
 		@extend .float--left;
 		@extend .one-whole;
 		@extend .alpha;
+		.info-icon {
+			vertical-align: top;
+		}
 	}
 	.sub-title {
 		@extend .float--left;
