@@ -199,33 +199,35 @@ function hk_get_contact_by_id($contact_id, $args) {
 	if (empty($contact_id)) {
 		return "<div class='contact-area'>Hittade ingen kontakt.</div>";
 	}
-	// query arguments
-	$query_args = array(
-		'posts_per_page' => -1,
-		'paged' => 1,
-		'more' => $more = 0,
-		'post__in' => preg_split("/[\s,]+/",$contact_id,NULL,PREG_SPLIT_NO_EMPTY),
-		'post_type' => 'hk_kontakter',
-		'order' => 'ASC', 
-		'suppress_filters' => 1
-	);
-
-	// search in all posts (ignore filters)
-	$the_query = new WP_Query( $query_args );
 	$retValue = "";
+	
+	foreach (preg_split("/[\s,]+/",$contact_id,NULL,PREG_SPLIT_NO_EMPTY) as $c_id) {
 
-	// The Loop
-	if ( $the_query->have_posts() ) :
-		while ( $the_query->have_posts() ) : $the_query->the_post();
-			$retValue .= "<div class='contact-area'>";
-			$retValue .= hk_get_the_contact($args);
-			$retValue .= "</div>";
-		endwhile;
-	endif;
+		// query arguments
+		$query_args = array(
+			'posts_per_page' => -1,
+			'paged' => 1,
+			'more' => $more = 0,
+			'post__in' => array($c_id),
+			'post_type' => 'hk_kontakter',
+			'suppress_filters' => 1
+		);
 
+		// search in all posts (ignore filters)
+		$the_query = new WP_Query( $query_args );
+
+		// The Loop
+		if ( $the_query->have_posts() ) :
+			while ( $the_query->have_posts() ) : $the_query->the_post();
+				$retValue .= "<div class='contact-area'>";
+				$retValue .= hk_get_the_contact($args);
+				$retValue .= "</div>";
+			endwhile;
+		endif;
+		wp_reset_postdata();
+		wp_reset_query();
+	}
 	// Reset Post Data
-	wp_reset_postdata();
-	wp_reset_query();
 	$post = $org_post;
 
 	return $retValue;
