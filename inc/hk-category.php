@@ -66,7 +66,14 @@
 	<?php endif; // end if !is_sub_category_firstpage ?>
 
 	<div id="primary" class="primary">
+	<?php 
+		/* display slideshow */
+		$vars = array();
+		$vars['thumbnail-size'] = 'wide-image';
+		$vars['posts_per_page'] = '-1';
 
+		echo hk_slideshow_generate_output($vars);
+	?>
 	<div id="content" role="main">
 
 	<?php if ($wp_query->post_count > 1 || $wp_query->max_num_pages > 1) : ?>
