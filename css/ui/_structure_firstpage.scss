@@ -201,14 +201,7 @@
 .home .img-wrapper .slideshow {
 	@extend .force-hidden--palm;
 }
-.home .firstpage-top-content .HK_tags_widget {
-	border-radius: 0 0 $border-radius $border-radius;
-	margin-bottom: $base-spacing-unit*1.5;
 
-	ul {
-		padding-right: $base-spacing-unit;
-	}
-}
 
 /* slideshow/contact/puff widget on first page */
 .home .slideshow-contact-puff-area {
@@ -446,6 +439,21 @@
 .main .widget.widget_hk_related_widget {
 	ul {
 		padding-bottom: $half-spacing-unit/2!important;
+	}
+}
+
+.home .main .firstpage-top-content .widget.HK_tags_widget {
+	@extend .gray-background;
+	a {
+		@extend .black-text;
+	}
+	h1 {
+		@extend .black-text;
+	}
+	border-radius: 0 0 $border-radius $border-radius;
+	margin-bottom: $base-spacing-unit*1.5;
+	ul {
+		padding-right: $base-spacing-unit;
 	}
 }
 .main .widget.widget_hk_aditro_rss_widget,
