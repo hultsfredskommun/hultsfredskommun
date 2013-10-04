@@ -1,10 +1,11 @@
-	<?php /* if is sub start page */ 
+	<?php 
+		/*
+		 * if not is sub start page 
+		 */ 
 
-	
-	?>
-
-
-	<?php if (!is_sub_category_firstpage()) :
+		global $default_settings;
+		
+		if (!is_sub_category_firstpage()) :
 			if ($cat != "") : 
 				/* check if there are posts to be hidden */
 				$args = array(	'posts_per_page' => -1,
@@ -108,10 +109,12 @@
 
 			<ul class="category-tools">
 				<?php $related_output = hk_related_output(true); ?>
+				<?php if ($default_settings["show_tags"] != 0) : ?>
 				<li class="tag-menu cat-item<?php echo ($related_output == "")?" rounded":""; ?>">
 					<a href="#">Visa bara<span class="dropdown-icon"></span></a>
 					<?php displayTagFilter(false, true, "sub-menu"); ?>
 				</li>
+				<?php endif; ?>
 				<?php echo $related_output;	?>
 			</ul>
 			<ul class="view-tools">
