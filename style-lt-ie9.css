@@ -113,8 +113,11 @@
 .summary-content {
 	width: 550px;
 }
+#ie7 .primary {
+	width: 882px;
+}
 .primary {
-	width: 897px;
+	width: 945px;
 }
 
 /* Firstpage content right */
@@ -188,6 +191,9 @@
 	padding-bottom: 12px;
 }
 /* Side content Right */
+#ie7 .article-wrapper .side-content {
+	width: 224px;
+}
 .article-wrapper .side-content {
 	margin-top: 12px;
 	margin-left: 15px;

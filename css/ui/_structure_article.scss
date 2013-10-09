@@ -100,7 +100,7 @@ article.post {
 	@extend .gamma;
 }
 .full .hide_full {
-	display: none;
+	display: none!important;
 }
 .article-wrapper {
 	@extend .float--left;
@@ -362,6 +362,9 @@ article.single .map_canvas {
 			@extend .float--left;
 			@extend .half-margin--left;
 		}
+	}
+	.more-contacts {
+		@extend .one-whole;
 	}
 }
 article.summary .full {

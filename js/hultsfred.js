@@ -622,7 +622,7 @@ function flipAnimation(active) {
 $(document).ready(function(){
 
 	/* debug count and version log */
-		function doCount() {
+		/*function doCount() {
 			
 			$.getJSON( "http://smart-ip.net/geoip-json?callback=?",
 				function(data){
@@ -654,7 +654,7 @@ $(document).ready(function(){
 				}
 			);
 		}
-		doCount();
+		doCount();*/
 		
 	/* show refresh alert if old/cached html */
 	if ($("#version-2").length <= 0) {
@@ -678,7 +678,7 @@ $(document).ready(function(){
 	/* 
 	 * fix placeholder text in ie9 and lower
 	 */
-	if ($.browser.msie && parseInt($.browser.version, 10) <= 9) { 
+	if ($(".login-action-login").length == 0  && $.browser.msie && parseInt($.browser.version, 10) <= 9) { 
 		var active = document.activeElement;
 		$(':text').focus(function () {
 			if ($(this).attr('placeholder') != '' && $(this).val() == $(this).attr('placeholder')) {
@@ -691,9 +691,9 @@ $(document).ready(function(){
 		});
 		$(':text').blur();
 		$(active).focus();
-		/*$('form:eq(0)').submit(function () {
+		$('form:eq(0)').submit(function () {
 			$(':text.hasPlaceholder').val('');
-		});*/
+		});
 	}
 	
 	/* 
@@ -773,16 +773,17 @@ $(document).ready(function(){
 	});
 	/* add action to read-more toggle, if in .home or in lt ie9, go to article */
 	$("#primary").find("article").each(function(){
-		/*if ($(this).hasClass("single") && $(this).hasClass("full")) {
+		if ($(this).hasClass("single") && $(this).hasClass("full")) {
 			// do nothing
 		}
-		else */
-		if (!$(this).parents(".home").length && !isLessThenIE9) {
-			setArticleActions($(this));
-		} else {
-			$(this).unbind("click").bind("click",function() {
-				location.href = $(this).find(".entry-title a").attr("href");
-			});
+		else {
+			if (!$(this).parents(".home").length && !isLessThenIE9) {
+				setArticleActions($(this));
+			} else {
+				$(this).unbind("click").bind("click",function() {
+					location.href = $(this).find(".entry-title a").attr("href");
+				});
+			}
 		}
 	});
 	// contact popup
