@@ -160,6 +160,8 @@ if(function_exists("register_field_group"))
 								'choices' => array (
 									'Blanketter' => 'Blanketter',
 									'Se även' => 'Se även',
+									'styrdokument' => 'Styrdokument',
+									'taxor-och-avgifter' => 'Taxor & avgifter',
 								),
 								'default_value' => '',
 								'key' => 'field_51c2c40ba83ff',
