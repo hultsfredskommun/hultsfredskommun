@@ -803,6 +803,10 @@ $(document).ready(function(){
 	if ($('.slideshow-contact-puff-area').find('.slide').length == 0 && $('.slideshow-contact-puff-area').find('.contact-puffs').length > 0){
 		$('.slideshow-contact-puff-area').height($('.slideshow-contact-puff-area').width() * 326 / 1138);
 	}
+	if ($('.slideshow-contact-puff-area').find('.slide').length >= 1 && $('.slideshow-contact-puff-area').find('.contact-puffs').length > 0){
+		$('.slideshow-contact-puff-area').height($('.slideshow-contact-puff-area').width() * 326 / 1138);
+		$('.slideshow-contact-puff-area').find(".slide").width($('.slideshow-contact-puff-area').width()).height($('.slideshow-contact-puff-area').width() * 326 / 1138);
+	}
 
 	
 	/* init google maps on ready */

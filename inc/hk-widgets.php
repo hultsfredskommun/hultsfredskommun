@@ -1422,6 +1422,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		$category_in = array();
 		if (get_query_var("cat") != "") {
 
+							
+			$retValue .= "<aside class='contact-puffs  widget'>";
+			
 			// query arguments
 			$args = array(
 				'posts_per_page' => -1,
@@ -1437,123 +1440,124 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 			// search in all posts (ignore filters)
 			$the_query = new WP_Query( $args );
 
-			if ($the_query->have_posts())
-			{ 
+			$retValue .= "<div class='contact-wrapper  content-wrapper'>";
+			
+			$rightcontent = false;
+			if (($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") ||
+				($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") ||
+				($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "") ||
+				($instance['direct_link4_url'] != "" && $instance['direct_link4_title'] != "") ||
+				($instance['direct_link5_url'] != "" && $instance['direct_link5_title'] != "")
+				) :
+				$rightcontent = true;
+				$halfcss = "two";
+			endif;
+
+			// show first contact
+			if ( !$the_query->have_posts() ) : 
+				$retValue .= "<div class='left-content  hide  $halfcss'></div>";
+			else :
+				// if contact exist
+				$the_query->the_post();
 				
-				$retValue .= "<aside class='contact-puffs  widget'>";
-				$retValue .= "<div class='contact-wrapper  content-wrapper'>";
-					
-				// show first contact
-				if ( $the_query->have_posts() ) : $the_query->the_post();
-					
-					$rightcontent = false;
-					if (($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") ||
-						($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") ||
-						($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "") ||
-						($instance['direct_link4_url'] != "" && $instance['direct_link4_title'] != "") ||
-						($instance['direct_link5_url'] != "" && $instance['direct_link5_title'] != "")
-						) :
-						$rightcontent = true;
-						$halfcss = "two";
-					endif;
-					
-					$retValue .= "<div class='left-content  $halfcss'>";
+				
+				$retValue .= "<div class='left-content  $halfcss'>";
 
-					// add link and title
-					$retValue .= "<h1 class='entry-title'>";
-					$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>"; 
-					$retValue .= "<span class='main-contact-link'>" . get_the_title() . "";
-					$retValue .= "<span class='more-contact-link'>fler kontaktuppgifter</span></span></a></h1>"; 
-					
-					$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
-					
-					$retValue .= "<ul>";
-					// email
-					if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
-						$retValue .= "<li class='hk_contact_emails'><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></li>";
-					endwhile; endif;
+				// add link and title
+				$retValue .= "<h1 class='entry-title'>";
+				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>"; 
+				$retValue .= "<span class='main-contact-link'>" . get_the_title() . "";
+				$retValue .= "<span class='more-contact-link'>fler kontaktuppgifter</span></span></a></h1>"; 
+				
+				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
+				
+				$retValue .= "<ul>";
+				// email
+				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
+					$retValue .= "<li class='hk_contact_emails'><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></li>";
+				endwhile; endif;
 
-					// phone
-					if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
-						$number = get_sub_field('number');
-						$link = explode('[',$number,2);
-						if (count($link) > 0) {
-							$link = str_replace(" ","",$link[0]);
-						} else {
-							$link = $number;
-						}
-						$number = str_replace("[","<span class='complement-italic-text'>(", $number);
-						$number = str_replace("]",")</span>", $number);
-
-						$retValue .= "<li class='hk_contact_phones'><a href='tel:$link'>";
-						$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
-						$retValue .= $number . "</a></li>";
-					endwhile; endif;
-					if (isset($instance['contacttext']) && $options["startpage_cat"] == $cat) {
-						foreach(split("\n",$instance['contacttext']) as $contacttext) {
-							$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'>" . $contacttext . "</a></li>";
-						}
+				// phone
+				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
+					$number = get_sub_field('number');
+					$link = explode('[',$number,2);
+					if (count($link) > 0) {
+						$link = str_replace(" ","",$link[0]);
+					} else {
+						$link = $number;
 					}
+					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
+					$number = str_replace("]",")</span>", $number);
 
+					$retValue .= "<li class='hk_contact_phones'><a href='tel:$link'>";
+					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
+					$retValue .= $number . "</a></li>";
+				endwhile; endif;
+				if (isset($instance['contacttext']) && $options["startpage_cat"] == $cat) {
+					foreach(split("\n",$instance['contacttext']) as $contacttext) {
+						$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'>" . $contacttext . "</a></li>";
+					}
+				}
+				$retValue .= "</ul></div>";
+			endif; // endif contact exist
 
-					$retValue .= "</ul></div>";
-					if ($rightcontent) :
+			if ($rightcontent) :
 
-						$retValue .= "<div class='right-content  $halfcss'>";
+				$retValue .= "<div class='right-content  $halfcss'>";
 
-						if ($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") :
-							$retValue .= "<div class='direct_link direct_link1' style='height: $direct_link1_height%;background-color: $direct_link1_bg;'>";
-							$retValue .= "<a style='color: $direct_link1_color' href='" . $instance['direct_link1_url'] . "'>";
-							if ($instance['direct_link1_icon'] != "") : $retValue .= $instance['direct_link1_icon']; endif;
-							$title = $instance['direct_link1_title'];
-							$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-							$title = str_replace("]",")</span>", $title);
-							$retValue .= $title . "</a></div>";
-						endif;
-						if ($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") :
-							$retValue .= "<div class='direct_link direct_link2' style='height: $direct_link2_height%;background-color: $direct_link2_bg;'>";
-							$retValue .= "<a style='color: $direct_link2_color' href='" . $instance['direct_link2_url'] . "'>";
-							if ($instance['direct_link2_icon'] != "") : $retValue .=  $instance['direct_link2_icon']; endif;
-							$title = $instance['direct_link2_title'];
-							$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-							$title = str_replace("]",")</span>", $title);
-							$retValue .= $title . "</a></div>";
-						endif;
-						if ($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "") :
-							$retValue .= "<div class='direct_link direct_link3' style='height: $direct_link3_height%;background-color: $direct_link3_bg;'>";
-							$retValue .= "<a style='color: $direct_link3_color' href='" . $instance['direct_link3_url'] . "'>";
-							if ($instance['direct_link3_icon'] != "") : $retValue .= $instance['direct_link3_icon']; endif;
-							$title = $instance['direct_link3_title'];
-							$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-							$title = str_replace("]",")</span>", $title);
-							$retValue .= $title . "</a></div>";
-						endif;
-						if ($instance['direct_link4_url'] != "" && $instance['direct_link4_title'] != "") :
-							$retValue .= "<div class='direct_link direct_link4' style='height: $direct_link4_height%;background-color: $direct_link4_bg;'>";
-							$retValue .= "<a style='color: $direct_link4_color' href='" . $instance['direct_link4_url'] . "'>";
-							if ($instance['direct_link4_icon'] != "") : $retValue .= $instance['direct_link4_icon']; endif;
-							$title = $instance['direct_link4_title'];
-							$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-							$title = str_replace("]",")</span>", $title);
-							$retValue .= $title . "</a></div>";
-						endif;
-						if ($instance['direct_link5_url'] != "" && $instance['direct_link5_title'] != "") :
-							$retValue .= "<div class='direct_link direct_link5' style='height: $direct_link5_height%;background-color: $direct_link5_bg;'>";
-							$retValue .= "<a style='color: $direct_link5_color' href='" . $instance['direct_link5_url'] . "'>";
-							if ($instance['direct_link5_icon'] != "") : $retValue .= $instance['direct_link5_icon']; endif;
-							$title = $instance['direct_link5_title'];
-							$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-							$title = str_replace("]",")</span>", $title);
-							$retValue .= $title . "</a></div>";
-						endif;
-					
-					
-						$retValue .= "</div>";
-					endif;
+				if ($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") :
+					$retValue .= "<div class='direct_link direct_link1' style='height: $direct_link1_height%;background-color: $direct_link1_bg;'>";
+					$retValue .= "<a style='color: $direct_link1_color' href='" . $instance['direct_link1_url'] . "'>";
+					if ($instance['direct_link1_icon'] != "") : $retValue .= $instance['direct_link1_icon']; endif;
+					$title = $instance['direct_link1_title'];
+					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+					$title = str_replace("]",")</span>", $title);
+					$retValue .= $title . "</a></div>";
 				endif;
-				
-				$retValue .= "</div></aside>";
-			}
+				if ($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") :
+					$retValue .= "<div class='direct_link direct_link2' style='height: $direct_link2_height%;background-color: $direct_link2_bg;'>";
+					$retValue .= "<a style='color: $direct_link2_color' href='" . $instance['direct_link2_url'] . "'>";
+					if ($instance['direct_link2_icon'] != "") : $retValue .=  $instance['direct_link2_icon']; endif;
+					$title = $instance['direct_link2_title'];
+					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+					$title = str_replace("]",")</span>", $title);
+					$retValue .= $title . "</a></div>";
+				endif;
+				if ($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "") :
+					$retValue .= "<div class='direct_link direct_link3' style='height: $direct_link3_height%;background-color: $direct_link3_bg;'>";
+					$retValue .= "<a style='color: $direct_link3_color' href='" . $instance['direct_link3_url'] . "'>";
+					if ($instance['direct_link3_icon'] != "") : $retValue .= $instance['direct_link3_icon']; endif;
+					$title = $instance['direct_link3_title'];
+					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+					$title = str_replace("]",")</span>", $title);
+					$retValue .= $title . "</a></div>";
+				endif;
+				if ($instance['direct_link4_url'] != "" && $instance['direct_link4_title'] != "") :
+					$retValue .= "<div class='direct_link direct_link4' style='height: $direct_link4_height%;background-color: $direct_link4_bg;'>";
+					$retValue .= "<a style='color: $direct_link4_color' href='" . $instance['direct_link4_url'] . "'>";
+					if ($instance['direct_link4_icon'] != "") : $retValue .= $instance['direct_link4_icon']; endif;
+					$title = $instance['direct_link4_title'];
+					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+					$title = str_replace("]",")</span>", $title);
+					$retValue .= $title . "</a></div>";
+				endif;
+				if ($instance['direct_link5_url'] != "" && $instance['direct_link5_title'] != "") :
+					$retValue .= "<div class='direct_link direct_link5' style='height: $direct_link5_height%;background-color: $direct_link5_bg;'>";
+					$retValue .= "<a style='color: $direct_link5_color' href='" . $instance['direct_link5_url'] . "'>";
+					if ($instance['direct_link5_icon'] != "") : $retValue .= $instance['direct_link5_icon']; endif;
+					$title = $instance['direct_link5_title'];
+					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+					$title = str_replace("]",")</span>", $title);
+					$retValue .= $title . "</a></div>";
+				endif;
+			
+			
+				$retValue .= "</div>";
+			
+			endif;
+			
+			$retValue .= "</div></aside>";
+			
 			$retValue .= "</div>";
 			// Reset Post Data
 			wp_reset_postdata();
