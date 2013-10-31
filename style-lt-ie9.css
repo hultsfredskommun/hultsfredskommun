@@ -113,6 +113,10 @@
 .summary-content {
 	width: 550px;
 }
+.box-list .summary-content {
+	width: 264px;
+}
+
 #ie7 .primary {
 	width: 882px;
 }
