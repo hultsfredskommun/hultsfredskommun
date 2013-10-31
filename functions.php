@@ -398,7 +398,7 @@ function setup_javascript_settings() {
 			'google_analytics' => $hk_options['google_analytics'],
 			'google_analytics_domain' => $hk_options['google_analytics_domain'],
 			'mobile_rewrite' => $hk_options["mobile_rewrite"],
-			'admin_ajax_url' => admin_url('admin-ajax.php'),
+			'admin_ajax_url' => str_replace("https://","http://",admin_url('admin-ajax.php')),
 		);
 	wp_localize_script(
 		'hultsfred_js',

@@ -5291,6 +5291,7 @@ html {
 /* slideshow/contact/puff widget on first page */
 .home .slideshow-contact-puff-area {
   line-height: 0;
+  margin-bottom: 6px;
   overflow: hidden;
 }
 @media only screen and (max-width: 540px) {
@@ -5298,15 +5299,10 @@ html {
     height: 266px !important;
   }
 }
-.home .slideshow-contact-puff-area .widget,
-.home .slideshow-contact-puff-area .slideshow {
-  margin-bottom: 6px;
-}
 .home .slideshow-contact-puff-area img {
   border-radius: 3px 3px 0 0;
 }
 .home .slideshow-contact-puff-area .content-wrapper {
-  padding-bottom: 6px;
   opacity: 0.9;
   z-index: 200;
   height: 100%;
