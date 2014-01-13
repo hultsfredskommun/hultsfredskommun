@@ -966,6 +966,10 @@ $(document).ready(function(){
 					t_ajaxsearch = setTimeout(ajaxsearch,600);
 					
 					function ajaxsearch() {
+					
+						// push to analytics
+						push_google_analytics("#search=" + $(this).attr("href"));
+	
 						if (!$(".searchresult-wrapper")[0]) 
 						{ 
 							$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'></div></div>"); 
@@ -981,8 +985,6 @@ $(document).ready(function(){
 							var first_index = 0;   var last_index = $('.searchresult li a').length-1;
 
 							var first_link = $(link_objects).first();  var last_link = $(link_objects).last();
-
-
 
 							var clearbutton = $('.clearbutton'); 
 
@@ -1025,7 +1027,6 @@ $(document).ready(function(){
 
 											var prev_index = index-1;
 
-
 											if(prev_index <= first_index) 
 											{ 
 												$('#s').focus(); 
@@ -1049,7 +1050,6 @@ $(document).ready(function(){
 								});
 
 							});
-
 						}); 
 						 //$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sök #content", function() { 
 						 // $(this).find('.readMoreToggleButton').each( function(){ 
