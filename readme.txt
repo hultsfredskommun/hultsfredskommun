@@ -36,6 +36,7 @@
  * Right-top-menu-item
 * hk_pre_search, hk_post_search, hk_pre_ajax_search and hk_post_ajax_search action hooks to add extra search in child theme
 * include_tag, ignore_cat and ignore_tag added as html get variable, i.e. http://yourdomain/category/the_category/?ignore_cat=12 to ignore the category with id 12
+* Contact Form 7 support
 
 === Recommended widget setup ===
 * Startsida toppinnehåll
@@ -70,6 +71,7 @@ MCE Table Buttons to add table buttons to editor.
 wpDirAuth by Paul Gilzow to get AD-intagrated login.
 Adritrorecruit by Jonas Hjalmarsson to get available jobs from adritrorecruit.com
 CBIS widget by Jonas Hjalmarsson to get CBIS search widgets
+Contact Form 7 by Takayuki Miyoshi to get forms
 
 === Handy tools ===
 Simple Image Size by Rahe to handle thumbnail regeneration when needed.

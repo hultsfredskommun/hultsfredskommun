@@ -379,6 +379,7 @@ function readMoreToggle(el){
 	if ($(article).hasClass("single")) {
 		return false;
 	}
+		
 	if ($(article).find(".js-external-link").length > 0) {
 		location.href = $(article).find(".js-external-link").attr("href");
 		return false;
@@ -524,6 +525,13 @@ function readMoreToggle(el){
 				});	
 			}
 			
+			// contact form 7
+			if ( $('div.wpcf7 > form').length > 0 ) {
+				if ( typeof $('div.wpcf7 > form').wpcf7InitForm == 'function' ) {
+					$('div.wpcf7 > form').wpcf7InitForm();
+				}
+			}
+
 			// google analytics
 			$(this).parents("article").find(".entry-title a").push_google_analytics();
 			
