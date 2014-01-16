@@ -656,7 +656,9 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 					$src = str_replace("http://" . $_SERVER['SERVER_NAME'], "", $src);
 					$retValue .= "<div class='slide' $style>";
 					$retValue .= "<img src='$src' alt='$alt' />";
-					$retValue .= "<span class='caption'>$caption</span>";
+					if ($caption != "") {
+						$retValue .= "<span class='image-caption'>$caption</span>";
+					}
 					$retValue .= "</div>";
 					$countSlides++;
 				}

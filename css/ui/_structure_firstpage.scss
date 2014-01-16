@@ -157,7 +157,7 @@
 .img-wrapper {
 	line-height: 0;
 }
-.summary-content .caption {
+.summary-content .image-caption {
 	@extend .hidden;
 }
 .slideshow {
@@ -170,7 +170,7 @@
 			@extend .one-whole;
 			border-right: 1px solid white;
 		}
-		.caption {
+		.image-caption {
 			@extend .border-radius;
 			@extend .float--left;
 			@extend .gray-light-background;

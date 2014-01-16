@@ -1171,7 +1171,7 @@ h4, .delta {
   line-height: 1.41176;
 }
 
-h5, .epsilon, .widget, .slideshow .slide .caption, .main-menu {
+h5, .epsilon, .widget, .slideshow .slide .image-caption, .main-menu {
   font-size: 16px;
   font-size: 1.06667rem;
   line-height: 1.5;
@@ -4518,7 +4518,7 @@ html.flexbox {
   float: right !important;
 }
 
-.float--left, .alignleft, .icon-left, .box-list.newscontent .post, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .sub-title, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .caption, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget h1,
+.float--left, .alignleft, .icon-left, .box-list.newscontent .post, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .sub-title, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .image-caption, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget h1,
 .main .widget.horizontal-list.HK_tags_widget h1, .help-navigation, .page-header .num-posts, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
 .single .img-wrapper, .side-content .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
@@ -4799,7 +4799,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .home .contact-area .contact-wrapper, .footer-wrapper.footer-widget-wrapper, .button, .slideshow .slide .caption, .page-header, .searchnavigation .form .input-wrapper, .responsive-sub-menu, .main-sub-menu, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
+.gray-light-background, .gray-image-background, .home .contact-area .contact-wrapper, .footer-wrapper.footer-widget-wrapper, .button, .slideshow .slide .image-caption, .page-header, .searchnavigation .form .input-wrapper, .responsive-sub-menu, .main-sub-menu, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover {
   background-color: #e5e6e7;
 }
@@ -4896,7 +4896,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: transparent;
 }
 
-.border-radius, .button, img, .widget_hk_wp_feed_rss_widget.widget, .slideshow .slide .caption, .slideshow .slide .caption-area .transparent, .main .widget.widget_hk_textwidget .inner-wrapper, .main .widget.widget_hk_aditro_rss_widget,
+.border-radius, .button, img, .widget_hk_wp_feed_rss_widget.widget, .slideshow .slide .image-caption, .slideshow .slide .caption-area .transparent, .main .widget.widget_hk_textwidget .inner-wrapper, .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,
 .main .widget.HK_tags_widget, .page-header, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .side-content .title, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
@@ -5014,7 +5014,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.5;
   }
 
-  h5, body, .epsilon, .widget, .slideshow .slide .caption, .main-menu {
+  h5, body, .epsilon, .widget, .slideshow .slide .image-caption, .main-menu {
     font-size: 14px;
     font-size: 0.93333rem;
     line-height: 1.71429;
@@ -5270,7 +5270,7 @@ html {
 .slideshow .slide img {
   border-right: 1px solid white;
 }
-.slideshow .slide .caption {
+.slideshow .slide .image-caption {
   display: block;
   margin: 0 12px 12px 0;
   padding: 0 12px 0;
@@ -6073,7 +6073,7 @@ html {
   left: 0;
 }
 
-.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .slideshow .slide .caption, .position-absolute--bottom-left, .pager, .contact-popup.box .close-contact {
+.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .slideshow .slide .image-caption, .position-absolute--bottom-left, .pager, .contact-popup.box .close-contact {
   position: absolute;
 }
 
@@ -6087,7 +6087,7 @@ html {
   right: 0;
 }
 
-.position-absolute--bottom-right, .slideshow .slide .caption {
+.position-absolute--bottom-right, .slideshow .slide .image-caption {
   bottom: 0;
   right: 0;
 }
@@ -6661,7 +6661,7 @@ html {
   left: 0;
 }
 
-.hidden, #responsive-info, .summary-content .caption, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
+.hidden, #responsive-info, .summary-content .image-caption, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
   display: none;
 }
 
