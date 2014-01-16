@@ -642,6 +642,8 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 			$src = $image["sizes"][$thumbsize];
 			$title = $image["title"];
 			$alt = $image["alt"];
+			$caption = $image["caption"];
+			
 			if ($alt == "") {
 				$alt = $title;
 			}
@@ -652,7 +654,10 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 						$style = "style='display: none;'";
 					}
 					$src = str_replace("http://" . $_SERVER['SERVER_NAME'], "", $src);
-					$retValue .= "<img class='slide' $style src='$src' alt='$alt' title='$alt' />";
+					$retValue .= "<div class='slide' $style>";
+					$retValue .= "<img src='$src' alt='$alt' />";
+					$retValue .= "<span class='caption'>$caption</span>";
+					$retValue .= "</div>";
 					$countSlides++;
 				}
 			}

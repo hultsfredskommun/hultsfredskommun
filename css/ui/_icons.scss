@@ -1,3 +1,15 @@
+.spinner {
+	display: none;
+	background: url(../images/icons/spinner.gif) no-repeat;
+	background-size: 20px 20px;
+	opacity: .7;
+	filter: alpha(opacity=70);
+	width: 20px;
+	height: 20px;
+	margin: 2px 5px 0;
+	vertical-align: top;
+}
+
 .clip {
 	background-image: url("../images/icons/ikoner.svg");
 	display: inline-block;

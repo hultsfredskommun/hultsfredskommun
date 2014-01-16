@@ -157,6 +157,9 @@
 .img-wrapper {
 	line-height: 0;
 }
+.summary-content .caption {
+	@extend .hidden;
+}
 .slideshow {
 	@extend .margin--bottom;
 	.slideshow_bg {
@@ -166,6 +169,18 @@
 		img {
 			@extend .one-whole;
 			border-right: 1px solid white;
+		}
+		.caption {
+			@extend .border-radius;
+			@extend .float--left;
+			@extend .gray-light-background;
+			@extend .position-absolute--bottom-right;
+			@extend .epsilon;
+			display: block;
+			margin: 0 $half-spacing-unit $half-spacing-unit 0;
+			padding: 0 $half-spacing-unit 0;
+			z-index: 1000;
+			
 		}
 		.caption-area {
 			@extend .float--left;

@@ -51,7 +51,7 @@ $classes .= ($external_blog)?" externalblog":"";
 						}
 					}
 					?>
-					<h1 class="entry-title"><a class="<?php echo $externalclass.$jstoggle; ?>" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+					<h1 class="entry-title"><a class="<?php echo $externalclass.$jstoggle; ?>" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a><span class="spinner"></span></h1>
 					<div class="entry-content">
 						<?php the_excerpt(); ?>
 					</div>

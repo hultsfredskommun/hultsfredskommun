@@ -22,6 +22,10 @@ article.post {
 	@extend .half-padding--left;
 }
 
+.muted .spinner {
+	display: inline-block;
+}
+
 .full .article-border-wrapper {
 	@extend .border-light--right;
 	@extend .border-light--left;
