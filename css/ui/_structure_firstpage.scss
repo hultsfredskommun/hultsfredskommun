@@ -166,6 +166,7 @@
 		@extend .one-whole;
 	}
 	.slide {
+		position: relative;
 		img {
 			@extend .one-whole;
 			border-right: 1px solid white;

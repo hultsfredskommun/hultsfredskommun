@@ -5267,6 +5267,9 @@ html {
   line-height: 0;
 }
 
+.slideshow .slide {
+  position: relative;
+}
 .slideshow .slide img {
   border-right: 1px solid white;
 }
