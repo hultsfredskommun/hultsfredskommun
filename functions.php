@@ -642,7 +642,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 			$src = $image["sizes"][$thumbsize];
 			$title = $image["title"];
 			$alt = $image["alt"];
-			$caption = $image["caption"];
+			$caption = get_field("source",$image["id"]);
 			
 			if ($alt == "") {
 				$alt = $title;
