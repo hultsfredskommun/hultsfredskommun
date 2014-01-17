@@ -299,7 +299,7 @@ article.single .map_canvas {
 	@extend .float--left;
 	@extend .one-whole;
 }
-.slide {
+.slide, .slide img {
 	@extend .one-whole;
 }
 .pager {
