@@ -1171,13 +1171,13 @@ h4, .delta {
   line-height: 1.41176;
 }
 
-h5, .epsilon, .widget, .slideshow .slide .image-caption, .main-menu {
+h5, .epsilon, .widget, .main-menu {
   font-size: 16px;
   font-size: 1.06667rem;
   line-height: 1.5;
 }
 
-h6, .zeta, .time, .sub-title, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
+h6, .zeta, .time, .sub-title, .slideshow .slide .image-caption, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
 .main .widget.widget_hk_related_widget .subtitle,
 .main .widget.widget_hk_protocol .subtitle,
 .main .widget.HK_tags_widget .subtitle, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .button.top, .button.bottom, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
@@ -5014,13 +5014,13 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.5;
   }
 
-  h5, body, .epsilon, .widget, .slideshow .slide .image-caption, .main-menu {
+  h5, body, .epsilon, .widget, .main-menu {
     font-size: 14px;
     font-size: 0.93333rem;
     line-height: 1.71429;
   }
 
-  h6, .zeta, .time, .sub-title, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
+  h6, .zeta, .time, .sub-title, .slideshow .slide .image-caption, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
   .main .widget.widget_hk_related_widget .subtitle,
   .main .widget.widget_hk_protocol .subtitle,
   .main .widget.HK_tags_widget .subtitle, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .button.top, .button.bottom, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
