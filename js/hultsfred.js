@@ -926,7 +926,8 @@ $(document).ready(function(){
 		}
 	});
 	$('#s').keyup(function(event) { 
-		if( $(window).width()+scrollbar > responsive_lap_start ){
+		if (true) {
+		//if( $(window).width()+scrollbar > responsive_lap_start ){
 			select = false; 
 			// do ajax search 
 
@@ -980,17 +981,26 @@ $(document).ready(function(){
 	
 						if (!$(".searchresult-wrapper")[0]) 
 						{ 
-							$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'></div></div>"); 
+							$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'><div class='ajaxresults'></div><div class='gcresults-wrapper'><span class='search-title'>S&ouml;kning p&aring; alla v&aring;ra webbplatser</span><div id='gcresults' class='gcresults'></div></div></div></div>"); 
 						} 
 						searchstring = $("#s").val(); 
 						
-						$(".searchresult-wrapper .searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
+						// google search
+						  if (document.readyState != 'complete')
+							return google.setOnLoadCallback(gcseCallback, true);
+						  google.search.cse.element.render({gname:'gsearch', div:'gcresults', tag:'searchresults-only', attributes:{linkTarget:''}});
+						  var element = google.search.cse.element.getElement('gsearch');
+						  element.execute(searchstring);
+
+						
+						$(".searchresult-wrapper .searchresult .ajaxresults").html("H&auml;mtar s&ouml;kresultat...");
+						$(".searchresult-wrapper .searchresult .ajaxresults").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
 						{ searchstring: searchstring }, 
 						function() { 
 
-							var link_objects = $('.searchresult li a');
+							var link_objects = $('.ajaxresults li a');
 
-							var first_index = 0;   var last_index = $('.searchresult li a').length-1;
+							var first_index = 0;   var last_index = $('.ajaxresults li a').length-1;
 
 							var first_link = $(link_objects).first();  var last_link = $(link_objects).last();
 
