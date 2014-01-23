@@ -158,6 +158,43 @@
 	}
 
 }
+/* google site search */
+.hk-gcse-wrapper {
+	.hk-gcse-results {
+		@extend .two-thirds;
+		@extend .float--left;
+	}
+	.hk-gcse-hooks {
+		@extend .one-third;
+		@extend .float--left;
+	}
+}
+.gsc-input {
+	padding-left: 12px;
+}
+.gsc-search-box {
+	td {
+		padding: 0 0 26px;
+	}
+}
+.gsc-control-cse {
+	padding: 0;
+}
+.gsc-table-result, 
+.gsc-thumbnail-inside, 
+.gsc-url-top {
+	padding-left: 0px!important;
+}
+.gsc-above-wrapper-area-container,
+.gsc-table-result {
+	margin-bottom: 0;
+}
+.gsc-resultsHeader {
+	display: none;
+}
+.cse .gsc-search-button input.gsc-search-button-v2, input.gsc-search-button-v2 {
+	height: 24px!important;
+}
 
 /* top right menu */
 .top-menu-wrapper {

@@ -34,18 +34,25 @@
 		};
 		
 		function gcse_Callback() {
-			
+			$(".gsc-input").css("background-image","none").attr("placeholder","<?php echo $options["search_watermark"]; ?>");
+			$("#gsc-i-id1").blur(function(event) { 
+				$(".gsc-input").css("background-image","none");
+			})
 			$("#gsc-i-id1").keyup(function(event) { 
 				var gcse_key = event.keyCode || event.which;
 				var gcse_searchstring = $("#gsc-i-id1").val();
-				$(".gcse_hooks").show().html("H&auml;mtar s&ouml;kresultat... " + gcse_searchstring).load(hultsfred_object["templateDir"]+"/ajax/search_hooks.php", 
+				if (gcse_searchstring == "") {
+					$(".gsc-input").css("background-image","none");
+					$(".hk-gcse-hooks").hide().html("");
+				} else {
+					$(".hk-gcse-hooks").show().html("H&auml;mtar s&ouml;kresultat... " + gcse_searchstring).load(hultsfred_object["templateDir"]+"/ajax/search_hooks.php", 
 							{ searchstring: gcse_searchstring }, function() {
 							});
+				}
 			});
 		}
 		
 	  })(jQuery);
 	</script>
-	<div class="gcse_hooks"></div>
-	<gcse:search></gcse:search>
+	<gcse:searchbox></gcse:searchbox>
 	<?php endif; ?>

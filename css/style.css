@@ -3459,11 +3459,11 @@ html.flexbox {
 /**
 * Thirds
 */
-.one-third, .two-sixths, .four-twelfths, .home .slideshow-contact-puff-area .caption {
+.one-third, .two-sixths, .four-twelfths, .home .slideshow-contact-puff-area .caption, .hk-gcse-wrapper .hk-gcse-hooks {
   width: 33.333%;
 }
 
-.two-thirds, .four-sixths, .eight-twelfths {
+.two-thirds, .four-sixths, .eight-twelfths, .hk-gcse-wrapper .hk-gcse-results {
   width: 66.666%;
 }
 
@@ -4520,7 +4520,7 @@ html.flexbox {
 
 .float--left, .alignleft, .icon-left, .box-list.newscontent .post, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .sub-title, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .image-caption, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget h1,
 .main .widget.horizontal-list.HK_tags_widget h1, .help-navigation, .page-header .num-posts, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
-.single .img-wrapper, .side-content .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.single .img-wrapper, .side-content .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .hk-gcse-wrapper .hk-gcse-results, .hk-gcse-wrapper .hk-gcse-hooks, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -5751,6 +5751,38 @@ html {
   display: block;
   margin-bottom: 4px;
   margin-left: 12px;
+}
+
+/* google site search */
+.gsc-input {
+  padding-left: 12px;
+}
+
+.gsc-search-box td {
+  padding: 0 0 26px;
+}
+
+.gsc-control-cse {
+  padding: 0;
+}
+
+.gsc-table-result,
+.gsc-thumbnail-inside,
+.gsc-url-top {
+  padding-left: 0px !important;
+}
+
+.gsc-above-wrapper-area-container,
+.gsc-table-result {
+  margin-bottom: 0;
+}
+
+.gsc-resultsHeader {
+  display: none;
+}
+
+.cse .gsc-search-button input.gsc-search-button-v2, input.gsc-search-button-v2 {
+  height: 24px !important;
 }
 
 /* top right menu */
