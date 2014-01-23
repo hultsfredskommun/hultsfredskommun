@@ -627,8 +627,11 @@ function flipAnimation(active) {
 	});
 }
 
+
 $(document).ready(function(){
 
+
+	
 	/* debug count and version log */
 		/*function doCount() {
 			
@@ -913,7 +916,7 @@ $(document).ready(function(){
 	
 
 	/* 
-	* give result in dropdownlist 
+	* handle f5 refresh
 	*/ 
 	$(document).keyup(function(event) { 
 		var key = event.keyCode || event.which;
@@ -925,9 +928,12 @@ $(document).ready(function(){
 				break;
 		}
 	});
+
+	/* 
+	* give result in dropdownlist 
+	*/ 
 	$('#s').keyup(function(event) { 
-		if (true) {
-		//if( $(window).width()+scrollbar > responsive_lap_start ){
+		if( $(window).width()+scrollbar > responsive_lap_start ){
 			select = false; 
 			// do ajax search 
 
@@ -981,26 +987,17 @@ $(document).ready(function(){
 	
 						if (!$(".searchresult-wrapper")[0]) 
 						{ 
-							$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'><div class='ajaxresults'></div><div class='gcresults-wrapper'><span class='search-title'>S&ouml;kning p&aring; alla v&aring;ra webbplatser</span><div id='gcresults' class='gcresults'></div></div></div></div>"); 
+							$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'></div></div>"); 
 						} 
 						searchstring = $("#s").val(); 
 						
-						// google search
-						  if (document.readyState != 'complete')
-							return google.setOnLoadCallback(gcseCallback, true);
-						  google.search.cse.element.render({gname:'gsearch', div:'gcresults', tag:'searchresults-only', attributes:{linkTarget:''}});
-						  var element = google.search.cse.element.getElement('gsearch');
-						  element.execute(searchstring);
-
-						
-						$(".searchresult-wrapper .searchresult .ajaxresults").html("H&auml;mtar s&ouml;kresultat...");
-						$(".searchresult-wrapper .searchresult .ajaxresults").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
+						$(".searchresult-wrapper .searchresult").html("H&auml;mtar s&ouml;kresultat...").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
 						{ searchstring: searchstring }, 
 						function() { 
 
-							var link_objects = $('.ajaxresults li a');
+							var link_objects = $('.searchresult li a');
 
-							var first_index = 0;   var last_index = $('.ajaxresults li a').length-1;
+							var first_index = 0;   var last_index = $('.searchresult li a').length-1;
 
 							var first_link = $(link_objects).first();  var last_link = $(link_objects).last();
 
