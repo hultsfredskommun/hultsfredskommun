@@ -5739,6 +5739,7 @@ html {
 .searchnavigation .searchresult .search-title {
   margin-left: 12px;
   margin-bottom: 12px;
+  padding-top: 0;
 }
 .searchnavigation .searchresult ul a, .searchnavigation .searchresult ul span {
   white-space: normal !important;

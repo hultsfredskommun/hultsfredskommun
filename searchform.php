@@ -38,7 +38,7 @@
 			$("#gsc-i-id1").keyup(function(event) { 
 				var gcse_key = event.keyCode || event.which;
 				var gcse_searchstring = $("#gsc-i-id1").val();
-				$(".gcse_contact").show().html("H&auml;mtar s&ouml;kresultat... " + gcse_searchstring).load(hultsfred_object["templateDir"]+"/ajax/search_hooks.php", 
+				$(".gcse_hooks").show().html("H&auml;mtar s&ouml;kresultat... " + gcse_searchstring).load(hultsfred_object["templateDir"]+"/ajax/search_hooks.php", 
 							{ searchstring: gcse_searchstring }, function() {
 							});
 			});
