@@ -38,18 +38,42 @@
 			$("#gsc-i-id1").blur(function(event) { 
 				$(".gsc-input").css("background-image","none");
 			})
+			$("#gsc-i-id1").blur(function(event) { 
+				var gcse_searchstring = $("#gsc-i-id1").val();
+				if (gcse_searchstring == "") {
+					$(".gsc-input").css("background-image","none");
+					$(".hk-gcse-hooks").hide().html("");
+				}
+			});
+			$(".gsst_a").click(function(event) {
+				$(".gsc-input").css("background-image","none");
+				$(".hk-gcse-hooks").hide().html("");
+			});
 			$("#gsc-i-id1").keyup(function(event) { 
 				var gcse_key = event.keyCode || event.which;
 				var gcse_searchstring = $("#gsc-i-id1").val();
 				if (gcse_searchstring == "") {
 					$(".gsc-input").css("background-image","none");
 					$(".hk-gcse-hooks").hide().html("");
-				} else {
-					$(".hk-gcse-hooks").show().html("H&auml;mtar s&ouml;kresultat... " + gcse_searchstring).load(hultsfred_object["templateDir"]+"/ajax/search_hooks.php", 
-							{ searchstring: gcse_searchstring }, function() {
-							});
+				}
+				if (gcse_key == 13) {
+					gcse_do_hook_callback();
 				}
 			});
+			$(".gsc-search-button").click(function(event) {
+				gcse_do_hook_callback();
+			});
+		}
+		function gcse_do_hook_callback() {
+			var gcse_searchstring = $("#gsc-i-id1").val();
+			if (gcse_searchstring == "") {
+				$(".gsc-input").css("background-image","none");
+				$(".hk-gcse-hooks").hide().html("");
+			} else {
+				$(".hk-gcse-hooks").show().html("H&auml;mtar s&ouml;kresultat... " + gcse_searchstring).load(hultsfred_object["templateDir"]+"/ajax/search_hooks.php", 
+						{ searchstring: gcse_searchstring }, function() {
+						});
+			}
 		}
 		
 	  })(jQuery);

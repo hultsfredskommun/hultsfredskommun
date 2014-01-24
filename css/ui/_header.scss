@@ -43,6 +43,7 @@
 .top-wrapper {
 	@extend .gw;
 	@extend .margin--bottom;
+	position: relative;
 }
 .logo {
 	@extend .half-margin--top;
@@ -160,22 +161,56 @@
 }
 /* google site search */
 .hk-gcse-wrapper {
+	@extend .one-whole;
+	@extend .hidden--palm;
+	background: white;
+	opacity: 0.9;
+	position: absolute;
+	top: 46px;
+	@include media-query(palm) {
+		top: 84px;
+		padding: 12px;
+	}
+	z-index: 5000;
+	
 	.hk-gcse-results {
-		@extend .two-thirds;
+		@extend .desk-two-thirds;
+		@extend .lap-two-thirds;
+		@extend .palm-one-whole;
 		@extend .float--left;
 	}
 	.hk-gcse-hooks {
-		@extend .one-third;
+		@extend .desk-one-third;
+		@extend .lap-one-third;
+		@extend .palm-one-whole;
 		@extend .float--left;
 	}
 }
 .gsc-input {
-	padding-left: 12px;
+	padding-left: 12px!important;
+	padding-right: 0px!important;
+}
+.gsc-input-box {
+	background-color: $gray-light-color!important;
+	border: 0px!important;
+	border-radius: 3px 0 0 3px!important;
+	box-shadow: none!important;
+	height: 24px!important;
+}
+input.gsc-input {
+	background-color: transparent!important;
 }
 .gsc-search-box {
 	td {
 		padding: 0 0 26px;
 	}
+}
+.gsc-search-button {
+	border-radius: 0 3px 3px 0!important;
+	padding-top: 3px!important;
+	margin-left: 0px!important;
+	margin-left: 0px!important;
+	width: auto!important;
 }
 .gsc-control-cse {
 	padding: 0;
