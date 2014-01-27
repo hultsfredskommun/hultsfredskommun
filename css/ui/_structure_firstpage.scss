@@ -172,15 +172,13 @@
 			border-right: 1px solid white;
 		}
 		.image-caption {
-			@extend .border-radius;
-			@extend .float--left;
-			@extend .gray-light-background;
-			@extend .position-absolute--bottom-right;
-			@extend .zeta;
+			@extend .float--right;
+			@extend .milli;
+			color: #888;
+			font-style: italic;
 			display: block;
-			margin: 0 $half-spacing-unit $half-spacing-unit 0;
-			padding: 0 $half-spacing-unit 0;
-			z-index: 1000;
+			margin: 0;
+			padding: 0 $half-spacing-unit/2 0;
 			
 		}
 		.caption-area {

@@ -1177,7 +1177,7 @@ h5, .epsilon, .widget, .main-menu {
   line-height: 1.5;
 }
 
-h6, .zeta, .time, .sub-title, .slideshow .slide .image-caption, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
+h6, .zeta, .time, .sub-title, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
 .main .widget.widget_hk_related_widget .subtitle,
 .main .widget.widget_hk_protocol .subtitle,
 .main .widget.HK_tags_widget .subtitle, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .button.top, .button.bottom, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
@@ -1244,6 +1244,7 @@ hgroup .hN {
  */
 .smallprint,
 .milli,
+.slideshow .slide .image-caption,
 .breadcrumb,
 .page-header,
 .article-wrapper .entry-meta .footer-wrapper {
@@ -4513,12 +4514,12 @@ html.flexbox {
  * A lot of these classes carry `!important` as you will always want them to win
  * out over other selectors.
  */
-.float--right, .alignright, .home .slideshow-contact-puff-area .content-wrapper .right-content, .page-header .view-tools,
+.float--right, .alignright, .slideshow .slide .image-caption, .home .slideshow-contact-puff-area .content-wrapper .right-content, .page-header .view-tools,
 .page-header .sort-order, .page-header .category-tools, .responsive-menu a, .right-nav-menu-item, .footer-image-wrapper .logo-footer-image img {
   float: right !important;
 }
 
-.float--left, .alignleft, .icon-left, .box-list.newscontent .post, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .sub-title, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .image-caption, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget h1,
+.float--left, .alignleft, .icon-left, .box-list.newscontent .post, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .sub-title, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget h1,
 .main .widget.horizontal-list.HK_tags_widget h1, .help-navigation, .page-header .num-posts, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
 .single .img-wrapper, .side-content .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
@@ -4799,7 +4800,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #c6cacb;
 }
 
-.gray-light-background, .gray-image-background, .home .contact-area .contact-wrapper, .footer-wrapper.footer-widget-wrapper, .button, .slideshow .slide .image-caption, .page-header, .searchnavigation .form .input-wrapper, .responsive-sub-menu, .main-sub-menu, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
+.gray-light-background, .gray-image-background, .home .contact-area .contact-wrapper, .footer-wrapper.footer-widget-wrapper, .button, .page-header, .searchnavigation .form .input-wrapper, .responsive-sub-menu, .main-sub-menu, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover {
   background-color: #e5e6e7;
 }
@@ -4896,7 +4897,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: transparent;
 }
 
-.border-radius, .button, img, .widget_hk_wp_feed_rss_widget.widget, .slideshow .slide .image-caption, .slideshow .slide .caption-area .transparent, .main .widget.widget_hk_textwidget .inner-wrapper, .main .widget.widget_hk_aditro_rss_widget,
+.border-radius, .button, img, .widget_hk_wp_feed_rss_widget.widget, .slideshow .slide .caption-area .transparent, .main .widget.widget_hk_textwidget .inner-wrapper, .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,
 .main .widget.HK_tags_widget, .page-header, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .side-content .title, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
@@ -4968,7 +4969,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   cursor: pointer;
 }
 
-.milli, .breadcrumb, .page-header, .article-wrapper .entry-meta .footer-wrapper {
+.milli, .slideshow .slide .image-caption, .breadcrumb, .page-header, .article-wrapper .entry-meta .footer-wrapper {
   font-size: 13px;
   font-size: 0.86667rem;
   line-height: 1.84615;
@@ -5020,7 +5021,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.71429;
   }
 
-  h6, .zeta, .time, .sub-title, .slideshow .slide .image-caption, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
+  h6, .zeta, .time, .sub-title, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
   .main .widget.widget_hk_related_widget .subtitle,
   .main .widget.widget_hk_protocol .subtitle,
   .main .widget.HK_tags_widget .subtitle, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .button.top, .button.bottom, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
@@ -5029,7 +5030,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.84615;
   }
 
-  .milli, .breadcrumb, .page-header, .article-wrapper .entry-meta .footer-wrapper {
+  .milli, .slideshow .slide .image-caption, .breadcrumb, .page-header, .article-wrapper .entry-meta .footer-wrapper {
     font-size: 12px;
     font-size: 0.8rem;
     line-height: 2;
@@ -5274,10 +5275,11 @@ html {
   border-right: 1px solid white;
 }
 .slideshow .slide .image-caption {
+  color: #888;
+  font-style: italic;
   display: block;
-  margin: 0 12px 12px 0;
-  padding: 0 12px 0;
-  z-index: 1000;
+  margin: 0;
+  padding: 0 6px 0;
 }
 .slideshow .slide .caption-area {
   padding: 0 0 12px;
@@ -6076,7 +6078,7 @@ html {
   left: 0;
 }
 
-.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .slideshow .slide .image-caption, .position-absolute--bottom-left, .pager, .contact-popup.box .close-contact {
+.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .pager, .contact-popup.box .close-contact {
   position: absolute;
 }
 
@@ -6090,7 +6092,7 @@ html {
   right: 0;
 }
 
-.position-absolute--bottom-right, .slideshow .slide .image-caption {
+.position-absolute--bottom-right {
   bottom: 0;
   right: 0;
 }
