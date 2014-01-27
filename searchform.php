@@ -38,6 +38,7 @@
 			$("#gsc-i-id1").blur(function(event) { 
 				$(".gsc-input").css("background-image","none");
 			})
+			/* input box blur */
 			$("#gsc-i-id1").blur(function(event) { 
 				var gcse_searchstring = $("#gsc-i-id1").val();
 				if (gcse_searchstring == "") {
@@ -45,10 +46,13 @@
 					$(".hk-gcse-hooks").hide().html("");
 				}
 			});
+			/* reset button */
 			$(".gsst_a").click(function(event) {
 				$(".gsc-input").css("background-image","none");
 				$(".hk-gcse-hooks").hide().html("");
+				$(".hk-gcse-wrapper").removeClass("unhidden");
 			});
+			/* key press in input */
 			$("#gsc-i-id1").keyup(function(event) { 
 				var gcse_key = event.keyCode || event.which;
 				var gcse_searchstring = $("#gsc-i-id1").val();
@@ -60,6 +64,7 @@
 					gcse_do_hook_callback();
 				}
 			});
+			/* search button click */
 			$(".gsc-search-button").click(function(event) {
 				gcse_do_hook_callback();
 			});
@@ -69,7 +74,9 @@
 			if (gcse_searchstring == "") {
 				$(".gsc-input").css("background-image","none");
 				$(".hk-gcse-hooks").hide().html("");
+				$(".hk-gcse-wrapper").removeClass("unhidden");
 			} else {
+				$(".hk-gcse-wrapper").addClass("unhidden");
 				$(".hk-gcse-hooks").show().html("H&auml;mtar s&ouml;kresultat... " + gcse_searchstring).load(hultsfred_object["templateDir"]+"/ajax/search_hooks.php", 
 						{ searchstring: gcse_searchstring }, function() {
 						});

@@ -887,7 +887,6 @@ $(document).ready(function(){
 	});
 	$(".js-show-search").unbind("click").bind("click",function(ev) {
 		$(".searchnavigation").toggleClass("unhidden");
-		$(".hk-gcse-wrapper").toggleClass("unhidden");
 		ev.preventDefault();
 	});
 

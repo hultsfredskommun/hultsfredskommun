@@ -162,17 +162,23 @@
 /* google site search */
 .hk-gcse-wrapper {
 	@extend .one-whole;
-	@extend .hidden--palm;
-	background: white;
-	opacity: 0.9;
+	@extend .hidden;
 	position: absolute;
 	top: 46px;
+	
 	@include media-query(palm) {
 		top: 84px;
 		padding: 12px;
 	}
 	z-index: 5000;
 	
+	.hk-gcse-border {
+		@extend .float--left;
+		background: white;
+		box-shadow: 0px 0px 10px black;
+		margin: 0 $base-spacing-unit 0;
+		opacity: 0.95;
+	}
 	.hk-gcse-results {
 		@extend .desk-two-thirds;
 		@extend .lap-two-thirds;
@@ -202,7 +208,7 @@ input.gsc-input {
 }
 .gsc-search-box {
 	td {
-		padding: 0 0 26px;
+		padding: 0 0 0px;
 	}
 }
 .gsc-search-button {

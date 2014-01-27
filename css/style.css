@@ -4520,7 +4520,7 @@ html.flexbox {
 
 .float--left, .alignleft, .icon-left, .box-list.newscontent .post, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .sub-title, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .image-caption, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .contact-area .contact-wrapper .content-wrapper h1, .home .contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget h1,
 .main .widget.horizontal-list.HK_tags_widget h1, .help-navigation, .page-header .num-posts, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
-.single .img-wrapper, .side-content .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .hk-gcse-wrapper .hk-gcse-results, .hk-gcse-wrapper .hk-gcse-hooks, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+.single .img-wrapper, .side-content .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .form .submit, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .hk-gcse-wrapper .hk-gcse-border, .hk-gcse-wrapper .hk-gcse-results, .hk-gcse-wrapper .hk-gcse-hooks, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
 
@@ -5759,8 +5759,6 @@ html {
 
 /* google site search */
 .hk-gcse-wrapper {
-  background: white;
-  opacity: 0.9;
   position: absolute;
   top: 46px;
   z-index: 5000;
@@ -5770,6 +5768,12 @@ html {
     top: 84px;
     padding: 12px;
   }
+}
+.hk-gcse-wrapper .hk-gcse-border {
+  background: white;
+  box-shadow: 0px 0px 10px black;
+  margin: 0 24px 0;
+  opacity: 0.95;
 }
 
 .gsc-input {
@@ -5790,7 +5794,7 @@ input.gsc-input {
 }
 
 .gsc-search-box td {
-  padding: 0 0 26px;
+  padding: 0 0 0px;
 }
 
 .gsc-search-button {
@@ -6739,12 +6743,12 @@ input.gsc-input {
   left: 0;
 }
 
-.hidden, #responsive-info, .summary-content .image-caption, .summary .entry-meta, article.summary .full, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
+.hidden, #responsive-info, .summary-content .image-caption, .summary .entry-meta, article.summary .full, .hk-gcse-wrapper, .category-navigation .parent li .children, .ui-tabs .ui-tabs-hide {
   display: none;
 }
 
 @media only screen and (max-width: 540px) {
-  .hidden--palm, .searchnavigation, .hk-gcse-wrapper, .main-menu,
+  .hidden--palm, .searchnavigation, .main-menu,
   .main-sub-menu, .more-in-navigation,
   .sort-order, .category-navigation {
     display: none;
