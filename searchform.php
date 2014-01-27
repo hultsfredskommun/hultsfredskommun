@@ -44,6 +44,8 @@
 				if (gcse_searchstring == "") {
 					$(".gsc-input").css("background-image","none");
 					$(".hk-gcse-hooks").hide().html("");
+					$(".hk-gcse-wrapper").removeClass("unhidden");
+					$(".hk-gcse-hooks").hide().html("");
 				}
 			});
 			/* reset button */
@@ -60,7 +62,7 @@
 					$(".gsc-input").css("background-image","none");
 					$(".hk-gcse-hooks").hide().html("");
 				}
-				if (gcse_key == 13) {
+				if (gcse_key == 13 || gcse_key == 8 || gcse_key == 46) {
 					gcse_do_hook_callback();
 				}
 			});
