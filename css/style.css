@@ -4899,7 +4899,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 .border-radius, .button, img, .widget_hk_wp_feed_rss_widget.widget, .slideshow .slide .image-caption, .slideshow .slide .caption-area .transparent, .main .widget.widget_hk_textwidget .inner-wrapper, .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,
-.main .widget.HK_tags_widget, .page-header, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .side-content .title, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
+.main .widget.HK_tags_widget, .page-header, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .side-content .title, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .hk-gcse-wrapper .hk-gcse-border, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .contact-popup.box {
   border-radius: 3px;
@@ -5772,7 +5772,7 @@ html {
 .hk-gcse-wrapper .hk-gcse-border {
   background: white;
   box-shadow: 0px 0px 10px black;
-  margin: 0 24px 0;
+  margin: 0 24px 0 48px;
   opacity: 0.95;
 }
 
