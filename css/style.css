@@ -4941,7 +4941,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 
 .font-weight-bold, .page-header .num-posts .active,
 .page-header .view-tools .active,
-.page-header .sort-order .active, .cookieinformation .textwidget a, .searchnavigation .searchresult .search-title, .searchnavigation .searchresult .external_more_link, .category-navigation .heading, .category-navigation .parent li.current-cat > a {
+.page-header .sort-order .active, .cookieinformation .textwidget a, .searchnavigation .searchresult .search-title, .searchnavigation .searchresult .external_more_link, .hk-gcse-wrapper .hk-gcse-hooks .search-title, .category-navigation .heading, .category-navigation .parent li.current-cat > a {
   font-weight: bold;
 }
 
@@ -5774,6 +5774,9 @@ html {
   box-shadow: 0px 0px 10px black;
   margin: 0 24px 0 48px;
   opacity: 0.95;
+}
+.hk-gcse-wrapper .hk-gcse-hooks .search-title {
+  padding-top: 24px;
 }
 
 .gsc-input {

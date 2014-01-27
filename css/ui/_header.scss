@@ -191,6 +191,10 @@
 		@extend .lap-one-third;
 		@extend .palm-one-whole;
 		@extend .float--left;
+		.search-title {
+			@extend .font-weight-bold;
+			padding-top: $base-spacing-unit;
+		}
 	}
 }
 .gsc-input {
