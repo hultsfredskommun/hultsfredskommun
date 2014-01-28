@@ -122,6 +122,8 @@ if (in_category($hk_options["hidden_cat"])) {
 	<script type="text/javascript">
 
 	var _gaq = _gaq || [];
+	var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+	_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
 	_gaq.push(['_setAccount', '<?php echo $hk_options["google_analytics"]; ?>']); 
 	_gaq.push(['_setDomainName', '<?php echo $hk_options['google_analytics_domain'];  ?>']);
 	_gaq.push(['_setAllowLinker', true]);
