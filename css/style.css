@@ -5797,6 +5797,12 @@ html {
   padding-right: 0px !important;
 }
 
+.gsc-input::-ms-clear {
+  display: none;
+  height: 0;
+  widht: 0;
+}
+
 .gsc-input-box {
   background-color: #e5e6e7 !important;
   border: 0px !important;

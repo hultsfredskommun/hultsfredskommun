@@ -211,6 +211,11 @@
 	padding-left: $half-spacing-unit!important;
 	padding-right: 0px!important;
 }
+.gsc-input::-ms-clear {
+    display: none;
+	height: 0;
+	widht: 0;
+}
 .gsc-input-box {
 	background-color: $gray-light-color!important;
 	border: 0px!important;

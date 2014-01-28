@@ -35,50 +35,58 @@
 		
 		function gcse_Callback() {
 			$(".gsc-input").css("background-image","none").attr("placeholder","<?php echo $options["search_watermark"]; ?>");
-			$("#gsc-i-id1").blur(function(event) { 
-				$(".gsc-input").css("background-image","none");
-			})
-			/* input box blur */
-			$("#gsc-i-id1").blur(function(event) { 
-				var gcse_searchstring = $("#gsc-i-id1").val();
-				if (gcse_searchstring == "") {
-					$(".gsc-input").css("background-image","none");
-					$(".hk-gcse-hooks").hide().html("");
-					$(".hk-gcse-wrapper").removeClass("unhidden");
-					$(".hk-gcse-hooks").hide().html("");
-				}
-			});
 			/* reset button */
 			$(".gsst_a").click(function(event) {
-				$(".gsc-input").css("background-image","none");
-				$(".hk-gcse-hooks").hide().html("");
-				$(".hk-gcse-wrapper").removeClass("unhidden");
+				gcse_clear_search();
 			});
+			
+			/* esc key press */
+			$(document).keyup(function(event) { 
+				var hk_document_key = event.keyCode || event.which;
+				
+				if ( hk_document_key == 27 ) {
+					gcse_clear_search();
+					$(".contact-popup").remove();
+				}
+			});
+
 			/* key press in input */
 			$("#gsc-i-id1").keyup(function(event) { 
 				var gcse_key = event.keyCode || event.which;
 				var gcse_searchstring = $("#gsc-i-id1").val();
-				if ( gcse_searchstring == "" ) {
-					$(".gsc-input").css("background-image","none");
-					$(".hk-gcse-hooks").hide().html("");
+				if ( gcse_searchstring == "" || gcse_key == 27 ) {
+					gcse_clear_search();
 				}
 				if ( gcse_key == 13 ) {
 					gcse_do_hook_callback();
 				}
+				
+			})
+			/* input box blur */
+			.blur(function(event) { 
+				$(".gsc-input").css("background-image","none");
+				var gcse_searchstring = $("#gsc-i-id1").val();
+				if (gcse_searchstring == "") {
+					gcse_clear_search();
+				}
 			});
+
 			/* search button click */
 			$(".gsc-search-button").click(function(event) {
 				gcse_do_hook_callback();
 			});
 		}
+		function gcse_clear_search() {
+			$(".gsc-input").css("background-image","none");
+			$(".hk-gcse-hooks").hide().html("");
+			$(".hk-gcse-wrapper").removeClass("unhidden");
+			$(".hk-gcse-overlay").remove();
+			$(".gsst_a").hide();
+		}
 		function gcse_do_hook_callback() {
 			var gcse_searchstring = $("#gsc-i-id1").val();
 			if (gcse_searchstring == "") {
-				$(".gsc-input").css("background-image","none");
-				$(".hk-gcse-hooks").hide().html("");
-				$(".hk-gcse-wrapper").removeClass("unhidden");
-				$(".hk-gcse-overlay").remove();
-				$(".gsst_a").hide();
+				gcse_clear_search();
 			} else {
 				$(".hk-gcse-overlay").remove();
 				$(".hk-gcse-wrapper").addClass("unhidden").before("<div class='hk-gcse-overlay'></div>");
