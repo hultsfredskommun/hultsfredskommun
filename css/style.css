@@ -5758,6 +5758,16 @@ html {
 }
 
 /* google site search */
+.hk-gcse-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1999;
+}
+
 .hk-gcse-wrapper {
   position: absolute;
   top: 46px;
@@ -5772,7 +5782,8 @@ html {
 .hk-gcse-wrapper .hk-gcse-border {
   background: white;
   box-shadow: 0px 0px 10px black;
-  margin: 0 24px 0 48px;
+  margin: 0 2% 0 4%;
+  width: 94%;
   opacity: 0.95;
 }
 .hk-gcse-wrapper .hk-gcse-hooks .search-title {
@@ -5796,6 +5807,10 @@ input.gsc-input {
   background-color: transparent !important;
 }
 
+.gsc-search-box {
+  position: relative;
+  z-index: 5002;
+}
 .gsc-search-box td {
   padding: 0 0 26px;
 }

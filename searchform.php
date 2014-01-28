@@ -58,11 +58,11 @@
 			$("#gsc-i-id1").keyup(function(event) { 
 				var gcse_key = event.keyCode || event.which;
 				var gcse_searchstring = $("#gsc-i-id1").val();
-				if (gcse_searchstring == "") {
+				if ( gcse_searchstring == "" ) {
 					$(".gsc-input").css("background-image","none");
 					$(".hk-gcse-hooks").hide().html("");
 				}
-				if (gcse_key == 13 || gcse_key == 8 || gcse_key == 46) {
+				if ( gcse_key == 13 ) {
 					gcse_do_hook_callback();
 				}
 			});
@@ -77,8 +77,15 @@
 				$(".gsc-input").css("background-image","none");
 				$(".hk-gcse-hooks").hide().html("");
 				$(".hk-gcse-wrapper").removeClass("unhidden");
+				$(".hk-gcse-overlay").remove();
+				$(".gsst_a").hide();
 			} else {
-				$(".hk-gcse-wrapper").addClass("unhidden");
+				$(".hk-gcse-overlay").remove();
+				$(".hk-gcse-wrapper").addClass("unhidden").before("<div class='hk-gcse-overlay'></div>");
+				$(".hk-gcse-overlay").click(function() {
+					$("#gsc-i-id1").val("");
+					gcse_do_hook_callback();
+				});
 				$(".hk-gcse-hooks").show().html("H&auml;mtar s&ouml;kresultat... " + gcse_searchstring).load(hultsfred_object["templateDir"]+"/ajax/search_hooks.php", 
 						{ searchstring: gcse_searchstring }, function() {
 						});
