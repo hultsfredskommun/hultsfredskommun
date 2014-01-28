@@ -7,12 +7,11 @@
 	
 	if ($searchstring != "") :
 	
-	
-		$retString = "<ul>";
-		$retString .= "<li><a href='" . site_url() . "/?s=" . $searchstring . "'>S&ouml;k efter " . $searchstring . "</a></li>";
-		$retString = "</ul>";
-
+		$retString = "";
 		
+		/*$retString .= "<ul>";
+		$retString .= "<li><a href='" . site_url() . "/?s=" . $searchstring . "'>S&ouml;k efter " . $searchstring . "</a></li>";
+		$retString .= "</ul>";*/
 		
 		/* get new posts */
 		//$query = array(	'posts_per_page' => get_option('posts_per_page') );

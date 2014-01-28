@@ -627,8 +627,11 @@ function flipAnimation(active) {
 	});
 }
 
+
 $(document).ready(function(){
 
+
+	
 	/* debug count and version log */
 		/*function doCount() {
 			
@@ -913,7 +916,7 @@ $(document).ready(function(){
 	
 
 	/* 
-	* give result in dropdownlist 
+	* handle f5 refresh
 	*/ 
 	$(document).keyup(function(event) { 
 		var key = event.keyCode || event.which;
@@ -925,6 +928,10 @@ $(document).ready(function(){
 				break;
 		}
 	});
+
+	/* 
+	* give result in dropdownlist 
+	*/ 
 	$('#s').keyup(function(event) { 
 		if( $(window).width()+scrollbar > responsive_lap_start ){
 			select = false; 
@@ -984,7 +991,7 @@ $(document).ready(function(){
 						} 
 						searchstring = $("#s").val(); 
 						
-						$(".searchresult-wrapper .searchresult").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
+						$(".searchresult-wrapper .searchresult").html("H&auml;mtar s&ouml;kresultat...").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
 						{ searchstring: searchstring }, 
 						function() { 
 
