@@ -3,6 +3,7 @@
  * The default template for displaying single content
  */
 ?>
+	<!--googleon: all-->
 	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky single full":"single full"); ?>>
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
