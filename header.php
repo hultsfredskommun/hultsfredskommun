@@ -229,20 +229,6 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			<div id="searchnavigation" class="searchnavigation" role="search">			
 				<?php get_search_form(); ?>
 			</div>
-			<?php if ($hk_options["gcse_id"] != "") : ?>
-			<div class="hk-gcse-wrapper">
-				<div class="hk-gcse-border">
-					<div class="hk-gcse-results">
-						<gcse:searchresults></gcse:searchresults>
-					</div>
-					<div class="hk-gcse-hooks"></div>
-				</div>
-			</div>
-			<?php endif; ?>
-
-
-
-			
 
 			<?php if (($hk_options["logo2_image"] != "") || ($hk_options["logo3_image"] != "") || (!empty($hk_options["right_logo_html"]) && $hk_options["right_logo_html"] != "")) : ?>
 			<div id="logo2" class="logo2">

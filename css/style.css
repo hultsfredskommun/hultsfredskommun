@@ -782,7 +782,7 @@ textarea:focus {
 .main .widget.widget_hk_textwidget .inner-wrapper,
 .cookieinformation .textwidget,
 .searchnavigation .searchresult .external_more_link,
-.scrolltotop, .matrix, .multi-list, .stat-group, .aligncenter, .time, .read-more-link, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .home .contact-area .contact-wrapper, .main .widget.widget_hk_aditro_rss_widget,
+.scrolltotop, .matrix, .multi-list, .stat-group, .aligncenter, .time, .read-more-link, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area .content-wrapper .more-contact-link, .home .contact-area .contact-wrapper, .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,
 .main .widget.HK_tags_widget, .page-header, article.post, .article-wrapper .content-wrapper .contact-area, .side-content ul li, .searchnavigation .form, .searchnavigation .form .submit, .responsive-sub-menu, .footer-image-wrapper .logo-footer-image {
@@ -810,7 +810,7 @@ textarea:focus {
 .main .widget.widget_hk_textwidget .inner-wrapper:before,
 .cookieinformation .textwidget:before,
 .searchnavigation .searchresult .external_more_link:before,
-.scrolltotop:before, .matrix:before, .multi-list:before, .stat-group:before, .aligncenter:before, .time:before, .read-more-link:before, .widget_hk_wp_feed_rss_widget.widget .content-wrapper:before, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper:before, .home .slideshow-contact-puff-area:before, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link:before, .home .contact-area .contact-wrapper:before, .main .widget.widget_hk_aditro_rss_widget:before,
+.scrolltotop:before, .matrix:before, .multi-list:before, .stat-group:before, .aligncenter:before, .time:before, .read-more-link:before, .widget_hk_wp_feed_rss_widget.widget .content-wrapper:before, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper:before, .home .slideshow-contact-puff-area:before, .home .slideshow-contact-puff-area .content-wrapper .more-contact-link:before, .home .contact-area .contact-wrapper:before, .main .widget.widget_hk_aditro_rss_widget:before,
 .main .widget.widget_hk_related_widget:before,
 .main .widget.widget_hk_protocol:before,
 .main .widget.HK_tags_widget:before, .page-header:before, article.post:before, .article-wrapper .content-wrapper .contact-area:before, .side-content ul li:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .responsive-sub-menu:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after,
@@ -835,7 +835,7 @@ textarea:focus {
 .main .widget.widget_hk_textwidget .inner-wrapper:after,
 .cookieinformation .textwidget:after,
 .searchnavigation .searchresult .external_more_link:after,
-.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .aligncenter:after, .time:after, .read-more-link:after, .widget_hk_wp_feed_rss_widget.widget .content-wrapper:after, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper:after, .home .slideshow-contact-puff-area:after, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link:after, .home .contact-area .contact-wrapper:after, .main .widget.widget_hk_aditro_rss_widget:after,
+.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .aligncenter:after, .time:after, .read-more-link:after, .widget_hk_wp_feed_rss_widget.widget .content-wrapper:after, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper:after, .home .slideshow-contact-puff-area:after, .home .slideshow-contact-puff-area .content-wrapper .more-contact-link:after, .home .contact-area .contact-wrapper:after, .main .widget.widget_hk_aditro_rss_widget:after,
 .main .widget.widget_hk_related_widget:after,
 .main .widget.widget_hk_protocol:after,
 .main .widget.HK_tags_widget:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .side-content ul li:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .responsive-sub-menu:after, .footer-image-wrapper .logo-footer-image:after {
@@ -864,7 +864,7 @@ textarea:focus {
 .main .widget.widget_hk_textwidget .inner-wrapper:after,
 .cookieinformation .textwidget:after,
 .searchnavigation .searchresult .external_more_link:after,
-.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .aligncenter:after, .time:after, .read-more-link:after, .widget_hk_wp_feed_rss_widget.widget .content-wrapper:after, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper:after, .home .slideshow-contact-puff-area:after, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link:after, .home .contact-area .contact-wrapper:after, .main .widget.widget_hk_aditro_rss_widget:after,
+.scrolltotop:after, .matrix:after, .multi-list:after, .stat-group:after, .aligncenter:after, .time:after, .read-more-link:after, .widget_hk_wp_feed_rss_widget.widget .content-wrapper:after, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper:after, .home .slideshow-contact-puff-area:after, .home .slideshow-contact-puff-area .content-wrapper .more-contact-link:after, .home .contact-area .contact-wrapper:after, .main .widget.widget_hk_aditro_rss_widget:after,
 .main .widget.widget_hk_related_widget:after,
 .main .widget.widget_hk_protocol:after,
 .main .widget.HK_tags_widget:after, .page-header:after, article.post:after, .article-wrapper .content-wrapper .contact-area:after, .side-content ul li:after, .searchnavigation .form:after, .searchnavigation .form .submit:after, .responsive-sub-menu:after, .footer-image-wrapper .logo-footer-image:after {
@@ -1177,7 +1177,7 @@ h5, .epsilon, .widget, .main-menu {
   line-height: 1.5;
 }
 
-h6, .zeta, .time, .sub-title, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
+h6, .zeta, .time, .sub-title, .home .slideshow-contact-puff-area .content-wrapper .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
 .main .widget.widget_hk_related_widget .subtitle,
 .main .widget.widget_hk_protocol .subtitle,
 .main .widget.HK_tags_widget .subtitle, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .button.top, .button.bottom, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
@@ -4958,7 +4958,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   font-style: normal !important;
 }
 
-.font-style-italic, .complement-italic-text, .contact-wrapper .content, .time, .sub-title, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
+.font-style-italic, .complement-italic-text, .contact-wrapper .content, .time, .sub-title, .home .slideshow-contact-puff-area .content-wrapper .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
 .main .widget.widget_hk_related_widget .subtitle,
 .main .widget.widget_hk_protocol .subtitle,
 .main .widget.HK_tags_widget .subtitle, .article-wrapper .entry-meta .footer-wrapper, .small-words {
@@ -5021,7 +5021,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.71429;
   }
 
-  h6, .zeta, .time, .sub-title, .home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
+  h6, .zeta, .time, .sub-title, .home .slideshow-contact-puff-area .content-wrapper .more-contact-link, .main .widget.widget_hk_aditro_rss_widget .subtitle,
   .main .widget.widget_hk_related_widget .subtitle,
   .main .widget.widget_hk_protocol .subtitle,
   .main .widget.HK_tags_widget .subtitle, .viewmode-only-titles .summary h1.entry-title, .article-wrapper .side-content, .button.top, .button.bottom, .top-menu-wrapper, .small-words, .footer-widget-wrapper {
@@ -5152,6 +5152,10 @@ html {
 
 .primary td, .primary th {
   border: 1px solid #e5e6e7;
+}
+
+.primary.searchresult td, .primary.searchresult th {
+  border: 0;
 }
 
 .widget h1 {
@@ -5327,10 +5331,13 @@ html {
 .home .slideshow-contact-puff-area .content-wrapper h1 a {
   display: block;
 }
+.home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link {
+  line-height: 48px;
+}
 .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link:hover {
   text-decoration: underline;
 }
-.home .slideshow-contact-puff-area .content-wrapper h1 .more-contact-link {
+.home .slideshow-contact-puff-area .content-wrapper .more-contact-link {
   display: block;
 }
 .home .slideshow-contact-puff-area .content-wrapper .left-content {

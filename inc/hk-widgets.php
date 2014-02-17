@@ -1466,8 +1466,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 				// add link and title
 				$retValue .= "<h1 class='entry-title'>";
 				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>"; 
-				$retValue .= "<span class='main-contact-link'>" . get_the_title() . "";
-				$retValue .= "<span class='more-contact-link'>fler kontaktuppgifter</span></span></a></h1>"; 
+				$retValue .= "<span class='main-contact-link'>" . get_the_title() . "</span></a></h1>"; 
 				
 				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
 				
@@ -1493,11 +1492,17 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 					$retValue .= $number . "</a></li>";
 				endwhile; endif;
-				if (isset($instance['contacttext']) && $options["startpage_cat"] == $cat) {
+				
+				if (isset($instance['contacttext']) && $options["startpage_cat"] == get_query_var("cat")) {
 					foreach(split("\n",$instance['contacttext']) as $contacttext) {
 						$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'>" . $contacttext . "</a></li>";
 					}
 				}
+				$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'><span class='more-contact-link'>fler kontaktuppgifter</span></a></li>";
+
+				//$retValue .= "<span class='more-contact-link'>fler kontaktuppgifter</span>";
+				
+				
 				$retValue .= "</ul></div>";
 			endif; // endif contact exist
 

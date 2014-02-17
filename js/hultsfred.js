@@ -932,6 +932,8 @@ $(document).ready(function(){
 	/* 
 	* give result in dropdownlist 
 	*/ 
+	if (!$("#searchform").hasClass("gcse")) {
+	
 	$('#s').keyup(function(event) { 
 		if( $(window).width()+scrollbar > responsive_lap_start ){
 			select = false; 
@@ -1089,6 +1091,8 @@ $(document).ready(function(){
 			} 
 		} // if not on palm
 	}); 
+	
+	} // end if gcse
 
 	
 	

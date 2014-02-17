@@ -114,6 +114,9 @@ img {
 .primary td, .primary th {
 	border: 1px solid $gray-light-color;
 }
+.primary.searchresult td, .primary.searchresult th {
+	border: 0;
+}
 
 .widget {
 	@extend .margin--bottom;

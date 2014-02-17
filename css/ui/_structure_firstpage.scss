@@ -264,16 +264,17 @@
 			}
 			.main-contact-link {
 				@extend .float--left;
+				line-height: 48px;
 				&:hover {
 					text-decoration: underline;
 				}
 			}
-			.more-contact-link {
-				@extend .zeta;
-				@extend .cf;
-				@extend .font-style-italic;
-				display: block;
-			}
+		}
+		.more-contact-link {
+			@extend .zeta;
+			@extend .cf;
+			@extend .font-style-italic;
+			display: block;
 		}
 		ul {
 			@extend .flush;
