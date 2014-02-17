@@ -784,17 +784,12 @@ $(document).ready(function(){
 	});
 	/* add action to read-more toggle, if in .home or in lt ie9, go to article */
 	$("#primary").find("article").each(function(){
-		if ($(this).hasClass("single") && $(this).hasClass("full")) {
-			// do nothing
-		}
-		else {
-			if (!$(this).parents(".home").length && !isLessThenIE9) {
-				setArticleActions($(this));
-			} else {
-				$(this).unbind("click").bind("click",function() {
-					location.href = $(this).find(".entry-title a").attr("href");
-				});
-			}
+		if (!$(this).parents(".home").length && !isLessThenIE9) {
+			setArticleActions($(this));
+		} else {
+			$(this).unbind("click").bind("click",function() {
+				location.href = $(this).find(".entry-title a").attr("href");
+			});
 		}
 	});
 	// contact popup
