@@ -221,7 +221,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			<?php if (!is_search()) : ?>
 			<div class="responsive-menu">
 				<a class="js-show-main-menu" href="#"><span class="menu-icon"></span></a>
-				<a class="js-show-search" href="#"><span class="search-icon"></span></a>
+				<?php /* <a class="js-show-search" href="#"><span class="search-icon"></span></a> */ ?>
 			</div>
 			<?php endif; ?>
 
