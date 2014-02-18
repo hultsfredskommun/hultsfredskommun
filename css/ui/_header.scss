@@ -69,14 +69,16 @@
 	}
 	.form {
 		@extend .cf;
+		border-radius: 22px;
+		border: 2px solid $main-color;
+		box-shadow: 1px 1px 10px gray;
+		overflow: hidden;
 		.input-wrapper {
 			@extend .position-relative;
 			@extend .desk-eight-tenths;
 			@extend .lap-eight-tenths;
-			@extend .palm-nine-tenths;
+			@extend .palm-eight-tenths;
 			@extend .float--left;
-			@extend .gray-light-background;
-			@extend .border-radius--left;
 			.field {
 				@extend .transparent-background;
 				@extend .padding--left;
@@ -89,20 +91,19 @@
 			}
 		}
 		.submit {
-			/*@extend .desk-two-tenths;
+			@extend .desk-one-tenth;
 			@extend .lap-two-tenths;
-			@extend .palm-one-tenth;*/
-			@extend .float--left;
-			@extend .main-background;
+			@extend .palm-two-tenths;
+			@extend .float--right;
+			@extend .white-background;
 			@extend .white-text;
-			@extend .border-radius--right;
 			@extend .noborder;
 			@extend .cf;
 		}
 		
 		.field,
 		.submit {
-			height: $base-spacing-unit+$half-spacing-unit/2;
+			height: 44px;
 		}
 	}
 	.searchresult-wrapper {

@@ -250,10 +250,10 @@
 .searchnavigation .submit { /* search-icon */
 	@extend .clip;
 	width: 45px;
-	background-position: -194px -498px;
+	background-position: -260px -490px;
 	@include media-query(palm) {
 		width: 10%;
-		background-position: -203px -498px;
+		background-position: -260px -490px;
 	}	
 }
 
