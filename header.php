@@ -218,11 +218,12 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 			</hgroup>
 				
-
+			<?php if (!is_search()) : ?>
 			<div class="responsive-menu">
 				<a class="js-show-main-menu" href="#"><span class="menu-icon"></span></a>
 				<?php /* <a class="js-show-search" href="#"><span class="search-icon"></span></a> */ ?>
 			</div>
+			<?php endif; ?>
 
 			<?php /* search form*/ ?>
 			<div id="searchnavigation" class="searchnavigation" role="search">			
