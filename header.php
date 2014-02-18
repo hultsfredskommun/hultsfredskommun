@@ -176,10 +176,9 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 
 		<?php /* top right navigation */ ?>
 		<?php 
-		
-			if ((($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0) || 
+			if ( ((($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0) || 
 				(!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") || 
-				(!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") ) : ?>
+				(!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") ) ) : ?>
 				<aside id='topmenu' class='top-menu-wrapper'><div class='content--center'>
 					
 					<?php if ( (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) || 
@@ -222,7 +221,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 
 			<div class="responsive-menu">
 				<a class="js-show-main-menu" href="#"><span class="menu-icon"></span></a>
-				<a class="js-show-search" href="#"><span class="search-icon"></span></a>
+				<?php /* <a class="js-show-search" href="#"><span class="search-icon"></span></a> */ ?>
 			</div>
 
 			<?php /* search form*/ ?>
@@ -247,7 +246,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 
 		</div></div>
 		<!--googleoff: all-->
-		
+		<?php if (!is_search()) : ?>
 		<nav id="menu" class="menu-wrapper" role="navigation">
 			<?php 
 				$menu_name = 'primary';
@@ -359,6 +358,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 
 			?>
 		</nav>
+		<?php endif; // not is search ?>
 	</header><!-- #branding -->
 
 	<div id="main" class="main">

@@ -5720,13 +5720,20 @@ html {
 }
 
 /* SEARCH */
+.search-title {
+  padding: 7px;
+}
+
+.searchnavigation {
+  /*@extend .hidden--palm; */
+}
 .searchnavigation .assistive-text {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
 }
 .searchnavigation .form {
-  border-radius: 22px;
+  border-radius: 12px;
   border: 2px solid #5c85b1;
   box-shadow: 1px 1px 10px gray;
   overflow: hidden;
@@ -6782,7 +6789,7 @@ input.gsc-input {
 }
 
 @media only screen and (max-width: 540px) {
-  .hidden--palm, .searchnavigation, .main-menu,
+  .hidden--palm, .main-menu,
   .main-sub-menu, .more-in-navigation,
   .sort-order, .category-navigation {
     display: none;

@@ -54,13 +54,15 @@
 }
 
 /* SEARCH */
-
+.search-title {
+	padding: 7px;
+}
 .searchnavigation {
 	@extend .g;
 	@extend .desk-one-half;
 	@extend .lap-one-half;
 	@extend .palm-one-whole;
-	@extend .hidden--palm;
+	/*@extend .hidden--palm; */
 	@extend .half-margin--top;
 	.assistive-text {
 		position: absolute !important;
@@ -69,7 +71,7 @@
 	}
 	.form {
 		@extend .cf;
-		border-radius: 22px;
+		border-radius: 12px;
 		border: 2px solid $main-color;
 		box-shadow: 1px 1px 10px gray;
 		overflow: hidden;
