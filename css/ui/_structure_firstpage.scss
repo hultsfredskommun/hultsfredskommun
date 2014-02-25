@@ -261,6 +261,7 @@
 			}
 			.contact-icon {
 				@extend .float--left;
+				@extend .hide--palm;
 			}
 			.main-contact-link {
 				@extend .float--left;
@@ -329,6 +330,12 @@
 				@extend .flush;
 				.complement-italic-text, a {
 					@extend .white-text;
+				}
+				@include media-query(palm) {
+					font-size: 13px!important;
+				}
+				@include media-query(lap) {
+					font-size: 13px!important;
 				}
 			}		
 		}

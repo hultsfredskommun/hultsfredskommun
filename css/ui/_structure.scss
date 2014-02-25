@@ -193,3 +193,10 @@ img {
 }
 
 
+#hk_allcomingreviews_dashboard_widget .inside,
+#hk_alllatestposts_dashboard_widget .inside,
+#hk_allhidden_dashboard_widget .inside {
+	height: 150px;
+	overflow: auto;
+}
+

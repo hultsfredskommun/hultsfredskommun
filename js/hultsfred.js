@@ -979,14 +979,14 @@ $(document).ready(function(){
 					
 					function ajaxsearch() {
 					
-						// push to analytics
-						push_google_analytics("#search=" + $(this).attr("href"));
-	
 						if (!$(".searchresult-wrapper")[0]) 
 						{ 
 							$('#searchform').after("<div class='searchresult-wrapper'><div class='searchresult with-border'></div></div>"); 
 						} 
 						searchstring = $("#s").val(); 
+						
+						// push to analytics
+						push_google_analytics("#search=" + searchstring);
 						
 						$(".searchresult-wrapper .searchresult").html("H&auml;mtar s&ouml;kresultat...").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
 						{ searchstring: searchstring }, 
