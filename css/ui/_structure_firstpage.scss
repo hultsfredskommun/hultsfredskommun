@@ -252,16 +252,24 @@
 			@extend .float--left;
 			@extend .one-whole;
 			@extend .noborder;
+			@extend .flush--bottom;
 			padding: 0;
 			a {
-				@extend .margin--top;
-				@extend .margin--left;
-				@extend .half-padding--bottom;
+				//@extend .margin--top;
+				//@extend .margin--left;
+				//@extend .half-padding--bottom;
+				//@extend .half-margin--top;
+				@include media-query(desk) {
+					margin-top: $half-spacing-unit;
+				}
+				@extend .half-margin--left;
+				@extend .half-margin--bottom;
 				display: block;
 			}
 			.contact-icon {
 				@extend .float--left;
 				@extend .hide--palm;
+				@extend .hide--lap;
 			}
 			.main-contact-link {
 				@extend .float--left;
@@ -282,9 +290,10 @@
 			@extend .nav;
 			@extend .nav--block;
 			@extend .nav--block-half-margin;
-			@extend .nav--block-double-margin;
+			//@extend .nav--block-double-margin;
 			@extend .nav--block-break;
 			@extend .nav--stacked;
+			
 		}
 		.left-content {
 			height: 100%;
@@ -326,16 +335,10 @@
 				@extend .white-text;
 				@extend .one-whole;
 				@extend .islet;
-				@extend .gamma;
+				@extend .gamma_responsive;
 				@extend .flush;
 				.complement-italic-text, a {
 					@extend .white-text;
-				}
-				@include media-query(palm) {
-					font-size: 13px!important;
-				}
-				@include media-query(lap) {
-					font-size: 13px!important;
 				}
 			}		
 		}

@@ -55,6 +55,16 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 }
+.gamma_responsive {
+	@extend .gamma;
+	@include media-query(palm) {
+		font-size: 13px!important;
+	}
+	@include media-query(lap) {
+		font-size: 13px!important;
+	}
+}
+
 
 /*
 	@include font-size($nano-size);
