@@ -788,7 +788,13 @@ $(document).ready(function(){
 			setArticleActions($(this));
 		} else {
 			$(this).unbind("click").bind("click",function() {
-				location.href = $(this).find(".entry-title a").attr("href");
+				if ($(this).find(".entry-title a").attr("href") !== undefined) {
+					location.href = $(this).find(".entry-title a").attr("href");
+				}
+				// if slideshow caption has link
+				else if ($(this).find(".caption").attr("href") !== undefined) {
+					location.href = $(this).find(".caption").attr("href");
+				}
 			});
 		}
 	});

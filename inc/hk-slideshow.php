@@ -88,10 +88,14 @@ function hk_slideshow_generate_output($vars) {
 		$meta_query = new WP_Query($args);
 		if ($meta_query->have_posts()) {
 			$retValue .= "<div class='img-wrapper'><div class='slideshow'>";
-			
        		// The Loop
 			$count = 0;
 	   		while ( $meta_query->have_posts() ) : $meta_query->the_post();
+				if ( get_field('hk_slideshow_link') ) {
+					$link = " href='" . get_field('hk_slideshow_link') . "'";
+				} else {
+					$link = "aa" . get_field('hk_slideshow_link');
+				}
 				if( get_field('hk_featured_images') ) :
 					while( has_sub_field('hk_featured_images') ) : 
 						$thumbsize = $vars["thumbnail-size"];
@@ -111,7 +115,7 @@ function hk_slideshow_generate_output($vars) {
 							if (get_the_content() != "") {
 								$retValue .= 	"<div class='caption-area'>";
 								$retValue .= 			"<div class='transparent'></div>";
-								$retValue .= 			"<a class='caption'>" . get_the_content() . "</a>";
+								$retValue .= 			"<a class='caption'$link>" . get_the_content() . "</a>";
 								//$retValue .= 			"<a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_content() . "</a>";
 								$retValue .= 	"</div>";
 							}
