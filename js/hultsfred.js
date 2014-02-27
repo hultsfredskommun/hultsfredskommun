@@ -783,7 +783,7 @@ $(document).ready(function(){
 		ev.preventDefault();
 	});
 	/* add action to read-more toggle, if in .home or in lt ie9, go to article */
-	$("#primary").find("article").each(function(){
+	$("#primary, #firstpage-top-content").find("article").each(function(){
 		if (!$(this).parents(".home").length && !isLessThenIE9) {
 			setArticleActions($(this));
 		} else {
@@ -791,9 +791,9 @@ $(document).ready(function(){
 				if ($(this).find(".entry-title a").attr("href") !== undefined) {
 					location.href = $(this).find(".entry-title a").attr("href");
 				}
-				// if slideshow caption has link
-				else if ($(this).find(".caption").attr("href") !== undefined) {
-					location.href = $(this).find(".caption").attr("href");
+				// if slideshow link
+				else if ($(this).find(".js-image-link").attr("href") !== undefined) {
+					location.href = $(this).find(".js-image-link").attr("href");
 				}
 			});
 		}

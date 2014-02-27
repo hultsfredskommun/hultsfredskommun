@@ -115,9 +115,12 @@ function hk_slideshow_generate_output($vars) {
 							if (get_the_content() != "") {
 								$retValue .= 	"<div class='caption-area'>";
 								$retValue .= 			"<div class='transparent'></div>";
-								$retValue .= 			"<a class='caption'$link>" . get_the_content() . "</a>";
+								$retValue .= 			"<a class='js-image-link caption'$link>" . get_the_content() . "</a>";
 								//$retValue .= 			"<a href='". get_permalink(get_the_id()) ."' title='Länk till sida ". get_the_title()  ."' rel='bookmark'>" . get_the_content() . "</a>";
 								$retValue .= 	"</div>";
+							}
+							else {
+							$retValue .= "<a class='hidden js-image-link'$link>" . get_the_content() . "</a>";
 							}
 							$retValue .= "</article>";
 						}
