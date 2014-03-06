@@ -5205,10 +5205,6 @@ html {
   .icon-left {
     line-height: 1.7em !important;
   }
-
-  .icon-right, .side-content .side-content .post-edit-link {
-    height: 24px;
-  }
 }
 /*
  * citybreak reset
@@ -5696,6 +5692,9 @@ html {
 }
 */
 /* aside content */
+.side-content {
+  padding-top: 22px;
+}
 .side-content .top .title {
   margin-top: 35px;
 }

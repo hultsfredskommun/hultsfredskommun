@@ -57,21 +57,16 @@
 	<?php if ( function_exists("get_field") && get_field('hk_related') ) : // related docs and links ?>
 	<div class="box related <?php echo ($count == 0)?"top":""; ?> <?php echo "full"; //TEMP REMOVED echo ($count < 2)?"summary":"full"; ?>">
 		<ul class="related-wrapper <?php echo "full"; //TEMP REMOVED echo ($count < 2)?"summary":"full"; ?><?php echo (get_field('hk_contacts'))?" top-margin":""; ?>">
-		<?php 
-		$add_title = true;
-		while ( has_sub_field('hk_related') ) :
-			if ( get_row_layout() == 'hk_related_titles' ) :
-				$add_title = false;
-			endif;
-		endwhile; 
-		if ($add_title) { ?>
-			<li class="title full">
-				<span>Se &auml;ven</span>
-			</li>	
-		<?php }	?>
 
-		
+
+		<?php $first_sub_field = true; ?>
 		<?php while ( has_sub_field('hk_related') ) : ?>
+			<?php if ( $first_sub_field && (get_row_layout() != 'hk_related_titles' ) ) : ?>
+				<li class="related_title title full">
+					<span>Se &auml;ven</span>
+				</li>
+			<?php endif; ?>
+			<?php $first_sub_field = false;	?>
 			<?php if (!$summary || $count++ < 2) : ?>
 				<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
 					<li class="related_page <?php echo "full"; //TEMP REMOVED echo ($count++ < 2)?"summary":"full"; ?>">
