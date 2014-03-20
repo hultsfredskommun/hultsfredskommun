@@ -18,7 +18,7 @@
 					</span>
 				</li>
 			<?php endif; // End if $tags_list ?>
-			<li class="editor">Sidansvarig: <a href="<?php echo get_permalink() . "?respond=".get_the_ID()."#respond"; ?>">
+			<li class="editor">Kontakta sidansvarig: <a href="<?php echo get_permalink() . "?respond=".get_the_ID()."#respond"; ?>">
 			<?php echo get_the_author(); ?></a> <?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
 			<li class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></li>
 
