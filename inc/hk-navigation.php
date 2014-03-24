@@ -500,11 +500,94 @@ class hk_Tag_Walker extends Walker_Category {
 }
 
 
+
+function hk_get_category_tags($varcat) {
+	global $wpdb;
+	$category_tags = $wpdb->get_results("
+		SELECT DISTINCT
+			terms2.term_id as tag_ID,
+			terms2.name as tag_name,
+			terms2.slug as tag_slug,
+			t2.count as posts_with_tag
+		FROM
+			$wpdb->posts as p1
+			LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID
+			LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id
+			LEFT JOIN $wpdb->terms as terms1 ON t1.term_id = terms1.term_id,
+
+			$wpdb->posts as p2
+			LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID
+			LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id
+			LEFT JOIN $wpdb->terms as terms2 ON t2.term_id = terms2.term_id
+		WHERE (
+			t1.taxonomy = 'category' AND
+			p1.post_status = 'publish' AND
+			terms1.term_id = '$varcat' AND
+			t2.taxonomy = 'post_tag' AND
+			p2.post_status = 'publish' AND
+			p1.ID = p2.ID
+			)
+		");
+	return $category_tags;
+}
+
+function hk_generate_tag_link($tagitem) {
+	$currtagslug = $tagitem->tag_slug;
+	$tags_filter = get_query_var("tag");
+	$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
+	//$term_id = get_query_var("cat");
+	$orderby = $_REQUEST["orderby"];
+	if ($orderby != "") {
+		$orderby = "&orderby=$orderby";
+	}
+	if (!empty($tags_filter))
+		$tag_array = explode(",",$tags_filter);
+	
+	if(!empty($tag_array) && in_array($currtagslug, $tag_array)) {
+		$current_tag = true;
+		$tags_filter = "?tag=";
+	}
+	else { 
+		$tags_filter = "?tag=".$currtagslug;
+	}
+
+	
+	// generate tag link
+	$cat_name = esc_attr( $tag->name); 
+	if (empty($term_id)) {
+		$href = get_site_url() . $tags_filter. $orderby;
+	}
+	else {
+		$href = get_category_link( $term_id ) . $tags_filter. $orderby;
+	}
+
+	$link = '<a href="' . $href  . '" '; 
+	$cat_name = $tagitem->tag_name;//apply_filters( 'list_cats', $cat_name, $tag ); 
+	if ( $use_desc_for_title == 0 || empty($tag->description) ) 
+		$link .= 'title="Filtrera med nyckelordet ' .  $cat_name . '"'; 
+	else 
+		$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $tag->description, $tag ) ) ) . '"'; 
+	$link .= '>'; 
+	$link .= $cat_name . ' (' . $tagitem->posts_with_tag . ')</a>'; 
+	
+	$output .= "\t<li"; 
+			$class = 'atag-item tag-item-'.$tag->term_id; 
+			$icon = "";
+			if ($current_tag) {
+				$class .=  ' current-tag'; 
+				$icon = "<a href='$href' class='delete-icon'></a>";
+			}
+			$output .=  ' class="'.$class.'"'; 
+			$output .= ">$icon$link\n"; 
+	return $output;
+}
+
+
 // show tag filter list
 function displayTagFilter($show_title = true, $show_selected_tags = true, $ul_class="more-navigation", $exclude_tags = "") {
 	global $default_settings;
 	if ($default_settings["show_tags"] != 0) :	
-
+		/*
 		$hk_tag_walker = new hk_Tag_Walker();
 		$args = array(
 			'orderby'            => 'name',
@@ -522,22 +605,30 @@ function displayTagFilter($show_title = true, $show_selected_tags = true, $ul_cl
 		
 		if ($show_selected_tags)
 			$args['walker'] = $hk_tag_walker;
-
-		echo "<ul class='$ul_class'>"; 
-		if ($show_title) {
-			echo "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Visa bara</a></li>";
-		}
-		if ($show_selected_tags && $_REQUEST["tag"] != "" && get_query_var("cat") != "")
-		{
-			if( hk_getParent(get_query_var("cat")) > 0) {
-				$href = get_category_link( hk_getParent(get_query_var("cat")) ) . "?tag=".$_REQUEST["tag"];
-				echo "<li class='tag-item complement-italic-text'><a href='$href' title='G&aring; upp en niv&aring;'>G&aring; upp en niv&aring;</a></li>";
+		*/
+		$tags = hk_get_category_tags(get_query_var("cat"));
+		if (!empty($tags)) :
+			echo "<ul class='$ul_class'>"; 
+			if ($show_title) {
+				echo "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Visa bara</a></li>";
 			}
-			//$href = get_category_link( get_query_var("cat") ) . "?tag=";
-			//echo "<li class='tag-item complement-italic-text'><a href='$href' title='Rensa valt alternativ'>Rensa</a></li>";
-		}
-		wp_list_categories( $args );
-		echo "</ul>";
+			if ($show_selected_tags && $_REQUEST["tag"] != "" && get_query_var("cat") != "")
+			{
+				if( hk_getParent(get_query_var("cat")) > 0) {
+					$href = get_category_link( hk_getParent(get_query_var("cat")) ) . "?tag=".$_REQUEST["tag"];
+					echo "<li class='tag-item complement-italic-text'><a href='$href' title='G&aring; upp en niv&aring;'>G&aring; upp en niv&aring;</a></li>";
+				}
+				//$href = get_category_link( get_query_var("cat") ) . "?tag=";
+				//echo "<li class='tag-item complement-italic-text'><a href='$href' title='Rensa valt alternativ'>Rensa</a></li>";
+			}
+			
+			
+			foreach( $tags as $tagitem) :
+				echo hk_generate_tag_link($tagitem);
+			endforeach;
+			//wp_list_categories( $args );
+			echo "</ul>";
+		endif; // endif tags available
 	endif;
 }
 
