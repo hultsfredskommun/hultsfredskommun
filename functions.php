@@ -689,7 +689,7 @@ function get_the_reviewed_date($id) {
 
 	$time = get_post_meta( $id, 'hk_last_reviewed', true );
 	if (isset($time) && $time != "") {
-		$time = "Granskad: " . hk_nicedate($time);
+		$time = "Granskad: <time datetime='$time' class='updated'>" . hk_nicedate($time) . "</time>";
 	}
 	return $time;
 }
