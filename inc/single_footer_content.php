@@ -18,8 +18,8 @@
 					</span>
 				</li>
 			<?php endif; // End if $tags_list ?>
-			<li class="editor">Kontakta sidansvarig: <a class="vcard author" href="<?php echo get_permalink() . "?respond=".get_the_ID()."#respond"; ?>" rel='author'>
-			<?php echo get_the_author(); ?></a> <?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
+			<li class="editor vcard author"><span class="fn">Kontakta sidansvarig: <a href="<?php echo get_permalink() . "?respond=".get_the_ID()."#respond"; ?>" rel='author'>
+			<?php echo get_the_author(); ?></a></span> <?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
 			<li class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></li>
 
 			<li class="permalink">Direktl&auml;nk: <a href="<?php echo get_permalink(); ?>"><?php echo get_permalink(); ?></a></li>
