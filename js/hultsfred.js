@@ -630,7 +630,24 @@ function flipAnimation(active) {
 
 $(document).ready(function(){
 
-
+	// if in tag list
+	if ($(".tag-listing").length > 0) {
+		$("ul.indent1, ul.indent2, ul.indent3, ul.indent4").hide();
+		$("h1.indent1, h2.indent2, h3.indent3, h4.indent4").each(function() {
+			if ($(this).next().hasClass($(this).attr("class"))) {
+				$(this).append(" <span class='sign'>+</span>");
+				$(this).css("cursor","pointer").click(function() {
+					$(this).next().toggle();
+					if ($(this).next().is(":visible")) {
+						$(this).find(".sign").html("-");
+					} else {
+						$(this).find(".sign").html("+");
+					}
+				});
+			}
+		});
+		
+	}
 	
 	/* debug count and version log */
 		/*function doCount() {

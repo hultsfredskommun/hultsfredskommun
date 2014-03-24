@@ -345,7 +345,7 @@ class hk_Category_Walker extends Walker_Category {
 		if (!empty($tags_filter)) {
 			$tags_filter = "?tag=$tags_filter";
 		}
-				
+		$tags_filter = "";		
         $cat_name = esc_attr( $category->name); 
 		
 		
@@ -410,8 +410,10 @@ class hk_Tag_Walker extends Walker_Category {
         extract($args);
 		$currtagslug = $tag->slug;
 		$tags_filter = get_query_var("tag");
+		
 		$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
 		//$term_id = get_query_var("cat");
+		
 		$orderby = $_REQUEST["orderby"];
 		if ($orderby != "") {
 			$orderby = "&orderby=$orderby";
@@ -500,15 +502,28 @@ class hk_Tag_Walker extends Walker_Category {
 }
 
 
-
+/*
+ * https://wordpress.org/support/topic/get-tags-specific-to-category
+ */
 function hk_get_category_tags($varcat) {
 	global $wpdb;
-	$category_tags = $wpdb->get_results("
+
+	$cat_ids = array($varcat);
+	$cat_ids = hk_getChildrenIdArray(hk_getMenuParent($varcat)); // get closes menu parent
+	$cat_ids = hk_getChildrenIdArray($varcat); // get child ids
+	$cat_ids[] = $varcat; // add current id
+
+	$varcat_where_or = "(1 = 0 \n";
+	foreach($cat_ids as $cat_id) :
+		$varcat_where_or .= "OR terms1.term_id = '$cat_id' \n";
+	endforeach;
+	$varcat_where_or .= " )";
+	
+	$query = "
 		SELECT DISTINCT
 			terms2.term_id as tag_ID,
 			terms2.name as tag_name,
-			terms2.slug as tag_slug,
-			t2.count as posts_with_tag
+			terms2.slug as tag_slug
 		FROM
 			$wpdb->posts as p1
 			LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID
@@ -522,20 +537,25 @@ function hk_get_category_tags($varcat) {
 		WHERE (
 			t1.taxonomy = 'category' AND
 			p1.post_status = 'publish' AND
-			terms1.term_id = '$varcat' AND
+			$varcat_where_or AND
 			t2.taxonomy = 'post_tag' AND
 			p2.post_status = 'publish' AND
 			p1.ID = p2.ID
 			)
-		");
+		";
+	$category_tags = $wpdb->get_results($query);
 	return $category_tags;
 }
 
 function hk_generate_tag_link($tagitem) {
 	$currtagslug = $tagitem->tag_slug;
 	$tags_filter = get_query_var("tag");
-	$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
-	//$term_id = get_query_var("cat");
+	
+	
+	$term_id = get_query_var("cat"); // just current cat
+	//$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
+	
+	
 	$orderby = $_REQUEST["orderby"];
 	if ($orderby != "") {
 		$orderby = "&orderby=$orderby";
@@ -564,21 +584,21 @@ function hk_generate_tag_link($tagitem) {
 	$link = '<a href="' . $href  . '" '; 
 	$cat_name = $tagitem->tag_name;//apply_filters( 'list_cats', $cat_name, $tag ); 
 	if ( $use_desc_for_title == 0 || empty($tag->description) ) 
-		$link .= 'title="Filtrera med nyckelordet ' .  $cat_name . '"'; 
+		$link .= "title='Filtrera med nyckelordet $cat_name'"; 
 	else 
 		$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $tag->description, $tag ) ) ) . '"'; 
 	$link .= '>'; 
-	$link .= $cat_name . ' (' . $tagitem->posts_with_tag . ')</a>'; 
+	$link .= "$cat_name</a>"; 
 	
 	$output .= "\t<li"; 
-			$class = 'atag-item tag-item-'.$tag->term_id; 
-			$icon = "";
-			if ($current_tag) {
-				$class .=  ' current-tag'; 
-				$icon = "<a href='$href' class='delete-icon'></a>";
-			}
-			$output .=  ' class="'.$class.'"'; 
-			$output .= ">$icon$link\n"; 
+		$class = 'atag-item tag-item-'.$tag->term_id; 
+		$icon = "";
+		if ($current_tag) {
+			$class .=  ' current-tag'; 
+			$icon = "<a href='$href' class='delete-icon'></a>";
+		}
+		$output .=  ' class="'.$class.'"'; 
+		$output .= ">$icon$link\n"; 
 	return $output;
 }
 
@@ -607,6 +627,7 @@ function displayTagFilter($show_title = true, $show_selected_tags = true, $ul_cl
 			$args['walker'] = $hk_tag_walker;
 		*/
 		$tags = hk_get_category_tags(get_query_var("cat"));
+		
 		if (!empty($tags)) :
 			echo "<ul class='$ul_class'>"; 
 			if ($show_title) {
