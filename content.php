@@ -12,7 +12,7 @@ $classes = "summary";
 $classes .= (is_sticky())?" sticky":"";
 $classes .= ($external_blog)?" externalblog":"";
  ?>
-	<!--googleon: all-->
+	
 	<article id="post-<?php the_ID(); ?>" <?php post_class($classes); ?>>
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
@@ -66,4 +66,4 @@ $classes .= ($external_blog)?" externalblog":"";
 		</div>
 		<span class='hidden article_id'><?php the_ID(); ?></span>
 	</article><!-- #post-<?php the_ID(); ?> -->
-	<!--googleoff: all-->
+	

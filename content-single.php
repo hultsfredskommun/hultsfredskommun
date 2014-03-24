@@ -35,3 +35,4 @@
 		</div>
 		<span class='hidden article_id'><?php the_ID(); ?></span>
 	</article><!-- #post-<?php the_ID(); ?> -->
+	<!--googleoff: all-->

@@ -7,7 +7,6 @@
  * @since Twenty Eleven 1.0
  */
 ?>
-	<!--googleon: all-->
 	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky news summary":"news summary"); ?>>
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
@@ -57,4 +56,3 @@
 		</div>
 		</div>
 	</article><!-- #post-<?php the_ID(); ?> -->
-	<!--googleoff: all-->
