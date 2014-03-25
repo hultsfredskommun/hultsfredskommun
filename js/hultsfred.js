@@ -632,21 +632,24 @@ $(document).ready(function(){
 
 	// if in tag list
 	if ($(".tag-listing").length > 0) {
-		$("ul.indent1, ul.indent2, ul.indent3, ul.indent4").hide();
-		$("h1.indent1, h2.indent2, h3.indent3, h4.indent4").each(function() {
-			if ($(this).next().hasClass($(this).attr("class"))) {
-				$(this).append(" <span class='sign'>+</span>");
-				$(this).css("cursor","pointer").click(function() {
-					$(this).next().toggle();
-					if ($(this).next().is(":visible")) {
-						$(this).find(".sign").html("-");
-					} else {
-						$(this).find(".sign").html("+");
-					}
-				});
-			}
-		});
-		
+		//alert($("h1.indent1, h2.indent2, h3.indent3, h4.indent4").length);
+		//alert($("ul.indent1, ul.indent2, ul.indent3, ul.indent4").length);
+		if ($("ul.indent1 li, ul.indent2 li, ul.indent3 li, ul.indent4 li").length > 10) {
+			$("ul.indent1, ul.indent2, ul.indent3, ul.indent4").hide();
+			$("h1.indent1, h2.indent2, h3.indent3, h4.indent4").each(function() {
+				if ($(this).next().hasClass($(this).attr("class"))) {
+					$(this).append(" <span class='sign'>+</span>");
+					$(this).css("cursor","pointer").click(function() {
+						$(this).next().toggle();
+						if ($(this).next().is(":visible")) {
+							$(this).find(".sign").html("-");
+						} else {
+							$(this).find(".sign").html("+");
+						}
+					});
+				}
+			});
+		}		
 	}
 	
 	/* debug count and version log */

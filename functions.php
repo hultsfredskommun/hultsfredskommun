@@ -958,6 +958,130 @@ function hk_get_parent_categories_from_cat($cat) {
 	$sub_parent_category = hk_getMenuParent($cat);
 	return array($parent_category, $sub_parent_category, $cat);
 }
+/*
+ * Get tags available in $varcat category or one of the children
+ * https://wordpress.org/support/topic/get-tags-specific-to-category
+ */
+function hk_get_category_tags($varcat) {
+	global $wpdb, $default_settings;
+
+	//$cat_ids = array($varcat);
+	//$cat_ids = hk_getChildrenIdArray(hk_getMenuParent($varcat)); // get closes menu parent
+	$cat_ids = hk_getChildrenIdArray($varcat); // get child ids
+	$cat_ids[] = $varcat; // add current id
+
+	$varcat_where_or = "(1 = 0 \n";
+	foreach($cat_ids as $cat_id) :
+		$varcat_where_or .= "OR r1.term_taxonomy_ID = '$cat_id' \n";
+	endforeach;
+	$varcat_where_or .= " )";
+	
+	$hidden_cat = $hidden_cat1 = $hidden_cat2 = "";
+	if ($default_settings["hidden_cat"] != "") {
+		$hidden_cat = $default_settings["hidden_cat"];
+		//$hidden_cat1 = "AND t1.term_taxonomy_id <> '$hidden_cat'";
+		//$hidden_cat2 = "AND t2.term_taxonomy_id <> '$hidden_cat'";
+	}
+	
+		$query = "
+		SELECT p1.ID as id
+		FROM
+			$wpdb->posts as p1
+			LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish'
+		WHERE
+			r1.term_taxonomy_ID = '$hidden_cat'
+			";
+			//echo $query;
+			/*$hidden_posts_array = $wpdb->get_results($query);
+			$hidden_posts = array();
+			foreach($hidden_posts_array as $hidden_post) {
+				$hidden_posts[] = $hidden_post->id;
+			}
+			print_r($hidden_posts);*/
+	$query = "
+		SELECT DISTINCT
+			terms2.term_id as tag_ID,
+			terms2.name as tag_name,
+			terms2.slug as tag_slug
+		FROM
+			$wpdb->posts as p1
+			LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish' AND r1.object_ID <> '$hidden_cat'
+			LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id AND t1.taxonomy = 'category' AND t1.term_taxonomy_id <> '$hidden_cat'
+			LEFT JOIN $wpdb->terms as terms1 ON t1.term_id = terms1.term_id AND terms1.term_id <> '$hidden_cat',
+
+			$wpdb->posts as p2
+			LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID AND p2.post_status = 'publish'
+			LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id AND t2.taxonomy = 'post_tag' 
+			LEFT JOIN $wpdb->terms as terms2 ON t2.term_id = terms2.term_id
+		WHERE (
+			$varcat_where_or AND
+			p1.ID = p2.ID AND
+			p1.ID NOT IN (SELECT p1.ID FROM wp_2_posts as p1 LEFT JOIN wp_2_term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish' WHERE r1.term_taxonomy_ID = '5')
+			)
+		";
+	$category_tags = $wpdb->get_results($query);
+	return $category_tags;
+}
+
+/*
+ * Generate tag link in tag navigation (wrapped in <li>)
+ */
+function hk_generate_tag_link($tagitem) {
+	$currtagslug = $tagitem->tag_slug;
+	$tags_filter = get_query_var("tag");
+	
+	
+	$term_id = get_query_var("cat"); // just current cat
+	//$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
+	
+	
+	$orderby = $_REQUEST["orderby"];
+	if ($orderby != "") {
+		$orderby = "&orderby=$orderby";
+	}
+	if (!empty($tags_filter))
+		$tag_array = explode(",",$tags_filter);
+	
+	if(!empty($tag_array) && in_array($currtagslug, $tag_array)) {
+		$current_tag = true;
+		$tags_filter = "?tag=";
+	}
+	else { 
+		$tags_filter = "?tag=".$currtagslug;
+	}
+
+	
+	// generate tag link
+	$cat_name = esc_attr( $tag->name); 
+	if (empty($term_id)) {
+		$href = get_site_url() . $tags_filter. $orderby;
+	}
+	else {
+		$href = get_category_link( $term_id ) . $tags_filter. $orderby;
+	}
+
+	$link = '<a href="' . $href  . '" '; 
+	$cat_name = $tagitem->tag_name;//apply_filters( 'list_cats', $cat_name, $tag ); 
+	if ( $use_desc_for_title == 0 || empty($tag->description) ) 
+		$link .= "title='Filtrera med nyckelordet $cat_name'"; 
+	else 
+		$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $tag->description, $tag ) ) ) . '"'; 
+	$link .= '>'; 
+	$link .= "$cat_name</a>"; 
+	
+	
+	$output .= "\t<li"; 
+	$class = 'atag-item tag-item-'.$tag->term_id; 
+	$icon = "";
+	if ($current_tag) {
+		$class .=  ' current-tag'; 
+		$icon = "<a href='$href' class='delete-icon'></a>";
+	}
+	$output .=  ' class="'.$class.'"'; 
+	$output .= ">$icon$link</li>\n"; 
+	return $output;
+}
+
 
 function hk_getSmallWords($smallwords) {
 	$smallwords = trim($smallwords);
