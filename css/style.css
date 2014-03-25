@@ -5530,12 +5530,31 @@ html {
 .tag-listing .indent7 {
   padding-left: 72px;
 }
-.tag-listing h2, .tag-listing h3, .tag-listing h4, .tag-listing h5, .tag-listing h6 {
-  margin-bottom: 6px;
+.tag-listing .indent1 li,
+.tag-listing .indent2 li,
+.tag-listing .indent3 li,
+.tag-listing .indent4 li,
+.tag-listing .indent5 li,
+.tag-listing .indent6 li,
+.tag-listing .indent7 li {
+  padding-left: 6px;
+  background: #eee;
+}
+.tag-listing .link {
+  padding-right: 6px;
+}
+.tag-listing h1 {
+  padding-top: 12px;
+}
+.tag-listing h1, .tag-listing h2, .tag-listing h3, .tag-listing h4, .tag-listing h5, .tag-listing h6 {
+  margin-bottom: 12px !important;
+  margin-top: 12px !important;
+  font-size: 90%;
 }
 .tag-listing ul {
   list-style-type: none;
   margin-left: 0;
+  margin-bottom: 0;
 }
 
 .contact-wrapper .content {

@@ -15,7 +15,7 @@ global $default_settings;
 			<?php while ( has_sub_field('hk_related') ) : ?>
 				<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
 					<?php $value = get_sub_field('hk_related_post');?>
-					<a href="<?php echo get_permalink($value->ID); ?>" class="icon related-post-icon" title="<?php echo $value->post_title; ?>"></a>
+					<!--a href="<?php echo get_permalink($value->ID); ?>" class="icon related-post-icon" title="<?php echo $value->post_title; ?>"></a-->
 				<?php elseif ( get_row_layout() == 'hk_related_links' ) : ?>
 					<?php 
 						// prepend http:// if not there already
@@ -24,7 +24,7 @@ global $default_settings;
 							$relate_link_url = "http://" . $relate_link_url;
 						}
 					?>
-					<a target="_blank" href="<?php echo $relate_link_url; ?>" class="icon related-link-icon" title="<?php echo get_sub_field('hk_related_link_name'); ?>"></a>
+					<!--a target="_blank" href="<?php echo $relate_link_url; ?>" class="icon related-link-icon" title="<?php echo get_sub_field('hk_related_link_name'); ?>"></a-->
 				<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
 					<?php $link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
 						$link_name = get_the_title(get_sub_field('hk_related_file')); ?>

@@ -631,13 +631,14 @@ function flipAnimation(active) {
 $(document).ready(function(){
 
 	// if in tag list
-	if ($(".tag-listing").length > 0) {
-		//alert($("h1.indent1, h2.indent2, h3.indent3, h4.indent4").length);
-		//alert($("ul.indent1, ul.indent2, ul.indent3, ul.indent4").length);
-		if ($("ul.indent1 li, ul.indent2 li, ul.indent3 li, ul.indent4 li").length > 10) {
-			$("ul.indent1, ul.indent2, ul.indent3, ul.indent4").hide();
-			$("h1.indent1, h2.indent2, h3.indent3, h4.indent4").each(function() {
-				if ($(this).next().hasClass($(this).attr("class"))) {
+	if ($(".tag-listing").length > 0) 
+		// collapse list if more items than 10
+		if ($("ul.indent1 li, ul.indent2 li, ul.indent3 li, ul.indent4 li, ul.indent5 li").length > 10) {
+			// hide wrappers all wrappers but level 1
+			$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6").hide();
+			// set the click toggle action and +-sign to header
+			$("h2.indent2, h3.indent3, h4.indent4, h5.indent5, h6.indent6").each(function() {
+				if ($(this).next().hasClass("wrapper")) {
 					$(this).append(" <span class='sign'>+</span>");
 					$(this).css("cursor","pointer").click(function() {
 						$(this).next().toggle();
@@ -648,8 +649,28 @@ $(document).ready(function(){
 						}
 					});
 				}
-			});
+			});			
+		}
+		// and collapse level 1 list if more items than 3
+		if ($("ul.indent1 li").length > 3) {
+			// hide the ul
+			$("ul.indent1").hide();
+			// set the click action and +-sign to h1
+			$("h1.indent1").each(function() {
+				if ($(this).next().children().first().hasClass("indent1")) {
+					$(this).append(" <span class='sign'>+</span>");
+					$(this).css("cursor","pointer").click(function() {
+						$(this).next().children().first().toggle();
+						if ($(this).next().next().is(":visible")) {
+							$(this).find(".sign").html("-");
+						} else {
+							$(this).find(".sign").html("+");
+						}
+					});
+				}
+			});			
 		}		
+
 	}
 	
 	/* debug count and version log */

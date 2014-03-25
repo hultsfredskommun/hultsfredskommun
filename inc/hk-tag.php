@@ -11,36 +11,32 @@
 		 */
 		$shownPosts = array();
 		if ($tag != "") : 
+		
+			// get selected category if any
 			if ($cat != "") {
 				$top_cat_arr = array($cat);
 				$cat_title = "kategori <strong>" . single_tag_title("",false) . "</strong>";
 			}
 			else {
+				// get all categories with parent == 0
 				foreach(get_categories(array('parent' => 0, 'hide_empty' => true)) as $c) :
 					$top_cat_arr[] = $c->cat_ID;
 				endforeach;
 				$cat_title = "<strong>hela webbplatsen</strong>";
-				
 			}
 			?>
 			<header class="page-header">
-				
 				<ul class="num-posts">
-					<?php
-						echo "<li><a class='nolink'>Inneh&aring;ll av typen <b>" . $tag . "</b> i " . $cat_title . "</a></li>";
-					?>
-					<?php //print_r($wp_query); ?>
+					<?php echo "<li><a class='nolink'>Inneh&aring;ll av typen <b>" . $tag . "</b> i " . $cat_title . "</a></li>"; ?>
 				</ul>
-
-
 			</header>
 			<?php
-
+			// loop top categories (one or many)
+			$lastsub = 0;
 			foreach($top_cat_arr as $cat) :
 				
+				// get child categories and include parent cat in children array
 				$childrenarr =  get_categories(array('child_of' => $cat, 'hide_empty' => true));
-				
-				// include parent cat in children array
 				$children = array();
 				$children[] = $cat;
 				foreach($childrenarr as $child) :
@@ -70,25 +66,39 @@
 								$catarr[] = $slug;
 								$c = get_category_by_slug($slug);
 								$sub = hk_countParents($c->cat_ID); 
+								while ($sub <= $lastsub--) {
+									echo "</div>";
+								}
+								$lastsub = $sub;
 								echo "<h$sub class='indent$sub'>" . $c->name . "</h$sub>";
+								echo "<div class='wrapper$sub wrapper'>";
 							endif;
 							
 						endforeach;
 						
 						$sub = hk_countParents($childcat->cat_ID); 
-						echo "<h$sub class='indent$sub'>" . $childcat->name . "</h$sub><ul class='indent$sub'>";
+						while ($sub <= $lastsub--) {
+							echo "</div>";
+						}
+						$lastsub = $sub;
+						echo "<h$sub class='indent$sub'>" . $childcat->name . "</h$sub>";
+						echo "<div class='wrapper$sub wrapper'>";
+						echo "<ul class='indent$sub'>";
 						while ( have_posts() ) : the_post();
 							get_template_part( 'content', 'single-line' );
 							$shownPosts[] = get_the_ID();
 						endwhile;
-						endif;
-					echo "</ul>";
+						echo "</ul>";
+					endif;
 
 					wp_reset_query(); // Reset Query
 
 				endforeach;
 				
 			endforeach;
+			while (1 < $lastsub--) {
+				echo "</div>";
+			}
 			
 		endif; /* end if has tag */
 		
