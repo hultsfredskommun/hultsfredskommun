@@ -631,10 +631,6 @@ function flipAnimation(active) {
 $(document).ready(function(){
 
 	// if in tag list
-<<<<<<< HEAD
-=======
-		alert("test");
->>>>>>> 4646e98c777562ecf77c652ce9c393260db8a70f
 	if ($(".tag-listing").length > 0) {
 		// collapse list if more items than 10
 		
