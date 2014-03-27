@@ -631,9 +631,15 @@ function flipAnimation(active) {
 $(document).ready(function(){
 
 	// if in tag list
+<<<<<<< HEAD
+=======
+		alert("test");
+>>>>>>> 4646e98c777562ecf77c652ce9c393260db8a70f
 	if ($(".tag-listing").length > 0) {
 		// collapse list if more items than 10
+		
 		if ($("ul.indent1 li, ul.indent2 li, ul.indent3 li, ul.indent4 li, ul.indent5 li").length > 10) {
+		
 			// hide wrappers all wrappers but level 1
 			$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6").hide();
 			// set the click toggle action and +-sign to header
