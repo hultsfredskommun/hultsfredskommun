@@ -975,7 +975,7 @@ function hk_get_category_tags($varcat) {
 		$varcat_where_or .= "OR r1.term_taxonomy_ID = '$cat_id' \n";
 	endforeach;
 	$varcat_where_or .= " )";
-	
+
 	$hidden_cat = $hidden_cat1 = $hidden_cat2 = "";
 	if ($default_settings["hidden_cat"] != "") {
 		$hidden_cat = $default_settings["hidden_cat"];
@@ -983,43 +983,35 @@ function hk_get_category_tags($varcat) {
 		//$hidden_cat2 = "AND t2.term_taxonomy_id <> '$hidden_cat'";
 	}
 	
-		$query = "
-		SELECT p1.ID as id
-		FROM
-			$wpdb->posts as p1
-			LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish'
-		WHERE
-			r1.term_taxonomy_ID = '$hidden_cat'
-			";
-			//echo $query;
-			/*$hidden_posts_array = $wpdb->get_results($query);
-			$hidden_posts = array();
-			foreach($hidden_posts_array as $hidden_post) {
-				$hidden_posts[] = $hidden_post->id;
-			}
-			print_r($hidden_posts);*/
-	$query = "
-		SELECT DISTINCT
-			terms2.term_id as tag_ID,
-			terms2.name as tag_name,
-			terms2.slug as tag_slug
-		FROM
-			$wpdb->posts as p1
-			LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish' AND r1.object_ID <> '$hidden_cat'
-			LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id AND t1.taxonomy = 'category' AND t1.term_taxonomy_id <> '$hidden_cat'
-			LEFT JOIN $wpdb->terms as terms1 ON t1.term_id = terms1.term_id AND terms1.term_id <> '$hidden_cat',
+	$query = "SELECT DISTINCT
+	       terms2.term_id as tag_ID,
+	       terms2.name as tag_name,
+	       terms2.slug as tag_slug
+	       FROM
+		       $wpdb->posts as p1
+		       LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID
+		       LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id
+		       LEFT JOIN $wpdb->terms as terms1 ON t1.term_id = terms1.term_id,
 
-			$wpdb->posts as p2
-			LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID AND p2.post_status = 'publish'
-			LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id AND t2.taxonomy = 'post_tag' 
-			LEFT JOIN $wpdb->terms as terms2 ON t2.term_id = terms2.term_id
-		WHERE (
-			$varcat_where_or AND
-			p1.ID = p2.ID AND
-			p1.ID NOT IN (SELECT p1.ID FROM wp_2_posts as p1 LEFT JOIN wp_2_term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish' WHERE r1.term_taxonomy_ID = '5')
-			)
-		";
+		       $wpdb->posts as p2
+		       LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID
+		       LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id
+		       LEFT JOIN $wpdb->terms as terms2 ON t2.term_id = terms2.term_id
+	       WHERE (
+	             t1.taxonomy = 'category' AND
+		     p1.post_status = 'publish' AND
+		     p1.post_type = 'post' AND
+		     $varcat_where_or AND
+		     t2.taxonomy = 'post_tag' AND
+		     p1.ID = p2.ID AND
+		     p1.ID NOT IN (SELECT p1.ID FROM $wpdb->posts as p1 
+			     LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish'
+			     WHERE r1.term_taxonomy_ID = '$hidden_cat')      )
+			     ";
+
+	//echo $query;
 	$category_tags = $wpdb->get_results($query);
+	//print_r($category_tags);
 	return $category_tags;
 }
 
