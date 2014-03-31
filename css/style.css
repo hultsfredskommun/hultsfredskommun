@@ -5572,7 +5572,8 @@ html {
 .tag-listing h1, .tag-listing h2, .tag-listing h3, .tag-listing h4, .tag-listing h5, .tag-listing h6 {
   margin-bottom: 12px !important;
   margin-top: 12px !important;
-  font-size: 90%;
+  font-size: 1.2em;
+  font-weight: normal;
 }
 .tag-listing ul {
   list-style-type: none;
