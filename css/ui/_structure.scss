@@ -1,6 +1,10 @@
 /* text colors */
 html {
+	@extend .black-background;
+}
+body {
 	@extend .default-text;
+	@extend .white-background;
 }
 a {
 	cursor: pointer;

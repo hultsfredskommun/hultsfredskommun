@@ -29,6 +29,9 @@ $face:	        			/*"Oxygen", "myriad-pro",  */'Segoe UI', Arial, sans-serif!def
 .default-text {
 	color: $default-color;
 }
+.default-background {
+	background-color: $default-color;
+}
 .main-text {
 	color: $main-color;
 }
@@ -50,8 +53,14 @@ $face:	        			/*"Oxygen", "myriad-pro",  */'Segoe UI', Arial, sans-serif!def
 .black-text {
 	color: #000;
 }
+.black-background {
+	background-color: #000;
+}
 .white-text {
 	color: #fff;
+}
+.white-background {
+	background-color: #fff;
 }
 .important-text {
 	color: $important-color;
