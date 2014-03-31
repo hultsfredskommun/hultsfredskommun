@@ -23,7 +23,7 @@
 		li {
 			margin-left: -$half-spacing-unit;
 			padding-left: $half-spacing-unit;
-			background: #eee;
+			background: $gray-light-color;
 			&:hover {
 				@extend .border-line-main--left;
 				margin-left: -($half-spacing-unit + 1);

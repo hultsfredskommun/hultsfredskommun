@@ -97,7 +97,7 @@
 				endforeach;
 				
 			endforeach;
-			while (1 < $lastsub--) {
+			while (0 < $lastsub--) {
 				echo "</div>";
 			}
 			
