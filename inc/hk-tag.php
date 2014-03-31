@@ -6,6 +6,7 @@
 	<div id="content" class="tag-listing" role="main">
 
 	<?php
+	
 		/**
 		 * Default order in orderby no set
 		 */

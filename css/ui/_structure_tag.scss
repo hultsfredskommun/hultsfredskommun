@@ -1,11 +1,17 @@
 .tag-listing {
 
-	.indent2 { padding-left: 12px; }
-	.indent3 { padding-left: 24px; }
-	.indent4 { padding-left: 36px; }
-	.indent5 { padding-left: 48px; }
-	.indent6 { padding-left: 60px; }
-	.indent7 { padding-left: 72px; }
+
+	.wrapper1,
+	.wrapper2,
+	.wrapper3,
+	.wrapper4,
+	.wrapper5,
+	.wrapper6,
+	.wrapper7 { padding-left: $half-spacing-unit; }
+	
+	.wrapper {
+		border-left: 1px solid $gray-color;
+	}
 	
 	.indent1, 
 	.indent2, 
@@ -15,19 +21,24 @@
 	.indent6, 
 	.indent7 {
 		li {
-			padding-left: 6px;
+			margin-left: -$half-spacing-unit;
+			padding-left: $half-spacing-unit;
 			background: #eee;
+			&:hover {
+				@extend .border-line-main--left;
+				margin-left: -($half-spacing-unit + 1);
+			}
 		}
 	}
 	.link {
-		padding-right: 6px;
+		padding-right: $half-spacing-unit/2;
 	}
 	h1 {
-		padding-top: 12px;
+		padding-top: $half-spacing-unit;
 	}
 	h1,h2,h3,h4,h5,h6 {
-		margin-bottom: 12px!important;
-		margin-top: 12px!important;
+		margin-bottom: $half-spacing-unit!important;
+		margin-top: $half-spacing-unit!important;
 		font-size: 90%;
 	}
 	ul {

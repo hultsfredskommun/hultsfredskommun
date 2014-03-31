@@ -958,6 +958,7 @@ function hk_get_parent_categories_from_cat($cat) {
 	$sub_parent_category = hk_getMenuParent($cat);
 	return array($parent_category, $sub_parent_category, $cat);
 }
+
 /*
  * Get tags available in $varcat category or one of the children
  * https://wordpress.org/support/topic/get-tags-specific-to-category
@@ -979,8 +980,6 @@ function hk_get_category_tags($varcat) {
 	$hidden_cat = $hidden_cat1 = $hidden_cat2 = "";
 	if ($default_settings["hidden_cat"] != "") {
 		$hidden_cat = $default_settings["hidden_cat"];
-		//$hidden_cat1 = "AND t1.term_taxonomy_id <> '$hidden_cat'";
-		//$hidden_cat2 = "AND t2.term_taxonomy_id <> '$hidden_cat'";
 	}
 	
 	$query = "SELECT DISTINCT
