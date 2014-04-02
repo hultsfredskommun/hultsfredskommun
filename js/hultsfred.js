@@ -635,7 +635,7 @@ $(document).ready(function(){
 		// collapse list if more items than 10
 		
 		if ($("ul.indent1 li, ul.indent2 li, ul.indent3 li, ul.indent4 li, ul.indent5 li").length > 10) {
-		
+			
 			// hide wrappers all wrappers but level 1
 			$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6").hide();
 			// set the click toggle action and +-sign to header
@@ -651,7 +651,7 @@ $(document).ready(function(){
 						}
 					});
 				}
-			});			
+			});
 		}
 		// and collapse level 1 list if more items than 3
 		if ($("ul.indent1 li").length > 3) {
@@ -671,7 +671,20 @@ $(document).ready(function(){
 					});
 				}
 			});			
-		}		
+		}
+		// add expand all button
+		$(".page-header").after("<span class='float--right hand js-expand-all-tags zeta'>[&ouml;ppna alla]</span>");
+		$(".js-expand-all-tags").click(function() {
+			if (!$(this).hasClass("expanded")) {
+				$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").show();
+				$(this).addClass("expanded").html("[st&auml;ng alla]");
+				$(".tag-listing").find(".sign").html("-");
+			} else {
+				$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").hide();
+				$(this).removeClass("expanded").html("[&ouml;ppna alla]");
+				$(".tag-listing").find(".sign").html("+");
+			}
+		});
 
 	}
 	
