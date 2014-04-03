@@ -974,7 +974,7 @@ function hk_get_category_tags($varcat = "") {
 	if ($varcat != "") {
 		$varcat_where_or = "(1 = 0 \n";
 		foreach($cat_ids as $cat_id) :
-			$varcat_where_or .= "OR r1.term_taxonomy_ID = '$cat_id' \n";
+			$varcat_where_or .= "OR terms1.term_ID = '$cat_id' \n";
 		endforeach;
 		$varcat_where_or .= " ) AND ";
 	}
@@ -989,20 +989,17 @@ function hk_get_category_tags($varcat = "") {
 	       terms2.slug as tag_slug
 	       FROM
 		       $wpdb->posts as p1
-		       LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID
-		       LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id
+		       LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish' AND p1.post_type = 'post'
+		       LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id AND t1.taxonomy = 'category'
 		       LEFT JOIN $wpdb->terms as terms1 ON t1.term_id = terms1.term_id,
 
 		       $wpdb->posts as p2
-		       LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID
-		       LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id
+		       LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID AND p2.post_status = 'publish' AND p2.post_type = 'post'
+		       LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id AND t2.taxonomy = 'post_tag'
 		       LEFT JOIN $wpdb->terms as terms2 ON t2.term_id = terms2.term_id
 	       WHERE (
-	             t1.taxonomy = 'category' AND
-		     p1.post_status = 'publish' AND
-		     p1.post_type = 'post' AND
 		     $varcat_where_or 
-		     t2.taxonomy = 'post_tag' AND
+			 terms2.term_id IS NOT NULL AND
 		     p1.ID = p2.ID AND
 		     p1.ID NOT IN (SELECT p3.ID FROM $wpdb->posts as p3 
 			     LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'

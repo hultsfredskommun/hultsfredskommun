@@ -5540,6 +5540,7 @@ html {
 }
 .tag-listing .dimmed-tag {
   color: #c6cacb !important;
+  font-weight: normal;
 }
 .tag-listing h1.page-title {
   font-weight: normal;
@@ -5586,7 +5587,6 @@ html {
   margin-bottom: 12px !important;
   margin-top: 12px !important;
   font-size: 1.1em !important;
-  font-weight: normal;
 }
 .tag-listing .link {
   padding-right: 6px;

@@ -542,6 +542,7 @@ function displayTagFilter($show_title = true, $show_selected_tags = true, $ul_cl
 		$tags = hk_get_category_tags(get_query_var("cat"));
 		
 		if (!empty($tags)) :
+		
 			echo "<ul class='$ul_class'>"; 
 			if ($show_title) {
 				echo "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Visa bara</a></li>";
