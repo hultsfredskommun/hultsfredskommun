@@ -1005,10 +1005,7 @@ function hk_get_category_tags($varcat = "") {
 			     LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
 			     WHERE r3.term_taxonomy_ID = '$hidden_cat')      )
 			     ";
-	echo "<span class='hidden'>$query</span>";
-	//echo $query;
 	$category_tags = $wpdb->get_results($query);
-	//print_r($category_tags);
 	return $category_tags;
 }
 
