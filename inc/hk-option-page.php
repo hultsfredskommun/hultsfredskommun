@@ -274,6 +274,7 @@ function hk_theme_options_do_page() {
 			}
 			?>
 			Kollar "sluta publicera" <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_stop_publish_event' )); ?></b> nästa gång. <br> 
+			Kördes senast <b><?php echo Date("Y-m-d H:i:s",$options["hk_stop_publish_time"]); ?></b><br>
 			LOG: <br><textarea name="hk_theme[hk_stop_publish_log]" cols=100 rows=5><?php echo $options["hk_stop_publish_log"]; ?></textarea>
 			<?php endif; // hidden_cat ?>
 			<?php endif; ?>
@@ -298,7 +299,9 @@ function hk_theme_options_do_page() {
 				}
 			}
 			?>
+			
 			Skickar granska mail <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_review_mail_event' )); ?></b> nästa gång. <br> 
+			Kördes senast <b><?php echo Date("Y-m-d H:i:s",$options["hk_review_mail_time"]); ?></b><br>
 			LOG: <br><textarea name="hk_theme[hk_review_mail_log]" cols=100 rows=5><?php echo $options["hk_review_mail_log"]; ?></textarea>
 			
 			
@@ -309,10 +312,9 @@ function hk_theme_options_do_page() {
 			<h3>Normalisera klickräknare</h3>
 			<p><input type="checkbox" name="hk_theme[enable_cron_normalize]" <?php echo ($options['enable_cron_normalize'])?"checked":""; ?> /> 
 			<label for="hk_theme[enable_cron_normalize]">Aktivera normalisera räknare.</label> <?php echo (wp_next_scheduled( 'hk_normalize_count_event' ))?"Aktiverat.":"Inaktiverat."; ?> 
-			<br>Normalisering körs <b><?php echo  Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_normalize_count_event' )); ?></b> nästa gång.</p>
-			<p><input type="checkbox" name="hk_theme[force_normalize]" value="1" /> <label for="hk_theme[force_normalize]">Tvinga normalisera!</label> <br>
+			<p><input type="checkbox" name="hk_theme[force_normalize]" value="1" /> <label for="hk_theme[force_normalize]">Tvinga normalisera!</label> </p>
+			<p>Normalisering körs <b><?php echo  Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_normalize_count_event' )); ?></b> nästa gång.<br/>
 			Kördes senast <b><?php echo Date("Y-m-d H:i:s",$options["hk_normalize_count_time"]); ?></b><br>
-			
 			<?php
 				if ($options["enable_cron_normalize"]) {
 					if ( !wp_next_scheduled( 'hk_normalize_count_event' ) ) {

@@ -16,7 +16,7 @@
 			// get selected category if any
 			if ($cat != "") {
 				$top_cat_arr = array($cat);
-				$cat_title = "kategori <strong>" . single_tag_title("",false) . "</strong>";
+				$cat_title = " <strong>" . single_tag_title("",false) . "</strong>";
 			}
 			else {
 				// get all categories with parent == 0
@@ -25,12 +25,18 @@
 				endforeach;
 				$cat_title = "<strong>hela webbplatsen</strong>";
 			}
+			//$tagname = 
+			
+			$tag_object = get_term_by("slug", $tag, "post_tag");
+			$tag_name = $tag_object->name;
 			?>
-			<header class="page-header">
+			
+			<!--header class="page-header">
 				<ul class="num-posts">
-					<?php echo "<li><a class='nolink'>Inneh&aring;ll av typen <b>" . $tag . "</b> i " . $cat_title . "</a></li>"; ?>
+					<?php echo "<li><a class='nolink'>Visa bara <b>" . $tag . "</b> fr&aring;n " . $cat_title . "</a></li>"; ?>
 				</ul>
-			</header>
+			</header-->
+			<?php echo "<h1 class='page-title'><a class='nolink'>Visa bara <b>" . $tag_name . "</b> fr&aring;n <b>" . $cat_title . "</b></a></h1>"; ?>
 			<?php
 			// loop top categories (one or many)
 			$lastsub = 0;
@@ -41,10 +47,16 @@
 				$children = array();
 				$children[] = $cat;
 				foreach($childrenarr as $child) :
+					//echo $child->name . "<br>";
 					$children[] = $child->cat_ID;
 				endforeach;
-				
-				
+
+				$tags_filter = get_query_var("tag");
+				if (!empty($tags_filter)) {
+					$tags_filter = "?tag=$tags_filter";
+				}
+
+				//print_r($children);
 				// get category child posts
 				foreach ($children as $childcatid) :
 					$childcat = get_category($childcatid);
@@ -66,12 +78,17 @@
 							if (!in_array($slug,$catarr)) :
 								$catarr[] = $slug;
 								$c = get_category_by_slug($slug);
-								$sub = hk_countParents($c->cat_ID); 
+								$sub = hk_countParents($c->cat_ID);
 								while ($sub <= $lastsub--) {
 									echo "</div>";
 								}
 								$lastsub = $sub;
-								echo "<h$sub class='indent$sub'>" . $c->name . "</h$sub>";
+								$pre_dimmed_link = $post_dimmed_link = "";
+								if (!in_array($c->cat_ID, $children)) {
+									$pre_dimmed_link = "<a class='dimmed' href='" . get_category_link($c->cat_ID) . $tags_filter . "'>";
+									$post_dimmed_link = "</a>";
+								}
+								echo "<h$sub class='indent$sub'>$pre_dimmed_link" . $c->name . "$post_dimmed_link</h$sub>";
 								echo "<div class='wrapper$sub wrapper'>";
 							endif;
 							

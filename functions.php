@@ -963,7 +963,7 @@ function hk_get_parent_categories_from_cat($cat) {
  * Get tags available in $varcat category or one of the children
  * https://wordpress.org/support/topic/get-tags-specific-to-category
  */
-function hk_get_category_tags($varcat) {
+function hk_get_category_tags($varcat = "") {
 	global $wpdb, $default_settings;
 
 	//$cat_ids = array($varcat);
@@ -971,12 +971,13 @@ function hk_get_category_tags($varcat) {
 	$cat_ids = hk_getChildrenIdArray($varcat); // get child ids
 	$cat_ids[] = $varcat; // add current id
 
-	$varcat_where_or = "(1 = 0 \n";
-	foreach($cat_ids as $cat_id) :
-		$varcat_where_or .= "OR r1.term_taxonomy_ID = '$cat_id' \n";
-	endforeach;
-	$varcat_where_or .= " )";
-
+	if ($varcat != "") {
+		$varcat_where_or = "(1 = 0 \n";
+		foreach($cat_ids as $cat_id) :
+			$varcat_where_or .= "OR r1.term_taxonomy_ID = '$cat_id' \n";
+		endforeach;
+		$varcat_where_or .= " ) AND ";
+	}
 	$hidden_cat = $hidden_cat1 = $hidden_cat2 = "";
 	if ($default_settings["hidden_cat"] != "") {
 		$hidden_cat = $default_settings["hidden_cat"];
@@ -1000,7 +1001,7 @@ function hk_get_category_tags($varcat) {
 	             t1.taxonomy = 'category' AND
 		     p1.post_status = 'publish' AND
 		     p1.post_type = 'post' AND
-		     $varcat_where_or AND
+		     $varcat_where_or 
 		     t2.taxonomy = 'post_tag' AND
 		     p1.ID = p2.ID AND
 		     p1.ID NOT IN (SELECT p1.ID FROM $wpdb->posts as p1 

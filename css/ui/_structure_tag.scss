@@ -1,6 +1,11 @@
 .tag-listing {
-
-
+	.dimmed {
+		color: $gray-color;
+	}
+	padding-left: $half-spacing-unit;
+	h1.page-title {
+		font-weight: normal;
+	}
 	.wrapper1,
 	.wrapper2,
 	.wrapper3,
@@ -22,6 +27,7 @@
 	.indent7 {
 		li {
 			margin-left: -$half-spacing-unit;
+			margin-bottom: 2px;
 			padding-left: $half-spacing-unit;
 			background: $gray-light-color;
 			&:hover {
@@ -30,18 +36,26 @@
 			}
 		}
 	}
+	h1.indent1, 
+	h2.indent2, 
+	h3.indent3, 
+	h4.indent4, 
+	h5.indent5, 
+	h6.indent6 {
+		margin-bottom: $half-spacing-unit!important;
+		margin-top: $half-spacing-unit!important;
+		font-size: 1.1em;
+		font-weight: normal;
+	}
+		
 	.link {
 		padding-right: $half-spacing-unit/2;
 	}
 	h1 {
 		padding-top: $half-spacing-unit;
 	}
-	h1,h2,h3,h4,h5,h6 {
-		margin-bottom: $half-spacing-unit!important;
-		margin-top: $half-spacing-unit!important;
-		font-size: 1.2em;
-		font-weight: normal;
-	}
+	
+	
 	ul {
 		list-style-type: none;
 		margin-left: 0;

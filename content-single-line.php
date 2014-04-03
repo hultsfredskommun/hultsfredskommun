@@ -10,6 +10,7 @@ global $default_settings;
 ?>
 	<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<a href="<?php the_permalink(); ?>" class="link" title="<?php echo get_the_excerpt(); // printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+		<?php /* ?>
 		<span class="tag_related_icons">
 		<?php if ( function_exists("get_field") && get_field('hk_related') ) : // related docs and links ?>
 			<?php while ( has_sub_field('hk_related') ) : ?>
@@ -34,5 +35,6 @@ global $default_settings;
 			<?php endwhile; ?>
 		<?php endif; ?> 
 		</span>
+		<?php /* ?>
 		<span class='hidden article_id'><?php the_ID(); ?></span>
 	</li><!-- #post-<?php the_ID(); ?> -->

@@ -118,6 +118,8 @@ function hk_review_mail() {
 	$log .= "Skickade $count_mail påminnelser den " . date("Y-m-d H:i:s", strtotime("now"));
 	$options["hk_review_mail_log"] = $log;
 
+	$hk_review_mail_time = time();
+	$options["hk_review_mail_time"] = $hk_review_mail_time;
 
 	update_option("hk_theme", $options);
 }
@@ -131,64 +133,74 @@ add_action("hk_review_mail_event","hk_review_mail");
  * Cron job to normalize views
  */
 if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled
-
 // normalize view count
-function hk_normalize_count($echolog = false) {
+function hk_normalize_count($returnlog = false) {
 	global $default_settings;
+
 	if (!function_exists( 'views_orderby' )) // don't do if plugin WP-PostViews not is enabled 
 		return;
 	
-
+	$log .= "Normaliserar view count " . date("Y-m-d H:i:s", strtotime("now")) . "\n";
 	//define arguments for WP_Query()
+	$paged = 1;
 	$qargs = array(
+		'paged' => $paged,
 		'post_type' => array("post","hk_kontakter"),
-		'posts_per_page' => -1,
-        'post_status' => 'published',
+		'posts_per_page' => 10,
+		'post_status' => 'published',
 		'suppress_filters' => true);
 	
 	$q = new WP_Query();
-	
-	remove_action( 'pre_get_posts', 'hk_exclude_category' );
+	//remove_action( 'pre_get_posts', 'hk_exclude_category' );
 	$q->query($qargs);
-	add_action( 'pre_get_posts', 'hk_exclude_category' );
-
-	// execute the WP loop
-	$log = "";
-	$count = 0;
-	while ($q->have_posts()) : $q->the_post();
-		$count++;
-		$post_id = get_the_ID();
-		$views = get_post_meta($post_id, "views");
+	//add_action( 'pre_get_posts', 'hk_exclude_category' );
+	$count = $q->post_count;
+	
+	while ($count > 0) :
+		// execute the WP loop
 		
-		$new_views = 1;
-		if (empty($views)) {
-			if (is_sticky()) 
-				add_post_meta($post_id, "views", $default_settings["sticky_number"]);
-			else
-				add_post_meta($post_id, "views", 0);
-		}
-		else {
-			$new_views = $views[0];
-			if (is_sticky() && $new_views >= $default_settings["sticky_number"]) 
-				$new_views -= $default_settings["sticky_number"]; // instead of sticky first in loop
-			$new_views = floor(sqrt($new_views));
-			if (is_sticky()) 
-				$new_views += $default_settings["sticky_number"]; // instead of sticky first in loop
+		$count = 0;
+		while ($q->have_posts()) : $q->the_post();
+			$count++;
+			$post_id = get_the_ID();
+			$views = get_post_meta($post_id, "views");
 			
-			if (count($views) > 1)
-			{
-				delete_post_meta($post_id, "views");
-				add_post_meta($post_id, "views", $new_views); 
+			$new_views = 1;
+			if (empty($views)) {
+				if (is_sticky()) 
+					add_post_meta($post_id, "views", $default_settings["sticky_number"]);
+				else
+					add_post_meta($post_id, "views", 0);
 			}
 			else {
-				update_post_meta($post_id, "views", $new_views); 
+				$new_views = $views[0];
+				if (is_sticky() && $new_views >= $default_settings["sticky_number"]) 
+					$new_views -= $default_settings["sticky_number"]; // instead of sticky first in loop
+				$new_views = floor(sqrt($new_views));
+				if (is_sticky()) 
+					$new_views += $default_settings["sticky_number"]; // instead of sticky first in loop
+				
+				if (count($views) > 1)
+				{
+					delete_post_meta($post_id, "views");
+					add_post_meta($post_id, "views", $new_views); 
+				}
+				else {
+					update_post_meta($post_id, "views", $new_views); 
+				}
 			}
-		}
+			
+			$log .= $post_id . " \told_views: " . $views[0] . " \tnew_views: " . $new_views . " \tis_sticky: " . is_sticky() . " count: " . count($views) . "\n";
+			//$log .= ". ";
+		endwhile; // endwhile have_posts
 		
-		$log .= $post_id . " \told_views: " . $views[0] . " \tnew_views: " . $new_views . " \tis_sticky: " . is_sticky() . " count: " . count($views) . "\n";
-		//$log .= ". ";
-	endwhile;
+		// get next page
+		$paged++;
+		$qargs["paged"] = $paged;
+		$q->query($qargs);
+		$count = $q->post_count;
 
+	endwhile; // endwhile count
 	$log .= "Normaliserade $count artiklar " . date("Y-m-d H:i:s", strtotime("now"));
 	
 	$options = get_option('hk_theme');
@@ -197,10 +209,11 @@ function hk_normalize_count($echolog = false) {
 	if ($log != "")
 		$options["hk_normalize_count_log"] = $log;
 	update_option("hk_theme", $options);
-	if ($echolog)
+	
+	if ($returnlog)
 		return $log;
-	else
-		return;
+	
+	return;
 }
 add_action("hk_normalize_count_event", "hk_normalize_count");
 
@@ -264,7 +277,8 @@ function hk_stop_publish_job() {
 	
 	$log .= "$count som har sluta publicera datum satt.\n$counttoday ska sluta publiceras senare idag.\n$counttrue som har slutat publiceras nu.\n" . date("Y-m-d H:i:s", strtotime("now"));
 	$options["hk_stop_publish_log"] = $log;
-
+	$hk_stop_publish_time = time();
+	$options["hk_stop_publish_time"] = $hk_stop_publish_time;
 
 	update_option("hk_theme", $options);
 }

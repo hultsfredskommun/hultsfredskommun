@@ -5250,6 +5250,10 @@ html {
   overflow: auto;
 }
 
+#post-nothing {
+  padding: 24px 0 0 12px;
+}
+
 .time {
   display: block;
 }
@@ -5531,6 +5535,15 @@ html {
 }
 
 /* search */
+.tag-listing {
+  padding-left: 12px;
+}
+.tag-listing .dimmed {
+  color: #c6cacb;
+}
+.tag-listing h1.page-title {
+  font-weight: normal;
+}
 .tag-listing .wrapper1,
 .tag-listing .wrapper2,
 .tag-listing .wrapper3,
@@ -5551,6 +5564,7 @@ html {
 .tag-listing .indent6 li,
 .tag-listing .indent7 li {
   margin-left: -12px;
+  margin-bottom: 2px;
   padding-left: 12px;
   background: #e5e6e7;
 }
@@ -5563,17 +5577,22 @@ html {
 .tag-listing .indent7 li:hover {
   margin-left: -13px;
 }
+.tag-listing h1.indent1,
+.tag-listing h2.indent2,
+.tag-listing h3.indent3,
+.tag-listing h4.indent4,
+.tag-listing h5.indent5,
+.tag-listing h6.indent6 {
+  margin-bottom: 12px !important;
+  margin-top: 12px !important;
+  font-size: 1.1em;
+  font-weight: normal;
+}
 .tag-listing .link {
   padding-right: 6px;
 }
 .tag-listing h1 {
   padding-top: 12px;
-}
-.tag-listing h1, .tag-listing h2, .tag-listing h3, .tag-listing h4, .tag-listing h5, .tag-listing h6 {
-  margin-bottom: 12px !important;
-  margin-top: 12px !important;
-  font-size: 1.2em;
-  font-weight: normal;
 }
 .tag-listing ul {
   list-style-type: none;
@@ -6537,7 +6556,7 @@ input.gsc-input {
   vertical-align: top;
 }
 
-.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .pager-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .left-icon, .right-icon,
+.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .pager-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .home-icon, .clip_12x12, .left-icon, .right-icon,
 .dropdown-icon, .searchnavigation .submit {
   background-image: url("../images/icons/ikoner.svg");
   display: inline-block;
@@ -6563,7 +6582,7 @@ input.gsc-input {
   height: 20px;
 }
 
-.clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon {
+.clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .home-icon {
   width: 16px;
   height: 16px;
 }
@@ -6621,6 +6640,10 @@ input.gsc-input {
 
 .edit-icon {
   background-position: -25px -94px;
+}
+
+.home-icon {
+  background-position: -329px -10px;
 }
 
 /* menu */

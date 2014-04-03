@@ -16,7 +16,7 @@ function hk_breadcrumb() {
 			$tag_link = "";
 			if ($tag != "") {
 				$tag_link = "?tag=".$tag; 
-				echo "<a href='" . get_site_url() . $tag_link . "'>Alla</a> &raquo; ";
+				echo "<a href='" . get_site_url() . $tag_link . "'>Hela webbplatsen</a> &raquo; ";
 			}
 			foreach  ($cats_array as $c) {
 				if ($c != "") {
@@ -26,7 +26,13 @@ function hk_breadcrumb() {
 			}
 			//echo get_category_parents($cat, TRUE, ' &raquo; ');
 		}
-	
+		else {
+			if ($tag != "") {
+				$tag_link = "?tag=".$tag; 
+				echo "<a href='" . get_site_url() . $tag_link . "'>Hela webbplatsen</a> &raquo; ";
+			}
+
+		}
 		/*if ($tag != "") {
 			echo '<br>Typ av information: ';
 			foreach (split(',',$tag) as $t) {
@@ -204,6 +210,7 @@ function hk_navigation() {
 			'echo'               => 1,
 			'depth'              => 3,
 			'taxonomy'           => 'category',
+			'exclude'			 => $default_settings["hidden_cat"],
 			'walker'			 => $hk_cat_walker,
 			'current_category'	 => $category
 		);
@@ -237,6 +244,12 @@ function hk_navigation() {
 
 	// if in category
 	else if ($cat != "") {
+	
+			if ($tags != "" && function_exists('displayTagFilter') ){
+				displayTagFilter();
+			}
+			if ($tags == "" && function_exists('displayTagFilter') ){
+
 		//if (is_sub_category()) {			
 			$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
 			$currentparent = $cat;
@@ -256,6 +269,7 @@ function hk_navigation() {
 				'echo'               => 1,
 				'depth'              => 3,
 				'taxonomy'           => 'category',
+				'exclude'			 => $default_settings["hidden_cat"],
 				'walker'			 => $hk_cat_walker
 			);
 			
@@ -270,7 +284,6 @@ function hk_navigation() {
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
-			if( function_exists('displayTagFilter') ){
 				displayTagFilter();
 			}
 		//}	
@@ -279,6 +292,10 @@ function hk_navigation() {
 	
 	// if in tag
 	else if ($tags != "") {
+		if( function_exists('displayTagFilter') ){
+			displayTagFilter();
+		}
+
 		//echo "<a class='dropdown-nav'>Etiketter</a>";
 		$hk_cat_walker = new hk_Category_Walker();
 		$parentCat = hk_getMenuParent($cat);
@@ -299,12 +316,10 @@ function hk_navigation() {
 			'walker'			 => $hk_cat_walker
 		);
 		echo "<ul class='parent'>"; 
+		echo "<li class='heading cat-item $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='". get_site_url() ."'>Hela webbplatsen</a></li>";
 		wp_list_categories( $args );
 		echo "</ul>";
 		
-		if( function_exists('displayTagFilter') ){
-			displayTagFilter();
-		}
 	}
 	
 	echo "&nbsp;</nav></aside>";
@@ -324,10 +339,6 @@ function hk_tag_navigation() {
 
 	echo "<aside id='nav' class='category-navigation' role='navigation'><nav>";
 	
-	//echo "<a class='dropdown-nav'>Etiketter</a>";
-
-	
-	
 	if( function_exists('displayTagFilter') ){
 		displayTagFilter();
 	}
@@ -345,7 +356,7 @@ class hk_Category_Walker extends Walker_Category {
 		if (!empty($tags_filter)) {
 			$tags_filter = "?tag=$tags_filter";
 		}
-		$tags_filter = "";		
+		//$tags_filter = "";
         $cat_name = esc_attr( $category->name); 
 		
 		
@@ -539,7 +550,7 @@ function displayTagFilter($show_title = true, $show_selected_tags = true, $ul_cl
 			{
 				if( hk_getParent(get_query_var("cat")) > 0) {
 					$href = get_category_link( hk_getParent(get_query_var("cat")) ) . "?tag=".$_REQUEST["tag"];
-					echo "<li class='tag-item complement-italic-text'><a href='$href' title='G&aring; upp en niv&aring;'>G&aring; upp en niv&aring;</a></li>";
+					//echo "<li class='tag-item complement-italic-text'><a href='$href' title='G&aring; upp en niv&aring;'>G&aring; upp en niv&aring;</a></li>";
 				}
 				//$href = get_category_link( get_query_var("cat") ) . "?tag=";
 				//echo "<li class='tag-item complement-italic-text'><a href='$href' title='Rensa valt alternativ'>Rensa</a></li>";
