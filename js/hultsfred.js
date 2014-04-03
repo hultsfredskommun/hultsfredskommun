@@ -652,10 +652,8 @@ $(document).ready(function(){
 					});
 				}
 			});
-		}
-		// and collapse level 1 list if more items than 3
-		if ($("ul.indent1 li").length > 3) {
-			hidden_stuff = true;
+			
+			// and collapse level 1 list
 			// hide the ul
 			$("ul.indent1").hide();
 			// set the click action and +-sign to h1
