@@ -1,6 +1,6 @@
 .tag-listing {
-	.dimmed {
-		color: $gray-color;
+	.dimmed-tag {
+		color: $gray-color!important;
 	}
 	padding-left: $half-spacing-unit;
 	h1.page-title {
@@ -44,7 +44,7 @@
 	h6.indent6 {
 		margin-bottom: $half-spacing-unit!important;
 		margin-top: $half-spacing-unit!important;
-		font-size: 1.1em;
+		font-size: 1.1em!important;
 		font-weight: normal;
 	}
 		

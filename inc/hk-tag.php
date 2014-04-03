@@ -85,7 +85,7 @@
 								$lastsub = $sub;
 								$pre_dimmed_link = $post_dimmed_link = "";
 								if (!in_array($c->cat_ID, $children)) {
-									$pre_dimmed_link = "<a class='dimmed' href='" . get_category_link($c->cat_ID) . $tags_filter . "'>";
+									$pre_dimmed_link = "<a class='dimmed-tag' href='" . get_category_link($c->cat_ID) . $tags_filter . "'>";
 									$post_dimmed_link = "</a>";
 								}
 								echo "<h$sub class='indent$sub'>$pre_dimmed_link" . $c->name . "$post_dimmed_link</h$sub>";
