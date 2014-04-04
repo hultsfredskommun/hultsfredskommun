@@ -1004,6 +1004,7 @@ function hk_get_category_tags($varcat = "") {
 		     p1.ID NOT IN (SELECT p3.ID FROM $wpdb->posts as p3 
 			     LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
 			     WHERE r3.term_taxonomy_ID = '$hidden_cat')      )
+		   ORDER BY tag_name
 			     ";
 	$category_tags = $wpdb->get_results($query);
 	return $category_tags;
