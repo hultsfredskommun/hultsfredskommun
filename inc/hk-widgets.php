@@ -1620,7 +1620,7 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 //AND $where AND post_status = 'publish' AND meta_key = 'views' AND post_password = '' ORDER BY views DESC LIMIT $limit");
 			$most_viewed = $wpdb->get_results("select * from
 				(
-					SELECT DISTINCT $wpdb->posts.*, LPAD(meta_value-" . $default_settings["sticky_number"] . ",6,'0') as views FROM $wpdb->posts, $wpdb->postmeta 
+					SELECT DISTINCT $wpdb->posts.*, CAST(meta_value-" . $default_settings["sticky_number"] . " AS signed) as views FROM $wpdb->posts, $wpdb->postmeta 
 				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
 				AND post_date < '".current_time('mysql')."'
 				AND meta_key='views' 
@@ -1630,7 +1630,7 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 				ORDER BY meta_value DESC LIMIT $limit ) as t1
 				union
 				(
-					SELECT DISTINCT $wpdb->posts.*, LPAD(meta_value,6,'0') as views FROM  $wpdb->posts, $wpdb->postmeta 
+					SELECT DISTINCT $wpdb->posts.*, CAST(meta_value AS signed) as views FROM  $wpdb->posts, $wpdb->postmeta 
 				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
 				AND post_date < '".current_time('mysql')."'
 				AND meta_key='views' 
