@@ -1589,7 +1589,7 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 		// Constructor
 		function hk_WP_Widget_PostViews() {
 			$widget_ops = array('description' => __('hk WP-PostViews views statistics, tag-cloudified', 'wp-postviews'));
-			$this->WP_Widget('views', __('HK Most Viewed', 'wp-postviews'), $widget_ops);
+			$this->WP_Widget('hk_views', __('HK Most Viewed', 'wp-postviews'), $widget_ops);
 		}
 
 		// Display Widget
@@ -1620,7 +1620,7 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 //AND $where AND post_status = 'publish' AND meta_key = 'views' AND post_password = '' ORDER BY views DESC LIMIT $limit");
 			$most_viewed = $wpdb->get_results("select * from
 				(
-					SELECT DISTINCT $wpdb->posts.*, meta_value-" . $default_settings["sticky_number"] . " as views FROM $wpdb->posts, $wpdb->postmeta 
+					SELECT DISTINCT $wpdb->posts.*, LPAD(meta_value-" . $default_settings["sticky_number"] . ",6,'0') as views FROM $wpdb->posts, $wpdb->postmeta 
 				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
 				AND post_date < '".current_time('mysql')."'
 				AND meta_key='views' 
@@ -1630,11 +1630,11 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 				ORDER BY meta_value DESC LIMIT $limit ) as t1
 				union
 				(
-					SELECT DISTINCT $wpdb->posts.*, meta_value as views FROM  $wpdb->posts, $wpdb->postmeta 
+					SELECT DISTINCT $wpdb->posts.*, LPAD(meta_value,6,'0') as views FROM  $wpdb->posts, $wpdb->postmeta 
 				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
 				AND post_date < '".current_time('mysql')."'
 				AND meta_key='views' 
-				AND meta_value<1000 
+				AND meta_value<" . $default_settings["sticky_number"] . " 
 				AND post_status = 'publish'
 				AND $where
 				ORDER BY meta_value DESC LIMIT $limit )
