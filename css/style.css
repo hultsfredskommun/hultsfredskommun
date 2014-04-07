@@ -6211,6 +6211,27 @@ input.gsc-input {
   line-height: 0;
 }
 
+/* hk view widget */
+.views-cloud-item {
+  margin-right: 12px;
+  display: block;
+}
+.views-cloud-item.large {
+  font-size: 110%;
+}
+.views-cloud-item.medium {
+  font-size: 105%;
+}
+.views-cloud-item.small {
+  font-size: 100%;
+}
+.views-cloud-item.mini {
+  font-size: 90%;
+}
+.views-cloud-item.tiny {
+  font-size: 80%;
+}
+
 /*.top-menu a:hover,
 .top-menu .menu-item:hover,
 .main-menu a:hover,

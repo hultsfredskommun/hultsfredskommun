@@ -127,7 +127,7 @@
 			$views = get_post_meta($post_ID, 'views', false); // get views array
 
 			
-			$new_views = 0;
+			$new_views = $default_settings["sticky_number"]/10;
 			if (is_sticky()) 
 				$new_views = $default_settings["sticky_number"]; // instead of sticky in loop
 

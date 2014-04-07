@@ -1578,6 +1578,175 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 /* add the widget  */
 add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpagecontactandpuff" );' ) );
 
+
+
+
+
+ ### Class: WP-PostViews Widget
+if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
+	class hk_WP_Widget_PostViews extends WP_Widget {
+	
+		// Constructor
+		function hk_WP_Widget_PostViews() {
+			$widget_ops = array('description' => __('hk WP-PostViews views statistics, tag-cloudified', 'wp-postviews'));
+			$this->WP_Widget('views', __('HK Most Viewed', 'wp-postviews'), $widget_ops);
+		}
+
+		// Display Widget
+		function widget($args, $instance) {
+			extract($args);
+			$title = apply_filters('widget_title', esc_attr($instance['title']));
+			$mode = esc_attr($instance['mode']);
+			$limit = intval($instance['limit']);
+			$chars = intval($instance['chars']);
+			echo $before_widget.$before_title.$title.$after_title;
+			echo '<div class="wp-views-cloud">'."\n";
+		
+		
+		
+			
+			global $wpdb, $default_settings;
+			$views_options = get_option('views_options');
+			$where = '';
+			$output = '';
+			if(!empty($mode) && $mode != 'both') {
+				$where = "post_type = '$mode'";
+			} else {
+				$where = '1=1';
+			}
+			$largest_count = -1;
+//			$most_viewed = $wpdb->get_results("SELECT DISTINCT $wpdb->posts.*, (meta_value+0) AS views FROM $wpdb->posts 
+//LEFT JOIN $wpdb->postmeta ON $wpdb->postmeta.post_id = $wpdb->posts.ID WHERE post_date < '".current_time('mysql')."' 
+//AND $where AND post_status = 'publish' AND meta_key = 'views' AND post_password = '' ORDER BY views DESC LIMIT $limit");
+			$most_viewed = $wpdb->get_results("select * from
+				(
+					SELECT DISTINCT $wpdb->posts.*, meta_value-" . $default_settings["sticky_number"] . " as views FROM $wpdb->posts, $wpdb->postmeta 
+				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
+				AND post_date < '".current_time('mysql')."'
+				AND meta_key='views' 
+				AND meta_value>=" . $default_settings["sticky_number"] . " 
+				AND post_status = 'publish'
+				AND $where
+				ORDER BY meta_value DESC LIMIT $limit ) as t1
+				union
+				(
+					SELECT DISTINCT $wpdb->posts.*, meta_value as views FROM  $wpdb->posts, $wpdb->postmeta 
+				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
+				AND post_date < '".current_time('mysql')."'
+				AND meta_key='views' 
+				AND meta_value<1000 
+				AND post_status = 'publish'
+				AND $where
+				ORDER BY meta_value DESC LIMIT $limit )
+
+				ORDER BY views DESC LIMIT $limit");
+
+			if($most_viewed) {
+				foreach ($most_viewed as $post) {
+					$post_views = intval($post->views);
+					if ($largest_count == -1)
+						$largest_count = $post_views;
+						
+					//case 
+					switch(intval($post_views*4/$largest_count)) {
+						case 4:
+							$class = 'large';
+							break;
+						case 3:
+							$class = 'medium';
+							break;
+						case 2:
+							$class = 'small';
+							break;
+						case 1:
+							$class = 'mini';
+							break;
+						default:
+							$class = 'tiny';
+							break;
+					}
+					
+					$post_title = get_the_title($post);
+					if($chars > 0) {
+						$post_title = snippet_text($post_title, $chars);
+					}
+					$post_excerpt = views_post_excerpt($post->post_excerpt, $post->post_content, $post->post_password, $chars);
+					$output .= "<a class='$class views-cloud-item' href='" . get_permalink($post) . "' title='$post_excerpt'>";
+					$output .= $post_title;
+					$output .= "</a>";
+				}
+			} else {
+				$output = 'Nothing here..';
+			}
+
+			echo $output;
+
+			
+			
+			
+
+			
+			echo '</div>'."\n";
+			echo $after_widget;
+		}
+
+		// When Widget Control Form Is Posted
+		function update($new_instance, $old_instance) {
+			if (!isset($new_instance['submit'])) {
+				return false;
+			}
+			$instance = $old_instance;
+			$instance['title'] = strip_tags($new_instance['title']);
+			$instance['mode'] = strip_tags($new_instance['mode']);
+			$instance['limit'] = intval($new_instance['limit']);
+			$instance['chars'] = intval($new_instance['chars']);
+			return $instance;
+		}
+
+		// DIsplay Widget Control Form
+		function form($instance) {
+			global $wpdb;
+			$instance = wp_parse_args((array) $instance, array('title' => __('Views', 'wp-postviews'), 'mode' => 'both', 'limit' => 10, 'chars' => 200));
+			$title = esc_attr($instance['title']);
+			$mode = esc_attr($instance['mode']);
+			$limit = intval($instance['limit']);
+			$chars = intval($instance['chars']);
+	?>
+			<p>
+				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'wp-postviews'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label>
+			</p>
+
+			<p>
+				<label for="<?php echo $this->get_field_id('mode'); ?>"><?php _e('Include Views From:', 'wp-postviews'); ?>
+					<select name="<?php echo $this->get_field_name('mode'); ?>" id="<?php echo $this->get_field_id('mode'); ?>" class="widefat">
+						<option value="both"<?php selected('both', $mode); ?>><?php _e('Posts &amp; Pages', 'wp-postviews'); ?></option>
+						<option value="post"<?php selected('post', $mode); ?>><?php _e('Posts Only', 'wp-postviews'); ?></option>
+						<option value="page"<?php selected('page', $mode); ?>><?php _e('Pages Only', 'wp-postviews'); ?></option>
+					</select>
+				</label>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id('limit'); ?>"><?php _e('No. Of Records To Show:', 'wp-postviews'); ?> <input class="widefat" id="<?php echo $this->get_field_id('limit'); ?>" name="<?php echo $this->get_field_name('limit'); ?>" type="text" value="<?php echo $limit; ?>" /></label>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id('chars'); ?>"><?php _e('Maximum Post Title Length (Characters):', 'wp-postviews'); ?> <input class="widefat" id="<?php echo $this->get_field_id('chars'); ?>" name="<?php echo $this->get_field_name('chars'); ?>" type="text" value="<?php echo $chars; ?>" /></label><br />
+				<small><?php _e('<strong>0</strong> to disable.', 'wp-postviews'); ?></small>
+			</p>
+			<input type="hidden" id="<?php echo $this->get_field_id('submit'); ?>" name="<?php echo $this->get_field_name('submit'); ?>" value="1" />
+	<?php
+		}
+	} // end class
+	
+	### Function: Init HuGy WP-PostViews Widget
+	add_action('widgets_init', 'hk_widget_views_init');
+	function hk_widget_views_init() {
+		register_widget('hk_WP_Widget_PostViews');
+	}
+
+} // end if Class: WP-PostViews Widget
+
+
+
 /* TODO cleanup old widgets
 add_action( 'widgets_init', create_function( '', 'unregister_widget('HK_firstpagecontact');' ) );
 */

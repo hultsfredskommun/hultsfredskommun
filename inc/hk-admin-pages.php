@@ -37,7 +37,10 @@ add_action( 'admin_init', 'change_role_caps');
 // generate cache on save_post
 add_action('save_post', hk_save_post);
 function hk_save_post($postID) {
+	global $default_settings;
 	$options = get_option("hk_theme");
+	
+	
 	
 	// TODO
 	// - check image size

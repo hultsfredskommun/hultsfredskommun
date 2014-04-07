@@ -80,3 +80,23 @@
 		@extend .totop-icon;
 	}
 }
+/* hk view widget */
+.views-cloud-item {
+	margin-right: $half-spacing-unit;
+	display: block;
+	&.large {
+		font-size: 110%;
+	}
+	&.medium {
+		font-size: 105%;
+	}
+	&.small {
+		font-size: 100%;
+	}
+	&.mini {
+		font-size: 90%;
+	}
+	&.tiny {
+		font-size: 80%;
+	}
+}
