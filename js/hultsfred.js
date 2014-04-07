@@ -627,13 +627,22 @@ function flipAnimation(active) {
 	});
 }
 
+/* case insensitive contain */
+$.extend($.expr[':'], {
+  'containsi': function(elem, i, match, array) {
+	return (elem.textContent || elem.innerText || '').toLowerCase()
+		.indexOf((match[3] || "").toLowerCase()) >= 0;
+  }
+});
 
 $(document).ready(function(){
 	
 	// if in tag list
 	if ($(".tag-listing").length > 0) {
 		// collapse list if more items than 10
-		hidden_stuff = false;	
+		hidden_stuff = false;
+		$(".page-title").append("<div class='float--left half-margin--bottom tag-tools one-whole'></div>");
+		
 		if ($("ul.indent1 li, ul.indent2 li, ul.indent3 li, ul.indent4 li, ul.indent5 li").length > 10) {
 			hidden_stuff = true;
 			// hide wrappers all wrappers but level 1
@@ -673,12 +682,15 @@ $(document).ready(function(){
 		}
 		// add expand all button
 		if (hidden_stuff) {
-			$(".page-header, .page-title").after("<span class='float--right hand js-expand-all-tags zeta'>[visa alla]</span>");
+			$(".tag-tools").append("<span class='float--right hand js-expand-all-tags zeta'>[visa alla]</span>");
 			$(".js-expand-all-tags").click(function() {
 				if (!$(this).hasClass("expanded")) {
 					$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").show();
 					$(this).addClass("expanded").html("[st&auml;ng alla]");
 					$(".tag-listing").find(".sign").html("-");
+					$(".tag-listing li").show();
+					$('#filter').val('');
+					$('#rensa').hide();
 				} else {
 					$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").hide();
 					$(this).removeClass("expanded").html("[visa alla]");
@@ -686,8 +698,42 @@ $(document).ready(function(){
 				}
 			});
 		}
-	}
-	
+		
+		// add filter button
+		$(".tag-tools").append("<div class='js-filter-tags zeta filter tool'></div>");
+		$(".filter.tool").append("<span class='float--left half-margin--right'>filtrera</span>");
+		$(".filter.tool").append("<input class='float--left' type='text' name='filter' id='filter' />");
+		$(".filter.tool").append("<span class='float--left delete-icon rensa hand hidden half-margin--left' style='margin:0' id='rensa'></span>");
+		$('#filter').focus();
+		$('#rensa').click(function() {
+			$('#filter').val('');
+			$('#rensa').hide();
+			$('#filter').focus();
+			filter_tags();
+		});
+		
+
+		$("#filter").keyup(function(ev) {
+			$('#rensa').show();
+			filter_tags();
+		});
+		function filter_tags() {
+			filter = $('#filter').val().toLowerCase();
+			
+			// show all
+			$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").show();
+			$(".tag-listing .js-expand-all-tags").removeClass("expanded").html("[visa alla]");
+			$(".tag-listing").find(".sign").html("-");
+
+			// hide not contains
+			$(".tag-listing li:not(:containsi('"+filter+"'))").hide();
+			// show contains
+			$(".tag-listing li:containsi('"+filter+"')").show();
+		}
+
+	} // end tag-listing
+
+
 	/* debug count and version log */
 		/*function doCount() {
 			
