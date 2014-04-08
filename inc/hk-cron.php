@@ -155,7 +155,7 @@ function hk_normalize_count($returnlog = false) {
 	$q->query($qargs);
 	//add_action( 'pre_get_posts', 'hk_exclude_category' );
 	$count = $q->post_count;
-	
+	$totalcount = 0;
 	while ($count > 0) :
 		// execute the WP loop
 		
@@ -198,10 +198,12 @@ function hk_normalize_count($returnlog = false) {
 		$paged++;
 		$qargs["paged"] = $paged;
 		$q->query($qargs);
+		$totalcount += $count;
 		$count = $q->post_count;
 
 	endwhile; // endwhile count
-	$log .= "Normaliserade $count artiklar " . date("Y-m-d H:i:s", strtotime("now"));
+	
+	$log .= "Normaliserade $totalcount artiklar (paged: ". ($paged - 1) . ") " . date("Y-m-d H:i:s", strtotime("now"));
 	
 	$options = get_option('hk_theme');
 	$hk_normalize_count_time = time();

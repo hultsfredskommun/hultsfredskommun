@@ -327,14 +327,15 @@ function hk_theme_options_do_page() {
 					}
 				}
 				if ($options["force_normalize"] == "1") {
-					echo "F&ouml;rs&ouml;ker normalisera visningar.";
+					echo "<br/><b>Tvingar normalisera visningar. Uppdatera sidan efter&aring;t f&ouml;r att se r&auml;tt log.</b> <br/><br/>";
 					$log = hk_normalize_count(true);
 					$opt = get_option("hk_theme");
+					$opt["hk_normalize_count_log"] = $log;
 					$opt["force_normalize"] = 0;
 					update_option("hk_theme", $opt);
 				}
 			?>
-			LOG:<br> <textarea name="hk_theme[hk_normalize_count_log]" cols=100 rows=5><?php echo $log . $options["hk_normalize_count_log"]; ?></textarea> </p>
+			LOG:<br> <textarea name="hk_theme[hk_normalize_count_log]" cols=100 rows=5><?php echo $options["hk_normalize_count_log"]; ?></textarea> </p>
 			<?php endif; // endif (function_exists( 'views_orderby' ))?>
 			<?php submit_button(); ?>
 
