@@ -24,7 +24,7 @@
 			  " js.src = '//connect.facebook.net/sv_SE/all.js#xfbml=1&appId=544714525648022'; " +
 			  " fjs.parentNode.insertBefore(js, fjs); " +
 			" }(document, 'script', 'facebook-jssdk'));</script>";
-			perma_link = $("#sample-permalink").text();
+			perma_link = $("#view-post-btn .button").attr("href");
 			fb_button = "<div class='fb-share-button' data-href='" + perma_link + "' data-type='button_count'></div>";
 			$("#edit-slug-box").before(fb_share);
 			$("#edit-slug-box").append(fb_button);
