@@ -356,16 +356,14 @@ article.single .map_canvas {
 		@extend .icon-right;
 	}
 	.readspeaker_toolbox {
-		display: none;
 	}
 	.rsbtn .rsbtn_left .rsbtn_text {
 		padding-left: 0!important;
 	}
 	.addthis_toolbox {
-		display: none;
 		a {
 			@extend .float--left;
-			@extend .half-margin--left;
+			margin: 3px 3px 0px 0px;
 		}
 	}
 	.more-contacts {

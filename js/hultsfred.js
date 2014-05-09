@@ -1284,15 +1284,15 @@ function setArticleActions(el) {
 	});
 	
 		
-	$(el).find(".js-read-click").unbind("click").bind("click",function(ev) {
+	/*$(el).find(".js-read-click").unbind("click").bind("click",function(ev) {
 		ev.preventDefault();
 		$(this).parent().next().find(".readspeaker_toolbox").fadeToggle();
-	});
+	});*/
 	/* add AddThis onclick */
-	$(el).find(".js-friend-click").unbind("click").bind("click",function(ev) {
+	/*$(el).find(".js-friend-click").unbind("click").bind("click",function(ev) {
 		ev.preventDefault();
 		$(this).parent().next().find(".addthis_toolbox").fadeToggle();
-	});
+	});*/
 
 	
 	//sets click-action on entry-titles

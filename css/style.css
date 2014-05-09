@@ -5760,14 +5760,11 @@ html {
 .side-content .top .title {
   margin-top: 35px;
 }
-.side-content .readspeaker_toolbox {
-  display: none;
-}
 .side-content .rsbtn .rsbtn_left .rsbtn_text {
   padding-left: 0 !important;
 }
-.side-content .addthis_toolbox {
-  display: none;
+.side-content .addthis_toolbox a {
+  margin: 3px 3px 0px 0px;
 }
 
 @media only screen and (max-width: 540px) {
@@ -6346,7 +6343,7 @@ input.gsc-input {
   margin-bottom: 1.6rem;
 }
 
-.margin--left, .alignright, .icon-right, .side-content .side-content .post-edit-link, .home .contact-area .contact-wrapper .content-wrapper h1 a, .footer-widget-wrapper .content {
+.margin--left, .alignright, .icon-right, .side-content .side-content .post-edit-link, .home .contact-area .contact-wrapper .content-wrapper h1 a {
   margin-left: 24px;
   margin-left: 1.6rem;
 }
@@ -6361,7 +6358,7 @@ input.gsc-input {
   margin-top: 0.8rem;
 }
 
-.half-margin--left, .sub-title, .home .slideshow-contact-puff-area .content-wrapper h1 a, .side-content .addthis_toolbox a, .category-navigation .parent, .category-navigation .more-navigation {
+.half-margin--left, .sub-title, .home .slideshow-contact-puff-area .content-wrapper h1 a, .category-navigation .parent, .category-navigation .more-navigation {
   margin-left: 12px;
   margin-left: 0.8rem;
 }

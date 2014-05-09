@@ -403,14 +403,24 @@ function setup_javascript_settings() {
 			'google_analytics_domain' => $hk_options['google_analytics_domain'],
 			'mobile_rewrite' => $hk_options["mobile_rewrite"],
 			'admin_ajax_url' => str_replace("https://","http://",admin_url('admin-ajax.php')),
+			'addthis_pubid' => $hk_options['addthis_pubid'],
 		);
-	wp_localize_script(
-		'hultsfred_js',
-		'hultsfred_object',
-		$hultsfred_array
-	);
+	if (!is_admin()) {
+		wp_localize_script(
+			'hultsfred_js',
+			'hultsfred_object',
+			$hultsfred_array
+		);
+	} else {
+		wp_localize_script(
+			'hk_admin_js',
+			'hultsfred_object',
+			$hultsfred_array
+		);
+	}
 }
 add_action('wp_head', 'setup_javascript_settings');
+add_action('admin_head', 'setup_javascript_settings');
 
 
 
