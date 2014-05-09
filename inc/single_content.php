@@ -21,7 +21,7 @@
 			}
 
 			?>
-			<h1 class="entry-title"><a class="<?php echo $externalclass; ?>js-toggle-article" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a><a class="js-toggle-article button top">st&auml;ng</a></h1>
+			<h1 class="entry-title"><a class="<?php echo $externalclass; ?>js-toggle-article" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 			<?php 
 				if (get_post_meta( get_the_ID(), "local_script", true ) != "") { 
 					echo get_post_meta( get_the_ID(), "local_script", true );

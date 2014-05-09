@@ -442,6 +442,14 @@ function readMoreToggle(el){
 					if ($(this).parents("article").find(".js-close-button").length >= 1)
 						$(this).parents("article").find(".js-close-button").remove();
 						
+						
+					//add close-button at top
+					var closea = $("<a>").addClass('js-close-button button top').attr("href","#").html("St&auml;ng").unbind("click").bind("click",function(ev){
+						ev.preventDefault();
+						readMoreToggle( $(this).parents("article").find(".entry-title a") );
+					});
+					$(this).parents("article").find(".more-content .entry-title").append(closea);
+
 					//add close-button at bottom
 					var closeb = $('<div>').addClass('js-close-button closeButton button bottom').html("<a href='#'>St&auml;ng</a>").unbind("click").bind("click",function(ev){
 						ev.preventDefault();
@@ -1294,7 +1302,6 @@ function setArticleActions(el) {
 		$(this).parent().next().find(".addthis_toolbox").fadeToggle();
 	});*/
 
-	
 	//sets click-action on entry-titles
 	$(el).find('.js-toggle-article').unbind("click").bind("click",function(ev){
 		ev.stopPropagation();
