@@ -23,7 +23,6 @@
 			hk_addthis = '<div class="addthis_toolbox addthis_default_style" style="float: right">' +
 				'<a class="addthis_button_facebook"></a>' + 
 				'<a class="addthis_button_twitter"></a>' +
-				'<a class="addthis_button_google_plusone_badge" g:plusone:size="small"></a>' +
 				'<a class="addthis_button_email"></a>' +
 				'<a class="addthis_button_print"></a>' +
 				'<a class="addthis_button_compact"></a>' +
