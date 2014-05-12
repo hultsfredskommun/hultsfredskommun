@@ -15,7 +15,12 @@ global $default_settings, $wp_query;
 /* get hk_options */
 $hk_options = get_option('hk_theme');
 
-
+//force the page to use http if not logged in
+if ($_SERVER["SERVER_PORT"] == 443 && !is_user_logged_in()) {
+    $redir = "Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    header($redir);
+    exit();
+}
 /* hide if single and not visible */
 if (in_category($hk_options["hidden_cat"])) {
 	header("HTTP/1.0 404 Not Found");
