@@ -115,7 +115,15 @@
 
 	<?php endif; ?>	
 	<ul class="box tools full">
-		<?php edit_post_link( "Redigera inl&auml;gg", "<li class='edit-post'><a title='Redigera inl&auml;gg' class='icon-left edit-icon editlink tool-line full icon-left'></a>", "</li>" ); ?>
+		
+		<?php 
+		if ( is_user_logged_in() ) {
+			echo "<li class='title'><span>Redakt&ouml;rsverktyg</span></li>";
+			edit_post_link( "Redigera inl&auml;gg", "<li class='edit-post half-margin--left'><a title='Redigera inl&auml;gg' class='editlink tool-line full'></a>", "</li>" ); 
+			if ( function_exists('media_buttons_context') ) { // if plugin valideratext exist
+				echo "<li class='half-margin--left'>" . media_buttons_context() . "</li>";
+			}
+		} ?>
 		<?php if (isset($options['readspeaker_id'])) : ?>
 		<li class="title">
 			<span>Lyssna</span>
