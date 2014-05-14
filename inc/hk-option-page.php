@@ -220,7 +220,8 @@ function hk_theme_options_do_page() {
 			<a name="tillagg"></a>
 			<hr/><h2>Till&auml;gg</h2>
 			<p><label for="hk_theme[gcse_id]">Google Site Search ID. Byter ut vanliga sökrutan mot Google Site Search. Ex. 017163027625550103349:urmqx2nuhpg</label><br/><input type="text" size="80" name="hk_theme[gcse_id]" value="<?php echo $options['gcse_id']; ?>" /></p>
-			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. L&auml;gger till Tipsa i artikel.</label><br/><input type="text" size="80" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
+			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. L&auml;gger till Dela i artikel.</label><br/><input type="text" size="80" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
+			<p><label for="hk_theme[addthis_pubid_admin]">AddThis pubid. L&auml;gger till dela i <b>wp-admin</b>.</label><br/><input type="text" size="80" name="hk_theme[addthis_pubid_admin]" value="<?php echo $options['addthis_pubid_admin']; ?>" /></p>
 			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. L&auml;gger till Lyssna i artikel.</label><br/><input type="text" size="80" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>			
 			<p><label for="hk_theme[typekit_url]">Typekit js url - http://&lt;resten av url&gt; f&ouml;r att l&auml;gga till typsnitt.</label><br/><input type="text" size="80" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
 			<p><label for="hk_theme[google_font]">Load google font - ex. <i>Oxygen:300,400,700</i> f&ouml;r att l&aumlgga till typsnitt.</label><br/><input type="text" size="80" name="hk_theme[google_font]" value="<?php echo $options['google_font']; ?>" /></p>

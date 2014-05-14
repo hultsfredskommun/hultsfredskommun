@@ -259,6 +259,7 @@ if (!is_admin()) {
 			true
 		);
 	}
+
 	if ($hk_options['addthis_pubid'] != "" && $default_settings['allow_cookies']) {
 		wp_enqueue_script(
 			'addthis_js',
@@ -268,6 +269,7 @@ if (!is_admin()) {
 			true
 		);
 	}
+
 	if ($hk_options['readspeaker_id'] != "") {
 		if ($hk_options['readspeaker_id'] == "6595") // to run without ios special script, special for Hultsfreds kommun
 			$readspeaker_url = get_template_directory_uri() . '/js/ReadSpeaker/ReadSpeaker.js?pids=embhl';
@@ -403,7 +405,7 @@ function setup_javascript_settings() {
 			'google_analytics_domain' => $hk_options['google_analytics_domain'],
 			'mobile_rewrite' => $hk_options["mobile_rewrite"],
 			'admin_ajax_url' => str_replace("https://","http://",admin_url('admin-ajax.php')),
-			'addthis_pubid' => $hk_options['addthis_pubid'],
+			'addthis_pubid_admin' => $hk_options['addthis_pubid_admin'],
 		);
 	if (!is_admin()) {
 		wp_localize_script(
