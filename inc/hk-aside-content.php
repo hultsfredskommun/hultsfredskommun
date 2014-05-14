@@ -116,14 +116,7 @@
 	<?php endif; ?>	
 	<ul class="box tools full">
 		
-		<?php 
-		if ( is_user_logged_in() ) {
-			echo "<li class='title'><span>Redakt&ouml;rsverktyg</span></li>";
-			edit_post_link( "Redigera inl&auml;gg", "<li class='edit-post half-margin--left'><a title='Redigera inl&auml;gg' class='editlink tool-line full'></a>", "</li>" ); 
-			if ( class_exists('ValideraText_Media_Button') ) { // if plugin valideratext exist
-				echo "<li class='half-margin--left'>" . ValideraText_Media_Button::media_buttons_context() . "</li>";
-			}
-		} ?>
+		<?php edit_post_link( "Redigera inl&auml;gg", "<li class='title'><span>Redakt&ouml;rsverktyg</span></li><li class='edit-post half-margin--left'><a title='Redigera inl&auml;gg' class='editlink tool-line full'></a>", "</li>" ); ?>
 		<?php if (isset($options['readspeaker_id'])) : ?>
 		<li class="title">
 			<span>Lyssna</span>
