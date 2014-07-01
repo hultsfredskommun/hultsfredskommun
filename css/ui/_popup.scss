@@ -1,3 +1,4 @@
+.form-popup.overlay,
 .contact-popup.overlay {
 	@extend .position-fixed;
 	height: 100%;
@@ -7,8 +8,10 @@
 	left: 0;
 	z-index: 1999;
 }
+.form-popup.box,
 .contact-popup.box {
 	@extend .white-background;
+	@extend .default-text;
 	@extend .position-fixed;
 	width: 80%;
 	height: 80%;
@@ -43,11 +46,7 @@
 			@extend .img--left;
 			@extend .flush--bottom;
 		}
-	
 	}
-
-
-	
 }
 
 @include media-query(desk) {
@@ -65,5 +64,9 @@
 			width: 50%;
 		}
 	}
+}
+.form-popup.box {
+	width: 40%;
+	left: 30%;
 }
 }

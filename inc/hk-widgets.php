@@ -854,7 +854,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		if ( isset( $instance[ 'color' ] ) ) {	$color = $instance[ 'color' ];
 		} else { $color = ""; }
 		if ( isset( $instance[ 'text' ] ) ) {	$text = $instance[ 'text' ];
-		} else {$menu = ""; }
+		} else {$text = ""; }
+		if ( isset( $instance[ 'popuptext' ] ) ) {	$popuptext = $instance[ 'popuptext' ];
+		} else {$popuptext = ""; }
 		if ( isset( $instance[ 'href' ] ) ) {	$href = $instance[ 'href' ];
 		} else {$href = ""; }
 		if ( isset( $instance[ 'show_widget_in_cat' ] ) ) {	$show_widget_in_cat = $instance[ 'show_widget_in_cat' ];
@@ -882,6 +884,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		<textarea class="widefat" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>"><?php echo $text; ?></textarea>
 		</p>
 		<p>
+		<label for="<?php echo $this->get_field_id( 'popuptext' ); ?>">Text som popar upp vid klick</label> 
+		<textarea class="widefat" id="<?php echo $this->get_field_id( 'popuptext' ); ?>" name="<?php echo $this->get_field_name( 'popuptext' ); ?>"><?php echo $popuptext; ?></textarea>
+		</p>
+		<p>
 		<label for="<?php echo $this->get_field_id( 'href' ); ?>">L&auml;nk</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'href' ); ?>" name="<?php echo $this->get_field_name( 'href' ); ?>" type="test" value="<?php echo esc_attr($href); ?>" />
 		</p>
@@ -901,6 +907,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		$instance['background'] = $new_instance['background'];
 		$instance['color'] = $new_instance['color'];
 		$instance['text'] =  $new_instance['text'];
+		$instance['popuptext'] =  $new_instance['popuptext'];
 		$instance['href'] =  $new_instance['href'];
 		$instance['show_widget_in_cat'] = strip_tags( $new_instance['show_widget_in_cat'] );
 		
@@ -911,8 +918,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 	    extract( $args );
 		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
 			echo $before_widget;
+			
 			if ( $instance["title"] == "" && $instance["text"] == "" && $instance["href"] != "" && $instance["image"] != "" ) {
-				echo "<a style='max-width: 100%; color: $color;' href='".$instance["href"]."'>";
+				echo "<a $popupcss style='max-width: 100%; color: $color;' href='".$instance["href"]."'>";
 				echo "<img class='image' src='" .$instance["image"]. "' />";
 				echo "</a>";
 			}
@@ -927,21 +935,38 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 				}
 				echo "<div class='inner-wrapper' style='background-color: $background; color: $color;$image_style'>";
 				if ( ! empty( $title ) ) {
-					if ($instance["href"] != "")
+					if ($instance["popuptext"] != "") {
+						echo "<a class='js-text-widget-popup' style='color: $color;' href='".$instance["href"]."'>";;
+					}
+					else if ($instance["href"] != "")
 						echo "<a style='color: $color;' href='".$instance["href"]."'>";
 					echo $before_title . $title . $after_title;
-					if ($instance["href"] != "")
+					if ($popupcss != "" || $instance["href"] != "")
 						echo "</a>";
 				}
 
 				echo "<div class='content'>";					
-					if ($instance["href"] != "")
-						echo "<a style='color: $color;' href='".$instance["href"]."'>";
-					echo $instance["text"];
-					if ($instance["href"] != "")
-						echo "</a>";
-
-				echo "</div></div>";
+				if ($instance["popuptext"] != "") {
+					echo "<a class='js-text-widget-popup' style='color: $color;' href='".$instance["href"]."'>";;
+				}
+				else if ($instance["href"] != "")
+					echo "<a style='color: $color;' href='".$instance["href"]."'>";
+				echo do_shortcode($instance["text"]);
+				if ($popupcss != "" || $instance["href"] != "")
+					echo "</a>";
+				echo "</div>";
+				
+				if ($instance["popuptext"] != "") {
+					echo "<div class='hidden overlay form-popup popuptext'>";
+						echo "<div class='box form-popup'>";
+							echo "<div class='close-contact close-button'></div>";
+							echo "<div class='entry-wrapper'>";
+								echo "<div class='entry-content'>";
+									echo do_shortcode($instance["popuptext"]);
+					echo "</div></div></div></div>";
+				}
+				
+				echo "</div>";
 			
 			}
 			echo $after_widget;

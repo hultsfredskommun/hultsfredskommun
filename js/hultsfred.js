@@ -912,6 +912,11 @@ $(document).ready(function(){
 	$(".js-contact-link").each(function() {
 		setContactPopupAction($(this));
 	});
+	//triggers popup-text-widget click-action 
+	$(".js-text-widget-popup").each(function() {
+		setTextWidgetPopupAction($(this));
+	});
+
 	// read-more-links
 	$(".js-read-more-link").each(function() {
 		$(this).unbind("click").bind("click", function(ev) {
@@ -1326,7 +1331,6 @@ function setArticleActions(el) {
 		setContactPopupAction($(this));
 	});
 	
-	
 	//google analytics
 	$(el).find(".related_link a").each(function() {
 		if ($(this).attr("href") !== undefined) {
@@ -1400,6 +1404,51 @@ function contactAction(el,ev) {
 	}
 }
 
+/* set contact popup action - link as input el */
+function setTextWidgetPopupAction(el) {
+	$(el).unbind("click").bind("click",function(ev) {
+		if (isLessThenIE9) {
+			return true;
+		}
+		textWidgetAction(el,ev);
+		return false;
+	});
+
+}
+function textWidgetAction(el,ev) {
+	// check if previous popups
+	//if ($(".contact-popup").length == 0) {
+		parentwidget = $(el).parents(".widget");
+		
+		// follow link if no popuptext found
+		if ($(parentwidget).find(".popuptext").length == 0)
+			return true;
+		if (ev != null)
+			ev.preventDefault();
+		
+		// show popup
+		$(parentwidget).find(".form-popup.overlay").show();
+
+		// google analytics
+		push_google_analytics("#popupform=" + $(parentwidget).attr("id"));	
+
+		// close button and close on overlay-press
+		$(parentwidget).find(".form-popup.overlay").unbind("click").bind("click",function(ev) {
+			$(el).parents(".widget").find(".form-popup.overlay").hide();
+		});
+		$(parentwidget).find(".form-popup.box").unbind("click").bind("click",function(ev) {
+			ev.stopPropagation();
+		});
+		$(parentwidget).find(".close-contact").unbind("click").bind("click",function() {
+			$(el).parents(".widget").find(".form-popup.overlay").hide();
+		});
+
+	/*}
+	else {
+		$(this).slideshow("pause");
+		$(".contact-popup").remove();
+	}*/
+}
 /**
  * load next posts dynamic
  */

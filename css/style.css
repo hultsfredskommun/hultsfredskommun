@@ -769,7 +769,8 @@ textarea:focus {
 .page-header .sort-order, .page-header .category-tools, .page-header .category-tools .menu-item .sub-menu, .page-header .category-tools .cat-item .sub-menu, .article-wrapper .entry-meta .footer-wrapper, .pager, .side-content .contacts,
 .side-content .related-wrapper,
 .side-content .tools, .searchnavigation .searchresult ul, .top-menu-wrapper .top-menu, .top-menu-wrapper .top-menu .menu-item .sub-menu, .more-menu-ul,
-.main-sub-menu, .tags-wrapper ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul, .media, .island, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
+.main-sub-menu, .tags-wrapper ul, .category-navigation .parent, .category-navigation .parent li .children, .category-navigation .more-navigation, .ui-tabs-nav, .footer-widget-wrapper ul, .media, .island, .footer-image-wrapper .logo-footer-image img, .form-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .entry-content,
 .islet,
 #responsive-info,
 .widget_hk_wp_feed_rss_widget.widget,
@@ -797,7 +798,8 @@ textarea:focus {
 .page-header .sort-order:before, .page-header .category-tools:before, .page-header .category-tools .menu-item .sub-menu:before, .page-header .category-tools .cat-item .sub-menu:before, .article-wrapper .entry-meta .footer-wrapper:before, .pager:before, .side-content .contacts:before,
 .side-content .related-wrapper:before,
 .side-content .tools:before, .searchnavigation .searchresult ul:before, .top-menu-wrapper .top-menu:before, .top-menu-wrapper .top-menu .menu-item .sub-menu:before, .more-menu-ul:before,
-.main-sub-menu:before, .tags-wrapper ul:before, .category-navigation .parent:before, .category-navigation .parent li .children:before, .category-navigation .more-navigation:before, .ui-tabs-nav:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .footer-image-wrapper .logo-footer-image img:before, .contact-popup.box .entry-wrapper .entry-content:before,
+.main-sub-menu:before, .tags-wrapper ul:before, .category-navigation .parent:before, .category-navigation .parent li .children:before, .category-navigation .more-navigation:before, .ui-tabs-nav:before, .footer-widget-wrapper ul:before, .media:before, .island:before, .footer-image-wrapper .logo-footer-image img:before, .form-popup.box .entry-wrapper .entry-content:before,
+.contact-popup.box .entry-wrapper .entry-content:before,
 .islet:before,
 #responsive-info:before,
 .widget_hk_wp_feed_rss_widget.widget:before,
@@ -822,7 +824,8 @@ textarea:focus {
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .page-header .category-tools .cat-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .side-content .contacts:after,
 .side-content .related-wrapper:after,
 .side-content .tools:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
-.main-sub-menu:after, .tags-wrapper ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
+.main-sub-menu:after, .tags-wrapper ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .footer-image-wrapper .logo-footer-image img:after, .form-popup.box .entry-wrapper .entry-content:after,
+.contact-popup.box .entry-wrapper .entry-content:after,
 .islet:after,
 #responsive-info:after,
 .widget_hk_wp_feed_rss_widget.widget:after,
@@ -851,7 +854,8 @@ textarea:focus {
 .page-header .sort-order:after, .page-header .category-tools:after, .page-header .category-tools .menu-item .sub-menu:after, .page-header .category-tools .cat-item .sub-menu:after, .article-wrapper .entry-meta .footer-wrapper:after, .pager:after, .side-content .contacts:after,
 .side-content .related-wrapper:after,
 .side-content .tools:after, .searchnavigation .searchresult ul:after, .top-menu-wrapper .top-menu:after, .top-menu-wrapper .top-menu .menu-item .sub-menu:after, .more-menu-ul:after,
-.main-sub-menu:after, .tags-wrapper ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .footer-image-wrapper .logo-footer-image img:after, .contact-popup.box .entry-wrapper .entry-content:after,
+.main-sub-menu:after, .tags-wrapper ul:after, .category-navigation .parent:after, .category-navigation .parent li .children:after, .category-navigation .more-navigation:after, .ui-tabs-nav:after, .footer-widget-wrapper ul:after, .media:after, .island:after, .footer-image-wrapper .logo-footer-image img:after, .form-popup.box .entry-wrapper .entry-content:after,
+.contact-popup.box .entry-wrapper .entry-content:after,
 .islet:after,
 #responsive-info:after,
 .widget_hk_wp_feed_rss_widget.widget:after,
@@ -892,6 +896,7 @@ pre,
 .media,
 .island,
 .footer-image-wrapper .logo-footer-image img,
+.form-popup.box .entry-wrapper .entry-content,
 .contact-popup.box .entry-wrapper .entry-content,
 .islet,
 #responsive-info,
@@ -1016,7 +1021,37 @@ pre, .islet .form-fields > li, #responsive-info .form-fields > li, .widget_hk_wp
 .island, .searchnavigation .searchresult ul
 .island, .searchnavigation .searchresult .external_more_link
 .island, .scrolltotop
-.island, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .widget_hk_wp_feed_rss_widget.widget .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .widget_hk_wp_feed_rss_widget.widget img, .slideshow .slide .caption-area .caption .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .slideshow .slide .caption-area .caption img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 img, .main .widget.widget_hk_textwidget .inner-wrapper .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .main .widget.widget_hk_textwidget .inner-wrapper img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .cookieinformation .textwidget .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .cookieinformation .textwidget img, .searchnavigation .searchresult ul .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult ul img, .searchnavigation .searchresult .external_more_link .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult .external_more_link img, .scrolltotop .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .scrolltotop img, .islet .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .islet .entry-content, #responsive-info .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper #responsive-info .entry-content, .widget_hk_wp_feed_rss_widget.widget .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .widget_hk_wp_feed_rss_widget.widget .entry-content, .slideshow .slide .caption-area .caption .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .slideshow .slide .caption-area .caption .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .entry-content, .main .widget.widget_hk_textwidget .inner-wrapper .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .main .widget.widget_hk_textwidget .inner-wrapper .entry-content, .pager .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .pager .entry-content, .cookieinformation .textwidget .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .cookieinformation .textwidget .entry-content, .searchnavigation .searchresult ul .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .searchnavigation .searchresult ul .entry-content, .searchnavigation .searchresult .external_more_link .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .searchnavigation .searchresult .external_more_link .entry-content, .scrolltotop .contact-popup.box .entry-wrapper .entry-content, .contact-popup.box .entry-wrapper .scrolltotop .entry-content, .islet
+.island, .islet .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .islet img, #responsive-info .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image #responsive-info img, .widget_hk_wp_feed_rss_widget.widget .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .widget_hk_wp_feed_rss_widget.widget img, .slideshow .slide .caption-area .caption .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .slideshow .slide .caption-area .caption img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 img, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 img, .main .widget.widget_hk_textwidget .inner-wrapper .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .main .widget.widget_hk_textwidget .inner-wrapper img, .pager .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .pager img, .cookieinformation .textwidget .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .cookieinformation .textwidget img, .searchnavigation .searchresult ul .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult ul img, .searchnavigation .searchresult .external_more_link .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .searchnavigation .searchresult .external_more_link img, .scrolltotop .footer-image-wrapper .logo-footer-image img, .footer-image-wrapper .logo-footer-image .scrolltotop img, .islet .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .islet .entry-content, #responsive-info .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper #responsive-info .entry-content, .widget_hk_wp_feed_rss_widget.widget .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .widget_hk_wp_feed_rss_widget.widget .entry-content, .slideshow .slide .caption-area .caption .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .slideshow .slide .caption-area .caption .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .entry-content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .entry-content, .main .widget.widget_hk_textwidget .inner-wrapper .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .main .widget.widget_hk_textwidget .inner-wrapper .entry-content, .pager .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .pager .entry-content, .cookieinformation .textwidget .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .cookieinformation .textwidget .entry-content, .searchnavigation .searchresult ul .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .searchnavigation .searchresult ul .entry-content, .searchnavigation .searchresult .external_more_link .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .searchnavigation .searchresult .external_more_link .entry-content, .scrolltotop .form-popup.box .entry-wrapper .entry-content, .form-popup.box .entry-wrapper .scrolltotop .entry-content,
+.islet .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .islet .entry-content,
+#responsive-info .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper #responsive-info .entry-content,
+.widget_hk_wp_feed_rss_widget.widget .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .widget_hk_wp_feed_rss_widget.widget .entry-content,
+.slideshow .slide .caption-area .caption .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .slideshow .slide .caption-area .caption .entry-content,
+.home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .entry-content,
+.home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .entry-content,
+.home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .entry-content,
+.home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .entry-content,
+.home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .entry-content,
+.main .widget.widget_hk_textwidget .inner-wrapper .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .main .widget.widget_hk_textwidget .inner-wrapper .entry-content,
+.pager .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .pager .entry-content,
+.cookieinformation .textwidget .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .cookieinformation .textwidget .entry-content,
+.searchnavigation .searchresult ul .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .searchnavigation .searchresult ul .entry-content,
+.searchnavigation .searchresult .external_more_link .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .searchnavigation .searchresult .external_more_link .entry-content,
+.scrolltotop .contact-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .scrolltotop .entry-content, .islet
 .islet, #responsive-info
 .islet, .widget_hk_wp_feed_rss_widget.widget
 .islet, .slideshow .slide .caption-area .caption
@@ -1475,7 +1510,8 @@ img[height] {
   margin-left: 24px;
 }
 
-.img--left, .summary .img-wrapper, .contact-popup.box .entry-wrapper .img-wrapper {
+.img--left, .summary .img-wrapper, .form-popup.box .entry-wrapper .img-wrapper,
+.contact-popup.box .entry-wrapper .img-wrapper {
   float: left;
   margin-right: 24px;
   margin-bottom: 24px;
@@ -2618,7 +2654,8 @@ html.flexbox {
  * Demo: jsfiddle.net/inuitcss/u8pV3
  * 
  */
-.island, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content,
+.island, .footer-image-wrapper .logo-footer-image img, .form-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .entry-content,
 .islet,
 #responsive-info,
 .widget_hk_wp_feed_rss_widget.widget,
@@ -2637,11 +2674,13 @@ html.flexbox {
   display: block;
 }
 
-.island, .footer-image-wrapper .logo-footer-image img, .contact-popup.box .entry-wrapper .entry-content {
+.island, .footer-image-wrapper .logo-footer-image img, .form-popup.box .entry-wrapper .entry-content,
+.contact-popup.box .entry-wrapper .entry-content {
   padding: 24px;
 }
 
-.island > :last-child, .footer-image-wrapper .logo-footer-image img > :last-child, .contact-popup.box .entry-wrapper .entry-content > :last-child,
+.island > :last-child, .footer-image-wrapper .logo-footer-image img > :last-child, .form-popup.box .entry-wrapper .entry-content > :last-child,
+.contact-popup.box .entry-wrapper .entry-content > :last-child,
 .islet > :last-child,
 #responsive-info > :last-child,
 .widget_hk_wp_feed_rss_widget.widget > :last-child,
@@ -4557,7 +4596,8 @@ html.flexbox {
 .main .widget.widget_hk_protocol ul,
 .main .widget.HK_tags_widget ul, .page-header .num-posts,
 .page-header .view-tools,
-.page-header .sort-order, .page-header .category-tools, .summary .img-wrapper, .pager, .side-content .tools, .searchnavigation .searchresult .external_more_link, .top-menu-wrapper .top-menu, .responsive-menu, .ui-tabs-nav, .contact-popup.box .entry-wrapper .img-wrapper {
+.page-header .sort-order, .page-header .category-tools, .summary .img-wrapper, .pager, .side-content .tools, .searchnavigation .searchresult .external_more_link, .top-menu-wrapper .top-menu, .responsive-menu, .ui-tabs-nav, .form-popup.box .entry-wrapper .img-wrapper,
+.contact-popup.box .entry-wrapper .img-wrapper {
   margin-bottom: 0 !important;
 }
 
@@ -4697,7 +4737,8 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   color: #3e3e3f !important;
 }
 
-.default-text, h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidget, .responsive-sub-menu a, .main-menu a, .main-sub-menu a, .category-navigation a, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .ui-tabs-nav a {
+.default-text, h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidget, .responsive-sub-menu a, .main-menu a, .main-sub-menu a, .category-navigation a, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .ui-tabs-nav a, .form-popup.box,
+.contact-popup.box {
   color: #3e3e3f;
 }
 
@@ -4752,7 +4793,9 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   color: #fff;
 }
 
-.white-background, body, .cookieinformation .textwidget, .searchnavigation .form .submit, .searchnavigation .searchresult-wrapper .searchresult, .scrolltotop, .contact-popup.box, .contact-popup.box .close-contact {
+.white-background, body, .cookieinformation .textwidget, .searchnavigation .form .submit, .searchnavigation .searchresult-wrapper .searchresult, .scrolltotop, .form-popup.box,
+.contact-popup.box, .form-popup.box .close-contact,
+.contact-popup.box .close-contact {
   background-color: #fff;
 }
 
@@ -4789,7 +4832,9 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #3e3e3f;
 }
 
-.white-background, body, .cookieinformation .textwidget, .searchnavigation .form .submit, .searchnavigation .searchresult-wrapper .searchresult, .scrolltotop, .contact-popup.box, .contact-popup.box .close-contact {
+.white-background, body, .cookieinformation .textwidget, .searchnavigation .form .submit, .searchnavigation .searchresult-wrapper .searchresult, .scrolltotop, .form-popup.box,
+.contact-popup.box, .form-popup.box .close-contact,
+.contact-popup.box .close-contact {
   background-color: #fff;
 }
 
@@ -4921,7 +4966,8 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 .main .widget.widget_hk_protocol,
 .main .widget.HK_tags_widget, .page-header, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .side-content .title, .cookieinformation .textwidget, .searchnavigation .searchresult-wrapper .searchresult, .hk-gcse-wrapper .hk-gcse-border, .responsive-menu a, .responsive-sub-menu, .main-sub-menu, .main-sub-menu a:hover, .main-sub-menu:hover a:hover,
 .main-sub-menu .current-category-ancestor a,
-.main-sub-menu .current-menu-item a, .contact-popup.box {
+.main-sub-menu .current-menu-item a, .form-popup.box,
+.contact-popup.box {
   border-radius: 3px;
 }
 
@@ -4984,7 +5030,8 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   font-style: italic;
 }
 
-.cursor-pointer, .map_link, .button, .contact-popup.box .close-contact {
+.cursor-pointer, .map_link, .button, .form-popup.box .close-contact,
+.contact-popup.box .close-contact {
   cursor: pointer;
 }
 
@@ -6247,7 +6294,9 @@ input.gsc-input {
 	-ms-transition: color .6s linear, background-color .6s linear;
 	transition: color .6s linear, background-color .6s linear;
 }*/
-.position-fixed, .position-fixed--top-left, .position-fixed--top-right, .position-fixed--bottom-right, .scrolltotop, .position-fixed--bottom-left, #responsive-info, .contact-popup.overlay, .contact-popup.box {
+.position-fixed, .position-fixed--top-left, .position-fixed--top-right, .position-fixed--bottom-right, .scrolltotop, .position-fixed--bottom-left, #responsive-info, .form-popup.overlay,
+.contact-popup.overlay, .form-popup.box,
+.contact-popup.box {
   position: fixed;
 }
 
@@ -6271,7 +6320,8 @@ input.gsc-input {
   left: 0;
 }
 
-.position-relative, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .contact-area .contact-wrapper, .searchnavigation .form .input-wrapper, .searchnavigation .searchresult-wrapper, .position-relative--top-left, .position-relative--top-right, .position-relative--bottom-right, .position-relative--bottom-left, .contact-popup.box .entry-wrapper {
+.position-relative, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .contact-area .contact-wrapper, .searchnavigation .form .input-wrapper, .searchnavigation .searchresult-wrapper, .position-relative--top-left, .position-relative--top-right, .position-relative--bottom-right, .position-relative--bottom-left, .form-popup.box .entry-wrapper,
+.contact-popup.box .entry-wrapper {
   position: relative;
 }
 
@@ -6295,7 +6345,8 @@ input.gsc-input {
   left: 0;
 }
 
-.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .pager, .contact-popup.box .close-contact {
+.position-absolute, .slideshow .slide .caption-area .transparent, .searchnavigation .searchresult-wrapper .searchresult, .position-absolute--top-left, .slideshow .slide .caption-area, .home .contact-area .contact-wrapper .content-wrapper, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--bottom-right, .position-absolute--bottom-left, .pager, .form-popup.box .close-contact,
+.contact-popup.box .close-contact {
   position: absolute;
 }
 
@@ -6506,6 +6557,7 @@ input.gsc-input {
   display: block;
 }
 
+.form-popup.overlay,
 .contact-popup.overlay {
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
@@ -6515,6 +6567,7 @@ input.gsc-input {
   z-index: 1999;
 }
 
+.form-popup.box,
 .contact-popup.box {
   width: 80%;
   height: 80%;
@@ -6522,6 +6575,7 @@ input.gsc-input {
   top: 10%;
   left: 10%;
 }
+.form-popup.box .close-contact,
 .contact-popup.box .close-contact {
   top: -12px;
   right: -12px;
@@ -6529,17 +6583,21 @@ input.gsc-input {
   border-radius: 24px;
   z-index: 6000;
 }
+.form-popup.box .close-contact .i,
 .contact-popup.box .close-contact .i {
   font-size: 150%;
 }
+.form-popup.box .entry-wrapper,
 .contact-popup.box .entry-wrapper {
   overflow: auto;
   height: 100%;
   width: 100%;
 }
+.form-popup.box .entry-wrapper .entry-content,
 .contact-popup.box .entry-wrapper .entry-content {
   overflow: initial;
 }
+.form-popup.box .entry-wrapper .img-wrapper,
 .contact-popup.box .entry-wrapper .img-wrapper {
   width: 150px;
 }
@@ -6557,6 +6615,11 @@ input.gsc-input {
   .contact-popup.box .entry-wrapper.hasmap .side-map {
     float: right !important;
     width: 50%;
+  }
+
+  .form-popup.box {
+    width: 40%;
+    left: 30%;
   }
 }
 .spinner {
