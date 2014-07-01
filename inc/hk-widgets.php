@@ -918,9 +918,13 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 	    extract( $args );
 		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
 			echo $before_widget;
-			
+			if ($instance["popuptext"] != "") {
+				$popupclass = "class='js-text-widget-popup'";
+			} else {
+				$popupclass = "";
+			}
 			if ( $instance["title"] == "" && $instance["text"] == "" && $instance["href"] != "" && $instance["image"] != "" ) {
-				echo "<a $popupcss style='max-width: 100%; color: $color;' href='".$instance["href"]."'>";
+				echo "<a $popupclass style='max-width: 100%; color: $color;' href='".$instance["href"]."'>";
 				echo "<img class='image' src='" .$instance["image"]. "' />";
 				echo "</a>";
 			}
@@ -935,40 +939,40 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 				}
 				echo "<div class='inner-wrapper' style='background-color: $background; color: $color;$image_style'>";
 				if ( ! empty( $title ) ) {
-					if ($instance["popuptext"] != "") {
-						echo "<a class='js-text-widget-popup' style='color: $color;' href='".$instance["href"]."'>";;
+					if ($instance["popuptext"] != "" || $instance["href"] != "") {
+						echo "<a $popupclass style='color: $color;' href='".$instance["href"]."'>";;
 					}
-					else if ($instance["href"] != "")
-						echo "<a style='color: $color;' href='".$instance["href"]."'>";
 					echo $before_title . $title . $after_title;
-					if ($popupcss != "" || $instance["href"] != "")
+					if ($instance["popuptext"] != "" || $instance["href"] != "") {
 						echo "</a>";
+					}
 				}
 
 				echo "<div class='content'>";					
-				if ($instance["popuptext"] != "") {
-					echo "<a class='js-text-widget-popup' style='color: $color;' href='".$instance["href"]."'>";;
+				if ($instance["popuptext"] != "" || $instance["href"] != "") {
+					echo "<a $popupclass style='color: $color;' href='".$instance["href"]."'>";
 				}
-				else if ($instance["href"] != "")
-					echo "<a style='color: $color;' href='".$instance["href"]."'>";
 				echo do_shortcode($instance["text"]);
-				if ($popupcss != "" || $instance["href"] != "")
+				if ($instance["popuptext"] != "" || $instance["href"] != "") {
 					echo "</a>";
+				}
 				echo "</div>";
 				
-				if ($instance["popuptext"] != "") {
-					echo "<div class='hidden overlay form-popup popuptext'>";
-						echo "<div class='box form-popup'>";
-							echo "<div class='close-contact close-button'></div>";
-							echo "<div class='entry-wrapper'>";
-								echo "<div class='entry-content'>";
-									echo do_shortcode($instance["popuptext"]);
-					echo "</div></div></div></div>";
-				}
 				
 				echo "</div>";
 			
 			}
+			
+			if ($instance["popuptext"] != "") {
+				echo "<div class='hidden overlay form-popup popuptext'>";
+					echo "<div class='box form-popup'>";
+						echo "<div class='close-contact close-button'></div>";
+						echo "<div class='entry-wrapper'>";
+							echo "<div class='entry-content'>";
+								echo do_shortcode($instance["popuptext"]);
+				echo "</div></div></div></div>";
+			}
+
 			echo $after_widget;
 		}
 
