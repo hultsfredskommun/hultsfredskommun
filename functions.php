@@ -321,7 +321,7 @@ if (!is_admin()) {
 		'hultsfred_js',
 		get_template_directory_uri() . '/js/hultsfred.js',
 		array('jquery','jquery-ui-core','jquery-ui-widget','jquery-ui-tabs'),
-		'1.0',
+		'1.0.1',
 		true
 	);
 	wp_enqueue_script(
