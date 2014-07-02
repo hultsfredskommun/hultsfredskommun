@@ -13,6 +13,5 @@
  */
 
 get_header();
-hk_stop_publish_job();
 require("inc/hk-sub-category-firstpage.php");
 get_footer();

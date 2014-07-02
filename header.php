@@ -78,7 +78,7 @@ if (in_category($hk_options["hidden_cat"])) {
 	?></title>
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php if ($_REQUEST["localstyle"] != "") : ?>
 <link href="http://localhost/<?php echo $_REQUEST["localstyle"]; ?>" rel="stylesheet">
@@ -253,115 +253,13 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 		</div></div>
 		<!--googleoff: all-->
 		<?php if (!is_search()) : ?>
-		<nav id="menu" class="menu-wrapper" role="navigation">
-			<?php 
-				$menu_name = 'primary';
-				// get nav_menu_parent id
-				if (is_single()) {
-					$category_hierarchy = hk_get_parent_categories_from_id(get_the_ID(), $menu_name);
-				} else if ($cat != "") {
-					$category_hierarchy = hk_get_parent_categories_from_cat($cat);	
+		
+		<nav id="menu" class="menu-wrapper<?php echo "$responsive_class"; ?>" role="navigation">
+			<?php
+				if (!(($locations = get_nav_menu_locations()) && isset( $locations['primary'] ) && $locations['primary'] > 0 )) {
+					echo "<div class='important-widget'>&nbsp;Du m&aring;ste s&auml;tta meny under <i>Utseende -> Menyer</i>.</div>";
 				}
-
-				$nav_menu_top_parent = hk_getNavMenuId($category_hierarchy[0], $menu_name);
-				$nav_menu_sub_parent = hk_getNavMenuId($category_hierarchy[1], $menu_name);
-				$top_parent = $category_hierarchy[0];
-				$top_parent = $category_hierarchy[0];
-				$sub_parent = $category_hierarchy[1];
-				$category = $category_hierarchy[2];
-			
-				if (!(($locations = get_nav_menu_locations()) && isset( $locations[$menu_name] ) && $locations[$menu_name] > 0 )) {
-					echo "<div class='important-widget'>&nbsp;Du m&aring;ste s&auml;tta huvudmeny under <i>Utseende -> Menyer</i>.</div>";
-				}
-
-				
-				$topwalker = new hk_topmenu_walker_nav_menu();
-				$args = array(
-					'theme_location'	=> $menu_name, 
-					'container' 		=> '',
-					'items_wrap' 		=> '%3$s',
-					'before' 			=> '',
-					'after'				=> '',
-					'depth' 			=> 1, //$default_settings['num_levels_in_menu'],
-					'echo' 				=> true,
-					'walker'			=> $topwalker
-				);
-				if ($top_parent > 0) {
-					$args["current_category"] = $top_parent;
-				} ?>
-				<?php
-
-				echo "<ul class='main-menu'>";
-				echo "<li class='small-words'>".hk_getSmallWords($hk_options["smallwords"])."</li>";
-				wp_nav_menu( $args ); 
-				if ( is_active_sidebar( 'right-main-menu-item-sidebar' ) ) { 
-					dynamic_sidebar( 'right-main-menu-item-sidebar' ); 
-				}
-
-				echo "</ul>";
-				
-				echo "<div class='responsive-sub-menu'>";
-				$parent = hk_getParent($cat);
-				
-				$top_name = get_cat_name($top_parent);
-				$sub_name = get_cat_name($sub_parent);
-				$cat_name = get_cat_name($category);
-				if ($sub_name == $cat_name)
-					$cat_name = "";
-				if ($top_name == $sub_name)
-					$sub_name = "";
-					
-				if ($cat_name != "")
-					$cat_title = $cat_name;
-				if ($sub_name != "")
-					$sub_title = $sub_name;
-				else if ($top_name != "")
-					$sub_title = $top_name;
-				else if (get_query_var("s") != "")
-					$sub_title = "Du s&ouml;kte p&aring; " . get_query_var("s");
-				else 
-					$sub_title = "";
-					
-				if ($sub_parent > 0 && $parent > 0) { 
-					echo "<a class='menu-up' href='" . get_category_link($parent) . "'><span class='menu-icon up'></span></a>";
-				}
-
-				echo "<a class='js-show-main-sub-menu menu'><span class='menu-icon'></span>";
-				echo "<span class='title'>Meny</span>";//<span class='dropdown-icon'></span>";
-
-				echo "</a>";
-				echo "</div>";
-				
-				if ($nav_menu_sub_parent > 0) {
-					
-					if ($default_settings['num_levels_in_menu'] > 1) {
-						echo "<ul class='main-sub-menu'>";
-						$submenu = new hk_submenu_walker_nav_menu();
-						$args = array(
-							'theme_location'	=> $menu_name, 
-							'container' 		=> '',							
-							'items_wrap' 		=> '%3$s',
-							'before' 			=> '',
-							'after'				=> '',
-							'depth' 			=> $default_settings['num_levels_in_menu'],
-							'echo' 				=> true,
-							'walker'			=> $submenu,
-							'nav_menu_parent'	=> $nav_menu_top_parent
-						);
-						if ($sub_parent > 0) {
-							$args["current_category"] = $sub_parent;
-						}
-						wp_nav_menu( $args ); 
-						if ( is_active_sidebar( 'right-main-sub-menu-item-sidebar' ) ) { 
-							dynamic_sidebar( 'right-main-sub-menu-item-sidebar' ); 
-						}
-						echo "</ul>";
-					}
-				}
-				else {
-					echo "<ul class='main-sub-menu'><li class='menu-item one-whole'><a>&nbsp;</a></li></ul>";
-				}
-
+				hk_navmenu_navigation("primary", $cat, "primarymenu");
 			?>
 		</nav>
 		<?php endif; // not is search ?>

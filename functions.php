@@ -8,6 +8,10 @@
  *
  */
 
+ /**
+  * Define HK_VERSION, will be set as version of style.css and hultsfred.js
+  */
+define("HK_VERSION", "1.0.2");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -55,9 +59,6 @@ require( get_template_directory() . '/inc/hk-option-page.php' );
 
 // Grab hk dynamic widgets
 require( get_template_directory() . '/inc/hk-dynamic-widgets.php' );
-
-// Grab hk text widget.
-//require( get_template_directory() . '/inc/hk-text-widget.php' );
 
 // Grab hk slideshow.
 require( get_template_directory() . '/inc/hk-slideshow.php' );
@@ -221,7 +222,7 @@ function hk_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array('primary' => 'Huvudmenu',
 							'topmenu' => 'Toppmeny',
-							'quickmenu' => 'Snabbgenv&auml;gar'
+							'quickmenu' => 'Snabbgenv&auml;gar',
 							));	
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );
@@ -229,13 +230,18 @@ function hk_setup() {
 }
 endif; // hk_setup
 
-
-
 /**
  * add theme javascript file and needed jquery 
  */
 if (!is_admin()) {
 	
+	wp_enqueue_style( 'hk-style', 
+		get_bloginfo( 'stylesheet_url' ), 
+		array(), 
+		HK_VERSION 
+	);
+	
+	/*<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?ver=1.0.1" />*/
 	/*
 	 * Loads special google font CSS file.
 	 */
@@ -321,7 +327,7 @@ if (!is_admin()) {
 		'hultsfred_js',
 		get_template_directory_uri() . '/js/hultsfred.js',
 		array('jquery','jquery-ui-core','jquery-ui-widget','jquery-ui-tabs'),
-		'1.0.1',
+		HK_VERSION,
 		true
 	);
 	wp_enqueue_script(
@@ -338,12 +344,14 @@ else {
 		'hk_admin_js',
 		get_template_directory_uri() . '/js/hultsfred-admin.js',
 		array('jquery'),
-		'1.0',
+		HK_VERSION,
 		true
 	);
 	wp_enqueue_script(
-		'hk_editor_js',
-		get_template_directory_uri() . '/editor-style.css'
+		'hk_editor_css',
+		get_template_directory_uri() . '/editor-style.css',
+		array(),
+		HK_VERSION
 	);
 
 }
