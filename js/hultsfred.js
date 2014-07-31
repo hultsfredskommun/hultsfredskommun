@@ -448,7 +448,7 @@ function readMoreToggle(el){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(this).parents("article").find(".more-content .entry-title").append(closea);
+					$(this).parents("article").find(".more-content > .entry-title").append(closea);
 
 					//add close-button at bottom
 					var closeb = $('<div>').addClass('js-close-button closeButton button bottom').html("<a href='#'>St&auml;ng</a>").unbind("click").bind("click",function(ev){
