@@ -104,6 +104,6 @@ global $default_settings;
 
 <?php wp_footer(); ?>
 <div id="scrollTo_top" class="scrolltotop"><a href="#"></a></div>
-<div id="log" class="flush--bottom  position-fixed--bottom-right  island  hidden"></div>
+<pre id="log" class="log"></pre>
 </body>
 </html>

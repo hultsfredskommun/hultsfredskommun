@@ -175,6 +175,43 @@ function hk_get_contact_by_cat($cat, $args) {
 }
 
 // get contact by name
+function hk_search_contacts_by_name($post_slug, $args) {
+	global $wpdb;
+	$id_array = array();
+	foreach(preg_split("/[\s,]+/",$post_slug,NULL,PREG_SPLIT_NO_EMPTY) as $value) {
+		$postid = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE '%%%s%%' LIMIT 0,5", $value ));
+		$id_array = array_merge($id_array, $postid);
+	}
+	$id_array = make_unique_sorted_by_frequence($id_array);
+	//$id_array = array_unique($id_array);
+	
+	return hk_get_contact_by_id(implode(",",$id_array), $args);
+}
+/* helper to sort and filter array by most frequent used id */
+function make_unique_sorted_by_frequence($array)
+{
+	$new_array = array();
+    foreach($array as $item)
+    {
+        if(array_key_exists($item, $new_array))
+        {
+			$new_array[$item]++;
+		}
+		else {
+			$new_array[$item] = 1;
+		}
+    }
+	arsort($new_array);
+	$ret_array = array();
+    foreach($new_array as $key => $value)
+    {
+		$ret_array[] = $key;
+    }
+
+    return $ret_array;
+}
+
+// get contact by name
 function hk_get_contact_by_name($post_slug, $args) {
 	$id_array = array();
 	foreach(preg_split("/[\s,]+/",$post_slug,NULL,PREG_SPLIT_NO_EMPTY) as $value) {
@@ -192,7 +229,7 @@ function hk_get_contact_by_name($post_slug, $args) {
 	return hk_get_contact_by_id(implode(",",$id_array), $args);
 }
 
-// get contact by id
+// get contact by comma separated id list
 function hk_get_contact_by_id($contact_id, $args) {
 	global $post;
 	$org_post = $post;
@@ -252,7 +289,8 @@ function hk_get_the_contact($args = array()) {
 		'visit_hours' => false,
 		'map' => false,
 		'title_link' => true,
-		'heading_element' => "h1"
+		'heading_element' => "h1",
+		'add_item_class' => ''
 		);
 
 	if (isset($args)) {
@@ -266,11 +304,16 @@ function hk_get_the_contact($args = array()) {
 		return "You need the Advanced Custom Field plugin for the contact to work properly.";
 	
 	$contact_position = get_field("hk_contact_position");
-	if ($hidden["map"] == "visible" && !empty($contact_position) && $contact_position["coordinates"] != "") {
+	$coordinates = "";
+	if (isset($contact_position["coordinates"])) {
+		$coordinates = $contact_position["coordinates"];
+	}
+	if ($hidden["map"] == "visible" && !empty($contact_position) && $coordinates != "") {
 		$mapclass = "hasmap";
 	}
+	$add_class = $default['add_item_class'];
 		
-	$retValue = "<div id='content-" . get_the_ID() ."' class='entry-wrapper contact-wrapper $mapclass'>";
+	$retValue = "<div id='content-" . get_the_ID() ."' class='entry-wrapper contact-wrapper $mapclass $add_class'>";
 		$retValue .= "<div class='entry-content'>";
 
 			// image
@@ -337,8 +380,8 @@ function hk_get_the_contact($args = array()) {
 		$retValue .= "</div>";
 	
 		// position
-		if (!empty($contact_position) && $contact_position["coordinates"] != "") :
-			$retValue .= "<div class='side-map " . $hidden['map'] . "'><div class='map_canvas'>[Karta <span class='coordinates'>" . $contact_position["coordinates"] . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div></div>";
+		if (!empty($contact_position) && $coordinates != "") :
+			$retValue .= "<div class='side-map " . $hidden['map'] . "'><div class='map_canvas'>[Karta <span class='coordinates'>" . $coordinates . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div></div>";
 		endif;
 		
 

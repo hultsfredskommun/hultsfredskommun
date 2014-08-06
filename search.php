@@ -11,11 +11,31 @@ get_header(); ?>
 		<?php $options = get_option("hk_theme");
 			//hk_navigation(); ?>
 		
-		<?php /* hook to be able to add other search result */ 
-		do_action('hk_pre_search', get_query_var("s")); ?>
-		
+		<?php 
+		if($hk_options["gcse_enable_kontakter_search"] != "" || has_action('hk_pre_search')) :
+			echo "<aside class='search-hook'>";
+			
+			if($options["gcse_enable_kontakter_search"] != ""):
+				$contacts = hk_search_contacts_by_name(get_query_var("s"), array(
+																	'name' => true,
+																	'title' => true,
+																	'workplace' => true,
+																	'phone' => true,
+																	'email' => true,
+																	'heading_element' => "h3",
+																	'add_item_class' => 'search-item'
+																	));
+				if ($contacts != "") {
+					echo "<div class='js-toggle-search-wrapper'><h3 class='search-title js-toggle-search-hook'>Kontakter</h3>$contacts</div>";
+				}
+			endif;
+			/* hook to be able to add other search result */ 
+			do_action('hk_pre_search', get_query_var("s")); ?>
+			</aside>
+		<?php endif; ?>
 		<div id="primary" class="primary  searchresult">
 			<div id="content" role="main">
+			
 			<?php if ($options["gcse_id"] != "") : ?>
 
 				<script>
@@ -87,12 +107,20 @@ get_header(); ?>
 			</div><!-- #content -->
 		</div><!-- #primary -->
 		
-		<?php /* hook to be able to add other search result */ 
+		<?php 
+		if(has_action('hk_post_search')) {
+			echo "<aside class='search-hook'>";
+		}
+		/* hook to be able to add other search result */ 
 		do_action('hk_post_search', get_query_var("s")); 
 		
 		/* add external link search */
 		if ($options["external_search_title"] != "" && $options["external_search_url"] != "")
 			echo "<a class='external_more_link' href='" . $options["external_search_url"] . get_query_var("s") . " ' title='" . $options["external_search_title"] . "'>" . $options["external_search_title"] . "</a>";
+
+		if(has_action('hk_post_search')) {
+			echo "</aside>";
+		}
 		?>
 		
 <?php get_footer(); ?>

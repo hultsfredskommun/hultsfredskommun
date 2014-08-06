@@ -20,7 +20,7 @@
 	left: 10%;
 	@extend .border-radius;
 	.close-contact {
-		@extend .cursor-pointer;;
+		@extend .cursor-pointer;
 		@extend .position-absolute;
 		@extend .white-background;
 		top: -12px;
@@ -28,9 +28,6 @@
 		line-height: 0;
 		border-radius: 24px;
 		z-index: 6000;
-		.i {
-			font-size: 150%;
-		}
 	}
 	.entry-wrapper {
 		@extend .position-relative;

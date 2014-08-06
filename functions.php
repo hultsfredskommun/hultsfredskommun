@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "1.0.3");
+define("HK_VERSION", "1.0.4");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -411,6 +411,7 @@ function setup_javascript_settings() {
 			'allow_google_analytics' => $default_settings['allow_google_analytics'],
 			'google_analytics' => $hk_options['google_analytics'],
 			'google_analytics_domain' => $hk_options['google_analytics_domain'],
+			'gcse_id' => $hk_options['gcse_id'],
 			'mobile_rewrite' => $hk_options["mobile_rewrite"],
 			'admin_ajax_url' => str_replace("https://","http://",admin_url('admin-ajax.php')),
 			'addthis_pubid_admin' => $hk_options['addthis_pubid_admin'],
@@ -1358,4 +1359,35 @@ function hk_count_func(){
 add_action('wp_ajax_hk_count', 'hk_count_func'); 
 add_action('wp_ajax_nopriv_hk_count', 'hk_count_func'); 
 
+
+function hk_search_hook_func(){
+	$searchstring = $_REQUEST["searchstring"];
+	$hk_options = get_option('hk_theme');
+	if ($searchstring != "") {
+		if($hk_options["gcse_enable_kontakter_search"] != ""):
+			$contacts = hk_search_contacts_by_name($searchstring, array(
+																'name' => true,
+																'title' => true,
+																'workplace' => true,
+																'phone' => true,
+																'email' => true,
+																'heading_element' => "h3",
+																'add_item_class' => 'search-item'
+																));
+			if ($contacts != "") {
+				echo "<div class='js-toggle-search-wrapper'><h3 class='search-title js-toggle-search-hook'>Kontakter</h3>$contacts</div>";
+			}
+		endif;
+		
+		/* hook to be able to add other search result */ 
+		do_action('hk_pre_ajax_search', $searchstring);
+		
+		/* hook to be able to add other search result */ 
+		do_action('hk_post_ajax_search', $searchstring);
+	}
+	die();
+	
+}
+add_action('wp_ajax_hk_search_hook', 'hk_search_hook_func'); 
+add_action('wp_ajax_nopriv_hk_search_hook', 'hk_search_hook_func'); 
 ?>

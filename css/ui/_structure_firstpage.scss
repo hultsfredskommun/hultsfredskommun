@@ -345,9 +345,9 @@
 	}
 }
 /* only contact widget on first page */
-.home .contact-area .contact-wrapper {
+.home .widget.contact-area .contact-wrapper {
 	line-height: 0;
-	@extend .gray-image-background;
+	@extend .gray-light-background;
 	@extend .cf;
 	@extend .position-relative;
 	@extend .one-whole;

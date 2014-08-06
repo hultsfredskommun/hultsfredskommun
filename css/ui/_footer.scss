@@ -97,3 +97,15 @@
 		font-size: 80%;
 	}
 }
+.log {
+	@extend .one-third;
+	@extend .flush--bottom;
+	@extend .position-fixed--bottom-right;
+	@extend .islet;
+	@extend .hidden; 
+	@extend .nano; 
+	@extend .default-background;
+	@extend .white-text;
+	line-height: 10px!important;
+	z-index: 9999;
+}

@@ -148,6 +148,7 @@ if (in_category($hk_options["hidden_cat"])) {
 
 		ga('create', '<?php echo $hk_options["google_analytics"]; ?>', '<?php echo $hk_options['google_analytics_domain'];  ?>');
 		ga('send', 'pageview');
+		ga('require', 'displayfeatures');
 	</script>
 	<?php endif;
 
@@ -250,7 +251,21 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 			</div>
 			<?php endif; ?>
 
-		</div></div>
+		</div>
+		<?php if ($hk_options["gcse_id"] != "" && $hk_options["gcse_ajax"] != "") { ?>
+		<?php $column_class = " no-hook"; if($hk_options["gcse_enable_kontakter_search"] != "" || has_action('hk_pre_ajax_search') || has_action('hk_post_ajax_search')) { $column_class = " has-hook"; } ?>
+		<div class="hk-gcse-ajax-searchresults-wrapper">
+			<div class="hk-gcse-ajax-searchresults<?php echo $column_class; ?>">
+				<div class="hk-gcse-hook-results">
+					<div class="islet">Väntar på sökresultat...<span style="display:inline-block" class="spinner"></span></div>
+				</div>
+				<div class="hk-gcse-googleresults">
+					<gcse:searchresults><div class="islet">Väntar på sökresultat...<span style="display:inline-block" class="spinner"></span></div></gcse:searchresults>
+				</div>
+			</div>
+		</div>
+		<?php }  ?>
+		</div>
 		<!--googleoff: all-->
 		<?php if (!is_search()) : ?>
 		

@@ -268,7 +268,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 		global $post, $default_settings;
 		$org_post = $post;
 
-		$retValue = "<div class='contact-area'>";
+		$retValue = "<div class='contact-area widget'>";
 		
 		// set startpage category if on startpage
 		$category_in = array();

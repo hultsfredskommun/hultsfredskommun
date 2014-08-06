@@ -172,6 +172,9 @@
 				background-position: 0 0;
 				border: 1px solid $gray-color;
 			}
+			&.current-menu-item a {
+				border: 1px solid #666;
+			}
 		}
 		white-space: normal;
 		background-color: white;

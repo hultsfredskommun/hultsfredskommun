@@ -5,7 +5,7 @@ var settings = new Array();
 
 var currPageTitle = $("head").find("title").html();
 var havePushed = false;
-var t_ajaxsearch = "";
+var t_ajaxsearch;
 var isLessThenIE9 = !$.support.leadingWhitespace;
 var isMobile = {
     Android: function() {
@@ -31,7 +31,9 @@ var isMobile = {
     }
 };
 
-// redirect if mobile_rewrite is set
+/**
+ * redirect if mobile_rewrite is set
+ */
 window.onload = function(event) {
 	if (event !== undefined) {
 		event.stopPropagation(true);
@@ -166,27 +168,23 @@ $.fn.searchSuggest = function()
 */
 
 /**
- * Initialize function resetHistory
+ * browser history helpers
  */
 function resetHistory(){
 	// reset webbrowser history
 	history.replaceState(null, currPageTitle, hultsfred_object["currPageUrl"]);
-	console.log("(reset) history.replaceState(null, "+currPageTitle+", "+hultsfred_object["currPageUrl"]+")");
+	log("(reset) history.replaceState(null, "+currPageTitle+", "+hultsfred_object["currPageUrl"]+")");
 	return false;
 }
-
-/**
- * Initialize function pushHistory
- */
 function pushHistory(title, url){
 	if( url != hultsfred_object["currPageUrl"] && !havePushed ){
 		history.pushState({}, title, url);
-		console.log("(push if) history.pushState(null, "+title+", "+url+")");
+		log("(push if) history.pushState(null, "+title+", "+url+")");
 		havePushed = true;
 	}
 	else if( url != hultsfred_object["currPageUrl"] ){
 		history.replaceState({}, title, url);
-		console.log("(push else) history.replaceState(null, "+title+", "+url+")");
+		log("(push else) history.replaceState(null, "+title+", "+url+")");
 	}
 	return false;
 }
@@ -358,6 +356,9 @@ else {
 	alert("ERROR: The function $.fn.slideshow already exists");
 }
 
+/**
+ * close all articles function
+ */
 function closeAllArticles()
 {
 	$("article.full").each(function() {
@@ -593,20 +594,13 @@ var oldWidth; //used to check if window-width have changed
 
 // reset opened articles when history back button
 $(window).on("popstate", function(e) {
-	console.log("same page: " + window.location != hultsfred_object["currPageUrl"]);
-	console.log(window.location + " " + hultsfred_object["currPageUrl"]);
-	//if( window.location != hultsfred_object["currPageUrl"] )
-	console.log(e.originalEvent);
-	console.log(e.originalEvent.state);
-	console.log(window.history.state);
-	console.log(window.history);
 	if (window.history.state == null) {
 		closeAllArticles();
 	}
 });
 
 /* enter the active element in flip array */
-function flipAnimation(active) {
+/*function flipAnimation(active) {
 	var image_width = $(active).width();
 	var margin = image_width / 2 + 'px';
 	var compress_css_properties = {
@@ -633,7 +627,7 @@ function flipAnimation(active) {
 			flipAnimation($(this));
 		});
 	});
-}
+}*/
 
 /* case insensitive contain */
 $.extend($.expr[':'], {
@@ -644,8 +638,11 @@ $.extend($.expr[':'], {
 });
 
 $(document).ready(function(){
-	
-	// if in tag list
+
+	/**
+	 * Tag list functionality - collapse/expand
+	 */
+	//if in tag list
 	if ($(".tag-listing").length > 0) {
 		// collapse list if more items than 10
 		hidden_stuff = false;
@@ -742,7 +739,9 @@ $(document).ready(function(){
 	} // end tag-listing
 
 
-	/* debug count and version log */
+	/**
+	 * debug count and version log 
+	 */
 		/*function doCount() {
 			
 			$.getJSON( "http://smart-ip.net/geoip-json?callback=?",
@@ -777,7 +776,9 @@ $(document).ready(function(){
 		}
 		doCount();*/
 		
-	/* show refresh alert if old/cached html */
+	/**
+	 * show refresh alert if old/cached html 
+	 */
 	if ($("#version-2").length <= 0) {
 		function newVersion() {
 			$(".top-menu-wrapper").before("<div class='wrong-version one-whole island important-background white-text flush--bottom hidden'>Du ser en gammal version av webbplatsen. Klicka <a class='white-text' style='text-decoration:underline' href='#'>h&auml;r</a> eller uppdatera webbl&auml;saren f&ouml;r att se den nya.</div>");
@@ -796,7 +797,7 @@ $(document).ready(function(){
 	oldWidth = $(window).width();
 
 	
-	/* 
+	/** 
 	 * fix placeholder text in ie9 and lower
 	 */
 	if ($(".login-action-login").length == 0  && $.browser.msie && parseInt($.browser.version, 10) <= 9) { 
@@ -817,19 +818,19 @@ $(document).ready(function(){
 		});
 	}
 	
-	/* 
+	/** 
 	 * aditro scrolling on first page
 	 */
 	//flipAnimation($(".widget_hk_aditro_rss_widget .entry-wrapper:first"));
 	
-	/*
+	/**
 	 * load typekit if any
 	 */	 
 	if ( !($.browser.msie && parseInt($.browser.version, 10) < 9)) {
 		try { Typekit.load(); } catch(e) {}
 	}
 	
-	/*
+	/**
 	 * open print dialog if on print page
 	 */
 	if ($("body").hasClass("print")) {
@@ -892,7 +893,11 @@ $(document).ready(function(){
 		$(".js-view-summary").removeClass("active");
 		ev.preventDefault();
 	});
-	/* add action to read-more toggle, if in .home or in lt ie9, go to article */
+	
+	
+	/** 
+	 * add action to read-more toggle, if in .home or in lt ie9, go to article 
+	 */
 	$("#primary, #firstpage-top-content").find("article").each(function(){
 		if (!$(this).parents(".home").length && !isLessThenIE9) {
 			setArticleActions($(this));
@@ -908,6 +913,11 @@ $(document).ready(function(){
 			});
 		}
 	});
+	
+	
+	/**
+	 * popup actions
+	 */
 	// contact popup
 	$(".js-contact-link").each(function() {
 		setContactPopupAction($(this));
@@ -917,7 +927,9 @@ $(document).ready(function(){
 		setTextWidgetPopupAction($(this));
 	});
 
-	// read-more-links
+	/**
+	 * read-more-links
+	 */
 	$(".js-read-more-link").each(function() {
 		$(this).unbind("click").bind("click", function(ev) {
 			ev.preventDefault();
@@ -925,7 +937,10 @@ $(document).ready(function(){
 			$(this).hide();
 		});
 	});
-	/* init slideshows */
+	
+	/** 
+	 * init slideshows 
+	 */
 	$('.img-wrapper').slideshow();
 	if ($('.slideshow-contact-puff-area').find('.slide').length == 0 && $('.slideshow-contact-puff-area').find('.contact-puffs').length > 0){
 		$('.slideshow-contact-puff-area').height($('.slideshow-contact-puff-area').width() * 326 / 1138);
@@ -936,7 +951,9 @@ $(document).ready(function(){
 	}
 
 	
-	/* init google maps on ready */
+	/** 
+	 * init google maps on ready 
+	 */
 	$(".contact-area .map_canvas, article.post .map_canvas, article.single .map_canvas").googlemap();
 	$("article.single .map_link").googlemaplink();
 	
@@ -1031,9 +1048,9 @@ $(document).ready(function(){
 	//$('#s').searchSuggest();
 	
 
-	/* 
-	* handle f5 refresh
-	*/ 
+	/** 
+	 * handle f5 refresh
+	 */ 
 	$(document).keyup(function(event) { 
 		var key = event.keyCode || event.which;
 		switch(key) { 
@@ -1045,10 +1062,13 @@ $(document).ready(function(){
 		}
 	});
 
-	/* 
-	* give result in dropdownlist 
-	*/ 
-	if (!$("#searchform").hasClass("gcse")) {
+	
+	
+	
+	/** 
+	 * give result in dropdownlist 
+	 */ 
+	/*if (!$("#searchform").hasClass("gcse")) {
 	
 	$('#s').keyup(function(event) { 
 		if( $(window).width()+scrollbar > responsive_lap_start ){
@@ -1208,7 +1228,8 @@ $(document).ready(function(){
 		} // if not on palm
 	}); 
 	
-	} // end if gcse
+	} */
+	// end if gcse
 
 	
 	
@@ -1257,14 +1278,148 @@ $(document).ready(function(){
 	}, 3000);*/
 
 
-	/* do callbacks if found */
+	
+
+	/**
+	 * add ajax searchbox if enabled in settings
+	 */
+	if ($(".hk-gcse-ajax-searchbox").length > 0 && $("body.search").length == 0) {
+
+		window.__gcse = {
+			parseTags: 'explicit',
+			callback: hkGcseCallback
+		};
+
+		var cx = hultsfred_object["gcse_id"];
+		var gcse = document.createElement('script'); gcse.type = 'text/javascript';
+		gcse.async = true;
+		gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
+		  '//www.google.com/cse/cse.js?cx=' + cx;
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+
+	}
+	
+	/**
+	 * init responsive search hook results
+	 */
+	initResponsiveSearchHookResult();
+	
+	/** 
+	 * do callbacks if found 
+	 */
 	if(typeof setSingleSettings == 'function') {
 		setSingleSettings();
 	}
 
 });/* END $(document).ready() */
 
-/* helper to ajax search */
+
+/** 
+ * gcse ajax callback and helpers
+ */ 
+var hkGcseCallback = function() {
+
+	if (document.readyState == 'complete') {
+		// Document is ready when CSE element is initialized.
+		// Render an element with both search box and search results in div with id 'test'.
+		google.search.cse.element.render(
+		{
+			div: 'hksearch',
+			tag: 'search'
+		});
+		hkHandleKeypress();
+	} else {
+		// Document is not ready yet, when CSE element is initialized.
+		google.setOnLoadCallback(function() {
+			// Render an element with both search box and search results in div with id 'test'.
+			google.search.cse.element.render(
+			{
+				div: 'hksearch',
+				tag: 'search'
+			});
+			hkHandleKeypress();
+		}, true);
+	}
+};
+var hkPreventSubmit = function(e) {
+	if(e.keyCode == 13 || e.which == 13) {  
+		e.preventDefault();
+		log('Enter pressed in search...'); 
+		return false;
+	}
+};
+var hkDoSearch = function(e) {
+	var key = event.keyCode || event.which;
+	
+	if ($('#s').val().length == 0 || (key == 27)) {
+		$(".hk-gcse-ajax-searchresults-wrapper").hide();
+		$(".close-search.close-button").remove();
+	}
+	
+	//Reset timer 
+	if (t_ajaxsearch != undefined) {
+		clearTimeout(t_ajaxsearch);
+	}
+	if ($('#s').val().length > 0 && (key != 27)) {
+		t_ajaxsearch = setTimeout(hkSearch, 400);
+	}
+};
+var hkSearch = function() {
+	if ($('#s').val().length == 0) {
+		$(".hk-gcse-ajax-searchresults-wrapper").hide();
+		$(".close-search.close-button").remove();
+	}
+	else {
+		$(".hk-gcse-ajax-searchresults-wrapper").show();
+
+		if ($(".close-search.close-button").length == 0) {
+			$(".hk-gcse-ajax-searchresults-wrapper").prepend("<div class='close-search close-button'></div>");
+			$(".close-search").unbind("click").bind("click",function() {
+				$(".hk-gcse-ajax-searchresults-wrapper").hide();
+				$(".close-search.close-button").remove();
+			});
+		}
+		
+		log("Searching for: " + $('#s').val());
+		google.search.cse.element.getElement("two-column").prefillQuery($('#s').val());
+		google.search.cse.element.getElement("two-column").execute();
+		
+		if ($(".hk-gcse-ajax-searchresults-wrapper").find(".has-hook").length > 0) {
+			data = {action: 'hk_search_hook', searchstring: $('#s').val()};
+			jQuery.ajax({
+				type: 'POST',
+				url: hultsfred_object["admin_ajax_url"],
+				data: data,
+				dataType: 'html',
+				success:function(response){
+					$(".hk-gcse-hook-results").html(response);
+					// contact popup
+					$(".hk-gcse-hook-results").find(".js-contact-link").each(function() {
+						setContactPopupAction($(this));
+					});
+					initResponsiveSearchHookResult();
+					//console.log("success: " + response);
+				},
+				error:function(response){
+					log("error: " + response);
+				}
+			});
+		}
+		
+	}
+};
+var hkHandleKeypress = function() {
+	$("#s").keypress(hkPreventSubmit);
+	$("#s").keydown(hkPreventSubmit);
+	$("#s").keyup(hkPreventSubmit);
+	$('#s').keyup(hkDoSearch);
+}
+
+
+/**
+ * helper to ajax search 
+ */
+ /*
 function erase_and_refocus_on_search_input() 
 { 
 	$('#s').val(''); 
@@ -1283,9 +1438,11 @@ function erase_and_refocus_on_search_input()
 	} 
 
 }
+*/
 
-
-/* article actions to be set when ready and when dynamic loading */
+/**
+ * article actions to be set when ready and when dynamic loading 
+ */
 function setArticleActions(el) {
 
 	/* add print dialog */
@@ -1348,7 +1505,9 @@ function setArticleActions(el) {
 	});
 }
 
-/* set contact popup action */
+/**
+ * set contact popup action 
+ */
 function setContactPopupAction(el) {
 	$(el).unbind("click").bind("click",function(ev) {
 		if (isLessThenIE9) {
@@ -1404,7 +1563,9 @@ function contactAction(el,ev) {
 	}
 }
 
-/* set contact popup action - link as input el */
+/**
+ * set contact popup action - link as input el 
+ */
 function setTextWidgetPopupAction(el) {
 	$(el).unbind("click").bind("click",function(ev) {
 		if (isLessThenIE9) {
@@ -1415,6 +1576,10 @@ function setTextWidgetPopupAction(el) {
 	});
 
 }
+
+/**
+ * Add action to text widget (i.e. popup with overlay if popuptext is found
+ */
 function textWidgetAction(el,ev) {
 	// check if previous popups
 	//if ($(".contact-popup").length == 0) {
@@ -1449,6 +1614,7 @@ function textWidgetAction(el,ev) {
 		$(".contact-popup").remove();
 	}*/
 }
+
 /**
  * load next posts dynamic
  */
@@ -1528,17 +1694,12 @@ function dyn_posts_load_posts() {
 };
 
 
-/* helpers */
-$.fn.sumWidth = function() {
-	totalWidth = 0;
-	$(this).each(function(index) {
-		totalWidth += $(this).width();
-	});
-	return totalWidth;
-}
 
 
-//om webbläsaren ändrar storlek
+
+/**
+ * handle browser resize
+ */
 $(window).resize(function() {
 	
 	/* scale map */
@@ -1578,16 +1739,49 @@ $(window).resize(function() {
 	oldWidth = $(window).width();
 });
 
-function log(logtext) {
-	//Reset timer hide
-	//clearTimeout(hide);
+/**
+ * helper function
+ */
 
-	//$("#log").fadeIn("slow");
-	$("#log").html(logtext);
-	//Fading out in 5s.
-	//hide = setTimeout( function(){
-	//	$("#log").fadeOut("slow");
-	//},2000);
+var initResponsiveSearchHookResult = function() {
+	if( $(window).width()+scrollbar < responsive_lap_start ){
+		$(".js-toggle-search-hook").each(function() {
+			toggleHookResult($(this));
+			$(this).css("cursor","pointer").append(" <span class='js-toggle-search-expander' style='display:inline-block'>+</span>").click(function() {
+				toggleHookResult($(this));
+			});
+		});
+	}
+}
+var toggleHookResult = function(el) {
+	var parent = $(el).parents(".js-toggle-search-wrapper");
+	if ($(parent).find(".js-toggle-search-expander").html() == "+") {
+		$(parent).find(".js-toggle-search-expander").html("-");
+	}
+	else {
+		$(parent).find(".js-toggle-search-expander").html("+");
+	}
+	$(parent).find(".search-item").each( function() {
+		$(this).toggle();
+	});
+
+}
+$("#log").click(function() {
+	$("#log").hide();
+});
+var log = function(logtext) {
+	if (document.location.hostname == "127.0.0.1" || document.location.hostname == "localhost") {
+		//Reset timer hide
+		//clearTimeout(hide);
+		
+		$("#log").fadeIn("slow");
+		
+		$("#log").append(logtext + "<br>");
+		//Fading out in 5s.
+		//hide = setTimeout( function(){
+		//	$("#log").fadeOut("slow");
+		//},2000);
+	}
 }
 
 
