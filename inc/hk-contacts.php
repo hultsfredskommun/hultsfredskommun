@@ -178,17 +178,61 @@ function hk_get_contact_by_cat($cat, $args) {
 function hk_search_contacts_by_name($post_slug, $args) {
 	global $wpdb;
 	$id_array = array();
+	$extra_search_text = "";
 	foreach(preg_split("/[\s,]+/",$post_slug,NULL,PREG_SPLIT_NO_EMPTY) as $value) {
-		$postid = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_title LIKE '%%%s%%' LIMIT 0,5", $value ));
-		$id_array = array_merge($id_array, $postid);
+		$value = hk_checkAndConvertSpecialValue($value);
+		if (count($value) == 2) {
+			$extra_search_text .= "S&ouml;ker &auml;ven efter " . $value[1] . ".<br>";
+		}
+		foreach($value as $val) {
+			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta 
+			WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter' 
+			AND ($wpdb->posts.post_title LIKE '%%%s%%' OR $wpdb->postmeta.meta_value LIKE '%%%s%%') LIMIT 0,5", $val, $val ));
+			$id_array = array_merge($id_array, $postid);
+		}
 	}
-	$id_array = make_unique_sorted_by_frequence($id_array);
-	//$id_array = array_unique($id_array);
 	
-	return hk_get_contact_by_id(implode(",",$id_array), $args);
+	$id_array = make_unique_sorted_by_frequence($id_array, 4);
+	//$id_array = array_unique($id_array);
+	if ($extra_search_text != "") {
+		$extra_search_text = "<div class='contact-area complement-italic-text search-item'>$extra_search_text</div>";
+	}
+	return /*$extra_search_text .*/ hk_get_contact_by_id(implode(",",$id_array), $args);
+}
+/* helper to check if value is or could be a phone number */
+function hk_checkAndConvertSpecialValue($value) {
+	$new_value = "";
+	$match_string = "/^[0-9\-]*$/";
+	if (preg_match($match_string,$value)) {
+		$new_value = preg_replace('/\D/', '', $value);
+		if(strlen($value) == 10) {
+			if (substr($value,0,3) == "070") {
+				$new_value = preg_replace("/([0-9]{3})([0-9]{3})([0-9]{2})([0-9]{2})/", "$1-$2 $3 $4", $value);
+			}
+			elseif (substr($value,0,4) == "0495") {
+				$new_value = preg_replace("/([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{2})/", "$1-$2 $3 $4", $value);
+			}
+		}
+		elseif(strlen($value) == 6) {
+			$new_value = preg_replace("/([0-9]{2})([0-9]{2})([0-9]{2})/", "$1 $2 $3", $value);
+		}
+		elseif(strlen($value) == 5) {
+			$new_value = preg_replace("/([0-9]{1})([0-9]{2})([0-9]{2})/", "$1 $2 $3", $value);
+		}
+		elseif(strlen($value) == 4) {
+			$new_value = preg_replace("/([0-9]{2})([0-9]{2})/", "$1 $2", $value);
+		}
+		else {
+			$new_value = "";
+		}
+	}
+	if ($new_value != "") {
+		return array($value,$new_value);
+	}
+	return array($value);
 }
 /* helper to sort and filter array by most frequent used id */
-function make_unique_sorted_by_frequence($array)
+function make_unique_sorted_by_frequence($array, $max_return = 100)
 {
 	$new_array = array();
     foreach($array as $item)
@@ -203,8 +247,10 @@ function make_unique_sorted_by_frequence($array)
     }
 	arsort($new_array);
 	$ret_array = array();
+	$num = 0;
     foreach($new_array as $key => $value)
     {
+		if (++$num > $max_return) break;
 		$ret_array[] = $key;
     }
 
