@@ -94,7 +94,7 @@ function hk_slideshow_generate_output($vars) {
 				if ( get_field('hk_slideshow_link') ) {
 					$link = " href='" . get_field('hk_slideshow_link') . "'";
 				} else {
-					$link = "aa" . get_field('hk_slideshow_link');
+					$link = get_field('hk_slideshow_link');
 				}
 				if( get_field('hk_featured_images') ) :
 					while( has_sub_field('hk_featured_images') ) : 

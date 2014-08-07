@@ -6,7 +6,7 @@ var settings = new Array();
 var currPageTitle = $("head").find("title").html();
 var havePushed = false;
 var t_ajaxsearch;
-var isLessThenIE9 = !$.support.leadingWhitespace;
+var isLessThanIE9 = !$.support.leadingWhitespace;
 var isMobile = {
     Android: function() {
         return navigator.userAgent.match(/Android/i);
@@ -638,6 +638,9 @@ $.extend($.expr[':'], {
 });
 
 $(document).ready(function(){
+	if (isLessThanIE9) {
+		$(".branding").before("<div style='padding: 12px; width: 100%; background: red; color: white;'>Du anv&auml;nder en gammal webbl&auml;sare. Vissa funktioner kommer inte fungera.</div>");
+	}
 
 	/**
 	 * Tag list functionality - collapse/expand
@@ -899,7 +902,7 @@ $(document).ready(function(){
 	 * add action to read-more toggle, if in .home or in lt ie9, go to article 
 	 */
 	$("#primary, #firstpage-top-content").find("article").each(function(){
-		if (!$(this).parents(".home").length && !isLessThenIE9) {
+		if (!$(this).parents(".home").length && !isLessThanIE9) {
 			setArticleActions($(this));
 		} else {
 			$(this).unbind("click").bind("click",function() {
@@ -1281,9 +1284,9 @@ $(document).ready(function(){
 	
 
 	/**
-	 * add ajax searchbox if enabled in settings
+	 * add ajax searchbox if enabled in settings and not less than ie9
 	 */
-	if ($(".hk-gcse-ajax-searchbox").length > 0 && $("body.search").length == 0) {
+	if ($(".hk-gcse-ajax-searchbox").length > 0 && $("body.search").length == 0 && !isLessThanIE9) {
 
 		window.__gcse = {
 			parseTags: 'explicit',
@@ -1510,7 +1513,7 @@ function setArticleActions(el) {
  */
 function setContactPopupAction(el) {
 	$(el).unbind("click").bind("click",function(ev) {
-		if (isLessThenIE9) {
+		if (isLessThanIE9) {
 			return true;
 		}
 		contactAction(el,ev);
@@ -1568,7 +1571,7 @@ function contactAction(el,ev) {
  */
 function setTextWidgetPopupAction(el) {
 	$(el).unbind("click").bind("click",function(ev) {
-		if (isLessThenIE9) {
+		if (isLessThanIE9) {
 			return true;
 		}
 		textWidgetAction(el,ev);
@@ -1766,10 +1769,10 @@ var toggleHookResult = function(el) {
 	});
 
 }
-$("#log").click(function() {
-	$("#log").hide();
-});
 var log = function(logtext) {
+	$("#log").unbind("click").click(function() {
+		$("#log").hide();
+	});
 	if (document.location.hostname == "127.0.0.1" || document.location.hostname == "localhost") {
 		//Reset timer hide
 		//clearTimeout(hide);

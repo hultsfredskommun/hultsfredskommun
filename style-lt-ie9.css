@@ -58,7 +58,7 @@
 
 /* Search menu */
 .searchnavigation .form .input-wrapper {
-	background-color: #DDD;
+	background-color: #fff;
 	z-index: 10000;
 	width: 540px;
 }
