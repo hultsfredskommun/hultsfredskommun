@@ -19,7 +19,7 @@ $classes .= ($external_blog)?" externalblog":"";
 			<div class="content-wrapper">
 				<div class="summary-content">
 					<?php $thumb = hk_get_the_post_thumbnail(get_the_ID(),'thumbnail-image', false, false); 
-					if ($thumb) :  					
+					if ($thumb != "") :
 						echo $thumb;
 					else : /* else default thumb; */
 						$options = get_option("hk_theme");

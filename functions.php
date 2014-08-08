@@ -716,7 +716,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 			}
 		}
 		/* return image or slides if images is found */
-		if (count($cbisimages) > 0) {
+		if (!empty($cbisimages)) {
 			
 			$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
 			while( $count < count($cbisimages) && ($showAll || $countSlides == 0)) : // only once if not showAll
