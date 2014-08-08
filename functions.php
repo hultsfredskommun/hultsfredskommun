@@ -715,32 +715,34 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 				$cbisimages[] = array("Url" => $cbis_thumbimageurl, "Description" => $caption);
 			}
 		}
-		/* return image or slides */
-		$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
-		while( ++$count < count($cbisimages) && ($showAll || $countSlides == 0)) : // only once if not showAll
-			$image = $cbisimages[$count];
-			$src = $image->Url;
-			$alt = $title = $image->Description;
+		/* return image or slides if images is found */
+		if (count($cbisimages) > 0) {
+			$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
+			while( ++$count < count($cbisimages) && ($showAll || $countSlides == 0)) : // only once if not showAll
+				$image = $cbisimages[$count];
+				$src = $image->Url;
+				$alt = $title = $image->Description;
 
-			if (!empty($src)) {
-				if ($countSlides > 0) {
-					$style = "style='display: none;'";
+				if (!empty($src)) {
+					if ($countSlides > 0) {
+						$style = "style='display: none;'";
+					}
+					$retValue .= "<div class='slide' $style>";
+					$retValue .= "<img src='$src$src_append' alt='$alt' />";
+					if ($caption != "") {
+						$retValue .= "<span class='image-caption'>$caption</span>";
+					}
+					$retValue .= "</div>";
+					$countSlides++;
 				}
-				$retValue .= "<div class='slide' $style>";
-				$retValue .= "<img src='$src$src_append' alt='$alt' />";
-				if ($caption != "") {
-					$retValue .= "<span class='image-caption'>$caption</span>";
-				}
-				$retValue .= "</div>";
-				$countSlides++;
+			endwhile;
+			/* print placeholder if slideshow */
+			if ($showAll && $countSlides > 1) {
+				$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
+				$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
 			}
-    	endwhile;
-		/* print placeholder if slideshow */
-		if ($showAll && $countSlides > 1) {
-			$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
-			$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
+			$retValue .= "</div></div>"; 
 		}
-		$retValue .= "</div></div>"; 
 		/*
 		$cbisimage = get_post_meta($id, "cbis_image_url", true);
 		$src = "$cbisimage&width=".$default_settings[$thumbsize][0]."&height=".$default_settings[$thumbsize][1]."&crop=1";
