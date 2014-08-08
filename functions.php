@@ -708,21 +708,22 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 		$caption = ""; // TODO add in option
 		
 		/* get special thumb image if thumbnail */
-		if ($thumbsize == "thubmnail") {
+		if ($thumbsize == "thumbnail-image") {
 			$cbis_thumbimageurl = get_post_meta($id, "cbis_thumbimageurl", true);
 			if (!empty($cbis_thumbimageurl) && $cbis_thumbimageurl != "") {
 				$cbisimages = array();
-				$cbisimages[] = array("Url" => $cbis_thumbimageurl, "Description" => $caption);
+				$cbisimages[] = (object)array("Url" => $cbis_thumbimageurl, "Description" => $caption);
 			}
 		}
 		/* return image or slides if images is found */
 		if (count($cbisimages) > 0) {
+			
 			$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
-			while( ++$count < count($cbisimages) && ($showAll || $countSlides == 0)) : // only once if not showAll
+			while( $count < count($cbisimages) && ($showAll || $countSlides == 0)) : // only once if not showAll
+			
 				$image = $cbisimages[$count];
 				$src = $image->Url;
 				$alt = $title = $image->Description;
-
 				if (!empty($src)) {
 					if ($countSlides > 0) {
 						$style = "style='display: none;'";
@@ -735,6 +736,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 					$retValue .= "</div>";
 					$countSlides++;
 				}
+				$count++;
 			endwhile;
 			/* print placeholder if slideshow */
 			if ($showAll && $countSlides > 1) {
