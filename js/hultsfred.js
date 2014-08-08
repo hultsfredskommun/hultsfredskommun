@@ -1770,10 +1770,10 @@ var toggleHookResult = function(el) {
 
 }
 var log = function(logtext) {
-	$("#log").unbind("click").click(function() {
-		$("#log").hide();
-	});
 	if (document.location.hostname == "127.0.0.1" || document.location.hostname == "localhost") {
+		$("#log").unbind("click").click(function() {
+			$("#log").hide();
+		});
 		//Reset timer hide
 		//clearTimeout(hide);
 		

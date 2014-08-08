@@ -6521,7 +6521,7 @@ input.gsc-input {
 }
 
 .margin--right, .alignleft, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .home .widget.contact-area .contact-wrapper .content-wrapper h1 a, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper,
-.single.hk_kontakter .img-wrapper, article.single .map_canvas, .scrolltotop {
+.single.hk_kontakter .img-wrapper, .scrolltotop {
   margin-right: 24px;
   margin-right: 1.6rem;
 }
@@ -6566,7 +6566,7 @@ input.gsc-input {
   padding-top: 1.6rem;
 }
 
-.padding--right, .icon-right, .side-content .side-content .post-edit-link, .article-wrapper .side-content, .content {
+.padding--right, .icon-right, .side-content .side-content .post-edit-link, .article-wrapper .side-content {
   padding-right: 24px;
   padding-right: 1.6rem;
 }

@@ -270,7 +270,7 @@ article.post {
 }
 .content {
 	@extend .float--left;
-	@extend .padding--right;
+	//@extend .padding--right;
 	@extend .padding--bottom;
 	@extend .one-whole;
 }
@@ -289,7 +289,7 @@ article.post {
 	height: 200px;
 }
 article.single .map_canvas {
-	@extend .margin--right;
+	//@extend .margin--right;
 }
 .post .img-wrapper,
 .single .img-wrapper {
