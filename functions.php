@@ -277,10 +277,10 @@ if (!is_admin()) {
 	}
 
 	if ($hk_options['readspeaker_id'] != "") {
-		if ($hk_options['readspeaker_id'] == "6595") // to run without ios special script, special for Hultsfreds kommun
+		/*if ($hk_options['readspeaker_id'] == "6595") // to run without ios special script, special for Hultsfreds kommun
 			$readspeaker_url = get_template_directory_uri() . '/js/ReadSpeaker/ReadSpeaker.js?pids=embhl';
-		else
-			$readspeaker_url = 'http'.$s_when_https.'://f1.eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
+		else*/
+		$readspeaker_url = 'http'.$s_when_https.'://f1.eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
 
 		wp_enqueue_script(
 			'readspeaker_js',
