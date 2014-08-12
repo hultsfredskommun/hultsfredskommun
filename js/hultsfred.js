@@ -1352,7 +1352,7 @@ var hkPreventSubmit = function(e) {
 	}
 };
 var hkDoSearch = function(e) {
-	var key = event.keyCode || event.which;
+	var key = e.keyCode || e.which;
 	
 	if ($('#s').val().length == 0 || (key == 27)) {
 		$(".hk-gcse-ajax-searchresults-wrapper").hide();
