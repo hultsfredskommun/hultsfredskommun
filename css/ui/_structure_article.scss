@@ -141,13 +141,14 @@ article.post {
 		@extend .half-margin--bottom;
 		.contact-area {
 			@extend .cf;
+			@extend .half-margin--bottom;
 			.img-wrapper {
 				@extend .float--left;
 				@extend .one-quarter;
 				@extend .margin--right;
 			}
 			h3.entry-title {
-				margin-bottom: $half-spacing-unit/2;
+				margin-bottom: 0;
 			}
 		}
 	}

@@ -5765,7 +5765,7 @@ html {
   border-bottom: 1px dotted #5c85b1;
 }
 .article-wrapper .content-wrapper .contact-area h3.entry-title {
-  margin-bottom: 6px;
+  margin-bottom: 0;
 }
 @media only screen and (min-width: 970px) {
   .article-wrapper .side-content {
@@ -6551,7 +6551,7 @@ input.gsc-input {
   margin-left: 0.8rem;
 }
 
-.half-margin--bottom, .read-more-link, .sub-title, .main .widget .entry-wrapper, .home .slideshow-contact-puff-area .content-wrapper h1 a, .page-header, .article-wrapper .content-wrapper, .side-content .title {
+.half-margin--bottom, .read-more-link, .sub-title, .main .widget .entry-wrapper, .home .slideshow-contact-puff-area .content-wrapper h1 a, .page-header, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area, .side-content .title {
   margin-bottom: 12px;
   margin-bottom: 0.8rem;
 }
