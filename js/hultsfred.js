@@ -936,7 +936,7 @@ $(document).ready(function(){
 	$(".js-read-more-link").each(function() {
 		$(this).unbind("click").bind("click", function(ev) {
 			ev.preventDefault();
-			$(this).next(".js-read-more-widget").toggle();
+			$(this).siblings(".js-read-more-widget").toggle();
 			$(this).hide();
 		});
 	});
