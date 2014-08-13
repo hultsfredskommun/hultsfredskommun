@@ -5354,10 +5354,6 @@ html {
   display: block;
   clear: both;
 }
-.read-more-link.inline {
-  clear: none;
-  float: left;
-}
 
 .sub-title {
   margin-top: -12px;
@@ -6545,7 +6541,7 @@ input.gsc-input {
   margin: 0.8rem;
 }
 
-.half-margin--top, .read-more-link, .home .widget.contact-area .contact-wrapper .content-wrapper ul, .post .summary-content h1.entry-title, .article-wrapper, .side-content .title, .logo, .searchnavigation, .logo2, .responsive-menu {
+.half-margin--top, .read-more-link, .read-more-widget, .home .widget.contact-area .contact-wrapper .content-wrapper ul, .post .summary-content h1.entry-title, .article-wrapper, .side-content .title, .logo, .searchnavigation, .logo2, .responsive-menu {
   margin-top: 12px;
   margin-top: 0.8rem;
 }
@@ -6560,7 +6556,7 @@ input.gsc-input {
   margin-bottom: 0.8rem;
 }
 
-.half-margin--right, .read-more-link.inline, .page-header .view-tools, .summary .img-wrapper {
+.half-margin--right, .page-header .view-tools, .summary .img-wrapper {
   margin-right: 12px;
   margin-right: 0.8rem;
 }
@@ -6775,7 +6771,7 @@ input.gsc-input {
   vertical-align: top;
 }
 
-.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .pager-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .home-icon, .rss-icon, .clip_12x12, .left-icon, .right-icon,
+.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .pager-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .home-icon, .clip_12x12, .left-icon, .right-icon,
 .dropdown-icon, .searchnavigation .submit {
   background-image: url("../images/icons/ikoner.svg");
   display: inline-block;
@@ -6801,7 +6797,7 @@ input.gsc-input {
   height: 20px;
 }
 
-.clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .home-icon, .rss-icon {
+.clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .home-icon {
   width: 16px;
   height: 16px;
 }
@@ -6965,11 +6961,6 @@ input.gsc-input {
   background-position: -283px -58px;
 }
 
-.rss-icon {
-  background-position: -354px -9px;
-  margin-left: 2px;
-}
-
 .category-tools .tag-menu .dropdown-icon,
 .dropdown-icon,
 .dropdown-icon.black {
@@ -7002,7 +6993,7 @@ input.gsc-input {
 
 .right-icon {
   margin-left: 2px;
-  background-position: -284px -59px;
+  background-position: -25px -30px;
 }
 
 .menu-icon {

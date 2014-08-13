@@ -431,11 +431,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 		if ( isset( $instance[ 'hide_more_news' ] ) ) { $hide_more_news = $instance[ 'hide_more_news' ];
 		} else { $hide_more_news = ''; }
-		
-		if ( isset( $instance[ 'rss_link_text' ] ) ) { $rss_link_text = $instance[ 'rss_link_text' ];
-		} else { $rss_link_text = ''; }
-		if ( isset( $instance[ 'rss_link_url' ] ) ) { $rss_link_url = $instance[ 'rss_link_url' ];
-		} else { $rss_link_url = ''; }
 
 
 		$options = get_option('hk_theme');
@@ -458,14 +453,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		<input class="widefat" id="<?php echo $this->get_field_id( 'hide_more_news' ); ?>" name="<?php echo $this->get_field_name( 'hide_more_news' ); ?>" type="text" value="<?php echo esc_attr( $hide_more_news); ?>" />
 		</p>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'rss_link_text' ); ?>">Visa en "RSS"-länk (ange namnet på länken).</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'rss_link_text' ); ?>" name="<?php echo $this->get_field_name( 'rss_link_text' ); ?>" type="text" value="<?php echo esc_attr( $rss_link_text); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'rss_link_url' ); ?>">Visa en "RSS"-länk (ange URL till flöde).</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'rss_link_url' ); ?>" name="<?php echo $this->get_field_name( 'rss_link_url' ); ?>" type="text" value="<?php echo esc_attr( $rss_link_url); ?>" />
-		</p>
-		<p>
 		<input id="<?php echo $this->get_field_id( 'box-list' ); ?>" name="<?php echo $this->get_field_name( 'box-list' ); ?>" type="checkbox" <?php echo ($instance["box-list"] != "")?"checked":""; ?> />
 		<label for="<?php echo $this->get_field_id( 'box-list' ); ?>">Visa i två kolumner</label> 
 		</p>
@@ -480,9 +467,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$instance['num_days_new'] = strip_tags( $new_instance['num_days_new'] );
 		$instance['content_type'] = strip_tags( $new_instance['content_type'] );
 		$instance['hide_more_news'] = strip_tags( $new_instance['hide_more_news'] );
-		$instance['rss_link_text'] = $new_instance['rss_link_text'];
-		$instance['rss_link_url'] = strip_tags( $new_instance['rss_link_url'] );
-		
 		$instance['box-list'] = strip_tags( $new_instance['box-list'] );
 		
 		return $instance;
@@ -500,10 +484,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		else $content_type = "";
 		if (isset($instance["hide_more_news"])) $hide_more_news = $instance["hide_more_news"];
 		else $hide_more_news = "";
-		if (isset($instance["rss_link_text"])) $rss_link_text = $instance["rss_link_text"];
-		else $rss_link_text = "";
-		if (isset($instance["rss_link_url"])) $rss_link_url = $instance["rss_link_url"];
-		else $rss_link_url = "";
 		$boxclass = "";
 		if (isset($instance['box-list']) && $instance['box-list'] != "") 
 			$boxclass = "box-list ";
@@ -556,15 +536,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
 					if ( have_posts() ) : 
 					$hiddenclass = "";
-					$after_newslist = "";
 					if ($hide_more_news != "") {
 						$hiddenclass = "hidden";
-						$after_newslist .= "<a href='#' class='read-more-link inline js-read-more-link'>$hide_more_news<span class='dropdown-icon'></span></a>";
-					}
-					if ($rss_link_url != "" && $rss_link_text != "") {
-						$after_newslist .= "<a href='$rss_link_url' class='read-more-link inline float--right'>$rss_link_text</a>";
-					}
-					?>
+						echo "<a href='#' class='read-more-link js-read-more-link'>$hide_more_news<span class='dropdown-icon'></span></a>";
+					} ?>
 					<div id='news' class="widget read-more-widget js-read-more-widget <?php echo $hiddenclass; ?>">
 						<?php if ($hide_more_news == "") { ?><h1 class='entry-title'>Fler nyheter</h1><?php } ?>
 						<?php while ( have_posts() ) : the_post(); ?>
@@ -574,9 +549,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						<?php endwhile; ?>
 						<span class="read-more-link"><a href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Nyhetsarkiv<span class="right-icon"></span></a></span>
 					</div>					
-					<?php
-						echo $after_newslist;
-					endif; ?> 
+					<?php endif; ?> 
 					<?php // Reset Query
 					wp_reset_query(); 
 				}
