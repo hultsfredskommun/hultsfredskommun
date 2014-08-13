@@ -29,16 +29,21 @@
 	@extend .zeta;
 	display: block;
 }
+
 .read-more-link {
 	@extend .half-margin--top;
 	@extend .half-margin--bottom;
 	@extend .cf;
 	display: block;
 	clear: both;
+	&.inline {
+		@extend .half-margin--right;
+		clear: none;
+		float: left;
+	}
 }
-.read-more-widget {
-	@extend .half-margin--top;
-}
+
+
 .sub-title {
 	@extend .font-style-italic;
 	@extend .white-text;
