@@ -177,7 +177,7 @@ function hk_get_contact_by_cat($cat, $args) {
 // get contact by name
 function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_title = false) {
 	global $wpdb;
-	$search = mb_convert_encoding($search, "ISO-8859-1");
+	//$search = mb_convert_encoding($search, "ISO-8859-1");
 	$id_array = array();
 	$title_text = "";
 	$extra_pre_search_text = "";
