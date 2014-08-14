@@ -354,12 +354,11 @@ function hk_navigation() {
 	// if in category
 	else if ($cat != "") {
 	
-			if ($tags != "" && function_exists('displayTagFilter') ){
-				displayTagFilter();
-			}
-			if ($tags == "" && function_exists('displayTagFilter') ){
+		if ($tags != "" && function_exists('displayTagFilter') ){
+			displayTagFilter();
+		}
+		if ($tags == "" && function_exists('displayTagFilter') ){
 
-		//if (is_sub_category()) {			
 			$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
 			$currentparent = $cat;
 			
@@ -393,9 +392,8 @@ function hk_navigation() {
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
-				displayTagFilter();
-			}
-		//}	
+			displayTagFilter();
+		}
 	}
 	
 	
@@ -626,52 +624,21 @@ class hk_Tag_Walker extends Walker_Category {
 
 
 // show tag filter list
-function displayTagFilter($show_title = true, $show_selected_tags = true, $ul_class="more-navigation", $exclude_tags = "", $echo = true) {
+function displayTagFilter($show_title = true, $ul_class="more-navigation", $echo = true) {
 	global $default_settings;
 	$retValue = "";
 	if ($default_settings["show_tags"] != 0) :	
-		/*
-		$hk_tag_walker = new hk_Tag_Walker();
-		$args = array(
-			'orderby'            => 'name',
-			'order'              => 'ASC',
-			'style'              => 'list',
-			'hide_empty'         => 1,
-			'use_desc_for_title' => 1,
-			'title_li'           => '',
-			'show_option_none'   => '',
-			'echo'               => 1,
-			'taxonomy'           => 'post_tag',
-			'hierarchical'		 => 0,
-			'exclude'		     => $exclude_tags,
-		);
 		
-		if ($show_selected_tags)
-			$args['walker'] = $hk_tag_walker;
-		*/
 		$tags = hk_get_category_tags(get_query_var("cat"));
 		
 		if (!empty($tags)) :
-		
 			$retValue .= "<ul class='$ul_class'>"; 
 			if ($show_title) {
 				$retValue .= "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Visa bara</a></li>";
 			}
-			if ($show_selected_tags && $_REQUEST["tag"] != "" && get_query_var("cat") != "")
-			{
-				if( hk_getParent(get_query_var("cat")) > 0) {
-					$href = get_category_link( hk_getParent(get_query_var("cat")) ) . "?tag=".$_REQUEST["tag"];
-					//echo "<li class='tag-item complement-italic-text'><a href='$href' title='G&aring; upp en niv&aring;'>G&aring; upp en niv&aring;</a></li>";
-				}
-				//$href = get_category_link( get_query_var("cat") ) . "?tag=";
-				//echo "<li class='tag-item complement-italic-text'><a href='$href' title='Rensa valt alternativ'>Rensa</a></li>";
-			}
-			
-			
 			foreach( $tags as $tagitem) :
 				$retValue .= hk_generate_tag_link($tagitem);
 			endforeach;
-			//wp_list_categories( $args );
 			$retValue .= "</ul>";
 		endif; // endif tags available
 		if ($echo) {

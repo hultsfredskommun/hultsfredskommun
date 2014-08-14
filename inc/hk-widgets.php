@@ -1172,10 +1172,6 @@ class HK_tags_widget extends WP_Widget {
 		<input id="<?php echo $this->get_field_id( 'horizontal-list' ); ?>" name="<?php echo $this->get_field_name( 'horizontal-list' ); ?>" type="checkbox" <?php echo ($instance["horizontal-list"] != "")?"checked":""; ?> />
 		<label for="<?php echo $this->get_field_id( 'horizontal-list' ); ?>">Horisontell lista</label> 
 		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'exclude-tags' ); ?>">Exkludera etiketter (på formen 3,42)</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'exclude-tags' ); ?>" name="<?php echo $this->get_field_name( 'exclude-tags' ); ?>" type="text" value="<?php echo esc_attr( $instance["exclude-tags"]); ?>" />
-		</p>
 	<?php
 	}
 
@@ -1183,7 +1179,6 @@ class HK_tags_widget extends WP_Widget {
 		$instance = array();
 		$instance['title'] = $new_instance['title'];
 		$instance['horizontal-list'] = $new_instance['horizontal-list'];
-		$instance['exclude-tags'] = $new_instance['exclude-tags'];
 		return $instance;
 	}
 
@@ -1198,7 +1193,7 @@ class HK_tags_widget extends WP_Widget {
 		if ($instance['title'] != "") {
 			echo "<h1 class='widget-title'>" . $instance['title'] . "</h1>";
 		}
-		displayTagFilter(false,true,"",$instance['exclude-tags']);
+		displayTagFilter(false,"");
 		echo "</aside>";
 		
 	} //end widget()

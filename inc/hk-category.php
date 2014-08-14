@@ -109,7 +109,7 @@
 
 			<ul class="category-tools">
 				<?php $related_output = hk_related_output(true); 
-				$taglist = displayTagFilter(false, true, "sub-menu", null, false); ?>
+				$taglist = displayTagFilter(false, "sub-menu", false); ?>
 				<?php if ($default_settings["show_tags"] != 0 && $taglist != "") : ?>
 				<li class="tag-menu cat-item<?php echo ($related_output == "")?" rounded":""; ?>">
 					<a href="#">Visa bara<span class="dropdown-icon"></span></a>
