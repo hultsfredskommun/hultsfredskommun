@@ -108,11 +108,12 @@
 				<?php //echo "<pre>"; print_r($wp_query); echo "</pre>"; ?>
 
 			<ul class="category-tools">
-				<?php $related_output = hk_related_output(true); ?>
-				<?php if ($default_settings["show_tags"] != 0) : ?>
+				<?php $related_output = hk_related_output(true); 
+				$taglist = displayTagFilter(false, true, "sub-menu", null, false); ?>
+				<?php if ($default_settings["show_tags"] != 0 && $taglist != "") : ?>
 				<li class="tag-menu cat-item<?php echo ($related_output == "")?" rounded":""; ?>">
 					<a href="#">Visa bara<span class="dropdown-icon"></span></a>
-					<?php displayTagFilter(false, true, "sub-menu"); ?>
+					<?php echo $taglist; ?>
 				</li>
 				<?php endif; ?>
 				<?php echo $related_output;	?>

@@ -626,8 +626,9 @@ class hk_Tag_Walker extends Walker_Category {
 
 
 // show tag filter list
-function displayTagFilter($show_title = true, $show_selected_tags = true, $ul_class="more-navigation", $exclude_tags = "") {
+function displayTagFilter($show_title = true, $show_selected_tags = true, $ul_class="more-navigation", $exclude_tags = "", $echo = true) {
 	global $default_settings;
+	$retValue = "";
 	if ($default_settings["show_tags"] != 0) :	
 		/*
 		$hk_tag_walker = new hk_Tag_Walker();
@@ -652,9 +653,9 @@ function displayTagFilter($show_title = true, $show_selected_tags = true, $ul_cl
 		
 		if (!empty($tags)) :
 		
-			echo "<ul class='$ul_class'>"; 
+			$retValue .= "<ul class='$ul_class'>"; 
 			if ($show_title) {
-				echo "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Visa bara</a></li>";
+				$retValue .= "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Visa bara</a></li>";
 			}
 			if ($show_selected_tags && $_REQUEST["tag"] != "" && get_query_var("cat") != "")
 			{
@@ -668,11 +669,16 @@ function displayTagFilter($show_title = true, $show_selected_tags = true, $ul_cl
 			
 			
 			foreach( $tags as $tagitem) :
-				echo hk_generate_tag_link($tagitem);
+				$retValue .= hk_generate_tag_link($tagitem);
 			endforeach;
 			//wp_list_categories( $args );
-			echo "</ul>";
+			$retValue .= "</ul>";
 		endif; // endif tags available
+		if ($echo) {
+			echo $retValue;
+		} else {
+			return $retValue;
+		}
 	endif;
 }
 
