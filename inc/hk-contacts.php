@@ -175,29 +175,63 @@ function hk_get_contact_by_cat($cat, $args) {
 }
 
 // get contact by name
-function hk_search_contacts_by_name($post_slug, $args) {
+function hk_search_contacts_by_name($search, $args, $count, $echo_title = false) {
 	global $wpdb;
+	$search = mb_convert_encoding($search, "ISO-8859-1");
 	$id_array = array();
-	$extra_search_text = "";
-	foreach(preg_split("/[\s,]+/",$post_slug,NULL,PREG_SPLIT_NO_EMPTY) as $value) {
-		$value = hk_checkAndConvertSpecialValue($value);
+	$extra_pre_search_text = "";
+	$extra_post_search_text = "";
+	foreach(preg_split("/[\s,]+/", $search, NULL, PREG_SPLIT_NO_EMPTY) as $value) {
+		$value = hk_checkAndConvertSpecialValue($value); // check if special phone number
 		if (count($value) == 2) {
-			$extra_search_text .= "S&ouml;ker &auml;ven efter " . $value[1] . ".<br>";
+			//$extra_pre_search_text .= "S&ouml;ker &auml;ven efter " . $value[1] . ".<br>";
 		}
 		foreach($value as $val) {
 			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta 
 			WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter' 
-			AND ($wpdb->posts.post_title LIKE '%%%s%%' OR $wpdb->postmeta.meta_value LIKE '%%%s%%') LIMIT 0,5", $val, $val ));
+			AND ($wpdb->posts.post_title LIKE '%%%s%%' OR $wpdb->postmeta.meta_value LIKE '%%%s%%') LIMIT 0,".($count + 1), $val, $val ));
+			if( is_wp_error( $postid ) ) {
+				echo "test";
+				echo $postid->get_error_message();
+			}
 			$id_array = array_merge($id_array, $postid);
+			
 		}
 	}
 	
-	$id_array = make_unique_sorted_by_frequence($id_array, 4);
-	//$id_array = array_unique($id_array);
-	if ($extra_search_text != "") {
-		$extra_search_text = "<div class='contact-area complement-italic-text search-item'>$extra_search_text</div>";
+	$id_array = make_unique_sorted_by_frequence($id_array, $count + 1);
+	
+	// return empty if no hits
+	if (count($id_array) <= 0) {
+		return "";
 	}
-	return /*$extra_search_text .*/ hk_get_contact_by_id(implode(",",$id_array), $args);
+	
+	
+	
+	if (count($id_array) > $count) {
+		$num_text = " ( &gt; $count)";
+		unset($id_array[count($id_array)-1]); // unset the extra in array, added just for this count
+		$extra_post_search_text .= "<div class='search-item'><a href='/?s=$search&numtele=1000'>Visa fler tr&auml;ffar...</a></div>";
+
+	}
+	else {
+		$num_text = " (" . count($id_array) . ")";
+	}
+	
+	$title_text = "";
+	if ($echo_title) {
+		$title_text = "<div class='js-toggle-search-wrapper'><h3 class='search-title js-toggle-search-hook'>Kontakter$num_text</h3>$contacts</div>";
+	}
+	if ($extra_pre_search_text != "") {
+		$extra_pre_search_text = "<div class='contact-area complement-italic-text search-item'>$extra_pre_search_text</div>";
+	}
+	if ($extra_post_search_text != "") {
+		$extra_post_search_text = "<div class='contact-area complement-italic-text search-item'>$extra_post_search_text</div>";
+	}
+
+	$contacts = hk_get_contact_by_id(implode(",",$id_array), $args);
+	
+	return $title_text . $extra_pre_search_text . $contacts . $extra_post_search_text;
 }
 /* helper to check if value is or could be a phone number */
 function hk_checkAndConvertSpecialValue($value) {

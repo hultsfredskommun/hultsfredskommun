@@ -1428,7 +1428,11 @@ function hk_search_hook_func(){
 	$hk_options = get_option('hk_theme');
 	if ($searchstring != "") {
 		if($hk_options["gcse_enable_kontakter_search"] != ""):
-			$contacts = hk_search_contacts_by_name($searchstring, array(
+			$count = 5;
+			if (!empty($_REQUEST["numtele"]))
+				$count = $_REQUEST["numtele"];
+
+			echo hk_search_contacts_by_name($searchstring, array(
 																'name' => true,
 																'title' => true,
 																'workplace' => true,
@@ -1436,10 +1440,7 @@ function hk_search_hook_func(){
 																'email' => true,
 																'heading_element' => "h3",
 																'add_item_class' => 'search-item'
-																));
-			if ($contacts != "") {
-				echo "<div class='js-toggle-search-wrapper'><h3 class='search-title js-toggle-search-hook'>Kontakter</h3>$contacts</div>";
-			}
+																), $count, true);
 		endif;
 		
 		/* hook to be able to add other search result */ 
