@@ -1432,7 +1432,7 @@ function hk_search_hook_func(){
 			if (!empty($_REQUEST["numtele"]))
 				$count = $_REQUEST["numtele"];
 
-			echo hk_search_contacts_by_name($searchstring, array(
+			echo hk_search_and_print_contacts_by_name($searchstring, array(
 																'name' => true,
 																'title' => true,
 																'workplace' => true,

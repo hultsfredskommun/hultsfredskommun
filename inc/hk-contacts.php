@@ -175,10 +175,11 @@ function hk_get_contact_by_cat($cat, $args) {
 }
 
 // get contact by name
-function hk_search_contacts_by_name($search, $args, $count, $echo_title = false) {
+function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_title = false) {
 	global $wpdb;
 	$search = mb_convert_encoding($search, "ISO-8859-1");
 	$id_array = array();
+	$title_text = "";
 	$extra_pre_search_text = "";
 	$extra_post_search_text = "";
 	foreach(preg_split("/[\s,]+/", $search, NULL, PREG_SPLIT_NO_EMPTY) as $value) {
@@ -190,12 +191,7 @@ function hk_search_contacts_by_name($search, $args, $count, $echo_title = false)
 			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta 
 			WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter' 
 			AND ($wpdb->posts.post_title LIKE '%%%s%%' OR $wpdb->postmeta.meta_value LIKE '%%%s%%') LIMIT 0,".($count + 1), $val, $val ));
-			if( is_wp_error( $postid ) ) {
-				echo "test";
-				echo $postid->get_error_message();
-			}
 			$id_array = array_merge($id_array, $postid);
-			
 		}
 	}
 	
@@ -218,15 +214,15 @@ function hk_search_contacts_by_name($search, $args, $count, $echo_title = false)
 		$num_text = " (" . count($id_array) . ")";
 	}
 	
-	$title_text = "";
+	
 	if ($echo_title) {
 		$title_text = "<div class='js-toggle-search-wrapper'><h3 class='search-title js-toggle-search-hook'>Kontakter$num_text</h3>$contacts</div>";
 	}
 	if ($extra_pre_search_text != "") {
-		$extra_pre_search_text = "<div class='contact-area complement-italic-text search-item'>$extra_pre_search_text</div>";
+		$extra_pre_search_text = "<div class='contact-area'><div class='complement-italic-text search-item'>$extra_pre_search_text</div></div>";
 	}
 	if ($extra_post_search_text != "") {
-		$extra_post_search_text = "<div class='contact-area complement-italic-text search-item'>$extra_post_search_text</div>";
+		$extra_post_search_text = "<div class='contact-area'>$extra_post_search_text</div>";
 	}
 
 	$contacts = hk_get_contact_by_id(implode(",",$id_array), $args);
