@@ -1282,25 +1282,26 @@ $(document).ready(function(){
 
 
 	
+	$("#s").focus(function() {
+		/**
+		 * add ajax searchbox if enabled in settings and not less than ie9
+		 */
+		if ($(".hk-gcse-ajax-searchbox").length > 0 && $("body.search").length == 0 && !isLessThanIE9) {
 
-	/**
-	 * add ajax searchbox if enabled in settings and not less than ie9
-	 */
-	if ($(".hk-gcse-ajax-searchbox").length > 0 && $("body.search").length == 0 && !isLessThanIE9) {
+			window.__gcse = {
+				parseTags: 'explicit',
+				callback: hkGcseCallback
+			};
 
-		window.__gcse = {
-			parseTags: 'explicit',
-			callback: hkGcseCallback
-		};
-
-		var cx = hultsfred_object["gcse_id"];
-		var gcse = document.createElement('script'); gcse.type = 'text/javascript';
-		gcse.async = true;
-		gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
-		  '//www.google.com/cse/cse.js?cx=' + cx;
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
-
-	}
+			var cx = hultsfred_object["gcse_id"];
+			var gcse = document.createElement('script'); gcse.type = 'text/javascript';
+			gcse.async = true;
+			gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
+			  '//www.google.com/cse/cse.js?cx=' + cx;
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+		}
+		$(this).unbind("focus");
+	});
 	
 	/**
 	 * init responsive search hook results
