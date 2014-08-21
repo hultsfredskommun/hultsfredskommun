@@ -4818,7 +4818,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   color: #000;
 }
 
-.black-background, html {
+.black-background {
   background-color: #000;
 }
 
