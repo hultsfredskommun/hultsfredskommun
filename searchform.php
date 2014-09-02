@@ -11,7 +11,7 @@
 	<?php if ($options["gcse_id"] != "" && $options["gcse_ajax"] != "") { ?>
 	<?php $gcse_class = "gcse_ajax_search"; ?>
 		<div class="hk-gcse-ajax-searchbox">
-			<gcse:searchbox></gcse:searchbox>
+			<div class="gcse-searchbox"></div>
 		</div>
 	<?php }  ?>
 	<form class="<?php echo ($options["gcse_id"] != "")?"gcse $gcse_class":"$gcse_class"; ?> form" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">

@@ -107,7 +107,7 @@ function hk_slideshow_generate_output($vars) {
 							$alt = $title;
 						}
 						if ($default_settings[$thumbsize][0] == $image["sizes"][$thumbsize . "-width"] && $default_settings[$thumbsize][1] == $image["sizes"][$thumbsize . "-height"]) {
-							$retValue .= "<article id='post-" . get_the_ID() . "' class='slide ";
+							$retValue .= "<div id='post-" . get_the_ID() . "' class='slide ";
 							if ($count++ == 0){ $retValue .= 'first '; }
 							else { $retValue .= 'hidden '; }
 							$retValue .= implode(" ",get_post_class()) . "'>";
@@ -122,7 +122,7 @@ function hk_slideshow_generate_output($vars) {
 							else {
 							$retValue .= "<a class='hidden js-image-link'$link>" . get_the_content() . "</a>";
 							}
-							$retValue .= "</article>";
+							$retValue .= "</div>";
 						}
 					endwhile;
 				endif;
