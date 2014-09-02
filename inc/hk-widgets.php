@@ -308,12 +308,12 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 						$halfcss = "two";
 					endif;
 					// add link and title
-					$retValue .= "<h1 class='entry-title'>";
+					$retValue .= "<h2 class='entry-title'>";
 					$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>Kontakta "; 
 					$retValue .= get_the_title();
 					$retValue .= "</a>"; 
 					$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
-					$retValue .= "</h1>";
+					$retValue .= "</h2>";
 					
 					$retValue .= "<ul class='left-content  $halfcss'>";
 					
@@ -566,7 +566,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 					}
 					?>
 					<div id='news' class="widget read-more-widget js-read-more-widget <?php echo $hiddenclass; ?>">
-						<?php if ($hide_more_news == "") { ?><h1 class='entry-title'>Fler nyheter</h1><?php } ?>
+						<?php if ($hide_more_news == "") { ?><h2 class='entry-title'>Fler nyheter</h2><?php } ?>
 						<?php while ( have_posts() ) : the_post(); ?>
 						<div class="entry-wrapper">
 						<?php the_date("","<span class='time'>","</span>"); ?> <a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
@@ -1191,7 +1191,7 @@ class HK_tags_widget extends WP_Widget {
 		echo "<aside class='widget HK_tags_widget $horizontal'>";
 		
 		if ($instance['title'] != "") {
-			echo "<h1 class='widget-title'>" . $instance['title'] . "</h1>";
+			echo "<h2 class='widget-title'>" . $instance['title'] . "</h2>";
 		}
 		displayTagFilter(false,"");
 		echo "</aside>";
@@ -1515,9 +1515,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 				$retValue .= "<div class='left-content  $halfcss'>";
 
 				// add link and title
-				$retValue .= "<h1 class='entry-title'>";
+				$retValue .= "<h2 class='entry-title'>";
 				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>"; 
-				$retValue .= "<span class='main-contact-link'>" . get_the_title() . "</span></a></h1>"; 
+				$retValue .= "<span class='main-contact-link'>" . get_the_title() . "</span></a></h2>"; 
 				
 				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
 				

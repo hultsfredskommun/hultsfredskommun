@@ -107,10 +107,10 @@
 	@extend .islet;
 	@extend .border-radius;
 	@extend .important-background;
-	a, span, h1 {
+	a, span, .widget-title {
 		@extend .white-text;
 	}
-	h1 {
+	.widget-title {
 		padding-top: 0;
 		@extend .float--left;
 		@extend .one-whole;
@@ -133,7 +133,7 @@
 		@extend .cf;
 	}
 	&.horizontal {
-		h1 {
+		.widget-title {
 			padding-bottom: 0;
 			margin-bottom: 0!important;
 			@extend .desk-three-tenths;
@@ -252,7 +252,7 @@
 		.complement-italic-text {
 			line-height: 0;
 		}
-		h1 {
+		.entry-title {
 			@extend .alpha;
 			@extend .float--left;
 			@extend .one-whole;
@@ -365,7 +365,7 @@
 			line-height: 0;
 		}
 		@extend .position-absolute--top-left;
-		h1 {
+		.entry-title {
 			@include media-query(palm){
 				padding: 0;
 			}
@@ -408,7 +408,7 @@
 /* horizontal widgets (related and tags) */
 .main .widget.horizontal-list.widget_hk_related_widget,
 .main .widget.horizontal-list.HK_tags_widget {
-	h1 {
+	.widget-title {
 		@extend .float--left;
 		padding-bottom: 0;
 		padding-top: $half-spacing-unit/2;
@@ -423,7 +423,7 @@
 }
 /* hk_textwidget on firstpage */
 .main .widget.widget_hk_textwidget {
-	h1 {
+	.widget-title {
 		@extend .alpha;
 	}
 	img.image {
@@ -474,7 +474,7 @@
 	a {
 		@extend .black-text;
 	}
-	h1 {
+	.widget-title {
 		@extend .black-text;
 	}
 	border-radius: 0 0 $border-radius $border-radius;
@@ -492,7 +492,7 @@
 	a {
 		@extend .white-text;
 	}
-	h1 {
+	.widget-title {
 		@extend .white-text;
 		@extend .alpha;
 		padding: $half-spacing-unit $half-spacing-unit $half-spacing-unit/2;

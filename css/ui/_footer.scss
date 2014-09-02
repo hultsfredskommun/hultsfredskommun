@@ -18,7 +18,7 @@
 	@extend .padding--top;
 	@extend .padding--bottom;
 	//@extend .border--top;
-	h1 {
+	.widget-title {
 		@extend .noborder;
 		padding: 12px 0 0;
 	}

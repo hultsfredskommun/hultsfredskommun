@@ -12,8 +12,8 @@ function hk_widgets_init() {
 		'description' => 'Inneh&aring;ll h&ouml;gst upp p&aring; startsidan',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 
 	register_sidebar( array(
@@ -22,8 +22,8 @@ function hk_widgets_init() {
 		'description' => 'Inneh&aring;ll under toppinnehåll p&aring; startsidan',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	
 	register_sidebar( array(
@@ -32,8 +32,8 @@ function hk_widgets_init() {
 		'description' => 'Startsidans sidof&auml;lt',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title"><span>',
-		'after_title' => '</span></h1>',
+		'before_title' => '<h2 class="widget-title"><span>',
+		'after_title' => '</span></h2>',
 	) );
 	
 	register_sidebar( array(
@@ -42,8 +42,8 @@ function hk_widgets_init() {
 		'description' => 'Startsidans sidof&auml;lt',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title"><span>',
-		'after_title' => '</span></h1>',
+		'before_title' => '<h2 class="widget-title"><span>',
+		'after_title' => '</span></h2>',
 	) );
 
 	register_sidebar( array(
@@ -52,8 +52,8 @@ function hk_widgets_init() {
 		'description' => "Widgetyta som visas p&aring; startsidan f&ouml;re sidfoten.",
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	/* footer */
 	register_sidebar( array(
@@ -62,8 +62,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	register_sidebar( array(
 		'name' => "Sidfot 2",
@@ -71,8 +71,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	register_sidebar( array(
 		'name' => "Sidfot 3",
@@ -80,8 +80,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	register_sidebar( array(
 		'name' => "Sidfot 4",
@@ -89,8 +89,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	/* footer 2 */
 	register_sidebar( array(
@@ -99,8 +99,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	register_sidebar( array(
 		'name' => "Andra sidfot 2",
@@ -108,8 +108,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	register_sidebar( array(
 		'name' => "Andra sidfot 3",
@@ -117,8 +117,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	register_sidebar( array(
 		'name' => "Andra sidfot 4",
@@ -126,8 +126,8 @@ function hk_widgets_init() {
 		'description' => __( 'An optional widget area for your site footer', 'twentyeleven' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	register_sidebar( array(
 		'name' => 'Viktigt toppinneh&aring;ll',
@@ -135,8 +135,8 @@ function hk_widgets_init() {
 		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp p&aring; alla sidor',
 		'before_widget' => '<aside id="%1$s" class="important-widget %2$s">',
 		'after_widget' => "</aside>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	
 	register_sidebar( array(
@@ -145,8 +145,8 @@ function hk_widgets_init() {
 		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i huvudmenyn',
 		'before_widget' => '<li id="%1$s" class="right-nav-menu-item menu-item %2$s">',
 		'after_widget' => "</li>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	register_sidebar( array(
 		'name' => 'H&ouml;gerst&auml;lld i huvudmenyns andra niv&aring;',
@@ -154,8 +154,8 @@ function hk_widgets_init() {
 		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i huvudmenyns andra niv&aring;',
 		'before_widget' => '<li id="%1$s" class="right-nav-menu-item menu-item %2$s">',
 		'after_widget' => "</li>",
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 	
 }

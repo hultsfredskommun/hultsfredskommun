@@ -1218,10 +1218,10 @@ html {
  * This allows us to apply, say, `class=alpha` to a `h3`; a double-stranded
  * heading hierarchy.
  */
-h1, .alpha, .widget_hk_wp_feed_rss_widget.widget h1, .home .slideshow-contact-puff-area .content-wrapper h1, .main .widget.widget_hk_textwidget h1, .main .widget.widget_hk_aditro_rss_widget h1,
-.main .widget.widget_hk_related_widget h1,
-.main .widget.widget_hk_protocol h1,
-.main .widget.HK_tags_widget h1 {
+h1, .alpha, .widget_hk_wp_feed_rss_widget.widget .widget-title, .home .slideshow-contact-puff-area .content-wrapper .entry-title, .main .widget.widget_hk_textwidget .widget-title, .main .widget.widget_hk_aditro_rss_widget .widget-title,
+.main .widget.widget_hk_related_widget .widget-title,
+.main .widget.widget_hk_protocol .widget-title,
+.main .widget.HK_tags_widget .widget-title {
   font-size: 22px;
   font-size: 1.46667rem;
   line-height: 1.09091;
@@ -1233,7 +1233,8 @@ h2, .beta, .more-from-heading {
   line-height: 1.2;
 }
 
-h3, .gamma, .gamma_responsive, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .widget h1, .post .summary-content h1.entry-title, .main-sub-menu a {
+h3, .gamma, .gamma_responsive, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .widget .widget-title,
+.widget .entry-title, .post .summary-content h1.entry-title, .main-sub-menu a {
   font-size: 18px;
   font-size: 1.2rem;
   line-height: 1.33333;
@@ -3527,7 +3528,8 @@ html.flexbox {
 /**
 * Whole
 */
-.one-whole, .page-content, .branding, .widget h1, .icon-right, .side-content .side-content .post-edit-link, .firstpage-top-content, .firstpage-pre-footer-sidebar, .box-list.newscontent .post .img-wrapper, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area .transparent, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area img, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .widget.contact-area .contact-wrapper, .home .widget.contact-area .contact-wrapper img, .home .widget.contact-area .contact-wrapper .content-wrapper h1, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
+.one-whole, .page-content, .branding, .widget .widget-title,
+.widget .entry-title, .icon-right, .side-content .side-content .post-edit-link, .firstpage-top-content, .firstpage-pre-footer-sidebar, .box-list.newscontent .post .img-wrapper, .widget_hk_wp_feed_rss_widget.widget .widget-title, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .slideshow .slideshow_bg, .slideshow .slide img, .slideshow .slide .caption-area .transparent, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .slideshow-contact-puff-area img, .home .slideshow-contact-puff-area .content-wrapper .entry-title, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .widget.contact-area .contact-wrapper, .home .widget.contact-area .contact-wrapper img, .home .widget.contact-area .contact-wrapper .content-wrapper .entry-title, .page-header, .post-search-hook, article.post, .article-border-wrapper, .home .post .content-wrapper, .post .summary-content h1.entry-title, .article-wrapper, .content, .post .img-wrapper,
 .single .img-wrapper, .slide, .slide img, .side-content .more-contacts, .searchnavigation .form .input-wrapper .field, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .hk-gcse-googleresults, .top-menu-wrapper, .responsive-sub-menu, .main-menu, .footer-widget-sidebar.one .footer-widgets {
   width: 100%;
 }
@@ -3667,7 +3669,7 @@ html.flexbox {
   /**
   * Whole
   */
-  .palm-one-whole, .firstpage-sidebar, .firstpage-content, .widget_hk_wp_feed_rss_widget.widget.horizontal h1, .widget_hk_wp_feed_rss_widget.widget.horizontal .content-wrapper, .home .slideshow-contact-puff-area .content-wrapper, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .widget.contact-area .contact-wrapper .content-wrapper ul.two, .breadcrumb, .primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .searchnavigation, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.has-hook .hk-gcse-googleresults, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.has-hook .hk-gcse-hook-results, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
+  .palm-one-whole, .firstpage-sidebar, .firstpage-content, .widget_hk_wp_feed_rss_widget.widget.horizontal .widget-title, .widget_hk_wp_feed_rss_widget.widget.horizontal .content-wrapper, .home .slideshow-contact-puff-area .content-wrapper, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .widget.contact-area .contact-wrapper .content-wrapper ul.two, .breadcrumb, .primary, .help-navigation, .article-wrapper .content-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .searchnavigation, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.has-hook .hk-gcse-googleresults, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.has-hook .hk-gcse-hook-results, .footer-widget-sidebar.two .footer-widgets, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
     width: 100%;
   }
 
@@ -3831,7 +3833,7 @@ html.flexbox {
     width: 20%;
   }
 
-  .lap-two-fifths, .lap-four-tenths, .widget_hk_wp_feed_rss_widget.widget.horizontal h1 {
+  .lap-two-fifths, .lap-four-tenths, .widget_hk_wp_feed_rss_widget.widget.horizontal .widget-title {
     width: 40%;
   }
 
@@ -4128,7 +4130,7 @@ html.flexbox {
     width: 10%;
   }
 
-  .desk-three-tenths, .widget_hk_wp_feed_rss_widget.widget.horizontal h1 {
+  .desk-three-tenths, .widget_hk_wp_feed_rss_widget.widget.horizontal .widget-title {
     width: 30%;
   }
 
@@ -4601,8 +4603,8 @@ html.flexbox {
   float: right !important;
 }
 
-.float--left, .alignleft, .icon-left, .box-list.newscontent .post, .widget_hk_wp_feed_rss_widget.widget h1, .widget_hk_wp_feed_rss_widget.widget .sub-title, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper h1, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .widget.contact-area .contact-wrapper .content-wrapper h1, .home .widget.contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget h1,
-.main .widget.horizontal-list.HK_tags_widget h1, .help-navigation, .page-header .num-posts, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
+.float--left, .alignleft, .icon-left, .box-list.newscontent .post, .widget_hk_wp_feed_rss_widget.widget .widget-title, .widget_hk_wp_feed_rss_widget.widget .sub-title, .widget_hk_wp_feed_rss_widget.widget .content-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .slideshow .slide .caption-area, .home .slideshow-contact-puff-area .content-wrapper .entry-title, .home .slideshow-contact-puff-area .content-wrapper .entry-title .contact-icon, .home .slideshow-contact-puff-area .content-wrapper .entry-title .main-contact-link, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .widget.contact-area .contact-wrapper .content-wrapper .entry-title, .home .widget.contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget .widget-title,
+.main .widget.horizontal-list.HK_tags_widget .widget-title, .help-navigation, .page-header .num-posts, .article-border-wrapper, .article-wrapper, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area .img-wrapper, .article-wrapper .side-content, .article-wrapper .entry-meta, .button.bottom, .content, .post .img-wrapper,
 .single .img-wrapper, .side-content .addthis_toolbox a, .searchnavigation .form .input-wrapper, .searchnavigation .searchresult ul, .searchnavigation .searchresult .external_more_link, .small-words, .responsive-sub-menu a, .responsive-sub-menu a span, .ui-tabs li.ui-state-default, .footer-widget-sidebar.three .footer-widgets, .footer-widget-sidebar.four .footer-widgets {
   float: left !important;
 }
@@ -4627,13 +4629,15 @@ html.flexbox {
   margin-top: 0 !important;
 }
 
-.flush--right, .main-sub-menu .menu-item.one-whole, .main-sub-menu .menu-item.page-content, .main-sub-menu .menu-item.branding, .main-sub-menu .widget h1.menu-item, .widget .main-sub-menu h1.menu-item, .main-sub-menu .menu-item.icon-right, .main-sub-menu .side-content .side-content .menu-item.post-edit-link, .side-content .side-content .main-sub-menu .menu-item.post-edit-link, .main-sub-menu .menu-item.firstpage-top-content, .main-sub-menu .menu-item.firstpage-pre-footer-sidebar, .main-sub-menu .widget_hk_wp_feed_rss_widget.widget .menu-item.content-wrapper, .widget_hk_wp_feed_rss_widget.widget .main-sub-menu .menu-item.content-wrapper, .main-sub-menu .slideshow .menu-item.slideshow_bg, .slideshow .main-sub-menu .menu-item.slideshow_bg, .main-sub-menu .slideshow .slide .caption-area .menu-item.transparent, .slideshow .slide .caption-area .main-sub-menu .menu-item.transparent, .main-sub-menu .slideshow .slide .caption-area .menu-item.caption, .slideshow .slide .caption-area .main-sub-menu .menu-item.caption, .main-sub-menu .home .menu-item.slideshow-contact-puff-area, .home .main-sub-menu .menu-item.slideshow-contact-puff-area, .main-sub-menu .home .slideshow-contact-puff-area img.menu-item, .home .slideshow-contact-puff-area .main-sub-menu img.menu-item, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper h1.menu-item, .home .slideshow-contact-puff-area .content-wrapper .main-sub-menu h1.menu-item, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link1, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link2, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link3, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link4, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link5, .main-sub-menu .home .widget.contact-area .menu-item.contact-wrapper, .home .widget.contact-area .main-sub-menu .menu-item.contact-wrapper, .main-sub-menu .home .widget.contact-area .contact-wrapper img.menu-item, .home .widget.contact-area .contact-wrapper .main-sub-menu img.menu-item, .main-sub-menu .menu-item.page-header, .main-sub-menu .menu-item.post-search-hook, .main-sub-menu article.menu-item.post, .main-sub-menu .menu-item.article-border-wrapper, .main-sub-menu .home .post .menu-item.content-wrapper, .home .post .main-sub-menu .menu-item.content-wrapper, .main-sub-menu .post .summary-content h1.menu-item.entry-title, .post .summary-content .main-sub-menu h1.menu-item.entry-title, .main-sub-menu .menu-item.article-wrapper, .main-sub-menu .menu-item.content, .main-sub-menu .post .menu-item.img-wrapper, .post .main-sub-menu .menu-item.img-wrapper,
+.flush--right, .main-sub-menu .menu-item.one-whole, .main-sub-menu .menu-item.page-content, .main-sub-menu .menu-item.branding, .main-sub-menu .widget .menu-item.widget-title, .widget .main-sub-menu .menu-item.widget-title,
+.main-sub-menu .widget .menu-item.entry-title,
+.widget .main-sub-menu .menu-item.entry-title, .main-sub-menu .menu-item.icon-right, .main-sub-menu .side-content .side-content .menu-item.post-edit-link, .side-content .side-content .main-sub-menu .menu-item.post-edit-link, .main-sub-menu .menu-item.firstpage-top-content, .main-sub-menu .menu-item.firstpage-pre-footer-sidebar, .main-sub-menu .widget_hk_wp_feed_rss_widget.widget .menu-item.content-wrapper, .widget_hk_wp_feed_rss_widget.widget .main-sub-menu .menu-item.content-wrapper, .main-sub-menu .slideshow .menu-item.slideshow_bg, .slideshow .main-sub-menu .menu-item.slideshow_bg, .main-sub-menu .slideshow .slide .caption-area .menu-item.transparent, .slideshow .slide .caption-area .main-sub-menu .menu-item.transparent, .main-sub-menu .slideshow .slide .caption-area .menu-item.caption, .slideshow .slide .caption-area .main-sub-menu .menu-item.caption, .main-sub-menu .home .menu-item.slideshow-contact-puff-area, .home .main-sub-menu .menu-item.slideshow-contact-puff-area, .main-sub-menu .home .slideshow-contact-puff-area img.menu-item, .home .slideshow-contact-puff-area .main-sub-menu img.menu-item, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .menu-item.entry-title, .home .slideshow-contact-puff-area .content-wrapper .main-sub-menu .menu-item.entry-title, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link1, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link2, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link3, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link4, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link5, .main-sub-menu .home .widget.contact-area .menu-item.contact-wrapper, .home .widget.contact-area .main-sub-menu .menu-item.contact-wrapper, .main-sub-menu .home .widget.contact-area .contact-wrapper img.menu-item, .home .widget.contact-area .contact-wrapper .main-sub-menu img.menu-item, .main-sub-menu .menu-item.page-header, .main-sub-menu .menu-item.post-search-hook, .main-sub-menu article.menu-item.post, .main-sub-menu .menu-item.article-border-wrapper, .main-sub-menu .home .post .menu-item.content-wrapper, .home .post .main-sub-menu .menu-item.content-wrapper, .main-sub-menu .post .summary-content h1.menu-item.entry-title, .post .summary-content .main-sub-menu h1.menu-item.entry-title, .main-sub-menu .menu-item.article-wrapper, .main-sub-menu .menu-item.content, .main-sub-menu .post .menu-item.img-wrapper, .post .main-sub-menu .menu-item.img-wrapper,
 .main-sub-menu .single .menu-item.img-wrapper,
 .single .main-sub-menu .menu-item.img-wrapper, .main-sub-menu .menu-item.slide, .main-sub-menu .slide img.menu-item, .slide .main-sub-menu img.menu-item, .main-sub-menu .side-content .menu-item.more-contacts, .side-content .main-sub-menu .menu-item.more-contacts, .main-sub-menu .searchnavigation .form .input-wrapper .menu-item.field, .searchnavigation .form .input-wrapper .main-sub-menu .menu-item.field, .main-sub-menu .hk-gcse-ajax-searchresults-wrapper .menu-item.hk-gcse-ajax-searchresults, .hk-gcse-ajax-searchresults-wrapper .main-sub-menu .menu-item.hk-gcse-ajax-searchresults, .main-sub-menu .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .menu-item.hk-gcse-googleresults, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .main-sub-menu .menu-item.hk-gcse-googleresults, .main-sub-menu .menu-item.top-menu-wrapper, .main-sub-menu .menu-item.responsive-sub-menu, .main-sub-menu .menu-item.main-menu, .main-sub-menu .footer-widget-sidebar.one .menu-item.footer-widgets, .footer-widget-sidebar.one .main-sub-menu .menu-item.footer-widgets {
   margin-right: 0 !important;
 }
 
-.flush--bottom, #responsive-info, .newscontent .widget, .widget_hk_wp_feed_rss_widget.widget .content-wrapper.hide_date .entry-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper, .widget_hk_wp_feed_rss_widget.widget .read-more-link, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area .content-wrapper h1, .main .widget.horizontal-list.widget_hk_related_widget ul,
+.flush--bottom, #responsive-info, .newscontent .widget, .widget_hk_wp_feed_rss_widget.widget .content-wrapper.hide_date .entry-wrapper, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper, .widget_hk_wp_feed_rss_widget.widget .read-more-link, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area .content-wrapper .entry-title, .main .widget.horizontal-list.widget_hk_related_widget ul,
 .main .widget.horizontal-list.HK_tags_widget ul, .main .widget.widget_hk_aditro_rss_widget ul,
 .main .widget.widget_hk_related_widget ul,
 .main .widget.widget_hk_protocol ul,
@@ -4735,13 +4739,13 @@ html.flexbox {
 }
 
 @media only screen and (max-width: 540px) {
-  .hide--palm, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .widget.contact-area .contact-wrapper .content-wrapper ul.right-content, .top-menu-wrapper, .logo2, .small-words {
+  .hide--palm, .home .slideshow-contact-puff-area .content-wrapper .entry-title .contact-icon, .home .widget.contact-area .contact-wrapper .content-wrapper ul.right-content, .top-menu-wrapper, .logo2, .small-words {
     position: absolute;
     left: -9999px;
   }
 }
 @media only screen and (min-width: 541px) and (max-width: 969px) {
-  .hide--lap, .home .slideshow-contact-puff-area .content-wrapper h1 .contact-icon, .home .widget.contact-area .contact-wrapper .content-wrapper ul.right-content, .small-words {
+  .hide--lap, .home .slideshow-contact-puff-area .content-wrapper .entry-title .contact-icon, .home .widget.contact-area .contact-wrapper .content-wrapper ul.right-content, .small-words {
     position: absolute;
     left: -9999px;
   }
@@ -4780,7 +4784,8 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   color: #3e3e3f !important;
 }
 
-.default-text, h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidget, .responsive-sub-menu a, .main-menu a, .main-sub-menu a, .category-navigation a, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .ui-tabs-nav a, .form-popup.box,
+.default-text, .widget-title a,
+h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidget, .responsive-sub-menu a, .main-menu a, .main-sub-menu a, .category-navigation a, .category-navigation .parent li, .category-navigation .more-navigation a, .category-navigation .more-navigation li, .ui-tabs-nav a, .form-popup.box,
 .contact-popup.box {
   color: #3e3e3f;
 }
@@ -4814,7 +4819,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   color: #c6cacb !important;
 }
 
-.black-text, .home .main .firstpage-top-content .widget.HK_tags_widget a, .home .main .firstpage-top-content .widget.HK_tags_widget h1, .page-header .category-tools .tag-menu a {
+.black-text, .home .main .firstpage-top-content .widget.HK_tags_widget a, .home .main .firstpage-top-content .widget.HK_tags_widget .widget-title, .page-header .category-tools .tag-menu a {
   color: #000;
 }
 
@@ -4822,13 +4827,13 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   background-color: #000;
 }
 
-.white-text, .sub-title, .widget_hk_wp_feed_rss_widget.widget a, .widget_hk_wp_feed_rss_widget.widget span, .widget_hk_wp_feed_rss_widget.widget h1, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .slideshow-contact-puff-area .content-wrapper .left-content .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .left-content .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .left-content .content, .home .slideshow-contact-puff-area .content-wrapper .left-content a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 a, .main .widget.widget_hk_aditro_rss_widget .entry-wrapper .time, .main .widget.widget_hk_aditro_rss_widget a,
+.white-text, .sub-title, .widget_hk_wp_feed_rss_widget.widget a, .widget_hk_wp_feed_rss_widget.widget span, .widget_hk_wp_feed_rss_widget.widget .widget-title, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area .content-wrapper .left-content, .home .slideshow-contact-puff-area .content-wrapper .left-content .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .left-content .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .left-content .content, .home .slideshow-contact-puff-area .content-wrapper .left-content a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4 a, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 .content, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5 a, .main .widget.widget_hk_aditro_rss_widget .entry-wrapper .time, .main .widget.widget_hk_aditro_rss_widget a,
 .main .widget.widget_hk_related_widget a,
 .main .widget.widget_hk_protocol a,
-.main .widget.HK_tags_widget a, .main .widget.widget_hk_aditro_rss_widget h1,
-.main .widget.widget_hk_related_widget h1,
-.main .widget.widget_hk_protocol h1,
-.main .widget.HK_tags_widget h1, .page-header .category-tools .related-menu a, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .button.top a, .button.bottom a, .side-content .title, .important-widget, .cookieinformation, .cookieinformation a,
+.main .widget.HK_tags_widget a, .main .widget.widget_hk_aditro_rss_widget .widget-title,
+.main .widget.widget_hk_related_widget .widget-title,
+.main .widget.widget_hk_protocol .widget-title,
+.main .widget.HK_tags_widget .widget-title, .page-header .category-tools .related-menu a, .article-wrapper .side-content .optional-text, .button.top, .button.bottom, .button.top a, .button.bottom a, .side-content .title, .important-widget, .cookieinformation, .cookieinformation a,
 .important-widget a, .searchnavigation .form .submit, .top-menu-wrapper, .top-menu-wrapper a, .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .footer2-wrapper,
 .footer2-wrapper a,
@@ -5014,7 +5019,7 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
   border-radius: 3px;
 }
 
-.noborder, .box-list.newscontent .post .article-border-wrapper, .home .slideshow-contact-puff-area .content-wrapper h1, .home .widget.contact-area .contact-wrapper .content-wrapper h1, .viewmode-only-titles .summary .article-border-wrapper, .searchnavigation .form .input-wrapper .field, .searchnavigation .form .submit, .footer-widget-wrapper h1 {
+.noborder, .box-list.newscontent .post .article-border-wrapper, .home .slideshow-contact-puff-area .content-wrapper .entry-title, .home .widget.contact-area .contact-wrapper .content-wrapper .entry-title, .viewmode-only-titles .summary .article-border-wrapper, .searchnavigation .form .input-wrapper .field, .searchnavigation .form .submit, .footer-widget-wrapper .widget-title {
   border: 0;
 }
 
@@ -5097,10 +5102,10 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 }
 
 @media only screen and (max-width: 969px) {
-  h1, .alpha, .widget_hk_wp_feed_rss_widget.widget h1, .home .slideshow-contact-puff-area .content-wrapper h1, .main .widget.widget_hk_textwidget h1, .main .widget.widget_hk_aditro_rss_widget h1,
-  .main .widget.widget_hk_related_widget h1,
-  .main .widget.widget_hk_protocol h1,
-  .main .widget.HK_tags_widget h1 {
+  h1, .alpha, .widget_hk_wp_feed_rss_widget.widget .widget-title, .home .slideshow-contact-puff-area .content-wrapper .entry-title, .main .widget.widget_hk_textwidget .widget-title, .main .widget.widget_hk_aditro_rss_widget .widget-title,
+  .main .widget.widget_hk_related_widget .widget-title,
+  .main .widget.widget_hk_protocol .widget-title,
+  .main .widget.HK_tags_widget .widget-title {
     font-size: 20px;
     font-size: 1.33333rem;
     line-height: 1.2;
@@ -5112,7 +5117,8 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
     line-height: 1.33333;
   }
 
-  h3, .gamma, .gamma_responsive, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .widget h1, .post .summary-content h1.entry-title, .main-sub-menu a {
+  h3, .gamma, .gamma_responsive, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .direct_link5, .widget .widget-title,
+  .widget .entry-title, .post .summary-content h1.entry-title, .main-sub-menu a {
     font-size: 17px;
     font-size: 1.13333rem;
     line-height: 1.41176;
@@ -5176,9 +5182,11 @@ a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookiein
 	$nano-size:        	10px!default; // .nano
 */
 /* default settings */
+.widget-title,
 h1 {
   margin-bottom: 6px !important;
 }
+.widget-title a,
 h1 a {
   line-height: 1.3;
 }
@@ -5280,7 +5288,8 @@ html {
   border: 0;
 }
 
-.widget h1 {
+.widget .widget-title,
+.widget .entry-title {
   padding: 12px 0;
   line-height: 1;
   font-weight: normal;
@@ -5386,17 +5395,17 @@ html {
 }
 
 /* driftinfo - widget_hk_wp_feed_rss_widget */
-.widget_hk_wp_feed_rss_widget.widget h1 {
+.widget_hk_wp_feed_rss_widget.widget .widget-title {
   padding-top: 0;
 }
-.widget_hk_wp_feed_rss_widget.widget h1 .info-icon {
+.widget_hk_wp_feed_rss_widget.widget .widget-title .info-icon {
   vertical-align: top;
 }
 .widget_hk_wp_feed_rss_widget.widget .sub-title {
   margin-top: -42px;
   margin-left: 54px;
 }
-.widget_hk_wp_feed_rss_widget.widget.horizontal h1 {
+.widget_hk_wp_feed_rss_widget.widget.horizontal .widget-title {
   padding-bottom: 0;
   margin-bottom: 0 !important;
 }
@@ -5458,21 +5467,21 @@ html {
 .home .slideshow-contact-puff-area .content-wrapper .complement-italic-text, .home .slideshow-contact-puff-area .content-wrapper .contact-wrapper .content, .contact-wrapper .home .slideshow-contact-puff-area .content-wrapper .content {
   line-height: 0;
 }
-.home .slideshow-contact-puff-area .content-wrapper h1 {
+.home .slideshow-contact-puff-area .content-wrapper .entry-title {
   padding: 0;
 }
-.home .slideshow-contact-puff-area .content-wrapper h1 a {
+.home .slideshow-contact-puff-area .content-wrapper .entry-title a {
   display: block;
 }
 @media only screen and (min-width: 970px) {
-  .home .slideshow-contact-puff-area .content-wrapper h1 a {
+  .home .slideshow-contact-puff-area .content-wrapper .entry-title a {
     margin-top: 12px;
   }
 }
-.home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link {
+.home .slideshow-contact-puff-area .content-wrapper .entry-title .main-contact-link {
   line-height: 48px;
 }
-.home .slideshow-contact-puff-area .content-wrapper h1 .main-contact-link:hover {
+.home .slideshow-contact-puff-area .content-wrapper .entry-title .main-contact-link:hover {
   text-decoration: underline;
 }
 .home .slideshow-contact-puff-area .content-wrapper .more-contact-link {
@@ -5507,22 +5516,22 @@ html {
   line-height: 0;
 }
 @media only screen and (max-width: 540px) {
-  .home .widget.contact-area .contact-wrapper .content-wrapper h1 {
+  .home .widget.contact-area .contact-wrapper .content-wrapper .entry-title {
     padding: 0;
   }
 }
 @media only screen and (min-width: 541px) and (max-width: 969px) {
-  .home .widget.contact-area .contact-wrapper .content-wrapper h1 {
+  .home .widget.contact-area .contact-wrapper .content-wrapper .entry-title {
     padding: 0;
   }
 }
-.home .widget.contact-area .contact-wrapper .content-wrapper h1 a {
+.home .widget.contact-area .contact-wrapper .content-wrapper .entry-title a {
   display: block;
 }
 
 /* horizontal widgets (related and tags) */
-.main .widget.horizontal-list.widget_hk_related_widget h1,
-.main .widget.horizontal-list.HK_tags_widget h1 {
+.main .widget.horizontal-list.widget_hk_related_widget .widget-title,
+.main .widget.horizontal-list.HK_tags_widget .widget-title {
   padding-bottom: 0;
   padding-top: 6px;
   width: auto;
@@ -5563,10 +5572,10 @@ html {
   padding-right: 24px;
 }
 
-.main .widget.widget_hk_aditro_rss_widget h1,
-.main .widget.widget_hk_related_widget h1,
-.main .widget.widget_hk_protocol h1,
-.main .widget.HK_tags_widget h1 {
+.main .widget.widget_hk_aditro_rss_widget .widget-title,
+.main .widget.widget_hk_related_widget .widget-title,
+.main .widget.widget_hk_protocol .widget-title,
+.main .widget.HK_tags_widget .widget-title {
   padding: 12px 12px 6px;
 }
 .main .widget.widget_hk_aditro_rss_widget .subtitle,
@@ -6375,7 +6384,7 @@ input.gsc-input {
   padding-top: 24px;
 }
 
-.footer-widget-wrapper h1 {
+.footer-widget-wrapper .widget-title {
   padding: 12px 0 0;
 }
 .footer-widget-wrapper ul {
@@ -6519,12 +6528,12 @@ input.gsc-input {
   margin: 1.6rem;
 }
 
-.margin--top, .home .widget.contact-area .contact-wrapper .content-wrapper h1 a, .pagenav, .article-wrapper .entry-meta, .more-from-heading, .searchnavigation .searchresult, .colophon {
+.margin--top, .home .widget.contact-area .contact-wrapper .content-wrapper .entry-title a, .pagenav, .article-wrapper .entry-meta, .more-from-heading, .searchnavigation .searchresult, .colophon {
   margin-top: 24px;
   margin-top: 1.6rem;
 }
 
-.margin--right, .alignleft, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .home .widget.contact-area .contact-wrapper .content-wrapper h1 a, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper,
+.margin--right, .alignleft, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper span, .widget_hk_wp_feed_rss_widget.widget.horizontal .entry-wrapper a, .home .widget.contact-area .contact-wrapper .content-wrapper .entry-title a, .article-wrapper .content-wrapper .contact-area .img-wrapper, .post.hk_kontakter .img-wrapper,
 .single.hk_kontakter .img-wrapper, .scrolltotop {
   margin-right: 24px;
   margin-right: 1.6rem;
@@ -6535,7 +6544,7 @@ input.gsc-input {
   margin-bottom: 1.6rem;
 }
 
-.margin--left, .alignright, .icon-right, .side-content .side-content .post-edit-link, .home .widget.contact-area .contact-wrapper .content-wrapper h1 a {
+.margin--left, .alignright, .icon-right, .side-content .side-content .post-edit-link, .home .widget.contact-area .contact-wrapper .content-wrapper .entry-title a {
   margin-left: 24px;
   margin-left: 1.6rem;
 }
@@ -6550,12 +6559,12 @@ input.gsc-input {
   margin-top: 0.8rem;
 }
 
-.half-margin--left, .sub-title, .home .slideshow-contact-puff-area .content-wrapper h1 a, .category-navigation .parent, .category-navigation .more-navigation {
+.half-margin--left, .sub-title, .home .slideshow-contact-puff-area .content-wrapper .entry-title a, .category-navigation .parent, .category-navigation .more-navigation {
   margin-left: 12px;
   margin-left: 0.8rem;
 }
 
-.half-margin--bottom, .read-more-link, .sub-title, .main .widget .entry-wrapper, .home .slideshow-contact-puff-area .content-wrapper h1 a, .page-header, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area, .side-content .title {
+.half-margin--bottom, .read-more-link, .sub-title, .main .widget .entry-wrapper, .home .slideshow-contact-puff-area .content-wrapper .entry-title a, .page-header, .article-wrapper .content-wrapper, .article-wrapper .content-wrapper .contact-area, .side-content .title {
   margin-bottom: 12px;
   margin-bottom: 0.8rem;
 }
@@ -6597,7 +6606,7 @@ input.gsc-input {
   padding-left: 0.8rem;
 }
 
-.half-padding--bottom, .box-list.newscontent .post .img-wrapper, .home .widget.contact-area .contact-wrapper .content-wrapper h1 a {
+.half-padding--bottom, .box-list.newscontent .post .img-wrapper, .home .widget.contact-area .contact-wrapper .content-wrapper .entry-title a {
   padding-bottom: 12px;
   padding-bottom: 0.8rem;
 }

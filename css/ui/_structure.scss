@@ -125,7 +125,8 @@ img {
 .widget {
 	@extend .margin--bottom;
 	@extend .epsilon;
-	h1 {
+	.widget-title,
+	.entry-title {
 		@extend .one-whole;
 		@extend .gamma;
 		padding: $half-spacing-unit 0;
