@@ -162,6 +162,7 @@ $printpageClass = ($_REQUEST["print"] == 1) ? "print":"";
 $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 ?>
 <body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass ); ?>>
+<?php echo $hk_options['in_topbody_section']; ?>
 <div id="version-2" style="display:none; visibility:hidden"></div>
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
