@@ -116,7 +116,7 @@ function hk_related_output($wrapping_li = true, $the_cat = "", $a_class = "") {
 							$value = get_sub_field('hk_related_post');
 							$retValue .= "<a class='$a_class $a_class-post' href='" . get_permalink($value->ID) . "'";
 							$retValue .= " title='" . get_sub_field('hk_related_post_description') . "'>" . $value->post_title . "</a>";
-							$retValue .= "</li>";		 
+							$retValue .= "</li>";
 						elseif ( get_row_layout() == 'hk_related_links' ) : 
 							$retValue .= "<li class='related_link'>";
 							// prepend http:// if not there already

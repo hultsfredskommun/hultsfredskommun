@@ -28,6 +28,7 @@ gtm-tw-taglink - "visa bara" länkar, widget
 
 // protocol widget
 gtm-protocol-link - protokoll länkar, widget
+gtm-protocol-more-link - visa fler protokoll länk, widget
 
 // related widget
 gtm-related-widget-link - hitta snabbt på startsidan + en av nedan class:

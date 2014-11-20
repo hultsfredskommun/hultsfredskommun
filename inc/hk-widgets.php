@@ -736,7 +736,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 					
 					?>
 					<li id="protocollink" class="read-more-link">
-						<?php echo "<a href='$cat_link' title='".strip_tags($show_more_link)."'>$show_more_link</a>"; ?>
+						<?php echo "<a class='gtm-protocol-more-link' href='$cat_link' title='".strip_tags($show_more_link)."'>$show_more_link</a>"; ?>
 					</li></ul>
 				<?php endif; ?>
 				
@@ -949,9 +949,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
 			echo $before_widget;
 			if ($instance["popuptext"] != "") {
-				$popupclass = "class='js-text-widget-popup'";
+				$popupclass = "class='gtm-text-widget-popup js-text-widget-popup'";
 			} else {
-				$popupclass = "";
+				$popupclass = "class='gtm-text-widget-link'";
 			}
 			if ( $instance["title"] == "" && $instance["text"] == "" && $instance["href"] != "" && $instance["image"] != "" ) {
 				echo "<a $popupclass style='max-width: 100%; color: $color;' href='".$instance["href"]."'>";
