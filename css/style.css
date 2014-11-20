@@ -29,7 +29,7 @@
  * paulirish.com/2012/box-sizing-border-box-ftw ?
  */
 /**
- * Would you like to use Adam WhitcroftÔÇÖs Batch icon font, as per:
+ * Would you like to use Adam Whitcroft’s Batch icon font, as per:
  * adamwhitcroft.com/batch ?
  */
 /**
@@ -59,7 +59,7 @@
  * English quote marks?
  */
 /**
- * If you want English quotes then please do not edit these; theyÔÇÖre only here
+ * If you want English quotes then please do not edit these; they’re only here
  * because Sass needs them.
  */
 /**
@@ -76,7 +76,7 @@
 /*------------------------------------*\
     INUIT.CSS
 \*------------------------------------*/
-/**
+/*!*
  * 
  * inuitcss.com -- @inuitcss -- @csswizardry
  * 
@@ -127,7 +127,7 @@
     $CONTENTS
 \*------------------------------------*/
 /**
- * CONTENTS............YouÔÇÖre reading it!
+ * CONTENTS............You’re reading it!
  * WARNING.............Here be dragons!
  * IMPORTS.............Begin importing the sections below
  * 
@@ -281,11 +281,11 @@
 /**
  * Media query mixin.
  *
- * ItÔÇÖs not great practice to define solid breakpoints up-front, preferring to
- * modify your design when it needs it, rather than assuming youÔÇÖll want a
- * change at ÔÇÿmobileÔÇÖ. However, as inuit.css is required to take a hands off
+ * It’s not great practice to define solid breakpoints up-front, preferring to
+ * modify your design when it needs it, rather than assuming you’ll want a
+ * change at ‘mobile’. However, as inuit.css is required to take a hands off
  * approach to design decisions, this is the closest we can get to baked-in
- * responsiveness. ItÔÇÖs flexible enough to allow you to set your own breakpoints
+ * responsiveness. It’s flexible enough to allow you to set your own breakpoints
  * but solid enough to be frameworkified.
  * 
  * We define some broad breakpoints in our vars file that are picked up here
@@ -304,7 +304,7 @@
  * 
  * We work out your end points for you:
  */
-/* normalize.css v2.1.0 | MIT License | git.io/normalize */
+/*! normalize.css v2.1.0 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
    ========================================================================== */
@@ -681,7 +681,7 @@ table {
  * As per: csswizardry.com/2011/10/reset-restarted
  */
 /**
-* LetÔÇÖs make the box model all nice, shall weÔÇª?
+* Let’s make the box model all nice, shall we…?
 */
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
@@ -726,7 +726,7 @@ ins {
 }
 
 /**
- * So that `alt` text is visually offset if images donÔÇÖt load.
+ * So that `alt` text is visually offset if images don’t load.
  */
 img {
   font-style: italic;
@@ -761,7 +761,8 @@ textarea:focus {
  * and over in your markup.
  */
 .cf, .gw, .main-wrapper, .top-wrapper, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults,
-.grid-wrapper, .nav, .home .slideshow-contact-puff-area .content-wrapper ul, .home .widget.contact-area .contact-wrapper .content-wrapper ul, .main .widget.widget_hk_aditro_rss_widget ul,
+.grid-wrapper, .nav, .home .slideshow-contact-puff-area .content-wrapper ul, .home .widget.contact-area .contact-wrapper .content-wrapper ul, .main .widget.horizontal-list.widget_hk_related_widget ul,
+.main .widget.horizontal-list.HK_tags_widget ul, .main .widget.widget_hk_aditro_rss_widget ul,
 .main .widget.widget_hk_related_widget ul,
 .main .widget.widget_hk_protocol ul,
 .main .widget.HK_tags_widget ul, .page-header .num-posts,
@@ -792,7 +793,8 @@ textarea:focus {
   zoom: 1;
 }
 .cf:before, .gw:before, .main-wrapper:before, .top-wrapper:before, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults:before,
-.grid-wrapper:before, .nav:before, .home .slideshow-contact-puff-area .content-wrapper ul:before, .home .widget.contact-area .contact-wrapper .content-wrapper ul:before, .main .widget.widget_hk_aditro_rss_widget ul:before,
+.grid-wrapper:before, .nav:before, .home .slideshow-contact-puff-area .content-wrapper ul:before, .home .widget.contact-area .contact-wrapper .content-wrapper ul:before, .main .widget.horizontal-list.widget_hk_related_widget ul:before,
+.main .widget.horizontal-list.HK_tags_widget ul:before, .main .widget.widget_hk_aditro_rss_widget ul:before,
 .main .widget.widget_hk_related_widget ul:before,
 .main .widget.widget_hk_protocol ul:before,
 .main .widget.HK_tags_widget ul:before, .page-header .num-posts:before,
@@ -820,7 +822,8 @@ textarea:focus {
 .main .widget.widget_hk_protocol:before,
 .main .widget.HK_tags_widget:before, .page-header:before, article.post:before, .article-wrapper .content-wrapper .contact-area:before, .side-content ul li:before, .searchnavigation .form:before, .searchnavigation .form .submit:before, .search .contact-area:before,
 .hk-gcse-ajax-searchresults-wrapper .contact-area:before, .responsive-sub-menu:before, .footer-image-wrapper .logo-footer-image:before, .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults:after,
-.grid-wrapper:after, .nav:after, .home .slideshow-contact-puff-area .content-wrapper ul:after, .home .widget.contact-area .contact-wrapper .content-wrapper ul:after, .main .widget.widget_hk_aditro_rss_widget ul:after,
+.grid-wrapper:after, .nav:after, .home .slideshow-contact-puff-area .content-wrapper ul:after, .home .widget.contact-area .contact-wrapper .content-wrapper ul:after, .main .widget.horizontal-list.widget_hk_related_widget ul:after,
+.main .widget.horizontal-list.HK_tags_widget ul:after, .main .widget.widget_hk_aditro_rss_widget ul:after,
 .main .widget.widget_hk_related_widget ul:after,
 .main .widget.widget_hk_protocol ul:after,
 .main .widget.HK_tags_widget ul:after, .page-header .num-posts:after,
@@ -852,7 +855,8 @@ textarea:focus {
   display: table;
 }
 .cf:after, .gw:after, .main-wrapper:after, .top-wrapper:after, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults:after,
-.grid-wrapper:after, .nav:after, .home .slideshow-contact-puff-area .content-wrapper ul:after, .home .widget.contact-area .contact-wrapper .content-wrapper ul:after, .main .widget.widget_hk_aditro_rss_widget ul:after,
+.grid-wrapper:after, .nav:after, .home .slideshow-contact-puff-area .content-wrapper ul:after, .home .widget.contact-area .contact-wrapper .content-wrapper ul:after, .main .widget.horizontal-list.widget_hk_related_widget ul:after,
+.main .widget.horizontal-list.HK_tags_widget ul:after, .main .widget.widget_hk_aditro_rss_widget ul:after,
 .main .widget.widget_hk_related_widget ul:after,
 .main .widget.widget_hk_protocol ul:after,
 .main .widget.HK_tags_widget ul:after, .page-header .num-posts:after,
@@ -1349,30 +1353,30 @@ hgroup .hN {
  * Inline quotes.
  */
 q {
-  quotes: "ÔÇÿ" "ÔÇÖ" "ÔÇ£" "ÔÇØ";
+  quotes: "‘" "’" "“" "”";
 }
 q:before {
-  content: "ÔÇÿ";
+  content: "‘";
   content: open-quote;
 }
 q:after {
-  content: "ÔÇÖ";
+  content: "’";
   content: close-quote;
 }
 q q:before {
-  content: "ÔÇ£";
+  content: "“";
   content: open-quote;
 }
 q q:after {
-  content: "ÔÇØ";
+  content: "”";
   content: close-quote;
 }
 
 blockquote {
-  quotes: "ÔÇ£" "ÔÇØ";
+  quotes: "“" "”";
 }
 blockquote p:before {
-  content: "ÔÇ£";
+  content: "“";
   content: open-quote;
 }
 blockquote p:after {
@@ -1380,15 +1384,15 @@ blockquote p:after {
   content: no-close-quote;
 }
 blockquote p:last-of-type:after {
-  content: "ÔÇØ";
+  content: "”";
   content: close-quote;
 }
 blockquote q:before {
-  content: "ÔÇÿ";
+  content: "‘";
   content: open-quote;
 }
 blockquote q:after {
-  content: "ÔÇÖ";
+  content: "’";
   content: close-quote;
 }
 
@@ -1403,7 +1407,7 @@ blockquote q:after {
  */
 blockquote {
   /**
-   * .4em is roughly equal to the width of the opening ÔÇ£ that we wish to hang.
+   * .4em is roughly equal to the width of the opening “ that we wish to hang.
    */
   text-indent: -0.41em;
 }
@@ -1416,7 +1420,7 @@ blockquote p:last-of-type {
   text-indent: 0;
 }
 .source:before {
-  content: "ÔÇö";
+  content: "—";
 }
 
 /*------------------------------------*\
@@ -1468,7 +1472,7 @@ pre mark {
  * 
  * 1. Make the list look like code.
  * 2. Give the list flush numbers with a leading zero.
- * 3. Make sure lines of code donÔÇÖt wrap.
+ * 3. Make sure lines of code don’t wrap.
  * 4. Give the code form by forcing the `code` to honour white-space.
  */
 .line-numbers {
@@ -1507,7 +1511,7 @@ a:hover, a:active, a:focus {
 }
 
 /**
- * ÔÇÿCurrentÔÇÖ states, e.g.:
+ * ‘Current’ states, e.g.:
  * 
    <ul class=nav>
        <li><a href=#>Home</a></li>
@@ -2011,7 +2015,7 @@ label,
    <small class=extra-help>.edu emails only</small>
  * 
  * We leave the help text in the document flow and merely set it to
- * `visibility:hidden;`. This means that it wonÔÇÖt interfere with anything once
+ * `visibility:hidden;`. This means that it won’t interfere with anything once
  * it reappears.
  * 
  */
@@ -2151,7 +2155,7 @@ label,
        </div>
    </div>
  * 
- * ItÔÇÖs pretty poorly named IÔÇÖm afraid, but it worksÔÇª
+ * It’s pretty poorly named I’m afraid, but it works…
  * 
  * Demo: jsfiddle.net/inuitcss/ufUh2
  * 
@@ -2436,7 +2440,7 @@ html.flexbox {
 \*------------------------------------*/
 /**
  * Link-group nav, used for displaying related options. Extends `.nav--block`
- * but could also extend `.nav--fit`. Extend with colours and ÔÇÿcurrent statesÔÇÖ
+ * but could also extend `.nav--fit`. Extend with colours and ‘current states’
  * in your theme stylesheet.
  * 
   <ul class="nav  options">
@@ -2509,11 +2513,11 @@ html.flexbox {
 }
 
 .pagination__first a:before {
-  content: "┬½ ";
+  content: "« ";
 }
 
 .pagination__last a:after {
-  content: " ┬╗";
+  content: " »";
 }
 
 /*------------------------------------*\
@@ -2533,7 +2537,7 @@ html.flexbox {
  * 
  */
 .breadcrumb > li + li:before {
-  content: "┬╗ ";
+  content: "» ";
 }
 
 /**
@@ -2654,7 +2658,7 @@ html.flexbox {
 }
 
 /**
- * Wait for a certain breakpoint to trigger ÔÇÿproper' marginalia. Up to this point,
+ * Wait for a certain breakpoint to trigger ‘proper' marginalia. Up to this point,
  * marginalia are inline with the other text.
  */
 @media (min-width: 970px) {
@@ -2906,7 +2910,7 @@ html.flexbox {
        <li class=first><b class=split__title>1st place</b> Bob</li>       
        <li class=second><b class=split__title>2nd place</b> Lilly</li>       
        <li class=third><b class=split__title>3rd place</b> Ted</li>       
-   </ol>ÔÇï
+   </ol>​
  * 
  * Demo: jsfiddle.net/inuitcss/9gZW7
  * 
@@ -3027,7 +3031,7 @@ html.flexbox {
 
 /**
  * Bring the flyouts into view when you hover their parents.
- * Two different types of flyout; ÔÇÿregularÔÇÖ (`.flyout`) and ÔÇÿalternativeÔÇÖ
+ * Two different types of flyout; ‘regular’ (`.flyout`) and ‘alternative’
  * (`.flyout--alt`).
  */
 .flyout:hover,
@@ -3094,7 +3098,7 @@ html.flexbox {
     $SPRITE
 \*------------------------------------*/
 /**
- * Giving an element a class of `.s` will throw it into ÔÇÿspriteÔÇÖ mode and apply
+ * Giving an element a class of `.s` will throw it into ‘sprite’ mode and apply
  * a background image e.g.:
  * 
    <a class="s  s--question-mark">More info&hellip;</a>
@@ -3103,13 +3107,13 @@ html.flexbox {
  * 
    <a href=#><i class="s  s--question-mark"></i> Help and FAQ</a>
  * 
- * Giving an element a class of `.i` will throw it into ÔÇÿiconÔÇÖ mode and will
+ * Giving an element a class of `.i` will throw it into ‘icon’ mode and will
  * not add a background, but should be used for icon fonts and is populated
  * through a `data-icon` attribute and the `:after` pseudo-element, e.g.:
  * 
    <a href=#><i class=i data-icon="&#xF000;"></i> View your favourites</a>
  * 
- * Where ÔÇÿ&#xF000;ÔÇÖ might map to a star in your particular font.
+ * Where ‘&#xF000;’ might map to a star in your particular font.
  * 
  * These all require extension in your theme stylesheet.
  * 
@@ -3124,7 +3128,7 @@ html.flexbox {
   vertical-align: middle;
   zoom: 1;
   /**
-   * So using `.i` on certain elements doesnÔÇÖt make a visual difference.
+   * So using `.i` on certain elements doesn’t make a visual difference.
    */
   font-style: normal;
   font-weight: normal;
@@ -3305,7 +3309,7 @@ html.flexbox {
   color: #fff;
   /* Override this color in your theme stylesheet */
   /**
-   * Normally weÔÇÖd use border-radius:100%; but instead here we just use an
+   * Normally we’d use border-radius:100%; but instead here we just use an
    * overly large number; `border-radius:100%;` would create an oval on
    * non-square elements whereas we just want to round the ends of an element.
    */
@@ -3350,7 +3354,7 @@ html.flexbox {
 }
 
 /**
- * Ornamental rules. Places a ┬º over the rule.
+ * Ornamental rules. Places a § over the rule.
  */
 .rule--ornament {
   position: relative;
@@ -3362,7 +3366,7 @@ html.flexbox {
   */
 }
 .rule--ornament:after {
-  content: "┬º";
+  content: "§";
   position: absolute;
   top: 0;
   right: 0;
@@ -3378,7 +3382,7 @@ html.flexbox {
     $STATS
 \*------------------------------------*/
 /**
- * Simple object to display keyÔÇôvalue statistic-like information, e.g.: 
+ * Simple object to display key–value statistic-like information, e.g.: 
  *
    <div class=stat-group>
        <dl class=stat>
@@ -3456,7 +3460,7 @@ html.flexbox {
  * The beauty of combining the greyboxing with inuit.css objects is that any
  * prototyping can quickly be converted into/used as production code.
  * 
- * For a more complete prototyping framework, consider Adam WhitcroftÔÇÖs Proto:
+ * For a more complete prototyping framework, consider Adam Whitcroft’s Proto:
  * adamwhitcroft.com/proto
  * 
  * Demo: jsfiddle.net/inuitcss/qCXfh/
@@ -3480,7 +3484,7 @@ html.flexbox {
 }
 
 /**
- * All greyboxes will occupy 100% of their parentÔÇÖs width, but to alter their
+ * All greyboxes will occupy 100% of their parent’s width, but to alter their
  * heights we apply incrementally larger line-heights:
  */
 .greybox--small,
@@ -3652,15 +3656,15 @@ html.flexbox {
 }
 
 /**
- * If you have set `$responsive` to ÔÇÿtrueÔÇÖ in `_vars.scss` then you now have
- * access to these classes. You can define at which breakpoing youÔÇÖd like an
+ * If you have set `$responsive` to ‘true’ in `_vars.scss` then you now have
+ * access to these classes. You can define at which breakpoing you’d like an
  * element to be a certain size, e.g.:
  *
  * `<div class="g  one-quarter  lap-one-half  palm-one-whole"> ... </div>`
  *
- * This would create a `div` that, at ÔÇÿdesktopÔÇÖ sizes, takes up a quarter of the
- * horizontal space, a half of that space at ÔÇÿtabletÔÇÖ sizes, and goes full width
- * at ÔÇÿmobileÔÇÖ sizes.
+ * This would create a `div` that, at ‘desktop’ sizes, takes up a quarter of the
+ * horizontal space, a half of that space at ‘tablet’ sizes, and goes full width
+ * at ‘mobile’ sizes.
  *
  * Demo: jsfiddle.net/inuitcss/WS4Ge
  *
@@ -4162,7 +4166,7 @@ html.flexbox {
   }
 }
 /**
- * If you have set the additional `$responsive-extra` variable to ÔÇÿtrueÔÇÖ in
+ * If you have set the additional `$responsive-extra` variable to ‘true’ in
  * `_vars.scss` then you now have access to the following class available to
  * accomodate much larger screen resolutions.
  */
@@ -4573,12 +4577,12 @@ html.flexbox {
  * any element using a handy helper class.
  */
 .brand {
-  font-family: "Helvetica Neue", sans-serif!important;
+  font-family: Helvetica Neue, sans-serif!important;
   color: #4a8ec2!important;
 }
 
 .brand-face {
-  font-family: "Helvetica Neue", sans-serif!important;
+  font-family: Helvetica Neue, sans-serif!important;
 }
 
 .brand-color,
@@ -4591,7 +4595,7 @@ html.flexbox {
 \*------------------------------------*/
 /**
  * A series of helper classes to use arbitrarily. Only use a helper class if an
- * element/component doesnÔÇÖt already have a class to which you could apply this
+ * element/component doesn’t already have a class to which you could apply this
  * styling, e.g. if you need to float `.main-nav` left then add `float:left;` to
  * that ruleset as opposed to adding the `.float--left` class to the markup.
  *
@@ -4631,7 +4635,7 @@ html.flexbox {
 
 .flush--right, .main-sub-menu .menu-item.one-whole, .main-sub-menu .menu-item.page-content, .main-sub-menu .menu-item.branding, .main-sub-menu .widget .menu-item.widget-title, .widget .main-sub-menu .menu-item.widget-title,
 .main-sub-menu .widget .menu-item.entry-title,
-.widget .main-sub-menu .menu-item.entry-title, .main-sub-menu .menu-item.icon-right, .main-sub-menu .side-content .side-content .menu-item.post-edit-link, .side-content .side-content .main-sub-menu .menu-item.post-edit-link, .main-sub-menu .menu-item.firstpage-top-content, .main-sub-menu .menu-item.firstpage-pre-footer-sidebar, .main-sub-menu .widget_hk_wp_feed_rss_widget.widget .menu-item.content-wrapper, .widget_hk_wp_feed_rss_widget.widget .main-sub-menu .menu-item.content-wrapper, .main-sub-menu .slideshow .menu-item.slideshow_bg, .slideshow .main-sub-menu .menu-item.slideshow_bg, .main-sub-menu .slideshow .slide .caption-area .menu-item.transparent, .slideshow .slide .caption-area .main-sub-menu .menu-item.transparent, .main-sub-menu .slideshow .slide .caption-area .menu-item.caption, .slideshow .slide .caption-area .main-sub-menu .menu-item.caption, .main-sub-menu .home .menu-item.slideshow-contact-puff-area, .home .main-sub-menu .menu-item.slideshow-contact-puff-area, .main-sub-menu .home .slideshow-contact-puff-area img.menu-item, .home .slideshow-contact-puff-area .main-sub-menu img.menu-item, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .menu-item.entry-title, .home .slideshow-contact-puff-area .content-wrapper .main-sub-menu .menu-item.entry-title, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link1, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link2, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link3, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link4, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link5, .main-sub-menu .home .widget.contact-area .menu-item.contact-wrapper, .home .widget.contact-area .main-sub-menu .menu-item.contact-wrapper, .main-sub-menu .home .widget.contact-area .contact-wrapper img.menu-item, .home .widget.contact-area .contact-wrapper .main-sub-menu img.menu-item, .main-sub-menu .menu-item.page-header, .main-sub-menu .menu-item.post-search-hook, .main-sub-menu article.menu-item.post, .main-sub-menu .menu-item.article-border-wrapper, .main-sub-menu .home .post .menu-item.content-wrapper, .home .post .main-sub-menu .menu-item.content-wrapper, .main-sub-menu .post .summary-content h1.menu-item.entry-title, .post .summary-content .main-sub-menu h1.menu-item.entry-title, .main-sub-menu .menu-item.article-wrapper, .main-sub-menu .menu-item.content, .main-sub-menu .post .menu-item.img-wrapper, .post .main-sub-menu .menu-item.img-wrapper,
+.widget .main-sub-menu .menu-item.entry-title, .main-sub-menu .menu-item.icon-right, .main-sub-menu .side-content .side-content .menu-item.post-edit-link, .side-content .side-content .main-sub-menu .menu-item.post-edit-link, .main-sub-menu .menu-item.firstpage-top-content, .main-sub-menu .menu-item.firstpage-pre-footer-sidebar, .main-sub-menu .widget_hk_wp_feed_rss_widget.widget .menu-item.content-wrapper, .widget_hk_wp_feed_rss_widget.widget .main-sub-menu .menu-item.content-wrapper, .main-sub-menu .slideshow .menu-item.slideshow_bg, .slideshow .main-sub-menu .menu-item.slideshow_bg, .main-sub-menu .slideshow .slide .caption-area .menu-item.transparent, .slideshow .slide .caption-area .main-sub-menu .menu-item.transparent, .main-sub-menu .slideshow .slide .caption-area .menu-item.caption, .slideshow .slide .caption-area .main-sub-menu .menu-item.caption, .main-sub-menu .home .menu-item.slideshow-contact-puff-area, .home .main-sub-menu .menu-item.slideshow-contact-puff-area, .main-sub-menu .home .slideshow-contact-puff-area img.menu-item, .home .slideshow-contact-puff-area .main-sub-menu img.menu-item, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .menu-item.entry-title, .home .slideshow-contact-puff-area .content-wrapper .main-sub-menu .menu-item.entry-title, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link1, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link2, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link3, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link4, .main-sub-menu .home .slideshow-contact-puff-area .content-wrapper .right-content .menu-item.direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .main-sub-menu .menu-item.direct_link5, .main-sub-menu .home .widget.contact-area .menu-item.contact-wrapper, .home .widget.contact-area .main-sub-menu .menu-item.contact-wrapper, .main-sub-menu .home .widget.contact-area .contact-wrapper img.menu-item, .home .widget.contact-area .contact-wrapper .main-sub-menu img.menu-item, .main-sub-menu .home .widget.contact-area .contact-wrapper .content-wrapper .menu-item.entry-title, .home .widget.contact-area .contact-wrapper .content-wrapper .main-sub-menu .menu-item.entry-title, .main-sub-menu .menu-item.page-header, .main-sub-menu .menu-item.post-search-hook, .main-sub-menu article.menu-item.post, .main-sub-menu .menu-item.article-border-wrapper, .main-sub-menu .home .post .menu-item.content-wrapper, .home .post .main-sub-menu .menu-item.content-wrapper, .main-sub-menu .post .summary-content h1.menu-item.entry-title, .post .summary-content .main-sub-menu h1.menu-item.entry-title, .main-sub-menu .menu-item.article-wrapper, .main-sub-menu .menu-item.content, .main-sub-menu .post .menu-item.img-wrapper, .post .main-sub-menu .menu-item.img-wrapper,
 .main-sub-menu .single .menu-item.img-wrapper,
 .single .main-sub-menu .menu-item.img-wrapper, .main-sub-menu .menu-item.slide, .main-sub-menu .slide img.menu-item, .slide .main-sub-menu img.menu-item, .main-sub-menu .side-content .menu-item.more-contacts, .side-content .main-sub-menu .menu-item.more-contacts, .main-sub-menu .searchnavigation .form .input-wrapper .menu-item.field, .searchnavigation .form .input-wrapper .main-sub-menu .menu-item.field, .main-sub-menu .hk-gcse-ajax-searchresults-wrapper .menu-item.hk-gcse-ajax-searchresults, .hk-gcse-ajax-searchresults-wrapper .main-sub-menu .menu-item.hk-gcse-ajax-searchresults, .main-sub-menu .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .menu-item.hk-gcse-googleresults, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .main-sub-menu .menu-item.hk-gcse-googleresults, .main-sub-menu .menu-item.top-menu-wrapper, .main-sub-menu .menu-item.responsive-sub-menu, .main-sub-menu .menu-item.main-menu, .main-sub-menu .footer-widget-sidebar.one .menu-item.footer-widgets, .footer-widget-sidebar.one .main-sub-menu .menu-item.footer-widgets {
   margin-right: 0 !important;
@@ -4707,7 +4711,7 @@ html.flexbox {
  * 
  */
 .go:after {
-  content: " ┬╗";
+  content: " »";
 }
 
 /**
@@ -4777,7 +4781,7 @@ html.flexbox {
 .link-text, a,
 a:active,
 a:focus, .article-wrapper .summary-content .entry-content .introwords, .cookieinformation .textwidget a, .category-navigation .parent li.current-cat > a > i, .category-navigation .parent li.current-cat > a {
-  color: #005baa;
+  color: #005BAA;
 }
 
 .force-default-text {
@@ -4796,27 +4800,27 @@ h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidge
 }
 
 .main-text, .small-words {
-  color: #5c85b1;
+  color: #5C85B1;
 }
 
 .complement-text, .complement-italic-text, .contact-wrapper .content, .time, .article-wrapper .entry-meta .footer-wrapper {
-  color: #644c20;
+  color: #644C20;
 }
 
 .complement-light-text {
-  color: #8e7042;
+  color: #8E7042;
 }
 
 .gray-text {
-  color: #c6cacb;
+  color: #C6CACB;
 }
 
 .gray-light-text {
-  color: #e5e6e7;
+  color: #E5E6E7;
 }
 
 .force-gray-text {
-  color: #c6cacb !important;
+  color: #C6CACB !important;
 }
 
 .black-text, .home .main .firstpage-top-content .widget.HK_tags_widget a, .home .main .firstpage-top-content .widget.HK_tags_widget .widget-title, .page-header .category-tools .tag-menu a {
@@ -4848,7 +4852,7 @@ h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidge
 }
 
 .important-text {
-  color: #a41d30;
+  color: #A41D30;
 }
 
 .black-text-shadow {
@@ -4860,11 +4864,11 @@ h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidge
 }
 
 .important-background, .widget_hk_wp_feed_rss_widget.widget, .important-widget, .cookieinformation {
-  background-color: #a41d30;
+  background-color: #A41D30;
 }
 
 .complement-background, .article-wrapper .side-content .optional-text {
-  background-color: #644c20;
+  background-color: #644C20;
 }
 
 .transparent-background, .searchnavigation .form .input-wrapper .field {
@@ -4891,7 +4895,7 @@ h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidge
 .main .widget.HK_tags_widget, .page-header .category-tools .related-menu, .page-header .category-tools .menu-item .sub-menu, .cookieinformation, .top-menu-wrapper, .top-menu-wrapper .top-menu .menu-item .sub-menu, .responsive-menu a, .footer2-wrapper,
 .footer2-wrapper a,
 .footer-image-wrapper {
-  background-color: #5c85b1;
+  background-color: #5C85B1;
 }
 
 .main-light-background {
@@ -4903,12 +4907,12 @@ h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidge
 }
 
 .gray-background, .home .main .firstpage-top-content .widget.HK_tags_widget, .page-header .category-tools .tag-menu, .page-header .category-tools .cat-item .sub-menu {
-  background-color: #c6cacb;
+  background-color: #C6CACB;
 }
 
 .gray-light-background, .gray-image-background, .footer-wrapper.footer-widget-wrapper, .button, .home .widget.contact-area .contact-wrapper, .page-header, .responsive-sub-menu, .main-sub-menu, .category-navigation .more-navigation li.current-tag, .ui-tabs-nav .ui-state-active,
 .ui-tabs-nav .ui-state-hover {
-  background-color: #e5e6e7;
+  background-color: #E5E6E7;
 }
 
 .gray-image-background, .footer-wrapper.footer-widget-wrapper {
@@ -4917,55 +4921,55 @@ h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidge
 }
 
 .main-border, .searchnavigation .searchresult-wrapper .searchresult {
-  border: 1px solid #5c85b1;
+  border: 1px solid #5C85B1;
 }
 
 .border {
-  border: 1px solid #c6cacb;
+  border: 1px solid #C6CACB;
 }
 
 .border-light {
-  border: 1px solid #e5e6e7;
+  border: 1px solid #E5E6E7;
 }
 
 .border--top {
-  border-top: 1px solid #c6cacb;
+  border-top: 1px solid #C6CACB;
 }
 
 .border-light--top, .single.full .article-border-wrapper {
-  border-top: 1px solid #e5e6e7;
+  border-top: 1px solid #E5E6E7;
 }
 
 .border--right {
-  border-right: 1px solid #c6cacb;
+  border-right: 1px solid #C6CACB;
 }
 
 .border-light--right, .full .article-border-wrapper {
-  border-right: 1px solid #e5e6e7;
+  border-right: 1px solid #E5E6E7;
 }
 
 .border--bottom {
-  border-bottom: 1px solid #c6cacb;
+  border-bottom: 1px solid #C6CACB;
 }
 
 .border-light--bottom, .article-border-wrapper {
-  border-bottom: 1px solid #e5e6e7;
+  border-bottom: 1px solid #E5E6E7;
 }
 
 .border--left, .home .widget.contact-area .contact-wrapper .content-wrapper ul.right-content {
-  border-left: 1px solid #c6cacb;
+  border-left: 1px solid #C6CACB;
 }
 
 .border-light--left, .full .article-border-wrapper {
-  border-left: 1px solid #e5e6e7;
+  border-left: 1px solid #E5E6E7;
 }
 
 .border-line, .button {
-  border: 1px solid #c6cacb;
+  border: 1px solid #C6CACB;
 }
 
 .border-line--left, .category-navigation .parent li, .category-navigation .more-navigation li {
-  border-left: 1px solid #c6cacb;
+  border-left: 1px solid #C6CACB;
 }
 
 .border-line-main--left, .tag-listing .indent1 li:hover,
@@ -4975,15 +4979,15 @@ h1 a, body, .button, .page-header, .page-header a, .cookieinformation .textwidge
 .tag-listing .indent5 li:hover,
 .tag-listing .indent6 li:hover,
 .tag-listing .indent7 li:hover, .category-navigation .parent li.current-cat > .children > li, .category-navigation .more-navigation li.current-tag, .category-navigation .more-navigation li:hover {
-  border-left: 1px solid #5c85b1;
+  border-left: 1px solid #5C85B1;
 }
 
 .border-line-main--bottom {
-  border-bottom: 1px solid #5c85b1;
+  border-bottom: 1px solid #5C85B1;
 }
 
 .border-main-menu--bottom {
-  border-bottom: 4px solid #5c85b1;
+  border-bottom: 4px solid #5C85B1;
 }
 
 .border-default-menu--bottom, .main-menu .current-category-ancestor a,
@@ -5281,7 +5285,7 @@ html {
 }
 
 .primary td, .primary th {
-  border: 1px solid #e5e6e7;
+  border: 1px solid #E5E6E7;
 }
 
 .primary.searchresult td, .primary.searchresult th {
@@ -5610,7 +5614,7 @@ html {
   height: 0px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 5px solid #5c85b1;
+  border-bottom: 5px solid #5C85B1;
   display: inline-block;
 }
 .page-header .num-posts .asc .arrow,
@@ -5620,7 +5624,7 @@ html {
   height: 0px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #5c85b1;
+  border-top: 5px solid #5C85B1;
   display: inline-block;
 }
 .page-header .category-tools {
@@ -5644,7 +5648,7 @@ html {
   padding-left: 12px;
 }
 .tag-listing .dimmed-tag {
-  color: #c6cacb !important;
+  color: #C6CACB !important;
   font-weight: normal;
 }
 .tag-listing h1.page-title {
@@ -5660,7 +5664,7 @@ html {
   padding-left: 12px;
 }
 .tag-listing .wrapper {
-  border-left: 1px solid #c6cacb;
+  border-left: 1px solid #C6CACB;
 }
 .tag-listing .indent1 li,
 .tag-listing .indent2 li,
@@ -5672,7 +5676,7 @@ html {
   margin-left: -12px;
   margin-bottom: 2px;
   padding-left: 12px;
-  background: #e5e6e7;
+  background: #E5E6E7;
 }
 .tag-listing .indent1 li:hover,
 .tag-listing .indent2 li:hover,
@@ -5775,7 +5779,7 @@ html {
   margin-bottom: 6px;
 }
 .article-wrapper .more-content .content a {
-  border-bottom: 1px dotted #5c85b1;
+  border-bottom: 1px dotted #5C85B1;
 }
 .article-wrapper .content-wrapper .contact-area h3.entry-title {
   margin-bottom: 0;
@@ -5787,7 +5791,7 @@ html {
   }
 }
 .article-wrapper .entry-meta .footer-wrapper {
-  border-left: 4px solid #644c20;
+  border-left: 4px solid #644C20;
   padding-left: 20px;
   /*a {
   	@extend .font-weight-normal;
@@ -5917,7 +5921,7 @@ html {
 }
 .searchnavigation .form {
   border-radius: 12px;
-  border: 2px solid #5c85b1;
+  border: 2px solid #5C85B1;
   box-shadow: 1px 1px 10px #666;
   overflow: hidden;
 }
@@ -5938,7 +5942,7 @@ html {
   border-bottom-color: transparent !important;
 }
 .searchnavigation .searchresult-wrapper .searchresult:after {
-  border-bottom-color: #5c85b1 !important;
+  border-bottom-color: #5C85B1 !important;
 }
 .searchnavigation .searchresult .search-title {
   margin-left: 12px;
@@ -6153,9 +6157,9 @@ input.gsc-input {
   word-spacing: 0;
 }
 .top-menu-wrapper .top-menu .menu-item .sub-menu {
-  border-right: 1px solid #5c85b1;
-  border-bottom: 1px solid #5c85b1;
-  border-left: 1px solid #5c85b1;
+  border-right: 1px solid #5C85B1;
+  border-bottom: 1px solid #5C85B1;
+  border-left: 1px solid #5C85B1;
   z-index: 100;
   margin-left: -1px;
 }
@@ -6186,7 +6190,7 @@ input.gsc-input {
 }
 .responsive-sub-menu a.menu-up {
   width: 10%;
-  border-right: 1px solid #c6cacb;
+  border-right: 1px solid #C6CACB;
   margin-right: 2%;
 }
 .responsive-sub-menu a.menu {
@@ -6259,7 +6263,7 @@ input.gsc-input {
     font-size: 17px;
   }
   .main-sub-menu li {
-    background-color: #e5e6e7;
+    background-color: #E5E6E7;
     border: 0 !important;
     /*margin: 0 $half-spacing-unit $half-spacing-unit 0;*/
     margin: 0 3px 3px 0;
@@ -6268,7 +6272,7 @@ input.gsc-input {
     border-radius: 3px;
     background-image: url(../images/spr_bgButtons.png);
     background-position: 0 0;
-    border: 1px solid #c6cacb;
+    border: 1px solid #C6CACB;
   }
   .main-sub-menu li.current-menu-item a {
     border: 1px solid #666;
@@ -6276,7 +6280,7 @@ input.gsc-input {
 
   .responsive-sub-menu {
     /*border-radius: $border-radius;*/
-    background-color: #e5e6e7;
+    background-color: #E5E6E7;
     /*margin: 0 $half-spacing-unit $half-spacing-unit 0;*/
     margin: 0 3px 3px 0;
     /*background-image: url(../images/spr_bgButtons.png);*/
@@ -6299,7 +6303,7 @@ input.gsc-input {
 
   .main-menu {
     text-align: left;
-    background-color: #e5e6e7;
+    background-color: #E5E6E7;
     border-radius: 3px;
   }
   .main-menu .current-category-ancestor a, .main-menu .current-menu-item a {
@@ -6311,7 +6315,7 @@ input.gsc-input {
     width: 100%;
   }
   .category-navigation nav {
-    background-color: #e5e6e7;
+    background-color: #E5E6E7;
     border-radius: 3px;
   }
 
@@ -6635,13 +6639,13 @@ input.gsc-input {
 
 /**
  * Bring the dropdowns into view when you hover their parents.
- * Two different types of dropdown; æregularÆ (`.dropdown`) and æalternativeÆ
- * (`.dropdown--alt`).
+ * Two different types of dropdown; 'regular' ('.dropdown') and 'alternative'
+ * ('.dropdown--alt').
  */
 /**
  * Regular dropdowns sit all the way from the top, flush left.
  */
-.dropdown:hover > .dropdown__content, .page-header .category-tools .menu-item:hover > .dropdown__content, .page-header .category-tools .cat-item:hover > .dropdown__content, .top-menu-wrapper .top-menu .menu-item:hover > .dropdown__content, .page-header .category-tools .cat-item .dropdown:hover > .sub-menu, .page-header .category-tools .cat-item .menu-item:hover > .sub-menu, .page-header .category-tools .cat-item:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item .dropdown:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu,
+.dropdown:hover > .dropdown__content, .page-header .category-tools .menu-item:hover > .dropdown__content, .page-header .category-tools .cat-item:hover > .dropdown__content, .top-menu-wrapper .top-menu .menu-item:hover > .dropdown__content, .page-header .category-tools .cat-item .dropdown:hover > .sub-menu, .page-header .category-tools .cat-item .menu-item:hover > .sub-menu, .page-header .category-tools .cat-item:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item .dropdown:hover > .sub-menu, .top-menu-wrapper .top-menu .page-header .category-tools .menu-item:hover > .sub-menu, .page-header .category-tools .top-menu-wrapper .top-menu .menu-item .cat-item:hover > .sub-menu, .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu,
 .dropdown:hover > .dropdown__content--left,
 .page-header .category-tools .menu-item:hover > .dropdown__content--left,
 .page-header .category-tools .cat-item:hover > .dropdown__content--left,
@@ -6653,7 +6657,9 @@ input.gsc-input {
 .page-header .category-tools .menu-item .dropdown:hover > .sub-menu,
 .page-header .category-tools .menu-item:hover > .sub-menu,
 .page-header .category-tools .menu-item .cat-item:hover > .sub-menu,
+.page-header .category-tools .top-menu-wrapper .top-menu .menu-item:hover > .sub-menu,
 .page-header .category-tools .tag-menu.rounded .dropdown:hover > .sub-menu,
+.page-header .category-tools .tag-menu.rounded .menu-item:hover > .sub-menu,
 .page-header .category-tools .tag-menu.rounded .cat-item:hover > .sub-menu,
 .top-menu-wrapper .top-menu .right.menu-item .dropdown:hover > .sub-menu,
 .top-menu-wrapper .top-menu .right.menu-item .page-header .category-tools .cat-item:hover > .sub-menu,
@@ -6666,6 +6672,8 @@ input.gsc-input {
 .page-header .category-tools .cat-item .menu-item:active > .sub-menu,
 .page-header .category-tools .cat-item:active > .sub-menu,
 .top-menu-wrapper .top-menu .menu-item .dropdown:active > .sub-menu,
+.top-menu-wrapper .top-menu .page-header .category-tools .menu-item:active > .sub-menu,
+.page-header .category-tools .top-menu-wrapper .top-menu .menu-item .cat-item:active > .sub-menu,
 .top-menu-wrapper .top-menu .menu-item:active > .sub-menu,
 .dropdown:active > .dropdown__content--left,
 .page-header .category-tools .menu-item:active > .dropdown__content--left,
@@ -6678,7 +6686,9 @@ input.gsc-input {
 .page-header .category-tools .menu-item .dropdown:active > .sub-menu,
 .page-header .category-tools .menu-item:active > .sub-menu,
 .page-header .category-tools .menu-item .cat-item:active > .sub-menu,
+.page-header .category-tools .top-menu-wrapper .top-menu .menu-item:active > .sub-menu,
 .page-header .category-tools .tag-menu.rounded .dropdown:active > .sub-menu,
+.page-header .category-tools .tag-menu.rounded .menu-item:active > .sub-menu,
 .page-header .category-tools .tag-menu.rounded .cat-item:active > .sub-menu,
 .top-menu-wrapper .top-menu .right.menu-item .dropdown:active > .sub-menu,
 .top-menu-wrapper .top-menu .right.menu-item .page-header .category-tools .cat-item:active > .sub-menu,
@@ -6691,6 +6701,8 @@ input.gsc-input {
 .page-header .category-tools .cat-item .menu-item:focus > .sub-menu,
 .page-header .category-tools .cat-item:focus > .sub-menu,
 .top-menu-wrapper .top-menu .menu-item .dropdown:focus > .sub-menu,
+.top-menu-wrapper .top-menu .page-header .category-tools .menu-item:focus > .sub-menu,
+.page-header .category-tools .top-menu-wrapper .top-menu .menu-item .cat-item:focus > .sub-menu,
 .top-menu-wrapper .top-menu .menu-item:focus > .sub-menu,
 .dropdown:focus > .dropdown__content--left,
 .page-header .category-tools .menu-item:focus > .dropdown__content--left,
@@ -6703,7 +6715,9 @@ input.gsc-input {
 .page-header .category-tools .menu-item .dropdown:focus > .sub-menu,
 .page-header .category-tools .menu-item:focus > .sub-menu,
 .page-header .category-tools .menu-item .cat-item:focus > .sub-menu,
+.page-header .category-tools .top-menu-wrapper .top-menu .menu-item:focus > .sub-menu,
 .page-header .category-tools .tag-menu.rounded .dropdown:focus > .sub-menu,
+.page-header .category-tools .tag-menu.rounded .menu-item:focus > .sub-menu,
 .page-header .category-tools .tag-menu.rounded .cat-item:focus > .sub-menu,
 .top-menu-wrapper .top-menu .right.menu-item .dropdown:focus > .sub-menu,
 .top-menu-wrapper .top-menu .right.menu-item .page-header .category-tools .cat-item:focus > .sub-menu,
@@ -6784,8 +6798,11 @@ input.gsc-input {
   vertical-align: top;
 }
 
-.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .pager-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .home-icon, .rss-icon, .clip_12x12, .left-icon, .right-icon,
-.dropdown-icon, .searchnavigation .submit {
+.clip, .clip_48x48, .slideshow-contact-puff-area .contact-icon, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .cat-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .decoration-icon.gray, .decoration-icon.white, .pager .decoration-icon.activeSlide, .close-button, .home .white.tag-icon, .home .pager .tag-icon.activeSlide, .pager .home .tag-icon.activeSlide, .home .tag-icon, .pager-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .home-icon, .rss-icon, .clip_12x12, .left-icon,
+.left-icon.gray, .right-icon,
+.right-icon.gray, .category-tools .tag-menu .dropdown-icon,
+.dropdown-icon,
+.dropdown-icon.black, .searchnavigation .submit {
   background-image: url("../images/icons/ikoner.svg");
   display: inline-block;
 }
@@ -6805,7 +6822,7 @@ input.gsc-input {
   height: 24px;
 }
 
-.clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .white.tag-icon, .home .tag-icon, .pager-icon, .menu-icon, .search-icon {
+.clip_20x20, .navigation-icon, .category-navigation .cat-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .decoration-icon.gray, .decoration-icon.white, .pager .decoration-icon.activeSlide, .close-button, .home .white.tag-icon, .home .pager .tag-icon.activeSlide, .pager .home .tag-icon.activeSlide, .home .tag-icon, .pager-icon, .menu-icon, .search-icon {
   width: 20px;
   height: 20px;
 }
@@ -6904,11 +6921,11 @@ input.gsc-input {
   vertical-align: middle;
 }
 
-.gray.decoration-icon {
+.decoration-icon.gray {
   background-position: -105px -331px;
 }
 
-.pager .decoration-icon.activeSlide, .white.decoration-icon {
+.decoration-icon.white, .pager .decoration-icon.activeSlide {
   background-position: -63px -331px;
 }
 
@@ -7207,3 +7224,5 @@ input.gsc-input {
     content: "PALM & PORTABLE";
   }
 }
+
+/*# sourceMappingURL=style.css.map */

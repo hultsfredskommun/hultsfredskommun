@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "1.0.8");
+define("HK_VERSION", "1.0.9");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -1097,7 +1097,7 @@ function hk_get_category_tags($varcat = "") {
 /*
  * Generate tag link in tag navigation (wrapped in <li>)
  */
-function hk_generate_tag_link($tagitem) {
+function hk_generate_tag_link($tagitem, $a_class = "") {
 	$currtagslug = $tagitem->tag_slug;
 	$tags_filter = get_query_var("tag");
 	
@@ -1130,8 +1130,13 @@ function hk_generate_tag_link($tagitem) {
 	else {
 		$href = get_category_link( $term_id ) . $tags_filter. $orderby;
 	}
+	
+	if ($a_class != "") {
+		$a_class = "class='$a_class'";
+	}
 
-	$link = '<a href="' . $href  . '" '; 
+
+	$link = '<a ' . $a_class . ' href="' . $href  . '" '; 
 	$cat_name = $tagitem->tag_name;//apply_filters( 'list_cats', $cat_name, $tag ); 
 	if ( $use_desc_for_title == 0 || empty($tag->description) ) 
 		$link .= "title='Filtrera med nyckelordet $cat_name'"; 
@@ -1139,7 +1144,6 @@ function hk_generate_tag_link($tagitem) {
 		$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $tag->description, $tag ) ) ) . '"'; 
 	$link .= '>'; 
 	$link .= "$cat_name</a>"; 
-	
 	
 	$output .= "\t<li"; 
 	$class = 'atag-item tag-item-'.$tag->term_id; 

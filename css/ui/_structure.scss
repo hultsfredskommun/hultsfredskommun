@@ -125,10 +125,12 @@ img {
 .widget {
 	@extend .margin--bottom;
 	@extend .epsilon;
+	
 	.widget-title,
 	.entry-title {
 		@extend .one-whole;
 		@extend .gamma;
+		margin: 0;
 		padding: $half-spacing-unit 0;
 		line-height: 1;
 		font-weight: normal;

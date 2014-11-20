@@ -1,0 +1,36 @@
+
+
+gtm-cn-news-link - länk på startsida i nyhetsflödet -  som ligger i content-news
+gtm-cn-news-button - knapp på startsida i nyhetsflödet -  som ligger i content-news
+
+//first page content
+gtm-fpcw-more-news-link - länk i expanderad nyhetslista -  som ligger i HK_firstpagecontent
+gtm-fpcw-show-more-news-link - länk som expanderar nyhetslistan -  som ligger i HK_firstpagecontent
+gtm-fpcw-hide-more-news-link - länk som gömmer nyhetslistan igen -  som ligger i HK_firstpagecontent
+gtm-fpcw-rss-link - länk till nyhetsrss - som ligger i HK_firstpagecontent
+gtm-fpcw-news-archive-link - länk till nyhetsarkiv - som ligger i HK_firstpagecontent
+
+//firstpage contact and puff
+gtm-fpcp-contactlink - kontaktrubriken
+gtm-fpcp-mailto - maillänken
+gtm-fpcp-phone - telefonnummerlänkarna
+gtm-fpcp-contacttext - länken som är på contacttexten, t.ex. öppettider
+gtm-fpcp-more-contactlink - länken fler kontaktuppgifter
+gtm-fpcp-direct-link - direktlänkarna till höger + en av nedan class:
+ gtm-fpcp-direct-link1 - direktlänk 1 till höger
+ gtm-fpcp-direct-link2 - direktlänk 2 till höger
+ gtm-fpcp-direct-link3
+ gtm-fpcp-direct-link4
+ gtm-fpcp-direct-link5
+ 
+//tag widget
+gtm-tw-taglink - "visa bara" länkar, widget
+
+// protocol widget
+gtm-protocol-link - protokoll länkar, widget
+
+// related widget
+gtm-related-widget-link - hitta snabbt på startsidan + en av nedan class:
+ gtm-related-widget-link-post - om post
+ gtm-related-widget-link-link - om extern länk
+ gtm-related-widget-link-file - om fil

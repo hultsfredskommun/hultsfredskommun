@@ -3,7 +3,7 @@
 /* 
  * OLD!! QUICK MENUS AND MOST VISITED 
  */ 
-
+/*
 class HK_quickmenu extends WP_Widget {
 	protected $vars = array();
 
@@ -69,7 +69,7 @@ class HK_quickmenu extends WP_Widget {
 	    extract( $args );
 		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
 
-			/* get all sub categories to use in queries */
+			// get all sub categories to use in queries 
 			$cat = get_query_var("cat");
 			$all_categories = hk_getChildrenIdArray($cat);
 			$all_categories[] = $cat;
@@ -118,7 +118,7 @@ class HK_quickmenu extends WP_Widget {
 			<div id="mostvisited">
 				<?php
 				if ($all_categories != "") {
-					/* Query all posts */
+					// Query all posts 
 					$query = array( 'posts_per_page' => $this->vars['posts_per_page'], 
 									'category__in' => $all_categories,
 									'ignore_sticky_posts' => 'true',
@@ -148,7 +148,7 @@ class HK_quickmenu extends WP_Widget {
 			<div id="latest">
 				<?php
 				if ($all_categories != "") {
-					/* Query all posts */
+					// Query all posts 
 					$query = array( 'posts_per_page' => $this->vars['posts_per_page'], 
 									'category__in' => $all_categories,
 									'ignore_sticky_posts' => 'true',
@@ -176,8 +176,9 @@ class HK_quickmenu extends WP_Widget {
 		} //end if show in category
 	} //end widget()
 }
+*/
 /* add the widget  */
-add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu" );' ) );
+//add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu" );' ) );
 
 
 
@@ -188,6 +189,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 /* 
  * OLD!! FIRSTPAGE CONTACT WIDGET 
  */ 
+ /*
  class HK_firstpagecontact extends WP_Widget {
 	protected $vars = array();
 
@@ -395,8 +397,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu
 
 	}
 }
+*/
 /* add the widget  */
-add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpagecontact" );' ) );
+//add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpagecontact" );' ) );
 
 
 
@@ -559,20 +562,20 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 					$after_newslist = "";
 					if ($hide_more_news != "") {
 						$hiddenclass = "hidden";
-						$after_newslist .= "<a href='#' class='read-more-link inline js-read-more-link'>$hide_more_news<span class='dropdown-icon'></span></a>";
+						$after_newslist .= "<a href='#' class='gtm-fpcw-show-more-news-link read-more-link inline js-read-more-link'>$hide_more_news<span class='dropdown-icon'></span></a>";
 					}
 					if ($rss_link_url != "" && $rss_link_text != "") {
-						$after_newslist .= "<a href='$rss_link_url' class='read-more-link inline float--right'>$rss_link_text</a>";
+						$after_newslist .= "<a href='$rss_link_url' class='gtm-fpcw-rss-link read-more-link inline float--right'>$rss_link_text</a>";
 					}
 					?>
 					<div id='news' class="widget read-more-widget js-read-more-widget <?php echo $hiddenclass; ?>">
 						<?php if ($hide_more_news == "") { ?><h2 class='entry-title'>Fler nyheter</h2><?php } ?>
 						<?php while ( have_posts() ) : the_post(); ?>
 						<div class="entry-wrapper">
-						<?php the_date("","<span class='time'>","</span>"); ?> <a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
+						<?php the_date("","<span class='time'>","</span>"); ?> <a class="gtm-fpcw-more-news-link" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
 						</div>
 						<?php endwhile; ?>
-						<span class="read-more-link"><a href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Nyhetsarkiv<span class="right-icon"></span></a></span>
+						<span class="read-more-link"><a class="gtm-fpcw-news-archive-link" href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Nyhetsarkiv<span class="right-icon"></span></a></span>
 					</div>					
 					<?php
 						echo $after_newslist;
@@ -713,7 +716,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 							}
 							?>
 							<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-							<a href="<?php the_permalink(); ?>" class="link" title="<?php echo get_the_excerpt(); // printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+							<a href="<?php the_permalink(); ?>" class="gtm-protocol-link link" title="<?php echo get_the_excerpt(); // printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 							<?php 
 								echo $title; 
 								if ($subtitle != "") {
@@ -1122,7 +1125,7 @@ class HK_related_widget extends WP_Widget {
 			$show_related_cat = "";
 			
 		// get quickmenu
-		$quickmenu = hk_related_output(false, $show_related_cat);
+		$quickmenu = hk_related_output(false, $show_related_cat, "gtm-related-widget-link");
 		if ($quickmenu == "") // return if no related output
 			return;
 
@@ -1193,7 +1196,7 @@ class HK_tags_widget extends WP_Widget {
 		if ($instance['title'] != "") {
 			echo "<h2 class='widget-title'>" . $instance['title'] . "</h2>";
 		}
-		displayTagFilter(false,"");
+		displayTagFilter(false, "", true, "gtm-tw-taglink");
 		echo "</aside>";
 		
 	} //end widget()
@@ -1473,7 +1476,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		$category_in = array();
 		if (get_query_var("cat") != "") {
 
-							
 			$retValue .= "<aside class='contact-puffs  widget'>";
 			
 			// query arguments
@@ -1516,7 +1518,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 
 				// add link and title
 				$retValue .= "<h2 class='entry-title'>";
-				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>"; 
+				$retValue .= "<a class='gtm-fpcp-contactlink contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>"; 
 				$retValue .= "<span class='main-contact-link'>" . get_the_title() . "</span></a></h2>"; 
 				
 				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
@@ -1524,7 +1526,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 				$retValue .= "<ul>";
 				// email
 				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
-					$retValue .= "<li class='hk_contact_emails'><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></li>";
+					$retValue .= "<li class='hk_contact_emails'><a class='gtm-fpcp-mailto' href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></li>";
 				endwhile; endif;
 
 				// phone
@@ -1539,17 +1541,17 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
 					$number = str_replace("]",")</span>", $number);
 
-					$retValue .= "<li class='hk_contact_phones'><a href='tel:$link'>";
+					$retValue .= "<li class='hk_contact_phones'><a class='gtm-fpcp-phone' href='tel:$link'>";
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 					$retValue .= $number . "</a></li>";
 				endwhile; endif;
 				
 				if (isset($instance['contacttext']) && $options["startpage_cat"] == get_query_var("cat")) {
 					foreach(split("\n",$instance['contacttext']) as $contacttext) {
-						$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'>" . $contacttext . "</a></li>";
+						$retValue .= "<li class='contactlink  js-contact-link'><a class='gtm-fpcp-contacttext' href='" . get_permalink(get_the_ID()) . "'>" . $contacttext . "</a></li>";
 					}
 				}
-				$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'><span class='more-contact-link'>fler kontaktuppgifter</span></a></li>";
+				$retValue .= "<li class='contactlink  js-contact-link'><a class='gtm-fpcp-more-contactlink' href='" . get_permalink(get_the_ID()) . "'><span class='more-contact-link'>fler kontaktuppgifter</span></a></li>";
 
 				//$retValue .= "<span class='more-contact-link'>fler kontaktuppgifter</span>";
 				
@@ -1563,7 +1565,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 
 				if ($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") :
 					$retValue .= "<div class='direct_link direct_link1' style='height: $direct_link1_height%;background-color: $direct_link1_bg;'>";
-					$retValue .= "<a style='color: $direct_link1_color' href='" . $instance['direct_link1_url'] . "'>";
+					$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link1' style='color: $direct_link1_color' href='" . $instance['direct_link1_url'] . "'>";
 					if ($instance['direct_link1_icon'] != "") : $retValue .= $instance['direct_link1_icon']; endif;
 					$title = $instance['direct_link1_title'];
 					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
@@ -1572,7 +1574,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 				endif;
 				if ($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") :
 					$retValue .= "<div class='direct_link direct_link2' style='height: $direct_link2_height%;background-color: $direct_link2_bg;'>";
-					$retValue .= "<a style='color: $direct_link2_color' href='" . $instance['direct_link2_url'] . "'>";
+					$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link2' style='color: $direct_link2_color' href='" . $instance['direct_link2_url'] . "'>";
 					if ($instance['direct_link2_icon'] != "") : $retValue .=  $instance['direct_link2_icon']; endif;
 					$title = $instance['direct_link2_title'];
 					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
@@ -1581,7 +1583,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 				endif;
 				if ($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "") :
 					$retValue .= "<div class='direct_link direct_link3' style='height: $direct_link3_height%;background-color: $direct_link3_bg;'>";
-					$retValue .= "<a style='color: $direct_link3_color' href='" . $instance['direct_link3_url'] . "'>";
+					$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link3' style='color: $direct_link3_color' href='" . $instance['direct_link3_url'] . "'>";
 					if ($instance['direct_link3_icon'] != "") : $retValue .= $instance['direct_link3_icon']; endif;
 					$title = $instance['direct_link3_title'];
 					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
@@ -1590,7 +1592,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 				endif;
 				if ($instance['direct_link4_url'] != "" && $instance['direct_link4_title'] != "") :
 					$retValue .= "<div class='direct_link direct_link4' style='height: $direct_link4_height%;background-color: $direct_link4_bg;'>";
-					$retValue .= "<a style='color: $direct_link4_color' href='" . $instance['direct_link4_url'] . "'>";
+					$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link4' style='color: $direct_link4_color' href='" . $instance['direct_link4_url'] . "'>";
 					if ($instance['direct_link4_icon'] != "") : $retValue .= $instance['direct_link4_icon']; endif;
 					$title = $instance['direct_link4_title'];
 					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
@@ -1599,7 +1601,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 				endif;
 				if ($instance['direct_link5_url'] != "" && $instance['direct_link5_title'] != "") :
 					$retValue .= "<div class='direct_link direct_link5' style='height: $direct_link5_height%;background-color: $direct_link5_bg;'>";
-					$retValue .= "<a style='color: $direct_link5_color' href='" . $instance['direct_link5_url'] . "'>";
+					$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link5' style='color: $direct_link5_color' href='" . $instance['direct_link5_url'] . "'>";
 					if ($instance['direct_link5_icon'] != "") : $retValue .= $instance['direct_link5_icon']; endif;
 					$title = $instance['direct_link5_title'];
 					$title = str_replace("[","<span class='complement-italic-text'>(", $title);

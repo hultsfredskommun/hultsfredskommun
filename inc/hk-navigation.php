@@ -624,7 +624,7 @@ class hk_Tag_Walker extends Walker_Category {
 
 
 // show tag filter list
-function displayTagFilter($show_title = true, $ul_class="more-navigation", $echo = true) {
+function displayTagFilter($show_title = true, $ul_class="more-navigation", $echo = true, $a_class = "") {
 	global $default_settings;
 	$retValue = "";
 	if ($default_settings["show_tags"] != 0) :	
@@ -637,7 +637,7 @@ function displayTagFilter($show_title = true, $ul_class="more-navigation", $echo
 				$retValue .= "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a href='#'>Visa bara</a></li>";
 			}
 			foreach( $tags as $tagitem) :
-				$retValue .= hk_generate_tag_link($tagitem);
+				$retValue .= hk_generate_tag_link($tagitem, $a_class);
 			endforeach;
 			$retValue .= "</ul>";
 		endif; // endif tags available

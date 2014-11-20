@@ -67,7 +67,7 @@ function hk_related_init() {
 }
 
 // generates the output of the content to the widget
-function hk_related_output($wrapping_li = true, $the_cat = "") {
+function hk_related_output($wrapping_li = true, $the_cat = "", $a_class = "") {
 
 	if (!function_exists("get_field"))
 		return "You need to install ACF to get this widget to work, read more in readme.txt.";
@@ -114,7 +114,7 @@ function hk_related_output($wrapping_li = true, $the_cat = "") {
 						if ( get_row_layout() == 'hk_related_posts' ) : 
 							$retValue .= "<li class='related_page'>";
 							$value = get_sub_field('hk_related_post');
-							$retValue .= "<a href='" . get_permalink($value->ID) . "'";
+							$retValue .= "<a class='$a_class $a_class-post' href='" . get_permalink($value->ID) . "'";
 							$retValue .= " title='" . get_sub_field('hk_related_post_description') . "'>" . $value->post_title . "</a>";
 							$retValue .= "</li>";		 
 						elseif ( get_row_layout() == 'hk_related_links' ) : 
@@ -124,14 +124,14 @@ function hk_related_output($wrapping_li = true, $the_cat = "") {
 							if (substr_compare($relate_link_url, 'http', 0, 4) != 0) {
 								$relate_link_url = 'http://' . $relate_link_url;
 							}
-							$retValue .= "<a target='_blank'";
+							$retValue .= "<a class='$a_class $a_class-link'  target='_blank'";
 							$retValue .= " href='" . $relate_link_url . "' title='" . get_sub_field('hk_related_link_description') . "'>" . get_sub_field('hk_related_link_name') . "</a>";
 							$retValue .= "</li>";
 						elseif ( get_row_layout() == 'hk_related_files' ) :
 							$link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
 							$link_name = get_the_title(get_sub_field('hk_related_file'));
 							$retValue .= "<li class='related_file'>";
-							$retValue .= "<a target='_blank'";
+							$retValue .= "<a class='$a_class $a_class-file'  target='_blank'";
 							$retValue .= " href='" . $link . "' title='" . get_sub_field('hk_related_file_description') . "'>" . $link_name . "</a>";
 							$retValue .= "</li>";
 						endif;

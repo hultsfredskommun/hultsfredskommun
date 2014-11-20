@@ -29,7 +29,7 @@
 						$name = get_field('hk_external_link_name'); 
 						if (!empty($href))
 						{
-							$externalclass = "class='js-external-link'";
+							$externalclass = " js-external-link";
 							$title = "Extern länk till " . the_title_attribute( 'echo=0' );
 						}
 					}
@@ -37,6 +37,7 @@
 						$href = get_permalink(); 
 						$title = "Länk till " . the_title_attribute( 'echo=0' );
 					}
+					$externalclass = "class='gtm-cn-news-link$externalclass'"
 					
 					?>
 					<h1 class="entry-title"><a <?php echo $externalclass; ?> href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
@@ -44,7 +45,7 @@
 						<?php the_excerpt(); 
 						if (!empty($href) && !empty($name))
 						{
-							echo "<a class='button' href='$href' title='$name'>$name</a>";
+							echo "<a class='gtm-cn-news-button button' href='$href' title='$name'>$name</a>";
 						}
 						?>
 					</div>
