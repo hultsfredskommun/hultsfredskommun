@@ -680,7 +680,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 					}
 					$src = str_replace("http://" . $_SERVER['SERVER_NAME'], "", $src);
 					$retValue .= "<div class='slide' $style>";
-					$retValue .= "<img src='$src' alt='$alt' />";
+					$retValue .= "<img src='$src' alt='$alt' title='$alt' />";
 					if ($caption != "") {
 						$retValue .= "<span class='image-caption'>Foto: $caption</span>";
 					}
@@ -690,7 +690,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 			}
     	endwhile;
 		if ($showAll && $countSlides > 1) {
-			$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
+			$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' title='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
 			$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
 		}
 		$retValue .= "</div></div>"; 
@@ -729,7 +729,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 						$style = "style='display: none;'";
 					}
 					$retValue .= "<div class='slide' $style>";
-					$retValue .= "<img src='$src$src_append' alt='$alt' />";
+					$retValue .= "<img src='$src$src_append' alt='$alt' title='$alt' />";
 					if ($caption != "") {
 						$retValue .= "<span class='image-caption'>$caption</span>";
 					}
@@ -740,7 +740,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 			endwhile;
 			/* print placeholder if slideshow */
 			if ($showAll && $countSlides > 1) {
-				$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
+				$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' title='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."' />";
 				$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
 			}
 			$retValue .= "</div></div>"; 

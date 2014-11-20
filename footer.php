@@ -88,12 +88,12 @@ global $default_settings;
 		<div class="footer-image-wrapper">
 			<?php /* footer image */
 			if ($hk_options["footer_image"] != "") : ?>
-				<div class="footer-image"><div class='content--center'><img src="<?php echo $hk_options["footer_image"]; ?>" /></div></div>
+				<div class="footer-image"><div class='content--center'><img src="<?php echo $hk_options["footer_image"]; ?>" alt='Sidfot' title='Sidfot' /></div></div>
 			<?php endif;
 			
 			if ( $hk_options["logo_footer_image"] ) :
 			?>
-				<div class="logo-footer-image"><div class='content--center'><img src="<?php echo $hk_options["logo_footer_image"]; ?>" /></div></div>
+				<div class="logo-footer-image"><div class='content--center'><img src="<?php echo $hk_options["logo_footer_image"]; ?>" alt='Logotyp' title='Logotyp' /></div></div>
 			<?php endif; ?>	
 		</div><!-- .footer-image-wrapper -->
 		<?php endif; ?>	

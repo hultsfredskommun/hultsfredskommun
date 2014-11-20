@@ -573,8 +573,10 @@ class hk_Tag_Walker extends Walker_Category {
                 $link .= '('; 
 			$href = get_category_feed_link($term_id, $feed_type) . $tags_filter . $orderby;
             $link .= '<a href="' . $href . '"'; 
-            if ( empty($feed) ) 
+            if ( empty($feed) ) {
+                $title = ' title="' . sprintf(__( 'Feed for all posts filed under %s' ), $cat_name ) . '"'; 
                 $alt = ' alt="' . sprintf(__( 'Feed for all posts filed under %s' ), $cat_name ) . '"'; 
+			}
             else { 
                 $title = ' title="' . $feed . '"'; 
                 $alt = ' alt="' . $feed . '"'; 

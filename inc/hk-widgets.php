@@ -891,6 +891,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		} else {$href = ""; }
 		if ( isset( $instance[ 'show_widget_in_cat' ] ) ) {	$show_widget_in_cat = $instance[ 'show_widget_in_cat' ];
 		} else { $show_widget_in_cat = ""; }
+		if ( isset( $instance[ 'alt' ] ) ) {	$alt = $instance[ 'alt' ];
+		} else { $alt = ""; }
 
 		?>
 		<p>
@@ -900,6 +902,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		<p>
 		<label for="<?php echo $this->get_field_id( 'image' ); ?>">Bild</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'image' ); ?>" name="<?php echo $this->get_field_name( 'image' ); ?>" type="text" value="<?php echo esc_attr( $image); ?>" />
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'alt' ); ?>">Alternativtext till bild, s&auml;tts annars till "L&auml;nk till &lt;url&gt;"</label> 
+		<textarea class="widefat" id="<?php echo $this->get_field_id( 'alt' ); ?>" name="<?php echo $this->get_field_name( 'alt' ); ?>"><?php echo $alt; ?></textarea>
 		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'background' ); ?>">Bakgrundsf&auml;rg</label> 
@@ -940,6 +946,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 		$instance['popuptext'] =  $new_instance['popuptext'];
 		$instance['href'] =  $new_instance['href'];
 		$instance['show_widget_in_cat'] = strip_tags( $new_instance['show_widget_in_cat'] );
+		$instance['alt'] = strip_tags( $new_instance['alt'] );
 		
 		return $instance;
 	}
@@ -948,6 +955,22 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 	    extract( $args );
 		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
 			echo $before_widget;
+			$alt = $instance["alt"];
+			if ($alt == "") {
+				$alt = $instance["alt"];
+			}
+			if ($alt == "") {
+				$alt = $instance["text"];
+			}
+			if ($alt == "") {
+				if ($instance["href"] != "") {
+					$alt = "L&auml;nk till " . $instance["href"];
+				}
+				else {
+					$alt = "Widgetbild";
+				}
+			}
+
 			if ($instance["popuptext"] != "") {
 				$popupclass = "class='gtm-text-widget-popup js-text-widget-popup'";
 			} else {
@@ -955,7 +978,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 			}
 			if ( $instance["title"] == "" && $instance["text"] == "" && $instance["href"] != "" && $instance["image"] != "" ) {
 				echo "<a $popupclass style='max-width: 100%; color: $color;' href='".$instance["href"]."'>";
-				echo "<img class='image' src='" .$instance["image"]. "' />";
+				echo "<img class='image' src='" .$instance["image"]. "' alt='$alt' title='$alt' />";
 				echo "</a>";
 			}
 			else if ( $instance["text"] != "" || $instance["title"] != "" ) {

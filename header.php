@@ -219,7 +219,7 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 				</div></aside>
 			<?php endif; ?>
 		<div id="topwrapper" class="content--center"><div class="top-wrapper">
-			<span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></span>
+			<span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" /></a></span>
 			<div class="site-title">
 				<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
@@ -244,10 +244,10 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 					<?php echo $hk_options["right_logo_html"]; ?>
 				<?php endif; ?>
 				<?php if ($hk_options["logo2_image"] != "") : ?>
-				<a target="_blank" href="<?php echo $hk_options["logo2_link"]; ?>" title="<?php echo $hk_options["logo2_descr"]; ?>"><img src="<?php echo $hk_options["logo2_image"]; ?>" alt="<?php echo $hk_options["logo2_descr"]; ?>" /></a>
+				<a target="_blank" href="<?php echo $hk_options["logo2_link"]; ?>" title="<?php echo $hk_options["logo2_descr"]; ?>"><img src="<?php echo $hk_options["logo2_image"]; ?>" alt="<?php echo $hk_options["logo2_descr"]; ?>" title="<?php echo $hk_options["logo2_descr"]; ?>" /></a>
 				<?php endif; ?>
 				<?php if ($hk_options["logo3_image"] != "") : ?>
-				<a target="_blank" href="<?php echo $hk_options["logo3_link"]; ?>" title="<?php echo $hk_options["logo3_descr"]; ?>"><img src="<?php echo $hk_options["logo3_image"]; ?>" alt="<?php echo $hk_options["logo3_descr"]; ?>" /></a>
+				<a target="_blank" href="<?php echo $hk_options["logo3_link"]; ?>" title="<?php echo $hk_options["logo3_descr"]; ?>"><img src="<?php echo $hk_options["logo3_image"]; ?>" alt="<?php echo $hk_options["logo3_descr"]; ?>" title="<?php echo $hk_options["logo3_descr"]; ?>"/></a>
 				<?php endif; ?>
 			</div>
 			<?php endif; ?>

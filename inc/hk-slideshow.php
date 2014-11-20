@@ -128,7 +128,7 @@ function hk_slideshow_generate_output($vars) {
 				endif;
         	endwhile;
 			if ($count > 1) {
-				$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg hidden' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&amp;h=".($default_settings[$vars["thumbnail-size"]][1])."'/>";
+				$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' title='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg hidden' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$vars["thumbnail-size"]][0]."&amp;h=".($default_settings[$vars["thumbnail-size"]][1])."'/>";
 			}
 			$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
 			$retValue .= "</div></div>";
