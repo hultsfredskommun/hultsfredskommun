@@ -78,6 +78,21 @@ if (in_category($hk_options["hidden_cat"])) {
 	?></title>
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
+<?php if ( $hk_options["favicon_image32"] != "" ) : ?>
+	<link rel="icon" href="<?php echo $hk_options["favicon_image32"]; ?>" sizes="32x32" type="image/png">
+<?php endif; ?>
+<?php if ( $hk_options["favicon_image64"] != "" ) : ?>
+	<link rel="icon" href="<?php echo $hk_options["favicon_image64"]; ?>" sizes="64x64" type="image/png">
+<?php endif; ?>
+<?php if ( $hk_options["favicon_image128"] != "" ) : ?>
+	<link rel="icon" href="<?php echo $hk_options["favicon_image128"]; ?>" sizes="128x128" type="image/png">
+<?php endif; ?>
+<?php if ( $hk_options["favicon_image256"] != "" ) : ?>
+	<link rel="icon" href="<?php echo $hk_options["favicon_image256"]; ?>" sizes="256x256" type="image/png">
+<?php endif; ?>
+<?php if ( $hk_options["favicon_image64"] != "" ) : ?>
+	<!--[if IE]><link rel="shortcut icon" href="<?php echo $hk_options["favicon_image64"]; ?>"><![endif]-->
+<?php endif; ?>
 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php if ($_REQUEST["localstyle"] != "") : ?>

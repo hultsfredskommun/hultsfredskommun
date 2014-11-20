@@ -53,6 +53,26 @@ function hk_theme_options_do_page() {
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_image]" value="<?php echo $options["logo_image"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
+			<p><label for="hk_theme[favicon_image32]">Favicon 32x32</label><br/>
+				<img width='150' src="<?php echo $options["favicon_image32"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image32]" value="<?php echo $options["favicon_image32"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[favicon_image64]">Favicon 64x64</label><br/>
+				<img width='150' src="<?php echo $options["favicon_image64"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image64]" value="<?php echo $options["favicon_image64"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[favicon_image128]">Favicon 128x128</label><br/>
+				<img width='150' src="<?php echo $options["favicon_image128"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image128]" value="<?php echo $options["favicon_image128"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[favicon_image256]">Favicon 256x256</label><br/>
+				<img width='150' src="<?php echo $options["favicon_image256"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image256]" value="<?php echo $options["favicon_image256"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
 			<p><label for="hk_theme[top_image]">Toppbild (inte klar att anv&auml;ndas)</label><br/>
 				<img width=150 src="<?php echo $options["top_image"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[top_image]" value="<?php echo $options["top_image"]; ?>" />
