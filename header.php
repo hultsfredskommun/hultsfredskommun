@@ -29,23 +29,28 @@ if (in_category($hk_options["hidden_cat"])) {
 }
  
 
-
+if ($hk_options["lang"] == "") {
+	$lang = 'lang="sv-SE"';
+}
+else {
+	$lang = 'lang="' . $hk_options["lang"] . '"';
+}
 
 
 //print_r($wp_query);
 
 ?><!DOCTYPE html>
 <!--[if IE 6]>
-<html id="ie6" <?php language_attributes(); ?>>
+<html id="ie6" <?php echo $lang; //language_attributes(); ?>>
 <![endif]-->
 <!--[if IE 7]>
-<html id="ie7" <?php language_attributes(); ?>>
+<html id="ie7" <?php echo $lang; //language_attributes(); ?>>
 <![endif]-->
 <!--[if IE 8]>
-<html id="ie8" <?php language_attributes(); ?>>
+<html id="ie8" <?php echo $lang; //language_attributes(); ?>>
 <![endif]-->
 <!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
-<html <?php language_attributes(); ?>>
+<html <?php echo $lang; //language_attributes(); ?>>
 <!--<![endif]-->
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />

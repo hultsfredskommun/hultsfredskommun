@@ -70,9 +70,15 @@
 			<?php if (!$summary || $count++ < 2) : ?>
 				<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
 					<li class="related_page <?php echo "full"; //TEMP REMOVED echo ($count++ < 2)?"summary":"full"; ?>">
-						<?php $value = get_sub_field('hk_related_post');?>
+						<?php $value = get_sub_field('hk_related_post');
+					
+						$relate_post_title = get_sub_field('hk_related_post_description');
+						if ($relate_post_title == "") {
+							$relate_post_title = "L&auml;nk till " . get_permalink($value->ID);
+						}
+						?>
 						<a href="<?php echo get_permalink($value->ID); ?>" class="icon-left related-post-icon" title="Relaterat inl&auml;gg"></a>
-						<a href="<?php echo get_permalink($value->ID); ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_post_description'); ?>"><?php echo $value->post_title; ?></a>
+						<a href="<?php echo get_permalink($value->ID); ?>" class="icon-right" title="<?php echo $relate_post_title; ?>"><?php echo $value->post_title; ?></a>
 					</li>			 
 				<?php elseif ( get_row_layout() == 'hk_related_links' ) : ?>
 					<li class="related_link <?php echo "full"; //TEMP REMOVED echo ($count++ < 2)?"summary":"full"; ?>">
@@ -82,16 +88,25 @@
 							if ($relate_link_url != "" && substr_compare($relate_link_url, "http", 0, 4) != 0) {
 								$relate_link_url = "http://" . $relate_link_url;
 							}
+							$relate_link_title = get_sub_field('hk_related_link_description');
+							if ($relate_link_title == "") {
+								$relate_link_title = "L&auml;nk till " . $relate_link_url;
+							}
 						?>
 						<a target="_blank" href="<?php echo $relate_link_url; ?>" class="icon-left related-link-icon" title="L&auml;nk till annan webbsida"></a>
-						<a target="_blank" href="<?php echo $relate_link_url; ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_link_description'); ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
+						<a target="_blank" href="<?php echo $relate_link_url; ?>" class="icon-right" title="<?php echo $relate_link_title ?>"><?php echo get_sub_field('hk_related_link_name'); ?></a>
 					</li>
 				<?php elseif ( get_row_layout() == 'hk_related_files' ) : ?>
 					<?php $link =  wp_get_attachment_url(get_sub_field('hk_related_file')); 
-						$link_name = get_the_title(get_sub_field('hk_related_file')); ?>
+						$link_name = get_the_title(get_sub_field('hk_related_file')); 
+						$relate_file_title = get_sub_field('hk_related_file_description');
+						if ($relate_file_title == "") {
+							$relate_file_title = "L&auml;nk till " . $link;
+						}
+?>
 					<li class="related_file <?php echo "full"; //TEMP REMOVED echo ($count++ < 2)?"summary":"full"; ?>">
 						<a target="_blank" href="<?php echo $link; ?>" class="icon-left related-file-icon" title="Ladda ner dokument"></a>
-						<a target="_blank" href="<?php echo $link; ?>" class="icon-right" title="<?php echo get_sub_field('hk_related_file_description'); ?>"><?php echo $link_name; ?></a>
+						<a target="_blank" href="<?php echo $link; ?>" class="icon-right" title="<?php echo $relate_file_title; ?>"><?php echo $link_name; ?></a>
 					</li>			 
 				<?php elseif ( get_row_layout() == 'hk_related_titles' ) : ?>
 					<?php $title = get_sub_field('hk_related_title'); 

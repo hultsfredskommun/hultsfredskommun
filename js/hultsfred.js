@@ -326,7 +326,17 @@ if (typeof $.fn.doslideshow != 'function') {
 						
 					// if pager should be added
 					if (!$(this).hasClass("nopager")) {
-						$(this).append('<ul class="pager pager'+rand+'">');
+						$(this).append('<div class="pager-wrapper pager-wrapper-'+rand+'"><ul class="pager pager'+rand+'"></ul><span class="pager-pause pause-icon"></span></div>');
+						$('.pager-wrapper-'+rand+' .pager-pause').click(function() {
+							if ($(this).hasClass("paused")) {
+								$(this).parents('.slideshow').cycle('resume');
+								$(this).removeClass("paused")
+							} else {
+								$(this).parents('.slideshow').cycle('pause');
+								$(this).addClass("paused")
+							}
+						});
+						
 						args['pager'] =  '.pager' + rand;
 						args['pagerEvent'] = 'mouseover';
 						args['fastOnEvent'] = true;
@@ -338,6 +348,7 @@ if (typeof $.fn.doslideshow != 'function') {
 							return '<li class="pager-icon"></li>'; 
 						};
 					}
+
 					
 					$(this).cycle( args );
 
@@ -1052,11 +1063,21 @@ $(document).ready(function(){
 	
 
 	/** 
-	 * handle f5 refresh
+	 * handle f5 refresh and esc
 	 */ 
 	$(document).keyup(function(event) { 
 		var key = event.keyCode || event.which;
+		log(key);
 		switch(key) { 
+			case 27:
+				if ($(".contact-popup").length > 0) {
+					$(".contact-popup").remove();
+				}
+				$(".form-popup.overlay").hide();
+				$(".hk-gcse-ajax-searchresults-wrapper").hide();
+				$(".close-search.close-button").remove();
+				$('#s').val('');
+				break;			
 			case 116: 
 				event.preventDefault();
 				resetHistory();
@@ -1064,6 +1085,19 @@ $(document).ready(function(){
 				break;
 		}
 	});
+	
+	// make :focus work on navigation dropdowns (i.e. if has class .menu-item.menu-item-has-children is set on parent)
+	$("a").hover(function(event) {
+		$(".menu-item.menu-item-has-children .sub-menu.active").removeClass("active");
+		//$(this).focus();
+	});
+	$("a").focus(function(event) {
+		$(".menu-item.menu-item-has-children .sub-menu").removeClass("active");
+	
+		if ($(this).hasClass(".menu-item.menu-item-has-children") || $(this).parents(".menu-item.menu-item-has-children").length > 0) {
+			$(this).parents(".menu-item.menu-item-has-children").find(".sub-menu").addClass("active");
+		}
+	});	
 
 	
 	
@@ -1358,6 +1392,7 @@ var hkDoSearch = function(e) {
 	if ($('#s').val().length == 0 || (key == 27)) {
 		$(".hk-gcse-ajax-searchresults-wrapper").hide();
 		$(".close-search.close-button").remove();
+		$('#s').val('');
 	}
 	
 	//Reset timer 

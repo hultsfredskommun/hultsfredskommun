@@ -34,10 +34,9 @@
     .dropdown:hover > .dropdown__content--right,
     .dropdown:active > .dropdown__content,
     .dropdown:active > .dropdown__content--left,
-    .dropdown:active > .dropdown__content--right,
-    .dropdown:focus > .dropdown__content,
-    .dropdown:focus > .dropdown__content--left,
-    .dropdown:focus > .dropdown__content--right {
+    .dropdown > .dropdown__content.active,
+    .dropdown > .dropdown__content--left.active,
+    .dropdown > .dropdown__content--right.active {
         display: block;
     }
     

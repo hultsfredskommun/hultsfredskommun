@@ -96,12 +96,15 @@
 		@extend .default-text;
 		padding: $base-spacing-unit/8 $base-spacing-unit/4;
 	}
+	.current-category-ancestor a:focus,
 	.current-category-ancestor a:hover,
+	.current-menu-item a:focus,
 	.current-menu-item a:hover {
 		text-decoration: none;
 	}
 	.current-category-ancestor a,
 	.current-menu-item a {
+		@extend .font-weight-bold;
 		@extend .border-default-menu--bottom;
 	}
 
@@ -124,6 +127,8 @@
 	.menu-item {
 		border-left: 3px solid white;
 	}
+	a:focus,
+	&:focus a:focus,
 	a:hover,
 	&:hover a:hover,
 	.current-category-ancestor a,

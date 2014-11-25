@@ -51,6 +51,9 @@
 	@extend .desk-one-quarter;
 	@extend .lap-one-quarter;
 	@extend .palm-six-tenths;
+	a:focus, a:active {
+		outline: auto;
+	}
 }
 
 /* SEARCH */

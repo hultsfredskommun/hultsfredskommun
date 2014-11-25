@@ -201,6 +201,10 @@ article.post {
 			}*/
 		}
 	}
+	.thanks-message {
+		@extend .beta;
+		@extend .font-weight-bold;
+	}
 }
 .map_link {
 	@extend .cursor-pointer;
@@ -300,16 +304,23 @@ article.single .map_canvas {
 .slide, .slide img {
 	@extend .one-whole;
 }
-.pager {
-	@extend .nav;
-	@extend .nav--block;
+.pager-wrapper {
 	@extend .position-absolute--bottom-left;
 	@extend .islet;
 	@extend .flush--bottom;
 	z-index: 100;
+}
+.pager {
+	@extend .nav;
+	@extend .nav--block;
+	@extend .flush--bottom;
+	float: left;
 	.activeSlide {
 		@extend .white;
 	}
+}
+.pager-pause {
+	float: left;
 }
 /*
 @include media-query(palm) {

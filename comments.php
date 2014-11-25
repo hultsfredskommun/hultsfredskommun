@@ -14,7 +14,7 @@
 ?>
 <?php if ( $_REQUEST["thanks"] == get_the_ID()) : ?>
 
-	<div id="comment" >
+	<div id="comment" class="thanks-message" >
 		Tack f&ouml;r ditt meddelande.
 	</div>
 

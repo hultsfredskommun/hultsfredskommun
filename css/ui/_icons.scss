@@ -174,6 +174,15 @@
 		background-position: -238px -130px;
 	}
 }
+.pause-icon {
+	@extend .hand;
+	@extend .clip_20x20;
+	@extend .half-margin--left;
+	background-position: -334px -130px;
+	&.paused {
+		background-position: -334px -95px;
+	}
+}
 
 .left-icon,
 .left-icon.gray {
@@ -222,6 +231,7 @@
 .dropdown-icon.up.white {
 	background-position: -57px -10px;
 }
+
 .category-tools .dropdown-icon,
 .top-menu .dropdown-icon {
 	background-position: -55px -30px;
