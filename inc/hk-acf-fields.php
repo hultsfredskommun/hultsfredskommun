@@ -878,6 +878,16 @@ if(function_exists("register_field_group"))
 				'default_value' => '',
 				'formatting' => 'none',
 			),
+			array (
+				'key' => 'field_52243a0577dd8',
+				'label' => 'Text som syns om sidan inte skickar vidare.',
+				'name' => 'hk_redirect_text',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+
 		),
 		'location' => 
 		array (

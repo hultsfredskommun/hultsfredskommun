@@ -1685,38 +1685,56 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 			$views_options = get_option('views_options');
 			$where = '';
 			$output = '';
+			
+			// remove hidden posts
+			$hidden_cat = "";
+			if ($default_settings["hidden_cat"] != "") {
+				$hidden_cat = $default_settings["hidden_cat"];
+			}
+			$ignore_hidden = " NOT IN (SELECT p3.ID FROM $wpdb->posts as p3 
+			     LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
+			     WHERE r3.term_taxonomy_ID = '$hidden_cat') ";
+			//$ignore_hidden = "";
+			// if specific mode 
 			if(!empty($mode) && $mode != 'both') {
 				$where = "post_type = '$mode'";
 			} else {
 				$where = '1=1';
 			}
+			
+			
 			$largest_count = -1;
 //			$most_viewed = $wpdb->get_results("SELECT DISTINCT $wpdb->posts.*, (meta_value+0) AS views FROM $wpdb->posts 
 //LEFT JOIN $wpdb->postmeta ON $wpdb->postmeta.post_id = $wpdb->posts.ID WHERE post_date < '".current_time('mysql')."' 
 //AND $where AND post_status = 'publish' AND meta_key = 'views' AND post_password = '' ORDER BY views DESC LIMIT $limit");
-			$most_viewed = $wpdb->get_results("select * from
+			
+			
+			
+			
+			$sql = "select * from
 				(
-					SELECT DISTINCT $wpdb->posts.*, CAST(meta_value-" . $default_settings["sticky_number"] . " AS signed) as views FROM $wpdb->posts, $wpdb->postmeta 
-				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
+					SELECT DISTINCT p1.*, CAST(meta_value-" . $default_settings["sticky_number"] . " AS signed) as views FROM $wpdb->posts as p1, $wpdb->postmeta as pm1
+				WHERE p1.ID = pm1.post_id 
 				AND post_date < '".current_time('mysql')."'
 				AND meta_key='views' 
 				AND meta_value>=" . $default_settings["sticky_number"] . " 
 				AND post_status = 'publish'
-				AND $where
-				ORDER BY meta_value DESC LIMIT $limit ) as t1
+				AND $where AND p1.ID $ignore_hidden
+				ORDER BY views DESC LIMIT $limit ) as t1
 				union
 				(
-					SELECT DISTINCT $wpdb->posts.*, CAST(meta_value AS signed) as views FROM  $wpdb->posts, $wpdb->postmeta 
-				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
+					SELECT DISTINCT p2.*, CAST(meta_value AS signed) as views FROM  $wpdb->posts as p2, $wpdb->postmeta as pm1
+				WHERE p2.ID = pm1.post_id 
 				AND post_date < '".current_time('mysql')."'
 				AND meta_key='views' 
 				AND meta_value<" . $default_settings["sticky_number"] . " 
 				AND post_status = 'publish'
-				AND $where
-				ORDER BY meta_value DESC LIMIT $limit )
-
-				ORDER BY views DESC LIMIT $limit");
-
+				AND $where AND p2.ID $ignore_hidden
+				ORDER BY views DESC LIMIT $limit )
+				ORDER BY views DESC LIMIT $limit 
+";
+			$most_viewed = $wpdb->get_results($sql);
+			
 			if($most_viewed) {
 				foreach ($most_viewed as $post) {
 					$post_views = intval($post->views);
