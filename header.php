@@ -55,7 +55,14 @@ else {
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-
+<?php if (!is_single() && $hk_options["meta_description"] != "") {
+	$meta_description = $hk_options["meta_description"];
+} else if (is_single() && get_the_ID() > 0) {
+	$meta_description = substr( strip_tags(get_post_field('post_content', get_the_ID())), 0, 200);
+} 
+if ($meta_description != "") :?>
+<meta name="description" content="<?php echo $meta_description; ?>" />
+<?php endif; ?>
 <?php /* SET VIEWPORT */ ?>
 <meta name="viewport" content="width=device-width" />
 

@@ -104,6 +104,9 @@ function hk_theme_options_do_page() {
 
 			<hr/><h2>Meddelande</h2>
 			<a name="meddelande"></a>
+			<h3>Google search description</h3>
+			<p><label for="hk_theme[meta_description]">Meta description</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[meta_description]"><?php echo $options['meta_description']; ?></textarea></p>
+
 			<h3>Meddelande vid 404</h3>
 			<p><label for="hk_theme[404title]">Titel</label><br/><input size="80" type="text" name="hk_theme[404title]" value="<?php echo $options['404title']; ?>" /></p>
 			<p><label for="hk_theme[404message]">Meddelande</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[404message]"><?php echo $options['404message']; ?></textarea></p>
