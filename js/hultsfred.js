@@ -553,10 +553,10 @@ function readMoreToggle(el){
 			}
 
 			// set click action on content header tools
-			if (addthis !== undefined) {
+			if (typeof addthis != "undefined") {
 				addthis.toolbox('.addthis_toolbox');
 			}
-			if (rspkr !== undefined) {
+			if (typeof rspkr != "undefined") {
 				rspkr.ui.addClickEvents();
 			}
 			
