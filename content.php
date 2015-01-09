@@ -60,8 +60,8 @@ $classes .= ($external_blog)?" externalblog":"";
 				</div><!-- .summary-content -->
 
 			</div><!-- .content-wrapper -->
-			<?php require("inc/hk-aside-content.php"); ?>
-			<?php require("inc/single_footer_content.php"); ?>
+			<?php //require("inc/hk-aside-content.php"); ?>
+			<?php //require("inc/single_footer_content.php"); ?>
 		</div>
 		</div>
 		<span class='hidden article_id'><?php the_ID(); ?></span>

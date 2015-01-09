@@ -141,6 +141,8 @@ function hk_theme_options_do_page() {
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
 			
+			<p><label for="hk_theme[show_most_viewed_in_cat]">Visa antal mest bes&ouml;kta artiklar p&aring; ing&aring;ngssidor. (Tom eller noll f&ouml;r att d&ouml;lja.)</label><br/><input type="text" name="hk_theme[show_most_viewed_in_cat]" value="<?php echo (!isset($options["show_most_viewed_in_cat"]) || $options["show_most_viewed_in_cat"] == "")?1:$options['show_most_viewed_in_cat']; ?>" /></p>
+				
 			<p><label for="hk_theme[startpage_cat]">Välj kategori som är startsida.</label><br/>
 							<?php 
 				$args = array(

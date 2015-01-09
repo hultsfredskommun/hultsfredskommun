@@ -1,5 +1,40 @@
 <?php
 
+			
+/** 
+ * Description: Echo post count
+ *  */
+
+function hk_postcount() {
+	global $wp_query, $paged;
+	if ($wp_query->post_count > 1 || $wp_query->max_num_pages > 1) {
+
+		if ($wp_query->max_num_pages > $paged && $wp_query->max_num_pages > 1) {
+			$url = next_posts(0,false);
+			$class = "";
+		}
+		else {
+			$url = "";
+			$class = "nolink";
+		}
+		echo "<a class='$class float--right' href='$url'>Visar " . $wp_query->post_count;
+		if ($wp_query->max_num_pages > 1) {
+			echo " av " . $wp_query->found_posts;
+		}
+		if ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1) 
+			echo " artikel";
+		else
+			echo " artiklar";
+		if ($wp_query->max_num_pages > 1) {
+			if ($paged == 0) { $p = 1; } else { $p = $paged; }
+			echo " | Sida " . $p . " av " . $wp_query->max_num_pages . "";
+		}
+		echo "</a>";
+		
+	}
+}
+
+	
 /** 
  * Description: Echo navigation
  *  */

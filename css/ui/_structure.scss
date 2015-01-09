@@ -70,13 +70,21 @@ html {
 	max-width: $desk-wide-start - $half-spacing-unit;
 }
 }
-
+@include media-query(desk) {
+.small-content--center {
+	margin: 0 auto;
+	max-width: $desk-start - $half-spacing-unit;
+}
+}
 .branding {
 	@extend .one-whole;
 }
 .menu-wrapper,
-.main {
+.home .main {
 	@extend .content--center;
+}
+.main {
+	@extend .small-content--center;
 }
 .main-wrapper {
 	@extend .gw;

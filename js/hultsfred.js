@@ -226,7 +226,7 @@ if (typeof $.fn.googlemaplink != 'function') {
 					// google analytics
 					push_google_analytics("#googlemap=" + address + " " + coordinates);
 
-					$(".contact-popup.box").prepend("<div class='close-contact close-button'></div>");
+					$(".contact-popup.box").prepend("<div class='close-contact close-popup'></div>");
 					$(".close-contact").unbind("click").bind("click",function() {
 						$(".contact-popup").remove();
 					});
@@ -456,18 +456,18 @@ function readMoreToggle(el){
 						
 						
 					//add close-button at top
-					var closea = $("<a>").addClass('js-close-button button top').attr("href","#").html("St&auml;ng").unbind("click").bind("click",function(ev){
+					var closea = $("<a>").addClass('js-close-button close-link').attr("href","#").html("<span class='close-icon'></span>St&auml;ng").unbind("click").bind("click",function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(this).parents("article").find(".more-content > .entry-title").append(closea);
+					$(this).parents("article").find(".header-tools .close-button-item").append(closea);
 
 					//add close-button at bottom
-					var closeb = $('<div>').addClass('js-close-button closeButton button bottom').html("<a href='#'>St&auml;ng</a>").unbind("click").bind("click",function(ev){
+					var closeb = $('<a>').addClass('js-close-button close-link').attr("href","#").html("<span class='close-icon'></span>St&auml;ng").unbind("click").bind("click",function(ev){
 						ev.preventDefault();
 						readMoreToggle( $(this).parents("article").find(".entry-title a") );
 					});
-					$(this).parents("article").append(closeb);
+					$(this).parents("article").find(".entry-meta").append(closeb);
 
 					// articles slideshow
 					$(this).slideshow();					
@@ -551,6 +551,25 @@ function readMoreToggle(el){
 					$('div.wpcf7 > form').wpcf7InitForm();
 				}
 			}
+
+			// set click action on content header tools
+			if (addthis !== undefined) {
+				addthis.toolbox('.addthis_toolbox');
+			}
+			if (rspkr !== undefined) {
+				rspkr.ui.addClickEvents();
+			}
+			
+			$(this).parents("article").find(".js-toggle-dropdown").unbind("click").bind("click",function(ev) {
+				ev.preventDefault();
+				if ($(this).next().is(":visible")) {
+					$(this).next().fadeOut();
+				}
+				else {
+					$(".js-toggle-dropdown").next().fadeOut();
+					$(this).next().fadeIn();
+				} 
+			});
 
 			// google analytics
 			$(this).parents("article").find(".entry-title a").push_google_analytics();
@@ -860,14 +879,21 @@ $(document).ready(function(){
 		$(".page-header").hide();
 	}*/
 
-
 	/**
-	 * tabs action
+	 * set click action on content header tools
 	 */
-	if (typeof $.fn.tabs == 'function') {
-		$(".js-tabs").removeClass("hidden").tabs();
-	}
+	$(".js-toggle-dropdown").unbind("click").bind("click",function(ev) {
+		ev.preventDefault();
+		if ($(this).next().is(":visible")) {
+			$(this).next().fadeOut();
+		}
+		else {
+			$(".js-toggle-dropdown").next().fadeOut();
+			$(this).next().fadeIn();
+		} 
+	});
 
+	
 	
 	
 	/**
@@ -1075,7 +1101,7 @@ $(document).ready(function(){
 				}
 				$(".form-popup.overlay").hide();
 				$(".hk-gcse-ajax-searchresults-wrapper").hide();
-				$(".close-search.close-button").remove();
+				$(".js-close-search").remove();
 				$('#s').val('');
 				break;			
 			case 116: 
@@ -1391,7 +1417,7 @@ var hkDoSearch = function(e) {
 	
 	if ($('#s').val().length == 0 || (key == 27)) {
 		$(".hk-gcse-ajax-searchresults-wrapper").hide();
-		$(".close-search.close-button").remove();
+		$(".js-close-search").remove();
 		$('#s').val('');
 	}
 	
@@ -1406,16 +1432,16 @@ var hkDoSearch = function(e) {
 var hkSearch = function() {
 	if ($('#s').val().length == 0) {
 		$(".hk-gcse-ajax-searchresults-wrapper").hide();
-		$(".close-search.close-button").remove();
+		$(".js-close-search").remove();
 	}
 	else {
 		$(".hk-gcse-ajax-searchresults-wrapper").show();
 
-		if ($(".close-search.close-button").length == 0) {
-			$(".hk-gcse-ajax-searchresults-wrapper").prepend("<div class='close-search close-button'></div>");
+		if ($(".js-close-search").length == 0) {
+			$(".hk-gcse-ajax-searchresults-wrapper").prepend("<div class='js-close-search close-search close-popup'></div>");
 			$(".close-search").unbind("click").bind("click",function() {
 				$(".hk-gcse-ajax-searchresults-wrapper").hide();
-				$(".close-search.close-button").remove();
+				$(".js-close-search").remove();
 			});
 		}
 		
@@ -1483,25 +1509,7 @@ function erase_and_refocus_on_search_input()
  * article actions to be set when ready and when dynamic loading 
  */
 function setArticleActions(el) {
-
-	/* add print dialog */
-	$("article .side-content").find(".tool-line.print").unbind("click").bind("click",function(ev) {
-		if ($(this).parents("body").hasClass("single")) {
-			ev.preventDefault();
-			window.print();
-		}
-	});
 	
-		
-	/*$(el).find(".js-read-click").unbind("click").bind("click",function(ev) {
-		ev.preventDefault();
-		$(this).parent().next().find(".readspeaker_toolbox").fadeToggle();
-	});*/
-	/* add AddThis onclick */
-	/*$(el).find(".js-friend-click").unbind("click").bind("click",function(ev) {
-		ev.preventDefault();
-		$(this).parent().next().find(".addthis_toolbox").fadeToggle();
-	});*/
 
 	//sets click-action on entry-titles
 	$(el).find('.js-toggle-article').unbind("click").bind("click",function(ev){
@@ -1585,8 +1593,8 @@ function contactAction(el,ev) {
 				push_google_analytics(thepage);
 			}
 
-			$(this).find(".entry-wrapper").before("<div class='close-contact close-button'></div>");
-			$(".close-contact").unbind("click").bind("click",function() {
+			$(this).find(".entry-wrapper").before("<div class='js-close-contact close-contact close-popup'></div>");
+			$(".js-close-contact").unbind("click").bind("click",function() {
 				$(".contact-popup").remove();
 			});
 			/* load google maps */

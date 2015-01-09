@@ -1,408 +1,5 @@
 <?php 
 
-/* 
- * OLD!! QUICK MENUS AND MOST VISITED 
- */ 
-/*
-class HK_quickmenu extends WP_Widget {
-	protected $vars = array();
-
-	public function __construct() {
-		parent::__construct(
-	 		'HK_quickmenu', // Base ID
-			'HK genv&auml;g widget', // Name
-			array( 'description' => "Widget som visar snabbmeny, senaste och mest bes&ouml;kt fr&aring;n aktiv kategori i flikar" ) // Args
-		);
-
-		$this->vars['posts_per_page'] = '10';
-	}
-
- 	public function form( $instance ) {
-		global $default_settings;
-		if ( isset( $instance[ 'posts_per_page' ] ) ) {
-			$posts_per_page = $instance[ 'posts_per_page' ];
-		} else {
-			$posts_per_page = $this->vars['posts_per_page'];
-		}
-		if ( isset( $instance[ 'show_tags' ] ) ) {
-			$show_tags = $instance[ 'show_tags' ];
-		} else {
-			$show_tags = 1;
-		}
-		if ( isset( $instance[ 'show_widget_in_cat' ] ) ) {
-			$show_widget_in_cat = $instance[ 'show_widget_in_cat' ];
-		} else {
-			$show_widget_in_cat = "";
-		}
-
-		?>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>">Antal poster i senaste och mest bes&ouml;kta:</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name( 'posts_per_page' ); ?>" type="text" value="<?php echo esc_attr( $posts_per_page); ?>" />
-		</p>
-		<?php if ($default_settings["show_tags"] != 0) : ?>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'show_tags' ); ?>">Visa etiketter som flik:</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'show_tags' ); ?>" name="<?php echo $this->get_field_name( 'show_tags' ); ?>" type="text" value="<?php echo esc_attr( $show_tags); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>">Visa bara i kategori (i formen 23,42,19)</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>" name="<?php echo $this->get_field_name( 'show_widget_in_cat' ); ?>" type="text" value="<?php echo esc_attr( $show_widget_in_cat); ?>" />
-		</p>
-
-		<?php endif; ?>
-
-		<?php
-	}
-
-	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['posts_per_page'] = strip_tags( $new_instance['posts_per_page'] );
-		$instance['show_tags'] = strip_tags( $new_instance['show_tags'] );
-		$instance['show_widget_in_cat'] = strip_tags( $new_instance['show_widget_in_cat'] );
-		
-		return $instance;
-	}
-
-	public function widget( $args, $instance ) {
-		global $default_settings;
-	    extract( $args );
-		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
-
-			// get all sub categories to use in queries 
-			$cat = get_query_var("cat");
-			$all_categories = hk_getChildrenIdArray($cat);
-			$all_categories[] = $cat;
-
-			// set number of posts
-			if (isset($instance['posts_per_page']))
-				$this->vars['posts_per_page'] = $instance['posts_per_page'];
-			if (isset($instance['show_tags']))
-				$show_tags = $instance['show_tags'];
-			else
-				$show_tags = $default_settings["show_tags"];
-			
-			// get quickmenu
-			$quickmenu = hk_related_output(false);
-			?>
-		<div id="quickmenus" class="widget  js-tabs  hidden">
-			<ul class="post_tabs_title">
-				<?php if ($quickmenu != "") : ?>
-				<li title="Hitta snabbt"><a href="#quickmenu">Hitta snabbt</a></li>
-				<?php endif; ?>
-				<?php if (function_exists( 'views_orderby' )) : ?>
-				<li title="Popul&auml;ra" class="hide--palm"><a href="#mostvisited">Popul&auml;ra</a></li>
-				<?php endif; ?>
-				<li title="Senaste" class="hide--palm  hide--lap"><a href="#latest">Senaste</a></li>
-				<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
-				<li title="Visa bara"><a href="#onlytag">Visa bara</a></li>
-				<?php endif; ?>
-			</ul>
-			<?php 
-			if ($quickmenu != "") :
-				echo "<div id='quickmenu'>";
-				echo $quickmenu;
-				echo "</div>";
-			endif;
-			?>
-			
-			<?php if ($default_settings["show_tags"] != 0 && $show_tags != 0) : ?>
-			<div id="onlytag">
-				<?php
-				displayTagFilter(false);
-				?>				
-			</div>
-			<?php endif; ?>
-			
-			<?php if (function_exists( 'views_orderby' )) : ?>
-			<div id="mostvisited">
-				<?php
-				if ($all_categories != "") {
-					// Query all posts 
-					$query = array( 'posts_per_page' => $this->vars['posts_per_page'], 
-									'category__in' => $all_categories,
-									'ignore_sticky_posts' => 'true',
-									'meta_key' => 'views', 
-									'orderby' => 'meta_value_num',
-									'order' => 'DESC',
-									) ;
-					
-					query_posts( $query );
-					if ( have_posts() ) : ?>
-					<ul>
-						<?php while ( have_posts() ) : the_post(); ?>
-						<li>
-							<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
-						</li>
-					<?php endwhile; ?>
-					</ul>
-					<?php endif;
-					// Reset Query
-					wp_reset_query(); 				
-				}
-				?>				
-			</div>
-
-			<?php endif; ?>
-			
-			<div id="latest">
-				<?php
-				if ($all_categories != "") {
-					// Query all posts 
-					$query = array( 'posts_per_page' => $this->vars['posts_per_page'], 
-									'category__in' => $all_categories,
-									'ignore_sticky_posts' => 'true',
-									'suppress_filters' => 'true'
-									) ;
-					
-					query_posts( $query );
-					if ( have_posts() ) : ?>
-					<ul>
-						<?php while ( have_posts() ) : the_post(); ?>
-						<li>
-							<a href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss(); ?>"><?php the_title(); ?></a>
-						</li>
-					<?php endwhile; ?>
-					</ul>
-					<?php endif;
-					// Reset Query
-					wp_reset_query();
-				} 				
-				?>				
-			</div>
-			
-		</div>
-	<?php
-		} //end if show in category
-	} //end widget()
-}
-*/
-/* add the widget  */
-//add_action( 'widgets_init', create_function( '', 'register_widget( "HK_quickmenu" );' ) );
-
-
-
-
-
-
-
-/* 
- * OLD!! FIRSTPAGE CONTACT WIDGET 
- */ 
- /*
- class HK_firstpagecontact extends WP_Widget {
-	protected $vars = array();
-
-	public function __construct() {
-		parent::__construct(
-	 		'HK_firstpagecontact', // Base ID
-			'HK f&ouml;rstasidans kontakt', // Name
-			array( 'description' => "Widget som visar kontakt kopplad till aktiv kategori p&aring; startsidan." ) // Args
-		);
-
-	}
-
- 	
- 	public function form( $instance ) {
-	
-		?>
-		<h3>Direktl&auml;nk 1</h3>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link1_title' ); ?>">Namn</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link1_title' ); ?>" name="<?php echo $this->get_field_name( 'direct_link1_title' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link1_title"]); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link1_url' ); ?>">L&auml;nk</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link1_url' ); ?>" name="<?php echo $this->get_field_name( 'direct_link1_url' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link1_url"]); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link1_icon' ); ?>">Ikon</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link1_icon' ); ?>" name="<?php echo $this->get_field_name( 'direct_link1_icon' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link1_icon"]); ?>" />
-		</p>
-
-		<h3>Direktl&auml;nk 2</h3>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link2_title' ); ?>">Namn</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link2_title' ); ?>" name="<?php echo $this->get_field_name( 'direct_link2_title' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link2_title"]); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link2_url' ); ?>">L&auml;nk</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link2_url' ); ?>" name="<?php echo $this->get_field_name( 'direct_link2_url' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link2_url"]); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link2_icon' ); ?>">Ikon</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link2_icon' ); ?>" name="<?php echo $this->get_field_name( 'direct_link2_icon' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link2_icon"]); ?>" />
-		</p>
-
-		<h3>Direktl&auml;nk 3</h3>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link3_title' ); ?>">Namn</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link3_title' ); ?>" name="<?php echo $this->get_field_name( 'direct_link3_title' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link3_title"]); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link3_url' ); ?>">L&auml;nk</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link3_url' ); ?>" name="<?php echo $this->get_field_name( 'direct_link3_url' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link3_url"]); ?>" />
-		</p>
-		<p>
-		<label for="<?php echo $this->get_field_id( 'direct_link3_icon' ); ?>">Ikon</label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'direct_link3_icon' ); ?>" name="<?php echo $this->get_field_name( 'direct_link3_icon' ); ?>" type="text" value="<?php echo esc_attr( $instance["direct_link3_icon"]); ?>" />
-		</p>
-		
-	<?php
-	}
-
-	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['direct_link1_url'] = strip_tags( $new_instance['direct_link1_url'] );
-		$instance['direct_link1_title'] = strip_tags( $new_instance['direct_link1_title'] );
-		$instance['direct_link1_icon'] = $new_instance['direct_link1_icon'];
-		$instance['direct_link2_url'] = strip_tags( $new_instance['direct_link2_url'] );
-		$instance['direct_link2_title'] = strip_tags( $new_instance['direct_link2_title'] );
-		$instance['direct_link2_icon'] = $new_instance['direct_link2_icon'];
-		$instance['direct_link3_url'] = strip_tags( $new_instance['direct_link3_url'] );
-		$instance['direct_link3_title'] = strip_tags( $new_instance['direct_link3_title'] );
-		$instance['direct_link3_icon'] = $new_instance['direct_link3_icon'];
-		return $instance;
-	}
-
-	public function widget( $args, $instance ) {
-	    extract( $args );
-		global $post, $default_settings;
-		$org_post = $post;
-
-		$retValue = "<div class='contact-area widget'>";
-		
-		// set startpage category if on startpage
-		$category_in = array();
-		if (get_query_var("cat") != "") {
-
-			// query arguments
-			$args = array(
-				'posts_per_page' => -1,
-				'paged' => 1,
-				'more' => $more = 0,
-				'post_type' => 'hk_kontakter',
-				'order' => 'ASC', 
-				'suppress_filters' => 1
-			);
-				
-			$args['category__and'] = get_query_var("cat");
-
-			// search in all posts (ignore filters)
-			$the_query = new WP_Query( $args );
-
-			if ($the_query->have_posts())
-			{ 
-				
-				$retValue .= "<aside class='hk_kontakter widget'><div class='contact-wrapper'>";
-				$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings['featured-image'][0]."&amp;h=".($default_settings['featured-image'][1])."'/>";
-				$retValue .= "<div class='content-wrapper'>";
-					
-				// The Loop
-				while ( $the_query->have_posts() ) : $the_query->the_post();
-					
-					$rightcontent = false;
-					if (($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") ||
-						($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") ||
-						($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "")
-						) :
-						$rightcontent = true;
-						$halfcss = "two";
-					endif;
-					// add link and title
-					$retValue .= "<h2 class='entry-title'>";
-					$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>Kontakta "; 
-					$retValue .= get_the_title();
-					$retValue .= "</a>"; 
-					$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
-					$retValue .= "</h2>";
-					
-					$retValue .= "<ul class='left-content  $halfcss'>";
-					
-					// email
-					if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
-						$retValue .= "<li class='hk_contact_emails'><a href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></li>";
-					endwhile; endif;
-
-					// phone
-					if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
-						$number = get_sub_field('number');
-						$link = explode('[',$number,2);
-						if (count($link) > 0) {
-							$link = str_replace(" ","",$link[0]);
-						} else {
-							$link = $number;
-						}
-						$number = str_replace("[","<span class='complement-italic-text'>(", $number);
-						$number = str_replace("]",")</span>", $number);
-
-						$retValue .= "<li class='hk_contact_phones'><a href='tel:$link'>";
-						$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
-						$retValue .= $number . "</a></li>";
-					endwhile; endif;				
-					$retValue .= "<li class='contactlink  js-contact-link'><a href='" . get_permalink(get_the_ID()) . "'>";
-					$retValue .= "fler kontaktuppgifter</a></li>";
-
-					$retValue .= "</ul>";
-					if ($rightcontent) :
-
-						$retValue .= "<ul class='right-content  $halfcss'>";
-						
-						if ($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") :
-							$retValue .= "<li class='direct_link direct_link1'>";
-							$retValue .= "<a href='" . $instance['direct_link1_url'] . "'>";
-							if ($instance['direct_link1_icon'] != "") : $retValue .= $instance['direct_link1_icon']; endif;
-							$title = $instance['direct_link1_title'];
-							$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-							$title = str_replace("]",")</span>", $title);
-							$retValue .= $title . "</a></li>";
-						endif;
-						if ($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") :
-							$retValue .= "<li class='direct_link direct_link2'>";
-							$retValue .= "<a href='" . $instance['direct_link2_url'] . "'>";
-							if ($instance['direct_link2_icon'] != "") : $retValue .=  $instance['direct_link2_icon']; endif;
-							$title = $instance['direct_link2_title'];
-							$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-							$title = str_replace("]",")</span>", $title);
-							$retValue .= $title . "</a></li>";
-						endif;
-						if ($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "") :
-							$retValue .= "<li class='direct_link direct_link3'>";
-							$retValue .= "<a href='" . $instance['direct_link3_url'] . "'>";
-							if ($instance['direct_link3_icon'] != "") : $retValue .= $instance['direct_link3_icon']; endif;
-							$title = $instance['direct_link3_title'];
-							$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-							$title = str_replace("]",")</span>", $title);
-							$retValue .= $title . "</a></li>";
-						endif;
-					
-					
-						$retValue .= "</ul>";
-					endif;
-				endwhile;
-				
-				$retValue .= "</div></div></aside>";
-			}
-			$retValue .= "</div>";
-			
-			// Reset Post Data
-			wp_reset_postdata();
-			wp_reset_query();
-			$post = $org_post;
-			
-
-		}
-			
-		echo $retValue;
-
-	}
-}
-*/
-/* add the widget  */
-//add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpagecontact" );' ) );
-
-
-
 
 
 
@@ -1019,7 +616,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 			if ($instance["popuptext"] != "") {
 				echo "<div class='hidden overlay form-popup popuptext'>";
 					echo "<div class='box form-popup'>";
-						echo "<div class='close-contact close-button'></div>";
+						echo "<div class='close-contact close-popup'></div>";
 						echo "<div class='entry-wrapper'>";
 							echo "<div class='entry-content'>";
 								echo do_shortcode($instance["popuptext"]);
@@ -1681,59 +1278,7 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 		
 		
 			
-			global $wpdb, $default_settings;
-			$views_options = get_option('views_options');
-			$where = '';
-			$output = '';
-			
-			// remove hidden posts
-			$hidden_cat = "";
-			if ($default_settings["hidden_cat"] != "") {
-				$hidden_cat = $default_settings["hidden_cat"];
-			}
-			$ignore_hidden = " NOT IN (SELECT p3.ID FROM $wpdb->posts as p3 
-			     LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
-			     WHERE r3.term_taxonomy_ID = '$hidden_cat') ";
-			//$ignore_hidden = "";
-			// if specific mode 
-			if(!empty($mode) && $mode != 'both') {
-				$where = "post_type = '$mode'";
-			} else {
-				$where = '1=1';
-			}
-			
-			
-			$largest_count = -1;
-//			$most_viewed = $wpdb->get_results("SELECT DISTINCT $wpdb->posts.*, (meta_value+0) AS views FROM $wpdb->posts 
-//LEFT JOIN $wpdb->postmeta ON $wpdb->postmeta.post_id = $wpdb->posts.ID WHERE post_date < '".current_time('mysql')."' 
-//AND $where AND post_status = 'publish' AND meta_key = 'views' AND post_password = '' ORDER BY views DESC LIMIT $limit");
-			
-			
-			
-			
-			$sql = "select * from
-				(
-					SELECT DISTINCT p1.*, CAST(meta_value-" . $default_settings["sticky_number"] . " AS signed) as views FROM $wpdb->posts as p1, $wpdb->postmeta as pm1
-				WHERE p1.ID = pm1.post_id 
-				AND post_date < '".current_time('mysql')."'
-				AND meta_key='views' 
-				AND meta_value>=" . $default_settings["sticky_number"] . " 
-				AND post_status = 'publish'
-				AND $where AND p1.ID $ignore_hidden
-				ORDER BY views DESC LIMIT $limit ) as t1
-				union
-				(
-					SELECT DISTINCT p2.*, CAST(meta_value AS signed) as views FROM  $wpdb->posts as p2, $wpdb->postmeta as pm1
-				WHERE p2.ID = pm1.post_id 
-				AND post_date < '".current_time('mysql')."'
-				AND meta_key='views' 
-				AND meta_value<" . $default_settings["sticky_number"] . " 
-				AND post_status = 'publish'
-				AND $where AND p2.ID $ignore_hidden
-				ORDER BY views DESC LIMIT $limit )
-				ORDER BY views DESC LIMIT $limit 
-";
-			$most_viewed = $wpdb->get_results($sql);
+			$most_viewed = hk_get_most_viewed($mode, $limit);
 			
 			if($most_viewed) {
 				foreach ($most_viewed as $post) {
@@ -1772,7 +1317,6 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 			} else {
 				$output = 'Nothing here..';
 			}
-
 			echo $output;
 
 			
@@ -1839,6 +1383,61 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 
 } // end if Class: WP-PostViews Widget
 
+function hk_get_most_viewed($mode, $limit) {
+	global $wpdb, $default_settings;
+	$where = '';
+	$output = '';
+
+	// remove hidden posts
+	$hidden_cat = "";
+	if ($default_settings["hidden_cat"] != "") {
+		$hidden_cat = $default_settings["hidden_cat"];
+	}
+	$ignore_hidden = " NOT IN (SELECT p3.ID FROM $wpdb->posts as p3 
+		 LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
+		 WHERE r3.term_taxonomy_ID = '$hidden_cat') ";
+	//$ignore_hidden = "";
+	// if specific mode 
+	if(!empty($mode) && $mode != 'both') {
+		$where = "post_type = '$mode'";
+	} else {
+		$where = '1=1';
+	}
+
+
+	$largest_count = -1;
+	//			$most_viewed = $wpdb->get_results("SELECT DISTINCT $wpdb->posts.*, (meta_value+0) AS views FROM $wpdb->posts 
+	//LEFT JOIN $wpdb->postmeta ON $wpdb->postmeta.post_id = $wpdb->posts.ID WHERE post_date < '".current_time('mysql')."' 
+	//AND $where AND post_status = 'publish' AND meta_key = 'views' AND post_password = '' ORDER BY views DESC LIMIT $limit");
+
+
+
+
+	$sql = "select * from
+		(
+			SELECT DISTINCT p1.*, CAST(meta_value-" . $default_settings["sticky_number"] . " AS signed) as views FROM $wpdb->posts as p1, $wpdb->postmeta as pm1
+		WHERE p1.ID = pm1.post_id 
+		AND post_date < '".current_time('mysql')."'
+		AND meta_key='views' 
+		AND meta_value>=" . $default_settings["sticky_number"] . " 
+		AND post_status = 'publish'
+		AND $where AND p1.ID $ignore_hidden
+		ORDER BY views DESC LIMIT $limit ) as t1
+		union
+		(
+			SELECT DISTINCT p2.*, CAST(meta_value AS signed) as views FROM  $wpdb->posts as p2, $wpdb->postmeta as pm1
+		WHERE p2.ID = pm1.post_id 
+		AND post_date < '".current_time('mysql')."'
+		AND meta_key='views' 
+		AND meta_value<" . $default_settings["sticky_number"] . " 
+		AND post_status = 'publish'
+		AND $where AND p2.ID $ignore_hidden
+		ORDER BY views DESC LIMIT $limit )
+		ORDER BY views DESC LIMIT $limit 
+	";
+	$most_viewed = $wpdb->get_results($sql);
+	return $most_viewed;
+}
 
 
 /* TODO cleanup old widgets

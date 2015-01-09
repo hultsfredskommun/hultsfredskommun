@@ -50,46 +50,41 @@
 	vertical-align: middle;
 }
 
-/* aside icons */
-.aside_icon {
+
+
+.header-tool-icon {
 	@extend .clip_16x16;
-	margin-top: 3px;
+	vertical-align: top;
+	margin-right: $half-spacing-unit/2;
 }
+.tool-icon {
+	@extend .header-tool-icon;
+	background-position: -275px -828px;
+}
+.addthis-icon {
+	@extend .header-tool-icon;
+	background-position: -275px -941px;
+}
+.readspeaker-icon {
+	@extend .header-tool-icon;
+	background-position: -275px -884px;
+}
+.close-icon {
+	@extend .header-tool-icon;
+	background-position: -186px -51px;
+}
+
 .contact-icon {
-	@extend .aside_icon;
-	background-position: -26px -229px;
+	@extend .clip_30x30;
+	background-position: -84px -934px;
+	margin-right: $half-spacing-unit;
+	vertical-align: text-top;
 }
-.slideshow-contact-puff-area .contact-icon {
-	@extend .clip_48x48;
-	background-position: -27px -613px;
-}
-.related-file-icon {
-	@extend .aside_icon;
-	background-position: -25px -165px;
-}
-.related-post-icon {
-	@extend .aside_icon;
-	background-position: -26px -198px;
-}
-.related-link-icon {
-	@extend .aside_icon;
-	background-position: -133px -198px;
-}
-.print-icon {
-	@extend .aside_icon;
-	background-position: -26px -263px;
-}
-.speak-icon {
-	@extend .aside_icon;
-	background-position: -27px -305px;
-}
-.friend-icon {
-	@extend .aside_icon;
-	background-position: -29px -422px;
-}
-.edit-icon {
-	@extend .aside_icon;
-	background-position: -25px -94px;
+.related-icon {
+	@extend .clip_30x30;
+	background-position: -28px -879px;
+	margin-right: $half-spacing-unit;
+	vertical-align: text-top;
 }
 
 .home-icon {
@@ -137,9 +132,9 @@
 }
 
 
-.close-button {
-	@extend .clip_20x20;
-	background-position: -183px -49px;
+.close-popup {
+	@extend .clip_30x30;
+	background-position: -136px -10px;
 }
 .totop-icon {
 	@extend .clip_30x30;

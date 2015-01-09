@@ -179,7 +179,7 @@
 	position: relative;
 	width: 95%;
 	margin: 0 auto;
-	.close-search.close-button {
+	/*.close-search.close-popup {
 		@extend .cursor-pointer;
 		@extend .position-absolute;
 		@extend .white-background;
@@ -188,7 +188,7 @@
 		line-height: 0;
 		border-radius: 24px;
 		z-index: 1600;
-	}
+	}*/
 	.hk-gcse-ajax-searchresults {
 		@extend .white-background;
 		@extend .gw;

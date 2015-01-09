@@ -41,6 +41,7 @@ if ( ! isset( $default_settings ) ) {
 								'allow_cookies' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "",
 								'allow_google_analytics' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "" || $hk_options['google_analytics_disable_if_no_cookies'] != "1",
 								'sticky_number' => 1000,
+								'show_most_viewed_in_cat' => $hk_options["show_most_viewed_in_cat"],
 								);
 								
 	/* browser check */
@@ -326,7 +327,7 @@ if (!is_admin()) {
 	wp_enqueue_script(
 		'hultsfred_js',
 		get_template_directory_uri() . '/js/hultsfred.js',
-		array('jquery','jquery-ui-core','jquery-ui-widget','jquery-ui-tabs'),
+		array('jquery','jquery-ui-core','jquery-ui-widget'),
 		HK_VERSION,
 		true
 	);
@@ -681,6 +682,9 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 					$src = str_replace("http://" . $_SERVER['SERVER_NAME'], "", $src);
 					$retValue .= "<div class='slide' $style>";
 					$retValue .= "<img src='$src' alt='$alt' title='$alt' />";
+					if ($title != "") {
+						$retValue .= "<span class='image-title'>$title</span>";
+					}
 					if ($caption != "") {
 						$retValue .= "<span class='image-caption'>Foto: $caption</span>";
 					}
@@ -773,13 +777,13 @@ function get_the_reviewed_date($id) {
 
 	$time = get_post_meta( $id, 'hk_last_reviewed', true );
 	if (isset($time) && $time != "") {
-		$time = "Granskad: <time datetime='$time' class='updated'>" . hk_nicedate($time) . "</time>";
+		$time = "Granskad: <time datetime='$time' class='updated updated-date'>" . hk_theme_nicedate($time) . "</time> (skapad: <span class='created-date'>" . get_the_date() . "</span>)";
 	}
 	return $time;
 }
-if (!function_exists("hk_nicedate")) {
-	function hk_nicedate($time) {
-		$time = date("j F Y" , $time);
+if (!function_exists("hk_theme_nicedate")) {
+	function hk_theme_nicedate($time) {
+		$time = date("j F, Y" , $time);
 		$mo = array('januari' => 'January',
 				'februari' => 'February',
 				'mars' => 'March',
@@ -857,6 +861,19 @@ function is_sub_category_firstpage() {
 		}
 	}
 	return $default_settings["is_sub_category_firstpage"];
+}
+// return true if current category is a sub firstpage, i.e. category level is one above num_levels_in_menu
+function is_sub_sub_category_firstpage() {
+	global $default_settings;
+	if ( !isset($default_settings["is_sub_sub_category_firstpage"]) ) {
+		$cat = get_query_var("cat");
+		if ( isset($cat) && hk_countParents($cat) == $default_settings["num_levels_in_menu"] ) {
+			$default_settings["is_sub_sub_category_firstpage"] = true;
+		} else {
+			$default_settings["is_sub_sub_category_firstpage"] = false;
+		}
+	}
+	return $default_settings["is_sub_sub_category_firstpage"];
 }
 // return number of parents argument $cat has
 function hk_countParents($cat) {

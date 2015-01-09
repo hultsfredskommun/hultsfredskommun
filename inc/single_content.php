@@ -5,13 +5,15 @@
 
 		// featured image ?>
 		<?php
-			$externalclass = "";
+			$options = get_option("hk_theme");
+			
+			$externalclass = "js-toggle-article";
 			if (function_exists("get_field")) { 
 				$href = get_field('hk_external_link_url'); 
 				$name = get_field('hk_external_link_name'); 
 				if (!empty($href))
 				{
-					$externalclass = "js-external-link  ";
+					$externalclass = "js-external-link";
 					$title = "Extern länk till " . the_title_attribute( 'echo=0' );
 				}
 			}
@@ -20,8 +22,9 @@
 				$title = "Länk till " . the_title_attribute( 'echo=0' );
 			}
 
+			require("hk-article-header.php");
 			?>
-			<h1 class="entry-title"><a class="<?php echo $externalclass; ?>js-toggle-article" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+			<h1 class="entry-title"><a class="<?php echo $externalclass; ?> article-title" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 			<?php 
 				if (get_post_meta( get_the_ID(), "local_script", true ) != "") { 
 					echo get_post_meta( get_the_ID(), "local_script", true );
@@ -57,6 +60,6 @@
 			</div><!-- .content -->
 			
 
-			<?php //require("hk-aside-content.php"); ?>
+			<?php require("hk-aside-content.php"); ?>
 			
-			<?php //require("single_footer_content.php"); ?>
+			<?php require("single_footer_content.php"); ?>

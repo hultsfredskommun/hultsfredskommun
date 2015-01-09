@@ -5,8 +5,49 @@
 
 		global $default_settings;
 		
-		if (!is_sub_category_firstpage()) :
+		if (!is_sub_category_firstpage()) : ?>
+			<?php 
 			if ($cat != "") : 
+				/* view most viewed if is sub sub category firstpage and theme setting is set */
+				if (function_exists("hk_get_most_viewed") && $default_settings["show_most_viewed_in_cat"] > 0 && is_sub_sub_category_firstpage()) :
+					$most_viewed = hk_get_most_viewed('post', $default_settings["show_most_viewed_in_cat"]);
+				
+					if($most_viewed) {
+						$output .= "<div class='most-viewed-posts-wrapper'>";
+						foreach ($most_viewed as $post) {							
+							$post_title = get_the_title($post);
+							if($chars > 0) {
+								$post_title = snippet_text($post_title, $chars);
+							}
+							$post_excerpt = views_post_excerpt($post->post_excerpt, $post->post_content, $post->post_password, 30);
+							
+							$output .= "<div class='most-viewed-post'>";
+							$thumb = hk_get_the_post_thumbnail(get_the_ID(),'thumbnail-image', false, false); 
+							if ($thumb != "") :
+								$output .= $thumb;
+							else : /* else default thumb; */
+								$options = get_option("hk_theme");
+								$src = $options["default_thumbnail_image"]; 
+								if (!empty($src)) :
+								$output .= "<div class='img-wrapper '><div><img class='slide' src='$src' alt='Standardbild' title='Standardbild'></div></div>";
+							endif; endif;
+
+					
+							$output .= "<a class='$class views-cloud-item' href='" . get_permalink($post) . "' title='$post_excerpt'>";
+							$output .= $post_title;
+							$output .= "</a></div>";
+						}
+						$output .= "</div>";
+					} else {
+						$output = '';
+					}
+					echo $output;
+				endif; //endif show most viewed
+			
+			
+			
+			
+			
 				/* check if there are posts to be hidden */
 				$args = array(	'posts_per_page' => -1,
 								'category__and' => array($cat),
@@ -63,7 +104,7 @@
 			endif; // end if cat is set
 			
 	?>
-	<div id="breadcrumb" class="<?php echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":""; ?>breadcrumb"><?php hk_breadcrumb(); ?></div>
+	<div id="breadcrumb" class="<?php echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":""; ?>breadcrumb"><?php hk_breadcrumb(); ?><?php hk_postcount() ?></div>
 	<?php endif; // end if !is_sub_category_firstpage ?>
 
 	<div id="primary" class="primary">
@@ -77,7 +118,7 @@
 	?>
 	<div id="content" role="main">
 
-	<?php if ($wp_query->post_count > 1 || $wp_query->max_num_pages > 1) : ?>
+	<?php if (false): //REMOVED 20141223 ($wp_query->post_count > 1 || $wp_query->max_num_pages > 1) : ?>
 		<header class="page-header">
 			
 			<ul class="num-posts">
@@ -106,7 +147,7 @@
 				?>
 			</ul>
 				<?php //echo "<pre>"; print_r($wp_query); echo "</pre>"; ?>
-
+			
 			<ul class="category-tools">
 				<?php $related_output = hk_related_output(true); 
 				$taglist = displayTagFilter(false, "sub-menu", false); ?>
@@ -128,6 +169,7 @@
 				if( function_exists('displaySortOrderButtons') ){
 					displaySortOrderButtons();
 				} 
+				
 			?>
 
 		</header>

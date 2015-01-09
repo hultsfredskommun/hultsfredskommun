@@ -1,25 +1,32 @@
 /* category structure */
 .breadcrumb {
-	@extend .g;
-	@extend .palm-one-whole;
-	@extend .lap-three-quarters;
-	@extend .desk-three-quarters;
-	
 	@extend .milli;
 //	@extend .hidden--desk;
 //	@extend .hidden--lap;
-	padding-bottom: $base-spacing-unit*0.25;
-	padding-left: $base-spacing-unit*1.5;
+	padding-bottom: $base-spacing-unit;
+	padding-left: $base-spacing-unit;
 }
 .one_article.breadcrumb {
 	padding-left: $base-spacing-unit;
 }
 
-.primary {
+.most-viewed-posts-wrapper .most-viewed-post {
+	@extend .gw;
+	@extend .palm-one-whole;
+	@extend .lap-one-third;
+	@extend .desk-one-third;
+	.image-title,
+	.image-caption {
+		@extend .hidden;
+	}
+}
+.most-viewed-posts-wrapper,
+.primary,
+.breadcrumb {
 	@extend .g;
 	@extend .palm-one-whole;
-	@extend .lap-three-quarters;
-	@extend .desk-three-quarters;
+	@extend .lap-two-thirds;
+	@extend .desk-two-thirds;
 }
 .help-navigation {
 	@extend .float--left;

@@ -162,11 +162,12 @@
 .img-wrapper {
 	line-height: 0;
 }
+.summary-content .image-title,
 .summary-content .image-caption {
 	@extend .hidden;
 }
 .slideshow {
-	@extend .margin--bottom;
+	margin-bottom: $base-spacing-unit * 2;
 	.slideshow_bg {
 		@extend .one-whole;
 	}
@@ -176,8 +177,16 @@
 			@extend .one-whole;
 			border-right: 1px solid white;
 		}
+		
 		.image-caption {
 			@extend .float--right;
+		}
+		.image-title {
+			@extend .float--left;
+		}
+		
+		.image-title,
+		.image-caption {
 			@extend .milli;
 			color: #888;
 			font-style: italic;
