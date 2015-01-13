@@ -7,7 +7,7 @@
 			<a class="toggle-tool js-toggle-dropdown"><span class="readspeaker-icon"></span>Lyssna</a>
 			<ul class="dropdown">			 
 				<li class="readspeaker">
-				<div id="readspeaker_button1" class="readspeaker_toolbox rs_skip rsbtn rs_preserve">
+				<div id="readspeaker_button1" class="readspeaker_toolbox rs_skip rsbtn rs_preserve rsbtn_compactskin">
 					<a class="rsbtn_play" accesskey="L" title="Lyssna p&aring; artikel" href="http://app.eu.readspeaker.com/cgi-bin/rsent?customerid=<?php echo $options['readspeaker_id']; ?>&amp;lang=sv_se&amp;readid=content-<?php the_ID(); ?>&amp;url=<?php the_permalink(); ?>">
 					<span class="rsbtn_left rsimg rspart"><span class="rsbtn_text"><span>Lyssna</span></span></span>
 					<span class="rsbtn_right rsimg rsplay rspart"></span></a>

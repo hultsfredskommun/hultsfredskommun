@@ -8,43 +8,6 @@
 		if (!is_sub_category_firstpage()) : ?>
 			<?php 
 			if ($cat != "") : 
-				/* view most viewed if is sub sub category firstpage and theme setting is set */
-				if (function_exists("hk_get_most_viewed") && $default_settings["show_most_viewed_in_cat"] > 0 && is_sub_sub_category_firstpage()) :
-					$most_viewed = hk_get_most_viewed('post', $default_settings["show_most_viewed_in_cat"]);
-				
-					if($most_viewed) {
-						$output .= "<div class='most-viewed-posts-wrapper'>";
-						foreach ($most_viewed as $post) {							
-							$post_title = get_the_title($post);
-							if($chars > 0) {
-								$post_title = snippet_text($post_title, $chars);
-							}
-							$post_excerpt = views_post_excerpt($post->post_excerpt, $post->post_content, $post->post_password, 30);
-							
-							$output .= "<div class='most-viewed-post'>";
-							$thumb = hk_get_the_post_thumbnail(get_the_ID(),'thumbnail-image', false, false); 
-							if ($thumb != "") :
-								$output .= $thumb;
-							else : /* else default thumb; */
-								$options = get_option("hk_theme");
-								$src = $options["default_thumbnail_image"]; 
-								if (!empty($src)) :
-								$output .= "<div class='img-wrapper '><div><img class='slide' src='$src' alt='Standardbild' title='Standardbild'></div></div>";
-							endif; endif;
-
-					
-							$output .= "<a class='$class views-cloud-item' href='" . get_permalink($post) . "' title='$post_excerpt'>";
-							$output .= $post_title;
-							$output .= "</a></div>";
-						}
-						$output .= "</div>";
-					} else {
-						$output = '';
-					}
-					echo $output;
-				endif; //endif show most viewed
-			
-			
 			
 			
 			
@@ -105,6 +68,17 @@
 			
 	?>
 	<div id="breadcrumb" class="<?php echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":""; ?>breadcrumb"><?php hk_breadcrumb(); ?><?php hk_postcount() ?></div>
+
+	
+	<?php 
+	if ($default_settings["show_quick_links_in_subsubcat"] > 0 && is_sub_sub_category_firstpage()) :
+		echo hk_view_quick_links();
+	endif; //endif show most viewed ?>
+
+	<?php if ($default_settings["show_most_viewed_in_subsubcat"] > 0 && is_sub_sub_category_firstpage()) :
+		echo hk_view_most_viewed_posts();
+	endif; //endif show most viewed ?>
+
 	<?php endif; // end if !is_sub_category_firstpage ?>
 
 	<div id="primary" class="primary">
@@ -120,7 +94,6 @@
 
 	<?php if (false): //REMOVED 20141223 ($wp_query->post_count > 1 || $wp_query->max_num_pages > 1) : ?>
 		<header class="page-header">
-			
 			<ul class="num-posts">
 				<?php
 					if ($wp_query->max_num_pages > $paged && $wp_query->max_num_pages > 1) {
@@ -173,35 +146,39 @@
 			?>
 
 		</header>
-	<?php endif; ?>
+	<?php endif; // end hidden ?>
 		
 	<?php
 		/**
 		 * Default order in orderby no set
 		 */
-		$shownPosts = array();
-		if ($cat != "") : 
-			if ( have_posts() ) : while ( have_posts() ) : the_post();
-				//echo get_field('hk_hide_from_category'); 
-				//echo "-";
-				/*echo get_post_meta(get_the_ID(),'views',true); 
-				if (is_sticky())
-					echo "sticky";*/
-				if ($wp_query->post_count == 1 && $wp_query->max_num_pages == 1)
-					get_template_part( 'content', 'single' );
-				else
-					get_template_part( 'content', get_post_type() );
-				$shownPosts[] = get_the_ID();
-			endwhile; endif;
-		endif;
-		
-		
-		hk_content_nav( 'nav-below' );
+		if ($default_settings["hide_articles_in_subsubcat"] != 1 || !is_sub_sub_category_firstpage()) :
 
-		/* help text if nothing is found */
-		if (empty($shownPosts)) {
-			hk_empty_navigation();
-		} ?>
+			$shownPosts = array();
+			if ($cat != "") : 
+				if ( have_posts() ) : while ( have_posts() ) : the_post();
+					//echo get_field('hk_hide_from_category'); 
+					//echo "-";
+					/*echo get_post_meta(get_the_ID(),'views',true); 
+					if (is_sticky())
+						echo "sticky";*/
+					if ($wp_query->post_count == 1 && $wp_query->max_num_pages == 1)
+						get_template_part( 'content', 'single' );
+					else
+						get_template_part( 'content', get_post_type() );
+					$shownPosts[] = get_the_ID();
+				endwhile; endif;
+			endif;
+			
+			
+			hk_content_nav( 'nav-below' );
+
+			/* help text if nothing is found */
+			if (empty($shownPosts)) {
+				hk_empty_navigation();
+			} 
+		endif;
+		?>
 
 	</div><!-- #content -->
 

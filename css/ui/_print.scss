@@ -18,9 +18,19 @@
 #comment-side-tab,
 #colophon,
 #scrollTo_top,
-.important-widget
+.important-widget,
+.content-header,
+.side-content .contact-icon,
+.side-content .related-icon
 {
 	display: none;
 }
-
+.article-border-wrapper {
+	border: 0;
+	box-shadow: none;
+}
+.side-content .contact_title.title,
+.side-content .related_title.title {
+	color: black;
+}
 }

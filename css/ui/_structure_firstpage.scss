@@ -287,7 +287,11 @@
 			}
 			.main-contact-link {
 				@extend .float--left;
-				line-height: 48px;
+				line-height: 36px;
+				margin-bottom: $half-spacing-unit/2;
+				@include media-query(desk) {
+					margin-bottom: $half-spacing-unit;
+				}
 				&:hover {
 					text-decoration: underline;
 				}

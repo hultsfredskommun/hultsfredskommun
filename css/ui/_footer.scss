@@ -3,8 +3,8 @@
 	@extend .margin--top;
 }
 .footer-wrapper.footer-widget-wrapper {
-	//@extend .gray-light-background;
-	@extend .gray-image-background;
+	@extend .gray-light-background;
+	//@extend .gray-image-background;
 }
 
 .footer2-wrapper,
@@ -78,7 +78,7 @@
 	}
 }
 /* hk view widget */
-.views-cloud-item {
+.colophon .views-cloud-item {
 	margin-right: $half-spacing-unit;
 	display: block;
 	&.large {

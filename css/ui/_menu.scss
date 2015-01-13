@@ -112,7 +112,7 @@
 .main-sub-menu {
 	
 	@extend .gray-light-background;
-	@extend .border-radius;
+	//@extend .border-radius;
 	margin-bottom: $base-spacing-unit*1.5;
 	a {
 		@extend .gamma;
@@ -125,7 +125,7 @@
 		border-left: 0;
 	}
 	.menu-item {
-		border-left: 3px solid white;
+	//	border-left: 3px solid white;
 	}
 	a:focus,
 	&:focus a:focus,
@@ -133,7 +133,7 @@
 	&:hover a:hover,
 	.current-category-ancestor a,
 	.current-menu-item a {
-		@extend .border-radius;
+		//@extend .border-radius;
 	}
 	.current-category-ancestor a,
 	.current-menu-item a {
@@ -172,13 +172,13 @@
 			/*margin: 0 $half-spacing-unit $half-spacing-unit 0;*/
 			margin: 0 3px 3px 0;
 			a {
-				border-radius: $border-radius;
-				background-image: url(../images/spr_bgButtons.png);
+				//border-radius: $border-radius;
+				//background-image: url(../images/spr_bgButtons.png);
 				background-position: 0 0;
-				border: 1px solid $gray-color;
+				//border: 1px solid $gray-color;
 			}
 			&.current-menu-item a {
-				border: 1px solid #666;
+				//border: 1px solid #666;
 			}
 		}
 		white-space: normal;

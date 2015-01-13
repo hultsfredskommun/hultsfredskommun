@@ -25,7 +25,191 @@ if(function_exists("register_field_group"))
 	/*******
 	 * POST
 	 *******/
-	 
+	
+/* POST RELATED */
+	register_field_group(array (
+		'id' => '5048edc031cee',
+		'title' => 'Snabbl&auml;nkar',
+		'fields' => 
+		array (
+			0 => 
+			array (
+				'key' => 'field_5048ad53aaeee',
+				'label' => 'Snabbl&auml;nkar',
+				'name' => 'hk_quick',
+				'type' => 'flexible_content',
+				'instructions' => '',
+				'required' => '0',
+				'layouts' => 
+				array (
+					0 => 
+					array (
+						'label' => 'Inlägg',
+						'name' => 'hk_quick_posts',
+						'display' => 'table',
+						'sub_fields' => 
+						array (
+							0 => 
+							array (
+								'label' => 'Inlägg',
+								'name' => 'hk_quick_post',
+								'type' => 'post_object',
+								'post_type' => 
+								array (
+									0 => 'post',
+								),
+								'taxonomy' => 
+								array (
+									0 => 'all',
+								),
+								'allow_null' => '0',
+								'multiple' => '0',
+								'key' => 'field_5048afeeeebee',
+								'order_no' => '0',
+							),
+							1 => 
+							array (
+								'label' => 'Beskrivning',
+								'name' => 'hk_quick_post_description',
+								'type' => 'textarea',
+								'default_value' => '',
+								'formatting' => 'br',
+								'key' => 'field_5048afee75bee',
+								'order_no' => '1',
+							),
+							2 => 
+							array (
+								'key' => 'field_5048db469ffee',
+								'label' => 'Bild',
+								'name' => 'hk_quick_image',
+								'type' => 'image',
+								'save_format' => 'object',
+								'preview_size' => 'thumbnail',
+								'order_no' => '0',
+							),
+						),
+					),
+					1 => 
+					array (
+						'label' => 'Extern länk',
+						'name' => 'hk_quick_links',
+						'display' => 'table',
+						'sub_fields' => 
+						array (
+							0 => 
+							array (
+								'label' => 'Namn',
+								'name' => 'hk_quick_link_name',
+								'type' => 'text',
+								'default_value' => '',
+								'formatting' => 'none',
+								'key' => 'field_5048afee75345',
+								'order_no' => '0',
+							),
+							1 => 
+							array (
+								'label' => 'Länk',
+								'name' => 'hk_quick_link_url',
+								'type' => 'text',
+								'default_value' => '',
+								'formatting' => 'none',
+								'key' => 'field_5048afee75346',
+								'order_no' => '1',
+							),
+							2 => 
+							array (
+								'label' => 'Beskrivning',
+								'name' => 'hk_quick_link_description',
+								'type' => 'textarea',
+								'default_value' => '',
+								'formatting' => 'br',
+								'key' => 'field_5048afee75347',
+								'order_no' => '2',
+							),
+							3 => 
+							array (
+								'key' => 'field_5048db469ffef',
+								'label' => 'Bild',
+								'name' => 'hk_quick_image',
+								'type' => 'image',
+								'save_format' => 'object',
+								'preview_size' => 'thumbnail',
+								'order_no' => '0',
+							),
+						),
+					),
+					2 => 
+					array (
+						'label' => 'Filer',
+						'name' => 'hk_quick_files',
+						'display' => 'table',
+						'sub_fields' => 
+						array (
+							0 => 
+							array (
+								'label' => 'Fil',
+								'name' => 'hk_quick_file',
+								'type' => 'file',
+								'save_format' => 'id',
+								'key' => 'field_6048afee75dee',
+								'order_no' => '0',
+							),
+							1 => 
+							array (
+								'label' => 'Beskrivning',
+								'name' => 'hk_quick_file_description',
+								'type' => 'textarea',
+								'default_value' => '',
+								'formatting' => 'br',
+								'key' => 'field_5048afee75dee',
+								'order_no' => '1',
+							),
+							2 => 
+							array (
+								'key' => 'field_5048db469ffff',
+								'label' => 'Bild',
+								'name' => 'hk_quick_image',
+								'type' => 'image',
+								'save_format' => 'object',
+								'preview_size' => 'thumbnail',
+								'order_no' => '0',
+							),
+						),
+					),
+					
+				),
+				
+				'button_label' => 'Lägg till fil',
+				'order_no' => '0',
+			),
+		),
+		'location' => 
+		array (
+			'rules' => 
+			array (
+				0 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'hk_quick',
+					'order_no' => '0',
+				),
+			),
+			'allorany' => 'any',
+		),
+		'options' => 
+		array (
+			'position' => 'normal',
+			'layout' => 'default',
+			'hide_on_screen' => 
+			array (
+			),
+		),
+		'menu_order' => 3,
+	));
+	
+	
+	
 	/* POST RELATED */
 	register_field_group(array (
 		'id' => '5048edc031ca0',
@@ -76,7 +260,7 @@ if(function_exists("register_field_group"))
 								'formatting' => 'br',
 								'key' => 'field_5048afee75bfd',
 								'order_no' => '1',
-							),
+							),	
 						),
 					),
 					1 => 

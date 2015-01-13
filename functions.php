@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "1.1");
+define("HK_VERSION", "1.2");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -41,9 +41,11 @@ if ( ! isset( $default_settings ) ) {
 								'allow_cookies' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "",
 								'allow_google_analytics' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "" || $hk_options['google_analytics_disable_if_no_cookies'] != "1",
 								'sticky_number' => 1000,
-								'show_most_viewed_in_cat' => $hk_options["show_most_viewed_in_cat"],
+								'show_most_viewed_in_subsubcat' => $hk_options["show_most_viewed_in_subsubcat"],
+								'show_quick_links_in_subsubcat' => $hk_options["show_quick_links_in_subsubcat"],
+								'hide_articles_in_subsubcat' => $hk_options["hide_articles_in_subsubcat"],
 								);
-								
+
 	/* browser check */
 	$ua = $_SERVER["HTTP_USER_AGENT"];
 	$default_settings["msie"] = (strpos($ua, 'MSIE') === true) ? true : false; // All Internet Explorer
@@ -69,6 +71,9 @@ require( get_template_directory() . '/inc/hk-contacts.php' );
 
 // Grab hk related.
 require( get_template_directory() . '/inc/hk-related.php' );
+
+// Grab hk quick.
+require( get_template_directory() . '/inc/hk-quick.php' );
 
 // Grab hk push.
 //require( get_template_directory() . '/inc/hk-push.php' );
@@ -659,11 +664,11 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 	global $default_settings;
 	$retValue = "";
 	/* check if ACF is enabled and if field hk_featured_images exists */
-	if( function_exists("get_field") && get_field('hk_featured_images') ) :
+	if( function_exists("get_field") && get_field('hk_featured_images', $id) ) :
 		if ($showAll) { $slideshowclass = "slideshow"; }
 		$countSlides = 0;
 		$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
-		while( has_sub_field('hk_featured_images') && ($showAll || $countSlides == 0)) : // only once if not showAll
+		while( has_sub_field('hk_featured_images', $id) && ($showAll || $countSlides == 0)) : // only once if not showAll
 			$image = get_sub_field('hk_featured_image');
 			$src = $image["sizes"][$thumbsize];
 			$title = $image["title"];
@@ -1475,4 +1480,49 @@ function hk_search_hook_func(){
 }
 add_action('wp_ajax_hk_search_hook', 'hk_search_hook_func'); 
 add_action('wp_ajax_nopriv_hk_search_hook', 'hk_search_hook_func'); 
+
+
+
+/* return current categories most viewed posts (only works if post count plugin is enabled) */
+function hk_view_most_viewed_posts() {
+	global $default_settings;
+	
+	/* view most viewed if is sub sub category firstpage and theme setting is set */
+	$most_viewed = hk_get_most_viewed('post', $default_settings["show_most_viewed_in_subsubcat"]);
+
+	if($most_viewed) {
+		$output .= "<div class='most-viewed-posts-wrapper'>";
+		$output .= "<div class='most-viewed-posts'>";
+		foreach ($most_viewed as $post) {
+			
+			$post_title = get_the_title($post);
+			if($chars > 0) {
+				$post_title = snippet_text($post_title, $chars);
+			}
+			$post_excerpt = views_post_excerpt($post->post_excerpt, $post->post_content, $post->post_password, 30);
+			
+			$output .= "<div class='most-viewed-post'>";
+			$thumb = hk_get_the_post_thumbnail($post->ID, 'thumbnail-image', false, false); 
+			$output .= "<a class='$class views-cloud-item' href='" . get_permalink($post) . "' title='$post_excerpt'>";
+			
+			if ($thumb != "") :
+				$output .= $thumb;
+			else : /* else default thumb; */
+				$options = get_option("hk_theme");
+				$src = $options["default_thumbnail_image"]; 
+				if (!empty($src)) :
+				$output .= "<div class='img-wrapper '><div><img class='slide' src='$src' alt='Standardbild' title='Standardbild'></div></div>";
+			endif; endif;
+
+	
+			$output .= $post_title;
+			$output .= "</a></div>";
+		}
+		$output .= "</div>";
+		$output .= "</div>";
+	} else {
+		$output = '';
+	}
+	return $output;
+}
 ?>

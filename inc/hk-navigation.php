@@ -6,7 +6,7 @@
  *  */
 
 function hk_postcount() {
-	global $wp_query, $paged;
+	global $wp_query, $paged, $default_settings;
 	if ($wp_query->post_count > 1 || $wp_query->max_num_pages > 1) {
 
 		if ($wp_query->max_num_pages > $paged && $wp_query->max_num_pages > 1) {
@@ -17,20 +17,21 @@ function hk_postcount() {
 			$url = "";
 			$class = "nolink";
 		}
-		echo "<a class='$class float--right' href='$url'>Visar " . $wp_query->post_count;
-		if ($wp_query->max_num_pages > 1) {
-			echo " av " . $wp_query->found_posts;
-		}
-		if ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1) 
-			echo " artikel";
-		else
-			echo " artiklar";
-		if ($wp_query->max_num_pages > 1) {
-			if ($paged == 0) { $p = 1; } else { $p = $paged; }
-			echo " | Sida " . $p . " av " . $wp_query->max_num_pages . "";
-		}
-		echo "</a>";
-		
+		if ($default_settings["hide_articles_in_subsubcat"] != 1  || !is_sub_sub_category_firstpage()) :
+			echo "<a class='$class float--right' href='$url'>Visar " . $wp_query->post_count;
+			if ($wp_query->max_num_pages > 1) {
+				echo " av " . $wp_query->found_posts;
+			}
+			if ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1) 
+				echo " artikel";
+			else
+				echo " artiklar";
+			if ($wp_query->max_num_pages > 1) {
+				if ($paged == 0) { $p = 1; } else { $p = $paged; }
+				echo " | Sida " . $p . " av " . $wp_query->max_num_pages . "";
+			}
+			echo "</a>";
+		endif;
 	}
 }
 
@@ -351,7 +352,7 @@ function hk_navigation() {
 			'hierarchical'       => true,
 			'title_li'           => '',
 			'show_option_none'   => '',
-			'echo'               => 1,
+			'echo'               => 0,
 			'depth'              => 3,
 			'taxonomy'           => 'category',
 			'exclude'			 => $default_settings["hidden_cat"],
@@ -359,12 +360,14 @@ function hk_navigation() {
 			'current_category'	 => $category
 		);
 		//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($category) . "</a>";
-		echo "<ul class='parent'>"; 
 		$p = get_the_category_by_ID($sub_parent);
-		if (!empty($p))
-			echo "<li class='heading cat-item $sub_parent current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='".get_category_link($sub_parent)."'>".$p."</a></li>";
-		wp_list_categories( $args );
-		echo "</ul>"; 
+		$categories = wp_list_categories( $args );
+		if (!empty($categories)) {
+			echo "<ul class='parent'>"; 
+			if (!empty($p))
+				echo "<li class='heading cat-item $sub_parent current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='".get_category_link($sub_parent)."'>".$p."</a></li>";
+			echo "</ul>"; 
+		}
 		//print_r($all_categories);
 		//print_r($category_hierarchy);
 		//print_r($rest_categories);
@@ -389,10 +392,7 @@ function hk_navigation() {
 	// if in category
 	else if ($cat != "") {
 	
-		if ($tags != "" && function_exists('displayTagFilter') ){
-			displayTagFilter();
-		}
-		if ($tags == "" && function_exists('displayTagFilter') ){
+		if ($tags == ""){
 
 			$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
 			$currentparent = $cat;
@@ -433,11 +433,9 @@ function hk_navigation() {
 	
 	
 	// if in tag
-	else if ($tags != "") {
-		if( function_exists('displayTagFilter') ){
-			displayTagFilter();
-		}
-
+	if ($tags != "" || is_single()) {
+		displayTagFilter();
+		
 		//echo "<a class='dropdown-nav'>Etiketter</a>";
 		$hk_cat_walker = new hk_Category_Walker();
 		$parentCat = hk_getMenuParent($cat);
