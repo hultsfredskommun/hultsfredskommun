@@ -374,7 +374,7 @@ function hk_get_the_contact($args = array()) {
 	}
 
 	foreach($default as $key => $value) {
-		$hidden[$key] = ($value)?"visible":"hidden";
+		$hidden[$key] = ($value)?"visible":"hidden rs_skip";
 	}
 	if (!function_exists("get_field")) 
 		return "You need the Advanced Custom Field plugin for the contact to work properly.";
@@ -404,7 +404,7 @@ function hk_get_the_contact($args = array()) {
 			$retValue .= get_the_title();
 			if ($default['title_link']) { 
 				$retValue .= "</a>"; 
-				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
+				$retValue .= "<span class='rs_skip hidden contact_id'>" . get_the_ID() . "</span>";
 			}
 			$retValue .= "</".$default["heading_element"].">";
 			
@@ -457,7 +457,7 @@ function hk_get_the_contact($args = array()) {
 	
 		// position
 		if (!empty($contact_position) && $coordinates != "") :
-			$retValue .= "<div class='side-map " . $hidden['map'] . "'><div class='map_canvas'>[Karta <span class='coordinates'>" . $coordinates . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div></div>";
+			$retValue .= "<div class='side-map " . $hidden['map'] . "'><div class='map_canvas'>[Karta <span class='coordinates rs_skip'>" . $coordinates . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div></div>";
 		endif;
 		
 

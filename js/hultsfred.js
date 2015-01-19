@@ -552,6 +552,16 @@ function readMoreToggle(el){
 				}
 			}
 
+			//set fast-links to related and contact
+			if ($(el).parents("article").find(".contact_title").length > 0)
+			{
+				$(el).parents("article").find(".js-quick-link.contact").removeClass("force-hidden");
+			}
+			if ($(el).parents("article").find(".related_title").length > 0)
+			{
+				$(el).parents("article").find(".js-quick-link.related").removeClass("force-hidden");
+			}
+
 			// set click action on content header tools
 			if (typeof addthis != "undefined") {
 				addthis.toolbox('.addthis_toolbox');
@@ -624,7 +634,7 @@ var oldWidth; //used to check if window-width have changed
 
 // reset opened articles when history back button
 $(window).on("popstate", function(e) {
-	if (window.history.state == null) {
+	if (window.history.state == null && location.hash == "") {
 		closeAllArticles();
 	}
 });
@@ -878,6 +888,18 @@ $(document).ready(function(){
 		readMoreToggle($('.archive').find("article .entry-title a"));
 		$(".page-header").hide();
 	}*/
+
+	/**
+	 * set quick-links to related and contact
+	 */
+	if ($(".contact_title").length > 0)
+	{
+		$(".js-quick-link.contact").removeClass("force-hidden");
+	}
+	if ($(".related_title").length > 0)
+	{
+		$(".js-quick-link.related").removeClass("force-hidden");
+	}
 
 	/**
 	 * set click action on content header tools
@@ -1523,7 +1545,7 @@ function setArticleActions(el) {
 	
 	
 	//triggers articles click-action entry-title clicked
-	$(el).find(".summary-content .entry-content").unbind("click").bind("click",function(){
+	$(el).find(".summary-content .entry-content, .summary-content .img-wrapper").unbind("click").bind("click",function(){
 		if ($(this).parents("article").find('.entry-title a').hasClass('js-toggle-article')) {
 			readMoreToggle( $(this).parents("article").find('.entry-title a') );
 		}
@@ -1534,6 +1556,7 @@ function setArticleActions(el) {
 	$(el).find(".js-contact-link").each(function() {
 		setContactPopupAction($(this));
 	});
+	
 	
 	//google analytics
 	$(el).find(".related_link a").each(function() {

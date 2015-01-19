@@ -24,6 +24,14 @@
 
 			require("hk-article-header.php");
 			?>
+			<div class="quick-links">
+				<span class="contact quick-link js-quick-link force-hidden">
+					<a class="contact-icon icon" href="#quick-contact-<?php the_ID(); ?>"></a>
+				</span>
+				<span class="related quick-link js-quick-link force-hidden">
+					<a class="related-icon icon" href="#quick-related-<?php the_ID(); ?>"></a>
+				</span>
+			</div>
 			<h1 class="entry-title"><a class="<?php echo $externalclass; ?> article-title" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 			<?php 
 				if (get_post_meta( get_the_ID(), "local_script", true ) != "") { 

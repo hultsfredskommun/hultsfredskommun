@@ -27,10 +27,9 @@ global $default_settings;
 						'map' => false,
 						'title_link' => false)); ?>
 				</div><!-- .summary-content -->
-
 			</div><!-- .content-wrapper -->
 			<?php require("inc/single_footer_content.php"); ?>
 		</div>
 		</div>
-		<span class='hidden article_id'><?php the_ID(); ?></span>
+		<span class='rs_skip hidden article_id'><?php the_ID(); ?></span>
 	</article><!-- #post-<?php the_ID(); ?> -->

@@ -8,6 +8,7 @@
 	
 	<?php if( function_exists("get_field") && get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
 	<ul class="box top contacts">
+		<a name="quick-contact-<?php the_ID(); ?>"></a>
 		<li class="contact_title title">
 			<span class="contact-icon"></span><span>Kontakt</span>
 		</li>			 
@@ -24,38 +25,36 @@
 				</div>
 				<?php else : ?>
 				<?php if (get_field('hk_contact_titel',$value->ID)) : ?>
-				<div class="title-content">
+				<span class="title-content">
 					<?php echo get_field('hk_contact_titel',$value->ID); ?>
-				</div>
+				</span>
 				<?php endif; endif; ?>
-			<span class="contact_id hidden"><?php echo $value->ID; ?></span></div></li>
+			<span class="rs_skip contact_id hidden"><?php echo $value->ID; ?></span></div></li>
 		<?php endwhile; ?>
 	</ul>
 	<?php endif; ?>
 	<?php //print_r($post); ?>
 	<?php if ( get_post_type() == "attachment" ) : // if view of attachment ?>
-	<div class="box related">
-		<ul class="related-wrapper">
-			<li class="aside-list-item related_file">
-				<a target="_blank" href="<?php echo wp_get_attachment_url(get_the_ID()); ?>" title="Direktl&auml;nk till filen<?php //echo get_the_content(); ?>"><?php the_title(); ?></a>
-			</li>
-		</ul>
-	</div>
+	<ul class="box related">
+		<li class="aside-list-item related_file">
+			<a target="_blank" href="<?php echo wp_get_attachment_url(get_the_ID()); ?>" title="Direktl&auml;nk till filen<?php //echo get_the_content(); ?>"><?php the_title(); ?></a>
+		</li>
+	</ul>
 	<?php endif; ?>
 
 	<?php if ( function_exists("get_field") && get_field('hk_related') ) : // related docs and links ?>
-	<div class="box related">
-		<ul class="related-wrapper">
-
+	<ul class="box related">
+		
 
 		<?php $first_sub_field = true; ?>
+		<?php $first_title_field = true; ?>
 		<?php while ( has_sub_field('hk_related') ) : ?>
 			<?php if ( $first_sub_field && (get_row_layout() != 'hk_related_titles' ) ) : ?>
 				<li class="related_title title full">
+					<a name="quick-related-<?php the_ID(); ?>"></a>
 					<span class="related-icon"></span><span>Se &auml;ven</span>
 				</li>
 			<?php endif; ?>
-			<?php $first_sub_field = false;	?>
 			<?php if (!$summary || $count++ < 2) : ?>
 				<?php if ( get_row_layout() == 'hk_related_posts' ) : ?>
 					<li class="aside-list-item related_page">
@@ -98,15 +97,19 @@
 					<?php $title = get_sub_field('hk_related_title'); 
 						$title = str_replace("-"," ",ucwords($title));
 					?>
+					<?php if ($first_sub_field) : ?>
+						<a name="quick-related-<?php the_ID(); ?>"></a>							
+					<?php else : ?>
+						</li></ul><ul class="box related">
+					<?php endif; ?>
 					<li class="related_title title">
 						<span class="related-icon"></span><span><?php echo $title; ?></span>
 					</li>			 
 				<?php endif; ?> 
 			<?php endif; ?> 
-			
+			<?php $first_sub_field = false;	?>
 		<?php endwhile; ?>
-		</ul>
-	</div>
+	</ul>
 	
 	<?php if (function_exists("get_field")) { $contact_position = get_field("hk_position"); } ?>
 	<?php // position

@@ -671,9 +671,10 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 		while( has_sub_field('hk_featured_images', $id) && ($showAll || $countSlides == 0)) : // only once if not showAll
 			$image = get_sub_field('hk_featured_image');
 			$src = $image["sizes"][$thumbsize];
+			$caption = $image["caption"];
 			$title = $image["title"];
 			$alt = $image["alt"];
-			$caption = get_field("source",$image["id"]);
+			$source = get_field("source",$image["id"]);
 			
 			if ($alt == "") {
 				$alt = $title;
@@ -687,11 +688,11 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 					$src = str_replace("http://" . $_SERVER['SERVER_NAME'], "", $src);
 					$retValue .= "<div class='slide' $style>";
 					$retValue .= "<img src='$src' alt='$alt' title='$alt' />";
-					if ($title != "") {
-						$retValue .= "<span class='image-title'>$title</span>";
-					}
 					if ($caption != "") {
-						$retValue .= "<span class='image-caption'>Foto: $caption</span>";
+						$retValue .= "<span class='image-title'>$caption</span>";
+					}
+					if ($source != "") {
+						$retValue .= "<span class='image-caption'>Foto: $source</span>";
 					}
 					$retValue .= "</div>";
 					$countSlides++;

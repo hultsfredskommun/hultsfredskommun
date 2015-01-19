@@ -6,6 +6,16 @@
 		@extend .complement-italic-text;
 		padding-bottom: 0;
 	}
+	.title-content {
+		@extend .complement-italic-text;
+	}
+}
+.single-hk_kontakter .type-hk_kontakter {
+	@extend .one-whole;
+	display: inline-block;	
+}
+.single-hk_kontakter .type-hk_kontakter .hk_kontakter {
+	@extend .half-margin;
 }
 
 
@@ -134,6 +144,7 @@ article.post {
 					@extend .nav;
 					@extend .nav--block;
 					@extend .nav--block-half-margin;
+					@extend .flush--bottom;
 					.item {
 						@extend .position-relative;
 						a {
@@ -168,6 +179,29 @@ article.post {
 			.side-content {
 				@extend .half-padding--left;
 				@extend .half-padding--right;
+			}
+			.entry-title {
+				width: auto;
+				display: inline;
+				float: left;
+			}
+			.quick-links {
+				@extend .float--right;
+				.quick-link {
+					@extend .border-radius;
+					display: inline-block;
+					margin: $half-spacing-unit/4 $half-spacing-unit $half-spacing-unit 0;
+					padding: $half-spacing-unit/4;
+				}
+				.icon {
+					margin-right: 0;
+				}
+				.related {
+					@extend .related-background;
+				}
+				.contact {
+					@extend .contact-background;
+				}
 			}
 			.content {
 				a {
@@ -239,6 +273,9 @@ article.post {
 				/*a {
 					@extend .font-weight-normal;
 				}*/
+			}
+			#comments {
+				@extend .half-margin;
 			}
 			.close-link {
 				
@@ -332,7 +369,7 @@ article.post {
 	@extend .one-quarter;
 	@extend .margin--right;
 }
-.single-content .entry-title {
+.post .entry-title {
 	@include font-size(26px);
 }
 .entry-title .dropdown-icon {
@@ -378,12 +415,14 @@ article.single .map_canvas {
 
 /* aside content */
 .side-content { 
-	padding-top: 22px;
 	ul li {
 		@extend .cf;
 	}
+	.contacts {
+		margin-top: 0;
+	}
 	.contacts,
-	.related-wrapper,
+	.related,
 	.tools {
 		@extend .nav;
 		@extend .nav--stacked;
@@ -392,9 +431,22 @@ article.single .map_canvas {
 		@extend .flush--bottom;
 	}
 
-	.title.contact_title {
-		@extend .contact-background;
-		@extend .white-text;
+	ul {
+		@extend .border-radius;
+		@extend .half-margin--top;
+		@extend .margin--bottom;
+		@extend .half-padding--bottom;
+
+		&.contacts {
+			background: $main-lightest-color;
+			.title.contact_title {
+				@extend .contact-background;
+				@extend .white-text;
+			}
+		}
+		&.related {
+			background: $related-lightest-color;
+		}
 	}
 	.aside-list-item {
 		@extend .half-margin--left;
@@ -405,9 +457,8 @@ article.single .map_canvas {
 		@extend .half-padding--bottom;
 		@extend .related-background;
 		@extend .half-padding--left;
-		@extend .half-margin--top;
 		@extend .half-margin--bottom;
-		@extend .border-radius;
+		@extend .border-radius--top;
 		@extend .beta;
 		line-height: 0;
 	}

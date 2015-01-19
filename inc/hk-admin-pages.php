@@ -68,6 +68,7 @@ function hk_save_post($postID) {
  */
 function hk_add_review_metabox() {
     add_meta_box( 'custom-metabox', "Granska", 'hk_review_metabox', 'post', 'side', 'high' );
+    add_meta_box( 'custom-metabox', "Granska", 'hk_review_metabox', 'hk_kontakter', 'side', 'high' );
 }
 // echo review meta box with settings for is reviewed and when review next time
 function hk_review_metabox() {
