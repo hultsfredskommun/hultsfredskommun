@@ -325,7 +325,7 @@ if(function_exists("register_field_group"))
 								'type' => 'textarea',
 								'default_value' => '',
 								'formatting' => 'br',
-								'key' => 'field_5048afee75d93',
+								'key' => 'field_5048afee75d94',
 								'order_no' => '1',
 							),
 						),
