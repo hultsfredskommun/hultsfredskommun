@@ -140,6 +140,7 @@ article.post {
 			.content-header { 
 				@extend .gray-light-background;
 				@extend .default-light-text;
+				@extend .half-margin--bottom;
 				.header-tools {
 					@extend .nav;
 					@extend .nav--block;
@@ -181,6 +182,8 @@ article.post {
 				@extend .half-padding--right;
 			}
 			.entry-title {
+				@include font-size(26px);
+				line-height: 1.1em;
 				width: auto;
 				display: inline;
 				float: left;
@@ -190,7 +193,7 @@ article.post {
 				.quick-link {
 					@extend .border-radius;
 					display: inline-block;
-					margin: $half-spacing-unit/4 $half-spacing-unit $half-spacing-unit 0;
+					margin: 0 $half-spacing-unit $half-spacing-unit/4 0;
 					padding: $half-spacing-unit/4;
 				}
 				.icon {
@@ -353,10 +356,7 @@ article.post {
 	@extend .one-quarter;
 }
 @include media-query(portable) {
-/*.archive .img-wrapper,
-.single .img-wrapper {
-	padding-right: $half-spacing-unit;
-}*/
+
 }
 .content {
 	@extend .float--left;
@@ -370,7 +370,7 @@ article.post {
 	@extend .margin--right;
 }
 .post .entry-title {
-	@include font-size(26px);
+	
 }
 .entry-title .dropdown-icon {
 	margin-left: 4px;
