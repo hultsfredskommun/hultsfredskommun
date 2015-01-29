@@ -161,6 +161,7 @@ article.post {
 						margin: 0;
 						padding: $half-spacing-unit;
 						list-style-type: none;
+						z-index: 100;
 						a {
 							@extend .float--left;
 						}
@@ -210,6 +211,15 @@ article.post {
 			.content {
 				a {
 					border-bottom: 1px dotted $main-color;
+				}
+				.contact-wrapper {
+					.entry-title {
+						float: none;
+						padding: 0;
+					}
+					.img-wrapper {
+						padding: 0;
+					}
 				}
 			}
 		}
