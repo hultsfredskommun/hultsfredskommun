@@ -11,7 +11,7 @@
 }
 
 .clip {
-	background-image: url("../images/icons/ikoner.svg");
+	background-image: url("../images/icons/ikoner.svg?version=1.3");
 	display: inline-block;
 }
 .clip_48x48 {
@@ -83,6 +83,18 @@
 .related-icon {
 	@extend .clip_30x30;
 	background-position: -28px -879px;
+	margin-right: $half-spacing-unit;
+	vertical-align: text-top;
+}
+.contact-small-icon {
+	@extend .clip_20x20;
+	background-position: -63px -1060px;
+	margin-right: $half-spacing-unit;
+	vertical-align: text-top;
+}
+.related-small-icon {
+	@extend .clip_20x20;
+	background-position: -63px -1024px;
 	margin-right: $half-spacing-unit;
 	vertical-align: text-top;
 }

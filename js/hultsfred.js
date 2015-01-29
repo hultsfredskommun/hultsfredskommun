@@ -552,15 +552,8 @@ function readMoreToggle(el){
 				}
 			}
 
-			//set fast-links to related and contact
-			if ($(el).parents("article").find(".contact_title").length > 0)
-			{
-				$(el).parents("article").find(".js-quick-link.contact").removeClass("force-hidden");
-			}
-			if ($(el).parents("article").find(".related_title").length > 0)
-			{
-				$(el).parents("article").find(".js-quick-link.related").removeClass("force-hidden");
-			}
+			//set quick-links to related and contact
+			setQuickLinks($(el).parents("article"));
 
 			// set click action on content header tools
 			if (typeof addthis != "undefined") {
@@ -892,14 +885,7 @@ $(document).ready(function(){
 	/**
 	 * set quick-links to related and contact
 	 */
-	if ($(".contact_title").length > 0)
-	{
-		$(".js-quick-link.contact").removeClass("force-hidden");
-	}
-	if ($(".related_title").length > 0)
-	{
-		$(".js-quick-link.related").removeClass("force-hidden");
-	}
+	setQuickLinks($(document));
 
 	/**
 	 * set click action on content header tools
@@ -1530,6 +1516,22 @@ function erase_and_refocus_on_search_input()
 /**
  * article actions to be set when ready and when dynamic loading 
  */
+ 
+function setQuickLinks(el) {
+
+	if ($(el).find(".contact_title").length > 0)
+	{
+		$(el).find(".js-quick-link.contact").removeClass("force-hidden");
+	}
+	if ($(el).find(".related_title").length > 0)
+	{
+		$(el).find(".js-quick-link.related").removeClass("force-hidden");
+	}
+	$(el).find(".js-quick-link a").click(function(ev) {
+		ev.preventDefault();
+		$("html,body").animate({scrollTop: -30 + $("[name='"+$(this).attr("href").substring(1)+"']").position().top - ($('#wpadminbar').height() || 0)}, 200);
+	});
+}
 function setArticleActions(el) {
 	
 

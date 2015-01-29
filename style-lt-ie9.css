@@ -1,6 +1,6 @@
 /* sprite png */
-.clip, .clip_48x48, .info-icon, .clip_30x30, .totop-icon, .scrolltotop a, .clip_24x24, .viewmode_titles, .viewmode_summary, .clip_20x20, .navigation-icon, .category-navigation .tag-icon, .cat-icon, .delete-icon, .decoration-icon, .close-button, .home .tag-icon, .pager-icon, .menu-icon, .search-icon, .clip_16x16, .aside_icon, .contact-icon, .related-file-icon, .related-post-icon, .related-link-icon, .print-icon, .speak-icon, .friend-icon, .edit-icon, .clip_12x12, .left-icon, .right-icon, .dropdown-icon, .searchnavigation .submit {
-	background-image: url("images/icons/ikoner.png");
+.clip,.clip_48x48,.info-icon,.clip_30x30,.contact-icon,.related-icon,.close-popup,.totop-icon,.scrolltotop a,.clip_24x24,.viewmode_titles,.viewmode_summary,.clip_20x20,.contact-small-icon,.related-small-icon,.navigation-icon,.category-navigation .cat-icon,.category-navigation .tag-icon,.cat-icon,.delete-icon,.decoration-icon,.decoration-icon.gray,.decoration-icon.white,.pager .decoration-icon.activeSlide,.home .white.tag-icon,.home .pager .tag-icon.activeSlide,.pager .home .tag-icon.activeSlide,.home .tag-icon,.pager-icon,.pause-icon,.menu-icon,.search-icon,.clip_16x16,.header-tool-icon,.tool-icon,.addthis-icon,.readspeaker-icon,.close-icon,.home-icon,.rss-icon,.clip_12x12,.left-icon,.left-icon.gray,.right-icon,.right-icon.gray,.category-tools .tag-menu .dropdown-icon,.dropdown-icon,.dropdown-icon.black,.searchnavigation .submit {
+	background-image: url("images/icons/ikoner.png?version=1.3");
 }
 /* hide */
 .logo2,
