@@ -20,9 +20,9 @@
 				
 				<?php $alt_title = get_sub_field('hk_contact_extra',get_the_ID());
 				if (!empty($alt_title)) : ?>
-				<div class="content">
+				<span class="title-content">
 					<?php echo $alt_title; ?>
-				</div>
+				</span>
 				<?php else : ?>
 				<?php if (get_field('hk_contact_titel',$value->ID)) : ?>
 				<span class="title-content">
