@@ -256,6 +256,7 @@ article.post {
 			.optional-text {
 				@extend .half-padding;
 				@extend .border-radius;
+				@extend .margin--bottom;
 				background: $gray-light-color;
 				p:last-child {
 					@extend .flush--bottom;
