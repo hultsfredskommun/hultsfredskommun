@@ -22,7 +22,7 @@
 			<?php echo get_the_author(); ?></a></span> <?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
 			<li class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></li>
 
-			<li class="permalink">Direktl&auml;nk: <a href="<?php echo get_permalink(); ?>" title='Direktl&auml;nk till denna artikel'><?php echo get_permalink(); ?></a></li>
+			<li class="permalink">Direktl&auml;nk: <a href="<?php echo get_permalink(); ?>" title='Direktl&auml;nk till artikel'><?php echo get_permalink(); ?></a></li>
 
 
 		</ul>
