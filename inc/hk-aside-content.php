@@ -16,7 +16,7 @@
 		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
 			<li class="aside-list-item contact-wrapper">
 				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>
-				<div class="contact-<?php echo $value->ID; ?>"><a class="js-contact-link" href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a>
+				<div class="contact-<?php echo $value->ID; ?>"><a class="js-contact-link" href="<?php echo get_permalink($value->ID); ?>" title='Mer kontaktinformation f&ouml;r <?php echo $value->post_title; ?>'><?php echo $value->post_title; ?></a>
 				
 				<?php $alt_title = get_sub_field('hk_contact_extra',get_the_ID());
 				if (!empty($alt_title)) : ?>
