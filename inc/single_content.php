@@ -42,13 +42,7 @@
 				echo hk_get_the_post_thumbnail(get_the_ID(),'featured-image');
 			?>
 		
-			<?php
-			if (function_exists("get_field")) { $optionaltext = get_field('hk_optional_text'); }
-			if (isset($optionaltext) && $optionaltext != "") : ?>
-				<div class="misc-ctrl">
-					<div class='optional-area'><?php echo $optionaltext; ?></div>
-				</div><!-- .misc-ctrl -->
-			<?php endif; ?>
+			
 		
 			<div id="content-<?php the_ID(); ?>" class="content">
 				<?php

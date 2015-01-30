@@ -255,10 +255,11 @@ article.post {
 			}
 			.optional-text {
 				@extend .half-padding;
-				@extend .margin--bottom;
 				@extend .border-radius;
-				@extend .complement-background;
-				@extend .white-text;
+				background: $gray-light-color;
+				p:last-child {
+					@extend .flush--bottom;
+				}
 			}
 		}
 		@include media-query(desk) {
