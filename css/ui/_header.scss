@@ -269,6 +269,9 @@
 		}
 		.contact-wrapper {
 			@extend .padding--bottom;
+			a.contactlink {
+				text-decoration: underline;
+			}
 		}
 	}
 	.search-title {
