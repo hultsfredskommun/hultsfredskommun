@@ -78,6 +78,7 @@ html {
 }
 .branding {
 	@extend .one-whole;
+	@extend .float--left;
 }
 .menu-wrapper,
 .home .main {
