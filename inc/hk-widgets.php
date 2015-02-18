@@ -229,6 +229,12 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		if ( isset( $instance[ 'show_more_link' ] ) ) { $show_more_link = $instance[ 'show_more_link' ];
 		} else { $show_more_link = ""; }
 
+		if ( isset( $instance[ 'show_time_link_url' ] ) ) { $show_time_link_url = $instance[ 'show_time_link_url' ];
+		} else { $show_time_link_url = ""; }
+		
+		if ( isset( $instance[ 'show_time_link' ] ) ) { $show_time_link = $instance[ 'show_time_link' ];
+		} else { $show_time_link = ""; }
+
 		if ( isset( $instance[ 'show_all_categories' ] ) ) { $show_all_categories = $instance[ 'show_all_categories' ];
 		} else { $show_all_categories = ""; }
 
@@ -251,7 +257,13 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		<label for="<?php echo $this->get_field_id( 'show_more_link' ); ?>">"Visa mer"-länk, ange text för vad det ska stå i länken.</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'show_more_link' ); ?>" name="<?php echo $this->get_field_name( 'show_more_link' ); ?>" type="text" value="<?php echo esc_attr( $show_more_link); ?>" />
 		</p>
+		<label for="<?php echo $this->get_field_id( 'show_time_link' ); ?>">Länknamn till sammantr&auml;destider-l&auml;nken.</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_time_link' ); ?>" name="<?php echo $this->get_field_name( 'show_time_link' ); ?>" type="text" value="<?php echo esc_attr( $show_time_link); ?>" />
+		</p>
 		<p>
+		<label for="<?php echo $this->get_field_id( 'show_time_link_url' ); ?>">Länk till sammantr&auml;destider.</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_time_link_url' ); ?>" name="<?php echo $this->get_field_name( 'show_time_link_url' ); ?>" type="text" value="<?php echo esc_attr( $show_time_link_url); ?>" />
+		</p>		<p>
 		<label for="<?php echo $this->get_field_id( 'show_all_categories' ); ?>">"Visa protokoll från"-lista, ange text för vad som ska stå som rubrik .</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'show_all_categories' ); ?>" name="<?php echo $this->get_field_name( 'show_all_categories' ); ?>" type="text" value="<?php echo esc_attr( $show_all_categories); ?>" />
 		</p>
@@ -265,6 +277,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		$instance['show_protocol'] = strip_tags( $new_instance['show_protocol'] );
 		$instance['num_protocol'] = strip_tags( $new_instance['num_protocol'] );
 		$instance['show_more_link'] = $new_instance['show_more_link'];
+		$instance['show_time_link'] = $new_instance['show_time_link'];
+		$instance['show_time_link_url'] = $new_instance['show_time_link_url'];
 		$instance['show_all_categories'] = strip_tags( $new_instance['show_all_categories'] );
 		return $instance;
 	}
@@ -279,6 +293,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		} else {$show_all_categories = ""; }
 		if ( isset( $instance[ 'show_more_link' ] ) ) { $show_more_link = $instance[ 'show_more_link' ];
 		} else {$show_more_link = ""; }
+		if ( isset( $instance[ 'show_time_link' ] ) ) { $show_time_link = $instance[ 'show_time_link' ];
+		} else {$show_time_link = ""; }
+		if ( isset( $instance[ 'show_time_link_url' ] ) ) { $show_time_link_url = $instance[ 'show_time_link_url' ];
+		} else {$show_time_link_url = ""; }
 
 		/* get all sub categories to use in queries */
 		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && (!isset($instance["show_protocol"]) || $instance["show_protocol"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_protocol"])));
@@ -289,6 +307,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 			<?php echo $before_widget; ?>
 			<?php echo $before_title . $title . $after_title; ?>
 			<div id="protocolwidget" class="protocolwidget">
+				<ul>
 				<?php 
 					/* Query all posts with selected startpage category */
 						$children =  hk_getChildrenIdArray($default_settings["protocol_cat"]);
@@ -301,7 +320,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 						
 						query_posts( $query );
 						
-						echo "<ul>";
 						if ( have_posts() ) :  while ( have_posts() ) : the_post();  
 							$title = get_the_title();
 							$date = substr($title,strrpos($title, " ")+1);
@@ -332,11 +350,17 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 					$cat_link = esc_url(get_category_link($default_settings["protocol_cat"]));
 					
 					?>
-					<li id="protocollink" class="read-more-link">
+					<li id="protocollink">
 						<?php echo "<a class='gtm-protocol-more-link' href='$cat_link' title='".strip_tags($show_more_link)."'>$show_more_link</a>"; ?>
-					</li></ul>
+					</li>
 				<?php endif; ?>
-				
+				<?php if ($show_time_link != "" && $show_time_link_url != "") : 					
+					?>
+					<li id="protocoltimelink">
+						<?php echo "<a class='gtm-protocol-time-link' href='$show_time_link_url' title='".strip_tags($show_time_link)."'>$show_time_link</a>"; ?>
+					</li>
+				<?php endif; ?>
+				</ul>
 				<?php if ($show_all_categories != "") : ?>
 					<div id="protocolcategories">
 						<div class="entry-title"><?php echo $instance["show_all_categories"]; ?></div><ul>
@@ -1272,6 +1296,7 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 			$mode = esc_attr($instance['mode']);
 			$limit = intval($instance['limit']);
 			$chars = intval($instance['chars']);
+			$largest_count = -1;
 			echo $before_widget.$before_title.$title.$after_title;
 			echo '<div class="wp-views-cloud">'."\n";
 		
@@ -1283,6 +1308,7 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 			if($most_viewed) {
 				foreach ($most_viewed as $post) {
 					$post_views = intval($post->views);
+					if ($post_views <= 0) $post_views = 1;
 					if ($largest_count == -1)
 						$largest_count = $post_views;
 						

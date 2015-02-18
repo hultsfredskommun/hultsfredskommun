@@ -496,6 +496,10 @@
 		padding-right: $base-spacing-unit;
 	}
 }
+.main .widget.widget_hk_protocol ul {
+	padding-bottom: $half-spacing-unit!important;
+}
+
 .main .widget.widget_hk_aditro_rss_widget,
 .main .widget.widget_hk_related_widget,
 .main .widget.widget_hk_protocol,

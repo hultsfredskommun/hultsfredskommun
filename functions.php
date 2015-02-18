@@ -265,20 +265,18 @@ if (!is_admin()) {
 	//  //use.typekit.net/xpx0dap.js
 		wp_enqueue_script(
 			'typekit_js',
-			'http'.$s_when_https.'://'.$hk_options['typekit_url'],
+			$hk_options['typekit_url'],
 			array(),
-			'1.0',
-			true
+			'1.0'
 		);
 	}
-
+	
 	if ($hk_options['addthis_pubid'] != "" && $default_settings['allow_cookies']) {
 		wp_enqueue_script(
 			'addthis_js',
-			'http'.$s_when_https.'://s7.addthis.com/js/300/addthis_widget.js#pubid='.$hk_options['addthis_pubid'],
+			'//s7.addthis.com/js/300/addthis_widget.js#pubid='.$hk_options['addthis_pubid'],
 			array(),
-			'1.0',
-			true
+			'1.0'
 		);
 	}
 
@@ -343,6 +341,16 @@ if (!is_admin()) {
 		'1.0',
 		true
 	);
+	
+	if ($hk_options['tidiochat_url'] != "") {
+		wp_enqueue_script(
+			'tidiochat_js',
+			$hk_options['tidiochat_url'],
+			array(),
+			'1.0'
+		);
+	}	
+
 } 
 /* only in admin */
 else {
