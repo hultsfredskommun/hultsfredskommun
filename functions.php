@@ -209,7 +209,6 @@ function hk_setup() {
 	 */
 	load_theme_textdomain( 'twentyeleven', get_template_directory() . '/languages' );
 
-	remove_action( 'wp_head', 'feed_links', 2 ); 
 	add_action('wp_head', 'addBackPostFeed');
 	function addBackPostFeed() {
 		global $default_settings;
@@ -231,7 +230,7 @@ function hk_setup() {
 							'quickmenu' => 'Snabbgenv&auml;gar',
 							));	
 	// Add default posts and comments RSS feed links to <head>.
-	add_theme_support( 'automatic-feed-links' );
+	//add_theme_support( 'automatic-feed-links' );
 
 }
 endif; // hk_setup

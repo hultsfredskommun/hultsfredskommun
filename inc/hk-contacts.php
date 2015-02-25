@@ -182,6 +182,41 @@ function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_titl
 	$title_text = "";
 	$extra_pre_search_text = "";
 	$extra_post_search_text = "";
+	
+	// check if phone number in string
+	preg_match('/([0-9 -]+)/', $search, $matches);	
+	
+	if (count($matches) > 0 && $matches[0] != "") {
+		$match = trim($matches[0]," ");
+		$searchmatch = trim($match,"0 ");
+		if ($searchmatch != "") {
+			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta 
+				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter' 
+				AND ($wpdb->posts.post_title LIKE '%%%s%%' OR $wpdb->postmeta.meta_value LIKE '%%%s%%') LIMIT 0,".($count + 1), $searchmatch, $searchmatch ));
+			$id_array = array_merge($id_array, $postid);
+			if (count($postid) > 0) {
+				$search = str_replace($match, "", $search);
+			}
+		}
+	}
+	
+	// check if two words (firstname lastname)
+	preg_match('/([a-zA-Z]+)[ ]+([a-zA-Z]+)/', $search, $matches);	
+	if (count($matches) > 1 && $matches[0] != "") {
+		$firstname = trim($matches[1]," ");
+		$lastname = trim($matches[2]," ");
+		if ($firstname != "" && $lastname != "") {
+			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta 
+				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter' 
+				AND ($wpdb->posts.post_title LIKE '%%%s%%') LIMIT 0,".($count + 1), "$firstname $lastname" ));
+			
+			$id_array = array_merge($id_array, $postid);
+			if (count($postid) > 0) {
+				$search = str_replace(trim($matches[0]), "", $search);
+			}
+		}
+	}
+
 	foreach(preg_split("/[\s,]+/", $search, NULL, PREG_SPLIT_NO_EMPTY) as $value) {
 		$value = hk_checkAndConvertSpecialValue($value); // check if special phone number
 		if (count($value) == 2) {
@@ -201,7 +236,6 @@ function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_titl
 	if (count($id_array) <= 0) {
 		return "";
 	}
-	
 	
 	
 	if (count($id_array) > $count) {
@@ -251,6 +285,37 @@ function hk_checkAndConvertSpecialValue($value) {
 		}
 		elseif(strlen($value) == 4) {
 			$new_value = preg_replace("/([0-9]{2})([0-9]{2})/", "$1 $2", $value);
+		}
+		else {
+			$new_value = "";
+		}
+	}
+	if ($new_value != "") {
+		return array($value,$new_value);
+	}
+	return array($value);
+}
+function hk_checkIfSpecialValue($value) {
+	$new_value = "";
+	$match_string = "/^[0-9\-]*$/";
+	if (preg_match($match_string,$value)) {
+		$new_value = preg_replace('/\D/', '', $value);
+		if(strlen($value) == 10) {
+			if (substr($value,0,3) == "070") {
+				$new_value = preg_replace("/([0-9]{3})-([0-9]{3}) ([0-9]{2}) ([0-9]{2})/", "$1-$2 $3 $4", $value);
+			}
+			elseif (substr($value,0,4) == "0495") {
+				$new_value = preg_replace("/([0-9]{4})-([0-9]{2}) ([0-9]{2}) ([0-9]{2})/", "$1-$2 $3 $4", $value);
+			}
+		}
+		elseif(strlen($value) == 6) {
+			$new_value = preg_replace("/([0-9]{2}) ([0-9]{2}) ([0-9]{2})/", "$1 $2 $3", $value);
+		}
+		elseif(strlen($value) == 5) {
+			$new_value = preg_replace("/([0-9]{1}) ([0-9]{2}) ([0-9]{2})/", "$1 $2 $3", $value);
+		}
+		elseif(strlen($value) == 4) {
+			$new_value = preg_replace("/([0-9]{2}) ([0-9]{2})/", "$1 $2", $value);
 		}
 		else {
 			$new_value = "";
@@ -315,7 +380,7 @@ function hk_get_contact_by_id($contact_id, $args) {
 	$retValue = "";
 	
 	foreach (preg_split("/[\s,]+/",$contact_id,NULL,PREG_SPLIT_NO_EMPTY) as $c_id) {
-
+		
 		// query arguments
 		$query_args = array(
 			'posts_per_page' => -1,
