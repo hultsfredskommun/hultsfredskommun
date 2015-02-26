@@ -405,6 +405,52 @@ if(function_exists("register_field_group"))
 		'menu_order' => 3,
 	));
 	
+	/* POST AND CONTACT FIELDS */
+	register_field_group(array (
+		'id' => '5048edc031ede',
+		'title' => 'Synonymer',
+		'fields' => 
+		array (
+			0 => 
+			array (
+				'key' => 'field_505ad25f206a7',
+				'label' => '',
+				'name' => 'hk_synonym',
+				'type' => 'text',
+				'instructions' => 'Ange extra synonymer f&ouml;r b&auml;ttre s&ouml;kbarhet.',
+				'required' => '0',
+				'default_value' => '',
+				'formatting' => 'br',
+				'order_no' => '6',
+			),
+		),
+		'location' => 
+		array (
+			'rules' => 
+			array (
+				0 => 
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'hk_kontakter',
+					'order_no' => '1',
+				),
+			),
+			'allorany' => 'any',
+		),
+		'options' => 
+		array (
+			'position' => 'normal',
+			'layout' => 'default',
+			'hide_on_screen' => 
+			array (
+			),
+		),
+		'menu_order' => 2,
+	));
+	
+			
+			
 	/* POST IMAGES */
 	register_field_group(array (
 		'id' => '5048edc031ead',
@@ -992,7 +1038,7 @@ if(function_exists("register_field_group"))
 			),
 			8 => 
 			array (
-				'key' => 'field_505ad28e202d9',
+				'key' => 'field_505ad28e292d9',
 				'label' => 'Position',
 				'name' => 'hk_contact_position',
 				'type' => 'location-field',
