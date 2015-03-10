@@ -2,31 +2,34 @@
 <aside class="side-content">
 	<?php
 	$options = get_option("hk_theme"); ?>
-	<?php if (get_field('hk_optional_text',get_the_ID())){ ?>
-		<div class="box optional-text"><?php echo get_field('hk_optional_text',get_the_ID()); ?></div>
+	<?php if (get_field('hk_optional_text2', get_the_ID())){ ?>
+		<div class="box optional-text2"><?php echo get_field('hk_optional_text2', get_the_ID()); ?></div>
+	<?php } ?>
+	<?php if (get_field('hk_optional_text', get_the_ID())){ ?>
+		<div class="box optional-text"><?php echo get_field('hk_optional_text', get_the_ID()); ?></div>
 	<?php } ?>
 	
-	<?php if( function_exists("get_field") && get_field('hk_contacts',get_the_ID()) ) : // related contacts ?>
+	<?php if( function_exists("get_field") && get_field('hk_contacts', get_the_ID()) ) : // related contacts ?>
 	<ul class="box top contacts">
 		<a name="quick-contact-<?php the_ID(); ?>"></a>
 		<li class="contact_title title">
 			<span class="contact-icon"></span><span>Kontakt</span>
 		</li>			 
 
-		<?php while( has_sub_field('hk_contacts',get_the_ID()) ): ?>
+		<?php while( has_sub_field('hk_contacts', get_the_ID()) ): ?>
 			<li class="aside-list-item contact-wrapper">
-				<?php $value = get_sub_field('hk_contact',get_the_ID()); ?>
+				<?php $value = get_sub_field('hk_contact', get_the_ID()); ?>
 				<div class="contact-<?php echo $value->ID; ?>"><a class="js-contact-link" href="<?php echo get_permalink($value->ID); ?>" title='Mer kontaktinformation f&ouml;r <?php echo $value->post_title; ?>'><?php echo $value->post_title; ?></a>
 				
-				<?php $alt_title = get_sub_field('hk_contact_extra',get_the_ID());
+				<?php $alt_title = get_sub_field('hk_contact_extra', get_the_ID());
 				if (!empty($alt_title)) : ?>
 				<span class="title-content">
 					<?php echo $alt_title; ?>
 				</span>
 				<?php else : ?>
-				<?php if (get_field('hk_contact_titel',$value->ID)) : ?>
+				<?php if (get_field('hk_contact_titel', $value->ID)) : ?>
 				<span class="title-content">
-					<?php echo get_field('hk_contact_titel',$value->ID); ?>
+					<?php echo get_field('hk_contact_titel', $value->ID); ?>
 				</span>
 				<?php endif; endif; ?>
 			<span class="rs_skip contact_id hidden"><?php echo $value->ID; ?></span></div></li>

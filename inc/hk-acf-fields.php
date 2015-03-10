@@ -762,8 +762,17 @@ if(function_exists("register_field_group"))
 		'title' => 'Artikelns extra information',
 		'fields' => array (
 			array (
-				'key' => 'field_52243a0577cc8',
+				'key' => 'field_52243a0577df8',
 				'label' => 'Extra text',
+				'name' => 'hk_optional_text2',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'yes',
+			),
+			array (
+				'key' => 'field_52243a0577cc8',
+				'label' => 'Extra text i gr&aring; ruta',
 				'name' => 'hk_optional_text',
 				'type' => 'wysiwyg',
 				'default_value' => '',
