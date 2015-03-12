@@ -102,6 +102,19 @@ if ($meta_description != "") :?>
 <?php if ( $hk_options["favicon_image256"] != "" ) : ?>
 	<link rel="icon" href="<?php echo $hk_options["favicon_image256"]; ?>" sizes="256x256" type="image/png">
 <?php endif; ?>
+<?php if ( $hk_options["favicon_image152"] != "" ) : ?>
+	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image152"]; ?>" sizes="152x152" type="image/png">
+<?php endif; ?>
+<?php if ( $hk_options["favicon_image144"] != "" ) : ?>
+	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image144"]; ?>" sizes="144x144" type="image/png">
+<?php endif; ?>
+<?php if ( $hk_options["favicon_image120"] != "" ) : ?>
+	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image120"]; ?>" sizes="120x120" type="image/png">
+<?php endif; ?>
+<?php if ( $hk_options["favicon_image114"] != "" ) : ?>
+	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image114"]; ?>" sizes="114x114" type="image/png">
+<?php endif; ?>
+
 <?php if ( $hk_options["favicon_image64"] != "" ) : ?>
 	<!--[if IE]><link rel="shortcut icon" href="<?php echo $hk_options["favicon_image64"]; ?>"><![endif]-->
 <?php endif; ?>

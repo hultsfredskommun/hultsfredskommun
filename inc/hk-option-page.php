@@ -55,25 +55,48 @@ function hk_theme_options_do_page() {
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
 			<p><label for="hk_theme[favicon_image32]">Favicon 32x32</label><br/>
-				<img width='150' src="<?php echo $options["favicon_image32"]; ?>" alt='Vald bild' title='Vald bild' />
+				<img width='32' src="<?php echo $options["favicon_image32"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image32]" value="<?php echo $options["favicon_image32"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
 			<p><label for="hk_theme[favicon_image64]">Favicon 64x64</label><br/>
-				<img width='150' src="<?php echo $options["favicon_image64"]; ?>" alt='Vald bild' title='Vald bild' />
+				<img width='64' src="<?php echo $options["favicon_image64"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image64]" value="<?php echo $options["favicon_image64"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
 			<p><label for="hk_theme[favicon_image128]">Favicon 128x128</label><br/>
-				<img width='150' src="<?php echo $options["favicon_image128"]; ?>" alt='Vald bild' title='Vald bild' />
+				<img width='128' src="<?php echo $options["favicon_image128"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image128]" value="<?php echo $options["favicon_image128"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
 			<p><label for="hk_theme[favicon_image256]">Favicon 256x256</label><br/>
-				<img width='150' src="<?php echo $options["favicon_image256"]; ?>" alt='Vald bild' title='Vald bild' />
+				<img width='256' src="<?php echo $options["favicon_image256"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image256]" value="<?php echo $options["favicon_image256"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
+
+			<p><label for="hk_theme[favicon_image152]">Apple Favicon 152x152</label><br/>
+				<img width='152' src="<?php echo $options["favicon_image152"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image152]" value="<?php echo $options["favicon_image152"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[favicon_image144]">Apple Favicon 144x144</label><br/>
+				<img width='144' src="<?php echo $options["favicon_image144"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image144]" value="<?php echo $options["favicon_image144"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[favicon_image120]">Apple Favicon 120x120</label><br/>
+				<img width='120' src="<?php echo $options["favicon_image120"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image120]" value="<?php echo $options["favicon_image120"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[favicon_image114]">Apple Favicon 114x114</label><br/>
+				<img width='114' src="<?php echo $options["favicon_image114"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image114]" value="<?php echo $options["favicon_image114"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			
+			
 			<p><label for="hk_theme[top_image]">Toppbild (inte klar att anv&auml;ndas)</label><br/>
 				<img width=150 src="<?php echo $options["top_image"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[top_image]" value="<?php echo $options["top_image"]; ?>" />
