@@ -385,6 +385,12 @@ function closeAllArticles()
 /**
  * Initialize function read-more toggle-button 
  */
+function getHistoryTitle(article)
+{
+	entry_title = $(article).find(".entry-title a").html();
+	blog_title = $("#logo").find('img').attr('alt');
+	return entry_title + " | " + blog_title;
+}
 function readMoreToggle(el){
 	//global var to article
 	article = $(el).parents("article");
@@ -401,12 +407,6 @@ function readMoreToggle(el){
 		return false;
 	}
 	
-	function getHistoryTitle(article)
-	{
-		entry_title = $(article).find(".entry-title a").html();
-		blog_title = $("#logo").find('img').attr('alt');
-		return entry_title + " | " + blog_title;
-	}
 	//toggle function
 	function toggleShow(article) {
 		// close article and show summary content
@@ -1606,6 +1606,7 @@ function contactAction(el,ev) {
 
 		$(".contact-popup.overlay").unbind("click").bind("click",function() {
 			$(".contact-popup").remove();
+			resetHistory();
 		});
 		
 		if ($(this).attr("href") !== undefined) {
@@ -1621,12 +1622,21 @@ function contactAction(el,ev) {
 			$(this).find(".entry-wrapper").before("<div class='js-close-contact close-contact close-popup'></div>");
 			$(".js-close-contact").unbind("click").bind("click",function() {
 				$(".contact-popup").remove();
+				resetHistory();
 			});
+			
 			/* load google maps */
 			$(this).find(".map_canvas").googlemap();
 			
 			/* init contact slideshow */
 			$(this).slideshow();
+			
+			//call pushHistory
+			resetHistory();
+			url = $(this).find(".entry-title a").attr("href");
+			title = getHistoryTitle($(this));
+			pushHistory(title, url);
+			
 		});
 	}
 	else {

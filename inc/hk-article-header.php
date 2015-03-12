@@ -1,4 +1,4 @@
-
+<?php global $options; ?>
 <div class="content-header">
 	<ul class="header-tools">
 

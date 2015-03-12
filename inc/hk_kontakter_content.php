@@ -10,5 +10,5 @@
 		'address' => true,
 		'visit_hours' => true,
 		'map' => true,
-		'title_link' => false));
+		'title_link' => true));
 ?>

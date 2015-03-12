@@ -10,6 +10,8 @@
 			<div class="single-content content-wrapper">
 				<?php 
 					if (get_post_type() == "hk_kontakter") {
+						require("inc/hk-article-header.php");
+						
 						hk_the_contact(array(
 							'image' => true,
 							'name' => true,
@@ -22,6 +24,9 @@
 							'visit_hours' => true,
 							'map' => true,
 							'title_link' => false)); 
+						
+						//require("inc/hk-aside-content.php");
+						require("inc/single_footer_content.php");
 					}
 					else {
 						require("inc/single_content.php"); 

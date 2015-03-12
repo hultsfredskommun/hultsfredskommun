@@ -295,6 +295,7 @@ function hk_display_allcomingreviews_dashboard_widget ()
 	
 	//define arguments for WP_Query()
 	$qargs = array(
+		'post_type' => array('post','hk_kontakter'),
         'category__not_in' => $ignore_cats,
 		'posts_per_page' => -1, 
 		'meta_key' => 'hk_next_review',  // which meta to query
@@ -387,6 +388,7 @@ function hk_display_mycomingreviews_dashboard_widget ()
 
 	//define arguments for WP_Query()
 	$qargs = array(
+		'post_type' => array('post','hk_kontakter'),
 		'category__not_in' => $ignore_cats,
 		'author'=> get_current_user_id(),
 		'posts_per_page' => 10,

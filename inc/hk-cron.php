@@ -54,6 +54,7 @@ function hk_review_mail() {
 	
 	//define arguments for WP_Query()
 	$qargs = array(
+		'post_type' => array('post','hk_kontakter'),
 		'posts_per_page' => -1,
         'post_status' => 'publish', 
 		'meta_key' => 'hk_next_review',  // which meta to query

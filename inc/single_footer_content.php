@@ -1,14 +1,14 @@
 	<footer class="entry-meta">
 		<ul class="footer-wrapper">
+			<?php
+			$categories_list = get_the_category_list( ' | ' );
+			if ( $categories_list && $categories_list != "Okategoriserade" ): ?>
 			<li class="tag-cloud">Tillh&ouml;r: 
-				<?php
-					$categories_list = get_the_category_list( ' | ' );
-					if ( $categories_list ): ?>
 				<span class="cat-links">
 					<?php echo $categories_list; ?>
 				</span>
-				<?php endif; // End if categories ?>
 			</li>
+			<?php endif; // End if categories ?>
 			<?php
 			$tags_list = get_the_term_list(get_the_ID(), "post_tag",'',' | ','');
 			if ( $tags_list ):  ?>
