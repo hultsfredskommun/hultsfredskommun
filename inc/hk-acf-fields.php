@@ -1058,6 +1058,20 @@ if(function_exists("register_field_group"))
 				'zoom' => '12',
 				'order_no' => '8',
 			),
+			9 => 
+			array (
+				'key' => 'field_555ad28e292d9',
+				'label' => 'Position',
+				'name' => 'hk_contact_position_2',
+				'type' => 'google_map',
+				'instructions' => '',
+				'required' => '0',
+				'val' => 'address',
+				'center_lat' => '57.455560638683025',
+				'center_lng' => '15.836223059667986',
+				'zoom' => '12',
+				'order_no' => '8',
+			),
 		),
 		'location' => 
 		array (

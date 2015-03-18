@@ -444,10 +444,17 @@ function hk_get_the_contact($args = array()) {
 	if (!function_exists("get_field")) 
 		return "You need the Advanced Custom Field plugin for the contact to work properly.";
 	
-	$contact_position = get_field("hk_contact_position");
+	$contact_position = get_field("hk_contact_position",get_the_ID());
+	$contact_position2 = get_field("hk_contact_position_2",get_the_ID());
+
 	$coordinates = "";
-	if (isset($contact_position["coordinates"])) {
-		$coordinates = $contact_position["coordinates"];
+	$contact_array = explode("|",$contact_position);
+
+	if (isset($contact_position2) && isset($contact_position2["lat"]) && isset($contact_position2["lng"])) {
+		$coordinates = $contact_position2["lat"].",".$contact_position2["lng"];
+	}
+	else if (isset($contact_array) && isset($contact_array[1])) {
+		$coordinates = $contact_array[1];
 	}
 	if ($hidden["map"] == "visible" && !empty($contact_position) && $coordinates != "") {
 		$mapclass = "hasmap";
