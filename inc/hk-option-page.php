@@ -284,6 +284,7 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[google_font]">Load google font - ex. <i>Oxygen:300,400,700</i> f&ouml;r att l&aumlgga till typsnitt.</label><br/><input type="text" size="80" name="hk_theme[google_font]" value="<?php echo $options['google_font']; ?>" /></p>
 			<p><label for="hk_theme[in_head_section]">script or other in &lt;head&gt;-section</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[in_head_section]"><?php echo $options['in_head_section']; ?></textarea></p>
 			<p><label for="hk_theme[in_topbody_section]">script or other in top of &lt;body&gt;-section</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[in_topbody_section]"><?php echo $options['in_topbody_section']; ?></textarea></p>
+			<p><label for="hk_theme[if_only_content]">style if in only_content mode (add ?only_content to url)</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[if_only_content]"><?php echo $options['if_only_content']; ?></textarea></p>
 			
 			<?php if (function_exists('relevanssi_do_query')) { ?>
 			<h3>Relevanssi - Multisajt sökning</h3>

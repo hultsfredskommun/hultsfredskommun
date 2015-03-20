@@ -7,13 +7,19 @@
  * @since Twenty Eleven 1.0
  */
 
+if (isset($_GET["only_content"])) {
+	$options = get_option("hk_theme");
+	echo "<style type='text/css'>" . $options["if_only_content"] . "</style>";
+}
+
+if (!isset($_GET["only_content"])) :
 get_header(); ?>
 
 	<?php hk_navigation(); ?>
 	
 	<div id="primary" class="primary">
 		<div id="content" role="main">
-
+<?php endif; ?>
 			<?php if ( have_posts() ) : the_post(); ?>
 				<?php
 					$cat_array = array();
@@ -34,7 +40,7 @@ get_header(); ?>
 			
 			<?php /* show related posts */
 			
-			if (empty($_REQUEST["print"]) && !empty($cat_array)) : ?>
+			if (empty($_REQUEST["print"]) && !isset($_GET["only_content"]) && !empty($cat_array)) : ?>
 			
 				<?php 
 				
@@ -74,8 +80,11 @@ get_header(); ?>
 				?>
 				<?php wp_reset_query(); ?>
 			<?php endif;  ?>
+<?php if (!isset($_GET["only_content"])) : ?>
+
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
+<?php endif; ?>
