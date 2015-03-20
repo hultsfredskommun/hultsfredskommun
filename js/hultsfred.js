@@ -398,7 +398,7 @@ function readMoreToggle(el){
 		return false;
 	}
 		
-	if ($(article).find(".js-external-link").length > 0) {
+	if ($(article).find(".js-external-link").length > 0 || $(article).parents(".search").length > 0) {
 		location.href = $(article).find(".js-external-link").attr("href");
 		return false;
 	}
@@ -947,7 +947,7 @@ $(document).ready(function(){
 	 * add action to read-more toggle, if in .home or in lt ie9, go to article 
 	 */
 	$("#primary, #firstpage-top-content").find("article").each(function(){
-		if (!$(this).parents(".home").length && !isLessThanIE9) {
+		if (!$(this).parents(".home").length && !$(this).parents(".search").length && !isLessThanIE9) {
 			setArticleActions($(this));
 		} else {
 			$(this).unbind("click").bind("click",function() {
