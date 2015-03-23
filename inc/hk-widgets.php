@@ -661,47 +661,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_textwidge
 
 
 
-/* 
- * EVENT RSS WIDGET 
- */ 
- class HK_event_rss_widget extends WP_Widget {
-	protected $vars = array();
-
-	public function __construct() {
-		parent::__construct(
-	 		'HK_event_rss_widget', // Base ID
-			'HK evenemang', // Name
-			array( 'description' => "Widget som visar evenemang" ) // Args
-		);
-
-	}
-
- 	public function form( $instance ) {
-	}
-
-	public function update( $new_instance, $old_instance ) {
-	}
-
-	public function widget( $args, $instance ) {
-	    extract( $args );
-		echo $before_widget;
-		echo $before_title."Evenemang".$after_title;
-?>
-	<div class="content-area">
-		H&auml;r ska det visas evenemang.
-	</div>
-<?php
-		echo $after_widget;
-	}
-}
-/* add the widget  */
-add_action( 'widgets_init', create_function( '', 'register_widget( "HK_event_rss_widget" );' ) );
-
-
-
-
-
-
 
 class HK_related_widget extends WP_Widget {
 	protected $vars = array();

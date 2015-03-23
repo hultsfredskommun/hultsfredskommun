@@ -12,7 +12,7 @@ class HK_events extends WP_Widget {
 		parent::__construct(
 	 		'HK_events', // Base ID
 			'HK_events', // Name
-			array( 'description' => "Widget som visar bildspel från besökt kategori" ) // Args
+			array( 'description' => "Widget som visar events från besökt kategori" ) // Args
 		);
 
 		$this->vars['divclass'] = 'events';

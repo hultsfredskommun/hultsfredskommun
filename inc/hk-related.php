@@ -9,37 +9,6 @@
  **/
 
 
-/* WIDGET */
-class Hk_Related extends WP_Widget {
-
-        public function __construct() {
-		parent::__construct(
-	 		'hk_Related', // Base ID
-			'Hk_related', // Name
-			array( 'description' => __( 'Related Widget to display Related from selected category', 'text_domain' ), ) // Args
-		);
-	}
-
- 	public function form( $instance ) {
-
-	}
-
-	public function update( $new_instance, $old_instance ) {
-		return $old_instance;
-	}
-
-	public function widget( $args, $instance ) {
-	       	extract( $args );
-			echo hk_related_output();
-	}
-
-}
-
-add_action( 'widgets_init', create_function( '', 'register_widget( "Hk_Related" );' ) );
-
-
-
-
 
 /* REGISTER post_type hk_related */
 
