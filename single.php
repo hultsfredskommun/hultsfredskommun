@@ -10,10 +10,12 @@
 if (isset($_GET["only_content"])) {
 	$options = get_option("hk_theme");
 	echo "<style type='text/css'>" . $options["if_only_content"] . "</style>";
+	echo $options["if_only_content_js"];
 }
 
 if (!isset($_GET["only_content"])) :
-get_header(); ?>
+get_header(); 
+?>
 
 	<?php hk_navigation(); ?>
 	
