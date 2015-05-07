@@ -189,6 +189,11 @@ img {
 	@include vendor(box-sizing, initial!important);
 }*/
 
+/* chatnox fix */
+.chatNox .chatnox-widget {
+	z-index: 10000!important;
+}
+
  /*
  * Responsive helper
  */
