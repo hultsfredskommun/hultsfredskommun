@@ -18,7 +18,7 @@
 					</span>
 				</li>
 			<?php endif; // End if $tags_list ?>
-			<li class="editor vcard author"><span class="fn">Kontakta sidansvarig: <a class="page-editor" href="<?php echo get_permalink() . "?respond=".get_the_ID()."#respond"; ?>" rel='author' title='Kontakta <?php echo get_the_author(); ?>'>
+			<li class="editor vcard author"><span class="fn">Sidansvarig: <a class="page-editor" href="<?php echo get_permalink() . "?respond=".get_the_ID()."#respond"; ?>" rel='author' title='Kontakta <?php echo get_the_author(); ?>'>
 			<?php echo get_the_author(); ?></a></span> <?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
 			<li class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></li>
 			<?php /*if (function_exists("get_field") && get_field("hk_synonym") != "") : ?>
