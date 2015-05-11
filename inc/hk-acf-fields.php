@@ -641,6 +641,96 @@ if(function_exists("register_field_group"))
 	));
 	
 	
+	register_field_group(array (
+		'key' => 'group_551b7f5770eca',
+		'title' => 'Vanliga frågor',
+		'fields' => array (
+			array (
+				'key' => 'field_551b7f762310e',
+				'label' => 'Vanliga frågor',
+				'name' => 'vanliga_fragor',
+				'prefix' => '',
+				'type' => 'repeater',
+				'instructions' => 'Formulera frågan så enkelt och kortfattat som möjligt. Ex. Hur söker jag barnbidrag?',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array (
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'min' => '',
+				'max' => '',
+				'layout' => 'table',
+				'button_label' => 'Lägg till rad',
+				'sub_fields' => array (
+					array (
+						'key' => 'field_551b7f892310f',
+						'label' => 'Fråga?',
+						'name' => 'fraga',
+						'prefix' => '',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array (
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+						'readonly' => 0,
+						'disabled' => 0,
+					),
+					array (
+						'key' => 'field_551b7fbf23110',
+						'label' => 'Svar',
+						'name' => 'svar',
+						'prefix' => '',
+						'type' => 'wysiwyg',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array (
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'tabs' => 'all',
+						'toolbar' => 'full',
+						'media_upload' => 1,
+					),
+				),
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'hk_kontakter',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+	));
 
 	
 	/* POST STOP PUBLISH */

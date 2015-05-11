@@ -792,6 +792,9 @@ function get_the_reviewed_date($id) {
 	if (isset($time) && $time != "") {
 		$time = "Granskad: <time datetime='$time' class='updated updated-date'>" . hk_theme_nicedate($time) . "</time> (skapad: <span class='created-date'>" . get_the_date() . "</span>)";
 	}
+	else {
+		$time = "Skapad: <span class='created-date'>" . get_the_date() . "</span>";
+	}
 	return $time;
 }
 if (!function_exists("hk_theme_nicedate")) {
