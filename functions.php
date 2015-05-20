@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "1.5");
+define("HK_VERSION", "1.6");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -428,6 +428,10 @@ function setup_javascript_settings() {
 			'mobile_rewrite' => $hk_options["mobile_rewrite"],
 			'admin_ajax_url' => str_replace("https://","http://",admin_url('admin-ajax.php')),
 			'addthis_pubid_admin' => $hk_options['addthis_pubid_admin'],
+			'cookie_text' => $hk_options['cookie_text'],
+			'cookie_button_text' => $hk_options['cookie_button_text'],
+			'cookie_link_text' => $hk_options['cookie_link_text'],
+			'cookie_link' => $hk_options['cookie_link'],
 		);
 	if (!is_admin()) {
 		wp_localize_script(
