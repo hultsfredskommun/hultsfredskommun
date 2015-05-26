@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "1.6");
+define("HK_VERSION", "1.7");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -38,8 +38,6 @@ if ( ! isset( $default_settings ) ) {
 								'protocol_cat' => $hk_options["protocol_cat"],
 								'num_levels_in_menu' => (!isset($hk_options["num_levels_in_menu"]) || $hk_options["num_levels_in_menu"] == "")?2:$hk_options["num_levels_in_menu"],
 								'show_tags' => (!isset($hk_options["show_tags"]) || $hk_options["show_tags"] == "")?1:$hk_options["show_tags"],
-								'allow_cookies' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "",
-								'allow_google_analytics' => $_COOKIE['allow_cookies'] || $hk_options["cookie_accept_enable"] == "" || $hk_options['google_analytics_disable_if_no_cookies'] != "1",
 								'sticky_number' => 1000,
 								'show_most_viewed_in_subsubcat' => $hk_options["show_most_viewed_in_subsubcat"],
 								'show_quick_links_in_subsubcat' => $hk_options["show_quick_links_in_subsubcat"],
@@ -421,13 +419,13 @@ function setup_javascript_settings() {
 			'blogId' => $blog_id,
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
 			'currentFilter' => json_encode($filter),
-			'allow_google_analytics' => $default_settings['allow_google_analytics'],
 			'google_analytics' => $hk_options['google_analytics'],
 			'google_analytics_domain' => $hk_options['google_analytics_domain'],
 			'gcse_id' => $hk_options['gcse_id'],
 			'mobile_rewrite' => $hk_options["mobile_rewrite"],
 			'admin_ajax_url' => str_replace("https://","http://",admin_url('admin-ajax.php')),
 			'addthis_pubid_admin' => $hk_options['addthis_pubid_admin'],
+			'cookie_accept_enable' => $hk_options['cookie_accept_enable'],
 			'cookie_text' => $hk_options['cookie_text'],
 			'cookie_button_text' => $hk_options['cookie_button_text'],
 			'cookie_link_text' => $hk_options['cookie_link_text'],

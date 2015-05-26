@@ -163,7 +163,7 @@ if ($meta_description != "") :?>
 	
 	
 	/* google analytics */
-	if ($hk_options["google_analytics"] != "" && $default_settings['allow_google_analytics']) : ?>
+	if ($hk_options["google_analytics"] != "") : ?>
 	<script type="text/javascript">
 		<?php /* gammal js analytics
 		var _gaq = _gaq || [];
@@ -209,17 +209,6 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 	<header id="branding" class="branding" role="banner">
 		<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>	
 		<?php dynamic_sidebar('important-top-content'); ?>
-		<?php if(!($_REQUEST["cookies"] == "true" || $default_settings['allow_cookies'])) : ?>
-		<?php //if(!$default_settings['allow_cookies'] && $hk_options["cookie_accept_enable"] == "1") : ?>
-			<div class="cookieinformation"><div class="textwidget"><?php echo $hk_options["cookie_text"]; ?>
-			<?php $cookie_button_text = "Forts&auml;tt"; 
-			if ($hk_options["cookie_button_text"] != "") { $cookie_button_text = $hk_options["cookie_button_text"];  } ?>
-			<a href="?cookies=true"><?php echo $cookie_button_text; ?></a>
-			<?php if ($hk_options["cookie_link"] != "") : ?>
-			 <a href="<?php echo $hk_options["cookie_link"]; ?>">Mer information</a>
-			<?php endif; ?>
-			</div></div>
-		<?php endif; ?>
 
 		<?php /* top right navigation */ ?>
 		<?php 

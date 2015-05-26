@@ -622,18 +622,6 @@ add_shortcode( 'karta', 'hk_map_shortcode_func' );
 add_action('init', 'hk_init');
 function hk_init() {
 	
-
-	/* first of all set allow cookie if any */
-	if ($_REQUEST["cookies"]) {
-		// allow cookies for 10 years
-		setcookie("allow_cookies", "true", time()+3600*24*3650, "/");
-		header("Location: http://".$_SERVER['SERVER_NAME'] . $_SERVER["REDIRECT_URL"]);
-		die();
-	}
-
-	
-	
-	
 	/* register category and tags for attachment */
 	//register_taxonomy_for_object_type('category', 'attachment');
 	//register_taxonomy_for_object_type('post_tag', 'attachment');

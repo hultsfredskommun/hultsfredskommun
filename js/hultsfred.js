@@ -261,7 +261,7 @@ if (typeof $.fn.push_google_analytics != 'function') {
 }
 if (typeof push_google_analytics != 'function') {
 	push_google_analytics = function(page) {
-		if (hultsfred_object['allow_google_analytics'] && typeof _gaq != 'undefined') {
+		if (typeof _gaq != 'undefined') {
 			_gaq.push(['_setAccount', hultsfred_object['google_analytics']]); 
 			_gaq.push(['_setDomainName', hultsfred_object['google_analytics_domain']]);
 			_gaq.push(['_trackPageview', page]);
@@ -2042,8 +2042,10 @@ var log = function(logtext) {
 
 /**/
 document.addEventListener('DOMContentLoaded', function(event) {
-	if (hultsfred_object != null && hultsfred_object["cookie_text"] != "" && hultsfred_object["cookie_button_text"] != "" && hultsfred_object["cookie_link_text"] != "" && hultsfred_object["cookie_link"] != "") {
-		cookieChoices.showCookieConsentBar(hultsfred_object["cookie_text"], hultsfred_object["cookie_button_text"], hultsfred_object["cookie_link_text"], hultsfred_object["cookie_link"]);
+	if (hultsfred_object != null && hultsfred_object["cookie_accept_enable"] == "1") {
+		if (hultsfred_object["cookie_text"] != "" && hultsfred_object["cookie_button_text"] != "" && hultsfred_object["cookie_link_text"] != "" && hultsfred_object["cookie_link"] != "") {
+			cookieChoices.showCookieConsentBar(hultsfred_object["cookie_text"], hultsfred_object["cookie_button_text"], hultsfred_object["cookie_link_text"], hultsfred_object["cookie_link"]);
+		}
 	}
 });
 

@@ -17,7 +17,7 @@
 		</li>
 		
 		<?php endif; ?>
-		<?php if ($options['addthis_pubid'] != "") : // TODO when cookies work && ($_REQUEST["cookies"] == "true" || $default_settings['allow_cookies'])) : ?>
+		<?php if ($options['addthis_pubid'] != "") : ?>
 		<li class="addthis-item item">
 			<a class="toggle-tool js-toggle-dropdown"><span class="addthis-icon"></span>Dela</a>
 			<ul class="dropdown">
