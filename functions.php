@@ -268,7 +268,7 @@ if (!is_admin()) {
 		);
 	}
 	
-	if ($hk_options['addthis_pubid'] != "" && $default_settings['allow_cookies']) {
+	if ($hk_options['addthis_pubid'] != "") {
 		wp_enqueue_script(
 			'addthis_js',
 			'//s7.addthis.com/js/300/addthis_widget.js#pubid='.$hk_options['addthis_pubid'],
