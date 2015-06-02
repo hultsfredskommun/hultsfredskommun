@@ -18,7 +18,7 @@
 					</span>
 				</li>
 			<?php endif; // End if $tags_list ?>
-			<li class="editor vcard author"><span class="fn">Sidansvarig: <a href="mailto:<?php the_author_meta('user_email'); ?>" title="E-post till <?php the_author_meta('display_name'); ?>"><?php the_author_meta('display_name'); ?></a>
+			<li class="editor vcard author"><span class="fn">Sidansvarig: <a class="gtm-footer-email-link" href="mailto:<?php the_author_meta('user_email'); ?>" title="E-post till <?php the_author_meta('display_name'); ?>"><?php the_author_meta('display_name'); ?></a>
 </span> <?php edit_post_link( "Redigera inl&auml;gg", " [", "]" ); ?></li>
 			<li class="reviewed"><?php echo get_the_reviewed_date(get_the_ID()); ?></li>
 			<?php /*if (function_exists("get_field") && get_field("hk_synonym") != "") : ?>

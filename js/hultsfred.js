@@ -1901,19 +1901,25 @@ var log = function(logtext) {
     var dismissLinkId = 'cookieChoiceDismiss';
 
     function _createHeaderElement(cookieText, dismissText, linkText, linkHref) {
-      var butterBarStyles = 'position:fixed;width:100%;background-color:#eee;border-top:3px solid #3e3e3f;' +
-          'margin:0; left:0; bottom:0;padding:20px;z-index:10001!important;text-align:center;';
+      var butterBarStyles = 'width:800px;max-width:80%;background-color:#eee;border:1px solid #3e3e3f; border-radius: 4px; margin:0 auto; padding:20px; text-align:center;';
+	  var butterWrapperBarStyles = 'position:fixed;width:100%; margin:0; left:0; bottom:20px; z-index:10001!important;';
 
-      var cookieConsentElement = document.createElement('div');
+     
+	  var cookieConsentElement = document.createElement('div');
       cookieConsentElement.id = cookieConsentId;
       cookieConsentElement.style.cssText = butterBarStyles;
       cookieConsentElement.appendChild(_createConsentText(cookieText));
+
+	  var cookieWrapperConsentElement = document.createElement('div');
+      cookieWrapperConsentElement.id = cookieConsentId;
+      cookieWrapperConsentElement.style.cssText = butterWrapperBarStyles;
+      cookieWrapperConsentElement.appendChild(cookieConsentElement);
 
       if (!!linkText && !!linkHref) {
         cookieConsentElement.appendChild(_createInformationLink(linkText, linkHref));
       }
       cookieConsentElement.appendChild(_createDismissLink(dismissText));
-      return cookieConsentElement;
+      return cookieWrapperConsentElement;
     }
 
     function _createDialogElement(cookieText, dismissText, linkText, linkHref) {
@@ -1971,7 +1977,7 @@ var log = function(logtext) {
       _setElementText(dismissLink, dismissText);
       dismissLink.id = dismissLinkId;
       dismissLink.href = '#';
-      dismissLink.style.marginLeft = '24px';
+      dismissLink.style.marginLeft = '16px';
       return dismissLink;
     }
 
@@ -1980,7 +1986,7 @@ var log = function(logtext) {
       _setElementText(infoLink, linkText);
       infoLink.href = linkHref;
       infoLink.target = '_top';
-      infoLink.style.marginLeft = '8px';
+      infoLink.style.marginLeft = '16px';
       return infoLink;
     }
 

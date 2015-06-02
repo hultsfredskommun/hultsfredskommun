@@ -16,12 +16,13 @@ gtm-fpcp-mailto - maillänken
 gtm-fpcp-phone - telefonnummerlänkarna
 gtm-fpcp-contacttext - länken som är på contacttexten, t.ex. öppettider
 gtm-fpcp-more-contactlink - länken fler kontaktuppgifter
-gtm-fpcp-direct-link - direktlänkarna till höger + en av nedan class:
+gtm-fpcp-direct-link - direktlänkarna till höger på bildspel + en av nedan class:
  gtm-fpcp-direct-link1 - direktlänk 1 till höger
  gtm-fpcp-direct-link2 - direktlänk 2 till höger
  gtm-fpcp-direct-link3
  gtm-fpcp-direct-link4
  gtm-fpcp-direct-link5
+gtm-text-widget-link - hk_text_widget länk
  
 //tag widget
 gtm-tw-taglink - "visa bara" länkar, widget
@@ -35,3 +36,6 @@ gtm-related-widget-link - hitta snabbt på startsidan + en av nedan class:
  gtm-related-widget-link-post - om post
  gtm-related-widget-link-link - om extern länk
  gtm-related-widget-link-file - om fil
+ 
+// article
+gtm-footer-email-link - e-post i artikelfoten

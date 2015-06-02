@@ -593,7 +593,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 			}
 
 			if ($instance["popuptext"] != "") {
-				$popupclass = "class='gtm-text-widget-popup js-text-widget-popup'";
+				$popupclass = "class='gtm-text-widget-popup gtm-text-widget-link js-text-widget-popup'";
 			} else {
 				$popupclass = "class='gtm-text-widget-link'";
 			}
