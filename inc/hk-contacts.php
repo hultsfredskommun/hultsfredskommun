@@ -499,12 +499,12 @@ function hk_get_the_contact($args = array()) {
 
 				// phone
 				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
-					$retValue .= "<div class='hk_contact_phones " . $hidden['phone'] . "'>";
-					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 					$number = get_sub_field('number');
+					$retValue .= "<div class='hk_contact_phones " . $hidden['phone'] . "'><a href='tel:".preg_replace('/\D/','',$number)."'>";
+					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
 					$number = str_replace("]",")</span>", $number);
-					$retValue .= $number . " </div>";
+					$retValue .= $number . "</a></div>";
 				endwhile; endif;				
 				
 				if( (get_field('hk_contact_phones') && $hidden['phone'] == "visible") || (get_field('hk_contact_emails') && $hidden['email'] == "visible") ) {

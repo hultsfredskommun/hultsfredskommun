@@ -1135,16 +1135,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 				// phone
 				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
 					$number = get_sub_field('number');
-					$link = explode('[',$number,2);
-					if (count($link) > 0) {
-						$link = str_replace(" ","",$link[0]);
-					} else {
-						$link = $number;
-					}
 					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
 					$number = str_replace("]",")</span>", $number);
 
-					$retValue .= "<li class='hk_contact_phones'><a class='gtm-fpcp-phone' href='tel:$link'>";
+					$retValue .= "<li class='hk_contact_phones'><a class='gtm-fpcp-phone' href='tel:".preg_replace('/\D/','',$number)."'>";
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 					$retValue .= $number . "</a></li>";
 				endwhile; endif;
