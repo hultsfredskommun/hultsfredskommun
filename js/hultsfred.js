@@ -1902,7 +1902,7 @@ var log = function(logtext) {
 
     function _createHeaderElement(cookieText, dismissText, linkText, linkHref) {
       var butterBarStyles = 'width:800px;max-width:80%;background-color:#eee;border:1px solid #3e3e3f; border-radius: 4px; margin:0 auto; padding:20px; text-align:center;';
-	  var butterWrapperBarStyles = 'position:fixed;width:100%; margin:0; left:0; bottom:20px; z-index:10001!important;';
+	  var butterWrapperBarStyles = 'position:fixed;width:100%; margin:0; left:0; bottom:60px; z-index:10001!important;';
 
      
 	  var cookieConsentElement = document.createElement('div');
