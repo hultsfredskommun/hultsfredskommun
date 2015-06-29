@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "1.9");
+define("HK_VERSION", "2.1");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -66,6 +66,9 @@ require( get_template_directory() . '/inc/hk-slideshow.php' );
 
 // Grab hk contacts.
 require( get_template_directory() . '/inc/hk-contacts.php' );
+
+// Grab hk FAQ.
+require( get_template_directory() . '/inc/hk-faq.php' );
 
 // Grab hk related.
 require( get_template_directory() . '/inc/hk-related.php' );
@@ -478,7 +481,7 @@ function hk_excerpt($content) {
 		
 	$content = strip_tags($content);
 	$content_array = explode(" ",$content);
-	$content = "<span class='introwords'>";
+	$content = "<span class='excerpt-wrapper'><span class='introwords'>";
 	$count = 1;
 	
 	foreach ($content_array as $c) {
@@ -490,6 +493,8 @@ function hk_excerpt($content) {
 	}
 	if ($count < 4)
 		$content .= "</span>";
+	
+	$content .= "</span>";
 		
     return $content;
 }

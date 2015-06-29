@@ -40,6 +40,7 @@
 					$externalclass = "class='gtm-cn-news-link$externalclass'"
 					
 					?>
+					<div class="content-text-wrapper">
 					<h1 class="entry-title"><a <?php echo $externalclass; ?> href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 					<div class="entry-content">
 						<?php the_excerpt(); 
@@ -48,6 +49,7 @@
 							echo "<a class='gtm-cn-news-button button' href='$href' title='$name'>$name</a>";
 						}
 						?>
+					</div>
 					</div>
 					
 				</div><!-- .summary-content -->

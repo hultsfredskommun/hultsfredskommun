@@ -69,6 +69,7 @@ function hk_save_post($postID) {
 function hk_add_review_metabox() {
     add_meta_box( 'custom-metabox', "Granska", 'hk_review_metabox', 'post', 'side', 'high' );
     add_meta_box( 'custom-metabox', "Granska", 'hk_review_metabox', 'hk_kontakter', 'side', 'high' );
+    add_meta_box( 'custom-metabox', "Granska", 'hk_review_metabox', 'hk_faq', 'side', 'high' );
 }
 // echo review meta box with settings for is reviewed and when review next time
 function hk_review_metabox() {
@@ -302,7 +303,7 @@ function hk_display_allcomingreviews_dashboard_widget ()
 		'meta_compare' => '<',          // method of comparison
 		'meta_type' => 'numeric',
 		'post_status' => 'publish',
-		'post_type' => array('post','hk_kontakter'),
+		'post_type' => array('post','hk_kontakter','hk_faq'),
 		'orderby' => 'meta_value',
 		'order' => 'ASC',
 		'ignore_sticky_posts' => 1 
@@ -391,7 +392,7 @@ function hk_display_mycomingreviews_dashboard_widget ()
 		'author'=> get_current_user_id(),
 		'posts_per_page' => 10,
 		'post_status' => 'publish',
-		'post_type' => array('post','hk_kontakter'),
+		'post_type' => array('post','hk_kontakter','hk_faq'),
 		'orderby' => 'meta_value',
 		'meta_key' => 'hk_next_review',
 		'order' => 'ASC' );
@@ -420,7 +421,7 @@ function hk_display_mylatestposts_dashboard_widget()
 		'author'=> get_current_user_id(),
 		'posts_per_page' => 10, 
 		'post_status' => 'publish',
-		'post_type' => array('post','hk_kontakter'),
+		'post_type' => array('post','hk_kontakter','hk_faq'),
 		'orderby' => 'modified_date', 
 		'order' => 'DESC'
 	);

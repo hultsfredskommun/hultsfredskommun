@@ -54,7 +54,7 @@ function hk_review_mail() {
 	
 	//define arguments for WP_Query()
 	$qargs = array(
-		'post_type' => array('post','hk_kontakter'),
+		'post_type' => array('post','hk_kontakter','hk_faq'),
 		'posts_per_page' => -1,
         'post_status' => 'publish', 
 		'meta_key' => 'hk_next_review',  // which meta to query
@@ -146,7 +146,7 @@ function hk_normalize_count($returnlog = false) {
 	$paged = 1;
 	$qargs = array(
 		'paged' => $paged,
-		'post_type' => array("post","hk_kontakter"),
+		'post_type' => array("post","hk_kontakter","hk_faq"),
 		'posts_per_page' => 10,
 		'post_status' => 'published',
 		'suppress_filters' => true);
