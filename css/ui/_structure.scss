@@ -219,3 +219,11 @@ img {
 #post-nothing {
 	padding: $base-spacing-unit 0 0 $half-spacing-unit;
 }
+
+/* GCal Events */
+.gce-list-event {
+	@extend .white-background;
+	@extend .font-weight-bold;
+	margin: 0;
+	padding: 0;
+}
