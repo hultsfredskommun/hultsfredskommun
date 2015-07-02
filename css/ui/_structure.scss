@@ -222,7 +222,7 @@ img {
 
 /* GCal Events */
 .gce-list-event {
-	@extend .white-background;
+	@extend .force-white-background;
 	@extend .font-weight-bold;
 	margin: 0!important;
 	padding: 0!important;
