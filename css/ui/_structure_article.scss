@@ -210,7 +210,7 @@ article.post {
 			}
 			.content {
 				a {
-					border-bottom: 1px dotted $main-color;
+					@extend .text-decoration-underline;
 				}
 				.contact-wrapper {
 					.entry-title {

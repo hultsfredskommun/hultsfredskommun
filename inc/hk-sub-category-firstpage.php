@@ -10,6 +10,12 @@
 </div><!-- #primary -->
 <?php endif; ?>
 
+<?php if (is_active_sidebar('firstpage-sidebar-2col')) : ?>
+<div id="firstpage-sidebar-2col" class="firstpage-sidebar-2col">
+	<?php dynamic_sidebar('firstpage-sidebar-2col'); ?>
+</div><!-- #primary -->
+<?php endif; ?>
+
 <?php if (is_active_sidebar('firstpage-sidebar')) : ?>
 <aside id="firstpage-sidebar" role="complementary" class="firstpage-sidebar">
 	<?php dynamic_sidebar('firstpage-sidebar'); ?>

@@ -11,6 +11,12 @@
 	@extend .lap-one-half;
 	@extend .palm-one-whole;
 }
+.firstpage-sidebar-2col {
+	@extend .g;
+	@extend .desk-one-half;
+	@extend .lap-one-whole;
+	@extend .palm-one-whole;
+}
 .firstpage-content {
 	@extend .g;
 	@extend .desk-one-half;
