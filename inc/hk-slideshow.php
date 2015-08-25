@@ -100,13 +100,18 @@ function hk_slideshow_generate_output($vars) {
 					while( has_sub_field('hk_featured_images') ) : 
 						$thumbsize = $vars["thumbnail-size"];
 						$image = get_sub_field('hk_featured_image');
-						$src = $image["sizes"][$thumbsize];
-						$title = $image["title"];
-						$alt = $image["alt"];
-						if ($alt == "") {
-							$alt = $title;
+						if (!empty($image)) {
+							$src = "";
+							if (!empty($image["sizes"])) {
+								$src = $image["sizes"][$thumbsize];
+							}
+							$title = $image["title"];
+							$alt = $image["alt"];
+							if ($alt == "") {
+								$alt = $title;
+							}
 						}
-						if ($default_settings[$thumbsize][0] == $image["sizes"][$thumbsize . "-width"] && $default_settings[$thumbsize][1] == $image["sizes"][$thumbsize . "-height"]) {
+						if ($src != "" && !empty($image) && $default_settings[$thumbsize][0] == $image["sizes"][$thumbsize . "-width"] && $default_settings[$thumbsize][1] == $image["sizes"][$thumbsize . "-height"]) {
 							$retValue .= "<div id='post-" . get_the_ID() . "' class='slide ";
 							if ($count++ == 0){ $retValue .= 'first '; }
 							else { $retValue .= 'hidden '; }

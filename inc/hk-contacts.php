@@ -529,7 +529,11 @@ function hk_get_the_contact($args = array()) {
 	
 		// position
 		if (!empty($contact_position) && $coordinates != "") :
-			$retValue .= "<div class='side-map " . $hidden['map'] . "'><div class='map_canvas'>[Karta <span class='coordinates rs_skip'>" . $coordinates . "</span> <span class='address'>" . $contact_position["address"] . "</span>]</div></div>";
+			$contact_position_address = "";
+			if (!empty($contact_position["address"])) {
+				$contact_position_address = $contact_position["address"];
+			}
+			$retValue .= "<div class='side-map " . $hidden['map'] . "'><div class='map_canvas'>[Karta <span class='coordinates rs_skip'>" . $coordinates . "</span> <span class='address'>" . $contact_position_address . "</span>]</div></div>";
 		endif;
 		
 

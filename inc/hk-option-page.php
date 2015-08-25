@@ -432,12 +432,14 @@ function hk_theme_options_do_page() {
 			<a name="debug"></a>
 			<hr/><h2>DEBUG</h2>
 			<?php 
-				echo '<h2>Vilka har anslutit?</h2><table cellspacing=4 style="margin-top:24px;border: 1px solid gray;">';
-				echo "<tr><td><b>IP</b></td><td><b>Antal uppdateringar</b></td></tr>";
-				foreach ($options["count_version"] as $ip => $count) {
-					echo "<tr><td>" . $ip . "</td><td>" . $count . "</td></tr>";
+				if (!empty($options["count_version"])) {
+					echo '<h2>Vilka har anslutit?</h2><table cellspacing=4 style="margin-top:24px;border: 1px solid gray;">';
+					echo "<tr><td><b>IP</b></td><td><b>Antal uppdateringar</b></td></tr>";
+					foreach ($options["count_version"] as $ip => $count) {
+						echo "<tr><td>" . $ip . "</td><td>" . $count . "</td></tr>";
+					}
+					echo '</table>';
 				}
-				echo '</table>';
 			?>
 			
 			<hr/><h2>Anv&auml;nds inte just nu:</h2>

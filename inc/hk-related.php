@@ -90,7 +90,7 @@ function hk_related_output($wrapping_li = true, $the_cat = "", $a_class = "") {
 							$retValue .= "<li class='related_link'>";
 							// prepend http:// if not there already
 							$relate_link_url = get_sub_field('hk_relate_link_url');
-							if (substr_compare($relate_link_url, 'http', 0, 4) != 0) {
+							if ($relate_link_url != "" && substr_compare($relate_link_url, 'http', 0, 4) != 0) {
 								$relate_link_url = 'http://' . $relate_link_url;
 							}
 							$retValue .= "<a class='$a_class $a_class-link'  target='_blank'";
