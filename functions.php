@@ -42,6 +42,7 @@ if ( ! isset( $default_settings ) ) {
 								'show_most_viewed_in_subsubcat' => $hk_options["show_most_viewed_in_subsubcat"],
 								'show_quick_links_in_subsubcat' => $hk_options["show_quick_links_in_subsubcat"],
 								'hide_articles_in_subsubcat' => $hk_options["hide_articles_in_subsubcat"],
+								'category_thumbnail_size' => $hk_options["category_thumbnail_size"],
 								);
 
 	/* browser check */
