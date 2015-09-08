@@ -168,9 +168,11 @@
 .img-wrapper {
 	line-height: 0;
 }
-.summary-content .image-title,
-.summary-content .image-caption {
-	@extend .hidden;
+.summary-content {
+	.image-title,
+	.image-caption {
+		@extend .hidden;
+	}
 }
 .slideshow {
 	margin-bottom: $base-spacing-unit * 2;
@@ -234,6 +236,9 @@
 }
 .home .img-wrapper .slideshow {
 	@extend .force-hidden--palm;
+}
+.home .summary-content img {
+	@extend .half-margin--bottom;
 }
 
 
