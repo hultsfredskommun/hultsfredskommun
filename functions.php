@@ -42,7 +42,7 @@ if ( ! isset( $default_settings ) ) {
 								'show_most_viewed_in_subsubcat' => $hk_options["show_most_viewed_in_subsubcat"],
 								'show_quick_links_in_subsubcat' => $hk_options["show_quick_links_in_subsubcat"],
 								'hide_articles_in_subsubcat' => $hk_options["hide_articles_in_subsubcat"],
-								'category_thumbnail_size' => $hk_options["category_thumbnail_size"],
+								'category_slideshow_thumbnail_size' => $hk_options["category_slideshow_thumbnail_size"],
 								);
 
 	/* browser check */
@@ -423,8 +423,6 @@ function setup_javascript_settings() {
 			'blogId' => $blog_id,
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
 			'currentFilter' => json_encode($filter),
-			'google_analytics' => $hk_options['google_analytics'],
-			'google_analytics_domain' => $hk_options['google_analytics_domain'],
 			'gcse_id' => $hk_options['gcse_id'],
 			'mobile_rewrite' => $hk_options["mobile_rewrite"],
 			'admin_ajax_url' => str_replace("https://","http://",admin_url('admin-ajax.php')),

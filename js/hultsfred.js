@@ -223,9 +223,6 @@ if (typeof $.fn.googlemaplink != 'function') {
 					
 					$("#page").append("<div class='contact-popup box'><div class='map_canvas'>H&auml;mtar karta...</div></div>").append("<div class='contact-popup overlay'></div>");
 			
-					// google analytics
-					push_google_analytics("#googlemap=" + address + " " + coordinates);
-
 					$(".contact-popup.box").prepend("<div class='close-contact close-popup'></div>");
 					$(".close-contact").unbind("click").bind("click",function() {
 						$(".contact-popup").remove();
@@ -248,25 +245,6 @@ if (typeof $.fn.googlemaplink != 'function') {
 	}
 } else {
 	alert("ERROR: The function $.fn.googlemaplink already exists");
-}	
-/**
- * Initialize google analytics push function 
- */
-if (typeof $.fn.push_google_analytics != 'function') {
-	$.fn.push_google_analytics = function() {
-		if ($(this).attr("href") !== undefined) {
-			push_google_analytics($(this).attr("href"));
-		}
-	}
-}
-if (typeof push_google_analytics != 'function') {
-	push_google_analytics = function(page) {
-		if (typeof _gaq != 'undefined') {
-			_gaq.push(['_setAccount', hultsfred_object['google_analytics']]); 
-			_gaq.push(['_setDomainName', hultsfred_object['google_analytics_domain']]);
-			_gaq.push(['_trackPageview', page]);
-		}
-	}
 }
 
 /**
@@ -573,9 +551,6 @@ function readMoreToggle(el){
 					$(this).next().fadeIn();
 				} 
 			});
-
-			// google analytics
-			$(this).parents("article").find(".entry-title a").push_google_analytics();
 			
 			// load google map
 			$(this).parents("article").find(".map_canvas").googlemap();
@@ -819,7 +794,6 @@ $(document).ready(function(){
 		function newVersion() {
 			$(".top-menu-wrapper").before("<div class='wrong-version one-whole island important-background white-text flush--bottom hidden'>Du ser en gammal version av webbplatsen. Klicka <a class='white-text' style='text-decoration:underline' href='#'>h&auml;r</a> eller uppdatera webbl&auml;saren f&ouml;r att se den nya.</div>");
 			$(".wrong-version").slideDown("slow").find("a").click(function() {
-				push_google_analytics("#new-version");
 				location.reload(true);
 				return false;
 			});
@@ -1197,9 +1171,6 @@ $(document).ready(function(){
 						} 
 						searchstring = $("#s").val(); 
 						
-						// push to analytics
-						push_google_analytics("#search=" + searchstring);
-						
 						$(".searchresult-wrapper .searchresult").html("H&auml;mtar s&ouml;kresultat...").load(hultsfred_object["templateDir"]+"/ajax/search.php", 
 						{ searchstring: searchstring }, 
 						function() { 
@@ -1558,23 +1529,6 @@ function setArticleActions(el) {
 	$(el).find(".js-contact-link").each(function() {
 		setContactPopupAction($(this));
 	});
-	
-	
-	//google analytics
-	$(el).find(".related_link a").each(function() {
-		if ($(this).attr("href") !== undefined) {
-			$(this).unbind("click").bind("click",function () {
-				push_google_analytics("#link=" + $(this).attr("href"));
-			});
-		}
-	});
-	$(el).find(".related_file a").each(function() {
-		if ($(this).attr("href") !== undefined) {
-			$(this).unbind("click").bind("click",function () {
-				push_google_analytics("#file=" + $(this).attr("href"));
-			});
-		}
-	});
 }
 
 /**
@@ -1614,11 +1568,6 @@ function contactAction(el,ev) {
 		}
 		$(".contact-popup.box").load(hultsfred_object["templateDir"]+"/ajax/hk_kontakter_load.php",{id:post_id,blog_id:hultsfred_object["blogId"]}, function()
 		{
-			// google analytics
-			if (thepage !== undefined) {
-				push_google_analytics(thepage);
-			}
-
 			$(this).find(".entry-wrapper").before("<div class='js-close-contact close-contact close-popup'></div>");
 			$(".js-close-contact").unbind("click").bind("click",function() {
 				$(".contact-popup").remove();
@@ -1675,9 +1624,6 @@ function textWidgetAction(el,ev) {
 		
 		// show popup
 		$(parentwidget).find(".form-popup.overlay").show();
-
-		// google analytics
-		push_google_analytics("#popupform=" + $(parentwidget).attr("id"));	
 
 		// close button and close on overlay-press
 		$(parentwidget).find(".form-popup.overlay").unbind("click").bind("click",function(ev) {

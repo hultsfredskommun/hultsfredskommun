@@ -254,7 +254,7 @@ function hk_theme_options_do_page() {
 			
 			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input size="8" type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo (!isset($options["num_levels_in_menu"]) || $options["num_levels_in_menu"] == "")?2:$options['num_levels_in_menu']; ?>" /></p>
 			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options['show_tags']; ?>" /></p>
-			<p><label for="hk_theme[category_thumbnail_size]">Tumnagelstorlek i kategorilista. (default: wide-image)</label><br/><input size="8" type="text" name="hk_theme[category_thumbnail_size]" value="<?php echo (!isset($options["category_thumbnail_size"]) || $options["category_thumbnail_size"] == "")?'wide-image':$options['category_thumbnail_size']; ?>" /></p>
+			<p><label for="hk_theme[category_slideshow_thumbnail_size]">Tumnagelstorlek för bildspel i kategorilista. (default: wide-image)</label><br/><input size="8" type="text" name="hk_theme[category_slideshow_thumbnail_size]" value="<?php echo (!isset($options["category_slideshow_thumbnail_size"]) || $options["category_slideshow_thumbnail_size"] == "")?'wide-image':$options['category_slideshow_thumbnail_size']; ?>" /></p>
 
 			<?php submit_button(); ?>
 			
@@ -308,9 +308,6 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[cookie_button_text]">Text på godkänn cookies knapp. </label><br/><input size="80" type="text" name="hk_theme[cookie_button_text]" value="<?php echo $options['cookie_button_text']; ?>" /></p>
 			<p><label for="hk_theme[cookie_link_text]">Länktext till mer information om cookies. </label><br/><input size="80" type="text" name="hk_theme[cookie_link_text]" value="<?php echo $options['cookie_link_text']; ?>" /></p>
 			<p><label for="hk_theme[cookie_link]">Länk till mer information om cookies. </label><br/><input size="80" type="text" name="hk_theme[cookie_link]" value="<?php echo $options['cookie_link']; ?>" /></p>
-			
-			<p><label for="hk_theme[google_analytics]">Google Analytics id (enligt UA-XXXXX-X). </label><br/><input type="text" name="hk_theme[google_analytics]" value="<?php echo $options['google_analytics']; ?>" /></p>
-			<p><label for="hk_theme[google_analytics_domain]">Google Analytics topp dom&auml;n (ex. mindom&auml;n.se). </label><br/><input type="text" name="hk_theme[google_analytics_domain]" value="<?php echo $options['google_analytics_domain']; ?>" /></p>
 			<?php submit_button(); ?>
 
 			<a name="cron"></a>
