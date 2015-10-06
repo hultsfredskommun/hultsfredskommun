@@ -448,15 +448,19 @@ function hk_get_the_contact($args = array()) {
 	$contact_position2 = get_field("hk_contact_position_2",get_the_ID());
 
 	$coordinates = "";
+	$contact_position_address = "";
 	$contact_array = explode("|",$contact_position);
 
 	if (isset($contact_position2) && isset($contact_position2["lat"]) && isset($contact_position2["lng"])) {
 		$coordinates = $contact_position2["lat"].",".$contact_position2["lng"];
+		$contact_position_address = $contact_position2["address"];
 	}
 	else if (isset($contact_array) && isset($contact_array[1])) {
 		$coordinates = $contact_array[1];
+		$contact_position_address = $contact_position["address"];
 	}
-	if ($hidden["map"] == "visible" && !empty($contact_position) && $coordinates != "") {
+
+	if ($hidden["map"] == "visible" && $coordinates != "") {
 		$mapclass = "hasmap";
 	}
 	$add_class = $default['add_item_class'];
@@ -528,11 +532,7 @@ function hk_get_the_contact($args = array()) {
 		$retValue .= "</div>";
 	
 		// position
-		if (!empty($contact_position) && $coordinates != "") :
-			$contact_position_address = "";
-			if (!empty($contact_position["address"])) {
-				$contact_position_address = $contact_position["address"];
-			}
+		if ($coordinates != "") :
 			$retValue .= "<div class='side-map " . $hidden['map'] . "'><div class='map_canvas'>[Karta <span class='coordinates rs_skip'>" . $coordinates . "</span> <span class='address'>" . $contact_position_address . "</span>]</div></div>";
 		endif;
 		

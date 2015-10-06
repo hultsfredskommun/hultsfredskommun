@@ -655,6 +655,12 @@ $(document).ready(function(){
 	 */
 	//if in tag list
 	if ($(".tag-listing").length > 0) {
+		// toggle tag-post
+		/*$(".js-toggle-tags-related-documents .js-toggle-arrow").click(function(ev) {
+			ev.preventDefault();
+			$(this).parents(".js-toggle-tags-related-documents").find(".tags-related-documents").toggle();
+		});*/
+		
 		// collapse list if more items than 10
 		hidden_stuff = false;
 		$(".page-title").append("<div class='float--left half-margin--bottom tag-tools one-whole'></div>");

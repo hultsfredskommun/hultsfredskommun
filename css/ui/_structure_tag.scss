@@ -1,3 +1,10 @@
+.tags-related-documents {
+	@extend .hidden;
+	@extend .half-margin--left;
+	@extend .half-margin--bottom;
+}
+.tags-document-toggle {
+}
 .tag-listing {
 	.dimmed-tag {
 		color: $gray-color!important;
