@@ -28,7 +28,12 @@ if ($post) {
 endif;
 
 if ($url != "") : ?>
-<html><head><?php echo "<meta http-equiv='refresh' content='0;url=$url'>"; ?></head><body><?php echo $text; ?><br /><br />Du skickas nu vidare till <?php echo $url; ?>.</body></html>
+<html><head><?php echo "<meta http-equiv='refresh' content='0;url=$url'>"; ?></head><body>
+<?php 
+$hk_options = get_option('hk_theme');
+echo $hk_options['in_topbody_section'];
+echo $text; 
+?><br /><br /><p>Du skickas nu vidare till </p><p><b><?php echo $url; ?></b></p></body></html>
 <?php else : ?>
 <html><head></head><body>Ingen enkel adress hittades.</body></html>
 <?php
