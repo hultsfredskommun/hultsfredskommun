@@ -2,10 +2,10 @@
 <aside class="side-content">
 	<?php
 	$options = get_option("hk_theme"); ?>
-	<?php if (get_field('hk_optional_text2', get_the_ID())){ ?>
+	<?php if (function_exists("get_field") && get_field('hk_optional_text2', get_the_ID())){ ?>
 		<div class="box optional-text2"><?php echo get_field('hk_optional_text2', get_the_ID()); ?></div>
 	<?php } ?>
-	<?php if (get_field('hk_optional_text', get_the_ID())){ ?>
+	<?php if (function_exists("get_field") && get_field('hk_optional_text', get_the_ID())){ ?>
 		<div class="box optional-text"><?php echo get_field('hk_optional_text', get_the_ID()); ?></div>
 	<?php } ?>
 	
@@ -27,7 +27,7 @@
 					<?php echo $alt_title; ?>
 				</span>
 				<?php else : ?>
-				<?php if (get_field('hk_contact_titel', $value->ID)) : ?>
+				<?php if (function_exists("get_field") && get_field('hk_contact_titel', $value->ID)) : ?>
 				<span class="title-content">
 					<?php echo get_field('hk_contact_titel', $value->ID); ?>
 				</span>

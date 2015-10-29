@@ -796,7 +796,7 @@ function get_the_reviewed_date($id) {
 
 	$time = get_post_meta( $id, 'hk_last_reviewed', true );
 	if (isset($time) && $time != "") {
-		$time = "Granskad: <time datetime='$time' class='updated updated-date'>" . hk_theme_nicedate($time) . "</time> (skapad: <span class='created-date'>" . get_the_date() . "</span>)";
+		$time = "Granskad: <time datetime='$time' class='updated created-date'>" . hk_theme_nicedate($time) . "</time>";// (skapad: <span class='created-date'>" . get_the_date() . "</span>)";
 	}
 	else {
 		$time = "Skapad: <span class='created-date'>" . get_the_date() . "</span>";
