@@ -457,7 +457,7 @@ function hk_get_the_contact($args = array()) {
 	}
 	else if (isset($contact_array) && isset($contact_array[1])) {
 		$coordinates = $contact_array[1];
-		$contact_position_address = $contact_position["address"];
+		$contact_position_address = $contact_position[0];
 	}
 
 	if ($hidden["map"] == "visible" && $coordinates != "") {
