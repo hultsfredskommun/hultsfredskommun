@@ -6,13 +6,17 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
+global $thumb_size;
+if (empty($thumb_size)) {
+	$thumb_size = 'thumbnail-image';
+}
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky news summary":"news summary"); ?>>
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
 			<div class="content-wrapper">
 				<div class="summary-content">
-					<?php $thumb = hk_get_the_post_thumbnail(get_the_ID(),'thumbnail-image', false, false); 
+					<?php $thumb = hk_get_the_post_thumbnail(get_the_ID(),$thumb_size, false, false); 
 					if ($thumb) :  					
 						echo $thumb;
 					else : /* else default thumb; */

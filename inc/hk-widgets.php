@@ -37,6 +37,9 @@
 		if ( isset( $instance[ 'rss_link_url' ] ) ) { $rss_link_url = $instance[ 'rss_link_url' ];
 		} else { $rss_link_url = ''; }
 
+		if ( isset( $instance[ 'thumb_size' ] ) ) { $thumb_size = $instance[ 'thumb_size' ];
+		} else { $thumb_size = ''; }
+
 
 		$options = get_option('hk_theme');
 
@@ -66,6 +69,14 @@
 		<input class="widefat" id="<?php echo $this->get_field_id( 'rss_link_url' ); ?>" name="<?php echo $this->get_field_name( 'rss_link_url' ); ?>" type="text" value="<?php echo esc_attr( $rss_link_url); ?>" />
 		</p>
 		<p>
+		<label for="<?php echo $this->get_field_id( 'thumb_size' ); ?>">Tumnagelstorlek (standard thumbnail-image).</label> 
+		<select id="<?php echo $this->get_field_id( 'thumb_size' ); ?>" name="<?php echo $this->get_field_name( 'thumb_size' ); ?>">
+		<option value=''>V&auml;lj storlek</option>";
+		<?php foreach (hk_get_image_sizes() as $key => $value) { ?>
+			<option <?php echo (($key == $thumb_size)?"selected":""); ?> value='<?php echo $key; ?>'><?php echo $key; ?></option>
+		<?php } ?>
+		</select>
+		<p>
 		<input id="<?php echo $this->get_field_id( 'box-list' ); ?>" name="<?php echo $this->get_field_name( 'box-list' ); ?>" type="checkbox" <?php echo ($instance["box-list"] != "")?"checked":""; ?> />
 		<label for="<?php echo $this->get_field_id( 'box-list' ); ?>">Visa i två kolumner</label> 
 		</p>
@@ -82,13 +93,14 @@
 		$instance['hide_more_news'] = strip_tags( $new_instance['hide_more_news'] );
 		$instance['rss_link_text'] = $new_instance['rss_link_text'];
 		$instance['rss_link_url'] = strip_tags( $new_instance['rss_link_url'] );
-		
+		$instance['thumb_size'] = strip_tags( $new_instance['thumb_size'] );
 		$instance['box-list'] = strip_tags( $new_instance['box-list'] );
 		
 		return $instance;
 	}
 
 	public function widget( $args, $instance ) {
+		global $thumb_size;
 	    extract( $args );
 		global $default_settings;
 		$options = get_option('hk_theme');
@@ -104,6 +116,9 @@
 		else $rss_link_text = "";
 		if (isset($instance["rss_link_url"])) $rss_link_url = $instance["rss_link_url"];
 		else $rss_link_url = "";
+		if (isset($instance["thumb_size"])) $thumb_size = $instance["thumb_size"];
+		else $thumb_size = "";
+		
 		$boxclass = "";
 		if (isset($instance['box-list']) && $instance['box-list'] != "") 
 			$boxclass = "box-list ";
@@ -131,10 +146,7 @@
 				$shownposts = array();
 				if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 					$shownposts[] = get_the_ID(); 
-					if ($content_type != "")
-						get_template_part( 'content', $content_type ); 
-					else
-						get_template_part( 'content', 'news' ); 
+					get_template_part( 'content', 'news' ); 
 				endwhile; endif; 
 				// Reset Query
 				wp_reset_query(); 

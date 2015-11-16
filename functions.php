@@ -32,6 +32,7 @@ if ( ! isset( $default_settings ) ) {
 								'slideshow-image' => array(980, 551, true),
 								'wide-image' => array(1138, 326, true),
 								'contact-image' => array(150, 190, true),
+								'thumbnail-news-image' => array(510, 289, true),
 								'startpage_cat' => $hk_options["startpage_cat"],
 								'news_tag' => $hk_options["news_tag"],
 								'hidden_cat' => $hk_options["hidden_cat"],
@@ -233,9 +234,10 @@ function hk_setup() {
 							));	
 	// Add default posts and comments RSS feed links to <head>.
 	//add_theme_support( 'automatic-feed-links' );
-
 }
 endif; // hk_setup
+
+
 
 /**
  * add theme javascript file and needed jquery 
@@ -1541,5 +1543,50 @@ function hk_view_most_viewed_posts() {
 		$output = '';
 	}
 	return $output;
+}
+
+/*
+ * get available image sizes
+ */
+function hk_get_image_sizes( $size = '' ) {
+
+	global $_wp_additional_image_sizes;
+
+	$sizes = array();
+	$get_intermediate_image_sizes = get_intermediate_image_sizes();
+
+	// Create the full array with sizes and crop info
+	foreach( $get_intermediate_image_sizes as $_size ) {
+
+			if ( in_array( $_size, array( 'thumbnail', 'medium', 'large' ) ) ) {
+
+					$sizes[ $_size ][0] = get_option( $_size . '_size_w' );
+					$sizes[ $_size ][1] = get_option( $_size . '_size_h' );
+					$sizes[ $_size ][2] = (bool) get_option( $_size . '_crop' );
+
+			} elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
+
+					$sizes[ $_size ] = array( 
+							$_wp_additional_image_sizes[ $_size ]['width'],
+							$_wp_additional_image_sizes[ $_size ]['height'],
+							$_wp_additional_image_sizes[ $_size ]['crop']
+					);
+
+			}
+
+	}
+
+	// Get only 1 size if found
+	if ( $size ) {
+
+			if( isset( $sizes[ $size ] ) ) {
+					return $sizes[ $size ];
+			} else {
+					return false;
+			}
+
+	}
+
+	return $sizes;
 }
 ?>
