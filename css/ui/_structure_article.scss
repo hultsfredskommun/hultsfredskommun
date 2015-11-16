@@ -436,7 +436,8 @@ article.single .map_canvas {
 	}
 	.contacts,
 	.related,
-	.tools {
+	.tools,
+	.faq {
 		@extend .nav;
 		@extend .nav--stacked;
 	}
@@ -449,6 +450,7 @@ article.single .map_canvas {
 		@extend .half-margin--top;
 		@extend .margin--bottom;
 		@extend .half-padding--bottom;
+		@extend .gray-light-background;
 
 		&.contacts {
 			background: $main-lightest-color;
@@ -459,6 +461,9 @@ article.single .map_canvas {
 		}
 		&.related {
 			background: $related-lightest-color;
+			.title.related_title {
+				@extend .related-background;
+			}
 		}
 	}
 	.aside-list-item {
@@ -468,7 +473,7 @@ article.single .map_canvas {
 		@extend .black-text;
 		@extend .half-padding--top;
 		@extend .half-padding--bottom;
-		@extend .related-background;
+		@extend .gray-background;
 		@extend .half-padding--left;
 		@extend .half-margin--bottom;
 		@extend .border-radius--top;

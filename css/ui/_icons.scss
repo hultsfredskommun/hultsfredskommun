@@ -86,6 +86,12 @@
 	margin-right: $half-spacing-unit;
 	vertical-align: text-top;
 }
+.faq-icon {
+	@extend .clip_30x30;
+	background-position: -28px -1106px;
+	margin-right: $half-spacing-unit;
+	vertical-align: text-top;
+}
 .contact-small-icon {
 	@extend .clip_20x20;
 	background-position: -63px -1060px;

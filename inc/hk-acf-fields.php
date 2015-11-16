@@ -648,7 +648,7 @@ if(function_exists("register_field_group"))
 			array (
 				'key' => 'field_551b7f762310e',
 				'label' => 'Vanliga frågor',
-				'name' => 'vanliga_fragor',
+				'name' => 'hk_vanliga_fragor',
 				'prefix' => '',
 				'type' => 'repeater',
 				'instructions' => 'Formulera frågan så enkelt och kortfattat som möjligt. Ex. Hur söker jag barnbidrag?',
@@ -685,10 +685,10 @@ if(function_exists("register_field_group"))
 						'maxlength' => '',
 						'readonly' => 0,
 						'disabled' => 0,
-					),
+					),/*
 					array (
 						'key' => 'field_551b7fbf23110',
-						'label' => 'Svar',
+						'label' => 'Kortfatta svar',
 						'name' => 'svar',
 						'prefix' => '',
 						'type' => 'wysiwyg',
@@ -704,7 +704,7 @@ if(function_exists("register_field_group"))
 						'tabs' => 'all',
 						'toolbar' => 'full',
 						'media_upload' => 1,
-					),
+					),*/
 				),
 			),
 		),
@@ -713,11 +713,11 @@ if(function_exists("register_field_group"))
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'hk_faq',
+					'value' => 'post',
 				),
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 10,
 		'position' => 'normal',
 		'style' => 'default',
 		'label_placement' => 'top',

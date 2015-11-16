@@ -70,7 +70,7 @@ require( get_template_directory() . '/inc/hk-slideshow.php' );
 require( get_template_directory() . '/inc/hk-contacts.php' );
 
 // Grab hk FAQ.
-require( get_template_directory() . '/inc/hk-faq.php' );
+//require( get_template_directory() . '/inc/hk-faq.php' );
 
 // Grab hk related.
 require( get_template_directory() . '/inc/hk-related.php' );

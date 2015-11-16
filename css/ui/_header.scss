@@ -51,8 +51,9 @@
 	@extend .desk-one-quarter;
 	@extend .lap-one-quarter;
 	@extend .palm-six-tenths;
-	a > img {
+	a, a > img {
 		max-width: 180px;
+		width: 100%;
 	}
 	a:focus, a:active {
 		outline: auto;

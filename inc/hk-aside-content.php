@@ -120,6 +120,22 @@
 			<div class='box map'><div class='map_canvas'>[Karta <span class='coordinates'><?php echo $contact_position["coordinates"]; ?></span> <span class='address'><?php echo $contact_position["address"]; ?></span>]</div></div>
 	<?php endif; ?>
 
+	<?php endif; ?>
+
+
+	<?php if( function_exists("get_field") && get_field('hk_vanliga_fragor', get_the_ID()) ) : // related contacts ?>
+	<ul class="box top faq">
+		<a name="quick-faq-<?php the_ID(); ?>"></a>
+		<li class="faq_title title">
+			<span class="faq-icon"></span><span>Artikeln svarar på f&ouml;ljande</span>
+		</li>			 
+
+		<?php while( has_sub_field('hk_vanliga_fragor', get_the_ID()) ): ?>
+			<li class="aside-list-item faq-wrapper">
+				<?php $value = get_sub_field('fraga', get_the_ID()); ?>
+				<?php echo $value; ?></li>
+		<?php endwhile; ?>
+	</ul>
 	<?php endif; ?>	
 
 	
