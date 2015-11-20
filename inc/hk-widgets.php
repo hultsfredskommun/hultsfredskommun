@@ -593,9 +593,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 				$alt = $instance["alt"];
 			}
 			if ($alt == "") {
-				$alt = $instance["text"];
-			}
-			if ($alt == "") {
 				if ($instance["href"] != "") {
 					$alt = "L&auml;nk till " . $instance["href"];
 				}
