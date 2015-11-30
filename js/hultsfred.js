@@ -1510,7 +1510,11 @@ function setQuickLinks(el) {
 	});
 }
 function setArticleActions(el) {
-	
+	// special if ghostrec active
+	if (document.cookie.match(new RegExp('ghostrec-usability'))) {
+		//location.href = $(article).find(".js-external-link").attr("href");
+		return true;
+	}
 
 	//sets click-action on entry-titles
 	$(el).find('.js-toggle-article').unbind("click").bind("click",function(ev){
