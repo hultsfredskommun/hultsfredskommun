@@ -37,6 +37,7 @@
 * include_tag, ignore_cat and ignore_tag added as html get variable, i.e. http://yourdomain/category/the_category/?ignore_cat=12 to ignore the category with id 12
 * Contact Form 7 support
 * EU cookie bar, settings is in Theme settings.
+* FAQ attribute in post to add "visible" question in post and searchable. Searchable is setting to enable in Theme setting.
 
 === Recommended widget setup ===
 * Startsida toppinnehåll
