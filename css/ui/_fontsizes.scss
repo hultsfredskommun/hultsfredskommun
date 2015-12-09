@@ -95,12 +95,14 @@ h1, h2, h3, h4, h5, h6 {
 .widget-title,
 h1 {
 	margin-bottom: $base-spacing-unit/4!important;
-	a, span {
+	a {
 		@extend .default-text;
 		line-height: 1.3;
 	}
 	
 }
 
-
-
+h1 span {
+	@extend .default-text;
+	line-height: 1.3;
+}
