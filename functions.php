@@ -1661,7 +1661,7 @@ function hk_search_and_print_faq($search) {
 				$value = $arr[1]; // get question
 				if (!empty($value) && $url) { // check not empty content
 					$retVal .= "<div class='search-item-area faq-wrapper'>";
-					$retVal .= "<a href='$url'>";
+					$retVal .= "<a href='$url' class='gtm-faq-item'>";
 					$retVal .= $value;
 					$retVal .= "</a></div>";
 					if ($count++ >= $max) { // break when $max
