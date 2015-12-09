@@ -7,7 +7,8 @@
 		<?php
 			$options = get_option("hk_theme");
 			
-			$externalclass = "js-toggle-article";
+			//$externalclass = "js-toggle-article";
+			$externalclass = "";
 			if (function_exists("get_field")) { 
 				$href = get_field('hk_external_link_url'); 
 				$name = get_field('hk_external_link_name'); 
@@ -32,7 +33,7 @@
 					<a class="related-small-icon icon" href="#quick-related-<?php the_ID(); ?>" title='G&aring; direkt till relaterad information'></a>
 				</span>
 			</div>
-			<h1 class="entry-title"><a class="<?php echo $externalclass; ?> article-title" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+			<h1 class="entry-title"><?php the_title(); ?></h1>
 			<?php 
 				if (get_post_meta( get_the_ID(), "local_script", true ) != "") { 
 					echo get_post_meta( get_the_ID(), "local_script", true );
