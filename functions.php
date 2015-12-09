@@ -1472,6 +1472,12 @@ function hk_search_hook_func(){
 	$searchstring = $_REQUEST["searchstring"];
 	$hk_options = get_option('hk_theme');
 	if ($searchstring != "") {
+		// show faq search
+		if($hk_options["gcse_enable_faq_search"] != ""):
+			echo hk_search_and_print_faq($searchstring);
+		endif;
+		
+		// show contacter search
 		if($hk_options["gcse_enable_kontakter_search"] != ""):
 			$count = 5;
 			if (!empty($_REQUEST["numtele"]))
@@ -1588,5 +1594,51 @@ function hk_get_image_sizes( $size = '' ) {
 	}
 
 	return $sizes;
+}
+
+/*
+	get faq/vanliga fragor
+*/
+function hk_search_and_print_faq($search) {
+	global $wpdb;
+	//$search = mb_convert_encoding($search, "ISO-8859-1");
+	$id_array = array();
+	$retVal = "";
+	// search in faq meta
+	foreach(preg_split("/[\s,]+/", $search, NULL, PREG_SPLIT_NO_EMPTY) as $val) {
+		$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta 
+		WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post' 
+		AND ($wpdb->postmeta.meta_key LIKE '%%vanliga%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $val ), "ARRAY_A");
+		$id_array = array_merge($id_array, $postarray);
+		//$retVal .= print_r($postarray,1);
+	}
+	
+	// return empty if no hits
+	if (count($id_array) <= 0) {
+		return "";
+	}
+	else {
+		$retVal .= "";
+		$retVal .= "<div class='search-title'>";
+		$retVal .= /*"<span class='faq-icon'></span>*/"<span>Letar du efter:</span>";
+		$retVal .= "</div>";
+		$existing_faq = array();
+		foreach ($id_array as $arr) {
+	
+			if (!in_array($arr["meta_value"],$existing_faq)) {
+			//while( has_sub_field('hk_vanliga_fragor', $id) ) { 
+				$retVal .= "<div class='search-item-area faq-wrapper'>";
+				$url = get_post_permalink($arr["id"]);
+				$retVal .= "<a href='$url'>";
+				$value = $arr["meta_value"];//get_sub_field('fraga', $id); 
+				$retVal .= $value;
+				$retVal .= "</a></div>";
+			//}
+				$existing_faq[] = $arr["meta_value"]; // don't show faq again
+			}
+		}
+		$retVal .= "</ul>";
+		return $retVal;
+	}
 }
 ?>

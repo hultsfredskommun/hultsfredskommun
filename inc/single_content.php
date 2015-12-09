@@ -33,7 +33,7 @@
 					<a class="related-small-icon icon" href="#quick-related-<?php the_ID(); ?>" title='G&aring; direkt till relaterad information'></a>
 				</span>
 			</div>
-			<h1 class="entry-title"><?php the_title(); ?></h1>
+			<h1 class="entry-title"><span><?php the_title(); ?></span></h1>
 			<?php 
 				if (get_post_meta( get_the_ID(), "local_script", true ) != "") { 
 					echo get_post_meta( get_the_ID(), "local_script", true );

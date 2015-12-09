@@ -123,7 +123,7 @@
 	<?php endif; ?>
 
 
-	<?php if( function_exists("get_field") && get_field('hk_vanliga_fragor', get_the_ID()) ) : // related contacts ?>
+	<?php if( function_exists("get_field") && get_field('hk_vanliga_fragor', get_the_ID()) ) : // faq ?>
 	<ul class="box top faq">
 		<a name="quick-faq-<?php the_ID(); ?>"></a>
 		<li class="faq_title title">

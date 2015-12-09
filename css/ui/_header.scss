@@ -259,8 +259,11 @@
 	.gsc-resultsHeader {
 		display: none;
 	}
-	.contact-area {
+	.contact-area,
+	.search-item-area {
 		padding-left: 6px;
+	}
+	.contact-area {
 		@extend .cf;
 		h3.entry-title {
 			@extend .epsilon;

@@ -12,9 +12,16 @@ get_header(); ?>
 			//hk_navigation(); ?>
 		
 		<?php 
-		if($hk_options["gcse_enable_kontakter_search"] != "" || has_action('hk_pre_search')) :
+		
+		if($options["gcse_enable_faq_search"] != "" || $options["gcse_enable_kontakter_search"] != "" || has_action('hk_pre_search')) :
 			echo "<aside class='search-hook'>";
 			
+			// show faq search
+			if($options["gcse_enable_faq_search"] != ""):
+				echo hk_search_and_print_faq(get_query_var("s"));
+			endif;
+			
+			// show contact search
 			if($options["gcse_enable_kontakter_search"] != ""):
 				$count = 5;
 				if (!empty($_REQUEST["numtele"]))

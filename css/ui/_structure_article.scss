@@ -183,7 +183,7 @@ article.post {
 				@extend .half-padding--right;
 			}
 			.entry-title {
-				@include font-size(26px);
+				//@include font-size(26px);
 				line-height: 1.1em;
 				width: auto;
 				display: inline;
