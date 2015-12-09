@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "2.2");
+define("HK_VERSION", "2.3");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -1604,41 +1604,75 @@ function hk_search_and_print_faq($search) {
 	//$search = mb_convert_encoding($search, "ISO-8859-1");
 	$id_array = array();
 	$retVal = "";
-	// search in faq meta
-	foreach(preg_split("/[\s,]+/", $search, NULL, PREG_SPLIT_NO_EMPTY) as $val) {
+	$search = trim($search);
+	// search in faq meta with words in order
+	if (!empty($search)) {
 		$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta 
 		WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post' 
-		AND ($wpdb->postmeta.meta_key LIKE '%%vanliga%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $val ), "ARRAY_A");
-		$id_array = array_merge($id_array, $postarray);
-		//$retVal .= print_r($postarray,1);
+		AND ($wpdb->postmeta.meta_key LIKE '%%vanliga%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $search ), "ARRAY_A");
+		
+		foreach($postarray as $arr) {
+			$id_array[implode("|",$arr)] = 1;
+		}
+	}
+	// search in faq meta with each word
+	if (count($id_array) <= 0) {
+		
+		foreach(preg_split("/[\s,]+/", $search, NULL, PREG_SPLIT_NO_EMPTY) as $val) {
+			$val = trim($val);
+			if (!empty($val)) {
+				$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta 
+				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post' 
+				AND ($wpdb->postmeta.meta_key LIKE '%%vanliga%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $val ), "ARRAY_A");
+				// count if faq is found more than once
+				foreach($postarray as $arr) {
+					$a = implode("|",$arr);
+					if (array_key_exists($a, $id_array)) {
+						$id_array[$a]++;
+					} else {
+						$id_array[$a] = 1;
+					}
+				}
+			}
+		}
+		// sort on most counted
+		arsort($id_array);
 	}
 	
 	// return empty if no hits
 	if (count($id_array) <= 0) {
 		return "";
 	}
+	// else return values
 	else {
+		// print title
 		$retVal .= "";
 		$retVal .= "<div class='search-title'>";
-		$retVal .= /*"<span class='faq-icon'></span>*/"<span>Letar du efter:</span>";
+		$retVal .= /*"<span class='faq-icon'></span>*/"<span>Letar du efter</span>";
 		$retVal .= "</div>";
-		$existing_faq = array();
-		foreach ($id_array as $arr) {
-	
-			if (!in_array($arr["meta_value"],$existing_faq)) {
-			//while( has_sub_field('hk_vanliga_fragor', $id) ) { 
-				$retVal .= "<div class='search-item-area faq-wrapper'>";
-				$url = get_post_permalink($arr["id"]);
-				$retVal .= "<a href='$url'>";
-				$value = $arr["meta_value"];//get_sub_field('fraga', $id); 
-				$retVal .= $value;
-				$retVal .= "</a></div>";
-			//}
-				$existing_faq[] = $arr["meta_value"]; // don't show faq again
+
+		// print $max number values
+		$count = 1;
+		$max = 5;
+		foreach ($id_array as $arr => $c) {
+			$arr = explode("|",$arr);
+			if (!empty($arr) && count($arr) == 2) { // check if valid content
+				$url = get_permalink($arr[0]); // get link
+				$value = $arr[1]; // get question
+				if (!empty($value) && $url) { // check not empty content
+					$retVal .= "<div class='search-item-area faq-wrapper'>";
+					$retVal .= "<a href='$url'>";
+					$retVal .= $value;
+					$retVal .= "</a></div>";
+					if ($count++ >= $max) { // break when $max
+						break;
+					}
+				}
 			}
 		}
-		$retVal .= "</ul>";
 		return $retVal;
 	}
 }
+
+
 ?>
