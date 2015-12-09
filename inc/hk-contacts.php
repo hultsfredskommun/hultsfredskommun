@@ -250,7 +250,7 @@ function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_titl
 	
 	
 	if ($echo_title) {
-		$title_text = "<div class='js-toggle-search-wrapper'><h3 class='search-title js-toggle-search-hook'>Kontakter$num_text</h3>$contacts</div>";
+		$title_text = "<h3 class='search-title js-toggle-search-hook'>Kontakter$num_text</h3>";
 	}
 	if ($extra_pre_search_text != "") {
 		$extra_pre_search_text = "<div class='contact-area'><div class='complement-italic-text search-item'>$extra_pre_search_text</div></div>";
@@ -261,7 +261,7 @@ function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_titl
 
 	$contacts = hk_get_contact_by_id(implode(",",$id_array), $args);
 	
-	return $title_text . $extra_pre_search_text . $contacts . $extra_post_search_text;
+	return "<div class='js-toggle-search-wrapper'>" . $title_text . $extra_pre_search_text . $contacts . $extra_post_search_text . "</div>";
 }
 /* helper to check if value is or could be a phone number */
 function hk_checkAndConvertSpecialValue($value) {

@@ -1646,7 +1646,7 @@ function hk_search_and_print_faq($search) {
 	// else return values
 	else {
 		// print title
-		$retVal .= "";
+		$retVal .= "<div class='search-wrapper'>";
 		$retVal .= "<div class='search-title'>";
 		$retVal .= /*"<span class='faq-icon'></span>*/"<span>Letar du efter</span>";
 		$retVal .= "</div>";
@@ -1670,6 +1670,8 @@ function hk_search_and_print_faq($search) {
 				}
 			}
 		}
+		$retVal .= "</div>";
+
 		return $retVal;
 	}
 }
