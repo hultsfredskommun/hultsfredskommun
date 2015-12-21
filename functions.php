@@ -287,7 +287,7 @@ if (!is_admin()) {
 		/*if ($hk_options['readspeaker_id'] == "6595") // to run without ios special script, special for Hultsfreds kommun
 			$readspeaker_url = get_template_directory_uri() . '/js/ReadSpeaker/ReadSpeaker.js?pids=embhl';
 		else*/
-		$readspeaker_url = 'http'.$s_when_https.'://f1.eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
+		$readspeaker_url = '//f1.eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
 
 		wp_enqueue_script(
 			'readspeaker_js',
@@ -300,7 +300,7 @@ if (!is_admin()) {
 	
 	wp_enqueue_script(
 		'google_map_js',
-		'http'.$s_when_https.'://maps.google.com/maps/api/js?sensor=false',
+		'//maps.google.com/maps/api/js?sensor=false',
 		array('jquery'),
 		'1.0',
 		true
@@ -1600,7 +1600,8 @@ function hk_get_image_sizes( $size = '' ) {
 	get faq/vanliga fragor
 */
 function hk_search_and_print_faq($search) {
-	global $wpdb;
+	global $wpdb, $hk_options;
+	
 	//$search = mb_convert_encoding($search, "ISO-8859-1");
 	$id_array = array();
 	$retVal = "";
@@ -1609,12 +1610,37 @@ function hk_search_and_print_faq($search) {
 	if (!empty($search)) {
 		$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta 
 		WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post' 
-		AND ($wpdb->postmeta.meta_key LIKE '%%vanliga%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $search ), "ARRAY_A");
-		
+		AND ($wpdb->postmeta.meta_key LIKE 'hk_vanliga_fragor%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $search ), "ARRAY_A");
 		foreach($postarray as $arr) {
 			$id_array[implode("|",$arr)] = 1;
 		}
 	}
+	
+	// search in faq meta with each word, ignoring words in faq_search_ignore_words
+	if (count($id_array) <= 0 && !empty($hk_options["faq_search_ignore_words"])) {
+		
+		foreach(preg_split("/[\s,]+/", $search, NULL, PREG_SPLIT_NO_EMPTY) as $val) {
+			$val = trim($val);
+			//$retVal .= print_r(explode(", ",$hk_options["faq_search_ignore_words"]),true);
+			if (!empty($val) && !in_array($val, explode(", ",$hk_options["faq_search_ignore_words"]))) {
+				$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta 
+				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post' 
+				AND ($wpdb->postmeta.meta_key LIKE 'hk_vanliga_fragor%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $val ), "ARRAY_A");
+				// count if faq is found more than once
+				foreach($postarray as $arr) {
+					$a = implode("|",$arr);
+					if (array_key_exists($a, $id_array)) {
+						$id_array[$a]++;
+					} else {
+						$id_array[$a] = 1;
+					}
+				}
+			}
+		}
+		// sort on most counted
+		arsort($id_array);
+	}
+	
 	// search in faq meta with each word
 	if (count($id_array) <= 0) {
 		
@@ -1623,7 +1649,7 @@ function hk_search_and_print_faq($search) {
 			if (!empty($val)) {
 				$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta 
 				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post' 
-				AND ($wpdb->postmeta.meta_key LIKE '%%vanliga%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $val ), "ARRAY_A");
+				AND ($wpdb->postmeta.meta_key LIKE 'hk_vanliga_fragor%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $val ), "ARRAY_A");
 				// count if faq is found more than once
 				foreach($postarray as $arr) {
 					$a = implode("|",$arr);
