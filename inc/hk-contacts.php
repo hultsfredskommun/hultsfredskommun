@@ -188,7 +188,7 @@ function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_titl
 	
 	if (count($matches) > 0 && $matches[0] != "") {
 		$match = trim($matches[0]," ");
-		$searchmatch = trim($match,"0 ");
+		$searchmatch = trim($match," ");
 		if ($searchmatch != "") {
 			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta 
 				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter' 
