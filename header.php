@@ -281,3 +281,4 @@ $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 
 	<div id="main" class="main">
 	<div class="main-wrapper">
+		<?php echo hk_view_quick_links(); ?>

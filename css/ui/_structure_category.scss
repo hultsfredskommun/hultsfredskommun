@@ -10,10 +10,8 @@
 	padding-left: $base-spacing-unit;
 }
 
-.quick-posts,
 .most-viewed-posts {
 	@extend .gw;
-	.quick-post,
 	.most-viewed-post {
 		@extend .g;
 		@extend .palm-one-third;
@@ -26,7 +24,16 @@
 		}
 	}
 }
-.quick-posts-wrapper,
+.quick-posts-wrapper {
+	@extend .g;
+	@extend .one-whole;
+	.quick-posts {
+		@extend .gw;
+		.quick-post {
+			@extend .g;
+		}
+	}
+}
 .most-viewed-posts-wrapper,
 .primary,
 .breadcrumb {

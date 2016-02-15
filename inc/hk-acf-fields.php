@@ -19,6 +19,256 @@
  * You may edit the array as you see fit. However, this may result in errors if the array is not compatible with ACF
  * This code must run every time the functions.php file is read
  */
+if( function_exists('acf_add_local_field_group') ):
+
+acf_add_local_field_group(array (
+	'key' => 'group_56bb0a0915e14',
+	'title' => 'Mellanstartsida',
+	'fields' => array (
+		array (
+			'key' => 'field_56bb09f161839',
+			'label' => 'Ingång',
+			'name' => 'hk_quick_link',
+			'type' => 'flexible_content',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'button_label' => 'Lägg till puff',
+			'min' => '',
+			'max' => '',
+			'layouts' => array (
+				array (
+					'key' => '56bb0a25a4143',
+					'name' => 'lagg_till_puff',
+					'label' => 'Lägg till puff',
+					'display' => 'block',
+					'sub_fields' => array (
+						array (
+							'key' => 'field_56bb0a146183a',
+							'label' => 'Bild',
+							'name' => 'image',
+							'type' => 'image',
+							'instructions' => '',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'return_format' => 'array',
+							'preview_size' => 'thumbnail',
+							'library' => 'all',
+							'min_width' => '',
+							'min_height' => '',
+							'min_size' => '',
+							'max_width' => '',
+							'max_height' => '',
+							'max_size' => '',
+							'mime_types' => '',
+						),
+						array (
+							'key' => 'field_56bb0a2e6183b',
+							'label' => 'Beskrivning',
+							'name' => 'description',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array (
+							'key' => 'field_56bb0a416183c',
+							'label' => 'Länk till',
+							'name' => 'content',
+							'type' => 'flexible_content',
+							'instructions' => '',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'button_label' => 'Länka till',
+							'min' => 0,
+							'max' => 1,
+							'layouts' => array (
+								array (
+									'key' => '56bb0dc197435',
+									'name' => 'fil',
+									'label' => 'Fil',
+									'display' => 'block',
+									'sub_fields' => array (
+										array (
+											'key' => 'field_56bb0d4262dc3',
+											'label' => 'Fil',
+											'name' => 'file',
+											'type' => 'file',
+											'instructions' => '',
+											'required' => 0,
+											'conditional_logic' => 0,
+											'wrapper' => array (
+												'width' => '',
+												'class' => '',
+												'id' => '',
+											),
+											'return_format' => 'array',
+											'library' => 'all',
+											'min_size' => '',
+											'max_size' => '',
+											'mime_types' => '',
+										),
+									),
+									'min' => '',
+									'max' => '',
+								),
+								array (
+									'key' => '56bb0f1acd048',
+									'name' => 'inlagg',
+									'label' => 'Inlägg',
+									'display' => 'block',
+									'sub_fields' => array (
+										array (
+											'key' => 'field_56bb0f1acd04d',
+											'label' => 'Post',
+											'name' => 'post',
+											'type' => 'post_object',
+											'instructions' => '',
+											'required' => 0,
+											'conditional_logic' => 0,
+											'wrapper' => array (
+												'width' => '',
+												'class' => '',
+												'id' => '',
+											),
+											'post_type' => array (
+												0 => 'post',
+											),
+											'taxonomy' => array (
+											),
+											'allow_null' => 0,
+											'multiple' => 0,
+											'return_format' => 'object',
+											'ui' => 1,
+										),
+									),
+									'min' => '',
+									'max' => '',
+								),
+								array (
+									'key' => '56bb0f17cd042',
+									'name' => 'extern',
+									'label' => 'Extern',
+									'display' => 'block',
+									'sub_fields' => array (
+										array (
+											'key' => 'field_56bb0f17cd044',
+											'label' => 'Extern URL',
+											'name' => 'extern',
+											'type' => 'text',
+											'instructions' => 'Ange URL till extern sida, inklusive http://',
+											'required' => 0,
+											'conditional_logic' => 0,
+											'wrapper' => array (
+												'width' => '',
+												'class' => '',
+												'id' => '',
+											),
+											'default_value' => '',
+											'placeholder' => '',
+											'prepend' => '',
+											'append' => '',
+											'maxlength' => '',
+											'readonly' => 0,
+											'disabled' => 0,
+										),
+									),
+									'min' => '',
+									'max' => '',
+								),
+							),
+						),
+						array (
+							'key' => 'field_56bb104207f50',
+							'label' => 'Layout',
+							'name' => 'layout',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array (
+								'one-whole' => 'Fullbredd',
+								'one-half' => 'En halv',
+								'one-third' => 'En tredjedel',
+								'two-thirds' => 'Två tredjedelar',
+								'one-quarter' => 'En fjärdedel',
+								'two-quarters' => 'Två fjärdedelar',
+								'three-quarters' => 'Tre fjärdedelar',
+								'one-fifth' => 'En femtedel',
+								'two-fifths' => 'Två femtedelar',
+								'three-fifths' => 'Tre femtedelar',
+								'four-fifths' => 'Fyra femtedelar',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+					),
+					'min' => '',
+					'max' => '',
+				),
+			),
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'hk_quick',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+
+endif;
+
 
 if(function_exists("register_field_group"))
 {
@@ -26,7 +276,7 @@ if(function_exists("register_field_group"))
 	 * POST
 	 *******/
 	
-/* POST RELATED */
+/* POST RELATED *//*
 	register_field_group(array (
 		'id' => '5048edc031cee',
 		'title' => 'Snabbl&auml;nkar',
@@ -206,7 +456,7 @@ if(function_exists("register_field_group"))
 			),
 		),
 		'menu_order' => 3,
-	));
+	));*/
 	
 	
 	

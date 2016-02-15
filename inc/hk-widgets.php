@@ -854,15 +854,25 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		} else {
 			$contacttext = "";
 		}
+		if ( isset( $instance[ 'more_contactinfo_text' ] ) ) {
+			$more_contactinfo_text = $instance[ 'more_contactinfo_text' ];
+		} else {
+			$more_contactinfo_text = "";
+		}
 
 		?>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'thumbnail-size' ); ?>"><?php _e( 'Bildformat:' ); ?></label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'thumbnail-size' ); ?>" name="<?php echo $this->get_field_name( 'thumbnail-size' ); ?>" type="text" value="<?php echo esc_attr( $thumbnailsize); ?>" />
 		</p>
+		
 		<p>
 		<label for="<?php echo $this->get_field_id( 'contacttext' ); ?>">Extra kontakttext (bara på startsidan)</label> 
 		<textarea class="widefat" id="<?php echo $this->get_field_id( 'contacttext' ); ?>" name="<?php echo $this->get_field_name( 'contacttext' ); ?>"><?php echo $contacttext; ?></textarea>
+		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'more_contactinfo_text' ); ?>">L&auml;nktexten till mer kontaktinfo</label> 
+		<textarea class="widefat" id="<?php echo $this->get_field_id( 'more_contactinfo_text' ); ?>" name="<?php echo $this->get_field_name( 'more_contactinfo_text' ); ?>"><?php echo $more_contactinfo_text; ?></textarea>
 		</p>
 
 		<h3>Direktl&auml;nk 1</h3>
@@ -1006,6 +1016,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		$instance = array();
 		$instance['thumbnail-size'] = strip_tags( $new_instance['thumbnail-size'] );
 		$instance['contacttext'] = strip_tags( $new_instance['contacttext'] );
+		$instance['more_contactinfo_text'] = strip_tags( $new_instance['more_contactinfo_text'] );
 		$instance['direct_link1_url'] = strip_tags( $new_instance['direct_link1_url'] );
 		$instance['direct_link1_title'] = strip_tags( $new_instance['direct_link1_title'] );
 		$instance['direct_link1_icon'] = $new_instance['direct_link1_icon'];
@@ -1147,9 +1158,11 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
 					$number = str_replace("]",")</span>", $number);
 
-					$retValue .= "<li class='hk_contact_phones'><a class='gtm-fpcp-phone' href='tel:".preg_replace('/\D/','',$number)."'>";
-					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
-					$retValue .= $number . "</a></li>";
+					if (get_row_layout() != "hk_contact_fax") {
+						$retValue .= "<li class='hk_contact_phones'><a class='gtm-fpcp-phone' href='tel:".preg_replace('/\D/','',$number)."'>";
+						$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
+						$retValue .= $number . "</a></li>";
+					}
 				endwhile; endif;
 				
 				if (isset($instance['contacttext']) && $options["startpage_cat"] == get_query_var("cat")) {
@@ -1157,7 +1170,12 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 						$retValue .= "<li class='contactlink  js-contact-link'><a class='gtm-fpcp-contacttext' href='" . get_permalink(get_the_ID()) . "'>" . $contacttext . "</a></li>";
 					}
 				}
-				$retValue .= "<li class='contactlink  js-contact-link'><a class='gtm-fpcp-more-contactlink' href='" . get_permalink(get_the_ID()) . "'><span class='more-contact-link'>fler kontaktuppgifter</span></a></li>";
+				
+				$more_contactinfo_text = "fler kontaktuppgifter &amp; &ouml;ppettider";
+				if (isset($instance['more_contactinfo_text'])) {
+					$more_contactinfo_text = $instance['more_contactinfo_text'];
+				}
+				$retValue .= "<li class='contactlink  js-contact-link'><a class='gtm-fpcp-more-contactlink' href='" . get_permalink(get_the_ID()) . "'><span class='more-contact-link'>$more_contactinfo_text</span></a></li>";
 
 				//$retValue .= "<span class='more-contact-link'>fler kontaktuppgifter</span>";
 				
