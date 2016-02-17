@@ -1,5 +1,5 @@
 <?php
-
+	
 /* REGISTER post_type hk_quick */
 
 add_action('init', hk_quick_init);
@@ -26,6 +26,9 @@ function hk_quick_init() {
 
 function hk_view_quick_links() {
 	global $cat;
+	/* don't show anything if not in category */
+	if ($cat == "") return;
+	
 	$args = array(
 			'post_type' => array('hk_quick'),
 			'post_status' => 'publish',
