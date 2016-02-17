@@ -955,6 +955,22 @@ if(function_exists("register_field_group"))
 						'toolbar' => 'full',
 						'media_upload' => 1,
 					),*/
+					array (
+						'key' => 'field_56c2b9f11ea60',
+						'label' => 'Utvald fråga',
+						'name' => 'important',
+						'type' => 'true_false',
+						'instructions' => '',
+						'required' => 0,
+						'conditional_logic' => 0,
+						'wrapper' => array (
+							'width' => '10%',
+							'class' => '',
+							'id' => '',
+						),
+						'message' => '',
+						'default_value' => 0,
+					),
 				),
 			),
 		),

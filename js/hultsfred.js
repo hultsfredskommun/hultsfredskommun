@@ -1042,6 +1042,16 @@ $(document).ready(function(){
 		$(".main-menu").toggleClass("unhidden");
 		ev.preventDefault();
 	});
+	$(".js-show-tag-menu").unbind("click").bind("click",function(ev) {
+		$(".tag-menu-wrapper").toggleClass("unhidden");
+		ev.preventDefault();
+	});
+	$(".js-show-tag-menu-li").unbind("click").bind("click",function(ev) {
+		if( $(window).width()+scrollbar < responsive_lap_start ) {
+			$(".category-navigation .more-navigation .atag-item").toggleClass("unhidden");
+		}
+		ev.preventDefault();
+	});
 	$(".js-show-main-sub-menu").unbind("click").bind("click",function(ev) {
 		$(".category-navigation").toggleClass("unhidden");
 		ev.preventDefault();
