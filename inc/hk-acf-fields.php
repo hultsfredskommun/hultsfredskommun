@@ -21,6 +21,13 @@
  */
 if( function_exists('acf_add_local_field_group') ):
 
+$imagesizeArr = array(  'thumbnail-image' => 'thumbnail-image',
+						'featured-image' => 'featured-image',
+						'slideshow-image' => 'slideshow-image',
+						'wide-image' => 'wide-image',
+						'contact-image' => 'contact-image',
+						'thumbnail-news-image' => 'thumbnail-news-image');
+						
 acf_add_local_field_group(array (
 	'key' => 'group_56bb0a0915e14',
 	'title' => 'Mellanstartsida',
@@ -73,10 +80,55 @@ acf_add_local_field_group(array (
 							'mime_types' => '',
 						),
 						array (
+							'key' => 'field_56c729a6a5d1b',
+							'label' => 'Bildformat',
+							'name' => 'image-size',
+							'type' => 'select',
+							'instructions' => 'Välj vilket format bilden ska ha.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => $imagesizeArr,
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_56cc0a2e6183b',
+							'label' => 'Rubrik',
+							'name' => 'title',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array (
 							'key' => 'field_56bb0a2e6183b',
 							'label' => 'Beskrivning',
 							'name' => 'description',
-							'type' => 'text',
+							'type' => 'textarea',
 							'instructions' => '',
 							'required' => 0,
 							'conditional_logic' => 0,
@@ -99,7 +151,7 @@ acf_add_local_field_group(array (
 							'name' => 'content',
 							'type' => 'flexible_content',
 							'instructions' => '',
-							'required' => 1,
+							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
 								'width' => '',

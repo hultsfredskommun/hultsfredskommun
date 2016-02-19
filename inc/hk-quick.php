@@ -57,8 +57,17 @@ function hk_view_quick_links() {
 					/* get image */
 					$imagediv = "";
 					$image = get_sub_field('image');
+					$imagesize = get_sub_field('image-size');
+					if ($imagesize == "") {
+						$imagesize = "thumbnail-image";
+					}
 					if ($image != "") :
-						$src = $image["sizes"]["thumbnail-image"];
+						if (!empty($image["sizes"][$imagesize])) {
+							$src = $image["sizes"][$imagesize];
+						}
+						else {
+							$src = $image["sizes"]["thumbnail-image"];
+						}
 						$alt = $image["alt"];
 						$imagediv .= "<div class='slide'>";
 						$imagediv .= "<img src='$src' alt='$alt' title='$alt' />";
@@ -71,6 +80,10 @@ function hk_view_quick_links() {
 					endif; endif;
 
 					/* get description */
+					$title = get_sub_field('title');
+					if (!empty($title)) {
+						$title = "<h2>$title</h2>";
+					}
 					$description = get_sub_field('description');
 
 					/* get layout */
@@ -87,7 +100,7 @@ function hk_view_quick_links() {
 								$retValue .= "<a class='$a_class $a_class-post' href='" . get_permalink($value->ID) . "'";
 								$retValue .= " title='" . $description . "'>";
 								$retValue .= $imagediv;
-								$retValue .= $description . "</a>";
+								$retValue .= $title . $description . "</a>";
 								$retValue .= "</div>";
 							elseif ( get_row_layout() == 'extern' ) : 
 								$retValue .= "<div class='quick-post  $layout'>";
@@ -99,20 +112,24 @@ function hk_view_quick_links() {
 								$retValue .= "<a class='$a_class $a_class-link'  target='_blank'";
 								$retValue .= " href='" . $quick_link_url . "' title='" . $description . "'>";
 								$retValue .= $imagediv;
-								$retValue .= $description . "</a>";
+								$retValue .= $title . $description . "</a>";
 								$retValue .= "</div>";
 							elseif ( get_row_layout() == 'fil' ) :
 								$link =  wp_get_attachment_url(get_sub_field('file')); 
-								$link_name = get_the_title(get_sub_field('file'));
 								$retValue .= "<div class='quick-post  $layout'>";
 								$retValue .= "<a class='$a_class $a_class-file'  target='_blank'";
 								$retValue .= " href='" . $link . "' title='" . $description . "'>";
 								$retValue .= $imagediv;
-								$retValue .= $description . "</a>";
+								$retValue .= $title . $description . "</a>";
 								$retValue .= "</div>";
 							endif;
 
 						endwhile;
+					else :
+						$retValue .= "<div class='quick-post  $layout'>";
+						$retValue .= $imagediv;
+						$retValue .= $title . $description;
+						$retValue .= "</div>";
 					endif; // end if content
 
 				endwhile;

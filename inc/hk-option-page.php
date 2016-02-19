@@ -170,6 +170,7 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[show_most_viewed_in_subsubcat]">Visa antal mest bes&ouml;kta artiklar p&aring; ing&aring;ngssidor. (Tom eller noll f&ouml;r att d&ouml;lja.)</label><br/><input type="text" name="hk_theme[show_most_viewed_in_subsubcat]" value="<?php echo (!isset($options["show_most_viewed_in_subsubcat"]) || $options["show_most_viewed_in_subsubcat"] == "")?0:$options['show_most_viewed_in_subsubcat']; ?>" /></p>
 			<p><input type="checkbox" name="hk_theme[show_quick_links_in_subsubcat]" value="1"<?php checked( 1 == $options['show_quick_links_in_subsubcat'] ); ?> /> <label for="hk_theme[show_quick_links_in_subsubcat]">Visa snabbgenv&auml;gar p&aring; ing&aring;ngssidor.</label></p>
 			<p><input type="checkbox" name="hk_theme[hide_articles_in_subsubcat]" value="1"<?php checked( 1 == $options['hide_articles_in_subsubcat'] ); ?> /> <label for="hk_theme[hide_articles_in_subsubcat]">Dölj artiklar p&aring; ing&aring;ngssidor.</label></p>
+			<p><input type="checkbox" name="hk_theme[hide_leftmenu]" value="1"<?php checked( 1 == $options['hide_leftmenu'] ); ?> /> <label for="hk_theme[hide_leftmenu]">Dölj v&auml;nstermeny.</label></p>
 							
 			<p><label for="hk_theme[startpage_cat]">Välj kategori som är startsida.</label><br/>
 							<?php 

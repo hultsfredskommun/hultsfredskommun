@@ -425,10 +425,16 @@ function hk_navmenu_old_navigation($menu_name, $cat, $menu_class) {
 function hk_navigation() {
 	global $post, $default_settings;
 	
+	$options = get_option('hk_theme'); 
+
 	$search = get_query_var("s");
 	$cat = get_query_var("cat");
 	$tags = get_query_var("tag");
 
+	// hide menu if hide_leftmenu is set
+	if ($options['hide_leftmenu'] == 1) return;
+	
+	// else show menu
 	echo "<aside id='nav' class='category-navigation' role='navigation'><nav>";
 	if ($search != "") {
 		echo "Du s&ouml;kte p&aring; " . $search . ".";

@@ -170,8 +170,9 @@ $firstpageClass =(is_sub_category_firstpage() && get_query_var("tag") == "") ? "
 $printpageClass = ($_REQUEST["print"] == 1) ? "print":"";
 $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 $menuversion = "old"; //or old
+$hide_leftmenu_class = ($hk_options['hide_leftmenu']) ? "hide-left-menu":"";
 ?>
-<body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu" ); ?>>
+<body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu " . $hide_leftmenu_class ); ?>>
 <?php echo $hk_options['in_topbody_section']; ?>
 <div id="version-2" style="display:none; visibility:hidden"></div>
 <div id="responsive-info"></div>

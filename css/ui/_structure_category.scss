@@ -31,7 +31,22 @@
 		@extend .gw;
 		.quick-post {
 			@extend .g;
+			@extend .margin--bottom;
+			a {
+				@extend .default-text;
+			}
+			h2 {
+				@extend .flush--bottom;
+			}
 		}
+	}
+}
+.hide-left-menu {
+	.most-viewed-posts-wrapper,
+	.primary,
+	.breadcrumb {
+		@extend .g;
+		@extend .one-whole;
 	}
 }
 .most-viewed-posts-wrapper,
