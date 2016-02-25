@@ -53,9 +53,11 @@
 <span class="menu-icon"></span>		
 
 		<?php /* search form*/ ?>
+		<?php if ($hk_options["hide_search"] != 1) : ?>
 		<div id="searchnavigation" class="searchnavigation" role="search">			
 			<?php get_search_form(); ?>
 		</div>
+		<?php endif; // end if hide_search?>
 		
 		
 		<?php if (($hk_options["logo2_image"] != "") || ($hk_options["logo3_image"] != "") || (!empty($hk_options["right_logo_html"]) && $hk_options["right_logo_html"] != "")) : ?>

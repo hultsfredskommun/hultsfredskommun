@@ -66,20 +66,15 @@
 
 			endif; // end if cat is set
 			
-		?>
-		<div id="breadcrumb" class="<?php echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":""; ?>breadcrumb"><?php hk_breadcrumb(); ?><?php hk_postcount() ?></div>
+			?>
+			<div id="breadcrumb" class="<?php echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":""; ?>breadcrumb"><?php hk_breadcrumb(); ?><?php hk_postcount() ?></div>
 
-		
-		<?php 
-		if ($default_settings["show_quick_links_in_subsubcat"] > 0 && is_sub_sub_category_firstpage()) :
-			echo hk_view_quick_links();
-		endif; //endif show most viewed ?>
 
-		<?php if ($default_settings["show_most_viewed_in_subsubcat"] > 0 && is_sub_sub_category_firstpage()) :
-			echo hk_view_most_viewed_posts();
-		endif; //endif show most viewed ?>
+			<?php if ($default_settings["show_most_viewed_in_subsubcat"] > 0 && is_sub_sub_category_firstpage()) :
+				echo hk_view_most_viewed_posts();
+			endif; //endif show most viewed ?>
 
-	<?php endif; // end if !is_sub_category_firstpage ?>
+		<?php endif; // end if !is_sub_category_firstpage ?>
 
 	<div id="primary" class="primary">
 	<?php 

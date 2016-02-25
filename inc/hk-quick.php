@@ -25,7 +25,7 @@ function hk_quick_init() {
 
 
 function hk_view_quick_links() {
-	global $cat;
+	global $cat, $default_settings;
 	/* don't show anything if not in category */
 	if ($cat == "") return;
 	
@@ -48,7 +48,9 @@ function hk_view_quick_links() {
 		// The Loop
 		while ($the_query->have_posts()) : $the_query->the_post();
 				
-
+			if (empty(get_field('hk_quick_show_articles'))) {
+				$default_settings["show_articles"] = false;
+			}
 			//$retValue .= wp_get_attachment_link($attachId); 
 			$title = get_the_title();
 			if (get_field('hk_quick_link')) :

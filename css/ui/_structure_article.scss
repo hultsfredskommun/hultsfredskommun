@@ -212,6 +212,18 @@ article.post {
 				a {
 					@extend .text-decoration-underline;
 				}
+				.gallery {
+					br {
+						display: none;
+					}
+					.gallery-item {
+						display: inline;
+						.gallery-icon {
+							display: inline;
+						}
+					}
+				}
+
 				.contact-wrapper {
 					.entry-title {
 						float: none;

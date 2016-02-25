@@ -32,6 +32,23 @@ acf_add_local_field_group(array (
 	'key' => 'group_56bb0a0915e14',
 	'title' => 'Mellanstartsida',
 	'fields' => array (
+	
+		array (
+			'key' => 'field_56c2b9e22ea60',
+			'label' => 'Visa det vanliga artikelflödet/startsidan under mellanstartsidan',
+			'name' => 'hk_quick_show_articles',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '100%',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 0,
+		),
 		array (
 			'key' => 'field_56bb09f161839',
 			'label' => 'Ingång',
