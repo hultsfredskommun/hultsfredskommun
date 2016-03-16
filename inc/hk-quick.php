@@ -23,6 +23,11 @@ function hk_quick_init() {
 
 }
 
+// shortcodes
+/*
+ * shortcode [mellanstartsida], show quick links (mellanstartsida)
+ */
+add_shortcode( 'mellanstartsida', 'hk_view_quick_links' );
 
 function hk_view_quick_links() {
 	global $cat, $default_settings;

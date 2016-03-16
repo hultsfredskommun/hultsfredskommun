@@ -481,7 +481,7 @@ function hk_navigation() {
 		if (!empty($categories)) {
 			echo "<ul class='parent'>"; 
 			if (!empty($p))
-				echo "<li class='heading cat-item $sub_parent current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='".get_category_link($sub_parent)."'>".$p."</a></li>";
+				echo "<li class='heading $sub_parent current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='".get_category_link($sub_parent)."'>".$p."</a></li>";
 			echo "</ul>"; 
 		}
 		//print_r($all_categories);
@@ -490,7 +490,7 @@ function hk_navigation() {
 		
 		if (!empty($rest_categories)) {
 			echo "<ul class='more-navigation'>";
-			echo "<li class='heading cat-item current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='#'>Artikeln ing&aring;r &auml;ven i kategorierna</a></li>";
+			echo "<li class='heading current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='#'>Artikeln ing&aring;r &auml;ven i kategorierna</a></li>";
 				foreach($rest_categories as $item) {
 					$cat = get_term( $item, "category");
 					if (!empty($cat)) {
@@ -539,7 +539,7 @@ function hk_navigation() {
 			if ($parentCat == $cat) {
 				$currentcat = 'current-cat';
 			}
-			echo "<li class='heading cat-item $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."</a></li>";
+			echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."</a></li>";
 			wp_list_categories( $args );
 			echo "</ul>"; 
 
@@ -572,7 +572,7 @@ function hk_navigation() {
 			'walker'			 => $hk_cat_walker
 		);
 		echo "<ul class='parent'>"; 
-		echo "<li class='heading cat-item $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='". get_site_url() ."'>Hela webbplatsen</a></li>";
+		echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='". get_site_url() ."'>Hela webbplatsen</a></li>";
 		wp_list_categories( $args );
 		echo "</ul>";
 		
@@ -785,7 +785,7 @@ function displayTagFilter($show_title = true, $ul_class="more-navigation", $echo
 		if (!empty($tags)) :
 			$retValue .= "<ul class='$ul_class'>"; 
 			if ($show_title) {
-				$retValue .= "<li class='heading cat-item'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
+				$retValue .= "<li class='heading'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
 			}
 			foreach( $tags as $tagitem) :
 				$retValue .= hk_generate_tag_link($tagitem, $a_class);

@@ -169,7 +169,7 @@ if ($meta_description != "") :?>
 $firstpageClass =(is_sub_category_firstpage() && get_query_var("tag") == "") ? "home":"";
 $printpageClass = ($_REQUEST["print"] == 1) ? "print":"";
 $subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
-$menuversion = "old"; //or old
+$menuversion = "old"; //new or old
 $hide_leftmenu_class = ($hk_options['hide_leftmenu']) ? "hide-left-menu":"";
 ?>
 <body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu " . $hide_leftmenu_class ); ?>>
@@ -187,4 +187,4 @@ $hide_leftmenu_class = ($hk_options['hide_leftmenu']) ? "hide-left-menu":"";
 
 	<div id="main" class="main">
 	<div class="main-wrapper">
-		<?php echo hk_view_quick_links(); ?>
+		<?php if (!is_sub_category_firstpage()) { echo hk_view_quick_links(); } ?>

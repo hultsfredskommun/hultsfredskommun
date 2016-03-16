@@ -195,6 +195,9 @@
 
 	}
 }
+.new-menu .cat-item {
+	@extend .force-hidden--palm;
+}
 .pagenav {
 	@extend .margin--top;
 }
