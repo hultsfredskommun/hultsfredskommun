@@ -145,10 +145,10 @@ function hk_view_quick_links() {
 
 						endwhile;
 					else :
-						$retValue .= "<div class='quick-post  $layout'>";
+						$retValue .= "<div class='quick-post  $layout'><div style='$style'>";
 						$retValue .= $imagediv;
 						$retValue .= $title . $description;
-						$retValue .= "</div>";
+						$retValue .= "</div></div>";
 					endif; // end if content
 
 				endwhile;
