@@ -2,6 +2,44 @@
 
 
 
+/* 
+ * MELLANSTARTSIDA CONTENT WIDGET 
+ */ 
+ class HK_mellanstartsida extends WP_Widget {
+	protected $vars = array();
+
+	public function __construct() {
+		parent::__construct(
+	 		'HK_mellanstartsida', // Base ID
+			'HK mellanstartsida', // Name
+			array( 'description' => "Widget som mellanstartsida från aktiv kategori" ) // Args
+		);
+	}
+
+ 	public function form( $instance ) {	
+		echo "<p><i>Inga inst&auml;llningsm&ouml;jligheter just nu.</i></p>";
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		
+		return $instance;
+	}
+
+	public function widget( $args, $instance ) {
+		if (function_exists(hk_view_quick_links)) {
+			echo "<div class='quick-posts-widget-wrapper'>";
+			echo hk_view_quick_links(); 
+			echo "</div>";
+		} else {
+			echo "Det finns ingen funktion för mellanstartsida p&aring; webbplatsen. Kontakta administrat&ouml;ren!";
+		}
+	}
+}
+/* add the widget  */
+add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellanstartsida" );' ) );
+
+
 
 /* 
  * FIRSTPAGE CONTENT WIDGET 

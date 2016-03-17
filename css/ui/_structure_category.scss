@@ -24,6 +24,10 @@
 		}
 	}
 }
+.quick-posts-widget-wrapper {
+	@extend .gw;
+}
+
 .quick-posts-wrapper {
 	@extend .g;
 	@extend .one-whole;
@@ -42,6 +46,7 @@
 		}
 	}
 }
+
 .hide-left-menu {
 	.most-viewed-posts-wrapper,
 	.primary,
@@ -195,8 +200,8 @@
 
 	}
 }
-.new-menu .cat-item {
-	@extend .force-hidden--palm;
+.new-menu .parent>.cat-item {
+	@extend .hidden--palm;
 }
 .pagenav {
 	@extend .margin--top;

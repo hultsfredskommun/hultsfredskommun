@@ -20,6 +20,10 @@
 	.tag-icon { 
 		@extend .hidden--palm;
 	}
+	.expand-icon {
+		@extend .hidden--lap;
+		@extend .hidden--desk;
+	}
 }
 .category-navigation {
 	@extend .g;

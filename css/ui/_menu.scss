@@ -186,7 +186,7 @@
 	padding: $half-spacing-unit $base-spacing-unit!important;
 }
 .new-menu .main-menu {
-	@extend .hidden;
+	@extend .hidden--palm;
 }
 .new-menu .tag-menu-wrapper {
 	@extend .hidden;

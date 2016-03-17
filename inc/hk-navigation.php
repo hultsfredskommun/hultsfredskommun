@@ -539,7 +539,7 @@ function hk_navigation() {
 			if ($parentCat == $cat) {
 				$currentcat = 'current-cat';
 			}
-			echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."</a></li>";
+			echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a class='js-show-navigation' href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."<span class='expand-icon'>+</span></a></li>";
 			wp_list_categories( $args );
 			echo "</ul>"; 
 

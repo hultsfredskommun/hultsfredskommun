@@ -1046,11 +1046,17 @@ $(document).ready(function(){
 		$(".tag-menu-wrapper").toggleClass("unhidden");
 		ev.preventDefault();
 	});
+	$(".js-show-navigation").unbind("click").bind("click",function(ev) {
+		if( $(window).width()+scrollbar < responsive_lap_start ) {
+			$(".category-navigation .cat-item").toggleClass("unhidden");
+			ev.preventDefault();
+		}
+	});
 	$(".js-show-tag-menu-li").unbind("click").bind("click",function(ev) {
 		if( $(window).width()+scrollbar < responsive_lap_start ) {
 			$(".category-navigation .more-navigation .atag-item").toggleClass("unhidden");
+			ev.preventDefault();
 		}
-		ev.preventDefault();
 	});
 	$(".js-show-main-sub-menu").unbind("click").bind("click",function(ev) {
 		$(".category-navigation").toggleClass("unhidden");
