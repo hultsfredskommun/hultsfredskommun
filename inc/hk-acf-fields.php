@@ -107,7 +107,28 @@ acf_add_local_field_group(array (
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '40%',
+								'width' => '25%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array (
+							'key' => 'field_57cc0a2e6183b',
+							'label' => 'Knapptext',
+							'name' => 'button',
+							'type' => 'text',
+							'instructions' => 'Text i knapp (om bild finns).',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '15%',
 								'class' => '',
 								'id' => '',
 							),
@@ -487,7 +508,7 @@ acf_add_local_field_group(array (
 							'label' => 'Padding',
 							'name' => 'padding',
 							'type' => 'text',
-							'instructions' => '',
+							'instructions' => 'Luft runtom puffens ram i antal pixlar (px).',
 							'required' => 0,
 							'conditional_logic' => array (
 								array (
@@ -511,7 +532,7 @@ acf_add_local_field_group(array (
 							'label' => 'Margin',
 							'name' => 'margin',
 							'type' => 'text',
-							'instructions' => '',
+							'instructions' => 'Luft innanför puffens ram i antal pixlar (px).',
 							'required' => 0,
 							'conditional_logic' => array (
 								array (

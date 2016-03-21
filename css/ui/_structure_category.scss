@@ -37,8 +37,12 @@
 			@extend .g;
 			@extend .palm-one-whole;
 			@extend .margin--bottom;
+			@extend .position-relative;
 			a {
 				@extend .default-text;
+				&.quick-button {
+					@extend .white-text;
+				}
 			}
 			h2 {
 				@extend .flush--bottom;

@@ -92,6 +92,7 @@ function hk_view_quick_links() {
 					if (!empty($title)) {
 						$title = "<h2>$title</h2>";
 					}
+					$button = get_sub_field('button');
 					$description = get_sub_field('description');
 
 
@@ -139,16 +140,20 @@ function hk_view_quick_links() {
 								$url =  wp_get_attachment_url(get_sub_field('file')); 
 								$target = "target='_blank'";
 							endif;
-							$retValue .= "<a $target style='$text_align $text_color' class='$a_class $a_class-post' href='$url' title='$description'>$imagediv$title$description</a>";
+							if (!empty($button) && !empty($imagediv)) {
+								$button = "<a class='gtm-cn-news-button quick-button' href='$url' title='$button'>$button</a>";
+							}
+							else {
+								$button = "";
+							}
+
+							$retValue .= "<a $target style='$text_align $text_color' class='$a_class $a_class-post' href='$url' title='$description'>$imagediv$title$description$button</a>";
 
 							$retValue .= "</div></div>";
 
 						endwhile;
 					else :
-						$retValue .= "<div class='quick-post  $layout'><div style='$style'>";
-						$retValue .= $imagediv;
-						$retValue .= $title . $description;
-						$retValue .= "</div></div>";
+						$retValue .= "<div class='quick-post  $layout'><div style='$style'>$imagediv$title$description$button</div></div>";
 					endif; // end if content
 
 				endwhile;
