@@ -16,7 +16,9 @@ if (empty($thumb_size)) {
 		<div class="article-wrapper">
 			<div class="content-wrapper">
 				<div class="summary-content">
-					<?php $thumb = hk_get_the_post_thumbnail(get_the_ID(),$thumb_size, false, false); 
+					<?php 
+					if ($thumb_size != "none") :
+					$thumb = hk_get_the_post_thumbnail(get_the_ID(),$thumb_size, false, false); 
 					if ($thumb) :  					
 						echo $thumb;
 					else : /* else default thumb; */
@@ -25,7 +27,7 @@ if (empty($thumb_size)) {
 						if (!empty($src)) :
 						?>
 						<div class="img-wrapper "><div><img class="slide" src="<?php echo $src; ?>" alt="Standardbild" title="Standardbild"></div></div>
-					<?php endif; endif;/*endif;*/ ?>
+					<?php endif; /*end empty */ endif; /* end else default thumb */ endif; /* end thumb_size != none */ ?>
 					<?php 
 					$externalclass = "";
 					if (function_exists("get_field")) { 

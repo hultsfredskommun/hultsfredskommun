@@ -110,6 +110,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 		<label for="<?php echo $this->get_field_id( 'thumb_size' ); ?>">Tumnagelstorlek (standard thumbnail-image).</label> 
 		<select id="<?php echo $this->get_field_id( 'thumb_size' ); ?>" name="<?php echo $this->get_field_name( 'thumb_size' ); ?>">
 		<option value=''>V&auml;lj storlek</option>";
+		<option <?php echo (("none" == $thumb_size)?"selected":""); ?> value='<?php echo "none" ?>'><?php echo "Ingen bild"; ?></option>
 		<?php foreach (hk_get_image_sizes() as $key => $value) { ?>
 			<option <?php echo (($key == $thumb_size)?"selected":""); ?> value='<?php echo $key; ?>'><?php echo $key; ?></option>
 		<?php } ?>
