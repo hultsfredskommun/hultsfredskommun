@@ -118,28 +118,35 @@ function hk_view_quick_links() {
 
 					/* get layout */
 					$layout = get_sub_field('layout');
-
+					$target = get_sub_field('target');
+					
+					if (!empty($target)) {
+						$target = "target='_$target'";
+					}
+					else {
+						$target = "";
+					}
 
 					/* get link to content */
 					if (get_sub_field('content')) :
 						while (has_sub_field('content')) : 
 
 							$retValue .= "<div class='quick-post  $layout'><div style='$style'>";
-							if ( get_row_layout() == 'inlagg' ) : 
+							if ( get_row_layout() == 'inlagg' ) {
 								$value = get_sub_field('post');
 								$url = get_permalink($value->ID);
-								$target = "";
-							elseif ( get_row_layout() == 'extern' ) : 
+							}
+							elseif ( get_row_layout() == 'extern' ) {
 								// prepend http:// if not there already
 								$url = get_sub_field('extern');
 								if (substr_compare($url, 'http', 0, 4) != 0) {
 									$url = 'http://' . $url;
 								}
-								$target = "target='_blank'";
-							elseif ( get_row_layout() == 'fil' ) :
+							}
+							elseif ( get_row_layout() == 'fil' ) {
 								$url =  wp_get_attachment_url(get_sub_field('file')); 
-								$target = "target='_blank'";
-							endif;
+							}
+							
 							if (!empty($button) && !empty($imagediv)) {
 								$button = "<a class='gtm-cn-news-button quick-button' href='$url' title='$button'>$button</a>";
 							}

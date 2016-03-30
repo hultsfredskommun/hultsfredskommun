@@ -222,6 +222,8 @@ acf_add_local_field_group(array (
 							'readonly' => 0,
 							'disabled' => 0,
 						),
+						
+						
 						array (
 							'key' => 'field_56bb0a416183c',
 							'label' => 'Länka till',
@@ -341,7 +343,7 @@ acf_add_local_field_group(array (
 							'label' => 'Visa avancerade inst&auml;llningar',
 							'name' => 'advanced',
 							'type' => 'true_false',
-							'instructions' => '',
+							'instructions' => 'De avancerade inst&auml;llningarna g&auml;ller &auml;ven n&auml;r denna ruta inte &auml;r ikryssad. Varje inst&auml;llning m&aring;ste nollst&auml;llas var f&ouml;r sig. Rutan m&aring;ste vara ikryssad f&ouml;r att &auml;ndringar ska sparas.',
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
@@ -369,7 +371,7 @@ acf_add_local_field_group(array (
 								),
 							),
 							'wrapper' => array (
-								'width' => '33%',
+								'width' => '20%',
 								'class' => '',
 								'id' => '',
 							),
@@ -392,7 +394,7 @@ acf_add_local_field_group(array (
 								),
 							),
 							'wrapper' => array (
-								'width' => '33%',
+								'width' => '20%',
 								'class' => '',
 								'id' => '',
 							),
@@ -415,12 +417,48 @@ acf_add_local_field_group(array (
 								),
 							),
 							'wrapper' => array (
-								'width' => '34%',
+								'width' => '40%',
 								'class' => '',
 								'id' => '',
 							),
 							'default_value' => '',
 						),
+						array (
+							'key' => 'field_503b104207f50',
+							'label' => '&Ouml;ppna f&ouml;nster i',
+							'name' => 'target',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field' => 'field_56eabc0f154d0',
+										'operator' => '==',
+										'value' => '1',
+									),
+								),
+							),
+							'wrapper' => array (
+								'width' => '20%',
+								'class' => '',
+								'id' => '',
+							),
+							'choices' => array (
+								'top' => 'Samma f&ouml;nster',
+								'blank' => 'Nytt f&ouml;nster',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						
 						array (
 							'key' => 'field_12cc0a2e6183b',
 							'label' => 'Bredd p&aring; ram',
