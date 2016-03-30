@@ -117,9 +117,13 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 		</select>
 		<p>
 		<input id="<?php echo $this->get_field_id( 'box-list' ); ?>" name="<?php echo $this->get_field_name( 'box-list' ); ?>" type="checkbox" <?php echo ($instance["box-list"] != "")?"checked":""; ?> />
-		<label for="<?php echo $this->get_field_id( 'box-list' ); ?>">Visa i två kolumner</label> 
+		<label for="<?php echo $this->get_field_id( 'box-list' ); ?>">Visa i kolumner (2 som standard)</label> 
 		</p>
-		
+		<p>
+		<input id="<?php echo $this->get_field_id( 'box-list-4-columns' ); ?>" name="<?php echo $this->get_field_name( 'box-list-4-columns' ); ?>" type="checkbox" <?php echo ($instance["box-list-4-columns"] != "")?"checked":""; ?> />
+		<label for="<?php echo $this->get_field_id( 'box-list-4-columns' ); ?>">Visa i 4 kolumner (f&ouml;reg&aring;nde inst&auml;llning m&aring;ste vara satt p&aring; kolumner)</label> 
+		</p>
+
 		<?php
 	}
 
@@ -134,6 +138,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 		$instance['rss_link_url'] = strip_tags( $new_instance['rss_link_url'] );
 		$instance['thumb_size'] = strip_tags( $new_instance['thumb_size'] );
 		$instance['box-list'] = strip_tags( $new_instance['box-list'] );
+		$instance['box-list-4-columns'] = strip_tags( $new_instance['box-list-4-columns'] );
 		
 		return $instance;
 	}
@@ -159,9 +164,12 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 		else $thumb_size = "";
 		
 		$boxclass = "";
-		if (isset($instance['box-list']) && $instance['box-list'] != "") 
+		if (isset($instance['box-list']) && $instance['box-list'] != "") {
 			$boxclass = "box-list ";
-
+			if (isset($instance['box-list-4-columns']) && $instance['box-list-4-columns'] != "") {
+				$boxclass .= "cols-4 ";
+			}
+		}
 		/* get all sub categories to use in queries */
 		$cat = get_query_var("cat");
 		$all_categories = hk_getChildrenIdArray($cat);

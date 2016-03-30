@@ -79,7 +79,9 @@
 	@extend .flush--bottom;
 }
 .box-list.newscontent {
+	@extend .gw;
 	.post {
+		@extend .g;
 		.article-border-wrapper {
 			@extend .noborder;
 			padding-left: 0;
@@ -106,11 +108,12 @@
 		@extend .one-half;
 		@extend .float--left;
 	}
-	.post:nth-child(odd) {
-		padding-right: $half-spacing-unit;
+	&.cols-4 .post {
+		@extend .one-quarter;	
 	}
-	.post:nth-child(even) {
-		padding-left: $half-spacing-unit;
+	.read-more-widget,
+	& > .read-more-link {
+		@extend .g;
 	}
 }
 
