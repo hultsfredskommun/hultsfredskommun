@@ -173,6 +173,13 @@
 	vertical-align: middle;
 	margin-right: 6px;
 }
+.info-small-icon {
+	@extend .clip_24x24;
+	background-position: -276px -696px;
+	vertical-align: middle;
+	margin-right: 6px;
+	margin-top: -3px;
+}
 
 /* firstpage */
 .home .white.tag-icon {
