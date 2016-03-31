@@ -139,7 +139,7 @@ function hk_view_quick_links() {
 							elseif ( get_row_layout() == 'extern' ) {
 								// prepend http:// if not there already
 								$url = get_sub_field('extern');
-								if (substr_compare($url, 'http', 0, 4) != 0) {
+								if ((substr_compare($url, '/', 0, 1) != 0) && (substr_compare($url, 'http', 0, 4) != 0)) {
 									$url = 'http://' . $url;
 								}
 							}
