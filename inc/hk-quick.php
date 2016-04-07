@@ -154,7 +154,7 @@ function hk_view_quick_links() {
 								$button = "";
 							}
 
-							$retValue .= "<a $target style='gtm-quick-link $text_align $text_color' class='$a_class $a_class-post' href='$url' title='$description'>$imagediv$title$description$button</a>";
+							$retValue .= "<a $target style='$text_align $text_color' class='gtm-quick-link $a_class $a_class-post' href='$url' title='$description'>$imagediv$title$description$button</a>";
 
 							$retValue .= "</div></div>";
 
