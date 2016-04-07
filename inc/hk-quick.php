@@ -148,13 +148,13 @@ function hk_view_quick_links() {
 							}
 							
 							if (!empty($button) && !empty($imagediv)) {
-								$button = "<a class='gtm-cn-news-button quick-button' href='$url' title='$button'>$button</a>";
+								$button = "<a class='gtm-quick-button quick-button' href='$url' title='$button'>$button</a>";
 							}
 							else {
 								$button = "";
 							}
 
-							$retValue .= "<a $target style='$text_align $text_color' class='$a_class $a_class-post' href='$url' title='$description'>$imagediv$title$description$button</a>";
+							$retValue .= "<a $target style='gtm-quick-link $text_align $text_color' class='$a_class $a_class-post' href='$url' title='$description'>$imagediv$title$description$button</a>";
 
 							$retValue .= "</div></div>";
 
