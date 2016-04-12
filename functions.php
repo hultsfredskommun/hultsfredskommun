@@ -238,6 +238,21 @@ function hk_setup() {
 endif; // hk_setup
 
 
+/* remove comment feed, but keep other feeds */
+function remove_comment_feeds( $for_comments ){
+    if( $for_comments ){
+        remove_action( 'do_feed', 'do_feed_rss2', 10, 1 );
+        remove_action( 'do_feed_rdf', 'do_feed_rss2', 10, 1 );
+		remove_action( 'do_feed_rss', 'do_feed_rss2', 10, 1 );
+		remove_action( 'do_feed_rss2', 'do_feed_rss2', 10, 1 );
+        remove_action( 'do_feed_atom', 'do_feed_atom', 10, 1 );
+    }
+}
+add_action( 'do_feed', 'remove_comment_feeds', 9, 1 );
+add_action( 'do_feed_rdf', 'remove_comment_feeds', 9, 1 );
+add_action( 'do_feed_rss', 'remove_comment_feeds', 9, 1 );
+add_action( 'do_feed_rss2', 'remove_comment_feeds', 9, 1 );
+add_action( 'do_feed_atom', 'remove_comment_feeds', 9, 1 );
 
 /**
  * add theme javascript file and needed jquery 
