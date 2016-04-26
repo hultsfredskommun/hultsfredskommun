@@ -10,8 +10,13 @@
 		<aside id='topmenu-mobile' class='top-menu-wrapper palm'>
 			<nav>
 				
-				<ul class='top-menu'>
-					<li><span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img class="js-svg-image" src="<?php echo $hk_options["logo_mobile_image"]; ?>" data-svg-src="<?php echo $hk_options["logo_mobile_image_svg"]; ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" /></a></span></li>
+				<ul class='top-menu'><?php
+					$logo_link = $hk_options["logo_link"];
+					if (empty($logo_link)) {
+						$logo_link = site_url('/');
+					}
+					?>
+					<li><span id="logo" class="logo"><a href="<?php echo $logo_link; ?>"><img class="js-svg-image" src="<?php echo $hk_options["logo_mobile_image"]; ?>" data-svg-src="<?php echo $hk_options["logo_mobile_image_svg"]; ?>" alt="<?php echo $hk_options["logo_image"]; ?>" title="<?php echo $hk_options["logo_image"]; ?>" /></a></span></li>
 					<li class="float--right"><a class="js-show-menu" href="#"><span class="menu-icon"></span></a></li>
 					<li class="float--right"><a class="js-show-search" href="#"><span class="search-icon"></span></a></li>
 					<li class="float--right"><a href="http://translate.google.com/translate?hl=sv&sl=sv&tl=en&u=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>"><span class="translate-small-icon"></span></a></li>

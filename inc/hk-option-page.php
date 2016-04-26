@@ -49,6 +49,7 @@ function hk_theme_options_do_page() {
 			<a name="sidhuvud"></a>
 			<hr/><h2>Sidhuvud</h2>
 			<p><label for="hk_theme[lang]">Spr&aring;k kod (standard sv-SE, ange de f&ouml;r tyska och en f&ouml;r engelska).</label><br/><input size="8" type="text" name="hk_theme[lang]" value="<?php echo $options['lang']; ?>" /></p>
+			<h3>Logga</h3>
 			<p><label for="hk_theme[logo_image]">Logga</label><br/>
 				<img width='150' src="<?php echo $options["logo_image"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_image]" value="<?php echo $options["logo_image"]; ?>" />
@@ -69,6 +70,9 @@ function hk_theme_options_do_page() {
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_mobile_image_svg]" value="<?php echo $options["logo_mobile_image_svg"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
+			<p><label for="hk_theme[logo_link_alt]">ALT-text p&aring; loggan:</label><br/><input size="80" type="text" name="hk_theme[logo_link_alt]" value="<?php echo $options['logo_link_alt']; ?>" /></p>
+			<p><label for="hk_theme[logo_link]">URL som loggan ska peka p&aring;:</label><br/><input size="80" type="text" name="hk_theme[logo_link]" value="<?php echo $options['logo_link']; ?>" /></p>
+			<h3>Favicon</h3>
 			<p><label for="hk_theme[favicon_image32]">Favicon 32x32</label><br/>
 				<img width='32' src="<?php echo $options["favicon_image32"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image32]" value="<?php echo $options["favicon_image32"]; ?>" />
@@ -111,7 +115,7 @@ function hk_theme_options_do_page() {
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
 			
-			
+			<h3>S&ouml;k och meny</h3>
 			<p><label for="hk_theme[top_image]">Toppbild (inte klar att anv&auml;ndas)</label><br/>
 				<img width=150 src="<?php echo $options["top_image"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[top_image]" value="<?php echo $options["top_image"]; ?>" />

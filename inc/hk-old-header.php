@@ -44,8 +44,13 @@
 					
 			</div></aside>
 		<?php endif; ?>
-	<div id="topwrapper" class="content--center"><div class="top-wrapper">
-		<span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" /></a></span>
+	<div id="topwrapper" class="content--center"><div class="top-wrapper"><?php
+			$logo_link = $hk_options["logo_link"];
+			if (empty($logo_link)) {
+				$logo_link = site_url('/');
+			}
+			?>
+		<span id="logo" class="logo"><a href="<?php echo $logo_link; ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php echo $hk_options["logo_link_alt"]; ?>" title="<?php echo $hk_options["logo_link_alt"]; ?>" /></a></span>
 		<div class="site-title">
 			<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 			<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
