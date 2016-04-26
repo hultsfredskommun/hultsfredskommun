@@ -49,7 +49,7 @@
 			}
 			&.line-break {
 				@extend .one-whole;
-				@extend .flush--bottom;
+				margin: 0;
 			}
 		}
 	}
