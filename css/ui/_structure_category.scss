@@ -47,6 +47,10 @@
 			h2 {
 				@extend .flush--bottom;
 			}
+			&.line-break {
+				@extend .one-whole;
+				@extend .flush--bottom;
+			}
 		}
 	}
 }

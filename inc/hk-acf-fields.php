@@ -88,7 +88,7 @@ acf_add_local_field_group(array (
 								'id' => '',
 							),
 							'choices' => $imagesizeArr,
-							'default_value' => array (
+							'default_value' => array ( 'featured-image'
 							),
 							'allow_null' => 0,
 							'multiple' => 0,

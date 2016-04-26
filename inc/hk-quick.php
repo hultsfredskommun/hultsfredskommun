@@ -58,6 +58,8 @@ function hk_view_quick_links() {
 			}
 			//$retValue .= wp_get_attachment_link($attachId); 
 			$title = get_the_title();
+			$row_width = 0;
+
 			if (get_field('hk_quick_link')) :
 				while (has_sub_field('hk_quick_link')) : 
 				
@@ -96,6 +98,10 @@ function hk_view_quick_links() {
 						}
 						$button = get_sub_field('button');
 						$description = get_sub_field('description');
+						$description_div = "";
+						if (!empty($description)) {
+							$description_div = "<div class='q-description'>$description</div>";
+						}
 						$cssclass = get_sub_field('css-class');
 
 
@@ -118,9 +124,24 @@ function hk_view_quick_links() {
 						$padding = ($padding)?"padding: $padding;":"";
 						$margin = ($margin)?"margin: $margin;":"";
 						$style = "$text_color$background_color$border_color$border_width$border_radius$text_align$padding$margin";
-
+						
 						/* get layout */
 						$layout = get_sub_field('layout');
+						switch($layout) {
+							case 'one-whole': $row_width += 100; break;
+							case 'one-half':
+							case 'two-quarters': $row_width += 50; break;
+							case 'one-third': $row_width += 33; break;
+							case 'two-thirds': $row_width += 67; break;
+							case 'one-quarter': $row_width += 25; break;
+							case 'three-quarters': $row_width += 75; break;
+							case 'one-fifth': $row_width += 20; break;
+							case 'two-fifths': $row_width += 40; break;
+							case 'three-fifths': $row_width += 60; break;
+							case 'four-fifths': $row_width += 80; break;
+						}
+						
+						/* get target */
 						$target = get_sub_field('target');
 						
 						if (!empty($target)) {
@@ -157,14 +178,19 @@ function hk_view_quick_links() {
 									$button = "";
 								}
 
-								$retValue .= "<a $target style='$text_align $text_color' class='gtm-quick-link $a_class $a_class-post' href='$url' title='$description'>$imagediv$title$description$button</a>";
+								$retValue .= "<a $target style='$text_align $text_color' class='gtm-quick-link $a_class $a_class-post' href='$url' title='$description'>$imagediv$title$description_div$button</a>";
 
 								$retValue .= "</div></div>";
 
 							endwhile;
 						else :
-							$retValue .= "<div class='quick-post  $layout  $cssclass'><div style='$style'>$imagediv$title$description$button</div></div>";
+							$retValue .= "<div class='quick-post  $layout  $cssclass'><div style='$style'>$imagediv$title$description_div$button</div></div>";
 						endif; // end if content
+						if ($row_width > 90) {
+							$row_width = 0;
+							$retValue .= "<div class='quick-post  line-break'></div>";
+						}
+
 					endif; // end if not inactive
 				endwhile;
 			endif; // end if quick links
