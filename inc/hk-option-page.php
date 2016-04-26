@@ -54,6 +54,21 @@ function hk_theme_options_do_page() {
 				<input class="upload-url" type="text" size="36" name="hk_theme[logo_image]" value="<?php echo $options["logo_image"]; ?>" />
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
+			<p><label for="hk_theme[logo_image_svg]">Logga (svg)</label><br/>
+				<img width='150' src="<?php echo $options["logo_image_svg"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[logo_image_svg]" value="<?php echo $options["logo_image_svg"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[logo_mobile_image]">Logga mobil</label><br/>
+				<img width='150' src="<?php echo $options["logo_mobile_image"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[logo_mobile_image]" value="<?php echo $options["logo_mobile_image"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
+			<p><label for="hk_theme[logo_mobile_image_svg]">Logga mobil (svg)</label><br/>
+				<img width='150' src="<?php echo $options["logo_mobile_image_svg"]; ?>" alt='Vald bild' title='Vald bild' />
+				<input class="upload-url" type="text" size="36" name="hk_theme[logo_mobile_image_svg]" value="<?php echo $options["logo_mobile_image_svg"]; ?>" />
+				<input class="upload_image_button" type="button" value="Upload Image" />
+			</p>
 			<p><label for="hk_theme[favicon_image32]">Favicon 32x32</label><br/>
 				<img width='32' src="<?php echo $options["favicon_image32"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image32]" value="<?php echo $options["favicon_image32"]; ?>" />
@@ -106,6 +121,7 @@ function hk_theme_options_do_page() {
 			<p><input type="checkbox" name="hk_theme[hide_search]" value="1"<?php checked( 1 == $options['hide_search'] ); ?> /> <label for="hk_theme[hide_search]">G&ouml;m s&ouml;krutan.</label></p>
 			<p><label for="hk_theme[pre_topmenu_html]">HTML f&ouml;re topmenu</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[pre_topmenu_html]"><?php echo $options['pre_topmenu_html']; ?></textarea></p>
 			<p><label for="hk_theme[post_topmenu_html]">HTML efter topmenu</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[post_topmenu_html]"><?php echo $options['post_topmenu_html']; ?></textarea></p>
+			<p><input type="checkbox" name="hk_theme[topmenu_google_translate]" value="1"<?php checked( 1 == $options['topmenu_google_translate'] ); ?> /> <label for="hk_theme[topmenu_google_translate]">Visa Google translate i toppmeny.</label></p>
 
 			
 			<h3>Extra loggor</h3>

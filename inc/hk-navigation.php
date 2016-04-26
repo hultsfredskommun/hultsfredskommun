@@ -202,7 +202,7 @@ function hk_empty_navigation() {
 		</article><!-- #post-0 -->
 <?php
 }
-function hk_navmenu_navigation($menu_name, $cat, $menu_class) {
+function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 	global $args, $hk_options, $default_settings;
 
 	// get nav_menu_parent id
@@ -283,7 +283,7 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class) {
 	if ($nav_menu_sub_parent > 0) {
 		
 		if ($default_settings['num_levels_in_menu'] > 1) {
-			echo "<ul class='main-sub-menu $menu_class'>";
+			echo "<ul class='main-sub-menu $menu_class $mainmenu_class'>";
 			$submenu = new hk_submenu_walker_nav_menu();
 			$args = array(
 				'theme_location'	=> $menu_name, 
@@ -430,7 +430,8 @@ function hk_navigation() {
 	$search = get_query_var("s");
 	$cat = get_query_var("cat");
 	$tags = get_query_var("tag");
-
+	$all_categories = array($cat);
+	
 	// hide menu if hide_leftmenu is set
 	if ($options['hide_leftmenu'] == 1) return;
 	
@@ -446,7 +447,8 @@ function hk_navigation() {
 		$all_categories_object = get_the_category(get_the_ID());
 		$all_categories = array();
 		foreach ($all_categories_object as $item) { $all_categories[] = $item->cat_ID; }
-		$category_hierarchy = hk_get_parent_categories_from_id(get_the_ID(), $menu_name);
+		
+		/*$category_hierarchy = hk_get_parent_categories_from_id(get_the_ID(), $menu_name);
 		$nav_menu_top_parent = hk_getNavMenuId($category_hierarchy[0], $menu_name);
 		$nav_menu_sub_parent = hk_getNavMenuId($category_hierarchy[1], $menu_name);
 		$top_parent = $category_hierarchy[0];
@@ -501,55 +503,61 @@ function hk_navigation() {
 					}
 				}
 			echo "</ul>"; 
-		}
+		}*/
 	}
 
 
 	// if in category
-	else if ($cat != "") {
-	
+	if ($cat != "" || is_single()) {
+		
 		if ($tags == ""){
+			$usedParentIDs = array();
+			foreach ($all_categories as $cat) { 
+				$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
+				$currentparent = $cat;
+				$hk_cat_walker = new hk_Category_Walker();
+				$parentCat = hk_getMenuParent($cat);
+				if (!in_array($parentCat,$usedParentIDs)) {
+					$usedParentIDs[] = $parentCat; 
+					$args = array(
+						'orderby'            => 'name',
+						'order'              => 'ASC',
+						'style'              => 'list',
+						'hide_empty'         => 0,
+						'use_desc_for_title' => 1,
+						'child_of'           => $parentCat,
+						'hierarchical'       => true,
+						'title_li'           => '',
+						'show_option_none'   => '',
+						'echo'               => 1,
+						'depth'              => 3,
+						'taxonomy'           => 'category',
+						'exclude'			 => $default_settings["hidden_cat"],
+						'walker'			 => $hk_cat_walker,
+						'current_category'	 => $cat
+					);
+					
+					//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
 
-			$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
-			$currentparent = $cat;
-			
-			$hk_cat_walker = new hk_Category_Walker();
-			$parentCat = hk_getMenuParent($cat);
-			$args = array(
-				'orderby'            => 'name',
-				'order'              => 'ASC',
-				'style'              => 'list',
-				'hide_empty'         => 0,
-				'use_desc_for_title' => 1,
-				'child_of'           => $parentCat,
-				'hierarchical'       => true,
-				'title_li'           => '',
-				'show_option_none'   => '',
-				'echo'               => 1,
-				'depth'              => 3,
-				'taxonomy'           => 'category',
-				'exclude'			 => $default_settings["hidden_cat"],
-				'walker'			 => $hk_cat_walker
-			);
-			
-			//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
-
-			echo "<ul class='parent'>"; 
-			$currentcat = '';
-			if ($parentCat == $cat) {
-				$currentcat = 'current-cat';
+					echo "<ul class='parent'>"; 
+					$currentcat = '';
+					if ($parentCat == $cat) {
+						$currentcat = 'current-cat';
+					}
+					echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'><a href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."</a></li>";
+					wp_list_categories( $args );
+					echo "</ul>"; 
+				}
 			}
-			echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a class='js-show-navigation' href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."<span class='expand-icon'>+</span></a></li>";
-			wp_list_categories( $args );
-			echo "</ul>"; 
-
+			
+			// TODO - handle tags if more than one category!!
 			displayTagFilter();
 		}
 	}
 	
 	
 	// if in tag
-	if ($tags != "" || is_single()) {
+	if ($tags != "") {
 		displayTagFilter();
 		
 		//echo "<a class='dropdown-nav'>Etiketter</a>";

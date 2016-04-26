@@ -81,7 +81,20 @@
 	display: table !important;
 }
 .main {
-	margin: 0 $half-spacing-unit/2;
+	//margin: 0 $half-spacing-unit/2;
+	margin: 0;
+}
+.primary {
+	padding-top: $half-spacing-unit;
+}
+.primary,
+.breadcrumb {
+	padding-bottom: $base-spacing-unit;
+	padding-left: $base-spacing-unit*1.25;
+	padding-right: $base-spacing-unit*0.25;
+}
+.top-wrapper {
+	margin-bottom: 0!important;
 }
 }
 
@@ -204,7 +217,7 @@
 
 	}
 }
-.new-menu .parent>.cat-item {
+.new-menu .category-navigation {
 	@extend .hidden--palm;
 }
 .pagenav {

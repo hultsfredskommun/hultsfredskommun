@@ -3,9 +3,6 @@
 .home .category-navigation {
 	@extend .hidden--palm;
 }
-.new-menu .menu-icon {
-	@extend .hidden;
-}
 .old-menu.single,
 .old-menu.archive {
 	.category-navigation {
@@ -102,6 +99,7 @@
 
 
 	.more-navigation {
+		@extend .hidden--palm;
 		@extend .half-padding--left;
 		@extend .nav;
 		@extend .nav--block;

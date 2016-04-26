@@ -168,7 +168,6 @@ if ($meta_description != "") :?>
 <?php
 $firstpageClass =(is_sub_category_firstpage() && get_query_var("tag") == "") ? "home":"";
 $printpageClass = ($_REQUEST["print"] == 1) ? "print":"";
-$subfirstpageClass = (is_sub_category_firstpage()) ? "subhome":"";
 $menuversion = "old"; //new or old
 $hide_leftmenu_class = ($hk_options['hide_leftmenu']) ? "hide-left-menu":"";
 ?>

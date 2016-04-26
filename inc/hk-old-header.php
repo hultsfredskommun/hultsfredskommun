@@ -1,5 +1,5 @@
 <?php
-	global $hk_options, $firstpageClass, $printpageClass, $subfirstpageClass;
+	global $hk_options, $firstpageClass, $printpageClass;
 
 ?>
 	

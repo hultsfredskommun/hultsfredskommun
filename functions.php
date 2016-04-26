@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "2.7");
+define("HK_VERSION", "2.8");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -1108,6 +1108,7 @@ function hk_get_category_tags($varcat = "") {
 
 	//$cat_ids = array($varcat);
 	//$cat_ids = hk_getChildrenIdArray(hk_getMenuParent($varcat)); // get closes menu parent
+	
 	$cat_ids = hk_getChildrenIdArray($varcat); // get child ids
 	$cat_ids[] = $varcat; // add current id
 

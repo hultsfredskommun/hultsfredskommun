@@ -649,7 +649,15 @@ $(document).ready(function(){
 	if (isLessThanIE9) {
 		$(".branding").before("<div style='padding: 12px; width: 100%; background: red; color: white;'>Du anv&auml;nder en gammal webbl&auml;sare. Vissa funktioner kommer inte fungera.</div>");
 	}
-
+	/**
+	 * SVG support
+	 */
+	$(".js-svg-image").each(function() {
+		if ($(this).attr("data-svg-src") != "") {
+			$(this).attr("src", $(this).attr("data-svg-src"));
+		}
+	});
+	
 	/**
 	 * Tag list functionality - collapse/expand
 	 */
@@ -1038,6 +1046,17 @@ $(document).ready(function(){
 	/**
 	 * Responsive top navigation bar
 	 */
+	 /* new-menu */
+	$(".js-show-search").unbind("click").bind("click",function(ev) {
+		$(".searchnavigation").toggleClass("unhidden");
+		ev.preventDefault();
+	});
+	$(".js-show-menu").unbind("click").bind("click",function(ev) {
+		$(".category-navigation").toggleClass("unhidden");
+		$(".home .main-sub-menu").toggleClass("unhidden");
+		ev.preventDefault();
+	});
+	/* end new-menu */
 	$(".js-show-main-menu").unbind("click").bind("click",function(ev) {
 		$(".main-menu").toggleClass("unhidden");
 		ev.preventDefault();
@@ -1046,12 +1065,12 @@ $(document).ready(function(){
 		$(".tag-menu-wrapper").toggleClass("unhidden");
 		ev.preventDefault();
 	});
-	$(".js-show-navigation").unbind("click").bind("click",function(ev) {
+/*	$(".js-show-navigation").unbind("click").bind("click",function(ev) {
 		if( $(window).width()+scrollbar < responsive_lap_start ) {
 			$(".category-navigation .cat-item").toggleClass("unhidden");
 			ev.preventDefault();
 		}
-	});
+});*/
 	$(".js-show-tag-menu-li").unbind("click").bind("click",function(ev) {
 		if( $(window).width()+scrollbar < responsive_lap_start ) {
 			$(".category-navigation .more-navigation .atag-item").toggleClass("unhidden");

@@ -339,6 +339,22 @@ acf_add_local_field_group(array (
 						
 						/* colors and style */
 						array (
+							'key' => 'field_56eabc5e154d0',
+							'label' => 'D&ouml;lj puff',
+							'name' => 'inactive',
+							'type' => 'true_false',
+							'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '20%',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
+						),
+						array (
 							'key' => 'field_56eabc0f154d0',
 							'label' => 'Visa avancerade inst&auml;llningar',
 							'name' => 'advanced',
@@ -347,7 +363,7 @@ acf_add_local_field_group(array (
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '',
+								'width' => '80%',
 								'class' => '',
 								'id' => '',
 							),
@@ -371,7 +387,7 @@ acf_add_local_field_group(array (
 								),
 							),
 							'wrapper' => array (
-								'width' => '20%',
+								'width' => '33%',
 								'class' => '',
 								'id' => '',
 							),
@@ -394,7 +410,7 @@ acf_add_local_field_group(array (
 								),
 							),
 							'wrapper' => array (
-								'width' => '20%',
+								'width' => '33%',
 								'class' => '',
 								'id' => '',
 							),
@@ -417,7 +433,7 @@ acf_add_local_field_group(array (
 								),
 							),
 							'wrapper' => array (
-								'width' => '40%',
+								'width' => '33%',
 								'class' => '',
 								'id' => '',
 							),
@@ -590,6 +606,29 @@ acf_add_local_field_group(array (
 						),
 
 						
+						array (
+							'key' => 'field_12e40a2e6183b',
+							'label' => 'Css class',
+							'name' => 'css-class',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field' => 'field_56eabc0f154d0',
+										'operator' => '==',
+										'value' => '1',
+									),
+								),
+							),
+							'wrapper' => array (
+								'width' => '20%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+						),
 					),
 					'min' => '',
 					'max' => '',

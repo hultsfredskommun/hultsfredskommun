@@ -35,9 +35,15 @@
 .old-menu.home {
 	.main-sub-menu {
 		display: block!important;
+		margin-top: 12px;
 	}
 }
-
+.old-menu .menu-wrapper {
+	margin-top: 12px;
+}
+.old-menu .menu .menu-icon {
+	@extend .menu-white-icon;
+}
 .old-menu.single,
 .old-menu.archive {
 	.main-menu,
@@ -252,8 +258,11 @@
 
 @include media-query(palm){
 /* make main-menu phone */
-.new-menu .menu-wrapper {
-	margin-bottom: 2px!important;
+.new-menu .menu-wrapper,
+.new-menu .responsive-menu {
+	margin: 0px!important;
+	padding: 0px!important;
+	
 }
 .home .responsive-sub-menu {
 	display: none;

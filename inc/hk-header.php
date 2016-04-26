@@ -1,5 +1,5 @@
 <?php
-	global $hk_options, $firstpageClass, $printpageClass, $subfirstpageClass;
+	global $hk_options, $firstpageClass, $printpageClass;
 ?>
 	
 <header id="branding" class="branding" role="banner">
@@ -7,11 +7,23 @@
 	<?php dynamic_sidebar('important-top-content'); ?>
 
 	<?php /* top right navigation */ ?>
+		<aside id='topmenu-mobile' class='top-menu-wrapper palm'>
+			<nav>
+				
+				<ul class='top-menu'>
+					<li><span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img class="js-svg-image" src="<?php echo $hk_options["logo_mobile_image"]; ?>" data-svg-src="<?php echo $hk_options["logo_mobile_image_svg"]; ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" /></a></span></li>
+					<li class="float--right"><a class="js-show-menu" href="#"><span class="menu-icon"></span></a></li>
+					<li class="float--right"><a class="js-show-search" href="#"><span class="search-icon"></span></a></li>
+					<li class="float--right"><a href="http://translate.google.com/translate?hl=sv&sl=sv&tl=en&u=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>"><span class="translate-small-icon"></span></a></li>
+				</ul>
+			</nav>
+				
+		</aside>
 	<?php 
 		if ( ((($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0) || 
 			(!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") || 
 			(!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") ) ) : ?>
-			<aside id='topmenu' class='top-menu-wrapper'><div class='content--center'>
+			<aside id='topmenu' class='top-menu-wrapper desk'><div class='content--center'>
 				
 				<?php if ( (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) || 
 						 (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") || 
@@ -23,6 +35,11 @@
 					<?php if (!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") : ?>
 						<li class="pre-top-menu"><?php echo $hk_options["pre_topmenu_html"]; ?></li>
 					<?php endif; ?>
+					<?php /* show google translate if set */ ?>
+					<?php if (!empty($hk_options["topmenu_google_translate"])) : ?>
+						<li class="pre-top-menu"><a href="http://translate.google.com/translate?hl=sv&sl=sv&tl=en&u=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>"><span class="translate-small-icon"></span>Google Translate</a></li>
+					<?php endif; ?>
+					
 					<?php
 					if (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) :
 					wp_nav_menu( array(
@@ -44,14 +61,12 @@
 			</div></aside>
 		<?php endif; ?>
 	<div id="topwrapper" class="content--center"><div class="top-wrapper">
-		<span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img src="<?php echo $hk_options["logo_image"]; ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" /></a></span>
+		<span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img class="js-svg-image" src="<?php echo $hk_options["logo_image"]; ?>" data-svg-src="<?php echo $hk_options["logo_image_svg"]; ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" /></a></span>
 		<div class="site-title">
 			<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 			<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 		</div>
 			
-<span class="menu-icon"></span>		
-
 		<?php /* search form*/ ?>
 		<?php if ($hk_options["hide_search"] != 1) : ?>
 		<div id="searchnavigation" class="searchnavigation" role="search">			
@@ -91,7 +106,7 @@
 	<?php }  ?>
 	</div>
 	<!--googleoff: all-->
-	<?php if (!is_search() && get_query_var("tag") == "") : ?>
+	<?php if (is_sub_category_firstpage()) : ?>
 		<div class="responsive-menu">
 			<ul class="main-sub-menu"><li><a class="js-show-main-menu" href="#">Vem &auml;r du?<span class="expand-icon">+</span></a></li></ul>
 			<?php /* <a class="js-show-search" href="#"><span class="search-icon"></span></a> */ ?>
@@ -104,12 +119,13 @@
 			if (!(($locations = get_nav_menu_locations()) && isset( $locations['primary'] ) && $locations['primary'] > 0 )) {
 				echo "<div class='important-widget'>&nbsp;Du m&aring;ste s&auml;tta meny under <i>Utseende -> Menyer</i>.</div>";
 			}
-			hk_navmenu_navigation("primary", $cat, "primarymenu");
+			$unhidden_class = (is_sub_category_firstpage())?"unhidden":"";
+			hk_navmenu_navigation("primary", $cat, "primarymenu", $unhidden_class);
 		?>
 	</nav>
 	<?php endif; // not is search ?>
 	
-	<?php if (is_home()) /*!is_search() && get_query_var("tag") == "")*/ : ?>
+	<?php if (false) : // TEMP REMOVED is_sub_category_firstpage()) /*!is_search() && get_query_var("tag") == "")*/ : ?>
 		<div class="responsive-menu">
 			<ul class="main-sub-menu"><li><a class="js-show-tag-menu" href="#">Visa bara<span class="expand-icon">+</span></a></li></ul>
 			<?php /* <a class="js-show-search" href="#"><span class="search-icon"></span></a> */ ?>

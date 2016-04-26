@@ -278,10 +278,23 @@
 .menu-icon {
 	@extend .clip_20x20;
 	margin: 2px;
+	background-position: -207px -470px;
+}
+.menu-white-icon {
+	@extend .clip_20x20;
+	margin: 2px;
 	background-position: -156px -470px;
 }
 .responsive-menu .menu-icon {
 	background-position: -207px -470px;
+}
+
+.pre-top-menu .translate-small-icon {
+	margin: 0 4px -4px 0;
+}
+.translate-small-icon {
+	@extend .clip_20x20;
+	background-position: -399px -695px;
 }
 
 .menu-icon.up {
