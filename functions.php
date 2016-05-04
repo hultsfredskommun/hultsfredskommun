@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "2.9");
+define("HK_VERSION", "3.0");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -103,6 +103,28 @@ require( get_template_directory() . '/inc/hk-acf-fields.php' );
 require( get_template_directory() . '/inc/hk-widgets.php' );
 
 // shortcodes
+/*
+ * shortcode [filtersearch], show filter function
+ */
+function hk_filter_search_func( $atts ){
+	global $default_settings;
+	$atts = shortcode_atts(
+		array(
+			'parent_class' => '',
+			'parent_element' => '',
+		), $atts, 'filtersearch' );
+	$retValue = "";
+
+	// full category tree
+	$retValue .= "<p id='filtersearch' class='filtersearch' data-filter-class='" . $atts["parent_class"] . "' data-filter-element='" . $atts["parent_element"] . "'>";
+	$retValue .= "";
+	$retValue .= "</p>";
+
+	return $retValue;
+}
+add_shortcode( 'filtersearch', 'hk_filter_search_func' );
+
+
 /*
  * shortcode [categorytree], show category tree
  */

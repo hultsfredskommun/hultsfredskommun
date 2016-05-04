@@ -227,3 +227,18 @@ img {
 	margin: 0!important;
 	padding: 0!important;
 }
+
+
+/* filter tools */
+.filtersearch,
+.tag-tools {
+	@extend .float--left;
+	@extend .half-margin--bottom;
+	@extend .one-whole;
+	@extend .gray-background;
+	@extend .border-radius;
+	@extend .islet;
+}
+.tag-tools {
+	@extend .half-margin--top;
+}

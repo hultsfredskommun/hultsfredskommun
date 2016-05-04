@@ -523,6 +523,9 @@ function readMoreToggle(el){
 				});	
 			}
 			
+			//add filtersearch
+			add_filtersearch($(article));
+
 			// contact form 7
 			if ( $('div.wpcf7 > form').length > 0 ) {
 				if ( typeof $('div.wpcf7 > form').wpcf7InitForm == 'function' ) {
@@ -658,111 +661,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	/**
-	 * Tag list functionality - collapse/expand
-	 */
-	//if in tag list
-	if ($(".tag-listing").length > 0) {
-		// toggle tag-post
-		/*$(".js-toggle-tags-related-documents .js-toggle-arrow").click(function(ev) {
-			ev.preventDefault();
-			$(this).parents(".js-toggle-tags-related-documents").find(".tags-related-documents").toggle();
-		});*/
-		
-		// collapse list if more items than 10
-		hidden_stuff = false;
-		$(".page-title").append("<div class='float--left half-margin--bottom tag-tools one-whole'></div>");
-		
-		if ($("ul.indent1 li, ul.indent2 li, ul.indent3 li, ul.indent4 li, ul.indent5 li").length > 10) {
-			hidden_stuff = true;
-			// hide wrappers all wrappers but level 1
-			$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6").hide();
-			// set the click toggle action and +-sign to header
-			$("h2.indent2, h3.indent3, h4.indent4, h5.indent5, h6.indent6").each(function() {
-				if ($(this).next().hasClass("wrapper")) {
-					$(this).append(" <span class='sign'>+</span>");
-					$(this).css("cursor","pointer").click(function() {
-						$(this).next().toggle();
-						if ($(this).next().is(":visible")) {
-							$(this).find(".sign").html("-");
-						} else {
-							$(this).find(".sign").html("+");
-						}
-					});
-				}
-			});
-			
-			// and collapse level 1 list
-			// hide the ul
-			$("ul.indent1").hide();
-			// set the click action and +-sign to h1
-			$("h1.indent1").each(function() {
-				if ($(this).next().children().first().hasClass("indent1")) {
-					$(this).append(" <span class='sign'>+</span>");
-					$(this).css("cursor","pointer").click(function() {
-						$(this).next().children().first().toggle();
-						if ($(this).next().next().is(":visible")) {
-							$(this).find(".sign").html("-");
-						} else {
-							$(this).find(".sign").html("+");
-						}
-					});
-				}
-			});			
-		}
-		// add expand all button
-		if (hidden_stuff) {
-			$(".tag-tools").append("<span class='float--right hand js-expand-all-tags zeta'>[visa alla]</span>");
-			$(".js-expand-all-tags").click(function() {
-				if (!$(this).hasClass("expanded")) {
-					$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").show();
-					$(this).addClass("expanded").html("[st&auml;ng alla]");
-					$(".tag-listing").find(".sign").html("-");
-					$(".tag-listing li").show();
-					$('#filter').val('');
-					$('#rensa').hide();
-				} else {
-					$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").hide();
-					$(this).removeClass("expanded").html("[visa alla]");
-					$(".tag-listing").find(".sign").html("+");
-				}
-			});
-		}
-		
-		// add filter button
-		$(".tag-tools").append("<div class='js-filter-tags zeta filter tool'></div>");
-		$(".filter.tool").append("<span class='float--left half-margin--right'>filtrera</span>");
-		$(".filter.tool").append("<input class='float--left' type='text' name='filter' id='filter' />");
-		$(".filter.tool").append("<span class='float--left delete-icon rensa hand hidden half-margin--left' style='margin:0' id='rensa'></span>");
-		$('#filter').focus();
-		$('#rensa').click(function() {
-			$('#filter').val('');
-			$('#rensa').hide();
-			$('#filter').focus();
-			filter_tags();
-		});
-		
-
-		$("#filter").keyup(function(ev) {
-			$('#rensa').show();
-			filter_tags();
-		});
-		function filter_tags() {
-			filter = $('#filter').val().toLowerCase();
-			
-			// show all
-			$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").show();
-			$(".tag-listing .js-expand-all-tags").removeClass("expanded").html("[visa alla]");
-			$(".tag-listing").find(".sign").html("-");
-
-			// hide not contains
-			$(".tag-listing li:not(:containsi('"+filter+"'))").hide();
-			// show contains
-			$(".tag-listing li:containsi('"+filter+"')").show();
-		}
-
-	} // end tag-listing
-
 
 	/**
 	 * debug count and version log 
@@ -1545,6 +1443,9 @@ function setQuickLinks(el) {
 	});
 }
 function setArticleActions(el) {
+	//add filtersearch
+	add_filtersearch($(el));
+
 	// special if ghostrec active
 	if (document.cookie.match(new RegExp('ghostrec-usability'))) {
 		//location.href = $(article).find(".js-external-link").attr("href");
@@ -1555,6 +1456,7 @@ function setArticleActions(el) {
 	$(el).find('.js-toggle-article').unbind("click").bind("click",function(ev){
 		ev.stopPropagation();
 		ev.preventDefault();
+
 		if( !$(this).parents('article').hasClass('loading') ){
 			readMoreToggle(this);
 		}
@@ -1682,7 +1584,7 @@ function textWidgetAction(el,ev) {
 		});
 
 	/*}
-	else {
+		else {
 		$(this).slideshow("pause");
 		$(".contact-popup").remove();
 	}*/
@@ -1856,6 +1758,163 @@ var log = function(logtext) {
 		//},2000);
 	}
 }
+
+
+
+/**
+ * filter functionality - alse collapse/expand in tags-list
+ */
+var add_filtersearch = function(parent) {
+	// check if filter exist
+	if ($(parent).find(".filtersearch").length <= 0 && $(".tag-listing").length <= 0) {
+		return;
+	}
+	
+	//if in tag list
+	if ($(".tag-listing").length > 0) {
+		// toggle tag-post
+		/*$(".js-toggle-tags-related-documents .js-toggle-arrow").click(function(ev) {
+			ev.preventDefault();
+			$(this).parents(".js-toggle-tags-related-documents").find(".tags-related-documents").toggle();
+		});*/
+		
+		// collapse list if more items than 10
+		hidden_stuff = false;
+		$(".page-title").append("<div class='tag-tools'></div>");
+		
+		/*if ($("ul.indent1 li, ul.indent2 li, ul.indent3 li, ul.indent4 li, ul.indent5 li").length > 10) {
+			hidden_stuff = true;
+			// hide wrappers all wrappers but level 1
+			$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6").hide();
+			// set the click toggle action and +-sign to header
+			$("h2.indent2, h3.indent3, h4.indent4, h5.indent5, h6.indent6").each(function() {
+				if ($(this).next().hasClass("wrapper")) {
+					$(this).append(" <span class='sign'>+</span>");
+					$(this).css("cursor","pointer").click(function() {
+						$(this).next().toggle();
+						if ($(this).next().is(":visible")) {
+							$(this).find(".sign").html("-");
+						} else {
+							$(this).find(".sign").html("+");
+						}
+					});
+				}
+			});
+			
+			// and collapse level 1 list
+			// hide the ul
+			$("ul.indent1").hide();
+			// set the click action and +-sign to h1
+			$("h1.indent1").each(function() {
+				if ($(this).next().children().first().hasClass("indent1")) {
+					$(this).append(" <span class='sign'>+</span>");
+					$(this).css("cursor","pointer").click(function() {
+						$(this).next().children().first().toggle();
+						if ($(this).next().next().is(":visible")) {
+							$(this).find(".sign").html("-");
+						} else {
+							$(this).find(".sign").html("+");
+						}
+					});
+				}
+			});			
+		}*/
+		// add expand all button
+		if (hidden_stuff) {
+			$(".tag-tools").append("<span class='float--right hand js-expand-all-tags zeta'>[visa alla]</span>");
+			$(".js-expand-all-tags").click(function() {
+				if (!$(this).hasClass("expanded")) {
+					$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").show();
+					$(this).addClass("expanded").html("[st&auml;ng alla]");
+					$(".tag-listing").find(".sign").html("-");
+					$(".tag-listing li").show();
+					$('#filter').val('');
+					$('#rensa').hide();
+				} else {
+					$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").hide();
+					$(this).removeClass("expanded").html("[visa alla]");
+					$(".tag-listing").find(".sign").html("+");
+				}
+			});
+		}
+		
+
+	} // end tag-listing
+
+	// add filter button
+	$(".tag-tools, .filtersearch").append("<div class='js-filter-tags zeta filter tool'></div>");
+	$(parent).find(".filter.tool").append("<span class='float--left half-margin--right'>s&ouml;k p&aring; denna sida</span>");
+	$(parent).find(".filter.tool").append("<input class='float--left' type='text' name='filter' id='filter' />");
+	$(parent).find(".filter.tool").append("<span class='float--left delete-icon rensa hand hidden half-margin--left' style='margin:0' id='rensa'></span>");
+	$(parent).find('#filter').focus();
+	$('#rensa').click(function() {
+		$('#filter').val('');
+		$('#rensa').hide();
+		$('#filter').focus();
+		filter_search($(this));
+	});		
+
+	$("#filter").keyup(function(ev) {
+		$('#rensa').show();
+		filter_search($(this));
+	});
+} // end function add_filtersearch
+var filter_search = function(el) {
+	filter = $(el).val().toLowerCase();
+	
+	// if tag-list
+	if ($(el).parents(".tag-listing").length > 0) {
+		// show all
+		$(el).parents(".tag-listing").find(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").show();
+		$(el).parents(".tag-listing").find(".tag-listing .js-expand-all-tags").removeClass("expanded").html("[visa alla]");
+		$(el).parents(".tag-listing").find(".tag-listing").find(".sign").html("-");
+
+		// hide not contains
+		$(el).parents(".tag-listing").find("li:not(:containsi('"+filter+"'))").hide();
+		// show contains
+		$(el).parents(".tag-listing").find("li:containsi('"+filter+"')").show();
+	}
+	// else not tag-list
+	else {
+		parent = $(el).parents("article");
+		filter_class = $(parent).find(".filtersearch").attr("data-filter-class");
+		filter_element = $(parent).find(".filtersearch").attr("data-filter-element");
+
+		// check if filter on element.class
+		filter_el = "";
+		if (filter_element != "") {
+			filter_el = filter_element;
+		}
+		if (filter_class != "") {
+			filter_el = filter_el + "." + filter_class;
+		}
+		if (filter_el != "") {
+			if ($(parent).find(filter_el) !== undefined) {
+				parent = $(parent).find(filter_el);
+			}
+		}
+		
+		// p-taggar
+		// show all
+		$(parent).find("p").show();
+		// hide not contains
+		$(parent).find("p:not(:containsi('"+filter+"'))").hide();
+		// show contains
+		$(parent).find("p:containsi('"+filter+"')").show();
+
+		// tr-taggar
+		// show all
+		$(parent).find("tr").show();
+		// hide not contains
+		$(parent).find("tr:not(:containsi('"+filter+"'))").hide();
+		// show contains
+		$(parent).find("tr:containsi('"+filter+"')").show();
+		
+		// show if hidden by mistake filter
+		$(parent).find("p.filtersearch").show();
+		
+	}
+} // end function filter_search
 
 })(jQuery);
 
