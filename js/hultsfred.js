@@ -649,6 +649,13 @@ $.extend($.expr[':'], {
 });
 
 $(document).ready(function(){
+	
+	/* add filter_search */
+	if ($(".tag-listing").length > 0) {
+		$(".page-title").append("<div class='tag-tools'></div>");
+		add_filtersearch($(".tag-listing"));
+	}
+	
 	if (isLessThanIE9) {
 		$(".branding").before("<div style='padding: 12px; width: 100%; background: red; color: white;'>Du anv&auml;nder en gammal webbl&auml;sare. Vissa funktioner kommer inte fungera.</div>");
 	}
@@ -1766,80 +1773,9 @@ var log = function(logtext) {
  */
 var add_filtersearch = function(parent) {
 	// check if filter exist
-	if ($(parent).find(".filtersearch").length <= 0 && $(".tag-listing").length <= 0) {
+	if ($(parent).find(".filtersearch").length <= 0 && !$(parent).hasClass("tag-listing")) {
 		return;
 	}
-	
-	//if in tag list
-	if ($(".tag-listing").length > 0) {
-		// toggle tag-post
-		/*$(".js-toggle-tags-related-documents .js-toggle-arrow").click(function(ev) {
-			ev.preventDefault();
-			$(this).parents(".js-toggle-tags-related-documents").find(".tags-related-documents").toggle();
-		});*/
-		
-		// collapse list if more items than 10
-		hidden_stuff = false;
-		$(".page-title").append("<div class='tag-tools'></div>");
-		
-		/*if ($("ul.indent1 li, ul.indent2 li, ul.indent3 li, ul.indent4 li, ul.indent5 li").length > 10) {
-			hidden_stuff = true;
-			// hide wrappers all wrappers but level 1
-			$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6").hide();
-			// set the click toggle action and +-sign to header
-			$("h2.indent2, h3.indent3, h4.indent4, h5.indent5, h6.indent6").each(function() {
-				if ($(this).next().hasClass("wrapper")) {
-					$(this).append(" <span class='sign'>+</span>");
-					$(this).css("cursor","pointer").click(function() {
-						$(this).next().toggle();
-						if ($(this).next().is(":visible")) {
-							$(this).find(".sign").html("-");
-						} else {
-							$(this).find(".sign").html("+");
-						}
-					});
-				}
-			});
-			
-			// and collapse level 1 list
-			// hide the ul
-			$("ul.indent1").hide();
-			// set the click action and +-sign to h1
-			$("h1.indent1").each(function() {
-				if ($(this).next().children().first().hasClass("indent1")) {
-					$(this).append(" <span class='sign'>+</span>");
-					$(this).css("cursor","pointer").click(function() {
-						$(this).next().children().first().toggle();
-						if ($(this).next().next().is(":visible")) {
-							$(this).find(".sign").html("-");
-						} else {
-							$(this).find(".sign").html("+");
-						}
-					});
-				}
-			});			
-		}*/
-		// add expand all button
-		if (hidden_stuff) {
-			$(".tag-tools").append("<span class='float--right hand js-expand-all-tags zeta'>[visa alla]</span>");
-			$(".js-expand-all-tags").click(function() {
-				if (!$(this).hasClass("expanded")) {
-					$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").show();
-					$(this).addClass("expanded").html("[st&auml;ng alla]");
-					$(".tag-listing").find(".sign").html("-");
-					$(".tag-listing li").show();
-					$('#filter').val('');
-					$('#rensa').hide();
-				} else {
-					$(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").hide();
-					$(this).removeClass("expanded").html("[visa alla]");
-					$(".tag-listing").find(".sign").html("+");
-				}
-			});
-		}
-		
-
-	} // end tag-listing
 
 	// add filter button
 	$(".tag-tools, .filtersearch").append("<div class='js-filter-tags zeta filter tool'></div>");
@@ -1879,6 +1815,7 @@ var filter_search = function(el) {
 		parent = $(el).parents("article");
 		filter_class = $(parent).find(".filtersearch").attr("data-filter-class");
 		filter_element = $(parent).find(".filtersearch").attr("data-filter-element");
+		filter_firstrow = $(parent).find(".filtersearch").attr("data-show-firstrow");
 
 		// check if filter on element.class
 		filter_el = "";
@@ -1912,6 +1849,10 @@ var filter_search = function(el) {
 		
 		// show if hidden by mistake filter
 		$(parent).find("p.filtersearch").show();
+		if (filter_firstrow != "" && filter_firstrow != "false") {
+			$(parent).find("tr:first-child").show();
+		}
+
 		
 	}
 } // end function filter_search

@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "3.0");
+define("HK_VERSION", "3.1");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -112,11 +112,12 @@ function hk_filter_search_func( $atts ){
 		array(
 			'parent_class' => '',
 			'parent_element' => '',
+			'always_show_firstrow' => '',
 		), $atts, 'filtersearch' );
 	$retValue = "";
 
 	// full category tree
-	$retValue .= "<p id='filtersearch' class='filtersearch' data-filter-class='" . $atts["parent_class"] . "' data-filter-element='" . $atts["parent_element"] . "'>";
+	$retValue .= "<p id='filtersearch' class='filtersearch' data-filter-class='" . $atts["parent_class"] . "' data-filter-element='" . $atts["parent_element"] . "' data-show-firstrow='" . $atts["always_show_firstrow"] . "'>";
 	$retValue .= "";
 	$retValue .= "</p>";
 
