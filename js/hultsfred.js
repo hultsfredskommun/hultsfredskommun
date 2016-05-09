@@ -540,7 +540,7 @@ function readMoreToggle(el){
 			if (typeof addthis != "undefined") {
 				addthis.toolbox('.addthis_toolbox');
 			}
-			if (typeof rspkr != "undefined") {
+			if (typeof rspkr != "undefined" && typeof rspkr.ui != "undefined") {
 				rspkr.ui.addClickEvents();
 			}
 			
@@ -1780,18 +1780,18 @@ var add_filtersearch = function(parent) {
 	// add filter button
 	$(".tag-tools, .filtersearch").append("<div class='js-filter-tags zeta filter tool'></div>");
 	$(parent).find(".filter.tool").append("<span class='float--left half-margin--right'>s&ouml;k p&aring; denna sida</span>");
-	$(parent).find(".filter.tool").append("<input class='float--left' type='text' name='filter' id='filter' />");
-	$(parent).find(".filter.tool").append("<span class='float--left delete-icon rensa hand hidden half-margin--left' style='margin:0' id='rensa'></span>");
-	$(parent).find('#filter').focus();
-	$('#rensa').click(function() {
-		$('#filter').val('');
-		$('#rensa').hide();
-		$('#filter').focus();
+	$(parent).find(".filter.tool").append("<input class='float--left filterinput' type='text' name='filterinput' />");
+	$(parent).find(".filter.tool").append("<span class='float--left delete-icon rensa hand hidden half-margin--left rensa' style='margin:0'></span>");
+	$(parent).find('.filter.tool .filterinput').focus();
+	$(parent).find('.filter.tool .rensa').click(function() {
+		$(this).parents(".filter.tool").find('.filterinput').val('');
+		$(this).parents(".filter.tool").find('.rensa').hide();
+		$(this).parents(".filter.tool").find('.filterinput').focus();
 		filter_search($(this));
 	});		
 
-	$("#filter").keyup(function(ev) {
-		$('#rensa').show();
+	$(parent).find('.filter.tool .filterinput').keyup(function(ev) {
+		$(this).parents(".filter.tool").find('.rensa').show();
 		filter_search($(this));
 	});
 } // end function add_filtersearch
