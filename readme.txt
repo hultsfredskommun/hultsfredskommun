@@ -23,6 +23,7 @@
  * Logo 2 (with link and alt-text settings)
  * Logo in footer
 * Shortcode to add [karta] to post.
+* Shortcode to add [filtersearch] to post, simple filter functionality to be added to filter a specific content in a post.
 * Google analytics if id added in settings
 * Widget areas
  * Startpage topcontent
