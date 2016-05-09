@@ -1796,7 +1796,7 @@ var add_filtersearch = function(parent) {
 	});
 } // end function add_filtersearch
 var filter_search = function(el) {
-	filter = $(el).val().toLowerCase();
+	var filter = $(el).val().toLowerCase();
 	
 	// if tag-list
 	if ($(el).parents(".tag-listing").length > 0) {
@@ -1812,13 +1812,13 @@ var filter_search = function(el) {
 	}
 	// else not tag-list
 	else {
-		parent = $(el).parents("article");
-		filter_class = $(parent).find(".filtersearch").attr("data-filter-class");
-		filter_element = $(parent).find(".filtersearch").attr("data-filter-element");
-		filter_firstrow = $(parent).find(".filtersearch").attr("data-show-firstrow");
+		var parent = $(el).parents("article");
+		var filter_class = $(parent).find(".filtersearch").attr("data-filter-class");
+		var filter_element = $(parent).find(".filtersearch").attr("data-filter-element");
+		var filter_firstrow = $(parent).find(".filtersearch").attr("data-show-firstrow");
 
 		// check if filter on element.class
-		filter_el = "";
+		var filter_el = "";
 		if (filter_element != "") {
 			filter_el = filter_element;
 		}
