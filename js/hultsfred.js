@@ -1776,10 +1776,15 @@ var add_filtersearch = function(parent) {
 	if ($(parent).find(".filtersearch").length <= 0 && !$(parent).hasClass("tag-listing")) {
 		return;
 	}
-
+	// pick text to use if entered in shortcode
+	var text = $(parent).find(".filtersearch").attr("data-text");
+	if (text == "") {
+		text = "s&ouml;k p&aring; denna sida";
+	}
+	
 	// add filter button
 	$(".tag-tools, .filtersearch").append("<div class='js-filter-tags zeta filter tool'></div>");
-	$(parent).find(".filter.tool").append("<span class='float--left half-margin--right'>s&ouml;k p&aring; denna sida</span>");
+	$(parent).find(".filter.tool").append("<span class='float--left half-margin--right'>" + text + "</span>");
 	$(parent).find(".filter.tool").append("<input class='float--left filterinput' type='text' name='filterinput' />");
 	$(parent).find(".filter.tool").append("<span class='float--left delete-icon rensa hand hidden half-margin--left rensa' style='margin:0'></span>");
 	$(parent).find('.filter.tool .filterinput').focus();

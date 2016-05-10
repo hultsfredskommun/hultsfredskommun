@@ -113,11 +113,12 @@ function hk_filter_search_func( $atts ){
 			'parent_class' => '',
 			'parent_element' => '',
 			'always_show_firstrow' => '',
+			'text' => '',
 		), $atts, 'filtersearch' );
 	$retValue = "";
 
 	// full category tree
-	$retValue .= "<p id='filtersearch' class='filtersearch' data-filter-class='" . $atts["parent_class"] . "' data-filter-element='" . $atts["parent_element"] . "' data-show-firstrow='" . $atts["always_show_firstrow"] . "'>";
+	$retValue .= "<p id='filtersearch' class='filtersearch' data-text='" . $atts["text"] . "' data-filter-class='" . $atts["parent_class"] . "' data-filter-element='" . $atts["parent_element"] . "' data-show-firstrow='" . $atts["always_show_firstrow"] . "'>";
 	$retValue .= "";
 	$retValue .= "</p>";
 
