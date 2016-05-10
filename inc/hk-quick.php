@@ -46,6 +46,7 @@ function hk_view_quick_links() {
 	
 	if ($the_query->have_posts())
 	{ 
+		$retValue .= "<style type='text/css'>.main { max-width: 1138px; }</style>";
 		$retValue .= "<div class='quick-posts-wrapper'>";
 		$retValue .= "<div class='quick-posts'>";
 		$a_class = "q";
