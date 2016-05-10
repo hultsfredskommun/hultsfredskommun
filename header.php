@@ -184,6 +184,8 @@ $hide_leftmenu_class = ($hk_options['hide_leftmenu']) ? "hide-left-menu":"";
 			require( get_template_directory() . '/inc/hk-old-header.php'); 		
 		}?>
 
+	<div class="main hk-quick"><div class="main-wrapper">
+		<?php if (!is_sub_category_firstpage()) { echo hk_view_quick_links(); } ?>
+	</div></div>
 	<div id="main" class="main">
 	<div class="main-wrapper">
-		<?php if (!is_sub_category_firstpage()) { echo hk_view_quick_links(); } ?>

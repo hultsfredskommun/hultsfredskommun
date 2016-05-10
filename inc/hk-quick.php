@@ -27,7 +27,7 @@ function hk_quick_init() {
 /*
  * shortcode [mellanstartsida], show quick links (mellanstartsida)
  */
-add_shortcode( 'mellanstartsida', 'hk_view_quick_links' );
+//add_shortcode( 'mellanstartsida', 'hk_view_quick_links' );
 
 function hk_view_quick_links() {
 	global $cat, $tag, $default_settings;
@@ -46,7 +46,7 @@ function hk_view_quick_links() {
 	
 	if ($the_query->have_posts())
 	{ 
-		$retValue .= "<style type='text/css'>.main { max-width: 1138px; }</style>";
+		//$retValue .= "<style type='text/css'>.main.hk-quick { max-width: 1138px; }</style>";
 		$retValue .= "<div class='quick-posts-wrapper'>";
 		$retValue .= "<div class='quick-posts'>";
 		$a_class = "q";
