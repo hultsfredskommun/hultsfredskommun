@@ -6,6 +6,18 @@
 .tags-document-toggle {
 }
 .tag-listing {
+	.summary-content img, .excerpt-wrapper {
+		@extend .hidden;
+	}
+	.article-border-wrapper {
+		border-bottom: 0!important;
+		padding-bottom: 0!important;
+		.summary-content,
+		.entry-title {
+			margin-top: 0!important;
+			padding-top: 0!important;
+		}
+	}
 	.dimmed-tag {
 		color: $gray-color!important;
 		font-weight: normal;
@@ -20,10 +32,11 @@
 	.wrapper4,
 	.wrapper5,
 	.wrapper6,
-	.wrapper7 { padding-left: $half-spacing-unit; }
+	.wrapper7 { /*padding-left: $half-spacing-unit;*/ }
 	
 	.wrapper {
-		border-left: 1px solid $gray-color;
+		/*border-left: 1px solid $gray-color;*/
+		/*padding-bottom: $base-spacing-unit;*/
 	}
 	
 	.indent1, 
@@ -34,12 +47,16 @@
 	.indent6, 
 	.indent7 {
 		li {
-			margin-left: -$half-spacing-unit;
+			/*margin-left: -$half-spacing-unit;
 			margin-bottom: 2px;
 			padding-left: $half-spacing-unit;
-			background: $gray-light-color;
+			*/
+			/*background: $gray-light-color;*/
 			&:hover {
 				@extend .border-line-main--left;
+				margin-left: -$half-spacing-unit;
+				padding-left: $half-spacing-unit;
+				background: $gray-light-color;
 				margin-left: -($half-spacing-unit + 1);
 			}
 		}
@@ -50,10 +67,10 @@
 	h4.indent4, 
 	h5.indent5, 
 	h6.indent6 {
+		margin-top: $base-spacing-unit!important;
 		margin-bottom: $half-spacing-unit!important;
-		margin-top: $half-spacing-unit!important;
-		font-size: 1.1em!important;
-		
+		/*font-size: 1.1em!important;
+		*/
 	}
 		
 	.link {

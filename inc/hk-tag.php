@@ -70,7 +70,8 @@
 						$args["tag_slug__in"] = split(",",$tag);
 					
 					query_posts( $args );
-					//print_r($childcat);
+					//echo $childcat->cat_ID;
+					//print_r($children);
 					if ( have_posts() ) : 
 						$catarr[] = $childcat->slug;
 						
@@ -85,7 +86,7 @@
 								$lastsub = $sub;
 								$pre_dimmed_link = $post_dimmed_link = "";
 								if (!in_array($c->cat_ID, $children)) {
-									$pre_dimmed_link = "<a class='dimmed-tag' href='" . get_category_link($c->cat_ID) . $tags_filter . "'>";
+									$pre_dimmed_link = "<a class='hidden dimmed-tag' href='" . get_category_link($c->cat_ID) . $tags_filter . "'>";
 									$post_dimmed_link = "</a>";
 								}
 								echo "<h$sub class='indent$sub'>$pre_dimmed_link" . $c->name . "$post_dimmed_link</h$sub>";
@@ -103,10 +104,11 @@
 						echo "<div class='wrapper$sub wrapper'>";
 						echo "<ul class='indent$sub'>";
 						while ( have_posts() ) : the_post();
-							get_template_part( 'content', 'single-line' );
+							get_template_part( 'content', get_post_type() );
 							$shownPosts[] = get_the_ID();
 						endwhile;
 						echo "</ul>";
+						
 					endif;
 
 					wp_reset_query(); // Reset Query

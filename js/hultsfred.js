@@ -1778,7 +1778,7 @@ var add_filtersearch = function(parent) {
 	}
 	// pick text to use if entered in shortcode
 	var text = $(parent).find(".filtersearch").attr("data-text");
-	if (text == "") {
+	if (text === undefined) {
 		text = "s&ouml;k p&aring; denna sida";
 	}
 	
@@ -1805,6 +1805,15 @@ var filter_search = function(el) {
 	
 	// if tag-list
 	if ($(el).parents(".tag-listing").length > 0) {
+		// article-taggar
+		// show all
+		$(el).parents(".tag-listing").find("article").show();
+		// hide not contains
+		$(el).parents(".tag-listing").find("article:not(:containsi('"+filter+"'))").hide();
+		// show contains
+		$(el).parents(".tag-listing").find("article:containsi('"+filter+"')").show();
+
+		// tag-listing
 		// show all
 		$(el).parents(".tag-listing").find(".wrapper2, .wrapper3, .wrapper4, .wrapper5, .wrapper6, ul.indent1").show();
 		$(el).parents(".tag-listing").find(".tag-listing .js-expand-all-tags").removeClass("expanded").html("[visa alla]");
@@ -1851,7 +1860,7 @@ var filter_search = function(el) {
 		$(parent).find("tr:not(:containsi('"+filter+"'))").hide();
 		// show contains
 		$(parent).find("tr:containsi('"+filter+"')").show();
-		
+
 		// show if hidden by mistake filter
 		$(parent).find("p.filtersearch").show();
 		if (filter_firstrow != "" && filter_firstrow != "false") {
