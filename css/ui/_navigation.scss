@@ -99,7 +99,7 @@
 
 
 	.more-navigation {
-		@extend .hidden--palm;
+		//@extend .hidden--palm;
 		@extend .half-padding--left;
 		@extend .nav;
 		@extend .nav--block;
@@ -151,7 +151,7 @@
 					padding-left: 0;
 				}
 				&.atag-item {
-					display: none;
+					/*display: none;*/
 				}
 			}
 		}

@@ -38,7 +38,7 @@ function hk_postcount() {
 	
 /** 
  * Description: Echo navigation
- *  */
+ **/
 
 function hk_breadcrumb() {
 	$search = get_query_var("s");

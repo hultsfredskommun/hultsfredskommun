@@ -104,7 +104,7 @@
 						echo "<div class='wrapper$sub wrapper'>";
 						echo "<ul class='indent$sub'>";
 						while ( have_posts() ) : the_post();
-							get_template_part( 'content', get_post_type() );
+							get_template_part( 'content', 'tag' );
 							$shownPosts[] = get_the_ID();
 						endwhile;
 						echo "</ul>";
