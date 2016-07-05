@@ -1818,6 +1818,14 @@ function hk_amp_additional_css_styles( $amp_template ) {
         width: 180px;
         text-indent: -9999px;
     }
+	.amp-wp-footer ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.amp-wp-footer li.title {
+		font-weight: bold;
+	}
     <?php
 }
 /* AMP featured image */
@@ -1886,7 +1894,7 @@ function hk_amp_remove_author_meta( $meta_parts ) {
     return array();
 }
 /* AMP head and footer */
-/*add_action( 'amp_post_template_head', 'hk_amp_add_head' );
+add_action( 'amp_post_template_head', 'hk_amp_add_head' );
 
 function hk_amp_add_head( $amp_template ) {
     $post_id = $amp_template->get( 'post_id' );
@@ -1897,6 +1905,8 @@ add_action( 'amp_post_template_footer', 'hk_amp_add_footer' );
 
 function hk_amp_add_footer( $amp_template ) {
     $post_id = $amp_template->get( 'post_id' );
-
-}*/
+	echo "<div class='amp-wp-content  amp-wp-footer'>";
+	include("inc/hk-aside-content.php");
+	echo "</div>";
+}
 ?>
