@@ -74,6 +74,7 @@ wpDirAuth by Paul Gilzow to get AD-intagrated login.
 Adritrorecruit by Jonas Hjalmarsson to get available jobs from adritrorecruit.com
 CBIS widget by Jonas Hjalmarsson to get CBIS search widgets
 Contact Form 7 by Takayuki Miyoshi to get forms
+AMP by Automatic to get AMP support, style added to follow this theme
 
 === Handy tools ===
 Simple Image Size by Rahe to handle thumbnail regeneration when needed.

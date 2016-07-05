@@ -6,6 +6,9 @@
 .tags-document-toggle {
 }
 .tag-listing {
+	article.post.summary {
+		padding-bottom: 0;
+	}
 	.article-border-wrapper {
 		border-bottom: 0!important;
 		padding-bottom: 0!important;
@@ -13,6 +16,9 @@
 		.entry-title {
 			margin-top: 0!important;
 			padding-top: 0!important;
+		}
+		.summary-content h1.entry-title {
+			@extend .zeta;
 		}
 	}
 	.dimmed-tag {

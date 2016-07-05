@@ -323,7 +323,10 @@ function hk_theme_options_do_page() {
 			<h3>Extern sökning</h3>
 			<p><label for="hk_theme[external_search_title]">Länktext till extern sökning</label><br/><input type="text" size="80" name="hk_theme[external_search_title]" value="<?php echo $options['external_search_title']; ?>" /></p>
 			<p><label for="hk_theme[external_search_url]">URL till extern sökning (lägger till sökordet direkt efter URL)</label><br/><input type="text" size="80" name="hk_theme[external_search_url]" value="<?php echo $options['external_search_url']; ?>" /></p>
-			
+
+			<h3>AMP inställningar - Kräver AMP-plugin från Automatic</h3>
+			<p><label for="hk_theme[amp_analytics]">Google Analytics för AMP-statistik</label><br/><input type="text" size="80" name="hk_theme[amp_analytics]" value="<?php echo $options['amp_analytics']; ?>" /></p>
+
 			<?php submit_button(); ?>
 
 			<a name="statistik"></a>

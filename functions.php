@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "3.6");
+define("HK_VERSION", "3.7");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -714,14 +714,16 @@ add_filter( 'the_excerpt_rss', 'strip_tags_from_excerpt' );
 
 
 /* help function to render custom thumbnail functionality */
-function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $class="") {
+function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $class="", $only_img=false) {
 	global $default_settings;
 	$retValue = "";
 	/* check if ACF is enabled and if field hk_featured_images exists */
 	if( function_exists("get_field") && get_field('hk_featured_images', $id) ) :
 		if ($showAll) { $slideshowclass = "slideshow"; }
 		$countSlides = 0;
-		$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
+		if (!$only_img) {
+			$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
+		}
 		while( has_sub_field('hk_featured_images', $id) && ($showAll || $countSlides == 0)) : // only once if not showAll
 			$image = get_sub_field('hk_featured_image');
 			$src = $image["sizes"][$thumbsize];
@@ -740,24 +742,30 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 						$style = "style='display: none;'";
 					}
 					$src = str_replace("http://" . $_SERVER['SERVER_NAME'], "", $src);
-					$retValue .= "<div class='slide' $style>";
+					if (!$only_img) {
+						$retValue .= "<div class='slide' $style>";
+					}
 					$retValue .= "<img src='$src' alt='$alt' title='$alt' />";
-					if ($caption != "") {
-						$retValue .= "<span class='image-title'>$caption</span>";
+					if (!$only_img) {
+						if ($caption != "") {
+							$retValue .= "<span class='image-title'>$caption</span>";
+						}
+						if ($source != "") {
+							$retValue .= "<span class='image-caption'>Foto: $source</span>";
+						}
+						$retValue .= "</div>";
 					}
-					if ($source != "") {
-						$retValue .= "<span class='image-caption'>Foto: $source</span>";
-					}
-					$retValue .= "</div>";
 					$countSlides++;
 				}
 			}
     	endwhile;
-		if ($showAll && $countSlides > 1) {
-			$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' title='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
-			$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
+		if (!$only_img) {
+			if ($showAll && $countSlides > 1) {
+				$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' title='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
+				$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
+			}
+			$retValue .= "</div></div>"; 
 		}
-		$retValue .= "</div></div>"; 
  	endif; 
 	
 	
@@ -782,7 +790,9 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 		/* return image or slides if images is found */
 		if (!empty($cbisimages)) {
 			
-			$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
+			if (!$only_img) {
+				$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
+			}
 			while( $count < count($cbisimages) && ($showAll || $countSlides == 0)) : // only once if not showAll
 			
 				$image = $cbisimages[$count];
@@ -792,22 +802,28 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 					if ($countSlides > 0) {
 						$style = "style='display: none;'";
 					}
-					$retValue .= "<div class='slide' $style>";
-					$retValue .= "<img src='$src$src_append' alt='$alt' title='$alt' />";
-					if ($caption != "") {
-						$retValue .= "<span class='image-caption'>$caption</span>";
+					if (!$only_img) {
+						$retValue .= "<div class='slide' $style>";
 					}
-					$retValue .= "</div>";
+					$retValue .= "<img src='$src$src_append' alt='$alt' title='$alt' />";
+					if (!$only_img) {
+						if ($caption != "") {
+							$retValue .= "<span class='image-caption'>$caption</span>";
+						}
+						$retValue .= "</div>";
+					}
 					$countSlides++;
 				}
 				$count++;
 			endwhile;
 			/* print placeholder if slideshow */
-			if ($showAll && $countSlides > 1) {
-				$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' title='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."' />";
-				$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
+			if (!$only_img) {
+				if ($showAll && $countSlides > 1) {
+					$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' title='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."' />";
+					$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
+				}
+				$retValue .= "</div></div>"; 
 			}
-			$retValue .= "</div></div>"; 
 		}
 		/*
 		$cbisimage = get_post_meta($id, "cbis_image_url", true);
@@ -1742,5 +1758,145 @@ function hk_search_and_print_faq($search) {
 	}
 }
 
+/* AMP plugin, see info: https://github.com/Automattic/amp-wp/blob/master/readme.md */
 
+/* AMP style */
+add_action( 'amp_post_template_css', 'hk_amp_additional_css_styles' );
+
+function hk_amp_additional_css_styles( $amp_template ) {
+    // only CSS here please...
+	global $hk_options;
+	$logo = $hk_options["logo_mobile_image"];
+	$svg_logo = $hk_options["logo_mobile_image_svg"];
+	if (empty($logo)) {
+		$logo = $hk_options["logo_image"];
+	}
+	if (empty($svg_logo)) {
+		$svg_logo = $hk_options["logo_image_svg"];
+	}
+?>
+	amp-img {
+	    border-radius: 3px;
+	}
+	html, 
+	.amp-wp-content,
+	.wp-caption-text {
+		font-family: "Segoe UI",Arial,sans-serif;
+		color: #3e3e3f;
+		font-size: 14px;
+		font-size: 0.93333rem;
+		line-height: 1.71429;
+	}
+	h1, 
+	.amp-wp-title {
+		font-family: Arial;
+		font-size: 20px;
+		font-size: 1.33333rem;
+		margin: 0;
+	}
+	.wp-caption-text {
+		padding: 0;
+	}
+	.amp-wp-meta {
+		display: none;
+	}
+    nav.amp-wp-title-bar {
+		margin: 0 auto;
+		max-width: 605px;
+        padding: 16px;
+        background: #fff;
+    }
+	nav.amp-wp-title-bar div {
+		margin: 0;
+	}
+    nav.amp-wp-title-bar a {
+        background-image: url( '<?php echo $logo; ?>' );
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: block;
+        height: 45px;
+        width: 180px;
+        text-indent: -9999px;
+    }
+    <?php
+}
+/* AMP featured image */
+add_action( 'pre_amp_render_post', 'hk_amp_add_custom_actions' );
+function hk_amp_add_custom_actions() {
+    add_filter( 'the_content', 'hk_amp_add_featured_image' );
+}
+
+function hk_amp_add_featured_image( $content ) {
+
+	$thumb = hk_get_the_post_thumbnail(get_the_ID(),'featured-image', false, false, "", true); 
+	if ($thumb != "") :
+        $content = $thumb . $content;
+	endif;
+	
+    return $content;
+}
+
+/* AMP width */
+add_filter( 'amp_content_max_width', 'hk_amp_change_content_width' );
+
+function hk_amp_change_content_width( $content_max_width ) {
+    return 605;
+}
+
+add_filter( 'amp_post_template_analytics', 'hk_amp_add_custom_analytics' );
+function hk_amp_add_custom_analytics( $analytics ) {
+	global $hk_options;
+	
+    if ( ! is_array( $analytics ) ) {
+        $analytics = array();
+    }
+
+	if (!empty($hk_options["amp_analytics"])) {
+		// https://developers.google.com/analytics/devguides/collection/amp-analytics/
+		$analytics['xyz-googleanalytics'] = array(
+			'type' => 'googleanalytics',
+			'attributes' => array(
+				// 'data-credentials' => 'include',
+			),
+			'config_data' => array(
+				'vars' => array(
+					'account' => $hk_options["amp_analytics"]
+				),
+				'triggers' => array(
+					'trackPageview' => array(
+						'on' => 'visible',
+						'request' => 'pageview',
+					),
+				),
+			),
+		);
+	}
+
+    return $analytics;
+}
+
+/* AMP meta */
+add_filter( 'amp_post_template_meta_parts', 'hk_amp_remove_author_meta' );
+
+function hk_amp_remove_author_meta( $meta_parts ) {
+    //print_r($meta_parts);
+	//foreach ( array_keys( $meta_parts, 'meta-author', true ) as $key ) {
+        //unset( $meta_parts[ $key ] );
+    //}
+    return array();
+}
+/* AMP head and footer */
+/*add_action( 'amp_post_template_head', 'hk_amp_add_head' );
+
+function hk_amp_add_head( $amp_template ) {
+    $post_id = $amp_template->get( 'post_id' );
+    
+}
+
+add_action( 'amp_post_template_footer', 'hk_amp_add_footer' );
+
+function hk_amp_add_footer( $amp_template ) {
+    $post_id = $amp_template->get( 'post_id' );
+
+}*/
 ?>

@@ -101,10 +101,10 @@
 	<div class="hk-gcse-ajax-searchresults-wrapper">
 		<div class="hk-gcse-ajax-searchresults<?php echo $column_class; ?>">
 			<div class="hk-gcse-hook-results">
-				<div class="islet">Väntar på sökresultat...<span style="display:inline-block" class="spinner"></span></div>
+				<div class="islet">V&auml;ntar p&aring; s&ouml;kresultat...<span style="display:inline-block" class="spinner"></span></div>
 			</div>
 			<div class="hk-gcse-googleresults">
-				<div class="gcse-searchresults"><div class="islet">Väntar på sökresultat...<span style="display:inline-block" class="spinner"></span></div></div>
+				<div class="gcse-searchresults"><div class="islet">V&auml;ntar p&aring; s&ouml;kresultat...<span style="display:inline-block" class="spinner"></span></div></div>
 			</div>
 		</div>
 	</div>

@@ -59,7 +59,7 @@ get_header(); ?>
 					s.parentNode.insertBefore(gcse, s);
 				  })();
 				</script>
-				<div class="gcse-searchresults-only"><h3>Väntar på sökresultat...<span style="display:inline-block" class="spinner"></span></h3></div>
+				<div class="gcse-searchresults-only"><h3>V&auml;ntar p&aring; s&ouml;kresultat...<span style="display:inline-block" class="spinner"></span></h3></div>
 			<?php else : ?>
 
 			<?php if ( have_posts() ) : ?>
