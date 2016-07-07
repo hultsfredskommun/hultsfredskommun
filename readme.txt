@@ -23,7 +23,6 @@
  * Logo 2 (with link and alt-text settings)
  * Logo in footer
 * Shortcode to add [karta] to post.
-* Shortcode to add [filtersearch] to post, simple filter functionality to be added to filter a specific content in a post.
 * Google analytics if id added in settings
 * Widget areas
  * Startpage topcontent
@@ -75,6 +74,7 @@ Adritrorecruit by Jonas Hjalmarsson to get available jobs from adritrorecruit.co
 CBIS widget by Jonas Hjalmarsson to get CBIS search widgets
 Contact Form 7 by Takayuki Miyoshi to get forms
 AMP by Automatic to get AMP support, style added to follow this theme
+HK search and filter by Hultsfredskommun to get CSV-ajax-search and search-content-filter (filter is moved from hultsfredskommun-theme).
 
 === Handy tools ===
 Simple Image Size by Rahe to handle thumbnail regeneration when needed.

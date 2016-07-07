@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "3.7");
+define("HK_VERSION", "3.8");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -106,6 +106,7 @@ require( get_template_directory() . '/inc/hk-widgets.php' );
 /*
  * shortcode [filtersearch], show filter function
  */
+ /*
 function hk_filter_search_func( $atts ){
 	global $default_settings;
 	$atts = shortcode_atts(
@@ -125,7 +126,7 @@ function hk_filter_search_func( $atts ){
 	return $retValue;
 }
 add_shortcode( 'filtersearch', 'hk_filter_search_func' );
-
+*/
 
 /*
  * shortcode [categorytree], show category tree

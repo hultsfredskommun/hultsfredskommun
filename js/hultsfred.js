@@ -524,7 +524,7 @@ function readMoreToggle(el){
 			}
 			
 			//add filtersearch
-			add_filtersearch($(article));
+			//add_filtersearch($(article));
 
 			// contact form 7
 			if ( $('div.wpcf7 > form').length > 0 ) {
@@ -1451,7 +1451,7 @@ function setQuickLinks(el) {
 }
 function setArticleActions(el) {
 	//add filtersearch
-	add_filtersearch($(el));
+	//add_filtersearch($(el));
 
 	// special if ghostrec active
 	if (document.cookie.match(new RegExp('ghostrec-usability'))) {
@@ -1773,7 +1773,8 @@ var log = function(logtext) {
  */
 var add_filtersearch = function(parent) {
 	// check if filter exist
-	if ($(parent).find(".filtersearch").length <= 0 && !$(parent).hasClass("tag-listing")) {
+	//if ($(parent).find(".filtersearch").length <= 0 && !$(parent).hasClass("tag-listing")) {
+	if (!$(parent).hasClass("tag-listing")) {
 		return;
 	}
 	// pick text to use if entered in shortcode
@@ -1808,6 +1809,10 @@ var filter_search = function(el) {
 		// article-taggar
 		// show all
 		$(el).parents(".tag-listing").find("article").show();
+		$.each(["h4","h3","h2", "h1"], function (i, val) {
+			$(el).parents(".tag-listing").find(val).show();
+		});
+		
 		// hide not contains
 		$(el).parents(".tag-listing").find("article:not(:containsi('"+filter+"'))").hide();
 		// show contains
@@ -1823,9 +1828,20 @@ var filter_search = function(el) {
 		$(el).parents(".tag-listing").find("li:not(:containsi('"+filter+"'))").hide();
 		// show contains
 		$(el).parents(".tag-listing").find("li:containsi('"+filter+"')").show();
+		
+		// hide empty headings
+		$.each(["h4","h3","h2", "h1"], function (i, val) {
+			$(el).parents(".tag-listing").find(val).each( function() {
+				if ($(this).next().hasClass("wrapper")) {
+					if ($(this).next().find("article:visible").length == 0) {
+						$(this).hide();
+					}
+				}
+			});
+		});
 	}
 	// else not tag-list
-	else {
+	/*else {
 		var parent = $(el).parents("article");
 		var filter_class = $(parent).find(".filtersearch").attr("data-filter-class");
 		var filter_element = $(parent).find(".filtersearch").attr("data-filter-element");
@@ -1868,7 +1884,7 @@ var filter_search = function(el) {
 		}
 
 		
-	}
+	}*/
 } // end function filter_search
 
 })(jQuery);
