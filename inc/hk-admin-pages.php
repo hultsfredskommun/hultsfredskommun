@@ -288,7 +288,7 @@ function hk_display_allcomingreviews_dashboard_widget ()
 	$options = get_option('hk_theme');
 
 	if ($options["no_reviews_to_cat"] != "")
-		$ignore_cats = split(",",$options["no_reviews_to_cat"]);
+		$ignore_cats = explode(",",$options["no_reviews_to_cat"]);
 	else
 		$ignore_cats = array();
 		
@@ -379,7 +379,7 @@ function hk_display_mycomingreviews_dashboard_widget ()
 	$options = get_option('hk_theme');
 	
 	if ($options["no_reviews_to_cat"] != "")
-		$ignore_cats = split(",",$options["no_reviews_to_cat"]);
+		$ignore_cats = explode(",",$options["no_reviews_to_cat"]);
 	else
 		$ignore_cats = array();
 		

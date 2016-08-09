@@ -358,7 +358,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 		} else {$show_time_link_url = ""; }
 
 		/* get all sub categories to use in queries */
-		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && (!isset($instance["show_protocol"]) || $instance["show_protocol"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_protocol"])));
+		$showprotocol = $default_settings["protocol_cat"] != "" && $default_settings["protocol_cat"] != "0" && (!isset($instance["show_protocol"]) || $instance["show_protocol"] == "" || in_array(get_query_var("cat"), explode(",",$instance["show_protocol"])));
 		?>
 		
 		<?php if ($showprotocol) : ?>
@@ -633,7 +633,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 
 	public function widget( $args, $instance ) {
 	    extract( $args );
-		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), split(",",$instance["show_widget_in_cat"]))) {
+		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), explode(",",$instance["show_widget_in_cat"]))) {
 			echo $before_widget;
 			$alt = $instance["alt"];
 			if ($alt == "") {
@@ -1213,7 +1213,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 				endwhile; endif;
 				
 				if (isset($instance['contacttext']) && $options["startpage_cat"] == get_query_var("cat")) {
-					foreach(split("\n",$instance['contacttext']) as $contacttext) {
+					foreach(explode("\n",$instance['contacttext']) as $contacttext) {
 						$retValue .= "<li class='contactlink  js-contact-link'><a class='gtm-fpcp-contacttext' href='" . get_permalink(get_the_ID()) . "'>" . $contacttext . "</a></li>";
 					}
 				}
@@ -1311,9 +1311,9 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 	class hk_WP_Widget_PostViews extends WP_Widget {
 	
 		// Constructor
-		function hk_WP_Widget_PostViews() {
+		function __construct() {
 			$widget_ops = array('description' => __('hk WP-PostViews views statistics, tag-cloudified', 'wp-postviews'));
-			$this->WP_Widget('hk_views', __('HK Most Viewed', 'wp-postviews'), $widget_ops);
+			parent::__construct('hk_views', __('HK Most Viewed', 'wp-postviews'), $widget_ops);
 		}
 
 		// Display Widget

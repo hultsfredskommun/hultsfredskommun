@@ -71,7 +71,7 @@ function hk_breadcrumb() {
 		}
 		/*if ($tag != "") {
 			echo '<br>Typ av information: ';
-			foreach (split(',',$tag) as $t) {
+			foreach (explode(',',$tag) as $t) {
 				$t = get_term_by( 'slug', $t, 'post_tag');
 				echo "<a href='" . get_tag_link($t->term_id) . "'>" . $t->name . "</a> | ";
 			}
@@ -522,7 +522,7 @@ function hk_navigation() {
 			'walker'			 => $hk_cat_walker
 		);
 		echo "<ul class='parent'>"; 
-		echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='". get_site_url() ."'>Hela webbplatsen</a></li>";
+		echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='". get_site_url() ."'>" . get_the_category_by_ID($parentCat) . "</a></li>";
 		wp_list_categories( $args );
 		echo "</ul>";
 		
@@ -557,7 +557,7 @@ function hk_tag_navigation() {
 	
 // Walker class: Show which category and tag is selected
 class hk_Category_Walker extends Walker_Category {
-	function start_el(&$output, $category, $depth, $args) { 
+	function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) { 
         extract($args); 
 		
 		$tags_filter = get_query_var("tag");
@@ -625,7 +625,7 @@ class hk_Category_Walker extends Walker_Category {
 
 // Walker class: Show which tags available to selected
 class hk_Tag_Walker extends Walker_Category {
-	function start_el(&$output, $tag, $depth, $args) { 
+	function start_el(&$output, $tag, $depth = 0, $args = array(), $id = 0 ) { 
         extract($args);
 		$currtagslug = $tag->slug;
 		$tags_filter = get_query_var("tag");
@@ -731,17 +731,43 @@ function displayTagFilter($show_title = true, $ul_class="more-navigation", $echo
 	global $default_settings;
 	$retValue = "";
 	if ($default_settings["show_tags"] != 0) :	
-		
+			
 		$tags = hk_get_category_tags(get_query_var("cat"));
-		
-		if (!empty($tags)) :
+		$tags_filter = get_query_var("tag");	
+			
+		if (!empty($tags) || !empty($tags_filter)) :
 			$retValue .= "<ul class='$ul_class'>"; 
+			/* show tag title */
 			if ($show_title) {
 				$retValue .= "<li class='heading'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
 			}
-			foreach( $tags as $tagitem) :
+			
+			/* helper to remember if all tag-filter-items has been seen */
+			if (!empty($tags_filter)) {
+				$tags_selected_and_visible = array();
+				$tag_array = explode(",",$tags_filter);
+				foreach( $tag_array as $tagslug) {
+					$tags_selected_and_visible[$tagslug] = false;
+				}
+			}
+
+			/* show tag list */
+			foreach( $tags as $tagitem) {
+				$tags_selected_and_visible[$tagitem->tag_slug] = true;
 				$retValue .= hk_generate_tag_link($tagitem, $a_class);
-			endforeach;
+			}
+
+			/* print if tag not exist in cat (check helper variable) */
+			foreach( $tags_selected_and_visible as $key => $value) {
+				if (!$value) {
+					$item = get_term_by("slug",$key,"post_tag", "OBJECT");
+					$tagitem = (object)array("tag_ID" => $item->term_id, "tag_name" => $item->name, "tag_slug" => $item->slug );
+					$retValue .= hk_generate_tag_link($tagitem, $a_class);
+					//$retValue .= hk_generate_tag_link($key, $a_class);
+				}
+			}
+			
+			
 			$retValue .= "</ul>";
 		endif; // endif tags available
 		if ($echo) {

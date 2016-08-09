@@ -19,7 +19,7 @@
 	$tags = $filter->tags;
 	$tag_array = "";
 	if ($tags != "")
-		$tag_array = split(",", $tags);
+		$tag_array = explode(",", $tags);
 	$shownPosts = explode(",",$_POST['shownPosts']);
 	$dyn_query = new WP_Query();
 	$posts_per_page = -1;//get_option('posts_per_page');

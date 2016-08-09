@@ -77,7 +77,7 @@ function hk_review_mail() {
 		$mail = get_the_author_email();
 		// dont send mail if in no_reviews_to_cat list
 		$dont_send = false;
-		foreach ( split(",",$options["no_reviews_to_cat"]) as $c ) {
+		foreach ( explode(",",$options["no_reviews_to_cat"]) as $c ) {
 			if (in_category($c)) 
 				$dont_send = true;
 		}

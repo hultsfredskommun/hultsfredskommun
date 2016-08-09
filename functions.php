@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "3.8");
+define("HK_VERSION", "3.9");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -282,136 +282,138 @@ add_action( 'do_feed_atom', 'remove_comment_feeds', 9, 1 );
 /**
  * add theme javascript file and needed jquery 
  */
-if (!is_admin()) {
-	
-	wp_enqueue_style( 'hk-style', 
-		get_bloginfo( 'stylesheet_url' ), 
-		array(), 
-		HK_VERSION 
-	);
-	
-	/*<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?ver=1.0.1" />*/
-	/*
-	 * Loads special google font CSS file.
-	 */
-	
-	if ($hk_options['google_font'] != "") {
-		$protocol = is_ssl() ? 'https' : 'http';
-		$query_args = array(
-			'family' => $hk_options['google_font'],
-			'subset' => '',
+function hk_enqueue_scripts() {
+	$hk_options = get_option("hk_theme");
+	if (!is_admin()) {
+		
+		wp_enqueue_style( 'hk-style', 
+			get_bloginfo( 'stylesheet_url' ), 
+			array(), 
+			HK_VERSION 
 		);
-		wp_enqueue_style( 'hk-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
-	}
-	
-	if ($hk_options['typekit_url'] != "") {
-	//  //use.typekit.net/xpx0dap.js
-		wp_enqueue_script(
-			'typekit_js',
-			$hk_options['typekit_url'],
-			array(),
-			'1.0'
-		);
-	}
-	
-	if ($hk_options['addthis_pubid'] != "") {
-		wp_enqueue_script(
-			'addthis_js',
-			'//s7.addthis.com/js/300/addthis_widget.js#pubid='.$hk_options['addthis_pubid'],
-			array(),
-			'1.0'
-		);
-	}
+		
+		/*<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?ver=1.0.1" />*/
+		/*
+		 * Loads special google font CSS file.
+		 */
+		if (isset($hk_options['google_font']) && $hk_options['google_font'] != "") {
+			$protocol = is_ssl() ? 'https' : 'http';
+			$query_args = array(
+				'family' => $hk_options['google_font'],
+				'subset' => '',
+			);
+			wp_enqueue_style( 'hk-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
+		}
+		
+		if (isset($hk_options['typekit_url']) && $hk_options['typekit_url'] != "") {
+		//  //use.typekit.net/xpx0dap.js
+			wp_enqueue_script(
+				'typekit_js',
+				$hk_options['typekit_url'],
+				array(),
+				'1.0'
+			);
+		}
+		
+		if (isset($hk_options['addthis_pubid']) && $hk_options['addthis_pubid'] != "") {
+			wp_enqueue_script(
+				'addthis_js',
+				'//s7.addthis.com/js/300/addthis_widget.js#pubid='.$hk_options['addthis_pubid'],
+				array(),
+				'1.0'
+			);
+		}
+		if (isset($hk_options['readspeaker_id']) && $hk_options['readspeaker_id'] != "") {
+			/*if ($hk_options['readspeaker_id'] == "6595") // to run without ios special script, special for Hultsfreds kommun
+				$readspeaker_url = get_template_directory_uri() . '/js/ReadSpeaker/ReadSpeaker.js?pids=embhl';
+			else*/
+			$readspeaker_url = '//f1.eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
 
-	if ($hk_options['readspeaker_id'] != "") {
-		/*if ($hk_options['readspeaker_id'] == "6595") // to run without ios special script, special for Hultsfreds kommun
-			$readspeaker_url = get_template_directory_uri() . '/js/ReadSpeaker/ReadSpeaker.js?pids=embhl';
-		else*/
-		$readspeaker_url = '//f1.eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
-
+			wp_enqueue_script(
+				'readspeaker_js',
+				$readspeaker_url,
+				array(),
+				'1.0',
+				true
+			);
+		}
+		
 		wp_enqueue_script(
-			'readspeaker_js',
-			$readspeaker_url,
-			array(),
+			'google_map_js',
+			'//maps.google.com/maps/api/js?sensor=false',
+			array('jquery'),
 			'1.0',
 			true
 		);
-	}
-	
-	wp_enqueue_script(
-		'google_map_js',
-		'//maps.google.com/maps/api/js?sensor=false',
-		array('jquery'),
-		'1.0',
-		true
-	);
-	wp_enqueue_script(
-		'jquery_ui_map_js',
-		get_template_directory_uri() . '/js/jquery.ui.map.min.js',
-		array('jquery'),
-		'1.0',
-		true
-	);
-
-	/*
-	wp_enqueue_script(
-		'google_maps_js',
-		'https://maps.googleapis.com/maps/api/js?key=AIzaSyBwAFyJDPO82hjRyCAmt-8-if6r6rrzlcE&sensor=false',
-		array('jquery'),
-		'1.0',
-		true
-	);*/
-	/*
-	wp_enqueue_script(
-		'history_js',
-		get_template_directory_uri() . '/js/native.history.js',
-		array('jquery'),
-		'1.0',
-		true
-	);
-	*/
-	wp_enqueue_script(
-		'hultsfred_js',
-		get_template_directory_uri() . '/js/hultsfred.js',
-		array('jquery','jquery-ui-core','jquery-ui-widget'),
-		HK_VERSION,
-		true
-	);
-	wp_enqueue_script(
-		'cycle_all_js',
-		get_template_directory_uri() . '/js/jquery.cycle.all.js',
-		array('jquery'),
-		'1.0',
-		true
-	);
-	
-	if ($hk_options['tidiochat_url'] != "") {
 		wp_enqueue_script(
-			'tidiochat_js',
-			$hk_options['tidiochat_url'],
-			array(),
-			'1.0'
+			'jquery_ui_map_js',
+			get_template_directory_uri() . '/js/jquery.ui.map.min.js',
+			array('jquery'),
+			'1.0',
+			true
 		);
-	}	
 
-} 
-/* only in admin */
-else {
-	wp_enqueue_script(
-		'hk_admin_js',
-		get_template_directory_uri() . '/js/hultsfred-admin.js',
-		array('jquery'),
-		HK_VERSION,
-		true
-	);
-	wp_enqueue_script(
-		'hk_editor_css',
-		get_template_directory_uri() . '/editor-style.css',
-		array(),
-		HK_VERSION
-	);
+		/*
+		wp_enqueue_script(
+			'google_maps_js',
+			'https://maps.googleapis.com/maps/api/js?key=AIzaSyBwAFyJDPO82hjRyCAmt-8-if6r6rrzlcE&sensor=false',
+			array('jquery'),
+			'1.0',
+			true
+		);*/
+		/*
+		wp_enqueue_script(
+			'history_js',
+			get_template_directory_uri() . '/js/native.history.js',
+			array('jquery'),
+			'1.0',
+			true
+		);
+		*/
+		wp_enqueue_script(
+			'hultsfred_js',
+			get_template_directory_uri() . '/js/hultsfred.js',
+			array('jquery','jquery-ui-core','jquery-ui-widget'),
+			HK_VERSION,
+			true
+		);
+		wp_enqueue_script(
+			'cycle_all_js',
+			get_template_directory_uri() . '/js/jquery.cycle.all.js',
+			array('jquery'),
+			'1.0',
+			true
+		);
+		
+		if (isset($hk_options['tidiochat_url']) && $hk_options['tidiochat_url'] != "") {
+			wp_enqueue_script(
+				'tidiochat_js',
+				$hk_options['tidiochat_url'],
+				array(),
+				'1.0'
+			);
+		}	
 
+	} 
+	/* only in admin */
+	else {
+		wp_enqueue_script(
+			'hk_admin_js',
+			get_template_directory_uri() . '/js/hultsfred-admin.js',
+			array('jquery'),
+			HK_VERSION,
+			true
+		);
+		wp_enqueue_script(
+			'hk_editor_css',
+			get_template_directory_uri() . '/editor-style.css',
+			array(),
+			HK_VERSION
+		);
+
+	}
 }
+add_action( 'wp_enqueue_scripts', 'hk_enqueue_scripts' );
 
 /**
  * Settings to be available in javascript
@@ -1152,7 +1154,7 @@ function hk_get_category_tags($varcat = "") {
 	
 	$cat_ids = hk_getChildrenIdArray($varcat); // get child ids
 	$cat_ids[] = $varcat; // add current id
-
+	$varcat_where_or = "";
 	if ($varcat != "") {
 		$varcat_where_or = "(1 = 0 \n";
 		foreach($cat_ids as $cat_id) :
@@ -1204,7 +1206,7 @@ function hk_generate_tag_link($tagitem, $a_class = "") {
 	//$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
 	
 	
-	$orderby = $_REQUEST["orderby"];
+	$orderby = (isset($_REQUEST["orderby"]))?$_REQUEST["orderby"]:"";
 	if ($orderby != "") {
 		$orderby = "&orderby=$orderby";
 	}
@@ -1221,7 +1223,6 @@ function hk_generate_tag_link($tagitem, $a_class = "") {
 
 	
 	// generate tag link
-	$cat_name = esc_attr( $tag->name); 
 	if (empty($term_id)) {
 		$href = get_site_url() . $tags_filter. $orderby;
 	}
@@ -1233,18 +1234,14 @@ function hk_generate_tag_link($tagitem, $a_class = "") {
 		$a_class = "class='$a_class'";
 	}
 
-
 	$link = '<a ' . $a_class . ' href="' . $href  . '" '; 
-	$cat_name = $tagitem->tag_name;//apply_filters( 'list_cats', $cat_name, $tag ); 
-	if ( $use_desc_for_title == 0 || empty($tag->description) ) 
-		$link .= "title='Filtrera med nyckelordet $cat_name'"; 
-	else 
-		$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $tag->description, $tag ) ) ) . '"'; 
+	$tag_name = $tagitem->tag_name; 
+	$link .= "title='Filtrera med nyckelordet $tag_name'"; 
 	$link .= '>'; 
-	$link .= "$cat_name</a>"; 
+	$link .= "$tag_name</a>"; 
 	
-	$output .= "\t<li"; 
-	$class = 'atag-item tag-item-'.$tag->term_id; 
+	$output = "\t<li"; 
+	$class = 'atag-item tag-item-'.$tagitem->tag_ID; 
 	$icon = "";
 	if ($current_tag) {
 		$class .=  ' current-tag'; 
@@ -1260,7 +1257,7 @@ function hk_getSmallWords($smallwords) {
 	$smallwords = trim($smallwords);
 	if (empty($smallwords)) return "";
 
-	$arr = split("\n",$smallwords);
+	$arr = explode("\n",$smallwords);
 	if (empty($arr) || count($arr) == 0) return "";
 
 	$count = count($arr);
@@ -1275,15 +1272,15 @@ function hk_getSmallWords($smallwords) {
 class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
 	  
 	// add classes to ul sub-menus
-	function start_lvl( &$output, $depth ) {
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		// depth dependent classes
 		$output .= "";
 	}
-	function end_lvl( &$output, $depth ) {
+	function end_lvl( &$output, $depth = 0, $args = array() ) {
 		$output .= "";
 	}  
 	// add main/sub classes to li's and links
-	function start_el( &$output, $item, $depth, $args ) {
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $wp_query;
 		
 		// dont show first level, and only show sublevels when right parent category
@@ -1328,7 +1325,7 @@ class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
 	}
-	function end_el( &$output, $item, $depth, $args ) {
+	function end_el( &$output, $item, $depth = 0, $args = array() ) {
 		if ($depth > 0 && $args->nav_menu_parent == $item->menu_item_parent) {
 			$output .= "</li>";
 		}
@@ -1340,15 +1337,15 @@ class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
 class hk_topmenu_walker_nav_menu extends Walker_Nav_Menu {
 	  
 	// add classes to ul sub-menus
-	function start_lvl( &$output, $depth ) {
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		// depth dependent classes
 		$output .= "";
 	}
-	function end_lvl( &$output, $depth ) {
+	function end_lvl( &$output, $depth = 0, $args = array() ) {
 		$output .= "";
 	}  
 	// add main/sub classes to li's and links
-	function start_el( &$output, $item, $depth, $args ) {
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $wp_query;
 		
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
@@ -1391,7 +1388,7 @@ class hk_topmenu_walker_nav_menu extends Walker_Nav_Menu {
 		// build html
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
-	function end_el( &$output, $item, $depth, $args ) {
+	function end_el( &$output, $item, $depth = 0, $args = array() ) {
 		$output .= "</li>";
 	}  
 }

@@ -39,7 +39,7 @@
 								
 								);
 				$options = get_option("hk_theme");
-				if ($_REQUEST["orderby"] == "" && get_query_var("cat") != "" && in_array(get_query_var("cat"), split(",",$options["order_by_date"])) ) {
+				if ($_REQUEST["orderby"] == "" && get_query_var("cat") != "" && in_array(get_query_var("cat"), explode(",",$options["order_by_date"])) ) {
 					//$args['suppress_filters'] = 'true';
 					$args['orderby'] = 'date';
 					$args['order'] = 'DESC';
