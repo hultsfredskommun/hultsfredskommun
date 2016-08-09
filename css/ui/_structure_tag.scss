@@ -29,43 +29,7 @@
 	h1.page-title {
 		font-weight: normal;
 	}
-	/*
-	.wrapper1,
-	.wrapper2,
-	.wrapper3,
-	.wrapper4,
-	.wrapper5,
-	.wrapper6,
-	.wrapper7 { padding-left: $half-spacing-unit; }
 	
-	.wrapper {
-		border-left: 1px solid $gray-color;
-		padding-bottom: $base-spacing-unit;
-	}
-	
-	.indent1, 
-	.indent2, 
-	.indent3, 
-	.indent4, 
-	.indent5, 
-	.indent6, 
-	.indent7 {
-		li {
-			margin-left: -$half-spacing-unit;
-			margin-bottom: 2px;
-			padding-left: $half-spacing-unit;
-			
-			background: $gray-light-color;
-			&:hover {
-				@extend .border-line-main--left;
-				margin-left: -$half-spacing-unit;
-				padding-left: $half-spacing-unit;
-				background: $gray-light-color;
-				margin-left: -($half-spacing-unit + 1);
-			}
-		}
-	}
-	*/
 	h1.indent1, 
 	h2.indent2, 
 	h3.indent3, 
@@ -82,12 +46,5 @@
 	}
 	h1 {
 		padding-top: $half-spacing-unit;
-	}
-	
-	
-	ul {
-		list-style-type: none;
-		margin-left: 0;
-		margin-bottom: 0;
 	}
 }

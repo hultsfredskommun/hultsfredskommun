@@ -452,7 +452,8 @@ function hk_navigation() {
 
 	// if in category
 	if ($cat != "" || is_single()) {
-		
+		$currentcat = '';
+
 		if ($tags == ""){
 			$usedParentIDs = array();
 			foreach ($all_categories as $cat) { 
@@ -483,7 +484,6 @@ function hk_navigation() {
 					//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
 
 					echo "<ul class='parent'>"; 
-					$currentcat = '';
 					if ($parentCat == $cat) {
 						$currentcat = 'current-cat';
 					}
@@ -505,6 +505,12 @@ function hk_navigation() {
 		//echo "<a class='dropdown-nav'>Etiketter</a>";
 		$hk_cat_walker = new hk_Category_Walker();
 		$parentCat = hk_getMenuParent($cat);
+		if (!empty($parentCat)) {
+			$parentName = get_the_category_by_ID($parentCat);
+		}
+		else {
+			$parentName = "Hela webbplatsen";
+		}
 		$args = array(
 			'orderby'            => 'name',
 			'order'              => 'ASC',
@@ -522,7 +528,7 @@ function hk_navigation() {
 			'walker'			 => $hk_cat_walker
 		);
 		echo "<ul class='parent'>"; 
-		echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='". get_site_url() ."'>" . get_the_category_by_ID($parentCat) . "</a></li>";
+		echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='". get_site_url() ."'>$parentName</a></li>";
 		wp_list_categories( $args );
 		echo "</ul>";
 		

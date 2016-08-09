@@ -102,12 +102,12 @@
 						$lastsub = $sub;
 						echo "<h$sub class='indent$sub'>" . $childcat->name . "</h$sub>";
 						echo "<div class='wrapper$sub wrapper'>";
-						echo "<ul class='indent$sub'>";
+						echo "<div class='indent$sub'>";
 						while ( have_posts() ) : the_post();
 							get_template_part( 'content', 'tag' );
 							$shownPosts[] = get_the_ID();
 						endwhile;
-						echo "</ul>";
+						echo "</div>";
 						
 					endif;
 
