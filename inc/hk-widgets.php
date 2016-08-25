@@ -58,6 +58,9 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 	}
 
  	public function form( $instance ) {	
+		if ( isset( $instance[ 'title' ] ) ) { $title = $instance[ 'title' ];
+		} else { $title = ""; }
+		
 		if ( isset( $instance[ 'num_aktuellt' ] ) ) { $num_aktuellt = $instance[ 'num_aktuellt' ];
 		} else { $num_aktuellt = $this->vars['num_aktuellt']; }
 
@@ -77,11 +80,17 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 
 		if ( isset( $instance[ 'thumb_size' ] ) ) { $thumb_size = $instance[ 'thumb_size' ];
 		} else { $thumb_size = ''; }
+		if ( isset( $instance[ 'css_wrapper' ] ) ) { $css_wrapper = $instance[ 'css_wrapper' ];
+		} else { $css_wrapper = ''; }
 
 
 		$options = get_option('hk_theme');
 
 		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Rubrik.</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title); ?>" />
+		</p>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'num_aktuellt' ); ?>">Antal inl&auml;gg i aktuellt (5 om tom).</label> 
 		<input class="widefat" id="<?php echo $this->get_field_id( 'num_aktuellt' ); ?>" name="<?php echo $this->get_field_name( 'num_aktuellt' ); ?>" type="text" value="<?php echo esc_attr( $num_aktuellt); ?>" />
@@ -123,12 +132,17 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 		<input id="<?php echo $this->get_field_id( 'box-list-4-columns' ); ?>" name="<?php echo $this->get_field_name( 'box-list-4-columns' ); ?>" type="checkbox" <?php echo ($instance["box-list-4-columns"] != "")?"checked":""; ?> />
 		<label for="<?php echo $this->get_field_id( 'box-list-4-columns' ); ?>">Visa i 4 kolumner (f&ouml;reg&aring;nde inst&auml;llning m&aring;ste vara satt p&aring; kolumner)</label> 
 		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'css_wrapper' ); ?>">Css på wrapper-element.</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'css_wrapper' ); ?>" name="<?php echo $this->get_field_name( 'css_wrapper' ); ?>" type="text" value="<?php echo esc_attr( $css_wrapper); ?>" />
+		</p>
 
 		<?php
 	}
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
+		$instance['title'] = $new_instance['title'];
 		$instance['num_aktuellt'] = strip_tags( $new_instance['num_aktuellt'] );
 		$instance['num_news'] = strip_tags( $new_instance['num_news'] );
 		$instance['num_days_new'] = strip_tags( $new_instance['num_days_new'] );
@@ -139,6 +153,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 		$instance['thumb_size'] = strip_tags( $new_instance['thumb_size'] );
 		$instance['box-list'] = strip_tags( $new_instance['box-list'] );
 		$instance['box-list-4-columns'] = strip_tags( $new_instance['box-list-4-columns'] );
+		$instance['css_wrapper'] = strip_tags( $new_instance['css_wrapper'] );
+		
 		
 		return $instance;
 	}
@@ -148,6 +164,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 	    extract( $args );
 		global $default_settings;
 		$options = get_option('hk_theme');
+		if (isset($instance["title"])) $title = "<h2 class='widget-title'>" . $instance["title"] . "</h2>";
+		else $title = "";
 		if (isset($instance["num_aktuellt"])) $num_aktuellt = $instance["num_aktuellt"];
 		else $num_aktuellt = 5;
 		if (isset($instance["num_news"])) $num_news = $instance["num_news"];
@@ -162,6 +180,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 		else $rss_link_url = "";
 		if (isset($instance["thumb_size"])) $thumb_size = $instance["thumb_size"];
 		else $thumb_size = "";
+		if (isset($instance["css_wrapper"])) $css_wrapper = $instance["css_wrapper"];
+		else $css_wrapper = "";
 		
 		$boxclass = "";
 		if (isset($instance['box-list']) && $instance['box-list'] != "") {
@@ -176,8 +196,8 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 		$all_categories[] = $cat;
 		?>
 
-	<div id="content" role="main">
-		
+	<div id="content" class="newscontent-wrapper" role="main" style="<?php echo $css_wrapper; ?>">
+		<?php echo $title; ?>
 		<div id="newscontent" class="<?php echo $boxclass; ?>newscontent">
 			<?php 
 				/* Query all posts with selected startpage category */
@@ -218,10 +238,10 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 					$after_newslist = "";
 					if ($hide_more_news != "") {
 						$hiddenclass = "hidden";
-						$after_newslist .= "<a href='#' class='gtm-fpcw-show-more-news-link read-more-link inline js-read-more-link'>$hide_more_news<span class='dropdown-icon'></span></a>";
+						$after_newslist .= "<a href='#' class='gtm-fpcw-show-more-news-link read-more-link read-more inline js-read-more-link'>$hide_more_news<span class='dropdown-icon'></span></a>";
 					}
 					if ($rss_link_url != "" && $rss_link_text != "") {
-						$after_newslist .= "<a href='$rss_link_url' class='gtm-fpcw-rss-link read-more-link inline float--right'>$rss_link_text</a>";
+						$after_newslist .= "<a href='$rss_link_url' class='gtm-fpcw-rss-link read-more-link rss inline float--right'>$rss_link_text</a>";
 					}
 					?>
 					<div id='news' class="widget read-more-widget js-read-more-widget <?php echo $hiddenclass; ?>">

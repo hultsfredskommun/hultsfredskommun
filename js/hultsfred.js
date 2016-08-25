@@ -44,128 +44,6 @@ window.onload = function(event) {
 };
 
 
-/**
- * search suggest 
- */
- /*
-$.fn.searchSuggest = function()
-{
-	var sTimer;
-	var newSearch = "";
-	var oldSearch = "";
-	var searching = false;
-	var container = $(this).parent().find('#search-suggestion');
-	
-	//Stores synonyms in multiarray syn
-	var nr = hk_options['syn_nr'];
-	var syn = new Array();
-	for (var i = 0; i < nr; i++){
-		var tmp = hk_options['syn_'+i]['synonyms'];
-		tmp = tmp.split(",");
-		syn.push(tmp);
-	}
-	
-	//function that checks the input for
-	//matching synonyms and displays them
-	function checkInput(inputBox){
-		newSearch = $(inputBox).val();
-		
-		if(searching){
-			if(newSearch != oldSearch){
-				clearTimeout(sTimer);
-			}
-			else{
-				return false;
-			}
-		}
-		
-		searching = true;
-		$(inputBox).addClass("search_in_progress");
-		$(container).hide().html(""); //emptying container
-		
-		if( newSearch.length >= 4 ){
-			oldSearch = newSearch;
-			
-			var terms = newSearch.split(" "); //split searchterms into array
-			//loop through synonyms and look for match
-			for(var i = 0; i < nr; i++){
-				var found = false;
-				for(j in syn[i]){
-					var syno = syn[i][j].replace(" ", "");
-					for(n in terms){
-						if( terms[n].length >= 4 ){
-							terms[n] = terms[n].replace(" ", ""); //remove spaces that remains
-							if( terms[n] == syno )
-							{
-								found = true;
-							}
-						}
-					}
-				}
-				if(found){
-					if( $(container).find('ul').length <= 0 ){
-						var ul = $('<ul>');
-						for(j in syn[i]){
-							var a = $('<a>').html(syn[i][j].replace(" ", ""));
-							var li = $('<li>').html(a);
-							$(ul).append(li);
-							//console.log($(li).html());
-						}					
-						$(container).html(ul);
-					}
-					else{
-						var ul = $(container).find('ul');
-						for(j in syn[i]){
-							var a = $('<a>').html(syn[i][j].replace(" ", ""));
-							var li = $('<li>').html(a);
-							$(ul).append(li);
-							//console.log($(li).html());
-						}
-					}
-				}
-			}
-			
-			//delaying the loading-image and the displaying of the results
-			sTimer = setTimeout(function(){
-				searching = false;
-				$(inputBox).removeClass("search_in_progress");
-				if( $(container).find('ul').length > 0 ){
-					$(container).show();
-				}
-			}, 800);
-			return false;
-		}
-		else{ //if input.length less than 4 chars
-			searching = false;
-			$(inputBox).removeClass("search_in_progress");
-			return false;
-		}
-	}
-	
-	//call from search-field when content changes
-	$(this).keyup( function(){
-		checkInput(this);
-	});
-	
-	//when search-field gets selected
-	$(this).focus(function(){		
-		if( $(container).html() != "" ){
-			$(container).show();
-		}
-		else{
-			$(container).hide();
-		}
-	});
-	
-	//when search-field gets deselected
-	$(this).blur(function(){
-		$(container).hide();
-		$(this).removeClass("search_in_progress");
-	});
-	
-	return false;
-};
-*/
 
 /**
  * browser history helpers
@@ -173,18 +51,21 @@ $.fn.searchSuggest = function()
 function resetHistory(){
 	// reset webbrowser history
 	history.replaceState(null, currPageTitle, hultsfred_object["currPageUrl"]);
-	log("(reset) history.replaceState(null, "+currPageTitle+", "+hultsfred_object["currPageUrl"]+")");
+	var ret = "(reset) history.replaceState(null, "+currPageTitle+", "+hultsfred_object["currPageUrl"]+")";
+	log(ret);
 	return false;
 }
 function pushHistory(title, url){
 	if( url != hultsfred_object["currPageUrl"] && !havePushed ){
 		history.pushState({}, title, url);
-		log("(push if) history.pushState(null, "+title+", "+url+")");
+		var ret = "(push if) history.pushState(null, "+title+", "+url+")";
+		log(ret);
 		havePushed = true;
 	}
 	else if( url != hultsfred_object["currPageUrl"] ){
 		history.replaceState({}, title, url);
-		log("(push else) history.replaceState(null, "+title+", "+url+")");
+		var ret = "(push else) history.replaceState(null, "+title+", "+url+")";
+		log(ret);
 	}
 	return false;
 }

@@ -72,6 +72,17 @@
 	
 }
 
+.newscontent-wrapper {
+	.widget-title {
+		@extend .flush--bottom;
+	}
+	.box-list {
+		.article-border-wrapper,
+		.content-wrapper {
+			@extend .flush--bottom;
+		}
+	}
+}
 .newscontent {
 	@extend .margin--bottom;
 }
@@ -109,11 +120,16 @@
 		@extend .float--left;
 	}
 	&.cols-4 .post {
-		@extend .one-quarter;	
+		@extend .desk-one-quarter;
+		@extend .lap-one-quarter	;
+		@extend .palm-one-whole;
 	}
 	.read-more-widget,
 	& > .read-more-link {
 		@extend .g;
+	}
+	& > .read-more {
+		width: 80%;
 	}
 }
 
