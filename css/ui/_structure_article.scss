@@ -500,6 +500,14 @@ article.summary .full {
 article.summary .summary {
 	display: none;
 }
+/* image responsive fix */
+article .wp-caption {
+	width: 100%!important;
+	img {
+		width: 100%!important;
+		height: auto;
+	}
+}
 }
 @include media-query(lap) {
 article.summary .summary {
