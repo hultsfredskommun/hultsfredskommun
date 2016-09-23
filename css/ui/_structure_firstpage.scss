@@ -85,6 +85,15 @@
 }
 .newscontent {
 	@extend .margin--bottom;
+	.entry-title {
+		@extend .flush--bottom;
+		a {
+			@extend .default-text;
+		}
+	}
+	time {
+		@extend .zeta;
+	}
 }
 .newscontent .widget {
 	@extend .flush--bottom;
