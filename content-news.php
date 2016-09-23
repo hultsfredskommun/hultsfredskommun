@@ -30,11 +30,13 @@ if (empty($thumb_size)) {
 					<?php endif; /*end empty */ endif; /* end else default thumb */ endif; /* end thumb_size != none */ ?>
 					<?php 
 					$externalclass = "";
+					$jstoggle = " js-toggle-article";
 					if (function_exists("get_field")) { 
 						$href = get_field('hk_external_link_url'); 
 						$name = get_field('hk_external_link_name'); 
 						if (!empty($href))
 						{
+							$jstoggle = "";
 							$externalclass = " js-external-link";
 							$title = "Extern länk till " . the_title_attribute( 'echo=0' );
 						}
@@ -43,11 +45,17 @@ if (empty($thumb_size)) {
 						$href = get_permalink(); 
 						$title = "Länk till " . the_title_attribute( 'echo=0' );
 					}
-					$externalclass = "class='gtm-cn-news-link$externalclass'"
+					$externalclass = "class='gtm-cn-news-link$externalclass$jstoggle'"
 					
 					?>
 					<div class="content-text-wrapper">
-					<h1 class="entry-title"><a <?php echo $externalclass; ?> href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h1>
+					<h5 class="entry-title"><a <?php echo $externalclass; ?> href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h5>
+					<?php
+						// if news
+						if (has_tag($default_settings["news_tag"])) {
+							echo "<time>" . get_the_date("Y-m-d") . "</time> ";
+						}
+					?>
 					<div class="entry-content">
 						<?php the_excerpt(); 
 						if (!empty($href) && !empty($name))

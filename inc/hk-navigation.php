@@ -507,9 +507,11 @@ function hk_navigation() {
 		$parentCat = hk_getMenuParent($cat);
 		if (!empty($parentCat)) {
 			$parentName = get_the_category_by_ID($parentCat);
+			$parentUrl = get_category_link($parentCat) . "?tag=$tags";
 		}
 		else {
 			$parentName = "Hela webbplatsen";
+			$parentUrl = get_site_url() . "?tag=$tags";
 		}
 		$args = array(
 			'orderby'            => 'name',
@@ -528,7 +530,7 @@ function hk_navigation() {
 			'walker'			 => $hk_cat_walker
 		);
 		echo "<ul class='parent'>"; 
-		echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='". get_site_url() ."'>$parentName</a></li>";
+		echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='$parentUrl'>$parentName</a></li>";
 		wp_list_categories( $args );
 		echo "</ul>";
 		

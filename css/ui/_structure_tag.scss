@@ -6,6 +6,21 @@
 .tags-document-toggle {
 }
 .tag-listing {
+	padding-left: 0!important;
+	&.news {
+		.article-border-wrapper {
+		@extend .margin--bottom;
+			.entry-title {
+				margin-bottom: 0!important;
+				a {
+					@extend .default-text;
+				}
+			}
+			time {
+				@extend .zeta;
+			}
+		}
+	}
 	article.post.summary {
 		padding-bottom: 0;
 	}
@@ -16,6 +31,7 @@
 		.entry-title {
 			margin-top: 0!important;
 			padding-top: 0!important;
+			
 		}
 		.summary-content h1.entry-title {
 			@extend .zeta;
@@ -28,8 +44,8 @@
 	padding-left: $half-spacing-unit;
 	h1.page-title {
 		font-weight: normal;
-	}
 	
+	}
 	h1.indent1, 
 	h2.indent2, 
 	h3.indent3, 

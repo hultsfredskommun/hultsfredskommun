@@ -95,6 +95,7 @@
 		@extend .g;
 		.article-border-wrapper {
 			@extend .noborder;
+			@extend .flush--bottom;
 			padding-left: 0;
 			&:hover {
 				box-shadow: none;
@@ -111,10 +112,20 @@
 		}
 		.img-wrapper {
 			@extend .one-whole;
-			@extend .half-padding--bottom;
+			@extend .flush--bottom;
+			img {
+				margin-bottom: $half-spacing-unit/2;
+			}
 		}
 		.entry-content {
 			display: none;
+		}
+		.entry-title {
+			@extend .flush--bottom;
+			font-weight: normal; 
+			a {
+				@extend .default-text;
+			}
 		}
 		@extend .one-half;
 		@extend .float--left;

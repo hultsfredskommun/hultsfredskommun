@@ -375,11 +375,17 @@ article.post {
 
 /* featured images */
 .summary .img-wrapper {
-	@extend .half-margin--right;
+	@extend .half-padding--right;
 	@extend .img--left;
 	@extend .flush--bottom;
 	@extend .one-quarter;
+	margin-right: 0;
 }
+.summary .content-text-wrapper {
+	@extend .three-quarters;
+	@extend .float--left;
+}
+
 @include media-query(portable) {
 
 }
@@ -525,5 +531,9 @@ article.summary .summary {
 	@extend .margin--top;
 	@extend .margin--bottom;
 	@extend .beta;
+}
+/* wpcf fix */
+span.wpcf7-list-item {
+	margin-left: 0;
 }
 

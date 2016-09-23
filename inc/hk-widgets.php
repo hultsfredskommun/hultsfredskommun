@@ -221,8 +221,22 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 			
 
 			<?php
+				$hiddenclass = "";
+				$after_newslist = "";
+
+				if ($hide_more_news == "") {
+					$after_newslist .= '<span class="read-more-link"><a class="gtm-fpcw-news-archive-link" href="' . get_tag_link($default_settings["news_tag"]) . '">Nyhetsarkiv<span class="right-icon"></span></a></span>';
+				}
+				else if ($hide_more_news != "") {
+					$hiddenclass = "hidden";
+					$after_newslist .= "<a href='#' class='gtm-fpcw-show-more-news-link read-more-link read-more inline js-read-more-link'>$hide_more_news<span class='dropdown-icon'></span></a>";
+				}
+				if ($rss_link_url != "" && $rss_link_text != "") {
+					$after_newslist .= "<a href='$rss_link_url' class='gtm-fpcw-rss-link read-more-link rss inline float--right'>$rss_link_text</a>";
+				}
+
 				/* Query all posts with news tag */
-				if ($default_settings["news_tag"] != "" && $default_settings["news_tag"] != "0") {
+				if ($default_settings["news_tag"] != "" && $default_settings["news_tag"] != "0" && $num_news != 0) {
 					$query = array( 'posts_per_page' => $num_news, 
 									'category__in' => $all_categories,
 									'post__not_in' => $shownposts,
@@ -234,15 +248,6 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 					query_posts( $query );		
 
 					if ( have_posts() ) : 
-					$hiddenclass = "";
-					$after_newslist = "";
-					if ($hide_more_news != "") {
-						$hiddenclass = "hidden";
-						$after_newslist .= "<a href='#' class='gtm-fpcw-show-more-news-link read-more-link read-more inline js-read-more-link'>$hide_more_news<span class='dropdown-icon'></span></a>";
-					}
-					if ($rss_link_url != "" && $rss_link_text != "") {
-						$after_newslist .= "<a href='$rss_link_url' class='gtm-fpcw-rss-link read-more-link rss inline float--right'>$rss_link_text</a>";
-					}
 					?>
 					<div id='news' class="widget read-more-widget js-read-more-widget <?php echo $hiddenclass; ?>">
 						<?php if ($hide_more_news == "") { ?><h2 class='entry-title'>Fler nyheter</h2><?php } ?>
@@ -251,13 +256,17 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 						<?php the_date("","<span class='time'>","</span>"); ?> <a class="gtm-fpcw-more-news-link" href="<?php the_permalink(); ?>" title="<?php the_excerpt_rss() ?>"><?php the_title(); ?></a>
 						</div>
 						<?php endwhile; ?>
-						<span class="read-more-link"><a class="gtm-fpcw-news-archive-link" href="<?php echo get_tag_link($default_settings["news_tag"]); ?>">Nyhetsarkiv<span class="right-icon"></span></a></span>
 					</div>					
 					<?php
 						echo $after_newslist;
-					endif; ?> 
+					endif; 
+					?> 
+
 					<?php // Reset Query
 					wp_reset_query(); 
+				}
+				if ($num_news == 0) {
+					echo $after_newslist;
 				}
 			?>
 		
