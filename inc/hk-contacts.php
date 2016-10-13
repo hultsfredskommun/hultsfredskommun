@@ -28,7 +28,7 @@ function hk_contacts_init() {
 				'rewrite' => array('slug' => 'kontakt'),
 				'show_ui' => true,
 				'show_in_menu' => true,
-				'capability_type' => 'page',
+				'capability_type' => 'post',
 				'hierarchical' => false,
 				'publicly_queryable' => true,
 				'query_var' => true,

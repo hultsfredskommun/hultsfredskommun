@@ -223,7 +223,7 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 		return;
 	}
 
-	
+	/* TOP MENU */
 	$topwalker = new hk_topmenu_walker_nav_menu();
 	$args = array(
 		'theme_location'	=> $menu_name, 
@@ -231,24 +231,26 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 		'items_wrap' 		=> '%3$s',
 		'before' 			=> '',
 		'after'				=> '',
-		'depth' 			=> 1, //$default_settings['num_levels_in_menu'],
+		'depth' 			=> 3, //$default_settings['num_levels_in_menu'],
 		'echo' 				=> true,
-		'walker'			=> $topwalker
+		//'walker'			=> $topwalker
 	);
 	if ($top_parent > 0) {
 		$args["current_category"] = $top_parent;
 	} 
 
-	echo "<ul class='main-menu $menu_class'>";
+	echo "<ul class='hultsfred-menu $menu_class'>";
+	/* REMOVED small-words!
 	echo "<li class='small-words'>".hk_getSmallWords($hk_options["smallwords"])."</li>";
+	*/
 	wp_nav_menu( $args ); 
+	/* REMOVED dynamic_sidebar
 	if ( is_active_sidebar( 'right-main-menu-item-sidebar' ) ) { 
 		dynamic_sidebar( 'right-main-menu-item-sidebar' ); 
 	}
-
+	*/
 	echo "</ul>";
 	
-	echo "<div class='responsive-sub-menu $menu_class'>";
 	$parent = hk_getParent($cat);
 	
 	$top_name = get_cat_name($top_parent);
@@ -270,6 +272,9 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 	else 
 		$sub_title = "";
 		
+	/*
+	REMOVED OLD SUB-MENU 
+	echo "<div class='responsive-sub-menu $menu_class'>";
 	if ($sub_parent > 0 && $parent > 0) { 
 		//echo "<a class='menu-up' href='" . get_category_link($parent) . "'><span class='menu-icon up'></span></a>";
 	}
@@ -296,6 +301,7 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 				'walker'			=> $submenu,
 				'nav_menu_parent'	=> $nav_menu_top_parent
 			);
+			
 			if ($sub_parent > 0) {
 				$args["current_category"] = $sub_parent;
 			}
@@ -309,6 +315,7 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 	else {
 		echo "<ul class='main-sub-menu'><li class='menu-item one-whole'><a>&nbsp;</a></li></ul>";
 	}
+	*/
 
 }
 

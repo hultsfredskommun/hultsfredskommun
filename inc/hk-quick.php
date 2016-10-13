@@ -13,7 +13,8 @@ function hk_quick_init() {
 			),
 			'public' => true,
 			'has_archive' => true,
-			'rewrite' => array('slug' => 'quick')
+			'rewrite' => array('slug' => 'quick'),
+			'capability_type' => 'page',
 		)
 	);
 	add_post_type_support( "hk_quick", array("title","revisions") );

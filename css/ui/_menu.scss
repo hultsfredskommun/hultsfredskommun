@@ -1,3 +1,13 @@
+/* NEW MENU */
+.hultsfred-menu > li.current-menu-item > ul.sub-menu,
+.hultsfred-menu > li.current-menu-ancestor > ul.sub-menu,
+.hultsfred-menu > li.current-menu-ancestor > ul.sub-menu {
+	display: block;	
+}
+.hultsfred-menu > li > ul.sub-menu {
+	display: none;
+}
+
 
 .small-words {
 	@extend .hide--lap;
