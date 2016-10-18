@@ -318,7 +318,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_firstpage
 
  	public function form( $instance ) {		
 		if ( isset( $instance[ 'title' ] ) ) {	$title = $instance[ 'title' ];
-		} else {$show_protocol = $this->vars['title']; }
+		} else {$title = $this->vars['title']; }
 
 		if ( isset( $instance[ 'show_protocol' ] ) ) {	$show_protocol = $instance[ 'show_protocol' ];
 		} else {$show_protocol = $this->vars['show_protocol']; }
@@ -674,7 +674,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_menuwidge
 
 	public function widget( $args, $instance ) {
 	    extract( $args );
-		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), explode(",",$instance["show_widget_in_cat"]))) {
+		if  ($instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), explode(",",$instance["show_widget_in_cat"]))) { /* IF SHOW IN CAT*/
 			echo $before_widget;
 			$alt = $instance["alt"];
 			if ($alt == "") {
@@ -875,6 +875,11 @@ class HK_tags_widget extends WP_Widget {
 		<input id="<?php echo $this->get_field_id( 'horizontal-list' ); ?>" name="<?php echo $this->get_field_name( 'horizontal-list' ); ?>" type="checkbox" <?php echo ($instance["horizontal-list"] != "")?"checked":""; ?> />
 		<label for="<?php echo $this->get_field_id( 'horizontal-list' ); ?>">Horisontell lista</label> 
 		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>">Visa bara i kategori (i formen 23,42,19)</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>" name="<?php echo $this->get_field_name( 'show_widget_in_cat' ); ?>" type="text" value="<?php echo esc_attr( $show_widget_in_cat); ?>" />
+		</p>
+
 	<?php
 	}
 
@@ -882,23 +887,28 @@ class HK_tags_widget extends WP_Widget {
 		$instance = array();
 		$instance['title'] = $new_instance['title'];
 		$instance['horizontal-list'] = $new_instance['horizontal-list'];
+		$instance['show_widget_in_cat'] = $new_instance['show_widget_in_cat'];
 		return $instance;
 	}
 
 	public function widget( $args, $instance ) {
 		global $default_settings;
 	    extract( $args );
-		$horizontal = "";
-		if (isset($instance['horizontal-list'])) 
-			$horizontal = "horizontal-list";
-		echo "<aside class='widget HK_tags_widget $horizontal'>";
 		
-		if ($instance['title'] != "") {
-			echo "<h2 class='widget-title'>" . $instance['title'] . "</h2>";
-		}
-		displayTagFilter(false, "", true, "gtm-tw-taglink");
-		echo "</aside>";
-		
+		if  (!isset($instance["show_widget_in_cat"]) || $instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), explode(",",$instance["show_widget_in_cat"]))) { /* if show widget in cat */
+
+			$horizontal = "";
+			if (isset($instance['horizontal-list'])) 
+				$horizontal = "horizontal-list";
+			echo "<aside class='widget HK_tags_widget $horizontal'>";
+			
+			if ($instance['title'] != "") {
+				echo "<h2 class='widget-title'>" . $instance['title'] . "</h2>";
+			}
+			displayTagFilter(false, "", true, "gtm-tw-taglink");
+			echo "</aside>";
+
+		} /* END if show window cat */
 	} //end widget()
 }
 /* add the widget  */
@@ -947,6 +957,11 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		} else {
 			$more_contactinfo_text = "";
 		}
+		if ( isset( $instance[ 'show_widget_in_cat' ] ) ) {
+			$show_widget_in_cat = $instance[ 'show_widget_in_cat' ];
+		} else {
+			$show_widget_in_cat = "";
+		}
 
 		?>
 		<p>
@@ -962,6 +977,11 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		<label for="<?php echo $this->get_field_id( 'more_contactinfo_text' ); ?>">L&auml;nktexten till mer kontaktinfo</label> 
 		<textarea class="widefat" id="<?php echo $this->get_field_id( 'more_contactinfo_text' ); ?>" name="<?php echo $this->get_field_name( 'more_contactinfo_text' ); ?>"><?php echo $more_contactinfo_text; ?></textarea>
 		</p>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>">Visa widget i kategorier (exempel 23,42,19).</label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>" name="<?php echo $this->get_field_name( 'show_widget_in_cat' ); ?>" type="text" value="<?php echo esc_attr( $show_widget_in_cat); ?>" />
+		</p>
+
 
 		<h3>Direktl&auml;nk 1</h3>
 		<p>
@@ -1105,6 +1125,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		$instance['thumbnail-size'] = strip_tags( $new_instance['thumbnail-size'] );
 		$instance['contacttext'] = strip_tags( $new_instance['contacttext'] );
 		$instance['more_contactinfo_text'] = strip_tags( $new_instance['more_contactinfo_text'] );
+		$instance['show_widget_in_cat'] = strip_tags( $new_instance['show_widget_in_cat'] );
 		$instance['direct_link1_url'] = strip_tags( $new_instance['direct_link1_url'] );
 		$instance['direct_link1_title'] = strip_tags( $new_instance['direct_link1_title'] );
 		$instance['direct_link1_icon'] = $new_instance['direct_link1_icon'];
@@ -1144,200 +1165,204 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_tags_widg
 		$options = get_option("hk_theme");
 		$org_post = $post;
 
-		$retValue = "<div class='slideshow-contact-puff-area'>";
 		
-		if (isset($instance['thumbnail-size']))
-			$this->vars['thumbnail-size'] = $instance['thumbnail-size'];
-		if (isset($instance['direct_link1_height']) && $instance['direct_link1_height'] != "") $direct_link1_height = $instance['direct_link1_height'];
-		else $direct_link1_height = 20;
-		if (isset($instance['direct_link2_height']) && $instance['direct_link2_height'] != "") $direct_link2_height = $instance['direct_link2_height'];
-		else $direct_link2_height = 20;
-		if (isset($instance['direct_link3_height']) && $instance['direct_link3_height'] != "") $direct_link3_height = $instance['direct_link3_height'];
-		else $direct_link3_height = 20;
-		if (isset($instance['direct_link4_height']) && $instance['direct_link4_height'] != "") $direct_link4_height = $instance['direct_link4_height'];
-		else $direct_link4_height = 20;
-		if (isset($instance['direct_link5_height']) && $instance['direct_link5_height'] != "") $direct_link5_height = $instance['direct_link5_height'];
-		else $direct_link5_height = 20;
-		
-		if (isset($instance['direct_link1_bg']) && $instance['direct_link1_bg'] != "") $direct_link1_bg = $instance['direct_link1_bg'];
-		else $direct_link1_bg = "";
-		if (isset($instance['direct_link2_bg']) && $instance['direct_link2_bg'] != "") $direct_link2_bg = $instance['direct_link2_bg'];
-		else $direct_link2_bg = "";
-		if (isset($instance['direct_link3_bg']) && $instance['direct_link3_bg'] != "") $direct_link3_bg = $instance['direct_link3_bg'];
-		else $direct_link3_bg = "";
-		if (isset($instance['direct_link4_bg']) && $instance['direct_link4_bg'] != "") $direct_link4_bg = $instance['direct_link4_bg'];
-		else $direct_link4_bg = "";
-		if (isset($instance['direct_link5_bg']) && $instance['direct_link5_bg'] != "") $direct_link5_bg = $instance['direct_link5_bg'];
-		else $direct_link5_bg = "";
-		
-		if (isset($instance['direct_link1_color']) && $instance['direct_link1_color'] != "") $direct_link1_color = $instance['direct_link1_color'];
-		else $direct_link1_color = "";
-		if (isset($instance['direct_link2_color']) && $instance['direct_link2_color'] != "") $direct_link2_color = $instance['direct_link2_color'];
-		else $direct_link2_color = "";
-		if (isset($instance['direct_link3_color']) && $instance['direct_link3_color'] != "") $direct_link3_color = $instance['direct_link3_color'];
-		else $direct_link3_color = "";
-		if (isset($instance['direct_link4_color']) && $instance['direct_link4_color'] != "") $direct_link4_color = $instance['direct_link4_color'];
-		else $direct_link4_color = "";
-		if (isset($instance['direct_link5_color']) && $instance['direct_link5_color'] != "") $direct_link5_color = $instance['direct_link5_color'];
-		else $direct_link5_color = "";
-		
-		$retValue .= hk_slideshow_generate_output($this->vars);
+		if ((!isset($instance["show_widget_in_cat"]) || $instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), explode(",",$instance["show_widget_in_cat"])))) : /* IF SHOW IN CAT*/ 
 
-		// set startpage category if on startpage
-		$category_in = array();
-		if (get_query_var("cat") != "") {
-
-			$retValue .= "<aside class='contact-puffs  widget'>";
+			$retValue = "<div class='slideshow-contact-puff-area'>";
 			
-			// query arguments
-			$args = array(
-				'posts_per_page' => -1,
-				'paged' => 1,
-				'more' => $more = 0,
-				'post_type' => 'hk_kontakter',
-				'order' => 'ASC', 
-				'suppress_filters' => 1
-			);
-				
-			$args['category__and'] = get_query_var("cat");
-
-			// search in all posts (ignore filters)
-			$the_query = new WP_Query( $args );
-
-			$retValue .= "<div class='contact-wrapper  content-wrapper'>";
+			if (isset($instance['thumbnail-size']))
+				$this->vars['thumbnail-size'] = $instance['thumbnail-size'];
+			if (isset($instance['direct_link1_height']) && $instance['direct_link1_height'] != "") $direct_link1_height = $instance['direct_link1_height'];
+			else $direct_link1_height = 20;
+			if (isset($instance['direct_link2_height']) && $instance['direct_link2_height'] != "") $direct_link2_height = $instance['direct_link2_height'];
+			else $direct_link2_height = 20;
+			if (isset($instance['direct_link3_height']) && $instance['direct_link3_height'] != "") $direct_link3_height = $instance['direct_link3_height'];
+			else $direct_link3_height = 20;
+			if (isset($instance['direct_link4_height']) && $instance['direct_link4_height'] != "") $direct_link4_height = $instance['direct_link4_height'];
+			else $direct_link4_height = 20;
+			if (isset($instance['direct_link5_height']) && $instance['direct_link5_height'] != "") $direct_link5_height = $instance['direct_link5_height'];
+			else $direct_link5_height = 20;
 			
-			$rightcontent = false;
-			if (($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") ||
-				($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") ||
-				($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "") ||
-				($instance['direct_link4_url'] != "" && $instance['direct_link4_title'] != "") ||
-				($instance['direct_link5_url'] != "" && $instance['direct_link5_title'] != "")
-				) :
-				$rightcontent = true;
-				$halfcss = "two";
-			endif;
+			if (isset($instance['direct_link1_bg']) && $instance['direct_link1_bg'] != "") $direct_link1_bg = $instance['direct_link1_bg'];
+			else $direct_link1_bg = "";
+			if (isset($instance['direct_link2_bg']) && $instance['direct_link2_bg'] != "") $direct_link2_bg = $instance['direct_link2_bg'];
+			else $direct_link2_bg = "";
+			if (isset($instance['direct_link3_bg']) && $instance['direct_link3_bg'] != "") $direct_link3_bg = $instance['direct_link3_bg'];
+			else $direct_link3_bg = "";
+			if (isset($instance['direct_link4_bg']) && $instance['direct_link4_bg'] != "") $direct_link4_bg = $instance['direct_link4_bg'];
+			else $direct_link4_bg = "";
+			if (isset($instance['direct_link5_bg']) && $instance['direct_link5_bg'] != "") $direct_link5_bg = $instance['direct_link5_bg'];
+			else $direct_link5_bg = "";
+			
+			if (isset($instance['direct_link1_color']) && $instance['direct_link1_color'] != "") $direct_link1_color = $instance['direct_link1_color'];
+			else $direct_link1_color = "";
+			if (isset($instance['direct_link2_color']) && $instance['direct_link2_color'] != "") $direct_link2_color = $instance['direct_link2_color'];
+			else $direct_link2_color = "";
+			if (isset($instance['direct_link3_color']) && $instance['direct_link3_color'] != "") $direct_link3_color = $instance['direct_link3_color'];
+			else $direct_link3_color = "";
+			if (isset($instance['direct_link4_color']) && $instance['direct_link4_color'] != "") $direct_link4_color = $instance['direct_link4_color'];
+			else $direct_link4_color = "";
+			if (isset($instance['direct_link5_color']) && $instance['direct_link5_color'] != "") $direct_link5_color = $instance['direct_link5_color'];
+			else $direct_link5_color = "";
+			
+			$retValue .= hk_slideshow_generate_output($this->vars);
 
-			// show first contact
-			if ( !$the_query->have_posts() ) : 
-				$retValue .= "<div class='left-content  hide  $halfcss'></div>";
-			else :
-				// if contact exist
-				$the_query->the_post();
-				
-				
-				$retValue .= "<div class='left-content  $halfcss'>";
+			// set startpage category if on startpage
+			$category_in = array();
+			if (get_query_var("cat") != "") {
 
-				// add link and title
-				$retValue .= "<h2 class='entry-title'>";
-				$retValue .= "<a class='gtm-fpcp-contactlink contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>"; 
-				$retValue .= "<span class='main-contact-link'>" . get_the_title() . "</span></a></h2>"; 
+				$retValue .= "<aside class='contact-puffs  widget'>";
 				
-				$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
+				// query arguments
+				$args = array(
+					'posts_per_page' => -1,
+					'paged' => 1,
+					'more' => $more = 0,
+					'post_type' => 'hk_kontakter',
+					'order' => 'ASC', 
+					'suppress_filters' => 1
+				);
+					
+				$args['category__and'] = get_query_var("cat");
+
+				// search in all posts (ignore filters)
+				$the_query = new WP_Query( $args );
+
+				$retValue .= "<div class='contact-wrapper  content-wrapper'>";
 				
-				$retValue .= "<ul>";
-				// email
-				if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
-					$retValue .= "<li class='hk_contact_emails'><a class='gtm-fpcp-mailto' href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></li>";
-				endwhile; endif;
+				$rightcontent = false;
+				if (($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") ||
+					($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") ||
+					($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "") ||
+					($instance['direct_link4_url'] != "" && $instance['direct_link4_title'] != "") ||
+					($instance['direct_link5_url'] != "" && $instance['direct_link5_title'] != "")
+					) :
+					$rightcontent = true;
+					$halfcss = "two";
+				endif;
 
-				// phone
-				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
-					$number = get_sub_field('number');
-					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
-					$number = str_replace("]",")</span>", $number);
+				// show first contact
+				if ( !$the_query->have_posts() ) : 
+					$retValue .= "<div class='left-content  hide  $halfcss'></div>";
+				else :
+					// if contact exist
+					$the_query->the_post();
+					
+					
+					$retValue .= "<div class='left-content  $halfcss'>";
 
-					if (get_row_layout() != "hk_contact_fax") {
-						$retValue .= "<li class='hk_contact_phones'><a class='gtm-fpcp-phone' href='tel:".preg_replace('/\D/','',$number)."'>";
-						$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
-						$retValue .= $number . "</a></li>";
+					// add link and title
+					$retValue .= "<h2 class='entry-title'>";
+					$retValue .= "<a class='gtm-fpcp-contactlink contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'><span class='contact-icon'></span>"; 
+					$retValue .= "<span class='main-contact-link'>" . get_the_title() . "</span></a></h2>"; 
+					
+					$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
+					
+					$retValue .= "<ul>";
+					// email
+					if( get_field('hk_contact_emails') ): while( has_sub_field('hk_contact_emails') ):
+						$retValue .= "<li class='hk_contact_emails'><a class='gtm-fpcp-mailto' href='mailto:" . get_sub_field('hk_contact_email') . "'>" . get_sub_field('hk_contact_email') . "</a></li>";
+					endwhile; endif;
+
+					// phone
+					if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
+						$number = get_sub_field('number');
+						$number = str_replace("[","<span class='complement-italic-text'>(", $number);
+						$number = str_replace("]",")</span>", $number);
+
+						if (get_row_layout() != "hk_contact_fax") {
+							$retValue .= "<li class='hk_contact_phones'><a class='gtm-fpcp-phone' href='tel:".preg_replace('/\D/','',$number)."'>";
+							$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
+							$retValue .= $number . "</a></li>";
+						}
+					endwhile; endif;
+					
+					if (isset($instance['contacttext']) && $options["startpage_cat"] == get_query_var("cat")) {
+						foreach(explode("\n",$instance['contacttext']) as $contacttext) {
+							$retValue .= "<li class='contactlink  js-contact-link'><a class='gtm-fpcp-contacttext' href='" . get_permalink(get_the_ID()) . "'>" . $contacttext . "</a></li>";
+						}
 					}
-				endwhile; endif;
-				
-				if (isset($instance['contacttext']) && $options["startpage_cat"] == get_query_var("cat")) {
-					foreach(explode("\n",$instance['contacttext']) as $contacttext) {
-						$retValue .= "<li class='contactlink  js-contact-link'><a class='gtm-fpcp-contacttext' href='" . get_permalink(get_the_ID()) . "'>" . $contacttext . "</a></li>";
+					
+					$more_contactinfo_text = "fler kontaktuppgifter &amp; &ouml;ppettider";
+					if (isset($instance['more_contactinfo_text'])) {
+						$more_contactinfo_text = $instance['more_contactinfo_text'];
 					}
-				}
+					$retValue .= "<li class='contactlink  js-contact-link'><a class='gtm-fpcp-more-contactlink' href='" . get_permalink(get_the_ID()) . "'><span class='more-contact-link'>$more_contactinfo_text</span></a></li>";
+
+					//$retValue .= "<span class='more-contact-link'>fler kontaktuppgifter</span>";
+					
+					
+					$retValue .= "</ul></div>";
+				endif; // endif contact exist
+
+				if ($rightcontent) :
+
+					$retValue .= "<div class='right-content  $halfcss'>";
+
+					if ($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") :
+						$retValue .= "<div class='direct_link direct_link1' style='height: $direct_link1_height%;background-color: $direct_link1_bg;'>";
+						$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link1' style='color: $direct_link1_color' href='" . $instance['direct_link1_url'] . "'>";
+						if ($instance['direct_link1_icon'] != "") : $retValue .= $instance['direct_link1_icon']; endif;
+						$title = $instance['direct_link1_title'];
+						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+						$title = str_replace("]",")</span>", $title);
+						$retValue .= $title . "</a></div>";
+					endif;
+					if ($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") :
+						$retValue .= "<div class='direct_link direct_link2' style='height: $direct_link2_height%;background-color: $direct_link2_bg;'>";
+						$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link2' style='color: $direct_link2_color' href='" . $instance['direct_link2_url'] . "'>";
+						if ($instance['direct_link2_icon'] != "") : $retValue .=  $instance['direct_link2_icon']; endif;
+						$title = $instance['direct_link2_title'];
+						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+						$title = str_replace("]",")</span>", $title);
+						$retValue .= $title . "</a></div>";
+					endif;
+					if ($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "") :
+						$retValue .= "<div class='direct_link direct_link3' style='height: $direct_link3_height%;background-color: $direct_link3_bg;'>";
+						$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link3' style='color: $direct_link3_color' href='" . $instance['direct_link3_url'] . "'>";
+						if ($instance['direct_link3_icon'] != "") : $retValue .= $instance['direct_link3_icon']; endif;
+						$title = $instance['direct_link3_title'];
+						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+						$title = str_replace("]",")</span>", $title);
+						$retValue .= $title . "</a></div>";
+					endif;
+					if ($instance['direct_link4_url'] != "" && $instance['direct_link4_title'] != "") :
+						$retValue .= "<div class='direct_link direct_link4' style='height: $direct_link4_height%;background-color: $direct_link4_bg;'>";
+						$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link4' style='color: $direct_link4_color' href='" . $instance['direct_link4_url'] . "'>";
+						if ($instance['direct_link4_icon'] != "") : $retValue .= $instance['direct_link4_icon']; endif;
+						$title = $instance['direct_link4_title'];
+						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+						$title = str_replace("]",")</span>", $title);
+						$retValue .= $title . "</a></div>";
+					endif;
+					if ($instance['direct_link5_url'] != "" && $instance['direct_link5_title'] != "") :
+						$retValue .= "<div class='direct_link direct_link5' style='height: $direct_link5_height%;background-color: $direct_link5_bg;'>";
+						$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link5' style='color: $direct_link5_color' href='" . $instance['direct_link5_url'] . "'>";
+						if ($instance['direct_link5_icon'] != "") : $retValue .= $instance['direct_link5_icon']; endif;
+						$title = $instance['direct_link5_title'];
+						$title = str_replace("[","<span class='complement-italic-text'>(", $title);
+						$title = str_replace("]",")</span>", $title);
+						$retValue .= $title . "</a></div>";
+					endif;
 				
-				$more_contactinfo_text = "fler kontaktuppgifter &amp; &ouml;ppettider";
-				if (isset($instance['more_contactinfo_text'])) {
-					$more_contactinfo_text = $instance['more_contactinfo_text'];
-				}
-				$retValue .= "<li class='contactlink  js-contact-link'><a class='gtm-fpcp-more-contactlink' href='" . get_permalink(get_the_ID()) . "'><span class='more-contact-link'>$more_contactinfo_text</span></a></li>";
-
-				//$retValue .= "<span class='more-contact-link'>fler kontaktuppgifter</span>";
 				
+					$retValue .= "</div>";
 				
-				$retValue .= "</ul></div>";
-			endif; // endif contact exist
-
-			if ($rightcontent) :
-
-				$retValue .= "<div class='right-content  $halfcss'>";
-
-				if ($instance['direct_link1_url'] != "" && $instance['direct_link1_title'] != "") :
-					$retValue .= "<div class='direct_link direct_link1' style='height: $direct_link1_height%;background-color: $direct_link1_bg;'>";
-					$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link1' style='color: $direct_link1_color' href='" . $instance['direct_link1_url'] . "'>";
-					if ($instance['direct_link1_icon'] != "") : $retValue .= $instance['direct_link1_icon']; endif;
-					$title = $instance['direct_link1_title'];
-					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-					$title = str_replace("]",")</span>", $title);
-					$retValue .= $title . "</a></div>";
 				endif;
-				if ($instance['direct_link2_url'] != "" && $instance['direct_link2_title'] != "") :
-					$retValue .= "<div class='direct_link direct_link2' style='height: $direct_link2_height%;background-color: $direct_link2_bg;'>";
-					$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link2' style='color: $direct_link2_color' href='" . $instance['direct_link2_url'] . "'>";
-					if ($instance['direct_link2_icon'] != "") : $retValue .=  $instance['direct_link2_icon']; endif;
-					$title = $instance['direct_link2_title'];
-					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-					$title = str_replace("]",")</span>", $title);
-					$retValue .= $title . "</a></div>";
-				endif;
-				if ($instance['direct_link3_url'] != "" && $instance['direct_link3_title'] != "") :
-					$retValue .= "<div class='direct_link direct_link3' style='height: $direct_link3_height%;background-color: $direct_link3_bg;'>";
-					$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link3' style='color: $direct_link3_color' href='" . $instance['direct_link3_url'] . "'>";
-					if ($instance['direct_link3_icon'] != "") : $retValue .= $instance['direct_link3_icon']; endif;
-					$title = $instance['direct_link3_title'];
-					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-					$title = str_replace("]",")</span>", $title);
-					$retValue .= $title . "</a></div>";
-				endif;
-				if ($instance['direct_link4_url'] != "" && $instance['direct_link4_title'] != "") :
-					$retValue .= "<div class='direct_link direct_link4' style='height: $direct_link4_height%;background-color: $direct_link4_bg;'>";
-					$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link4' style='color: $direct_link4_color' href='" . $instance['direct_link4_url'] . "'>";
-					if ($instance['direct_link4_icon'] != "") : $retValue .= $instance['direct_link4_icon']; endif;
-					$title = $instance['direct_link4_title'];
-					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-					$title = str_replace("]",")</span>", $title);
-					$retValue .= $title . "</a></div>";
-				endif;
-				if ($instance['direct_link5_url'] != "" && $instance['direct_link5_title'] != "") :
-					$retValue .= "<div class='direct_link direct_link5' style='height: $direct_link5_height%;background-color: $direct_link5_bg;'>";
-					$retValue .= "<a class='gtm-fpcp-direct-link gtm-fpcp-direct-link5' style='color: $direct_link5_color' href='" . $instance['direct_link5_url'] . "'>";
-					if ($instance['direct_link5_icon'] != "") : $retValue .= $instance['direct_link5_icon']; endif;
-					$title = $instance['direct_link5_title'];
-					$title = str_replace("[","<span class='complement-italic-text'>(", $title);
-					$title = str_replace("]",")</span>", $title);
-					$retValue .= $title . "</a></div>";
-				endif;
-			
-			
+				
+				$retValue .= "</div></aside>";
+				
 				$retValue .= "</div>";
-			
-			endif;
-			
-			$retValue .= "</div></aside>";
-			
-			$retValue .= "</div>";
-			// Reset Post Data
-			wp_reset_postdata();
-			wp_reset_query();
-			$post = $org_post;
-			
+				// Reset Post Data
+				wp_reset_postdata();
+				wp_reset_query();
+				$post = $org_post;
+				
 
-		}
-			
-		echo $retValue;
+			}
+				
+			echo $retValue;
+		endif; /* END if showwidget */
 	}
 }
 /* add the widget  */
