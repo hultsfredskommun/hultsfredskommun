@@ -611,7 +611,7 @@ acf_add_local_field_group(array (
 							'label' => 'Css class',
 							'name' => 'css-class',
 							'type' => 'text',
-							'instructions' => '',
+							'instructions' => 'Klass om puffen ska ha speciellt utseende.',
 							'required' => 0,
 							'conditional_logic' => array (
 								array (
@@ -629,12 +629,44 @@ acf_add_local_field_group(array (
 							),
 							'default_value' => '',
 						),
+						array (
+							'key' => 'field_56dd0a2e6183b',
+							'label' => 'Video',
+							'name' => 'video',
+							'type' => 'text',
+							'instructions' => 'Stöd för youtube och vimeo. Klistra in den vanliga sökvägen till videon. Videon kommer autostarta i ett popupfönster när man klickar på bilden.',
+							'required' => 0,
+							'conditional_logic' => array (
+								array (
+									array (
+										'field' => 'field_56eabc0f154d0',
+										'operator' => '==',
+										'value' => '1',
+									),
+								),
+							),
+							'wrapper' => array (
+								'width' => '60%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
 					),
+
 					'min' => '',
 					'max' => '',
+
 				),
 			),
 		),
+
 	),
 	'location' => array (
 		array (

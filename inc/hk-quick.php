@@ -66,6 +66,16 @@ function hk_view_quick_links() {
 				while (has_sub_field('hk_quick_link')) : 
 				
 					if (!get_sub_field('inactive')) :
+						/* get video */
+						$videourl = get_sub_field('video');
+						
+						/* get css */
+						$videocssclass = "";
+						if (!empty($videourl)) {
+							$videocssclass = "js-video-popup";
+							$videourl = "data-video-url='$videourl'";
+						}
+						$cssclass = get_sub_field('css-class');
 
 						/* get image */
 						$imagediv = "";
@@ -82,7 +92,7 @@ function hk_view_quick_links() {
 								$src = $image["sizes"]["thumbnail-image"];
 							}
 							$alt = $image["alt"];
-							$imagediv .= "<div class='slide'>";
+							$imagediv .= "<div class='$videocssclass slide' $videourl>";
 							$imagediv .= "<img src='$src' alt='$alt' title='$alt' />";
 							$imagediv .= "</div>";
 						else : /* else default thumb; */
@@ -104,8 +114,6 @@ function hk_view_quick_links() {
 						if (!empty($description)) {
 							$description_div = "<div class='q-description'>$description</div>";
 						}
-						$cssclass = get_sub_field('css-class');
-
 
 						/* get style */
 						$text_color = get_sub_field('text-color');
@@ -174,7 +182,7 @@ function hk_view_quick_links() {
 								}
 								
 								if (!empty($button) && !empty($imagediv)) {
-									$button = "<a class='gtm-quick-button quick-button' href='$url' title='$button'>$button</a>";
+									$button = "<a class='gtm-quick-button quick-button $videocssclass' href='$url' title='$button'>$button</a>";
 								}
 								else {
 									$button = "";

@@ -744,6 +744,10 @@ $(document).ready(function(){
 	$(".js-contact-link").each(function() {
 		setContactPopupAction($(this));
 	});
+	// contact popup
+	$(".js-video-popup").each(function() {
+		setVideoPopupAction($(this));
+	});
 	//triggers popup-text-widget click-action 
 	$(".js-text-widget-popup").each(function() {
 		setTextWidgetPopupAction($(this));
@@ -1365,6 +1369,88 @@ function setArticleActions(el) {
 		setContactPopupAction($(this));
 	});
 }
+/**
+ * set video popup action 
+ */
+function setVideoPopupAction(el) {
+	$(el).unbind("click").bind("click",function(ev) {
+		if (isLessThanIE9) {
+			return true;
+		}
+		videoAction(el,ev);
+		return false;
+	});
+}
+function youtube_parser(url){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
+}
+function vimeo_parser( url ) {
+  // look for a string with 'vimeo', then whatever, then a 
+  // forward slash and a group of digits.
+  var match = /vimeo.*\/(\d+)/i.exec( url );
+
+  // if the match isn't null (i.e. it matched)
+  if ( match ) {
+    // the grouped/matched digits from the regex
+    return match[1];
+  }
+}
+function videoAction(el,ev) {
+	if ($(".video-popup").length == 0) {
+		var videourl = $(el).attr("data-video-url");
+		
+		// follow link if post_id not found
+		if (videourl == null) {
+			return true;
+		}
+		
+		if (ev != null) {
+			ev.preventDefault();
+		}
+		
+		videocode = "Har inte st&ouml;d f&ouml;r denna URL: " + videourl;
+		youtubeurl = youtube_parser(videourl);
+		vimeourl = vimeo_parser(videourl);
+		if (youtubeurl != "") {
+			parsedvideourl = "https://www.youtube.com/embed/" + youtubeurl + "?autoplay=1";
+			videocode = "<iframe src='" + parsedvideourl + "' frameborder='0' allowfullscreen></iframe>";
+		} 
+		else if (vimeourl != "") {
+			parsedvideourl = "https://player.vimeo.com/video/" + vimeourl + "?autoplay=1";
+			videocode = "<iframe src='" + parsedvideourl + "' frameborder='0' allowfullscreen></iframe>";
+		}
+		$("#page").append("<div class='video-popup box'><div class='entry-content islet'>" + videocode + "</div></div>").append("<div class='video-popup overlay'></div>");
+		
+		$(".video-popup iframe").height($(".video-popup").height()-24);
+		$(".video-popup.overlay").unbind("click").bind("click",function() {
+			$(".video-popup").remove();
+			//resetHistory();
+		});
+		
+		if ($(this).attr("href") !== undefined) {
+			var thepage = $(this).attr("href");
+		}
+		
+
+		$(".video-popup.box").find(".entry-content").before("<div class='js-close-video close-video close-popup'></div>");
+		$(".js-close-video").unbind("click").bind("click",function() {
+			$(".video-popup").remove();
+			//resetHistory();
+		});
+					
+		//call pushHistory
+		//resetHistory();
+		//url = $(this).find(".entry-title a").attr("href");
+		//title = getHistoryTitle($(this));
+		//pushHistory(title, url);
+			
+	}
+	else {
+		$(".video-popup").remove();
+	}
+}
 
 /**
  * set contact popup action 
@@ -1568,7 +1654,9 @@ $(window).resize(function() {
 	/* scale map */
 	$(".map_canvas").height($(".contact-popup").height());
 
-	
+	/* scale video */
+	$(".video-popup iframe").height($(".video-popup").height()-24);
+
 	if( oldWidth != $(window).width() ) {
 		/*alert($.browser);
 		alert($.browser.version <= 9);
