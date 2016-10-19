@@ -38,6 +38,10 @@
 			@extend .palm-one-whole;
 			@extend .margin--bottom;
 			@extend .position-relative;
+			img.overlay-img {
+			    position: absolute;
+				padding-right: $base-spacing-unit;
+			}
 			a {
 				@extend .default-text;
 				&.quick-button {

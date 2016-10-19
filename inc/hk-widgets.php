@@ -219,7 +219,7 @@ add_action( 'widgets_init', create_function( '', 'register_widget( "HK_mellansta
 					$shownposts[] = get_the_ID(); 
 					get_template_part( 'content', 'news' ); 
 					if (++$countrows%$num_news_row == 0) {
-						echo "<div class='one-whole'>&nbsp;</div>";
+						echo "<div style='clear:both' class='one-whole'></div>";
 					}
 				endwhile; endif; 
 				// Reset Query

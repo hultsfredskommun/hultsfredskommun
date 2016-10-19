@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "4.4");
+define("HK_VERSION", "4.5");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -44,7 +44,9 @@ if ( ! isset( $default_settings ) ) {
 								'show_quick_links_in_subsubcat' => $hk_options["show_quick_links_in_subsubcat"],
 								'hide_articles_in_subsubcat' => $hk_options["hide_articles_in_subsubcat"],
 								'category_slideshow_thumbnail_size' => $hk_options["category_slideshow_thumbnail_size"],
-								'show_articles' => true);
+								'show_articles' => true,
+								'video_thumbnail_image' => $hk_options["video_thumbnail_image"]
+							);
 
 	/* browser check */
 	$ua = $_SERVER["HTTP_USER_AGENT"];
