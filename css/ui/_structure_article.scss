@@ -506,11 +506,17 @@ article.summary .full {
 article.summary .summary {
 	display: none;
 }
+}
+@include media-query(portable) {
 /* image responsive fix */
-article .wp-caption {
-	width: 100%!important;
-	img {
-		width: 100%!important;
+article {
+	.wp-caption {
+		max-width: 100%;
+	}
+	img,
+	img[width], 
+	img[height] {
+		max-width: 100%!important;
 		height: auto;
 	}
 }

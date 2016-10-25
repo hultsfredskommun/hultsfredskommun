@@ -171,7 +171,7 @@ function hk_view_quick_links() {
 						if (get_sub_field('content')) :
 							while (has_sub_field('content')) : 
 
-								$retValue .= "<div class='quick-post  $layout  $cssclass'><div style='$style'>";
+								$retValue .= "<div class='quick-post  $imagesize  $layout  $cssclass'><div style='$style'>";
 								if ( get_row_layout() == 'inlagg' ) {
 									$value = get_sub_field('post');
 									$url = get_permalink($value->ID);

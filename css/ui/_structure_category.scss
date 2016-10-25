@@ -38,9 +38,15 @@
 			@extend .palm-one-whole;
 			@extend .margin--bottom;
 			@extend .position-relative;
+			.slide {
+				@extend .position-relative;
+			}
 			img.overlay-img {
-			    position: absolute;
+				@extend .position-absolute;
 				padding-right: $base-spacing-unit;
+				max-height: calc(100% - 6px);
+				width: auto;
+				margin: 0 auto;
 			}
 			a {
 				@extend .default-text;
@@ -55,6 +61,11 @@
 			&.line-break {
 				@extend .one-whole;
 				margin: 0;
+			}
+			&.wide-image {
+				img.overlay-img {
+					margin-left: 23%;
+				}
 			}
 		}
 	}

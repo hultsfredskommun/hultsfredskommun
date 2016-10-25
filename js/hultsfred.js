@@ -1387,13 +1387,8 @@ function youtube_parser(url){
     return (match&&match[7].length==11)? match[7] : false;
 }
 function vimeo_parser( url ) {
-  // look for a string with 'vimeo', then whatever, then a 
-  // forward slash and a group of digits.
   var match = /vimeo.*\/(\d+)/i.exec( url );
-
-  // if the match isn't null (i.e. it matched)
   if ( match ) {
-    // the grouped/matched digits from the regex
     return match[1];
   }
 }
@@ -1413,15 +1408,18 @@ function videoAction(el,ev) {
 		videocode = "Har inte st&ouml;d f&ouml;r denna URL: " + videourl;
 		youtubeurl = youtube_parser(videourl);
 		vimeourl = vimeo_parser(videourl);
+		uniqueVideoID = ""; 
 		if (youtubeurl != "") {
+			uniqueVideoID = youtubeurl;
 			parsedvideourl = "https://www.youtube.com/embed/" + youtubeurl + "?autoplay=1";
 			videocode = "<iframe src='" + parsedvideourl + "' frameborder='0' allowfullscreen></iframe>";
 		} 
 		else if (vimeourl != "") {
+			uniqueVideoID = vimeourl;
 			parsedvideourl = "https://player.vimeo.com/video/" + vimeourl + "?autoplay=1";
 			videocode = "<iframe src='" + parsedvideourl + "' frameborder='0' allowfullscreen></iframe>";
 		}
-		$("#page").append("<div class='video-popup box'><div class='entry-content islet'>" + videocode + "</div></div>").append("<div class='video-popup overlay'></div>");
+		$("#page").append("<div class='video-popup box' id='" + uniqueVideoID + "'><div class='entry-content islet'>" + videocode + "</div></div>").append("<div class='video-popup overlay'></div>");
 		
 		$(".video-popup iframe").height($(".video-popup").height()-24);
 		$(".video-popup.overlay").unbind("click").bind("click",function() {
