@@ -39,29 +39,39 @@
 								
 								);
 				$options = get_option("hk_theme");
+				/* if orderby not is set, check if standard order should be date in settings */
 				if ($_REQUEST["orderby"] == "" && get_query_var("cat") != "" && in_array(get_query_var("cat"), explode(",",$options["order_by_date"])) ) {
 					//$args['suppress_filters'] = 'true';
 					$args['orderby'] = 'date';
 					$args['order'] = 'DESC';
 				}
+				/* if orderby not is set, check if standard order should be alpha in settings */
+				else if ($_REQUEST["orderby"] == "" && get_query_var("cat") != "" && in_array(get_query_var("cat"), explode(",",$options["order_by_alpha"])) ) {
+					$args['orderby'] = 'title';
+					$args['order'] = 'ASC';
+				}
+				/* if orderby is set manually in url */
 				else if ($_REQUEST["orderby"] == "latest") {
 					$args['orderby'] = 'date';
 					$args['order'] = 'DESC';				
 				}
+				/* if orderby is set manually in url */
 				else if ($_REQUEST["orderby"] == "oldest") {
 					$args['orderby'] = 'date';
 					$args['order'] = 'ASC';				
 				}
+				/* standard order if views plugin exist */
 				else if (function_exists( 'views_orderby' )) {
 					$args['meta_key'] = 'views'; 
 					$args['orderby'] = 'meta_value_num';
 					$args['order'] = 'DESC';	
 				}
+				/* else fallback to order by date DESC */
 				else {
 					$args['orderby'] = 'date';
 					$args['order'] = 'DESC';				
 				}
-
+				//print_r($args);
 				query_posts( $args );
 
 			endif; // end if cat is set

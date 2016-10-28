@@ -3,7 +3,7 @@
 			// Get term by slug $tag in Tags taxonomy.
 			$tagitem = get_term_by('slug', $tag, 'post_tag');
 			$newstag = "";
-			$news_list_arr = split(",",str_replace(" ","",$hk_options["show_taglist_as_newslist"]));
+			$news_list_arr = split(",", str_replace(" ", "", $hk_options["show_taglist_as_newslist"])); /* get if show tag as news list */
 			$is_news_list = $default_settings["news_tag"] == $tagitem->term_id || in_array($tagitem->slug, $news_list_arr);
 			echo '<div id="breadcrumb" class="';
 			echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":"";
@@ -12,7 +12,7 @@
 			// if news
 			if ($is_news_list) {
 				echo hk_postcount();
-				$newstag = "news";
+				$newstag = "news"; /* help class for news list css */
 			}
 			echo '</div>';
 		endif;

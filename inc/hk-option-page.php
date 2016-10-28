@@ -278,9 +278,8 @@ function hk_theme_options_do_page() {
 			?>
 			</p>
 
-			<?php if ( function_exists( 'views_orderby' ) ) : ?>
-			<p><label for="hk_theme[order_by_date]">Välj vilka kategorier som ska sorteras på datum istället för mest besökt.</label><br/><input size="8" type="text" name="hk_theme[order_by_date]" value="<?php echo $options['order_by_date']; ?>" /></p>
-			<?php endif; ?>
+			<p><label for="hk_theme[order_by_date]">Välj vilka kategorier som ska sorteras på datum istället för mest besökt.</label><br/><input size="40" type="text" name="hk_theme[order_by_date]" value="<?php echo $options['order_by_date']; ?>" /></p>
+			<p><label for="hk_theme[order_by_alpha]">Välj vilka kategorier som ska sorteras i bokstavsordning istället för mest besökt.</label><br/><input size="40" type="text" name="hk_theme[order_by_alpha]" value="<?php echo $options['order_by_alpha']; ?>" /></p>
 			
 			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input size="8" type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo (!isset($options["num_levels_in_menu"]) || $options["num_levels_in_menu"] == "")?2:$options['num_levels_in_menu']; ?>" /></p>
 			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options['show_tags']; ?>" /></p>
