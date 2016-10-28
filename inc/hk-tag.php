@@ -3,13 +3,14 @@
 			// Get term by slug $tag in Tags taxonomy.
 			$tagitem = get_term_by('slug', $tag, 'post_tag');
 			$newstag = "";
-
+			$news_list_arr = split(",",str_replace(" ","",$hk_options["show_taglist_as_newslist"]));
+			$is_news_list = $default_settings["news_tag"] == $tagitem->term_id || in_array($tagitem->slug, $news_list_arr);
 			echo '<div id="breadcrumb" class="';
 			echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":"";
 			echo 'breadcrumb">';
 			echo hk_breadcrumb(); 
 			// if news
-			if ($default_settings["news_tag"] == $tagitem->term_id) {
+			if ($is_news_list) {
 				echo hk_postcount();
 				$newstag = "news";
 			}
@@ -59,7 +60,7 @@
 			
 			
 			// if news
-			if ($default_settings["news_tag"] == $tagitem->term_id) {
+			if ($is_news_list) {
 				//echo "news;";
 				//echo $cat;
 				$childrenarr =  get_categories(array('child_of' => $cat, 'hide_empty' => true));

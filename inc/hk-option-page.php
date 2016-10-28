@@ -237,6 +237,8 @@ function hk_theme_options_do_page() {
 				wp_dropdown_categories( $args ); 
 			?>
 			</p>
+			
+			<p><label for="hk_theme[show_taglist_as_newslist]">Etiketter ska visas som nyhetslistning. (kommaseparerad lista med etikett-slug-namn) </label><br/><input type="text" name="hk_theme[show_taglist_as_newslist]" value="<?php echo $options["show_taglist_as_newslist"]; ?>" /></p>
 
 			<p><label for="hk_theme[hidden_cat]">Välj kategori som innehåller <b>ej synliga poster</b>.</label><br/>
 							<?php 

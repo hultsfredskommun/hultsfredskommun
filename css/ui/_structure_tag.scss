@@ -33,8 +33,13 @@
 			padding-top: 0!important;
 			
 		}
-		.summary-content h1.entry-title {
+		.tag.entry-title {
 			@extend .zeta;
+			@extend .font-weight-normal;
+			@extend .flush--bottom;
+			a {
+				@extend .force-default-text;
+			}
 		}
 	}
 	.dimmed-tag {
