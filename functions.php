@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "4.8");
+define("HK_VERSION", "4.9");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -1656,7 +1656,7 @@ function hk_get_image_sizes( $size = '' ) {
 	get faq/vanliga fragor
 */
 function hk_search_and_print_faq($search) {
-	global $wpdb, $hk_options;
+	global $wpdb, $hk_options, $default_settings;
 	
 	//$search = mb_convert_encoding($search, "ISO-8859-1");
 	$id_array = array();
@@ -1721,41 +1721,43 @@ function hk_search_and_print_faq($search) {
 		arsort($id_array);
 	}
 	
-	// return empty if no hits
-	if (count($id_array) <= 0) {
-		return "";
-	}
-	// else return values
-	else {
-		// print title
-		$retVal .= "<div class='search-wrapper'>";
-		$retVal .= "<div class='search-title'>";
-		$retVal .= /*"<span class='faq-icon'></span>*/"<span>Letar du efter</span>";
-		$retVal .= "</div>";
+	/* return values */
+		
+	/* print title */
+	$retVal .= "<div class='search-wrapper'>";
+	$retVal .= "<div class='search-title'>";
+	$retVal .= /*"<span class='faq-icon'></span>*/"<span>Letar du efter</span>";
+	$retVal .= "</div>";
 
-		// print $max number values
-		$count = 1;
-		$max = 5;
-		foreach ($id_array as $arr => $c) {
-			$arr = explode("|",$arr);
-			if (!empty($arr) && count($arr) == 2) { // check if valid content
-				$url = get_permalink($arr[0]); // get link
-				$value = $arr[1]; // get question
-				if (!empty($value) && $url) { // check not empty content
-					$retVal .= "<div class='search-item-area faq-wrapper'>";
-					$retVal .= "<a href='$url' class='gtm-faq-item'>";
-					$retVal .= $value;
-					$retVal .= "</a></div>";
-					if ($count++ >= $max) { // break when $max
-						break;
-					}
+	/* print $max number values */
+	$count = 1;
+	$max = 5;
+	foreach ($id_array as $arr => $c) {
+		$arr = explode("|",$arr);
+		if (!empty($arr) && count($arr) == 2 && !in_category( $default_settings["hidden_cat"], $arr[0] )) { // check if valid content and not in hidden_cat
+			$url = get_permalink($arr[0]); // get link
+			$value = $arr[1]; // get question
+			// check if in hidden_cat
+			if (!empty($value) && $url) { // check not empty content
+				$retVal .= "<div class='search-item-area faq-wrapper'>";
+				$retVal .= "<a href='$url' class='gtm-faq-item'>";
+				$retVal .= $value;
+				$retVal .= "</a></div>";
+				if ($count++ >= $max) { // break when $max
+					break;
 				}
 			}
 		}
-		$retVal .= "</div>";
-
-		return $retVal;
 	}
+
+	/* return empty if noting printed */
+	if ($count == 1) {
+		$retVal .= "<div class='search-item-area faq-wrapper'>Hittade inga vanliga frågor med din sökning.</div>";
+	}
+	$retVal .= "</div>";
+
+	return $retVal;
+	
 }
 
 /* AMP plugin, see info: https://github.com/Automattic/amp-wp/blob/master/readme.md */
