@@ -1763,7 +1763,7 @@ function hk_search_and_print_faq($search) {
 /* AMP plugin, see info: https://github.com/Automattic/amp-wp/blob/master/readme.md */
 
 /* AMP style */
-add_action( 'amp_post_template_css', 'hk_amp_additional_css_styles' );
+add_action( 'amp_post_template_head', 'hk_amp_additional_css_styles' );
 
 function hk_amp_additional_css_styles( $amp_template ) {
     // only CSS here please...
@@ -1776,11 +1776,82 @@ function hk_amp_additional_css_styles( $amp_template ) {
 	if (empty($svg_logo)) {
 		$svg_logo = $hk_options["logo_image_svg"];
 	}
-?>
+?><style amp-runtime>
+	/* hide stuff */
+	.hidden,
+	.amp-wp-article-footer,
+	footer.amp-wp-footer,
+	.amp-wp-meta,
+	.amp-wp-author
+	{
+		display:none!important; 
+	}
+	
+	.amp-wp-header {
+		background: #3d6a98!important;
+	}
+	.amp-wp-article,
+	.amp-wp-content.amp-wp-footer
+	{
+		border: 0;
+		color: #353535;
+		font-weight: 400;
+		margin: 1.5em auto;
+		max-width: 840px;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+    }	
+	
+	.amp-wp-article-content,
+	.amp-wp-content.amp-wp-footer .side-content
+	{
+		margin: 0 16px;
+	}
+	/* aside stuff */
+	ul {
+		margin-bottom: 12px!important;
+		padding: 8px 0px!important;
+	}
+	/*ul.contacts {
+		background: #E4EDF6;
+	}
+	ul.faq {
+		background: #E5E6E7;
+	}
+	ul.related {
+		background: #FFF3DA;
+	}*/
+	.aside-list-item div {
+		padding: 2px 0!important;
+	}
+	
+	.side-content .title {
+		font-size: 18px;
+	}
+	
+	
 	amp-img {
 	    border-radius: 3px;
 	}
-	html, 
+	.amp-wp-title {
+		font-family: "Segoe UI",Arial,sans-serif!important;
+		font-size: 28px!important;
+		font-weight: bold!important;
+	}
+	h2 {
+		margin-bottom: 0px;
+	}
+	p {
+		margin-bottom: 2px!important;
+	}
+	.amp-wp-article-content ul, .amp-wp-article-content ol {
+		margin-left: 20px!important;
+	}
+	html, body {
+		background: white!important;
+		font-family: "Segoe UI",Arial,sans-serif!important;
+	}
+	html, p, 
 	.amp-wp-content,
 	.wp-caption-text {
 		font-family: "Segoe UI",Arial,sans-serif;
@@ -1828,7 +1899,7 @@ function hk_amp_additional_css_styles( $amp_template ) {
 	.amp-wp-footer li.title {
 		font-weight: bold;
 	}
-    <?php
+    </style><?php
 }
 /* AMP featured image */
 add_action( 'pre_amp_render_post', 'hk_amp_add_custom_actions' );

@@ -182,7 +182,7 @@
 				endwhile; endif;
 			endif;
 			
-			
+			echo "<div id='shownposts' class='hidden' data-shownposts='" . implode(",", $shownPosts) . "'></div>";
 			hk_content_nav( 'nav-below' );
 
 			/* help text if nothing is found */

@@ -790,6 +790,7 @@ $(document).ready(function(){
 	$(window).scroll(function () {
 	
 		/* load next pages posts dynamically when reaching bottom of page */
+		// TODO: enable if setting is set
 		/*if( !$("body").hasClass("home") && parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height()*2 - $("#colophon").height()) ) {
 	
 			if ($("#dyn-posts-load-posts").length <= 0 && !$("#shownposts").hasClass("loaded")) {
@@ -1572,10 +1573,10 @@ function dyn_posts_load_posts() {
 	if (!loading_next_page) {
 		
 		loading_next_page = true;
-		var shownPosts = $("#shownposts").html();
+		var shownPosts = $("#shownposts").attr("data-shownposts");
 				
 		$('#primary')
-			.append('<div id="dyn-posts-placeholder" class="dyn-posts-placeholder"></div>')	
+			.append('<div id="dyn-posts-placeholder" class="dyn-posts-placeholder">Laddar fler artiklar...</div>')	
 
 		$('#dyn-posts-placeholder').hide().load(hultsfred_object["templateDir"]+"/ajax/posts_load.php",
 			{ shownPosts: shownPosts, filter: filter }, 
@@ -1585,7 +1586,7 @@ function dyn_posts_load_posts() {
 				if ($('#dyn-posts-placeholder').html() == "") {
 					return;
 				}
-				$('#dyn-posts-placeholder').prepend("<p>Du har nu sett de mest bes&ouml;kta artiklarna, men leta g&auml;rna vidare i denna lista med resten av ditt urval.</p>");
+				//$('#dyn-posts-placeholder').prepend("<p>Du har nu sett de mest bes&ouml;kta artiklarna, men leta g&auml;rna vidare i denna lista med resten av ditt urval.</p>");
 				
 				
 				// read-more toggle actions
