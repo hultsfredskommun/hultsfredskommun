@@ -97,7 +97,7 @@ function hk_view_quick_links() {
 								$src = $image["sizes"]["thumbnail-image"];
 							}
 							$alt = $image["alt"];
-							$imagediv .= "<div class='$videocssclass slide' $videourl>";
+							$imagediv .= "<div class='$videocssclass $imagesize slide' $videourl>";
 							$imagediv .= $videoimageoverlay;
 							$imagediv .= "<img src='$src' alt='$alt' title='$alt' />";
 							$imagediv .= "</div>";
@@ -200,11 +200,11 @@ function hk_view_quick_links() {
 
 							endwhile;
 						else :
-							$retValue .= "<div class='quick-post  $layout  $cssclass'><div style='$style'>$imagediv$title$description_div$button</div></div>";
+							$retValue .= "<div class='quick-post $imagesize $layout  $cssclass'><div style='$style'>$imagediv$title$description_div$button</div></div>";
 						endif; // end if content
 						if ($row_width > 90) {
 							$row_width = 0;
-							$retValue .= "<div class='quick-post  line-break'></div>";
+							$retValue .= "<div class='quick-post $imagesize line-break'></div>";
 						}
 
 					endif; // end if not inactive
