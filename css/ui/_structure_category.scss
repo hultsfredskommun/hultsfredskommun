@@ -68,6 +68,12 @@
 					cursor: pointer;
 				}
 			}
+			&.slideshow-image {
+				img.overlay-img {
+					margin-left: 20%;
+					cursor: pointer;
+				}
+			}
 		}
 	}
 }
