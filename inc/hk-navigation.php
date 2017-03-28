@@ -202,7 +202,10 @@ function hk_empty_navigation() {
 		</article><!-- #post-0 -->
 <?php
 }
-function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
+
+
+
+function hk_mobile_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 	global $args, $hk_options, $default_settings;
 
 	// get nav_menu_parent id
@@ -215,7 +218,6 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 	$nav_menu_top_parent = hk_getNavMenuId($category_hierarchy[0], $menu_name);
 	$nav_menu_sub_parent = hk_getNavMenuId($category_hierarchy[1], $menu_name);
 	$top_parent = $category_hierarchy[0];
-	$top_parent = $category_hierarchy[0];
 	$sub_parent = $category_hierarchy[1];
 	$category = $category_hierarchy[2];
 
@@ -224,8 +226,25 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 	}
 
 	/* TOP MENU */
-	$topwalker = new hk_topmenu_walker_nav_menu();
-	$args = array(
+	$newtopwalker = new hk_newtopmenu_walker_nav_menu();
+	echo "<ul class='hultsfred-menu $menu_class'>";
+    /* show top level selection */
+    echo "<li class='toplevelselect'><a class='js-expand-who'>Vem &auml;r du? <i>".get_cat_name($top_parent)."</i></a><ul>";
+    $args = array(
+		'theme_location'	=> $menu_name, 
+		'container' 		=> '',
+		'items_wrap' 		=> '%3$s',
+		'before' 			=> '',
+		'after'				=> '',
+		'depth' 			=> 1, //$default_settings['num_levels_in_menu'],
+		'echo' 				=> true,
+		'walker'			=> $newtopwalker,
+		'current_category'  => $top_parent
+	);
+    wp_nav_menu( $args ); 
+    echo "</ul></li>";
+    /* end top level selection */
+    $args = array(
 		'theme_location'	=> $menu_name, 
 		'container' 		=> '',
 		'items_wrap' 		=> '%3$s',
@@ -233,13 +252,12 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 		'after'				=> '',
 		'depth' 			=> 3, //$default_settings['num_levels_in_menu'],
 		'echo' 				=> true,
-		//'walker'			=> $topwalker
+		'walker'			=> $newtopwalker
 	);
 	if ($top_parent > 0) {
 		$args["current_category"] = $top_parent;
 	} 
 
-	echo "<ul class='hultsfred-menu $menu_class'>";
 	/* REMOVED small-words!
 	echo "<li class='small-words'>".hk_getSmallWords($hk_options["smallwords"])."</li>";
 	*/
@@ -271,6 +289,8 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 		$sub_title = "Du s&ouml;kte p&aring; " . get_query_var("s");
 	else 
 		$sub_title = "";
+    
+    
 		
 	/*
 	REMOVED OLD SUB-MENU 
@@ -318,7 +338,6 @@ function hk_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_class) {
 	*/
 
 }
-
 function hk_navmenu_old_navigation($menu_name, $cat, $menu_class) {
 	global $args, $hk_options, $default_settings;
 
@@ -501,7 +520,7 @@ function hk_navigation() {
 			}
 			
 			// TODO - handle tags if more than one category!!
-			displayTagFilter();
+			hk_displayTagFilter();
 		}
 	}
 	
@@ -541,7 +560,7 @@ function hk_navigation() {
 		wp_list_categories( $args );
 		echo "</ul>";
 		
-		displayTagFilter();
+		hk_displayTagFilter();
 
 	}
 	
@@ -563,7 +582,7 @@ function hk_tag_navigation() {
 	echo "<aside id='nav' class='category-navigation' role='navigation'><nav>";
 	
 	if( function_exists('displayTagFilter') ){
-		displayTagFilter();
+		hk_displayTagFilter();
 	}
 
 	
@@ -742,17 +761,23 @@ class hk_Tag_Walker extends Walker_Category {
 
 
 // show tag filter list
-function displayTagFilter($show_title = true, $ul_class="more-navigation", $echo = true, $a_class = "") {
+function hk_displayTagFilter($show_title = true, $ul_class="more-navigation", $echo = true, $a_class = "", $cat = "", $skip_ul_wrapper = false) {
 	global $default_settings;
-	$retValue = "";
+	$retValue = "";//cat: $cat " . get_query_var("cat");
 	if ($default_settings["show_tags"] != 0) :	
 			
-		$tags = hk_get_category_tags(get_query_var("cat"));
-		$tags_filter = get_query_var("tag");	
+		if ($cat != "") {
+            $tags = hk_get_category_tags($cat);
+        } else {
+            $tags = hk_get_category_tags(get_query_var("cat"));
+        }
+        $tags_filter = get_query_var("tag");	
 			
 		if (!empty($tags) || !empty($tags_filter)) :
-			$retValue .= "<ul class='$ul_class'>"; 
-			/* show tag title */
+            if (!$skip_ul_wrapper) {
+                $retValue .= "<ul class='$ul_class'>"; 
+            }
+            /* show tag title */
 			if ($show_title) {
 				$retValue .= "<li class='heading'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
 			}
@@ -769,7 +794,7 @@ function displayTagFilter($show_title = true, $ul_class="more-navigation", $echo
 			/* show tag list */
 			foreach( $tags as $tagitem) {
 				$tags_selected_and_visible[$tagitem->tag_slug] = true;
-				$retValue .= hk_generate_tag_link($tagitem, $a_class);
+				$retValue .= hk_generate_tag_link($tagitem, $a_class, $cat);
 			}
 
 			/* print if tag not exist in cat (check helper variable) */
@@ -782,8 +807,9 @@ function displayTagFilter($show_title = true, $ul_class="more-navigation", $echo
 				}
 			}
 			
-			
-			$retValue .= "</ul>";
+			if (!$skip_ul_wrapper) {
+			 $retValue .= "</ul>";
+            }
 		endif; // endif tags available
 		if ($echo) {
 			echo $retValue;

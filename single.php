@@ -41,7 +41,7 @@ get_header();
 			<?php endif; // end of the loop. ?>
 			
 			<?php /* show related posts */
-			
+			if (false) : // remove related
 			if (empty($_REQUEST["print"]) && !isset($_GET["only_content"]) && !empty($cat_array)) : ?>
 			
 				<?php 
@@ -81,7 +81,8 @@ get_header();
 				
 				?>
 				<?php wp_reset_query(); ?>
-			<?php endif;  ?>
+			<?php endif; // not only_content or print  ?>
+			<?php endif; // false, remove related  ?>
 <?php if (!isset($_GET["only_content"])) : ?>
 
 		</div><!-- #content -->

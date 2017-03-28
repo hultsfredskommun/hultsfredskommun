@@ -168,7 +168,7 @@ if ($meta_description != "") :?>
 <?php
 $firstpageClass =(is_sub_category_firstpage() && get_query_var("tag") == "") ? "home":"";
 $printpageClass = ($_REQUEST["print"] == 1) ? "print":"";
-$menuversion = "old"; //new or old
+$menuversion = (empty($default_settings["new_mobile_menu"]))?"old":"new";//"new"; //new or old
 $hide_leftmenu_class = ($hk_options['hide_leftmenu']) ? "hide-left-menu":"";
 ?>
 <body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu " . $hide_leftmenu_class ); ?>>

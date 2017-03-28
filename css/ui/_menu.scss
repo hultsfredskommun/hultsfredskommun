@@ -1,13 +1,105 @@
 /* NEW MENU */
-.hultsfred-menu > li.current-menu-item > ul.sub-menu,
-.hultsfred-menu > li.current-menu-ancestor > ul.sub-menu,
-.hultsfred-menu > li.current-menu-ancestor > ul.sub-menu {
+
+
+/*MOBILMENU - expanderade val */
+.hultsfred-menu  li.current-menu-item > ul.sub-menu,
+.hultsfred-menu  li.current-menu-item li.current-menu-item > ul.parent,
+.hultsfred-menu  li.current-menu-item li.current-category-ancestor > ul.parent,
+.hultsfred-menu  li.current-menu-item li.current-cat > ul.children,
+.hultsfred-menu  li.current-menu-item li.current-cat-ancestor > ul.children {
 	display: block;	
 }
-.hultsfred-menu > li > ul.sub-menu {
-	display: none;
+
+.hultsfred-menu > li.main-menu-item.current-menu-item {
+	display: block; 
 }
 
+.hultsfred-menu > li.main-menu-item,
+.hultsfred-menu > li > a,
+.hultsfred-menu > li > button,
+.hultsfred-menu  li  ul.parent,
+.hultsfred-menu  li  ul.children,
+.hultsfred-menu  li  ul.sub-menu {
+	display: none;
+}
+.hultsfred-menu .current-menu-item > a,
+.hultsfred-menu .current-cat > a {
+    font-weight: bold;
+}
+.hultsfred-menu .atag-item {
+    //margin-left: 12px;
+    font-style: italic;
+}
+/*.responsive-sub-menu {
+    @extend .hidden--palm;
+}*/
+.hultsfred-menu .toplevelselect {
+    button, a {
+        display: inline-block!important;
+    }
+    ul {
+        @extend .hidden;
+        @extend .main-light-background;
+    }
+}
+.hultsfred-menu {
+    @extend .nav;
+    @extend .nav--block;
+    @extend .hidden--desk;
+    @extend .hidden--lap;
+    @extend .hidden--palm;
+    @extend .main-background;
+    &, ul {
+        list-style-type: none;
+        margin-left: 0;
+    }
+    li {
+        @extend .one-whole;
+	}
+	a {
+		@extend .white-text;
+        @extend .half-padding;
+		//padding: $base-spacing-unit/2 0;
+        display: inline-block;
+	}
+    .expand-button {
+        @extend .white-text;
+        @extend .beta;
+        @extend .float--right;
+        background: transparent;
+        border: none;
+        padding: 6px 12px;
+        width: 36px;
+        &:focus, &:hover {
+            background: rgba(255,255,255,0.5);
+            outline: none;
+            border: none;
+        }
+    }
+    .current-tag a {
+        font-weight: bold;
+    }
+    a.delete-icon {
+        display: none;
+    }
+
+}
+
+// background-color
+.hultsfred-menu ul ul {
+    @extend .main-light-background;
+    ul {
+        @extend .main-lighter-background;
+        ul {
+            @extend .main-lightest-background;
+            a {
+                @extend .default-text;
+            }
+        }
+    }
+}
+
+/* END NEW MENU */
 
 .small-words {
 	@extend .hide--lap;
@@ -290,11 +382,14 @@
 }
 
 .home.new-menu .main-sub-menu {
+	display: none;
+}
+/*.home.new-menu .main-sub-menu {
 	display: block;
 	li {
 		margin: 0 0 2px 0;
 	}
-}
+}*/
 .new-menu .responsive-menu .main-sub-menu {
 	display: block;
 	li {
@@ -319,10 +414,12 @@
 		background-color: $gray-light-color;
 		margin-bottom: 0px;
 	}
-	.current-category-ancestor a, .current-menu-item a {
+	.current-category-ancestor a, .current-menu-item a
+    {
 		border: 0;
 		font-weight: bold;
 	}
+
 }
 .new-menu .main-sub-menu {
 	li {

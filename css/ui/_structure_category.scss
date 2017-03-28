@@ -31,7 +31,8 @@
 .quick-posts-wrapper {
 	@extend .g;
 	@extend .one-whole;
-	.quick-posts {
+    
+    .quick-posts {
 		@extend .gw;
 		.quick-post {
 			@extend .g;
@@ -103,6 +104,12 @@
 /*
  * sort-order 
  */
+@include media-query(lap){
+.primary,
+.breadcrumb {
+	padding-right: $base-spacing-unit*0.25;
+}
+}
  @include media-query(portable){
 .page-header .category-tools .menu-item .sub-menu > li {
 	display: table !important;
@@ -118,7 +125,7 @@
 .breadcrumb {
 	padding-bottom: $base-spacing-unit;
 	padding-left: $base-spacing-unit;
-	padding-right: $base-spacing-unit*0.25;
+	padding-right: 0;
 }
 .top-wrapper {
 	margin-bottom: 0!important;

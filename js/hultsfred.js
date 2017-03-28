@@ -472,8 +472,8 @@ function readMoreToggle(el){
 
 
 
-//Webkit använder sig av ett annat sätt att mäta brädden på skärmen,
-//om inte webbläsaren använder webkit så kompenseras det med värdet 17
+//Webkit anvï¿½nder sig av ett annat sï¿½tt att mï¿½ta brï¿½dden pï¿½ skï¿½rmen,
+//om inte webblï¿½saren anvï¿½nder webkit sï¿½ kompenseras det med vï¿½rdet 17
 var scrollbar = $.browser.webkit ? 0 : 17;
 var responsive_lap_start = 541;
 var responsive_desk_start = 970;
@@ -842,11 +842,20 @@ $(document).ready(function(){
 		$(".searchnavigation").toggleClass("unhidden");
 		ev.preventDefault();
 	});
+    /* visa meny */
 	$(".js-show-menu").unbind("click").bind("click",function(ev) {
-		$(".category-navigation").toggleClass("unhidden");
-		$(".home .main-sub-menu").toggleClass("unhidden");
-		ev.preventDefault();
-	});
+        ev.preventDefault();
+        if ($(".hultsfred-menu").length > 0) {
+            $(".hultsfred-menu").toggleClass("unhidden");
+            addExpandButtons();
+        }
+    });
+	/*$(".js-show-main-sub-menu").unbind("click").bind("click",function(ev) {
+        ev.preventDefault();
+        $(".category-navigation").toggleClass("unhidden");
+        $(".home .main-sub-menu").toggleClass("unhidden");
+	});*/
+
 	/* end new-menu */
 	$(".js-show-main-menu").unbind("click").bind("click",function(ev) {
 		$(".main-menu").toggleClass("unhidden");
@@ -869,12 +878,13 @@ $(document).ready(function(){
 		}
 	});
 	$(".js-show-main-sub-menu").unbind("click").bind("click",function(ev) {
-		$(".category-navigation").toggleClass("unhidden");
 		ev.preventDefault();
+		//$(".main-sub-menu").toggleClass("unhidden");
+		$(".category-navigation").toggleClass("unhidden");
 	});
 	$(".js-show-search").unbind("click").bind("click",function(ev) {
-		$(".searchnavigation").toggleClass("unhidden");
 		ev.preventDefault();
+		$(".searchnavigation").toggleClass("unhidden");
 	});
 
 	
@@ -1078,7 +1088,7 @@ $(document).ready(function(){
 
 							});
 						}); 
-						 //$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sök #content", function() { 
+						 //$("#primary").load("/wordpress/?s="+$('#s').val()+"&submit=Sï¿½k #content", function() { 
 						 // $(this).find('.readMoreToggleButton').each( function(){ 
 						 // 
 						 // initToggleReadMore(this); 
@@ -1140,7 +1150,7 @@ $(document).ready(function(){
 	*/
 	
 	
-	//Skriver ut skärmens storlek
+	//Skriver ut skï¿½rmens storlek
 	/*log( "$(window).width = " + $(window).width() + ", " +
 		"MQ Screensize = " + ($(window).width() + scrollbar) 
 	);*//*
@@ -1664,7 +1674,7 @@ $(window).resize(function() {
 			alert("test");
 		}*/
 		
-		//Skriver ut skärmens storlek
+		//Skriver ut skï¿½rmens storlek
 		/*log( $(window).height() + " $(window).width = " + $(window).width() + ", " +
 			"MQ Screensize = " + ($(window).width() + scrollbar) 
 		);*/
@@ -1854,6 +1864,58 @@ var filter_search = function(el) {
 		
 	}*/
 } // end function filter_search
+
+
+/* add expand-ul buttons helper function */
+var firstRunExpandButtons = true;
+var addExpandButtons = function () {
+    if (firstRunExpandButtons) {
+        firstRunExpandButtons = false;
+        /* add button */
+        if ($(".hultsfred-menu").length > 0) {
+            $(".hultsfred-menu ul").each(function(e){
+                var prevel = $(this).prev(); 
+                if ($(prevel).is("a")) {
+                    if ($(this).has("li").length > 0) {
+                        if ($(this).is(":visible")) {
+                            $(prevel).after('<button class="js-expand expand-button expanded">-</button>');
+                        }
+                        else {
+                            $(prevel).after('<button class="js-expand expand-button">+</button>');
+                        }
+                    }
+                }
+
+            })
+        }
+        /* add click-action */
+        $(".hultsfred-menu .js-expand").click(function(ev) {
+           if($(this).hasClass("expanded")) {
+               $(this).html("+").toggleClass("expanded");
+               $(this).next().fadeToggle(200);
+           }
+           else {
+               $(this).html("-").toggleClass("expanded");
+               $(this).next().fadeToggle(200);
+           }
+        });
+        $(".hultsfred-menu .js-expand-who").click(function(ev) {
+           if($(this).next().hasClass("expanded")) {
+               $(this).next().html("+");
+               $(this).next().toggleClass("expanded");
+               $(this).parent().find("ul").first().fadeToggle(200);
+           }
+           else {
+               $(this).next().html("-");
+               $(this).next().toggleClass("expanded");
+               $(this).parent().find("ul").first().fadeToggle(200);
+           }
+        });
+
+    }
+
+} /* end addExpandButtons */
+
 
 })(jQuery);
 

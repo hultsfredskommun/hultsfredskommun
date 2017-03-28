@@ -126,7 +126,8 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[pre_topmenu_html]">HTML f&ouml;re topmenu</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[pre_topmenu_html]"><?php echo $options['pre_topmenu_html']; ?></textarea></p>
 			<p><label for="hk_theme[post_topmenu_html]">HTML efter topmenu</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[post_topmenu_html]"><?php echo $options['post_topmenu_html']; ?></textarea></p>
 			<p><input type="checkbox" name="hk_theme[topmenu_google_translate]" value="1"<?php checked( 1 == $options['topmenu_google_translate'] ); ?> /> <label for="hk_theme[topmenu_google_translate]">Visa Google translate i toppmeny.</label></p>
-
+            <p><input type="checkbox" name="hk_theme[new_mobile_menu]" value="1"<?php checked( 1 == $options['new_mobile_menu'] ); ?> /> <label for="hk_theme[new_mobile_menu]">EN mobilmeny istället för delad.</label></p>
+			
 			
 			<h3>Extra loggor</h3>
 			<p><label for="hk_theme[right_logo_html]">HTML vid eller ist&auml;llet för logo2</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[right_logo_html]"><?php echo $options['right_logo_html']; ?></textarea></p>

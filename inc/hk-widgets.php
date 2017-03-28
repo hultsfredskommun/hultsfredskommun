@@ -905,7 +905,7 @@ class HK_tags_widget extends WP_Widget {
 			if ($instance['title'] != "") {
 				echo "<h2 class='widget-title'>" . $instance['title'] . "</h2>";
 			}
-			displayTagFilter(false, "", true, "gtm-tw-taglink");
+			hk_displayTagFilter(false, "", true, "gtm-tw-taglink");
 			echo "</aside>";
 
 		} /* END if show window cat */

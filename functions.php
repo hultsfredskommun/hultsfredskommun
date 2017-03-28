@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "5.2");
+define("HK_VERSION", "5.3");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -45,7 +45,9 @@ if ( ! isset( $default_settings ) ) {
 								'hide_articles_in_subsubcat' => $hk_options["hide_articles_in_subsubcat"],
 								'category_slideshow_thumbnail_size' => $hk_options["category_slideshow_thumbnail_size"],
 								'show_articles' => true,
-								'video_thumbnail_image' => $hk_options["video_thumbnail_image"]
+								'video_thumbnail_image' => $hk_options["video_thumbnail_image"],
+								'new_mobile_menu' => $hk_options["new_mobile_menu"],
+                              
 							);
 
 	/* browser check */
@@ -1199,14 +1201,15 @@ function hk_get_category_tags($varcat = "") {
 /*
  * Generate tag link in tag navigation (wrapped in <li>)
  */
-function hk_generate_tag_link($tagitem, $a_class = "") {
+function hk_generate_tag_link($tagitem, $a_class = "", $term_id = "") {
 	$currtagslug = $tagitem->tag_slug;
 	$tags_filter = get_query_var("tag");
 	
 	
-	$term_id = get_query_var("cat"); // just current cat
-	//$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
-	
+    if ($term_id == "") {
+        $term_id = get_query_var("cat"); // get current cat
+	   //$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
+    }
 	
 	$orderby = (isset($_REQUEST["orderby"]))?$_REQUEST["orderby"]:"";
 	if ($orderby != "") {
@@ -1334,6 +1337,358 @@ class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
 	
 	}  
 }
+
+// new topmenu walker to get second row of top menu
+class hk_newtopmenu_walker_nav_menu extends Walker_Nav_Menu {
+	  
+	// add classes to ul sub-menus
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
+		$indent = str_repeat("\t", $depth);
+		$output .= "\n$indent<ul class=\"sub-menu\">\n";
+	}
+	function end_lvl( &$output, $depth = 0, $args = array() ) {
+        $indent = str_repeat("\t", $depth);
+		$output .= "$indent</ul>\n";
+	}
+	// add main/sub classes to li's and links
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		global $wp_query;
+		
+		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
+
+		// depth dependent classes
+		$depth_classes = array(
+			( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
+			( $depth >=2 ? 'sub-sub-menu-item' : '' ),
+			( $depth % 2 ? 'menu-item-odd' : 'menu-item-even' ),
+			'menu-item-depth-' . $depth
+		);
+		$depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
+	  
+		// passed classes
+		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
+	  
+		// current category classes
+		$cat_class = ($item->object == "category" && $item->object_id == $args->current_category) ? "current-menu-item" : "";
+
+		// build html
+		$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . ' ' . $cat_class . '">';
+	  
+		// link attributes
+		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+		$attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
+	  
+		$item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
+			$args->before,
+			$attributes,
+			$args->link_before,
+			apply_filters( 'the_title', $item->title, $item->ID ),
+			$args->link_after,
+			$args->after
+		);
+		//echo "<br>";
+		//print_r($item);
+	  
+		// build html
+		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+		
+		// add categories
+		if ($depth == 1) {
+			//$output .= "<ul data-depth='depth-$depth-".$item->object_id."'><li>";
+			$output .= hk_newtop_categories($item->object_id);        
+			//$output .= "</li></ul>";
+		}
+	}
+	function end_el( &$output, $item, $depth = 0, $args = array() ) {
+		$output .= "</li>";
+	}  
+}
+function hk_newtop_categories($currentcat) {
+	global $post, $default_settings;
+
+	$output = "";
+	
+	// get category
+    $cat = get_query_var("cat");
+    $hk_mobilemenu_walker = new hk_mobilemenu_walker();
+	$args = array(
+		'orderby'            => 'name',
+		'order'              => 'ASC',
+		'style'              => 'list',
+		'hide_empty'         => 0,
+		'use_desc_for_title' => 1,
+		'child_of'           => $currentcat,
+		'hierarchical'       => true,
+		'title_li'           => '',
+		'show_option_none'   => '',
+		'echo'               => 0,
+		'depth'              => 3,
+		'taxonomy'           => 'category',
+		'exclude'			 => $default_settings["hidden_cat"],
+		'walker'			 => $hk_mobilemenu_walker,
+		'current_category'	 => $cat
+	);
+	
+	//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
+
+	$output .= /*"cat: $cat - $currentcat - $parentCat - */"<ul class='parent'>"; 
+	/*if ($parentCat == $cat) {
+		$currentcatclass = 'current-cat';
+	}*/
+	//$output .= "<ul><li class='heading $currentcatclass current-cat-parent cat-has-children'>";//<a href='#' class='cat-icon'><a href='".get_category_link($currentcat)."'>".get_the_category_by_ID($currentcat)."</a></li></ul></li>";
+	$output .= wp_list_categories( $args );
+	//$output .= "</li></ul>"; 
+
+    /* show tags */
+	// TODO - handle tags if more than one category!!
+	$output .= hk_displayTagFilter(false, "more-navigation", false, "", $currentcat, true);
+
+	$output .= "</ul>"; 
+	
+		
+		
+	return $output;
+	
+}
+
+
+
+
+// mobile menu walker
+class hk_mobilemenu_walker extends Walker_Category {
+
+    public $parent_cat = [];
+    
+	/**
+	 * What the class handles.
+	 *
+	 * @since 2.1.0
+	 * @access public
+	 * @var string
+	 *
+	 * @see Walker::$tree_type
+	 */
+	public $tree_type = 'category';
+
+	/**
+	 * Database fields to use.
+	 *
+	 * @since 2.1.0
+	 * @access public
+	 * @var array
+	 *
+	 * @see Walker::$db_fields
+	 * @todo Decouple this
+	 */
+	public $db_fields = array ('parent' => 'parent', 'id' => 'term_id');
+
+	/**
+	 * Starts the list before the elements are added.
+	 *
+	 * @since 2.1.0
+	 * @access public
+	 *
+	 * @see Walker::start_lvl()
+	 *
+	 * @param string $output Used to append additional content. Passed by reference.
+	 * @param int    $depth  Optional. Depth of category. Used for tab indentation. Default 0.
+	 * @param array  $args   Optional. An array of arguments. Will only append content if style argument
+	 *                       value is 'list'. See wp_list_categories(). Default empty array.
+	 */
+	public function start_lvl( &$output, $depth = 0, $args = array() ) {
+		if ( 'list' != $args['style'] )
+			return;
+
+		$indent = str_repeat("\t", $depth);
+		$output .= "$indent<ul class='children'>\n";
+	}
+
+	/**
+	 * Ends the list of after the elements are added.
+	 *
+	 * @since 2.1.0
+	 * @access public
+	 *
+	 * @see Walker::end_lvl()
+	 *
+	 * @param string $output Used to append additional content. Passed by reference.
+	 * @param int    $depth  Optional. Depth of category. Used for tab indentation. Default 0.
+	 * @param array  $args   Optional. An array of arguments. Will only append content if style argument
+	 *                       value is 'list'. See wp_list_categories(). Default empty array.
+	 */
+	public function end_lvl( &$output, $depth = 0, $args = array() ) {
+		if ( 'list' != $args['style'] )
+			return;
+
+		$indent = str_repeat("\t", $depth);
+        if (!empty($this->parent_cat[$depth+1])) {
+            //$output .= "$indent<li>as fd " . $this->parent_cat . "</li>";
+            $output .= hk_displayTagFilter(false, "more-navigation", false, "", $this->parent_cat[$depth+1], true);
+        }
+
+		$output .= "$indent</ul>\n";
+	}
+
+	/**
+	 * Starts the element output.
+	 *
+	 * @since 2.1.0
+	 * @access public
+	 *
+	 * @see Walker::start_el()
+	 *
+	 * @param string $output   Passed by reference. Used to append additional content.
+	 * @param object $category Category data object.
+	 * @param int    $depth    Optional. Depth of category in reference to parents. Default 0.
+	 * @param array  $args     Optional. An array of arguments. See wp_list_categories(). Default empty array.
+	 * @param int    $id       Optional. ID of the current category. Default 0.
+	 */
+	public function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
+		/** This filter is documented in wp-includes/category-template.php */
+		$cat_name = apply_filters(
+			'list_cats',
+			esc_attr( $category->name ),
+			$category
+		);
+
+		// Don't generate an element if the category name is empty.
+		if ( ! $cat_name ) {
+			return;
+		}
+
+		$link = '<a href="' . esc_url( get_term_link( $category ) ) . '" ';
+		if ( $args['use_desc_for_title'] && ! empty( $category->description ) ) {
+			/**
+			 * Filter the category description for display.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $description Category description.
+			 * @param object $category    Category object.
+			 */
+			$link .= 'title="' . esc_attr( strip_tags( apply_filters( 'category_description', $category->description, $category ) ) ) . '"';
+		}
+
+		$link .= '>';
+		$link .= $cat_name . '</a>';
+
+		if ( ! empty( $args['feed_image'] ) || ! empty( $args['feed'] ) ) {
+			$link .= ' ';
+
+			if ( empty( $args['feed_image'] ) ) {
+				$link .= '(';
+			}
+
+			$link .= '<a href="' . esc_url( get_term_feed_link( $category->term_id, $category->taxonomy, $args['feed_type'] ) ) . '"';
+
+			if ( empty( $args['feed'] ) ) {
+				$alt = ' alt="' . sprintf(__( 'Feed for all posts filed under %s' ), $cat_name ) . '"';
+			} else {
+				$alt = ' alt="' . $args['feed'] . '"';
+				$name = $args['feed'];
+				$link .= empty( $args['title'] ) ? '' : $args['title'];
+			}
+
+			$link .= '>';
+
+			if ( empty( $args['feed_image'] ) ) {
+				$link .= $name;
+			} else {
+				$link .= "<img src='" . $args['feed_image'] . "'$alt" . ' />';
+			}
+			$link .= '</a>';
+
+			if ( empty( $args['feed_image'] ) ) {
+				$link .= ')';
+			}
+		}
+
+		if ( ! empty( $args['show_count'] ) ) {
+			$link .= ' (' . number_format_i18n( $category->count ) . ')';
+		}
+		if ( 'list' == $args['style'] ) {
+			$output .= "\t<li";
+			$css_classes = array(
+				'cat-item',
+				'cat-item-' . $category->term_id,
+			);
+
+			if ( ! empty( $args['current_category'] ) ) {
+				// 'current_category' can be an array, so we use `get_terms()`.
+				$_current_terms = get_terms( $category->taxonomy, array(
+					'include' => $args['current_category'],
+					'hide_empty' => false,
+				) );
+
+				foreach ( $_current_terms as $_current_term ) {
+					if ( $category->term_id == $_current_term->term_id ) {
+						$css_classes[] = 'current-cat';
+					} elseif ( $category->term_id == $_current_term->parent ) {
+						$css_classes[] = 'current-cat-parent';
+					}
+					while ( $_current_term->parent ) {
+						if ( $category->term_id == $_current_term->parent ) {
+							$css_classes[] =  'current-cat-ancestor';
+							break;
+						}
+						$_current_term = get_term( $_current_term->parent, $category->taxonomy );
+					}
+				}
+			}
+
+			/**
+			 * Filter the list of CSS classes to include with each category in the list.
+			 *
+			 * @since 4.2.0
+			 *
+			 * @see wp_list_categories()
+			 *
+			 * @param array  $css_classes An array of CSS classes to be applied to each list item.
+			 * @param object $category    Category data object.
+			 * @param int    $depth       Depth of page, used for padding.
+			 * @param array  $args        An array of wp_list_categories() arguments.
+			 */
+			$css_classes = implode( ' ', apply_filters( 'category_css_class', $css_classes, $category, $depth, $args ) );
+
+			$output .=  ' class="' . $css_classes . '"';
+			$output .= ">$link\n";
+		} elseif ( isset( $args['separator'] ) ) {
+			$output .= "\t$link" . $args['separator'] . "\n";
+		} else {
+			$output .= "\t$link<br />\n";
+		}
+        //save current parent
+        $this->parent_cat[$depth] = $category->category_parent;
+        //$output .= $category->cat_ID;
+	}
+
+	/**
+	 * Ends the element output, if needed.
+	 *
+	 * @since 2.1.0
+	 * @access public
+	 *
+	 * @see Walker::end_el()
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @param object $page   Not used.
+	 * @param int    $depth  Optional. Depth of category. Not used.
+	 * @param array  $args   Optional. An array of arguments. Only uses 'list' for whether should append
+	 *                       to output. See wp_list_categories(). Default empty array.
+	 */
+	public function end_el( &$output, $page, $depth = 0, $args = array() ) {
+		if ( 'list' != $args['style'] )
+			return;
+
+		$output .= "</li>\n";
+	}
+}
+
+
 
 // topmenu walker to get second row of top menu
 class hk_topmenu_walker_nav_menu extends Walker_Nav_Menu {

@@ -5,6 +5,11 @@
 	//@extend .palm-one-whole;
 	@extend .one-whole;
 }
+@include media-query(palm) {
+.firstpage-top-content {
+    margin-top: $base-spacing-unit;
+}
+}
 .firstpage-sidebar {
 	@extend .g;
 	@extend .desk-one-quarter;

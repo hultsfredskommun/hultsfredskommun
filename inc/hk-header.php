@@ -111,7 +111,7 @@
 	<?php }  ?>
 	</div>
 	<!--googleoff: all-->
-	<?php if (is_sub_category_firstpage()) : ?>
+	<?php if (false) : /* REMOVE OLD RESPONSVE MENU if (is_sub_category_firstpage()) : */ ?>
 		<div class="responsive-menu">
 			<ul class="main-sub-menu"><li><a class="js-show-main-menu" href="#">Vem &auml;r du?<span class="expand-icon">+</span></a></li></ul>
 			<?php /* <a class="js-show-search" href="#"><span class="search-icon"></span></a> */ ?>
@@ -125,7 +125,8 @@
 				echo "<div class='important-widget'>&nbsp;Du m&aring;ste s&auml;tta meny under <i>Utseende -> Menyer</i>.</div>";
 			}
 			$unhidden_class = (is_sub_category_firstpage())?"unhidden":"";
-			hk_navmenu_navigation("primary", $cat, "primarymenu", $unhidden_class);
+			hk_mobile_navmenu_navigation("primary", $cat, "primarymenu", $unhidden_class);
+			hk_navmenu_old_navigation("primary", $cat, "primarymenu");
 		?>
 	</nav>
 	<?php endif; // not is search ?>
