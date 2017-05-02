@@ -212,7 +212,8 @@ function hk_formatTinyMCE($in)
 	//$in['paste_retain_style_properties'] = 'none';
 	$in['paste_text_sticky'] = true;
 	$in['paste_text_sticky_default'] = true;
-	$in['theme_advanced_blockformats'] = 'p,h2,h3';
+	//$in['theme_advanced_blockformats'] = 'p,h2,h3';
+    $in['block_formats'] = 'Stycke=p; Rubrik 2=h2; Rubrik 3=h3; Markerad=pre';
 	$in['theme_advanced_buttons1']='formatselect,bold,italic,removeformat,|,bullist,numlist,indent,outdent,|,charmap,|,link,unlink,|,undo,redo,|,valideratext,|,wp_fullscreen, wp_adv';
 	$in['theme_advanced_buttons2']='table,row_props,cell_props,row_before,row_after,delete_row,|,col_before,col_after,delete_col,|,split_cells,merge_cells';
 	$in['theme_advanced_buttons3']='';

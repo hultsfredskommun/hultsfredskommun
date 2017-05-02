@@ -13,16 +13,17 @@ html .mceContentBody {
 	line-height: 1.625;
 }
 body {
-	color: #333;
-	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 14px; 
+	color: #3e3e3f;
+	font-family: "Segoe UI", Arial, sans-serif;
+	font-size: 15px; 
 	font-weight: 300;
-	line-height: 1.625;
+	line-height: 24px;
 }
 
 /* Headings */
 h1,h2,h3,h4,h5,h6 {
 	clear: none;
+	font-family: Arial, sans-serif;
 	padding: .4em 0 .3em;	
 }
 hr {
@@ -37,13 +38,19 @@ h1
 }
 h2
 {
-	font-size: 1.2em;
+	font-size: 20px;
 	font-weight: bold;
+    line-height: 24px;
+    margin: 0 0 6px 0;
+    padding: 0;
 }
 h3
 {
-	font-size: 1.1em;
+	font-size: 18px;
 	font-weight: bold;
+    line-height: 24px;
+    margin: 0 0 6px 0;
+    padding: 0;
 }
 h4
 {
@@ -63,10 +70,14 @@ h6
 
 /* Text elements */
 p, ul, ol, dl {
-	font-weight: 300;
+	font-weight: 400;
 }
 p, table {
 	margin-bottom: 0.625em;
+}
+p {
+    margin: 0 0 24px 0;
+    padding: 0;
 }
 ul, ol {
 	margin: 0em 0.4em 0.625em 2em;
@@ -107,11 +118,11 @@ cite, em, i {
 	font-style: italic;
 }
 pre {
-	background: #f4f4f4;
-	font: 13px "Courier 10 Pitch", Courier, monospace;
-	line-height: 1.5;
-	margin-bottom: 1.625em;
-	padding: 0.75em 1.625em;
+	background: #fff;
+	font: 15px monospace, serif;
+	line-height: 24px;
+	margin: 0 0 24px 0;
+	padding: 0;
 }
 code, kbd, samp, var {
 	font: 13px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
