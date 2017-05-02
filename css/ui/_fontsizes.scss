@@ -33,22 +33,22 @@ h1, h2, h3, h4, h5, h6 {
 	@extend .header-font;
 }
 @include media-query(portable){
-	h1, .alpha/*--#{$state}*/{
+	.alpha/*--#{$state}*/{
 		@include font-size($h2-size);
 	}
-	h2, .beta{
+	.beta{
 		@include font-size($h3-size);
 	}
-	h3, .gamma{
+	.gamma{
 		@include font-size($h4-size);
 	}
-	h4, .delta{
+	.delta{
 		@include font-size($h5-size);
 	}
-	h5, body,.epsilon{
+	body,.epsilon{
 		@include font-size($h6-size);
 	}
-	h6, .zeta{
+	.zeta{
 		@include font-size($milli-size);
 	}
 	.milli{
@@ -56,6 +56,26 @@ h1, h2, h3, h4, h5, h6 {
 	}
 
 }
+
+/* override h2 - h6 size */
+h2 {
+    @include font-size($h3-size);
+}
+h3, h4, h5, h6 {
+    @include font-size($base-font-size);
+}
+h4, h5, h6 {
+    @extend .font-style-italic;
+}
+@include media-query(portable){
+    h1 {
+        @include font-size($h3-size);
+    }
+    h2 {
+        @include font-size($h5-size);
+    }
+}
+
 .gamma_responsive {
 	@extend .gamma;
 	@include media-query(palm) {
