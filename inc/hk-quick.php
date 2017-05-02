@@ -179,12 +179,18 @@ function hk_view_quick_links() {
 								elseif ( get_row_layout() == 'extern' ) {
 									// prepend http:// if not there already
 									$url = get_sub_field('extern');
-									if ((substr_compare($url, '/', 0, 1) != 0) && (substr_compare($url, 'http', 0, 4) != 0)) {
+                                    if ((substr_compare($url, '/', 0, 1) != 0) && (substr_compare($url, 'http', 0, 4) != 0)) {
 										$url = 'http://' . $url;
 									}
 								}
 								elseif ( get_row_layout() == 'fil' ) {
-									$url =  wp_get_attachment_url(get_sub_field('file')); 
+                                    $value = get_sub_field('file');
+                                    if (!empty($value)) {
+                                        if (empty($description)) {
+                                            $description = $value["description"];
+                                        }
+                                        $url = $value["url"];
+                                    }
 								}
 								
 								if (!empty($button) && !empty($imagediv)) {
