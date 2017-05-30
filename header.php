@@ -28,6 +28,9 @@ if (in_category($hk_options["hidden_cat"])) {
 	die("Inte synlig.");
 }
  
+/* get showfromchildren recursive setting */
+$catvalue = "category_" . get_query_var("cat");
+$default_settings['showfromchildren'] = ((get_field("category_as_filter", $catvalue)=="")?false:true);
 
 if ($hk_options["lang"] == "") {
 	$lang = 'lang="sv-SE"';
@@ -170,8 +173,9 @@ $firstpageClass =(is_sub_category_firstpage() && get_query_var("tag") == "") ? "
 $printpageClass = ($_REQUEST["print"] == 1) ? "print":"";
 $menuversion = (empty($default_settings["new_mobile_menu"]))?"old":"new";//"new"; //new or old
 $hide_leftmenu_class = ($hk_options['hide_leftmenu']) ? "hide-left-menu":"";
+$dynamic_post_load_class = ($hk_options['use_dynamic_posts_load_in_category'] == 1) ? "hk-js-dynamic-posts-load":"";
 ?>
-<body <?php body_class($firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu " . $hide_leftmenu_class ); ?>>
+<body <?php body_class($dynamic_post_load_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu " . $hide_leftmenu_class ); ?>>
 <?php echo $hk_options['in_topbody_section']; ?>
 <div id="version-2" style="display:none; visibility:hidden"></div>
 <div id="responsive-info"></div>

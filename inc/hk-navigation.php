@@ -18,7 +18,7 @@ function hk_postcount() {
 			$class = "nolink";
 		}
 		if ($default_settings["hide_articles_in_subsubcat"] != 1  || !is_sub_sub_category_firstpage()) :
-			echo "<a class='$class float--right' href='$url'>Visar " . $wp_query->post_count;
+			echo "<span class='postcount $class float--right' href='$url'>Visar <span class='count'>" . $wp_query->post_count . "</span>";
 			if ($wp_query->max_num_pages > 1) {
 				echo " av " . $wp_query->found_posts;
 			}
@@ -28,9 +28,9 @@ function hk_postcount() {
 				echo " artiklar";
 			if ($wp_query->max_num_pages > 1) {
 				if ($paged == 0) { $p = 1; } else { $p = $paged; }
-				echo " | Sida " . $p . " av " . $wp_query->max_num_pages . "";
+				echo "<span class='pagecountinfo'> | Sida " . $p . " av " . $wp_query->max_num_pages . "</span>";
 			}
-			echo "</a>";
+			echo "</span>";
 		endif;
 	}
 }

@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "5.4");
+define("HK_VERSION", "5.5");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -27,6 +27,7 @@ $hk_options = get_option('hk_theme');
 	
 /* SET DEFAULT SETTINGS */
 if ( ! isset( $default_settings ) ) {
+	
 	$default_settings = array(	'thumbnail-image' => array(270, 153, true),
 								'featured-image' => array(605, 353, true), /* array(660, 396, true) */
 								'slideshow-image' => array(980, 551, true),
@@ -41,13 +42,13 @@ if ( ! isset( $default_settings ) ) {
 								'show_tags' => (!isset($hk_options["show_tags"]) || $hk_options["show_tags"] == "")?1:$hk_options["show_tags"],
 								'sticky_number' => 1000,
 								'show_most_viewed_in_subsubcat' => $hk_options["show_most_viewed_in_subsubcat"],
-								'show_quick_links_in_subsubcat' => $hk_options["show_quick_links_in_subsubcat"],
+								'use_dynamic_posts_load_in_category' => $hk_options["use_dynamic_posts_load_in_category"],
 								'hide_articles_in_subsubcat' => $hk_options["hide_articles_in_subsubcat"],
 								'category_slideshow_thumbnail_size' => $hk_options["category_slideshow_thumbnail_size"],
 								'show_articles' => true,
 								'video_thumbnail_image' => $hk_options["video_thumbnail_image"],
 								'new_mobile_menu' => $hk_options["new_mobile_menu"],
-                              
+
 							);
 
 	/* browser check */
@@ -210,6 +211,7 @@ function hk_pre_get_posts( $query ) {
 			$wp_query->set( 'cat', $cat);
 		}
     }
+
 }
 add_action( 'pre_get_posts', 'hk_pre_get_posts' );
 
@@ -232,7 +234,6 @@ if ( ! function_exists( 'hk_setup' ) ):
  *
  */
 function hk_setup() {
-
 
 	/* Make Twenty Eleven available for translation.
 	 * Translations can be added to the /languages/ directory.
@@ -460,7 +461,8 @@ function setup_javascript_settings() {
 	$tags = get_query_var("tag");
 	$search = get_query_var("s");
 	$orderby = get_query_var("orderby");
-	$filter = array("cat" => $cat, "tags" => $tags, "s" => $search, "orderby" => $orderby);
+	$paged = get_query_var("paged");
+	$filter = array("cat" => $cat, "paged" => $paged, "orderby" => $orderby, "showfromchildren" => $default_settings["showfromchildren"]);
 	//id 381 blog_id 2
 	// Add some parameters for the dynamic load more posts JS.
 	$hultsfred_array = array(
@@ -1079,12 +1081,15 @@ function hk_getSubNavMenuIdArray($topmenu, $menu_name) {
 // return all the category children of category $cat in id array form
 function hk_getChildrenIdArray($cat) {
 	if (empty($cat)) return array();
-	$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
-	$retArray = array();
-	foreach($children as $child) {
-		$retArray[] = $child->term_id;
-	}
-	return $retArray;
+	$children = get_term_children($cat, 'category');
+    return $children;
+    //OLD $children = get_categories(array('child_of' => $cat, 'hide_empty' => false));
+    //print_r($children);
+	//$retArray = array();
+	//foreach($children as $child) {
+	//	$retArray[] = $child->term_id;
+	//}
+	//return $retArray;
 }
 
 // get parents from post, returns array(topmenucategory, submenucategory, category)
@@ -2336,5 +2341,100 @@ function hk_amp_add_footer( $amp_template ) {
 	echo "<div class='amp-wp-content  amp-wp-footer'>";
 	include("inc/hk-aside-content.php");
 	echo "</div>";
+}
+
+/* helper to query wp_query category arguments, used in posts_load.php and hk-category.php */
+function hk_get_cat_query_args($cat, $paged=1, $showfromchildren = false, $orderby = "", $shownposts = "") {
+
+    $options = get_option("hk_theme");
+
+    /* put category-children in array */
+    if ($showfromchildren) {
+        $catarray = hk_getChildrenIdArray($cat);
+        $catarray[] = $cat; //add current category
+    }
+    
+
+    /* check if there are posts to be hidden */
+    $args = array(	'posts_per_page' => -1,
+                    'meta_query' => array(
+                                        array(
+                                            'key' => 'hk_hide_from_category',
+                                            'compare' => '=',
+                                            'value' => '1'
+                                        )
+                                    )
+            );
+    if ($showfromchildren) {
+        $args['category__or'] = $catarray;
+    }
+    else {
+        $args['category__and'] = array($cat);
+    }
+
+    $dyn_query = new WP_Query();
+    $dyn_query->query($args);
+
+    /* Start the hidden posts Loop */
+    $hiddenarr = array();
+    while ( $dyn_query->have_posts() ) : $dyn_query->the_post();
+        $hiddenarr[] = get_the_ID();
+    endwhile;
+    /* END get hidden */
+	
+	/* remove already shown posts */
+	if (!empty($shownposts) || $shownposts == "") {
+		$hiddenarr = array_merge($hiddenarr, $shownposts);
+	}
+
+    /* do category list query args */
+    $args = array(	'paged' => $paged,
+                    'post__not_in' => $hiddenarr,
+                 );
+
+    /* from wich categories */
+    if ($showfromchildren) {
+        $args['category__in'] = $catarray;
+    }
+    else {
+        $args['category__and'] = array($cat);
+    }
+    
+    /* if orderby not is set, check if standard order should be date in settings */
+    if ($orderby == "" && $cat != "" && in_array($cat, explode(",",$options["order_by_date"])) ) {
+        //$args['suppress_filters'] = 'true';
+        $args['orderby'] = 'date';
+        $args['order'] = 'DESC';
+    }
+    /* if orderby not is set, check if standard order should be alpha in settings */
+    else if ($orderby == "" && $cat != "" && in_array($cat, explode(",",$options["order_by_alpha"])) ) {
+        $args['orderby'] = 'title';
+        $args['order'] = 'ASC';
+    }
+    /* if orderby is set manually in url */
+    else if ($orderby == "latest") {
+        $args['orderby'] = 'date';
+        $args['order'] = 'DESC';				
+    }
+    /* if orderby is set manually in url */
+    else if ($orderby == "oldest") {
+        $args['orderby'] = 'date';
+        $args['order'] = 'ASC';				
+    }
+    /* standard order if views plugin exist */
+    else if (function_exists( 'views_orderby' )) {
+        $args['meta_key'] = 'views'; 
+        $args['orderby'] = 'meta_value_num';
+        $args['order'] = 'DESC';	
+    }
+    /* else fallback to order by date DESC */
+    else {
+        $args['orderby'] = 'date';
+        $args['order'] = 'DESC';				
+    }
+    /* END get query args */
+
+    //print_r($args);
+    return $args;
 }
 ?>

@@ -22,6 +22,7 @@
  * Logo
  * Logo 2 (with link and alt-text settings)
  * Logo in footer
+ * Infinite scroll option for category list
 * Shortcode to add [karta] to post.
 * Google analytics if id added in settings
 * Widget areas
