@@ -51,7 +51,6 @@ function hk_breadcrumb() {
 
 	if (!is_home() ) {
 		if ($cat != "") {
-			echo $cat;
 			$cats_str = get_category_parents($cat, false, '%#%', true);
 			$cats_array = explode('%#%', $cats_str);
 			$tag_link = "";
