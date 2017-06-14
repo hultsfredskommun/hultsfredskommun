@@ -28,9 +28,10 @@ if (in_category($hk_options["hidden_cat"])) {
 	die("Inte synlig.");
 }
  
-/* get showfromchildren recursive setting */
+/* get category_as_filter recursive setting */
 $catvalue = "category_" . get_query_var("cat");
-$default_settings['showfromchildren'] = ((get_field("category_as_filter", $catvalue)=="")?false:true);
+$default_settings['category_as_filter'] = ((get_field("category_as_filter", $catvalue)=="")?false:true);
+$default_settings['category_show_children'] = ((get_field("category_show_children", $catvalue)=="")?false:true);
 
 if ($hk_options["lang"] == "") {
 	$lang = 'lang="sv-SE"';
@@ -173,9 +174,12 @@ $firstpageClass =(is_sub_category_firstpage() && get_query_var("tag") == "") ? "
 $printpageClass = ($_REQUEST["print"] == 1) ? "print":"";
 $menuversion = (empty($default_settings["new_mobile_menu"]))?"old":"new";//"new"; //new or old
 $hide_leftmenu_class = ($hk_options['hide_leftmenu']) ? "hide-left-menu":"";
-$dynamic_post_load_class = ($hk_options['use_dynamic_posts_load_in_category'] == 1) ? "hk-js-dynamic-posts-load":"";
+$dynamic_post_load_class = ($hk_options['use_dynamic_posts_load_in_category'] == 1) ? "hk-js-dynamic-posts-load  dynamic-posts-load":"no-dynamic-posts-load";
+$category_as_filter_class = (!empty($default_settings["category_as_filter"]) && $default_settings["category_as_filter"] == 1) ? "hk-js-category-filter  category-filter":"no-category-filter";
+$category_show_children_class = (!empty($default_settings["category_show_children"]) && $default_settings["category_show_children"] == 1) ? "hk-js-category-show-children  category-show-children":"no-category-show-children";
+
 ?>
-<body <?php body_class($dynamic_post_load_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu " . $hide_leftmenu_class ); ?>>
+<body <?php body_class($category_show_children_class . " " . $category_as_filter_class . " " . $dynamic_post_load_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu " . $hide_leftmenu_class ); ?>>
 <?php echo $hk_options['in_topbody_section']; ?>
 <div id="version-2" style="display:none; visibility:hidden"></div>
 <div id="responsive-info"></div>

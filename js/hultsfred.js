@@ -541,14 +541,6 @@ var settings = new Array();
         if (isLessThanIE9) {
             $(".branding").before("<div style='padding: 12px; width: 100%; background: red; color: white;'>Du anv&auml;nder en gammal webbl&auml;sare. Vissa funktioner kommer inte fungera.</div>");
         }
-        /**
-         * SVG support
-         */
-        $(".js-svg-image").each(function() {
-            if ($(this).attr("data-svg-src") != "") {
-                $(this).attr("src", $(this).attr("data-svg-src"));
-            }
-        });
 
         /**
          * cleanup if dynamic load of posts
@@ -562,6 +554,23 @@ var settings = new Array();
             $(".breadcrumb .postcount").clone().appendTo(".pagecount-below");
             $(".pagecount-below .postcount").removeClass("float--right");
         }
+
+        /**
+         * filter function if category-filter is active
+         */
+        if ($("body").hasClass("hk-js-category-filter")) {
+
+        }
+
+        /**
+         * SVG support
+         */
+        $(".js-svg-image").each(function() {
+            if ($(this).attr("data-svg-src") != "") {
+                $(this).attr("src", $(this).attr("data-svg-src"));
+            }
+        });
+
 
         /**
          * debug count and version log 

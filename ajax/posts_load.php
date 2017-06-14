@@ -10,10 +10,11 @@
 	$orderby = $filter->orderby;
 	$cat = $filter->cat;
 	//$paged = $filter->paged;
-	$showfromchildren = $filter->showfromchildren;
+	$category_as_filter = $filter->category_as_filter;
+	$category_show_children = $filter->category_show_children;
 	$shownposts = $filter->shownposts;
 	
-	$args = hk_get_cat_query_args($cat, $paged, $showfromchildren, $orderby, $shownposts);
+	$args = hk_getCatQueryArgs($cat, $paged, $category_show_children, $orderby, $shownposts);
 	//print_r($args);
 	query_posts($args);
      

@@ -4,22 +4,21 @@
 		 */ 
 
 		global $default_settings;
-        $showfromchildren = $default_settings["showfromchildren"];
+        $category_as_filter = $default_settings["category_as_filter"];
+        $category_show_children = $default_settings["category_show_children"];
         $dynamic_posts_load = $default_settings["use_dynamic_posts_load_in_category"];
 
 
         // if filter is enabled on category (ACF in category)
-        if ($showfromchildren) {
-            echo "Kategorifilter &auml;r p&aring;.";
-            
+        if ($category_as_filter) {
+            echo "Kategorifilter &auml;r p&aring; (fungerar inte &auml;n)." . $category_as_filter . " - " . $dynamic_posts_load . "(visa underliggande kategorier: " . $category_show_children . ")";            
         }
 
 		if (!is_sub_category_firstpage()) { 
             
 			if ($cat != "") {
                 // get query args for category
-                $args = hk_get_cat_query_args($cat, $paged, $showfromchildren, $_REQUEST["orderby"]);
-                
+                $args = hk_getCatQueryArgs($cat, $paged, $category_show_children, $_REQUEST["orderby"], "", $_REQUEST["current-category-filter"]);
                 query_posts( $args );
                 
             } // end if cat is set

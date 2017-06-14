@@ -41,12 +41,17 @@ function hk_postcount() {
  **/
 
 function hk_breadcrumb() {
+	global $default_settings;
+	if ($default_settings["category_as_filter"]) {
+		return;
+	}
 	$search = get_query_var("s");
 	$cat = get_query_var("cat");
 	$tag = get_query_var("tag");
 
 	if (!is_home() ) {
 		if ($cat != "") {
+			echo $cat;
 			$cats_str = get_category_parents($cat, false, '%#%', true);
 			$cats_array = explode('%#%', $cats_str);
 			$tag_link = "";
@@ -447,17 +452,15 @@ function hk_navmenu_old_navigation($menu_name, $cat, $menu_class) {
 	}
 
 }
-
+/*
+ * Main navigation-function showing category menu navigation
+ */
 function hk_navigation() {
-	global $post, $default_settings;
-	
+	global $default_settings;
 	$options = get_option('hk_theme'); 
-
+	$category_as_filter = $default_settings["category_as_filter"];
 	$search = get_query_var("s");
-	$cat = get_query_var("cat");
-	$tags = get_query_var("tag");
-	$all_categories = array($cat);
-	
+
 	// hide menu if hide_leftmenu is set
 	if ($options['hide_leftmenu'] == 1) return;
 	
@@ -466,6 +469,254 @@ function hk_navigation() {
 	if ($search != "") {
 		echo "Du s&ouml;kte p&aring; " . $search . ".";
 	}
+
+	// show filter or normal menu
+	if ($category_as_filter) {
+		hk_filter_navigation(); 
+	}
+	else {
+		hk_menu_navigation();
+	}
+
+	echo "&nbsp;</nav></aside>";
+
+}
+
+
+/* menu when filtering selected */
+function hk_filter_navigation() {
+	global $post, $default_settings;
+	
+	$options = get_option('hk_theme'); 
+
+	$cat = get_query_var("cat");
+	$tags = get_query_var("tag");
+	$all_categories = array($cat);
+	
+
+	// if in category (filter not available in single or in tag)
+	if ($cat != "") {
+		$currentcat = '';
+		echo "<form method='get'>";
+
+		$usedParentIDs = array();
+		foreach ($all_categories as $cat) { 
+			$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
+			$currentparent = $cat;
+			$walker = new hk_Category_Filter_Walker();
+			$parentCat = hk_getMenuParent($cat);
+			if (!in_array($parentCat,$usedParentIDs)) {
+				$usedParentIDs[] = $parentCat; 
+				$args = array(
+					'orderby'            => 'name',
+					'order'              => 'ASC',
+					'style'              => 'list',
+					'hide_empty'         => 0,
+					'use_desc_for_title' => 1,
+					'child_of'           => $parentCat,
+					'hierarchical'       => true,
+					'title_li'           => '',
+					'show_option_none'   => '',
+					'echo'               => 1,
+					'depth'              => 3,
+					'taxonomy'           => 'category',
+					'exclude'			 => $default_settings["hidden_cat"],
+					'walker'			 => $walker,
+					'current_category'	 => $cat
+				);
+				
+				//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
+				echo "<ul class='parent'>"; 
+				if ($parentCat == $cat) {
+					$currentcat = 'current-cat';
+				}
+
+				echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'><a href='".get_category_link($parentCat)."'>".get_the_category_by_ID($parentCat)."</a></li>";
+				wp_list_categories( $args );
+				echo "</ul>"; 
+			}
+						
+			//hk_displayFilterTagFilter(false);
+
+			echo "<input type='submit' value='Filtrera' />";
+			echo "</form>";
+
+		}
+	}
+}
+// show tag filtering list
+/*function hk_displayFilterTagFilter($show_title = true, $ul_class="more-navigation", $echo = true, $a_class = "", $cat = "", $skip_ul_wrapper = false) {
+	global $default_settings;
+	$retValue = "";//cat: $cat " . get_query_var("cat");
+	if ($default_settings["show_tags"] != 0) :	
+			
+		if ($cat != "") {
+            $tags = hk_getCategoryTags($cat);
+        } else {
+            $tags = hk_getCategoryTags(get_query_var("cat"));
+        }
+        $tags_filter = get_query_var("tag");	
+			
+		if (!empty($tags) || !empty($tags_filter)) :
+            if (!$skip_ul_wrapper) {
+                $retValue .= "<ul class='$ul_class'>"; 
+            }
+            // show tag title
+			if ($show_title) {
+				$retValue .= "<li class='heading'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
+			}
+			
+			// helper to remember if all tag-filter-items has been seen 
+			if (!empty($tags_filter)) {
+				$tags_selected_and_visible = array();
+				$tag_array = explode(",",$tags_filter);
+				foreach( $tag_array as $tagslug) {
+					$tags_selected_and_visible[$tagslug] = false;
+				}
+			}
+
+			// show tag list 
+			foreach( $tags as $tagitem) {
+				$tags_selected_and_visible[$tagitem->tag_slug] = true;
+				$retValue .= hk_generateTagFilter($tagitem, $a_class, $cat);
+			}
+
+			// print if tag not exist in cat (check helper variable) 
+			foreach( $tags_selected_and_visible as $key => $value) {
+				if (!$value) {
+					$item = get_term_by("slug",$key,"post_tag", "OBJECT");
+					$tagitem = (object)array("tag_ID" => $item->term_id, "tag_name" => $item->name, "tag_slug" => $item->slug );
+					$retValue .= hk_generateTagFilter($tagitem, $a_class);
+				}
+			}
+			
+			if (!$skip_ul_wrapper) {
+			 $retValue .= "</ul>";
+            }
+		endif; // endif tags available
+		if ($echo) {
+			echo $retValue;
+		} else {
+			return $retValue;
+		}
+	endif;
+}
+
+/* Generate tag link in tag navigation (wrapped in <li>) */
+/*function hk_generateTagFilter($tagitem, $a_class = "", $term_id = "") {
+	$currtagslug = $tagitem->tag_slug;
+	$currtagid = $tagitem->tag_ID;
+	$tagsfilter = $_REQUEST["current-tag-filter"];
+	
+	
+    if ($term_id == "") {
+        $term_id = get_query_var("cat"); // get current cat
+	   //$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
+    }
+	
+	$orderby = (isset($_REQUEST["orderby"]))?$_REQUEST["orderby"]:"";
+	if ($orderby != "") {
+		$orderby = "&orderby=$orderby";
+	}
+	
+	if(!empty($tagsfilter) && in_array($currtagid, $tagsfilter)) {
+		$current_tag_selected = " checked";
+	}
+
+	
+	
+	if ($a_class != "") {
+		$a_class = "class='$a_class'";
+	}
+
+	$link = '<span ' . $a_class . '><input type="checkbox" '; 
+	$tag_name = $tagitem->tag_name; 
+	$link .= "name='current-tag-filter'"; 
+	$link .= $current_tag_selected; 
+	$link .= ' value="' . $tagitem->tag_ID . '" />'; 
+	$link .= $tag_name . "</span>"; 
+	
+	$output = "\t<li"; 
+	$class = 'atag-item tag-item-'.$tagitem->tag_ID; 
+	$icon = "";
+	$output .=  ' class="'.$class.'"'; 
+	$output .= ">$link</li>\n"; 
+	return $output;
+}*/
+
+// Walker class: Show which category and tag is selected
+class hk_Category_Filter_Walker extends Walker_Category {
+	function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) { 
+        extract($args); 
+		$current_category_filter = $_REQUEST["current-category-filter"];
+		
+		$tags_filter = get_query_var("tag");
+		if (!empty($tags_filter)) {
+			$tags_filter = "?tag=$tags_filter";
+		}
+		//$tags_filter = "";
+        $cat_name = esc_attr( $category->name); 
+		
+		
+		// set classes
+		$haschildclass = "";
+		if (count(get_term_children($category->term_id,"category")) > 0)
+			$haschildclass = " cat-has-children";
+        if ( isset($current_category) && $current_category ) 
+            $current_category_object = get_category( $current_category ); 
+		$class = 'cat-item cat-item-'.$category->term_id.$haschildclass; 
+		if ( isset($current_category) && $current_category && ($category->term_id == $current_category) ) 
+			$class .=  ' current-cat'; 
+		elseif ( isset($current_category_object) && $current_category_object && ($category->term_id == $current_category_object->parent) ) 
+			$class .=  ' current-cat-parent'; 
+		elseif ( hk_isParentOf($current_category_object->term_id, $category->term_id) ) 
+			$class .=  ' current-cat-parent current-cat-grandparent'; 
+		
+		
+		$selected = "";
+		if (!empty($current_category_filter) && in_array($category->term_id, $current_category_filter)) {
+			$selected = "checked";
+		}
+        $link = '<span><input type="checkbox" name="current-category-filter[]" value="' . $category->term_id . '" ' . $selected; 
+        $cat_name = apply_filters( 'list_cats', $cat_name, $category ); 
+        $link .= '>'; 
+
+        $link .= $cat_name . '</span>'; 
+        
+
+        if ( isset($show_count) && $show_count ) 
+            $link .= ' (' . intval($category->count) . ')'; 
+ 
+        if ( isset($show_date) && $show_date ) { 
+            $link .= ' ' . gmdate('Y-m-d', $category->last_update_timestamp); 
+        } 
+
+        if ( 'list' == $args['style'] ) { 
+			
+
+            $output .= "\t<li"; 
+            
+            $output .=  ' class="'.$class.'"'; 
+            $output .= ">$link\n"; 
+        } else { 
+            $output .= "\t$link<br />\n"; 
+        } 
+	} 
+
+}
+
+
+
+/* menu when normal category and tag view */
+function hk_menu_navigation() {
+	global $post, $default_settings;
+	
+	$options = get_option('hk_theme'); 
+
+	$cat = get_query_var("cat");
+	$tags = get_query_var("tag");
+	$all_categories = array($cat);
+	
 	
 	if (is_single()) {
 		/* get post first parents */
@@ -485,7 +736,7 @@ function hk_navigation() {
 			foreach ($all_categories as $cat) { 
 				$children =  get_categories(array('child_of' => $cat, 'hide_empty' => false));
 				$currentparent = $cat;
-				$hk_cat_walker = new hk_Category_Walker();
+				$walker = new hk_Category_Walker();
 				$parentCat = hk_getMenuParent($cat);
 				if (!in_array($parentCat,$usedParentIDs)) {
 					$usedParentIDs[] = $parentCat; 
@@ -503,7 +754,7 @@ function hk_navigation() {
 						'depth'              => 3,
 						'taxonomy'           => 'category',
 						'exclude'			 => $default_settings["hidden_cat"],
-						'walker'			 => $hk_cat_walker,
+						'walker'			 => $walker,
 						'current_category'	 => $cat
 					);
 					
@@ -529,7 +780,7 @@ function hk_navigation() {
 	if ($tags != "") {
 		
 		//echo "<a class='dropdown-nav'>Etiketter</a>";
-		$hk_cat_walker = new hk_Category_Walker();
+		$walker = new hk_Category_Walker();
 		$parentCat = hk_getMenuParent($cat);
 		if (!empty($parentCat)) {
 			$parentName = get_the_category_by_ID($parentCat);
@@ -553,7 +804,7 @@ function hk_navigation() {
 			'depth'              => 2,
 			'taxonomy'           => 'category',
 			'exclude'			 => $default_settings["hidden_cat"],
-			'walker'			 => $hk_cat_walker
+			'walker'			 => $walker
 		);
 		echo "<ul class='parent'>"; 
 		echo "<li class='heading $currentcat current-cat-parent cat-has-children'><a href='#' class='cat-icon'></a><a href='$parentUrl'>$parentName</a></li>";
@@ -564,31 +815,131 @@ function hk_navigation() {
 
 	}
 	
-	echo "&nbsp;</nav></aside>";
+}
+
+// show normal tag filter list
+function hk_displayTagFilter($show_title = true, $ul_class="more-navigation", $echo = true, $a_class = "", $cat = "", $skip_ul_wrapper = false) {
+	global $default_settings;
+	$retValue = "";//cat: $cat " . get_query_var("cat");
+	if ($default_settings["show_tags"] != 0) :	
+			
+		if ($cat != "") {
+            $tags = hk_getCategoryTags($cat);
+        } else {
+            $tags = hk_getCategoryTags(get_query_var("cat"));
+        }
+        $tags_filter = get_query_var("tag");	
+			
+		if (!empty($tags) || !empty($tags_filter)) :
+            if (!$skip_ul_wrapper) {
+                $retValue .= "<ul class='$ul_class'>"; 
+            }
+            /* show tag title */
+			if ($show_title) {
+				$retValue .= "<li class='heading'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
+			}
+			
+			/* helper to remember if all tag-filter-items has been seen */
+			if (!empty($tags_filter)) {
+				$tags_selected_and_visible = array();
+				$tag_array = explode(",",$tags_filter);
+				foreach( $tag_array as $tagslug) {
+					$tags_selected_and_visible[$tagslug] = false;
+				}
+			}
+
+			/* show tag list */
+			foreach( $tags as $tagitem) {
+				$tags_selected_and_visible[$tagitem->tag_slug] = true;
+				$retValue .= hk_generateTagLink($tagitem, $a_class, $cat);
+			}
+
+			/* print if tag not exist in cat (check helper variable) */
+			foreach( $tags_selected_and_visible as $key => $value) {
+				if (!$value) {
+					$item = get_term_by("slug",$key,"post_tag", "OBJECT");
+					$tagitem = (object)array("tag_ID" => $item->term_id, "tag_name" => $item->name, "tag_slug" => $item->slug );
+					$retValue .= hk_generateTagLink($tagitem, $a_class);
+					//$retValue .= hk_generateTagLink($key, $a_class);
+				}
+			}
+			
+			if (!$skip_ul_wrapper) {
+			 $retValue .= "</ul>";
+            }
+		endif; // endif tags available
+		if ($echo) {
+			echo $retValue;
+		} else {
+			return $retValue;
+		}
+	endif;
 }
 
 /* return description if one is set, otherwise return the normal category link */
-function hk_get_category_link( $cat ) {
+function hk_getCategoryLink( $cat ) {
 	return ($cat->description != "") ? $cat->description : get_category_link( $cat->term_id );
 }
 
-function hk_tag_navigation() {
-	global $post, $default_settings;
+/* Generate tag link in tag navigation (wrapped in <li>) */
+function hk_generateTagLink($tagitem, $a_class = "", $term_id = "") {
+	$currtagslug = $tagitem->tag_slug;
+	$tags_filter = get_query_var("tag");
 	
-	$search = get_query_var("s");
-	$cat = get_query_var("cat");
-	$tags = get_query_var("tag");
-
-	echo "<aside id='nav' class='category-navigation' role='navigation'><nav>";
 	
-	if( function_exists('displayTagFilter') ){
-		hk_displayTagFilter();
+    if ($term_id == "") {
+        $term_id = get_query_var("cat"); // get current cat
+	   //$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
+    }
+	
+	$orderby = (isset($_REQUEST["orderby"]))?$_REQUEST["orderby"]:"";
+	if ($orderby != "") {
+		$orderby = "&orderby=$orderby";
+	}
+	if (!empty($tags_filter))
+		$tag_array = explode(",",$tags_filter);
+	
+	if(!empty($tag_array) && in_array($currtagslug, $tag_array)) {
+		$current_tag = true;
+		$tags_filter = "?tag=";
+	}
+	else { 
+		$tags_filter = "?tag=".$currtagslug;
 	}
 
 	
-	echo "&nbsp;</nav></aside>";
-}
+	// generate tag link
+	if (empty($term_id)) {
+		$href = get_site_url() . $tags_filter. $orderby;
+	}
+	else {
+		$href = get_category_link( $term_id ) . $tags_filter. $orderby;
+	}
 	
+	if ($a_class != "") {
+		$a_class = "class='$a_class'";
+	}
+
+	$link = '<a ' . $a_class . ' href="' . $href  . '" '; 
+	$tag_name = $tagitem->tag_name; 
+	$link .= "title='Filtrera med nyckelordet $tag_name'"; 
+	$link .= '>'; 
+	$link .= "$tag_name</a>"; 
+	
+	$output = "\t<li"; 
+	$class = 'atag-item tag-item-'.$tagitem->tag_ID; 
+	$icon = "";
+	if ($current_tag) {
+		$class .=  ' current-tag'; 
+		$icon = "<a href='$href' class='delete-icon'></a>";
+	}
+	$output .=  ' class="'.$class.'"'; 
+	$output .= ">$icon$link</li>\n"; 
+	return $output;
+}
+
+
+
 // Walker class: Show which category and tag is selected
 class hk_Category_Walker extends Walker_Category {
 	function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) { 
@@ -625,7 +976,7 @@ class hk_Category_Walker extends Walker_Category {
 			}
 		}
 		
-        $link = '<a href="' . hk_get_category_link( $category ) . $tags_filter . '" '; 
+        $link = '<a href="' . hk_getCategoryLink( $category ) . $tags_filter . '" '; 
         $cat_name = apply_filters( 'list_cats', $cat_name, $category ); 
         if ( $use_desc_for_title == 0 || empty($category->description) ) 
             $link .= 'title="Visa allt om ' . $cat_name . '"'; 
@@ -757,67 +1108,61 @@ class hk_Tag_Walker extends Walker_Category {
 }
 
 
+/*
+ * Get tags available in $varcat category or one of the children
+ * https://wordpress.org/support/topic/get-tags-specific-to-category
+ */
+function hk_getCategoryTags($varcat = "") {
+	global $wpdb, $default_settings;
 
+	//$cat_ids = array($varcat);
+	//$cat_ids = hk_getChildrenIdArray(hk_getMenuParent($varcat)); // get closes menu parent
+	
+	$cat_ids = hk_getChildrenIdArray($varcat); // get child ids
+	$cat_ids[] = $varcat; // add current id
+	$varcat_where_or = "";
+	if ($varcat != "") {
+		$varcat_where_or = "(1 = 0 \n";
+		foreach($cat_ids as $cat_id) :
+			$varcat_where_or .= "OR terms1.term_ID = '$cat_id' \n";
+		endforeach;
+		$varcat_where_or .= " ) AND ";
+	}
+	$hidden_cat = $hidden_cat1 = $hidden_cat2 = "";
+	if ($default_settings["hidden_cat"] != "") {
+		$hidden_cat = $default_settings["hidden_cat"];
+	}
+	
+	$query = "SELECT DISTINCT
+	       terms2.term_id as tag_ID,
+	       terms2.name as tag_name,
+	       terms2.slug as tag_slug
+	       FROM
+		       $wpdb->posts as p1
+		       LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish' AND p1.post_type = 'post'
+		       LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id AND t1.taxonomy = 'category'
+		       LEFT JOIN $wpdb->terms as terms1 ON t1.term_id = terms1.term_id,
 
-
-// show tag filter list
-function hk_displayTagFilter($show_title = true, $ul_class="more-navigation", $echo = true, $a_class = "", $cat = "", $skip_ul_wrapper = false) {
-	global $default_settings;
-	$retValue = "";//cat: $cat " . get_query_var("cat");
-	if ($default_settings["show_tags"] != 0) :	
-			
-		if ($cat != "") {
-            $tags = hk_get_category_tags($cat);
-        } else {
-            $tags = hk_get_category_tags(get_query_var("cat"));
-        }
-        $tags_filter = get_query_var("tag");	
-			
-		if (!empty($tags) || !empty($tags_filter)) :
-            if (!$skip_ul_wrapper) {
-                $retValue .= "<ul class='$ul_class'>"; 
-            }
-            /* show tag title */
-			if ($show_title) {
-				$retValue .= "<li class='heading'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
-			}
-			
-			/* helper to remember if all tag-filter-items has been seen */
-			if (!empty($tags_filter)) {
-				$tags_selected_and_visible = array();
-				$tag_array = explode(",",$tags_filter);
-				foreach( $tag_array as $tagslug) {
-					$tags_selected_and_visible[$tagslug] = false;
-				}
-			}
-
-			/* show tag list */
-			foreach( $tags as $tagitem) {
-				$tags_selected_and_visible[$tagitem->tag_slug] = true;
-				$retValue .= hk_generate_tag_link($tagitem, $a_class, $cat);
-			}
-
-			/* print if tag not exist in cat (check helper variable) */
-			foreach( $tags_selected_and_visible as $key => $value) {
-				if (!$value) {
-					$item = get_term_by("slug",$key,"post_tag", "OBJECT");
-					$tagitem = (object)array("tag_ID" => $item->term_id, "tag_name" => $item->name, "tag_slug" => $item->slug );
-					$retValue .= hk_generate_tag_link($tagitem, $a_class);
-					//$retValue .= hk_generate_tag_link($key, $a_class);
-				}
-			}
-			
-			if (!$skip_ul_wrapper) {
-			 $retValue .= "</ul>";
-            }
-		endif; // endif tags available
-		if ($echo) {
-			echo $retValue;
-		} else {
-			return $retValue;
-		}
-	endif;
+		       $wpdb->posts as p2
+		       LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID AND p2.post_status = 'publish' AND p2.post_type = 'post'
+		       LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id AND t2.taxonomy = 'post_tag'
+		       LEFT JOIN $wpdb->terms as terms2 ON t2.term_id = terms2.term_id
+	       WHERE (
+		     $varcat_where_or 
+			 terms2.term_id IS NOT NULL AND
+		     p1.ID = p2.ID AND
+		     p1.ID NOT IN (SELECT p3.ID FROM $wpdb->posts as p3 
+			     LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
+			     WHERE r3.term_taxonomy_ID = '$hidden_cat')      )
+		   ORDER BY tag_name
+			     ";
+	$category_tags = $wpdb->get_results($query);
+	return $category_tags;
 }
+
+
+
+
 
 
 ?>

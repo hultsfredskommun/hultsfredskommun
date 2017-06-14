@@ -1,7 +1,10 @@
 @charset "UTF-8";
+
 /*------------------------------------*\
     STYLE.CSS
 \*------------------------------------*/
+
+
 /**
  * 
  * sass --watch style.scss:style.min.css --style compressed
@@ -10,9 +13,11 @@
  * project-specific components afterwards.
  */
 
+
 /**
   * Setup
  */
+
 @import "vars";
 @import "inuit.css/inuit";
 
@@ -21,19 +26,8 @@
  */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* UI IMPORTS */
+
 @import "ui/colors";
 @import "ui/borders";
 @import "ui/fontsizes";
@@ -44,7 +38,6 @@
 @import "ui/structure_article";
 @import "ui/header";
 @import "ui/menu";
-@import "ui/navigation";
 @import "ui/ui-tabs";
 @import "ui/footer";
 @import "ui/transitions";
@@ -57,93 +50,93 @@
 @import "ui/icons";
 @import "ui/print";
 
-
-
-
-
-
-
-
-
-
-
 /* google map zoom visulal fix */
+
 .Citybreak_engine img,
 .map_canvas img {
-	max-width: none;
+    max-width: none;
 }
 
 
-/* to un- .hide element */ 
+/* to un- .hide element */
+
 .unhide {
-	position: initial;
-	left: 0;
+    position: initial;
+    left: 0;
 }
+
 .hidden {
-	display: none;
+    display: none;
 }
-@each $state in palm, lap, portable, desk{
-    @include media-query(#{$state}){
-        .hidden--#{$state}{
-			display: none;
+
+@each $state in palm,
+lap,
+portable,
+desk {
+    @include media-query(#{$state}) {
+        .hidden--#{$state} {
+            display: none;
         }
     }
 }
 
 .force-hidden {
-	display: none!important;
+    display: none!important;
 }
-@each $state in palm, lap, portable, desk{
-    @include media-query(#{$state}){
-        .force-hidden--#{$state}{
-			display: none!important;
+
+@each $state in palm,
+lap,
+portable,
+desk {
+    @include media-query(#{$state}) {
+        .force-hidden--#{$state} {
+            display: none!important;
         }
     }
 }
 
 .unhidden {
-	display: block!important;
+    display: block!important;
 }
 
-@each $state in palm, lap, portable, desk{
-    @include media-query(#{$state}){
-        .unhidden--#{$state}{
-			display: block!important;
+@each $state in palm,
+lap,
+portable,
+desk {
+    @include media-query(#{$state}) {
+        .unhidden--#{$state} {
+            display: block!important;
         }
     }
 }
+
 .force-unhidden {
-	display: block!important;
+    display: block!important;
 }
 
 
+/* HELP MEDIA QUERY INFO */
 
-
-
-
-
-
-
-
-
-/* HELP MEDIA QUERY INFO */		
 @include media-query(desk) {
-	#responsive-info:after {
-		content: "DESK";
-	}
+    #responsive-info:after {
+        content: "DESK";
+    }
 }
+
 @include media-query(desk-wide) {
-	#responsive-info:after {
-		content: "DESKWIDE";
-	}
+    #responsive-info:after {
+        content: "DESKWIDE";
+    }
 }
+
 @include media-query(lap) {
-	#responsive-info:after {
-		content: "LAP & PORTABLE";
-	}
+    #responsive-info:after {
+        content: "LAP & PORTABLE";
+    }
 }
+
 @include media-query(palm) {
-	#responsive-info:after {
-		content: "PALM & PORTABLE";
-	}
+    #responsive-info:after {
+        content: "PALM & PORTABLE";
+    }
 }

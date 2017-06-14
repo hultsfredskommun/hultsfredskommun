@@ -462,7 +462,7 @@ function setup_javascript_settings() {
 	$search = get_query_var("s");
 	$orderby = get_query_var("orderby");
 	$paged = get_query_var("paged");
-	$filter = array("cat" => $cat, "paged" => $paged, "orderby" => $orderby, "showfromchildren" => $default_settings["showfromchildren"]);
+	$filter = array("cat" => $cat, "paged" => $paged, "orderby" => $orderby, "category_as_filter" => $default_settings["category_as_filter"], "category_show_children" => $default_settings["category_show_children"]);
 	//id 381 blog_id 2
 	// Add some parameters for the dynamic load more posts JS.
 	$hultsfred_array = array(
@@ -1151,116 +1151,8 @@ function hk_get_parent_categories_from_cat($cat) {
 	return array($parent_category, $sub_parent_category, $cat);
 }
 
-/*
- * Get tags available in $varcat category or one of the children
- * https://wordpress.org/support/topic/get-tags-specific-to-category
- */
-function hk_get_category_tags($varcat = "") {
-	global $wpdb, $default_settings;
 
-	//$cat_ids = array($varcat);
-	//$cat_ids = hk_getChildrenIdArray(hk_getMenuParent($varcat)); // get closes menu parent
-	
-	$cat_ids = hk_getChildrenIdArray($varcat); // get child ids
-	$cat_ids[] = $varcat; // add current id
-	$varcat_where_or = "";
-	if ($varcat != "") {
-		$varcat_where_or = "(1 = 0 \n";
-		foreach($cat_ids as $cat_id) :
-			$varcat_where_or .= "OR terms1.term_ID = '$cat_id' \n";
-		endforeach;
-		$varcat_where_or .= " ) AND ";
-	}
-	$hidden_cat = $hidden_cat1 = $hidden_cat2 = "";
-	if ($default_settings["hidden_cat"] != "") {
-		$hidden_cat = $default_settings["hidden_cat"];
-	}
-	
-	$query = "SELECT DISTINCT
-	       terms2.term_id as tag_ID,
-	       terms2.name as tag_name,
-	       terms2.slug as tag_slug
-	       FROM
-		       $wpdb->posts as p1
-		       LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish' AND p1.post_type = 'post'
-		       LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id AND t1.taxonomy = 'category'
-		       LEFT JOIN $wpdb->terms as terms1 ON t1.term_id = terms1.term_id,
 
-		       $wpdb->posts as p2
-		       LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID AND p2.post_status = 'publish' AND p2.post_type = 'post'
-		       LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id AND t2.taxonomy = 'post_tag'
-		       LEFT JOIN $wpdb->terms as terms2 ON t2.term_id = terms2.term_id
-	       WHERE (
-		     $varcat_where_or 
-			 terms2.term_id IS NOT NULL AND
-		     p1.ID = p2.ID AND
-		     p1.ID NOT IN (SELECT p3.ID FROM $wpdb->posts as p3 
-			     LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
-			     WHERE r3.term_taxonomy_ID = '$hidden_cat')      )
-		   ORDER BY tag_name
-			     ";
-	$category_tags = $wpdb->get_results($query);
-	return $category_tags;
-}
-
-/*
- * Generate tag link in tag navigation (wrapped in <li>)
- */
-function hk_generate_tag_link($tagitem, $a_class = "", $term_id = "") {
-	$currtagslug = $tagitem->tag_slug;
-	$tags_filter = get_query_var("tag");
-	
-	
-    if ($term_id == "") {
-        $term_id = get_query_var("cat"); // get current cat
-	   //$term_id = hk_getMenuParent(get_query_var("cat")); // get closes menu parent
-    }
-	
-	$orderby = (isset($_REQUEST["orderby"]))?$_REQUEST["orderby"]:"";
-	if ($orderby != "") {
-		$orderby = "&orderby=$orderby";
-	}
-	if (!empty($tags_filter))
-		$tag_array = explode(",",$tags_filter);
-	
-	if(!empty($tag_array) && in_array($currtagslug, $tag_array)) {
-		$current_tag = true;
-		$tags_filter = "?tag=";
-	}
-	else { 
-		$tags_filter = "?tag=".$currtagslug;
-	}
-
-	
-	// generate tag link
-	if (empty($term_id)) {
-		$href = get_site_url() . $tags_filter. $orderby;
-	}
-	else {
-		$href = get_category_link( $term_id ) . $tags_filter. $orderby;
-	}
-	
-	if ($a_class != "") {
-		$a_class = "class='$a_class'";
-	}
-
-	$link = '<a ' . $a_class . ' href="' . $href  . '" '; 
-	$tag_name = $tagitem->tag_name; 
-	$link .= "title='Filtrera med nyckelordet $tag_name'"; 
-	$link .= '>'; 
-	$link .= "$tag_name</a>"; 
-	
-	$output = "\t<li"; 
-	$class = 'atag-item tag-item-'.$tagitem->tag_ID; 
-	$icon = "";
-	if ($current_tag) {
-		$class .=  ' current-tag'; 
-		$icon = "<a href='$href' class='delete-icon'></a>";
-	}
-	$output .=  ' class="'.$class.'"'; 
-	$output .= ">$icon$link</li>\n"; 
-	return $output;
-}
 
 
 function hk_getSmallWords($smallwords) {
@@ -2344,15 +2236,29 @@ function hk_amp_add_footer( $amp_template ) {
 }
 
 /* helper to query wp_query category arguments, used in posts_load.php and hk-category.php */
-function hk_get_cat_query_args($cat, $paged=1, $showfromchildren = false, $orderby = "", $shownposts = "") {
+function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby = "", $shownposts = "", $showonlyfromcatarr = array() /*, $showonlyfromtagarr = array()*/) {
 
     $options = get_option("hk_theme");
+	$catarray = array();
+	//$tagarray = array();
+
+	if ($shownposts == "") {
+		$shownposts = array();
+	}
 
     /* put category-children in array */
     if ($showfromchildren) {
-        $catarray = hk_getChildrenIdArray($cat);
-        $catarray[] = $cat; //add current category
-    }
+		$catarray = hk_getChildrenIdArray($cat);
+		$catarray[] = $cat; //add current category
+	}
+	/* if show only from some categories */
+	if (!empty($showonlyfromcatarr)) {
+		$catarray = $showonlyfromcatarr;
+	}
+	/* if also filter of tags */
+	/*if (!empty($showonlyfromtagarr)) {
+		$tagarray = $showonlyfromtagarr;
+	}*/
     
 
     /* check if there are posts to be hidden */
@@ -2366,11 +2272,17 @@ function hk_get_cat_query_args($cat, $paged=1, $showfromchildren = false, $order
                                     )
             );
     if ($showfromchildren) {
-        $args['category__or'] = $catarray;
+        $args['category__in'] = $catarray;
     }
     else {
         $args['category__and'] = array($cat);
     }
+	/* filter tags */
+    /*if (!empty($tagarray)) {
+        $args['tag__in'] = $tagarray;
+    }*/
+
+
 
     $dyn_query = new WP_Query();
     $dyn_query->query($args);
@@ -2382,10 +2294,8 @@ function hk_get_cat_query_args($cat, $paged=1, $showfromchildren = false, $order
     endwhile;
     /* END get hidden */
 	
-	/* remove already shown posts */
-	if (!empty($shownposts) || $shownposts == "") {
-		$hiddenarr = array_merge($hiddenarr, $shownposts);
-	}
+	/* remove already shown posts from next query */
+	$hiddenarr = array_merge($hiddenarr, $shownposts);
 
     /* do category list query args */
     $args = array(	'paged' => $paged,
@@ -2399,7 +2309,11 @@ function hk_get_cat_query_args($cat, $paged=1, $showfromchildren = false, $order
     else {
         $args['category__and'] = array($cat);
     }
-    
+    /* filter tags */
+    /*if (!empty($tagarray)) {
+        $args['tag__in'] = $tagarray;
+    }*/
+
     /* if orderby not is set, check if standard order should be date in settings */
     if ($orderby == "" && $cat != "" && in_array($cat, explode(",",$options["order_by_date"])) ) {
         //$args['suppress_filters'] = 'true';
