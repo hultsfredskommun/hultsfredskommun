@@ -66,10 +66,94 @@ acf_add_local_field_group(array (
 			'min' => '',
 			'max' => '',
 			'layouts' => array (
+					array (
+						'key' => '56bb0a25a4100',
+						'name' => 'lagg_till_code',
+						'label' => 'Kod',
+						'display' => 'block',
+						'sub_fields' => array (
+							array (
+								'key' => 'field_56cc104207f50',
+								'label' => 'Layout',
+								'name' => 'layout',
+								'type' => 'select',
+								'instructions' => 'Hur stor del av skärmen som puffen använda.',
+								'required' => 1,
+								'conditional_logic' => 0,
+								'wrapper' => array (
+									'width' => '50%',
+									'class' => '',
+									'id' => '',
+								),
+
+								'choices' => array (
+									'one-whole' => 'Fullbredd',
+									'one-half' => 'En halv',
+									'one-third' => 'En tredjedel',
+									'two-thirds' => 'Två tredjedelar',
+									'one-quarter' => 'En fjärdedel',
+									'two-quarters' => 'Två fjärdedelar',
+									'three-quarters' => 'Tre fjärdedelar',
+									'one-fifth' => 'En femtedel',
+									'two-fifths' => 'Två femtedelar',
+									'three-fifths' => 'Tre femtedelar',
+									'four-fifths' => 'Fyra femtedelar',
+								),
+								'default_value' => array (
+								),
+								'allow_null' => 0,
+								'multiple' => 0,
+								'ui' => 0,
+								'ajax' => 0,
+								'placeholder' => '',
+								'disabled' => 0,
+								'readonly' => 0,
+							),
+							array (
+								'key' => 'field_56eabc5e15411',
+								'label' => 'D&ouml;lj puff',
+								'name' => 'inactive',
+								'type' => 'true_false',
+								'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array (
+									'width' => '50%',
+									'class' => '',
+									'id' => '',
+								),
+								'message' => '',
+								'default_value' => 0,
+							),
+
+							array (
+								'key' => 'field_56cc0a2e61830',
+								'label' => 'Kod',
+								'name' => 'code',
+								'type' => 'textarea',
+								'instructions' => 'HTML-kod',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array (
+									'width' => '100%',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'maxlength' => '',
+								'readonly' => 0,
+								'disabled' => 0,
+							),
+
+					)
+				), 
 				array (
 					'key' => '56bb0a25a4143',
 					'name' => 'lagg_till_puff',
-					'label' => 'Lägg till puff',
+					'label' => 'Puff',
 					'display' => 'block',
 					'sub_fields' => array (
 						
