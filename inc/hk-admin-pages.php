@@ -34,7 +34,7 @@ function change_role_caps() {
 add_action( 'admin_init', 'change_role_caps');
 
 
-// generate cache on save_post
+// do on save_post
 add_action('save_post', hk_save_post);
 function hk_save_post($postID) {
 	global $default_settings;
@@ -47,8 +47,13 @@ function hk_save_post($postID) {
 	
 	// set to hidden_cat if stop publish date and time has past
 	if(function_exists("register_field_group")) : // if acf plugin enabled 
-		if (get_field("hk_stop_publish_date") != "" && get_field("hk_stop_publish_date") <= date("Ymd",current_time('timestamp',0))) {
-			if (get_field("hk_stop_publish_hour") <= date("G",current_time('timestamp',0))) {
+		if (get_field("hk_stop_publish_date") != "") {
+			if (    get_field("hk_stop_publish_date") < date("Ymd",current_time('timestamp',0)) ||
+					(
+						( get_field("hk_stop_publish_date") == date("Ymd",current_time('timestamp',0) ) ) &&
+						( get_field("hk_stop_publish_hour") < date("G",current_time('timestamp',0) ) )
+					)
+				) {
 				$arr = wp_get_post_categories(get_the_ID());
 				$arr[] = $options["hidden_cat"];
 				$ret = wp_set_post_categories( get_the_ID(), $arr );

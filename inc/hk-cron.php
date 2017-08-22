@@ -233,10 +233,10 @@ function hk_stop_publish_job() {
 	$options = get_option('hk_theme');
 	if ($options["hidden_cat"] == "" || $options["hidden_cat"] == "0")
 		return;
-		
+
 	$hk_stop_publish_check_time = time();
 	$options["hk_stop_publish_check_time"] = $hk_stop_publish_check_time;
-	
+
 	//define arguments for WP_Query()
 	$qargs = array(
 		'posts_per_page' => -1,
@@ -256,12 +256,17 @@ function hk_stop_publish_job() {
 	
 	// execute the WP loop
 	$log = "";
-	$count = $counttoday = $counttrue = 0;
+	$count = $counttrue = 0;
 	while ($q->have_posts()) : $q->the_post();
-	
-		$count++;
-		if (get_field("hk_stop_publish_date") != "" && get_field("hk_stop_publish_date") <= date("Ymd",current_time('timestamp',0))) {
-			if (get_field("hk_stop_publish_hour") <= date("G",current_time('timestamp',0))) {
+		if (get_field("hk_stop_publish_date") != "") {
+			$count++;
+			if (
+					get_field("hk_stop_publish_date") < date("Ymd",current_time('timestamp',0)) ||
+					(
+						( get_field("hk_stop_publish_date") == date("Ymd",current_time('timestamp',0) ) ) &&
+						( get_field("hk_stop_publish_hour") < date("G",current_time('timestamp',0) ) )
+					)
+				) {
 				$counttrue++;
 				$arr = wp_get_post_categories(get_the_ID());
 				$arr[] = $options["hidden_cat"];
@@ -269,16 +274,12 @@ function hk_stop_publish_job() {
 
 				$log .= "Post " . get_the_ID() . " " . get_the_title() . " is set to hidden_cat : ".print_r($ret,true) . "\n";
 			}
-			else {
-				$counttoday++;
-			}
 
-		}
-		
+			
+		} // end if not empty date	
 	endwhile;
-
 	
-	$log .= "$count som har sluta publicera datum satt.\n$counttoday ska sluta publiceras senare idag.\n$counttrue som har slutat publiceras nu.\n" . date("Y-m-d H:i:s", strtotime("now"));
+	$log .= "$count som har sluta publicera datum satt.\n$counttrue som har slutat publiceras nu.\n" . date("Y-m-d H:i:s", strtotime("now"));
 	$options["hk_stop_publish_log"] = $log;
 	$hk_stop_publish_time = time();
 	$options["hk_stop_publish_time"] = $hk_stop_publish_time;

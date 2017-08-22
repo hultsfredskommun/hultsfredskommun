@@ -372,7 +372,7 @@ function hk_theme_options_do_page() {
 			?>
 			Kollar "sluta publicera" <b><?php echo Date("Y-m-d H:i:s",wp_next_scheduled( 'hk_stop_publish_event' )); ?></b> nästa gång. <br> 
 			Kördes senast <b><?php echo Date("Y-m-d H:i:s",$options["hk_stop_publish_time"]); ?></b><br>
-			LOG: <br><textarea name="hk_theme[hk_stop_publish_log]" cols=100 rows=5><?php echo $options["hk_stop_publish_log"]; ?></textarea>
+			LOG: <br><textarea cols=100 rows=5><?php echo $options["hk_stop_publish_log"]; ?></textarea>
 			<?php endif; // hidden_cat ?>
 			<?php endif; ?>
 			
