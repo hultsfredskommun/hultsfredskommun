@@ -1,5 +1,14 @@
-/* NEW MENU */
+/* MAX MEGA MENU */
+#mega-menu-wrap-primary {
+    @include media-query(lap) {
+        margin-top: $base-spacing-unit;
+    }
+}
 
+
+
+
+/* NEW MENU */
 
 /*MOBILMENU - expanderade val */
 

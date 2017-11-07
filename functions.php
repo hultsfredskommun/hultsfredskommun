@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "5.5");
+define("HK_VERSION", "5.6");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -1585,6 +1585,122 @@ class hk_mobilemenu_walker extends Walker_Category {
 	}
 }
 
+
+// function to set enable Hultsfred style to Max mega Menu theme selection
+function megamenu_add_theme_hultsfreds_kommun_1510035476($themes) {
+    $themes["hultsfreds_kommun_1510035476"] = array(
+        'title' => 'Hultsfreds kommun',
+        'container_background_from' => 'rgb(229, 230, 231)',
+        'container_background_to' => 'rgb(229, 230, 231)',
+        'container_border_radius_top_left' => '2px',
+        'container_border_radius_top_right' => '2px',
+        'container_border_radius_bottom_left' => '2px',
+        'container_border_radius_bottom_right' => '2px',
+        'menu_item_background_hover_from' => 'rgb(62, 62, 63)',
+        'menu_item_background_hover_to' => 'rgb(62, 62, 63)',
+        'menu_item_link_font_size' => '15px',
+        'menu_item_link_color' => 'rgb(62, 62, 63)',
+        'menu_item_link_padding_left' => '16px',
+        'menu_item_link_padding_right' => '16px',
+        'menu_item_link_border_radius_top_left' => '0',
+        'menu_item_link_border_radius_top_right' => '0',
+        'menu_item_link_border_radius_bottom_left' => '0',
+        'menu_item_link_border_radius_bottom_right' => '0',
+        'panel_header_border_color' => '#555',
+        'panel_font_size' => '14px',
+        'panel_font_color' => '#666',
+        'panel_font_family' => 'inherit',
+        'panel_second_level_font_color' => '#555',
+        'panel_second_level_font_color_hover' => '#555',
+        'panel_second_level_text_transform' => 'uppercase',
+        'panel_second_level_font' => 'inherit',
+        'panel_second_level_font_size' => '16px',
+        'panel_second_level_font_weight' => 'bold',
+        'panel_second_level_font_weight_hover' => 'bold',
+        'panel_second_level_text_decoration' => 'none',
+        'panel_second_level_text_decoration_hover' => 'none',
+        'panel_second_level_border_color' => '#555',
+        'panel_third_level_font_color' => '#666',
+        'panel_third_level_font_color_hover' => '#666',
+        'panel_third_level_font' => 'inherit',
+        'panel_third_level_font_size' => '14px',
+        'flyout_link_size' => '14px',
+        'flyout_link_color' => '#666',
+        'flyout_link_color_hover' => '#666',
+        'flyout_link_family' => 'inherit',
+        'toggle_background_from' => '#222',
+        'toggle_background_to' => '#222',
+        'toggle_font_color' => 'rgb(62, 62, 63)',
+        'mobile_background_from' => '#222',
+        'mobile_background_to' => '#222',
+        'mobile_menu_item_link_font_size' => '14px',
+        'mobile_menu_item_link_color' => '#ffffff',
+        'mobile_menu_item_link_text_align' => 'left',
+        'custom_css' => '/** Push menu onto new line **/ 
+#{$wrap} { 
+    clear: both; 
+}',
+    );
+    $themes["visit_hultsfred_1510035537"] = array(
+        'title' => 'Visit hultsfred',
+        'container_background_from' => 'rgb(164, 29, 48)',
+        'container_background_to' => 'rgb(164, 29, 48)',
+        'container_border_radius_top_left' => '2px',
+        'container_border_radius_top_right' => '2px',
+        'container_border_radius_bottom_left' => '2px',
+        'container_border_radius_bottom_right' => '2px',
+        'menu_item_background_hover_from' => 'rgba(255, 255, 255, 0.2)',
+        'menu_item_background_hover_to' => 'rgba(255, 255, 255, 0.2)',
+        'menu_item_link_font_size' => '15px',
+        'menu_item_link_color' => 'rgb(255, 255, 255)',
+        'menu_item_link_text_decoration_hover' => 'underline',
+        'menu_item_link_padding_left' => '16px',
+        'menu_item_link_padding_right' => '16px',
+        'menu_item_link_border_radius_top_left' => '0',
+        'menu_item_link_border_radius_top_right' => '0',
+        'menu_item_link_border_radius_bottom_left' => '0',
+        'menu_item_link_border_radius_bottom_right' => '0',
+        'menu_item_divider' => 'on',
+        'menu_item_divider_glow_opacity' => '0.3',
+        'panel_header_border_color' => '#555',
+        'panel_font_size' => '14px',
+        'panel_font_color' => '#666',
+        'panel_font_family' => 'inherit',
+        'panel_second_level_font_color' => '#555',
+        'panel_second_level_font_color_hover' => '#555',
+        'panel_second_level_text_transform' => 'uppercase',
+        'panel_second_level_font' => 'inherit',
+        'panel_second_level_font_size' => '16px',
+        'panel_second_level_font_weight' => 'bold',
+        'panel_second_level_font_weight_hover' => 'bold',
+        'panel_second_level_text_decoration' => 'none',
+        'panel_second_level_text_decoration_hover' => 'none',
+        'panel_second_level_border_color' => '#555',
+        'panel_third_level_font_color' => '#666',
+        'panel_third_level_font_color_hover' => '#666',
+        'panel_third_level_font' => 'inherit',
+        'panel_third_level_font_size' => '14px',
+        'flyout_link_size' => '14px',
+        'flyout_link_color' => '#666',
+        'flyout_link_color_hover' => '#666',
+        'flyout_link_family' => 'inherit',
+        'responsive_breakpoint' => '730px',
+        'toggle_background_from' => 'rgb(164, 29, 48)',
+        'toggle_background_to' => 'rgb(164, 29, 48)',
+        'toggle_font_color' => 'rgb(255, 255, 255)',
+        'mobile_background_from' => 'rgb(164, 29, 48)',
+        'mobile_background_to' => 'rgb(164, 29, 48)',
+        'mobile_menu_item_link_font_size' => '14px',
+        'mobile_menu_item_link_color' => '#ffffff',
+        'mobile_menu_item_link_text_align' => 'left',
+        'custom_css' => '
+#{$wrap} { 
+    clear: both; 
+}',
+    );
+    return $themes;
+}
+add_filter("megamenu_themes", "megamenu_add_theme_hultsfreds_kommun_1510035476");
 
 
 // topmenu walker to get second row of top menu

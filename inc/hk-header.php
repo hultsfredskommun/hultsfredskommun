@@ -1,3 +1,4 @@
+
 <?php
 	global $hk_options, $firstpageClass, $printpageClass;
 ?>
@@ -17,8 +18,10 @@
 					}
 					?>
 					<li><span id="logo" class="logo"><a href="<?php echo $logo_link; ?>"><img class="js-svg-image" src="<?php echo $hk_options["logo_mobile_image"]; ?>" data-svg-src="<?php echo $hk_options["logo_mobile_image_svg"]; ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" /></a></span></li>
+                    <?php if ( !(function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled('primary')) ) : // show max mega menu ?>
 					<li class="float--right"><a class="js-show-menu" href="#"><span class="menu-icon"></span></a></li>
-					<li class="float--right"><a class="js-show-search" href="#"><span class="search-icon"></span></a></li>
+					<?php endif; ?>
+                    <li class="float--right"><a class="js-show-search" href="#"><span class="search-icon"></span></a></li>
 					<li class="float--right"><a href="http://translate.google.com/translate?hl=sv&sl=sv&tl=en&u=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>"><span class="translate-small-icon"></span></a></li>
 				</ul>
 			</nav>
@@ -118,6 +121,14 @@
 		</div>
 	<?php endif; ?>
 
+    <?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled('primary') ) : // show max mega menu ?>
+	
+    <nav id="menu" class="menu-wrapper" role="navigation">
+	<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
+    </nav>
+    
+    <?php else: // show normal menu, if no max mega menu is used ?>
+    
 	<?php if (!is_search()) : ?>
 	<nav id="menu" class="menu-wrapper" role="navigation">
 		<?php
@@ -130,6 +141,7 @@
 		?>
 	</nav>
 	<?php endif; // not is search ?>
+	<?php endif; // end else normal menu ?>
 	
 	<?php if (false) : // TEMP REMOVED is_sub_category_firstpage()) /*!is_search() && get_query_var("tag") == "")*/ : ?>
 		<div class="responsive-menu">
