@@ -41,7 +41,9 @@ get_header(); ?>
 			/* hook to be able to add other search result */ 
 			do_action('hk_pre_search', get_query_var("s")); ?>
 			</aside>
-		<?php endif; ?>
+		<?php endif; // end google search ?>
+
+        <div id="breadcrumb" class="breadcrumb"><a class='nolink'>Du s&ouml;kte p&aring; <strong><?php echo get_query_var("s"); ?></strong></a></div>
 		<div id="primary" class="primary  searchresult">
 			<div id="content" role="main">
 			
@@ -64,19 +66,6 @@ get_header(); ?>
 
 			<?php if ( have_posts() ) : ?>
 
-				<header class="page-header">
-					<ul class="num-posts">
-						<li><a class='nolink'>Du s&ouml;kte p&aring; <strong><?php echo get_query_var("s"); ?></strong></a></li>
-					</ul>
-
-					<ul class="view-tools">
-						<li class="menu-item view-mode"> 
-						<a class="viewmode_titles js-view-titles active" title="Listvisning" href="#"></a>
-						<a class="viewmode_summary js-view-summary" title="Kompakt visning" href="#"></a>
-						</li>
-					</ul>
-				</header>
-
 				
 				<?php if (function_exists('relevanssi_didyoumean')) { relevanssi_didyoumean(get_search_query(), "<div class='didyoumean'>Menade du: ", "</div>", 5);
 				}?>
@@ -95,7 +84,8 @@ get_header(); ?>
 						 * If you want to overload this in a child theme then include a file
 						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 						 */
-						get_template_part( 'content', get_post_type() );
+						//get_template_part( 'content', get_post_type() );
+						get_template_part( 'content' );
 						if ($external_blog) { 
 							restore_current_blog();
 						}

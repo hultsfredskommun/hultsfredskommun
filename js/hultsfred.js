@@ -967,7 +967,6 @@ var settings = new Array();
              * add ajax searchbox if enabled in settings and not less than ie9
              */
             if ($(".hk-gcse-ajax-searchbox").length > 0 && $("body.search").length == 0 && !isLessThanIE9) {
-
                 window.__gcse = {
                     parseTags: 'explicit',
                     callback: hkGcseCallback
@@ -981,7 +980,12 @@ var settings = new Array();
                     '//www.google.com/cse/cse.js?cx=' + cx;
                 var s = document.getElementsByTagName('script')[0];
                 s.parentNode.insertBefore(gcse, s);
+            } 
+            else if ($(".hk-ajax-searchbox").length > 0 && $("body.search").length == 0 && !isLessThanIE9) { // else wp search
+                hkHandleKeypress();
             }
+
+            
             $(this).unbind("focus");
         });
 
@@ -1065,9 +1069,29 @@ var settings = new Array();
             }
 
             log("Searching for: " + $('#s').val());
-            google.search.cse.element.getElement("two-column").prefillQuery($('#s').val());
-            google.search.cse.element.getElement("two-column").execute();
-
+            if ($("body.search").length == 0 && !isLessThanIE9) {
+                if ($(".hk-gcse-ajax-searchbox").length > 0) { // if google search
+                    google.search.cse.element.getElement("two-column").prefillQuery($('#s').val());
+                    google.search.cse.element.getElement("two-column").execute();
+                }
+                else { // else wp search
+                    //$(".gcse-searchresults").html(response);
+                    data = { action: 'hk_search', searchstring: $('#s').val() };
+                    jQuery.ajax({
+                        type: 'POST',
+                        url: hultsfred_object["admin_ajax_url"],
+                        data: data,
+                        dataType: 'html',
+                        success: function(response) {
+                            $(".gcse-searchresults").html(response);
+                            //console.log("success: " + response);
+                        },
+                        error: function(response) {
+                            log("error: " + response);
+                        }
+                    });
+                }
+            }
             if ($(".hk-gcse-ajax-searchresults-wrapper").find(".has-hook").length > 0) {
                 data = { action: 'hk_search_hook', searchstring: $('#s').val() };
                 jQuery.ajax({

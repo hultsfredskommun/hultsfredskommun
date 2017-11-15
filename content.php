@@ -12,8 +12,8 @@ $classes = "summary";
 $classes .= (is_sticky())?" sticky":"";
 $classes .= ($external_blog)?" externalblog":"";
  ?>
-	
-	<article id="post-<?php the_ID(); ?>" <?php echo "class='gtm-dyn-article ".str_replace("hentry", "", implode(" ",get_post_class($classes)))." '"; ?>>
+
+	<article id="post-<?php the_ID(); ?>" <?php echo "class='post gtm-dyn-article ".str_replace("hentry", "", implode(" ",get_post_class($classes)))." '"; ?>>
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">
 			<div class="content-wrapper">
@@ -54,7 +54,19 @@ $classes .= ($external_blog)?" externalblog":"";
 					?>
 					<h1 class="entry-title"><a class="<?php echo $externalclass.$jstoggle; ?>" href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a><span class="spinner"></span></h1>
 					<div class="entry-content">
-						<?php the_excerpt(); ?>
+                        <?php 
+                        if ($_REQUEST["action"] == "hk_search" && $_REQUEST["searchstring"] != "" && function_exists('relevanssi_do_query')) {
+                            //relevanssi_the_excerpt(); // not showing same as search excerpt
+                            //$content = apply_filters(‘relevanssi_excerpt_content’, get_the_content());//, $post, $query);
+                            //print_r($post);
+                            $excerpt = relevanssi_do_excerpt($post, $_REQUEST["searchstring"]);
+                            $excerpt = relevanssi_highlight_terms($excerpt, $_REQUEST["searchstring"]);
+                            echo $excerpt;
+                        } 
+                        else {
+                            the_excerpt(); 
+                        }
+                        ?>
 					</div>
 
 				</div><!-- .summary-content -->

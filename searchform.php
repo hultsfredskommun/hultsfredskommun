@@ -8,9 +8,16 @@
  */
 ?>
 	<?php $options = get_option('hk_theme'); ?>
-	<?php if ($options["gcse_id"] != "" && $options["gcse_ajax"] != "") { ?>
-	<?php $gcse_class = "gcse_ajax_search"; ?>
-		<div class="hk-gcse-ajax-searchbox">
+	<?php 
+    if ($options["gcse_ajax"] != "") { 
+        if ($options["gcse_id"] != "") {
+            $hk_searchclass = "hk-gcse-ajax-searchbox";
+        }
+        else {
+            $hk_searchclass = "hk-ajax-searchbox";
+        }
+        $gcse_class = "gcse_ajax_search"; ?>
+		<div class="<?php echo $hk_searchclass; ?>">
 			<div class="gcse-searchbox"></div>
 		</div>
 	<?php }  ?>

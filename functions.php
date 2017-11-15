@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "5.6");
+define("HK_VERSION", "5.7");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -523,11 +523,19 @@ add_filter('gallery_style',
 /*
  * Alter excerpt - add link on three first words
  */
+
 add_filter('the_excerpt', 'hk_excerpt');
 function hk_excerpt($content) {
-	if (is_search())
-		return $content;
-		
+	if (is_search()) {
+        return $content;
+    }
+    /*else if ($_REQUEST["action"] == "hk_search" && $_REQUEST["searchstring"] != "") {
+        relevanssi_the_excerpt(); // not showing same as search excerpt
+        $content = apply_filters(‘relevanssi_excerpt_content’, $content, $post, $query);
+        return $content;
+    }*/
+
+
 	$content = strip_tags($content);
 	$content_array = explode(" ",$content);
 	$content = "<span class='excerpt-wrapper'><span class='introwords'>";
@@ -1929,6 +1937,57 @@ function hk_search_hook_func(){
 }
 add_action('wp_ajax_hk_search_hook', 'hk_search_hook_func'); 
 add_action('wp_ajax_nopriv_hk_search_hook', 'hk_search_hook_func'); 
+
+function hk_search_func(){
+    global $default_settings;
+	$searchstring = $_REQUEST["searchstring"];
+	$hk_options = get_option('hk_theme');
+	if ($searchstring != "") {
+        
+        echo "<div class='islet'>";
+        
+		// show search
+        $query_args = array( 's' => esc_sql($searchstring),
+                             'category__not_in' => array( $default_settings["hidden_cat"] ),
+);
+        $query = new WP_Query( $query_args );
+        if (function_exists('relevanssi_do_query')) {
+            relevanssi_do_query( $query );
+        }
+        if ( $query->have_posts() ) :
+
+            while ( $query->have_posts() ) : $query->the_post(); 
+
+                $external_blog = false; 
+                if ($blog_id != $post->blog_id){ 
+                    $external_blog = true; 
+                    switch_to_blog($post->blog_id);
+                }
+
+                /* Include the Post-Format-specific template for the content.
+                 * If you want to overload this in a child theme then include a file
+                 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                 */
+                //get_template_part( 'content', get_post_type() );
+                get_template_part( 'content' );
+                if ($external_blog) { 
+                    restore_current_blog();
+                }
+
+
+            endwhile;
+
+        else :
+            hk_empty_search();
+        endif;
+        echo "</div>";
+
+	} // end if searchstring not empty
+	die();
+	
+}
+add_action('wp_ajax_hk_search', 'hk_search_func'); 
+add_action('wp_ajax_nopriv_hk_search', 'hk_search_func'); 
 
 
 

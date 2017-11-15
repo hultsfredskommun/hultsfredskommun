@@ -39,6 +39,7 @@
 * Contact Form 7 support
 * EU cookie bar, settings is in Theme settings.
 * FAQ attribute in post to add "visible" question in post and searchable. Searchable is setting to enable in Theme setting.
+* AJAX search with Wordpress standard search, Relevanssi plugin and Google Custom Site Search (deprecated).
 
 === Recommended widget setup ===
 * Startsida toppinnehåll
@@ -77,7 +78,7 @@ Contact Form 7 by Takayuki Miyoshi to get forms
 AMP by Automatic to get AMP support, style added to follow this theme
 HK search and filter by Hultsfredskommun to get CSV-ajax-search and search-content-filter (filter is moved from hultsfredskommun-theme).
 Max Mega Menu (by Tom Hemsley) - The theme has support for this plugin with two different themes included (Hultsfreds kommun and Visit Hultsfred), clone one of the themes to make your own style.
-
+Relevanssi (by Mikko Saari) - Support for search and also ajax search with Relevanssi plugin enabled.
 
 === Handy tools ===
 Simple Image Size by Rahe to handle thumbnail regeneration when needed.

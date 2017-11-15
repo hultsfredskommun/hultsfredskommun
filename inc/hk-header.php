@@ -99,8 +99,11 @@
 		<?php endif; ?>
 
 	</div>
-	<?php if ($hk_options["gcse_id"] != "" && $hk_options["gcse_ajax"] != "") { ?>
-	<?php $column_class = " no-hook"; if($hk_options["gcse_enable_kontakter_search"] != "" || has_action('hk_pre_ajax_search') || has_action('hk_post_ajax_search')) { $column_class = " has-hook"; } ?>
+	<?php 
+        // if google sök och ajax-sökning
+        if ($hk_options["gcse_ajax"] != "") {
+            $column_class = " no-hook"; 
+            if($hk_options["gcse_enable_kontakter_search"] != "" || has_action('hk_pre_ajax_search') || has_action('hk_post_ajax_search')) { $column_class = " has-hook"; } ?>
 	<div class="hk-gcse-ajax-searchresults-wrapper">
 		<div class="hk-gcse-ajax-searchresults<?php echo $column_class; ?>">
 			<div class="hk-gcse-hook-results">
@@ -111,8 +114,9 @@
 			</div>
 		</div>
 	</div>
-	<?php }  ?>
-	</div>
+	<?php } // end ajax-sökning ?>
+        
+	</div><?php // end div topwrapper ?>
 	<!--googleoff: all-->
 	<?php if (false) : /* REMOVE OLD RESPONSVE MENU if (is_sub_category_firstpage()) : */ ?>
 		<div class="responsive-menu">
