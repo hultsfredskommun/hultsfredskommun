@@ -61,7 +61,9 @@ $classes .= ($external_blog)?" externalblog":"";
                             //print_r($post);
                             $excerpt = relevanssi_do_excerpt($post, $_REQUEST["searchstring"]);
                             $excerpt = relevanssi_highlight_terms($excerpt, $_REQUEST["searchstring"]);
+                            echo '<a class="' . $externalclass.$jstoggle . '" href="' . $href . '" title="' . $title . '" rel="bookmark">';
                             echo $excerpt;
+                            echo "</a>";
                         } 
                         else {
                             the_excerpt(); 
