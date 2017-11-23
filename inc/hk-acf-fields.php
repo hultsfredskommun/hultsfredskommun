@@ -1566,66 +1566,93 @@ if(function_exists("register_field_group"))
 	/* POST STOP PUBLISH */
 	$options = get_option("hk_theme");
 	if ($options['enable_cron_stop_publish']) {
-		register_field_group(array (
-			'id' => 'acf_sluta-publicera',
-			'title' => 'Sluta publicera',
-			'fields' => array (
-				array (
-					'date_format' => 'yymmdd',
-					'display_format' => 'yy-mm-dd',
-					'first_day' => 1,
-					'key' => 'field_51bffccf1a73f',
-					'label' => 'Datum',
-					'name' => 'hk_stop_publish_date',
-					'type' => 'date_picker',
-				),
-				array (
-					'multiple' => 0,
-					'allow_null' => 0,
-					'choices' => array (
-						7 => '7:00',
-						8 => '8:00',
-						9 => '9:00',
-						10 => '10:00',
-						11 => '11:00',
-						12 => '12:00',
-						13 => '13:00',
-						14 => '14:00',
-						15 => '15:00',
-						16 => '16:00',
-						17 => '17:00',
-						18 => '18:00',
-						19 => '19:00',
-						20 => '20:00',
-						21 => '21:00',
-						22 => '22:00',
-					),
-					'default_value' => 12,
-					'key' => 'field_51bffe875ccc4',
-					'label' => 'Tid',
-					'name' => 'hk_stop_publish_hour',
-					'type' => 'select',
-				),
-			),
-			'location' => array (
-				array (
-					array (
-						'param' => 'post_type',
-						'operator' => '==',
-						'value' => 'post',
-						'order_no' => 0,
-						'group_no' => 0,
-					),
-				),
-			),
-			'options' => array (
-				'position' => 'side',
-				'layout' => 'default',
-				'hide_on_screen' => array (
-				),
-			),
-			'menu_order' => 10,
-		));
+        
+        if( function_exists('acf_add_local_field_group') ) {
+
+            acf_add_local_field_group(array (
+                'key' => 'acf_sluta-publicera',
+                'title' => 'Sluta publicera',
+                'fields' => array (
+                    array (
+                        'key' => 'field_51bffccf1a73f',
+                        'label' => 'Datum',
+                        'name' => 'hk_stop_publish_date',
+                        'type' => 'date_picker',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'display_format' => 'Y-m-d',
+                        'return_format' => 'Ymd',
+                        'first_day' => 1,
+                    ),
+                    array (
+                        'key' => 'field_51bffe875ccc4',
+                        'label' => 'Tid',
+                        'name' => 'hk_stop_publish_hour',
+                        'type' => 'select',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'choices' => array (
+                                7 => '7:00',
+                                    8 => '8:00',
+                                    9 => '9:00',
+                                    10 => '10:00',
+                                    11 => '11:00',
+                                    12 => '12:00',
+                                    13 => '13:00',
+                                    14 => '14:00',
+                                    15 => '15:00',
+                                    16 => '16:00',
+                                    17 => '17:00',
+                                    18 => '18:00',
+                                    19 => '19:00',
+                                    20 => '20:00',
+                                    21 => '21:00',
+                                    22 => '22:00',
+                        ),
+                        'default_value' => array (
+                        ),
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 0,
+                        'ajax' => 0,
+                        'return_format' => 'value',
+                        'placeholder' => '',
+                    ),
+                ),
+                'location' => array (
+                    array (
+                        array (
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'post',
+                        ),
+                    ),
+                ),
+                'menu_order' => 0,
+                'position' => 'normal',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+                'hide_on_screen' => '',
+                'active' => 1,
+                'description' => '',
+            ));
+
+        }
+        
+        
 	}
 	
 		
