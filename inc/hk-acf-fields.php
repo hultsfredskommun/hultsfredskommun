@@ -1640,6 +1640,15 @@ if(function_exists("register_field_group"))
                         ),
                     ),
                 ),
+                'options' => 
+                  array (
+                    'position' => 'side',
+                    'layout' => 'default',
+                    'hide_on_screen' => 
+                    array (
+                    ),
+                ),
+
                 'menu_order' => 0,
                 'position' => 'normal',
                 'style' => 'default',
@@ -1717,6 +1726,7 @@ if(function_exists("register_field_group"))
 			0 => 
 			array (
 				'key' => 'field_5046fe5d332d8',
+				'label' => 'Visa bara när etikett är vald',
 				'label' => 'Visa bara när etikett är vald',
 				'name' => 'hk_hide_from_category',
 				'type' => 'true_false',
