@@ -40,6 +40,7 @@
 * EU cookie bar, settings is in Theme settings.
 * FAQ attribute in post to add "visible" question in post and searchable. Searchable is setting to enable in Theme setting.
 * AJAX search with Wordpress standard search, Relevanssi plugin and Google Custom Site Search (deprecated).
+* Möjlighet att lägga till ett lokalt javascript på ett inlägg.
 
 === Recommended widget setup ===
 * Startsida toppinnehåll

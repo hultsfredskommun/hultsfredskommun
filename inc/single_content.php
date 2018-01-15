@@ -35,7 +35,13 @@
 			</div>
 			<h1 class="entry-title"><span><?php the_title(); ?></span></h1>
 			<?php 
-				if (get_post_meta( get_the_ID(), "local_script", true ) != "") { 
+                /* local script */
+                if (function_exists("get_field")) { 
+                    $localscript = get_field('hk_local_script'); 
+                    echo $localscript;
+                }
+                /* OLD local script meta data */
+				if (empty($localscript) && get_post_meta( get_the_ID(), "local_script", true ) != "") { 
 					echo get_post_meta( get_the_ID(), "local_script", true );
 				}
 			?>

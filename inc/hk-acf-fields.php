@@ -847,188 +847,6 @@ if(function_exists("register_field_group"))
 	 * POST
 	 *******/
 	
-/* POST RELATED *//*
-	register_field_group(array (
-		'id' => '5048edc031cee',
-		'title' => 'Snabbl&auml;nkar',
-		'fields' => 
-		array (
-			0 => 
-			array (
-				'key' => 'field_5048ad53aaeee',
-				'label' => 'Snabbl&auml;nkar',
-				'name' => 'hk_quick',
-				'type' => 'flexible_content',
-				'instructions' => '',
-				'required' => '0',
-				'layouts' => 
-				array (
-					0 => 
-					array (
-						'label' => 'Inlägg',
-						'name' => 'hk_quick_posts',
-						'display' => 'table',
-						'sub_fields' => 
-						array (
-							0 => 
-							array (
-								'label' => 'Inlägg',
-								'name' => 'hk_quick_post',
-								'type' => 'post_object',
-								'post_type' => 
-								array (
-									0 => 'post',
-								),
-								'taxonomy' => 
-								array (
-									0 => 'all',
-								),
-								'allow_null' => '0',
-								'multiple' => '0',
-								'key' => 'field_5048afeeeebee',
-								'order_no' => '0',
-							),
-							1 => 
-							array (
-								'label' => 'Beskrivning',
-								'name' => 'hk_quick_post_description',
-								'type' => 'textarea',
-								'default_value' => '',
-								'formatting' => 'br',
-								'key' => 'field_5048afee75bee',
-								'order_no' => '1',
-							),
-							2 => 
-							array (
-								'key' => 'field_5048db469ffee',
-								'label' => 'Bild',
-								'name' => 'hk_quick_image',
-								'type' => 'image',
-								'save_format' => 'object',
-								'preview_size' => 'thumbnail',
-								'order_no' => '0',
-							),
-						),
-					),
-					1 => 
-					array (
-						'label' => 'Extern länk',
-						'name' => 'hk_quick_links',
-						'display' => 'table',
-						'sub_fields' => 
-						array (
-							0 => 
-							array (
-								'label' => 'Namn',
-								'name' => 'hk_quick_link_name',
-								'type' => 'text',
-								'default_value' => '',
-								'formatting' => 'none',
-								'key' => 'field_5048afee75345',
-								'order_no' => '0',
-							),
-							1 => 
-							array (
-								'label' => 'Länk',
-								'name' => 'hk_quick_link_url',
-								'type' => 'text',
-								'default_value' => '',
-								'formatting' => 'none',
-								'key' => 'field_5048afee75346',
-								'order_no' => '1',
-							),
-							2 => 
-							array (
-								'label' => 'Beskrivning',
-								'name' => 'hk_quick_link_description',
-								'type' => 'textarea',
-								'default_value' => '',
-								'formatting' => 'br',
-								'key' => 'field_5048afee75347',
-								'order_no' => '2',
-							),
-							3 => 
-							array (
-								'key' => 'field_5048db469ffef',
-								'label' => 'Bild',
-								'name' => 'hk_quick_image',
-								'type' => 'image',
-								'save_format' => 'object',
-								'preview_size' => 'thumbnail',
-								'order_no' => '0',
-							),
-						),
-					),
-					2 => 
-					array (
-						'label' => 'Filer',
-						'name' => 'hk_quick_files',
-						'display' => 'table',
-						'sub_fields' => 
-						array (
-							0 => 
-							array (
-								'label' => 'Fil',
-								'name' => 'hk_quick_file',
-								'type' => 'file',
-								'save_format' => 'id',
-								'key' => 'field_6048afee75dee',
-								'order_no' => '0',
-							),
-							1 => 
-							array (
-								'label' => 'Beskrivning',
-								'name' => 'hk_quick_file_description',
-								'type' => 'textarea',
-								'default_value' => '',
-								'formatting' => 'br',
-								'key' => 'field_5048afee75dee',
-								'order_no' => '1',
-							),
-							2 => 
-							array (
-								'key' => 'field_5048db469ffff',
-								'label' => 'Bild',
-								'name' => 'hk_quick_image',
-								'type' => 'image',
-								'save_format' => 'object',
-								'preview_size' => 'thumbnail',
-								'order_no' => '0',
-							),
-						),
-					),
-					
-				),
-				
-				'button_label' => 'Lägg till fil',
-				'order_no' => '0',
-			),
-		),
-		'location' => 
-		array (
-			'rules' => 
-			array (
-				0 => 
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'hk_quick',
-					'order_no' => '0',
-				),
-			),
-			'allorany' => 'any',
-		),
-		'options' => 
-		array (
-			'position' => 'normal',
-			'layout' => 'default',
-			'hide_on_screen' => 
-			array (
-			),
-		),
-		'menu_order' => 3,
-	));*/
-	
 	
 	
 	/* POST RELATED */
@@ -1561,110 +1379,114 @@ if(function_exists("register_field_group"))
 		'instruction_placement' => 'label',
 		'hide_on_screen' => '',
 	));
+}
 
 	
-	/* POST STOP PUBLISH */
-	$options = get_option("hk_theme");
-	if ($options['enable_cron_stop_publish']) {
-        
-        if( function_exists('acf_add_local_field_group') ) {
+    
+/* POST STOP PUBLISH */
+$options = get_option("hk_theme");
+if ($options['enable_cron_stop_publish']) {
 
-            acf_add_local_field_group(array (
-                'key' => 'acf_sluta-publicera',
-                'title' => 'Sluta publicera',
-                'fields' => array (
-                    array (
-                        'key' => 'field_51bffccf1a73f',
-                        'label' => 'Datum',
-                        'name' => 'hk_stop_publish_date',
-                        'type' => 'date_picker',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array (
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ),
-                        'display_format' => 'Y-m-d',
-                        'return_format' => 'Ymd',
-                        'first_day' => 1,
+    if (function_exists('acf_add_local_field_group') ) {
+
+        acf_add_local_field_group(array (
+            'key' => 'acf_sluta-publicera',
+            'title' => 'Sluta publicera',
+            'fields' => array (
+                array (
+                    'key' => 'field_51bffccf1a73f',
+                    'label' => 'Datum',
+                    'name' => 'hk_stop_publish_date',
+                    'type' => 'date_picker',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array (
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
                     ),
+                    'display_format' => 'Y-m-d',
+                    'return_format' => 'Ymd',
+                    'first_day' => 1,
+                ),
+                array (
+                    'key' => 'field_51bffe875ccc4',
+                    'label' => 'Tid',
+                    'name' => 'hk_stop_publish_hour',
+                    'type' => 'select',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array (
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'choices' => array (
+                            7 => '7:00',
+                                8 => '8:00',
+                                9 => '9:00',
+                                10 => '10:00',
+                                11 => '11:00',
+                                12 => '12:00',
+                                13 => '13:00',
+                                14 => '14:00',
+                                15 => '15:00',
+                                16 => '16:00',
+                                17 => '17:00',
+                                18 => '18:00',
+                                19 => '19:00',
+                                20 => '20:00',
+                                21 => '21:00',
+                                22 => '22:00',
+                    ),
+                    'default_value' => array (
+                    ),
+                    'allow_null' => 0,
+                    'multiple' => 0,
+                    'ui' => 0,
+                    'ajax' => 0,
+                    'return_format' => 'value',
+                    'placeholder' => '',
+                ),
+            ),
+            'location' => array (
+                array (
                     array (
-                        'key' => 'field_51bffe875ccc4',
-                        'label' => 'Tid',
-                        'name' => 'hk_stop_publish_hour',
-                        'type' => 'select',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array (
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ),
-                        'choices' => array (
-                                7 => '7:00',
-                                    8 => '8:00',
-                                    9 => '9:00',
-                                    10 => '10:00',
-                                    11 => '11:00',
-                                    12 => '12:00',
-                                    13 => '13:00',
-                                    14 => '14:00',
-                                    15 => '15:00',
-                                    16 => '16:00',
-                                    17 => '17:00',
-                                    18 => '18:00',
-                                    19 => '19:00',
-                                    20 => '20:00',
-                                    21 => '21:00',
-                                    22 => '22:00',
-                        ),
-                        'default_value' => array (
-                        ),
-                        'allow_null' => 0,
-                        'multiple' => 0,
-                        'ui' => 0,
-                        'ajax' => 0,
-                        'return_format' => 'value',
-                        'placeholder' => '',
+                        'param' => 'post_type',
+                        'operator' => '==',
+                        'value' => 'post',
                     ),
                 ),
-                'location' => array (
-                    array (
-                        array (
-                            'param' => 'post_type',
-                            'operator' => '==',
-                            'value' => 'post',
-                        ),
-                    ),
+            ),
+            'options' => 
+              array (
+                'position' => 'side',
+                'layout' => 'default',
+                'hide_on_screen' => 
+                array (
                 ),
-                'options' => 
-                  array (
-                    'position' => 'side',
-                    'layout' => 'default',
-                    'hide_on_screen' => 
-                    array (
-                    ),
-                ),
+            ),
 
-                'menu_order' => 0,
-                'position' => 'normal',
-                'style' => 'default',
-                'label_placement' => 'top',
-                'instruction_placement' => 'label',
-                'hide_on_screen' => '',
-                'active' => 1,
-                'description' => '',
-            ));
+            'menu_order' => 0,
+            'position' => 'normal',
+            'style' => 'default',
+            'label_placement' => 'top',
+            'instruction_placement' => 'label',
+            'hide_on_screen' => '',
+            'active' => 1,
+            'description' => '',
+        ));
 
-        }
-        
-        
-	}
-	
-		
+    }
+
+
+}
+
+
+if(function_exists("register_field_group"))
+{		
 	/* POST EXTERNAL LINK */
 	register_field_group(array (
 		'id' => '5048edc032150',
@@ -1807,12 +1629,69 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 50,
 	));
+}
 
 
+
+if( function_exists('acf_add_local_field_group') ) {
+
+    acf_add_local_field_group(array(
+        'key' => 'group_5a5c59629744f',
+        'title' => 'Local script',
+        'fields' => array(
+            array(
+                'key' => 'field_5a5c595b9933a',
+                'label' => 'Lokalt javascript',
+                'name' => 'hk_local_script',
+                'type' => 'textarea',
+                'instructions' => 'M&ouml;jlighet att l&auml;gga till ett lokalt javascript på detta inl&auml;gg.',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => 3,
+                'new_lines' => '',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'post',
+                ),
+            ),
+        ),
+        'menu_order' => 100,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => 1,
+        'description' => '',
+    ));
+
+}
+    
+    /*******
+     * END POST
+     *******/
 
 	/*******
 	 * CONTACT
 	 *******/
+
+
+if(function_exists("register_field_group"))
+{
+
 	register_field_group(array (
 		'id' => '5062a4b871449',
 		'title' => 'Kontaktinformation',
