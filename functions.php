@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "5.9");
+define("HK_VERSION", "6.0");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -2525,5 +2525,35 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
 
     //print_r($args);
     return $args;
+}
+
+
+
+/* Yoast fix to eneble for specific user */
+if ( defined('WPSEO_VERSION') ) {
+    // Disable WordPress SEO meta box and menu for users that not is yoast enabled (ACF-setting in user form)
+    function wpse_init(){
+        $current_user = wp_get_current_user();
+        $enable_yoast = get_field('enable_yoast', 'user_'. $current_user->ID );
+        if( !$enable_yoast ){
+            // Remove page analysis columns from post lists, also SEO status on post editor
+            add_filter('wpseo_use_page_analysis', '__return_false');
+            // Remove Yoast meta boxes
+            add_action('add_meta_boxes', 'disable_seo_metabox', 100000);
+            // Remove Yoast from menu
+            add_action('admin_menu', 'remove_wpseo_admin_menu_links');
+        }   
+    }
+    add_action('init', 'wpse_init');
+    // Remove menu link
+    function remove_wpseo_admin_menu_links(){
+        remove_action( 'admin_bar_menu', 'wpseo_admin_bar_menu', 95 );
+        remove_menu_page( 'wpseo_dashboard' );
+    }
+    // Remove metaboxes
+    function disable_seo_metabox(){
+        remove_meta_box('wpseo_meta', 'post', 'normal');
+        remove_meta_box('wpseo_meta', 'page', 'normal');
+    }
 }
 ?>
