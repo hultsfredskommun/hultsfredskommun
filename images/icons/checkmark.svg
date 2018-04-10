@@ -1,0 +1,18 @@
+<svg width="16" height="12" viewBox="0 0 16 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>checkmark</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-1249 384)">
+<g id="checkmark">
+<g id="Vector">
+<use xlink:href="#path0_stroke" transform="translate(1251 -377.9)" fill="#A22033"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path1_stroke" transform="translate(1255 -382)" fill="#A22033"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_stroke" d="M 3.09289 4.50711L 3.8 5.21421L 5.21421 3.8L 4.50711 3.09289L 3.09289 4.50711ZM 0.707107 -0.707107L 3.90989e-08 -1.41421L -1.41421 1.39715e-07L -0.707107 0.707107L 0.707107 -0.707107ZM 4.50711 3.09289L 0.707107 -0.707107L -0.707107 0.707107L 3.09289 4.50711L 4.50711 3.09289Z"/>
+<path id="path1_stroke" d="M 8.70711 0.707107L 9.41421 -7.86006e-08L 8 -1.41421L 7.29289 -0.707107L 8.70711 0.707107ZM -0.707107 7.29289L -1.41421 8L 6.89676e-08 9.41421L 0.707107 8.70711L -0.707107 7.29289ZM 7.29289 -0.707107L -0.707107 7.29289L 0.707107 8.70711L 8.70711 0.707107L 7.29289 -0.707107Z"/>
+</defs>
+</svg>

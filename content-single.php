@@ -3,13 +3,19 @@
  * The default template for displaying single content
  */
 ?>
+
 	<!--googleon: all-->
-	<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky single full":"single full"); ?>>
-		<div class="article-border-wrapper">
-		<div class="article-wrapper">
-			<div class="single-content content-wrapper">
-				<?php 
-					if (get_post_type() == "hk_kontakter") {
+	<?php 
+	
+		if (get_post_type() == "hk_kontakter") :
+	
+	?>
+
+		<article id="post-<?php the_ID(); ?>" <?php post_class((is_sticky())?"sticky single full":"single full"); ?>>
+			<div class="article-border-wrapper">
+			<div class="article-wrapper">
+				<div class="single-content content-wrapper">
+					<?php 
 						require("inc/hk-article-header.php");
 						
 						hk_the_contact(array(
@@ -27,17 +33,26 @@
 						
 						//require("inc/hk-aside-content.php");
 						require("inc/single_footer_content.php");
-					}
-					else {
-						require("inc/single_content.php"); 
-					}
-				?>
+					?>
+					
+				</div><!-- .single-content .content-wrapper -->
+				<?php //require("inc/hk-aside-content.php"); ?>
+				<?php //require("inc/single_footer_content.php"); ?>
 				
-			</div><!-- .single-content .content-wrapper -->
-			<?php //require("inc/hk-aside-content.php"); ?>
-			<?php //require("inc/single_footer_content.php"); ?>
-		</div>
-		</div>
-		<span class='hidden article_id'><?php the_ID(); ?></span>
-	</article><!-- #post-<?php the_ID(); ?> -->
+			</div>
+			</div>
+			<span class='hidden article_id'><?php the_ID(); ?></span>
+
+		</article><!-- #post-<?php the_ID(); ?> -->
+
+	<?php 
+	
+		else:
+			
+			require("inc/single_content.php");			
+
+		endif;
+	
+	?>
+	
 	<!--googleoff: all-->

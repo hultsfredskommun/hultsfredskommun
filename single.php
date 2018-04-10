@@ -17,12 +17,18 @@ if (!isset($_GET["only_content"])) :
 get_header(); 
 ?>
 
-	<?php hk_navigation(); ?>
+	<?php if (get_post_type() == "hk_kontakter") hk_navigation(); ?>
 	
-	<div id="primary" class="primary">
+	<div id="primary" class="primary primary--full-width">
 		<div id="content" role="main">
+		
 <?php endif; ?>
+
+
+
+
 			<?php if ( have_posts() ) : the_post(); ?>
+			
 				<?php
 					$cat_array = array();
 					$from_string = "" ;
@@ -36,10 +42,20 @@ get_header();
 					// get post type
 					$post_type = get_post_type();
 				?>
+
 				<?php get_template_part( 'content', 'single' ); ?>
 
 			<?php endif; // end of the loop. ?>
 			
+
+
+
+
+
+
+
+
+
 			<?php /* show related posts */
 			if (false) : // remove related
 			if (empty($_REQUEST["print"]) && !isset($_GET["only_content"]) && !empty($cat_array)) : ?>

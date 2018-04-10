@@ -27,7 +27,7 @@
 
 
 /* UI IMPORTS */
-
+ 
 @import "ui/colors";
 @import "ui/borders";
 @import "ui/fontsizes";
@@ -49,12 +49,25 @@
 @import "ui/popup";
 @import "ui/icons";
 @import "ui/print";
+@import "ui/quick-filter";
+@import "ui/category-article";
 
 /* google map zoom visulal fix */
 
 .Citybreak_engine img,
 .map_canvas img {
     max-width: none;
+}
+
+*[v-cloak] {
+    opacity: 0;
+
+    &:before {
+        content: 'Laddar';
+        display: block;
+
+        text-align: center;
+    }
 }
 
 
@@ -139,4 +152,14 @@ desk {
     #responsive-info:after {
         content: "PALM & PORTABLE";
     }
+}
+
+
+
+
+
+
+// Move if needed
+.primary.primary--full-width {
+    width: 100%;
 }
