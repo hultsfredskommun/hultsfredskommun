@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "6.1");
+define("HK_VERSION", "6.0");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -2808,81 +2808,32 @@ function acf_google_map_api( $api ){
 
 add_filter('acf/fields/google_map/api', 'acf_google_map_api');
 
-
-/* Yoast fix to eneble for specific user */ 
-if ( defined('WPSEO_VERSION') ) { 
-    // Disable WordPress SEO meta box and menu for users that not is yoast enabled (ACF-setting in user form) 
-    function wpse_init(){ 
-        $current_user = wp_get_current_user(); 
-        $enable_yoast = get_field('enable_yoast', 'user_'. $current_user->ID ); 
-        if( !$enable_yoast ){ 
-            // Remove page analysis columns from post lists, also SEO status on post editor 
-            add_filter('wpseo_use_page_analysis', '__return_false'); 
-            // Remove Yoast meta boxes 
-            add_action('add_meta_boxes', 'disable_seo_metabox', 100000); 
-            // Remove Yoast from menu 
-            add_action('admin_menu', 'remove_wpseo_admin_menu_links'); 
-        }    
-    } 
-    add_action('init', 'wpse_init'); 
-    // Remove menu link 
-    function remove_wpseo_admin_menu_links(){ 
-        remove_action( 'admin_bar_menu', 'wpseo_admin_bar_menu', 95 ); 
-        remove_menu_page( 'wpseo_dashboard' ); 
-    } 
-    // Remove metaboxes 
-    function disable_seo_metabox(){ 
-        remove_meta_box('wpseo_meta', 'post', 'normal'); 
-        remove_meta_box('wpseo_meta', 'page', 'normal'); 
-    } 
-} 
-
-// disable Yoast for all and add option to enable for specific users.
-if ( defined('WPSEO_VERSION') ) { 
-    if( function_exists('acf_add_local_field_group') ) { 
- 
-        acf_add_local_field_group(array( 
-            'key' => 'group_5a698d89796df', 
-            'title' => 'Yoast', 
-            'fields' => array( 
-                array( 
-                    'key' => 'field_5a698d821fd5d', 
-                    'label' => 'Aktivera Yoast', 
-                    'name' => 'enable_yoast', 
-                    'type' => 'true_false', 
-                    'instructions' => '', 
-                    'required' => 0, 
-                    'conditional_logic' => 0, 
-                    'wrapper' => array( 
-                        'width' => '', 
-                        'class' => '', 
-                        'id' => '', 
-                    ), 
-                    'message' => '', 
-                    'default_value' => 0, 
-                    'ui' => 0, 
-                    'ui_on_text' => '', 
-                    'ui_off_text' => '', 
-                ), 
-            ), 
-            'location' => array( 
-                array( 
-                    array( 
-                        'param' => 'user_form', 
-                        'operator' => '==', 
-                        'value' => 'all', 
-                    ), 
-                ), 
-            ), 
-            'menu_order' => 0, 
-            'position' => 'normal', 
-            'style' => 'default', 
-            'label_placement' => 'top', 
-            'instruction_placement' => 'label', 
-            'hide_on_screen' => '', 
-            'active' => 1, 
-            'description' => '', 
-        )); 
+/* Yoast fix to eneble for specific user */
+if ( defined('WPSEO_VERSION') ) {
+    // Disable WordPress SEO meta box and menu for users that not is yoast enabled (ACF-setting in user form)
+    function wpse_init(){
+        $current_user = wp_get_current_user();
+        $enable_yoast = get_field('enable_yoast', 'user_'. $current_user->ID );
+        if( !$enable_yoast ){
+            // Remove page analysis columns from post lists, also SEO status on post editor
+            add_filter('wpseo_use_page_analysis', '__return_false');
+            // Remove Yoast meta boxes
+            add_action('add_meta_boxes', 'disable_seo_metabox', 100000);
+            // Remove Yoast from menu
+            add_action('admin_menu', 'remove_wpseo_admin_menu_links');
+        }   
     }
-} 
+    add_action('init', 'wpse_init');
+    // Remove menu link
+    function remove_wpseo_admin_menu_links(){
+        remove_action( 'admin_bar_menu', 'wpseo_admin_bar_menu', 95 );
+        remove_menu_page( 'wpseo_dashboard' );
+    }
+    // Remove metaboxes
+    function disable_seo_metabox(){
+        remove_meta_box('wpseo_meta', 'post', 'normal');
+        remove_meta_box('wpseo_meta', 'page', 'normal');
+    }
+}
+
 ?>

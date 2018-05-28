@@ -1,10 +1,14 @@
 <?php 
 
     $query_categories = $_GET['cat'];
-
-    $category_slug = get_the_category_by_id( get_query_var("cat"));
-    $category = get_category_by_slug($category_slug);
-
+    //echo get_query_var("cat");
+    
+    $category = get_term(get_query_var("cat"), 'category');
+    
+    //$category_slug = get_the_category_by_id( get_query_var("cat"));
+    //$category = get_category_by_slug($category_slug);
+    
+    //print_r($category);
     $args = array(
         'type'                     => 'post',
         'child_of'                 => $category->term_id,
@@ -15,18 +19,24 @@
         'taxonomy'                 => 'category',
     );
     $child_categories = get_categories( $args );
-
     $category_list = array();
     $category_list[] = $category->term_id;
 
-
+    //echo "cat term id :" . $category->term_id . "<br>";
+    //print_r($category);
+    
     // All categories which are going to be displayed in the filter
     if ( !empty ( $child_categories ) ){
         foreach ( $child_categories as $child_category ){
+            //echo "<br>child cat term id :" . $child_category->term_id . " - " . $child_category->category_parent . "<br>";
 
             // Puts category in array if the category is a top level category
             if ($category->term_id === $child_category->category_parent) {
+    
+                //echo "is top level";
                 $filter_category_list[] = hk_get_child_categories($child_category);
+    
+                //print_r($filter_category_list);
             }
 
         }
@@ -39,6 +49,11 @@
         }
     }
     
+    //print_r($filter_category_list);
+    //echo "<hr>";
+    //print_r($child_categories);
+    //echo "<hr>";
+    //print_r($category_list);
 
     $wp_api_settings_array = [
         'root' => esc_url_raw( rest_url() ),
@@ -47,7 +62,7 @@
         'category' => $category,
         'categoryChildren' => $filter_category_list
     ];
-
+    //print_r($wp_api_settings_array);
     wp_localize_script( 'hultsfred_js', 'WP_API_ENV', $wp_api_settings_array );
 
 

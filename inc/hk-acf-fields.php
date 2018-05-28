@@ -11,8 +11,6 @@
 // if(!get_option('acf_options_page_ac')) update_option('acf_options_page_ac', "xxxx-xxxx-xxxx-xxxx");
 // if(!get_option('acf_flexible_content_ac')) update_option('acf_flexible_content_ac', "xxxx-xxxx-xxxx-xxxx");
 // if(!get_option('acf_gallery_ac')) update_option('acf_gallery_ac', "xxxx-xxxx-xxxx-xxxx");
-
-
 /**
  * Register field groups
  * The register_field_group function accepts 1 array which holds the relevant data to register a field group
@@ -20,7 +18,6 @@
  * This code must run every time the functions.php file is read
  */
 if( function_exists('acf_add_local_field_group') ):
-
 $imagesizeArr = array(  'thumbnail-image' => 'thumbnail-image',
 						'featured-image' => 'featured-image',
 						'slideshow-image' => 'slideshow-image',
@@ -85,7 +82,6 @@ acf_add_local_field_group(array (
 									'class' => '',
 									'id' => '',
 								),
-
 								'choices' => array (
 									'one-whole' => 'Fullbredd',
 									'one-half' => 'En halv',
@@ -125,7 +121,6 @@ acf_add_local_field_group(array (
 								'message' => '',
 								'default_value' => 0,
 							),
-
 							array (
 								'key' => 'field_56cc0a2e61830',
 								'label' => 'Kod',
@@ -147,7 +142,6 @@ acf_add_local_field_group(array (
 								'readonly' => 0,
 								'disabled' => 0,
 							),
-
 					)
 				), 
 				array (
@@ -664,7 +658,6 @@ acf_add_local_field_group(array (
 							),
 							'default_value' => '',
 						),
-
 						array (
 							'key' => 'field_12c70a2e6183b',
 							'label' => 'Margin',
@@ -688,7 +681,6 @@ acf_add_local_field_group(array (
 							),
 							'default_value' => '',
 						),
-
 						
 						array (
 							'key' => 'field_12e40a2e6183b',
@@ -743,14 +735,11 @@ acf_add_local_field_group(array (
 							'disabled' => 0,
 						),
 					),
-
 					'min' => '',
 					'max' => '',
-
 				),
 			),
 		),
-
 	),
 	'location' => array (
 		array (
@@ -770,9 +759,6 @@ acf_add_local_field_group(array (
 	'active' => 1,
 	'description' => '',
 ));
-
-
-
 /* category filter and show children settings */
 acf_add_local_field_group(array (
 	'key' => 'group_590855185bb8d',
@@ -837,10 +823,7 @@ acf_add_local_field_group(array (
 	'active' => 1,
 	'description' => '',
 ));
-
 endif;
-
-
 if(function_exists("register_field_group"))
 {
 	/*******
@@ -993,7 +976,6 @@ if(function_exists("register_field_group"))
 								'type' => 'select',
 								'column_width' => '',
 							),
-
 						),
 					),
 				),
@@ -1200,8 +1182,6 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
-
-
 	/* POST CONTACT */
 	register_field_group(array (
 		'id' => '5048edc032013',
@@ -1380,15 +1360,12 @@ if(function_exists("register_field_group"))
 		'hide_on_screen' => '',
 	));
 }
-
 	
     
 /* POST STOP PUBLISH */
 $options = get_option("hk_theme");
 if ($options['enable_cron_stop_publish']) {
-
     if (function_exists('acf_add_local_field_group') ) {
-
         acf_add_local_field_group(array (
             'key' => 'acf_sluta-publicera',
             'title' => 'Sluta publicera',
@@ -1468,7 +1445,6 @@ if ($options['enable_cron_stop_publish']) {
                 array (
                 ),
             ),
-
             'menu_order' => 0,
             'position' => 'normal',
             'style' => 'default',
@@ -1478,13 +1454,8 @@ if ($options['enable_cron_stop_publish']) {
             'active' => 1,
             'description' => '',
         ));
-
     }
-
-
 }
-
-
 if(function_exists("register_field_group"))
 {		
 	/* POST EXTERNAL LINK */
@@ -1630,11 +1601,7 @@ if(function_exists("register_field_group"))
 		'menu_order' => 50,
 	));
 }
-
-
-
 if( function_exists('acf_add_local_field_group') ) {
-
     acf_add_local_field_group(array(
         'key' => 'group_5a5c59629744f',
         'title' => 'Local script',
@@ -1677,21 +1644,16 @@ if( function_exists('acf_add_local_field_group') ) {
         'active' => 1,
         'description' => '',
     ));
-
 }
     
     /*******
      * END POST
      *******/
-
 	/*******
 	 * CONTACT
 	 *******/
-
-
 if(function_exists("register_field_group"))
 {
-
 	register_field_group(array (
 		'id' => '5062a4b871449',
 		'title' => 'Kontaktinformation',
@@ -1976,7 +1938,6 @@ if(function_exists("register_field_group"))
 				'toolbar' => 'full',
 				'media_upload' => 'yes',
 			),
-
 		),
 		'location' => 
 		array (
@@ -2044,7 +2005,6 @@ if(function_exists("register_field_group"))
 				'type' => 'text',
 				'default_value' => '5',
 			),
-
 		),
 		'location' => 
 		array (
@@ -2106,12 +2066,9 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
-
 }
-
 if ( defined('WPSEO_VERSION') ) {
     if( function_exists('acf_add_local_field_group') ) {
-
         acf_add_local_field_group(array(
             'key' => 'group_5a698d89796df',
             'title' => 'Yoast',
@@ -2154,7 +2111,6 @@ if ( defined('WPSEO_VERSION') ) {
             'active' => 1,
             'description' => '',
         ));
-
     }
 }
 ?>
