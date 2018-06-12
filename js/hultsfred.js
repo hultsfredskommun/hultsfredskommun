@@ -532,6 +532,182 @@ var settings = new Array();
 
     $(document).ready(function() {
 
+
+
+        /* VUE */
+
+            if ($('#quick-vue-wrapper')[0]) {
+                
+                new Vue({
+                    el: '#quick-vue-wrapper',
+            
+                    mounted() {
+
+                        var categoryChildren = WP_API_ENV.categoryChildren;
+            
+                        categoryChildren.forEach(function (category, i) {
+                            this.getAllPostsFromCategory(category);
+                        }.bind(this));
+
+                        $('body').click(function() {
+                            this.filterDropdownOpen = false;
+                        }.bind(this));
+            
+                    },
+            
+                    data() {
+                        return {
+            
+                            category: '',
+                            childCategories: [],
+                            posts: [],
+                            filter: [],
+                            filteredPosts: [],
+                            filterDropdownOpen: false
+            
+                        }
+                    },
+            
+                    watch: {
+                        filter(filter) {
+                            this.filteredPosts = [];
+                            filter.forEach(function (value) {
+            
+                                this.posts.forEach(function (post, i) {
+            
+                                    post.categories.forEach(function (category) {
+                                        var isInFilteredPosts = false;
+            
+                                        this.filteredPosts.forEach(function (filteredPost, i) {
+                                            if (post.ID === filteredPost.ID) isInFilteredPosts = true;
+                                        }.bind(this));
+            
+                                        if (category === value.id && !isInFilteredPosts) this.filteredPosts.push(post);
+            
+                                    }.bind(this));
+            
+                                }.bind(this));
+            
+                            }.bind(this));
+                        }
+                    },
+            
+                    methods: {
+
+                        toggleFilterDropdown(e) {
+                            e.stopPropagation();
+                            this.filterDropdownOpen ? this.filterDropdownOpen = false : this.filterDropdownOpen = true;
+                        },
+            
+                        toggleCategoryFilter(e, category) {
+
+                            e.stopPropagation();
+            
+                            category.name = category.name.replace(/&/g, '&');
+            
+                            var index = this.containsObject(category, this.filter);
+            
+                            var srcElement = $('.quick-filter-dropdown__button--' + category.id);
+                            var checkbox = srcElement.find('.quick-filter-dropdown__checkbox');
+                            
+                            if (index === -1) {
+                                this.filter.push(category);
+                                if (checkbox[0]) checkbox.addClass('quick-filter-dropdown__checkbox--checked');
+                                else srcElement.addClass('quick-filter-dropdown__text--selected');
+                                srcElement.attr('aria-selected', true);
+                            } else {
+                                this.filter.splice(index, 1);
+                                if (checkbox[0]) checkbox.removeClass('quick-filter-dropdown__checkbox--checked');
+                                else srcElement.removeClass('quick-filter-dropdown__text--selected');
+                                srcElement.attr('aria-selected', false);
+                            }
+
+
+                            if (category.children) {
+
+                                if (srcElement.attr('aria-selected') == 'true') {
+                                    category.children.forEach(function (child, i) {
+                                        var button = $('.quick-filter-dropdown__button--' + child.term_id);
+                                        if (button.attr('aria-selected') == 'false') {
+                                            button[0].click();
+                                        }
+                                    });
+                                } else {
+                                    category.children.forEach(function (child, i) {
+                                        var button = $('.quick-filter-dropdown__button--' + child.term_id);
+                                        if (button.attr('aria-selected') == 'true') {
+                                            button[0].click();
+                                        }
+                                    });
+                                }
+
+                                
+                            }
+            
+                        },
+            
+                        getAllPostsFromCategory(category) {
+            
+                            category.posts.forEach(function (categoryPost, i) {
+                                var alreadyInPostsArray = false;
+            
+                                this.posts.forEach(function (post, i) {
+                                    if (post.ID === categoryPost.ID) alreadyInPostsArray = true;
+                                }.bind(this));
+            
+                                if (!alreadyInPostsArray) this.posts.push(categoryPost);
+            
+                            }.bind(this));
+            
+                            if (category.child_categories !== undefined) {
+                                category.child_categories.forEach(function (childCategory, i) {
+                                    this.getAllPostsFromCategory(childCategory);
+                                }.bind(this));
+                            }
+            
+                        },
+            
+                        toggleDropdown(e) {
+                            e.stopPropagation();
+            
+                            var button = e.target;
+            
+                            var dropdown = $(button.parentElement.nextElementSibling);
+                            var hasClass = dropdown.hasClass('quick-filter-dropdown__sub-list--visible');
+                            button = $(button);
+            
+                            if (hasClass) {
+                                button.removeClass('quick-filter-dropdown__expand--expanded');
+                                dropdown.removeClass('quick-filter-dropdown__sub-list--visible');
+                            } else {
+                                button.addClass('quick-filter-dropdown__expand--expanded');
+                                dropdown.addClass('quick-filter-dropdown__sub-list--visible');
+                            }
+                        },
+            
+                        containsObject(obj, list) {
+                            var i;
+
+                            
+                            for(i = 0; i < list.length; i++) {
+                                if (list[i].id === obj.id) {
+                                    return i;
+                                }
+                            }
+            
+                            return -1;
+                        }
+            
+                    },
+
+                });
+
+            }
+
+
+            /* VUE */
+
+            
         /* add filter_search */
         if ($(".tag-listing").length > 0) {
             $(".page-title").append("<div class='tag-tools'></div>");
