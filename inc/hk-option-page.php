@@ -30,7 +30,7 @@ function hk_theme_options_do_page() {
 			<a href="#mobil">Mobil</a>
 			<a href="#sidhuvud">Sidhuvud</a>
 			<a href="#meddelande">Meddelande</a>
-			<a href="#kategorier">Kategorier</a>
+			<a href="#kategorier">Kategorier och utseende</a>
 			<a href="#kontakta-oss">Kontakta-oss</a>
 			<a href="#permalänkar">Permalänkar</a>
 			<a href="#tillagg">Tillägg</a>
@@ -286,6 +286,8 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options['show_tags']; ?>" /></p>
 			<p><label for="hk_theme[category_slideshow_thumbnail_size]">Tumnagelstorlek för bildspel i kategorilista. (default: wide-image)</label><br/><input size="8" type="text" name="hk_theme[category_slideshow_thumbnail_size]" value="<?php echo (!isset($options["category_slideshow_thumbnail_size"]) || $options["category_slideshow_thumbnail_size"] == "")?'wide-image':$options['category_slideshow_thumbnail_size']; ?>" /></p>
 
+			<p><input type="checkbox" name="hk_theme[new_post_template]" value="1"<?php checked( 1 == $options['new_post_template'] ); ?> /> <label for="hk_theme[new_post_template]">Använd utseende 2.0 på alla artiklar.</label></p>
+			
 			<?php submit_button(); ?>
 			
 			<a name="kontakta-oss"></a>
