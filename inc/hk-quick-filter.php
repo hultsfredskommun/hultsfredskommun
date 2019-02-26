@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     $query_categories = $_GET['cat'];
 
@@ -38,7 +38,7 @@
             $category_list[] = $child_category->term_id;
         }
     }
-    
+
 
     $wp_api_settings_array = [
         'root' => esc_url_raw( rest_url() ),
@@ -60,13 +60,13 @@
         <?php if(!empty($filter_category_list)) : ?>
 
             <h3 class="quick-filter__title"><?php echo $category->name ?>:</h3>
-            
+
             <div class="quick-filter__filter-wrapper">
-                
+
                 <button class="quick-filter__shape quick-filter__button" @click="toggleFilterDropdown($event)">
-                    
+
                     Filter
-                
+
                     <svg width="18" height="14" viewBox="0 0 18 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Canvas" transform="translate(-1079 461)">
                             <g id="ios-settings-strong">
@@ -88,15 +88,15 @@
                             <path id="path1_fill" d="M 0 0.954545L 3.67031 0.954545C 3.91886 0.393273 4.48517 0 5.14286 0C 5.80054 0 6.3669 0.393273 6.6154 0.954545L 18 0.954545L 18 2.22727L 6.6154 2.22727C 6.36686 2.78855 5.80054 3.18182 5.14286 3.18182C 4.48517 3.18182 3.91882 2.78855 3.67031 2.22727L 0 2.22727"/>
                         </defs>
                     </svg>
-            
+
                 </button>
 
                 <div class="quick-filter-dropdown" :class="{'quick-filter-dropdown--visible': filterDropdownOpen}" @click="$event.stopPropagation()">
 
                     <ul class="quick-filter-dropdown__list">
 
-                        <?php 
-                            
+                        <?php
+
                             foreach ($filter_category_list as $filter_category) :
 
                                 $category_json = [
@@ -107,12 +107,12 @@
                                 if (!empty($filter_category->child_categories)) {
                                     $category_json['children'] = $filter_category->child_categories;
                                 }
-                                
+
                                 $category_json = json_encode($category_json);
                         ?>
 
                                 <li>
-                                
+
                                     <div class="cf quick-filter-dropdown__button <?php echo 'quick-filter-dropdown__button--' . $filter_category->term_id ?>"
                                         role="button"
                                         tabindex="0"
@@ -133,19 +133,19 @@
 
                                     <?php if (!empty($filter_category->child_categories)) : ?>
                                         <ul class="quick-filter-dropdown__sub-list">
-                                        <?php 
-                                        
+                                        <?php
+
                                             foreach ($filter_category->child_categories as $filter_child_category) {
 
                                                 echo hk_display_child_categories($filter_child_category, $query_categories);
-                                                
+
                                             }
-                                        
+
                                         ?>
                                         </ul>
                                     <?php endif; ?>
 
-                                </li>     
+                                </li>
 
                         <?php
 
@@ -158,14 +158,14 @@
                     <button class="quick-filter-dropdown__close" @click="toggleFilterDropdown($event)">Stäng</button>
 
                 </div>
-                
+
             </div>
 
             <span v-for="category in filter" class="quick-filter__shape quick-filter__tag">
                 {{ category.name }}
                 <button @click="toggleCategoryFilter($event, category)" class="quick-filter__remove-tag"><svg width="10" height="10" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Canvas" transform="translate(-1282 458)"><g id="close"><g id="Vector"><use xlink:href="#close_stroke" transform="translate(1284 -456)"/></g><g id="Vector"><use xlink:href="#close2_stroke" transform="translate(1284 -456)"/></g></g></g><defs><path id="close_stroke" d="M 0.53033 -0.53033L -9.53674e-09 -1.06066L -1.06066 -9.53674e-09L -0.53033 0.53033L 0.53033 -0.53033ZM 5.46967 6.53033L 6 7.06066L 7.06066 6L 6.53033 5.46967L 5.46967 6.53033ZM -0.53033 0.53033L 5.46967 6.53033L 6.53033 5.46967L 0.53033 -0.53033L -0.53033 0.53033Z"/><path id="close2_stroke" d="M -0.53033 5.46967L -1.06066 6L -9.53674e-09 7.06066L 0.53033 6.53033L -0.53033 5.46967ZM 6.53033 0.53033L 7.06066 -9.53674e-09L 6 -1.06066L 5.46967 -0.53033L 6.53033 0.53033ZM 0.53033 6.53033L 6.53033 0.53033L 5.46967 -0.53033L -0.53033 5.46967L 0.53033 6.53033Z"/></defs></svg></button>
             </span>
- 
+
         <?php else: ?>
 
             <h2 class="quick-filter__title quick-filter__title--large"><?php echo $category->name ?></h2>
@@ -178,7 +178,7 @@
     <div class="quick-posts-wrapper quick-filter-article">
 
         <div class="quick-posts">
-    
+
             <div v-if="filteredPosts.length > 0">
                 <a v-for="post in filteredPosts" :href="post.permalink" class="quick-filter-article quick-post one-third">
                     <div class="featured-image slide">
@@ -200,10 +200,8 @@
                     <h2 class="quick-filter-article__title">{{ post.post_title }}</h2>
                     <p class="quick-filter-article__excerpt" v-html="post.post_content.substr(0, 100)"></p>
                 </a>
-            
-            </div>
 
-            <h2 v-if="posts.length < 0" class="quick-filter-article__no-posts">Det finns tyvärr inga artiklar som matchar med den nuvarande filtreringen.</h2>
+            </div>
 
         </div>
 
@@ -212,7 +210,7 @@
 </div>
 
 
-<?php 
+<?php
 
     $all_posts = array();
 
@@ -246,7 +244,7 @@
             $post_categories = get_the_category($post->ID);
 
             $post->categories = [];
-            
+
             foreach ($post_categories as $post_category) {
                 $post->categories[] = $post_category->term_id;
             }
@@ -263,7 +261,7 @@
         $category->posts = $posts;
 
 
-        if (empty($child_categories)) return $category;        
+        if (empty($child_categories)) return $category;
 
         $category->child_categories = array();
 
@@ -289,7 +287,7 @@
         if (!empty($child_categories)) {
             $category_json['children'] = $child_categories;
         }
-        
+
         $category_json = json_encode($category_json);
 
 
@@ -298,18 +296,18 @@
         $return_string .= '
                 <li>
                     <div class="cf quick-filter-dropdown__button quick-filter-dropdown__button--' . $category->term_id . '"
-                    role="button" 
-                    tabindex="0" 
+                    role="button"
+                    tabindex="0"
                     @click="toggleCategoryFilter($event, ' . htmlspecialchars($category_json) . ')"
                     @keypress.enter="toggleCategoryFilter($event, ' . htmlspecialchars($category_json) . ')"
                     aria-selected="false">
                         <span class="quick-filter-dropdown__text">' . $category->name . '</span>';
-        
+
         if ( !empty($child_categories) ) {
             $return_string .= '<button class="quick-filter-dropdown__expand" @click="toggleDropdown($event)"></button>';
             $return_string .= '<span class="quick-filter-dropdown__checkbox"></span>';
         } else {
-            $return_string .= '<span class="quick-filter-dropdown__checkbox"></span>';    
+            $return_string .= '<span class="quick-filter-dropdown__checkbox"></span>';
         }
 
         $return_string .= '</div>';
@@ -329,7 +327,7 @@
         if ( !empty($child_categories) ) {
             $return_string .= '</ul>';
         }
-        
+
         return $return_string;
 
     }

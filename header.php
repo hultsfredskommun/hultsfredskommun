@@ -9,7 +9,7 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
- 
+
 
 global $default_settings, $wp_query;
 /* get hk_options */
@@ -27,7 +27,7 @@ if (in_category($hk_options["hidden_cat"])) {
 	//TODO print 404 error - include("404.php");?
 	die("Inte synlig.");
 }
- 
+
 /* get category_as_filter recursive setting */
 $catvalue = "category_" . get_query_var("cat");
 $default_settings['category_as_filter'] = ((get_field("category_as_filter", $catvalue)=="")?false:true);
@@ -63,7 +63,7 @@ else {
 	$meta_description = $hk_options["meta_description"];
 } else if (is_single() && get_the_ID() > 0) {
 	$meta_description = substr( strip_tags(get_post_field('post_content', get_the_ID())), 0, 200);
-} 
+}
 if ($meta_description != "") :?>
 <meta name="description" content="<?php echo $meta_description; ?>" />
 <?php endif; ?>
@@ -161,8 +161,8 @@ if ($meta_description != "") :?>
 	 * generally use this hook to add elements to <head> such
 	 * as styles, scripts, and meta tags.
 	 */
-	 
-	/* option to be able to add scipts or other from setting */ 
+
+	/* option to be able to add scipts or other from setting */
 	echo $hk_options['in_head_section'];
 
 	/* wp_head last in <head> */
@@ -186,14 +186,14 @@ $category_show_children_class = (!empty($default_settings["category_show_childre
 <div id="page" class="hfeed">
 	<?php
 		if ($menuversion == "new") {
-			require( get_template_directory() . '/inc/hk-header.php'); 
+			require( get_template_directory() . '/inc/hk-header.php');
 		}
 		else {
-			require( get_template_directory() . '/inc/hk-old-header.php'); 		
+			require( get_template_directory() . '/inc/hk-old-header.php');
 		}?>
 
 	<div class="main hk-quick"><div class="main-wrapper">
-		<?php if (!is_sub_category_firstpage()) { echo hk_view_quick_links(); } ?>
+		<?php //if ( !is_sub_category_firstpage() ) echo hk_view_quick_links(); ?>
 	</div></div>
 	<div id="main" class="main">
 	<div class="main-wrapper">

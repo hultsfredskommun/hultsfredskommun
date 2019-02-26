@@ -1,35 +1,40 @@
 <?php
 /**
  * Activate Add-ons
- * Here you can enter your activation codes to unlock Add-ons to use in your theme. 
- * Since all activation codes are multi-site licenses, you are allowed to include your key in premium themes. 
- * Use the commented out code to update the database with your activation code. 
+ * Here you can enter your activation codes to unlock Add-ons to use in your theme.
+ * Since all activation codes are multi-site licenses, you are allowed to include your key in premium themes.
+ * Use the commented out code to update the database with your activation code.
  * You may place this code inside an IF statement that only runs on theme activation.
- */ 
- 
+ */
+
 // if(!get_option('acf_repeater_ac')) update_option('acf_repeater_ac', "xxxx-xxxx-xxxx-xxxx");
 // if(!get_option('acf_options_page_ac')) update_option('acf_options_page_ac', "xxxx-xxxx-xxxx-xxxx");
 // if(!get_option('acf_flexible_content_ac')) update_option('acf_flexible_content_ac', "xxxx-xxxx-xxxx-xxxx");
 // if(!get_option('acf_gallery_ac')) update_option('acf_gallery_ac', "xxxx-xxxx-xxxx-xxxx");
+
+
 /**
  * Register field groups
  * The register_field_group function accepts 1 array which holds the relevant data to register a field group
  * You may edit the array as you see fit. However, this may result in errors if the array is not compatible with ACF
  * This code must run every time the functions.php file is read
  */
+
 if( function_exists('acf_add_local_field_group') ):
+
 $imagesizeArr = array(  'thumbnail-image' => 'thumbnail-image',
 						'featured-image' => 'featured-image',
 						'slideshow-image' => 'slideshow-image',
+						'article-image' => 'article-image',
 						'wide-image' => 'wide-image',
 						'contact-image' => 'contact-image',
 						'thumbnail-news-image' => 'thumbnail-news-image');
-						
+
 acf_add_local_field_group(array (
 	'key' => 'group_56bb0a0915e14',
 	'title' => 'Mellanstartsida',
 	'fields' => array (
-	
+
 		array (
 			'key' => 'field_56c2b9e22ea60',
 			'label' => 'Visa det vanliga artikelflödet/startsidan under mellanstartsidan',
@@ -82,6 +87,7 @@ acf_add_local_field_group(array (
 									'class' => '',
 									'id' => '',
 								),
+
 								'choices' => array (
 									'one-whole' => 'Fullbredd',
 									'one-half' => 'En halv',
@@ -121,6 +127,7 @@ acf_add_local_field_group(array (
 								'message' => '',
 								'default_value' => 0,
 							),
+
 							array (
 								'key' => 'field_56cc0a2e61830',
 								'label' => 'Kod',
@@ -142,16 +149,17 @@ acf_add_local_field_group(array (
 								'readonly' => 0,
 								'disabled' => 0,
 							),
+
 					)
-				), 
+				),
 				array (
 					'key' => '56bb0a25a4143',
 					'name' => 'lagg_till_puff',
 					'label' => 'Puff',
 					'display' => 'block',
 					'sub_fields' => array (
-						
-						
+
+
 						array (
 							'key' => 'field_56c729a6a5d1b',
 							'label' => 'Bildformat',
@@ -254,7 +262,7 @@ acf_add_local_field_group(array (
 							'disabled' => 0,
 							'readonly' => 0,
 						),
-						
+
 						array (
 							'key' => 'field_56bb0a146183a',
 							'label' => 'Bild',
@@ -300,8 +308,8 @@ acf_add_local_field_group(array (
 							'readonly' => 0,
 							'disabled' => 0,
 						),
-						
-						
+
+
 						array (
 							'key' => 'field_56bb0a416183c',
 							'label' => 'Länka till',
@@ -414,7 +422,7 @@ acf_add_local_field_group(array (
 								),
 							),
 						),
-						
+
 						/* colors and style */
 						array (
 							'key' => 'field_56eabc5e154d0',
@@ -552,7 +560,7 @@ acf_add_local_field_group(array (
 							'disabled' => 0,
 							'readonly' => 0,
 						),
-						
+
 						array (
 							'key' => 'field_12cc0a2e6183b',
 							'label' => 'Bredd p&aring; ram',
@@ -658,6 +666,7 @@ acf_add_local_field_group(array (
 							),
 							'default_value' => '',
 						),
+
 						array (
 							'key' => 'field_12c70a2e6183b',
 							'label' => 'Margin',
@@ -681,7 +690,8 @@ acf_add_local_field_group(array (
 							),
 							'default_value' => '',
 						),
-						
+
+
 						array (
 							'key' => 'field_12e40a2e6183b',
 							'label' => 'Css class',
@@ -735,11 +745,14 @@ acf_add_local_field_group(array (
 							'disabled' => 0,
 						),
 					),
+
 					'min' => '',
 					'max' => '',
+
 				),
 			),
 		),
+
 	),
 	'location' => array (
 		array (
@@ -759,49 +772,9 @@ acf_add_local_field_group(array (
 	'active' => 1,
 	'description' => '',
 ));
-/* New article layout */	
-acf_add_local_field_group(array(
-	'key' => 'group_5b1f6c2a4d721',
-	'title' => 'Nytt artikelutseende',
-	'fields' => array(
-		array(
-			'key' => 'field_5b1f6bf359770',
-			'label' => 'Nytt artikelutseende',
-			'name' => 'new_post_template',
-			'type' => 'true_false',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'message' => '',
-			'default_value' => 0,
-			'ui' => 0,
-			'ui_on_text' => '',
-			'ui_off_text' => '',
-		),
-	),
-	'location' => array(
-		array(
-			array(
-				'param' => 'post_type',
-				'operator' => '==',
-				'value' => 'post',
-			),
-		),
-	),
-	'menu_order' => 0,
-	'position' => 'normal',
-	'style' => 'default',
-	'label_placement' => 'top',
-	'instruction_placement' => 'label',
-	'hide_on_screen' => '',
-	'active' => 1,
-	'description' => '',
-));
+
+
+
 /* category filter and show children settings */
 acf_add_local_field_group(array (
 	'key' => 'group_590855185bb8d',
@@ -866,22 +839,207 @@ acf_add_local_field_group(array (
 	'active' => 1,
 	'description' => '',
 ));
+
 endif;
+
+
 if(function_exists("register_field_group"))
 {
 	/*******
 	 * POST
 	 *******/
-	
-	
-	
+
+/* POST RELATED *//*
+	register_field_group(array (
+		'id' => '5048edc031cee',
+		'title' => 'Snabbl&auml;nkar',
+		'fields' =>
+		array (
+			0 =>
+			array (
+				'key' => 'field_5048ad53aaeee',
+				'label' => 'Snabbl&auml;nkar',
+				'name' => 'hk_quick',
+				'type' => 'flexible_content',
+				'instructions' => '',
+				'required' => '0',
+				'layouts' =>
+				array (
+					0 =>
+					array (
+						'label' => 'Inlägg',
+						'name' => 'hk_quick_posts',
+						'display' => 'table',
+						'sub_fields' =>
+						array (
+							0 =>
+							array (
+								'label' => 'Inlägg',
+								'name' => 'hk_quick_post',
+								'type' => 'post_object',
+								'post_type' =>
+								array (
+									0 => 'post',
+								),
+								'taxonomy' =>
+								array (
+									0 => 'all',
+								),
+								'allow_null' => '0',
+								'multiple' => '0',
+								'key' => 'field_5048afeeeebee',
+								'order_no' => '0',
+							),
+							1 =>
+							array (
+								'label' => 'Beskrivning',
+								'name' => 'hk_quick_post_description',
+								'type' => 'textarea',
+								'default_value' => '',
+								'formatting' => 'br',
+								'key' => 'field_5048afee75bee',
+								'order_no' => '1',
+							),
+							2 =>
+							array (
+								'key' => 'field_5048db469ffee',
+								'label' => 'Bild',
+								'name' => 'hk_quick_image',
+								'type' => 'image',
+								'save_format' => 'object',
+								'preview_size' => 'thumbnail',
+								'order_no' => '0',
+							),
+						),
+					),
+					1 =>
+					array (
+						'label' => 'Extern länk',
+						'name' => 'hk_quick_links',
+						'display' => 'table',
+						'sub_fields' =>
+						array (
+							0 =>
+							array (
+								'label' => 'Namn',
+								'name' => 'hk_quick_link_name',
+								'type' => 'text',
+								'default_value' => '',
+								'formatting' => 'none',
+								'key' => 'field_5048afee75345',
+								'order_no' => '0',
+							),
+							1 =>
+							array (
+								'label' => 'Länk',
+								'name' => 'hk_quick_link_url',
+								'type' => 'text',
+								'default_value' => '',
+								'formatting' => 'none',
+								'key' => 'field_5048afee75346',
+								'order_no' => '1',
+							),
+							2 =>
+							array (
+								'label' => 'Beskrivning',
+								'name' => 'hk_quick_link_description',
+								'type' => 'textarea',
+								'default_value' => '',
+								'formatting' => 'br',
+								'key' => 'field_5048afee75347',
+								'order_no' => '2',
+							),
+							3 =>
+							array (
+								'key' => 'field_5048db469ffef',
+								'label' => 'Bild',
+								'name' => 'hk_quick_image',
+								'type' => 'image',
+								'save_format' => 'object',
+								'preview_size' => 'thumbnail',
+								'order_no' => '0',
+							),
+						),
+					),
+					2 =>
+					array (
+						'label' => 'Filer',
+						'name' => 'hk_quick_files',
+						'display' => 'table',
+						'sub_fields' =>
+						array (
+							0 =>
+							array (
+								'label' => 'Fil',
+								'name' => 'hk_quick_file',
+								'type' => 'file',
+								'save_format' => 'id',
+								'key' => 'field_6048afee75dee',
+								'order_no' => '0',
+							),
+							1 =>
+							array (
+								'label' => 'Beskrivning',
+								'name' => 'hk_quick_file_description',
+								'type' => 'textarea',
+								'default_value' => '',
+								'formatting' => 'br',
+								'key' => 'field_5048afee75dee',
+								'order_no' => '1',
+							),
+							2 =>
+							array (
+								'key' => 'field_5048db469ffff',
+								'label' => 'Bild',
+								'name' => 'hk_quick_image',
+								'type' => 'image',
+								'save_format' => 'object',
+								'preview_size' => 'thumbnail',
+								'order_no' => '0',
+							),
+						),
+					),
+
+				),
+
+				'button_label' => 'Lägg till fil',
+				'order_no' => '0',
+			),
+		),
+		'location' =>
+		array (
+			'rules' =>
+			array (
+				0 =>
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'hk_quick',
+					'order_no' => '0',
+				),
+			),
+			'allorany' => 'any',
+		),
+		'options' =>
+		array (
+			'position' => 'normal',
+			'layout' => 'default',
+			'hide_on_screen' =>
+			array (
+			),
+		),
+		'menu_order' => 3,
+	));*/
+
+
+
 	/* POST RELATED */
 	register_field_group(array (
 		'id' => '5048edc031ca0',
 		'title' => 'Relaterad information',
-		'fields' => 
+		'fields' =>
 		array (
-			0 => 
+			0 =>
 			array (
 				'key' => 'field_5048ad53aae54',
 				'label' => 'Relaterat',
@@ -889,25 +1047,25 @@ if(function_exists("register_field_group"))
 				'type' => 'flexible_content',
 				'instructions' => '',
 				'required' => '0',
-				'layouts' => 
+				'layouts' =>
 				array (
-					0 => 
+					0 =>
 					array (
 						'label' => 'Inlägg',
 						'name' => 'hk_related_posts',
 						'display' => 'table',
-						'sub_fields' => 
+						'sub_fields' =>
 						array (
-							0 => 
+							0 =>
 							array (
 								'label' => 'Inlägg',
 								'name' => 'hk_related_post',
 								'type' => 'post_object',
-								'post_type' => 
+								'post_type' =>
 								array (
 									0 => 'post',
 								),
-								'taxonomy' => 
+								'taxonomy' =>
 								array (
 									0 => 'all',
 								),
@@ -916,7 +1074,7 @@ if(function_exists("register_field_group"))
 								'key' => 'field_5048afee75ba5',
 								'order_no' => '0',
 							),
-							1 => 
+							1 =>
 							array (
 								'label' => 'Beskrivning',
 								'name' => 'hk_related_post_description',
@@ -925,17 +1083,17 @@ if(function_exists("register_field_group"))
 								'formatting' => 'br',
 								'key' => 'field_5048afee75bfd',
 								'order_no' => '1',
-							),	
+							),
 						),
 					),
-					1 => 
+					1 =>
 					array (
 						'label' => 'Extern länk',
 						'name' => 'hk_related_links',
 						'display' => 'table',
-						'sub_fields' => 
+						'sub_fields' =>
 						array (
-							0 => 
+							0 =>
 							array (
 								'label' => 'Namn',
 								'name' => 'hk_related_link_name',
@@ -945,7 +1103,7 @@ if(function_exists("register_field_group"))
 								'key' => 'field_5048afee75c57',
 								'order_no' => '0',
 							),
-							1 => 
+							1 =>
 							array (
 								'label' => 'Länk',
 								'name' => 'hk_relate_link_url',
@@ -955,7 +1113,7 @@ if(function_exists("register_field_group"))
 								'key' => 'field_5048afee75ca5',
 								'order_no' => '1',
 							),
-							2 => 
+							2 =>
 							array (
 								'label' => 'Beskrivning',
 								'name' => 'hk_related_link_description',
@@ -967,14 +1125,14 @@ if(function_exists("register_field_group"))
 							),
 						),
 					),
-					2 => 
+					2 =>
 					array (
 						'label' => 'Filer',
 						'name' => 'hk_related_files',
 						'display' => 'table',
-						'sub_fields' => 
+						'sub_fields' =>
 						array (
-							0 => 
+							0 =>
 							array (
 								'label' => 'Fil',
 								'name' => 'hk_related_file',
@@ -983,7 +1141,7 @@ if(function_exists("register_field_group"))
 								'key' => 'field_5048afee75d45',
 								'order_no' => '0',
 							),
-							1 => 
+							1 =>
 							array (
 								'label' => 'Beskrivning',
 								'name' => 'hk_related_file_description',
@@ -995,14 +1153,14 @@ if(function_exists("register_field_group"))
 							),
 						),
 					),
-					3 => 
+					3 =>
 					array (
 						'label' => 'Rubriker',
 						'name' => 'hk_related_titles',
 						'display' => 'table',
-						'sub_fields' => 
+						'sub_fields' =>
 						array (
-							0 => 
+							0 =>
 							array (
 								'multiple' => 0,
 								'allow_null' => 0,
@@ -1019,16 +1177,17 @@ if(function_exists("register_field_group"))
 								'type' => 'select',
 								'column_width' => '',
 							),
+
 						),
 					),
 				),
-				'sub_fields' => 
+				'sub_fields' =>
 				array (
-					0 => 
+					0 =>
 					array (
 						'key' => 'field_5048af3786941',
 					),
-					1 => 
+					1 =>
 					array (
 						'key' => 'field_5048af378698e',
 					),
@@ -1037,18 +1196,18 @@ if(function_exists("register_field_group"))
 				'order_no' => '0',
 			),
 		),
-		'location' => 
+		'location' =>
 		array (
-			'rules' => 
+			'rules' =>
 			array (
-				0 => 
+				0 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
 					'value' => 'post',
 					'order_no' => '0',
 				),
-				1 => 
+				1 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
@@ -1058,24 +1217,24 @@ if(function_exists("register_field_group"))
 			),
 			'allorany' => 'any',
 		),
-		'options' => 
+		'options' =>
 		array (
 			'position' => 'normal',
 			'layout' => 'default',
-			'hide_on_screen' => 
+			'hide_on_screen' =>
 			array (
 			),
 		),
 		'menu_order' => 3,
 	));
-	
+
 	/* POST AND CONTACT FIELDS */
 	register_field_group(array (
 		'id' => '5048edc031ede',
 		'title' => 'Synonymer',
-		'fields' => 
+		'fields' =>
 		array (
-			0 => 
+			0 =>
 			array (
 				'key' => 'field_505ad25f206a7',
 				'label' => '',
@@ -1088,11 +1247,11 @@ if(function_exists("register_field_group"))
 				'order_no' => '6',
 			),
 		),
-		'location' => 
+		'location' =>
 		array (
-			'rules' => 
+			'rules' =>
 			array (
-				0 => 
+				0 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
@@ -1102,26 +1261,26 @@ if(function_exists("register_field_group"))
 			),
 			'allorany' => 'any',
 		),
-		'options' => 
+		'options' =>
 		array (
 			'position' => 'normal',
 			'layout' => 'default',
-			'hide_on_screen' => 
+			'hide_on_screen' =>
 			array (
 			),
 		),
 		'menu_order' => 2,
 	));
-	
-			
-			
+
+
+
 	/* POST IMAGES */
 	register_field_group(array (
 		'id' => '5048edc031ead',
 		'title' => 'Utvald bild',
-		'fields' => 
+		'fields' =>
 		array (
-			0 => 
+			0 =>
 			array (
 				'key' => 'field_5048db469fef5',
 				'label' => 'Bilder',
@@ -1129,9 +1288,9 @@ if(function_exists("register_field_group"))
 				'type' => 'repeater',
 				'instructions' => '',
 				'required' => '0',
-				'sub_fields' => 
+				'sub_fields' =>
 				array (
-					0 => 
+					0 =>
 					array (
 						'key' => 'field_5048db469ff3e',
 						'label' => 'Bild',
@@ -1149,25 +1308,25 @@ if(function_exists("register_field_group"))
 				'order_no' => '0',
 			),
 		),
-		'location' => 
+		'location' =>
 		array (
-			'rules' => 
+			'rules' =>
 			array (
-				0 => 
+				0 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
 					'value' => 'post',
 					'order_no' => '0',
 				),
-				1 => 
+				1 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
 					'value' => 'hk_kontakter',
 					'order_no' => '1',
 				),
-				2 => 
+				2 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
@@ -1177,17 +1336,17 @@ if(function_exists("register_field_group"))
 			),
 			'allorany' => 'any',
 		),
-		'options' => 
+		'options' =>
 		array (
 			'position' => 'normal',
 			'layout' => 'default',
-			'hide_on_screen' => 
+			'hide_on_screen' =>
 			array (
 			),
 		),
 		'menu_order' => 2,
 	));
-	
+
 	/* slidehow link */
 	register_field_group(array (
 		'id' => 'acf_slideshow',
@@ -1225,13 +1384,15 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
+
+
 	/* POST CONTACT */
 	register_field_group(array (
 		'id' => '5048edc032013',
 		'title' => 'Utvald kontakt',
-		'fields' => 
+		'fields' =>
 		array (
-			0 => 
+			0 =>
 			array (
 				'key' => 'field_5048dbf579c0b',
 				'label' => 'Kontakter',
@@ -1239,19 +1400,19 @@ if(function_exists("register_field_group"))
 				'type' => 'repeater',
 				'instructions' => '',
 				'required' => '0',
-				'sub_fields' => 
+				'sub_fields' =>
 				array (
-					0 => 
+					0 =>
 					array (
 						'key' => 'field_5048dbf579c54',
 						'label' => 'Kontakt',
 						'name' => 'hk_contact',
 						'type' => 'post_object',
-						'post_type' => 
+						'post_type' =>
 						array (
 							0 => 'hk_kontakter',
 						),
-						'taxonomy' => 
+						'taxonomy' =>
 						array (
 							0 => 'all',
 						),
@@ -1259,7 +1420,7 @@ if(function_exists("register_field_group"))
 						'multiple' => '0',
 						'order_no' => '0',
 					),
-					1 => 
+					1 =>
 					array (
 						'label' => 'Byt ut titel (frivilligt)',
 						'name' => 'hk_contact_extra',
@@ -1277,11 +1438,11 @@ if(function_exists("register_field_group"))
 				'order_no' => '0',
 			),
 		),
-		'location' => 
+		'location' =>
 		array (
-			'rules' => 
+			'rules' =>
 			array (
-				0 => 
+				0 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
@@ -1291,18 +1452,18 @@ if(function_exists("register_field_group"))
 			),
 			'allorany' => 'all',
 		),
-		'options' => 
+		'options' =>
 		array (
 			'position' => 'normal',
 			'layout' => 'default',
-			'hide_on_screen' => 
+			'hide_on_screen' =>
 			array (
 			),
 		),
 		'menu_order' => 5,
 	));
-	
-	
+
+
 	register_field_group(array (
 		'key' => 'group_551b7f5770eca',
 		'title' => 'Vanliga frågor',
@@ -1402,112 +1563,117 @@ if(function_exists("register_field_group"))
 		'instruction_placement' => 'label',
 		'hide_on_screen' => '',
 	));
-}
-	
-    
-/* POST STOP PUBLISH */
-$options = get_option("hk_theme");
-if ($options['enable_cron_stop_publish']) {
-    if (function_exists('acf_add_local_field_group') ) {
-        acf_add_local_field_group(array (
-            'key' => 'acf_sluta-publicera',
-            'title' => 'Sluta publicera',
-            'fields' => array (
-                array (
-                    'key' => 'field_51bffccf1a73f',
-                    'label' => 'Datum',
-                    'name' => 'hk_stop_publish_date',
-                    'type' => 'date_picker',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => 0,
-                    'wrapper' => array (
-                        'width' => '',
-                        'class' => '',
-                        'id' => '',
-                    ),
-                    'display_format' => 'Y-m-d',
-                    'return_format' => 'Ymd',
-                    'first_day' => 1,
-                ),
-                array (
-                    'key' => 'field_51bffe875ccc4',
-                    'label' => 'Tid',
-                    'name' => 'hk_stop_publish_hour',
-                    'type' => 'select',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => 0,
-                    'wrapper' => array (
-                        'width' => '',
-                        'class' => '',
-                        'id' => '',
-                    ),
-                    'choices' => array (
-                            7 => '7:00',
-                                8 => '8:00',
-                                9 => '9:00',
-                                10 => '10:00',
-                                11 => '11:00',
-                                12 => '12:00',
-                                13 => '13:00',
-                                14 => '14:00',
-                                15 => '15:00',
-                                16 => '16:00',
-                                17 => '17:00',
-                                18 => '18:00',
-                                19 => '19:00',
-                                20 => '20:00',
-                                21 => '21:00',
-                                22 => '22:00',
-                    ),
-                    'default_value' => array (
-                    ),
-                    'allow_null' => 0,
-                    'multiple' => 0,
-                    'ui' => 0,
-                    'ajax' => 0,
-                    'return_format' => 'value',
-                    'placeholder' => '',
-                ),
-            ),
-            'location' => array (
-                array (
+
+
+	/* POST STOP PUBLISH */
+	$options = get_option("hk_theme");
+	if ($options['enable_cron_stop_publish']) {
+
+        if( function_exists('acf_add_local_field_group') ) {
+
+            acf_add_local_field_group(array (
+                'key' => 'acf_sluta-publicera',
+                'title' => 'Sluta publicera',
+                'fields' => array (
                     array (
-                        'param' => 'post_type',
-                        'operator' => '==',
-                        'value' => 'post',
+                        'key' => 'field_51bffccf1a73f',
+                        'label' => 'Datum',
+                        'name' => 'hk_stop_publish_date',
+                        'type' => 'date_picker',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'display_format' => 'Y-m-d',
+                        'return_format' => 'Ymd',
+                        'first_day' => 1,
+                    ),
+                    array (
+                        'key' => 'field_51bffe875ccc4',
+                        'label' => 'Tid',
+                        'name' => 'hk_stop_publish_hour',
+                        'type' => 'select',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array (
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'choices' => array (
+                                7 => '7:00',
+                                    8 => '8:00',
+                                    9 => '9:00',
+                                    10 => '10:00',
+                                    11 => '11:00',
+                                    12 => '12:00',
+                                    13 => '13:00',
+                                    14 => '14:00',
+                                    15 => '15:00',
+                                    16 => '16:00',
+                                    17 => '17:00',
+                                    18 => '18:00',
+                                    19 => '19:00',
+                                    20 => '20:00',
+                                    21 => '21:00',
+                                    22 => '22:00',
+                        ),
+                        'default_value' => array (
+                        ),
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 0,
+                        'ajax' => 0,
+                        'return_format' => 'value',
+                        'placeholder' => '',
                     ),
                 ),
-            ),
-            'options' => 
-              array (
-                'position' => 'side',
-                'layout' => 'default',
-                'hide_on_screen' => 
-                array (
+                'location' => array (
+                    array (
+                        array (
+                            'param' => 'post_type',
+                            'operator' => '==',
+                            'value' => 'post',
+                        ),
+                    ),
                 ),
-            ),
-            'menu_order' => 0,
-            'position' => 'normal',
-            'style' => 'default',
-            'label_placement' => 'top',
-            'instruction_placement' => 'label',
-            'hide_on_screen' => '',
-            'active' => 1,
-            'description' => '',
-        ));
-    }
-}
-if(function_exists("register_field_group"))
-{		
+                'options' =>
+                  array (
+                    'position' => 'side',
+                    'layout' => 'default',
+                    'hide_on_screen' =>
+                    array (
+                    ),
+                ),
+
+                'menu_order' => 0,
+                'position' => 'normal',
+                'style' => 'default',
+                'label_placement' => 'top',
+                'instruction_placement' => 'label',
+                'hide_on_screen' => '',
+                'active' => 1,
+                'description' => '',
+            ));
+
+        }
+
+
+	}
+
+
 	/* POST EXTERNAL LINK */
 	register_field_group(array (
 		'id' => '5048edc032150',
 		'title' => 'Extern länk',
-		'fields' => 
+		'fields' =>
 		array (
-			0 => 
+			0 =>
 			array (
 				'key' => 'field_5046fe5d332c8',
 				'label' => 'Namn',
@@ -1517,7 +1683,7 @@ if(function_exists("register_field_group"))
 				'required' => '0',
 				'order_no' => '0',
 			),
-			1 => 
+			1 =>
 			array (
 				'key' => 'field_5046fe5d332c9',
 				'label' => 'URL',
@@ -1528,11 +1694,11 @@ if(function_exists("register_field_group"))
 				'order_no' => '0',
 			),
 		),
-		'location' => 
+		'location' =>
 		array (
-			'rules' => 
+			'rules' =>
 			array (
-				0 => 
+				0 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
@@ -1542,24 +1708,24 @@ if(function_exists("register_field_group"))
 			),
 			'allorany' => 'all',
 		),
-		'options' => 
+		'options' =>
 		array (
 			'position' => 'side',
 			'layout' => 'default',
-			'hide_on_screen' => 
+			'hide_on_screen' =>
 			array (
 			),
 		),
 		'menu_order' => 10,
 	));
-	
+
 	/* HIDE POST FROM CATEGORY LIST */
 	register_field_group(array (
 		'id' => '5048edc032160',
 		'title' => 'Visa bara i etikettlista',
-		'fields' => 
+		'fields' =>
 		array (
-			0 => 
+			0 =>
 			array (
 				'key' => 'field_5046fe5d332d8',
 				'label' => 'Visa bara när etikett är vald',
@@ -1569,11 +1735,11 @@ if(function_exists("register_field_group"))
 				'message' => 'Göm inlägget från kategorielistan',
 			),
 		),
-		'location' => 
+		'location' =>
 		array (
-			'rules' => 
+			'rules' =>
 			array (
-				0 => 
+				0 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
@@ -1584,17 +1750,17 @@ if(function_exists("register_field_group"))
 			),
 			'allorany' => 'all',
 		),
-		'options' => 
+		'options' =>
 		array (
 			'position' => 'side',
 			'layout' => 'default',
-			'hide_on_screen' => 
+			'hide_on_screen' =>
 			array (
 			),
 		),
 		'menu_order' => 10,
 	));
-	
+
 	/* POST EXTRA INFO */
 	register_field_group(array (
 		'id' => '5048edc032267',
@@ -1619,11 +1785,11 @@ if(function_exists("register_field_group"))
 				'media_upload' => 'yes',
 			),
 		),
-		'location' => 
+		'location' =>
 		array (
-			'rules' => 
+			'rules' =>
 			array (
-				0 => 
+				0 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
@@ -1633,76 +1799,28 @@ if(function_exists("register_field_group"))
 			),
 			'allorany' => 'all',
 		),
-		'options' => 
+		'options' =>
 		array (
 			'position' => 'normal',
 			'layout' => 'default',
-			'hide_on_screen' => 
+			'hide_on_screen' =>
 			array (
 			),
 		),
 		'menu_order' => 50,
 	));
-}
-if( function_exists('acf_add_local_field_group') ) {
-    acf_add_local_field_group(array(
-        'key' => 'group_5a5c59629744f',
-        'title' => 'Local script',
-        'fields' => array(
-            array(
-                'key' => 'field_5a5c595b9933a',
-                'label' => 'Lokalt javascript',
-                'name' => 'hk_local_script',
-                'type' => 'textarea',
-                'instructions' => 'M&ouml;jlighet att l&auml;gga till ett lokalt javascript på detta inl&auml;gg.',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'maxlength' => '',
-                'rows' => 3,
-                'new_lines' => '',
-            ),
-        ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'post',
-                ),
-            ),
-        ),
-        'menu_order' => 100,
-        'position' => 'normal',
-        'style' => 'default',
-        'label_placement' => 'top',
-        'instruction_placement' => 'label',
-        'hide_on_screen' => '',
-        'active' => 1,
-        'description' => '',
-    ));
-}
-    
-    /*******
-     * END POST
-     *******/
+
+
+
 	/*******
 	 * CONTACT
 	 *******/
-if(function_exists("register_field_group"))
-{
 	register_field_group(array (
 		'id' => '5062a4b871449',
 		'title' => 'Kontaktinformation',
-		'fields' => 
+		'fields' =>
 		array (
-			0 => 
+			0 =>
 			array (
 				'key' => 'field_505ad25f0c2bb',
 				'label' => 'Titel',
@@ -1714,7 +1832,7 @@ if(function_exists("register_field_group"))
 				'formatting' => 'none',
 				'order_no' => '0',
 			),
-			1 => 
+			1 =>
 			array (
 				'key' => 'field_505ad7e9928b3',
 				'label' => 'Arbetsplats',
@@ -1722,9 +1840,9 @@ if(function_exists("register_field_group"))
 				'type' => 'repeater',
 				'instructions' => 'Här fyller du i vilken avdelning, förvaltning eller arbetsplats kontakten jobbar på.',
 				'required' => '0',
-				'sub_fields' => 
+				'sub_fields' =>
 				array (
-					0 => 
+					0 =>
 					array (
 						'key' => 'field_505ad7e9928cf',
 						'label' => 'Plats',
@@ -1743,7 +1861,7 @@ if(function_exists("register_field_group"))
 				'button_label' => 'Add Row',
 				'order_no' => '1',
 			),
-			2 => 
+			2 =>
 			array (
 				'key' => 'field_505b206c9f70f',
 				'label' => 'Telefonnummer',
@@ -1751,16 +1869,16 @@ if(function_exists("register_field_group"))
 				'type' => 'flexible_content',
 				'instructions' => '',
 				'required' => '0',
-				'layouts' => 
+				'layouts' =>
 				array (
-					0 => 
+					0 =>
 					array (
 						'label' => 'Telefon',
 						'name' => 'hk_contact_phone',
 						'display' => 'table',
-						'sub_fields' => 
+						'sub_fields' =>
 						array (
-							0 => 
+							0 =>
 							array (
 								'label' => 'Nummer',
 								'name' => 'number',
@@ -1772,14 +1890,14 @@ if(function_exists("register_field_group"))
 							),
 						),
 					),
-					1 => 
+					1 =>
 					array (
 						'label' => 'Mobil',
 						'name' => 'hk_contact_mobile',
 						'display' => 'table',
-						'sub_fields' => 
+						'sub_fields' =>
 						array (
-							0 => 
+							0 =>
 							array (
 								'label' => 'Nummer',
 								'name' => 'number',
@@ -1791,14 +1909,14 @@ if(function_exists("register_field_group"))
 							),
 						),
 					),
-					2 => 
+					2 =>
 					array (
 						'label' => 'Fax',
 						'name' => 'hk_contact_fax',
 						'display' => 'table',
-						'sub_fields' => 
+						'sub_fields' =>
 						array (
-							0 => 
+							0 =>
 							array (
 								'label' => 'Nummer',
 								'name' => 'number',
@@ -1811,9 +1929,9 @@ if(function_exists("register_field_group"))
 						),
 					),
 				),
-				'sub_fields' => 
+				'sub_fields' =>
 				array (
-					0 => 
+					0 =>
 					array (
 						'key' => 'field_505b213b16b15',
 					),
@@ -1821,7 +1939,7 @@ if(function_exists("register_field_group"))
 				'button_label' => 'Lägg till nytt nummer',
 				'order_no' => '2',
 			),
-			3 => 
+			3 =>
 			array (
 				'key' => 'field_505ad25f18351',
 				'label' => 'E-post',
@@ -1829,9 +1947,9 @@ if(function_exists("register_field_group"))
 				'type' => 'repeater',
 				'instructions' => '',
 				'required' => '0',
-				'sub_fields' => 
+				'sub_fields' =>
 				array (
-					0 => 
+					0 =>
 					array (
 						'key' => 'field_505ad25f1838b',
 						'label' => 'E-post',
@@ -1850,7 +1968,7 @@ if(function_exists("register_field_group"))
 				'button_label' => 'Lägg till e-postadress',
 				'order_no' => '3',
 			),
-			4 => 
+			4 =>
 			array (
 				'key' => 'field_505ad4be8d8d5',
 				'label' => 'Beskrivning',
@@ -1862,7 +1980,7 @@ if(function_exists("register_field_group"))
 				'formatting' => 'br',
 				'order_no' => '4',
 			),
-			5 => 
+			5 =>
 			array (
 				'key' => 'field_505ad25f1c69c',
 				'label' => 'Besöksadress',
@@ -1874,7 +1992,7 @@ if(function_exists("register_field_group"))
 				'formatting' => 'br',
 				'order_no' => '5',
 			),
-			6 => 
+			6 =>
 			array (
 				'key' => 'field_505ad25f205a2',
 				'label' => 'Besökstid',
@@ -1886,7 +2004,7 @@ if(function_exists("register_field_group"))
 				'formatting' => 'br',
 				'order_no' => '6',
 			),
-			8 => 
+			8 =>
 			array (
 				'key' => 'field_505ad28e292d9',
 				'label' => 'Position',
@@ -1899,7 +2017,7 @@ if(function_exists("register_field_group"))
 				'zoom' => '12',
 				'order_no' => '8',
 			),
-			9 => 
+			9 =>
 			array (
 				'key' => 'field_555ad28e292d9',
 				'label' => 'Position',
@@ -1914,11 +2032,11 @@ if(function_exists("register_field_group"))
 				'order_no' => '8',
 			),
 		),
-		'location' => 
+		'location' =>
 		array (
-			'rules' => 
+			'rules' =>
 			array (
-				0 => 
+				0 =>
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
@@ -1928,26 +2046,26 @@ if(function_exists("register_field_group"))
 			),
 			'allorany' => 'all',
 		),
-		'options' => 
+		'options' =>
 		array (
 			'position' => 'normal',
 			'layout' => 'default',
-			'hide_on_screen' => 
+			'hide_on_screen' =>
 			array (
 				0 => 'the_content',
 			),
 		),
 		'menu_order' => 0,
 	));
-	
-	
+
+
 	/* ENKEL ADRESS TILL SIDA */
 	register_field_group(array (
 		'id' => '50f53001d8c88',
 		'title' => 'Enkel adress',
-		'fields' => 
+		'fields' =>
 		array (
-			0 => 
+			0 =>
 			array (
 				'key' => 'field_505b21d9177e7',
 				'label' => 'Länk att skicka vidare till',
@@ -1956,12 +2074,12 @@ if(function_exists("register_field_group"))
 				'order_no' => 0,
 				'instructions' => '',
 				'required' => 1,
-				'conditional_logic' => 
+				'conditional_logic' =>
 				array (
 					'status' => 0,
-					'rules' => 
+					'rules' =>
 					array (
-						0 => 
+						0 =>
 						array (
 							'field' => 'null',
 							'operator' => '==',
@@ -1981,12 +2099,13 @@ if(function_exists("register_field_group"))
 				'toolbar' => 'full',
 				'media_upload' => 'yes',
 			),
+
 		),
-		'location' => 
+		'location' =>
 		array (
-			'rules' => 
+			'rules' =>
 			array (
-				0 => 
+				0 =>
 				array (
 					'param' => 'page_template',
 					'operator' => '==',
@@ -1996,27 +2115,27 @@ if(function_exists("register_field_group"))
 			),
 			'allorany' => 'any',
 		),
-		'options' => 
+		'options' =>
 		array (
 			'position' => 'normal',
 			'layout' => 'default',
-			'hide_on_screen' => 
+			'hide_on_screen' =>
 			array (
 				0 => 'the_content',
 			),
 		),
 		'menu_order' => 0,
 	));
-	
-	
-	
+
+
+
 	/* FULLSKÄRM SIDA */
 	register_field_group(array (
 		'id' => '50f53001d8c98',
 		'title' => 'Redirect adress',
-		'fields' => 
+		'fields' =>
 		array (
-			0 => 
+			0 =>
 			array (
 				'key' => 'field_504b21d9177e7',
 				'label' => 'Länk att skicka vidare till',
@@ -2025,12 +2144,12 @@ if(function_exists("register_field_group"))
 				'order_no' => 0,
 				'instructions' => '',
 				'required' => 1,
-				'conditional_logic' => 
+				'conditional_logic' =>
 				array (
 					'status' => 0,
-					'rules' => 
+					'rules' =>
 					array (
-						0 => 
+						0 =>
 						array (
 							'field' => 'null',
 							'operator' => '==',
@@ -2048,12 +2167,13 @@ if(function_exists("register_field_group"))
 				'type' => 'text',
 				'default_value' => '5',
 			),
+
 		),
-		'location' => 
+		'location' =>
 		array (
-			'rules' => 
+			'rules' =>
 			array (
-				0 => 
+				0 =>
 				array (
 					'param' => 'page_template',
 					'operator' => '==',
@@ -2063,7 +2183,7 @@ if(function_exists("register_field_group"))
 			),
 			'allorany' => 'any',
 		),
-		'options' => 
+		'options' =>
 		array (
 			'position' => 'normal',
 			'layout' => 'default',
@@ -2071,7 +2191,7 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
-	
+
 	/* media / attachment */
 	register_field_group(array (
 		'id' => 'acf_media',
@@ -2109,51 +2229,6 @@ if(function_exists("register_field_group"))
 		),
 		'menu_order' => 0,
 	));
-}
-if ( defined('WPSEO_VERSION') ) {
-    if( function_exists('acf_add_local_field_group') ) {
-        acf_add_local_field_group(array(
-            'key' => 'group_5a698d89796df',
-            'title' => 'Yoast',
-            'fields' => array(
-                array(
-                    'key' => 'field_5a698d821fd5d',
-                    'label' => 'Aktivera Yoast',
-                    'name' => 'enable_yoast',
-                    'type' => 'true_false',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => 0,
-                    'wrapper' => array(
-                        'width' => '',
-                        'class' => '',
-                        'id' => '',
-                    ),
-                    'message' => '',
-                    'default_value' => 0,
-                    'ui' => 0,
-                    'ui_on_text' => '',
-                    'ui_off_text' => '',
-                ),
-            ),
-            'location' => array(
-                array(
-                    array(
-                        'param' => 'user_form',
-                        'operator' => '==',
-                        'value' => 'all',
-                    ),
-                ),
-            ),
-            'menu_order' => 0,
-            'position' => 'normal',
-            'style' => 'default',
-            'label_placement' => 'top',
-            'instruction_placement' => 'label',
-            'hide_on_screen' => '',
-            'active' => 1,
-            'description' => '',
-        ));
-    }
+
 }
 ?>

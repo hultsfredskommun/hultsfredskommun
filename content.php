@@ -12,7 +12,7 @@ $classes = "summary";
 $classes .= (is_sticky())?" sticky":"";
 $classes .= ($external_blog)?" externalblog":"";
  ?>
-
+ 
 	<article id="post-<?php the_ID(); ?>" <?php echo "class='post gtm-dyn-article ".str_replace("hentry", "", implode(" ",get_post_class($classes)))." '"; ?>>
 		<div class="article-border-wrapper">
 		<div class="article-wrapper">

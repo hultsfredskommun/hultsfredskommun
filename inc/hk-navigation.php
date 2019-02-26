@@ -345,6 +345,7 @@ function hk_mobile_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_c
 function hk_navmenu_old_navigation($menu_name, $cat, $menu_class) {
 	global $args, $hk_options, $default_settings;
 
+
 	// get nav_menu_parent id
 	if (is_single()) {
 		$category_hierarchy = hk_get_parent_categories_from_id(get_the_ID(), $menu_name);

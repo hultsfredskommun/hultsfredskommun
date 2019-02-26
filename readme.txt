@@ -40,8 +40,6 @@
 * EU cookie bar, settings is in Theme settings.
 * FAQ attribute in post to add "visible" question in post and searchable. Searchable is setting to enable in Theme setting.
 * AJAX search with Wordpress standard search, Relevanssi plugin and Google Custom Site Search (deprecated).
-* Setting to add a local javascript on a post added (ACF-field).
-* Setting to enable Yoast SEO on a user through the user form (by ACF-field), default a user is disabled. Requires Yoast plugin.
 
 === Recommended widget setup ===
 * Startsida toppinnehåll

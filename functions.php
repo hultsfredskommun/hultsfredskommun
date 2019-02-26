@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "6.0");
+define("HK_VERSION", "5.8");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -19,15 +19,15 @@ define("HK_VERSION", "6.0");
 if ( ! isset( $content_width ) )
 	$content_width = 584;
 
-/* help variable */	
+/* help variable */
 $s_when_https = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on' ? 's' : '');
 /* get hk_hk_options */
 $hk_options = get_option('hk_theme');
 
-	
+
 /* SET DEFAULT SETTINGS */
 if ( ! isset( $default_settings ) ) {
-	
+
 	$default_settings = array(	'thumbnail-image' => array(270, 153, true),
 								'featured-image' => array(605, 353, true), /* array(660, 396, true) */
 								'slideshow-image' => array(980, 551, true),
@@ -103,7 +103,7 @@ require( get_template_directory() . '/inc/hk-admin-pages.php' );
 require( get_template_directory() . '/inc/hk-cron.php' );
 
 // Grab hk sort-order function
-// require( get_template_directory() . '/inc/hk-acf-fields.php' );
+require( get_template_directory() . '/inc/hk-acf-fields.php' );
 
 // Grab hk widgets function containing general widgets
 require( get_template_directory() . '/inc/hk-widgets.php' );
@@ -143,7 +143,7 @@ function hk_category_tree_func( $atts ){
 
 	// full category tree
 	$retValue .= "<div id='categorytree' class='shortcode'>";
-	$retValue .= wp_list_categories( 
+	$retValue .= wp_list_categories(
 		array(
 			'show_option_all'    => '',
 			'style'              => 'list',
@@ -175,7 +175,7 @@ function hk_category_tree_func( $atts ){
 add_shortcode( 'categorytree', 'hk_category_tree_func' );
 
 
-/* 
+/*
  * Set startpage to startpage_cat
  */
 function hk_pre_get_posts( $query ) {
@@ -205,7 +205,7 @@ function hk_pre_get_posts( $query ) {
 	if ( !empty($in_tag) ) {
 		$query->set( 'tag__in', $in_tag);
 	}
-	
+
 	if ($wp_query->is_home()) {
 		$cat = $options["startpage_cat"];
 		if ($cat != "" && $cat != "0" ) {
@@ -247,11 +247,11 @@ function hk_setup() {
 	function addBackPostFeed() {
 		global $default_settings;
 		if (empty($default_settings["news_tag"])) return;
-		
+
 		$url = get_tag_link($default_settings["news_tag"]) . "feed/";
-		echo '<link rel="alternate" type="application/rss+xml" title="Nyhetsflöde" href="'.$url.'" />'; 
+		echo '<link rel="alternate" type="application/rss+xml" title="Nyhetsflöde" href="'.$url.'" />';
 	}
-	
+
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
 
@@ -262,7 +262,7 @@ function hk_setup() {
 	register_nav_menus( array('primary' => 'Huvudmenu',
 							'topmenu' => 'Toppmeny',
 							'quickmenu' => 'Snabbgenv&auml;gar',
-							));	
+							));
 	// Add default posts and comments RSS feed links to <head>.
 	//add_theme_support( 'automatic-feed-links' );
 }
@@ -286,18 +286,18 @@ add_action( 'do_feed_rss2', 'remove_comment_feeds', 9, 1 );
 add_action( 'do_feed_atom', 'remove_comment_feeds', 9, 1 );
 
 /**
- * add theme javascript file and needed jquery 
+ * add theme javascript file and needed jquery
  */
 function hk_enqueue_scripts() {
 	$hk_options = get_option("hk_theme");
 	if (!is_admin()) {
-		
-		wp_enqueue_style( 'hk-style', 
-			get_bloginfo( 'stylesheet_url' ), 
-			array(), 
-			HK_VERSION 
+
+		wp_enqueue_style( 'hk-style',
+			get_bloginfo( 'stylesheet_url' ),
+			array(),
+			HK_VERSION
 		);
-		
+
 		/*<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?ver=1.0.1" />*/
 		/*
 		 * Loads special google font CSS file.
@@ -310,7 +310,7 @@ function hk_enqueue_scripts() {
 			);
 			wp_enqueue_style( 'hk-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
 		}
-		
+
 		if (isset($hk_options['typekit_url']) && $hk_options['typekit_url'] != "") {
 		//  //use.typekit.net/xpx0dap.js
 			wp_enqueue_script(
@@ -320,7 +320,7 @@ function hk_enqueue_scripts() {
 				'1.0'
 			);
 		}
-		
+
 		if (isset($hk_options['addthis_pubid']) && $hk_options['addthis_pubid'] != "") {
 			wp_enqueue_script(
 				'addthis_js',
@@ -343,7 +343,7 @@ function hk_enqueue_scripts() {
 				true
 			);
 		}
-		
+
 		wp_enqueue_script(
 			'google_map_js',
 			'//maps.google.com/maps/api/js?sensor=false',
@@ -359,7 +359,7 @@ function hk_enqueue_scripts() {
 			true
 		);
 
-		
+
 		// wp_enqueue_script(
 		// 	'google_maps_js',
 		// 	'https://maps.googleapis.com/maps/api/js?key=AIzaSyBwAFyJDPO82hjRyCAmt-8-if6r6rrzlcE&sensor=false',
@@ -367,8 +367,8 @@ function hk_enqueue_scripts() {
 		// 	'1.0',
 		// 	true
 		// );
-		
-		
+
+
 		/*
 		wp_enqueue_script(
 			'history_js',
@@ -379,13 +379,13 @@ function hk_enqueue_scripts() {
 		);
 		*/
 
-		
+
 
 		wp_enqueue_script( 'wp-api' );
 
 		wp_enqueue_script(
 			'vuejs',
-			get_template_directory_uri() . '/js/vue.min.js',
+			get_template_directory_uri() . '/js/vue.js',
 			[],
 			'1.0',
 			true
@@ -399,7 +399,7 @@ function hk_enqueue_scripts() {
 			true
 		);
 
-		
+
 
 		wp_enqueue_script(
 			'cycle_all_js',
@@ -408,7 +408,7 @@ function hk_enqueue_scripts() {
 			'1.0',
 			true
 		);
-		
+
 		if (isset($hk_options['tidiochat_url']) && $hk_options['tidiochat_url'] != "") {
 			wp_enqueue_script(
 				'tidiochat_js',
@@ -416,9 +416,9 @@ function hk_enqueue_scripts() {
 				array(),
 				'1.0'
 			);
-		}	
+		}
 
-	} 
+	}
 	/* only in admin */
 	else {
 		wp_enqueue_script(
@@ -532,9 +532,9 @@ add_filter('widget_text', 'do_shortcode');
 /**
  * Remove the gallery inline css
  */
-add_filter('gallery_style', 
+add_filter('gallery_style',
 	create_function(
-		'$css', 
+		'$css',
 		'return preg_replace("#<style type=\'text/css\'>(.*?)</style>#s", "", $css);'
 		)
 	);
@@ -559,9 +559,9 @@ function hk_excerpt($content) {
 	$content_array = explode(" ",$content);
 	$content = "<span class='excerpt-wrapper'><span class='introwords'>";
 	$count = 1;
-	
+
 	foreach ($content_array as $c) {
-		
+
 		if ($count++ == 3)
 			$content .= $c . "</span> ";
 		else
@@ -569,9 +569,9 @@ function hk_excerpt($content) {
 	}
 	if ($count < 4)
 		$content .= "</span>";
-	
+
 	$content .= "</span>";
-		
+
     return $content;
 }
 
@@ -734,7 +734,7 @@ function hk_body_classes( $classes ) {
 add_filter( 'body_class', 'hk_body_classes' );
 
 
- 
+
 /**
  * Adds a filter that replaces the w3 validate error rel="category tag" with rel="tag"
  */
@@ -767,11 +767,11 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 			$title = $image["title"];
 			$alt = $image["alt"];
 			$source = get_field("source",$image["id"]);
-			
+
 			if ($alt == "") {
 				$alt = $title;
 			}
-			
+
 			if ($default_settings[$thumbsize][0] == $image["sizes"][$thumbsize . "-width"] && $default_settings[$thumbsize][1] == $image["sizes"][$thumbsize . "-height"]) {
 				if (!empty($src)) {
 					if ($countSlides > 0) {
@@ -800,11 +800,11 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 				$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' title='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."'/>";
 				$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
 			}
-			$retValue .= "</div></div>"; 
+			$retValue .= "</div></div>";
 		}
- 	endif; 
-	
-	
+ 	endif;
+
+
 	// try CBIS image if no image found yet
 	if ($retValue == "") :
 		$cbisimage = get_post_meta($id, "cbis_mediaobject", true);
@@ -814,7 +814,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 		$count = 0;
 		$src_append = "&width=".$default_settings[$thumbsize][0]."&height=".$default_settings[$thumbsize][1]."&crop=1";
 		$caption = ""; // TODO add in option
-		
+
 		/* get special thumb image if thumbnail */
 		if ($thumbsize == "thumbnail-image") {
 			$cbis_thumbimageurl = get_post_meta($id, "cbis_thumbimageurl", true);
@@ -825,12 +825,12 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 		}
 		/* return image or slides if images is found */
 		if (!empty($cbisimages)) {
-			
+
 			if (!$only_img) {
 				$retValue .= "<div class='img-wrapper ".$class."'><div class='$slideshowclass'>";
 			}
 			while( $count < count($cbisimages) && ($showAll || $countSlides == 0)) : // only once if not showAll
-			
+
 				$image = $cbisimages[$count];
 				$src = $image->Url;
 				$alt = $title = $image->Description;
@@ -858,7 +858,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 					$retValue .= "<img alt='Platsh&aring;llare f&ouml;r bildspel' title='Platsh&aring;llare f&ouml;r bildspel' class='slideshow_bg' src='" . get_template_directory_uri() . "/image.php?w=".$default_settings[$thumbsize][0]."&amp&h=".$default_settings[$thumbsize][1]."' />";
 					$retValue .= "<span class='prevslide'></span><span class='nextslide'></span>";
 				}
-				$retValue .= "</div></div>"; 
+				$retValue .= "</div></div>";
 			}
 		}
 		/*
@@ -873,7 +873,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 		*/
 
 	endif;
-	
+
 	if ($echo) {
 		echo $retValue;
 	}
@@ -913,7 +913,7 @@ if (!function_exists("hk_theme_nicedate")) {
 				'oktober' => 'October',
 				'november' => 'November',
 				'december' => 'December');
-				
+
 		foreach ($mo as $swe => $eng)
 		$time = preg_replace('/\b'.$eng.'\b/', $swe, $time);
 		return $time;
@@ -925,21 +925,21 @@ function get_the_next_review_date($id) {
 
 	return duration(strtotime("now"),$time);
 }
-function duration($start,$end) {  
+function duration($start,$end) {
 	$neg = false;
-	$seconds = $end - $start;  
+	$seconds = $end - $start;
 
 	if ($seconds < 0) {
 		$seconds = -$seconds;
 		$neg = true;
 	}
 
-	$days = floor($seconds/60/60/24);  
-	$hours = $seconds/60/60%24;  
-	$mins = $seconds/60%60;  
-	$secs = $seconds%60;  
+	$days = floor($seconds/60/60/24);
+	$hours = $seconds/60/60%24;
+	$mins = $seconds/60%60;
+	$secs = $seconds%60;
 
-	$duration='';  
+	$duration='';
 	if($days>0) {
 		if ($neg)
 			$duration = "<b>för $days dagar sedan</b>";
@@ -949,9 +949,9 @@ function duration($start,$end) {
 	else {
 		$duration = 'nu';
 	}
-	
-	return $duration;  
-}  
+
+	return $duration;
+}
 
 // return true if current category has more parents than specified in num_levels_in_menu
 function is_sub_category() {
@@ -1056,14 +1056,14 @@ function hk_getNavMenuId($cat_id, $menu_name) {
 		foreach ( (array) $menu_items as $key => $menu_item ) {
 			$title = $menu_item->title;
 			$url = $menu_item->url;
-			
+
 			if ($menu_item->object_id == $cat_id) {
 				return $menu_item->ID;
 			}
 		}
-	} 
+	}
 	return -1;
-}	
+}
 // return top nav menu ids
 function hk_getTopNavMenuIdArray($menu_name) {
 	$menu_array = array();
@@ -1075,9 +1075,9 @@ function hk_getTopNavMenuIdArray($menu_name) {
 				$menu_array[] = $menu_item->object_id;
 			}
 		}
-	} 
+	}
 	return $menu_array;
-}	
+}
 // return sub nav menu ids
 function hk_getSubNavMenuIdArray($topmenu, $menu_name) {
 	$menu_array = array();
@@ -1089,16 +1089,16 @@ function hk_getSubNavMenuIdArray($topmenu, $menu_name) {
 				$menu_array[] = $menu_item->object_id;
 			}
 		}
-	} 
+	}
 	return $menu_array;
-}	
+}
 
 
 // return the top parent id found in the menu
 /*function hk_getMenuTopParent($cat) {
 	global $default_settings;
 	if (empty($cat)) return array();
-	
+
 	$cats_str = get_category_parents($cat, false, '%#%', true);
 	$cats_array = explode('%#%', $cats_str);
 	$cat_depth = sizeof($cats_array)-1;
@@ -1124,7 +1124,7 @@ function hk_getChildrenIdArray($cat) {
 // get parents from post, returns array(topmenucategory, submenucategory, category)
 function hk_get_parent_categories_from_id($id, $menu_name) {
 	$categories_list = get_the_category($id);
-	
+
 	// get current posts top menus
 	$topparentsarr = array();
 	foreach($categories_list as $item) {
@@ -1133,7 +1133,7 @@ function hk_get_parent_categories_from_id($id, $menu_name) {
 			$topparentsarr[] = $parent;
 		}
 	}
-	
+
 	// get the first top menu
 	$parent_category = -1;
 	foreach(hk_getTopNavMenuIdArray($menu_name) as $item) {
@@ -1142,7 +1142,7 @@ function hk_get_parent_categories_from_id($id, $menu_name) {
 			break;
 		}
 	}
-	
+
 	// get current posts sub menus from selected top menu
 	$subparentsarr = array();
 	foreach($categories_list as $item) {
@@ -1160,7 +1160,7 @@ function hk_get_parent_categories_from_id($id, $menu_name) {
 			break;
 		}
 	}
-	
+
 	// get child category if any
 	$category = -1;
 	foreach($categories_list as $item) {
@@ -1201,7 +1201,7 @@ function hk_getSmallWords($smallwords) {
 
 // submenu walker to get second row of top menu
 class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
-	  
+
 	// add classes to ul sub-menus
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		// depth dependent classes
@@ -1209,15 +1209,15 @@ class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
 	}
 	function end_lvl( &$output, $depth = 0, $args = array() ) {
 		$output .= "";
-	}  
+	}
 	// add main/sub classes to li's and links
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $wp_query;
-		
+
 		// dont show first level, and only show sublevels when right parent category
 		if ($depth > 0 && $args->nav_menu_parent == $item->menu_item_parent) {
 			$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
-		  
+
 			// depth dependent classes
 			$depth_classes = array(
 				( $depth == 0 ? 'main-menu-item' : 'sub-menu-item' ),
@@ -1226,23 +1226,23 @@ class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
 				'menu-item-depth-' . $depth
 			);
 			$depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
-		  
+
 			// passed classes
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 			$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
-		  
+
 			// current category classesq
 			$cat_class = ($item->object == "category" && $item->object_id == $args->current_category) ? "current-menu-item" : "";
 
 			$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . ' ' . $cat_class . '">';
-		  
+
 			// link attributes
 			$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
 			$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
 			$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 			$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 			$attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
-		  
+
 			$item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
 				$args->before,
 				$attributes,
@@ -1251,7 +1251,7 @@ class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
 				$args->link_after,
 				$args->after
 			);
-		  
+
 			// build html
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
@@ -1260,13 +1260,13 @@ class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
 		if ($depth > 0 && $args->nav_menu_parent == $item->menu_item_parent) {
 			$output .= "</li>";
 		}
-	
-	}  
+
+	}
 }
 
 // new topmenu walker to get second row of top menu
 class hk_newtopmenu_walker_nav_menu extends Walker_Nav_Menu {
-	  
+
 	// add classes to ul sub-menus
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat("\t", $depth);
@@ -1279,7 +1279,7 @@ class hk_newtopmenu_walker_nav_menu extends Walker_Nav_Menu {
 	// add main/sub classes to li's and links
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $wp_query;
-		
+
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
 
 		// depth dependent classes
@@ -1290,24 +1290,24 @@ class hk_newtopmenu_walker_nav_menu extends Walker_Nav_Menu {
 			'menu-item-depth-' . $depth
 		);
 		$depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
-	  
+
 		// passed classes
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
-	  
+
 		// current category classes
 		$cat_class = ($item->object == "category" && $item->object_id == $args->current_category) ? "current-menu-item" : "";
 
 		// build html
 		$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . ' ' . $cat_class . '">';
-	  
+
 		// link attributes
 		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
 		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 		$attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
-	  
+
 		$item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
 			$args->before,
 			$attributes,
@@ -1318,26 +1318,26 @@ class hk_newtopmenu_walker_nav_menu extends Walker_Nav_Menu {
 		);
 		//echo "<br>";
 		//print_r($item);
-	  
+
 		// build html
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-		
+
 		// add categories
 		if ($depth == 1) {
 			//$output .= "<ul data-depth='depth-$depth-".$item->object_id."'><li>";
-			$output .= hk_newtop_categories($item->object_id);        
+			$output .= hk_newtop_categories($item->object_id);
 			//$output .= "</li></ul>";
 		}
 	}
 	function end_el( &$output, $item, $depth = 0, $args = array() ) {
 		$output .= "</li>";
-	}  
+	}
 }
 function hk_newtop_categories($currentcat) {
 	global $post, $default_settings;
 
 	$output = "";
-	
+
 	// get category
     $cat = get_query_var("cat");
     $hk_mobilemenu_walker = new hk_mobilemenu_walker();
@@ -1358,27 +1358,27 @@ function hk_newtop_categories($currentcat) {
 		'walker'			 => $hk_mobilemenu_walker,
 		'current_category'	 => $cat
 	);
-	
+
 	//echo "<a class='dropdown-nav'>" . get_the_category_by_ID($parentCat) . "</a>";
 
-	$output .= /*"cat: $cat - $currentcat - $parentCat - */"<ul class='parent'>"; 
+	$output .= /*"cat: $cat - $currentcat - $parentCat - */"<ul class='parent'>";
 	/*if ($parentCat == $cat) {
 		$currentcatclass = 'current-cat';
 	}*/
 	//$output .= "<ul><li class='heading $currentcatclass current-cat-parent cat-has-children'>";//<a href='#' class='cat-icon'><a href='".get_category_link($currentcat)."'>".get_the_category_by_ID($currentcat)."</a></li></ul></li>";
 	$output .= wp_list_categories( $args );
-	//$output .= "</li></ul>"; 
+	//$output .= "</li></ul>";
 
     /* show tags */
 	// TODO - handle tags if more than one category!!
 	$output .= hk_displayTagFilter(false, "more-navigation", false, "", $currentcat, true);
 
-	$output .= "</ul>"; 
-	
-		
-		
+	$output .= "</ul>";
+
+
+
 	return $output;
-	
+
 }
 
 
@@ -1388,7 +1388,7 @@ function hk_newtop_categories($currentcat) {
 class hk_mobilemenu_walker extends Walker_Category {
 
     public $parent_cat = [];
-    
+
 	/**
 	 * What the class handles.
 	 *
@@ -1665,9 +1665,9 @@ function megamenu_add_theme_hultsfreds_kommun_1510035476($themes) {
         'mobile_menu_item_link_font_size' => '14px',
         'mobile_menu_item_link_color' => '#ffffff',
         'mobile_menu_item_link_text_align' => 'left',
-        'custom_css' => '/** Push menu onto new line **/ 
-#{$wrap} { 
-    clear: both; 
+        'custom_css' => '/** Push menu onto new line **/
+#{$wrap} {
+    clear: both;
 }',
     );
     $themes["visit_hultsfred_1510035537"] = array(
@@ -1723,8 +1723,8 @@ function megamenu_add_theme_hultsfreds_kommun_1510035476($themes) {
         'mobile_menu_item_link_color' => '#ffffff',
         'mobile_menu_item_link_text_align' => 'left',
         'custom_css' => '
-#{$wrap} { 
-    clear: both; 
+#{$wrap} {
+    clear: both;
 }',
     );
     return $themes;
@@ -1734,7 +1734,7 @@ add_filter("megamenu_themes", "megamenu_add_theme_hultsfreds_kommun_1510035476")
 
 // topmenu walker to get second row of top menu
 class hk_topmenu_walker_nav_menu extends Walker_Nav_Menu {
-	  
+
 	// add classes to ul sub-menus
 	function start_lvl( &$output, $depth = 0, $args = array() ) {
 		// depth dependent classes
@@ -1742,11 +1742,11 @@ class hk_topmenu_walker_nav_menu extends Walker_Nav_Menu {
 	}
 	function end_lvl( &$output, $depth = 0, $args = array() ) {
 		$output .= "";
-	}  
+	}
 	// add main/sub classes to li's and links
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		global $wp_query;
-		
+
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
 
 		// depth dependent classes
@@ -1757,24 +1757,24 @@ class hk_topmenu_walker_nav_menu extends Walker_Nav_Menu {
 			'menu-item-depth-' . $depth
 		);
 		$depth_class_names = esc_attr( implode( ' ', $depth_classes ) );
-	  
+
 		// passed classes
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
-	  
+
 		// current category classes
 		$cat_class = ($item->object == "category" && $item->object_id == $args->current_category) ? "current-menu-item" : "";
 
 		// build html
 		$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . ' ' . $cat_class . '">';
-	  
+
 		// link attributes
 		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
 		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 		$attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
-	  
+
 		$item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
 			$args->before,
 			$attributes,
@@ -1783,19 +1783,19 @@ class hk_topmenu_walker_nav_menu extends Walker_Nav_Menu {
 			$args->link_after,
 			$args->after
 		);
-	  
+
 		// build html
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 	}
 	function end_el( &$output, $item, $depth = 0, $args = array() ) {
 		$output .= "</li>";
-	}  
+	}
 }
 
 
 /* add modified date to feed */
 add_action("do_feed_rss","wp_rss_img_do_feed",5,1);
-add_action("do_feed_rss2","wp_rss_img_do_feed",5,1); 
+add_action("do_feed_rss2","wp_rss_img_do_feed",5,1);
 
 function wp_rss_img_do_feed($for_comments){
 	if(!$for_comments) {
@@ -1830,31 +1830,31 @@ if ($_REQUEST["DEBUG"] == "true") :
 
 ini_set( 'error_reporting', -1 );
 ini_set( 'display_errors', 'On' );
- 
+
 echo '<pre>';
- 
+
 add_action( 'parse_request', 'debug_404_rewrite_dump' );
 function debug_404_rewrite_dump( &$wp ) {
     global $wp_rewrite;
- 
+
     echo '<h2>rewrite rules</h2>';
     echo var_export( $wp_rewrite->wp_rewrite_rules(), true );
- 
+
     echo '<h2>permalink structure</h2>';
     echo var_export( $wp_rewrite->permalink_structure, true );
- 
+
     echo '<h2>page permastruct</h2>';
     echo var_export( $wp_rewrite->get_page_permastruct(), true );
- 
+
     echo '<h2>matched rule and query</h2>';
     echo var_export( $wp->matched_rule, true );
- 
+
     echo '<h2>matched query</h2>';
     echo var_export( $wp->matched_query, true );
- 
+
     echo '<h2>request</h2>';
     echo var_export( $wp->request, true );
- 
+
     global $wp_the_query;
     echo '<h2>the query</h2>';
     echo var_export( $wp_the_query, true );
@@ -1866,10 +1866,10 @@ function debug_404_template_redirect() {
     echo var_export( $wp_filter[current_filter()], true );
 }
 add_filter ( 'template_include', 'debug_404_template_dump' );
-function debug_404_template_dump( $template ) { 
+function debug_404_template_dump( $template ) {
     echo '<h2>template file selected</h2>';
     echo var_export( $template, true );
-    
+
     echo '</pre>';
     exit();
 }
@@ -1894,7 +1894,7 @@ function get_client_ip() {
      else
          $ipaddress = 'UNKNOWN';
 
-     return $ipaddress; 
+     return $ipaddress;
 }
 function hk_count_func(){
 	$version = $_POST["version"];
@@ -1905,7 +1905,7 @@ function hk_count_func(){
 		$count = $hk_options["count_version"];
 		if (!is_array($count))
 			$count = Array();
-			
+
 		if ($count[$version . " - " . $browser . " - " . $ip] != "")
 			$count[$version . " - " . $browser . " - " . $ip]++;
 		else
@@ -1915,10 +1915,10 @@ function hk_count_func(){
 	}
 	echo "counted";
 	die();
-	
+
 }
-add_action('wp_ajax_hk_count', 'hk_count_func'); 
-add_action('wp_ajax_nopriv_hk_count', 'hk_count_func'); 
+add_action('wp_ajax_hk_count', 'hk_count_func');
+add_action('wp_ajax_nopriv_hk_count', 'hk_count_func');
 
 
 function hk_search_hook_func(){
@@ -1929,7 +1929,7 @@ function hk_search_hook_func(){
 		if($hk_options["gcse_enable_faq_search"] != ""):
 			echo hk_search_and_print_faq($searchstring);
 		endif;
-		
+
 		// show contacter search
 		if($hk_options["gcse_enable_kontakter_search"] != ""):
 			$count = 5;
@@ -1946,27 +1946,27 @@ function hk_search_hook_func(){
 																'add_item_class' => 'search-item'
 																), $count, true);
 		endif;
-		
-		/* hook to be able to add other search result */ 
+
+		/* hook to be able to add other search result */
 		do_action('hk_pre_ajax_search', $searchstring);
-		
-		/* hook to be able to add other search result */ 
+
+		/* hook to be able to add other search result */
 		do_action('hk_post_ajax_search', $searchstring);
 	}
 	die();
-	
+
 }
-add_action('wp_ajax_hk_search_hook', 'hk_search_hook_func'); 
-add_action('wp_ajax_nopriv_hk_search_hook', 'hk_search_hook_func'); 
+add_action('wp_ajax_hk_search_hook', 'hk_search_hook_func');
+add_action('wp_ajax_nopriv_hk_search_hook', 'hk_search_hook_func');
 
 function hk_search_func(){
     global $default_settings;
 	$searchstring = $_REQUEST["searchstring"];
 	$hk_options = get_option('hk_theme');
 	if ($searchstring != "") {
-        
+
         echo "<div class='islet'>";
-        
+
 		// show search
         $query_args = array( 's' => esc_sql($searchstring),
                              'category__not_in' => array( $default_settings["hidden_cat"] ),
@@ -1977,11 +1977,11 @@ function hk_search_func(){
         }
         if ( $query->have_posts() ) :
 
-            while ( $query->have_posts() ) : $query->the_post(); 
+            while ( $query->have_posts() ) : $query->the_post();
 
-                $external_blog = false; 
-                if ($blog_id != $post->blog_id){ 
-                    $external_blog = true; 
+                $external_blog = false;
+                if ($blog_id != $post->blog_id){
+                    $external_blog = true;
                     switch_to_blog($post->blog_id);
                 }
 
@@ -1991,7 +1991,7 @@ function hk_search_func(){
                  */
                 //get_template_part( 'content', get_post_type() );
                 get_template_part( 'content' );
-                if ($external_blog) { 
+                if ($external_blog) {
                     restore_current_blog();
                 }
 
@@ -2005,17 +2005,17 @@ function hk_search_func(){
 
 	} // end if searchstring not empty
 	die();
-	
+
 }
-add_action('wp_ajax_hk_search', 'hk_search_func'); 
-add_action('wp_ajax_nopriv_hk_search', 'hk_search_func'); 
+add_action('wp_ajax_hk_search', 'hk_search_func');
+add_action('wp_ajax_nopriv_hk_search', 'hk_search_func');
 
 
 
 /* return current categories most viewed posts (only works if post count plugin is enabled) */
 function hk_view_most_viewed_posts() {
 	global $default_settings;
-	
+
 	/* view most viewed if is sub sub category firstpage and theme setting is set */
 	$most_viewed = hk_get_most_viewed('post', $default_settings["show_most_viewed_in_subsubcat"]);
 
@@ -2023,27 +2023,27 @@ function hk_view_most_viewed_posts() {
 		$output .= "<div class='most-viewed-posts-wrapper'>";
 		$output .= "<div class='most-viewed-posts'>";
 		foreach ($most_viewed as $post) {
-			
+
 			$post_title = get_the_title($post);
 			if($chars > 0) {
 				$post_title = snippet_text($post_title, $chars);
 			}
 			$post_excerpt = views_post_excerpt($post->post_excerpt, $post->post_content, $post->post_password, 30);
-			
+
 			$output .= "<div class='most-viewed-post'>";
-			$thumb = hk_get_the_post_thumbnail($post->ID, 'thumbnail-image', false, false); 
+			$thumb = hk_get_the_post_thumbnail($post->ID, 'thumbnail-image', false, false);
 			$output .= "<a class='$class views-cloud-item' href='" . get_permalink($post) . "' title='$post_excerpt'>";
-			
+
 			if ($thumb != "") :
 				$output .= $thumb;
 			else : /* else default thumb; */
 				$options = get_option("hk_theme");
-				$src = $options["default_thumbnail_image"]; 
+				$src = $options["default_thumbnail_image"];
 				if (!empty($src)) :
 				$output .= "<div class='img-wrapper '><div><img class='slide' src='$src' alt='Standardbild' title='Standardbild'></div></div>";
 			endif; endif;
 
-	
+
 			$output .= $post_title;
 			$output .= "</a></div>";
 		}
@@ -2076,7 +2076,7 @@ function hk_get_image_sizes( $size = '' ) {
 
 			} elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
 
-					$sizes[ $_size ] = array( 
+					$sizes[ $_size ] = array(
 							$_wp_additional_image_sizes[ $_size ]['width'],
 							$_wp_additional_image_sizes[ $_size ]['height'],
 							$_wp_additional_image_sizes[ $_size ]['crop']
@@ -2105,30 +2105,30 @@ function hk_get_image_sizes( $size = '' ) {
 */
 function hk_search_and_print_faq($search) {
 	global $wpdb, $hk_options, $default_settings;
-	
+
 	//$search = mb_convert_encoding($search, "ISO-8859-1");
 	$id_array = array();
 	$retVal = "";
 	$search = trim($search);
 	// search in faq meta with words in order
 	if (!empty($search)) {
-		$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta 
-		WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post' 
+		$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta
+		WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post'
 		AND ($wpdb->postmeta.meta_key LIKE 'hk_vanliga_fragor%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $search ), "ARRAY_A");
 		foreach($postarray as $arr) {
 			$id_array[implode("|",$arr)] = 1;
 		}
 	}
-	
+
 	// search in faq meta with each word, ignoring words in faq_search_ignore_words
 	if (count($id_array) <= 0 && !empty($hk_options["faq_search_ignore_words"])) {
-		
+
 		foreach(preg_split("/[\s,]+/", $search, NULL, PREG_SPLIT_NO_EMPTY) as $val) {
 			$val = trim($val);
 			//$retVal .= print_r(explode(", ",$hk_options["faq_search_ignore_words"]),true);
 			if (!empty($val) && !in_array($val, explode(", ",$hk_options["faq_search_ignore_words"]))) {
-				$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta 
-				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post' 
+				$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta
+				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post'
 				AND ($wpdb->postmeta.meta_key LIKE 'hk_vanliga_fragor%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $val ), "ARRAY_A");
 				// count if faq is found more than once
 				foreach($postarray as $arr) {
@@ -2144,15 +2144,15 @@ function hk_search_and_print_faq($search) {
 		// sort on most counted
 		arsort($id_array);
 	}
-	
+
 	// search in faq meta with each word
 	if (count($id_array) <= 0) {
-		
+
 		foreach(preg_split("/[\s,]+/", $search, NULL, PREG_SPLIT_NO_EMPTY) as $val) {
 			$val = trim($val);
 			if (!empty($val)) {
-				$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta 
-				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post' 
+				$postarray = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID, $wpdb->postmeta.meta_value  FROM $wpdb->posts, $wpdb->postmeta
+				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'post'
 				AND ($wpdb->postmeta.meta_key LIKE 'hk_vanliga_fragor%%' AND $wpdb->postmeta.meta_value LIKE '%%%s%%')", $val ), "ARRAY_A");
 				// count if faq is found more than once
 				foreach($postarray as $arr) {
@@ -2168,9 +2168,9 @@ function hk_search_and_print_faq($search) {
 		// sort on most counted
 		arsort($id_array);
 	}
-	
+
 	/* return values */
-		
+
 	/* print title */
 	$retVal .= "<div class='search-wrapper'>";
 	$retVal .= "<div class='search-title'>";
@@ -2205,7 +2205,7 @@ function hk_search_and_print_faq($search) {
 	$retVal .= "</div>";
 
 	return $retVal;
-	
+
 }
 
 /* AMP plugin, see info: https://github.com/Automattic/amp-wp/blob/master/readme.md */
@@ -2232,9 +2232,9 @@ function hk_amp_additional_css_styles( $amp_template ) {
 	.amp-wp-meta,
 	.amp-wp-author
 	{
-		display:none!important; 
+		display:none!important;
 	}
-	
+
 	.amp-wp-header {
 		background: #3d6a98!important;
 	}
@@ -2248,8 +2248,8 @@ function hk_amp_additional_css_styles( $amp_template ) {
 		max-width: 840px;
 		overflow-wrap: break-word;
 		word-wrap: break-word;
-    }	
-	
+    }
+
 	.amp-wp-article-content,
 	.amp-wp-content.amp-wp-footer .side-content
 	{
@@ -2272,12 +2272,12 @@ function hk_amp_additional_css_styles( $amp_template ) {
 	.aside-list-item div {
 		padding: 2px 0!important;
 	}
-	
+
 	.side-content .title {
 		font-size: 18px;
 	}
-	
-	
+
+
 	amp-img {
 	    border-radius: 3px;
 	}
@@ -2299,7 +2299,7 @@ function hk_amp_additional_css_styles( $amp_template ) {
 		background: white!important;
 		font-family: "Segoe UI",Arial,sans-serif!important;
 	}
-	html, p, 
+	html, p,
 	.amp-wp-content,
 	.wp-caption-text {
 		font-family: "Segoe UI",Arial,sans-serif;
@@ -2308,7 +2308,7 @@ function hk_amp_additional_css_styles( $amp_template ) {
 		font-size: 0.93333rem;
 		line-height: 1.71429;
 	}
-	h1, 
+	h1,
 	.amp-wp-title {
 		font-family: Arial;
 		font-size: 20px;
@@ -2357,11 +2357,11 @@ function hk_amp_add_custom_actions() {
 
 function hk_amp_add_featured_image( $content ) {
 
-	$thumb = hk_get_the_post_thumbnail(get_the_ID(),'featured-image', false, false, "", true); 
+	$thumb = hk_get_the_post_thumbnail(get_the_ID(),'featured-image', false, false, "", true);
 	if ($thumb != "") :
         $content = $thumb . $content;
 	endif;
-	
+
     return $content;
 }
 
@@ -2375,7 +2375,7 @@ function hk_amp_change_content_width( $content_max_width ) {
 add_filter( 'amp_post_template_analytics', 'hk_amp_add_custom_analytics' );
 function hk_amp_add_custom_analytics( $analytics ) {
 	global $hk_options;
-	
+
     if ( ! is_array( $analytics ) ) {
         $analytics = array();
     }
@@ -2419,7 +2419,7 @@ add_action( 'amp_post_template_head', 'hk_amp_add_head' );
 
 function hk_amp_add_head( $amp_template ) {
     $post_id = $amp_template->get( 'post_id' );
-    
+
 }
 
 add_action( 'amp_post_template_footer', 'hk_amp_add_footer' );
@@ -2455,7 +2455,7 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
 	/*if (!empty($showonlyfromtagarr)) {
 		$tagarray = $showonlyfromtagarr;
 	}*/
-    
+
 
     /* check if there are posts to be hidden */
     $args = array(	'posts_per_page' => -1,
@@ -2489,7 +2489,7 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
         $hiddenarr[] = get_the_ID();
     endwhile;
     /* END get hidden */
-	
+
 	/* remove already shown posts from next query */
 	$hiddenarr = array_merge($hiddenarr, $shownposts);
 
@@ -2524,23 +2524,23 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
     /* if orderby is set manually in url */
     else if ($orderby == "latest") {
         $args['orderby'] = 'date';
-        $args['order'] = 'DESC';				
+        $args['order'] = 'DESC';
     }
     /* if orderby is set manually in url */
     else if ($orderby == "oldest") {
         $args['orderby'] = 'date';
-        $args['order'] = 'ASC';				
+        $args['order'] = 'ASC';
     }
     /* standard order if views plugin exist */
     else if (function_exists( 'views_orderby' )) {
-        $args['meta_key'] = 'views'; 
+        $args['meta_key'] = 'views';
         $args['orderby'] = 'meta_value_num';
-        $args['order'] = 'DESC';	
+        $args['order'] = 'DESC';
     }
     /* else fallback to order by date DESC */
     else {
         $args['orderby'] = 'date';
-        $args['order'] = 'DESC';				
+        $args['order'] = 'DESC';
     }
     /* END get query args */
 
@@ -2569,159 +2569,159 @@ add_action( 'init', 'create_article_post_type' );
 
 // Breadcrumbs
 function custom_breadcrumbs() {
-       
+
     // Settings
     $separator          = '<svg width="6" height="10" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>breadcrumb_chevron</title><desc>Created using Figma</desc><g id="Canvas" transform="translate(-2414 476)"><g id="breadcrumb_chevron"><use xlink:href="#path0_stroke" transform="translate(2415 -475)" fill="#004F9F"/></g></g><defs><path id="path0_stroke" d="M -0.707107 7.29289C -1.09763 7.68342 -1.09763 8.31658 -0.707107 8.70711C -0.316583 9.09763 0.316583 9.09763 0.707107 8.70711L -0.707107 7.29289ZM 4 4L 4.70711 4.70711C 5.09763 4.31658 5.09763 3.68342 4.70711 3.29289L 4 4ZM 0.707107 -0.707107C 0.316583 -1.09763 -0.316583 -1.09763 -0.707107 -0.707107C -1.09763 -0.316583 -1.09763 0.316583 -0.707107 0.707107L 0.707107 -0.707107ZM 0.707107 8.70711L 4.70711 4.70711L 3.29289 3.29289L -0.707107 7.29289L 0.707107 8.70711ZM 4.70711 3.29289L 0.707107 -0.707107L -0.707107 0.707107L 3.29289 4.70711L 4.70711 3.29289Z"/></defs></svg>';
     $breadcrums_id      = 'single-breadcrumbs';
     $breadcrums_class   = 'category-article__breadcrumbs category-article-breadcrumbs';
     $home_title         = 'Hem';
-      
+
     // If you have any custom post types with custom taxonomies, put the taxonomy name below (e.g. product_cat)
     $custom_taxonomy    = 'product_cat';
-       
+
     // Get the query & post information
     global $post,$wp_query;
-       
+
     // Do not display on the homepage
     if ( !is_front_page() ) {
-       
+
         // Build the breadcrums
         echo '<ul id="' . $breadcrums_id . '" class="' . $breadcrums_class . '">';
-           
+
         // Home page
         echo '<li class="item-home"><a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
         echo '<li class="separator separator-home"> ' . $separator . ' </li>';
-           
+
         if ( is_archive() && !is_tax() && !is_category() && !is_tag() ) {
-              
+
             echo '<li class="item-current item-archive"><strong class="bread-current bread-archive">' . post_type_archive_title($prefix, false) . '</strong></li>';
-              
+
         } else if ( is_archive() && is_tax() && !is_category() && !is_tag() ) {
-              
+
             // If post is a custom post type
             $post_type = get_post_type();
-              
+
             // If it is a custom post type display name and link
             if($post_type != 'post') {
-                  
+
                 $post_type_object = get_post_type_object($post_type);
                 $post_type_archive = get_post_type_archive_link($post_type);
-              
+
                 echo '<li class="item-cat item-custom-post-type-' . $post_type . '"><a class="bread-cat bread-custom-post-type-' . $post_type . '" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
                 echo '<li class="separator"> ' . $separator . ' </li>';
-              
+
             }
-              
+
             $custom_tax_name = get_queried_object()->name;
             echo '<li class="item-current item-archive"><strong class="bread-current bread-archive">' . $custom_tax_name . '</strong></li>';
-              
+
         } else if ( is_single() ) {
-              
+
             // If post is a custom post type
             $post_type = get_post_type();
-              
+
             // If it is a custom post type display name and link
             if($post_type != 'post') {
-                  
+
                 $post_type_object = get_post_type_object($post_type);
                 $post_type_archive = get_post_type_archive_link($post_type);
-              
+
                 echo '<li class="item-cat item-custom-post-type-' . $post_type . '"><a class="bread-cat bread-custom-post-type-' . $post_type . '" href="' . $post_type_archive . '" title="' . $post_type_object->labels->name . '">' . $post_type_object->labels->name . '</a></li>';
                 echo '<li class="separator"> ' . $separator . ' </li>';
-              
+
             }
-              
+
             // Get post category info
             $category = get_the_category();
-             
+
             if(!empty($category)) {
-              
+
                 // Get last category post is in
                 $last_category = end(array_values($category));
-                  
+
                 // Get parent any categories and create array
                 $get_cat_parents = rtrim(get_category_parents($last_category->term_id, true, ','),',');
                 $cat_parents = explode(',',$get_cat_parents);
-                  
+
                 // Loop through parent categories and store in variable $cat_display
                 $cat_display = '';
                 foreach($cat_parents as $parents) {
                     $cat_display .= '<li class="item-cat">'.$parents.'</li>';
                     $cat_display .= '<li class="separator"> ' . $separator . ' </li>';
                 }
-             
+
             }
-              
+
             // If it's a custom post type within a custom taxonomy
             $taxonomy_exists = taxonomy_exists($custom_taxonomy);
             if(empty($last_category) && !empty($custom_taxonomy) && $taxonomy_exists) {
-                   
+
                 $taxonomy_terms = get_the_terms( $post->ID, $custom_taxonomy );
                 $cat_id         = $taxonomy_terms[0]->term_id;
                 $cat_nicename   = $taxonomy_terms[0]->slug;
                 $cat_link       = get_term_link($taxonomy_terms[0]->term_id, $custom_taxonomy);
                 $cat_name       = $taxonomy_terms[0]->name;
-               
+
             }
-              
+
             // Check if the post is in a category
             if(!empty($last_category)) {
                 echo $cat_display;
                 echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
-                  
+
             // Else if post is in a custom taxonomy
             } else if(!empty($cat_id)) {
-                  
+
                 echo '<li class="item-cat item-cat-' . $cat_id . ' item-cat-' . $cat_nicename . '"><a class="bread-cat bread-cat-' . $cat_id . ' bread-cat-' . $cat_nicename . '" href="' . $cat_link . '" title="' . $cat_name . '">' . $cat_name . '</a></li>';
                 echo '<li class="separator"> ' . $separator . ' </li>';
                 echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
-              
+
             } else {
-                  
+
                 echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</strong></li>';
-                  
+
             }
-              
+
         } else if ( is_category() ) {
-               
+
             // Category page
             echo '<li class="item-current item-cat"><strong class="bread-current bread-cat">' . single_cat_title('', false) . '</strong></li>';
-               
+
         } else if ( is_page() ) {
-               
+
             // Standard page
             if( $post->post_parent ){
-                   
-                // If child page, get parents 
+
+                // If child page, get parents
                 $anc = get_post_ancestors( $post->ID );
-                   
+
                 // Get parents in the right order
                 $anc = array_reverse($anc);
-                   
+
                 // Parent page loop
                 if ( !isset( $parents ) ) $parents = null;
                 foreach ( $anc as $ancestor ) {
                     $parents .= '<li class="item-parent item-parent-' . $ancestor . '"><a class="bread-parent bread-parent-' . $ancestor . '" href="' . get_permalink($ancestor) . '" title="' . get_the_title($ancestor) . '">' . get_the_title($ancestor) . '</a></li>';
                     $parents .= '<li class="separator separator-' . $ancestor . '"> ' . $separator . ' </li>';
                 }
-                   
+
                 // Display parent pages
                 echo $parents;
-                   
+
                 // Current page
                 echo '<li class="item-current item-' . $post->ID . '"><strong title="' . get_the_title() . '"> ' . get_the_title() . '</strong></li>';
-                   
+
             } else {
-                   
+
                 // Just display current page if not parents
                 echo '<li class="item-current item-' . $post->ID . '"><strong class="bread-current bread-' . $post->ID . '"> ' . get_the_title() . '</strong></li>';
-                   
+
             }
-               
+
         } else if ( is_tag() ) {
-               
+
             // Tag page
-               
+
             // Get tag information
             $term_id        = get_query_var('tag_id');
             $taxonomy       = 'post_tag';
@@ -2730,110 +2730,82 @@ function custom_breadcrumbs() {
             $get_term_id    = $terms[0]->term_id;
             $get_term_slug  = $terms[0]->slug;
             $get_term_name  = $terms[0]->name;
-               
+
             // Display the tag name
             echo '<li class="item-current item-tag-' . $get_term_id . ' item-tag-' . $get_term_slug . '"><strong class="bread-current bread-tag-' . $get_term_id . ' bread-tag-' . $get_term_slug . '">' . $get_term_name . '</strong></li>';
-           
+
         } elseif ( is_day() ) {
-               
+
             // Day archive
-               
+
             // Year link
             echo '<li class="item-year item-year-' . get_the_time('Y') . '"><a class="bread-year bread-year-' . get_the_time('Y') . '" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
             echo '<li class="separator separator-' . get_the_time('Y') . '"> ' . $separator . ' </li>';
-               
+
             // Month link
             echo '<li class="item-month item-month-' . get_the_time('m') . '"><a class="bread-month bread-month-' . get_the_time('m') . '" href="' . get_month_link( get_the_time('Y'), get_the_time('m') ) . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</a></li>';
             echo '<li class="separator separator-' . get_the_time('m') . '"> ' . $separator . ' </li>';
-               
+
             // Day display
             echo '<li class="item-current item-' . get_the_time('j') . '"><strong class="bread-current bread-' . get_the_time('j') . '"> ' . get_the_time('jS') . ' ' . get_the_time('M') . ' Archives</strong></li>';
-               
+
         } else if ( is_month() ) {
-               
+
             // Month Archive
-               
+
             // Year link
             echo '<li class="item-year item-year-' . get_the_time('Y') . '"><a class="bread-year bread-year-' . get_the_time('Y') . '" href="' . get_year_link( get_the_time('Y') ) . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</a></li>';
             echo '<li class="separator separator-' . get_the_time('Y') . '"> ' . $separator . ' </li>';
-               
+
             // Month display
             echo '<li class="item-month item-month-' . get_the_time('m') . '"><strong class="bread-month bread-month-' . get_the_time('m') . '" title="' . get_the_time('M') . '">' . get_the_time('M') . ' Archives</strong></li>';
-               
+
         } else if ( is_year() ) {
-               
+
             // Display year archive
             echo '<li class="item-current item-current-' . get_the_time('Y') . '"><strong class="bread-current bread-current-' . get_the_time('Y') . '" title="' . get_the_time('Y') . '">' . get_the_time('Y') . ' Archives</strong></li>';
-               
+
         } else if ( is_author() ) {
-               
+
             // Auhor archive
-               
+
             // Get the author information
             global $author;
             $userdata = get_userdata( $author );
-               
+
             // Display author name
             echo '<li class="item-current item-current-' . $userdata->user_nicename . '"><strong class="bread-current bread-current-' . $userdata->user_nicename . '" title="' . $userdata->display_name . '">' . 'Author: ' . $userdata->display_name . '</strong></li>';
-           
+
         } else if ( get_query_var('paged') ) {
-               
+
             // Paginated archives
             echo '<li class="item-current item-current-' . get_query_var('paged') . '"><strong class="bread-current bread-current-' . get_query_var('paged') . '" title="Page ' . get_query_var('paged') . '">'.__('Page') . ' ' . get_query_var('paged') . '</strong></li>';
-               
+
         } else if ( is_search() ) {
-           
+
             // Search results page
             echo '<li class="item-current item-current-' . get_search_query() . '"><strong class="bread-current bread-current-' . get_search_query() . '" title="Search results for: ' . get_search_query() . '">Search results for: ' . get_search_query() . '</strong></li>';
-           
+
         } elseif ( is_404() ) {
-               
+
             // 404 page
             echo '<li>' . 'Error 404' . '</li>';
         }
-       
+
         echo '</ul>';
-           
+
     }
-       
+
 }
 
 function acf_google_map_api( $api ){
-	
+
 	$api['key'] = 'AIzaSyAlYSgouu-vxtqakRGjZNdjVd7Vsli5eqk';
 
 	return $api;
-	
+
 }
 
 add_filter('acf/fields/google_map/api', 'acf_google_map_api');
-
-/* Yoast fix to eneble for specific user */
-if ( defined('WPSEO_VERSION') ) {
-    // Disable WordPress SEO meta box and menu for users that not is yoast enabled (ACF-setting in user form)
-    function wpse_init(){
-        $current_user = wp_get_current_user();
-        $enable_yoast = get_field('enable_yoast', 'user_'. $current_user->ID );
-        if( !$enable_yoast ){
-            // Remove page analysis columns from post lists, also SEO status on post editor
-            add_filter('wpseo_use_page_analysis', '__return_false');
-            // Remove Yoast meta boxes
-            add_action('add_meta_boxes', 'disable_seo_metabox', 100000);
-            // Remove Yoast from menu
-            add_action('admin_menu', 'remove_wpseo_admin_menu_links');
-        }   
-    }
-    add_action('init', 'wpse_init');
-    // Remove menu link
-    function remove_wpseo_admin_menu_links(){
-        remove_action( 'admin_bar_menu', 'wpseo_admin_bar_menu', 95 );
-        remove_menu_page( 'wpseo_dashboard' );
-    }
-    // Remove metaboxes
-    function disable_seo_metabox(){
-        remove_meta_box('wpseo_meta', 'post', 'normal');
-        remove_meta_box('wpseo_meta', 'page', 'normal');
-    }
-}
 
 ?>
