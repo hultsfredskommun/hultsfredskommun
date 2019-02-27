@@ -3,7 +3,7 @@
 			<?php
 			$categories_list = get_the_category_list( ' | ' );
 			if ( $categories_list && $categories_list != "Okategoriserade" ): ?>
-			<li class="tag-cloud">Tillh&ouml;r: 
+			<li class="tag-cloud">Tillh&ouml;r:
 				<span class="cat-links">
 					<?php echo $categories_list; ?>
 				</span>
