@@ -2,15 +2,15 @@
 <?php
 	global $hk_options, $firstpageClass, $printpageClass;
 ?>
-	
+
 <header id="branding" class="branding" role="banner">
-	<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>	
+	<?php /* IMPORTANT DYNAMIC TOP WIDGET CONTENT */ ?>
 	<?php dynamic_sidebar('important-top-content'); ?>
 
 	<?php /* top right navigation */ ?>
 		<aside id='topmenu-mobile' class='top-menu-wrapper palm'>
 			<nav>
-				
+
 				<ul class='top-menu'><?php
 					$logo_link = $hk_options["logo_link"];
 					if (empty($logo_link)) {
@@ -22,22 +22,22 @@
 					<li class="float--right"><a class="js-show-menu" href="#"><span class="menu-icon"></span></a></li>
 					<?php endif; ?>
                     <li class="float--right"><a class="js-show-search" href="#"><span class="search-icon"></span></a></li>
-					<li class="float--right"><a href="http://translate.google.com/translate?hl=sv&sl=sv&tl=en&u=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>"><span class="translate-small-icon"></span></a></li>
+					<li class="float--right"><a href="https://translate.google.com/translate?hl=sv&sl=sv&tl=en&u=<?php echo (isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>"><span class="translate-small-icon"></span></a></li>
 				</ul>
 			</nav>
-				
+
 		</aside>
-	<?php 
-		if ( ((($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0) || 
-			(!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") || 
+	<?php
+		if ( ((($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0) ||
+			(!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") ||
 			(!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") ) ) : ?>
 			<aside id='topmenu' class='top-menu-wrapper desk'><div class='content--center'>
-				
-				<?php if ( (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) || 
-						 (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") || 
+
+				<?php if ( (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) ||
+						 (!empty($hk_options["translate_url"]) && $hk_options["translate_url"] != "") ||
 						 (!empty($hk_options["readspeaker_id"]) && $hk_options["readspeaker_id"] != "") ) : ?>
 					<nav>
-					
+
 					<ul class='top-menu'>
 					<?php /* pre html if any in options */ ?>
 					<?php if (!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") : ?>
@@ -45,18 +45,18 @@
 					<?php endif; ?>
 					<?php /* show google translate if set */ ?>
 					<?php if (!empty($hk_options["topmenu_google_translate"])) : ?>
-						<li class="pre-top-menu"><a href="http://translate.google.com/translate?hl=sv&sl=sv&tl=en&u=<?php echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>"><span class="translate-small-icon"></span>Google Translate</a></li>
+						<li class="pre-top-menu"><a href="https://translate.google.com/translate?hl=sv&sl=sv&tl=en&u=<?php echo (isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>"><span class="translate-small-icon"></span>Google Translate</a></li>
 					<?php endif; ?>
-					
+
 					<?php
 					if (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) :
 					wp_nav_menu( array(
-						'theme_location' => 'topmenu', 
+						'theme_location' => 'topmenu',
 						'container' 	=> '',
 						'items_wrap'	=> '%3$s',
 						'depth' 		=> 2,
 						'echo' 			=> true
-					)); 
+					));
 					endif;
 					 ?>
 					<?php /* post html if any in options */ ?>
@@ -65,7 +65,7 @@
 					<?php endif; ?>
 					</ul></nav>
 				<?php endif; ?>
-					
+
 			</div></aside>
 		<?php endif; ?>
 	<div id="topwrapper" class="content--center"><div class="top-wrapper">
@@ -74,15 +74,12 @@
 			<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
 			<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 		</div>
-			
+
 		<?php /* search form*/ ?>
-		<?php if ($hk_options["hide_search"] != 1) : ?>
-		<div id="searchnavigation" class="searchnavigation" role="search">			
+		<div id="searchnavigation" class="searchnavigation" role="search">
 			<?php get_search_form(); ?>
 		</div>
-		<?php endif; // end if hide_search?>
-		
-		
+
 		<?php if (($hk_options["logo2_image"] != "") || ($hk_options["logo3_image"] != "") || (!empty($hk_options["right_logo_html"]) && $hk_options["right_logo_html"] != "")) : ?>
 		<div id="logo2" class="logo2">
 			<?php /* right logo html if any in options */ ?>
@@ -99,10 +96,10 @@
 		<?php endif; ?>
 
 	</div>
-	<?php 
+	<?php
         // if google sök och ajax-sökning
         if ($hk_options["gcse_ajax"] != "") {
-            $column_class = " no-hook"; 
+            $column_class = " no-hook";
             if($hk_options["gcse_enable_kontakter_search"] != "" || has_action('hk_pre_ajax_search') || has_action('hk_post_ajax_search')) { $column_class = " has-hook"; } ?>
 	<div class="hk-gcse-ajax-searchresults-wrapper">
 		<div class="hk-gcse-ajax-searchresults<?php echo $column_class; ?>">
@@ -115,7 +112,7 @@
 		</div>
 	</div>
 	<?php } // end ajax-sökning ?>
-        
+
 	</div><?php // end div topwrapper ?>
 	<!--googleoff: all-->
 	<?php if (false) : /* REMOVE OLD RESPONSVE MENU if (is_sub_category_firstpage()) : */ ?>
@@ -126,13 +123,13 @@
 	<?php endif; ?>
 
     <?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled('primary') ) : // show max mega menu ?>
-	
+
     <nav id="menu" class="menu-wrapper" role="navigation">
 	<?php wp_nav_menu( array( 'theme_location' => 'primary') ); ?>
     </nav>
-    
+
     <?php else: // show normal menu, if no max mega menu is used ?>
-    
+
 	<?php if (!is_search()) : ?>
 	<nav id="menu" class="menu-wrapper" role="navigation">
 		<?php
@@ -146,7 +143,7 @@
 	</nav>
 	<?php endif; // not is search ?>
 	<?php endif; // end else normal menu ?>
-	
+
 	<?php if (false) : // TEMP REMOVED is_sub_category_firstpage()) /*!is_search() && get_query_var("tag") == "")*/ : ?>
 		<div class="responsive-menu">
 			<ul class="main-sub-menu"><li><a class="js-show-tag-menu" href="#">Visa bara<span class="expand-icon">+</span></a></li></ul>

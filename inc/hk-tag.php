@@ -1,14 +1,20 @@
 	<?php
-		if ($tag != "") : 
+		$curr_tag = get_query_var("tag");
+		if ($curr_tag != "") :
 			// Get term by slug $tag in Tags taxonomy.
-			$tagitem = get_term_by('slug', $tag, 'post_tag');
+			$tagitem = get_term_by('slug', $curr_tag, 'post_tag');
+
 			$newstag = "";
-			$news_list_arr = split(",", str_replace(" ", "", $hk_options["show_taglist_as_newslist"])); /* get if show tag as news list */
-			$is_news_list = $default_settings["news_tag"] == $tagitem->term_id || in_array($tagitem->slug, $news_list_arr);
+			$news_list_arr = explode(",", str_replace(" ", "", $hk_options["show_taglist_as_newslist"])); /* get if show tag as news list */
+			if ($tagitem instanceof WP_Term) {
+				$is_news_list = $default_settings["news_tag"] == $tagitem->term_id || in_array($tagitem->slug, $news_list_arr);
+			} else {
+				$is_news_list = false;
+			}
 			echo '<div id="breadcrumb" class="';
 			echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":"";
 			echo 'breadcrumb">';
-			echo hk_breadcrumb(); 
+			echo hk_breadcrumb();
 			// if news
 			if ($is_news_list) {
 				echo hk_postcount();
@@ -20,17 +26,16 @@
 
 	<div id="primary" class="primary">
 
-	<div id="content" class="tag-listing <?php echo $newstag . " " . $tag; ?>" role="main">
+	<div id="content" class="tag-listing <?php echo $newstag . " " . $curr_tag; ?>" role="main">
 
 	<?php
-	
+
 		/**
 		 * Default order in orderby no set
 		 */
 		$shownPosts = array();
-		if ($tag != "") : 
-			
-			
+		if ($curr_tag != "") :
+
 			// get selected category if any
 			if ($cat != "") {
 				$top_cat_arr = array($cat);
@@ -43,22 +48,22 @@
 				endforeach;
 				$cat_title = "<strong>hela webbplatsen</strong>";
 			}
-			//$tagname = 
-			
-			$tag_object = get_term_by("slug", $tag, "post_tag");
-			$tag_name = $tag_object->name;
+			//$tagname =
+
+			$tag_object = get_term_by("slug", $curr_tag, "post_tag");
+			$tag_name = ($tag_object instanceof WP_Term)?$tag_object->name:'';
 			?>
-			
+
 			<!--header class="page-header">
 				<ul class="num-posts">
-					<?php echo "<li><a class='nolink'>Visa bara <b>" . $tag . "</b> fr&aring;n " . $cat_title . "</a></li>"; ?>
+					<?php echo "<li><a class='nolink'>Visa bara <b>" . $curr_tag . "</b> fr&aring;n " . $cat_title . "</a></li>"; ?>
 				</ul>
 			</header-->
 			<?php echo "<h1 class='page-title'><a class='nolink'>Visa bara <b>" . $tag_name . "</b> fr&aring;n <b>" . $cat_title . "</b></a></h1>"; ?>
 			<?php
 			// loop top categories (one or many)
-			
-			
+
+
 			// if news
 			if ($is_news_list) {
 				//echo "news;";
@@ -77,35 +82,91 @@
 				'ignore_sticky_posts' => 1,
 				'orderby' => 'date',
 				'order' => 'DESC',);
-				
+
 				$args["category__in"] = $children;
-				$args["tag_slug__in"] = split(",",$tag);
-				
+				$args["tag_slug__in"] = explode(",",$curr_tag);
+
 				//print_r($args);
 				query_posts( $args );
-				if ( have_posts() ) : 
+				if ( have_posts() ) :
 					while ( have_posts() ) : the_post();
 						get_template_part( 'content', 'news' );
 						$shownPosts[] = get_the_ID();
 
 					endwhile;
-					
+
 				endif;
 			}
 			// else not news
 			else {
 				$lastsub = 0;
-				foreach($top_cat_arr as $cat) :
-					
+				// loop through top meny - invånare, företagare m.m.
+				//foreach($top_cat_arr as $cat) :
+
 					// get child categories and include parent cat in children array
-					$childrenarr =  get_categories(array('child_of' => $cat, 'hide_empty' => true));
+
+					$childrenarr =  get_categories(array('child_of' => $cat, 'hide_empty' => true,'orderby' => 'name','order' => 'ASC'));
 					$children = array();
-					$children[] = $cat;
+					if (!empty($cat)) {
+						$children[] = $cat;
+					}
 					foreach($childrenarr as $child) :
 						//echo $child->name . "<br>";
-						$children[] = $child->cat_ID;
+						if ($child->cat_ID != 1) { // remove "ej synlig"
+							$children[] = $child->cat_ID;
+						}
 					endforeach;
 
+
+					// echo "<div style='display:none'>jonastest";
+					// //echo " hk_getChildrenIdArray: ";
+					// //print_r(hk_getChildrenIdArray($cat));
+					// // echo " ch: ";
+					// // print_r($ch);
+					// echo " children: ";
+					// print_r($children);
+
+
+					$args = array( 'posts_per_page' => -1,
+					'ignore_sticky_posts' => 1,
+					'orderby' => 'title',
+					'order' => 'ASC',);
+					if (is_array($children)) {
+						$args["category__in"] = $children;
+					}
+					if ($curr_tag != "") {
+						$args["tag_slug__in"] = explode(",",$curr_tag);
+					}
+					 //print_r($args);
+					//echo "</div>";
+
+					query_posts( $args );
+					//echo $childcat->cat_ID;
+					//print_r($children);
+					if ( have_posts() ) :
+						while ( have_posts() ) : the_post();
+							get_template_part( 'content', 'tag' );
+							$shownPosts[] = get_the_ID();
+						endwhile;
+
+					endif;
+
+
+					wp_reset_query(); // Reset Query
+
+					// echo "</div>";
+
+
+
+
+
+
+
+
+
+
+
+					/*
 					$tags_filter = get_query_var("tag");
 					if (!empty($tags_filter)) {
 						$tags_filter = "?tag=$tags_filter";
@@ -121,15 +182,15 @@
 						'order' => 'ASC',);
 						if ($childcat->cat_ID != "")
 							$args["category__and"] = array($childcat->cat_ID);
-						if ($tag != "")
-							$args["tag_slug__in"] = split(",",$tag);
-						
+						if ($curr_tag != "")
+							$args["tag_slug__in"] = explode(",",$curr_tag);
+
 						query_posts( $args );
 						//echo $childcat->cat_ID;
 						//print_r($children);
-						if ( have_posts() ) : 
+						if ( have_posts() ) :
 							$catarr[] = $childcat->slug;
-							
+
 							foreach(hk_getParentsSlugArray($childcat->cat_ID) as $slug) :
 								if (!in_array($slug,$catarr)) :
 									$catarr[] = $slug;
@@ -147,10 +208,10 @@
 									echo "<h$sub class='indent$sub'>$pre_dimmed_link" . $c->name . "$post_dimmed_link</h$sub>";
 									echo "<div class='wrapper$sub wrapper'>";
 								endif;
-								
+
 							endforeach;
-							
-							$sub = hk_countParents($childcat->cat_ID); 
+
+							$sub = hk_countParents($childcat->cat_ID);
 							while ($sub <= $lastsub--) {
 								echo "</div>";
 							}
@@ -163,22 +224,23 @@
 								$shownPosts[] = get_the_ID();
 							endwhile;
 							echo "</div>";
-							
+
 						endif;
 
 						wp_reset_query(); // Reset Query
 
 					endforeach;
-					
-				endforeach;
-				while (0 < $lastsub--) {
-					echo "</div>";
-				}
+					*/
+
+				//endforeach;
+				//while (0 < $lastsub--) {
+					//echo "</div>";
+				//}
 			} // end not news
 		endif; /* end if has tag */
-		
-		
-		
+
+
+
 		/* helper array to know which posts is shown if loading more dynamically */
 		if (empty($sticky)) {
 			$allposts = $shownPosts;
@@ -196,11 +258,12 @@
 			$allposts = implode(",",$allposts);
 		else
 			$allposts = "";
-			
+
 		echo "<span id='shownposts' class='hidden'>" . $allposts . "</span>";
 
-		hk_content_nav( 'nav-below' );
-
+		if ($is_news_list) {
+			hk_content_nav( 'nav-below' );
+		}
 		/* help text if nothing is found */
 		if (empty($shownPosts)) {
 			hk_empty_navigation();
@@ -208,6 +271,6 @@
 
 	</div><!-- #content -->
 
-	
-	
+
+
 </div><!-- #primary -->

@@ -16,24 +16,24 @@ if (empty($thumb_size)) {
 		<div class="article-wrapper">
 			<div class="content-wrapper">
 				<div class="summary-content">
-					<?php 
+					<?php
 					if ($thumb_size != "none") :
-					$thumb = hk_get_the_post_thumbnail(get_the_ID(),$thumb_size, false, false); 
-					if ($thumb) :  					
+					$thumb = hk_get_the_post_thumbnail(get_the_ID(),$thumb_size, false, false);
+					if ($thumb) :
 						echo $thumb;
 					else : /* else default thumb; */
 						$options = get_option("hk_theme");
-						$src = $options["default_thumbnail_image"]; 
+						$src = $options["default_thumbnail_image"];
 						if (!empty($src)) :
 						?>
-						<div class="img-wrapper "><div><img class="slide" src="<?php echo $src; ?>" alt="Standardbild" title="Standardbild"></div></div>
+						<div class="img-wrapper "><div><img class="slide" src="<?php echo $src; ?>" alt=""></div></div>
 					<?php endif; /*end empty */ endif; /* end else default thumb */ endif; /* end thumb_size != none */ ?>
-					<?php 
+					<?php
 					$externalclass = "";
 					$jstoggle = " js-toggle-article";
-					if (function_exists("get_field")) { 
-						$href = get_field('hk_external_link_url'); 
-						$name = get_field('hk_external_link_name'); 
+					if (function_exists("get_field")) {
+						$href = get_field('hk_external_link_url');
+						$name = get_field('hk_external_link_name');
 						if (!empty($href))
 						{
 							$jstoggle = "";
@@ -42,22 +42,22 @@ if (empty($thumb_size)) {
 						}
 					}
 					if (empty($href)) {
-						$href = get_permalink(); 
+						$href = get_permalink();
 						$title = "Länk till " . the_title_attribute( 'echo=0' );
 					}
 					$externalclass = "class='gtm-cn-news-link$externalclass$jstoggle'"
-					
+
 					?>
 					<div class="content-text-wrapper">
 					<h5 class="entry-title"><a <?php echo $externalclass; ?> href="<?php echo $href; ?>" title="<?php echo $title; ?>" rel="bookmark"><?php the_title(); ?></a></h5>
 					<?php
 						// if news
-						if (has_tag($default_settings["news_tag"])) {
+						if (!empty($default_settings["news_tag"]) && has_tag($default_settings["news_tag"])) {
 							echo "<time>" . get_the_date("Y-m-d") . "</time> ";
 						}
 					?>
 					<div class="entry-content">
-						<?php the_excerpt(); 
+						<?php the_excerpt();
 						if (!empty($href) && !empty($name))
 						{
 							echo "<a class='gtm-cn-news-button button' href='$href' title='$name'>$name</a>";
@@ -65,7 +65,7 @@ if (empty($thumb_size)) {
 						?>
 					</div>
 					</div>
-					
+
 				</div><!-- .summary-content -->
 
 			</div><!-- .content-wrapper -->

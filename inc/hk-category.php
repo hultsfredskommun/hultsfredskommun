@@ -1,7 +1,7 @@
-	<?php 
+	<?php
 		/*
-		 * if not is sub start page 
-		 */ 
+		 * if not is sub start page
+		 */
 
 		global $default_settings;
         $category_as_filter = $default_settings["category_as_filter"];
@@ -11,29 +11,29 @@
 
         // if filter is enabled on category (ACF in category)
         if ($category_as_filter) {
-            echo "Kategorifilter &auml;r p&aring; (fungerar inte &auml;n)." . $category_as_filter . " - " . $dynamic_posts_load . "(visa underliggande kategorier: " . $category_show_children . ")";            
+            echo "Kategorifilter &auml;r p&aring; (fungerar inte &auml;n)." . $category_as_filter . " - " . $dynamic_posts_load . "(visa underliggande kategorier: " . $category_show_children . ")";
         }
 
-		if (!is_sub_category_firstpage()) { 
-            
+		if (!is_sub_category_firstpage()) {
+
 			if ($cat != "") {
                 // get query args for category
-                $args = hk_getCatQueryArgs($cat, $paged, $category_show_children, $_REQUEST["orderby"], "", $_REQUEST["current-category-filter"]);
+                $args = hk_getCatQueryArgs($cat, $paged, $category_show_children, (!empty($_REQUEST["orderby"]))?$_REQUEST["orderby"]:'', "", (!empty($_REQUEST["current-category-filter"]))?$_REQUEST["current-category-filter"]:'');
                 query_posts( $args );
-                
+
             } // end if cat is set
-			
+
 			?>
 			<div id="breadcrumb" class="<?php echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":""; ?>breadcrumb"><?php hk_breadcrumb(); ?><?php hk_postcount() ?></div>
 
 
 			<?php if ($default_settings["show_most_viewed_in_subsubcat"] > 0 && is_sub_sub_category_firstpage()) {
 				echo hk_view_most_viewed_posts();
-            } //endif show most viewed 
+            } //endif show most viewed
         } // end if !is_sub_category_firstpage ?>
 
 	<div id="primary" class="primary">
-        <?php 
+        <?php
             /* display slideshow */
             $vars = array();
             $vars['thumbnail-size'] = 'wide-image';
@@ -50,9 +50,9 @@
             if ($default_settings["hide_articles_in_subsubcat"] != 1 || !is_sub_sub_category_firstpage()) {
                 $countposts = 0;
                 $shownPosts = array();
-                if ($cat != "") { 
-                    if ( have_posts() ) { 
-                        while ( have_posts() ) { 
+                if ($cat != "") {
+                    if ( have_posts() ) {
+                        while ( have_posts() ) {
                             the_post();
                             if (!in_array(get_the_ID(), $shownPosts)) {
                                 if ($wp_query->post_count == 1 && $wp_query->max_num_pages == 1) {
@@ -63,7 +63,7 @@
                                 }
                                 $shownPosts[] = get_the_ID();
                             }
-                        } 
+                        }
                     }
                 }
 
@@ -73,14 +73,12 @@
                 /* help text if nothing is found */
                 if (empty($shownPosts)) {
                     hk_empty_navigation();
-                } 
+                }
             }
         ?>
 
 	</div><!-- #content -->
 
-	
-	
+
+
 </div><!-- #primary -->
-
-

@@ -3,21 +3,21 @@
  * Add unfiltered_html capabilities to administrator, editor and author
  */
 function change_role_caps() {
-	$role = get_role( 'administrator' ); 
-	$role->add_cap( 'unfiltered_html' ); 
-	
-	$role = get_role( 'editor' ); 
+	$role = get_role( 'administrator' );
+	$role->add_cap( 'unfiltered_html' );
+
+	$role = get_role( 'editor' );
 	$role->add_cap( 'unfiltered_html' );
 	$role->remove_cap('manage_categories');
 	$role->remove_cap('manage_links');
 
-	$role = get_role( 'author' ); 
-	$role->add_cap( 'unfiltered_html' );	 
+	$role = get_role( 'author' );
+	$role->add_cap( 'unfiltered_html' );
 	$role->remove_cap('manage_links');
 
-	
+
 	// add new role extended author
-	$role = get_role( 'editor' ); 
+	$role = get_role( 'editor' );
 	$capabilities = $role->capabilities;
 	unset($capabilities["edit_pages"]);
 	unset($capabilities["edit_others_pages"]);
@@ -35,18 +35,17 @@ add_action( 'admin_init', 'change_role_caps');
 
 
 // do on save_post
-add_action('save_post', hk_save_post);
 function hk_save_post($postID) {
 	global $default_settings;
 	$options = get_option("hk_theme");
-	
-	
-	
+
+
+
 	// TODO
 	// - check image size
-	
+
 	// set to hidden_cat if stop publish date and time has past
-	if(function_exists("register_field_group")) : // if acf plugin enabled 
+	if(function_exists("register_field_group")) : // if acf plugin enabled
 		if (get_field("hk_stop_publish_date") != "") {
 			if (    get_field("hk_stop_publish_date") < date("Ymd",current_time('timestamp',0)) ||
 					(
@@ -61,6 +60,7 @@ function hk_save_post($postID) {
 		}
 	endif;
 }
+add_action('save_post', 'hk_save_post');
 
 
 /*
@@ -83,16 +83,16 @@ function hk_review_metabox() {
     $date = get_post_meta( $post->ID, 'hk_last_reviewed', true );
     $nextdate = get_post_meta( $post->ID, 'hk_next_review', true );
     $timespan = get_post_meta( $post->ID, 'hk_review_timespan', true );
-    if ($timespan == "") $timespan = "threemonths" 
+    if ($timespan == "") $timespan = "threemonths"
     ?>
 	<?php if ($date != "") : ?>
 	    <p>Granskas igen <?php echo get_the_next_review_date(get_the_ID()); ?>.</p>
 	<?php else : ?>
 	    <p><?php echo "Inlägget har aldrig granskats."; ?></p>
 	<?php endif; ?>
-    <p><label for="hk_reviewed"> 
+    <p><label for="hk_reviewed">
         <input type="checkbox" id="hk_reviewed" name="hk_reviewed">&nbsp;Jag har granskat inlägget</input></label></p>
-    <p><label for="hk_review_timespan">Tid till nästa granskning 
+    <p><label for="hk_review_timespan">Tid till nästa granskning
         <select type="checkbox" id="hk_review_timespan" name="hk_review_timespan">
 	        <option value="week" <?php echo ($timespan == "week") ? "selected":""; ?>>Nästa vecka</option>
 			<option value="month" <?php echo ($timespan == "month") ? "selected":""; ?>>Nästa månad</option>
@@ -104,7 +104,7 @@ function hk_review_metabox() {
 }
 
 function hk_save_review_details( $post_ID ) {
-    global $post;   
+    global $post;
     if( $_POST ) {
     	$date = strtotime('now');
     	$timespan = "+3 months";
@@ -137,7 +137,7 @@ add_action( 'save_post', 'hk_save_review_details' );
 
 
 
-/* 
+/*
  * Media Library and images
  */
 
@@ -151,12 +151,12 @@ function filterPostMimeTypes($post_mime_types) {
 add_filter('post_mime_types', 'filterPostMimeTypes');
 
 
-// add mime extensions 
+// add mime extensions
 function custom_upload_mimes ( $existing_mimes=array() ) {
 	// add your extension to the array
 	$existing_mimes['eps'] = 'image/eps';
 	$existing_mimes['svg'] = 'image/svg';
-	
+
 	if (current_user_can('manage_options')) {
 		$existing_mimes['exe'] = 'application/exe';
 	}
@@ -169,11 +169,10 @@ add_filter('upload_mimes', 'custom_upload_mimes');
 
 
 // Add Hultsfredskommun custom image sizes.
-if ( function_exists( 'add_image_size' ) ) { 
+if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'thumbnail-image',  $default_settings['thumbnail-image'][0], $default_settings['thumbnail-image'][1], $default_settings['thumbnail-image'][2] );
 	add_image_size( 'featured-image',  $default_settings['featured-image'][0], $default_settings['featured-image'][1], $default_settings['featured-image'][2] );
 	add_image_size( 'slideshow-image',  $default_settings['slideshow-image'][0], $default_settings['slideshow-image'][1], $default_settings['slideshow-image'][2] );
-	add_image_size( 'article-image',  $default_settings['article-image'][0], $default_settings['article-image'][1], $default_settings['article-image'][2] );
 	add_image_size( 'wide-image',  $default_settings['wide-image'][0], $default_settings['wide-image'][1], $default_settings['wide-image'][2] );
 	add_image_size( 'contact-image',  $default_settings['contact-image'][0], $default_settings['contact-image'][1], $default_settings['contact-image'][2] );
 }
@@ -191,7 +190,7 @@ add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
 
 /**
  * Alter the default admin menus, settings and looks.
- * Change name of menus in admin 
+ * Change name of menus in admin
  */
 
 
@@ -211,7 +210,7 @@ function hk_formatTinyMCE($in)
 	//$in['paste_text_use_dialog']=true;
 	//$in['wpeditimage_disable_captions']=true;
 	//$in['plugins']='inlinepopups,tabfocus,paste,media,fullscreen,wordpress,wpeditimage,wpgallery,wplink,wpdialogs,wpfullscreen';
-	
+
 	//$in['content_css']=get_template_directory_uri() . "/editor-style.css";
 	//$in['wpautop']=true;
 	//$in['apply_source_formatting']=false;
@@ -257,7 +256,7 @@ function hk_cleanup_dashboard()
 	//Quick Press Form
 	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
 	//Recent Drafts List
-	//unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);  
+	//unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);
 
 
 	//My posts to review
@@ -267,7 +266,7 @@ function hk_cleanup_dashboard()
 	//All my hidden posts
 	wp_add_dashboard_widget('hk_myhidden_dashboard_widget', 'Mina ej synliga sidor', 'hk_display_myhidden_dashboard_widget' );
 
-	
+
 	// remove incoming links info for authors or editors
 	if (!current_user_can('administrator'))
 	{
@@ -298,13 +297,13 @@ function hk_display_allcomingreviews_dashboard_widget ()
 		$ignore_cats = explode(",",$options["no_reviews_to_cat"]);
 	else
 		$ignore_cats = array();
-		
+
 	$ignore_cats[] = $options["hidden_cat"];
-	
+
 	//define arguments for WP_Query()
 	$qargs = array(
         'category__not_in' => $ignore_cats,
-		'posts_per_page' => -1, 
+		'posts_per_page' => -1,
 		'meta_key' => 'hk_next_review',  // which meta to query
 		'meta_value'   => strtotime("+1 day"),  // value for comparison
 		'meta_compare' => '<',          // method of comparison
@@ -313,7 +312,7 @@ function hk_display_allcomingreviews_dashboard_widget ()
 		'post_type' => array('post','hk_kontakter','hk_faq'),
 		'orderby' => 'meta_value',
 		'order' => 'ASC',
-		'ignore_sticky_posts' => 1 
+		'ignore_sticky_posts' => 1
 		);
 	// perform the query
 	$q = new WP_Query();
@@ -324,17 +323,17 @@ function hk_display_allcomingreviews_dashboard_widget ()
 	// execute the WP loop
 	echo '<ul>';
 	echo '<li>&nbsp; <span class="alignright">Granskas igen</span></li>';
-	while ($q->have_posts()) : $q->the_post(); 
+	while ($q->have_posts()) : $q->the_post();
 		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_next_review_date(get_the_ID())."</span></li>" );
 	endwhile;
 	echo '</ul>';
-} 
+}
 // function to display my latest dashboard widget
-function hk_display_alllatestposts_dashboard_widget() 
+function hk_display_alllatestposts_dashboard_widget()
 {
 	//define arguments for WP_Query()
 	$qargs = array(
-		'posts_per_page' => 10, 
+		'posts_per_page' => 10,
 		'orderby' => 'modified_date',
 		'post_status' => 'publish',
 		'post_type' => array('post','hk_kontakter'),
@@ -347,12 +346,12 @@ function hk_display_alllatestposts_dashboard_widget()
 	// execute the WP loop
 	echo '<ul>';
 	echo '<li>&nbsp; <span class="alignright">Ändrades senast</span></li>';
-	while ($q->have_posts()) : $q->the_post(); 
+	while ($q->have_posts()) : $q->the_post();
 		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_modified_date()."</span></li>" );
 	endwhile;
 	echo '</ul>';
 
-} 
+}
 // function to display my hidden posts dashboard widget
 function hk_display_allhidden_dashboard_widget ()
 {
@@ -373,25 +372,25 @@ function hk_display_allhidden_dashboard_widget ()
 	// execute the WP loop
 	echo '<ul>';
 	echo '<li>&nbsp; <span class="alignright">Ändrades senast</span></li>';
-	while ($q->have_posts()) : $q->the_post(); 
+	while ($q->have_posts()) : $q->the_post();
 		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_modified_date()."</span></li>" );
 	endwhile;
 	echo '</ul>';
-} 
+}
 // function to display my coming reviews dashboard widget
 function hk_display_mycomingreviews_dashboard_widget ()
 {
 	global $default_settings;
-	
+
 	$options = get_option('hk_theme');
-	
+
 	if ($options["no_reviews_to_cat"] != "")
 		$ignore_cats = explode(",",$options["no_reviews_to_cat"]);
 	else
 		$ignore_cats = array();
-		
+
 	$ignore_cats[] = $options["hidden_cat"];
-	
+
 
 	//define arguments for WP_Query()
 	$qargs = array(
@@ -403,7 +402,7 @@ function hk_display_mycomingreviews_dashboard_widget ()
 		'orderby' => 'meta_value',
 		'meta_key' => 'hk_next_review',
 		'order' => 'ASC' );
-		
+
 	// perform the query
 	$q = new WP_Query();
 	$q->query($qargs);
@@ -412,13 +411,13 @@ function hk_display_mycomingreviews_dashboard_widget ()
 	// execute the WP loop
 	echo '<ul>';
 	echo '<li>&nbsp; <span class="alignright">Granskas igen</span></li>';
-	while ($q->have_posts()) : $q->the_post(); 
+	while ($q->have_posts()) : $q->the_post();
 		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_next_review_date(get_the_ID())."</span></li>" );
 	endwhile;
 	echo '</ul>';
-} 
+}
 // function to display my latest dashboard widget
-function hk_display_mylatestposts_dashboard_widget() 
+function hk_display_mylatestposts_dashboard_widget()
 {
 	global $default_settings;
 
@@ -426,10 +425,10 @@ function hk_display_mylatestposts_dashboard_widget()
 	$qargs = array(
 		'category__not_in' => array($default_settings["hidden_cat"]),
 		'author'=> get_current_user_id(),
-		'posts_per_page' => 10, 
+		'posts_per_page' => 10,
 		'post_status' => 'publish',
 		'post_type' => array('post','hk_kontakter','hk_faq'),
-		'orderby' => 'modified_date', 
+		'orderby' => 'modified_date',
 		'order' => 'DESC'
 	);
 	// perform the query
@@ -439,12 +438,12 @@ function hk_display_mylatestposts_dashboard_widget()
 	// execute the WP loop
 	echo '<ul>';
 	echo '<li>&nbsp; <span class="alignright">Ändrades senast</span></li>';
-	while ($q->have_posts()) : $q->the_post(); 
+	while ($q->have_posts()) : $q->the_post();
 		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_modified_date()."</span></li>" );
 	endwhile;
 	echo '</ul>';
 
-} 
+}
 // function to display my hidden posts dashboard widget
 function hk_display_myhidden_dashboard_widget ()
 {
@@ -466,23 +465,23 @@ function hk_display_myhidden_dashboard_widget ()
 	// execute the WP loop
 	echo '<ul>';
 	echo '<li>&nbsp; <span class="alignright">Ändrades senast</span></li>';
-	while ($q->have_posts()) : $q->the_post(); 
+	while ($q->have_posts()) : $q->the_post();
 		edit_post_link( get_the_title(), "<li>", "<span class='alignright'>".get_the_modified_date()."</span></li>" );
 	endwhile;
 	echo '</ul>';
-} 
+}
 
 //add our function to the dashboard setup hook
 add_action('wp_dashboard_setup', 'hk_cleanup_dashboard');
 
 
 
-// remove links/menus from the admin bar 
-function hk_admin_bar_render() { 
-	global $wp_admin_bar; 
+// remove links/menus from the admin bar
+function hk_admin_bar_render() {
+	global $wp_admin_bar;
 
-} 
-add_action( 'wp_before_admin_bar_render', 'hk_admin_bar_render' ); 
+}
+add_action( 'wp_before_admin_bar_render', 'hk_admin_bar_render' );
 
 
 /* change names in admin menus */
@@ -519,28 +518,28 @@ function remove_media_upload_fields( $form_fields, $post ) {
     //unset( $form_fields['url'] );
     //unset( $form_fields['image_url'] );
     //unset( $form_fields['align'] );
-    
+
     return $form_fields;
 }
 add_filter('attachment_fields_to_edit', 'remove_media_upload_fields', null, 2);
 
- 
+
 function my_plugin_image_tabs($_default_tabs) {
 
     //unset($_default_tabs['type']);
     //unset($_default_tabs['type_url']);
     //unset($_default_tabs['gallery']);
-	
-	return($_default_tabs); 
+
+	return($_default_tabs);
 }
 add_filter('media_upload_tabs', 'my_plugin_image_tabs', 10, 1);
 
 
 
-/* 
+/*
  * Extra filter dropdown in admin
- * more info here about adding adminpostfilter: 
- * http://wordpress.stackexchange.com/questions/16637/how-to-filter-post-listing-in-wp-dashboard-posts-listing-using-a-custom-field 
+ * more info here about adding adminpostfilter:
+ * http://wordpress.stackexchange.com/questions/16637/how-to-filter-post-listing-in-wp-dashboard-posts-listing-using-a-custom-field
  */
 
 add_filter( 'parse_query', 'hk_admin_posts_filter' );
@@ -594,13 +593,13 @@ function hk_map_shortcode_func( $atts ) {
 		'class' => '',
 		'visa' => 'karta' // show map or link or other
 		);
-		
+
 	$atts = shortcode_atts( $default, $atts );
-	
+
 	if ($atts["echo_args"] != "") {
 		return "<p>[karta ".$atts["echo_args"] . "]</p>";
 	}
-	
+
 	if ($atts["punkt"] == "") {
 		return "<p>Hittade ingen kartpunkt.</p>";
 	}
@@ -618,7 +617,7 @@ function hk_map_shortcode_func( $atts ) {
 		return "<div $style class='map_canvas " . $atts["class"] . "'>[karta <span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>]</div>";
 	}
 	if ($atts["visa"] == "popup") {
-		return "<a $style class='map_link " . $atts["class"] . "'><span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>" . $atts["text"] . "</a>";	
+		return "<a $style class='map_link " . $atts["class"] . "'><span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>" . $atts["text"] . "</a>";
 	}
 }
 add_shortcode( 'karta', 'hk_map_shortcode_func' );
@@ -629,7 +628,7 @@ add_shortcode( 'karta', 'hk_map_shortcode_func' );
 /* checks before headers is sent, also add categories and tags to media */
 add_action('init', 'hk_init');
 function hk_init() {
-	
+
 	/* register category and tags for attachment */
 	//register_taxonomy_for_object_type('category', 'attachment');
 	//register_taxonomy_for_object_type('post_tag', 'attachment');
@@ -669,7 +668,7 @@ function hk_admin_enqueue_scripts() {
     // at first assume we don't want to show pointers
     $do_add_script = false;
 	$do_add_script2 = false;
-	
+
 	// Handle our first pointer announcing the plugin's new settings screen.
 	// check for dismissal of pksimplenote settings menu pointer 'hkseenit'
 	if ( ! in_array( $seenit_id, $seen_it ) ) {
@@ -707,7 +706,7 @@ function my_admin_print_footer_scripts() {
 				action: 'dismiss-wp-pointer'
 			});        }
 		}).pointer('open');
-	});	
+	});
    //]]>
    </script>
 
@@ -732,7 +731,7 @@ function my_admin_print_footer_scripts2() {
 			});        }
 		}).pointer('open');
 	});
-	
+
    //]]>
    </script>
 

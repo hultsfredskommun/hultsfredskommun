@@ -5,7 +5,6 @@
  */
 
 get_header(); 
-
 ?>
 		<?php hk_navigation(); ?>
 		<?php require("inc/hk-tag.php"); ?>

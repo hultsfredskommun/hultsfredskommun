@@ -6,6 +6,9 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
+ 
+die(); // author page not used
+
 
 get_header(); ?>
 
@@ -36,7 +39,7 @@ get_header(); ?>
 					rewind_posts();
 				?>
 
-				<?php twentyeleven_content_nav( 'nav-above' ); ?>
+				<?php //twentyeleven_content_nav( 'nav-above' ); ?>
 
 				<?php
 				// If a user has filled out their description, show a bio on their entries.

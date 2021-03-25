@@ -11,6 +11,7 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
+ /*
 ?>
 <?php if ( $_REQUEST["thanks"] == get_the_ID()) : ?>
 
@@ -25,20 +26,20 @@
 		<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'twentyeleven' ); ?></p>
 	</div><!-- #comments -->
 	<?php
-			/* Stop the rest of comments.php from being processed,
-			 * but don't kill the script entirely -- we still have
-			 * to fully load the template.
-			 */
+			// Stop the rest of comments.php from being processed,
+			// but don't kill the script entirely -- we still have
+			// to fully load the template.
+
 			return;
 		endif;
 	?>
 
 	<?php // You can start editing here -- including this comment! ?>
-	<?php 
+	<?php
 		global $current_user, $hk_options;
 	?>
 
-	<?php 
+	<?php
 	$comment_notes_before = "";
 	if ($hk_options["comment_notes_before"] != "") {
 		$comment_notes_before = "<p>" . $hk_options["comment_notes_before"] . "</p>";
@@ -47,7 +48,7 @@
 	'fields' => apply_filters( 'comment_form_default_fields', array(
 		'author' => '<p class="comment-form-author">' . '<input name="redirect_to" type="hidden" value="' . get_permalink() . '?thanks=' . get_the_ID() . '"/><label for="author">Namn ' . ( $req ? '<span class="required">*</span>' : '' ) . '</label><input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>',
 		'email' => '<p class="comment-form-email"><label for="email">E-post ' . ( $req ? '<span class="required">*</span>' : '' ) . '</label><input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>',
-		) ), 
+		) ),
 	'comment_notes_before' => $comment_notes_before,
 	'comment_field' => '<p class="comment-form-comment"><label for="comment">Meddelande <span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
 	'label_submit' => 'Skicka meddelande',
@@ -55,4 +56,4 @@
 	));  ?>
 
 </div><!-- #comments -->
-<?php endif; // end if request respond != "" ?>
+<?php endif; // end if request respond != "" */ ?>

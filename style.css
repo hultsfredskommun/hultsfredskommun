@@ -1,14 +1,249 @@
 /*
 Theme Name: Hultsfreds kommun
-Theme URI: 
+Theme URI:
 Author: the Hultsfred team
 Author URI: http://wordpress.org/
-Description: Based on version 1.4 of the 2011 theme for WordPress 
-Version: 6.1
+Description: Based on version 1.4 of the 2011 theme for WordPress
+Version: 6.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: 
+Tags:
 Text Domain: hultsfredskommun
 */
 
-@import url("css/style.min.css?version=6.1");
+@import url("css/style.min.css?version=6.4");
+
+
+
+/* bug fixes */
+.side-content ul li:before {
+  content: initial;
+}
+.scrolltotop {
+  left: 24px;
+  right: initial;
+}
+
+
+/* hk tag fixes */
+.tag-listing .article-border-wrapper .entry-title.single-line {
+  margin-top: 10px!important;
+  padding-right: 40px!important;
+}
+.tag-listing .single-line {
+  position: relative;
+}
+.tag-listing .single-line-icon {
+  position: absolute;
+  top: -4px;
+  right: 0;
+}
+
+/* lättläst */
+.lattlast .breadcrumb{
+  font-size: 120%!important;
+}
+.lattlast .main-wrapper {
+  font-size: 130%!important;
+  line-height: 200%!important;
+}
+.lattlast .main-wrapper li {
+  line-height: 150%!important;
+}
+.lattlast .readspeaker-icon {
+  vertical-align: unset;
+}
+.lattlast .main-wrapper .category-navigation .cat-icon,
+.lattlast .main-wrapper .category-navigation .tag-icon {
+  display: none;
+}
+.lattlast .main-wrapper .category-navigation .heading a {
+  padding-left: 0;
+}
+.lattlast .category-navigation {
+  display: block!important;
+}
+.lattlast .category-navigation {
+  display: block!important;
+}
+.lattlast .more-navigation {
+  display: none!important;
+}
+@media only screen and (min-width: 541px) {
+  .hide-lattlast-in-desktop-menu {
+    display: none!important;
+  }
+}
+
+.collapseomatic {
+  font-size: 1.2rem;
+  line-height: 1.33333;
+  font-weight: bold;
+  background-position-y: 5px;
+  display: block;
+  padding-bottom: 25px;
+  border-top: 1px solid gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+  padding: 6px  0 6px 25px!important;
+  margin-top: 16px;
+  background-position-y: 10px;
+  background-position-x: 5px;
+}
+.collapseomatic.colomat-close {
+  border-bottom: none;
+}
+.collapseomatic_content {
+  margin-left: 0;
+  padding-left: 16px;
+  padding-top: 16px;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+
+@media only screen and (min-width: 970px) {
+  .box-list.newscontent.cols-5 .post {
+    width: 20%;
+  }
+}
+@media only screen and (max-width: 969px) {
+  .newscontent-wrapper > .newscontent > article:nth-child(5) {
+    display: none!important;
+  }
+  .newscontent-wrapper > .newscontent .entry-title {
+    height: 90px!important;
+  }
+  .article-border-wrapper .article-wrapper {
+    overflow: visible;
+  }
+}
+.newscontent-wrapper {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 3px;
+}
+
+
+/* on screen keyboard */
+.cK {}
+
+.cK.cKLine {
+	display: block;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	list-style-type : none;
+}
+
+.cK.cKKey, .cK.cKFunction {
+	font-weight: bold;
+	font-size: 34px;
+	display: inline-block;
+	border-radius: 6px;
+	border: 1px solid lightgray;
+	background-color: #fff;
+	color: #000;
+	margin: 5px 8px;
+	padding: 0 15px;
+	min-width: 70px;
+	height: 70px;
+	box-sizing: border-box;
+	text-align: center;
+	line-height: 70px;
+	overflow: hidden;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	user-select: none;
+	outline: 0;
+}
+
+.cK.cKKey.uppercase {
+	text-transform: uppercase;
+}
+
+.cK.cK-Active {}
+
+.cK .cK:active {}
+
+.cK.cKey-backspace {
+	width: 75px;
+	background-image: url("images/light/delete.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	color: transparent;
+}
+
+.cK.cKey-shift {
+	width: 110px;
+	background-image: url("images/light/shift.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	color: transparent;
+}
+
+.cK.cKey-space {
+	width: 400px;
+}
+
+.cK.cKey-return {
+	position: relative;
+	width: 170px;
+	animation: none !important;
+	color: #fff;
+	overflow:hidden;
+	background-color: #383736;
+	z-index: 1;
+	transition:         0.07s ease-in;
+	-o-transition:      0.07s ease-in;
+	-ms-transition:     0.07s ease-in;
+	-moz-transition:    0.07s ease-in;
+	-webkit-transition: 0.07s ease-in;
+}
+
+.cK.cKey-return:active {
+	color: #383736;
+}
+
+.cK.cKey-return:before {
+	color: #383736;
+	content: "";
+	position: absolute;
+	background-color: #fff;
+	bottom: 0;
+	left: 0;
+	right: 100%;
+	top: 0;
+	z-index: -1;
+	transition: right 0.07s ease-in;
+}
+
+.cK.cKey-return:active:before {
+	right: 0;
+}
+
+/* DARK THEME */
+.dark .cK.cKKey, .cK.cKFunction {
+	color: #fff;
+	background-color: #383838;
+	border-color: #A7A4A4;
+}
+
+.dark .cK.cKey-backspace {
+	background-image: url("images/dark/delete.svg");
+}
+
+.dark .cK.cKey-shift {
+	background-image: url("images/dark/shift.svg");
+}
+
+.dark .cK.cKey-return {
+	background-color: #767676;
+}

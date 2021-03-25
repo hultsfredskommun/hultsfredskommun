@@ -1,7 +1,7 @@
 <?php
 
-/* 
- * Description: Add slideshow widget 
+/*
+ * Description: Add slideshow widget
  **/
 
 
@@ -32,7 +32,7 @@ class HK_slideshow extends WP_Widget {
 
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'thumbnail-size' ); ?>"><?php _e( 'Bildformat:' ); ?></label> 
+		<label for="<?php echo $this->get_field_id( 'thumbnail-size' ); ?>"><?php _e( 'Bildformat:' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'thumbnail-size' ); ?>" name="<?php echo $this->get_field_name( 'thumbnail-size' ); ?>" type="text" value="<?php echo esc_attr( $thumbnailsize); ?>" />
 		</p>
 		<?php
@@ -67,18 +67,18 @@ class HK_slideshow extends WP_Widget {
 // outputs the content of the widget
 function hk_slideshow_generate_output($vars) {
 	global $default_settings;
-	
+
 	$retValue = "";
 	$selected_categories = get_query_var("cat");
- 	
+
 	if (!function_exists("get_field"))
 		return "";
-	
+
 	if ( !empty($selected_categories) )
 	{
 		// query arguments
 	   	$args = array(
-	   	   	'posts_per_page' => $vars["posts_per_page"], 
+	   	   	'posts_per_page' => $vars["posts_per_page"],
 			'post_type'	 => 'hk_slideshow',
 			'suppress_filters' => 'true',
 		);
@@ -97,7 +97,7 @@ function hk_slideshow_generate_output($vars) {
 					$link = get_field('hk_slideshow_link');
 				}
 				if( get_field('hk_featured_images') ) :
-					while( has_sub_field('hk_featured_images') ) : 
+					while( has_sub_field('hk_featured_images') ) :
 						$thumbsize = $vars["thumbnail-size"];
 						$image = get_sub_field('hk_featured_image');
 						if (!empty($image)) {
@@ -139,7 +139,7 @@ function hk_slideshow_generate_output($vars) {
 			$retValue .= "</div></div>";
 
 		}
-		
+
 	}
 	return $retValue;
 
@@ -147,12 +147,12 @@ function hk_slideshow_generate_output($vars) {
 
 
 /* add the widget  */
-add_action( 'widgets_init', create_function( '', 'register_widget( "HK_slideshow" );' ) );
+add_action( 'widgets_init', function() {register_widget( "HK_slideshow" );} );
 
 
 
 /* REGISTER post_type hk_slideshow */
-add_action('init', hk_slideshow_init);
+add_action('init', 'hk_slideshow_init');
 function hk_slideshow_init() {
 	// only if in admin and is administrator
     if (is_admin() && current_user_can("administrator")) {

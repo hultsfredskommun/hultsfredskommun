@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * Description: Add Contact widget and contact post_type
  *
  * Use post name as contact name, content as more contact information and featured image to show thumbnail of contact
@@ -11,7 +11,7 @@
 
 
 /* REGISTER post_type hk_kontakter */
-add_action('init', hk_contacts_init);
+add_action('init', 'hk_contacts_init');
 function hk_contacts_init() {
 	// only if in admin and is administrator
     //if (is_admin() && current_user_can("administrator")) {
@@ -71,13 +71,14 @@ function hk_contact_shortcode_func( $atts ) {
 		'besokstid' => false,
 		'karta' => false);
 	$atts = shortcode_atts( $default, $atts );
-	
-	if ($atts["echo_args"] != "") {
+
+	if (!empty($atts["echo_args"]) && $atts["echo_args"] != "") {
 		return "<p>[kontakt ".$atts["echo_args"] . "]</p>";
 	}
-	
+
 	// translate from swedish to variables
 	$translate = array(
+		'echo_args' => 'echo_args', 
 		'id' => 'id',
 		'kontaktnamn' => 'contactslug',
 		'kategori' => 'cat',
@@ -128,7 +129,7 @@ function hk_get_contact_by_cat_slug($cat, $args) {
 		$post = get_category_by_slug($value);
 		if ($post) {
 			$cat_array[] = $post->term_id;
-		} 
+		}
 	}
 	return hk_get_contact_by_cat(implode(",",$cat_array), $args);
 
@@ -141,14 +142,14 @@ function hk_get_contact_by_cat($cat, $args) {
 	}
 
 	$cat_array = preg_split("/[\s,]+/",$cat,NULL,PREG_SPLIT_NO_EMPTY);
-	
+
 	// query arguments
 	$query_args = array(
 		'posts_per_page' => -1,
 		'paged' => 1,
 		'more' => $more = 0,
 		'post_type' => 'hk_kontakter',
-		'order' => 'ASC', 
+		'order' => 'ASC',
 		'suppress_filters' => 1,
 		'category__in' => $cat_array
 	);
@@ -182,16 +183,16 @@ function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_titl
 	$title_text = "";
 	$extra_pre_search_text = "";
 	$extra_post_search_text = "";
-	
+
 	// check if phone number in string
-	preg_match('/([0-9 -]+)/', $search, $matches);	
-	
+	preg_match('/([0-9 -]+)/', $search, $matches);
+
 	if (count($matches) > 0 && $matches[0] != "") {
 		$match = trim($matches[0]," ");
 		$searchmatch = trim($match," ");
 		if ($searchmatch != "") {
-			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta 
-				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter' 
+			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta
+				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter'
 				AND ($wpdb->posts.post_title LIKE '%%%s%%' OR $wpdb->postmeta.meta_value LIKE '%%%s%%') LIMIT 0,".($count + 1), $searchmatch, $searchmatch ));
 			$id_array = array_merge($id_array, $postid);
 			if (count($postid) > 0) {
@@ -199,17 +200,17 @@ function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_titl
 			}
 		}
 	}
-	
+
 	// check if two words (firstname lastname)
-	preg_match('/([a-zA-Z]+)[ ]+([a-zA-Z]+)/', $search, $matches);	
+	preg_match('/([a-zA-Z]+)[ ]+([a-zA-Z]+)/', $search, $matches);
 	if (count($matches) > 1 && $matches[0] != "") {
 		$firstname = trim($matches[1]," ");
 		$lastname = trim($matches[2]," ");
 		if ($firstname != "" && $lastname != "") {
-			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta 
-				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter' 
+			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta
+				WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter'
 				AND ($wpdb->posts.post_title LIKE '%%%s%%') LIMIT 0,".($count + 1), "$firstname $lastname" ));
-			
+
 			$id_array = array_merge($id_array, $postid);
 			if (count($postid) > 0) {
 				$search = str_replace(trim($matches[0]), "", $search);
@@ -223,21 +224,21 @@ function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_titl
 			//$extra_pre_search_text .= "S&ouml;ker &auml;ven efter " . $value[1] . ".<br>";
 		}
 		foreach($value as $val) {
-			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta 
-			WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter' 
+			$postid = $wpdb->get_col( $wpdb->prepare( "SELECT DISTINCT $wpdb->posts.ID FROM $wpdb->posts, $wpdb->postmeta
+			WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id AND $wpdb->posts.post_type = 'hk_kontakter'
 			AND ($wpdb->posts.post_title LIKE '%%%s%%' OR $wpdb->postmeta.meta_value LIKE '%%%s%%') LIMIT 0,".($count + 1), $val, $val ));
 			$id_array = array_merge($id_array, $postid);
 		}
 	}
-	
+
 	$id_array = make_unique_sorted_by_frequence($id_array, $count + 1);
-	
+
 	// return empty if no hits
 	if (count($id_array) <= 0) {
 		return "";
 	}
-	
-	
+
+
 	if (count($id_array) > $count) {
 		$num_text = " ( &gt; $count)";
 		unset($id_array[count($id_array)-1]); // unset the extra in array, added just for this count
@@ -247,8 +248,8 @@ function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_titl
 	else {
 		$num_text = " (" . count($id_array) . ")";
 	}
-	
-	
+
+
 	if ($echo_title) {
 		$title_text = "<h3 class='search-title js-toggle-search-hook'>Kontakter$num_text</h3>";
 	}
@@ -260,7 +261,7 @@ function hk_search_and_print_contacts_by_name($search, $args, $count, $echo_titl
 	}
 
 	$contacts = hk_get_contact_by_id(implode(",",$id_array), $args);
-	
+
 	return "<div class='js-toggle-search-wrapper'>" . $title_text . $extra_pre_search_text . $contacts . $extra_post_search_text . "</div>";
 }
 /* helper to check if value is or could be a phone number */
@@ -365,7 +366,7 @@ function hk_get_contact_by_name($post_slug, $args) {
 		$post = get_posts($get_post_args );
 		if ($post) {
 			$id_array[] = $post[0]->ID;
-		} 	
+		}
 	}
 	return hk_get_contact_by_id(implode(",",$id_array), $args);
 }
@@ -378,9 +379,9 @@ function hk_get_contact_by_id($contact_id, $args) {
 		return "<div class='contact-area'>Hittade ingen kontakt.</div>";
 	}
 	$retValue = "";
-	
+
 	foreach (preg_split("/[\s,]+/",$contact_id,NULL,PREG_SPLIT_NO_EMPTY) as $c_id) {
-		
+
 		// query arguments
 		$query_args = array(
 			'posts_per_page' => -1,
@@ -418,6 +419,7 @@ function hk_the_contact($args = array()) {
 	echo hk_get_the_contact($args);
 }
 function hk_get_the_contact($args = array()) {
+	$mapclass = '';
 	$default = array(
 		'image' => false,
 		'name' => true,
@@ -441,9 +443,9 @@ function hk_get_the_contact($args = array()) {
 	foreach($default as $key => $value) {
 		$hidden[$key] = ($value)?"visible":"hidden rs_skip";
 	}
-	if (!function_exists("get_field")) 
+	if (!function_exists("get_field"))
 		return "You need the Advanced Custom Field plugin for the contact to work properly.";
-	
+
 	$contact_position = get_field("hk_contact_position",get_the_ID());
 	$contact_position2 = get_field("hk_contact_position_2",get_the_ID());
 
@@ -464,35 +466,35 @@ function hk_get_the_contact($args = array()) {
 		$mapclass = "hasmap";
 	}
 	$add_class = $default['add_item_class'];
-		
+
 	$retValue = "<div id='content-" . get_the_ID() ."' class='entry-wrapper contact-wrapper $mapclass $add_class'>";
 		$retValue .= "<div class='entry-content'>";
 
 			// image
 			$retValue .= hk_get_the_post_thumbnail(get_the_ID(),"contact-image",true,false, $hidden['image']);
-			
+
 			$retValue .= "<" . $default["heading_element"] . " class='entry-title " . $hidden['name'] . "'>";
 			// add link to title
-			if ($default['title_link']) { 
-				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'>"; 
+			if ($default['title_link']) {
+				$retValue .= "<a class='contactlink  js-contact-link' href='" . get_permalink(get_the_ID()) . "'>";
 			}
 			// title
 			$retValue .= get_the_title();
-			if ($default['title_link']) { 
-				$retValue .= "</a>"; 
+			if ($default['title_link']) {
+				$retValue .= "</a>";
 				$retValue .= "<span class='rs_skip hidden contact_id'>" . get_the_ID() . "</span>";
 			}
 			$retValue .= "</".$default["heading_element"].">";
-			
-		
+
+
 			$retValue .= "<div class='contact-" . get_the_ID() . " " . implode(" ",get_post_class()) ."'>";
 				$retValue .= "<div class='hk_contact_titel " . $hidden['title'] . "'>" . get_field("hk_contact_titel") . "</div>";
-				
+
 				// workplace
 				if( get_field('hk_contact_workplaces') ): while( has_sub_field('hk_contact_workplaces') ):
 					$retValue .= "<div class='hk_contact_workplaces " . $hidden['workplace'] . "'>" . get_sub_field('hk_contact_workplace') . "</div>";
 				endwhile; endif;
-				
+
 				if( (get_field('hk_contact_phones') && $hidden['phone'] == "visible") || (get_field('hk_contact_emails') && $hidden['email'] == "visible") ) {
 					$retValue .= "<div class='topspace'>";
 				}
@@ -502,40 +504,40 @@ function hk_get_the_contact($args = array()) {
 				endwhile; endif;
 
 				// phone
-				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ): 
+				if( get_field('hk_contact_phones') ): while( has_sub_field('hk_contact_phones') ):
 					$number = get_sub_field('number');
 					$retValue .= "<div class='hk_contact_phones " . $hidden['phone'] . "'><a href='tel:".preg_replace('/\D/','',$number)."'>";
 					$retValue .= (get_row_layout() == "hk_contact_fax")?"Fax: ":"";
 					$number = str_replace("[","<span class='complement-italic-text'>(", $number);
 					$number = str_replace("]",")</span>", $number);
 					$retValue .= $number . "</a></div>";
-				endwhile; endif;				
-				
+				endwhile; endif;
+
 				if( (get_field('hk_contact_phones') && $hidden['phone'] == "visible") || (get_field('hk_contact_emails') && $hidden['email'] == "visible") ) {
 					$retValue .= "</div>";
 				}
 				// description
 				if (get_field("hk_contact_description")) {
 					$retValue .= "<p class='hk_contact_description " . $hidden['description'] . "'>" . get_field("hk_contact_description") . "</p>";
-				}				
+				}
 				// address
 				if (get_field("hk_contact_address")) {
 					$retValue .= "<p class='hk_contact_address " . $hidden['address'] . "'>" . get_field("hk_contact_address") . "</p>";
 				}
-				
+
 				// visit hours
 				if (get_field("hk_contact_visit_hours")) {
 					$retValue .= "<p class='hk_contact_visit_hours " . $hidden['visit_hours'] . "'>" . get_field("hk_contact_visit_hours") . "</p>";
 				}
-								
+
 			$retValue .= "</div>";
 		$retValue .= "</div>";
-	
+
 		// position
 		if ($coordinates != "") :
 			$retValue .= "<div class='side-map " . $hidden['map'] . "'><div class='map_canvas'>[Karta <span class='coordinates rs_skip'>" . $coordinates . "</span> <span class='address'>" . $contact_position_address . "</span>]</div></div>";
 		endif;
-		
+
 
 	$retValue .= "</div>";
 
@@ -545,11 +547,11 @@ function hk_get_the_contact($args = array()) {
 // outputs the content of the contact side tab
 function hk_contact_tab() {
 	global $hk_options;
-	
+
 	$retValue = "";
 	$retValue .= "<aside id='contact-side-tab' class='hk_kontakter'>";
 	$retValue .= "<a class='toggle-tab'></a><div class='content-wrapper'>";
-	
+
 	/*
 	// set startpage category if on startpage
 	$category_in = array();
@@ -558,14 +560,14 @@ function hk_contact_tab() {
 		$category_in = array_reverse($category_in);
 		$shown = array();
 		foreach($category_in as $category) {
-		
+
 			// query arguments
 			$args = array(
 				'posts_per_page' => -1,
 				'paged' => 1,
 				'more' => $more = 0,
 				'post_type' => 'hk_kontakter',
-				'order' => 'ASC', 
+				'order' => 'ASC',
 				'suppress_filters' => 1
 			);
 			if (!empty($shown)) {
@@ -573,14 +575,14 @@ function hk_contact_tab() {
 			}
 			$cat = get_category_by_slug($category);
 			if ($cat) {
-				
+
 				$args['category__and'] = $cat->term_id;
 
 				// search in all posts (ignore filters)
 				$the_query = new WP_Query( $args );
-	
+
 				if ($the_query->have_posts())
-				{ 
+				{
 
 					// The Loop
 					while ( $the_query->have_posts() ) : $the_query->the_post();
@@ -591,7 +593,7 @@ function hk_contact_tab() {
 						$retValue .= "<a class='contactlink' href='". get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a>";
 						$retValue .= "<span class='hidden contact_id'>" . get_the_ID() . "</span>";
 						if (function_exists("get_field")) { $retValue .= "<div class='content'>" . get_field("hk_contact_titel") . "</div>"; }
-						
+
 						$retValue .= "</div></div>";
 					endwhile;
 					// Reset Post Data
@@ -601,7 +603,7 @@ function hk_contact_tab() {
 		}
 
 	}*/
-	
+
 	$retValue .= "</div></aside>";
 	echo $retValue;
 

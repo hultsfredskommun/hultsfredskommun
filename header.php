@@ -9,25 +9,25 @@
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
- 
+
 
 global $default_settings, $wp_query;
 /* get hk_options */
 $hk_options = get_option('hk_theme');
 
 //force the page to use http if not logged in
-if ($_SERVER["SERVER_PORT"] == 443 && !is_user_logged_in()) {
+/*if ($_SERVER["SERVER_PORT"] == 443 && !is_user_logged_in()) {
     $redir = "Location: http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     header($redir);
     exit();
-}
+}*/
 /* hide if single and not visible */
 if (in_category($hk_options["hidden_cat"])) {
 	header("HTTP/1.0 404 Not Found");
 	//TODO print 404 error - include("404.php");?
 	die("Inte synlig.");
 }
- 
+
 /* get category_as_filter recursive setting */
 $catvalue = "category_" . get_query_var("cat");
 $default_settings['category_as_filter'] = ((get_field("category_as_filter", $catvalue)=="")?false:true);
@@ -59,11 +59,26 @@ else {
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<?php if (!is_single() && $hk_options["meta_description"] != "") {
+<?php
+	if (is_category()) {
+		$cat_object = get_category(get_query_var("cat"));
+		$cat_desc = $cat_object->description;
+		if (!empty($cat_desc)) {
+			echo "<meta http-equiv='refresh' content='0;URL=". $cat_desc . "' />";
+		}
+	}
+?>
+
+<?php
+$meta_description = '';
+if (is_single() && get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true)) {
+	$meta_description = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
+}
+else if (!is_single() && $hk_options["meta_description"] != "") {
 	$meta_description = $hk_options["meta_description"];
 } else if (is_single() && get_the_ID() > 0) {
 	$meta_description = substr( strip_tags(get_post_field('post_content', get_the_ID())), 0, 200);
-} 
+}
 if ($meta_description != "") :?>
 <meta name="description" content="<?php echo $meta_description; ?>" />
 <?php endif; ?>
@@ -124,9 +139,6 @@ if ($meta_description != "") :?>
 <?php endif; ?>
 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<?php if ($_REQUEST["localstyle"] != "") : ?>
-<link href="http://localhost/<?php echo $_REQUEST["localstyle"]; ?>" rel="stylesheet">
-<?php endif; ?>
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri() . "/style-lt-ie9.css"; ?>" />
@@ -161,8 +173,8 @@ if ($meta_description != "") :?>
 	 * generally use this hook to add elements to <head> such
 	 * as styles, scripts, and meta tags.
 	 */
-	 
-	/* option to be able to add scipts or other from setting */ 
+
+	/* option to be able to add scipts or other from setting */
 	echo $hk_options['in_head_section'];
 
 	/* wp_head last in <head> */
@@ -170,30 +182,46 @@ if ($meta_description != "") :?>
 ?>
 </head>
 <?php
+$term = get_queried_object();
+$current_cat = (!empty($term)) ? $term->slug : '';
 $firstpageClass =(is_sub_category_firstpage() && get_query_var("tag") == "") ? "home":"";
-$printpageClass = ($_REQUEST["print"] == 1) ? "print":"";
+$printpageClass = ((!empty($_REQUEST["print"])) && $_REQUEST["print"] == 1) ? "print":"";
 $menuversion = (empty($default_settings["new_mobile_menu"]))?"old":"new";//"new"; //new or old
-$hide_leftmenu_class = ($hk_options['hide_leftmenu']) ? "hide-left-menu":"";
-$dynamic_post_load_class = ($hk_options['use_dynamic_posts_load_in_category'] == 1) ? "hk-js-dynamic-posts-load  dynamic-posts-load":"no-dynamic-posts-load";
+$hide_leftmenu_class = (!empty($hk_options['hide_leftmenu']) && $hk_options['hide_leftmenu']) ? "hide-left-menu":"";
+$dynamic_post_load_class = (!empty($hk_options['use_dynamic_posts_load_in_category']) && $hk_options['use_dynamic_posts_load_in_category'] == 1) ? "hk-js-dynamic-posts-load  dynamic-posts-load":"no-dynamic-posts-load";
 $category_as_filter_class = (!empty($default_settings["category_as_filter"]) && $default_settings["category_as_filter"] == 1) ? "hk-js-category-filter  category-filter":"no-category-filter";
 $category_show_children_class = (!empty($default_settings["category_show_children"]) && $default_settings["category_show_children"] == 1) ? "hk-js-category-show-children  category-show-children":"no-category-show-children";
+$lattlast_cat_array = (!empty($hk_options["show_categorylist_lattlast"])) ? explode(",", str_replace(" ", "", $hk_options["show_categorylist_lattlast"])) : '';
+$lattlast = (!empty($lattlast_cat_array) && in_array($current_cat, $lattlast_cat_array))?'lattlast':'';
+if (empty($lattlast) && is_single()) {
+	if (!empty($lattlast_cat_array)) {
+		foreach ($lattlast_cat_array as $lattlast_cat) {
+			if (has_category($lattlast_cat, get_the_ID())) {
+				$lattlast = "lattlast";
+				break;
+			}
+		}
+	}
+}
 
 ?>
-<body <?php body_class($category_show_children_class . " " . $category_as_filter_class . " " . $dynamic_post_load_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu " . $hide_leftmenu_class ); ?>>
+<body <?php body_class($lattlast . " " . $category_show_children_class . " " . $category_as_filter_class . " " . $dynamic_post_load_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu " . $hide_leftmenu_class ); ?>>
 <?php echo $hk_options['in_topbody_section']; ?>
 <div id="version-2" style="display:none; visibility:hidden"></div>
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
 	<?php
 		if ($menuversion == "new") {
-			require( get_template_directory() . '/inc/hk-header.php'); 
+			require( get_template_directory() . '/inc/hk-header.php');
 		}
 		else {
-			require( get_template_directory() . '/inc/hk-old-header.php'); 		
+			require( get_template_directory() . '/inc/hk-old-header.php');
 		}?>
 
 	<div class="main hk-quick"><div class="main-wrapper">
-		<?php if (!is_sub_category_firstpage()) { echo hk_view_quick_links(); } ?>
+		<?php
+		if (!is_sub_category_firstpage() && get_query_var("tag") == "") { echo hk_view_quick_links(); }
+		?>
 	</div></div>
 	<div id="main" class="main">
 	<div class="main-wrapper">
