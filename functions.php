@@ -328,13 +328,6 @@ add_action( 'do_feed_atom', 'remove_comment_feeds', 9, 1 );
  */
 function hk_enqueue_admin_scripts() {
 	wp_enqueue_script(
-		'google_map_js',
-		'//maps.google.com/maps/api/js?sensor=false&key=AIzaSyAAaPRowoiijvHeam1ZUXoKTF-QbQRA5Dw',
-		array('jquery'),
-		'1.0',
-		true
-	);
-	wp_enqueue_script(
 		'jquery_ui_map_js',
 		get_template_directory_uri() . '/js/jquery.ui.map.min.js',
 		array('jquery'),
