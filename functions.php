@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "6.8");
+define("HK_VERSION", "7.0");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -328,20 +328,19 @@ add_action( 'do_feed_atom', 'remove_comment_feeds', 9, 1 );
  */
 function hk_enqueue_admin_scripts() {
 	wp_enqueue_script(
+		'google_map_js',
+		'//maps.google.com/maps/api/js?sensor=false',
+		array('jquery'),
+		'1.0',
+		true
+	);
+	wp_enqueue_script(
 		'jquery_ui_map_js',
 		get_template_directory_uri() . '/js/jquery.ui.map.min.js',
 		array('jquery'),
 		'1.0',
 		true
 	);
-	/*wp_enqueue_script(
-		'ckeyboard',
-		get_template_directory_uri() . '/js/ckeyboard.min.js',
-		array('jquery'),
-		'1.0',
-		true
-	);*/
-
 }
 add_action( 'admin_enqueue_scripts', 'hk_enqueue_admin_scripts' );
 
@@ -387,11 +386,8 @@ function hk_enqueue_scripts() {
 			);
 		}
 		if (isset($hk_options['readspeaker_id']) && $hk_options['readspeaker_id'] != "") {
-			/*if ($hk_options['readspeaker_id'] == "6595") // to run without ios special script, special for Hultsfreds kommun
-				$readspeaker_url = get_template_directory_uri() . '/js/ReadSpeaker/ReadSpeaker.js?pids=embhl';
-			else*/
-			//$readspeaker_url = '//f1.eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
-			$readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
+			//$readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
+			$readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/webReader/webReader.js?pids=wr';
 
 			wp_enqueue_script(
 				'readspeaker_js',
@@ -1973,56 +1969,6 @@ if (!is_admin()) {
 //	add_action('pre_get_posts', 'hk_attachments_in_query');
 }*/
 
-
-// show 404 debug if true
-if (!empty($_REQUEST["DEBUG"]) && $_REQUEST["DEBUG"] == "true") :
-
-ini_set( 'error_reporting', -1 );
-ini_set( 'display_errors', 'On' );
-
-echo '<pre>';
-
-add_action( 'parse_request', 'debug_404_rewrite_dump' );
-function debug_404_rewrite_dump( &$wp ) {
-    global $wp_rewrite;
-
-    echo '<h2>rewrite rules</h2>';
-    echo var_export( $wp_rewrite->wp_rewrite_rules(), true );
-
-    echo '<h2>permalink structure</h2>';
-    echo var_export( $wp_rewrite->permalink_structure, true );
-
-    echo '<h2>page permastruct</h2>';
-    echo var_export( $wp_rewrite->get_page_permastruct(), true );
-
-    echo '<h2>matched rule and query</h2>';
-    echo var_export( $wp->matched_rule, true );
-
-    echo '<h2>matched query</h2>';
-    echo var_export( $wp->matched_query, true );
-
-    echo '<h2>request</h2>';
-    echo var_export( $wp->request, true );
-
-    global $wp_the_query;
-    echo '<h2>the query</h2>';
-    echo var_export( $wp_the_query, true );
-}
-add_action( 'template_redirect', 'debug_404_template_redirect', 99999 );
-function debug_404_template_redirect() {
-    global $wp_filter;
-    echo '<h2>template redirect filters</h2>';
-    echo var_export( $wp_filter[current_filter()], true );
-}
-add_filter ( 'template_include', 'debug_404_template_dump' );
-function debug_404_template_dump( $template ) {
-    echo '<h2>template file selected</h2>';
-    echo var_export( $template, true );
-
-    echo '</pre>';
-    exit();
-}
-endif; // debug == true
 
 
 
