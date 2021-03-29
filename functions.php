@@ -398,20 +398,22 @@ function hk_enqueue_scripts() {
 			);
 		}
 
-		wp_enqueue_script(
-			'google_map_js',
-			'//maps.google.com/maps/api/js?sensor=false&key=AIzaSyAAaPRowoiijvHeam1ZUXoKTF-QbQRA5Dw',
-			array('jquery'),
-			'1.0',
-			true
-		);
-		wp_enqueue_script(
-			'jquery_ui_map_js',
-			get_template_directory_uri() . '/js/jquery.ui.map.min.js',
-			array('jquery'),
-			'1.0',
-			true
-		);
+		if (isset($hk_options['googlemapskey']) && $hk_options['googlemapskey'] != "") {
+			wp_enqueue_script(
+				'google_map_js',
+				'//maps.google.com/maps/api/js?sensor=false&key='.$hk_options['googlemapskey'],
+				array('jquery'),
+				'1.0',
+				true
+			);
+			wp_enqueue_script(
+				'jquery_ui_map_js',
+				get_template_directory_uri() . '/js/jquery.ui.map.min.js',
+				array('jquery'),
+				'1.0',
+				true
+			);
+		}
 
 		/*
 		wp_enqueue_script(
