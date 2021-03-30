@@ -13,6 +13,13 @@ Text Domain: hultsfredskommun
 
 @import url("css/style.min.css?version=6.4");
 
+/* hidden links */
+@media only screen and (min-width: 541px) {
+  .hide-in-desktop-menu {
+    display: none!important;
+  }
+}
+
 
 /* readspeaker */
 .rsbtn.rsexpanded .rsbtn_exp .rsbtn_exp_inner {
@@ -78,11 +85,7 @@ Text Domain: hultsfredskommun
 .lattlast .more-navigation {
   display: none!important;
 }
-@media only screen and (min-width: 541px) {
-  .hide-lattlast-in-desktop-menu {
-    display: none!important;
-  }
-}
+
 
 /* collapse content */
 .collapseomatic {
