@@ -168,10 +168,10 @@ function hk_view_quick_links() {
 									$src = $image["sizes"]["thumbnail-image"];
 								}
 								$alt = $image["alt"];
-								$imagediv .= "<div class='$videocssclass $imagesize slide' $videourl>";
+								$imagediv .= "<span class='$videocssclass $imagesize slide' $videourl>";
 								$imagediv .= $videoimageoverlay;
 								$imagediv .= "<img src='$src' alt='$alt' title='$alt' />";
-								$imagediv .= "</div>";
+								$imagediv .= "</span>";
 							else : /* else default thumb; */
 								/*$options = get_option("hk_theme");
 								$src = $options["default_thumbnail_image"];
@@ -231,7 +231,7 @@ function hk_view_quick_links() {
 							/* get target */
 							$target = get_sub_field('target');
 
-							if (!empty($target)) {
+							if (!empty($target) && $target != "top") {
 								$target = "target='_$target'";
 							}
 							else {
