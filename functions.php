@@ -107,31 +107,6 @@ require( get_template_directory() . '/inc/hk-acf-fields.php' );
 // Grab hk widgets function containing general widgets
 require( get_template_directory() . '/inc/hk-widgets.php' );
 
-// shortcodes
-/*
- * shortcode [filtersearch], show filter function
- */
- /*
-function hk_filter_search_func( $atts ){
-	global $default_settings;
-	$atts = shortcode_atts(
-		array(
-			'parent_class' => '',
-			'parent_element' => '',
-			'always_show_firstrow' => '',
-			'text' => '',
-		), $atts, 'filtersearch' );
-	$retValue = "";
-
-	// full category tree
-	$retValue .= "<p id='filtersearch' class='filtersearch' data-text='" . $atts["text"] . "' data-filter-class='" . $atts["parent_class"] . "' data-filter-element='" . $atts["parent_element"] . "' data-show-firstrow='" . $atts["always_show_firstrow"] . "'>";
-	$retValue .= "";
-	$retValue .= "</p>";
-
-	return $retValue;
-}
-add_shortcode( 'filtersearch', 'hk_filter_search_func' );
-*/
 
 /*
  * shortcode [categorytree], show category tree
@@ -173,40 +148,6 @@ function hk_category_tree_func( $atts ){
 	return $retValue;
 }
 
-/*class Walker_Category_Posts extends Walker_Category {
-
-    function start_el(&$output, $category, $depth, $args) {
-
-        $this->category = $category;
-
-        parent::start_el($output, $category, $depth, $args);
-    }
-
-    function end_el(&$output, $page, $depth, $args) {
-        if ( 'list' != $args['style'] )
-            return;
-
-        $posts = get_posts( array(
-            'cat' => $this->category->term_id,
-            'numberposts' => 100,
-        ) );
-
-        if( !empty( $posts ) ) {
-
-            $posts_list = '<ul>';
-
-            foreach( $posts as $post )
-                $posts_list .= '<li><a href="' . get_permalink( $post->ID ) . '">'.get_the_title( $post->ID ).'</a></li>';
-
-            $posts_list .= '</ul>';
-        }
-        else {
-            $posts_list = '';
-        }
-
-        $output .= "{$posts_list}</li>\n";
-    }
-}*/
 add_shortcode( 'categorytree', 'hk_category_tree_func' );
 
 
@@ -326,23 +267,13 @@ add_action( 'do_feed_atom', 'remove_comment_feeds', 9, 1 );
 /**
  * add theme javascript file and needed jquery
  */
-function hk_enqueue_admin_scripts() {
-	wp_enqueue_script(
-		'google_map_js',
-		'//maps.google.com/maps/api/js?sensor=false',
-		array('jquery'),
-		'1.0',
-		true
-	);
-	wp_enqueue_script(
-		'jquery_ui_map_js',
-		get_template_directory_uri() . '/js/jquery.ui.map.min.js',
-		array('jquery'),
-		'1.0',
-		true
-	);
+function hk_acf_init() {
+	$hk_options = get_option("hk_theme");
+	if (isset($hk_options['googlemapskey']) && $hk_options['googlemapskey'] != "") {
+		acf_update_setting('google_api_key', $hk_options['googlemapskey']);
+	}
 }
-add_action( 'admin_enqueue_scripts', 'hk_enqueue_admin_scripts' );
+add_action('acf/init', 'hk_acf_init');
 
 function hk_enqueue_scripts() {
 	$hk_options = get_option("hk_theme");
@@ -415,14 +346,6 @@ function hk_enqueue_scripts() {
 			);
 		}
 
-		/*
-		wp_enqueue_script(
-			'google_maps_js',
-			'https://maps.googleapis.com/maps/api/js?key=AIzaSyBwAFyJDPO82hjRyCAmt-8-if6r6rrzlcE&sensor=false',
-			array('jquery'),
-			'1.0',
-			true
-		);*/
 		/*
 		wp_enqueue_script(
 			'history_js',
