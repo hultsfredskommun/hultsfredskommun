@@ -100,7 +100,7 @@
         // if google sök och ajax-sökning
         if ($hk_options["gcse_ajax"] != "") {
             $column_class = " no-hook";
-            if($hk_options["gcse_enable_kontakter_search"] != "" || has_action('hk_pre_ajax_search') || has_action('hk_post_ajax_search')) { $column_class = " has-hook"; } ?>
+            if($hk_options["gcse_enable_kontakter_search"] != "" || $hk_options["gcse_enable_faq_search"] != "" || has_action('hk_pre_ajax_search') || has_action('hk_post_ajax_search')) { $column_class = " has-hook"; } ?>
 	<div class="hk-gcse-ajax-searchresults-wrapper">
 		<div class="hk-gcse-ajax-searchresults<?php echo $column_class; ?>">
 			<div class="hk-gcse-hook-results">

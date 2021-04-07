@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "7.3");
+define("HK_VERSION", "7.4");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -568,15 +568,12 @@ function hk_remove_inline_css ($css) {
 
 add_filter('the_excerpt', 'hk_excerpt');
 function hk_excerpt($content) {
-	if (is_search()) {
-        return $content;
-    }
-    /*else if ($_REQUEST["action"] == "hk_search" && $_REQUEST["searchstring"] != "") {
-        relevanssi_the_excerpt(); // not showing same as search excerpt
-        $content = apply_filters(‘relevanssi_excerpt_content’, $content, $post, $query);
-        return $content;
-    }*/
-
+	if (is_search() || $_REQUEST["action"] == "hk_search" ||  $_REQUEST["searchstring"] != "") {
+		relevanssi_the_excerpt(); // not showing same as search excerpt
+		$content = apply_filters(‘relevanssi_excerpt_content’, $content, $post, $query);
+		return $content;
+	}
+/*
 
 	$content = strip_tags($content);
 	$content_array = explode(" ",$content);
@@ -594,7 +591,7 @@ function hk_excerpt($content) {
 		$content .= "</span>";
 
 	$content .= "</span>";
-
+*/
     return $content;
 }
 
@@ -602,7 +599,7 @@ function hk_excerpt($content) {
  * Sets the post excerpt length to 30 words.
  */
 function hk_excerpt_length( $length ) {
-	return 10;
+	return 20;
 }
 add_filter( 'excerpt_length', 'hk_excerpt_length' );
 
@@ -1986,11 +1983,14 @@ function hk_search_func(){
 	if ($searchstring != "") {
 
         echo "<div class='islet'>";
+				//if (function_exists('relevanssi_do_query')) {
+				 	//relevanssi_didyoumean( $searchstring, "Menade du ", "", 5, true );
+				//}
 
-		// show search
+				// show search
         $query_args = array( 's' => esc_sql($searchstring),
                              'category__not_in' => array( $default_settings["hidden_cat"] ),
-);
+													 );
         $query = new WP_Query( $query_args );
         if (function_exists('relevanssi_do_query')) {
             relevanssi_do_query( $query );
@@ -2010,8 +2010,8 @@ function hk_search_func(){
                  * If you want to overload this in a child theme then include a file
                  * called content-___.php (where ___ is the Post Format name) and that will be used instead.
                  */
-                //get_template_part( 'content', get_post_type() );
-                get_template_part( 'content' );
+                get_template_part( 'content', get_post_type() );
+                //get_template_part( 'content' );
                 if ($external_blog) {
                     restore_current_blog();
                 }

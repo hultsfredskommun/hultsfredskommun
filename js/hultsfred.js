@@ -1,5 +1,7 @@
 //used by dynamic load
 var settings = new Array();
+var currentSearch = null;
+var currentSearchHook = null;
 
 /* set rek variable if in "artikel" */
 if (window.location.href.indexOf("artikel") > -1) {
@@ -566,9 +568,6 @@ if (window.location.href.indexOf("artikel") > -1) {
             add_filtersearch($(".tag-listing"));
         }
 
-        if (isLessThanIE9) {
-            $(".branding").before("<div style='padding: 12px; width: 100%; background: red; color: white;'>Du anv&auml;nder en gammal webbl&auml;sare. Vissa funktioner kommer inte fungera.</div>");
-        }
 
         /**
          * cleanup if dynamic load of posts
@@ -583,12 +582,6 @@ if (window.location.href.indexOf("artikel") > -1) {
             $(".pagecount-below .postcount").removeClass("float--right");
         }
 
-        /**
-         * filter function if category-filter is active
-         */
-        if ($("body").hasClass("hk-js-category-filter")) {
-
-        }
 
         /**
          * SVG support
@@ -600,96 +593,11 @@ if (window.location.href.indexOf("artikel") > -1) {
         });
 
 
-        /**
-         * debug count and version log
-         */
-        /*function doCount() {
-
-        	$.getJSON( "http://smart-ip.net/geoip-json?callback=?",
-        		function(data){
-        			browser = "other";
-        			if ($.browser.webkit)
-        				browser = "webkit-" + $.browser.version;
-        			else if ($.browser.msie)
-        				browser = "msie-" + $.browser.version;
-        			else if ($.browser.opera)
-        				browser = "opera-" + $.browser.version;
-        			else if ($.browser.mozilla)
-        				browser = "mozilla-" + $.browser.version;
-        			else if ($.browser.safari)
-        				browser = "safari-" + $.browser.version;
-
-        			data = {action: 'hk_count', version: $("#version-2").length, browser: browser, ip: data.host };
-        			jQuery.ajax({
-        				type: 'POST',
-        				url: hultsfred_object["admin_ajax_url"], //"/wp/info/wp-admin/admin-ajax.php", // our PHP handler file
-        				data: data,
-        				dataType: 'html',
-        				success:function(response){
-        					log(response);
-        				},
-        				error:function(response){
-        					log("error: " + response);
-        				}
-        			});
-        		}
-        	);
-        }
-        doCount();*/
-
-        /**
-         * show refresh alert if old/cached html
-         */
-        if ($("#version-2").length <= 0) {
-            function newVersion() {
-                $(".top-menu-wrapper").before("<div class='wrong-version one-whole island important-background white-text flush--bottom hidden'>Du ser en gammal version av webbplatsen. Klicka <a class='white-text' style='text-decoration:underline' href='#'>h&auml;r</a> eller uppdatera webbl&auml;saren f&ouml;r att se den nya.</div>");
-                $(".wrong-version").slideDown("slow").find("a").click(function() {
-                    location.reload(true);
-                    return false;
-                });
-            }
-            setTimeout(newVersion, 2000);
-        }
-
         var wpadminbarheight = $("#wpadminbar").height();
 
         //Stores the window-width for later use
         oldWidth = $(window).width();
 
-
-        /**
-         * fix placeholder text in ie9 and lower
-         */
-         /*
-        if ($(".login-action-login").length == 0 && $.browser.msie && parseInt($.browser.version, 10) <= 9) {
-            var active = document.activeElement;
-            $(':text').focus(function() {
-                if ($(this).attr('placeholder') != '' && $(this).val() == $(this).attr('placeholder')) {
-                    $(this).val('').removeClass('hasPlaceholder').css("color", "#3f3f3f");
-                }
-            }).blur(function() {
-                if ($(this).attr('placeholder') != '' && ($(this).val() == '' || $(this).val() == $(this).attr('placeholder'))) {
-                    $(this).val($(this).attr('placeholder')).addClass('hasPlaceholder').css("color", "#999");
-                }
-            });
-            $(':text').blur();
-            $(active).focus();
-            $('form:eq(0)').submit(function() {
-                $(':text.hasPlaceholder').val('');
-            });
-        }*/
-
-        /**
-         * aditro scrolling on first page
-         */
-        //flipAnimation($(".widget_hk_aditro_rss_widget .entry-wrapper:first"));
-
-        /**
-         * load typekit if any
-         */
-        /*if (!($.browser.msie && parseInt($.browser.version, 10) < 9)) {
-            try { Typekit.load(); } catch (e) {}
-        }*/
 
         /**
          * open print dialog if on print page
@@ -725,27 +633,6 @@ if (window.location.href.indexOf("artikel") > -1) {
             }
         });
 
-
-
-
-        /**
-         * history url handling
-         */
-        /*History.Adapter.bind(window,'popstate',function(evt){
-        	//alert(evt.state);
-        	var State = History.getState();
-        	History.log(State);
-        	if(evt.state !== null && evt.state !== undefined){
-        		window.location = State.url;
-        	}
-        });*/
-
-        //url clean-up and history-fix
-        /*if( !$("body").hasClass("single") && !$("body").hasClass("page") ){
-        	//do a clean-up that removes the hash (tags, sort m.m.)
-        	var title = $("html head title").html();
-        	History.replaceState(null, title, hultsfred_object["currPageUrl"]);
-        }*/
 
 
         /**
@@ -853,24 +740,6 @@ if (window.location.href.indexOf("artikel") > -1) {
                 $('#scrollTo_top').fadeOut(300);
             }
 
-
-            /* stick menu to top */
-            //if( $(this).scrollTop() > wpadminbarheight ) {
-            //	$('#branding').css("position", "fixed").css("top", wpadminbarheight + "px"); /*.css("border-top-left-radius","0").css("border-top-right-radius","0").css("border-bottom-left-radius","10px").css("border-bottom-right-radius","10px")*/
-            //}
-            //else {
-            //	$('#branding').css("position", "initial").css("top","initial"); /*.css("border-top-left-radius","10px").css("border-top-right-radius","10px").css("border-bottom-left-radius","0").css("border-bottom-right-radius","0")*/
-            //}
-
-
-            /*
-            if( $(this).scrollTop() > 180 ) {
-            	$('#nav-sidebar').css("position", "fixed").css("top", "69px").css("width", "17%");
-            }
-            else {
-            	$('#nav-sidebar').css("position", "initial").css("width", "100%");
-            }
-            */
         });
         $('#scrollTo_top a').unbind("click").bind("click", function() {
             $('html, body').animate({ scrollTop: 0 }, 500);
@@ -926,30 +795,6 @@ if (window.location.href.indexOf("artikel") > -1) {
             ev.preventDefault();
             $(".searchnavigation").toggleClass("unhidden");
         });
-
-
-        /**
-         * nav-sidebar collapsing and expand filters on category and tags
-         */
-        /* TODO TEMP REMOVED
-	$(".children").each(function() {
-	 	if ($(this).parent().parent().hasClass("parent") && !$(this).parent().hasClass("current-cat") && $(this).parent().find(".current-cat").length == 0) {
-			$(this).prev().append("<span class='more-children'>+</span>");
-			$(this).hide();
-	 	}
-	});
-	$(".more-children").each(function() {
-		$(this).unbind("click").bind("click",function(ev) {
-			ev.preventDefault();
-			ev.stopPropagation();
-			$(this).parent().parent().find(".children:first").toggle();
-		});
-	});*/
-
-        /**
-         * first simple test of dynamic search
-         */
-        //$('#s').searchSuggest();
 
 
         /**
@@ -1079,7 +924,7 @@ if (window.location.href.indexOf("artikel") > -1) {
             clearTimeout(t_ajaxsearch);
         }
         if ($('#s').val().length > 0 && (key != 27)) {
-            t_ajaxsearch = setTimeout(hkSearch, 400);
+            t_ajaxsearch = setTimeout(hkSearch, 100);
         }
     };
     var hkSearch = function() {
@@ -1106,7 +951,11 @@ if (window.location.href.indexOf("artikel") > -1) {
                 else { // else wp search
                     //$(".gcse-searchresults").html(response);
                     data = { action: 'hk_search', searchstring: $('#s').val() };
-                    jQuery.ajax({
+                    $(".gcse-searchresults").html('<div class="islet">V&auml;ntar på s&ouml;kresultat...<span style="display:inline-block" class="spinner"></span></div>');
+                    if(currentSearch != null) {
+                        currentSearch.abort();
+                    }
+                    currentSearch = jQuery.ajax({
                         type: 'POST',
                         url: hultsfred_object["admin_ajax_url"],
                         data: data,
@@ -1123,7 +972,12 @@ if (window.location.href.indexOf("artikel") > -1) {
             }
             if ($(".hk-gcse-ajax-searchresults-wrapper").find(".has-hook").length > 0) {
                 data = { action: 'hk_search_hook', searchstring: $('#s').val() };
-                jQuery.ajax({
+                $(".hk-gcse-hook-results").html('<div class="islet">V&auml;ntar på s&ouml;kresultat...<span style="display:inline-block" class="spinner"></span></div>');
+
+                if(currentSearchHook != null) {
+                    currentSearchHook.abort();
+                }
+                currentSearchHook = jQuery.ajax({
                     type: 'POST',
                     url: hultsfred_object["admin_ajax_url"],
                     data: data,

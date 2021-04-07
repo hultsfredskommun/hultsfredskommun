@@ -61,10 +61,20 @@ $classes .= ($external_blog)?" externalblog":"";
                             //$content = apply_filters(‘relevanssi_excerpt_content’, get_the_content());//, $post, $query);
                             //print_r($post);
                             $excerpt = relevanssi_do_excerpt($post, $_REQUEST["searchstring"]);
-                            $excerpt = relevanssi_highlight_terms($excerpt, $_REQUEST["searchstring"]);
-                            echo '<a class="' . $externalclass.$jstoggle . '" href="' . $href . '" title="' . $title . '" rel="bookmark">';
+                            //$excerpt = relevanssi_highlight_terms($excerpt, $_REQUEST["searchstring"]);
+                            //echo '<a class="' . $externalclass.$jstoggle . '" href="' . $href . '" title="' . $title . '" rel="bookmark">';
                             echo $excerpt;
-                            echo "</a>";
+
+                            $u_time = get_the_time('U');
+                            $u_modified_time = get_the_modified_time('U');
+                            //if ($u_modified_time >= $u_time + 86400) {
+                            echo "<p style='font-size: 90%; font-style: italic;'>Senast uppdaterad ";
+                            the_modified_time('j F, Y');
+                            echo " vid ";
+                            the_modified_time();
+                            echo "</p> ";
+                            //}
+                            //echo "</a>";
                         }
                         else {
                             the_excerpt();
