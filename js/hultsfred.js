@@ -963,6 +963,16 @@ if (window.location.href.indexOf("artikel") > -1) {
                         success: function(response) {
                             $(".gcse-searchresults").html(response);
                             //console.log("success: " + response);
+
+                            // make click work on image and text
+                            $(".hk-gcse-googleresults").find(".type-post .entry-content, .type-post .img-wrapper").click(function()
+                            {
+                              $(this).parents(".article-wrapper").find(".js-toggle-article")[0].click();
+                            });
+                            $(".hk-gcse-googleresults").find(".type-hk_kontakter .contact-wrapper").click(function() {
+                              $(this).parents("article").find(".entry-title a")[0].click();
+                            });
+
                         },
                         error: function(response) {
                             log("error: " + response);
@@ -988,6 +998,7 @@ if (window.location.href.indexOf("artikel") > -1) {
                         $(".hk-gcse-hook-results").find(".js-contact-link").each(function() {
                             setContactPopupAction($(this));
                         });
+
                         initResponsiveSearchHookResult();
                         //console.log("success: " + response);
                     },
