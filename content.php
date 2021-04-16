@@ -65,15 +65,14 @@ $classes .= ($external_blog)?" externalblog":"";
                             //echo '<a class="' . $externalclass.$jstoggle . '" href="' . $href . '" title="' . $title . '" rel="bookmark">';
                             echo $excerpt;
 
-                            $u_time = get_the_time('U');
                             $u_modified_time = get_the_modified_time('U');
-                            //if ($u_modified_time >= $u_time + 86400) {
+                            if ($u_modified_time) {
                             echo "<p style='font-size: 90%; font-style: italic;'>Senast uppdaterad ";
                             the_modified_time('j F, Y');
                             echo " vid ";
                             the_modified_time();
                             echo "</p> ";
-                            //}
+                            }
                             //echo "</a>";
                         }
                         else {
