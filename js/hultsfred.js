@@ -13,7 +13,6 @@ if (window.location.href.indexOf("artikel") > -1) {
     var currPageTitle = $("head").find("title").html();
     var havePushed = false;
     var t_ajaxsearch;
-    var isLessThanIE9 = !$.support.leadingWhitespace;
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
@@ -658,7 +657,7 @@ if (window.location.href.indexOf("artikel") > -1) {
          * add action to read-more toggle, if in .home or in lt ie9, go to article
          */
         $("#primary, #firstpage-top-content").find("article").each(function() {
-            if (!$(this).parents(".home").length && !$(this).parents(".search").length && !isLessThanIE9) {
+            if (!$(this).parents(".home").length && !$(this).parents(".search").length) {
                 setArticleActions($(this));
             } else {
                 $(this).unbind("click").bind("click", function() {
@@ -840,7 +839,7 @@ if (window.location.href.indexOf("artikel") > -1) {
             /**
              * add ajax searchbox if enabled in settings and not less than ie9
              */
-            if ($(".hk-gcse-ajax-searchbox").length > 0 && $("body.search").length == 0 && !isLessThanIE9) {
+            if ($(".hk-gcse-ajax-searchbox").length > 0 && $("body.search").length == 0) {
                 window.__gcse = {
                     parseTags: 'explicit',
                     callback: hkGcseCallback
@@ -855,7 +854,7 @@ if (window.location.href.indexOf("artikel") > -1) {
                 var s = document.getElementsByTagName('script')[0];
                 s.parentNode.insertBefore(gcse, s);
             }
-            else if ($(".hk-ajax-searchbox").length > 0 && $("body.search").length == 0 && !isLessThanIE9) { // else wp search
+            else if ($(".hk-ajax-searchbox").length > 0 && $("body.search").length == 0) { // else wp search
                 hkHandleKeypress();
             }
 
@@ -943,7 +942,7 @@ if (window.location.href.indexOf("artikel") > -1) {
             }
 
             log("Searching for: " + $('#s').val());
-            if ($("body.search").length == 0 && !isLessThanIE9) {
+            if ($("body.search").length == 0) {
                 if ($(".hk-gcse-ajax-searchbox").length > 0) { // if google search
                     google.search.cse.element.getElement("two-column").prefillQuery($('#s').val());
                     google.search.cse.element.getElement("two-column").execute();
@@ -1099,9 +1098,6 @@ function erase_and_refocus_on_search_input()
      */
     function setVideoPopupAction(el) {
         $(el).unbind("click").bind("click", function(ev) {
-            if (isLessThanIE9) {
-                return true;
-            }
             videoAction(el, ev);
             return false;
         });
@@ -1181,9 +1177,6 @@ function erase_and_refocus_on_search_input()
      */
     function setContactPopupAction(el) {
         $(el).unbind("click").bind("click", function(ev) {
-            if (isLessThanIE9) {
-                return true;
-            }
             contactAction(el, ev);
             return false;
         });
@@ -1243,9 +1236,6 @@ function erase_and_refocus_on_search_input()
      */
     function setTextWidgetPopupAction(el) {
         $(el).unbind("click").bind("click", function(ev) {
-            if (isLessThanIE9) {
-                return true;
-            }
             textWidgetAction(el, ev);
             return false;
         });

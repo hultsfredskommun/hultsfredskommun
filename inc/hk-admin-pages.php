@@ -581,47 +581,6 @@ function hk_admin_posts_filter_restrict_manage_posts()
 
 
 
-// [karta punkt="57.455560638683025,15.836223059667986"]
-function hk_map_shortcode_func( $atts ) {
-	$default = array(
-		'echo_args' => '', // to echo help texts
-		'punkt' => '',
-		'text' => '',
-		'popuptext' => '',
-		'width' => '',
-		'height' => '',
-		'class' => '',
-		'visa' => 'karta' // show map or link or other
-		);
-
-	$atts = shortcode_atts( $default, $atts );
-
-	if ($atts["echo_args"] != "") {
-		return "<p>[karta ".$atts["echo_args"] . "]</p>";
-	}
-
-	if ($atts["punkt"] == "") {
-		return "<p>Hittade ingen kartpunkt.</p>";
-	}
-	$style = "";
-	if ($atts["width"] != "") {
-		$style .= "max-width: " . $atts["width"] . ";";
-	}
-	if ($atts["height"] != "") {
-		$style .= "height: " . $atts["height"] . ";";
-	}
-	if ($style != "") {
-		$style = "style='$style'";
-	}
-	if ($atts["visa"] == "karta") {
-		return "<div $style class='map_canvas " . $atts["class"] . "'>[karta <span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>]</div>";
-	}
-	if ($atts["visa"] == "popup") {
-		return "<a $style class='map_link " . $atts["class"] . "'><span class='coordinates'>" . $atts["punkt"] . "</span> <span class='address'>" . $atts["popuptext"] . "</span>" . $atts["text"] . "</a>";
-	}
-}
-add_shortcode( 'karta', 'hk_map_shortcode_func' );
-
 
 
 

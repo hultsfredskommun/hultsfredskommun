@@ -94,8 +94,9 @@ if ($meta_description != "") :?>
 
 	wp_title( '|', true, 'right' );
 
+	/*
 	// Add the blog name.
-	bloginfo( 'name' );
+	//bloginfo( 'name' );
 
 	// Add the blog description for the home/front page.
 	$site_description = get_bloginfo( 'description', 'display' );
@@ -105,7 +106,7 @@ if ($meta_description != "") :?>
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
 		echo ' | ' . sprintf( __( 'Page %s', 'twentyeleven' ), max( $paged, $page ) );
-
+	*/
 	?></title>
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
