@@ -15,7 +15,7 @@ Text Domain: hultsfredskommun
 
 /* hidden helpers */
 .hide-expand-button-in-mobile-menu .expand-button {
-  display: none!important;  
+  display: none!important;
 }
 @media only screen and (min-width: 541px) {
   .hide-in-desktop-menu {
@@ -41,7 +41,9 @@ Text Domain: hultsfredskommun
   left: 24px;
   right: initial;
 }
-
+.js-video-popup {
+  display: block;
+}
 
 
 /* hk tag fixes */
