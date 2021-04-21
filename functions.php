@@ -2033,6 +2033,7 @@ function hk_search_func(){
 				// show search
         $query_args = array( 's' => esc_sql($searchstring),
                              'category__not_in' => array( $default_settings["hidden_cat"] ),
+														 'post_status' => 'publish'
 													 );
         $query = new WP_Query( $query_args );
         if (function_exists('relevanssi_do_query')) {
