@@ -42,8 +42,8 @@ function cron_add_month( $schedules ) {
  	return $schedules;
 }
 add_filter( 'cron_schedules', 'cron_add_month' );
- 
- 
+
+
 /*
  * Cron job to check which posts to be reviewed and send mail to remind author
  */
@@ -51,25 +51,25 @@ function hk_review_mail() {
 	$options = get_option('hk_theme');
 	$hk_review_mail_check_time = time();
 	$options["hk_review_mail_check_time"] = $hk_review_mail_check_time;
-	
+
 	//define arguments for WP_Query()
 	$qargs = array(
 		'post_type' => array('post','hk_kontakter','hk_faq'),
 		'posts_per_page' => -1,
-        'post_status' => 'publish', 
+        'post_status' => 'publish',
 		'meta_key' => 'hk_next_review',  // which meta to query
 		'meta_value'   => strtotime("+1 day"),  // value for comparison
 		'meta_compare' => '<',          // method of comparison
 		'meta_type' => 'numeric',
 		'orderby' => 'meta_value',
 		'order' => 'ASC',
-		//'suppress_filters' => true,	
+		//'suppress_filters' => true,
 		'ignore_sticky_posts' => 1,
 		);
-	
+
 	$q = new WP_Query();
 	$q->query($qargs);
-	
+
 	// execute the WP loop
 	$log = "";
 	$maillist = Array();
@@ -78,10 +78,10 @@ function hk_review_mail() {
 		// dont send mail if in no_reviews_to_cat list
 		$dont_send = false;
 		foreach ( explode(",",$options["no_reviews_to_cat"]) as $c ) {
-			if (in_category($c)) 
+			if (in_category($c))
 				$dont_send = true;
 		}
-		
+
 		if ( !$dont_send ) {
 			if ($mail == "") {
 				$log .= "Saknar e-postadress på användare ". get_the_author() . ".<br>";
@@ -98,7 +98,7 @@ function hk_review_mail() {
 
 	$count_mail = 0;
 	foreach ($maillist as $mailaddress => $value) {
-		
+
 		$subject = "Dags att granska ett inlägg på hemsidan";
 		$message = "Du har följande inlägg att granska:<br>";
 		$message .= "<ul>";
@@ -115,7 +115,7 @@ function hk_review_mail() {
 			wp_mail($mailaddress, $subject, $message);
 			$log .= "Har skickat påminnelser, till $mailaddress\n";
 		}
-	} 
+	}
 	$log .= "Skickade $count_mail påminnelser den " . date("Y-m-d H:i:s", strtotime("now"));
 	$options["hk_review_mail_log"] = $log;
 
@@ -138,9 +138,9 @@ if (function_exists( 'views_orderby' )) : // if plugin WP-PostViews is enabled
 function hk_normalize_count($returnlog = false) {
 	global $default_settings;
 
-	if (!function_exists( 'views_orderby' )) // don't do if plugin WP-PostViews not is enabled 
+	if (!function_exists( 'views_orderby' )) // don't do if plugin WP-PostViews not is enabled
 		return;
-	
+
 	$log .= "Normaliserar view count " . date("Y-m-d H:i:s", strtotime("now")) . "\n";
 	//define arguments for WP_Query()
 	$paged = 1;
@@ -148,9 +148,9 @@ function hk_normalize_count($returnlog = false) {
 		'paged' => $paged,
 		'post_type' => array("post","hk_kontakter","hk_faq"),
 		'posts_per_page' => 10,
-		'post_status' => 'published',
+		'post_status' => 'publish',
 		'suppress_filters' => true);
-	
+
 	$q = new WP_Query();
 	//remove_action( 'pre_get_posts', 'hk_exclude_category' );
 	$q->query($qargs);
@@ -159,42 +159,42 @@ function hk_normalize_count($returnlog = false) {
 	$totalcount = 0;
 	while ($count > 0) :
 		// execute the WP loop
-		
+
 		$count = 0;
 		while ($q->have_posts()) : $q->the_post();
 			$count++;
 			$post_id = get_the_ID();
 			$views = get_post_meta($post_id, "views");
-			
+
 			$new_views = 1;
 			if (empty($views)) {
-				if (is_sticky()) 
+				if (is_sticky())
 					add_post_meta($post_id, "views", $default_settings["sticky_number"]);
 				else
 					add_post_meta($post_id, "views", 0);
 			}
 			else {
 				$new_views = $views[0];
-				if (is_sticky() && $new_views >= $default_settings["sticky_number"]) 
+				if (is_sticky() && $new_views >= $default_settings["sticky_number"])
 					$new_views -= $default_settings["sticky_number"]; // instead of sticky first in loop
 				$new_views = floor(sqrt($new_views));
-				if (is_sticky()) 
+				if (is_sticky())
 					$new_views += $default_settings["sticky_number"]; // instead of sticky first in loop
-				
+
 				if (count($views) > 1)
 				{
 					delete_post_meta($post_id, "views");
-					add_post_meta($post_id, "views", $new_views); 
+					add_post_meta($post_id, "views", $new_views);
 				}
 				else {
-					update_post_meta($post_id, "views", $new_views); 
+					update_post_meta($post_id, "views", $new_views);
 				}
 			}
-			
+
 			$log .= $post_id . " \told_views: " . $views[0] . " \tnew_views: " . $new_views . " \tis_sticky: " . is_sticky() . " count: " . count($views) . "\n";
 			//$log .= ". ";
 		endwhile; // endwhile have_posts
-		
+
 		// get next page
 		$paged++;
 		$qargs["paged"] = $paged;
@@ -203,19 +203,19 @@ function hk_normalize_count($returnlog = false) {
 		$count = $q->post_count;
 
 	endwhile; // endwhile count
-	
+
 	$log .= "Normaliserade $totalcount artiklar (paged: ". ($paged - 1) . ") " . date("Y-m-d H:i:s", strtotime("now"));
-	
+
 	$options = get_option('hk_theme');
 	$hk_normalize_count_time = time();
 	$options["hk_normalize_count_time"] = $hk_normalize_count_time;
 	if ($log != "")
 		$options["hk_normalize_count_log"] = $log;
 	update_option("hk_theme", $options);
-	
+
 	if ($returnlog)
 		return $log;
-	
+
 	return;
 }
 add_action("hk_normalize_count_event", "hk_normalize_count");
@@ -241,19 +241,19 @@ function hk_stop_publish_job() {
 	$qargs = array(
 		'posts_per_page' => -1,
 		'category__not_in' => array($options["hidden_cat"]),
-        'post_status' => 'publish', 
-		'post_type' => 'post', 
+        'post_status' => 'publish',
+		'post_type' => 'post',
 		'meta_key' => 'hk_stop_publish_date',  // which meta to query
 		'meta_value'   => date("Ymd"),  // value for comparison
 		'meta_compare' => '<=',          // method of comparison
 		'meta_type' => 'numeric',
-		//'suppress_filters' => true,	
+		//'suppress_filters' => true,
 		'ignore_sticky_posts' => 1,
 		);
-	
+
 	$q = new WP_Query();
 	$q->query($qargs);
-	
+
 	// execute the WP loop
 	$log = "";
 	$count = $counttrue = 0;
@@ -275,10 +275,10 @@ function hk_stop_publish_job() {
 				$log .= "Post " . get_the_ID() . " " . get_the_title() . " is set to hidden_cat : ".print_r($ret,true) . "\n";
 			}
 
-			
-		} // end if not empty date	
+
+		} // end if not empty date
 	endwhile;
-	
+
 	$log .= "$count som har sluta publicera datum satt.\n$counttrue som har slutat publiceras nu.\n" . date("Y-m-d H:i:s", strtotime("now"));
 	$options["hk_stop_publish_log"] = $log;
 	$hk_stop_publish_time = time();
