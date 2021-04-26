@@ -612,8 +612,10 @@ function hk_remove_inline_css ($css) {
 add_filter('the_excerpt', 'hk_excerpt');
 function hk_excerpt($content) {
 	if (is_search() || $_REQUEST["action"] == "hk_search" ||  $_REQUEST["searchstring"] != "") {
-		relevanssi_the_excerpt(); // not showing same as search excerpt
-		$content = apply_filters(‘relevanssi_excerpt_content’, $content, $post, $query);
+		if (function_exists( 'relevanssi_the_excerpt' )) {
+			relevanssi_the_excerpt(); // not showing same as search excerpt
+			$content = apply_filters("relevanssi_excerpt_content", $content, $post, $query);
+		}
 		return $content;
 	}
 /*
