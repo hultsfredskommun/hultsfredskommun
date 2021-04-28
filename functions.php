@@ -527,11 +527,6 @@ add_action('wp_head', 'add_jsonld_head', 1);
 function add_jsonld_head() {
 		//$post_ID = get_the_id();
 
-		?>
-		<script type="application/ld+json">
-			{
-			  "@context": "https://www.schema.org",
-<?php
 				$posttags = get_the_tags();
 				$postcats = get_the_category();
 				$type_array = array();
@@ -558,33 +553,41 @@ function add_jsonld_head() {
 						if ($catname != "" && !in_array($catname,$type_array) ) { $type_array[] = $catname; }
 					}
 				}
-
-				if ($type_array) {
-
-					$type_count = 0;
-					foreach($type_array as $type_item) {
-						$type_count++;
-						$end_sign = ',';
-						if (count($type_array) == $type_count && !$is_news_article) {
-							$end_sign = '';
-						}
-						?>
-  					"post_type_<?php echo $type_count; ?>" : { "@type": "<?php echo $type_item; ?>" }<?php echo $end_sign."\n";
-			 		}//end foreach type_array
-				}//end if type_array
-				if ($is_news_article) {
+				if ($type_array || $is_news_article) {
 					?>
-					"news": { "@type": "NewsArticle",
-						"headline": "<?php the_title(); ?>",
-						"image": [
-							"<?php echo $og_image; ?>"
-					 	] }
-<?php
+					<script type="application/ld+json">
+						{
+							"@context": "https://www.schema.org",
+			<?php
+
+					if ($type_array) {
+
+						$type_count = 0;
+						foreach($type_array as $type_item) {
+							$type_count++;
+							$end_sign = ',';
+							if (count($type_array) == $type_count && !$is_news_article) {
+								$end_sign = '';
+							}
+							?>
+	  					"post_type_<?php echo $type_count; ?>" : { "@type": "<?php echo $type_item; ?>" }<?php echo $end_sign."\n";
+				 		}//end foreach type_array
+					}//end if type_array
+					if ($is_news_article) {
+						?>
+						"news": { "@type": "NewsArticle",
+							"headline": "<?php the_title(); ?>",
+							"image": [
+								"<?php echo $og_image; ?>"
+						 	] }
+	<?php
+					}
+					?>
+					}
+				</script>
+				<?php
 				}
-			?>
-			}
-		</script>
-		<?php if ( !empty($og_image) ) { ?>
+			if ( !empty($og_image) ) { ?>
 				<meta property="og:image" content="<?php echo $og_image; ?>">
 		<?php	} // end if og_image
 }

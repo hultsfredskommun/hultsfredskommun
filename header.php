@@ -76,7 +76,7 @@ if (is_single() && get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true)) {
 }
 else if (!is_single() && $hk_options["meta_description"] != "") {
 	$meta_description = $hk_options["meta_description"];
-} else if (is_single() && get_the_ID() > 0) {
+} else if ( !defined('RANK_MATH_PRO_VERSION') && is_single() && get_the_ID() > 0) {
 	$meta_description = substr( strip_tags(get_post_field('post_content', get_the_ID())), 0, 200);
 }
 if ($meta_description != "") :?>

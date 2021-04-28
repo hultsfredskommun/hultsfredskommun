@@ -71,8 +71,8 @@
 	<div id="topwrapper" class="content--center"><div class="top-wrapper">
 		<span id="logo" class="logo"><a href="<?php echo site_url('/'); ?>"><img class="js-svg-image" src="<?php echo $hk_options["logo_image"]; ?>" data-svg-src="<?php echo $hk_options["logo_image_svg"]; ?>" alt="<?php bloginfo( 'name' ); ?>" title="<?php bloginfo( 'name' ); ?>" /></a></span>
 		<div class="site-title">
-			<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-			<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+			<div id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></div>
+			<?php /* <h2 id="site-description"><?php bloginfo( 'description' ); ?></h2> */ ?>
 		</div>
 
 		<?php /* search form*/ ?>
