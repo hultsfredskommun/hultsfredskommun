@@ -34,6 +34,11 @@ Text Domain: hultsfredskommun
 }
 
 /* bug fixes */
+@media only screen and (max-width: 541px) {
+#main {
+  margin: 1%;
+}
+}
 .side-content ul li:before {
   content: initial;
 }
