@@ -77,9 +77,6 @@ require( get_template_directory() . '/inc/hk-contacts.php' );
 // Grab hk FAQ.
 //require( get_template_directory() . '/inc/hk-faq.php' );
 
-// Grab hk related.
-require( get_template_directory() . '/inc/hk-related.php' );
-
 // Grab hk quick.
 require( get_template_directory() . '/inc/hk-quick.php' );
 
