@@ -91,17 +91,8 @@ require( get_template_directory() . '/inc/hk-dynamic-widgets.php' );
 // Grab hk contacts.
 require( get_template_directory() . '/inc/hk-contacts.php' );
 
-// Grab hk FAQ.
-//require( get_template_directory() . '/inc/hk-faq.php' );
-
 // Grab hk quick.
 require( get_template_directory() . '/inc/hk-quick.php' );
-
-// Grab hk push.
-//require( get_template_directory() . '/inc/hk-push.php' );
-
-// Grab hk events.
-//require( get_template_directory() . '/inc/hk-events.php' );
 
 // Grab hk menu widget.
 require( get_template_directory() . '/inc/hk-navigation.php' );
