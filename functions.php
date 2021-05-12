@@ -68,9 +68,6 @@ require( get_template_directory() . '/inc/hk-option-page.php' );
 // Grab hk dynamic widgets
 require( get_template_directory() . '/inc/hk-dynamic-widgets.php' );
 
-// Grab hk slideshow.
-require( get_template_directory() . '/inc/hk-slideshow.php' );
-
 // Grab hk contacts.
 require( get_template_directory() . '/inc/hk-contacts.php' );
 

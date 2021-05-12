@@ -33,16 +33,7 @@
         } // end if !is_sub_category_firstpage ?>
 
 	<div id="primary" class="primary">
-        <?php
-            /* display slideshow */
-            $vars = array();
-            $vars['thumbnail-size'] = 'wide-image';
-            if (isset($default_settings["category_slideshow_thumbnail_size"]) && $default_settings["category_slideshow_thumbnail_size"] != "") {
-                $vars['thumbnail-size'] = $default_settings["category_slideshow_thumbnail_size"];
-            }
-            $vars['posts_per_page'] = '-1';
-            echo hk_slideshow_generate_output($vars);
-        ?>
+        
         <div id="content" role="main">
 
         <?php

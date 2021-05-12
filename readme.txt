@@ -1,6 +1,6 @@
 = HULTSFREDSKOMMUN =
 
-* by the Hultsfred team, http://hultsfred.se/
+* by the Hultsfred team, https://hultsfred.se/
 
 == ABOUT HULTSFREDSKOMMUN THEME ==
 
@@ -43,28 +43,6 @@
 * Setting to add a local javascript on a post added (ACF-field).
 * Setting to enable Yoast SEO on a user through the user form (by ACF-field), default a user is disabled. Requires Yoast plugin.
 
-=== Recommended widget setup ===
-* Startsida toppinnehåll
- * hk_slideshow
-* Startsida sidofält
- * hk förstasidans kontakt
- * hk genväg widget
-* Startsida innehåll
- * hk förstasidans innehåll
-* Startsida sidofält 2
- * övriga widgets, i.e. hk protocol, aditrorecruit
-* Startsidan före sidfot
- * T.ex. extra ingångar med bildlänkar
-* Sidfot 1-4
- * Valfria widgets i sidfot
-* Andra sidfot 1-4
- * Valfria widgets i sidfot (underst, med annan bakgrundsfärg)
-* Viktigt toppinnehåll
- * Valfria widgets som hamnar högst upp på alla sidor.
-* Högerställd i huvudmeny
- * Widget som hamnar till höger i menyn
-* Högerställd i huvudmenyns andra nivå
- * Widget som hamnar till höger i menyns andranivå
 
 
 === Optional functionality ===
@@ -89,7 +67,7 @@ Enable Media Replace by mungobbq to get a replace this file in Media Library.
 Force User Login to hide site from public view before release.
 
 
-Iconset used: 
+Iconset used:
 http://www.icondeposit.com/theicondeposit:113
 http://adamwhitcroft.com/batch/
 
