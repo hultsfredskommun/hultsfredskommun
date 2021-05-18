@@ -3,11 +3,6 @@ var settings = new Array();
 var currentSearch = null;
 var currentSearchHook = null;
 
-/* set rek variable if in "artikel" */
-if (window.location.href.indexOf("artikel") > -1) {
-  window.rek_viewclick = true;
-}
-
 (function($) {
 
     var currPageTitle = $("head").find("title").html();
@@ -250,12 +245,6 @@ if (window.location.href.indexOf("artikel") > -1) {
     }
 
     function readMoreToggle(el) {
-
-        // save page to rek.ai
-        if (window.__rekai) {
-          window.__rekai.eventAddToSessionPath(window.__rekai.customer);
-          window.__rekai.sendView();
-        }
 
         //global var to article
         article = $(el).parents("article");
