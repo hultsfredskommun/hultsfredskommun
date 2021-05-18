@@ -1294,24 +1294,6 @@ function hk_get_parent_categories_from_cat($cat) {
 }
 
 
-
-
-
-function hk_getSmallWords($smallwords) {
-	$smallwords = trim($smallwords);
-	if (empty($smallwords)) return "";
-
-	$arr = explode("\n",$smallwords);
-	if (empty($arr) || count($arr) == 0) return "";
-
-	$count = count($arr);
-	if ($count == 1) return $arr[0];
-
-	$rand = rand(0,$count-1);
-	if ($rand < 0) return "";
-	return $arr[$rand];
-}
-
 // submenu walker to get second row of top menu
 class hk_submenu_walker_nav_menu extends Walker_Nav_Menu {
 

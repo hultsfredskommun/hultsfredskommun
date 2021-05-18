@@ -265,9 +265,6 @@ function hk_mobile_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_c
 		$args["current_category"] = $top_parent;
 	}
 
-	/* REMOVED small-words!
-	echo "<li class='small-words'>".hk_getSmallWords($hk_options["smallwords"])."</li>";
-	*/
 	wp_nav_menu( $args );
 	/* REMOVED dynamic_sidebar
 	if ( is_active_sidebar( 'right-main-menu-item-sidebar' ) ) {
@@ -672,7 +669,7 @@ function hk_menu_navigation() {
 				}
 			}
 
-			hk_displayAllTagFilter();		
+			hk_displayAllTagFilter();
 		}
 	}
 

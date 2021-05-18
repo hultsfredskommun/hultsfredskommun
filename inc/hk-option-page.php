@@ -147,8 +147,6 @@ function hk_theme_options_do_page() {
 
 			<a name="kategorier"></a>
 			<hr/><h2>Kategorier, fl&ouml;de och menyer</h2>
-			<p><label for="hk_theme[smallwords]">Värdeord över huvudmeny</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[smallwords]"><?php echo $options['smallwords']; ?></textarea></p>
-
 			<p><label for="hk_theme[default_thumbnail_image]">Defaulttumnagel som visas om artikel inte har någon utvald bild (bör ha storlek 177x100px)</label><br/>
 				<img width=150 src="<?php echo $options["default_thumbnail_image"]; ?>" alt='Vald bild' title='Vald bild' />
 				<input class="upload-url" type="text" size="36" name="hk_theme[default_thumbnail_image]" value="<?php echo $options["default_thumbnail_image"]; ?>" />
