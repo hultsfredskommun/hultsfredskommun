@@ -78,7 +78,7 @@ function hk_contact_shortcode_func( $atts ) {
 
 	// translate from swedish to variables
 	$translate = array(
-		'echo_args' => 'echo_args', 
+		'echo_args' => 'echo_args',
 		'id' => 'id',
 		'kontaktnamn' => 'contactslug',
 		'kategori' => 'cat',
@@ -518,16 +518,16 @@ function hk_get_the_contact($args = array()) {
 				}
 				// description
 				if (get_field("hk_contact_description")) {
-					$retValue .= "<p class='hk_contact_description " . $hidden['description'] . "'>" . get_field("hk_contact_description") . "</p>";
+					$retValue .= "<p class='hk_contact_description " . $hidden['description'] . "'>" . do_shortcode(get_field("hk_contact_description")) . "</p>";
 				}
 				// address
 				if (get_field("hk_contact_address")) {
-					$retValue .= "<p class='hk_contact_address " . $hidden['address'] . "'>" . get_field("hk_contact_address") . "</p>";
+					$retValue .= "<p class='hk_contact_address " . $hidden['address'] . "'>" . do_shortcode(get_field("hk_contact_address")) . "</p>";
 				}
 
 				// visit hours
 				if (get_field("hk_contact_visit_hours")) {
-					$retValue .= "<p class='hk_contact_visit_hours " . $hidden['visit_hours'] . "'>" . get_field("hk_contact_visit_hours") . "</p>";
+					$retValue .= "<p class='hk_contact_visit_hours " . $hidden['visit_hours'] . "'>" . do_shortcode(get_field("hk_contact_visit_hours")) . "</p>";
 				}
 
 			$retValue .= "</div>";
