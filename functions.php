@@ -494,15 +494,11 @@ function setup_javascript_settings() {
 	//id 381 blog_id 2
 	// Add some parameters for the dynamic load more posts JS.
 	$hultsfred_array = array(
-			//'startPage' => 1,
-			//'maxPages' => $max,
-			//'nextLink' => str_replace(curBaseURL(), "", next_posts($max, false)),
 			'templateDir' => get_template_directory_uri(),
 			'blogId' => $blog_id,
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
 			'currentFilter' => json_encode($filter),
 			'gcse_id' => $hk_options['gcse_id'],
-			'mobile_rewrite' => $hk_options["mobile_rewrite"],
 			'admin_ajax_url' => '/wp-admin/admin-ajax.php',
 			'addthis_pubid_admin' => $hk_options['addthis_pubid_admin'],
 			'cookie_accept_enable' => (!empty($hk_options['cookie_accept_enable'])) ? $hk_options['cookie_accept_enable'] : '',

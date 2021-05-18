@@ -27,7 +27,6 @@ function hk_theme_options_do_page() {
 
 
 
-			<a href="#mobil">Mobil</a>
 			<a href="#sidhuvud">Sidhuvud</a>
 			<a href="#meddelande">Meddelande</a>
 			<a href="#kategorier">Kategorier</a>
@@ -41,10 +40,6 @@ function hk_theme_options_do_page() {
 			<a href="#info">Standardinställningar</a>
 			<a href="#debug">debug</a>
 
-
-			<a name="mobil"></a>
-			<hr/><h2>Mobil</h2>
-			<p><label for="hk_theme[mobile_rewrite]">Skicka vidare till denna sida om mobil:</label><br/><input size="80" type="text" name="hk_theme[mobile_rewrite]" value="<?php echo $options['mobile_rewrite']; ?>" /></p>
 
 			<a name="sidhuvud"></a>
 			<hr/><h2>Sidhuvud</h2>
