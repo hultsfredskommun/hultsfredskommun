@@ -47,7 +47,6 @@ if ( ! isset( $default_settings ) ) {
 								'category_slideshow_thumbnail_size' => $hk_options["category_slideshow_thumbnail_size"],
 								'show_articles' => true,
 								'video_thumbnail_image' => $hk_options["video_thumbnail_image"],
-								'new_mobile_menu' => (!empty($hk_options["new_mobile_menu"])) ? $hk_options["new_mobile_menu"] : '',
 
 							);
 

@@ -160,7 +160,6 @@ $term = get_queried_object();
 $current_cat = (!empty($term)) ? $term->slug : '';
 $firstpageClass =(is_sub_category_firstpage() && get_query_var("tag") == "") ? "home":"";
 $printpageClass = ((!empty($_REQUEST["print"])) && $_REQUEST["print"] == 1) ? "print":"";
-$menuversion = (empty($default_settings["new_mobile_menu"]))?"old":"new";//"new"; //new or old
 $hide_leftmenu_class = (!empty($hk_options['hide_leftmenu']) && $hk_options['hide_leftmenu']) ? "hide-left-menu":"";
 $dynamic_post_load_class = (!empty($hk_options['use_dynamic_posts_load_in_category']) && $hk_options['use_dynamic_posts_load_in_category'] == 1) ? "hk-js-dynamic-posts-load  dynamic-posts-load":"no-dynamic-posts-load";
 $category_as_filter_class = (!empty($default_settings["category_as_filter"]) && $default_settings["category_as_filter"] == 1) ? "hk-js-category-filter  category-filter":"no-category-filter";
@@ -179,18 +178,14 @@ if (empty($lattlast) && is_single()) {
 }
 
 ?>
-<body <?php body_class($lattlast . " " . $category_show_children_class . " " . $category_as_filter_class . " " . $dynamic_post_load_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " " . $menuversion . "-menu " . $hide_leftmenu_class ); ?>>
+<body <?php body_class($lattlast . " " . $category_show_children_class . " " . $category_as_filter_class . " " . $dynamic_post_load_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " new-menu " . $hide_leftmenu_class ); ?>>
 <?php echo $hk_options['in_topbody_section']; ?>
 <div id="version-2" style="display:none; visibility:hidden"></div>
 <div id="responsive-info"></div>
 <div id="page" class="hfeed">
 	<?php
-		if ($menuversion == "new") {
-			require( get_template_directory() . '/inc/hk-header.php');
-		}
-		else {
-			require( get_template_directory() . '/inc/hk-old-header.php');
-		}?>
+		require( get_template_directory() . '/inc/hk-header.php');
+	?>
 
 	<div class="main hk-quick"><div class="main-wrapper">
 		<?php

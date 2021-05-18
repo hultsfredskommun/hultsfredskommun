@@ -28,9 +28,7 @@
 
 		</aside>
 	<?php
-		if ( ((($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0) ||
-			(!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") ||
-			(!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") ) ) : ?>
+		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) : ?>
 			<aside id='topmenu' class='top-menu-wrapper desk'><div class='content--center'>
 
 				<?php if ( (($locations = get_nav_menu_locations()) && isset( $locations['topmenu'] ) && $locations['topmenu'] > 0 ) ||
@@ -39,10 +37,6 @@
 					<nav>
 
 					<ul class='top-menu'>
-					<?php /* pre html if any in options */ ?>
-					<?php if (!empty($hk_options["pre_topmenu_html"]) && $hk_options["pre_topmenu_html"] != "") : ?>
-						<li class="pre-top-menu"><?php echo $hk_options["pre_topmenu_html"]; ?></li>
-					<?php endif; ?>
 					<?php /* show google translate if set */ ?>
 					<?php if (!empty($hk_options["topmenu_google_translate"])) : ?>
 						<li class="pre-top-menu"><a href="https://translate.google.com/translate?hl=sv&sl=sv&tl=en&u=<?php echo (isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]; ?>"><span class="translate-small-icon"></span>Google Translate</a></li>
@@ -59,10 +53,6 @@
 					));
 					endif;
 					 ?>
-					<?php /* post html if any in options */ ?>
-					<?php if (!empty($hk_options["post_topmenu_html"]) && $hk_options["post_topmenu_html"] != "") : ?>
-						<li class="post-top-menu"><?php echo $hk_options["post_topmenu_html"]; ?></li>
-					<?php endif; ?>
 					</ul></nav>
 				<?php endif; ?>
 
