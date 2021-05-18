@@ -113,23 +113,6 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[search_watermark]">Vattenst&auml;mpel i s&ouml;k</label><br/><input size="80" type="text" name="hk_theme[search_watermark]" value="<?php echo $options['search_watermark']; ?>" /></p>
 			<p><input type="checkbox" name="hk_theme[topmenu_google_translate]" value="1"<?php checked( 1 == $options['topmenu_google_translate'] ); ?> /> <label for="hk_theme[topmenu_google_translate]">Visa Google translate i toppmeny.</label></p>
 
-
-			<h3>Extra loggor</h3>
-			<p><label for="hk_theme[right_logo_html]">HTML vid eller ist&auml;llet för logo2</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[right_logo_html]"><?php echo $options['right_logo_html']; ?></textarea></p>
-			<p><label for="hk_theme[logo2_image]">Logga 2 - till h&ouml;ger i huvudet</label><br/>
-				<img width=150  src="<?php echo $options["logo2_image"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[logo2_image]" value="<?php echo $options["logo2_image"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[logo2_link]">Logga 2 l&auml;nk. </label><br/><input size="80" type="text" name="hk_theme[logo2_link]" value="<?php echo $options['logo2_link']; ?>" /></p>
-			<p><label for="hk_theme[logo2_descr]">Logga 2 beskrivning. </label><br/><input size="80" type="text" name="hk_theme[logo2_descr]" value="<?php echo $options['logo2_descr']; ?>" /></p>
-			<p><label for="hk_theme[logo3_image]">Logga 3 - till h&ouml;ger i huvudet</label><br/>
-				<img width=150  src="<?php echo $options["logo3_image"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[logo3_image]" value="<?php echo $options["logo3_image"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[logo3_link]">Logga 3 l&auml;nk. </label><br/><input size="80" type="text" name="hk_theme[logo3_link]" value="<?php echo $options['logo3_link']; ?>" /></p>
-			<p><label for="hk_theme[logo3_descr]">Logga 3 beskrivning. </label><br/><input size="80" type="text" name="hk_theme[logo3_descr]" value="<?php echo $options['logo3_descr']; ?>" /></p>
 			<?php submit_button(); ?>
 
 			<hr/><h2>Meddelande</h2>

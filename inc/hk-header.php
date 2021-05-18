@@ -70,21 +70,6 @@
 			<?php get_search_form(); ?>
 		</div>
 
-		<?php if (($hk_options["logo2_image"] != "") || ($hk_options["logo3_image"] != "") || (!empty($hk_options["right_logo_html"]) && $hk_options["right_logo_html"] != "")) : ?>
-		<div id="logo2" class="logo2">
-			<?php /* right logo html if any in options */ ?>
-			<?php if (!empty($hk_options["right_logo_html"]) && $hk_options["right_logo_html"] != "") : ?>
-				<?php echo $hk_options["right_logo_html"]; ?>
-			<?php endif; ?>
-			<?php if ($hk_options["logo2_image"] != "") : ?>
-			<a target="_blank" href="<?php echo $hk_options["logo2_link"]; ?>" title="<?php echo $hk_options["logo2_descr"]; ?>"><img src="<?php echo $hk_options["logo2_image"]; ?>" alt="<?php echo $hk_options["logo2_descr"]; ?>" title="<?php echo $hk_options["logo2_descr"]; ?>" /></a>
-			<?php endif; ?>
-			<?php if ($hk_options["logo3_image"] != "") : ?>
-			<a target="_blank" href="<?php echo $hk_options["logo3_link"]; ?>" title="<?php echo $hk_options["logo3_descr"]; ?>"><img src="<?php echo $hk_options["logo3_image"]; ?>" alt="<?php echo $hk_options["logo3_descr"]; ?>" title="<?php echo $hk_options["logo3_descr"]; ?>"/></a>
-			<?php endif; ?>
-		</div>
-		<?php endif; ?>
-
 	</div>
 	<?php
         // if google sök och ajax-sökning
