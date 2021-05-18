@@ -110,11 +110,6 @@ function hk_theme_options_do_page() {
 			</p>
 
 			<h3>S&ouml;k och meny</h3>
-			<p><label for="hk_theme[top_image]">Toppbild (inte klar att anv&auml;ndas)</label><br/>
-				<img width=150 src="<?php echo $options["top_image"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[top_image]" value="<?php echo $options["top_image"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
 			<p><label for="hk_theme[search_watermark]">Vattenst&auml;mpel i s&ouml;k</label><br/><input size="80" type="text" name="hk_theme[search_watermark]" value="<?php echo $options['search_watermark']; ?>" /></p>
 			<p><label for="hk_theme[pre_topmenu_html]">HTML f&ouml;re topmenu</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[pre_topmenu_html]"><?php echo $options['pre_topmenu_html']; ?></textarea></p>
 			<p><label for="hk_theme[post_topmenu_html]">HTML efter topmenu</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[post_topmenu_html]"><?php echo $options['post_topmenu_html']; ?></textarea></p>
