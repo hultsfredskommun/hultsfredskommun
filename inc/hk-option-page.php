@@ -43,7 +43,6 @@ function hk_theme_options_do_page() {
 
 			<a name="sidhuvud"></a>
 			<hr/><h2>Sidhuvud</h2>
-			<p><label for="hk_theme[lang]">Spr&aring;k kod (standard sv-SE, ange de f&ouml;r tyska och en f&ouml;r engelska).</label><br/><input size="8" type="text" name="hk_theme[lang]" value="<?php echo $options['lang']; ?>" /></p>
 			<h3>Logga</h3>
 			<p><label for="hk_theme[logo_image]">Logga</label><br/>
 				<img width='150' src="<?php echo $options["logo_image"]; ?>" alt='Vald bild' title='Vald bild' />
