@@ -40,16 +40,11 @@
 	?>
 
 	<?php
-	$comment_notes_before = "";
-	if ($hk_options["comment_notes_before"] != "") {
-		$comment_notes_before = "<p>" . $hk_options["comment_notes_before"] . "</p>";
-	}
 	comment_form(array('title_reply' => "Kontakta sidansvarig",
 	'fields' => apply_filters( 'comment_form_default_fields', array(
 		'author' => '<p class="comment-form-author">' . '<input name="redirect_to" type="hidden" value="' . get_permalink() . '?thanks=' . get_the_ID() . '"/><label for="author">Namn ' . ( $req ? '<span class="required">*</span>' : '' ) . '</label><input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>',
 		'email' => '<p class="comment-form-email"><label for="email">E-post ' . ( $req ? '<span class="required">*</span>' : '' ) . '</label><input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>',
 		) ),
-	'comment_notes_before' => $comment_notes_before,
 	'comment_field' => '<p class="comment-form-comment"><label for="comment">Meddelande <span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
 	'label_submit' => 'Skicka meddelande',
 	'comment_notes_after' => '',

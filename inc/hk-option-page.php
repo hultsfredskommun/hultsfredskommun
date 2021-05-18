@@ -142,8 +142,6 @@ function hk_theme_options_do_page() {
 			<?php } ?>
 			<p><label for="hk_theme[emptycatmessage3]">Meddelande3 (innan listning av underkategori)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[emptycatmessage3]"><?php echo $options['emptycatmessage3']; ?></textarea></p>
 
-			<h3>Meddelande f&ouml;re kommentar till sidansvarig</h3>
-			<p><label for="hk_theme[emptycatmessage3]">Meddelande (innan kommentarsf&auml;ltet)</label><br/><textarea cols="80" rows="5" type="text" name="hk_theme[comment_notes_before]"><?php echo $options['comment_notes_before']; ?></textarea></p>
 			<?php submit_button(); ?>
 
 
