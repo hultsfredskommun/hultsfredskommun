@@ -421,6 +421,36 @@ add_shortcode( 'childcare', 'hk_childcare_shortcode_func' );
 
 
 /*
+ * helper script to netpublicator code
+ */
+function hk_netpublicator_shortcode_func( $att ) {
+	ob_start(); ?>
+	<script>
+		function handleDocHeightMsg(e) {
+
+	      if ( e.origin === 'https://www.netpublicator.com' ) {
+          	var data = JSON.parse( e.data );
+          	if ( data['docHeight'] ) {
+          		var ht = data['docHeight'];
+          		var ifrm = document.getElementById("bulletinboardframe");
+          		ifrm.style.visibility = 'hidden';
+          		ifrm.style.height = ht +4 + "px";
+          		ifrm.style.visibility = 'visible';
+	          }
+	      }
+	  }
+	  if ( window.addEventListener ) {
+			window.addEventListener('message', handleDocHeightMsg, false);
+	  } else if ( window.attachEvent ) { // ie8
+	      window.attachEvent('onmessage', handleDocHeightMsg);
+	  }
+	</script>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'netpublicator_script', 'hk_netpublicator_shortcode_func' );
+
+/*
  * Set startpage to startpage_cat
  */
 function hk_pre_get_posts( $query ) {

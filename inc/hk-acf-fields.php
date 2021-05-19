@@ -1690,7 +1690,7 @@ if(function_exists("register_field_group"))
 
 if( function_exists('acf_add_local_field_group') ) {
 
-    acf_add_local_field_group(array(
+  /*  acf_add_local_field_group(array(
         'key' => 'group_5a5c59629744f',
         'title' => 'Local script',
         'fields' => array(
@@ -1731,7 +1731,7 @@ if( function_exists('acf_add_local_field_group') ) {
         'hide_on_screen' => '',
         'active' => 1,
         'description' => '',
-    ));
+    )); */
 
 }
 

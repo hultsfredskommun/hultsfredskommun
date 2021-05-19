@@ -37,16 +37,16 @@
 			<!-- LOCAL SCRIPT //-->
 			<?php
         /* local script */
-        if (function_exists("get_field")) {
+        /*if (function_exists("get_field")) {
             $localscript = get_field('hk_local_script');
 						if (!empty($localscript)) {
             	echo "\n" . str_replace( '&lt;', '<', str_replace( '&gt;', '>', str_replace( '&amp;', '&', str_replace('[[', '<', str_replace(']]', '>', $localscript)))));
 						}
-        }
+        }*/
         /* OLD local script meta data */
-				if (empty($localscript) && get_post_meta( get_the_ID(), "local_script", true ) != "") {
+				/*if (empty($localscript) && get_post_meta( get_the_ID(), "local_script", true ) != "") {
 					echo get_post_meta( get_the_ID(), "local_script", true );
-				}
+				}*/
 			?>
 			<!-- END LOCAL SCRIPT //-->
 			<?php //the_post_thumbnail('featured-image');
