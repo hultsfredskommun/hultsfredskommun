@@ -197,6 +197,228 @@ function hk_map_shortcode_func( $atts ) {
 add_shortcode( 'karta', 'hk_map_shortcode_func' );
 
 
+/*
+ * Calculate child care shortcode
+ */
+function hk_childcare_shortcode_func( $att ) {
+	ob_start();
+ 	$default = array(
+ 		'child1max_1to5' => '1510',
+ 		'child1max_6to12' => '1007',
+ 		'child2max_1to5' => '1007',
+ 		'child2max_6to12' => '503',
+ 		'child3max_1to5' => '503',
+ 		'child3max_6to12' => '503'
+ 		);
+
+	$rand = rand(1,1000);
+ 	$atts = shortcode_atts( $default, $att );
+?>
+<div id="childcare-<?php echo $rand; ?>"></div>
+ <script>
+ 	jQuery(document).ready(function() {
+ 		printChildCareForm();
+ 	});
+
+ 	function printChildCareForm() {
+       var childform = "<form id='careform' action='' onsubmit='return false;'>";
+       childform += "<div id='errMsg'></div><p><label>Familjens bruttoinkomst: </label><input id='income' name='income' type='text' />/månad</p>";
+       childform += "<p>Barn 1: <br/><select id='child1' name='child1'> <option selected='selected' value='0'>inget</option> <option value='1'>1-3 år</option> <option value='3'>4-5 år endast med allmän förskola</option> <option value='4'>4-5 år med allmän förskola</option> <option value='5'>4-5 år utanför allmän förskola</option><option value='6'>6-12 år</option></select></p>";
+       childform += "<p>Barn 2: <br/><select id='child2' name='child2'> <option selected='selected' value='7'>inget</option> <option value='1'>1-3 år</option> <option value='3'>4-5 år endast med allmän förskola</option> <option value='4'>4-5 år med allmän förskola</option> <option value='5'>4-5 år utanför allmän förskola</option> <option value='6'>6-12 år</option></select></p>";
+       childform += "<p>Barn 3: <br/><select id='child3' name='child3'> <option selected='selected' value='0'>inget</option> <option value='1'>1-3 år</option> <option value='3'>4-5 år endast med allmän förskola</option> <option value='4'>4-5 år med allmän förskola</option> <option value='5'>4-5 år utanför allmän förskola</option> <option value='6'>6-12 år</option></select></p>";
+       childform += "<p>Barn 4: <br/>Avgiftsfritt</p>";
+       childform += "<p><input type='submit' value='Räkna' onclick='getTotal(); return false;' /> <div id='Child1'></div> <div id='Child2'></div> <div id='Child3'></div> <div id='totalTax'></div></p> </form></div>";
+ 		jQuery("#childcare-<?php echo $rand; ?>").append(childform);
+ 	}
+
+ 	function getTaxTotal() {
+ 		var theForm = document.forms["careform"];
+
+ 		var CurrentPage = new Array();
+ 		/* Child 1 */
+ 		CurrentPage["Child1Percentage_1to5"]  = 3;
+ 		CurrentPage["Child1Percentage_6to12"] = 2;
+ 		CurrentPage["Child1Max_1to5"]	= <?php echo $atts['child1max_1to5']; //1510; //1478; ?>;
+ 		CurrentPage["Child1Max_6to12"]	= <?php echo $atts['child1max_6to12']; //1007; //986; ?>;
+
+ 		/* Child 2 */
+ 		CurrentPage["Child2Percentage_1to5"]  = 2;
+ 		CurrentPage["Child2Percentage_6to12"] = 1;
+ 		CurrentPage["Child2Max_1to5"]	= <?php echo $atts['child2max_1to5']; //1007; //986; ?>;
+ 		CurrentPage["Child2Max_6to12"]	= <?php echo $atts['child2max_6to12']; //503; //493; ?>;
+
+ 		/* Child 3 */
+ 		CurrentPage["Child3Percentage_1to5"]  = 1;
+ 		CurrentPage["Child3Percentage_6to12"] = 1;
+ 		CurrentPage["Child3Max_1to5"]	= <?php echo $atts['child3max_1to5']; //503; //493; ?>;
+ 		CurrentPage["Child3Max_6to12"]	= <?php echo $atts['child3max_6to12']; //503; //493; ?>;
+
+ 		var taxTotal = 0;
+ 		var feeC1b = 0;
+ 		var feeC2b = 0;
+ 		var feeC3b = 0;
+ 		var I = theForm.elements["income"].value;
+ 		var AgeChild1 = theForm.elements["child1"];
+ 		var AgeChild2 = theForm.elements["child2"];
+ 		var AgeChild3 = theForm.elements["child3"];
+
+ 			// Child 1
+ 			// 1-3 eller 4-5 utanför allmän förskola
+ 			if(AgeChild1.value == "1" || AgeChild1.value == "5")
+ 			{
+ 				feeC1a = Math.min(CurrentPage["Child1Max_1to5"], (CurrentPage["Child1Percentage_1to5"]/100)*I);
+ 				feeC1b = feeC1a;
+ 			}
+ 			// 4-5 med allmän förskola
+ 			else if(AgeChild1.value == "4")
+ 			{
+ 				feeC1a = Math.min(CurrentPage["Child1Max_1to5"], (CurrentPage["Child1Percentage_1to5"]/100)*I);
+ 				feeC1b = feeC1a*0.625;
+ 			}
+ 			// 6-12
+ 			else if(AgeChild1.value == "6")
+ 			{
+ 				feeC1a = Math.min(CurrentPage["Child1Max_6to12"], (CurrentPage["Child1Percentage_6to12"]/100)*I);
+ 				feeC1b = feeC1a;
+ 			}
+ 			else {
+ 				feeC1a = 0;
+ 				feeC1b = feeC1a;
+ 			}
+
+ 			// Child 2
+ 			if(AgeChild2.value == "1" || AgeChild2.value == "5")
+ 			{
+ 				feeC2a = Math.min(CurrentPage["Child2Max_1to5"], (CurrentPage["Child2Percentage_1to5"]/100)*I);
+ 				feeC2b = feeC2a;
+ 			}
+ 			else if(AgeChild2.value == "4")
+ 			{
+ 				feeC2a = Math.min(CurrentPage["Child2Max_1to5"], (CurrentPage["Child2Percentage_1to5"]/100)*I);
+ 				feeC2b = feeC2a*0.625;
+ 			}
+ 			else if(AgeChild2.value == "6")
+ 			{
+ 				feeC2a = Math.min(CurrentPage["Child2Max_6to12"], (CurrentPage["Child2Percentage_6to12"]/100)*I);
+ 				feeC2b = feeC2a;
+ 			}
+ 			else {
+ 				feeC2a = 0;
+ 				feeC2b = feeC2a;
+ 			}
+
+ 			// Child 3
+ 			if(AgeChild3.value == "1" || AgeChild3.value == "5")
+ 			{
+ 				feeC3a = Math.min(CurrentPage["Child3Max_1to5"], (CurrentPage["Child3Percentage_1to5"]/100)*I);
+ 				feeC3b = feeC3a;
+ 			}
+ 			else if(AgeChild3.value == "4")
+ 			{
+ 				feeC3a = Math.min(CurrentPage["Child3Max_1to5"], (CurrentPage["Child3Percentage_1to5"]/100)*I);
+ 				feeC3b = feeC3a*0.625;
+ 			}
+ 			else if(AgeChild3.value == "6")
+ 			{
+ 				feeC3a = Math.min(CurrentPage["Child3Max_6to12"], (CurrentPage["Child3Percentage_6to12"]/100)*I);
+ 				feeC3b = feeC3a;
+ 			}
+ 			else {
+ 				feeC3a = 0;
+ 				feeC3b = feeC3a;
+ 			}
+
+ 			/* Print Result */
+ 			// Child 1
+ 			if (feeC1a == feeC1b)
+ 			{
+ 				Child1a = Math.round(feeC1b);
+ 				document.getElementById("Child1").innerHTML = "Barn 1. jan-dec: " + Child1a + " kr / månad";
+ 			} else {
+ 				Child1a = Math.round(feeC1a);
+ 				Child1b = Math.round(feeC1b);
+ 				document.getElementById("Child1").innerHTML =
+ 				"Barn 1. sep-maj: " + Child1b + " kr / månad <br> jun-aug: " + Child1a + " kr / månad <br>";
+ 			}
+
+ 			// Child 2
+ 			if (feeC2a == feeC2b)
+ 			{
+ 				Child2a = Math.round(feeC2b);
+ 				document.getElementById("Child2").innerHTML = "Barn 2. jan-dec: " + Child2a + " kr / månad";
+ 			} else {
+ 				Child2a = Math.round(feeC2a);
+ 				Child2b = Math.round(feeC2b);
+ 				document.getElementById("Child2").innerHTML =
+ 				"Barn 2. sep-maj: " + Child2b + " kr / månad <br> jun-aug: " + Child2a + " kr / månad <br>";
+ 			}
+
+ 			// Child 3
+ 			if (feeC3a == feeC3b)
+ 			{
+ 				Child3a = Math.round(feeC3b);
+ 				document.getElementById("Child3").innerHTML = "Barn 3. jan-dec: " + Child3a + " kr / månad";
+ 			} else {
+ 				Child3a = Math.round(feeC3a);
+ 				Child3b = Math.round(feeC3b);
+ 				document.getElementById("Child3").innerHTML =
+ 				"Barn 3. sep-maj: " + Child3b + " kr / månad <br> jun-aug: " + Child3a + " kr / månad <br>";
+ 			}
+
+ 			var sumA =  Math.round(feeC1a + feeC2a + feeC3a);
+ 			var sumB =  Math.round(feeC1b + feeC2b + feeC3b);
+ 			if (sumA == sumB) {
+ 				document.getElementById("totalTax").innerHTML = "Totalt: " + sumA + " kr / månad";
+ 			} else {
+ 				document.getElementById("totalTax").innerHTML = "Totalt:<br />sep-maj: " + sumB + " kr /månad <br>jun-aug: " + sumA + " kr / månad";
+ 			}
+
+ 	} /* End of getTaxTotal */
+
+ 	function getTotal() {
+ 		formVal = document.forms["careform"];
+ 		child1 = formVal["child1"].value;
+ 		child2 = formVal["child2"].value;
+ 		child3 = formVal["child3"].value;
+
+ 		function validate(){
+ 			if (child2 !== "0") {
+ 				if ((child2 >= child1) || ((child1 == "3") || (child1 == "4") || (child1 == "5")) && (child2 != "1")) {
+ 					if (child3 !== "0") {
+ 						if ((child3 >= child2) || ((child2 == "3") || (child2 == "4") || (child2 == "5")) && (child3 != "1")) {
+ 							getTaxTotal();
+ 						} else {
+ 							document.getElementById("errMsg").innerHTML = "Tredje barnet måste vara äldre än det andra. <br><br>";
+ 						}
+ 					} else {
+ 						getTaxTotal();
+ 					}
+ 				} else {
+ 					document.getElementById("errMsg").innerHTML = "Andra barnet måste vara äldre än det första. <br><br>";
+ 				}
+ 			} else {
+ 				getTaxTotal();
+ 			}
+ 		}
+
+ 		if (formVal["income"].value !== "") {
+ 			if (child1 !== "0") {
+ 				document.getElementById("errMsg").innerHTML = "";
+ 				validate();
+ 			} else {
+ 				document.getElementById("errMsg").innerHTML = "Beräkningen kunde inte utföras eftersom: <br> Du har inte angivit ett första barn. <br><br>";
+ 			}
+ 		} else {
+ 			document.getElementById("errMsg").innerHTML = "Beräkningen kunde inte utföras eftersom: <br> Den angivna inkomsten är inte ett tal. <br><br>";
+ 		}
+ 	}
+
+ 	</script>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'childcare', 'hk_childcare_shortcode_func' );
+
 
 /*
  * Set startpage to startpage_cat
