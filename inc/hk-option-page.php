@@ -159,7 +159,6 @@ function hk_theme_options_do_page() {
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
 
-			<p><label for="hk_theme[show_most_viewed_in_subsubcat]">Visa antal mest bes&ouml;kta artiklar p&aring; ing&aring;ngssidor. (Tom eller noll f&ouml;r att d&ouml;lja.)</label><br/><input type="text" name="hk_theme[show_most_viewed_in_subsubcat]" value="<?php echo (!isset($options["show_most_viewed_in_subsubcat"]) || $options["show_most_viewed_in_subsubcat"] == "")?0:$options['show_most_viewed_in_subsubcat']; ?>" /></p>
 			<p><input type="checkbox" name="hk_theme[hide_articles_in_subsubcat]" value="1"<?php checked( 1 == $options['hide_articles_in_subsubcat'] ); ?> /> <label for="hk_theme[hide_articles_in_subsubcat]">Dölj artiklar p&aring; ing&aring;ngssidor.</label></p>
 			<p><input type="checkbox" name="hk_theme[hide_leftmenu]" value="1"<?php checked( 1 == $options['hide_leftmenu'] ); ?> /> <label for="hk_theme[hide_leftmenu]">Dölj v&auml;nstermeny.</label></p>
 			<p><input type="checkbox" name="hk_theme[use_dynamic_posts_load_in_category]" value="1"<?php checked( 1 == $options['use_dynamic_posts_load_in_category'] ); ?> /> <label for="hk_theme[use_dynamic_posts_load_in_category]">Anv&auml;nd dynamisk laddning (infinite scroll) av inl&auml;gg p&aring; kategorilistning.</label></p>

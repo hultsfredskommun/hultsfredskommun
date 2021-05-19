@@ -41,7 +41,6 @@ if ( ! isset( $default_settings ) ) {
 								'num_levels_in_menu' => (!isset($hk_options["num_levels_in_menu"]) || $hk_options["num_levels_in_menu"] == "")?2:$hk_options["num_levels_in_menu"],
 								'show_tags' => (!isset($hk_options["show_tags"]) || $hk_options["show_tags"] == "")?1:$hk_options["show_tags"],
 								'sticky_number' => 1000,
-								'show_most_viewed_in_subsubcat' => $hk_options["show_most_viewed_in_subsubcat"],
 								'use_dynamic_posts_load_in_category' => (!empty($hk_options["use_dynamic_posts_load_in_category"]))?$hk_options["use_dynamic_posts_load_in_category"]:'',
 								'hide_articles_in_subsubcat' => (!empty($hk_options["hide_articles_in_subsubcat"]))?$hk_options["hide_articles_in_subsubcat"]:'',
 								'category_slideshow_thumbnail_size' => $hk_options["category_slideshow_thumbnail_size"],
@@ -2315,49 +2314,6 @@ add_action('wp_ajax_hk_search', 'hk_search_func');
 add_action('wp_ajax_nopriv_hk_search', 'hk_search_func');
 
 
-
-/* return current categories most viewed posts (only works if post count plugin is enabled) */
-function hk_view_most_viewed_posts() {
-	global $default_settings;
-
-	/* view most viewed if is sub sub category firstpage and theme setting is set */
-	$most_viewed = hk_get_most_viewed('post', $default_settings["show_most_viewed_in_subsubcat"]);
-
-	if($most_viewed) {
-		$output .= "<div class='most-viewed-posts-wrapper'>";
-		$output .= "<div class='most-viewed-posts'>";
-		foreach ($most_viewed as $post) {
-
-			$post_title = get_the_title($post);
-			if($chars > 0) {
-				$post_title = snippet_text($post_title, $chars);
-			}
-			$post_excerpt = views_post_excerpt($post->post_excerpt, $post->post_content, $post->post_password, 30);
-
-			$output .= "<div class='most-viewed-post'>";
-			$thumb = hk_get_the_post_thumbnail($post->ID, 'thumbnail-image', false, false);
-			$output .= "<a class='$class views-cloud-item' href='" . get_permalink($post) . "' title='$post_excerpt'>";
-
-			if ($thumb != "") :
-				$output .= $thumb;
-			else : /* else default thumb; */
-				$options = get_option("hk_theme");
-				$src = $options["default_thumbnail_image"];
-				if (!empty($src)) :
-				$output .= "<div class='img-wrapper '><div><img class='slide' src='$src' alt='' title='' role='presentation'></div></div>";
-			endif; endif;
-
-
-			$output .= $post_title;
-			$output .= "</a></div>";
-		}
-		$output .= "</div>";
-		$output .= "</div>";
-	} else {
-		$output = '';
-	}
-	return $output;
-}
 
 /*
  * get available image sizes

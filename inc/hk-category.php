@@ -27,13 +27,11 @@
 			<div id="breadcrumb" class="<?php echo ($wp_query->post_count <= 1 && $wp_query->max_num_pages == 1)?"one_article ":""; ?>breadcrumb"><?php hk_breadcrumb(); ?><?php hk_postcount() ?></div>
 
 
-			<?php if ($default_settings["show_most_viewed_in_subsubcat"] > 0 && is_sub_sub_category_firstpage()) {
-				echo hk_view_most_viewed_posts();
-            } //endif show most viewed
+			<?php
         } // end if !is_sub_category_firstpage ?>
 
 	<div id="primary" class="primary">
-        
+
         <div id="content" role="main">
 
         <?php
