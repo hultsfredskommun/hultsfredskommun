@@ -266,11 +266,6 @@ function hk_mobile_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_c
 	}
 
 	wp_nav_menu( $args );
-	/* REMOVED dynamic_sidebar
-	if ( is_active_sidebar( 'right-main-menu-item-sidebar' ) ) {
-		dynamic_sidebar( 'right-main-menu-item-sidebar' );
-	}
-	*/
 	echo "</ul>";
 
 	$parent = hk_getParent($cat);
@@ -379,12 +374,7 @@ function hk_navmenu_old_navigation($menu_name, $cat, $menu_class) {
 	}
 
 	echo "<ul class='main-menu $menu_class'>";
-	echo "<li class='small-words'>".hk_getSmallWords($hk_options["smallwords"])."</li>";
 	wp_nav_menu( $args );
-	if ( is_active_sidebar( 'right-main-menu-item-sidebar' ) ) {
-		dynamic_sidebar( 'right-main-menu-item-sidebar' );
-	}
-
 	echo "</ul>";
 
 	echo "<div class='responsive-sub-menu $menu_class'>";

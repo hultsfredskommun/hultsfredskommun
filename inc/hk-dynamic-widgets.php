@@ -19,13 +19,13 @@ function hk_widgets_init() {
 	register_sidebar( array(
 		'name' => 'Startsidans inneh&aring;ll',
 		'id' => 'firstpage-content',
-		'description' => 'Inneh&aring;ll under toppinnehåll p&aring; startsidan',
+		'description' => 'Inneh&aring;ll under toppinnehï¿½ll p&aring; startsidan',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => 'Startsidans sidof&auml;lt 2 kolumner',
 		'id' => 'firstpage-sidebar-2col',
@@ -35,7 +35,7 @@ function hk_widgets_init() {
 		'before_title' => '<h2 class="widget-title"><span>',
 		'after_title' => '</span></h2>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => 'Startsidans sidof&auml;lt',
 		'id' => 'firstpage-sidebar',
@@ -45,7 +45,7 @@ function hk_widgets_init() {
 		'before_title' => '<h2 class="widget-title"><span>',
 		'after_title' => '</span></h2>',
 	) );
-	
+
 	register_sidebar( array(
 		'name' => 'Startsidans sidof&auml;lt 2',
 		'id' => 'firstpage-sidebar-2',
@@ -150,15 +150,6 @@ function hk_widgets_init() {
 	) );
 	
 	register_sidebar( array(
-		'name' => 'H&ouml;gerst&auml;lld i huvudmeny',
-		'id' => 'right-main-menu-item-sidebar',
-		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i huvudmenyn',
-		'before_widget' => '<li id="%1$s" class="right-nav-menu-item menu-item %2$s">',
-		'after_widget' => "</li>",
-		'before_title' => '<h2 class="widget-title">',
-		'after_title' => '</h2>',
-	) );
-	register_sidebar( array(
 		'name' => 'H&ouml;gerst&auml;lld i huvudmenyns andra niv&aring;',
 		'id' => 'right-main-sub-menu-item-sidebar',
 		'description' => 'Inneh&aring;ll som hamnar h&ouml;gst upp till h&ouml;ger i huvudmenyns andra niv&aring;',
@@ -167,7 +158,7 @@ function hk_widgets_init() {
 		'before_title' => '<h2 class="widget-title">',
 		'after_title' => '</h2>',
 	) );
-	
+
 }
 add_action( 'widgets_init', 'hk_widgets_init' );
 ?>
