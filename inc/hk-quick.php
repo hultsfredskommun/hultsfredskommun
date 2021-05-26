@@ -412,6 +412,12 @@ function load_content_news() {
 			$src = $hk_featured_repeater[0]["hk_featured_image"]["sizes"]["featured-image"];
 			$alt = $hk_featured_repeater[0]["hk_featured_image"]["alt"];
 			$retString .=  "<img src='$src' alt='$alt' />";
+		} else {
+			$options = get_option("hk_theme");
+			$src = $options["default_thumbnail_image"];
+			if (!empty($src)) {
+				$retString .=  "<img src='$src' alt='' />";
+			}
 		}
 
 				 $externalclass = "";
