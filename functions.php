@@ -806,7 +806,7 @@ function add_jsonld_head() {
 				}
 				if ($type_array || $is_news_article) {
 					?>
-					<script type="application/ld+json">
+					<script type="application/ld+json" data-rekai>
 						{
 							"@context": "https://www.schema.org",
 			<?php
