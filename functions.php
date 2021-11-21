@@ -784,26 +784,27 @@ function add_jsonld_head() {
 				$is_news_article = false;
 				if ( is_single() ) {
 					$og_image = hk_get_the_post_thumbnail_og_image(get_the_ID());
-				}
-				if ($posttags) {
-					foreach($posttags as $tag) {
-						if ($tag->name == "Nyheter") {
-							$is_news_article = true;
+					if ($posttags) {
+						foreach($posttags as $tag) {
+							if ($tag->name == "Nyheter") {
+								$is_news_article = true;
+							}
+							$type_array[] = $tag->slug;
 						}
-			  		$type_array[] = $tag->slug;
 					}
-				}
-				if ($postcats) {
-					foreach($postcats as $cat) {
-						$parentcats = hk_get_parent_categories_from_cat($cat->cat_ID);
-						$catname = get_category($parentcats[0])->slug;
-						if ($catname != "" && !in_array($catname,$type_array) ) { $type_array[] = $catname; }
-						$catname = get_category($parentcats[1])->slug;
-						if ($catname != "" && !in_array($catname,$type_array) ) { $type_array[] = $catname; }
-			  		$catname = $cat->slug;
-						if ($catname != "" && !in_array($catname,$type_array) ) { $type_array[] = $catname; }
+					if ($postcats) {
+						foreach($postcats as $cat) {
+							$parentcats = hk_get_parent_categories_from_cat($cat->cat_ID);
+							$catname = get_category($parentcats[0])->slug;
+							if ($catname != "" && !in_array($catname,$type_array) ) { $type_array[] = $catname; }
+							$catname = get_category($parentcats[1])->slug;
+							if ($catname != "" && !in_array($catname,$type_array) ) { $type_array[] = $catname; }
+							$catname = $cat->slug;
+							if ($catname != "" && !in_array($catname,$type_array) ) { $type_array[] = $catname; }
+						}
 					}
-				}
+				} 
+				
 				if ($type_array || $is_news_article) {
 					?>
 					<script type="application/ld+json" data-rekai>
