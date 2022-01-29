@@ -285,8 +285,8 @@ if (window.location.href.indexOf("artikel") > -1) {
                     $(this).parents("article").removeClass("full").addClass("summary");
 
                     $(this).parents("article").find('.summary-content').slideDown(0, function() {
-                        if ($(document).scrollTop() > $(this).parents("article").position().top - $('#wpadminbar').height() || 0) {
-                            $("html,body").animate({ scrollTop: -30 + $(this).parents("article").position().top - ($('#wpadminbar').height() || 0) }, 200);
+                        if ($(document).scrollTop() > $(this).parents("article").position().top) {
+                            $("html,body").animate({ scrollTop: $(this).parents("article").position().top }, 200);
                         }
                     });
 
@@ -313,7 +313,7 @@ if (window.location.href.indexOf("artikel") > -1) {
 
 
                         // animate to top of article
-                        $("html,body").animate({ scrollTop: -30 + $(this).parents("article").position().top - $('#wpadminbar').height() || 0 }, 200);
+                        $("html,body").animate({ scrollTop: $(this).parents("article").position().top }, 200);
 
                         if ($(this).parents("article").find(".js-close-button").length >= 1)
                             $(this).parents("article").find(".js-close-button").remove();
@@ -579,8 +579,6 @@ if (window.location.href.indexOf("artikel") > -1) {
             }
         });
 
-
-        var wpadminbarheight = $("#wpadminbar").height();
 
         //Stores the window-width for later use
         oldWidth = $(window).width();
@@ -1043,7 +1041,7 @@ function erase_and_refocus_on_search_input()
         }
         $(el).find(".js-quick-link a").click(function(ev) {
             ev.preventDefault();
-            $("html,body").animate({ scrollTop: -30 + $("[name='" + $(this).attr("href").substring(1) + "']").position().top - ($('#wpadminbar').height() || 0) }, 200);
+            $("html,body").animate({ scrollTop: $("[name='" + $(this).attr("href").substring(1) + "']").position().top }, 200);
         });
     }
 
