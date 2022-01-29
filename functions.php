@@ -616,7 +616,8 @@ function hk_enqueue_scripts() {
 		}
 		if (isset($hk_options['readspeaker_id']) && $hk_options['readspeaker_id'] != "") {
 			//$readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
-			$readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/webReader/webReader.js?pids=wr';
+			// $readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/webReader/webReader.js?pids=wr';
+			$readspeaker_url = '//cdn-eu.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/webReader/webReader.js?pids=wr';
 
 			wp_enqueue_script(
 				'readspeaker_js',
