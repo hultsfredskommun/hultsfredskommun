@@ -144,7 +144,7 @@ function hk_view_quick_links() {
 								$the_query->reset_postdata();
 
 							/* END NEWS */
-							$retValue .= "</></div>";
+							$retValue .= "</div></div>";
 						endif; // if not inactive
 
 					elseif(get_row_layout() == "lagg_till_code"):
