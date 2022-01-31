@@ -456,7 +456,7 @@ function load_content_news() {
 			$options = get_option("hk_theme");
 			$src = $options["default_thumbnail_image"];
 			if (!empty($src)) {
-				$retString .=  "<img src='$src' alt='' />";
+				$retString .=  "<img src='$src' alt='' role='presentation' />";
 			}
 		}
 
