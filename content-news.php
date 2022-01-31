@@ -26,7 +26,7 @@ if (empty($thumb_size)) {
 						$src = $options["default_thumbnail_image"];
 						if (!empty($src)) :
 						?>
-						<div class="img-wrapper "><div><img class="slide" src="<?php echo $src; ?>" alt=""></div></div>
+						<div class="img-wrapper "><div><img class="slide" src="<?php echo $src; ?>" alt="" role="presentation"></div></div>
 					<?php endif; /*end empty */ endif; /* end else default thumb */ endif; /* end thumb_size != none */ ?>
 					<?php
 					$externalclass = "";

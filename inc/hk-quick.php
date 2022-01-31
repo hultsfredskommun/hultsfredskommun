@@ -65,7 +65,44 @@ function hk_view_quick_links() {
 
 			if (get_field('hk_quick_link')) :
 				while (has_sub_field('hk_quick_link')) :
-					if(get_row_layout() == "lagg_till_news"):
+					if(get_row_layout() == "lagg_till_rekai"):
+						if (!get_sub_field('inactive')) :
+
+							/* get layout */
+							$layout = get_sub_field('layout');
+							switch($layout) {
+								case 'one-whole': $row_width += 100; break;
+								case 'one-half':
+								case 'two-quarters': $row_width += 50; break;
+								case 'one-third': $row_width += 33; break;
+								case 'two-thirds': $row_width += 67; break;
+								case 'one-quarter': $row_width += 25; break;
+								case 'three-quarters': $row_width += 75; break;
+								case 'one-fifth': $row_width += 20; break;
+								case 'two-fifths': $row_width += 40; break;
+								case 'three-fifths': $row_width += 60; break;
+								case 'four-fifths': $row_width += 80; break;
+							}
+
+							$retValue .= "<div class='quick-post $layout quick-rekai'><div>";
+
+							/* rekai */
+							$css_wrapper = get_sub_field('css-wrapper');
+							$category = get_term(get_query_var("cat"), 'category');
+							$category_slug = ($category && !is_wp_error( $category )) ? $category->slug : "";
+							$retValue .= "<style>$css_wrapper</style>";
+							$title = get_sub_field('title');
+							if (!empty($title)) {
+								$retValue .= "<h2>$title</h2>";
+							}
+
+							$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-addstripes='false' data-nrofhits='7' data-pagetype='$category_slug' data-notpagetype='NewsArticle'></div>";
+
+
+							$retValue .= "</div></div>";
+						endif; // if not inactive
+
+					elseif(get_row_layout() == "lagg_till_news"):
 						if (!get_sub_field('inactive')) :
 
 							/* get layout */
@@ -411,12 +448,15 @@ function load_content_news() {
 
 			$src = $hk_featured_repeater[0]["hk_featured_image"]["sizes"]["featured-image"];
 			$alt = $hk_featured_repeater[0]["hk_featured_image"]["alt"];
+			if ($alt == '') {
+				$alt = $hk_featured_repeater[0]["hk_featured_image"]["title"];
+			}
 			$retString .=  "<img src='$src' alt='$alt' />";
 		} else {
 			$options = get_option("hk_theme");
 			$src = $options["default_thumbnail_image"];
 			if (!empty($src)) {
-				$retString .=  "<img src='$src' alt='' />";
+				$retString .=  "<img src='$src' alt='' role='presentation' />";
 			}
 		}
 

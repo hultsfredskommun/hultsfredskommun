@@ -26,7 +26,7 @@ $classes .= ($external_blog)?" externalblog":"";
 						$src = $options["default_thumbnail_image"];
 						if (!empty($src)) :
 						?>
-						<div class="img-wrapper "><div><img class="slide" src="<?php echo $src; ?>" alt=""></div></div>
+						<div class="img-wrapper "><div><img class="slide" src="<?php echo $src; ?>" alt="" role="presentation"></div></div>
 					<?php endif; endif;/*endif;*/ ?>
 					<?php
 					$externalclass = "";
