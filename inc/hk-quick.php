@@ -88,6 +88,7 @@ function hk_view_quick_links() {
 
 							/* rekai */
 							$css_wrapper = get_sub_field('css-wrapper');
+							$nrofhits = get_sub_field('nrofhits');
 							$category = get_term(get_query_var("cat"), 'category');
 							$category_slug = ($category && !is_wp_error( $category )) ? $category->slug : "";
 							$retValue .= "<style>$css_wrapper</style>";
@@ -96,7 +97,7 @@ function hk_view_quick_links() {
 								$retValue .= "<h2>$title</h2>";
 							}
 
-							$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-addstripes='false' data-nrofhits='7' data-pagetype='$category_slug' data-notpagetype='NewsArticle'></div>";
+							$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-addstripes='false' data-nrofhits='$nrofhits' data-pagetype='$category_slug' data-notpagetype='NewsArticle'></div>";
 
 
 							$retValue .= "</div></div>";

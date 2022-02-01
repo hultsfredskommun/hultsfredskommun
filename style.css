@@ -23,6 +23,29 @@ Text Domain: hultsfredskommun
   }
 }
 
+/* rek.ai */
+.rek-prediction .rek-style-cols ul {
+    padding-left: 0px;
+}
+.rek-prediction .rek-style-cols ul li {
+    padding: 4px 25px 4px 18px;
+    flex-basis: auto; /*25%;*/
+    align-items: flex-start;
+}
+.rek-prediction .rek-style-cols ul li a {
+    position: relative;
+}
+.rek-prediction .rek-style-cols ul li a:before {
+    content: '';
+    position: absolute;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    left: -21px;
+    transform: translateY(-50%) rotate(-45deg);
+}
 
 /* readspeaker */
 .rsbtn.rsexpanded .rsbtn_exp .rsbtn_exp_inner {
