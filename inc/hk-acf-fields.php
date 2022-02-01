@@ -130,18 +130,9 @@ acf_add_local_field_group(array (
 
 							'choices' => array (
 								'one-whole' => 'Fullbredd',
-								'one-half' => 'En halv',
-								'one-third' => 'En tredjedel',
-								'two-thirds' => 'Två tredjedelar',
-								'one-quarter' => 'En fjärdedel',
-								'two-quarters' => 'Två fjärdedelar',
-								'three-quarters' => 'Tre fjärdedelar',
-								'one-fifth' => 'En femtedel',
-								'two-fifths' => 'Två femtedelar',
-								'three-fifths' => 'Tre femtedelar',
-								'four-fifths' => 'Fyra femtedelar',
 							),
 							'default_value' => array (
+								'one-whole'
 							),
 							'allow_null' => 0,
 							'multiple' => 0,
