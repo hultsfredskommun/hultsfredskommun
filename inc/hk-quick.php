@@ -97,7 +97,7 @@ function hk_view_quick_links() {
 								$retValue .= "<h2>$title</h2>";
 							}
 
-							$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-addstripes='false' data-nrofhits='$nrofhits' data-pagetype='$category_slug' data-notpagetype='NewsArticle'></div>";
+							$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-addstripes='false' data-nrofhits='$nrofhits' data-pagetype='$category_slug' data-notpagetype='NewsArticle,ContactPoint'></div>";
 
 
 							$retValue .= "</div></div>";
