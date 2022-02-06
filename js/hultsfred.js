@@ -424,7 +424,7 @@ if (window.location.href.indexOf("artikel") > -1) {
                 }
 
                 //set quick-links to related and contact
-                setQuickLinks($(el).parents("article"));
+                //setQuickLinks($(el).parents("article"));
 
                 // set click action on content header tools
                 if (typeof addthis != "undefined") {
@@ -603,7 +603,7 @@ if (window.location.href.indexOf("artikel") > -1) {
         /**
          * set quick-links to related and contact
          */
-        setQuickLinks($(document));
+        //setQuickLinks($(document));
 
         /**
          * set click action on content header tools
@@ -1030,7 +1030,7 @@ function erase_and_refocus_on_search_input()
     /**
      * article actions to be set when ready and when dynamic loading
      */
-
+    /*
     function setQuickLinks(el) {
 
         if ($(el).find(".contact_title").length > 0) {
@@ -1044,6 +1044,7 @@ function erase_and_refocus_on_search_input()
             $("html,body").animate({ scrollTop: $("[name='" + $(this).attr("href").substring(1) + "']").position().top }, 200);
         });
     }
+    */
 
     function setArticleActions(el) {
         //add filtersearch
