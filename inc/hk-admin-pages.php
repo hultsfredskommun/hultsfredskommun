@@ -58,6 +58,17 @@ function hk_save_post($postID) {
 				$ret = wp_set_post_categories( get_the_ID(), $arr );
 			}
 		}
+		
+		// set to draft if hidden_cat is set
+		$arr = wp_get_post_categories(get_the_ID());
+		if (in_array($options["hidden_cat"], $arr)) {
+			// set status to draft
+			remove_action('save_post', 'hk_save_post'); // remove action temp to avoid recursion of save event
+			$post = array( 'ID' => get_the_ID(), 'post_status' => 'draft' );
+			wp_update_post($post);
+			add_action('save_post', 'hk_save_post');
+		}
+
 	endif;
 }
 add_action('save_post', 'hk_save_post');
