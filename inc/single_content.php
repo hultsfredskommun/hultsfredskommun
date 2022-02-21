@@ -25,6 +25,7 @@
 
 			require("hk-article-header.php");
 			?>
+			<?php /*
 			<div class="quick-links">
 				<span class="contact quick-link js-quick-link force-hidden">
 					<a class="contact-small-icon icon" href="#quick-contact-<?php the_ID(); ?>" title='G&aring; direkt till kontaktinformation'></a>
@@ -33,6 +34,7 @@
 					<a class="related-small-icon icon" href="#quick-related-<?php the_ID(); ?>" title='G&aring; direkt till relaterad information'></a>
 				</span>
 			</div>
+			*/ ?>
 			<h1 class="entry-title"><span><?php the_title(); ?></span></h1>
 			<!-- LOCAL SCRIPT //-->
 			<?php

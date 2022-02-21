@@ -272,6 +272,10 @@ function hk_stop_publish_job() {
 				$arr[] = $options["hidden_cat"];
 				$ret = wp_set_post_categories( get_the_ID(), $arr );
 
+				// set status to draft
+				$post = array( 'ID' => get_the_ID(), 'post_status' => 'draft' );
+				wp_update_post($post);
+
 				$log .= "Post " . get_the_ID() . " " . get_the_title() . " is set to hidden_cat : ".print_r($ret,true) . "\n";
 			}
 

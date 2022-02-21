@@ -84,7 +84,7 @@ function hk_view_quick_links() {
 								case 'four-fifths': $row_width += 80; break;
 							}
 
-							$retValue .= "<div class='quick-post $layout quick-rekai'><div>";
+							$retValue .= "<div class='quick-post $layout'><div class='quick-rekai'>";
 
 							/* rekai */
 							$css_wrapper = get_sub_field('css-wrapper');
@@ -97,7 +97,7 @@ function hk_view_quick_links() {
 								$retValue .= "<h2>$title</h2>";
 							}
 
-							$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-addstripes='false' data-nrofhits='$nrofhits' data-pagetype='$category_slug' data-notpagetype='NewsArticle'></div>";
+							$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-addstripes='false' data-nrofhits='$nrofhits' data-pagetype='$category_slug' data-notpagetype='nyheter,kontakter'></div>";
 
 
 							$retValue .= "</div></div>";
@@ -400,9 +400,9 @@ function get_quick_news( $args ) {
 			//get_template_part( 'content', 'news' );
 			$retString .= load_content_news();
 
-			if (++$countrows%$num_news_cols == 0) {
-					$retString .= "<div style='clear:both' class='one-whole'></div>";
-			}
+			// if (++$countrows%$num_news_cols == 0) {
+			// 		$retString .= "<div style='clear:both' class='one-whole'></div>";
+			// }
 		endwhile;
 		//$quick_new_loop->reset_postdata();
 	endif;
@@ -419,15 +419,16 @@ function get_quick_news( $args ) {
 	$after_newslist2 = "";
 
 	$after_newslist .= '<span class="read-more-link inline"><a class="gtm-fpcw-news-archive-link" href="' . get_tag_link($default_settings["news_tag"]) . '">Nyhetsarkiv<span class="right-icon"></span></a></span>';
-
+	
 	if ($rss_link_url != "" && $rss_link_text != "") {
 		$after_newslist .= "<a href='$rss_link_url' class='gtm-fpcw-rss-link read-more-link rss inline float--right'>$rss_link_text</a>";
 	}
-
+	
 	$retString .= $after_newslist;
+	
+	$retString .= "</div>";
 
-
-	$retString .= "</div><!-- END #newscontent --></div><!-- END .newscontent-wrapper -->";
+	$retString .= "<!-- END #newscontent --></div><!-- END .newscontent-wrapper -->";
 
 	return $retString;
 }
