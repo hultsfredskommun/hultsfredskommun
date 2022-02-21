@@ -659,7 +659,7 @@ function hk_menu_navigation() {
 				}
 			}
 
-			hk_displayAllTagFilter();
+			hk_displayTagFilter();
 		}
 	}
 
@@ -699,7 +699,7 @@ function hk_menu_navigation() {
 		wp_list_categories( $args );
 		echo "</ul>";
 
-		hk_displayAllTagFilter();
+		hk_displayTagFilter();
 
 	}
 
@@ -1062,46 +1062,51 @@ function hk_getCategoryTags($varcat = "") {
 
 	//$cat_ids = array($varcat);
 	//$cat_ids = hk_getChildrenIdArray(hk_getMenuParent($varcat)); // get closes menu parent
+	$transient_name = 'hk_getcategorytags_' . $varcat;
+	if ( false === ( $category_tags = get_transient( $transient_name ) ) ) {
+		// Use the data like you would have normally...
+		$cat_ids = hk_getChildrenIdArray($varcat); // get child ids
+		$cat_ids[] = $varcat; // add current id
+		$varcat_where_or = "";
+		if ($varcat != "") {
+			$varcat_where_or = "(1 = 0 \n";
+			foreach($cat_ids as $cat_id) :
+				$varcat_where_or .= "OR terms1.term_ID = '$cat_id' \n";
+			endforeach;
+			$varcat_where_or .= " ) AND ";
+		}
+		$hidden_cat = $hidden_cat1 = $hidden_cat2 = "";
+		if ($default_settings["hidden_cat"] != "") {
+			$hidden_cat = $default_settings["hidden_cat"];
+		}
 
-	$cat_ids = hk_getChildrenIdArray($varcat); // get child ids
-	$cat_ids[] = $varcat; // add current id
-	$varcat_where_or = "";
-	if ($varcat != "") {
-		$varcat_where_or = "(1 = 0 \n";
-		foreach($cat_ids as $cat_id) :
-			$varcat_where_or .= "OR terms1.term_ID = '$cat_id' \n";
-		endforeach;
-		$varcat_where_or .= " ) AND ";
+		$query = "SELECT DISTINCT
+			terms2.term_id as tag_ID,
+			terms2.name as tag_name,
+			terms2.slug as tag_slug
+			FROM
+				$wpdb->posts as p1
+				LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish' AND p1.post_type = 'post'
+				LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id AND t1.taxonomy = 'category'
+				LEFT JOIN $wpdb->terms as terms1 ON t1.term_id = terms1.term_id,
+
+				$wpdb->posts as p2
+				LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID AND p2.post_status = 'publish' AND p2.post_type = 'post'
+				LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id AND t2.taxonomy = 'post_tag'
+				LEFT JOIN $wpdb->terms as terms2 ON t2.term_id = terms2.term_id
+			WHERE (
+				$varcat_where_or
+				terms2.term_id IS NOT NULL AND
+				p1.ID = p2.ID AND
+				p1.ID NOT IN (SELECT p3.ID FROM $wpdb->posts as p3
+					LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
+					WHERE r3.term_taxonomy_ID = '$hidden_cat')      )
+			ORDER BY tag_name
+					";
+		$category_tags = $wpdb->get_results($query);
+		set_transient( $transient_name, $category_tags, 12 * HOUR_IN_SECONDS );
+
 	}
-	$hidden_cat = $hidden_cat1 = $hidden_cat2 = "";
-	if ($default_settings["hidden_cat"] != "") {
-		$hidden_cat = $default_settings["hidden_cat"];
-	}
-
-	$query = "SELECT DISTINCT
-	       terms2.term_id as tag_ID,
-	       terms2.name as tag_name,
-	       terms2.slug as tag_slug
-	       FROM
-		       $wpdb->posts as p1
-		       LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID AND p1.post_status = 'publish' AND p1.post_type = 'post'
-		       LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id AND t1.taxonomy = 'category'
-		       LEFT JOIN $wpdb->terms as terms1 ON t1.term_id = terms1.term_id,
-
-		       $wpdb->posts as p2
-		       LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID AND p2.post_status = 'publish' AND p2.post_type = 'post'
-		       LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id AND t2.taxonomy = 'post_tag'
-		       LEFT JOIN $wpdb->terms as terms2 ON t2.term_id = terms2.term_id
-	       WHERE (
-		     $varcat_where_or
-			 terms2.term_id IS NOT NULL AND
-		     p1.ID = p2.ID AND
-		     p1.ID NOT IN (SELECT p3.ID FROM $wpdb->posts as p3
-			     LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
-			     WHERE r3.term_taxonomy_ID = '$hidden_cat')      )
-		   ORDER BY tag_name
-			     ";
-	$category_tags = $wpdb->get_results($query);
 	return $category_tags;
 }
 
