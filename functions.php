@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "8.1");
+define("HK_VERSION", "8.2");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -576,6 +576,12 @@ add_action('acf/init', 'hk_acf_init');
 function hk_enqueue_scripts() {
 	$hk_options = get_option("hk_theme");
 	if (!is_admin()) {
+
+		wp_enqueue_style( 'hk-parent-style',
+			get_template_directory_uri() . "/style.css",
+			array(),
+			HK_VERSION
+		);
 
 		wp_enqueue_style( 'hk-style',
 			get_bloginfo( 'stylesheet_url' ),

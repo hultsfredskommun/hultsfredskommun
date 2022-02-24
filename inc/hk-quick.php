@@ -65,7 +65,45 @@ function hk_view_quick_links() {
 
 			if (get_field('hk_quick_link')) :
 				while (has_sub_field('hk_quick_link')) :
-					if(get_row_layout() == "lagg_till_rekai"):
+					if (get_sub_field('inactive')) :
+						continue;
+					endif;
+
+					if(get_row_layout() == "lagg_till_tags"):
+
+						/* get layout */
+						$layout = get_sub_field('layout');
+						switch($layout) {
+							case 'one-whole': $row_width += 100; break;
+							case 'one-half':
+							case 'two-quarters': $row_width += 50; break;
+							case 'one-third': $row_width += 33; break;
+							case 'two-thirds': $row_width += 67; break;
+							case 'one-quarter': $row_width += 25; break;
+							case 'three-quarters': $row_width += 75; break;
+							case 'one-fifth': $row_width += 20; break;
+							case 'two-fifths': $row_width += 40; break;
+							case 'three-fifths': $row_width += 60; break;
+							case 'four-fifths': $row_width += 80; break;
+						}
+
+						$retValue .= "<div class='quick-post $layout'><div class='quick-tags'>";
+
+						/* rekai */
+						$css_wrapper = get_sub_field('css-wrapper');
+						$category = get_term(get_query_var("cat"), 'category');
+						$retValue .= "<style>$css_wrapper</style>";
+						$title = get_sub_field('title');
+						if (!empty($title)) {
+							$retValue .= "<h2>$title</h2>";
+						}
+						$retValue .= hk_displayTagFilter(false, 'tags-list', false, "", $category->term_id, false);
+						
+
+
+						$retValue .= "</div></div>";
+
+					elseif(get_row_layout() == "lagg_till_rekai"):
 						if (!get_sub_field('inactive')) :
 
 							/* get layout */
