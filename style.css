@@ -24,6 +24,7 @@ Text Domain: hultsfredskommun
 }
 
 /* rek.ai */
+.quick-tags,
 .quick-rekai {
   background: #f5f5f5;
   border: 1px solid #ddd;
@@ -32,17 +33,37 @@ Text Domain: hultsfredskommun
   /* margin-left: 24px; */
   /* width: calc(100% - 24px); */
 }
-.rek-prediction .rek-style-cols ul {
-    padding-left: 0px;
+
+/* link list */
+.quick-links ul {
+  list-style: none;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
 }
+
+/* ul list with border */
+.quick-tags ul,
+.rek-prediction .rek-style-cols ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+.quick-tags ul li,
 .rek-prediction .rek-style-cols ul li {
     padding: 4px 25px 4px 18px;
     flex-basis: auto; /*25%;*/
     align-items: flex-start;
 }
+.quick-tags ul li a,
 .rek-prediction .rek-style-cols ul li a {
     position: relative;
 }
+.quick-tags ul li a:before,
 .rek-prediction .rek-style-cols ul li a:before {
     content: '';
     position: absolute;

@@ -39,6 +39,11 @@ function hk_save_post($postID) {
 	global $default_settings;
 	$options = get_option("hk_theme");
 
+	// skip check if trash
+	$post = get_post($postID);
+	if ( 'trash' === $post->post_status ) {
+        return;
+    }
 
 
 	// TODO
