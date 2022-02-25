@@ -67,6 +67,287 @@ acf_add_local_field_group(array (
 			'max' => '',
 			'layouts' => array (
 				array (
+					'key' => '56bb0a25a45555',
+					'name' => 'lagg_till_links',
+					'label' => 'L&auml;nkar',
+					'display' => 'block',
+					'sub_fields' => array (
+
+
+
+						array (
+							'key' => 'field_56cc0a2e65555',
+							'label' => 'Rubrik',
+							'name' => 'title',
+							'type' => 'text',
+							'instructions' => 'Rubrik som syns över listan.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '50%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array (
+							'key' => 'field_56cc104205555',
+							'label' => 'Layout',
+							'name' => 'layout',
+							'type' => 'select',
+							'instructions' => 'Hur stor del av skärmen som puffen använda.',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '50%',
+								'class' => '',
+								'id' => '',
+							),
+
+							'choices' => array (
+								'one-whole' => 'Fullbredd',
+								'one-half' => 'En halv',
+								'one-third' => 'En tredjedel',
+								'two-thirds' => 'Två tredjedelar',
+								'one-quarter' => 'En fjärdedel',
+								'two-quarters' => 'Två fjärdedelar',
+								'three-quarters' => 'Tre fjärdedelar',
+								'one-fifth' => 'En femtedel',
+								'two-fifths' => 'Två femtedelar',
+								'three-fifths' => 'Tre femtedelar',
+								'four-fifths' => 'Fyra femtedelar',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+
+
+
+
+
+
+
+
+
+
+
+						array(
+							'key' => 'field_6217ded68a2e9',
+							'label' => 'Länk',
+							'name' => 'link_wrapper',
+							'type' => 'repeater',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '100%',
+								'class' => '',
+								'id' => '',
+							),
+							'collapsed' => '',
+							'min' => 0,
+							'max' => 0,
+							'layout' => 'table',
+							'button_label' => '',
+							'sub_fields' => array(
+								array(
+									'key' => 'field_621891088cace',
+									'label' => 'title',
+									'name' => 'title',
+									'type' => 'text',
+									'instructions' => '',
+									'required' => 0,
+									'conditional_logic' => 0,
+									'wrapper' => array(
+										'width' => '',
+										'class' => '',
+										'id' => '',
+									),
+									'default_value' => '',
+									'placeholder' => '',
+									'prepend' => '',
+									'append' => '',
+									'maxlength' => '',
+								),
+								array(
+									'key' => 'field_6217dee58a2ea',
+									'label' => 'link',
+									'name' => 'link',
+									'type' => 'flexible_content',
+									'instructions' => '',
+									'required' => 0,
+									'conditional_logic' => 0,
+									'wrapper' => array(
+										'width' => '',
+										'class' => '',
+										'id' => '',
+									),
+									'layouts' => array(
+										'layout_6218944019389' => array(
+											'key' => 'layout_6218944019389',
+											'name' => 'extern',
+											'label' => 'Extern',
+											'display' => 'block',
+											'sub_fields' => array(
+												array(
+													'key' => 'field_62189276087b9',
+													'label' => 'Extern',
+													'name' => 'extern',
+													'type' => 'text',
+													'instructions' => '',
+													'required' => 0,
+													'conditional_logic' => 0,
+													'wrapper' => array(
+														'width' => '',
+														'class' => '',
+														'id' => '',
+													),
+													'default_value' => '',
+													'placeholder' => '',
+													'prepend' => '',
+													'append' => '',
+													'maxlength' => '',
+												),
+											),
+											'min' => '',
+											'max' => '',
+										),
+										'layout_621894853ba82' => array(
+											'key' => 'layout_621894853ba82',
+											'name' => 'inlagg',
+											'label' => 'Inlägg',
+											'display' => 'block',
+											'sub_fields' => array(
+												array(
+													'key' => 'field_621894853ba83',
+													'label' => 'Inlägg',
+													'name' => 'inlagg',
+													'type' => 'page_link',
+													'instructions' => '',
+													'required' => 0,
+													'conditional_logic' => 0,
+													'wrapper' => array(
+														'width' => '',
+														'class' => '',
+														'id' => '',
+													),
+													'post_type' => array(
+														0 => 'post',
+													),
+													'taxonomy' => '',
+													'allow_null' => 0,
+													'allow_archives' => 1,
+													'multiple' => 0,
+												),
+											),
+											'min' => '',
+											'max' => '',
+										),
+										'layout_621894ad3ba84' => array(
+											'key' => 'layout_621894ad3ba84',
+											'name' => 'kategori',
+											'label' => 'Kategori',
+											'display' => 'block',
+											'sub_fields' => array(
+												array(
+													'key' => 'field_621894ad3ba85',
+													'label' => 'Kategori',
+													'name' => 'kategori',
+													'type' => 'taxonomy',
+													'instructions' => '',
+													'required' => 0,
+													'conditional_logic' => 0,
+													'wrapper' => array(
+														'width' => '',
+														'class' => '',
+														'id' => '',
+													),
+													'taxonomy' => 'category',
+													'field_type' => 'select',
+													'allow_null' => 0,
+													'add_term' => 0,
+													'save_terms' => 0,
+													'load_terms' => 0,
+													'return_format' => '',
+													'multiple' => 0,
+												),
+											),
+											'min' => '',
+											'max' => '',
+										),
+									),
+									'button_label' => 'Lägg till länk',
+									'min' => 1,
+									'max' => 1,
+								),
+							),
+						),
+
+
+
+
+
+
+
+
+
+
+
+
+
+						array (
+							'key' => 'field_56eabc5e155555',
+							'label' => 'D&ouml;lj puff',
+							'name' => 'inactive',
+							'type' => 'true_false',
+							'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '50%',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
+						),
+						array (
+							'key' => 'field_12e40a2e65555',
+							'label' => 'Css',
+							'name' => 'css-wrapper',
+							'type' => 'textarea',
+							'instructions' => 'Style för att sätta utseende på wrapper',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '50%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+					)
+				),
+				array (
 					'key' => '56bb0a25a45544',
 					'name' => 'lagg_till_tags',
 					'label' => 'Etiketter',
@@ -152,7 +433,7 @@ acf_add_local_field_group(array (
 							'label' => 'Css',
 							'name' => 'css-wrapper',
 							'type' => 'textarea',
-							'instructions' => 'Style för att sätta utseende på nyhets-wrapper',
+							'instructions' => 'Style för att sätta utseende på wrapper',
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
@@ -345,30 +626,6 @@ acf_add_local_field_group(array (
 							'message' => '',
 							'default_value' => 0,
 						),
-/*
-						array (
-							'key' => 'field_56cc0a2e61890',
-							'label' => 'Nyhet',
-							'name' => 'code',
-							'type' => 'textarea',
-							'instructions' => 'HTML-kod',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '100%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'maxlength' => '',
-							'readonly' => 0,
-							'disabled' => 0,
-						),
-*/
-
 					array (
 						'key' => 'field_12e40a2e6189b',
 						'label' => 'Css',
@@ -724,7 +981,7 @@ acf_add_local_field_group(array (
 											'label' => 'Extern URL',
 											'name' => 'extern',
 											'type' => 'text',
-											'instructions' => 'Ange URL till extern sida, inklusive http://',
+											'instructions' => 'Ange URL till extern sida, inklusive https://',
 											'required' => 0,
 											'conditional_logic' => 0,
 											'wrapper' => array (

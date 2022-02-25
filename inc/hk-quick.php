@@ -69,7 +69,79 @@ function hk_view_quick_links() {
 						continue;
 					endif;
 
-					if(get_row_layout() == "lagg_till_tags"):
+					if(get_row_layout() == "lagg_till_links"):
+
+						/* get layout */
+						$layout = get_sub_field('layout');
+						switch($layout) {
+							case 'one-whole': $row_width += 100; break;
+							case 'one-half':
+							case 'two-quarters': $row_width += 50; break;
+							case 'one-third': $row_width += 33; break;
+							case 'two-thirds': $row_width += 67; break;
+							case 'one-quarter': $row_width += 25; break;
+							case 'three-quarters': $row_width += 75; break;
+							case 'one-fifth': $row_width += 20; break;
+							case 'two-fifths': $row_width += 40; break;
+							case 'three-fifths': $row_width += 60; break;
+							case 'four-fifths': $row_width += 80; break;
+						}
+
+						$retValue .= "<div class='quick-post $layout'><div class='quick-links'>";
+
+						$css_wrapper = get_sub_field('css-wrapper');
+						$category = get_term(get_query_var("cat"), 'category');
+						$retValue .= "<style>$css_wrapper</style>";
+						$title = get_sub_field('title');
+						if (!empty($title)) {
+							$retValue .= "<h2>$title</h2>";
+						}
+						$retValue .= "";
+						
+						/* get link to content */
+						if (get_sub_field('link_wrapper')) :
+							$retValue .= '<ul>';
+							while (has_sub_field('link_wrapper')) :
+								$title = $url = '';
+								$title = get_sub_field('title');
+								
+		
+								if (get_sub_field('link')) :
+									while (has_sub_field('link')) :
+										if ( get_row_layout() == 'inlagg' ) {
+											$url = get_sub_field('inlagg');
+										}
+										elseif ( get_row_layout() == 'extern' ) {
+											// prepend http:// if not there already
+											$url = get_sub_field('extern');
+											if ((substr_compare($url, '/', 0, 1) != 0) && (substr_compare($url, 'http', 0, 4) != 0)) {
+												$url = 'https://' . $url;
+											}
+										}
+										elseif ( get_row_layout() == 'kategori' ) {
+											$url = get_category_link(get_sub_field('kategori'));
+										}
+										// elseif ( get_row_layout() == 'fil' ) {
+										// 	$value = get_sub_field('file');
+										// 	if (!empty($value)) {
+										// 		if (empty($description)) {
+										// 			$description = $value["description"];
+										// 		}
+										// 		$url = $value["url"];
+										// 	}
+										// }
+									endwhile;
+								endif;
+							// if (!empty($title) && !empty($url)) {
+								$retValue .= "<li><a class='gtm-quick-link' href='$url'>$title</a></li>";
+							// }
+
+							endwhile;
+							$retValue .= '</ul>';
+						endif;
+						$retValue .= "</div></div>";
+
+					elseif(get_row_layout() == "lagg_till_tags"):
 
 						/* get layout */
 						$layout = get_sub_field('layout');
@@ -89,7 +161,6 @@ function hk_view_quick_links() {
 
 						$retValue .= "<div class='quick-post $layout'><div class='quick-tags'>";
 
-						/* rekai */
 						$css_wrapper = get_sub_field('css-wrapper');
 						$category = get_term(get_query_var("cat"), 'category');
 						$retValue .= "<style>$css_wrapper</style>";
@@ -104,7 +175,6 @@ function hk_view_quick_links() {
 						$retValue .= "</div></div>";
 
 					elseif(get_row_layout() == "lagg_till_rekai"):
-						if (!get_sub_field('inactive')) :
 
 							/* get layout */
 							$layout = get_sub_field('layout');
@@ -139,7 +209,6 @@ function hk_view_quick_links() {
 
 
 							$retValue .= "</div></div>";
-						endif; // if not inactive
 
 					elseif(get_row_layout() == "lagg_till_news"):
 						if (!get_sub_field('inactive')) :

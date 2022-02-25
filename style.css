@@ -33,6 +33,16 @@ Text Domain: hultsfredskommun
   /* margin-left: 24px; */
   /* width: calc(100% - 24px); */
 }
+
+/* link list */
+.quick-links ul {
+  list-style: none;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+}
+
+/* ul list with border */
 .quick-tags ul,
 .rek-prediction .rek-style-cols ul {
     display: flex;
