@@ -36,6 +36,8 @@ Text Domain: hultsfredskommun
 .quick-tags ul,
 .rek-prediction .rek-style-cols ul {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     list-style: none;
     padding-left: 0px;
     margin-left: 0px;
