@@ -85,6 +85,11 @@ Text Domain: hultsfredskommun
   background: white!important;
 }
 
+/* iframe mobile */
+iframe {
+  max-width: 100%;
+}
+
 /* bug fixes */
 @media only screen and (max-width: 541px) {
 #main {
