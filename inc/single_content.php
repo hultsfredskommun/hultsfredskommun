@@ -36,6 +36,19 @@
 			</div>
 			*/ ?>
 			<h1 class="entry-title"><span><?php the_title(); ?></span></h1>
+			<?php
+			global $default_settings;
+
+				// if news
+				if (!empty($default_settings["news_tag"]) && has_tag($default_settings["news_tag"])) {
+					$published = get_the_date("Y-m-d");
+					$modified = get_the_modified_date("Y-m-d");
+					
+					$modified = ($published != $modified) ? "<span class='modified-date'>Uppdaterad: $modified</span>" : '';
+					
+					echo "<div class='news-time-wrapper'>Publicerad: <time class='published-date'>$published</time>$modified</div>";
+				}
+			?>
 			<!-- LOCAL SCRIPT //-->
 			<?php
         /* local script */
