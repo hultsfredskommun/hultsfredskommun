@@ -11,7 +11,7 @@ Tags:
 Text Domain: hultsfredskommun
 */
 
-@import url("css/style.min.css?version=6.4");
+@import url("css/style.min.css?version=8.9");
 
 /* hidden helpers */
 .hide-expand-button-in-mobile-menu .expand-button {
@@ -83,6 +83,11 @@ Text Domain: hultsfredskommun
 }
 .readspeaker-item .dropdown {
   background: white!important;
+}
+
+/* iframe mobile */
+iframe {
+  max-width: 100%;
 }
 
 /* bug fixes */

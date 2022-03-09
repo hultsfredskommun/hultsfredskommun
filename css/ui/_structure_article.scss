@@ -178,7 +178,8 @@ article.post {
 			.entry-title,
 			.content, 
 			.img-wrapper,
-			.side-content {
+			.side-content,
+			.news-time-wrapper {
 				@extend .half-padding--left;
 				@extend .half-padding--right;
 			}
@@ -186,8 +187,8 @@ article.post {
 				//@include font-size(26px);
 				line-height: 1.1em;
 				width: auto;
-				display: inline;
-				float: left;
+				display: inline-block;
+				// float: left;
 			}
 			.quick-links {
 				@extend .float--right;
@@ -207,6 +208,22 @@ article.post {
 				.contact {
 					@extend .contact-background;
 				}
+			}
+			.news-time-wrapper {
+				font-style: italic;
+				padding-bottom: $base-spacing-unit;
+				&,
+				.published-date,
+				.modified-date {
+					color: $default-light-color;
+					@include font-size($h6-size);
+				}
+				.modified-date {
+					padding-left: $half-spacing-unit;
+					margin-left: $half-spacing-unit;
+					border-left: 1px solid $default-light-color;
+				}
+
 			}
 			.content {
 				a {
