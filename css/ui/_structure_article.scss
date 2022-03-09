@@ -216,9 +216,10 @@ article.post {
 				.published-date,
 				.modified-date {
 					color: $default-light-color;
+					@include font-size($h6-size);
 				}
 				.modified-date {
-						padding-left: $half-spacing-unit;
+					padding-left: $half-spacing-unit;
 					margin-left: $half-spacing-unit;
 					border-left: 1px solid $default-light-color;
 				}
