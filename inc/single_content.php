@@ -44,7 +44,8 @@
 					$published = get_the_date("Y-m-d");
 					$modified = get_the_modified_date("Y-m-d");
 					
-					$modified = ($published != $modified) ? "<span class='modified-date'>Uppdaterad: $modified</span>" : '';
+					$modified = ($published != $modified) ? "<span class='modified-date'>Uppdaterad: ".get_the_modified_date("Y-m-d G:i")."</span>" : '';
+					$published = (empty($modified)) ? get_the_date("Y-m-d G:i") : $published;
 					
 					echo "<div class='news-time-wrapper'>Publicerad: <time class='published-date'>$published</time>$modified</div>";
 				}
