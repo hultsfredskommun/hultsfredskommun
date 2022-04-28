@@ -236,14 +236,14 @@ function hk_view_quick_links() {
 
 							$quick_news_args =
 								array("title" => "Nyheter",
-											"num_aktuellt" => 5,
+											"num_aktuellt" => 3,
 											"num_news" => 10,
 											"content_type" => "",
 											"rss_link_text" => "<span class='rss-icon'></span> RSS",
 											"rss_link_url" => "/feed/?tag=nyheter",
 											"thumb_size" => "",
 											"css_wrapper" => $css_wrapper,
-											"num_news_cols" => 5);
+											"num_news_cols" => 3);
 								$retValue .= "<!-- FÖRE NYHETER -->";
 								$retValue .= get_quick_news( $quick_news_args );
 								$retValue .= "<!-- EFTER NYHETER -->";
@@ -481,7 +481,7 @@ function get_quick_news( $args ) {
 	$all_categories[] = $cat;
 
 
-	$retString = '<div class="newscontent-wrapper" role="main" style="'.$css_wrapper.'">';
+	$retString = '<div class="newscontent-wrapper2" role="main" style="'.$css_wrapper.'">';
 	$retString .= $title;
 	$retString .= '<div id="newscontent" class="' . $boxclass . 'newscontent">';
 
@@ -505,7 +505,8 @@ function get_quick_news( $args ) {
 			$shownposts[] = get_the_ID();
 			$retString .= "<!-- " . get_the_ID() . " -->";
 			//get_template_part( 'content', 'news' );
-			$retString .= load_content_news();
+			// $retString .= load_content_news();
+			$retString .= load_quick_news();
 
 			// if (++$countrows%$num_news_cols == 0) {
 			// 		$retString .= "<div style='clear:both' class='one-whole'></div>";
@@ -531,15 +532,53 @@ function get_quick_news( $args ) {
 		$after_newslist .= "<a href='$rss_link_url' class='gtm-fpcw-rss-link read-more-link rss inline float--right'>$rss_link_text</a>";
 	}
 	
+	$retString .= "</div><!-- END #newscontent -->";
 	$retString .= $after_newslist;
-	
-	$retString .= "</div>";
-
-	$retString .= "<!-- END #newscontent --></div><!-- END .newscontent-wrapper -->";
+	$retString .= "</div><!-- END .newscontent-wrapper -->";
 
 	return $retString;
 }
 
+function load_quick_news() {
+
+	$retString = "<article id='post-" . get_the_ID() . "' class='" . join( ' ', get_post_class() ) . " " . ((is_sticky())?"sticky news summary":"news summary") . "'>";
+
+	$externalclass = "";
+	$jstoggle = " js-toggle-article";
+	if (function_exists("get_field")) {
+		$href = get_field('hk_external_link_url');
+		$name = get_field('hk_external_link_name');
+		if (!empty($href))
+		{
+			$jstoggle = "";
+			$externalclass = " js-external-link";
+			$title = "Extern länk till " . the_title_attribute( 'echo=0' );
+		}
+	}
+	if (empty($href)) {
+		$href = get_permalink();
+		$title = "Länk till " . the_title_attribute( 'echo=0' );
+	}
+	$externalclass = "class='gtm-cn-news-link$externalclass$jstoggle'";
+
+
+	// if news
+	if (!empty($default_settings["news_tag"]) && has_tag($default_settings["news_tag"])) {
+		$retString .= "<time>" . get_the_date("Y-m-d") . "</time> ";
+	}
+	
+	$published = get_the_date("Y-m-d");
+	$modified = get_the_modified_date("Y-m-d");
+	$published_date = ($published != $modified) ? "<span class='modified-date'>".get_the_modified_date("Y-m-d G:i")."</span>" : "<span class='published-date'>" . get_the_date("Y-m-d G:i") . "</span>";
+	$retString .= "<div class='news-time-wrapper'>$published_date</div>";
+	$retString .= "<h5 class='entry-title'><a $externalclass href='$href' title='$title' rel='bookmark'>" . get_the_title() . "...</a></h5>";
+
+
+	$retString .= "<span class='hidden article_id'>" . get_the_ID() . "</span>";
+	$retString .= "</article><!-- #post-" . get_the_ID() . " -->";
+
+	return $retString;
+}
 function load_content_news() {
 
  $thumb_size = 'featured-image';

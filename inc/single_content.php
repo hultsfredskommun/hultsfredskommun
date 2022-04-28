@@ -35,7 +35,6 @@
 				</span>
 			</div>
 			*/ ?>
-			<h1 class="entry-title"><span><?php the_title(); ?></span></h1>
 			<?php
 			global $default_settings;
 
@@ -50,21 +49,8 @@
 					echo "<div class='news-time-wrapper'>Publicerad: <time class='published-date'>$published</time>$modified</div>";
 				}
 			?>
-			<!-- LOCAL SCRIPT //-->
-			<?php
-        /* local script */
-        /*if (function_exists("get_field")) {
-            $localscript = get_field('hk_local_script');
-						if (!empty($localscript)) {
-            	echo "\n" . str_replace( '&lt;', '<', str_replace( '&gt;', '>', str_replace( '&amp;', '&', str_replace('[[', '<', str_replace(']]', '>', $localscript)))));
-						}
-        }*/
-        /* OLD local script meta data */
-				/*if (empty($localscript) && get_post_meta( get_the_ID(), "local_script", true ) != "") {
-					echo get_post_meta( get_the_ID(), "local_script", true );
-				}*/
-			?>
-			<!-- END LOCAL SCRIPT //-->
+			<h1 class="entry-title"><span><?php the_title(); ?></span></h1>
+
 			<?php //the_post_thumbnail('featured-image');
 				echo hk_get_the_post_thumbnail(get_the_ID(),'featured-image');
 			?>

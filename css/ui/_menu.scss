@@ -291,7 +291,7 @@
 .main-sub-menu {
     @extend .gray-light-background;
     //@extend .border-radius;
-    margin-bottom: $base-spacing-unit*1.5;
+    margin-bottom: $base-spacing-unit;
     a {
         @extend .gamma;
         @extend .default-text;

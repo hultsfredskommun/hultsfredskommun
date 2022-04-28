@@ -184,8 +184,8 @@ article.post {
 				@extend .half-padding--right;
 			}
 			.entry-title {
-				//@include font-size(26px);
-				line-height: 1.1em;
+				@include font-size(26px);
+				line-height: 1.2em;
 				width: auto;
 				display: inline-block;
 				// float: left;
@@ -211,7 +211,9 @@ article.post {
 			}
 			.news-time-wrapper {
 				font-style: italic;
-				padding-bottom: $base-spacing-unit;
+				@extend .flush--bottom;
+
+				// padding-bottom: $base-spacing-unit;
 				&,
 				.published-date,
 				.modified-date {
