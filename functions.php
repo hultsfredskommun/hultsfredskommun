@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "8.9");
+define("HK_VERSION", "9.0");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -109,6 +109,30 @@ require( get_template_directory() . '/inc/hk-acf-fields.php' );
 
 // Grab hk widgets function containing general widgets
 require( get_template_directory() . '/inc/hk-widgets.php' );
+
+/*
+ * Synpunkt shortcode
+ */
+function hk_synpunkt_func( $atts ){
+	$default = array(
+		'src' => 'https://synpunkt.hultsfred.se/AddMatter2.aspx?MatterTypeID=1&FrameType=IFrame&View=medborgare&RootID=117' // show map or link or other
+		);
+
+	$atts = shortcode_atts( $default, $atts );
+	$src = $atts["src"];
+	$retValue =  "<script src='https://synpunkt.hultsfred.se/Scripts/IFrameCommunicator.js'></script>
+	<iframe id='dfr_iframe'
+		data-extraHeight='100'
+		data-identifier='dfr_iframe'
+		scrolling='auto'
+		src='$src'
+		style='overflow-x:hidden; overflow-y:scroll; border:none; width:100%;'>
+	</iframe>";
+
+	return $retValue;
+}
+
+add_shortcode( 'synpunkt', 'hk_synpunkt_func' );
 
 
 /*
