@@ -2416,15 +2416,15 @@ if(function_exists("register_field_group"))
 			8 =>
 			array (
 				'key' => 'field_505ad28e292d9',
-				'label' => 'Position',
+				'label' => 'Position (gammal)',
 				'name' => 'hk_contact_position',
-				'type' => 'location-field',
+				'type' => 'text',
 				'instructions' => '',
 				'required' => '0',
 				'val' => 'address',
 				'center' => '57.455560638683025,15.836223059667986',
 				'zoom' => '12',
-				'order_no' => '8',
+				'order_no' => '9',
 			),
 			9 =>
 			array (
