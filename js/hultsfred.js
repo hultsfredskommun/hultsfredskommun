@@ -537,7 +537,7 @@ if (window.location.href.indexOf("artikel") > -1) {
         }
     });
 
-    if (typeof __rekai != "undefined" && hultsfred_object['rekai_autocomplete']) {
+    if (typeof __rekai != "undefined" && hultsfred_object['rekai_autocomplete'] == '1') {
         __rekai.ready(function() {
             var rekAutocomplete = rekai_autocomplete('#s');
         });
