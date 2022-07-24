@@ -8,6 +8,126 @@ $imagesizeArr = array(  'thumbnail-image' => 'thumbnail-image',
 						'contact-image' => 'contact-image',
 						'thumbnail-news-image' => 'thumbnail-news-image');
 
+$rekai_array = [];
+if (get_field('rekai_enable', 'options')) {
+$rekai_array = array( array (
+			'key' => '56bb0a25a41aa',
+			'name' => 'lagg_till_rekai',
+			'label' => 'Rek.ai',
+			'display' => 'block',
+			'sub_fields' => array (
+				array (
+					'key' => 'field_56cc0a2e618aa',
+					'label' => 'Rubrik',
+					'name' => 'title',
+					'type' => 'text',
+					'instructions' => 'Rubrik som syns över listan.',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '25%',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+					'readonly' => 0,
+					'disabled' => 0,
+				),
+				array(
+					'key' => 'field_61f8fa4d79b07',
+					'label' => 'Antal',
+					'name' => 'nrofhits',
+					'type' => 'number',
+					'instructions' => 'Antal länkar som ska visas.',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '25%',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '4',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'min' => '',
+					'max' => '',
+					'step' => '',
+				),
+				array (
+					'key' => 'field_56cc104207faa',
+					'label' => 'Layout',
+					'name' => 'layout',
+					'type' => 'select',
+					'instructions' => 'Hur stor del av skärmen som puffen använda.',
+					'required' => 1,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '50%',
+						'class' => '',
+						'id' => '',
+					),
+
+					'choices' => array (
+						'one-whole' => 'Fullbredd',
+					),
+					'default_value' => array (
+						'one-whole'
+					),
+					'allow_null' => 0,
+					'multiple' => 0,
+					'ui' => 0,
+					'ajax' => 0,
+					'placeholder' => '',
+					'disabled' => 0,
+					'readonly' => 0,
+				),
+				array (
+					'key' => 'field_56eabc5e154aa',
+					'label' => 'D&ouml;lj puff',
+					'name' => 'inactive',
+					'type' => 'true_false',
+					'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '25%',
+						'class' => '',
+						'id' => '',
+					),
+					'message' => '',
+					'default_value' => 0,
+				),
+
+				array (
+					'key' => 'field_12e40a2e618aa',
+					'label' => 'Css',
+					'name' => 'css-wrapper',
+					'type' => 'textarea',
+					'instructions' => 'Style för att sätta utseende på rek-wrapper',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '75%',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+					'readonly' => 0,
+					'disabled' => 0,
+				),
+			)
+		) 
+	);
+}
 acf_add_local_field_group(array (
 	'key' => 'group_56bb0a0915e14',
 	'title' => 'Mellanstartsida',
@@ -45,7 +165,8 @@ acf_add_local_field_group(array (
 			'button_label' => 'Lägg till puff',
 			'min' => '',
 			'max' => '',
-			'layouts' => array (
+			'layouts' => array_merge(
+				$rekai_array, array (
 				array (
 					'key' => '56bb0a25a45555',
 					'name' => 'lagg_till_links',
@@ -431,122 +552,7 @@ acf_add_local_field_group(array (
 						),
 					)
 				),
-				array (
-					'key' => '56bb0a25a41aa',
-					'name' => 'lagg_till_rekai',
-					'label' => 'Rek.ai',
-					'display' => 'block',
-					'sub_fields' => array (
-						array (
-							'key' => 'field_56cc0a2e618aa',
-							'label' => 'Rubrik',
-							'name' => 'title',
-							'type' => 'text',
-							'instructions' => 'Rubrik som syns över listan.',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '25%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'maxlength' => '',
-							'readonly' => 0,
-							'disabled' => 0,
-						),
-						array(
-							'key' => 'field_61f8fa4d79b07',
-							'label' => 'Antal',
-							'name' => 'nrofhits',
-							'type' => 'number',
-							'instructions' => 'Antal länkar som ska visas.',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array(
-								'width' => '25%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '4',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'min' => '',
-							'max' => '',
-							'step' => '',
-						),
-						array (
-							'key' => 'field_56cc104207faa',
-							'label' => 'Layout',
-							'name' => 'layout',
-							'type' => 'select',
-							'instructions' => 'Hur stor del av skärmen som puffen använda.',
-							'required' => 1,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '50%',
-								'class' => '',
-								'id' => '',
-							),
-
-							'choices' => array (
-								'one-whole' => 'Fullbredd',
-							),
-							'default_value' => array (
-								'one-whole'
-							),
-							'allow_null' => 0,
-							'multiple' => 0,
-							'ui' => 0,
-							'ajax' => 0,
-							'placeholder' => '',
-							'disabled' => 0,
-							'readonly' => 0,
-						),
-						array (
-							'key' => 'field_56eabc5e154aa',
-							'label' => 'D&ouml;lj puff',
-							'name' => 'inactive',
-							'type' => 'true_false',
-							'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '25%',
-								'class' => '',
-								'id' => '',
-							),
-							'message' => '',
-							'default_value' => 0,
-						),
-
-						array (
-							'key' => 'field_12e40a2e618aa',
-							'label' => 'Css',
-							'name' => 'css-wrapper',
-							'type' => 'textarea',
-							'instructions' => 'Style för att sätta utseende på rek-wrapper',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '75%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'maxlength' => '',
-							'readonly' => 0,
-							'disabled' => 0,
-						),
-					)
-				),
+				
 				array (
 					'key' => '56bb0a25a4190',
 					'name' => 'lagg_till_news',
@@ -1312,6 +1318,7 @@ acf_add_local_field_group(array (
 
 				),
 			),
+		)
 		),
 
 	),

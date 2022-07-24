@@ -46,7 +46,6 @@ if ( ! isset( $default_settings ) ) {
 								'category_slideshow_thumbnail_size' => $hk_options["category_slideshow_thumbnail_size"],
 								'show_articles' => true,
 								'video_thumbnail_image' => $hk_options["video_thumbnail_image"],
-
 							);
 
 	/* browser check */
@@ -709,6 +708,28 @@ function hk_enqueue_scripts() {
 			);
 		}
 
+		$rekai_enable = get_field('rekai_enable', 'options');
+		$rekai_id = get_field('rekai_id', 'options');
+		if ($rekai_enable && !empty($rekai_id)) {
+			wp_enqueue_script(
+				'rekai_js',
+				"//static.rekai.se/$rekai_id.js",
+				array(),
+				'1.0'
+			);
+			$rekai_autocomplete = get_field('rekai_autocomplete', 'options');
+			if ($rekai_autocomplete) {
+				wp_enqueue_script(
+					'rekai_autocomplete_js',
+					"//static.rekai.se/addon/rekai_autocomplete.min.js",
+					array('rekai_js'),
+					'1.0'
+				);
+	
+			}
+		}
+
+
 	}
 	/* only in admin */
 	else {
@@ -787,6 +808,7 @@ function setup_javascript_settings() {
 			'cookie_button_text' => $hk_options['cookie_button_text'],
 			'cookie_link_text' => $hk_options['cookie_link_text'],
 			'cookie_link' => $hk_options['cookie_link'],
+			'rekai_autocomplete' => get_field('rekai_autocomplete', 'options'),
 		);
 	if (!is_admin()) {
 		wp_localize_script(

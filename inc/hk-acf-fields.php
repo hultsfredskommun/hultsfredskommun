@@ -21,7 +21,6 @@
  */
 add_action('acf/init',  'hk_acf_op_init');
 function hk_acf_op_init() {
-
 	if( function_exists('acf_add_options_page') ) {
 		acf_add_options_page(array(
 			'page_title' 	=> 'Hultsfred Settings',

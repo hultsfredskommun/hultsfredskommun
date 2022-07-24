@@ -537,17 +537,25 @@ if (window.location.href.indexOf("artikel") > -1) {
         }
     });
 
+    if (typeof __rekai != "undefined" && hultsfred_object['rekai_autocomplete']) {
+        __rekai.ready(function() {
+            var rekAutocomplete = rekai_autocomplete('#s');
+        });
+    }
     $(document).ready(function() {
 
-      /* make search-results have target blank */
-        $("#s").focus(function() {
-        //if ($('.gcse-searchresults').length > 0) {
-           //$('.gcse-searchresults a.js-toggle-article').on('mouseenter', function() {
-           $('.gcse-searchresults').on('mouseenter', 'a.js-toggle-article', function() {
-             $(this).attr('target', '_blank');
-           });
-        //}
-      });
+        /* make search-results have target blank */
+        if (hultsfred_object['rekai_autocomplete'] != 1) {
+
+            $("#s").focus(function() {
+              //if ($('.gcse-searchresults').length > 0) {
+                  //$('.gcse-searchresults a.js-toggle-article').on('mouseenter', function() {
+                $('.gcse-searchresults').on('mouseenter', 'a.js-toggle-article', function() {
+                        $(this).attr('target', '_blank');
+                });
+                //}
+            });
+        }
 
         /* add filter_search */
         if ($(".tag-listing").length > 0) {
