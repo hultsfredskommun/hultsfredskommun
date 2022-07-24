@@ -415,20 +415,6 @@ function hk_theme_options_do_page() {
 			dag och tid (standard php date): <?php echo date("Y-m-d H:i:s"); ?><br>
 
 
-			<a name="debug"></a>
-			<hr/><h2>DEBUG</h2>
-			<?php
-				if (!empty($options["count_version"])) {
-					echo '<h2>Vilka har anslutit?</h2><table cellspacing=4 style="margin-top:24px;border: 1px solid gray;">';
-					echo "<tr><td><b>IP</b></td><td><b>Antal uppdateringar</b></td></tr>";
-					foreach ($options["count_version"] as $ip => $count) {
-						echo "<tr><td>" . $ip . "</td><td>" . $count . "</td></tr>";
-					}
-					echo '</table>';
-				}
-			?>
-
-
 			<?php submit_button(); ?>
 
 		</form>
