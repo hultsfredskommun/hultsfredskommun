@@ -443,36 +443,6 @@ function hk_theme_options_do_page() {
 				}
 			?>
 
-			<hr/><h2>Anv&auml;nds inte just nu:</h2>
-			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
-				<tr valign="top">
-					<th style="width: 120px">Namn:</td>
-					<th>V&auml;rde:</td>
-					<th style="width: 72px"></td>
-				</tr>
-				<tr id="syn_0" class="row_syn">
-					<td><input type="text" name="hk_theme[syn_0][name]" value="<?php echo $options['syn_0']['name']; ?>" /></td>
-					<td><input type="text" style="width:100%" name="hk_theme[syn_0][value]" value="<?php echo $options['syn_0']['value']; ?>" /></td>
-					<td><button class="btn_removeRow button-secondary">Ta bort</button></td>
-				</tr>
-				<?php $nr = 1; while( isset($options['syn_'.$nr]) ) : ?>
-				<tr id="syn_<?php echo $nr;?>" class="row_syn">
-					<td><input type="text" name="hk_theme[syn_<?php echo $nr;?>][name]" value="<?php echo $options['syn_'.$nr]['name']; ?>" /></td>
-					<td><input type="text" style="width:100%" name="hk_theme[syn_<?php echo $nr;?>][value]" value="<?php echo $options['syn_'.$nr]['value']; ?>" /></td>
-					<td><button class="btn_removeRow button-secondary">Ta bort</button></td>
-				</tr>
-				<?php $nr += 1; endwhile; ?>
-				<tr class="row_btn">
-					<td><button id="btn_addRow" class="button-secondary">Lägg till fält</button></td>
-					<td><input id="syn_nr" type="hidden" name="hk_theme[syn_nr]" value="<?php
-						if(isset($options['syn_nr'])){
-							echo $options['syn_nr'];
-						}
-						else{ echo 1; }
-					?>" /></td>
-					<td></td>
-				</tr>
-			</table>
 
 			<?php submit_button(); ?>
 
