@@ -94,10 +94,6 @@ get_header(); ?>
 		/* hook to be able to add other search result */ 
 		do_action('hk_post_search', get_query_var("s")); 
 		
-		/* add external link search */
-		if ($options["external_search_title"] != "" && $options["external_search_url"] != "")
-			echo "<a class='external_more_link' href='" . $options["external_search_url"] . get_query_var("s") . " ' title='" . $options["external_search_title"] . "'>" . $options["external_search_title"] . "</a>";
-
 		if(has_action('hk_post_search')) {
 			echo "</aside>";
 		}

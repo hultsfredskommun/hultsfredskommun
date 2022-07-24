@@ -103,8 +103,5 @@
 		/* hook to be able to add other search result */ 
 		do_action('hk_post_ajax_search', $searchstring);
 		
-		if ($options["external_search_title"] != "" && $options["external_search_url"] != "")
-			echo "<a class='external_more_link' href='" . $options["external_search_url"] . $searchstring . " ' title='" . $options["external_search_title"] . "'>" . $options["external_search_title"] . "</a>";
-
 	endif;
 ?>
