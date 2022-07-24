@@ -275,8 +275,6 @@ function hk_theme_options_do_page() {
 			<p><input type="checkbox" name="hk_theme[gcse_enable_faq_search]" value="1"<?php checked( 1 == $options['gcse_enable_faq_search'] ); ?> /> <label for="hk_theme[gcse_enable_faq_search]">Sök specifikt i vanliga fr&aring;gor, visas i en kolumn bredvid vanliga s&ouml;ktr&auml;ffarna.</label></p>
 			<p><label for="hk_theme[faq_search_ignore_words]">Ord som ska nerprioriteras vid sökning i 'Vanliga fr&aring;gor'.</label><br/><input type="text" size="80" name="hk_theme[faq_search_ignore_words]" value="<?php echo $options['faq_search_ignore_words']; ?>" /></p>
 
-			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. L&auml;gger till Dela i artikel.</label><br/><input type="text" size="80" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
-			<p><label for="hk_theme[addthis_pubid_admin]">AddThis pubid. L&auml;gger till dela i <b>wp-admin</b>.</label><br/><input type="text" size="80" name="hk_theme[addthis_pubid_admin]" value="<?php echo $options['addthis_pubid_admin']; ?>" /></p>
 			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. L&auml;gger till Lyssna i artikel.</label><br/><input type="text" size="80" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>
 			<p><label for="hk_theme[googlemapskey]">Google Maps key.</label><br/><input type="text" size="80" name="hk_theme[googlemapskey]" value="<?php echo $options['googlemapskey']; ?>" /></p>
 			<p><label for="hk_theme[typekit_url]">Typekit js url - hela js-urlen (börja med //) f&ouml;r att l&auml;gga till typsnitt.</label><br/><input type="text" size="80" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>

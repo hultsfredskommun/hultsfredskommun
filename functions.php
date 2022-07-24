@@ -636,14 +636,6 @@ function hk_enqueue_scripts() {
 			);
 		}
 
-		if (isset($hk_options['addthis_pubid']) && $hk_options['addthis_pubid'] != "") {
-			wp_enqueue_script(
-				'addthis_js',
-				'//s7.addthis.com/js/300/addthis_widget.js#pubid='.$hk_options['addthis_pubid'],
-				array(),
-				'1.0'
-			);
-		}
 		if (isset($hk_options['readspeaker_id']) && $hk_options['readspeaker_id'] != "") {
 			//$readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
 			// $readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/webReader/webReader.js?pids=wr';
@@ -802,7 +794,6 @@ function setup_javascript_settings() {
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
 			'currentFilter' => json_encode($filter),
 			'admin_ajax_url' => '/wp-admin/admin-ajax.php',
-			'addthis_pubid_admin' => $hk_options['addthis_pubid_admin'],
 			'cookie_accept_enable' => (!empty($hk_options['cookie_accept_enable'])) ? $hk_options['cookie_accept_enable'] : '',
 			'cookie_text' => $hk_options['cookie_text'],
 			'cookie_button_text' => $hk_options['cookie_button_text'],

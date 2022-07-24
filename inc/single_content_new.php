@@ -35,31 +35,6 @@
 			</div>
 			<?php endif; ?>
 
-			<?php if ($options['addthis_pubid'] != "") : ?>
-			<div class="category-article-utility-bar__item">
-
-				<button class="category-article-utility-bar__button">
-					<svg width="15" height="16" viewBox="0 0 15 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Canvas" transform="translate(-2449 435)"><g id="android-share-alt"><g id="Icon 33"><g id="Group"><g id="Vector"><use xlink:href="#android-share-alt-path" transform="translate(2449 -435)" fill="#A22033"/></g></g></g></g></g><defs><path id="android-share-alt-path" d="M 12.0687 11.3368C 11.4633 11.3368 10.898 11.5378 10.4944 11.9398L 4.7224 8.60322C 4.76282 8.40217 4.80323 8.24123 4.80323 8.04024C 4.80323 7.83919 4.76282 7.67825 4.7224 7.47726L 10.4139 4.18105C 10.8578 4.58305 11.423 4.8241 12.0687 4.8241C 13.4006 4.8241 14.4905 3.73859 14.4905 2.41203C 14.4905 1.08554 13.4006 0 12.0687 0C 10.7368 0 9.64688 1.08554 9.64688 2.41207C 9.64688 2.61309 9.68707 2.77407 9.72771 2.97505L 4.03637 6.27127C 3.59233 5.86923 3.02728 5.62821 2.38143 5.62821C 1.04951 5.62821 -1.07251e-15 6.71372 -1.07251e-15 8.04028C -1.07251e-15 9.36681 1.0897 10.4524 2.42181 10.4524C 3.06765 10.4524 3.63271 10.2113 4.07675 9.80926L 9.80847 13.1459C 9.76786 13.3065 9.72768 13.4674 9.72768 13.6684C 9.72768 14.955 10.777 16 12.0687 16C 13.3603 16 14.4097 14.955 14.4097 13.6684C 14.4097 12.3819 13.3604 11.3368 12.0687 11.3368Z"/></defs></svg>
-					<span class="category-article-utility-bar__heading">Dela</span>
-				</button>
-
-				<ul class="category-article-utility-bar__dropdown category-article-utility-bar__dropdown--addthis">
-					<li class="addthis">
-						<div class="addthis_toolbox addthis_32x32_style" addthis:url="<?php echo the_permalink(); ?>" addthis:title="<?php the_title(); ?>" addthis:description="Kolla den h&auml;r sidan.">
-							<a class="addthis_button_facebook"></a>
-							<a class="addthis_button_twitter"></a>
-							<a class="addthis_button_google_plusone_share"></a>
-							<a class="addthis_button_email"></a>
-							<a class="addthis_button_print"></a>
-							<a class="addthis_button_compact"></a>
-							<!--a class="addthis_counter addthis_bubble_style"></a-->
-						</div>
-					</li>
-				</ul>
-
-			</div>
-			<?php endif; ?>
-
 		</div>
 
 	</div>
