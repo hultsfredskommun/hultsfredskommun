@@ -613,28 +613,6 @@ function hk_enqueue_scripts() {
 			HK_VERSION
 		);
 
-		/*<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?ver=1.0.1" />*/
-		/*
-		 * Loads special google font CSS file.
-		 */
-		if (isset($hk_options['google_font']) && $hk_options['google_font'] != "") {
-			$protocol = is_ssl() ? 'https' : 'http';
-			$query_args = array(
-				'family' => $hk_options['google_font'],
-				'subset' => '',
-			);
-			wp_enqueue_style( 'hk-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
-		}
-
-		if (isset($hk_options['typekit_url']) && $hk_options['typekit_url'] != "") {
-		//  //use.typekit.net/xpx0dap.js
-			wp_enqueue_script(
-				'typekit_js',
-				$hk_options['typekit_url'],
-				array(),
-				'1.0'
-			);
-		}
 
 		if (isset($hk_options['readspeaker_id']) && $hk_options['readspeaker_id'] != "") {
 			//$readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
@@ -690,15 +668,6 @@ function hk_enqueue_scripts() {
 			'1.0',
 			true
 		);
-
-		if (isset($hk_options['tidiochat_url']) && $hk_options['tidiochat_url'] != "") {
-			wp_enqueue_script(
-				'tidiochat_js',
-				$hk_options['tidiochat_url'],
-				array(),
-				'1.0'
-			);
-		}
 
 		$rekai_enable = get_field('rekai_enable', 'options');
 		$rekai_id = get_field('rekai_id', 'options');
