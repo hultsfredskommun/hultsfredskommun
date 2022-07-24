@@ -768,7 +768,7 @@ function setup_javascript_settings() {
 			'cookie_button_text' => $hk_options['cookie_button_text'],
 			'cookie_link_text' => $hk_options['cookie_link_text'],
 			'cookie_link' => $hk_options['cookie_link'],
-			'rekai_autocomplete' => (get_field('rekai_autocomplete', 'options') && get_field('rekai_autocomplete', 'options')),
+			'rekai_autocomplete' => (get_field('rekai_enable', 'options') && get_field('rekai_autocomplete', 'options')),
 		);
 	if (!is_admin()) {
 		wp_localize_script(
