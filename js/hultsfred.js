@@ -545,7 +545,7 @@ if (window.location.href.indexOf("artikel") > -1) {
     $(document).ready(function() {
 
         /* make search-results have target blank */
-        if (hultsfred_object['rekai_autocomplete'] != 1) {
+        if (hultsfred_object['rekai_autocomplete'] != '1') {
 
             $("#s").focus(function() {
               //if ($('.gcse-searchresults').length > 0) {
