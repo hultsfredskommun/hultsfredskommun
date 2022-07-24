@@ -11,18 +11,13 @@
 	<?php
 		$gcse_class = '';
     if (!empty($options["gcse_ajax"]) && $options["gcse_ajax"] != "") {
-        if (!empty($options["gcse_id"]) && $options["gcse_id"] != "") {
-            $hk_searchclass = "hk-gcse-ajax-searchbox";
-        }
-        else {
-            $hk_searchclass = "hk-ajax-searchbox";
-        }
+		$hk_searchclass = "hk-ajax-searchbox";
         $gcse_class = "gcse_ajax_search"; ?>
 		<div class="<?php echo $hk_searchclass; ?>">
 			<div class="gcse-searchbox"></div>
 		</div>
 	<?php }  ?>
-	<form class="<?php echo (!empty($options["gcse_id"]) && $options["gcse_id"] != "")?"gcse $gcse_class":"$gcse_class"; ?> form" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+	<form class="<?php echo $gcse_class ?> form" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 		<label for="s" class="assistive-text"><?php _e( 'Search', 'twentyeleven' ); ?></label>
 		<div class="input-wrapper"><input type="text" class="field" name="s" id="s" autocomplete="off" placeholder="<?php echo $options["search_watermark"]; ?>" value="<?php echo (!empty($_REQUEST["s"])) ? $_REQUEST["s"]:''; ?>" /></div>
 		<input type="submit" class="submit" id="searchsubmit" value="" />

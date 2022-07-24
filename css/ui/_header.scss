@@ -273,11 +273,6 @@
  * google site search 
  */
  
-/* hide search box and results */
-.hk-gcse-ajax-searchbox,
-.hk-gcse-ajax-searchresults-wrapper {
-	@extend .hidden;
-}
 /* wrap results to get absolut positioning */
 .hk-gcse-ajax-searchresults-wrapper {
 	position: relative;

@@ -825,22 +825,7 @@ if (window.location.href.indexOf("artikel") > -1) {
             /**
              * add ajax searchbox if enabled in settings and not less than ie9
              */
-            if ($(".hk-gcse-ajax-searchbox").length > 0 && $("body.search").length == 0) {
-                window.__gcse = {
-                    parseTags: 'explicit',
-                    callback: hkGcseCallback
-                };
-
-                var cx = hultsfred_object["gcse_id"];
-                var gcse = document.createElement('script');
-                gcse.type = 'text/javascript';
-                gcse.async = true;
-                gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
-                    '//www.google.com/cse/cse.js?cx=' + cx;
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(gcse, s);
-            }
-            else if ($(".hk-ajax-searchbox").length > 0 && $("body.search").length == 0) { // else wp search
+            if ($(".hk-ajax-searchbox").length > 0 && $("body.search").length == 0) { // else wp search
                 hkHandleKeypress();
             }
 
@@ -929,11 +914,6 @@ if (window.location.href.indexOf("artikel") > -1) {
 
             log("Searching for: " + $('#s').val());
             if ($("body.search").length == 0) {
-                if ($(".hk-gcse-ajax-searchbox").length > 0) { // if google search
-                    google.search.cse.element.getElement("two-column").prefillQuery($('#s').val());
-                    google.search.cse.element.getElement("two-column").execute();
-                }
-                else { // else wp search
                     //$(".gcse-searchresults").html(response);
                     data = { action: 'hk_search', searchstring: $('#s').val() };
                     $(".gcse-searchresults").html('<div class="islet">V&auml;ntar på s&ouml;kresultat...<span style="display:inline-block" class="spinner"></span></div>');
@@ -963,7 +943,7 @@ if (window.location.href.indexOf("artikel") > -1) {
                             log("error: " + response);
                         }
                     });
-                }
+                
             }
             if ($(".hk-gcse-ajax-searchresults-wrapper").find(".has-hook").length > 0) {
                 data = { action: 'hk_search_hook', searchstring: $('#s').val() };

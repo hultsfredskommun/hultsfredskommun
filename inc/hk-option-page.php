@@ -270,7 +270,6 @@ function hk_theme_options_do_page() {
 
 			<a name="tillagg"></a>
 			<hr/><h2>Till&auml;gg</h2>
-			<p><label for="hk_theme[gcse_id]">Google Site Search ID. Låter sökrutan göra en Google Site Search istället för wordpressökning. Ex. 017163027625550103349:urmqx2nuhpg</label><br/><input type="text" size="80" name="hk_theme[gcse_id]" value="<?php echo $options['gcse_id']; ?>" /></p>
 			<p><input type="checkbox" name="hk_theme[gcse_ajax]" value="1"<?php checked( 1 == $options['gcse_ajax'] ); ?> /> <label for="hk_theme[gcse_ajax]">Använd AJAX-sökning.</label></p>
 			<p><input type="checkbox" name="hk_theme[gcse_enable_kontakter_search]" value="1"<?php checked( 1 == $options['gcse_enable_kontakter_search'] ); ?> /> <label for="hk_theme[gcse_enable_kontakter_search]">Sök specifikt i kontakter, visas i en kolumn bredvid vanliga s&ouml;ktr&auml;ffarna.</label></p>
 			<p><input type="checkbox" name="hk_theme[gcse_enable_faq_search]" value="1"<?php checked( 1 == $options['gcse_enable_faq_search'] ); ?> /> <label for="hk_theme[gcse_enable_faq_search]">Sök specifikt i vanliga fr&aring;gor, visas i en kolumn bredvid vanliga s&ouml;ktr&auml;ffarna.</label></p>
