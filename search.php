@@ -12,8 +12,8 @@ get_header(); ?>
 			//hk_navigation(); ?>
 		
 		<?php 
-		
-		if($options["gcse_enable_faq_search"] != "" || $options["gcse_enable_kontakter_search"] != "" || has_action('hk_pre_search')) :
+
+		if($options["gcse_enable_faq_search"] != "" || has_action('hk_pre_search')) :
 			echo "<aside class='search-hook'>";
 			
 			// show faq search
@@ -21,23 +21,6 @@ get_header(); ?>
 				echo hk_search_and_print_faq(get_query_var("s"));
 			endif;
 			
-			// show contact search
-			if($options["gcse_enable_kontakter_search"] != ""):
-				$count = 5;
-				if (!empty($_REQUEST["numtele"]))
-					$count = $_REQUEST["numtele"];
-
-				echo hk_search_and_print_contacts_by_name(get_query_var("s"), array(
-																	'name' => true,
-																	'title' => true,
-																	'workplace' => true,
-																	'phone' => true,
-																	'email' => true,
-																	'heading_element' => "h3",
-																	'add_item_class' => 'search-item'
-																	), $count, true);
-				
-			endif;
 			/* hook to be able to add other search result */ 
 			do_action('hk_pre_search', get_query_var("s")); ?>
 			</aside>
@@ -57,11 +40,6 @@ get_header(); ?>
 				
 				<?php while ( have_posts() ) : the_post(); ?>
 					<?php
-						$external_blog = false; 
-						if ($blog_id != $post->blog_id){ 
-							$external_blog = true; 
-							switch_to_blog($post->blog_id);
-						}
 						
 						/* Include the Post-Format-specific template for the content.
 						 * If you want to overload this in a child theme then include a file
@@ -69,9 +47,6 @@ get_header(); ?>
 						 */
 						//get_template_part( 'content', get_post_type() );
 						get_template_part( 'content' );
-						if ($external_blog) { 
-							restore_current_blog();
-						}
 					?>
 
 				<?php endwhile; ?>

@@ -271,7 +271,6 @@ function hk_theme_options_do_page() {
 			<a name="tillagg"></a>
 			<hr/><h2>Till&auml;gg</h2>
 			<p><input type="checkbox" name="hk_theme[gcse_ajax]" value="1"<?php checked( 1 == $options['gcse_ajax'] ); ?> /> <label for="hk_theme[gcse_ajax]">Använd AJAX-sökning.</label></p>
-			<p><input type="checkbox" name="hk_theme[gcse_enable_kontakter_search]" value="1"<?php checked( 1 == $options['gcse_enable_kontakter_search'] ); ?> /> <label for="hk_theme[gcse_enable_kontakter_search]">Sök specifikt i kontakter, visas i en kolumn bredvid vanliga s&ouml;ktr&auml;ffarna.</label></p>
 			<p><input type="checkbox" name="hk_theme[gcse_enable_faq_search]" value="1"<?php checked( 1 == $options['gcse_enable_faq_search'] ); ?> /> <label for="hk_theme[gcse_enable_faq_search]">Sök specifikt i vanliga fr&aring;gor, visas i en kolumn bredvid vanliga s&ouml;ktr&auml;ffarna.</label></p>
 			<p><label for="hk_theme[faq_search_ignore_words]">Ord som ska nerprioriteras vid sökning i 'Vanliga fr&aring;gor'.</label><br/><input type="text" size="80" name="hk_theme[faq_search_ignore_words]" value="<?php echo $options['faq_search_ignore_words']; ?>" /></p>
 

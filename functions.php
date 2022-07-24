@@ -2197,23 +2197,6 @@ function hk_search_hook_func(){
 			echo hk_search_and_print_faq($searchstring);
 		endif;
 
-		// show contacter search
-		if($hk_options["gcse_enable_kontakter_search"] != ""):
-			$count = 5;
-			if (!empty($_REQUEST["numtele"]))
-				$count = $_REQUEST["numtele"];
-
-			echo hk_search_and_print_contacts_by_name($searchstring, array(
-																'name' => true,
-																'title' => true,
-																'workplace' => true,
-																'phone' => true,
-																'email' => true,
-																'heading_element' => "h3",
-																'add_item_class' => 'search-item'
-																), $count, true);
-		endif;
-
 		/* hook to be able to add other search result */
 		do_action('hk_pre_ajax_search', $searchstring);
 
