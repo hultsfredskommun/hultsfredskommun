@@ -286,9 +286,6 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[if_only_content]">style - style-tag is wrapped around content</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[if_only_content]"><?php echo $options['if_only_content']; ?></textarea></p>
 			<p><label for="hk_theme[if_only_content_js]">js or other - nothing is wrapped around this content</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[if_only_content_js]"><?php echo $options['if_only_content_js']; ?></textarea></p>
 
-			<h3>AMP inställningar - Kräver AMP-plugin från Automatic</h3>
-			<p><label for="hk_theme[amp_analytics]">Google Analytics för AMP-statistik</label><br/><input type="text" size="80" name="hk_theme[amp_analytics]" value="<?php echo $options['amp_analytics']; ?>" /></p>
-
 			<?php submit_button(); ?>
 
 			<a name="statistik"></a>
