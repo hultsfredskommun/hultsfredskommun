@@ -288,11 +288,6 @@ function hk_theme_options_do_page() {
 			<p><label for="hk_theme[if_only_content]">style - style-tag is wrapped around content</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[if_only_content]"><?php echo $options['if_only_content']; ?></textarea></p>
 			<p><label for="hk_theme[if_only_content_js]">js or other - nothing is wrapped around this content</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[if_only_content_js]"><?php echo $options['if_only_content_js']; ?></textarea></p>
 
-			<?php if (function_exists('relevanssi_do_query')) { ?>
-			<h3>Relevanssi - Multisajt sökning</h3>
-			<p><label for="hk_theme[relevanssi_multisite]">Kommaseparerad lista med ID på de sajter som ska sökas på (Relevanssi måste vara aktiverat på de sajter som ska vara sökbara). Sök bara på denna sajt genom att lämna inställningen tom.</label><br/><input type="text" size="80" name="hk_theme[relevanssi_multisite]" value="<?php echo $options['relevanssi_multisite']; ?>" /></p>
-			<?php } ?>
-
 			<h3>Extern sökning</h3>
 			<p><label for="hk_theme[external_search_title]">Länktext till extern sökning</label><br/><input type="text" size="80" name="hk_theme[external_search_title]" value="<?php echo $options['external_search_title']; ?>" /></p>
 			<p><label for="hk_theme[external_search_url]">URL till extern sökning (lägger till sökordet direkt efter URL)</label><br/><input type="text" size="80" name="hk_theme[external_search_url]" value="<?php echo $options['external_search_url']; ?>" /></p>

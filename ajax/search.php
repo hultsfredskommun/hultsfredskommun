@@ -35,7 +35,6 @@
 			$retString .= "<ul class='search-posts'>";
 			$retString .= "<li class='search-title'>Artiklar</li>";
 			while ( $dyn_query->have_posts() ) : $dyn_query->the_post();
-				if ($options['relevanssi_multisite'] != "") { switch_to_blog($dyn_query->blog_id); }
 				$retString .= "<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a></li>"; //<i>" . get_the_category_list(', ') . "</i>
 			endwhile;
 			$retString .= "</ul>";
