@@ -76,7 +76,7 @@
         if ($hk_options["gcse_ajax"] != "") {
             $column_class = " no-hook";
             if($hk_options["gcse_enable_faq_search"] != "" || has_action('hk_pre_ajax_search') || has_action('hk_post_ajax_search')) { $column_class = " has-hook"; } ?>
-	<div class="hk-gcse-ajax-searchresults-wrapper">
+	<div class="hk-gcse-ajax-searchresults-wrapper" style='display:none'>
 		<div class="hk-gcse-ajax-searchresults<?php echo $column_class; ?>">
 			<div class="hk-gcse-hook-results">
 				<div class="islet">V&auml;ntar p&aring; s&ouml;kresultat...<span style="display:inline-block" class="spinner"></span></div>

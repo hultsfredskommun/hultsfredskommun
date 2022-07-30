@@ -427,9 +427,6 @@ if (window.location.href.indexOf("artikel") > -1) {
                 //setQuickLinks($(el).parents("article"));
 
                 // set click action on content header tools
-                if (typeof addthis != "undefined") {
-                    addthis.toolbox('.addthis_toolbox');
-                }
                 if (typeof rspkr != "undefined" && typeof rspkr.ui != "undefined") {
                     rspkr.ui.addClickEvents();
                 }
@@ -499,35 +496,6 @@ if (window.location.href.indexOf("artikel") > -1) {
         }
     });
 
-    /* enter the active element in flip array */
-    /*function flipAnimation(active) {
-    	var image_width = $(active).width();
-    	var margin = image_width / 2 + 'px';
-    	var compress_css_properties = {
-    		width: 0,
-    		marginLeft: margin,
-    		opacity: 0.3
-    	};
-    	var decompress_css_properties = {
-    		width: image_width,
-    		marginLeft: 0,
-    		opacity: 1
-    	};
-    	if ($(active).next() != "")
-    		$(active).next().css(compress_css_properties);
-    	else
-    		$(active).first().css(compress_css_properties);
-
-    	$(active).click(function() {
-    		//animate width to 0 and margin-left to 1/2 width
-    		$(this).stop().animate(compress_css_properties, 1000, function() {
-    			// animate second card to full width and margin-left to 0
-    			$(this).hide();
-    			$(this).next().show().animate(decompress_css_properties, 1000);
-    			flipAnimation($(this));
-    		});
-    	});
-    }*/
 
     /* case insensitive contain */
     $.extend($.expr[':'], {
@@ -544,18 +512,7 @@ if (window.location.href.indexOf("artikel") > -1) {
     }
     $(document).ready(function() {
 
-        /* make search-results have target blank */
-        if (hultsfred_object['rekai_autocomplete'] != '1') {
 
-            $("#s").focus(function() {
-              //if ($('.gcse-searchresults').length > 0) {
-                  //$('.gcse-searchresults a.js-toggle-article').on('mouseenter', function() {
-                $('.gcse-searchresults').on('mouseenter', 'a.js-toggle-article', function() {
-                        $(this).attr('target', '_blank');
-                });
-                //}
-            });
-        }
 
         /* add filter_search */
         if ($(".tag-listing").length > 0) {
@@ -828,19 +785,27 @@ if (window.location.href.indexOf("artikel") > -1) {
         });
 
 
+        if (hultsfred_object['rekai_autocomplete'] != '1') {
 
-        $("#s").focus(function() {
-            /**
-             * add ajax searchbox if enabled in settings and not less than ie9
-             */
-            if ($(".hk-ajax-searchbox").length > 0 && $("body.search").length == 0) { // else wp search
-                hkHandleKeypress();
-            }
+            $("#s").focus(function() {
+            
+                /**
+                 * add ajax searchbox if enabled in settings and not less than ie9
+                 */
+                if ($(".hk-ajax-searchbox").length > 0 && $("body.search").length == 0) { // else wp search
+                    hkHandleKeypress();
+
+                    /* make search-results have target blank */
+                    $('.gcse-searchresults').on('mouseenter', 'a.js-toggle-article', function() {
+                        $(this).attr('target', '_blank');
+                    });
+
+                }
 
 
-            $(this).unbind("focus");
-        });
-
+                $(this).unbind("focus");
+            });
+        }
         /**
          * init responsive search hook results
          */
@@ -859,28 +824,6 @@ if (window.location.href.indexOf("artikel") > -1) {
     /**
      * gcse ajax callback and helpers
      */
-    var hkGcseCallback = function() {
-
-        if (document.readyState == 'complete') {
-            // Document is ready when CSE element is initialized.
-            // Render an element with both search box and search results in div with id 'test'.
-            google.search.cse.element.render({
-                div: 'hksearch',
-                tag: 'search'
-            });
-            hkHandleKeypress();
-        } else {
-            // Document is not ready yet, when CSE element is initialized.
-            google.setOnLoadCallback(function() {
-                // Render an element with both search box and search results in div with id 'test'.
-                google.search.cse.element.render({
-                    div: 'hksearch',
-                    tag: 'search'
-                });
-                hkHandleKeypress();
-            }, true);
-        }
-    };
     var hkPreventSubmit = function(e) {
         if (e.keyCode == 13 || e.which == 13) {
             e.preventDefault();
@@ -906,7 +849,7 @@ if (window.location.href.indexOf("artikel") > -1) {
         }
     };
     var hkSearch = function() {
-        if ($('#s').val().length == 0) {
+        if ($('#s').val().length < 3) {
             $(".hk-gcse-ajax-searchresults-wrapper").hide();
             $(".js-close-search").remove();
         } else {
