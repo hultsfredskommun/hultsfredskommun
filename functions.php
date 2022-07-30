@@ -2216,15 +2216,15 @@ function hk_search_func(){
 	if ($searchstring != "") {
 
         echo "<div class='islet'>";
-				//if (function_exists('relevanssi_do_query')) {
-				 	//relevanssi_didyoumean( $searchstring, "Menade du ", "", 5, true );
-				//}
+		//if (function_exists('relevanssi_do_query')) {
+			//relevanssi_didyoumean( $searchstring, "Menade du ", "", 5, true );
+		//}
 
-				// show search
+		// show search
         $query_args = array( 's' => esc_sql($searchstring),
                              'category__not_in' => array( $default_settings["hidden_cat"] ),
-														 'post_status' => 'publish'
-													 );
+							 'post_status' => 'publish'
+						);
         $query = new WP_Query( $query_args );
         if (function_exists('relevanssi_do_query')) {
             relevanssi_do_query( $query );
@@ -2233,23 +2233,12 @@ function hk_search_func(){
 
             while ( $query->have_posts() ) : $query->the_post();
 
-                $external_blog = false;
-								if (!empty($post->blog_id)) {
-	                if (get_current_blog_id() != $post->blog_id){
-	                    $external_blog = true;
-	                    switch_to_blog($post->blog_id);
-	                }
-								}
                 /* Include the Post-Format-specific template for the content.
                  * If you want to overload this in a child theme then include a file
                  * called content-___.php (where ___ is the Post Format name) and that will be used instead.
                  */
                 get_template_part( 'content', get_post_type() );
                 //get_template_part( 'content' );
-                if ($external_blog) {
-                    restore_current_blog();
-                }
-
 
             endwhile;
 
