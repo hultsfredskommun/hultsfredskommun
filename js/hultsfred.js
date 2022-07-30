@@ -45,7 +45,7 @@ if (window.location.href.indexOf("artikel") > -1) {
     function resetHistory() {
         // reset webbrowser history
         history.replaceState(null, currPageTitle, hultsfred_object["currPageUrl"]);
-        var ret = "(reset) history.replaceState(null, " + currPageTitle + ", " + hultsfred_object["currPageUrl"] + ")";
+        // var ret = "(reset) history.replaceState(null, " + currPageTitle + ", " + hultsfred_object["currPageUrl"] + ")";
         // log(ret);
         return false;
     }
@@ -53,12 +53,12 @@ if (window.location.href.indexOf("artikel") > -1) {
     function pushHistory(title, url) {
         if (url != hultsfred_object["currPageUrl"] && !havePushed) {
             history.pushState({}, title, url);
-            var ret = "(push if) history.pushState(null, " + title + ", " + url + ")";
+            // var ret = "(push if) history.pushState(null, " + title + ", " + url + ")";
             // log(ret);
             havePushed = true;
         } else if (url != hultsfred_object["currPageUrl"]) {
             history.replaceState({}, title, url);
-            var ret = "(push else) history.replaceState(null, " + title + ", " + url + ")";
+            // var ret = "(push else) history.replaceState(null, " + title + ", " + url + ")";
             // log(ret);
         }
         return false;
@@ -828,10 +828,12 @@ if (window.location.href.indexOf("artikel") > -1) {
     var hkDoSearch = function(e) {
         var key = e.keyCode || e.which;
         
+        // don't do anything if same search term is entered
         if ($('#s').val() == $('#s').data('old-search')) {
             return
         }
         $('#s').data('old-search', $('#s').val());
+
         if ($('#s').val().length == 0 || (key == 27)) {
             $(".hk-gcse-ajax-searchresults-wrapper").hide();
             $(".js-close-search").remove();
