@@ -61,19 +61,6 @@ get_header();
 						get_template_part( 'content' , get_post_type());
 					endwhile;
 					
-					// removed dynamic load more
-					if (false) { 
-					$filter = array("cat" => implode(",",$cat_array));
-					
-					echo "<script type='text/javascript'>setSingleSettings = function () { \n";
-					echo "settings[\"maxPages\"] = " . $wpq->max_num_pages . ";\n";  
-					echo "settings[\"numPages\"] = 0;\n";
-					echo "hultsfred_object[\"currentFilter\"] = \"" . addslashes(json_encode($filter)) . "\";\n";
-					echo "}\n</script>";
-
-					echo '<div id="dyn-posts-placeholder-2" class="dyn-posts-placeholder"></div>';
-					echo '<p id="dyn-posts-load-posts"><a href="#">Ladda fler sidor</a></p>';
-					}
 					echo "</aside>";
 				endif; 
 				

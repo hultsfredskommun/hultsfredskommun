@@ -811,12 +811,6 @@ if (window.location.href.indexOf("artikel") > -1) {
          */
         initResponsiveSearchHookResult();
 
-        /**
-         * do callbacks if found
-         */
-        if (typeof setSingleSettings == 'function') {
-            setSingleSettings();
-        }
 
     }); /* END $(document).ready() */
 
@@ -1288,33 +1282,13 @@ function erase_and_refocus_on_search_input()
         $(".video-popup iframe").height($(".video-popup").height() - 24);
 
         if (oldWidth != $(window).width()) {
-            /*alert($.browser);
-            alert($.browser.version <= 9);
-            alert(isMobile.any());
-            if(($.browser.msie && $.browser.version <= 9) && !isMobile.any()) {
-            	alert("test");
-            }*/
-
-            //Skriver ut sk�rmens storlek
-            /*log( $(window).height() + " $(window).width = " + $(window).width() + ", " +
-            	"MQ Screensize = " + ($(window).width() + scrollbar)
-            );*/
 
             /* reset responsive stuff */
-
             if ($(window).width() + scrollbar > responsive_lap_start) {
                 $("ul.main-menu, ul.main-sub-menu").addClass("unhidden");
             } else {
                 $("ul.main-menu, ul.main-sub-menu").removeClass("unhidden");
             }
-            /*
-            if( $(window).width()+scrollbar > responsive_lap_start ){
-            	$("#searchnavigation").addClass("unhide");
-            }
-            else {
-            	$("#searchnavigation").removeClass("unhide");
-            }
-            */
         }
         oldWidth = $(window).width();
     });
@@ -1437,52 +1411,7 @@ function erase_and_refocus_on_search_input()
                     });
                 });
             }
-            // else not tag-list
-            /*else {
-            	var parent = $(el).parents("article");
-            	var filter_class = $(parent).find(".filtersearch").attr("data-filter-class");
-            	var filter_element = $(parent).find(".filtersearch").attr("data-filter-element");
-            	var filter_firstrow = $(parent).find(".filtersearch").attr("data-show-firstrow");
-
-            	// check if filter on element.class
-            	var filter_el = "";
-            	if (filter_element != "") {
-            		filter_el = filter_element;
-            	}
-            	if (filter_class != "") {
-            		filter_el = filter_el + "." + filter_class;
-            	}
-            	if (filter_el != "") {
-            		if ($(parent).find(filter_el) !== undefined) {
-            			parent = $(parent).find(filter_el);
-            		}
-            	}
-
-            	// p-taggar
-            	// show all
-            	$(parent).find("p").show();
-            	// hide not contains
-            	$(parent).find("p:not(:containsi('"+filter+"'))").hide();
-            	// show contains
-            	$(parent).find("p:containsi('"+filter+"')").show();
-
-            	// tr-taggar
-            	// show all
-            	$(parent).find("tr").show();
-            	// hide not contains
-            	$(parent).find("tr:not(:containsi('"+filter+"'))").hide();
-            	// show contains
-            	$(parent).find("tr:containsi('"+filter+"')").show();
-
-            	// show if hidden by mistake filter
-            	$(parent).find("p.filtersearch").show();
-            	if (filter_firstrow != "" && filter_firstrow != "false") {
-            		$(parent).find("tr:first-child").show();
-            	}
-
-
-            }*/
-        } // end function filter_search
+    } // end function filter_search
 
 
     /* add expand-ul buttons helper function */
