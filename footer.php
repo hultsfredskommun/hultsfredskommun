@@ -27,8 +27,7 @@ global $default_settings;
 	<?php endif; ?>
 
 	<?php if ( $hk_options["logo_footer_image"] || 
-			is_active_sidebar( 'footer-sidebar' ) || is_active_sidebar( 'footer-sidebar-2' ) || is_active_sidebar( 'footer-sidebar-3' ) || is_active_sidebar( 'footer-sidebar-4' ) ||
-			is_active_sidebar( 'footer2-sidebar' ) || is_active_sidebar( 'footer2-sidebar-2' ) || is_active_sidebar( 'footer2-sidebar-3' ) || is_active_sidebar( 'footer2-sidebar-4' ) ) : ?>
+			is_active_sidebar( 'footer-sidebar' ) || is_active_sidebar( 'footer-sidebar-2' ) || is_active_sidebar( 'footer-sidebar-3' ) || is_active_sidebar( 'footer-sidebar-4' ) ) : ?>
 	<footer id="colophon" class="colophon" role="contentinfo">
 			<a name="footer"></a>
 			<?php

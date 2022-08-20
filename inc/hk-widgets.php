@@ -84,7 +84,7 @@ add_action( 'widgets_init', function() { register_widget( "HK_mellanstartsida" )
 		} else { $css_wrapper = ''; }
 
 
-		$options = get_option('hk_theme');
+		// $options = get_option('hk_theme');
 
 		?>
 		<p>
@@ -163,7 +163,7 @@ add_action( 'widgets_init', function() { register_widget( "HK_mellanstartsida" )
 		global $thumb_size;
 	    extract( $args );
 		global $default_settings;
-		$options = get_option('hk_theme');
+		// $options = get_option('hk_theme');
 		if (isset($instance["title"])) $title = "<h2 class='widget-title'>" . $instance["title"] . "</h2>";
 		else $title = "";
 		if (isset($instance["num_aktuellt"])) $num_aktuellt = $instance["num_aktuellt"];
@@ -338,7 +338,7 @@ add_action( 'widgets_init', function() { register_widget( "HK_firstpagecontent" 
 		if ( isset( $instance[ 'show_all_categories' ] ) ) { $show_all_categories = $instance[ 'show_all_categories' ];
 		} else { $show_all_categories = ""; }
 
-		$options = get_option('hk_theme');
+		// $options = get_option('hk_theme');
 
 		?>
 		<p>
@@ -386,7 +386,7 @@ add_action( 'widgets_init', function() { register_widget( "HK_firstpagecontent" 
 	public function widget( $args, $instance ) {
 	    extract( $args );
 		global $default_settings;
-		$options = get_option('hk_theme');
+		// $options = get_option('hk_theme');
 		if ( isset( $instance[ 'title' ] ) ) { $title = $instance[ 'title' ];
 		} else {$title = $this->vars['title']; }
 		if ( isset( $instance[ 'show_all_categories' ] ) ) { $show_all_categories = $instance[ 'show_all_categories' ];
@@ -498,28 +498,28 @@ add_action( 'widgets_init', function() { register_widget( "HK_protocol" ); } );
 /*
  * MENU IN WIDGET
  */
- class HK_menuwidget extends WP_Widget {
-	protected $vars = array();
+//  class HK_menuwidget extends WP_Widget {
+// 	protected $vars = array();
 
-	public function __construct() {
-		parent::__construct(
-	 		'HK_menuwidget', // Base ID
-			'HK meny i widget', // Name
-			array( 'description' => "Widget som vald meny" ) // Args
-		);
+// 	public function __construct() {
+// 		parent::__construct(
+// 	 		'HK_menuwidget', // Base ID
+// 			'HK meny i widget', // Name
+// 			array( 'description' => "Widget som vald meny" ) // Args
+// 		);
 
 
-	}
+// 	}
 
- 	public function form( $instance ) {
-		if ( isset( $instance[ 'title' ] ) ) {	$title = $instance[ 'title' ];
-		} else { $title = ""; }
-		if ( isset( $instance[ 'icon' ] ) ) {	$icon = $instance[ 'icon' ];
-		} else { $icon = ""; }
-		if ( isset( $instance[ 'menu' ] ) ) {	$menu = $instance[ 'menu' ];
-		} else {$menu = ""; }
+//  	public function form( $instance ) {
+// 		if ( isset( $instance[ 'title' ] ) ) {	$title = $instance[ 'title' ];
+// 		} else { $title = ""; }
+// 		if ( isset( $instance[ 'icon' ] ) ) {	$icon = $instance[ 'icon' ];
+// 		} else { $icon = ""; }
+// 		if ( isset( $instance[ 'menu' ] ) ) {	$menu = $instance[ 'menu' ];
+// 		} else {$menu = ""; }
 
-		?>
+/*		?>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Meny rubrik</label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title); ?>" />
@@ -539,43 +539,43 @@ add_action( 'widgets_init', function() { register_widget( "HK_protocol" ); } );
 		</p>
 
 
-		<?php
-	}
+		<?php */
+// 	}
 
-	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['icon'] = $new_instance['icon'];
-		$instance['menu'] = strip_tags( $new_instance['menu'] );
+// 	public function update( $new_instance, $old_instance ) {
+// 		$instance = array();
+// 		$instance['title'] = strip_tags( $new_instance['title'] );
+// 		$instance['icon'] = $new_instance['icon'];
+// 		$instance['menu'] = strip_tags( $new_instance['menu'] );
 
-		return $instance;
-	}
+// 		return $instance;
+// 	}
 
-	public function widget( $args, $instance ) {
-	    extract( $args );
+// 	public function widget( $args, $instance ) {
+// 	    extract( $args );
 
 
-		if ( isset($instance["menu"]) ) {
-			$title = apply_filters( 'widget_title', $instance['title'] );
-			echo $before_widget;
-			if ( ! empty( $title ) ) {
-				echo $before_title . $instance['icon'] . $title . $after_title;
-			}
+// 		if ( isset($instance["menu"]) ) {
+// 			$title = apply_filters( 'widget_title', $instance['title'] );
+// 			echo $before_widget;
+// 			if ( ! empty( $title ) ) {
+// 				echo $before_title . $instance['icon'] . $title . $after_title;
+// 			}
 
-			wp_nav_menu( array(
-				'menu' => $instance["menu"],
-				'container' 	=> '',
-				'items_wrap'	=> '<ul>%3$s</ul>',
-				'depth' 		=> -1,
-				'echo' 			=> true
-			));
-			echo $after_widget;
-		}
+// 			wp_nav_menu( array(
+// 				'menu' => $instance["menu"],
+// 				'container' 	=> '',
+// 				'items_wrap'	=> '<ul>%3$s</ul>',
+// 				'depth' 		=> -1,
+// 				'echo' 			=> true
+// 			));
+// 			echo $after_widget;
+// 		}
 
-	}
-}
-/* add the widget  */
-add_action( 'widgets_init', function() { register_widget( "HK_menuwidget" ); } );
+// 	}
+// }
+// /* add the widget  */
+// add_action( 'widgets_init', function() { register_widget( "HK_menuwidget" ); } );
 
 
 
@@ -756,20 +756,20 @@ add_action( 'widgets_init', function() { register_widget( "HK_textwidget" ); } )
 
 
 
-class HK_tags_widget extends WP_Widget {
-	protected $vars = array();
+// class HK_tags_widget extends WP_Widget {
+// 	protected $vars = array();
 
-	public function __construct() {
-		parent::__construct(
-	 		'HK_tags_widget', // Base ID
-			'HK etikett widget', // Name
-			array( 'description' => "Widget som visar etiketter" ) // Args
-		);
-	}
+// 	public function __construct() {
+// 		parent::__construct(
+// 	 		'HK_tags_widget', // Base ID
+// 			'HK etikett widget', // Name
+// 			array( 'description' => "Widget som visar etiketter" ) // Args
+// 		);
+// 	}
 
- 	public function form( $instance ) {
-		global $default_settings;
-	?>
+//  	public function form( $instance ) {
+// 		global $default_settings;
+/*	?>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>">Rubrik</label>
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance["title"]); ?>" />
@@ -783,39 +783,39 @@ class HK_tags_widget extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'show_widget_in_cat' ); ?>" name="<?php echo $this->get_field_name( 'show_widget_in_cat' ); ?>" type="text" value="<?php echo esc_attr( $show_widget_in_cat); ?>" />
 		</p>
 
-	<?php
-	}
+	<?php */
+// 	}
 
-	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title'] = $new_instance['title'];
-		$instance['horizontal-list'] = $new_instance['horizontal-list'];
-		$instance['show_widget_in_cat'] = $new_instance['show_widget_in_cat'];
-		return $instance;
-	}
+// 	public function update( $new_instance, $old_instance ) {
+// 		$instance = array();
+// 		$instance['title'] = $new_instance['title'];
+// 		$instance['horizontal-list'] = $new_instance['horizontal-list'];
+// 		$instance['show_widget_in_cat'] = $new_instance['show_widget_in_cat'];
+// 		return $instance;
+// 	}
 
-	public function widget( $args, $instance ) {
-		global $default_settings;
-	    extract( $args );
+// 	public function widget( $args, $instance ) {
+// 		global $default_settings;
+// 	    extract( $args );
 
-		if  (!isset($instance["show_widget_in_cat"]) || $instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), explode(",",$instance["show_widget_in_cat"]))) { /* if show widget in cat */
+// 		if  (!isset($instance["show_widget_in_cat"]) || $instance["show_widget_in_cat"] == "" || in_array(get_query_var("cat"), explode(",",$instance["show_widget_in_cat"]))) { /* if show widget in cat */
 
-			$horizontal = "";
-			if (isset($instance['horizontal-list']))
-				$horizontal = "horizontal-list";
-			echo "<aside class='widget HK_tags_widget $horizontal'>";
+// 			$horizontal = "";
+// 			if (isset($instance['horizontal-list']))
+// 				$horizontal = "horizontal-list";
+// 			echo "<aside class='widget HK_tags_widget $horizontal'>";
 
-			if ($instance['title'] != "") {
-				echo "<h2 class='widget-title'>" . $instance['title'] . "</h2>";
-			}
-			hk_displayAllTagFilter(false, "", true, "gtm-tw-taglink");
-			echo "</aside>";
+// 			if ($instance['title'] != "") {
+// 				echo "<h2 class='widget-title'>" . $instance['title'] . "</h2>";
+// 			}
+// 			hk_displayAllTagFilter(false, "", true, "gtm-tw-taglink");
+// 			echo "</aside>";
 
-		} /* END if show window cat */
-	} //end widget()
-}
-/* add the widget  */
-add_action( 'widgets_init', function() { register_widget( "HK_tags_widget" ); } );
+// 		} /* END if show window cat */
+// 	} //end widget()
+// }
+// /* add the widget  */
+// add_action( 'widgets_init', function() { register_widget( "HK_tags_widget" ); } );
 
 
 
@@ -824,102 +824,102 @@ add_action( 'widgets_init', function() { register_widget( "HK_tags_widget" ); } 
 
 
  ### Class: WP-PostViews Widget
-if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
-	class hk_WP_Widget_PostViews extends WP_Widget {
+// if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
+// 	class hk_WP_Widget_PostViews extends WP_Widget {
 
-		// Constructor
-		function __construct() {
-			$widget_ops = array('description' => __('hk WP-PostViews views statistics, tag-cloudified', 'wp-postviews'));
-			parent::__construct('hk_views', __('HK Most Viewed', 'wp-postviews'), $widget_ops);
-		}
+// 		// Constructor
+// 		function __construct() {
+// 			$widget_ops = array('description' => __('hk WP-PostViews views statistics, tag-cloudified', 'wp-postviews'));
+// 			parent::__construct('hk_views', __('HK Most Viewed', 'wp-postviews'), $widget_ops);
+// 		}
 
-		// Display Widget
-		function widget($args, $instance) {
-			extract($args);
-			$title = apply_filters('widget_title', esc_attr($instance['title']));
-			$mode = esc_attr($instance['mode']);
-			$limit = intval($instance['limit']);
-			$chars = intval($instance['chars']);
-			$largest_count = -1;
-			echo $before_widget.$before_title.$title.$after_title;
-			echo '<div class="wp-views-cloud">'."\n";
-
-
-
-
-			$most_viewed = hk_get_most_viewed($mode, $limit);
-
-			if($most_viewed) {
-				foreach ($most_viewed as $post) {
-					$post_views = intval($post->views);
-					if ($post_views <= 0) $post_views = 1;
-					if ($largest_count == -1)
-						$largest_count = $post_views;
-
-					//case
-					switch(intval($post_views*4/$largest_count)) {
-						case 4:
-							$class = 'large';
-							break;
-						case 3:
-							$class = 'medium';
-							break;
-						case 2:
-							$class = 'small';
-							break;
-						case 1:
-							$class = 'mini';
-							break;
-						default:
-							$class = 'tiny';
-							break;
-					}
-
-					$post_title = get_the_title($post);
-					if($chars > 0) {
-						$post_title = snippet_text($post_title, $chars);
-					}
-					$post_excerpt = views_post_excerpt($post->post_excerpt, $post->post_content, $post->post_password, $chars);
-					$output .= "<a class='$class views-cloud-item' href='" . get_permalink($post) . "' title='$post_excerpt'>";
-					$output .= $post_title;
-					$output .= "</a>";
-				}
-			} else {
-				$output = 'Nothing here..';
-			}
-			echo $output;
+// 		// Display Widget
+// 		function widget($args, $instance) {
+// 			extract($args);
+// 			$title = apply_filters('widget_title', esc_attr($instance['title']));
+// 			$mode = esc_attr($instance['mode']);
+// 			$limit = intval($instance['limit']);
+// 			$chars = intval($instance['chars']);
+// 			$largest_count = -1;
+// 			echo $before_widget.$before_title.$title.$after_title;
+// 			echo '<div class="wp-views-cloud">'."\n";
 
 
 
 
+// 			$most_viewed = hk_get_most_viewed($mode, $limit);
+
+// 			if($most_viewed) {
+// 				foreach ($most_viewed as $post) {
+// 					$post_views = intval($post->views);
+// 					if ($post_views <= 0) $post_views = 1;
+// 					if ($largest_count == -1)
+// 						$largest_count = $post_views;
+
+// 					//case
+// 					switch(intval($post_views*4/$largest_count)) {
+// 						case 4:
+// 							$class = 'large';
+// 							break;
+// 						case 3:
+// 							$class = 'medium';
+// 							break;
+// 						case 2:
+// 							$class = 'small';
+// 							break;
+// 						case 1:
+// 							$class = 'mini';
+// 							break;
+// 						default:
+// 							$class = 'tiny';
+// 							break;
+// 					}
+
+// 					$post_title = get_the_title($post);
+// 					if($chars > 0) {
+// 						$post_title = snippet_text($post_title, $chars);
+// 					}
+// 					$post_excerpt = views_post_excerpt($post->post_excerpt, $post->post_content, $post->post_password, $chars);
+// 					$output .= "<a class='$class views-cloud-item' href='" . get_permalink($post) . "' title='$post_excerpt'>";
+// 					$output .= $post_title;
+// 					$output .= "</a>";
+// 				}
+// 			} else {
+// 				$output = 'Nothing here..';
+// 			}
+// 			echo $output;
 
 
-			echo '</div>'."\n";
-			echo $after_widget;
-		}
 
-		// When Widget Control Form Is Posted
-		function update($new_instance, $old_instance) {
-			if (!isset($new_instance['submit'])) {
-				return false;
-			}
-			$instance = $old_instance;
-			$instance['title'] = strip_tags($new_instance['title']);
-			$instance['mode'] = strip_tags($new_instance['mode']);
-			$instance['limit'] = intval($new_instance['limit']);
-			$instance['chars'] = intval($new_instance['chars']);
-			return $instance;
-		}
 
-		// DIsplay Widget Control Form
-		function form($instance) {
-			global $wpdb;
-			$instance = wp_parse_args((array) $instance, array('title' => __('Views', 'wp-postviews'), 'mode' => 'both', 'limit' => 10, 'chars' => 200));
-			$title = esc_attr($instance['title']);
-			$mode = esc_attr($instance['mode']);
-			$limit = intval($instance['limit']);
-			$chars = intval($instance['chars']);
-	?>
+
+
+// 			echo '</div>'."\n";
+// 			echo $after_widget;
+// 		}
+
+// 		// When Widget Control Form Is Posted
+// 		function update($new_instance, $old_instance) {
+// 			if (!isset($new_instance['submit'])) {
+// 				return false;
+// 			}
+// 			$instance = $old_instance;
+// 			$instance['title'] = strip_tags($new_instance['title']);
+// 			$instance['mode'] = strip_tags($new_instance['mode']);
+// 			$instance['limit'] = intval($new_instance['limit']);
+// 			$instance['chars'] = intval($new_instance['chars']);
+// 			return $instance;
+// 		}
+
+// 		// DIsplay Widget Control Form
+// 		function form($instance) {
+// 			global $wpdb;
+// 			$instance = wp_parse_args((array) $instance, array('title' => __('Views', 'wp-postviews'), 'mode' => 'both', 'limit' => 10, 'chars' => 200));
+// 			$title = esc_attr($instance['title']);
+// 			$mode = esc_attr($instance['mode']);
+// 			$limit = intval($instance['limit']);
+// 			$chars = intval($instance['chars']);
+/*	?>
 			<p>
 				<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'wp-postviews'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label>
 			</p>
@@ -941,73 +941,73 @@ if(class_exists('WP_Widget_PostViews')) { // check if plugin is enabled
 				<small><?php _e('<strong>0</strong> to disable.', 'wp-postviews'); ?></small>
 			</p>
 			<input type="hidden" id="<?php echo $this->get_field_id('submit'); ?>" name="<?php echo $this->get_field_name('submit'); ?>" value="1" />
-	<?php
-		}
-	} // end class
+	<?php */
+// 		}
+// 	} // end class
 
-	### Function: Init HuGy WP-PostViews Widget
-	add_action('widgets_init', 'hk_widget_views_init');
-	function hk_widget_views_init() {
-		register_widget('hk_WP_Widget_PostViews');
-	}
+// 	### Function: Init HuGy WP-PostViews Widget
+// 	add_action('widgets_init', 'hk_widget_views_init');
+// 	function hk_widget_views_init() {
+// 		register_widget('hk_WP_Widget_PostViews');
+// 	}
 
-} // end if Class: WP-PostViews Widget
+// } // end if Class: WP-PostViews Widget
 
-function hk_get_most_viewed($mode, $limit) {
-	global $wpdb, $default_settings;
-	$where = '';
-	$output = '';
+// function hk_get_most_viewed($mode, $limit) {
+// 	global $wpdb, $default_settings;
+// 	$where = '';
+// 	$output = '';
 
-	// remove hidden posts
-	$hidden_cat = "";
-	if ($default_settings["hidden_cat"] != "") {
-		$hidden_cat = $default_settings["hidden_cat"];
-	}
-	$ignore_hidden = " NOT IN (SELECT p3.ID FROM $wpdb->posts as p3
-		 LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
-		 WHERE r3.term_taxonomy_ID = '$hidden_cat') ";
-	//$ignore_hidden = "";
-	// if specific mode
-	if(!empty($mode) && $mode != 'both') {
-		$where = "post_type = '$mode'";
-	} else {
-		$where = '1=1';
-	}
-
-
-	$largest_count = -1;
-	//			$most_viewed = $wpdb->get_results("SELECT DISTINCT $wpdb->posts.*, (meta_value+0) AS views FROM $wpdb->posts
-	//LEFT JOIN $wpdb->postmeta ON $wpdb->postmeta.post_id = $wpdb->posts.ID WHERE post_date < '".current_time('mysql')."'
-	//AND $where AND post_status = 'publish' AND meta_key = 'views' AND post_password = '' ORDER BY views DESC LIMIT $limit");
+// 	// remove hidden posts
+// 	$hidden_cat = "";
+// 	if ($default_settings["hidden_cat"] != "") {
+// 		$hidden_cat = $default_settings["hidden_cat"];
+// 	}
+// 	$ignore_hidden = " NOT IN (SELECT p3.ID FROM $wpdb->posts as p3
+// 		 LEFT JOIN $wpdb->term_relationships as r3 ON p3.ID = r3.object_ID AND p3.post_status = 'publish'
+// 		 WHERE r3.term_taxonomy_ID = '$hidden_cat') ";
+// 	//$ignore_hidden = "";
+// 	// if specific mode
+// 	if(!empty($mode) && $mode != 'both') {
+// 		$where = "post_type = '$mode'";
+// 	} else {
+// 		$where = '1=1';
+// 	}
 
 
+// 	$largest_count = -1;
+// 	//			$most_viewed = $wpdb->get_results("SELECT DISTINCT $wpdb->posts.*, (meta_value+0) AS views FROM $wpdb->posts
+// 	//LEFT JOIN $wpdb->postmeta ON $wpdb->postmeta.post_id = $wpdb->posts.ID WHERE post_date < '".current_time('mysql')."'
+// 	//AND $where AND post_status = 'publish' AND meta_key = 'views' AND post_password = '' ORDER BY views DESC LIMIT $limit");
 
 
-	$sql = "select * from
-		(
-			SELECT DISTINCT p1.*, CAST(meta_value-" . $default_settings["sticky_number"] . " AS signed) as views FROM $wpdb->posts as p1, $wpdb->postmeta as pm1
-		WHERE p1.ID = pm1.post_id
-		AND post_date < '".current_time('mysql')."'
-		AND meta_key='views'
-		AND meta_value>=" . $default_settings["sticky_number"] . "
-		AND post_status = 'publish'
-		AND $where AND p1.ID $ignore_hidden
-		ORDER BY views DESC LIMIT $limit ) as t1
-		union
-		(
-			SELECT DISTINCT p2.*, CAST(meta_value AS signed) as views FROM  $wpdb->posts as p2, $wpdb->postmeta as pm1
-		WHERE p2.ID = pm1.post_id
-		AND post_date < '".current_time('mysql')."'
-		AND meta_key='views'
-		AND meta_value<" . $default_settings["sticky_number"] . "
-		AND post_status = 'publish'
-		AND $where AND p2.ID $ignore_hidden
-		ORDER BY views DESC LIMIT $limit )
-		ORDER BY views DESC LIMIT $limit
-	";
-	$most_viewed = $wpdb->get_results($sql);
-	return $most_viewed;
-}
+
+
+// 	$sql = "select * from
+// 		(
+// 			SELECT DISTINCT p1.*, CAST(meta_value-" . $default_settings["sticky_number"] . " AS signed) as views FROM $wpdb->posts as p1, $wpdb->postmeta as pm1
+// 		WHERE p1.ID = pm1.post_id
+// 		AND post_date < '".current_time('mysql')."'
+// 		AND meta_key='views'
+// 		AND meta_value>=" . $default_settings["sticky_number"] . "
+// 		AND post_status = 'publish'
+// 		AND $where AND p1.ID $ignore_hidden
+// 		ORDER BY views DESC LIMIT $limit ) as t1
+// 		union
+// 		(
+// 			SELECT DISTINCT p2.*, CAST(meta_value AS signed) as views FROM  $wpdb->posts as p2, $wpdb->postmeta as pm1
+// 		WHERE p2.ID = pm1.post_id
+// 		AND post_date < '".current_time('mysql')."'
+// 		AND meta_key='views'
+// 		AND meta_value<" . $default_settings["sticky_number"] . "
+// 		AND post_status = 'publish'
+// 		AND $where AND p2.ID $ignore_hidden
+// 		ORDER BY views DESC LIMIT $limit )
+// 		ORDER BY views DESC LIMIT $limit
+// 	";
+// 	$most_viewed = $wpdb->get_results($sql);
+// 	return $most_viewed;
+// }
 
 
 /* TODO cleanup old widgets
