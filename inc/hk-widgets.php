@@ -27,13 +27,13 @@
 	}
 
 	public function widget( $args, $instance ) {
-		// if (function_exists('hk_view_quick_links')) {
-		// 	echo "<div class='quick-posts-widget-wrapper'>";
-		// 	echo hk_view_quick_links();
-		// 	echo "</div>";
-		// } else {
-		// 	echo "Det finns ingen funktion för mellanstartsida p&aring; webbplatsen. Kontakta administrat&ouml;ren!";
-		// }
+		if (function_exists('hk_view_quick_links')) {
+			echo "<div class='quick-posts-widget-wrapper'>";
+			echo hk_view_quick_links();
+			echo "</div>";
+		} else {
+			echo "Det finns ingen funktion för mellanstartsida p&aring; webbplatsen. Kontakta administrat&ouml;ren!";
+		}
 	}
 }
 /* add the widget  */

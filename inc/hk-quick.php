@@ -280,9 +280,10 @@ function hk_view_quick_links() {
 								case 'three-fifths': $row_width += 60; break;
 								case 'four-fifths': $row_width += 80; break;
 							}
+							$num_rows_class = get_sub_field('num_rows');
 
 							// $retValue .= "<div class='quick-post $layout quick-code'><div>";
-							$retValue .= "<div class='mellanstart-post $layout quick-code'><div>";
+							$retValue .= "<div class='mellanstart-post $layout quick-code $num_rows_class'><div>";
 							$retValue .= get_sub_field('code');
 							$retValue .= "</div></div>";
 						endif; // if not inactive
@@ -431,7 +432,8 @@ function hk_view_quick_links() {
 
 								endwhile;
 							else :
-								$retValue .= "<div class='quick-post $imagesize $layout  $cssclass'><div style='$style'>$imagediv$title$description_div$button</div></div>";
+								$retValue .= "<div class='mellanstart-post $imagesize $layout  $cssclass'><div style='$style'>$imagediv$title$description_div$button</div></div>";
+								// $retValue .= "<div class='quick-post $imagesize $layout  $cssclass'><div style='$style'>$imagediv$title$description_div$button</div></div>";
 							endif; // end if content
 
 						endif; // end if not inactive

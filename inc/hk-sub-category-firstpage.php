@@ -1,7 +1,9 @@
 
+<?php if (get_field('mellanstart_on_sub_category_enable', 'options')) : ?>
 <div class='mellanstart-widget-wrapper'>
 	<?php echo hk_view_quick_links(); ?>
 </div>
+<?php else: ?>
 <?php if ( is_active_sidebar("firstpage-top-content") ) : ?>
 	<div id="firstpage-top-content" class="firstpage-top-content">
 		<?php dynamic_sidebar('firstpage-top-content'); ?>
@@ -36,4 +38,5 @@
 <div id="firstpage-pre-footer-sidebar" class="firstpage-pre-footer-sidebar">
 	<?php dynamic_sidebar('firstpage-pre-footer-sidebar'); ?>
 </div><!-- #firstpage-pre-footer-sidebar -->
+<?php endif; ?>
 <?php endif; ?>

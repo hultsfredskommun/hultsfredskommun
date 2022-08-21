@@ -650,7 +650,7 @@ acf_add_local_field_group(array (
 						'required' => 1,
 						'conditional_logic' => 0,
 						'wrapper' => array (
-							'width' => '50%',
+							'width' => '40%',
 							'class' => '',
 							'id' => '',
 						),
@@ -679,6 +679,39 @@ acf_add_local_field_group(array (
 						'readonly' => 0,
 					),
 					array (
+						'key' => 'field_56cc104207f60',
+						'label' => 'Antal rader',
+						'name' => 'num_rows',
+						'type' => 'select',
+						'instructions' => 'Antal rader som innehållet ska synas.',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array (
+							'width' => '40%',
+							'class' => '',
+							'id' => '',
+						),
+
+						'choices' => array (
+							'span-rows-1' => '1 rad',
+							'span-rows-2' => '2 rader',
+							'span-rows-3' => '3 rader',
+							'span-rows-4' => '4 rader',
+							
+						),
+						'default_value' => array (
+							'span-rows-1' => '1 rad'
+						),
+						'allow_null' => 0,
+						'multiple' => 0,
+						'ui' => 0,
+						'ajax' => 0,
+						'placeholder' => '',
+						'disabled' => 0,
+						'readonly' => 0,
+					),
+					
+					array (
 						'key' => 'field_56eabc5e15411',
 						'label' => 'D&ouml;lj puff',
 						'name' => 'inactive',
@@ -687,7 +720,7 @@ acf_add_local_field_group(array (
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array (
-							'width' => '50%',
+							'width' => '20%',
 							'class' => '',
 							'id' => '',
 						),

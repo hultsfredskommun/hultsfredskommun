@@ -1835,7 +1835,8 @@ h4, .delta, .search .search-title,
 }
 
 h5, .epsilon, .new-menu .tag-menu-wrapper ul li a, .main-menu, .search .contact-area h3.entry-title,
-.hk-gcse-ajax-searchresults-wrapper .contact-area h3.entry-title, .quick-posts-wrapper .quick-posts .quick-post h2, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post h2, .widget {
+.hk-gcse-ajax-searchresults-wrapper .contact-area h3.entry-title, .quick-posts-wrapper .quick-posts .quick-post h2, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post h2,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post h2, .widget {
   font-size: 16px;
   font-size: 1.0666666667rem;
   line-height: 1.5;
@@ -5277,7 +5278,8 @@ html.flexbox {
 .article-border-wrapper .article-wrapper .more-content .news-time-wrapper, .article-border-wrapper .article-wrapper .single-content .content-header .header-tools,
 .article-border-wrapper .article-wrapper .more-content .content-header .header-tools, .tag-listing .article-border-wrapper .tag.entry-title, .search-title, .page-header .category-tools, .page-header .num-posts,
 .page-header .view-tools,
-.page-header .sort-order, .quick-posts-wrapper .quick-posts .quick-post h2, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post h2, .main .widget.widget_hk_aditro_rss_widget ul,
+.page-header .sort-order, .quick-posts-wrapper .quick-posts .quick-post h2, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post h2,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post h2, .main .widget.widget_hk_aditro_rss_widget ul,
 .main .widget.widget_hk_related_widget ul,
 .main .widget.widget_hk_protocol ul,
 .main .widget.HK_tags_widget ul, .main .widget.horizontal-list.widget_hk_related_widget ul,
@@ -5424,7 +5426,8 @@ a:focus {
 
 .default-text, .video-popup.box,
 .form-popup.box,
-.contact-popup.box, .ui-tabs-nav a, .category-navigation .more-navigation li, .category-navigation .more-navigation a, .category-navigation .parent li, .category-navigation a, .main-sub-menu a, .main-menu a, .responsive-sub-menu a, .hultsfred-menu ul ul ul ul a, .cookieinformation .textwidget, .tag-listing.news .article-border-wrapper .entry-title a, .page-header a, .page-header, .quick-posts-wrapper .quick-posts .quick-post a, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post a, .button, body, h1 span, .widget-title a,
+.contact-popup.box, .ui-tabs-nav a, .category-navigation .more-navigation li, .category-navigation .more-navigation a, .category-navigation .parent li, .category-navigation a, .main-sub-menu a, .main-menu a, .responsive-sub-menu a, .hultsfred-menu ul ul ul ul a, .cookieinformation .textwidget, .tag-listing.news .article-border-wrapper .entry-title a, .page-header a, .page-header, .quick-posts-wrapper .quick-posts .quick-post a, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post a,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post a, .button, body, h1 span, .widget-title a,
 h1 a {
   color: #3e3e3f;
 }
@@ -5474,7 +5477,8 @@ h1 a {
 
 .white-text, .log, .footer-image-wrapper, .main-sub-menu .current-category-ancestor a,
 .main-sub-menu .current-menu-item a, .hultsfred-menu .expand-button, .hultsfred-menu a, .searchnavigation .form .submit, .top-menu-wrapper a, .top-menu-wrapper, .cookieinformation a,
-.important-widget a, .cookieinformation, .important-widget, .side-content ul.contacts .title.contact_title, .page-header .category-tools .related-menu a, .quick-posts-wrapper .quick-posts .quick-post a.quick-button, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post a.quick-button, .main .widget.widget_hk_aditro_rss_widget .widget-title,
+.important-widget a, .cookieinformation, .important-widget, .side-content ul.contacts .title.contact_title, .page-header .category-tools .related-menu a, .quick-posts-wrapper .quick-posts .quick-post a.quick-button, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post a.quick-button,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post a.quick-button, .main .widget.widget_hk_aditro_rss_widget .widget-title,
 .main .widget.widget_hk_related_widget .widget-title,
 .main .widget.widget_hk_protocol .widget-title,
 .main .widget.HK_tags_widget .widget-title, .main .widget.widget_hk_aditro_rss_widget a,
@@ -5812,7 +5816,8 @@ h6 {
   }
 
   body, .epsilon, .new-menu .tag-menu-wrapper ul li a, .main-menu, .search .contact-area h3.entry-title,
-.hk-gcse-ajax-searchresults-wrapper .contact-area h3.entry-title, .quick-posts-wrapper .quick-posts .quick-post h2, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post h2, .widget {
+.hk-gcse-ajax-searchresults-wrapper .contact-area h3.entry-title, .quick-posts-wrapper .quick-posts .quick-post h2, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post h2,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post h2, .widget {
     font-size: 14px;
     font-size: 0.9333333333rem;
     line-height: 1.7142857143;
@@ -6414,36 +6419,50 @@ html {
   padding-left: 24px;
 }
 
+.quick-posts-widget-wrapper,
 .mellanstart-widget-wrapper {
   margin-left: 24px;
 }
+.quick-posts-widget-wrapper .mellanstart-wrapper,
 .mellanstart-widget-wrapper .mellanstart-wrapper {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: dense;
   gap: 24px;
 }
 @media only screen and (max-width: 540px) {
-  .mellanstart-widget-wrapper .mellanstart-wrapper {
+  .quick-posts-widget-wrapper .mellanstart-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper {
     grid-template-columns: 1fr;
   }
 }
+.quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post,
 .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post {
   width: 100%;
 }
+.quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post img.overlay-img,
 .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post img.overlay-img {
   padding-right: 24px;
   max-height: calc(100% - 6px);
   width: auto;
   margin: 0 auto;
 }
+.quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.wide-image img.overlay-img,
 .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.wide-image img.overlay-img {
   margin-left: 23%;
   cursor: pointer;
 }
+.quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.slideshow-image img.overlay-img,
 .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.slideshow-image img.overlay-img {
   margin-left: 20%;
   cursor: pointer;
 }
+.quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post .quick-code,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post .quick-code {
+  overflow: hidden;
+}
+.quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post .quick-tags ul li,
+.quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post .rek-prediction .rek-style-cols ul li,
 .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post .quick-tags ul li,
 .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post .rek-prediction .rek-style-cols ul li {
   padding: 4px 25px 4px 18px;
@@ -6451,31 +6470,166 @@ html {
   align-items: flex-start;
 }
 @media only screen and (min-width: 541px) {
-  .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-whole, .mellanstart-widget-wrapper .mellanstart-wrapper .footer-widget-sidebar.one .mellanstart-post.footer-widgets, .footer-widget-sidebar.one .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.footer-widgets, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.main-menu, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.responsive-sub-menu, .mellanstart-widget-wrapper .mellanstart-wrapper .hultsfred-menu li.mellanstart-post, .hultsfred-menu .mellanstart-widget-wrapper .mellanstart-wrapper li.mellanstart-post, .mellanstart-widget-wrapper .mellanstart-wrapper .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .mellanstart-post.hk-gcse-googleresults, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.hk-gcse-googleresults, .mellanstart-widget-wrapper .mellanstart-wrapper .hk-gcse-ajax-searchresults-wrapper .mellanstart-post.hk-gcse-ajax-searchresults, .hk-gcse-ajax-searchresults-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.hk-gcse-ajax-searchresults, .mellanstart-widget-wrapper .mellanstart-wrapper .searchnavigation .form .input-wrapper .mellanstart-post.field, .searchnavigation .form .input-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.field, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.top-menu-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.slide, .mellanstart-widget-wrapper .mellanstart-wrapper .slide img.mellanstart-post, .slide .mellanstart-widget-wrapper .mellanstart-wrapper img.mellanstart-post, .mellanstart-widget-wrapper .mellanstart-wrapper .post .mellanstart-post.img-wrapper, .post .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper,
+  .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.span-rows-2,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.span-rows-2 {
+    grid-row: span 2;
+  }
+  .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.span-rows-3,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.span-rows-3 {
+    grid-row: span 3;
+  }
+  .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.span-rows-4,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.span-rows-4 {
+    grid-row: span 4;
+  }
+  .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-whole, .quick-posts-widget-wrapper .mellanstart-wrapper .footer-widget-sidebar.one .mellanstart-post.footer-widgets, .footer-widget-sidebar.one .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.footer-widgets, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.main-menu, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.responsive-sub-menu, .quick-posts-widget-wrapper .mellanstart-wrapper .hultsfred-menu li.mellanstart-post, .hultsfred-menu .quick-posts-widget-wrapper .mellanstart-wrapper li.mellanstart-post, .quick-posts-widget-wrapper .mellanstart-wrapper .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .mellanstart-post.hk-gcse-googleresults, .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.hk-gcse-googleresults, .quick-posts-widget-wrapper .mellanstart-wrapper .hk-gcse-ajax-searchresults-wrapper .mellanstart-post.hk-gcse-ajax-searchresults, .hk-gcse-ajax-searchresults-wrapper .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.hk-gcse-ajax-searchresults, .quick-posts-widget-wrapper .mellanstart-wrapper .searchnavigation .form .input-wrapper .mellanstart-post.field, .searchnavigation .form .input-wrapper .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.field, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.top-menu-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.slide, .quick-posts-widget-wrapper .mellanstart-wrapper .slide img.mellanstart-post, .slide .quick-posts-widget-wrapper .mellanstart-wrapper img.mellanstart-post, .quick-posts-widget-wrapper .mellanstart-wrapper .post .mellanstart-post.img-wrapper, .post .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper,
+.quick-posts-widget-wrapper .mellanstart-wrapper .single .mellanstart-post.img-wrapper,
+.single .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.content, .quick-posts-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .mellanstart-post.entry-meta, .article-border-wrapper .article-wrapper .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-meta, .quick-posts-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .mellanstart-post.side-content, .article-border-wrapper .article-wrapper .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.side-content, .quick-posts-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .mellanstart-post.content-wrapper, .article-border-wrapper .article-wrapper .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .summary-content h1.mellanstart-post.entry-title, .article-border-wrapper .article-wrapper .summary-content .quick-posts-widget-wrapper .mellanstart-wrapper h1.mellanstart-post.entry-title, .quick-posts-widget-wrapper .mellanstart-wrapper .article-border-wrapper .mellanstart-post.article-wrapper, .article-border-wrapper .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.article-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.article-border-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper article.mellanstart-post.post, .quick-posts-widget-wrapper .mellanstart-wrapper .home .post .mellanstart-post.content-wrapper, .home .post .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .single-hk_kontakter .mellanstart-post.type-hk_kontakter, .single-hk_kontakter .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.type-hk_kontakter, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.post-search-hook, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.page-header, .quick-posts-widget-wrapper .mellanstart-wrapper .hide-left-menu .mellanstart-post.primary, .hide-left-menu .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.primary,
+.quick-posts-widget-wrapper .mellanstart-wrapper .hide-left-menu .mellanstart-post.breadcrumb,
+.hide-left-menu .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.breadcrumb, .quick-posts-widget-wrapper .mellanstart-wrapper .quick-posts-wrapper .quick-posts .mellanstart-post.quick-post.line-break, .quick-posts-wrapper .quick-posts .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.quick-post.line-break, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.quick-posts-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.page-content, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.branding, .quick-posts-widget-wrapper .mellanstart-wrapper .widget .mellanstart-post.widget-title, .widget .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.widget-title,
+.quick-posts-widget-wrapper .mellanstart-wrapper .widget .mellanstart-post.entry-title,
+.widget .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-title, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.icon-right, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.filtersearch,
+.quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.tag-tools, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.firstpage-top-content, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.firstpage-pre-footer-sidebar, .quick-posts-widget-wrapper .mellanstart-wrapper .widget_hk_wp_feed_rss_widget.widget .mellanstart-post.content-wrapper, .widget_hk_wp_feed_rss_widget.widget .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .slideshow .mellanstart-post.slideshow_bg, .slideshow .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.slideshow_bg, .quick-posts-widget-wrapper .mellanstart-wrapper .slideshow .slide img.mellanstart-post, .slideshow .slide .quick-posts-widget-wrapper .mellanstart-wrapper img.mellanstart-post, .quick-posts-widget-wrapper .mellanstart-wrapper .slideshow .slide .caption-area .mellanstart-post.transparent, .slideshow .slide .caption-area .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.transparent, .quick-posts-widget-wrapper .mellanstart-wrapper .slideshow .slide .caption-area .mellanstart-post.caption, .slideshow .slide .caption-area .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.caption, .quick-posts-widget-wrapper .mellanstart-wrapper .home .mellanstart-post.slideshow-contact-puff-area, .home .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.slideshow-contact-puff-area, .quick-posts-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area img.mellanstart-post, .home .slideshow-contact-puff-area .quick-posts-widget-wrapper .mellanstart-wrapper img.mellanstart-post, .quick-posts-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .mellanstart-post.entry-title, .home .slideshow-contact-puff-area .content-wrapper .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-title, .quick-posts-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link1, .quick-posts-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link2, .quick-posts-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link3, .quick-posts-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link4, .quick-posts-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link5, .quick-posts-widget-wrapper .mellanstart-wrapper .home .widget.contact-area .mellanstart-post.contact-wrapper, .home .widget.contact-area .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.contact-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .home .widget.contact-area .contact-wrapper img.mellanstart-post, .home .widget.contact-area .contact-wrapper .quick-posts-widget-wrapper .mellanstart-wrapper img.mellanstart-post, .quick-posts-widget-wrapper .mellanstart-wrapper .home .widget.contact-area .contact-wrapper .content-wrapper .mellanstart-post.entry-title, .home .widget.contact-area .contact-wrapper .content-wrapper .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-title,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-whole,
+.mellanstart-widget-wrapper .mellanstart-wrapper .footer-widget-sidebar.one .mellanstart-post.footer-widgets,
+.footer-widget-sidebar.one .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.footer-widgets,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.main-menu,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.responsive-sub-menu,
+.mellanstart-widget-wrapper .mellanstart-wrapper .hultsfred-menu li.mellanstart-post,
+.hultsfred-menu .mellanstart-widget-wrapper .mellanstart-wrapper li.mellanstart-post,
+.mellanstart-widget-wrapper .mellanstart-wrapper .hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .mellanstart-post.hk-gcse-googleresults,
+.hk-gcse-ajax-searchresults-wrapper .hk-gcse-ajax-searchresults.no-hook .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.hk-gcse-googleresults,
+.mellanstart-widget-wrapper .mellanstart-wrapper .hk-gcse-ajax-searchresults-wrapper .mellanstart-post.hk-gcse-ajax-searchresults,
+.hk-gcse-ajax-searchresults-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.hk-gcse-ajax-searchresults,
+.mellanstart-widget-wrapper .mellanstart-wrapper .searchnavigation .form .input-wrapper .mellanstart-post.field,
+.searchnavigation .form .input-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.field,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.top-menu-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.slide,
+.mellanstart-widget-wrapper .mellanstart-wrapper .slide img.mellanstart-post,
+.slide .mellanstart-widget-wrapper .mellanstart-wrapper img.mellanstart-post,
+.mellanstart-widget-wrapper .mellanstart-wrapper .post .mellanstart-post.img-wrapper,
+.post .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper,
 .mellanstart-widget-wrapper .mellanstart-wrapper .single .mellanstart-post.img-wrapper,
-.single .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.content, .mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .mellanstart-post.entry-meta, .article-border-wrapper .article-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-meta, .mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .mellanstart-post.side-content, .article-border-wrapper .article-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.side-content, .mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .mellanstart-post.content-wrapper, .article-border-wrapper .article-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .summary-content h1.mellanstart-post.entry-title, .article-border-wrapper .article-wrapper .summary-content .mellanstart-widget-wrapper .mellanstart-wrapper h1.mellanstart-post.entry-title, .mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .mellanstart-post.article-wrapper, .article-border-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.article-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.article-border-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper article.mellanstart-post.post, .mellanstart-widget-wrapper .mellanstart-wrapper .home .post .mellanstart-post.content-wrapper, .home .post .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .single-hk_kontakter .mellanstart-post.type-hk_kontakter, .single-hk_kontakter .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.type-hk_kontakter, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.post-search-hook, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.page-header, .mellanstart-widget-wrapper .mellanstart-wrapper .hide-left-menu .mellanstart-post.primary, .hide-left-menu .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.primary,
+.single .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.content,
+.mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .mellanstart-post.entry-meta,
+.article-border-wrapper .article-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-meta,
+.mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .mellanstart-post.side-content,
+.article-border-wrapper .article-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.side-content,
+.mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .mellanstart-post.content-wrapper,
+.article-border-wrapper .article-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .summary-content h1.mellanstart-post.entry-title,
+.article-border-wrapper .article-wrapper .summary-content .mellanstart-widget-wrapper .mellanstart-wrapper h1.mellanstart-post.entry-title,
+.mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .mellanstart-post.article-wrapper,
+.article-border-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.article-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.article-border-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper article.mellanstart-post.post,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .post .mellanstart-post.content-wrapper,
+.home .post .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .single-hk_kontakter .mellanstart-post.type-hk_kontakter,
+.single-hk_kontakter .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.type-hk_kontakter,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.post-search-hook,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.page-header,
+.mellanstart-widget-wrapper .mellanstart-wrapper .hide-left-menu .mellanstart-post.primary,
+.hide-left-menu .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.primary,
 .mellanstart-widget-wrapper .mellanstart-wrapper .hide-left-menu .mellanstart-post.breadcrumb,
-.hide-left-menu .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.breadcrumb, .mellanstart-widget-wrapper .mellanstart-wrapper .quick-posts-wrapper .quick-posts .mellanstart-post.quick-post.line-break, .quick-posts-wrapper .quick-posts .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.quick-post.line-break, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.quick-posts-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.page-content, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.branding, .mellanstart-widget-wrapper .mellanstart-wrapper .widget .mellanstart-post.widget-title, .widget .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.widget-title,
+.hide-left-menu .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.breadcrumb,
+.mellanstart-widget-wrapper .mellanstart-wrapper .quick-posts-wrapper .quick-posts .mellanstart-post.quick-post.line-break,
+.quick-posts-wrapper .quick-posts .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.quick-post.line-break,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.quick-posts-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.page-content,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.branding,
+.mellanstart-widget-wrapper .mellanstart-wrapper .widget .mellanstart-post.widget-title,
+.widget .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.widget-title,
 .mellanstart-widget-wrapper .mellanstart-wrapper .widget .mellanstart-post.entry-title,
-.widget .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-title, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.icon-right, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.filtersearch,
-.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.tag-tools, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.firstpage-top-content, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.firstpage-pre-footer-sidebar, .mellanstart-widget-wrapper .mellanstart-wrapper .widget_hk_wp_feed_rss_widget.widget .mellanstart-post.content-wrapper, .widget_hk_wp_feed_rss_widget.widget .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .slideshow .mellanstart-post.slideshow_bg, .slideshow .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.slideshow_bg, .mellanstart-widget-wrapper .mellanstart-wrapper .slideshow .slide .caption-area .mellanstart-post.transparent, .slideshow .slide .caption-area .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.transparent, .mellanstart-widget-wrapper .mellanstart-wrapper .slideshow .slide .caption-area .mellanstart-post.caption, .slideshow .slide .caption-area .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.caption, .mellanstart-widget-wrapper .mellanstart-wrapper .home .mellanstart-post.slideshow-contact-puff-area, .home .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.slideshow-contact-puff-area, .mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area img.mellanstart-post, .home .slideshow-contact-puff-area .mellanstart-widget-wrapper .mellanstart-wrapper img.mellanstart-post, .mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .mellanstart-post.entry-title, .home .slideshow-contact-puff-area .content-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-title, .mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link1, .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link1, .mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link2, .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link2, .mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link3, .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link3, .mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link4, .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link4, .mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link5, .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link5, .mellanstart-widget-wrapper .mellanstart-wrapper .home .widget.contact-area .mellanstart-post.contact-wrapper, .home .widget.contact-area .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.contact-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .home .widget.contact-area .contact-wrapper img.mellanstart-post, .home .widget.contact-area .contact-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper img.mellanstart-post, .mellanstart-widget-wrapper .mellanstart-wrapper .home .widget.contact-area .contact-wrapper .content-wrapper .mellanstart-post.entry-title, .home .widget.contact-area .contact-wrapper .content-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-title {
+.widget .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-title,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.icon-right,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.filtersearch,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.tag-tools,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.firstpage-top-content,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.firstpage-pre-footer-sidebar,
+.mellanstart-widget-wrapper .mellanstart-wrapper .widget_hk_wp_feed_rss_widget.widget .mellanstart-post.content-wrapper,
+.widget_hk_wp_feed_rss_widget.widget .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .slideshow .mellanstart-post.slideshow_bg,
+.slideshow .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.slideshow_bg,
+.mellanstart-widget-wrapper .mellanstart-wrapper .slideshow .slide img.mellanstart-post,
+.slideshow .slide .mellanstart-widget-wrapper .mellanstart-wrapper img.mellanstart-post,
+.mellanstart-widget-wrapper .mellanstart-wrapper .slideshow .slide .caption-area .mellanstart-post.transparent,
+.slideshow .slide .caption-area .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.transparent,
+.mellanstart-widget-wrapper .mellanstart-wrapper .slideshow .slide .caption-area .mellanstart-post.caption,
+.slideshow .slide .caption-area .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.caption,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .mellanstart-post.slideshow-contact-puff-area,
+.home .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.slideshow-contact-puff-area,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area img.mellanstart-post,
+.home .slideshow-contact-puff-area .mellanstart-widget-wrapper .mellanstart-wrapper img.mellanstart-post,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .mellanstart-post.entry-title,
+.home .slideshow-contact-puff-area .content-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-title,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link1,
+.home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link1,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link2,
+.home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link2,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link3,
+.home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link3,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link4,
+.home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link4,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-post.direct_link5,
+.home .slideshow-contact-puff-area .content-wrapper .right-content .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.direct_link5,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .widget.contact-area .mellanstart-post.contact-wrapper,
+.home .widget.contact-area .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.contact-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .widget.contact-area .contact-wrapper img.mellanstart-post,
+.home .widget.contact-area .contact-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper img.mellanstart-post,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .widget.contact-area .contact-wrapper .content-wrapper .mellanstart-post.entry-title,
+.home .widget.contact-area .contact-wrapper .content-wrapper .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.entry-title {
     grid-column: span 12;
   }
-  .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-half, .mellanstart-widget-wrapper .mellanstart-wrapper .searchnavigation .searchresult ul.mellanstart-post, .searchnavigation .searchresult .mellanstart-widget-wrapper .mellanstart-wrapper ul.mellanstart-post, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-quarters, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.three-sixths, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.four-eighths, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.five-tenths, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.six-twelfths {
+  .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-half, .quick-posts-widget-wrapper .mellanstart-wrapper .searchnavigation .searchresult ul.mellanstart-post, .searchnavigation .searchresult .quick-posts-widget-wrapper .mellanstart-wrapper ul.mellanstart-post, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-quarters, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.three-sixths, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.four-eighths, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.five-tenths, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.six-twelfths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-half,
+.mellanstart-widget-wrapper .mellanstart-wrapper .searchnavigation .searchresult ul.mellanstart-post,
+.searchnavigation .searchresult .mellanstart-widget-wrapper .mellanstart-wrapper ul.mellanstart-post,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-quarters,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.three-sixths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.four-eighths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.five-tenths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.six-twelfths {
     grid-column: span 6;
   }
-  .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-third, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.log, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-sixths, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.four-twelfths, .mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .mellanstart-post.caption, .home .slideshow-contact-puff-area .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.caption {
+  .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-third, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.log, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-sixths, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.four-twelfths, .quick-posts-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .mellanstart-post.caption, .home .slideshow-contact-puff-area .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.caption,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-third,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.log,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-sixths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.four-twelfths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .home .slideshow-contact-puff-area .mellanstart-post.caption,
+.home .slideshow-contact-puff-area .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.caption {
     grid-column: span 4;
   }
-  .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-thirds, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.four-sixths, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.eight-twelfths {
+  .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-thirds, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.four-sixths, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.eight-twelfths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-thirds,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.four-sixths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.eight-twelfths {
     grid-column: span 8;
   }
-  .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-quarter, .mellanstart-widget-wrapper .mellanstart-wrapper .post.hk_kontakter .mellanstart-post.img-wrapper, .post.hk_kontakter .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper,
+  .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-quarter, .quick-posts-widget-wrapper .mellanstart-wrapper .post.hk_kontakter .mellanstart-post.img-wrapper, .post.hk_kontakter .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper,
+.quick-posts-widget-wrapper .mellanstart-wrapper .single.hk_kontakter .mellanstart-post.img-wrapper,
+.single.hk_kontakter .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .summary .mellanstart-post.img-wrapper, .summary .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .content-wrapper .contact-area .mellanstart-post.img-wrapper, .article-border-wrapper .article-wrapper .content-wrapper .contact-area .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-eighths, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.three-twelfths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.one-quarter,
+.mellanstart-widget-wrapper .mellanstart-wrapper .post.hk_kontakter .mellanstart-post.img-wrapper,
+.post.hk_kontakter .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper,
 .mellanstart-widget-wrapper .mellanstart-wrapper .single.hk_kontakter .mellanstart-post.img-wrapper,
-.single.hk_kontakter .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .summary .mellanstart-post.img-wrapper, .summary .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .content-wrapper .contact-area .mellanstart-post.img-wrapper, .article-border-wrapper .article-wrapper .content-wrapper .contact-area .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-eighths, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.three-twelfths {
+.single.hk_kontakter .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .summary .mellanstart-post.img-wrapper,
+.summary .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .article-border-wrapper .article-wrapper .content-wrapper .contact-area .mellanstart-post.img-wrapper,
+.article-border-wrapper .article-wrapper .content-wrapper .contact-area .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.img-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.two-eighths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.three-twelfths {
     grid-column: span 3;
   }
-  .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.three-quarters, .mellanstart-widget-wrapper .mellanstart-wrapper .summary .mellanstart-post.content-text-wrapper, .summary .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-text-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.six-eighths, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.nine-twelfths {
+  .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.three-quarters, .quick-posts-widget-wrapper .mellanstart-wrapper .summary .mellanstart-post.content-text-wrapper, .summary .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-text-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.six-eighths, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post.nine-twelfths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.three-quarters,
+.mellanstart-widget-wrapper .mellanstart-wrapper .summary .mellanstart-post.content-text-wrapper,
+.summary .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.content-text-wrapper,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.six-eighths,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post.nine-twelfths {
     grid-column: span 9;
   }
 }
@@ -7581,7 +7735,8 @@ span.wpcf7-list-item {
 
 .position-relative, .video-popup.box .entry-wrapper,
 .form-popup.box .entry-wrapper,
-.contact-popup.box .entry-wrapper, .position-relative--bottom-left, .position-relative--bottom-right, .position-relative--top-right, .position-relative--top-left, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .widget.contact-area .contact-wrapper, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post .slide, .quick-posts-wrapper .quick-posts .quick-post, .quick-posts-wrapper .quick-posts .quick-post .slide, .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .item,
+.contact-popup.box .entry-wrapper, .position-relative--bottom-left, .position-relative--bottom-right, .position-relative--top-right, .position-relative--top-left, .slideshow .slide .caption-area .caption, .home .slideshow-contact-puff-area, .home .widget.contact-area .contact-wrapper, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post .slide,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post .slide, .quick-posts-wrapper .quick-posts .quick-post, .quick-posts-wrapper .quick-posts .quick-post .slide, .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .item,
 .article-border-wrapper .article-wrapper .more-content .content-header .header-tools .item, .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .item a,
 .article-border-wrapper .article-wrapper .more-content .content-header .header-tools .item a, .searchnavigation .form .input-wrapper, .searchnavigation .searchresult-wrapper {
   position: relative;
@@ -7609,7 +7764,8 @@ span.wpcf7-list-item {
 
 .position-absolute, .close-video,
 .close-search,
-.close-contact, .position-absolute--bottom-left, .pager-wrapper, .position-absolute--bottom-right, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--top-left, .slideshow .slide .caption-area, .home .widget.contact-area .contact-wrapper .content-wrapper, .quick-button, .slideshow .slide .caption-area .transparent, .mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post img.overlay-img, .quick-posts-wrapper .quick-posts .quick-post img.overlay-img, .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .dropdown, .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .page-header .category-tools .menu-item, .page-header .category-tools .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .menu-item, .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .page-header .category-tools .cat-item, .page-header .category-tools .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .cat-item,
+.close-contact, .position-absolute--bottom-left, .pager-wrapper, .position-absolute--bottom-right, .position-absolute--top-right, .home .slideshow-contact-puff-area .content-wrapper, .searchnavigation .form .input-wrapper .clearbutton, .position-absolute--top-left, .slideshow .slide .caption-area, .home .widget.contact-area .contact-wrapper .content-wrapper, .quick-button, .slideshow .slide .caption-area .transparent, .quick-posts-widget-wrapper .mellanstart-wrapper .mellanstart-post img.overlay-img,
+.mellanstart-widget-wrapper .mellanstart-wrapper .mellanstart-post img.overlay-img, .quick-posts-wrapper .quick-posts .quick-post img.overlay-img, .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .dropdown, .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .page-header .category-tools .menu-item, .page-header .category-tools .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .menu-item, .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .page-header .category-tools .cat-item, .page-header .category-tools .article-border-wrapper .article-wrapper .single-content .content-header .header-tools .cat-item,
 .article-border-wrapper .article-wrapper .more-content .content-header .header-tools .dropdown,
 .article-border-wrapper .article-wrapper .more-content .content-header .header-tools .page-header .category-tools .menu-item,
 .page-header .category-tools .article-border-wrapper .article-wrapper .more-content .content-header .header-tools .menu-item,
