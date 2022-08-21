@@ -63,7 +63,7 @@
 .header-tool-icon {
 	@extend .clip_16x16;
 	vertical-align: top;
-	margin-right: $half-spacing-unit/2;
+	margin-right: $half-spacing-unit*0.5;
 }
 .tool-icon {
 	@extend .header-tool-icon;
@@ -328,7 +328,7 @@
 .viewmode_titles {
 	@extend .clip_24x24;
 	padding: 0!important;
-	margin: $half-spacing-unit/2 0!important;
+	margin: $half-spacing-unit*0.5 0!important;
 	background-position: -99px -469px;
 	&.active {
 		background-position: -28px -469px;
@@ -337,7 +337,7 @@
 .viewmode_summary {
 	@extend .clip_24x24;
 	padding: 0!important;
-	margin: $half-spacing-unit/2 0!important;
+	margin: $half-spacing-unit*0.5 0!important;
 	background-position: -99px -505px;
 	&.active {
 		background-position: -28px -505px;

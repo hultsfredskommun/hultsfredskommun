@@ -1,3 +1,7 @@
+
+<div class='mellanstart-widget-wrapper'>
+	<?php echo hk_view_quick_links(); ?>
+</div>
 <?php if ( is_active_sidebar("firstpage-top-content") ) : ?>
 	<div id="firstpage-top-content" class="firstpage-top-content">
 		<?php dynamic_sidebar('firstpage-top-content'); ?>

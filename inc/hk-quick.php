@@ -49,8 +49,10 @@ function hk_view_quick_links() {
 	if ($the_query->have_posts())
 	{
 		//$retValue .= "<style type='text/css'>.main.hk-quick { max-width: 1138px; }</style>";
-		$retValue .= "<div class='quick-posts-wrapper'>";
-		$retValue .= "<div class='quick-posts'>";
+		// $retValue .= "<div class='quick-posts-wrapper'>";
+		// $retValue .= "<div class='quick-posts'>";
+		$retValue .= "<div class='mellanstart-wrapper'>";
+		// $retValue .= "<div class='mellanstart-posts'>";
 		$a_class = "q";
 
 		// The Loop
@@ -87,7 +89,8 @@ function hk_view_quick_links() {
 							case 'four-fifths': $row_width += 80; break;
 						}
 
-						$retValue .= "<div class='quick-post $layout'><div class='quick-links'>";
+						// $retValue .= "<div class='quick-post $layout'><div class='quick-links'>";
+						$retValue .= "<div class='mellanstart-post $layout'><div class='mellanstart-links'>";
 
 						$css_wrapper = get_sub_field('css-wrapper');
 						$category = get_term(get_query_var("cat"), 'category');
@@ -159,7 +162,8 @@ function hk_view_quick_links() {
 							case 'four-fifths': $row_width += 80; break;
 						}
 
-						$retValue .= "<div class='quick-post $layout'><div class='quick-tags'>";
+						$retValue .= "<div class='mellanstart-post $layout'><div class='quick-tags'>";
+						// $retValue .= "<div class='quick-post $layout'><div class='quick-tags'>";
 
 						$css_wrapper = get_sub_field('css-wrapper');
 						$category = get_term(get_query_var("cat"), 'category');
@@ -192,7 +196,8 @@ function hk_view_quick_links() {
 								case 'four-fifths': $row_width += 80; break;
 							}
 
-							$retValue .= "<div class='quick-post $layout'><div class='quick-rekai'>";
+							// $retValue .= "<div class='quick-post $layout'><div class='quick-rekai'>";
+							$retValue .= "<div class='mellanstart-post $layout'><div class='quick-rekai'>";
 
 							/* rekai */
 							$css_wrapper = get_sub_field('css-wrapper');
@@ -204,7 +209,7 @@ function hk_view_quick_links() {
 							if (!empty($title)) {
 								$retValue .= "<h2>$title</h2>";
 							}
-
+							/* data-projectid='10341068' data-srek='41e77c49' TODO: only for dev*/
 							$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-excludetree='/artikel/kontakt/' data-addstripes='false' data-nrofhits='$nrofhits' data-pagetype='$category_slug' data-notpagetype='nyheter,kontakter'></div>";
 
 
@@ -229,7 +234,8 @@ function hk_view_quick_links() {
 								case 'four-fifths': $row_width += 80; break;
 							}
 
-							$retValue .= "<div class='quick-post $layout quick-news'><div>";
+							// $retValue .= "<div class='quick-post $layout quick-news'><div>";
+							$retValue .= "<div class='mellanstart-post $layout quick-news'><div>";
 
 							/* NEWS */
 							$css_wrapper = get_sub_field('css-wrapper');
@@ -274,7 +280,8 @@ function hk_view_quick_links() {
 								case 'four-fifths': $row_width += 80; break;
 							}
 
-							$retValue .= "<div class='quick-post $layout quick-code'><div>";
+							// $retValue .= "<div class='quick-post $layout quick-code'><div>";
+							$retValue .= "<div class='mellanstart-post $layout quick-code'><div>";
 							$retValue .= get_sub_field('code');
 							$retValue .= "</div></div>";
 						endif; // if not inactive
@@ -387,7 +394,8 @@ function hk_view_quick_links() {
 							if (get_sub_field('content')) :
 								while (has_sub_field('content')) :
 
-									$retValue .= "<div class='quick-post  $imagesize  $layout  $cssclass quick-puff'><div style='$style'>";
+									// $retValue .= "<div class='quick-post  $imagesize  $layout  $cssclass quick-puff'><div style='$style'>";
+									$retValue .= "<div class='mellanstart-post  $imagesize  $layout  $cssclass quick-puff'><div style='$style'>";
 									if ( get_row_layout() == 'inlagg' ) {
 										$value = get_sub_field('post');
 										$url = get_permalink($value->ID);
@@ -431,7 +439,7 @@ function hk_view_quick_links() {
 					// add row break
 					if ($row_width > 90) {
 						$row_width = 0;
-						$retValue .= "<div class='quick-post line-break'></div>";
+						// $retValue .= "<div class='quick-post line-break'></div>";
 					}
 				endwhile;
 			endif; // end if quick links
@@ -442,7 +450,8 @@ function hk_view_quick_links() {
 		// Reset Post Data
 		wp_reset_postdata();
 
-		$retValue .= "</div></div>";
+		// $retValue .= "</div>";
+		$retValue .= "</div>";
 
 		return $retValue;
 	}

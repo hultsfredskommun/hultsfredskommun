@@ -77,7 +77,7 @@
     a {
         @extend .white-text;
         @extend .half-padding;
-        //padding: $base-spacing-unit/2 0;
+        //padding: $base-spacing-unit*0.5 0;
         display: inline-block;
     }
     .expand-button {
@@ -207,10 +207,10 @@
     a {
         @extend .float--left;
         @extend .default-text;
-        padding: $half-spacing-unit/2 0;
+        padding: $half-spacing-unit*0.5 0;
         span {
             @extend .float--left;
-            margin-right: $half-spacing-unit/2;
+            margin-right: $half-spacing-unit*0.5;
             &.dropdown-icon {
                 margin-top: 5px;
             }
@@ -269,11 +269,11 @@
     text-align: right;
     li {
         display: inline-block;
-        padding: $base-spacing-unit/8 $base-spacing-unit/4;
+        padding: $half-spacing-unit*0.25 $half-spacing-unit*0.5;
     }
     a {
         @extend .default-text;
-        padding: $base-spacing-unit/8 $base-spacing-unit/4;
+        padding: $half-spacing-unit*0.25 $half-spacing-unit*0.5;
     }
     .current-category-ancestor a:focus,
     .current-category-ancestor a:hover,
@@ -409,7 +409,7 @@
     .home .old-menu .main-sub-menu {
         display: block;
         li {
-            margin: 0 0 $half-spacing-unit/2 0;
+            margin: 0 0 $half-spacing-unit*0.5 0;
         }
     }
     .new-menu .main-menu {

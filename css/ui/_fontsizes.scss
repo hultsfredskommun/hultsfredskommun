@@ -115,7 +115,7 @@ h4, h5, h6 {
 /* default settings */
 .widget-title,
 h1 {
-	margin-bottom: $base-spacing-unit/4!important;
+	margin-bottom: $half-spacing-unit*0.5!important;
 	a {
 		@extend .default-text;
 		line-height: 1.3;

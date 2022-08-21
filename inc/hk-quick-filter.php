@@ -1,4 +1,7 @@
 <?php 
+    exit(); // TODO: check if this file is needed
+
+
 
     $query_categories = $_GET['cat'];
 

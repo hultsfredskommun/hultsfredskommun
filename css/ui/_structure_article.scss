@@ -103,7 +103,7 @@ article.post {
 		@extend .one-whole;
 		overflow: hidden;
 		h2, h3 {
-			margin-bottom: $half-spacing-unit/2;
+			margin-bottom: $half-spacing-unit*0.5;
 		}
 		a {
 			@extend .force-font-style-normal;
@@ -195,8 +195,8 @@ article.post {
 				.quick-link {
 					@extend .border-radius;
 					display: inline-block;
-					margin: 0 $half-spacing-unit $half-spacing-unit/4 0;
-					padding: $half-spacing-unit/4;
+					margin: 0 $half-spacing-unit $half-spacing-unit*0.25 0;
+					padding: $half-spacing-unit*0.25;
 					line-height: 20px;
 				}
 				.icon {
@@ -370,7 +370,7 @@ article.post {
 		font-weight: normal;
 		background-image: none;
 		margin: -$half-spacing-unit*1.5 0 0 $base-spacing-unit;
-		padding: $half-spacing-unit/2 $half-spacing-unit;
+		padding: *0.5 $half-spacing-unit;
 		a {
 			@extend .white-text;
 		}

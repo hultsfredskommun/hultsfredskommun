@@ -12,8 +12,8 @@
  */
 @mixin font-size($font-size){
     font-size:$font-size;
-    font-size:($font-size / $base-font-size)*1rem;
-    line-height:ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
+    font-size:math.div($font-size, $base-font-size)*1rem;
+    line-height:ceil(math.div($font-size, $base-line-height)) * math.div($base-line-height, $font-size);
 }
 
 
@@ -32,42 +32,6 @@
 }
 
 
-/**
- * Create CSS keyframe animations for all vendors in one go, e.g.:
- * 
-   .foo{
-       @include vendor(animation, shrink 3s);
-   }
-   
-   @include keyframe(shrink){
-       from{
-           font-size:5em;
-       }
-   }
- * 
- * Courtesy of @integralist: twitter.com/integralist/status/260484115315437569
- */
-@mixin keyframe ($animation-name){
-    @-webkit-keyframes $animation-name{
-        @content;
-    }
-    
-    @-moz-keyframes $animation-name{
-        @content;
-    }
-    
-    @-ms-keyframes $animation-name{
-        @content;
-    }
-    
-    @-o-keyframes $animation-name{
-        @content;
-    }
-    
-    @keyframes $animation-name{
-        @content;
-    }
-}
 
 
 /**

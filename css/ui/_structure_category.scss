@@ -10,20 +10,82 @@
 	padding-left: $base-spacing-unit;
 }
 
-.most-viewed-posts {
-	@extend .gw;
-	.most-viewed-post {
-		@extend .g;
-		@extend .palm-one-third;
-		@extend .lap-one-third;
-		@extend .desk-one-third;
-		@extend .margin--bottom;
-		.image-title,
-		.image-caption {
-			@extend .hidden;
+
+.mellanstart-widget-wrapper {
+	margin-left: $base-spacing-unit;
+	.mellanstart-wrapper {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		@include media-query(palm) {
+			grid-template-columns: 1fr;
 		}
-	}
+		gap: $base-spacing-unit;
+		.mellanstart-post {
+			width: 100%;
+			.slide {
+				@extend .position-relative;
+			}
+			img.overlay-img {
+				@extend .position-absolute;
+				padding-right: $base-spacing-unit;
+				max-height: calc(100% - 6px);
+				width: auto;
+				margin: 0 auto;
+			}
+			a {
+				@extend .default-text;
+				&.quick-button {
+					@extend .white-text;
+				}
+			}
+			h2 {
+				@extend .flush--bottom;
+				@extend .epsilon;
+			}
+			&.wide-image {
+				img.overlay-img {
+					margin-left: 23%;
+					cursor: pointer;
+				}
+			}
+			&.slideshow-image {
+				img.overlay-img {
+					margin-left: 20%;
+					cursor: pointer;
+				}
+			}
+			.quick-tags ul li, 
+			.rek-prediction .rek-style-cols ul li {
+				padding: 4px 25px 4px 18px;
+				flex-basis: auto;
+				align-items: flex-start;
+			}
+			@include media-query(lap-and-up) {
+
+				&.one-whole {
+					grid-column: span 12;
+				}
+				&.one-half {
+					grid-column: span 6;
+				}
+				&.one-third {
+					grid-column: span 4;
+				}
+				&.two-thirds {
+					grid-column: span 8;
+				}
+				&.one-quarter {
+					grid-column: span 3;
+				}
+				&.three-quarters {
+					grid-column: span 9;
+				}
+			}
+		}
+		
+	}	
 }
+
 .quick-posts-widget-wrapper {
 	@extend .gw;
 }
@@ -80,14 +142,12 @@
 }
 
 .hide-left-menu {
-	.most-viewed-posts-wrapper,
 	.primary,
 	.breadcrumb {
 		@extend .g;
 		@extend .one-whole;
 	}
 }
-.most-viewed-posts-wrapper,
 .primary,
 .breadcrumb {
 	@extend .g;
@@ -115,7 +175,7 @@
 	display: table !important;
 }
 .main {
-	//margin: 0 $half-spacing-unit/2;
+	//margin: 0 $half-spacing-unit*0.5;
 	margin: 0;
 }
 .primary {
