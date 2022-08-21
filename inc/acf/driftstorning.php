@@ -100,7 +100,7 @@ acf_add_local_field_group(array(
                             'key' => 'field_6301dac816564',
                             'label' => 'Beskrivning',
                             'name' => 'description',
-                            'type' => 'textarea',
+                            'type' => 'wysiwyg',
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,

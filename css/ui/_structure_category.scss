@@ -60,13 +60,16 @@
 				.driftstorning {
 					padding: 12px!important;
     				border-radius: 3px;
-					background-color: red;
+					background-color: $important-color;
 					position: relative;
 					&, h2, a, p {
 						@extend .white-text;
 					}
+					h2 {
+						margin-bottom: $half-spacing-unit!important;
+					}
 					p {
-						@extend .half-margin--bottom;
+						margin-bottom: $half-spacing-unit * 0.5;
 					}
 					.dates {
 						display: flex;
