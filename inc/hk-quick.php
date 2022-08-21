@@ -63,7 +63,7 @@ function hk_view_quick_links() {
 			}
 			//$retValue .= wp_get_attachment_link($attachId);
 			$title = get_the_title();
-			$row_width = 0;
+			
 
 			if (get_field('hk_quick_link')) :
 				while (has_sub_field('hk_quick_link')) :
@@ -71,26 +71,16 @@ function hk_view_quick_links() {
 						continue;
 					endif;
 
-					if(get_row_layout() == "lagg_till_links"):
+					$row_layout = get_row_layout();
+					$column_layout = get_sub_field('layout');
+					$num_rows_class = get_sub_field('num_rows');
+					
+					$retValue .= "\n<div class='mellanstart-post $column_layout $num_rows_class $row_layout'>";
+					if($row_layout == "lagg_till_links"):
 
-						/* get layout */
-						$layout = get_sub_field('layout');
-						switch($layout) {
-							case 'one-whole': $row_width += 100; break;
-							case 'one-half':
-							case 'two-quarters': $row_width += 50; break;
-							case 'one-third': $row_width += 33; break;
-							case 'two-thirds': $row_width += 67; break;
-							case 'one-quarter': $row_width += 25; break;
-							case 'three-quarters': $row_width += 75; break;
-							case 'one-fifth': $row_width += 20; break;
-							case 'two-fifths': $row_width += 40; break;
-							case 'three-fifths': $row_width += 60; break;
-							case 'four-fifths': $row_width += 80; break;
-						}
 
-						// $retValue .= "<div class='quick-post $layout'><div class='quick-links'>";
-						$retValue .= "<div class='mellanstart-post $layout'><div class='mellanstart-links'>";
+						// $retValue .= "<div class='quick-post $column_layout'><div class='quick-links'>";
+						$retValue .= "<div class='mellanstart-links'>";
 
 						$css_wrapper = get_sub_field('css-wrapper');
 						$category = get_term(get_query_var("cat"), 'category');
@@ -142,28 +132,16 @@ function hk_view_quick_links() {
 							endwhile;
 							$retValue .= '</ul>';
 						endif;
-						$retValue .= "</div></div>";
+						$retValue .= "</div>";
 
-					elseif(get_row_layout() == "lagg_till_tags"):
 
-						/* get layout */
-						$layout = get_sub_field('layout');
-						switch($layout) {
-							case 'one-whole': $row_width += 100; break;
-							case 'one-half':
-							case 'two-quarters': $row_width += 50; break;
-							case 'one-third': $row_width += 33; break;
-							case 'two-thirds': $row_width += 67; break;
-							case 'one-quarter': $row_width += 25; break;
-							case 'three-quarters': $row_width += 75; break;
-							case 'one-fifth': $row_width += 20; break;
-							case 'two-fifths': $row_width += 40; break;
-							case 'three-fifths': $row_width += 60; break;
-							case 'four-fifths': $row_width += 80; break;
-						}
 
-						$retValue .= "<div class='mellanstart-post $layout'><div class='quick-tags'>";
-						// $retValue .= "<div class='quick-post $layout'><div class='quick-tags'>";
+
+
+					elseif($row_layout == "lagg_till_tags"):
+
+						$retValue .= "<div class='quick-tags'>";
+						// $retValue .= "<div class='quick-post $column_layout'><div class='quick-tags'>";
 
 						$css_wrapper = get_sub_field('css-wrapper');
 						$category = get_term(get_query_var("cat"), 'category');
@@ -173,279 +151,224 @@ function hk_view_quick_links() {
 							$retValue .= "<h2>$title</h2>";
 						}
 						$retValue .= hk_displayTagFilter(false, 'tags-list', false, "", $category->term_id, false);
+
+						$retValue .= "</div>";
+
+					
+					
+					
+					elseif($row_layout == "lagg_till_rekai"):
+
+						// $retValue .= "<div class='quick-post $column_layout'><div class='quick-rekai'>";
+						$retValue .= "<div class='quick-rekai'>";
+
+						/* rekai */
+						$css_wrapper = get_sub_field('css-wrapper');
+						$nrofhits = get_sub_field('nrofhits');
+						$category = get_term(get_query_var("cat"), 'category');
+						$category_slug = ($category && !is_wp_error( $category )) ? $category->slug : "";
+						$retValue .= "<style>$css_wrapper</style>";
+						$title = get_sub_field('title');
+						if (!empty($title)) {
+							$retValue .= "<h2>$title</h2>";
+						}
+						// TODO: only for dev
+						/* data-projectid='10341068' data-srek='41e77c49' */
+						$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-excludetree='/artikel/kontakt/' data-addstripes='false' data-nrofhits='$nrofhits' data-pagetype='$category_slug' data-notpagetype='nyheter,kontakter'></div>";
+
+
+						$retValue .= "</div>";
+
+
+
+
+
+
+					elseif($row_layout == "lagg_till_news"):
+							
+						// $retValue .= "<div class='quick-post $column_layout quick-news'><div>";
+						$retValue .= "<div class='quick-news'>";
+
+						/* NEWS */
+						$css_wrapper = get_sub_field('css-wrapper');
+
+						$quick_news_args =
+							array("title" => "Nyheter",
+										"num_aktuellt" => 3,
+										"num_news" => 10,
+										"content_type" => "",
+										"rss_link_text" => "<span class='rss-icon'></span> RSS",
+										"rss_link_url" => "/feed/?tag=nyheter",
+										"thumb_size" => "",
+										"css_wrapper" => $css_wrapper,
+										"num_news_cols" => 3);
+							$retValue .= "<!-- FÖRE NYHETER -->";
+							$retValue .= get_quick_news( $quick_news_args );
+							$retValue .= "<!-- EFTER NYHETER -->";
+
+							/* reset data to current query */
+							$the_query->reset_postdata();
+
+						/* END NEWS */
+						$retValue .= "</div>";
+
+
+
+					elseif($row_layout == "lagg_till_code"):							
+
+						// $retValue .= "<div class='quick-post $column_layout quick-code'><div>";
+						$retValue .= "<div class='quick-code'>";
+						$retValue .= get_sub_field('code');
+						$retValue .= "</div>";
+
+
+						
+					elseif($row_layout == "lagg_till_driftstorning"):							
+
+						// $retValue .= "<div class='quick-post $column_layout quick-code'><div>";
+						$driftstorning = new Driftstorning();
+						
+						if ($driftstorning->getActive()) {
+							$retValue .= "<div class='quick-driftstorning' id='" . $driftstorning->getID() . "'>";
+							$retValue .= $driftstorning->getHTML();
+							$retValue .= "</div>";
+						};
 						
 
+						
+					elseif($row_layout == "lagg_till_puff"):
+					
+						/* get video */
+						$videourl = get_sub_field('video');
+						$videoimageoverlay = "";
+						/* get css */
+						$videocssclass = "";
+						if (!empty($videourl)) {
+							$videocssclass = "js-video-popup";
+							$videourl = "data-video-url='$videourl'";
+							$videoimagesrc = $default_settings["video_thumbnail_image"];
 
-						$retValue .= "</div></div>";
-
-					elseif(get_row_layout() == "lagg_till_rekai"):
-
-							/* get layout */
-							$layout = get_sub_field('layout');
-							switch($layout) {
-								case 'one-whole': $row_width += 100; break;
-								case 'one-half':
-								case 'two-quarters': $row_width += 50; break;
-								case 'one-third': $row_width += 33; break;
-								case 'two-thirds': $row_width += 67; break;
-								case 'one-quarter': $row_width += 25; break;
-								case 'three-quarters': $row_width += 75; break;
-								case 'one-fifth': $row_width += 20; break;
-								case 'two-fifths': $row_width += 40; break;
-								case 'three-fifths': $row_width += 60; break;
-								case 'four-fifths': $row_width += 80; break;
+							if (!empty($videoimagesrc)) {
+								$videoimageoverlay = "<img class='overlay-img slide' src='$videoimagesrc' alt='Play' title='Play'>";
 							}
+						}
+						$cssclass = get_sub_field('css-class');
 
-							// $retValue .= "<div class='quick-post $layout'><div class='quick-rekai'>";
-							$retValue .= "<div class='mellanstart-post $layout'><div class='quick-rekai'>";
-
-							/* rekai */
-							$css_wrapper = get_sub_field('css-wrapper');
-							$nrofhits = get_sub_field('nrofhits');
-							$category = get_term(get_query_var("cat"), 'category');
-							$category_slug = ($category && !is_wp_error( $category )) ? $category->slug : "";
-							$retValue .= "<style>$css_wrapper</style>";
-							$title = get_sub_field('title');
-							if (!empty($title)) {
-								$retValue .= "<h2>$title</h2>";
-							}
-							// TODO: only for dev
-							/* data-projectid='10341068' data-srek='41e77c49' */
-							$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-excludetree='/artikel/kontakt/' data-addstripes='false' data-nrofhits='$nrofhits' data-pagetype='$category_slug' data-notpagetype='nyheter,kontakter'></div>";
-
-
-							$retValue .= "</div></div>";
-
-					elseif(get_row_layout() == "lagg_till_news"):
-						if (!get_sub_field('inactive')) :
-
-							/* get layout */
-							$layout = get_sub_field('layout');
-							switch($layout) {
-								case 'one-whole': $row_width += 100; break;
-								case 'one-half':
-								case 'two-quarters': $row_width += 50; break;
-								case 'one-third': $row_width += 33; break;
-								case 'two-thirds': $row_width += 67; break;
-								case 'one-quarter': $row_width += 25; break;
-								case 'three-quarters': $row_width += 75; break;
-								case 'one-fifth': $row_width += 20; break;
-								case 'two-fifths': $row_width += 40; break;
-								case 'three-fifths': $row_width += 60; break;
-								case 'four-fifths': $row_width += 80; break;
-							}
-
-							// $retValue .= "<div class='quick-post $layout quick-news'><div>";
-							$retValue .= "<div class='mellanstart-post $layout quick-news'><div>";
-
-							/* NEWS */
-							$css_wrapper = get_sub_field('css-wrapper');
-
-							$quick_news_args =
-								array("title" => "Nyheter",
-											"num_aktuellt" => 3,
-											"num_news" => 10,
-											"content_type" => "",
-											"rss_link_text" => "<span class='rss-icon'></span> RSS",
-											"rss_link_url" => "/feed/?tag=nyheter",
-											"thumb_size" => "",
-											"css_wrapper" => $css_wrapper,
-											"num_news_cols" => 3);
-								$retValue .= "<!-- FÖRE NYHETER -->";
-								$retValue .= get_quick_news( $quick_news_args );
-								$retValue .= "<!-- EFTER NYHETER -->";
-
-								/* reset data to current query */
-								$the_query->reset_postdata();
-
-							/* END NEWS */
-							$retValue .= "</div></div>";
-						endif; // if not inactive
-
-					elseif(get_row_layout() == "lagg_till_code"):
-						if (!get_sub_field('inactive')) :
-
-							/* get layout */
-							$layout = get_sub_field('layout');
-							switch($layout) {
-								case 'one-whole': $row_width += 100; break;
-								case 'one-half':
-								case 'two-quarters': $row_width += 50; break;
-								case 'one-third': $row_width += 33; break;
-								case 'two-thirds': $row_width += 67; break;
-								case 'one-quarter': $row_width += 25; break;
-								case 'three-quarters': $row_width += 75; break;
-								case 'one-fifth': $row_width += 20; break;
-								case 'two-fifths': $row_width += 40; break;
-								case 'three-fifths': $row_width += 60; break;
-								case 'four-fifths': $row_width += 80; break;
-							}
-							$num_rows_class = get_sub_field('num_rows');
-
-							// $retValue .= "<div class='quick-post $layout quick-code'><div>";
-							$retValue .= "<div class='mellanstart-post $layout quick-code $num_rows_class'><div>";
-							$retValue .= get_sub_field('code');
-							$retValue .= "</div></div>";
-						endif; // if not inactive
-
-
-					elseif(get_row_layout() == "lagg_till_puff"):
-						if (!get_sub_field('inactive')) :
-							/* get video */
-							$videourl = get_sub_field('video');
-							$videoimageoverlay = "";
-							/* get css */
-							$videocssclass = "";
-							if (!empty($videourl)) {
-								$videocssclass = "js-video-popup";
-								$videourl = "data-video-url='$videourl'";
-								$videoimagesrc = $default_settings["video_thumbnail_image"];
-
-								if (!empty($videoimagesrc)) {
-									$videoimageoverlay = "<img class='overlay-img slide' src='$videoimagesrc' alt='Play' title='Play'>";
-								}
-							}
-							$cssclass = get_sub_field('css-class');
-
-							/* get image */
-							$imagediv = "";
-							$image = get_sub_field('image');
-							$imagesize = get_sub_field('image-size');
-							if ($imagesize == "") {
-								$imagesize = "thumbnail-image";
-							}
-							if ($image != "") :
-								if (!empty($image["sizes"][$imagesize])) {
-									$src = $image["sizes"][$imagesize];
-								}
-								else {
-									$src = $image["sizes"]["thumbnail-image"];
-								}
-								$alt = $image["alt"];
-								$imagediv .= "<span class='$videocssclass $imagesize slide' $videourl>";
-								$imagediv .= $videoimageoverlay;
-								$imagediv .= "<img src='$src' alt='$alt' title='$alt' />";
-								$imagediv .= "</span>";
-							else : /* else default thumb; */
-								/*$options = get_option("hk_theme");
-								$src = $options["default_thumbnail_image"];
-								if (!empty($src)) :
-									$imagediv .= "<div class='img-wrapper '><div><img class='slide' src='$src' alt=''></div></div>";
-								endif;*/
-							endif;
-
-							/* get description */
-							$title = get_sub_field('title');
-							if (!empty($title)) {
-								$title = "<h2>$title</h2>";
-							}
-							$button = get_sub_field('button');
-							$description = get_sub_field('description');
-							$description_div = "";
-							if (!empty($description)) {
-								$description_div = "<div class='q-description'>$description</div>";
-							}
-
-							/* get style */
-							$text_color = get_sub_field('text-color');
-							$background_color = get_sub_field('background-color');
-							$border_color = get_sub_field('border-color');
-							$border_width = get_sub_field('border-width');
-							$border_radius = get_sub_field('border-radius');
-							$text_align = get_sub_field('text-align');
-							$padding = get_sub_field('padding');
-							$margin = get_sub_field('margin');
-
-							$text_color = ($text_color)?"color: $text_color;":"";
-							$background_color = ($background_color)?"background: $background_color;":"";
-							$border_color = ($border_color)?"border-color: $border_color;":"";
-							$border_width = ($border_width)?"border-style: solid; border-width: ".$border_width.";":"";
-							$border_radius = ($border_radius)?"border-radius: ".$border_radius.";":"";
-							$text_align = ($text_align)?"text-align: $text_align;":"";
-							$padding = ($padding)?"padding: $padding;":"";
-							$margin = ($margin)?"margin: $margin;":"";
-							$style = "$text_color$background_color$border_color$border_width$border_radius$text_align$padding$margin";
-
-							/* get layout */
-							$layout = get_sub_field('layout');
-							switch($layout) {
-								case 'one-whole': $row_width += 100; break;
-								case 'one-half':
-								case 'two-quarters': $row_width += 50; break;
-								case 'one-third': $row_width += 33; break;
-								case 'two-thirds': $row_width += 67; break;
-								case 'one-quarter': $row_width += 25; break;
-								case 'three-quarters': $row_width += 75; break;
-								case 'one-fifth': $row_width += 20; break;
-								case 'two-fifths': $row_width += 40; break;
-								case 'three-fifths': $row_width += 60; break;
-								case 'four-fifths': $row_width += 80; break;
-							}
-
-							/* get target */
-							$target = get_sub_field('target');
-
-							if (!empty($target) && $target != "top") {
-								$target = "target='_$target'";
+						/* get image */
+						$imagediv = "";
+						$image = get_sub_field('image');
+						$imagesize = get_sub_field('image-size');
+						if ($imagesize == "") {
+							$imagesize = "thumbnail-image";
+						}
+						if ($image != "") :
+							if (!empty($image["sizes"][$imagesize])) {
+								$src = $image["sizes"][$imagesize];
 							}
 							else {
-								$target = "";
+								$src = $image["sizes"]["thumbnail-image"];
 							}
+							$alt = $image["alt"];
+							$imagediv .= "<span class='$videocssclass $imagesize slide' $videourl>";
+							$imagediv .= $videoimageoverlay;
+							$imagediv .= "<img src='$src' alt='$alt' title='$alt' />";
+							$imagediv .= "</span>";
+						endif;
 
-							/* get link to content */
-							if (get_sub_field('content')) :
-								while (has_sub_field('content')) :
+						/* get description */
+						$title = get_sub_field('title');
+						if (!empty($title)) {
+							$title = "<h2>$title</h2>";
+						}
+						$button = get_sub_field('button');
+						$description = get_sub_field('description');
+						$description_div = "";
+						if (!empty($description)) {
+							$description_div = "<div class='q-description'>$description</div>";
+						}
 
-									// $retValue .= "<div class='quick-post  $imagesize  $layout  $cssclass quick-puff'><div style='$style'>";
-									$retValue .= "<div class='mellanstart-post  $imagesize  $layout  $cssclass quick-puff'><div style='$style'>";
-									if ( get_row_layout() == 'inlagg' ) {
-										$value = get_sub_field('post');
-										$url = get_permalink($value->ID);
+						/* get style */
+						$text_color = get_sub_field('text-color');
+						$background_color = get_sub_field('background-color');
+						$border_color = get_sub_field('border-color');
+						$border_width = get_sub_field('border-width');
+						$border_radius = get_sub_field('border-radius');
+						$text_align = get_sub_field('text-align');
+						$padding = get_sub_field('padding');
+						$margin = get_sub_field('margin');
+
+						$text_color = ($text_color)?"color: $text_color;":"";
+						$background_color = ($background_color)?"background: $background_color;":"";
+						$border_color = ($border_color)?"border-color: $border_color;":"";
+						$border_width = ($border_width)?"border-style: solid; border-width: ".$border_width.";":"";
+						$border_radius = ($border_radius)?"border-radius: ".$border_radius.";":"";
+						$text_align = ($text_align)?"text-align: $text_align;":"";
+						$padding = ($padding)?"padding: $padding;":"";
+						$margin = ($margin)?"margin: $margin;":"";
+						$style = "$text_color$background_color$border_color$border_width$border_radius$text_align$padding$margin";
+
+						
+
+						/* get target */
+						$target = get_sub_field('target');
+
+						if (!empty($target) && $target != "top") {
+							$target = "target='_$target'";
+						}
+						else {
+							$target = "";
+						}
+
+						/* get link to content */
+						if (get_sub_field('content')) :
+							while (has_sub_field('content')) :
+
+								// $retValue .= "<div class='quick-post  $imagesize  $column_layout  $cssclass quick-puff'><div style='$style'>";
+								$retValue .= "<div class='$imagesize  $cssclass quick-puff'><div style='$style'>";
+								if ( get_row_layout() == 'inlagg' ) {
+									$value = get_sub_field('post');
+									$url = get_permalink($value->ID);
+								}
+								elseif ( get_row_layout() == 'extern' ) {
+									// prepend http:// if not there already
+									$url = get_sub_field('extern');
+									if ((substr_compare($url, '/', 0, 1) != 0) && (substr_compare($url, 'http', 0, 4) != 0)) {
+										$url = 'https://' . $url;
 									}
-									elseif ( get_row_layout() == 'extern' ) {
-										// prepend http:// if not there already
-										$url = get_sub_field('extern');
-										if ((substr_compare($url, '/', 0, 1) != 0) && (substr_compare($url, 'http', 0, 4) != 0)) {
-											$url = 'https://' . $url;
+								}
+								elseif ( get_row_layout() == 'fil' ) {
+									$value = get_sub_field('file');
+									if (!empty($value)) {
+										if (empty($description)) {
+											$description = $value["description"];
 										}
+										$url = $value["url"];
 									}
-									elseif ( get_row_layout() == 'fil' ) {
-										$value = get_sub_field('file');
-										if (!empty($value)) {
-											if (empty($description)) {
-												$description = $value["description"];
-											}
-											$url = $value["url"];
-										}
-									}
+								}
 
-									if (!empty($button) && !empty($imagediv)) {
-										$button = "<a class='gtm-quick-button quick-button $videocssclass' href='$url' title='$button'>$button</a>";
-									}
-									else {
-										$button = "";
-									}
+								if (!empty($button) && !empty($imagediv)) {
+									$button = "<a class='gtm-quick-button quick-button $videocssclass' href='$url' title='$button'>$button</a>";
+								}
+								else {
+									$button = "";
+								}
 
-									$retValue .= "<a $target style='$text_align $text_color' class='gtm-quick-link $a_class $a_class-post' href='$url' title='$description'>$imagediv$title$description_div$button</a>";
+								$retValue .= "<a $target style='$text_align $text_color' class='gtm-quick-link $a_class $a_class-post' href='$url' title='$description'>$imagediv$title$description_div$button</a>";
 
-									$retValue .= "</div></div>";
+								$retValue .= "</div></div>";
 
-								endwhile;
-							else :
-								$retValue .= "<div class='mellanstart-post $imagesize $layout  $cssclass'><div style='$style'>$imagediv$title$description_div$button</div></div>";
-								// $retValue .= "<div class='quick-post $imagesize $layout  $cssclass'><div style='$style'>$imagediv$title$description_div$button</div></div>";
-							endif; // end if content
+							endwhile;
+						
+						// else if no content is found
+						else :
+							$retValue .= "<div class='$imagesize $cssclass quick-puff'><div style='$style'>$imagediv$title$description_div$button</div></div>";
+							// $retValue .= "<div class='quick-post $imagesize $column_layout  $cssclass'><div style='$style'>$imagediv$title$description_div$button</div></div>";
+						endif; // end if content
 
-						endif; // end if not inactive
-					endif; // end row layout lagg_till_code
-
-					// add row break
-					if ($row_width > 90) {
-						$row_width = 0;
-						// $retValue .= "<div class='quick-post line-break'></div>";
-					}
-				endwhile;
-			endif; // end if quick links
+					endif; // end layout
+					$retValue .= '</div>';
+				endwhile; // end looping through rows
+			endif; // end if quick links exists
 			$retValue .= "<!-- END WHILE QUICK POST " . get_the_ID() . "-->";
 
 		endwhile; // end while have_posts

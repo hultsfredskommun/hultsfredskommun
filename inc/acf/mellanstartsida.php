@@ -635,6 +635,7 @@ acf_add_local_field_group(array (
 					),
 				)
 			),
+
 			array (
 				'key' => '56bb0a25a4100',
 				'name' => 'lagg_till_code',
@@ -752,6 +753,108 @@ acf_add_local_field_group(array (
 
 					)
 				),
+				
+
+				array (
+					'key' => '56bb0a25a4101',
+					'name' => 'lagg_till_driftstorning',
+					'label' => 'Driftstörning',
+					'display' => 'block',
+					'sub_fields' => array (
+						array (
+							'key' => 'field_56cc104207f51',
+							'label' => 'Layout',
+							'name' => 'layout',
+							'type' => 'select',
+							'instructions' => 'Hur stor del av skärmen som puffen använda.',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '40%',
+								'class' => '',
+								'id' => '',
+							),
+	
+							'choices' => array (
+								'one-whole' => 'Fullbredd',
+								'one-half' => 'En halv',
+								'one-third' => 'En tredjedel',
+								'two-thirds' => 'Två tredjedelar',
+								'one-quarter' => 'En fjärdedel',
+								'two-quarters' => 'Två fjärdedelar',
+								'three-quarters' => 'Tre fjärdedelar',
+								'one-fifth' => 'En femtedel',
+								'two-fifths' => 'Två femtedelar',
+								'three-fifths' => 'Tre femtedelar',
+								'four-fifths' => 'Fyra femtedelar',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						array (
+							'key' => 'field_56cc104207f61',
+							'label' => 'Antal rader',
+							'name' => 'num_rows',
+							'type' => 'select',
+							'instructions' => 'Antal rader som innehållet ska synas.',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '40%',
+								'class' => '',
+								'id' => '',
+							),
+	
+							'choices' => array (
+								'span-rows-1' => '1 rad',
+								'span-rows-2' => '2 rader',
+								'span-rows-3' => '3 rader',
+								'span-rows-4' => '4 rader',
+								
+							),
+							'default_value' => array (
+								'span-rows-1' => '1 rad'
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						
+						array (
+							'key' => 'field_56eabc5e15412',
+							'label' => 'D&ouml;lj puff',
+							'name' => 'inactive',
+							'type' => 'true_false',
+							'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '20%',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
+						),
+	
+	
+					)
+				),
+
+
+
+
 				array (
 					'key' => '56bb0a25a4143',
 					'name' => 'lagg_till_puff',

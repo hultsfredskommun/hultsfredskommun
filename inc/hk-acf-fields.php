@@ -23,15 +23,15 @@ add_action('acf/init',  'hk_acf_op_init');
 function hk_acf_op_init() {
 	if( function_exists('acf_add_options_page') ) {
 		acf_add_options_page(array(
-			'page_title' 	=> 'Hultsfred Settings',
-			'menu_title'	=> 'Hultsfred Settings',
+			'page_title' 	=> 'Hultsfred',
+			'menu_title'	=> 'Hultsfred',
 			'menu_slug' 	=> 'hultsfred-options',
 			'capability'	=> 'administrator',
 			'redirect'		=> false
 		));
         acf_add_options_sub_page(array(
-            'page_title' 	=> 'Admin settings',
-            'menu_title'	=> 'Admin',
+            'page_title' 	=> 'Driftstörningar',
+            'menu_title'	=> 'Driftstörningar',
             'parent_slug'	=> 'hultsfred-options',
         ));
 
@@ -44,6 +44,7 @@ function hk_acf_init_options() {
 	if( function_exists('acf_add_local_field_group') ) :
 		require_once( get_template_directory() . '/inc/acf/options.php' );
 		require_once( get_template_directory() . '/inc/acf/mellanstartsida.php' );
+		require_once( get_template_directory() . '/inc/acf/driftstorning.php' );
 		require_once( get_template_directory() . '/inc/acf/category.php' );
 	endif;
 	if ( function_exists('register_field_group') ) :
