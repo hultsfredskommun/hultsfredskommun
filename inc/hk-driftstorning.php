@@ -40,14 +40,14 @@ class DriftStorning {
                 driftstorningar.forEach(function(driftstorning) {
                     if (window.localStorage.getItem(driftstorning.md5) != '') {
                         check_date = new Date();
-                        check_date.setDate(check_date.getDate() - 7);
+                        check_date.setDate(check_date.getDate() - 7); // 7 days ago
                         close_date = new Date(window.localStorage.getItem(driftstorning.md5));
                         if (close_date > check_date) { // don't show if less than 7 days old
                             return;
                         }
                     }
                     var driftstorningHTML = '<div class=\"driftstorning\" data-id=\"' + driftstorning.md5 + '\">';
-                    driftstorningHTML += '<a class=\"close\">x</a>';
+                    driftstorningHTML += '<a class=\"close\"><svg xmlns=\"https://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"none\" class=\"times\"><path d=\"M15.176 0L16 .825.825 15.999 0 15.175 15.176 0z\" fill=\"#fff\"></path><path d=\"M.825 0L16 15.175l-.825.825L0 .825.825 0z\" fill=\"#fff\"></path></svg></a>';
                     driftstorningHTML += '<h2>' + driftstorning.title + '</h2>';
                     driftstorningHTML += driftstorning.description;
                     driftstorningHTML += '<p class=\"dates\">';

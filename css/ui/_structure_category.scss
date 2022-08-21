@@ -75,6 +75,10 @@
 						display: flex;
 						gap: 10px;
 						@extend .flush--bottom;
+						date {
+							@include font-size($h6-size);
+							font-style: italic;						}
+						
 					}
 					.close {
 						position: absolute;
