@@ -209,7 +209,8 @@ function hk_view_quick_links() {
 							if (!empty($title)) {
 								$retValue .= "<h2>$title</h2>";
 							}
-							/* data-projectid='10341068' data-srek='41e77c49' TODO: only for dev*/
+							// TODO: only for dev
+							/* data-projectid='10341068' data-srek='41e77c49' */
 							$retValue .= "<div class='rek-prediction' data-renderstyle='list' data-listcols='1' data-excludetree='/artikel/kontakt/' data-addstripes='false' data-nrofhits='$nrofhits' data-pagetype='$category_slug' data-notpagetype='nyheter,kontakter'></div>";
 
 
