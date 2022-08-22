@@ -62,8 +62,12 @@
     				border-radius: 3px;
 					background-color: $important-color;
 					position: relative;
+					margin-bottom: $half-spacing-unit;
 					&, h2, a, p {
 						@extend .white-text;
+					}
+					a {
+						text-decoration: underline;
 					}
 					h2 {
 						margin-bottom: $half-spacing-unit!important;
