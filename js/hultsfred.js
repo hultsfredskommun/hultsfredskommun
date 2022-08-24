@@ -9,7 +9,7 @@ if (window.location.href.indexOf("artikel") > -1) {
 }
 
 /* block rek hits in dev */
-// document.cookie = 'rekblock=1'; // TODO: only for dev
+document.cookie = 'rekblock=1'; // TODO: only for dev
 
 (function($) {
 
@@ -511,7 +511,7 @@ if (window.location.href.indexOf("artikel") > -1) {
     if (typeof __rekai != "undefined" && hultsfred_object['rekai_autocomplete'] == '1') {
         __rekai.ready(function() {
             var rekAutocomplete = rekai_autocomplete('#s', {
-                // projectid: '10341068', // TODO: only for dev
+                projectid: '10341068', // TODO: only for dev
                 hint: true,
                 tabAutocomplete: true,
             }).on('rekai_autocomplete:selected', function(event, suggestion, dataset) {
