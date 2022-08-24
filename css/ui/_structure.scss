@@ -194,17 +194,6 @@ img {
  /*
  * Responsive helper
  */
-#responsive-info
-{
-	@extend .hidden;
-	@extend .position-fixed--bottom-left;
-	@extend .islet;
-	@extend .flush--bottom;
-	background: black;
-	color: white;
-	z-index: 10000;
-	border-top-right-radius: $border-radius;
-}
 
 
 #hk_allcomingreviews_dashboard_widget .inside,

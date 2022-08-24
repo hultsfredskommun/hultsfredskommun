@@ -90,12 +90,6 @@
 
 	</div><?php // end div topwrapper ?>
 	<!--googleoff: all-->
-	<?php if (false) : /* REMOVE OLD RESPONSVE MENU if (is_sub_category_firstpage()) : */ ?>
-		<div class="responsive-menu">
-			<ul class="main-sub-menu"><li><a class="js-show-main-menu" href="#">Vem &auml;r du?<span class="expand-icon">+</span></a></li></ul>
-			<?php /* <a class="js-show-search" href="#"><span class="search-icon"></span></a> */ ?>
-		</div>
-	<?php endif; ?>
 
     <?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled('primary') ) : // show max mega menu ?>
 
@@ -118,17 +112,5 @@
 	</nav>
 	<?php endif; // not is search ?>
 	<?php endif; // end else normal menu ?>
-
-	<?php if (false) : // TEMP REMOVED is_sub_category_firstpage()) /*!is_search() && get_query_var("tag") == "")*/ : ?>
-		<div class="responsive-menu">
-			<ul class="main-sub-menu"><li><a class="js-show-tag-menu" href="#">Visa bara<span class="expand-icon">+</span></a></li></ul>
-			<?php /* <a class="js-show-search" href="#"><span class="search-icon"></span></a> */ ?>
-		</div>
-		<nav id="tag-menu" class="tag-menu-wrapper">
-		<?php
-			displayTagFilter(false, "main-sub-menu");
-		?>
-		</nav>
-	<?php endif; ?>
 
 </header><!-- #branding -->

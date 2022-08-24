@@ -114,29 +114,3 @@ desk {
     display: block!important;
 }
 
-
-/* HELP MEDIA QUERY INFO */
-
-@include media-query(desk) {
-    #responsive-info:after {
-        content: "DESK";
-    }
-}
-
-@include media-query(desk-wide) {
-    #responsive-info:after {
-        content: "DESKWIDE";
-    }
-}
-
-@include media-query(lap) {
-    #responsive-info:after {
-        content: "LAP & PORTABLE";
-    }
-}
-
-@include media-query(palm) {
-    #responsive-info:after {
-        content: "PALM & PORTABLE";
-    }
-}

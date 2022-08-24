@@ -176,12 +176,10 @@ if (empty($lattlast) && is_single()) {
 		}
 	}
 }
-
+ 
 ?>
 <body <?php body_class($lattlast . " " . $category_show_children_class . " " . $category_as_filter_class . " " . $dynamic_post_load_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " new-menu " . $hide_leftmenu_class ); ?>>
 <?php echo $hk_options['in_topbody_section']; ?>
-<div id="version-2" style="display:none; visibility:hidden"></div>
-<div id="responsive-info"></div>
 <div id="page" class="hfeed">
 	<?php
 		require( get_template_directory() . '/inc/hk-header.php');
