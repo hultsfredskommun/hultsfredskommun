@@ -185,10 +185,16 @@ if (empty($lattlast) && is_single()) {
 		require( get_template_directory() . '/inc/hk-header.php');
 	?>
 
-	<div class="main hk-quick"><div class="main-wrapper">
-		<?php
-		if (!is_sub_category_firstpage() && get_query_var("tag") == "") { echo hk_view_quick_links(); }
-		?>
-	</div></div>
+	<?php
+	// if (!is_sub_category_firstpage() && get_query_var("tag") == "") { 
+	if ((get_query_var("cat") != "" || is_home()) && get_query_var("tag") == "") { ?>
+		<div class="main hk-quick"><div class="main-wrapper">
+			<div class='mellanstart-widget-wrapper'>
+			<?php echo hk_view_quick_links(); ?>
+			</div>
+		</div></div>
+	<?php } ?>
+		
+	
 	<div id="main" class="main">
 	<div class="main-wrapper">
