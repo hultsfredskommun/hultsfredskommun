@@ -9,7 +9,7 @@ if (window.location.href.indexOf("artikel") > -1) {
 }
 
 /* block rek hits in dev */
-document.cookie = 'rekblock=1'; // TODO: only for dev
+// document.cookie = 'rekblock=1'; // TODO: only for dev
 
 (function($) {
 
