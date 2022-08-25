@@ -5,8 +5,9 @@ class DriftStorning {
     private $id = 0;
     function __construct() {
 
-        if (get_field('driftstorning', 'option')) {
-            while (has_sub_field('driftstorning', 'option')) {
+        if (have_rows('driftstorning', 'option')) {
+            while (have_rows('driftstorning', 'option')) {
+                the_row();
 
                 if (get_sub_field('hide')) 
                     continue;

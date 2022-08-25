@@ -67,7 +67,7 @@ $rekai_array = array( array (
 					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array (
-						'width' => '50%',
+						'width' => '35%',
 						'class' => '',
 						'id' => '',
 					),
@@ -83,19 +83,19 @@ $rekai_array = array( array (
 					'ui' => 0,
 					'ajax' => 0,
 					'placeholder' => '',
-					'disabled' => 0,
-					'readonly' => 0,
+					'disabled' => 1,
+					'readonly' => 1,
 				),
 				array (
 					'key' => 'field_56eabc5e154aa',
 					'label' => 'D&ouml;lj puff',
 					'name' => 'inactive',
 					'type' => 'true_false',
-					'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
+					'instructions' => '',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array (
-						'width' => '25%',
+						'width' => '15%',
 						'class' => '',
 						'id' => '',
 					),
@@ -103,27 +103,7 @@ $rekai_array = array( array (
 					'default_value' => 0,
 				),
 
-				array (
-					'key' => 'field_12e40a2e618aa',
-					'label' => 'Css',
-					'name' => 'css-wrapper',
-					'type' => 'textarea',
-					'instructions' => 'Style för att sätta utseende på rek-wrapper',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array (
-						'width' => '75%',
-						'class' => '',
-						'id' => '',
-					),
-					'default_value' => '',
-					'placeholder' => '',
-					'prepend' => '',
-					'append' => '',
-					'maxlength' => '',
-					'readonly' => 0,
-					'disabled' => 0,
-				),
+				
 			)
 		) 
 	);
@@ -185,7 +165,7 @@ acf_add_local_field_group(array (
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '50%',
+								'width' => '45%',
 								'class' => '',
 								'id' => '',
 							),
@@ -206,7 +186,7 @@ acf_add_local_field_group(array (
 							'required' => 1,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '50%',
+								'width' => '40%',
 								'class' => '',
 								'id' => '',
 							),
@@ -217,12 +197,7 @@ acf_add_local_field_group(array (
 								'one-third' => 'En tredjedel',
 								'two-thirds' => 'Två tredjedelar',
 								'one-quarter' => 'En fjärdedel',
-								'two-quarters' => 'Två fjärdedelar',
 								'three-quarters' => 'Tre fjärdedelar',
-								'one-fifth' => 'En femtedel',
-								'two-fifths' => 'Två femtedelar',
-								'three-fifths' => 'Tre femtedelar',
-								'four-fifths' => 'Fyra femtedelar',
 							),
 							'default_value' => array (
 							),
@@ -235,14 +210,22 @@ acf_add_local_field_group(array (
 							'readonly' => 0,
 						),
 
-
-
-
-
-
-
-
-
+						array (
+							'key' => 'field_56eabc5e155555',
+							'label' => 'D&ouml;lj puff',
+							'name' => 'inactive',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '15%',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
+						),
 
 
 						array(
@@ -398,54 +381,6 @@ acf_add_local_field_group(array (
 						),
 
 
-
-
-
-
-
-
-
-
-
-
-
-						array (
-							'key' => 'field_56eabc5e155555',
-							'label' => 'D&ouml;lj puff',
-							'name' => 'inactive',
-							'type' => 'true_false',
-							'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '50%',
-								'class' => '',
-								'id' => '',
-							),
-							'message' => '',
-							'default_value' => 0,
-						),
-						array (
-							'key' => 'field_12e40a2e65555',
-							'label' => 'Css',
-							'name' => 'css-wrapper',
-							'type' => 'textarea',
-							'instructions' => 'Style för att sätta utseende på wrapper',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '50%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'maxlength' => '',
-							'readonly' => 0,
-							'disabled' => 0,
-						),
 					)
 				),
 				array (
@@ -463,7 +398,7 @@ acf_add_local_field_group(array (
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '50%',
+								'width' => '45%',
 								'class' => '',
 								'id' => '',
 							),
@@ -484,7 +419,7 @@ acf_add_local_field_group(array (
 							'required' => 1,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '50%',
+								'width' => '40%',
 								'class' => '',
 								'id' => '',
 							),
@@ -495,12 +430,7 @@ acf_add_local_field_group(array (
 								'one-third' => 'En tredjedel',
 								'two-thirds' => 'Två tredjedelar',
 								'one-quarter' => 'En fjärdedel',
-								'two-quarters' => 'Två fjärdedelar',
 								'three-quarters' => 'Tre fjärdedelar',
-								'one-fifth' => 'En femtedel',
-								'two-fifths' => 'Två femtedelar',
-								'three-fifths' => 'Tre femtedelar',
-								'four-fifths' => 'Fyra femtedelar',
 							),
 							'default_value' => array (
 							),
@@ -517,11 +447,11 @@ acf_add_local_field_group(array (
 							'label' => 'D&ouml;lj puff',
 							'name' => 'inactive',
 							'type' => 'true_false',
-							'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
+							'instructions' => '',
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '50%',
+								'width' => '15%',
 								'class' => '',
 								'id' => '',
 							),
@@ -529,27 +459,6 @@ acf_add_local_field_group(array (
 							'default_value' => 0,
 						),
 
-						array (
-							'key' => 'field_12e40a2e65544',
-							'label' => 'Css',
-							'name' => 'css-wrapper',
-							'type' => 'textarea',
-							'instructions' => 'Style för att sätta utseende på wrapper',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '50%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'maxlength' => '',
-							'readonly' => 0,
-							'disabled' => 0,
-						),
 					)
 				),
 				
@@ -568,7 +477,7 @@ acf_add_local_field_group(array (
 							'required' => 1,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '50%',
+								'width' => '85%',
 								'class' => '',
 								'id' => '',
 							),
@@ -579,12 +488,7 @@ acf_add_local_field_group(array (
 								'one-third' => 'En tredjedel',
 								'two-thirds' => 'Två tredjedelar',
 								'one-quarter' => 'En fjärdedel',
-								'two-quarters' => 'Två fjärdedelar',
 								'three-quarters' => 'Tre fjärdedelar',
-								'one-fifth' => 'En femtedel',
-								'two-fifths' => 'Två femtedelar',
-								'three-fifths' => 'Tre femtedelar',
-								'four-fifths' => 'Fyra femtedelar',
 							),
 							'default_value' => array (
 							),
@@ -601,38 +505,18 @@ acf_add_local_field_group(array (
 							'label' => 'D&ouml;lj puff',
 							'name' => 'inactive',
 							'type' => 'true_false',
-							'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
+							'instructions' => '',
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '50%',
+								'width' => '15%',
 								'class' => '',
 								'id' => '',
 							),
 							'message' => '',
 							'default_value' => 0,
 						),
-					array (
-						'key' => 'field_12e40a2e6189b',
-						'label' => 'Css',
-						'name' => 'css-wrapper',
-						'type' => 'textarea',
-						'instructions' => 'Style för att sätta utseende på nyhets-wrapper',
-						'required' => 0,
-						'conditional_logic' => 0,
-						'wrapper' => array (
-							'width' => '100%',
-							'class' => '',
-							'id' => '',
-						),
-						'default_value' => '',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'maxlength' => '',
-						'readonly' => 0,
-						'disabled' => 0,
-					),
+					
 				)
 			),
 
@@ -651,7 +535,7 @@ acf_add_local_field_group(array (
 						'required' => 1,
 						'conditional_logic' => 0,
 						'wrapper' => array (
-							'width' => '40%',
+							'width' => '45%',
 							'class' => '',
 							'id' => '',
 						),
@@ -662,12 +546,7 @@ acf_add_local_field_group(array (
 							'one-third' => 'En tredjedel',
 							'two-thirds' => 'Två tredjedelar',
 							'one-quarter' => 'En fjärdedel',
-							'two-quarters' => 'Två fjärdedelar',
 							'three-quarters' => 'Tre fjärdedelar',
-							'one-fifth' => 'En femtedel',
-							'two-fifths' => 'Två femtedelar',
-							'three-fifths' => 'Tre femtedelar',
-							'four-fifths' => 'Fyra femtedelar',
 						),
 						'default_value' => array (
 						),
@@ -717,11 +596,11 @@ acf_add_local_field_group(array (
 						'label' => 'D&ouml;lj puff',
 						'name' => 'inactive',
 						'type' => 'true_false',
-						'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
+						'instructions' => '',
 						'required' => 0,
 						'conditional_logic' => 0,
 						'wrapper' => array (
-							'width' => '20%',
+							'width' => '15%',
 							'class' => '',
 							'id' => '',
 						),
@@ -770,7 +649,7 @@ acf_add_local_field_group(array (
 							'required' => 1,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '40%',
+								'width' => '45%',
 								'class' => '',
 								'id' => '',
 							),
@@ -781,12 +660,7 @@ acf_add_local_field_group(array (
 								'one-third' => 'En tredjedel',
 								'two-thirds' => 'Två tredjedelar',
 								'one-quarter' => 'En fjärdedel',
-								'two-quarters' => 'Två fjärdedelar',
 								'three-quarters' => 'Tre fjärdedelar',
-								'one-fifth' => 'En femtedel',
-								'two-fifths' => 'Två femtedelar',
-								'three-fifths' => 'Tre femtedelar',
-								'four-fifths' => 'Fyra femtedelar',
 							),
 							'default_value' => array (
 							),
@@ -836,11 +710,11 @@ acf_add_local_field_group(array (
 							'label' => 'D&ouml;lj puff',
 							'name' => 'inactive',
 							'type' => 'true_false',
-							'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
+							'instructions' => '',
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '20%',
+								'width' => '15%',
 								'class' => '',
 								'id' => '',
 							),
@@ -896,7 +770,7 @@ acf_add_local_field_group(array (
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '25%',
+								'width' => '35%',
 								'class' => '',
 								'id' => '',
 							),
@@ -908,27 +782,7 @@ acf_add_local_field_group(array (
 							'readonly' => 0,
 							'disabled' => 0,
 						),
-						array (
-							'key' => 'field_57cc0a2e6183b',
-							'label' => 'Knapptext',
-							'name' => 'button',
-							'type' => 'text',
-							'instructions' => 'Text i knapp (om bild finns).',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '15%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'maxlength' => '',
-							'readonly' => 0,
-							'disabled' => 0,
-						),
+						
 						array (
 							'key' => 'field_56bb104207f50',
 							'label' => 'Layout',
@@ -938,7 +792,7 @@ acf_add_local_field_group(array (
 							'required' => 1,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '35%',
+								'width' => '25%',
 								'class' => '',
 								'id' => '',
 							),
@@ -948,12 +802,7 @@ acf_add_local_field_group(array (
 								'one-third' => 'En tredjedel',
 								'two-thirds' => 'Två tredjedelar',
 								'one-quarter' => 'En fjärdedel',
-								'two-quarters' => 'Två fjärdedelar',
 								'three-quarters' => 'Tre fjärdedelar',
-								'one-fifth' => 'En femtedel',
-								'two-fifths' => 'Två femtedelar',
-								'three-fifths' => 'Tre femtedelar',
-								'four-fifths' => 'Fyra femtedelar',
 							),
 							'default_value' => array (
 							),
@@ -964,6 +813,23 @@ acf_add_local_field_group(array (
 							'placeholder' => '',
 							'disabled' => 0,
 							'readonly' => 0,
+						),
+
+						array (
+							'key' => 'field_56eabc5e154d0',
+							'label' => 'D&ouml;lj puff',
+							'name' => 'inactive',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '15%',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
 						),
 
 						array (
@@ -1092,6 +958,38 @@ acf_add_local_field_group(array (
 									'min' => '',
 									'max' => '',
 								),
+								array(
+									'key' => '56bb0f17cd046',
+									'name' => 'category',
+									'label' => 'Kategori',
+									'display' => 'block',
+									'sub_fields' => array (
+										array(
+											'key' => 'field_6307362bf26db',
+											'label' => 'Kategori',
+											'name' => 'category',
+											'type' => 'taxonomy',
+											'instructions' => '',
+											'required' => 0,
+											'conditional_logic' => 0,
+											'wrapper' => array(
+												'width' => '',
+												'class' => '',
+												'id' => '',
+											),
+											'taxonomy' => 'category',
+											'field_type' => 'select',
+											'allow_null' => 0,
+											'add_term' => 0,
+											'save_terms' => 0,
+											'load_terms' => 0,
+											'return_format' => 'id',
+											'multiple' => 0,
+										),
+									),
+									'min' => '',
+									'max' => '',
+								),
 								array (
 									'key' => '56bb0f17cd042',
 									'name' => 'extern',
@@ -1099,7 +997,7 @@ acf_add_local_field_group(array (
 									'display' => 'block',
 									'sub_fields' => array (
 										array (
-											'key' => 'field_56bb0f17cd044',
+											'key' => 'field_56bb0f17cd004',
 											'label' => 'Extern URL',
 											'name' => 'extern',
 											'type' => 'text',
@@ -1123,319 +1021,53 @@ acf_add_local_field_group(array (
 									'min' => '',
 									'max' => '',
 								),
+								array (
+									'key' => '56bb0f17cd043',
+									'name' => 'video',
+									'label' => 'Video',
+									'display' => 'block',
+									'sub_fields' => array (
+										array (
+											'key' => 'field_56bb0f17cd044',
+											'label' => 'Video URL',
+											'name' => 'video_url',
+											'type' => 'text',
+											'instructions' => 'Stöd för youtube och vimeo. Klistra in den vanliga sökvägen till videon. Videon kommer autostarta i ett popupfönster när man klickar på bilden.',
+											'required' => 0,
+											'conditional_logic' => 0,
+											'wrapper' => array (
+												'width' => '',
+												'class' => '',
+												'id' => '',
+											),
+											'default_value' => '',
+											'placeholder' => '',
+											'prepend' => '',
+											'append' => '',
+											'maxlength' => '',
+											'readonly' => 0,
+											'disabled' => 0,
+										),
+									),
+									'min' => '',
+									'max' => '',
+								),
 							),
 						),
 
-						/* colors and style */
-						array (
-							'key' => 'field_56eabc5e154d0',
-							'label' => 'D&ouml;lj puff',
-							'name' => 'inactive',
-							'type' => 'true_false',
-							'instructions' => 'Kryssa i för att d&ouml;lja puffen.',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '20%',
-								'class' => '',
-								'id' => '',
-							),
-							'message' => '',
-							'default_value' => 0,
-						),
-						array (
-							'key' => 'field_56eabc0f154d0',
-							'label' => 'Visa avancerade inst&auml;llningar',
-							'name' => 'advanced',
-							'type' => 'true_false',
-							'instructions' => 'De avancerade inst&auml;llningarna g&auml;ller &auml;ven n&auml;r denna ruta inte &auml;r ikryssad. Varje inst&auml;llning m&aring;ste nollst&auml;llas var f&ouml;r sig. Rutan m&aring;ste vara ikryssad f&ouml;r att &auml;ndringar ska sparas.',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array (
-								'width' => '80%',
-								'class' => '',
-								'id' => '',
-							),
-							'message' => '',
-							'default_value' => 0,
-						),
-						array (
-							'key' => 'field_02bb104207f50',
-							'label' => 'Textf&auml;rg',
-							'name' => 'text-color',
-							'type' => 'color_picker',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
-							'wrapper' => array (
-								'width' => '33%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-						),
-						array (
-							'key' => 'field_11bb104207f50',
-							'label' => 'Bakgrundsf&auml;rg',
-							'name' => 'background-color',
-							'type' => 'color_picker',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
-							'wrapper' => array (
-								'width' => '33%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-						),
-						array (
-							'key' => 'field_12c729a6a5d1b',
-							'label' => 'F&auml;rg p&aring; ram',
-							'name' => 'border-color',
-							'type' => 'color_picker',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
-							'wrapper' => array (
-								'width' => '33%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-						),
-						array (
-							'key' => 'field_503b104207f50',
-							'label' => '&Ouml;ppna f&ouml;nster i',
-							'name' => 'target',
-							'type' => 'select',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
-							'wrapper' => array (
-								'width' => '20%',
-								'class' => '',
-								'id' => '',
-							),
-							'choices' => array (
-								'top' => 'Samma f&ouml;nster',
-								'blank' => 'Nytt f&ouml;nster',
-							),
-							'default_value' => array (
-							),
-							'allow_null' => 0,
-							'multiple' => 0,
-							'ui' => 0,
-							'ajax' => 0,
-							'placeholder' => '',
-							'disabled' => 0,
-							'readonly' => 0,
-						),
-
-						array (
-							'key' => 'field_12cc0a2e6183b',
-							'label' => 'Bredd p&aring; ram',
-							'name' => 'border-width',
-							'type' => 'text',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
-							'wrapper' => array (
-								'width' => '20%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-						),
-						array (
-							'key' => 'field_12000a2e6183b',
-							'label' => 'Radie p&aring; ram',
-							'name' => 'border-radius',
-							'type' => 'text',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
-							'wrapper' => array (
-								'width' => '20%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-						),
-						array (
-							'key' => 'field_12bb104207f50',
-							'label' => 'Align',
-							'name' => 'text-align',
-							'type' => 'select',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
-							'wrapper' => array (
-								'width' => '20%',
-								'class' => '',
-								'id' => '',
-							),
-							'choices' => array (
-								'left' => 'left',
-								'center' => 'center',
-								'right' => 'right',
-							),
-							'default_value' => array (
-							),
-							'allow_null' => 0,
-							'multiple' => 0,
-							'ui' => 0,
-							'ajax' => 0,
-							'placeholder' => '',
-							'disabled' => 0,
-							'readonly' => 0,
-						),
-						array (
-							'key' => 'field_12c60a2e6183b',
-							'label' => 'Padding',
-							'name' => 'padding',
-							'type' => 'text',
-							'instructions' => 'Luft runtom puffens ram i antal pixlar (px).',
-							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
-							'wrapper' => array (
-								'width' => '20%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-						),
-
-						array (
-							'key' => 'field_12c70a2e6183b',
-							'label' => 'Margin',
-							'name' => 'margin',
-							'type' => 'text',
-							'instructions' => 'Luft innanför puffens ram i antal pixlar (px).',
-							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
-							'wrapper' => array (
-								'width' => '20%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-						),
 
 
-						array (
-							'key' => 'field_12e40a2e6183b',
-							'label' => 'Css class',
-							'name' => 'css-class',
-							'type' => 'text',
-							'instructions' => 'Klass om puffen ska ha speciellt utseende.',
-							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
-							'wrapper' => array (
-								'width' => '20%',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-						),
+
 						array (
 							'key' => 'field_56dd0a2e6183b',
-							'label' => 'Video',
+							'label' => 'Video -- gammal, änvänd länka till och välj video istället.',
 							'name' => 'video',
 							'type' => 'text',
-							'instructions' => 'Stöd för youtube och vimeo. Klistra in den vanliga sökvägen till videon. Videon kommer autostarta i ett popupfönster när man klickar på bilden.',
+							'instructions' => '',
 							'required' => 0,
-							'conditional_logic' => array (
-								array (
-									array (
-										'field' => 'field_56eabc0f154d0',
-										'operator' => '==',
-										'value' => '1',
-									),
-								),
-							),
+							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '60%',
+								'width' => '65%',
 								'class' => '',
 								'id' => '',
 							),
@@ -1444,7 +1076,7 @@ acf_add_local_field_group(array (
 							'prepend' => '',
 							'append' => '',
 							'maxlength' => '',
-							'readonly' => 0,
+							'readonly' => 1,
 							'disabled' => 0,
 						),
 					),

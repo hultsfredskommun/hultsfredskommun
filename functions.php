@@ -609,7 +609,13 @@ function hk_enqueue_scripts() {
 			array(),
 			HK_VERSION
 		);
-
+		wp_enqueue_style( 'hk-parent-sass-style',
+			get_template_directory_uri() . "/css/style.min.css",
+			array(),
+			HK_VERSION
+		);
+	
+	
 		wp_enqueue_style( 'hk-style',
 			get_bloginfo( 'stylesheet_url' ),
 			array(),
