@@ -27,7 +27,7 @@ acf_add_local_field_group(array(
 
                         array(
                             'key' => 'field_6301da8016561',
-                            'label' => 'Text',
+                            'label' => 'Rubrik',
                             'name' => 'title',
                             'type' => 'text',
                             'instructions' => '',
@@ -44,7 +44,6 @@ acf_add_local_field_group(array(
                             'append' => '',
                             'maxlength' => '',
                         ),
-
                         array(
                             'key' => 'field_6301daaf16563',
                             'label' => 'Göm',
@@ -64,6 +63,28 @@ acf_add_local_field_group(array(
                             'ui_on_text' => '',
                             'ui_off_text' => '',
                         ),
+                        array(
+                            'key' => 'field_6301da8016568',
+                            'label' => 'Text',
+                            'name' => 'description',
+                            'type' => 'textarea',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '100%',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                            'rows' => '',
+                            'new_lines' => 'wpautop',
+                        ),
+
 
                         array(
 							'key' => 'field_63064a92d56e2',
@@ -81,7 +102,6 @@ acf_add_local_field_group(array(
 							'choices' => array(
 								'urgent' => 'Fel',
 								'warning' => 'Varning',
-								'information' => 'Information',
 							),
 							'default_value' => array(
 							),

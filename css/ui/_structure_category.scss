@@ -25,18 +25,6 @@
 		.mellanstart-post {
 			width: 100%;
 			&.lagg_till_title {
-				// .quick-title {
-					// box-shadow: 2px 4px 25px 7px rgb(20 20 30 / 5%);
-					// transition: all 0.3s ease-in-out;
-					// border-radius: 3px;
-					// padding: $half-spacing-unit;
-					// height: 100%;
-					// &:hover {
-						// box-shadow: 1px 2px 20px 7px rgb(0 0 0 / 10%);
-						// transform: scale(1.01);
-					// }
-
-				// }
 				.q-description {
 					@include font-size(16px);
 				}
@@ -55,8 +43,10 @@
 							text-decoration: underline;
 						}
 					}
-					
-					// box-shadow: 5.46986px 5.46986px 27.35px 1.64096px rgba(39,92,141,0.1);
+					h2 {
+						@include font-size(20px);
+						
+					}
 					box-shadow: 2px 4px 25px 7px rgb(20 20 30 / 5%);
 					transition: all 0.3s ease-in-out;
 					border-radius: 12px;
@@ -66,8 +56,6 @@
 						box-shadow: 1px 2px 20px 7px rgb(0 0 0 / 10%);
 						// transform: scale(1.01);
 						text-decoration: none;
-						
-
 					}
 					img {
 						border-radius: 12px 12px 0 0;
@@ -115,20 +103,29 @@
 			.quick-driftstorning {
 				.driftstorning {
 					display: flex;
+					gap: 6px;
 					flex-direction: row;
-					align-items: center;
+					align-items: flex-start;
 					justify-content: flex-start;
 					padding: 12px!important;
     				border-radius: 3px;
-					// background-color: $important-color;
 					&.urgent {
-						border: 2px solid $important-color;
+						background: $important-color;
+						a, span {
+							color: white;
+						}
+						svg {
+							fill: white;
+						}
+						.close {
+							svg, path {
+								fill: white!important;
+							}
+						}
+						// border: 2px solid $important-color;
 					}
 					&.warning {
-						border: 2px solid orange;
-					}
-					&.information {
-						border: 2px solid yellowgreen;
+						background: orange;
 					}
 					position: relative;
 					margin-bottom: $half-spacing-unit;
@@ -136,12 +133,28 @@
 						line-height: 0;
 						margin-right: 10px;
 					}
+					.title {
+						display: block;
+						@include font-size(17px);
+					}
+					.description {
+						@include font-size(14px);
+						p {
+							margin-bottom: $half-spacing-unit;
+							&:last-of-type {
+								margin-bottom: 0;
+							}
+						}
+					}
 					a, span {
 						// @extend .white-text;
 						font-size: 1.2rem;
 					}
 					a:hover {
-						text-decoration: underline;
+						text-decoration: none;
+						.title {
+							text-decoration: underline;
+						}
 					}
 
 					// .dates {
@@ -151,12 +164,17 @@
 					// 	date {
 					// 		@include font-size($h6-size);
 					// 		font-style: italic;						}
-						
 					// }
+					.category {
+						line-height: 0;
+						padding: 0px;
+					} 
+					.close {
+						padding: 4px;
+						line-height: 0;
+					}
 					.close {
 						margin-left: auto;
-						padding: 10px;
-						line-height: 0;
 					}
 				}
 			}
