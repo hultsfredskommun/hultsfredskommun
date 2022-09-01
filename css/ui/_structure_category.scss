@@ -59,7 +59,7 @@
 					// box-shadow: 5.46986px 5.46986px 27.35px 1.64096px rgba(39,92,141,0.1);
 					box-shadow: 2px 4px 25px 7px rgb(20 20 30 / 5%);
 					transition: all 0.3s ease-in-out;
-					border-radius: 3px;
+					border-radius: 12px;
 					padding-bottom: $half-spacing-unit;
 					height: 100%;
 					&:hover {
@@ -70,7 +70,7 @@
 
 					}
 					img {
-						border-radius: 3px 3px 0 0;
+						border-radius: 12px 12px 0 0;
 					}
 					h2,
 					.q-description {
