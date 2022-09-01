@@ -25,18 +25,19 @@
 		.mellanstart-post {
 			width: 100%;
 			&.lagg_till_title {
-				.quick-title {
-					box-shadow: 2px 4px 25px 7px rgb(20 20 30 / 5%);
-					transition: all 0.3s ease-in-out;
-					border-radius: 3px;
-					padding: $half-spacing-unit;
-					height: 100%;
-					&:hover {
-						box-shadow: 1px 2px 20px 7px rgb(0 0 0 / 10%);
+				// .quick-title {
+					// box-shadow: 2px 4px 25px 7px rgb(20 20 30 / 5%);
+					// transition: all 0.3s ease-in-out;
+					// border-radius: 3px;
+					// padding: $half-spacing-unit;
+					// height: 100%;
+					// &:hover {
+						// box-shadow: 1px 2px 20px 7px rgb(0 0 0 / 10%);
 						// transform: scale(1.01);
-					}
+					// }
 
-				}
+				// }
+				margin: $half-spacing-unit 0 $base-spacing-unit;
 			}
 			&.lagg_till_puff {
 
