@@ -62,9 +62,6 @@
 			}
 			a {
 				@extend .default-text;
-				&.quick-button {
-					@extend .white-text;
-				}
 			}
 			h2 {
 				@extend .flush--bottom;
@@ -200,9 +197,6 @@
 			}
 			a {
 				@extend .default-text;
-				&.quick-button {
-					@extend .white-text;
-				}
 			}
 			h2 {
 				@extend .flush--bottom;

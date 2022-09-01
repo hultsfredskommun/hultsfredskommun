@@ -7,18 +7,6 @@
 	display: block;
 }
 
-.quick-button {
-	@extend .position-absolute;
-	@extend .white-text;
-	@extend .main-background;
-    @extend .border-radius;
-	top: 6px;
-    right: 6px;
-	font-size: 18px;
-    padding: 6px 12px;
-    margin: 0;
-}
-
 .read-more-link {
 	@extend .half-margin--top;
 	@extend .half-margin--bottom;
