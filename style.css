@@ -104,6 +104,7 @@ iframe {
 .scrolltotop {
   left: 24px;
   right: initial;
+  width: 52px;
 }
 .js-video-popup {
   display: block;
