@@ -12,8 +12,7 @@
 
 /* full width */
 .widget.HK_tags_widget.horizontal-list,
-.home .slideshow-contact-puff-area,
-.firstpage-top-content {
+.home .slideshow-contact-puff-area {
 	width: 1188px;
 }
 /*Body*/
@@ -104,12 +103,6 @@
 	width:570px;
 }
 /* Firstpage content left */
-.firstpage-top-content{
-	z-index: 1;
-}
-.firstpage-content {
-	width: 582px;
-}
 .summary-content {
 	width: 550px;
 }
@@ -124,10 +117,6 @@
 	width: 945px;
 }
 
-/* Firstpage content right */
-.firstpage-sidebar {
-	width: 279px;
-}
 
 /* Contact widget */
 .contact-wrapper.content-wrapper,

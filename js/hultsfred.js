@@ -616,7 +616,7 @@ if (window.location.href.indexOf("artikel") > -1) {
         /**
          * add action to read-more toggle, if in .home or in lt ie9, go to article
          */
-        $("#primary, #firstpage-top-content").find("article").each(function() {
+        $("#primary").find("article").each(function() {
             if (!$(this).parents(".home").length && !$(this).parents(".search").length) {
                 setArticleActions($(this));
             } else {
