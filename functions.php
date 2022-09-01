@@ -110,8 +110,6 @@ require( get_template_directory() . '/inc/hk-acf-fields.php' );
 // Grab hk driftstorning
 require( get_template_directory() . '/inc/hk-driftstorning.php' );
 
-// Grab hk widgets function containing general widgets
-require( get_template_directory() . '/inc/hk-widgets.php' );
 
 /*
  * Synpunkt shortcode
