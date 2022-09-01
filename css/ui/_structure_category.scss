@@ -37,6 +37,9 @@
 					// }
 
 				// }
+				.q-description {
+					@include font-size(16px);
+				}
 				margin: $half-spacing-unit 0 $base-spacing-unit;
 			}
 			&.lagg_till_puff {
@@ -79,10 +82,14 @@
 			a {
 				@extend .default-text;
 			}
-			h2 {
-				@extend .flush--bottom;
-				@extend .epsilon;
+			h1, h2 {
+				margin: $half-spacing-unit 0;
+				// @extend .alpha;
 			}
+			// h2 {
+			// 	@extend .flush--bottom;
+			// 	// @extend .beta;
+			// }
 			.wide-image {
 				img.overlay-img {
 					margin-left: 23%;

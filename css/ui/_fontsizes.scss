@@ -58,8 +58,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* override h2 - h6 size */
+h1 {
+    @include font-size($h1-size);
+	font-weight: 500;
+}
 h2 {
-    @include font-size($h3-size);
+    @include font-size($h2-size);
+	font-weight: 500;
 }
 h3, h4, h5, h6 {
     @include font-size($base-font-size);
@@ -69,10 +74,10 @@ h4, h5, h6 {
 }
 @include media-query(portable){
     h1 {
-        @include font-size($h3-size);
+        @include font-size($h2-size);
     }
     h2 {
-        @include font-size($h5-size);
+        @include font-size($h3-size);
     }
 }
 
