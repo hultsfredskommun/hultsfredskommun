@@ -49,6 +49,13 @@
 						display: flex;
 						flex-direction: column;
 					}
+					a:hover {
+						text-decoration: none;
+						h2 {
+							text-decoration: underline;
+						}
+					}
+					
 					// box-shadow: 5.46986px 5.46986px 27.35px 1.64096px rgba(39,92,141,0.1);
 					box-shadow: 2px 4px 25px 7px rgb(20 20 30 / 5%);
 					transition: all 0.3s ease-in-out;
@@ -58,6 +65,9 @@
 					&:hover {
 						box-shadow: 1px 2px 20px 7px rgb(0 0 0 / 10%);
 						// transform: scale(1.01);
+						text-decoration: none;
+						
+
 					}
 					img {
 						border-radius: 3px 3px 0 0;
