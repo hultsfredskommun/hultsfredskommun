@@ -227,7 +227,22 @@ function hk_view_quick_links() {
 						};
 						
 
+							
+					elseif($row_layout == "lagg_till_title"):
+					
+
+						/* get text */
+						$title = get_sub_field('title');
+						$title_div = (!empty($title)) ? "<h1>$title</h1>" : "";
+						$description = get_sub_field('description');
+						$description_div = (!empty($description)) ? "<div class='q-description'>$description</div>" : '';
 						
+						$retValue .= "<div class='quick-title $content_layout'>";
+						$retValue .= "$title_div$description_div</a>";
+						$retValue .= "</div>";
+
+
+					
 					elseif($row_layout == "lagg_till_puff"):
 					
 						/* get video */

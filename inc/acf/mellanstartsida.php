@@ -728,6 +728,108 @@ acf_add_local_field_group(array (
 
 
 
+				array (
+					'key' => '56bb0a27a4100',
+					'name' => 'lagg_till_title',
+					'label' => 'Rubrik',
+					'display' => 'block',
+					'sub_fields' => array (
+						array (
+							'key' => 'field_56cc072e6183b',
+							'label' => 'Rubrik',
+							'name' => 'title',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '40%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array (
+							'key' => 'field_56cc104267f50',
+							'label' => 'Layout',
+							'name' => 'layout',
+							'type' => 'select',
+							'instructions' => 'Hur stor del av skärmen som puffen använda.',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '45%',
+								'class' => '',
+								'id' => '',
+							),
+	
+							'choices' => array (
+								'one-whole' => 'Fullbredd',
+								'one-half' => 'En halv',
+								'one-third' => 'En tredjedel',
+								'two-thirds' => 'Två tredjedelar',
+								'one-quarter' => 'En fjärdedel',
+								'three-quarters' => 'Tre fjärdedelar',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+
+						array (
+							'key' => 'field_56eab75e15411',
+							'label' => 'D&ouml;lj puff',
+							'name' => 'inactive',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '15%',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
+						),
+	
+						array (
+							'key' => 'field_56cc0a2e91830',
+							'label' => 'Text',
+							'name' => 'description',
+							'type' => 'textarea',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '100%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+	
+						)
+					),
+						
 
 				array (
 					'key' => '56bb0a25a4143',
