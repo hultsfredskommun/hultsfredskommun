@@ -451,6 +451,8 @@ function hk_navigation() {
 
 	// hide menu if hide_leftmenu is set
 	if (!empty($options['hide_leftmenu']) && $options['hide_leftmenu'] == 1) return;
+	
+	if (get_post_type() == "page" && get_page_template_slug() == 'forum.php') return;
 
 	// else show menu
 	echo "<aside id='nav' class='category-navigation' role='navigation'><nav>";

@@ -290,11 +290,13 @@
 
 .main-sub-menu {
     @extend .gray-light-background;
+    // @extend .main-dark-background;
     //@extend .border-radius;
     margin-bottom: $base-spacing-unit;
     a {
         @extend .gamma;
         @extend .default-text;
+        // @extend .white-text;
     }
     .menu-item:first-child a {
         /*@extend .border-radius--left;*/
@@ -316,6 +318,7 @@
     .current-category-ancestor a,
     .current-menu-item a {
         @extend .default-background;
+        // @extend .main-background;
         @extend .white-text;
     }
 }

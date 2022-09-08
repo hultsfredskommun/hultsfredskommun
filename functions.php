@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "10.4");
+define("HK_VERSION", "10.6");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -47,13 +47,6 @@ if ( ! isset( $default_settings ) ) {
 								'show_articles' => true,
 								'video_thumbnail_image' => $hk_options["video_thumbnail_image"],
 							);
-
-	/* browser check */
-	$ua = $_SERVER["HTTP_USER_AGENT"];
-	$default_settings["msie"] = (strpos($ua, 'MSIE') === true) ? true : false; // All Internet Explorer
-	$default_settings["msie_6"] = (strpos($ua, 'MSIE 6.0') === true) ? true : false; // Internet Explorer 6
-	$default_settings["msie_7"] = (strpos($ua, 'MSIE 7.0') === true) ? true : false; // Internet Explorer 7
-	$default_settings["msie_8"] = (strpos($ua, 'MSIE 8.0') === true) ? true : false; // Internet Explorer 8
 
 }
 
@@ -110,6 +103,8 @@ require( get_template_directory() . '/inc/hk-acf-fields.php' );
 // Grab hk driftstorning
 require( get_template_directory() . '/inc/hk-driftstorning.php' );
 
+// Grab hk forum
+require( get_template_directory() . '/inc/hk-forum.php' );
 
 /*
  * Synpunkt shortcode
