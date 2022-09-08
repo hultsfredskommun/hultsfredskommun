@@ -95,15 +95,16 @@ acf_add_local_field_group(array(
 							'required' => 0,
 							'conditional_logic' => 0,
 							'wrapper' => array(
-								'width' => '15%',
+								'width' => '25%',
 								'class' => '',
 								'id' => '',
 							),
 							'choices' => array(
-								'urgent' => 'Fel',
-								'warning' => 'Varning',
+								'urgent' => 'Akut',
+								'warning' => 'Driftstörning',
 							),
 							'default_value' => array(
+                                'warning'
 							),
 							'allow_null' => 0,
 							'multiple' => 0,
@@ -158,7 +159,7 @@ acf_add_local_field_group(array(
 								),
 							),
 							'wrapper' => array(
-								'width' => '70%',
+								'width' => '60%',
 								'class' => '',
 								'id' => '',
 							),
@@ -188,7 +189,7 @@ acf_add_local_field_group(array(
                                 ),
                             ),
                             'wrapper' => array (
-                                'width' => '70%',
+                                'width' => '60%',
                                 'class' => '',
                                 'id' => '',
                             ),
@@ -216,7 +217,7 @@ acf_add_local_field_group(array(
 								),
 							),
 							'wrapper' => array(
-								'width' => '70%',
+								'width' => '60%',
 								'class' => '',
 								'id' => '',
 							),
