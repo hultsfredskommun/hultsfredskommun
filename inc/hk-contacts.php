@@ -34,6 +34,7 @@ function hk_contacts_init() {
 				'query_var' => true,
 				'supports' => array('title','editor','comments','revisions','author','custom-fields'),
 				'taxonomies' => array('category'),
+				'menu_icon' => 'dashicons-businessperson',
 				// there are a lot more available arguments, but the above is plenty for now
 			));
 

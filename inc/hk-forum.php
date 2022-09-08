@@ -14,17 +14,20 @@ function hk_forum_init() {
 					'singular_name' => __( 'Debattforum' ),
 					'description' => 'L&auml;gg till ett foruminlägg.'
 				),
-				'public' => true,
 				'has_archive' => true,
 				'rewrite' => array('slug' => 'forum'),
+				'public' => false,
 				'show_ui' => true,
 				'show_in_menu' => true,
+                'show_in_nav_menus' => false,
+                'exclude_from_search' => true,
+				'publicly_queryable' => true,
 				'capability_type' => 'post',
 				'hierarchical' => false,
-				'publicly_queryable' => true,
 				'query_var' => true,
 				'supports' => array('title','revisions','author','custom-fields'),
 				'taxonomies' => array(),
+                'menu_icon' => 'dashicons-format-chat',
 				// there are a lot more available arguments, but the above is plenty for now
 			));
 

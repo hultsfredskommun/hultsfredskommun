@@ -11,10 +11,16 @@ function hk_quick_init() {
 				'name' => __( 'Mellanstartsida' ),
 				'singular_name' => __( 'Mellanstartsida' )
 			),
-			'public' => true,
+			'public' => false,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'show_in_nav_menus' => false,
+			'exclude_from_search' => true,
+			'publicly_queryable' => true,
 			'has_archive' => true,
 			'rewrite' => array('slug' => 'quick'),
 			'capability_type' => 'page',
+			'menu_icon' => 'dashicons-schedule'
 		)
 	);
 	add_post_type_support( "hk_quick", array("title","revisions") );
