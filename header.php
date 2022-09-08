@@ -130,10 +130,7 @@ if ($meta_description != "") :?>
 <?php endif; ?>
 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri() . "/style-lt-ie9.css"; ?>" />
-<![endif]-->
+
 <?php
 	/* We add some JavaScript to pages with the comment form
 	 * to support sites with threaded comments (when in use).
@@ -176,21 +173,25 @@ if (empty($lattlast) && is_single()) {
 		}
 	}
 }
-
+ 
 ?>
 <body <?php body_class($lattlast . " " . $category_show_children_class . " " . $category_as_filter_class . " " . $dynamic_post_load_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " new-menu " . $hide_leftmenu_class ); ?>>
 <?php echo $hk_options['in_topbody_section']; ?>
-<div id="version-2" style="display:none; visibility:hidden"></div>
-<div id="responsive-info"></div>
 <div id="page" class="hfeed">
 	<?php
 		require( get_template_directory() . '/inc/hk-header.php');
 	?>
 
-	<div class="main hk-quick"><div class="main-wrapper">
-		<?php
-		if (!is_sub_category_firstpage() && get_query_var("tag") == "") { echo hk_view_quick_links(); }
-		?>
-	</div></div>
+	<?php
+	// if (!is_sub_category_firstpage() && get_query_var("tag") == "") { 
+	if ((get_query_var("cat") != "" || is_home()) && get_query_var("tag") == "") { ?>
+		<div class="main hk-quick"><div class="main-wrapper">
+			<div class='mellanstart-widget-wrapper'>
+			<?php echo hk_view_quick_links(); ?>
+			</div>
+		</div></div>
+	<?php } ?>
+		
+	
 	<div id="main" class="main">
 	<div class="main-wrapper">

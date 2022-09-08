@@ -11,7 +11,7 @@ Tags:
 Text Domain: hultsfredskommun
 */
 
-@import url("css/style.min.css?version=8.9");
+/* @import url("css/style.min.css?version=9.3"); */
 
 /* hidden helpers */
 .hide-expand-button-in-mobile-menu .expand-button {
@@ -26,12 +26,14 @@ Text Domain: hultsfredskommun
 /* rek.ai */
 .quick-tags,
 .quick-rekai {
-  background: #f5f5f5;
-  border: 1px solid #ddd;
   padding: 12px!important;
   border-radius: 3px;
-  /* margin-left: 24px; */
-  /* width: calc(100% - 24px); */
+}
+.quick-tags {
+  background-color: #f5f5f5;
+}
+.quick-rekai {
+  background-color: rgb(224, 236, 216); 
 }
 
 /* link list */
@@ -69,10 +71,10 @@ Text Domain: hultsfredskommun
     position: absolute;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     top: 50%;
-    left: -21px;
+    left: -19px;
     transform: translateY(-50%) rotate(-45deg);
 }
 
@@ -93,7 +95,7 @@ iframe {
 /* bug fixes */
 @media only screen and (max-width: 541px) {
 #main {
-  margin: 1%;
+  margin: 1% 0;
 }
 }
 .side-content ul li:before {
@@ -102,6 +104,7 @@ iframe {
 .scrolltotop {
   left: 24px;
   right: initial;
+  width: 52px;
 }
 .js-video-popup {
   display: block;

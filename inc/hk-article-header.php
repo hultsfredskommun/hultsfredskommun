@@ -17,24 +17,6 @@
 		</li>
 
 		<?php endif; ?>
-		<?php if ($options['addthis_pubid'] != "") : ?>
-		<li class="addthis-item item">
-			<a class="toggle-tool js-toggle-dropdown"><span class="addthis-icon"></span>Dela</a>
-			<ul class="dropdown">
-				<li class="addthis">
-					<div class="addthis_toolbox addthis_32x32_style" addthis:url="<?php echo the_permalink(); ?>" addthis:title="<?php the_title(); ?>" addthis:description="Kolla den h&auml;r sidan.">
-						<a class="addthis_button_facebook"></a>
-						<a class="addthis_button_twitter"></a>
-						<a class="addthis_button_google_plusone_share"></a>
-						<a class="addthis_button_email"></a>
-						<a class="addthis_button_print"></a>
-						<a class="addthis_button_compact"></a>
-						<!--a class="addthis_counter addthis_bubble_style"></a-->
-					</div>
-				</li>
-			</ul>
-		</li>
-		<?php endif; ?>
 
 		<?php edit_post_link( "<span class='tool-icon'></span>Redigera inl&auml;gg", "<li class='edit-post aside-list-item item'>", "</li>" ); ?>
 

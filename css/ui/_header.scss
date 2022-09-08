@@ -165,8 +165,10 @@
 }
 .searchnavigation {
 	@extend .g;
-	@extend .desk-one-half;
-	@extend .lap-one-half;
+	/*@extend .desk-one-half;
+	@extend .lap-one-half;*/
+	@extend .desk-three-quarters;
+	@extend .lap-three-quarters;
 	@extend .palm-one-whole;
 	/*@extend .hidden--palm; */
 	@extend .half-margin--top;
@@ -177,10 +179,13 @@
 	}
 	.form {
 		@extend .cf;
-		border-radius: 12px;
-		border: 2px solid $main-color;
-		box-shadow: 1px 1px 10px #666;
-		overflow: hidden;
+		&:hover {
+			background-color: #f0f0f0;
+		}
+		border-radius: 2px;
+		border: 1px solid $gray-color;
+		
+		/* box-shadow: 1px 1px 10px #666; */
 		.input-wrapper {
 			@extend .position-relative;
 			@extend .desk-eight-tenths;
@@ -197,11 +202,16 @@
 				@extend .position-absolute--top-right;
 				margin-right: $half-spacing-unit;
 			}
+			.rekai-dropdown-menu {
+				margin-top: 2px!important;
+				margin-left: 10px!important;
+			}
 		}
 		.submit {
-			@extend .desk-one-tenth;
+			/*@extend .desk-one-tenth;
 			@extend .lap-two-tenths;
-			@extend .palm-two-tenths;
+			@extend .palm-two-tenths;*/
+			width: 50px;
 			@extend .float--right;
 			@extend .white-background;
 			@extend .white-text;
@@ -212,11 +222,12 @@
 		.field,
 		.submit {
 			height: 44px;
+			background-color: transparent!important;
 		}
 	}
 	.searchresult-wrapper {
 		@extend .position-relative;
-		margin-top: $half-spacing-unit/2;
+		margin-top: $half-spacing-unit*0.5;
 		
 		.searchresult {
 			@include arrow(top, left, $main-color, transparent);
@@ -253,7 +264,7 @@
 				margin-bottom: $half-spacing-unit;
 				span {
 					display: block;
-					margin-bottom: $half-spacing-unit/3;
+					margin-bottom: $half-spacing-unit*0.33;
 					margin-left: $half-spacing-unit;
 
 				}
@@ -273,11 +284,6 @@
  * google site search 
  */
  
-/* hide search box and results */
-.hk-gcse-ajax-searchbox,
-.hk-gcse-ajax-searchresults-wrapper {
-	@extend .hidden;
-}
 /* wrap results to get absolut positioning */
 .hk-gcse-ajax-searchresults-wrapper {
 	position: relative;

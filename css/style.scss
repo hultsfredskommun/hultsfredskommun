@@ -17,7 +17,7 @@
 /**
   * Setup
  */
-
+@use "sass:math";
 @import "vars";
 @import "inuit.css/inuit";
 
@@ -37,6 +37,7 @@
 @import "ui/structure_tag.scss";
 @import "ui/structure_article";
 @import "ui/header";
+@import "ui/forum";
 @import "ui/menu";
 @import "ui/ui-tabs";
 @import "ui/footer";
@@ -114,29 +115,3 @@ desk {
     display: block!important;
 }
 
-
-/* HELP MEDIA QUERY INFO */
-
-@include media-query(desk) {
-    #responsive-info:after {
-        content: "DESK";
-    }
-}
-
-@include media-query(desk-wide) {
-    #responsive-info:after {
-        content: "DESKWIDE";
-    }
-}
-
-@include media-query(lap) {
-    #responsive-info:after {
-        content: "LAP & PORTABLE";
-    }
-}
-
-@include media-query(palm) {
-    #responsive-info:after {
-        content: "PALM & PORTABLE";
-    }
-}

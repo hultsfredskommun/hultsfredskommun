@@ -8,6 +8,9 @@ if (window.location.href.indexOf("artikel") > -1) {
     window.rek_viewclick = true;
 }
 
+/* block rek hits in dev */
+// document.cookie = 'rekblock=1'; // TODO: only for dev
+
 (function($) {
 
     var currPageTitle = $("head").find("title").html();
@@ -45,21 +48,21 @@ if (window.location.href.indexOf("artikel") > -1) {
     function resetHistory() {
         // reset webbrowser history
         history.replaceState(null, currPageTitle, hultsfred_object["currPageUrl"]);
-        var ret = "(reset) history.replaceState(null, " + currPageTitle + ", " + hultsfred_object["currPageUrl"] + ")";
-        log(ret);
+        // var ret = "(reset) history.replaceState(null, " + currPageTitle + ", " + hultsfred_object["currPageUrl"] + ")";
+        // log(ret);
         return false;
     }
 
     function pushHistory(title, url) {
         if (url != hultsfred_object["currPageUrl"] && !havePushed) {
             history.pushState({}, title, url);
-            var ret = "(push if) history.pushState(null, " + title + ", " + url + ")";
-            log(ret);
+            // var ret = "(push if) history.pushState(null, " + title + ", " + url + ")";
+            // log(ret);
             havePushed = true;
         } else if (url != hultsfred_object["currPageUrl"]) {
             history.replaceState({}, title, url);
-            var ret = "(push else) history.replaceState(null, " + title + ", " + url + ")";
-            log(ret);
+            // var ret = "(push else) history.replaceState(null, " + title + ", " + url + ")";
+            // log(ret);
         }
         return false;
     }
@@ -427,9 +430,6 @@ if (window.location.href.indexOf("artikel") > -1) {
                 //setQuickLinks($(el).parents("article"));
 
                 // set click action on content header tools
-                if (typeof addthis != "undefined") {
-                    addthis.toolbox('.addthis_toolbox');
-                }
                 if (typeof rspkr != "undefined" && typeof rspkr.ui != "undefined") {
                     rspkr.ui.addClickEvents();
                 }
@@ -499,35 +499,6 @@ if (window.location.href.indexOf("artikel") > -1) {
         }
     });
 
-    /* enter the active element in flip array */
-    /*function flipAnimation(active) {
-    	var image_width = $(active).width();
-    	var margin = image_width / 2 + 'px';
-    	var compress_css_properties = {
-    		width: 0,
-    		marginLeft: margin,
-    		opacity: 0.3
-    	};
-    	var decompress_css_properties = {
-    		width: image_width,
-    		marginLeft: 0,
-    		opacity: 1
-    	};
-    	if ($(active).next() != "")
-    		$(active).next().css(compress_css_properties);
-    	else
-    		$(active).first().css(compress_css_properties);
-
-    	$(active).click(function() {
-    		//animate width to 0 and margin-left to 1/2 width
-    		$(this).stop().animate(compress_css_properties, 1000, function() {
-    			// animate second card to full width and margin-left to 0
-    			$(this).hide();
-    			$(this).next().show().animate(decompress_css_properties, 1000);
-    			flipAnimation($(this));
-    		});
-    	});
-    }*/
 
     /* case insensitive contain */
     $.extend($.expr[':'], {
@@ -537,17 +508,20 @@ if (window.location.href.indexOf("artikel") > -1) {
         }
     });
 
+    if (typeof __rekai != "undefined" && hultsfred_object['rekai_autocomplete'] == '1') {
+        __rekai.ready(function() {
+            var rekAutocomplete = rekai_autocomplete('#s', {
+                projectid: '10341068', // TODO: only for dev
+                hint: true,
+                tabAutocomplete: true,
+            }).on('rekai_autocomplete:selected', function(event, suggestion, dataset) {
+                window.location = suggestion.url;
+            });
+        });
+    }
     $(document).ready(function() {
 
-      /* make search-results have target blank */
-        $("#s").focus(function() {
-        //if ($('.gcse-searchresults').length > 0) {
-           //$('.gcse-searchresults a.js-toggle-article').on('mouseenter', function() {
-           $('.gcse-searchresults').on('mouseenter', 'a.js-toggle-article', function() {
-             $(this).attr('target', '_blank');
-           });
-        //}
-      });
+
 
         /* add filter_search */
         if ($(".tag-listing").length > 0) {
@@ -642,7 +616,7 @@ if (window.location.href.indexOf("artikel") > -1) {
         /**
          * add action to read-more toggle, if in .home or in lt ie9, go to article
          */
-        $("#primary, #firstpage-top-content").find("article").each(function() {
+        $("#primary").find("article").each(function() {
             if (!$(this).parents(".home").length && !$(this).parents(".search").length) {
                 setArticleActions($(this));
             } else {
@@ -787,7 +761,7 @@ if (window.location.href.indexOf("artikel") > -1) {
          */
         $(document).keyup(function(event) {
             var key = event.keyCode || event.which;
-            log(key);
+            // log(key);
             switch (key) {
                 case 27:
                     if ($(".contact-popup").length > 0) {
@@ -820,45 +794,32 @@ if (window.location.href.indexOf("artikel") > -1) {
         });
 
 
+        if (hultsfred_object['rekai_autocomplete'] != '1') {
 
-        $("#s").focus(function() {
-            /**
-             * add ajax searchbox if enabled in settings and not less than ie9
-             */
-            if ($(".hk-gcse-ajax-searchbox").length > 0 && $("body.search").length == 0) {
-                window.__gcse = {
-                    parseTags: 'explicit',
-                    callback: hkGcseCallback
-                };
+            $("#s").focus(function() {
+            
+                /**
+                 * add ajax searchbox if enabled in settings and not less than ie9
+                 */
+                if ($(".hk-ajax-searchbox").length > 0 && $("body.search").length == 0) { // else wp search
+                    hkHandleKeypress();
 
-                var cx = hultsfred_object["gcse_id"];
-                var gcse = document.createElement('script');
-                gcse.type = 'text/javascript';
-                gcse.async = true;
-                gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
-                    '//www.google.com/cse/cse.js?cx=' + cx;
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(gcse, s);
-            }
-            else if ($(".hk-ajax-searchbox").length > 0 && $("body.search").length == 0) { // else wp search
-                hkHandleKeypress();
-            }
+                    /* make search-results have target blank */
+                    $('.gcse-searchresults').on('mouseenter', 'a.js-toggle-article', function() {
+                        $(this).attr('target', '_blank');
+                    });
+
+                }
 
 
-            $(this).unbind("focus");
-        });
-
+                $(this).unbind("focus");
+            });
+        }
         /**
          * init responsive search hook results
          */
         initResponsiveSearchHookResult();
 
-        /**
-         * do callbacks if found
-         */
-        if (typeof setSingleSettings == 'function') {
-            setSingleSettings();
-        }
 
     }); /* END $(document).ready() */
 
@@ -866,37 +827,21 @@ if (window.location.href.indexOf("artikel") > -1) {
     /**
      * gcse ajax callback and helpers
      */
-    var hkGcseCallback = function() {
-
-        if (document.readyState == 'complete') {
-            // Document is ready when CSE element is initialized.
-            // Render an element with both search box and search results in div with id 'test'.
-            google.search.cse.element.render({
-                div: 'hksearch',
-                tag: 'search'
-            });
-            hkHandleKeypress();
-        } else {
-            // Document is not ready yet, when CSE element is initialized.
-            google.setOnLoadCallback(function() {
-                // Render an element with both search box and search results in div with id 'test'.
-                google.search.cse.element.render({
-                    div: 'hksearch',
-                    tag: 'search'
-                });
-                hkHandleKeypress();
-            }, true);
-        }
-    };
     var hkPreventSubmit = function(e) {
         if (e.keyCode == 13 || e.which == 13) {
             e.preventDefault();
-            log('Enter pressed in search...');
+            // log('Enter pressed in search...');
             return false;
         }
     };
     var hkDoSearch = function(e) {
         var key = e.keyCode || e.which;
+        
+        // don't do anything if same search term is entered
+        if ($('#s').val() == $('#s').data('old-search')) {
+            return
+        }
+        $('#s').data('old-search', $('#s').val());
 
         if ($('#s').val().length == 0 || (key == 27)) {
             $(".hk-gcse-ajax-searchresults-wrapper").hide();
@@ -908,12 +853,12 @@ if (window.location.href.indexOf("artikel") > -1) {
         if (t_ajaxsearch != undefined) {
             clearTimeout(t_ajaxsearch);
         }
-        if ($('#s').val().length > 0 && (key != 27)) {
-            t_ajaxsearch = setTimeout(hkSearch, 100);
+        if ($('#s').val().length > 2 && (key != 27)) {
+            t_ajaxsearch = setTimeout(hkSearch, 300);
         }
     };
     var hkSearch = function() {
-        if ($('#s').val().length == 0) {
+        if ($('#s').val().length < 3) {
             $(".hk-gcse-ajax-searchresults-wrapper").hide();
             $(".js-close-search").remove();
         } else {
@@ -927,13 +872,8 @@ if (window.location.href.indexOf("artikel") > -1) {
                 });
             }
 
-            log("Searching for: " + $('#s').val());
+            // log("Searching for: " + $('#s').val());
             if ($("body.search").length == 0) {
-                if ($(".hk-gcse-ajax-searchbox").length > 0) { // if google search
-                    google.search.cse.element.getElement("two-column").prefillQuery($('#s').val());
-                    google.search.cse.element.getElement("two-column").execute();
-                }
-                else { // else wp search
                     //$(".gcse-searchresults").html(response);
                     data = { action: 'hk_search', searchstring: $('#s').val() };
                     $(".gcse-searchresults").html('<div class="islet">V&auml;ntar på s&ouml;kresultat...<span style="display:inline-block" class="spinner"></span></div>');
@@ -960,10 +900,10 @@ if (window.location.href.indexOf("artikel") > -1) {
 
                         },
                         error: function(response) {
-                            log("error: " + response);
+                            // log("error: " + response);
                         }
                     });
-                }
+                
             }
             if ($(".hk-gcse-ajax-searchresults-wrapper").find(".has-hook").length > 0) {
                 data = { action: 'hk_search_hook', searchstring: $('#s').val() };
@@ -988,7 +928,7 @@ if (window.location.href.indexOf("artikel") > -1) {
                         //console.log("success: " + response);
                     },
                     error: function(response) {
-                        log("error: " + response);
+                        // log("error: " + response);
                     }
                 });
             }
@@ -1357,33 +1297,13 @@ function erase_and_refocus_on_search_input()
         $(".video-popup iframe").height($(".video-popup").height() - 24);
 
         if (oldWidth != $(window).width()) {
-            /*alert($.browser);
-            alert($.browser.version <= 9);
-            alert(isMobile.any());
-            if(($.browser.msie && $.browser.version <= 9) && !isMobile.any()) {
-            	alert("test");
-            }*/
-
-            //Skriver ut sk�rmens storlek
-            /*log( $(window).height() + " $(window).width = " + $(window).width() + ", " +
-            	"MQ Screensize = " + ($(window).width() + scrollbar)
-            );*/
 
             /* reset responsive stuff */
-
             if ($(window).width() + scrollbar > responsive_lap_start) {
                 $("ul.main-menu, ul.main-sub-menu").addClass("unhidden");
             } else {
                 $("ul.main-menu, ul.main-sub-menu").removeClass("unhidden");
             }
-            /*
-            if( $(window).width()+scrollbar > responsive_lap_start ){
-            	$("#searchnavigation").addClass("unhide");
-            }
-            else {
-            	$("#searchnavigation").removeClass("unhide");
-            }
-            */
         }
         oldWidth = $(window).width();
     });
@@ -1506,52 +1426,7 @@ function erase_and_refocus_on_search_input()
                     });
                 });
             }
-            // else not tag-list
-            /*else {
-            	var parent = $(el).parents("article");
-            	var filter_class = $(parent).find(".filtersearch").attr("data-filter-class");
-            	var filter_element = $(parent).find(".filtersearch").attr("data-filter-element");
-            	var filter_firstrow = $(parent).find(".filtersearch").attr("data-show-firstrow");
-
-            	// check if filter on element.class
-            	var filter_el = "";
-            	if (filter_element != "") {
-            		filter_el = filter_element;
-            	}
-            	if (filter_class != "") {
-            		filter_el = filter_el + "." + filter_class;
-            	}
-            	if (filter_el != "") {
-            		if ($(parent).find(filter_el) !== undefined) {
-            			parent = $(parent).find(filter_el);
-            		}
-            	}
-
-            	// p-taggar
-            	// show all
-            	$(parent).find("p").show();
-            	// hide not contains
-            	$(parent).find("p:not(:containsi('"+filter+"'))").hide();
-            	// show contains
-            	$(parent).find("p:containsi('"+filter+"')").show();
-
-            	// tr-taggar
-            	// show all
-            	$(parent).find("tr").show();
-            	// hide not contains
-            	$(parent).find("tr:not(:containsi('"+filter+"'))").hide();
-            	// show contains
-            	$(parent).find("tr:containsi('"+filter+"')").show();
-
-            	// show if hidden by mistake filter
-            	$(parent).find("p.filtersearch").show();
-            	if (filter_firstrow != "" && filter_firstrow != "false") {
-            		$(parent).find("tr:first-child").show();
-            	}
-
-
-            }*/
-        } // end function filter_search
+    } // end function filter_search
 
 
     /* add expand-ul buttons helper function */

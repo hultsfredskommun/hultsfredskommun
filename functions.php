@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "8.9");
+define("HK_VERSION", "10.6");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -46,23 +46,16 @@ if ( ! isset( $default_settings ) ) {
 								'category_slideshow_thumbnail_size' => $hk_options["category_slideshow_thumbnail_size"],
 								'show_articles' => true,
 								'video_thumbnail_image' => $hk_options["video_thumbnail_image"],
-
 							);
-
-	/* browser check */
-	$ua = $_SERVER["HTTP_USER_AGENT"];
-	$default_settings["msie"] = (strpos($ua, 'MSIE') === true) ? true : false; // All Internet Explorer
-	$default_settings["msie_6"] = (strpos($ua, 'MSIE 6.0') === true) ? true : false; // Internet Explorer 6
-	$default_settings["msie_7"] = (strpos($ua, 'MSIE 7.0') === true) ? true : false; // Internet Explorer 7
-	$default_settings["msie_8"] = (strpos($ua, 'MSIE 8.0') === true) ? true : false; // Internet Explorer 8
 
 }
 
 /* REMOVE COMMENTS */
 // Removes from admin menu
-add_action( 'admin_menu', 'my_remove_admin_menus' );
+add_action( 'admin_init', 'my_remove_admin_menus' );
 function my_remove_admin_menus() {
     remove_menu_page( 'edit-comments.php' );
+	remove_menu_page( 'acf-options');
 }
 // Removes from post and pages
 add_action('init', 'remove_comment_support', 100);
@@ -107,8 +100,35 @@ require( get_template_directory() . '/inc/hk-cron.php' );
 // Grab hk sort-order function
 require( get_template_directory() . '/inc/hk-acf-fields.php' );
 
-// Grab hk widgets function containing general widgets
-require( get_template_directory() . '/inc/hk-widgets.php' );
+// Grab hk driftstorning
+require( get_template_directory() . '/inc/hk-driftstorning.php' );
+
+// Grab hk forum
+require( get_template_directory() . '/inc/hk-forum.php' );
+
+/*
+ * Synpunkt shortcode
+ */
+function hk_synpunkt_func( $atts ){
+	$default = array(
+		'src' => 'https://synpunkt.hultsfred.se/AddMatter2.aspx?MatterTypeID=1&FrameType=IFrame&View=medborgare&RootID=117' // show map or link or other
+		);
+
+	$atts = shortcode_atts( $default, $atts );
+	$src = $atts["src"];
+	$retValue =  "<script src='https://synpunkt.hultsfred.se/Scripts/IFrameCommunicator.js'></script>
+	<iframe id='dfr_iframe'
+		data-extraHeight='100'
+		data-identifier='dfr_iframe'
+		scrolling='auto'
+		src='$src'
+		style='overflow-x:hidden; overflow-y:scroll; border:none; width:100%;'>
+	</iframe>";
+
+	return $retValue;
+}
+
+add_shortcode( 'synpunkt', 'hk_synpunkt_func' );
 
 
 /*
@@ -582,44 +602,20 @@ function hk_enqueue_scripts() {
 			array(),
 			HK_VERSION
 		);
-
+		wp_enqueue_style( 'hk-parent-sass-style',
+			get_template_directory_uri() . "/css/style.min.css",
+			array(),
+			HK_VERSION
+		);
+	
+	
 		wp_enqueue_style( 'hk-style',
 			get_bloginfo( 'stylesheet_url' ),
 			array(),
 			HK_VERSION
 		);
 
-		/*<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?ver=1.0.1" />*/
-		/*
-		 * Loads special google font CSS file.
-		 */
-		if (isset($hk_options['google_font']) && $hk_options['google_font'] != "") {
-			$protocol = is_ssl() ? 'https' : 'http';
-			$query_args = array(
-				'family' => $hk_options['google_font'],
-				'subset' => '',
-			);
-			wp_enqueue_style( 'hk-fonts', add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ), array(), null );
-		}
 
-		if (isset($hk_options['typekit_url']) && $hk_options['typekit_url'] != "") {
-		//  //use.typekit.net/xpx0dap.js
-			wp_enqueue_script(
-				'typekit_js',
-				$hk_options['typekit_url'],
-				array(),
-				'1.0'
-			);
-		}
-
-		if (isset($hk_options['addthis_pubid']) && $hk_options['addthis_pubid'] != "") {
-			wp_enqueue_script(
-				'addthis_js',
-				'//s7.addthis.com/js/300/addthis_widget.js#pubid='.$hk_options['addthis_pubid'],
-				array(),
-				'1.0'
-			);
-		}
 		if (isset($hk_options['readspeaker_id']) && $hk_options['readspeaker_id'] != "") {
 			//$readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/ReadSpeaker.js?pids=embhl&skin=ReadSpeakerCompactSkin';
 			// $readspeaker_url = '//cdn1.readspeaker.com/script/'.$hk_options['readspeaker_id'].'/webReader/webReader.js?pids=wr';
@@ -675,14 +671,27 @@ function hk_enqueue_scripts() {
 			true
 		);
 
-		if (isset($hk_options['tidiochat_url']) && $hk_options['tidiochat_url'] != "") {
+		$rekai_enable = get_field('rekai_enable', 'options');
+		$rekai_id = get_field('rekai_id', 'options');
+		if ($rekai_enable && !empty($rekai_id)) {
 			wp_enqueue_script(
-				'tidiochat_js',
-				$hk_options['tidiochat_url'],
+				'rekai_js',
+				"//static.rekai.se/$rekai_id.js",
 				array(),
 				'1.0'
 			);
+			$rekai_autocomplete = get_field('rekai_autocomplete', 'options');
+			if ($rekai_autocomplete) {
+				wp_enqueue_script(
+					'rekai_autocomplete_js',
+					"//static.rekai.se/addon/rekai_autocomplete.min.js",
+					array('rekai_js'),
+					'1.0'
+				);
+	
+			}
 		}
+
 
 	}
 	/* only in admin */
@@ -755,14 +764,13 @@ function setup_javascript_settings() {
 			'blogId' => $blog_id,
 			'currPageUrl' => curPageURL(), //window.location.protocol + "//" + window.location.host + window.location.pathname
 			'currentFilter' => json_encode($filter),
-			'gcse_id' => $hk_options['gcse_id'],
 			'admin_ajax_url' => '/wp-admin/admin-ajax.php',
-			'addthis_pubid_admin' => $hk_options['addthis_pubid_admin'],
 			'cookie_accept_enable' => (!empty($hk_options['cookie_accept_enable'])) ? $hk_options['cookie_accept_enable'] : '',
 			'cookie_text' => $hk_options['cookie_text'],
 			'cookie_button_text' => $hk_options['cookie_button_text'],
 			'cookie_link_text' => $hk_options['cookie_link_text'],
 			'cookie_link' => $hk_options['cookie_link'],
+			'rekai_autocomplete' => (get_field('rekai_enable', 'options') && get_field('rekai_autocomplete', 'options')),
 		);
 	if (!is_admin()) {
 		wp_localize_script(
@@ -2182,51 +2190,6 @@ if (!is_admin()) {
 
 
 
-
-function get_client_ip() {
-     $ipaddress = '';
-     if (getenv('HTTP_CLIENT_IP'))
-         $ipaddress = getenv('HTTP_CLIENT_IP');
-     else if(getenv('HTTP_X_FORWARDED_FOR'))
-         $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-     else if(getenv('HTTP_X_FORWARDED'))
-         $ipaddress = getenv('HTTP_X_FORWARDED');
-     else if(getenv('HTTP_FORWARDED_FOR'))
-         $ipaddress = getenv('HTTP_FORWARDED_FOR');
-     else if(getenv('HTTP_FORWARDED'))
-        $ipaddress = getenv('HTTP_FORWARDED');
-     else if(getenv('REMOTE_ADDR'))
-         $ipaddress = getenv('REMOTE_ADDR');
-     else
-         $ipaddress = 'UNKNOWN';
-
-     return $ipaddress;
-}
-function hk_count_func(){
-	$version = $_POST["version"];
-	$browser = $_POST["browser"];
-	$hk_options = get_option('hk_theme');
-	$ip = $_POST["ip"] . " - " . get_client_ip();
-	if ($hk_options !== false) {
-		$count = $hk_options["count_version"];
-		if (!is_array($count))
-			$count = Array();
-
-		if ($count[$version . " - " . $browser . " - " . $ip] != "")
-			$count[$version . " - " . $browser . " - " . $ip]++;
-		else
-			$count[$version . " - " . $browser . " - " . $ip] = 1;
-		$hk_options["count_version"] = $count;
-		update_option("hk_theme",$hk_options);
-	}
-	echo "counted";
-	die();
-
-}
-add_action('wp_ajax_hk_count', 'hk_count_func');
-add_action('wp_ajax_nopriv_hk_count', 'hk_count_func');
-
-
 function hk_search_hook_func(){
 	$searchstring = $_REQUEST["searchstring"];
 	$hk_options = get_option('hk_theme');
@@ -2234,23 +2197,6 @@ function hk_search_hook_func(){
 		// show faq search
 		if($hk_options["gcse_enable_faq_search"] != ""):
 			echo hk_search_and_print_faq($searchstring);
-		endif;
-
-		// show contacter search
-		if($hk_options["gcse_enable_kontakter_search"] != ""):
-			$count = 5;
-			if (!empty($_REQUEST["numtele"]))
-				$count = $_REQUEST["numtele"];
-
-			echo hk_search_and_print_contacts_by_name($searchstring, array(
-																'name' => true,
-																'title' => true,
-																'workplace' => true,
-																'phone' => true,
-																'email' => true,
-																'heading_element' => "h3",
-																'add_item_class' => 'search-item'
-																), $count, true);
 		endif;
 
 		/* hook to be able to add other search result */
@@ -2272,15 +2218,15 @@ function hk_search_func(){
 	if ($searchstring != "") {
 
         echo "<div class='islet'>";
-				//if (function_exists('relevanssi_do_query')) {
-				 	//relevanssi_didyoumean( $searchstring, "Menade du ", "", 5, true );
-				//}
+		//if (function_exists('relevanssi_do_query')) {
+			//relevanssi_didyoumean( $searchstring, "Menade du ", "", 5, true );
+		//}
 
-				// show search
+		// show search
         $query_args = array( 's' => esc_sql($searchstring),
                              'category__not_in' => array( $default_settings["hidden_cat"] ),
-														 'post_status' => 'publish'
-													 );
+							 'post_status' => 'publish'
+						);
         $query = new WP_Query( $query_args );
         if (function_exists('relevanssi_do_query')) {
             relevanssi_do_query( $query );
@@ -2289,23 +2235,12 @@ function hk_search_func(){
 
             while ( $query->have_posts() ) : $query->the_post();
 
-                $external_blog = false;
-								if (!empty($post->blog_id)) {
-	                if (get_current_blog_id() != $post->blog_id){
-	                    $external_blog = true;
-	                    switch_to_blog($post->blog_id);
-	                }
-								}
                 /* Include the Post-Format-specific template for the content.
                  * If you want to overload this in a child theme then include a file
                  * called content-___.php (where ___ is the Post Format name) and that will be used instead.
                  */
                 get_template_part( 'content', get_post_type() );
                 //get_template_part( 'content' );
-                if ($external_blog) {
-                    restore_current_blog();
-                }
-
 
             endwhile;
 
@@ -2476,228 +2411,7 @@ function hk_search_and_print_faq($search) {
 
 }
 
-/* AMP plugin, see info: https://github.com/Automattic/amp-wp/blob/master/readme.md */
 
-/* AMP style */
-add_action( 'amp_post_template_head', 'hk_amp_additional_css_styles' );
-
-function hk_amp_additional_css_styles( $amp_template ) {
-    // only CSS here please...
-	global $hk_options;
-	$logo = $hk_options["logo_mobile_image"];
-	$svg_logo = $hk_options["logo_mobile_image_svg"];
-	if (empty($logo)) {
-		$logo = $hk_options["logo_image"];
-	}
-	if (empty($svg_logo)) {
-		$svg_logo = $hk_options["logo_image_svg"];
-	}
-?><style amp-runtime>
-	/* hide stuff */
-	.hidden,
-	.amp-wp-article-footer,
-	footer.amp-wp-footer,
-	.amp-wp-meta,
-	.amp-wp-author
-	{
-		display:none!important;
-	}
-
-	.amp-wp-header {
-		background: #3d6a98!important;
-	}
-	.amp-wp-article,
-	.amp-wp-content.amp-wp-footer
-	{
-		border: 0;
-		color: #353535;
-		font-weight: 400;
-		margin: 1.5em auto;
-		max-width: 840px;
-		overflow-wrap: break-word;
-		word-wrap: break-word;
-    }
-
-	.amp-wp-article-content,
-	.amp-wp-content.amp-wp-footer .side-content
-	{
-		margin: 0 16px;
-	}
-	/* aside stuff */
-	ul {
-		margin-bottom: 12px!important;
-		padding: 8px 0px!important;
-	}
-	/*ul.contacts {
-		background: #E4EDF6;
-	}
-	ul.faq {
-		background: #E5E6E7;
-	}
-	ul.related {
-		background: #FFF3DA;
-	}*/
-	.aside-list-item div {
-		padding: 2px 0!important;
-	}
-
-	.side-content .title {
-		font-size: 18px;
-	}
-
-
-	amp-img {
-	    border-radius: 3px;
-	}
-	.amp-wp-title {
-		font-family: "Segoe UI",Arial,sans-serif!important;
-		font-size: 28px!important;
-		font-weight: bold!important;
-	}
-	h2 {
-		margin-bottom: 0px;
-	}
-	p {
-		margin-bottom: 2px!important;
-	}
-	.amp-wp-article-content ul, .amp-wp-article-content ol {
-		margin-left: 20px!important;
-	}
-	html, body {
-		background: white!important;
-		font-family: "Segoe UI",Arial,sans-serif!important;
-	}
-	html, p,
-	.amp-wp-content,
-	.wp-caption-text {
-		font-family: "Segoe UI",Arial,sans-serif;
-		color: #3e3e3f;
-		font-size: 14px;
-		font-size: 0.93333rem;
-		line-height: 1.71429;
-	}
-	h1,
-	.amp-wp-title {
-		font-family: Arial;
-		font-size: 20px;
-		font-size: 1.33333rem;
-		margin: 0;
-	}
-	.wp-caption-text {
-		padding: 0;
-	}
-	.amp-wp-meta {
-		display: none;
-	}
-    nav.amp-wp-title-bar {
-		margin: 0 auto;
-		max-width: 605px;
-        padding: 16px;
-        background: #fff;
-    }
-	nav.amp-wp-title-bar div {
-		margin: 0;
-	}
-    nav.amp-wp-title-bar a {
-        background-image: url( '<?php echo $logo; ?>' );
-        background-repeat: no-repeat;
-        background-size: contain;
-        display: block;
-        height: 45px;
-        width: 180px;
-        text-indent: -9999px;
-    }
-	.amp-wp-footer ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-	.amp-wp-footer li.title {
-		font-weight: bold;
-	}
-    </style><?php
-}
-/* AMP featured image */
-add_action( 'pre_amp_render_post', 'hk_amp_add_custom_actions' );
-function hk_amp_add_custom_actions() {
-    add_filter( 'the_content', 'hk_amp_add_featured_image' );
-}
-
-function hk_amp_add_featured_image( $content ) {
-
-	$thumb = hk_get_the_post_thumbnail(get_the_ID(),'featured-image', false, false, "", true);
-	if ($thumb != "") :
-        $content = $thumb . $content;
-	endif;
-
-    return $content;
-}
-
-/* AMP width */
-add_filter( 'amp_content_max_width', 'hk_amp_change_content_width' );
-
-function hk_amp_change_content_width( $content_max_width ) {
-    return 605;
-}
-
-add_filter( 'amp_post_template_analytics', 'hk_amp_add_custom_analytics' );
-function hk_amp_add_custom_analytics( $analytics ) {
-	global $hk_options;
-
-    if ( ! is_array( $analytics ) ) {
-        $analytics = array();
-    }
-
-	if (!empty($hk_options["amp_analytics"])) {
-		// https://developers.google.com/analytics/devguides/collection/amp-analytics/
-		$analytics['xyz-googleanalytics'] = array(
-			'type' => 'googleanalytics',
-			'attributes' => array(
-				// 'data-credentials' => 'include',
-			),
-			'config_data' => array(
-				'vars' => array(
-					'account' => $hk_options["amp_analytics"]
-				),
-				'triggers' => array(
-					'trackPageview' => array(
-						'on' => 'visible',
-						'request' => 'pageview',
-					),
-				),
-			),
-		);
-	}
-
-    return $analytics;
-}
-
-/* AMP meta */
-add_filter( 'amp_post_template_meta_parts', 'hk_amp_remove_author_meta' );
-
-function hk_amp_remove_author_meta( $meta_parts ) {
-    //print_r($meta_parts);
-	//foreach ( array_keys( $meta_parts, 'meta-author', true ) as $key ) {
-        //unset( $meta_parts[ $key ] );
-    //}
-    return array();
-}
-/* AMP head and footer */
-add_action( 'amp_post_template_head', 'hk_amp_add_head' );
-
-function hk_amp_add_head( $amp_template ) {
-    $post_id = $amp_template->get( 'post_id' );
-
-}
-
-add_action( 'amp_post_template_footer', 'hk_amp_add_footer' );
-
-function hk_amp_add_footer( $amp_template ) {
-    $post_id = $amp_template->get( 'post_id' );
-	echo "<div class='amp-wp-content  amp-wp-footer'>";
-	include("inc/hk-aside-content.php");
-	echo "</div>";
-}
 
 /* helper to query wp_query category arguments, used in posts_load.php and hk-category.php */
 function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby = "", $shownposts = "", $showonlyfromcatarr = array() /*, $showonlyfromtagarr = array()*/) {
@@ -2817,32 +2531,4 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
 }
 
 
-
-/* Yoast fix to eneble for specific user */
-if ( defined('WPSEO_VERSION') ) {
-    // Disable WordPress SEO meta box and menu for users that not is yoast enabled (ACF-setting in user form)
-    function wpse_init(){
-        $current_user = wp_get_current_user();
-        $enable_yoast = get_field('enable_yoast', 'user_'. $current_user->ID );
-        if( !$enable_yoast ){
-            // Remove page analysis columns from post lists, also SEO status on post editor
-            add_filter('wpseo_use_page_analysis', '__return_false');
-            // Remove Yoast meta boxes
-            add_action('add_meta_boxes', 'disable_seo_metabox', 100000);
-            // Remove Yoast from menu
-            add_action('admin_menu', 'remove_wpseo_admin_menu_links');
-        }
-    }
-    add_action('init', 'wpse_init');
-    // Remove menu link
-    function remove_wpseo_admin_menu_links(){
-        remove_action( 'admin_bar_menu', 'wpseo_admin_bar_menu', 95 );
-        remove_menu_page( 'wpseo_dashboard' );
-    }
-    // Remove metaboxes
-    function disable_seo_metabox(){
-        remove_meta_box('wpseo_meta', 'post', 'normal');
-        remove_meta_box('wpseo_meta', 'page', 'normal');
-    }
-}
 ?>

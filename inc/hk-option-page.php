@@ -270,36 +270,17 @@ function hk_theme_options_do_page() {
 
 			<a name="tillagg"></a>
 			<hr/><h2>Till&auml;gg</h2>
-			<p><label for="hk_theme[gcse_id]">Google Site Search ID. Låter sökrutan göra en Google Site Search istället för wordpressökning. Ex. 017163027625550103349:urmqx2nuhpg</label><br/><input type="text" size="80" name="hk_theme[gcse_id]" value="<?php echo $options['gcse_id']; ?>" /></p>
 			<p><input type="checkbox" name="hk_theme[gcse_ajax]" value="1"<?php checked( 1 == $options['gcse_ajax'] ); ?> /> <label for="hk_theme[gcse_ajax]">Använd AJAX-sökning.</label></p>
-			<p><input type="checkbox" name="hk_theme[gcse_enable_kontakter_search]" value="1"<?php checked( 1 == $options['gcse_enable_kontakter_search'] ); ?> /> <label for="hk_theme[gcse_enable_kontakter_search]">Sök specifikt i kontakter, visas i en kolumn bredvid vanliga s&ouml;ktr&auml;ffarna.</label></p>
 			<p><input type="checkbox" name="hk_theme[gcse_enable_faq_search]" value="1"<?php checked( 1 == $options['gcse_enable_faq_search'] ); ?> /> <label for="hk_theme[gcse_enable_faq_search]">Sök specifikt i vanliga fr&aring;gor, visas i en kolumn bredvid vanliga s&ouml;ktr&auml;ffarna.</label></p>
 			<p><label for="hk_theme[faq_search_ignore_words]">Ord som ska nerprioriteras vid sökning i 'Vanliga fr&aring;gor'.</label><br/><input type="text" size="80" name="hk_theme[faq_search_ignore_words]" value="<?php echo $options['faq_search_ignore_words']; ?>" /></p>
 
-			<p><label for="hk_theme[addthis_pubid]">AddThis pubid. L&auml;gger till Dela i artikel.</label><br/><input type="text" size="80" name="hk_theme[addthis_pubid]" value="<?php echo $options['addthis_pubid']; ?>" /></p>
-			<p><label for="hk_theme[addthis_pubid_admin]">AddThis pubid. L&auml;gger till dela i <b>wp-admin</b>.</label><br/><input type="text" size="80" name="hk_theme[addthis_pubid_admin]" value="<?php echo $options['addthis_pubid_admin']; ?>" /></p>
 			<p><label for="hk_theme[readspeaker_id]">Readspeaker id. L&auml;gger till Lyssna i artikel.</label><br/><input type="text" size="80" name="hk_theme[readspeaker_id]" value="<?php echo $options['readspeaker_id']; ?>" /></p>
 			<p><label for="hk_theme[googlemapskey]">Google Maps key.</label><br/><input type="text" size="80" name="hk_theme[googlemapskey]" value="<?php echo $options['googlemapskey']; ?>" /></p>
-			<p><label for="hk_theme[typekit_url]">Typekit js url - hela js-urlen (börja med //) f&ouml;r att l&auml;gga till typsnitt.</label><br/><input type="text" size="80" name="hk_theme[typekit_url]" value="<?php echo $options['typekit_url']; ?>" /></p>
-			<p><label for="hk_theme[tidiochat_url]">Tidiochat js url - hela js-url (börja med //) f&ouml;r att l&auml;gga till tidiochat.</label><br/><input type="text" size="80" name="hk_theme[tidiochat_url]" value="<?php echo $options['tidiochat_url']; ?>" /></p>
-			<p><label for="hk_theme[google_font]">Load google font - ex. <i>Oxygen:300,400,700</i> f&ouml;r att l&aumlgga till typsnitt.</label><br/><input type="text" size="80" name="hk_theme[google_font]" value="<?php echo $options['google_font']; ?>" /></p>
 			<p><label for="hk_theme[in_head_section]">script or other in &lt;head&gt;-section</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[in_head_section]"><?php echo $options['in_head_section']; ?></textarea></p>
 			<p><label for="hk_theme[in_topbody_section]">script or other in top of &lt;body&gt;-section</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[in_topbody_section]"><?php echo $options['in_topbody_section']; ?></textarea></p>
 			<h3>only_content mode (add ?only_content to url to use)</h3>
 			<p><label for="hk_theme[if_only_content]">style - style-tag is wrapped around content</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[if_only_content]"><?php echo $options['if_only_content']; ?></textarea></p>
 			<p><label for="hk_theme[if_only_content_js]">js or other - nothing is wrapped around this content</label><br/><textarea cols="100" rows="5" type="text" name="hk_theme[if_only_content_js]"><?php echo $options['if_only_content_js']; ?></textarea></p>
-
-			<?php if (function_exists('relevanssi_do_query')) { ?>
-			<h3>Relevanssi - Multisajt sökning</h3>
-			<p><label for="hk_theme[relevanssi_multisite]">Kommaseparerad lista med ID på de sajter som ska sökas på (Relevanssi måste vara aktiverat på de sajter som ska vara sökbara). Sök bara på denna sajt genom att lämna inställningen tom.</label><br/><input type="text" size="80" name="hk_theme[relevanssi_multisite]" value="<?php echo $options['relevanssi_multisite']; ?>" /></p>
-			<?php } ?>
-
-			<h3>Extern sökning</h3>
-			<p><label for="hk_theme[external_search_title]">Länktext till extern sökning</label><br/><input type="text" size="80" name="hk_theme[external_search_title]" value="<?php echo $options['external_search_title']; ?>" /></p>
-			<p><label for="hk_theme[external_search_url]">URL till extern sökning (lägger till sökordet direkt efter URL)</label><br/><input type="text" size="80" name="hk_theme[external_search_url]" value="<?php echo $options['external_search_url']; ?>" /></p>
-
-			<h3>AMP inställningar - Kräver AMP-plugin från Automatic</h3>
-			<p><label for="hk_theme[amp_analytics]">Google Analytics för AMP-statistik</label><br/><input type="text" size="80" name="hk_theme[amp_analytics]" value="<?php echo $options['amp_analytics']; ?>" /></p>
 
 			<?php submit_button(); ?>
 
@@ -430,248 +411,10 @@ function hk_theme_options_do_page() {
 			dag och tid (standard php date): <?php echo date("Y-m-d H:i:s"); ?><br>
 
 
-			<a name="debug"></a>
-			<hr/><h2>DEBUG</h2>
-			<?php
-				if (!empty($options["count_version"])) {
-					echo '<h2>Vilka har anslutit?</h2><table cellspacing=4 style="margin-top:24px;border: 1px solid gray;">';
-					echo "<tr><td><b>IP</b></td><td><b>Antal uppdateringar</b></td></tr>";
-					foreach ($options["count_version"] as $ip => $count) {
-						echo "<tr><td>" . $ip . "</td><td>" . $count . "</td></tr>";
-					}
-					echo '</table>';
-				}
-			?>
-
-			<hr/><h2>Anv&auml;nds inte just nu:</h2>
-			<table id="table-options" class="form-table" style="width:600px"><caption style="width: 100%"><strong style="float:left; margin-left: 8px; font-size: 13px;"></strong></caption>
-				<tr valign="top">
-					<th style="width: 120px">Namn:</td>
-					<th>V&auml;rde:</td>
-					<th style="width: 72px"></td>
-				</tr>
-				<tr id="syn_0" class="row_syn">
-					<td><input type="text" name="hk_theme[syn_0][name]" value="<?php echo $options['syn_0']['name']; ?>" /></td>
-					<td><input type="text" style="width:100%" name="hk_theme[syn_0][value]" value="<?php echo $options['syn_0']['value']; ?>" /></td>
-					<td><button class="btn_removeRow button-secondary">Ta bort</button></td>
-				</tr>
-				<?php $nr = 1; while( isset($options['syn_'.$nr]) ) : ?>
-				<tr id="syn_<?php echo $nr;?>" class="row_syn">
-					<td><input type="text" name="hk_theme[syn_<?php echo $nr;?>][name]" value="<?php echo $options['syn_'.$nr]['name']; ?>" /></td>
-					<td><input type="text" style="width:100%" name="hk_theme[syn_<?php echo $nr;?>][value]" value="<?php echo $options['syn_'.$nr]['value']; ?>" /></td>
-					<td><button class="btn_removeRow button-secondary">Ta bort</button></td>
-				</tr>
-				<?php $nr += 1; endwhile; ?>
-				<tr class="row_btn">
-					<td><button id="btn_addRow" class="button-secondary">Lägg till fält</button></td>
-					<td><input id="syn_nr" type="hidden" name="hk_theme[syn_nr]" value="<?php
-						if(isset($options['syn_nr'])){
-							echo $options['syn_nr'];
-						}
-						else{ echo 1; }
-					?>" /></td>
-					<td></td>
-				</tr>
-			</table>
-
 			<?php submit_button(); ?>
 
 		</form>
 	</div>
-	<script>
-		(function($) {
-			//prints out the html for current element
-			//plus optional number of parents
-			function debugHTML(el, step){
-				step = typeof step !== 'undefined' ? step : 0;
-				var element = el;
-				var text = "$(this)";
-				for(var i = 0; i <= step; i++){
-					if(i > 0){
-						element = $(element).parent();
-						text = text+".parent()";
-					}
-					alert(text+": "+$(element)[0].outerHTML);
-				}
-				return false;
-			}
-
-			function removeRow(el){
-				var currRow = $(el);
-				var id = currRow.attr('id');
-				var nr = parseInt(id.split('syn_')[1]);
-
-				var i = 0;
-				var nextRow = currRow.next();
-				while( nextRow.is('.row_btn') == false ){
-					//om denna rad inte är '.row_btn'
-					//minska nummret i namnen på text-fälten med 1.
-					nextRow.attr('id', 'syn_'+(nr+i));
-					nextRow.find('input').each( function(index){
-						if(index == 0){
-							$(this).attr('name', 'hk_theme[syn_'+(nr+i)+'][name]');
-						}
-						else{
-							$(this).attr('name', 'hk_theme[syn_'+(nr+i)+'][value]');
-						}
-					});
-					nextRow = nextRow.next();
-					i += 1;
-				}
-				//om currRow inte är första raden (id!=syn_0) eller
-				//om currRow är första raden men det finns fler rader med synonymer.
-				if(i > 0 || nr > 0){
-					currRow.remove();
-					$("#syn_nr").attr( 'value', parseInt($("#syn_nr").attr('value'))-1 );
-				}
-				else{ //annars töm värdena i text-fälten
-					currRow.find('input').each( function(){
-						$(this).attr('value', '');
-					});
-				}
-				return false;
-			}
-
-			//the default field's remove-button
-			$(".btn_removeRow").click( function(){
-				//$(this) == <button>
-				//$(this).parent().parent() == <tr>
-				//debugHTML(this, 2);
-				var currRow = $(this).parent().parent();
-				removeRow(currRow);
-				return false;
-			});
-
-			//creating and adding new field after the last one.
-			$("#btn_addRow").click(function(){
-				var nr = parseInt($("#syn_nr").attr('value'));
-
-				//text-field syn_tag_name
-				var input_name = $("<input>").attr('type', 'text').attr('name', 'hk_theme[syn_'+nr+'][name]').attr('value', '');
-				var td_name = $("<td>").html(input_name);
-
-				//text-field syn_tag_synonyms
-				var input_syn = $("<input>").attr('type', 'text').attr('style', 'width:100%').attr('name', 'hk_theme[syn_'+nr+'][value]').attr('value', '');
-				var td_syn = $("<td>").html(input_syn);
-
-				//remove-button
-				var btn = $("<button>").addClass('btn_removeRow').addClass('button-secondary').html('Ta bort').click( function(ev){
-					ev.preventDefault();
-					//$(this) == <button>
-					//$(this).parent().parent() == <tr>
-					//debugHTML(this, 2);
-					var currRow = $(this).parent().parent();
-					removeRow(currRow);
-				});
-				var td_btn = $("<td>").html(btn);
-
-				//new table-row
-				var tr = $("<tr>").attr('id','syn_'+nr).addClass('row_syn').append(td_name).append(td_syn).append(td_btn);
-
-				//add the new field between the last field and the button
-				$(".row_btn").before(tr);
-				nr += 1;
-				$("#syn_nr").attr('value', nr);
-
-				return false;
-			});
-
-			//check values on submit
-			$("#btn_submit").click(function(){
-
-				var error = new Array();
-
-				//creates a temp table to use when searching
-				//for duplicates.
-				var nr = parseInt( $("#syn_nr").attr('value') );
-				var table = new Array();
-				for (i = 0; i < nr; i++){
-					table[i] = $("#syn_"+i).find('input').attr('value');
-				}
-
-				//steps up through the table row by row until row has no class
-				var currRow = $(".row_btn").prev(); //selects the row above '.row_btn'
-				while( currRow.hasClass('row_syn') ){
-					//checks if any of the input-fields are empty
-					var empty = false;
-					var both = false;
-					var i = 0;
-					currRow.find('input').each(function(){
-						if( $(this).attr('value') == '' ){
-							empty = true;
-							i++;
-						}
-						both = i < 2 ? false : true;
-					});
-
-					if( empty ){
-						if( both ){
-							//if both are empty, step up one row and delete previous row
-							var prevRow = currRow;
-							currRow = currRow.prev();
-							removeRow(prevRow);
-						}
-						else{
-							//if one are empty
-							if( !error[0] ){
-								error[0] = "Några fält är tomma!";
-							}
-							currRow.find('input').css({'background-color':'rgba(236, 90, 119, 0.45)'}).click(function(){
-								$(this).parent().parent().find('input').css({'background-color':'white'});
-							});
-							currRow = currRow.prev();
-						}
-					}
-					else{
-						//check for duplicates
-						var value_toLookFor = currRow.find('input').attr('value');
-						var index_toLookFor = parseInt(currRow.attr('id').split('syn_')[1]);
-						var multipleMatches = false;
-						var firstMatch = -1;
-						for(i = 0; i < nr; i++){
-							if( table[i] == value_toLookFor ){
-								if( firstMatch == -1 ){
-									firstMatch = i;
-								}
-								else{
-									multipleMatches = true;
-								}
-							}
-						}
-						if (multipleMatches /*&& (index_toLookFor != firstMatch)*/ ){
-							//if duplicate, step up one row and delete previous row
-							/*var prevRow = currRow;
-							currRow = currRow.prev();
-							removeRow(prevRow);*/
-							if( !error[1] ){
-								error[1] = "Dubbletter hittades!";
-							}
-							currRow.find('input').css({'background-color':'rgba(236, 90, 119, 0.45)'}).click(function(){
-								$(this).parent().parent().find('input').css({'background-color':'white'});
-							});
-						}
-						currRow = currRow.prev();
-					}
-				}
-				if( error.length > 0 ){
-					var error_text = "";
-					for (i = 0; i < error.length; i++){
-						if(error[i]){
-							if(i > 0){ error_text += "\n\n"; }
-							error_text += error[i];
-						}
-					}
-					alert(error_text);
-					//don't submit form
-					return false;
-				}
-				else{
-					//submit form
-					return true;
-				}
-			});
-		})(jQuery);
-	</script>
 	<?php
 }
 

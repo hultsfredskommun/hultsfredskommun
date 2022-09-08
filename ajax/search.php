@@ -35,7 +35,6 @@
 			$retString .= "<ul class='search-posts'>";
 			$retString .= "<li class='search-title'>Artiklar</li>";
 			while ( $dyn_query->have_posts() ) : $dyn_query->the_post();
-				if ($options['relevanssi_multisite'] != "") { switch_to_blog($dyn_query->blog_id); }
 				$retString .= "<li><a href='" . get_permalink(get_the_ID()) . "'>" . get_the_title() . "</a></li>"; //<i>" . get_the_category_list(', ') . "</i>
 			endwhile;
 			$retString .= "</ul>";
@@ -104,8 +103,5 @@
 		/* hook to be able to add other search result */ 
 		do_action('hk_post_ajax_search', $searchstring);
 		
-		if ($options["external_search_title"] != "" && $options["external_search_url"] != "")
-			echo "<a class='external_more_link' href='" . $options["external_search_url"] . $searchstring . " ' title='" . $options["external_search_title"] . "'>" . $options["external_search_title"] . "</a>";
-
 	endif;
 ?>

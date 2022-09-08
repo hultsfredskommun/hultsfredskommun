@@ -28,6 +28,13 @@
 	@extend .border-light--left;
 	//box-shadow: inset 0px 0px 25px #f3f3f3;
 }
+@include media-query(portable) {
+	.full .article-border-wrapper {
+		border-left: 0;
+		border-right: 0;
+	}
+}
+
 .single.full .article-border-wrapper {
 	@extend .border-light--top;
 }
@@ -103,7 +110,7 @@ article.post {
 		@extend .one-whole;
 		overflow: hidden;
 		h2, h3 {
-			margin-bottom: $half-spacing-unit/2;
+			margin-bottom: $half-spacing-unit*0.5;
 		}
 		a {
 			@extend .force-font-style-normal;
@@ -132,6 +139,10 @@ article.post {
 			}
 			.entry-content:hover {
 				@extend .text-decoration-underline;
+			}
+			@include media-query(portable) {
+				margin-left: $half-spacing-unit;
+				margin-right: $half-spacing-unit;
 			}
 		}
 		.single-content,
@@ -184,8 +195,8 @@ article.post {
 				@extend .half-padding--right;
 			}
 			.entry-title {
-				//@include font-size(26px);
-				line-height: 1.1em;
+				@include font-size(26px);
+				line-height: 1.2em;
 				width: auto;
 				display: inline-block;
 				// float: left;
@@ -195,8 +206,8 @@ article.post {
 				.quick-link {
 					@extend .border-radius;
 					display: inline-block;
-					margin: 0 $half-spacing-unit $half-spacing-unit/4 0;
-					padding: $half-spacing-unit/4;
+					margin: 0 $half-spacing-unit $half-spacing-unit*0.25 0;
+					padding: $half-spacing-unit*0.25;
 					line-height: 20px;
 				}
 				.icon {
@@ -211,7 +222,9 @@ article.post {
 			}
 			.news-time-wrapper {
 				font-style: italic;
-				padding-bottom: $base-spacing-unit;
+				@extend .flush--bottom;
+
+				// padding-bottom: $base-spacing-unit;
 				&,
 				.published-date,
 				.modified-date {
@@ -368,7 +381,7 @@ article.post {
 		font-weight: normal;
 		background-image: none;
 		margin: -$half-spacing-unit*1.5 0 0 $base-spacing-unit;
-		padding: $half-spacing-unit/2 $half-spacing-unit;
+		padding: *0.5 $half-spacing-unit;
 		a {
 			@extend .white-text;
 		}

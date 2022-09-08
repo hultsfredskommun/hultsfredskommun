@@ -13,5 +13,5 @@
  */
 
 get_header();
-require("inc/hk-sub-category-firstpage.php");
+
 get_footer();

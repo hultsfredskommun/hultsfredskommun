@@ -16,9 +16,7 @@ if ($default_settings["show_articles"] || get_query_var("tag") != "") : // show 
 	<?php elseif ( !is_sub_category_firstpage() ) : ?>
 		<?php hk_navigation(); ?>
 		<?php require("inc/hk-category.php"); ?>
-	<?php else : ?>
-		<?php require("inc/hk-sub-category-firstpage.php"); ?>
-	<?php endif;  /* END ELSE is_sub_category_firstpage */ ?>
+	<?php endif; ?>
 
 
 <?php

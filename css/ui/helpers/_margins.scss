@@ -1,79 +1,79 @@
 .margin {
 	margin:$base-spacing-unit;
-    margin:($base-spacing-unit / $base-font-size)*1rem;
+    margin:math.div($base-spacing-unit, $base-font-size)*1rem;
 }
 .margin--top {
 	margin-top:$base-spacing-unit;
-    margin-top:($base-spacing-unit / $base-font-size)*1rem;
+    margin-top:math.div($base-spacing-unit, $base-font-size)*1rem;
 }
 .margin--right {
 	margin-right:$base-spacing-unit;
-    margin-right:($base-spacing-unit / $base-font-size)*1rem;
+    margin-right:math.div($base-spacing-unit, $base-font-size)*1rem;
 }
 .margin--bottom {
 	margin-bottom:$base-spacing-unit;
-    margin-bottom:($base-spacing-unit / $base-font-size)*1rem;
+    margin-bottom:math.div($base-spacing-unit, $base-font-size)*1rem;
 }
 .margin--left {
 	margin-left:$base-spacing-unit;
-    margin-left:($base-spacing-unit / $base-font-size)*1rem;
+    margin-left:math.div($base-spacing-unit, $base-font-size)*1rem;
 }
 
 .half-margin {
 	margin:$half-spacing-unit;
-	margin:($half-spacing-unit / $base-font-size)*1rem;
+	margin:math.div($half-spacing-unit, $base-font-size)*1rem;
 }
 .half-margin--top {
 	margin-top:$half-spacing-unit;
-	margin-top:($half-spacing-unit / $base-font-size)*1rem;
+	margin-top:math.div($half-spacing-unit, $base-font-size)*1rem;
 }
 .half-margin--left {
 	margin-left:$half-spacing-unit;
-	margin-left:($half-spacing-unit / $base-font-size)*1rem;
+	margin-left:math.div($half-spacing-unit, $base-font-size)*1rem;
 }
 .half-margin--bottom {
 	margin-bottom:$half-spacing-unit;
-	margin-bottom:($half-spacing-unit / $base-font-size)*1rem;
+	margin-bottom:math.div($half-spacing-unit, $base-font-size)*1rem;
 }
 .half-margin--right {
 	margin-right:$half-spacing-unit;
-	margin-right:($half-spacing-unit / $base-font-size)*1rem;
+	margin-right:math.div($half-spacing-unit, $base-font-size)*1rem;
 }
 
 .padding--top {
 	padding-top:$base-spacing-unit;
-	padding-top:($base-spacing-unit / $base-font-size)*1rem;
+	padding-top:math.div($base-spacing-unit, $base-font-size)*1rem;
 }
 .padding--right {
 	padding-right:$base-spacing-unit;
-	padding-right:($base-spacing-unit / $base-font-size)*1rem;
+	padding-right:math.div($base-spacing-unit, $base-font-size)*1rem;
 }
 .padding--bottom {
 	padding-bottom:$base-spacing-unit;
-	padding-bottom:($base-spacing-unit / $base-font-size)*1rem;
+	padding-bottom:math.div($base-spacing-unit, $base-font-size)*1rem;
 }
 .padding--left {
 	padding-left:$base-spacing-unit;
-	padding-left:($base-spacing-unit / $base-font-size)*1rem;
+	padding-left:math.div($base-spacing-unit, $base-font-size)*1rem;
 }
 .half-padding {
 	padding:$half-spacing-unit;
-	padding:($half-spacing-unit / $base-font-size)*1rem;
+	padding:math.div($half-spacing-unit, $base-font-size)*1rem;
 }
 .half-padding--left {
 	padding-left:$half-spacing-unit;
-	padding-left:($half-spacing-unit / $base-font-size)*1rem;
+	padding-left:math.div($half-spacing-unit, $base-font-size)*1rem;
 }
 .half-padding--right {
 	padding-right:$half-spacing-unit;
-	padding-right:($half-spacing-unit / $base-font-size)*1rem;
+	padding-right:math.div($half-spacing-unit, $base-font-size)*1rem;
 }
 .half-padding--top {
 	padding-top:$half-spacing-unit;
-	padding-top:($half-spacing-unit / $base-font-size)*1rem;
+	padding-top:math.div($half-spacing-unit, $base-font-size)*1rem;
 }
 .half-padding--bottom {
 	padding-bottom:$half-spacing-unit;
-	padding-bottom:($half-spacing-unit / $base-font-size)*1rem;
+	padding-bottom:math.div($half-spacing-unit, $base-font-size)*1rem;
 }
 
