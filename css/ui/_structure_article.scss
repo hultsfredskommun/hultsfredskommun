@@ -28,6 +28,13 @@
 	@extend .border-light--left;
 	//box-shadow: inset 0px 0px 25px #f3f3f3;
 }
+@include media-query(portable) {
+	.full .article-border-wrapper {
+		border-left: 0;
+		border-right: 0;
+	}
+}
+
 .single.full .article-border-wrapper {
 	@extend .border-light--top;
 }
@@ -132,6 +139,10 @@ article.post {
 			}
 			.entry-content:hover {
 				@extend .text-decoration-underline;
+			}
+			@include media-query(portable) {
+				margin-left: $half-spacing-unit;
+				margin-right: $half-spacing-unit;
 			}
 		}
 		.single-content,

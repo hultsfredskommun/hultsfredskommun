@@ -59,7 +59,7 @@ html {
 }
 
 .content--center {
-	margin: 0 $half-spacing-unit*0.5;
+	margin: 0 $half-spacing-unit;
 }
 @include media-query(desk) {
 .content--center {
@@ -76,6 +76,11 @@ html {
 .branding {
 	@extend .one-whole;
 	// @extend .float--left;
+}
+@include media-query(palm) {
+	.branding {
+		margin-bottom: $half-spacing-unit;
+	}
 }
 .menu-wrapper,
 .main.hk-quick,

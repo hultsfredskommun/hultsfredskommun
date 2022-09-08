@@ -95,7 +95,7 @@ iframe {
 /* bug fixes */
 @media only screen and (max-width: 541px) {
 #main {
-  margin: 1%;
+  margin: 1% 0;
 }
 }
 .side-content ul li:before {

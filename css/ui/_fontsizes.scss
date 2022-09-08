@@ -66,6 +66,10 @@ h2 {
     @include font-size($h2-size);
 	font-weight: 500;
 }
+h3 {
+	@include font-size($h3-size);
+	font-weight: 500;
+}
 .expand summary {
     @include font-size(22px);
 	font-weight: 500!important;
@@ -73,7 +77,7 @@ h2 {
 		@include font-size($h3-size);
 	}
 }
-h3, h4, h5, h6 {
+h4, h5, h6 {
     @include font-size($base-font-size);
 }
 h4, h5, h6 {
