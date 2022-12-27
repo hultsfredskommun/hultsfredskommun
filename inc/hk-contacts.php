@@ -44,7 +44,7 @@ function hk_contacts_init() {
 // rewrites custom post type name
 global $wp_rewrite;
 $option = get_option('hk_theme');
-$permalink = $option['permalinkstructure'];
+$permalink = isset($option['permalinkstructure']) ? $option['permalinkstructure'] : 'default';
 if ($permalink == "") $permalink = '/artikel/kontakt';
 $projects_structure = $permalink . '/%hk_kontakter%/';
 $wp_rewrite->add_rewrite_tag("%hk_kontakter%", '([^/]+)', "kontakt=");

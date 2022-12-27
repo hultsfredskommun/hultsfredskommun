@@ -9,7 +9,7 @@ $imagesizeArr = array(  'thumbnail-image' => 'thumbnail-image',
 						'thumbnail-news-image' => 'thumbnail-news-image');
 
 $rekai_array = [];
-if (get_field('rekai_enable', 'options')) {
+if (function_exists("get_field") && get_field('rekai_enable', 'options')) {
 $rekai_array = array( array (
 			'key' => '56bb0a25a41aa',
 			'name' => 'lagg_till_rekai',

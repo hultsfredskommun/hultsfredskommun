@@ -52,6 +52,9 @@ function hk_view_quick_links() {
 	// search in all posts (ignore filters)
 	$the_query = new WP_Query( $args );
 
+	if (!function_exists('get_field'))
+	 	return "Add Advanced Custom Fields plugin to show quick links.";
+		
 	if ($the_query->have_posts())
 	{
 		//$retValue .= "<style type='text/css'>.main.hk-quick { max-width: 1138px; }</style>";

@@ -34,18 +34,18 @@ if ( ! isset( $default_settings ) ) {
 								'wide-image' => array(1138, 326, true),
 								'contact-image' => array(150, 190, true),
 								'thumbnail-news-image' => array(510, 289, true),
-								'startpage_cat' => $hk_options["startpage_cat"],
-								'news_tag' => $hk_options["news_tag"],
-								'hidden_cat' => $hk_options["hidden_cat"],
-								'protocol_cat' => $hk_options["protocol_cat"],
+								'startpage_cat' => isset($hk_options["startpage_cat"]) ? $hk_options["startpage_cat"] : "",
+								'news_tag' => isset($hk_options["news_tag"]) ? $hk_options["news_tag"] : "",
+								'hidden_cat' => isset($hk_options["hidden_cat"]) ? $hk_options["hidden_cat"] : "",
+								'protocol_cat' => isset($hk_options["protocol_cat"]) ? $hk_options["protocol_cat"] : "",
 								'num_levels_in_menu' => (!isset($hk_options["num_levels_in_menu"]) || $hk_options["num_levels_in_menu"] == "")?2:$hk_options["num_levels_in_menu"],
 								'show_tags' => (!isset($hk_options["show_tags"]) || $hk_options["show_tags"] == "")?1:$hk_options["show_tags"],
 								'sticky_number' => 1000,
 								'use_dynamic_posts_load_in_category' => (!empty($hk_options["use_dynamic_posts_load_in_category"]))?$hk_options["use_dynamic_posts_load_in_category"]:'',
 								'hide_articles_in_subsubcat' => (!empty($hk_options["hide_articles_in_subsubcat"]))?$hk_options["hide_articles_in_subsubcat"]:'',
-								'category_slideshow_thumbnail_size' => $hk_options["category_slideshow_thumbnail_size"],
+								'category_slideshow_thumbnail_size' => isset($hk_options["category_slideshow_thumbnail_size"]) ? $hk_options["category_slideshow_thumbnail_size"] : "",
 								'show_articles' => true,
-								'video_thumbnail_image' => $hk_options["video_thumbnail_image"],
+								'video_thumbnail_image' => isset($hk_options["video_thumbnail_image"]) ? $hk_options["video_thumbnail_image"] : 0,
 							);
 
 }
@@ -105,6 +105,9 @@ require( get_template_directory() . '/inc/hk-driftstorning.php' );
 
 // Grab hk forum
 require( get_template_directory() . '/inc/hk-forum.php' );
+
+// Grab hk bubble
+require( get_template_directory() . '/inc/hk-bubble.php' );
 
 /*
  * Synpunkt shortcode
@@ -501,7 +504,7 @@ function hk_pre_get_posts( $query ) {
 	}
 
 	if ($wp_query->is_home()) {
-		$cat = $options["startpage_cat"];
+		$cat = (isset($options["startpage_cat"])) ? $options["startpage_cat"] : "";
 		if ($cat != "" && $cat != "0" ) {
 			$wp_query->set( 'cat', $cat);
 		}
@@ -671,8 +674,8 @@ function hk_enqueue_scripts() {
 			true
 		);
 
-		$rekai_enable = get_field('rekai_enable', 'options');
-		$rekai_id = get_field('rekai_id', 'options');
+		$rekai_enable = (function_exists("get_field")) ? get_field('rekai_enable', 'options') : false;
+		$rekai_id = (function_exists("get_field")) ? get_field('rekai_id', 'options') : '';
 		if ($rekai_enable && !empty($rekai_id)) {
 			wp_enqueue_script(
 				'rekai_js',
@@ -766,11 +769,11 @@ function setup_javascript_settings() {
 			'currentFilter' => json_encode($filter),
 			'admin_ajax_url' => '/wp-admin/admin-ajax.php',
 			'cookie_accept_enable' => (!empty($hk_options['cookie_accept_enable'])) ? $hk_options['cookie_accept_enable'] : '',
-			'cookie_text' => $hk_options['cookie_text'],
-			'cookie_button_text' => $hk_options['cookie_button_text'],
-			'cookie_link_text' => $hk_options['cookie_link_text'],
-			'cookie_link' => $hk_options['cookie_link'],
-			'rekai_autocomplete' => (get_field('rekai_enable', 'options') && get_field('rekai_autocomplete', 'options')),
+			'cookie_text' => isset($hk_options['cookie_text']) ? $hk_options['cookie_text'] : '',
+			'cookie_button_text' => isset($hk_options['cookie_button_text']) ? $hk_options['cookie_button_text'] : '',
+			'cookie_link_text' => isset($hk_options['cookie_link_text']) ? $hk_options['cookie_link_text'] : '',
+			'cookie_link' => isset($hk_options['cookie_link']) ? $hk_options['cookie_link'] : '',
+			'rekai_autocomplete' => (function_exists("get_field") && get_field('rekai_enable', 'options') && get_field('rekai_autocomplete', 'options')),
 		);
 	if (!is_admin()) {
 		wp_localize_script(
@@ -1082,8 +1085,9 @@ function hk_body_classes( $classes ) {
 		if ($current_cat > 0 ) {
 			$current_cat = get_category($current_cat);
 			$parent_cat = get_category($current_cat->category_parent);
-			if ( (!empty($current_cat) && strpos($current_cat->slug,"lattlast") !== false) ||
-					 (!empty($parent_cat) && strpos($parent_cat->slug,"lattlast") !== false) ) {
+
+			if ( !is_wp_error($parent_cat) && ((!empty($current_cat) && strpos($current_cat->slug,"lattlast") !== false) ||
+					 (!empty($parent_cat) && strpos($parent_cat->slug,"lattlast") !== false) ) ) {
 	 				$classes[] = "lattlast";
 			}
 		}

@@ -583,7 +583,7 @@ register_field_group(array (
 
 /* POST STOP PUBLISH */
 $options = get_option("hk_theme");
-if ($options['enable_cron_stop_publish']) {
+if (isset($options['enable_cron_stop_publish']) && $options['enable_cron_stop_publish'] == 1) {
 
     if (function_exists('acf_add_local_field_group') ) {
 

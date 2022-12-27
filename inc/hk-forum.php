@@ -35,6 +35,9 @@ function hk_forum_init() {
 }
 
 function hk_forum() {
+	if (!function_exists("get_field"))
+		return "You need the Advanced Custom Field plugin for the forum to work properly.";
+
     $debatt_query = new WP_Query( array(
         'post_type' => 'hk_forum',
         'posts_per_page' => -1,

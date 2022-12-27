@@ -21,7 +21,7 @@ acf_add_local_field_group(array(
                 'layout_6301da735f257' => array(
                     'key' => 'layout_6301da735f257',
                     'name' => 'dritstorning',
-                    'label' => 'Dritstörning',
+                    'label' => 'Driftstörning',
                     'display' => 'block',
                     'sub_fields' => array(
 
