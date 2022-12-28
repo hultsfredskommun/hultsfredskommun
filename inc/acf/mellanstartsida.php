@@ -727,6 +727,22 @@ acf_add_local_field_group(array (
 				),
 
 				array (
+					'key' => '56bb0a25a4103',
+					'name' => 'lagg_till_wide_size_start',
+					'label' => 'FULL BREDD START',
+					'display' => 'block',
+					'sub_fields' => array ()
+				),
+
+				array (
+					'key' => '56bb0a25a4104',
+					'name' => 'lagg_till_wide_size_stop',
+					'label' => 'FULL BREDD STOP',
+					'display' => 'block',
+					'sub_fields' => array ()
+				),
+
+				array (
 					'key' => '56bb0a25a4102',
 					'name' => 'lagg_till_bubble',
 					'label' => 'Bubblare',

@@ -86,7 +86,15 @@ function hk_view_quick_links() {
 					$column_layout = get_sub_field('layout');
 					$num_rows_class = get_sub_field('num_rows');
 					
-					if($row_layout != "lagg_till_bubble"):
+					if($row_layout == 'lagg_till_wide_size_start'):
+						$retValue .= "</div>";
+						$retValue .= "<div class='mellanstart-wrapper one-whole-wide'>";
+
+					elseif($row_layout == 'lagg_till_wide_size_stop'):
+						$retValue .= "</div>";
+						$retValue .= "<div class='mellanstart-wrapper'>";
+
+					elseif($row_layout != "lagg_till_bubble"):
 						$retValue .= "\n<div class='mellanstart-post $column_layout $num_rows_class $row_layout'>";
 					endif;
 
@@ -377,15 +385,16 @@ function hk_view_quick_links() {
 						$title_div = (!empty($title)) ? "<h2>$title</h2>" : "";
 						$description = get_sub_field('description');
 						$description_div = (!empty($description)) ? "<div class='q-description'>$description</div>" : '';
-						
+						$text_div = "<div class='q-text'>$title_div$description_div</div>";
+
 						$retValue .= "<div class='$imagesize quick-puff $content_layout'>";
-						$retValue .= "<a $target class='gtm-quick-link $a_class $a_class-post' href='$url' title='$title'>$imagediv$title_div$description_div</a>";
+						$retValue .= "<a $target class='gtm-quick-link $a_class $a_class-post' href='$url' title='$title'>$imagediv$text_div</a>";
 						$retValue .= "</div>";
 
 
 					endif; // end layout
 
-					if($row_layout != "lagg_till_bubble"):
+					if($row_layout != "lagg_till_bubble" && $row_layout != 'lagg_till_wide_size_start' && $row_layout != 'lagg_till_wide_size_stop'):
 						$retValue .= '</div>'; // end mellanstart-post
 					endif;
 
