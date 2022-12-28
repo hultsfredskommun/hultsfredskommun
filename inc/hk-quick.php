@@ -55,6 +55,8 @@ function hk_view_quick_links() {
 	if (!function_exists('get_field'))
 	 	return "Add Advanced Custom Fields plugin to show quick links.";
 		
+	// print_r($the_query);
+
 	if ($the_query->have_posts())
 	{
 		//$retValue .= "<style type='text/css'>.main.hk-quick { max-width: 1138px; }</style>";
@@ -237,7 +239,10 @@ function hk_view_quick_links() {
 						
 					elseif($row_layout == "lagg_till_bubble"):
 
-						$retValue .= hk_bubble();						
+						$retValue .= hk_bubble();	
+						/* reset data to current query */
+						$the_query->reset_postdata();
+					
 							
 					elseif($row_layout == "lagg_till_title"):
 					

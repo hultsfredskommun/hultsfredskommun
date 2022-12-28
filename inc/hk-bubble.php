@@ -121,16 +121,16 @@ function hk_bubble() {
         $ret .= "<div class='nav-arrows'><span class='arrow-left arrow disabled'>&lt;</span><span class='arrow-right arrow'>&gt;</span></div>";
         $ret .= "<div class='nav-items'>$nav_items</div>";
         $ret .= '</div>';
-        // wp_reset_postdata();
-
-
+        
+        
         $ret_style = "
         <style type='text/css'>
-            :root {
-                --hultsfred-nr-bubbles: $nr;
-            }
+        :root {
+            --hultsfred-nr-bubbles: $nr;
+        }
 	    </style>";
-
+        
+        wp_reset_postdata();
 
         return $ret_style . $ret;
     else :
