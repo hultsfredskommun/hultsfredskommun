@@ -2497,7 +2497,36 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
     }*/
 
     /* if orderby not is set, check if standard order should be date in settings */
-    if ($orderby == "" && $cat != "" && in_array($cat, explode(",",$options["order_by_date"])) ) {
+	/*
+		none : Mest klickad (standard)
+		date_asc : Datum äldst först
+		date_desc : Datum nyast först
+		alpha_asc : Alfabetisk A till Ö
+		alpha_desc : Alfabetisk Ö till A
+	 */
+	
+	// if sortering is set in category
+	if ($orderby == "" && $cat != "" && function_exists('get_field') && get_field("sortering", "category_" . $cat) != 'none'  ) {
+		switch (get_field("sortering", "category_".$cat)) {
+			case 'date_asc':
+				$args['orderby'] = 'date';
+				$args['order'] = 'ASC';
+				break;
+			case 'date_desc':
+				$args['orderby'] = 'date';
+				$args['order'] = 'DESC';
+				break;
+			case 'alpha_asc':
+				$args['orderby'] = 'title';
+				$args['order'] = 'ASC';
+				break;
+			case 'alpha_desc':
+				$args['orderby'] = 'title';
+				$args['order'] = 'DESC';
+				break;
+		}
+	}
+    else if ($orderby == "" && $cat != "" && in_array($cat, explode(",",$options["order_by_date"])) ) {
         //$args['suppress_filters'] = 'true';
         $args['orderby'] = 'date';
         $args['order'] = 'DESC';
@@ -2534,5 +2563,40 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
     return $args;
 }
 
-
+function hk_show_post_date() {
+	// don't show if search page
+	if (!empty($_REQUEST["action"]) && $_REQUEST["action"] == "hk_search" &&
+		!empty($_REQUEST["searchstring"]) && $_REQUEST["searchstring"] != "" && function_exists('relevanssi_do_query')) {
+			return;
+	}
+	// don't show if news
+	if (!empty($default_settings["news_tag"]) && has_tag($default_settings["news_tag"])) {
+		return;
+	}
+	// check if post is in category that should show date
+	$showdate = false;
+	$categories = get_the_category();
+	foreach ($categories as $category) {
+		if (get_field('visa_datum', 'category_' . $category->term_id )) {
+			$showdate = true;
+		}
+	}
+	if ($showdate) {
+		$u_modified_time = get_the_modified_time('U');
+		if ($u_modified_time) {
+			echo "<p style='font-size: 90%; font-style: italic;'>Senast uppdaterad ";
+			the_modified_time('j F, Y');
+			echo " vid ";
+			the_modified_time();
+			echo "</p> ";
+		}
+		else {
+			echo "<p style='font-size: 90%; font-style: italic;'>Publicerad ";
+			the_time('j F, Y');
+			echo " vid ";
+			the_time();
+			echo "</p> ";
+		}
+	}
+}
 ?>

@@ -68,7 +68,7 @@
 							echo "<p><strong>Artikeln hänvisar till denna sida: <a href='" . $href . "'>" . $href . "</a></strong></p>";
 						}
 					}
-
+					hk_show_post_date();
 					the_content();
 					endif;
 				?>
