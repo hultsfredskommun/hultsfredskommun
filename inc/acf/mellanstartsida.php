@@ -726,6 +726,64 @@ acf_add_local_field_group(array (
 					)
 				),
 
+				array (
+					'key' => '56bb0a25a4102',
+					'name' => 'lagg_till_bubble',
+					'label' => 'Bubblare',
+					'display' => 'block',
+					'sub_fields' => array (
+						array (
+							'key' => 'field_56cc104207f52',
+							'label' => 'Layout',
+							'name' => 'layout',
+							'type' => 'select',
+							'instructions' => 'Hur stor del av skärmen som puffen använda.',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '85%',
+								'class' => '',
+								'id' => '',
+							),
+	
+							'choices' => array (
+								'one-whole' => 'Fullbredd',
+								'one-half' => 'En halv',
+								'one-third' => 'En tredjedel',
+								'two-thirds' => 'Två tredjedelar',
+								'one-quarter' => 'En fjärdedel',
+								'three-quarters' => 'Tre fjärdedelar',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						
+						array (
+							'key' => 'field_56eabc5e15413',
+							'label' => 'D&ouml;lj puff',
+							'name' => 'inactive',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '15%',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
+						),
+	
+					)
+				),
 
 
 				array (

@@ -235,7 +235,9 @@ function hk_view_quick_links() {
 							$retValue .= "</div>";
 						};
 						
+					elseif($row_layout == "lagg_till_bubble"):
 
+						$retValue .= hk_bubble();						
 							
 					elseif($row_layout == "lagg_till_title"):
 					

@@ -520,7 +520,64 @@ if (window.location.href.indexOf("artikel") > -1) {
         });
     }
     $(document).ready(function() {
+        /* bubble */
+        if ($(".bubble").length >= 2) {
+            $(".bubble").each(function() {
+                var bubble = $(this);
+            });
+            $(".nav-item").click(function() {
+                $(this).data('id')
+                
+            });
+            $('.quick-bubble-scroll').scroll(function() {
+                var scroll = $(this).scrollLeft();
+                var width = $(this).width();
+                var max = 0;
+                $(this).children().each(function() {
+                    max += $(this).width();
+                });
+                // calculate which bubble is visible
+                var nr = Math.round(scroll / width);
+                $(this).find(`.bubble[data-id!=${nr}]`).removeClass("active");
+                $(this).find(`.bubble[data-id=${nr}]`).addClass("active");
+                $(this).parent().find(`.nav-item[data-id!=${nr}]`).removeClass("active");
+                $(this).parent().find(`.nav-item[data-id=${nr}]`).addClass("active");
+                if (nr == 0) {
+                    $('.quick-bubble .arrow-left').addClass('disabled');
+                } else {
+                    $('.quick-bubble .arrow-left').removeClass('disabled');
+                }
+                if (nr == max / width - 1) {
+                    $('.quick-bubble .arrow-right').addClass('disabled');
+                } else {
+                    $('.quick-bubble .arrow-right').removeClass('disabled');
+                }
+                console.log([scroll, width, max, nr]);
+            });
+            $('.quick-bubble .arrow').click(function() {
+                var bubble = $(this).parents('.quick-bubble').find('.quick-bubble-scroll');
+                var scroll = bubble.scrollLeft();
+                var width = bubble.width();
+                var max = 0;
+                bubble.children().each(function() {
+                    max += $(this).width();
+                });
+                // calculate which bubble is visible
+                var nr = Math.round(scroll / width);
+                if ($(this).hasClass('arrow-left') && nr > 0) {
+                    nr--;
+                }
+                else if ($(this).hasClass('arrow-right') && nr < max / width) {
+                    nr++;
+                }
+                bubble.scrollLeft(nr * width);
+                // bubble.animate({
+                //     scrollLeft: nr * width
+                // }, 1500);
+            });
 
+
+        }
 
 
         /* add filter_search */

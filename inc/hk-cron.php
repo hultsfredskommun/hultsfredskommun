@@ -258,7 +258,7 @@ function hk_stop_publish_job() {
 	$log = "";
 	$count = $counttrue = 0;
 	while ($q->have_posts()) : $q->the_post();
-		if (get_field("hk_stop_publish_date") != "") {
+		if (function_exists("get_field") && get_field("hk_stop_publish_date") != "") {
 			$count++;
 			if (
 					get_field("hk_stop_publish_date") < date("Ymd",current_time('timestamp',0)) ||

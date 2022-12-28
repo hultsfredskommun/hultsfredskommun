@@ -45,6 +45,7 @@ function hk_acf_init_options() {
 		require_once( get_template_directory() . '/inc/acf/options.php' );
 		require_once( get_template_directory() . '/inc/acf/mellanstartsida.php' );
 		require_once( get_template_directory() . '/inc/acf/driftstorning.php' );
+		require_once( get_template_directory() . '/inc/acf/bubble.php' );
 		require_once( get_template_directory() . '/inc/acf/category.php' );
 		require_once( get_template_directory() . '/inc/acf/forum.php' );
 	endif;
