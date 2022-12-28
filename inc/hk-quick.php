@@ -62,13 +62,13 @@ function hk_view_quick_links() {
 		//$retValue .= "<style type='text/css'>.main.hk-quick { max-width: 1138px; }</style>";
 		// $retValue .= "<div class='quick-posts-wrapper'>";
 		// $retValue .= "<div class='quick-posts'>";
-		$retValue .= "<div class='mellanstart-wrapper'>";
 		// $retValue .= "<div class='mellanstart-posts'>";
 		$a_class = "q";
 
 		// The Loop
 		while ($the_query->have_posts()) : $the_query->the_post();
 			$retValue .= "<!-- BEGIN WHILE QUICK POST " . get_the_ID() . "-->";
+			$retValue .= "<div class='mellanstart-wrapper'>";
 			if (empty(get_field('hk_quick_show_articles'))) {
 				$default_settings["show_articles"] = false;
 			}
@@ -86,8 +86,28 @@ function hk_view_quick_links() {
 					$column_layout = get_sub_field('layout');
 					$num_rows_class = get_sub_field('num_rows');
 					
-					$retValue .= "\n<div class='mellanstart-post $column_layout $num_rows_class $row_layout'>";
-					if($row_layout == "lagg_till_links"):
+					if($row_layout != "lagg_till_bubble"):
+						$retValue .= "\n<div class='mellanstart-post $column_layout $num_rows_class $row_layout'>";
+					endif;
+
+
+
+					// check all layout
+					if($row_layout == "lagg_till_bubble"):
+
+						$retValue .= "</div>";
+						$retValue .= "<div class='mellanstart-wrapper $column_layout'>";
+						$retValue .= "\n<div class='mellanstart-post $column_layout $num_rows_class $row_layout'>";
+						$retValue .= hk_bubble();	
+						/* reset data to current query */
+						$the_query->reset_postdata();
+						
+						$retValue .= "</div>";
+						$retValue .= "</div>";
+						$retValue .= "<div class='mellanstart-wrapper'>";
+
+
+					elseif($row_layout == "lagg_till_links"):
 
 
 						// $retValue .= "<div class='quick-post $column_layout'><div class='quick-links'>";
@@ -237,12 +257,7 @@ function hk_view_quick_links() {
 							$retValue .= "</div>";
 						};
 						
-					elseif($row_layout == "lagg_till_bubble"):
-
-						$retValue .= hk_bubble();	
-						/* reset data to current query */
-						$the_query->reset_postdata();
-					
+						
 							
 					elseif($row_layout == "lagg_till_title"):
 					
@@ -369,9 +384,14 @@ function hk_view_quick_links() {
 
 
 					endif; // end layout
-					$retValue .= '</div>';
+
+					if($row_layout != "lagg_till_bubble"):
+						$retValue .= '</div>'; // end mellanstart-post
+					endif;
+
 				endwhile; // end looping through rows
 			endif; // end if quick links exists
+			$retValue .= "</div>";
 			$retValue .= "<!-- END WHILE QUICK POST " . get_the_ID() . "-->";
 
 		endwhile; // end while have_posts
@@ -380,7 +400,6 @@ function hk_view_quick_links() {
 		wp_reset_postdata();
 
 		// $retValue .= "</div>";
-		$retValue .= "</div>";
 
 		return $retValue;
 	}

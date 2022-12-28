@@ -1,3 +1,7 @@
+.one-whole-wide img {
+    border-radius: 0!important;
+}
+
 .quick-bubble {
     position: relative;
     width: 100%;
@@ -100,6 +104,19 @@
 
                 }
             }
+            @include media-query(palm) {
+                .bubble-overlay {
+                    top: 0;
+                    height: 100%;
+    
+                    .title {
+                        font-size: 1.5em;
+                    }
+                    .text {
+                        font-size: 1em;
+                    }
+                }
+            }
         }
     }
 
@@ -128,6 +145,9 @@
         }
     }
     .nav-arrows {
+        @include media-query(palm) {
+            display: none;
+        }
         .arrow {
             position: absolute;
             top: 35%;
@@ -142,6 +162,16 @@
             cursor: pointer;
             transition: all 0.5s;
             z-index: 3;
+            svg {
+                width: 60%;
+                polyline {
+                    fill: none;
+                    stroke: #fff;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke-width: 3px;
+                }
+            }
             &.arrow-left {
                 left: 20px;
             }

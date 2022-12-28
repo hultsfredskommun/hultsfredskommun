@@ -118,7 +118,13 @@ function hk_bubble() {
         endwhile;
         $ret .= '</div>';
 
-        $ret .= "<div class='nav-arrows'><span class='arrow-left arrow disabled'>&lt;</span><span class='arrow-right arrow'>&gt;</span></div>";
+        $ret .= "<div class='nav-arrows'>
+            <span class='arrow-left arrow disabled'>
+                <svg id='left_arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><polyline points='16.99 20.59 8.31 11.92 16.99 3.24'/></svg>
+            </span>
+            <span class='arrow-right arrow'>
+                <svg id='right_arrow' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><polyline points='8.31 3.24 16.99 11.92 8.31 20.59'/></svg>
+            </span></div>";
         $ret .= "<div class='nav-items'>$nav_items</div>";
         $ret .= '</div>';
         
@@ -129,7 +135,6 @@ function hk_bubble() {
             --hultsfred-nr-bubbles: $nr;
         }
 	    </style>";
-        
         wp_reset_postdata();
 
         return $ret_style . $ret;

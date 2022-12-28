@@ -23,6 +23,7 @@
 			grid-template-columns: 1fr;
 		}
 		gap: $base-spacing-unit;
+		padding-bottom: $base-spacing-unit;
 		.mellanstart-post {
 			width: 100%;
 			&.lagg_till_title {
@@ -130,6 +131,9 @@
 					}
 					position: relative;
 					margin-bottom: $half-spacing-unit;
+					&:last-child {
+						margin-bottom: 0;
+					}
 					.category {
 						line-height: 0;
 						margin-right: 10px;
@@ -189,6 +193,7 @@
 				align-items: flex-start;
 			}
 			@include media-query(lap-and-up) {
+
 				&.span-rows-2 {
 					grid-row: span 2;
 				}
@@ -197,6 +202,9 @@
 				}
 				&.span-rows-4 {
 					grid-row: span 4;
+				}
+				&.one-whole-wide {
+					grid-column: span 12;
 				}
 				&.one-whole {
 					grid-column: span 12;

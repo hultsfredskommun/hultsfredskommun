@@ -83,9 +83,19 @@ html {
 	}
 }
 .menu-wrapper,
-.main.hk-quick,
+.main.hk-quick .mellanstart-wrapper:not(.one-whole-wide),
 .home .main {
 	@extend .content--center;
+}
+.main.hk-quick {
+	width: 100%;
+	max-width: 100%;
+	@include media-query(palm) {
+		margin: 0;
+	}
+	@include media-query(lap) {
+		margin: 0;
+	}
 }
 .main {
 	@extend .small-content--center;
