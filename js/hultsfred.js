@@ -522,6 +522,28 @@ if (window.location.href.indexOf("artikel") > -1) {
     $(document).ready(function() {
         /* bubble */
         if ($(".bubble").length >= 2) {
+            animateBubbleNext();
+
+            
+            function animateBubbleNext() {
+                var bubble = $(".js-bubble-slideshow").find('.quick-bubble-scroll');
+                var scroll = bubble.scrollLeft();
+                var width = bubble.width();
+                var max = 0;
+                bubble.children().each(function() {
+                    max += $(this).width();
+                });
+                max = Math.round(max / width);
+                // calculate which bubble is visible
+                var nr = Math.round(scroll / width);
+                nr++;
+                if (nr >= max) {
+                    nr = 0;
+                }
+                // console.log(nr + " " + max)
+                bubble.scrollLeft(nr * width);
+                setTimeout(animateBubbleNext, 7000);
+            }
             $(".bubble").each(function() {
                 var bubble = $(this);
             });

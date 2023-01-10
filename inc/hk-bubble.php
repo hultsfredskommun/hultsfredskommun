@@ -36,7 +36,11 @@ function hk_bubble_init() {
 
 function hk_bubble() {
     $ret = '';
-    if (is_category()) {
+    if (is_home()) {
+        $options = get_option("hk_theme");
+        $cat = (isset($options["startpage_cat"])) ? $options["startpage_cat"] : "";
+    }
+    else if (is_category()) {
         $cat = get_category( get_query_var( 'cat' ) );
         $cat_slug = $cat->slug;
         // $ret .= 'in category: ' . $cat_slug;
@@ -67,11 +71,22 @@ function hk_bubble() {
         while ( $bubble_query->have_posts() ) : $bubble_query->the_post();
             $active_class = ($nr == 0) ? 'active' : '';
             $image_id = get_field('image');
+            $video_id = get_field('video');
             // $image = wp_get_attachment_image_src( $image_id, 'wide-image' );
             // $ret_image = '<img src="' . $image_url . '" alt="' . $image_alt . '" title="' . $image_title . '" />';
             $ret_image = wp_get_attachment_image( $image_id, 'wide-image' );
-            
-            
+            $ret_video = '';
+            if (wp_attachment_is('video', $video_id)) {
+                $video_url = wp_get_attachment_url( $video_id, 'wide-image' );
+                $att_video = wp_get_attachment_metadata( $video_id, true);
+                $video_format = $att_video['fileformat'];
+                $poster_url = wp_get_attachment_url( $image_id, 'wide-image' );
+                // print_r($att_video);
+                $type = 'video';
+                $ret_video = "<video poster='$poster_url' autoplay playsinline loop muted><source src='$video_url' type='video/$video_format'>Your browser dooes not support the video format.</video>";
+            }
+            $ret_media = (!empty($ret_video)) ? $ret_video : $ret_image;
+
             $title = get_the_title();
             $text = get_field('text');
             $url = '';
@@ -108,7 +123,7 @@ function hk_bubble() {
             $text_span = "<$link_el href='$url' $target class='text'>$text</$link_el>";
             
             $ret .= "<div class='bubble bubble-$nr $active_class' data-id='$nr'>";
-            $ret .= "<div class='bubble-image'>$ret_image</div>";
+            $ret .= "<div class='bubble-image'>$ret_media</div>";
             $ret .= "<div class='bubble-overlay'>$title_span$text_span</div>";            
             $ret .= '</div>';
 

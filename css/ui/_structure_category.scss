@@ -23,7 +23,7 @@
 			grid-template-columns: 1fr;
 		}
 		gap: $base-spacing-unit;
-		&.one-whole-wide {
+		&.wide-layout {
 			gap: 0;
 			.mellanstart-post.lagg_till_puff {
 				position: relative;

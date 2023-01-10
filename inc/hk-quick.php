@@ -84,11 +84,13 @@ function hk_view_quick_links() {
 
 					$row_layout = get_row_layout();
 					$column_layout = get_sub_field('layout');
+					if (empty($column_layout))
+						$column_layout = "one-whole";
 					$num_rows_class = get_sub_field('num_rows');
 					
 					if($row_layout == 'lagg_till_wide_size_start'):
 						$retValue .= "</div>";
-						$retValue .= "<div class='mellanstart-wrapper one-whole-wide'>";
+						$retValue .= "<div class='mellanstart-wrapper $column_layout wide-layout'>";
 
 					elseif($row_layout == 'lagg_till_wide_size_stop'):
 						$retValue .= "</div>";
@@ -102,10 +104,10 @@ function hk_view_quick_links() {
 
 					// check all layout
 					if($row_layout == "lagg_till_bubble"):
-
+						$animate = (get_sub_field('animate'))? "js-bubble-slideshow" : "";
 						$retValue .= "</div>";
 						$retValue .= "<div class='mellanstart-wrapper $column_layout'>";
-						$retValue .= "\n<div class='mellanstart-post $column_layout $num_rows_class $row_layout'>";
+						$retValue .= "\n<div class='mellanstart-post $column_layout $num_rows_class $row_layout $animate'>";
 						$retValue .= hk_bubble();	
 						/* reset data to current query */
 						$the_query->reset_postdata();

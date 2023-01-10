@@ -1,4 +1,4 @@
-.one-whole-wide img {
+.wide-layout img {
     border-radius: 0!important;
 }
 
@@ -59,7 +59,7 @@
             .bubble-image {
                 transition: all 0.5s;
                 opacity: 0.4;
-                img {
+                video, img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
