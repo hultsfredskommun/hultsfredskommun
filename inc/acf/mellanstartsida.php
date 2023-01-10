@@ -729,7 +729,7 @@ acf_add_local_field_group(array (
 				array (
 					'key' => '56bb0a25a4103',
 					'name' => 'lagg_till_wide_size_start',
-					'label' => 'WIDE START',
+					'label' => 'Utvalda puffar',
 					'display' => 'block',
 					'sub_fields' => array (
 						array (
@@ -747,8 +747,8 @@ acf_add_local_field_group(array (
 							),
 	
 							'choices' => array (
-								'one-whole-wide' => 'Fullbredd',
-								'one-whole' => 'Menybredd',
+								'one-whole-wide' => 'Helbredd',
+								'one-whole' => 'Fullbredd',
 							),
 							'default_value' => array (
 							),
@@ -766,7 +766,7 @@ acf_add_local_field_group(array (
 				array (
 					'key' => '56bb0a25a4104',
 					'name' => 'lagg_till_wide_size_stop',
-					'label' => 'FULL BREDD STOP',
+					'label' => 'Utvalda puffar - SLUT',
 					'display' => 'block',
 					'sub_fields' => array ()
 				),
@@ -792,7 +792,7 @@ acf_add_local_field_group(array (
 							),
 	
 							'choices' => array (
-								'one-whole-wide' => 'Extra bred',
+								'one-whole-wide' => 'Helbredd',
 								'one-whole' => 'Fullbredd',
 								// 'one-half' => 'En halv',
 								// 'one-third' => 'En tredjedel',

@@ -2587,14 +2587,14 @@ function hk_show_post_date() {
 			echo "<p style='font-size: 90%; font-style: italic;'>Senast uppdaterad ";
 			the_modified_time('j F, Y');
 			echo " vid ";
-			the_modified_time();
+			the_modified_time('H:i');
 			echo "</p> ";
 		}
 		else {
 			echo "<p style='font-size: 90%; font-style: italic;'>Publicerad ";
 			the_time('j F, Y');
 			echo " vid ";
-			the_time();
+			the_time('H:i');
 			echo "</p> ";
 		}
 	}
