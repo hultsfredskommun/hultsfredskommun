@@ -100,35 +100,7 @@ if ($meta_description != "") :?>
 	?></title>
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<?php if ( isset($hk_options["favicon_image32"]) ) : ?>
-	<link rel="icon" href="<?php echo $hk_options["favicon_image32"]; ?>" sizes="32x32" type="image/png">
-<?php endif; ?>
-<?php if ( isset($hk_options["favicon_image64"]) ) : ?>
-	<link rel="icon" href="<?php echo $hk_options["favicon_image64"]; ?>" sizes="64x64" type="image/png">
-<?php endif; ?>
-<?php if ( isset($hk_options["favicon_image128"]) ) : ?>
-	<link rel="icon" href="<?php echo $hk_options["favicon_image128"]; ?>" sizes="128x128" type="image/png">
-<?php endif; ?>
-<?php if ( isset($hk_options["favicon_image256"]) ) : ?>
-	<link rel="icon" href="<?php echo $hk_options["favicon_image256"]; ?>" sizes="256x256" type="image/png">
-<?php endif; ?>
-<?php if ( isset($hk_options["favicon_image152"]) ) : ?>
-	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image152"]; ?>" sizes="152x152" type="image/png">
-<?php endif; ?>
-<?php if ( isset($hk_options["favicon_image144"]) ) : ?>
-	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image144"]; ?>" sizes="144x144" type="image/png">
-<?php endif; ?>
-<?php if ( isset($hk_options["favicon_image120"]) ) : ?>
-	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image120"]; ?>" sizes="120x120" type="image/png">
-<?php endif; ?>
-<?php if ( isset($hk_options["favicon_image114"]) ) : ?>
-	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image114"]; ?>" sizes="114x114" type="image/png">
-<?php endif; ?>
-
-<?php if ( isset($hk_options["favicon_image64"]) ) : ?>
-	<!--[if IE]><link rel="shortcut icon" href="<?php echo $hk_options["favicon_image64"]; ?>"><![endif]-->
-<?php endif; ?>
-
+<?php wp_site_icon(); ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 <?php
