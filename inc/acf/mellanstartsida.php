@@ -766,7 +766,7 @@ acf_add_local_field_group(array (
 				array (
 					'key' => '56bb0a25a4104',
 					'name' => 'lagg_till_wide_size_stop',
-					'label' => 'Utvalda puffar - SLUT',
+					'label' => 'Utvalda puffar - stopp',
 					'display' => 'block',
 					'sub_fields' => array ()
 				),
