@@ -15,6 +15,7 @@ add_action('init', 'hk_contacts_init');
 function hk_contacts_init() {
 	// only if in admin and is administrator
     //if (is_admin() && current_user_can("administrator")) {
+		$user_can_edit = (!get_field('user_permissions_hk_kontakter', 'options') || get_field('user_can_edit_hk_kontakter', 'user_' . get_current_user_id())) ? true : false;
 
 		register_post_type( 'hk_kontakter',
 			array(
@@ -26,8 +27,8 @@ function hk_contacts_init() {
 				'public' => true,
 				'has_archive' => true,
 				'rewrite' => array('slug' => 'kontakt'),
-				'show_ui' => true,
-				'show_in_menu' => true,
+				'show_ui' => $user_can_edit,
+				'show_in_menu' => $user_can_edit,
 				'capability_type' => 'post',
 				'hierarchical' => false,
 				'publicly_queryable' => true,

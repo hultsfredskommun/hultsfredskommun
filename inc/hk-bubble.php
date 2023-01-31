@@ -1,11 +1,12 @@
 <?php
 
 
-/* REGISTER post_type hk_forum */
+/* REGISTER post_type hk_bubble */
 add_action('init', 'hk_bubble_init');
 function hk_bubble_init() {
 	// only if in admin and is administrator
     //if (is_admin() && current_user_can("administrator")) {
+        $user_can_edit = (!get_field('user_permissions_hk_bubble', 'options') || get_field('user_can_edit_hk_bubble', 'user_' . get_current_user_id())) ? true : false;
 
 		register_post_type( 'hk_bubble',
 			array(
@@ -17,8 +18,8 @@ function hk_bubble_init() {
 				'has_archive' => true,
 				'rewrite' => array('slug' => 'bubble'),
 				'public' => false,
-				'show_ui' => true,
-				'show_in_menu' => true,
+				'show_ui' => $user_can_edit,
+				'show_in_menu' => $user_can_edit,
                 'show_in_nav_menus' => false,
                 'exclude_from_search' => true,
 				'publicly_queryable' => true,

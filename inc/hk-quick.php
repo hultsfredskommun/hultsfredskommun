@@ -5,6 +5,8 @@
 add_action('init', 'hk_quick_init');
 function hk_quick_init() {
 	// only if in admin and is administrator
+	$user_can_edit = (!get_field('user_permissions_hk_quick', 'options') || get_field('user_can_edit_hk_quick', 'user_' . get_current_user_id())) ? true : false;
+	
 	register_post_type( 'hk_quick',
 		array(
 			'labels' => array(
@@ -12,8 +14,8 @@ function hk_quick_init() {
 				'singular_name' => __( 'Mellanstartsida' )
 			),
 			'public' => false,
-			'show_ui' => true,
-			'show_in_menu' => true,
+			'show_ui' => $user_can_edit,
+			'show_in_menu' => $user_can_edit,
 			'show_in_nav_menus' => false,
 			'exclude_from_search' => true,
 			'publicly_queryable' => true,
