@@ -37,16 +37,20 @@ function hk_bubble_init() {
 
 function hk_bubble() {
     $ret = '';
+    $cat_slug = '';
+    $cat = false;
     if (is_home()) {
         $options = get_option("hk_theme");
         $cat = (isset($options["startpage_cat"])) ? $options["startpage_cat"] : "";
     }
     else if (is_category()) {
-        $cat = get_category( get_query_var( 'cat' ) );
-        $cat_slug = $cat->slug;
+        $cat = get_query_var( 'cat' );
         // $ret .= 'in category: ' . $cat_slug;
     } else {
         return 'no category';
+    }
+    if ($cat) {
+        $cat_slug = get_category($cat)->slug;
     }
 
     $bubble_query = new WP_Query( array(

@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "11.0");
+define("HK_VERSION", "11.1");
 
 /**
  * Set the content width based on the theme's design and stylesheet.

@@ -522,11 +522,15 @@ if (window.location.href.indexOf("artikel") > -1) {
     $(document).ready(function() {
         /* bubble */
         if ($(".bubble").length >= 2) {
+            var bubble_timeout = false
             animateBubbleNext();
 
             
             function animateBubbleNext() {
                 var bubble = $(".js-bubble-slideshow").find('.quick-bubble-scroll');
+                if (bubble.length == 0) {
+                    return;
+                }
                 var scroll = bubble.scrollLeft();
                 var width = bubble.width();
                 var max = 0;
@@ -541,8 +545,14 @@ if (window.location.href.indexOf("artikel") > -1) {
                     nr = 0;
                 }
                 // console.log(nr + " " + max)
-                bubble.scrollLeft(nr * width);
-                setTimeout(animateBubbleNext, 7000);
+                bubble.scrollLeft(nr * width)
+                setAnimateTimeout()
+            }
+            function setAnimateTimeout() {
+                if (bubble_timeout) {
+                    clearTimeout(bubble_timeout)
+                }
+                bubble_timeout = setTimeout(animateBubbleNext, 7000)
             }
             $(".bubble").each(function() {
                 var bubble = $(this);
@@ -574,7 +584,7 @@ if (window.location.href.indexOf("artikel") > -1) {
                 } else {
                     $('.quick-bubble .arrow-right').removeClass('disabled');
                 }
-                console.log([scroll, width, max, nr]);
+                // console.log([scroll, width, max, nr]);
             });
             $('.quick-bubble .arrow').click(function() {
                 var bubble = $(this).parents('.quick-bubble').find('.quick-bubble-scroll');
@@ -592,7 +602,8 @@ if (window.location.href.indexOf("artikel") > -1) {
                 else if ($(this).hasClass('arrow-right') && nr < max / width) {
                     nr++;
                 }
-                bubble.scrollLeft(nr * width);
+                bubble.scrollLeft(nr * width)
+                setAnimateTimeout()
                 // bubble.animate({
                 //     scrollLeft: nr * width
                 // }, 1500);

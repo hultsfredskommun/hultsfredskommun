@@ -61,7 +61,15 @@
                 opacity: 0.4;
                 video, img {
                     width: 100%;
-                    height: 100%;
+                    @include media-query(desk) {
+                        height: 100%;
+                    }
+                    @include media-query(lap) {
+                        height: 400px;
+                    }
+                    @include media-query(palm) {
+                        height: 300px;
+                    }
                     object-fit: cover;
                 }
             }
