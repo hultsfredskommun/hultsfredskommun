@@ -89,10 +89,11 @@ function hk_view_quick_links() {
 					if (empty($column_layout))
 						$column_layout = "one-whole";
 					$num_rows_class = get_sub_field('num_rows');
-					
+
+					$wide_size = ($column_layout != "one-whole") ? $column_layout : '';					
 					if($row_layout == 'lagg_till_wide_size_start'):
 						$retValue .= "</div>";
-						$retValue .= "<div class='mellanstart-wrapper $column_layout wide-layout'>";
+						$retValue .= "<div class='mellanstart-wrapper $wide_size wide-layout'>";
 
 					elseif($row_layout == 'lagg_till_wide_size_stop'):
 						$retValue .= "</div>";
@@ -108,7 +109,7 @@ function hk_view_quick_links() {
 					if($row_layout == "lagg_till_bubble"):
 						$animate = (get_sub_field('animate'))? "js-bubble-slideshow" : "";
 						$retValue .= "</div>";
-						$retValue .= "<div class='mellanstart-wrapper $column_layout'>";
+						$retValue .= "<div class='mellanstart-wrapper $wide_size'>";
 						$retValue .= "\n<div class='mellanstart-post $column_layout $num_rows_class $row_layout $animate'>";
 						$retValue .= hk_bubble();	
 						/* reset data to current query */
@@ -278,7 +279,7 @@ function hk_view_quick_links() {
 						$title = get_sub_field('title');
 						$title_div = (!empty($title)) ? "<h1>$title</h1>" : "";
 						$description = get_sub_field('description');
-						$description_div = (!empty($description)) ? "<div class='q-description'>$description</div>" : '';
+						$description_div = (!empty($description)) ? "<div class='q-description'><p>$description</p></div>" : '';
 						
 						$retValue .= "<div class='quick-title $content_layout'>";
 						$retValue .= "$title_div$description_div</a>";
@@ -388,7 +389,7 @@ function hk_view_quick_links() {
 						$title = get_sub_field('title');
 						$title_div = (!empty($title)) ? "<h2>$title</h2>" : "";
 						$description = get_sub_field('description');
-						$description_div = (!empty($description)) ? "<div class='q-description'>$description</div>" : '';
+						$description_div = (!empty($description)) ? "<div class='q-description'><p>$description</p></div>" : '';
 						$text_div = "<div class='q-text'>$title_div$description_div</div>";
 
 						$retValue .= "<div class='$imagesize quick-puff $content_layout'>";
