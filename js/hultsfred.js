@@ -523,7 +523,7 @@ if (window.location.href.indexOf("artikel") > -1) {
         /* bubble */
         if ($(".bubble").length >= 2) {
             var bubble_timeout = false
-            animateBubbleNext();
+            setAnimateTimeout();
 
             
             function animateBubbleNext() {
