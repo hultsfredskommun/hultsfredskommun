@@ -37,7 +37,6 @@ function hk_bubble_init() {
 
 function hk_bubble() {
     $ret = '';
-    $cat_slug = '';
     $cat = false;
     if (is_home()) {
         $options = get_option("hk_theme");
@@ -45,28 +44,23 @@ function hk_bubble() {
     }
     else if (is_category()) {
         $cat = get_query_var( 'cat' );
-        // $ret .= 'in category: ' . $cat_slug;
     } else {
         return 'no category';
     }
-    if ($cat) {
-        $cat_slug = get_category($cat)->slug;
-    }
-
-    $bubble_query = new WP_Query( array(
+    $args = array(
         'post_type' => 'hk_bubble',
         'posts_per_page' => -1,
         'orderby' => 'date',
         'order' => 'DESC',
         'post_status' => 'publish',
         'ignore_sticky_posts' => true,
-        'paged' => get_query_var('paged'),
-        'category_name' => $cat_slug
-    ) );
-
+        'suppress_filters' => 'true',
+        "category__and" => array($cat),
+    );
+    $bubble_query = new WP_Query( $args );
     if ( $bubble_query->have_posts() ) :
         
-        $ret .= "<div class='quick-bubble'>";
+        $ret .= "<div class='quick-bubble' data-cat='$cat'>";
         $ret .= "<div class='quick-bubble-scroll'>";
         $nr = 0;
         $nav_items = '';
@@ -153,8 +147,16 @@ function hk_bubble() {
         <style type='text/css'>
         :root {
             --hultsfred-nr-bubbles: $nr;
+        }";
+        if ($nr <= 1) {
+            $ret_style .= "
+            .quick-bubble .nav-arrows,
+            .quick-bubble .nav-items {
+                display: none;
+            }";
         }
-	    </style>";
+        $ret_style .= "
+        </style>";
         wp_reset_postdata();
 
         return $ret_style . $ret;
