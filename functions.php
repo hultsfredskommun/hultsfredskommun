@@ -29,7 +29,8 @@ $hk_options = get_option('hk_theme');
 if ( ! isset( $default_settings ) ) {
 
 	$default_settings = array(	'thumbnail-image' => array(270, 153, true),
-								'featured-image' => array(605, 353, true), /* array(660, 396, true) */
+								'featured-image' => array(605, 353, true), 
+								'featured-image-large' => array(1210, 706, true), 
 								'slideshow-image' => array(980, 551, true),
 								'wide-image' => array(1138, 326, true),
 								'contact-image' => array(150, 190, true),
