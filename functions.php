@@ -1145,7 +1145,15 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 		}
 		while( has_sub_field('hk_featured_images', $id) && ($showAll || $countSlides == 0)) : // only once if not showAll
 			$image = get_sub_field('hk_featured_image');
+			$thumbsize_large = $thumbsize . "-large";
+			
 			$src = (!empty($image["sizes"]) && !empty($image["sizes"][$thumbsize])) ? $image["sizes"][$thumbsize] : "";
+			$src_large = (!empty($image["sizes"]) && !empty($image["sizes"][$thumbsize_large])) ? $image["sizes"][$thumbsize_large] : "";
+			
+			$srcset = '';
+			if (!empty($src_large)) {
+				$srcset = "srcset='$src 1x, $src_large 1.5x'";
+			}
 			$caption = $image["caption"];
 			$title = $image["title"];
 			$alt = $image["alt"];
@@ -1166,7 +1174,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 					if (!$only_img) {
 						$retValue .= "<div class='slide' $style>";
 					}
-					$retValue .= "<img src='$src' alt='$alt' title='$alt' />";
+					$retValue .= "<img src='$src' alt='$alt' title='$alt' $srcset class='$thumbsize' />";
 					if (!$only_img) {
 						if ($caption != "") {
 							$retValue .= "<span class='image-title'>$caption</span>";
