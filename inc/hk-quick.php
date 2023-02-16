@@ -289,23 +289,10 @@ function hk_view_quick_links() {
 					
 					elseif($row_layout == "lagg_till_puff"):
 					
-						/* get video */
-						$videourl = get_sub_field('video');
-						$videoimageoverlay = "";
-						/* get css */
+						$videourl = '';
 						$videocssclass = "";
-						if (!empty($videourl)) {
-							$videocssclass = "js-video-popup";
-							$videourl = "data-video-url='$videourl'";
-							$videoimagesrc = $default_settings["video_thumbnail_image"];
 
-							if (!empty($videoimagesrc)) {
-								$videoimageoverlay = "<img class='overlay-img slide' src='$videoimagesrc' alt='Play' title='Play' />";
-							}
-						}
 						/* get link to content */
-						$videoimageoverlay = "";
-						$videocssclass = "";
 						if (have_rows('content')) :
 							while (have_rows('content')) : the_row();
 
@@ -346,11 +333,6 @@ function hk_view_quick_links() {
 										if (!empty($videourl)) {
 											$videocssclass = "js-video-popup";
 											$videourl = "data-video-url='$videourl'";
-											$videoimagesrc = $default_settings["video_thumbnail_image"];
-
-											if (!empty($videoimagesrc)) {
-												$videoimageoverlay = "<img class='overlay-img slide' src='$videoimagesrc' alt='Play' title='Play' />";
-											}
 										}
 										break;
 									default:
@@ -380,7 +362,6 @@ function hk_view_quick_links() {
 							}
 							$alt = $image["alt"];
 							$imagediv .= "<span class='$videocssclass $imagesize slide' $videourl>";
-							$imagediv .= $videoimageoverlay;
 							$imagediv .= "<img src='$src' alt='$alt' title='$alt' />";
 							$imagediv .= "</span>";
 						endif;

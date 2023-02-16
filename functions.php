@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "11.2");
+define("HK_VERSION", "12.0");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -598,6 +598,7 @@ function hk_acf_init() {
 add_action('acf/init', 'hk_acf_init');
 
 function hk_enqueue_scripts() {
+	global $default_settings;
 	$hk_options = get_option("hk_theme");
 	if (!is_admin()) {
 
@@ -611,7 +612,16 @@ function hk_enqueue_scripts() {
 			array(),
 			HK_VERSION
 		);
-	
+
+		$videoimagesrc = $default_settings["video_thumbnail_image"];
+		$css = "
+		:root {
+			--hultsfred-video-thumbnail: url($videoimagesrc) no-repeat center center;
+		}";
+		
+		if ($css != "") {
+			wp_add_inline_style( 'hk-parent-sass-style', $css );
+		}
 	
 		wp_enqueue_style( 'hk-style',
 			get_bloginfo( 'stylesheet_url' ),

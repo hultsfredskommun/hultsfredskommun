@@ -71,11 +71,32 @@ function hk_bubble() {
             $active_class = ($nr == 0) ? 'active' : '';
             $image_id = get_field('image');
             $video_id = get_field('video');
-            // $image = wp_get_attachment_image_src( $image_id, 'wide-image' );
-            // $ret_image = '<img src="' . $image_url . '" alt="' . $image_alt . '" title="' . $image_title . '" />';
+            $youtube = get_field('youtube');
+            $youtube_src = (!empty($youtube)) ? $youtube['src'] : '';
+            $youtube_type = (!empty($youtube)) ? $youtube['type'] : '';
+
             $ret_image = wp_get_attachment_image( $image_id, 'wide-image' );
             $ret_video = '';
-            if (wp_attachment_is('video', $video_id)) {
+            $videocssclass = "";
+            $videourl = "";
+            if (!empty($youtube_src)) {
+                $type = 'youtube';
+                if ($youtube_type == 'embed') {
+                    $youtube_src = str_replace('watch?v=', 'embed/', $youtube_src);
+                    $youtube_src = str_replace('youtu.be/', 'youtube.com/embed/', $youtube_src);
+                    $youtube_src = add_query_arg( array('autoplay' => 1, 'mute' => 1, 'controls' => 0, 'rel' => 0, 'loop' => 1), $youtube_src );
+                    //width='1138' height='326'
+                    $embed = "<iframe src='$youtube_src' style='height: 326px; width: 100%;' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+                    // $embed = wp_oembed_get($youtube_url, [ 'width' => 1138, 'height' => 326 ]);
+                    $ret_video = "<div class='youtube' data-url='$youtube_src'>$embed</div>";
+                }
+                else { // popup
+                    $videocssclass = "js-video-popup";
+                    $videourl = "data-video-url='$youtube_src'";
+                }
+                
+            }
+            if (empty($ret_video) && wp_attachment_is('video', $video_id)) {
                 $video_url = wp_get_attachment_url( $video_id, 'wide-image' );
                 $att_video = wp_get_attachment_metadata( $video_id, true);
                 $video_format = $att_video['fileformat'];
@@ -121,7 +142,7 @@ function hk_bubble() {
             $title_span = "<$link_el href='$url' $target class='title'>$title</$link_el>";
             $text_span = "<$link_el href='$url' $target class='text'>$text</$link_el>";
             
-            $ret .= "<div class='bubble bubble-$nr $active_class' data-id='$nr'>";
+            $ret .= "<div class='bubble bubble-$nr $active_class $videocssclass' data-id='$nr' $videourl>";
             $ret .= "<div class='bubble-image'>$ret_media</div>";
             $ret .= "<div class='bubble-overlay'>$title_span$text_span</div>";            
             $ret .= '</div>';
