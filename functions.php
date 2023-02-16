@@ -39,12 +39,10 @@ if ( ! isset( $default_settings ) ) {
 								'news_tag' => isset($hk_options["news_tag"]) ? $hk_options["news_tag"] : "",
 								'hidden_cat' => isset($hk_options["hidden_cat"]) ? $hk_options["hidden_cat"] : "",
 								'protocol_cat' => isset($hk_options["protocol_cat"]) ? $hk_options["protocol_cat"] : "",
-								'num_levels_in_menu' => (!isset($hk_options["num_levels_in_menu"]) || $hk_options["num_levels_in_menu"] == "")?2:$hk_options["num_levels_in_menu"],
-								'show_tags' => (!isset($hk_options["show_tags"]) || $hk_options["show_tags"] == "")?1:$hk_options["show_tags"],
+								'num_levels_in_menu' => 2,
 								'sticky_number' => 1000,
 								'use_dynamic_posts_load_in_category' => (!empty($hk_options["use_dynamic_posts_load_in_category"]))?$hk_options["use_dynamic_posts_load_in_category"]:'',
 								'hide_articles_in_subsubcat' => (!empty($hk_options["hide_articles_in_subsubcat"]))?$hk_options["hide_articles_in_subsubcat"]:'',
-								'category_slideshow_thumbnail_size' => isset($hk_options["category_slideshow_thumbnail_size"]) ? $hk_options["category_slideshow_thumbnail_size"] : "",
 								'show_articles' => true,
 								'video_thumbnail_image' => isset($hk_options["video_thumbnail_image"]) ? $hk_options["video_thumbnail_image"] : 0,
 							);
