@@ -2545,16 +2545,6 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
 				break;
 		}
 	}
-    else if ($orderby == "" && $cat != "" && in_array($cat, explode(",",$options["order_by_date"])) ) {
-        //$args['suppress_filters'] = 'true';
-        $args['orderby'] = 'date';
-        $args['order'] = 'DESC';
-    }
-    /* if orderby not is set, check if standard order should be alpha in settings */
-    else if ($orderby == "" && $cat != "" && in_array($cat, explode(",",$options["order_by_alpha"])) ) {
-        $args['orderby'] = 'title';
-        $args['order'] = 'ASC';
-    }
     /* if orderby is set manually in url */
     else if ($orderby == "latest") {
         $args['orderby'] = 'date';
