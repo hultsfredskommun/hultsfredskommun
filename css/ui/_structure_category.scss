@@ -371,13 +371,6 @@
 	}
 }
 
-.hide-left-menu {
-	.primary,
-	.breadcrumb {
-		@extend .g;
-		@extend .one-whole;
-	}
-}
 .primary,
 .breadcrumb {
 	@extend .g;

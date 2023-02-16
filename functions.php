@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "12.0");
+define("HK_VERSION", "12.1");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -41,8 +41,6 @@ if ( ! isset( $default_settings ) ) {
 								'protocol_cat' => isset($hk_options["protocol_cat"]) ? $hk_options["protocol_cat"] : "",
 								'num_levels_in_menu' => 2,
 								'sticky_number' => 1000,
-								'use_dynamic_posts_load_in_category' => (!empty($hk_options["use_dynamic_posts_load_in_category"]))?$hk_options["use_dynamic_posts_load_in_category"]:'',
-								'hide_articles_in_subsubcat' => (!empty($hk_options["hide_articles_in_subsubcat"]))?$hk_options["hide_articles_in_subsubcat"]:'',
 								'show_articles' => true,
 								'video_thumbnail_image' => isset($hk_options["video_thumbnail_image"]) ? $hk_options["video_thumbnail_image"] : 0,
 							);

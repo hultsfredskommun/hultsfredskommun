@@ -17,7 +17,7 @@ function hk_postcount() {
 			$url = "";
 			$class = "nolink";
 		}
-		if ($default_settings["hide_articles_in_subsubcat"] != 1  || !is_sub_sub_category_firstpage()) :
+		if (!is_sub_sub_category_firstpage()) :
 			echo "<span class='postcount $class float--right' href='$url'>Visar <span class='count'>" . $wp_query->post_count . "</span>";
 			if ($wp_query->max_num_pages > 1) {
 				echo " av " . $wp_query->found_posts;
@@ -403,9 +403,6 @@ function hk_navigation() {
 	$category_as_filter = $default_settings["category_as_filter"];
 	$search = get_query_var("s");
 
-	// hide menu if hide_leftmenu is set
-	if (!empty($options['hide_leftmenu']) && $options['hide_leftmenu'] == 1) return;
-	
 	if (get_post_type() == "page" && get_page_template_slug() == 'forum.php') return;
 
 	// else show menu
