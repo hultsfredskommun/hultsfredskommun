@@ -35,7 +35,7 @@
 
         <?php
             /* show if not is sub_sub */
-            if (!is_sub_sub_category_firstpage()) {
+            if ($default_settings["show_articles"] || !is_sub_sub_category_firstpage()) {
                 $countposts = 0;
                 $shownPosts = array();
                 if ($cat != "") {
