@@ -31,6 +31,25 @@
 	
 }
 
+.wide-layout .lagg_till_news {
+	background-color: rgb(216, 226, 236);
+	
+	.newscontent-wrapper2 {
+		padding: $base-spacing-unit;
+		.newscontent {
+			grid-gap: 0!important;
+			article {
+				grid-gap: 0!important;
+				border-radius: 0!important;
+				padding: 12px 0!important;
+				.news-image-wrapper {
+					margin-right: $half-spacing-unit;
+				}
+			}
+			
+		}
+	}
+}
 .newscontent-wrapper2 {
 	.widget-title {
 		padding-bottom: $half-spacing-unit;
@@ -41,8 +60,10 @@
 
 		article {
 			display: flex;
-			flex-direction: column;
+			flex-direction: row;
 			justify-content: start;
+			align-items: center;
+			grid-gap: $half-spacing-unit;
 			// @extend .border;
 
 			@extend .border-radius;
@@ -56,6 +77,31 @@
 			// background-blend-mode: overlay;
 			// background-size: cover;
 			// background-position: center;
+
+			&.has-image {
+				display: grid;
+				grid-template-columns: 120px 1fr;
+				&::before,
+				&::after {
+					display: none;
+				}
+			}
+			&.circle {
+				.news-image-wrapper {
+					
+					img {
+						border-radius: 50%!important;
+						height: 100px;
+						width: 100px;
+						background-size: cover;
+						&.default-image {
+							background-color: $main-color;
+							padding: 16px;
+							
+						}
+					}
+				} 
+			}
 			h5.entry-title {
 				@include font-size($h4-size);
 				@extend .flush--bottom;
@@ -68,14 +114,24 @@
 					// @extend .white-text;
 				}
 			}
-			.news-time-wrapper {
-
-				.published-date,
-				.modified-date {
-					// color: $default-light-color;
-					// @extend .white-text;
-					@include font-size($h6-size);
-					font-style: italic;
+			// .news-image-wrapper {
+			// 	max-width: 200px;
+			// 	width: 20%;
+			// }
+			.news-text-wrapper {
+				display: flex;
+				flex-direction: column;
+				justify-content: start;
+	
+				.news-time-wrapper {
+					
+					.published-date,
+					.modified-date {
+						// color: $default-light-color;
+						// @extend .white-text;
+						@include font-size($h6-size);
+						font-style: italic;
+					}
 				}
 			}
 		}

@@ -74,6 +74,11 @@ $rekai_array = array( array (
 
 					'choices' => array (
 						'one-whole' => 'Fullbredd',
+						'one-half' => 'En halv',
+						'one-third' => 'En tredjedel',
+						'two-thirds' => 'Två tredjedelar',
+						'one-quarter' => 'En fjärdedel',
+						'three-quarters' => 'Tre fjärdedelar',						
 					),
 					'default_value' => array (
 						'one-whole'
@@ -83,8 +88,8 @@ $rekai_array = array( array (
 					'ui' => 0,
 					'ajax' => 0,
 					'placeholder' => '',
-					'disabled' => 1,
-					'readonly' => 1,
+					'disabled' => 0,
+					'readonly' => 0,
 				),
 				array (
 					'key' => 'field_56eabc5e154aa',
@@ -103,6 +108,36 @@ $rekai_array = array( array (
 					'default_value' => 0,
 				),
 
+				array (
+					'key' => 'field_56cc104207f92',
+					'label' => 'Stil',
+					'name' => 'rek_style',
+					'type' => 'select',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '35%',
+						'class' => '',
+						'id' => '',
+					),
+
+					'choices' => array (
+						'none' => 'Löpande',
+						'rows' => 'Rader',
+						
+					),
+					'default_value' => array (
+						'none'
+					),
+					'allow_null' => 0,
+					'multiple' => 0,
+					'ui' => 0,
+					'ajax' => 0,
+					'placeholder' => '',
+					'disabled' => 0,
+					'readonly' => 0,
+				),
 				
 			)
 		) 
@@ -469,6 +504,49 @@ acf_add_local_field_group(array (
 					'display' => 'block',
 					'sub_fields' => array (
 						array (
+							'key' => 'field_56cc0a2e618ab',
+							'label' => 'Rubrik',
+							'name' => 'title',
+							'type' => 'text',
+							'instructions' => 'Rubrik som syns över nyheterna.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '25%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => 'Nyheter',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array(
+							'key' => 'field_61f8fa4d79b08',
+							'label' => 'Antal',
+							'name' => 'num_news',
+							'type' => 'number',
+							'instructions' => 'Antal nyheter som ska visas.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '25%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '4',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'min' => '',
+							'max' => '',
+							'step' => '',
+						),
+
+						array (
 							'key' => 'field_56cc104207f90',
 							'label' => 'Layout',
 							'name' => 'layout',
@@ -477,7 +555,7 @@ acf_add_local_field_group(array (
 							'required' => 1,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '85%',
+								'width' => '35%',
 								'class' => '',
 								'id' => '',
 							),
@@ -516,7 +594,57 @@ acf_add_local_field_group(array (
 							'message' => '',
 							'default_value' => 0,
 						),
-					
+						array(
+							'key' => 'field_61f8fa4d79b09',
+							'label' => 'Antal kolumner',
+							'name' => 'num_news_cols',
+							'type' => 'number',
+							'instructions' => 'Antal kolumner.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '25%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '3',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'min' => '',
+							'max' => '',
+							'step' => '',
+						),
+						array (
+							'key' => 'field_56cc104207f91',
+							'label' => 'Bildutseende',
+							'name' => 'image_style',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '35%',
+								'class' => '',
+								'id' => '',
+							),
+
+							'choices' => array (
+								'none' => 'Ingen',
+								'circle' => 'Rund',
+								'thumbnail' => 'Tumnagel',
+							),
+							'default_value' => array (
+								'none',
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
 				)
 			),
 
