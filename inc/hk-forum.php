@@ -6,6 +6,7 @@ add_action('init', 'hk_forum_init');
 function hk_forum_init() {
 	// only if in admin and is administrator
     //if (is_admin() && current_user_can("administrator")) {
+        $user_can_edit = (!get_field('user_permissions_hk_forum', 'options') || get_field('user_can_edit_hk_forum', 'user_' . get_current_user_id())) ? true : false;
 
 		register_post_type( 'hk_forum',
 			array(
@@ -17,8 +18,8 @@ function hk_forum_init() {
 				'has_archive' => true,
 				'rewrite' => array('slug' => 'forum'),
 				'public' => false,
-				'show_ui' => true,
-				'show_in_menu' => true,
+				'show_ui' => $user_can_edit,
+				'show_in_menu' => $user_can_edit,
                 'show_in_nav_menus' => false,
                 'exclude_from_search' => true,
 				'publicly_queryable' => true,
@@ -35,6 +36,9 @@ function hk_forum_init() {
 }
 
 function hk_forum() {
+	if (!function_exists("get_field"))
+		return "You need the Advanced Custom Field plugin for the forum to work properly.";
+
     $debatt_query = new WP_Query( array(
         'post_type' => 'hk_forum',
         'posts_per_page' => -1,

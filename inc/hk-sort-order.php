@@ -28,7 +28,7 @@
 			?>
 			<li><a class="nolink helper">Sortera p&aring;: </a></li>
 			<?php if (function_exists( 'views_orderby' )) : ?>
-			<?php $force_date = (get_query_var("cat") != "" && in_array(get_query_var("cat"), explode(",",$options["order_by_date"])) ); ?>
+			<?php $force_date = (get_query_var("cat") != "" ); ?>
 
 			<?php if ($_REQUEST["orderby"] == "popular" || ($_REQUEST["orderby"] == "" && !$force_date)) { ?>
 				<li class='current-menu-item'><a class="active">Popul&auml;ra</a></li>

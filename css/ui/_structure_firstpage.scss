@@ -1,3 +1,4 @@
+$news-icon-size: 60px;
 
 .time {
 	@extend .cf;
@@ -31,6 +32,30 @@
 	
 }
 
+.wide-layout .lagg_till_news {
+	background-color: rgb(216, 226, 236);
+	
+	.newscontent-wrapper2 {
+		padding: $base-spacing-unit;
+		.newscontent {
+			grid-gap: 0!important;
+			article {
+				grid-gap: 0!important;
+				border-radius: 0!important;
+				padding: 12px 0!important;
+				.news-image-wrapper {
+					margin-right: $half-spacing-unit;
+				}
+			}
+			
+		}
+	}
+}
+/* dom-ready animations */
+.dom-ready .lagg_till_news img {
+	opacity: 1!important;
+}
+
 .newscontent-wrapper2 {
 	.widget-title {
 		padding-bottom: $half-spacing-unit;
@@ -41,8 +66,10 @@
 
 		article {
 			display: flex;
-			flex-direction: column;
+			flex-direction: row;
 			justify-content: start;
+			align-items: center;
+			grid-gap: $half-spacing-unit;
 			// @extend .border;
 
 			@extend .border-radius;
@@ -56,6 +83,34 @@
 			// background-blend-mode: overlay;
 			// background-size: cover;
 			// background-position: center;
+
+			&.has-image {
+				display: grid;
+				grid-template-columns: calc($news-icon-size + $base-spacing-unit) 1fr;
+				&::before,
+				&::after {
+					display: none;
+				}
+			}
+			&.circle {
+				.news-image-wrapper {
+					
+					border-radius: 50%!important;
+					height: $news-icon-size;
+					width: $news-icon-size;
+					overflow: hidden;
+					background-color: $main-color;
+					&.default-image img {
+						padding: $half-spacing-unit;
+					}
+					img {
+						opacity: 0;
+						transition: opacity 0.5s ease;
+						background-size: cover;
+					}
+					
+				} 
+			}
 			h5.entry-title {
 				@include font-size($h4-size);
 				@extend .flush--bottom;
@@ -68,14 +123,24 @@
 					// @extend .white-text;
 				}
 			}
-			.news-time-wrapper {
-
-				.published-date,
-				.modified-date {
-					// color: $default-light-color;
-					// @extend .white-text;
-					@include font-size($h6-size);
-					font-style: italic;
+			// .news-image-wrapper {
+			// 	max-width: 200px;
+			// 	width: 20%;
+			// }
+			.news-text-wrapper {
+				display: flex;
+				flex-direction: column;
+				justify-content: start;
+	
+				.news-time-wrapper {
+					
+					.published-date,
+					.modified-date {
+						// color: $default-light-color;
+						// @extend .white-text;
+						@include font-size($h6-size);
+						font-style: italic;
+					}
 				}
 			}
 		}
@@ -296,7 +361,7 @@
 		position: relative;
 		img {
 			@extend .one-whole;
-			border-right: 1px solid white;
+			// border-right: 1px solid white;
 		}
 		
 		.image-caption {

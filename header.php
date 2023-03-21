@@ -22,7 +22,7 @@ $hk_options = get_option('hk_theme');
     exit();
 }*/
 /* hide if single and not visible */
-if (in_category($hk_options["hidden_cat"])) {
+if (isset($hk_options["hidden_cat"]) && in_category($hk_options["hidden_cat"])) {
 	header("HTTP/1.0 404 Not Found");
 	//TODO print 404 error - include("404.php");?
 	die("Inte synlig.");
@@ -30,8 +30,8 @@ if (in_category($hk_options["hidden_cat"])) {
 
 /* get category_as_filter recursive setting */
 $catvalue = "category_" . get_query_var("cat");
-$default_settings['category_as_filter'] = ((get_field("category_as_filter", $catvalue)=="")?false:true);
-$default_settings['category_show_children'] = ((get_field("category_show_children", $catvalue)=="")?false:true);
+$default_settings['category_as_filter'] = ((function_exists("get_field") && get_field("category_as_filter", $catvalue)=="")?false:true);
+$default_settings['category_show_children'] = ((function_exists("get_field") && get_field("category_show_children", $catvalue)=="")?false:true);
 
 ?><!DOCTYPE html>
 <!--[if IE 6]>
@@ -64,7 +64,7 @@ $meta_description = '';
 if (is_single() && get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true)) {
 	$meta_description = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
 }
-else if (!is_single() && $hk_options["meta_description"] != "") {
+else if (!is_single() && isset($hk_options["meta_description"]) ) {
 	$meta_description = $hk_options["meta_description"];
 } else if ( !defined('RANK_MATH_PRO_VERSION') && is_single() && get_the_ID() > 0) {
 	$meta_description = substr( strip_tags(get_post_field('post_content', get_the_ID())), 0, 200);
@@ -100,35 +100,7 @@ if ($meta_description != "") :?>
 	?></title>
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<?php if ( $hk_options["favicon_image32"] != "" ) : ?>
-	<link rel="icon" href="<?php echo $hk_options["favicon_image32"]; ?>" sizes="32x32" type="image/png">
-<?php endif; ?>
-<?php if ( $hk_options["favicon_image64"] != "" ) : ?>
-	<link rel="icon" href="<?php echo $hk_options["favicon_image64"]; ?>" sizes="64x64" type="image/png">
-<?php endif; ?>
-<?php if ( $hk_options["favicon_image128"] != "" ) : ?>
-	<link rel="icon" href="<?php echo $hk_options["favicon_image128"]; ?>" sizes="128x128" type="image/png">
-<?php endif; ?>
-<?php if ( $hk_options["favicon_image256"] != "" ) : ?>
-	<link rel="icon" href="<?php echo $hk_options["favicon_image256"]; ?>" sizes="256x256" type="image/png">
-<?php endif; ?>
-<?php if ( $hk_options["favicon_image152"] != "" ) : ?>
-	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image152"]; ?>" sizes="152x152" type="image/png">
-<?php endif; ?>
-<?php if ( $hk_options["favicon_image144"] != "" ) : ?>
-	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image144"]; ?>" sizes="144x144" type="image/png">
-<?php endif; ?>
-<?php if ( $hk_options["favicon_image120"] != "" ) : ?>
-	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image120"]; ?>" sizes="120x120" type="image/png">
-<?php endif; ?>
-<?php if ( $hk_options["favicon_image114"] != "" ) : ?>
-	<link rel="apple-touch-icon" href="<?php echo $hk_options["favicon_image114"]; ?>" sizes="114x114" type="image/png">
-<?php endif; ?>
-
-<?php if ( $hk_options["favicon_image64"] != "" ) : ?>
-	<!--[if IE]><link rel="shortcut icon" href="<?php echo $hk_options["favicon_image64"]; ?>"><![endif]-->
-<?php endif; ?>
-
+<?php wp_site_icon(); ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 <?php
@@ -146,7 +118,7 @@ if ($meta_description != "") :?>
 	 */
 
 	/* option to be able to add scipts or other from setting */
-	echo $hk_options['in_head_section'];
+	echo isset($hk_options['in_head_section']) ? $hk_options['in_head_section'] : '';
 
 	/* wp_head last in <head> */
 	wp_head();
@@ -157,8 +129,6 @@ $term = get_queried_object();
 $current_cat = (!empty($term)) ? $term->slug : '';
 $firstpageClass =(is_sub_category_firstpage() && get_query_var("tag") == "") ? "home":"";
 $printpageClass = ((!empty($_REQUEST["print"])) && $_REQUEST["print"] == 1) ? "print":"";
-$hide_leftmenu_class = (!empty($hk_options['hide_leftmenu']) && $hk_options['hide_leftmenu']) ? "hide-left-menu":"";
-$dynamic_post_load_class = (!empty($hk_options['use_dynamic_posts_load_in_category']) && $hk_options['use_dynamic_posts_load_in_category'] == 1) ? "hk-js-dynamic-posts-load  dynamic-posts-load":"no-dynamic-posts-load";
 $category_as_filter_class = (!empty($default_settings["category_as_filter"]) && $default_settings["category_as_filter"] == 1) ? "hk-js-category-filter  category-filter":"no-category-filter";
 $category_show_children_class = (!empty($default_settings["category_show_children"]) && $default_settings["category_show_children"] == 1) ? "hk-js-category-show-children  category-show-children":"no-category-show-children";
 $lattlast_cat_array = (!empty($hk_options["show_categorylist_lattlast"])) ? explode(",", str_replace(" ", "", $hk_options["show_categorylist_lattlast"])) : '';
@@ -175,8 +145,8 @@ if (empty($lattlast) && is_single()) {
 }
  
 ?>
-<body <?php body_class($lattlast . " " . $category_show_children_class . " " . $category_as_filter_class . " " . $dynamic_post_load_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " new-menu " . $hide_leftmenu_class ); ?>>
-<?php echo $hk_options['in_topbody_section']; ?>
+<body <?php body_class($lattlast . " " . $category_show_children_class . " " . $category_as_filter_class . " " . $firstpageClass . " " . $printpageClass . " " . $printpageClass . " new-menu " ); ?>>
+<?php echo isset($hk_options['in_topbody_section']) ? $hk_options['in_topbody_section'] : ''; ?>
 <div id="page" class="hfeed">
 	<?php
 		require( get_template_directory() . '/inc/hk-header.php');

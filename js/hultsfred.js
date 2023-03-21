@@ -521,6 +521,99 @@ if (window.location.href.indexOf("artikel") > -1) {
     }
     $(document).ready(function() {
 
+        $('body').addClass('dom-ready');
+
+        /* bubble */
+        if ($(".bubble").length >= 2) {
+            var bubble_timeout = false
+            setAnimateTimeout();
+
+            
+            function animateBubbleNext() {
+                var bubble = $(".js-bubble-slideshow").find('.quick-bubble-scroll');
+                if (bubble.length == 0) {
+                    return;
+                }
+                var scroll = bubble.scrollLeft();
+                var width = bubble.width();
+                var max = 0;
+                bubble.children().each(function() {
+                    max += $(this).width();
+                });
+                max = Math.round(max / width);
+                // calculate which bubble is visible
+                var nr = Math.round(scroll / width);
+                nr++;
+                if (nr >= max) {
+                    nr = 0;
+                }
+                // console.log(nr + " " + max)
+                bubble.scrollLeft(nr * width)
+                setAnimateTimeout()
+            }
+            function setAnimateTimeout() {
+                if (bubble_timeout) {
+                    clearTimeout(bubble_timeout)
+                }
+                bubble_timeout = setTimeout(animateBubbleNext, 7000)
+            }
+            $(".bubble").each(function() {
+                var bubble = $(this);
+            });
+            $(".nav-item").click(function() {
+                $(this).data('id')
+                
+            });
+            $('.quick-bubble-scroll').scroll(function() {
+                var scroll = $(this).scrollLeft();
+                var width = $(this).width();
+                var max = 0;
+                $(this).children().each(function() {
+                    max += $(this).width();
+                });
+                // calculate which bubble is visible
+                var nr = Math.round(scroll / width);
+                $(this).find(`.bubble[data-id!=${nr}]`).removeClass("active");
+                $(this).find(`.bubble[data-id=${nr}]`).addClass("active");
+                $(this).parent().find(`.nav-item[data-id!=${nr}]`).removeClass("active");
+                $(this).parent().find(`.nav-item[data-id=${nr}]`).addClass("active");
+                if (nr == 0) {
+                    $('.quick-bubble .arrow-left').addClass('disabled');
+                } else {
+                    $('.quick-bubble .arrow-left').removeClass('disabled');
+                }
+                if (nr == max / width - 1) {
+                    $('.quick-bubble .arrow-right').addClass('disabled');
+                } else {
+                    $('.quick-bubble .arrow-right').removeClass('disabled');
+                }
+                // console.log([scroll, width, max, nr]);
+            });
+            $('.quick-bubble .arrow').click(function() {
+                var bubble = $(this).parents('.quick-bubble').find('.quick-bubble-scroll');
+                var scroll = bubble.scrollLeft();
+                var width = bubble.width();
+                var max = 0;
+                bubble.children().each(function() {
+                    max += $(this).width();
+                });
+                // calculate which bubble is visible
+                var nr = Math.round(scroll / width);
+                if ($(this).hasClass('arrow-left') && nr > 0) {
+                    nr--;
+                }
+                else if ($(this).hasClass('arrow-right') && nr < max / width) {
+                    nr++;
+                }
+                bubble.scrollLeft(nr * width)
+                setAnimateTimeout()
+                // bubble.animate({
+                //     scrollLeft: nr * width
+                // }, 1500);
+            });
+
+
+        }
 
 
         /* add filter_search */
@@ -529,19 +622,6 @@ if (window.location.href.indexOf("artikel") > -1) {
             add_filtersearch($(".tag-listing"));
         }
 
-
-        /**
-         * cleanup if dynamic load of posts
-         */
-        if ($("body").hasClass("hk-js-dynamic-posts-load")) {
-            // hide pages info when infinite scroll
-            $("#nav-below").hide();
-            $(".breadcrumb .postcount .pagecountinfo").hide();
-            // add article count at bottom aswell
-            $("<div>").addClass("pagecount-below").addClass("breadcrumb").css("padding-left", "0px").appendTo("#primary");
-            $(".breadcrumb .postcount").clone().appendTo(".pagecount-below");
-            $(".pagecount-below .postcount").removeClass("float--right");
-        }
 
 
         /**
@@ -684,12 +764,6 @@ if (window.location.href.indexOf("artikel") > -1) {
          */
         $('#scrollTo_top').hide();
         $(window).scroll(function() {
-
-            /* load next pages posts dynamically when reaching bottom of page */
-
-            if ($("body").hasClass("hk-js-dynamic-posts-load") && parseInt($(this).scrollTop()) > parseInt($(document).height() - $(window).height() * 2 - $("#colophon").height())) {
-                dyn_posts_load_posts();
-            }
 
 
             /* show scroll to top icon */
@@ -943,48 +1017,6 @@ if (window.location.href.indexOf("artikel") > -1) {
     }
 
 
-    /**
-     * helper to ajax search
-     */
-    /*
-function erase_and_refocus_on_search_input()
-{
-	$('#s').val('');
-	$('#s').focus();
-
-	var dropdown = $('.searchresult-wrapper');
-
-	if($(dropdown).length > 0) {
-		$(dropdown).remove();
-	}
-
-	var erase_button = $('.clearbutton');
-
-	if($(erase_button).length > 0) {
-		$(erase_button).remove();
-	}
-
-}
-*/
-
-    /**
-     * article actions to be set when ready and when dynamic loading
-     */
-    /*
-    function setQuickLinks(el) {
-
-        if ($(el).find(".contact_title").length > 0) {
-            $(el).find(".js-quick-link.contact").removeClass("force-hidden");
-        }
-        if ($(el).find(".related_title").length > 0) {
-            $(el).find(".js-quick-link.related").removeClass("force-hidden");
-        }
-        $(el).find(".js-quick-link a").click(function(ev) {
-            ev.preventDefault();
-            $("html,body").animate({ scrollTop: $("[name='" + $(this).attr("href").substring(1) + "']").position().top }, 200);
-        });
-    }
-    */
 
     function setArticleActions(el) {
         //add filtersearch
@@ -1203,85 +1235,6 @@ function erase_and_refocus_on_search_input()
         	$(".contact-popup").remove();
         }*/
     }
-
-    /**
-     * load next posts dynamic
-     */
-    var load_next_page = true;
-    var first_page_loaded = false;
-    var filter = "";
-    var shownposts = "";
-
-    function dyn_posts_load_posts() {
-        // stop if already loading
-        if (!load_next_page) {
-            return false;
-        }
-        load_next_page = false;
-
-        // first time only, get parameters
-        if (!first_page_loaded) {
-            first_page_loaded = true;
-            filter = hultsfred_object["currentFilter"];
-            filter = JSON.parse(filter);
-            shownposts = $("#shownposts").data("shownposts");
-            shownposts = shownposts.split(",");
-        }
-
-        // setup div to collect new posts
-        $('#content')
-            .append('<div id="dyn-posts-placeholder" class="dyn-posts-placeholder"></div><div class="dyn-posts-loading">Laddar fler artiklar <span class="spinner" style="display: inline-block"></span></div>')
-
-        // update to new shownposts
-        filter["shownposts"] = shownposts;
-
-        // load new posts
-        $('#dyn-posts-placeholder').hide().load(hultsfred_object["templateDir"] + "/ajax/posts_load.php", { filter: JSON.stringify(filter) },
-            function() {
-
-                // do nothing if dyn-posts is empty
-                if ($('#dyn-posts-placeholder').html() == "") {
-                    $(".dyn-posts-loading").html("Alla artiklar &auml;r laddade.");
-                    load_next_page = false;
-                    return; // i.e. don't try to load more pages
-                }
-
-                // read-more toggle actions on loaded posts
-                $('#dyn-posts-placeholder').find('article').each(function() {
-                    setArticleActions($(this));
-                });
-
-                // show list when loaded and unwrap, getting ready for more posts
-                $('#dyn-posts-placeholder').slideDown("fast", function() {
-
-                    // debug
-                    //$('#dyn-posts-placeholder').prepend("<div>client: " + filter["paged"] + "</div>");
-
-                    // add added posts to shownposts
-                    $('#dyn-posts-placeholder').find(".article_id").each(function() {
-                        shownposts.push($(this)[0].innerText);
-                    });
-
-                    // unwrap temp wrapper
-                    $('#dyn-posts-placeholder').children(":first-child").unwrap();
-
-                    // update loaded post count
-                    $(".breadcrumb .postcount .count").html($("#content article").length);
-
-                    // ready to load next page
-                    $(".dyn-posts-loading").remove();
-                    load_next_page = true;
-                });
-
-            }
-
-        );
-
-
-        return false;
-    };
-
-
 
 
 

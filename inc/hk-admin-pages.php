@@ -188,6 +188,7 @@ add_filter('upload_mimes', 'custom_upload_mimes');
 if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'thumbnail-image',  $default_settings['thumbnail-image'][0], $default_settings['thumbnail-image'][1], $default_settings['thumbnail-image'][2] );
 	add_image_size( 'featured-image',  $default_settings['featured-image'][0], $default_settings['featured-image'][1], $default_settings['featured-image'][2] );
+	add_image_size( 'featured-image-large',  $default_settings['featured-image-large'][0], $default_settings['featured-image-large'][1], $default_settings['featured-image-large'][2] );
 	add_image_size( 'slideshow-image',  $default_settings['slideshow-image'][0], $default_settings['slideshow-image'][1], $default_settings['slideshow-image'][2] );
 	add_image_size( 'wide-image',  $default_settings['wide-image'][0], $default_settings['wide-image'][1], $default_settings['wide-image'][2] );
 	add_image_size( 'contact-image',  $default_settings['contact-image'][0], $default_settings['contact-image'][1], $default_settings['contact-image'][2] );

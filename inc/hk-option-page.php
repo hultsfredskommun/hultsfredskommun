@@ -66,48 +66,6 @@ function hk_theme_options_do_page() {
 			</p>
 			<p><label for="hk_theme[logo_link_alt]">ALT-text p&aring; loggan:</label><br/><input size="80" type="text" name="hk_theme[logo_link_alt]" value="<?php echo $options['logo_link_alt']; ?>" /></p>
 			<p><label for="hk_theme[logo_link]">URL som loggan ska peka p&aring;:</label><br/><input size="80" type="text" name="hk_theme[logo_link]" value="<?php echo $options['logo_link']; ?>" /></p>
-			<h3>Favicon</h3>
-			<p><label for="hk_theme[favicon_image32]">Favicon 32x32</label><br/>
-				<img width='32' src="<?php echo $options["favicon_image32"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image32]" value="<?php echo $options["favicon_image32"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[favicon_image64]">Favicon 64x64</label><br/>
-				<img width='64' src="<?php echo $options["favicon_image64"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image64]" value="<?php echo $options["favicon_image64"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[favicon_image128]">Favicon 128x128</label><br/>
-				<img width='128' src="<?php echo $options["favicon_image128"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image128]" value="<?php echo $options["favicon_image128"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[favicon_image256]">Favicon 256x256</label><br/>
-				<img width='256' src="<?php echo $options["favicon_image256"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image256]" value="<?php echo $options["favicon_image256"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-
-			<p><label for="hk_theme[favicon_image152]">Apple Favicon 152x152</label><br/>
-				<img width='152' src="<?php echo $options["favicon_image152"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image152]" value="<?php echo $options["favicon_image152"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[favicon_image144]">Apple Favicon 144x144</label><br/>
-				<img width='144' src="<?php echo $options["favicon_image144"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image144]" value="<?php echo $options["favicon_image144"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[favicon_image120]">Apple Favicon 120x120</label><br/>
-				<img width='120' src="<?php echo $options["favicon_image120"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image120]" value="<?php echo $options["favicon_image120"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
-			<p><label for="hk_theme[favicon_image114]">Apple Favicon 114x114</label><br/>
-				<img width='114' src="<?php echo $options["favicon_image114"]; ?>" alt='Vald bild' title='Vald bild' />
-				<input class="upload-url" type="text" size="36" name="hk_theme[favicon_image114]" value="<?php echo $options["favicon_image114"]; ?>" />
-				<input class="upload_image_button" type="button" value="Upload Image" />
-			</p>
 
 			<h3>S&ouml;k och meny</h3>
 			<p><label for="hk_theme[search_watermark]">Vattenst&auml;mpel i s&ouml;k</label><br/><input size="80" type="text" name="hk_theme[search_watermark]" value="<?php echo $options['search_watermark']; ?>" /></p>
@@ -159,9 +117,6 @@ function hk_theme_options_do_page() {
 				<input class="upload_image_button" type="button" value="Upload Image" />
 			</p>
 
-			<p><input type="checkbox" name="hk_theme[hide_articles_in_subsubcat]" value="1"<?php checked( 1 == $options['hide_articles_in_subsubcat'] ); ?> /> <label for="hk_theme[hide_articles_in_subsubcat]">Dölj artiklar p&aring; ing&aring;ngssidor.</label></p>
-			<p><input type="checkbox" name="hk_theme[hide_leftmenu]" value="1"<?php checked( 1 == $options['hide_leftmenu'] ); ?> /> <label for="hk_theme[hide_leftmenu]">Dölj v&auml;nstermeny.</label></p>
-			<p><input type="checkbox" name="hk_theme[use_dynamic_posts_load_in_category]" value="1"<?php checked( 1 == $options['use_dynamic_posts_load_in_category'] ); ?> /> <label for="hk_theme[use_dynamic_posts_load_in_category]">Anv&auml;nd dynamisk laddning (infinite scroll) av inl&auml;gg p&aring; kategorilistning.</label></p>
 
 			<p><label for="hk_theme[startpage_cat]">Välj kategori som är startsida.</label><br/>
 							<?php
@@ -243,13 +198,6 @@ function hk_theme_options_do_page() {
 				wp_dropdown_categories( $args );
 			?>
 			</p>
-
-			<p><label for="hk_theme[order_by_date]">Välj vilka kategorier som ska sorteras på datum istället för mest besökt.</label><br/><input size="40" type="text" name="hk_theme[order_by_date]" value="<?php echo $options['order_by_date']; ?>" /></p>
-			<p><label for="hk_theme[order_by_alpha]">Välj vilka kategorier som ska sorteras i bokstavsordning istället för mest besökt.</label><br/><input size="40" type="text" name="hk_theme[order_by_alpha]" value="<?php echo $options['order_by_alpha']; ?>" /></p>
-
-			<p><label for="hk_theme[num_levels_in_menu]">Antal nivåer i huvudmeny. (default: 2)</label><br/><input size="8" type="text" name="hk_theme[num_levels_in_menu]" value="<?php echo (!isset($options["num_levels_in_menu"]) || $options["num_levels_in_menu"] == "")?2:$options['num_levels_in_menu']; ?>" /></p>
-			<p><label for="hk_theme[show_tags]">Visa etiketter i vänstermeny. (default: 1) </label><br/><input type="text" name="hk_theme[show_tags]" value="<?php echo (!isset($options["show_tags"]) || $options["show_tags"] == "")?1:$options['show_tags']; ?>" /></p>
-			<p><label for="hk_theme[category_slideshow_thumbnail_size]">Tumnagelstorlek för bildspel i kategorilista. (default: wide-image)</label><br/><input size="8" type="text" name="hk_theme[category_slideshow_thumbnail_size]" value="<?php echo (!isset($options["category_slideshow_thumbnail_size"]) || $options["category_slideshow_thumbnail_size"] == "")?'wide-image':$options['category_slideshow_thumbnail_size']; ?>" /></p>
 
 			<?php submit_button(); ?>
 

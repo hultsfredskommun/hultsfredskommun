@@ -6,12 +6,11 @@
 		global $default_settings;
         $category_as_filter = $default_settings["category_as_filter"];
         $category_show_children = $default_settings["category_show_children"];
-        $dynamic_posts_load = $default_settings["use_dynamic_posts_load_in_category"];
 
 
         // if filter is enabled on category (ACF in category)
         if ($category_as_filter) {
-            echo "Kategorifilter &auml;r p&aring; (fungerar inte &auml;n)." . $category_as_filter . " - " . $dynamic_posts_load . "(visa underliggande kategorier: " . $category_show_children . ")";
+            echo "Kategorifilter &auml;r p&aring; (fungerar inte &auml;n)." . $category_as_filter . " (visa underliggande kategorier: " . $category_show_children . ")";
         }
 
 		if (!is_sub_category_firstpage()) {
@@ -35,8 +34,8 @@
         <div id="content" role="main">
 
         <?php
-            /* show if hide_articles_in_subsubcat not is set */
-            if ($default_settings["hide_articles_in_subsubcat"] != 1 || !is_sub_sub_category_firstpage()) {
+            /* show if not is sub_sub */
+            if ($default_settings["show_articles"] || !is_sub_sub_category_firstpage()) {
                 $countposts = 0;
                 $shownPosts = array();
                 if ($cat != "") {

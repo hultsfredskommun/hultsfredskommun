@@ -9,7 +9,7 @@ $imagesizeArr = array(  'thumbnail-image' => 'thumbnail-image',
 						'thumbnail-news-image' => 'thumbnail-news-image');
 
 $rekai_array = [];
-if (get_field('rekai_enable', 'options')) {
+if (function_exists("get_field") && get_field('rekai_enable', 'options')) {
 $rekai_array = array( array (
 			'key' => '56bb0a25a41aa',
 			'name' => 'lagg_till_rekai',
@@ -74,6 +74,11 @@ $rekai_array = array( array (
 
 					'choices' => array (
 						'one-whole' => 'Fullbredd',
+						'one-half' => 'En halv',
+						'one-third' => 'En tredjedel',
+						'two-thirds' => 'Två tredjedelar',
+						'one-quarter' => 'En fjärdedel',
+						'three-quarters' => 'Tre fjärdedelar',						
 					),
 					'default_value' => array (
 						'one-whole'
@@ -83,8 +88,8 @@ $rekai_array = array( array (
 					'ui' => 0,
 					'ajax' => 0,
 					'placeholder' => '',
-					'disabled' => 1,
-					'readonly' => 1,
+					'disabled' => 0,
+					'readonly' => 0,
 				),
 				array (
 					'key' => 'field_56eabc5e154aa',
@@ -103,6 +108,36 @@ $rekai_array = array( array (
 					'default_value' => 0,
 				),
 
+				array (
+					'key' => 'field_56cc104207f92',
+					'label' => 'Stil',
+					'name' => 'rek_style',
+					'type' => 'select',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '35%',
+						'class' => '',
+						'id' => '',
+					),
+
+					'choices' => array (
+						'none' => 'Löpande',
+						'rows' => 'Rader',
+						
+					),
+					'default_value' => array (
+						'none'
+					),
+					'allow_null' => 0,
+					'multiple' => 0,
+					'ui' => 0,
+					'ajax' => 0,
+					'placeholder' => '',
+					'disabled' => 0,
+					'readonly' => 0,
+				),
 				
 			)
 		) 
@@ -469,6 +504,49 @@ acf_add_local_field_group(array (
 					'display' => 'block',
 					'sub_fields' => array (
 						array (
+							'key' => 'field_56cc0a2e618ab',
+							'label' => 'Rubrik',
+							'name' => 'title',
+							'type' => 'text',
+							'instructions' => 'Rubrik som syns över nyheterna.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '25%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => 'Nyheter',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+							'readonly' => 0,
+							'disabled' => 0,
+						),
+						array(
+							'key' => 'field_61f8fa4d79b08',
+							'label' => 'Antal',
+							'name' => 'num_news',
+							'type' => 'number',
+							'instructions' => 'Antal nyheter som ska visas.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '25%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '4',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'min' => '',
+							'max' => '',
+							'step' => '',
+						),
+
+						array (
 							'key' => 'field_56cc104207f90',
 							'label' => 'Layout',
 							'name' => 'layout',
@@ -477,7 +555,7 @@ acf_add_local_field_group(array (
 							'required' => 1,
 							'conditional_logic' => 0,
 							'wrapper' => array (
-								'width' => '85%',
+								'width' => '35%',
 								'class' => '',
 								'id' => '',
 							),
@@ -516,7 +594,83 @@ acf_add_local_field_group(array (
 							'message' => '',
 							'default_value' => 0,
 						),
-					
+						array(
+							'key' => 'field_61f8fa4d79b09',
+							'label' => 'Antal kolumner',
+							'name' => 'num_news_cols',
+							'type' => 'number',
+							'instructions' => 'Antal kolumner.',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '25%',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '3',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'min' => '',
+							'max' => '',
+							'step' => '',
+						),
+						array(
+							'key' => 'field_64165de834ad7',
+							'label' => 'Nyhetsikon - transparent - kvadratisk',
+							'name' => 'news_icon',
+							'aria-label' => '',
+							'type' => 'image',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '40%',
+								'class' => '',
+								'id' => '',
+							),
+							'return_format' => 'id',
+							'library' => 'all',
+							'min_width' => '',
+							'min_height' => '',
+							'min_size' => '',
+							'max_width' => '',
+							'max_height' => '',
+							'max_size' => '',
+							'mime_types' => '',
+							'preview_size' => 'thumbnail',
+						),
+						array (
+							'key' => 'field_56cc104207f91',
+							'label' => 'Bildutseende',
+							'name' => 'image_style',
+							'type' => 'select',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '35%',
+								'class' => '',
+								'id' => '',
+							),
+
+							'choices' => array (
+								'none' => 'Ingen',
+								'circle' => 'Rund',
+								'thumbnail' => 'Tumnagel',
+							),
+							'default_value' => array (
+								'none',
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+
 				)
 			),
 
@@ -726,6 +880,126 @@ acf_add_local_field_group(array (
 					)
 				),
 
+				array (
+					'key' => '56bb0a25a4103',
+					'name' => 'lagg_till_wide_size_start',
+					'label' => 'Utvalda puffar',
+					'display' => 'block',
+					'sub_fields' => array (
+						array (
+							'key' => 'field_56cc104207f51',
+							'label' => 'Layout',
+							'name' => 'layout',
+							'type' => 'select',
+							'instructions' => 'Hur stor del av skärmen som puffen använda.',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '45%',
+								'class' => '',
+								'id' => '',
+							),
+	
+							'choices' => array (
+								'one-whole-wide' => 'Helbredd',
+								'one-whole' => 'Fullbredd',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+					)
+				),
+
+				array (
+					'key' => '56bb0a25a4104',
+					'name' => 'lagg_till_wide_size_stop',
+					'label' => 'Utvalda puffar - stopp',
+					'display' => 'block',
+					'sub_fields' => array ()
+				),
+
+				array (
+					'key' => '56bb0a25a4102',
+					'name' => 'lagg_till_bubble',
+					'label' => 'Bubblare',
+					'display' => 'block',
+					'sub_fields' => array (
+						array (
+							'key' => 'field_56cc104207f52',
+							'label' => 'Layout',
+							'name' => 'layout',
+							'type' => 'select',
+							'instructions' => 'Hur stor del av skärmen som puffen använda.',
+							'required' => 1,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '70%',
+								'class' => '',
+								'id' => '',
+							),
+	
+							'choices' => array (
+								'one-whole-wide' => 'Helbredd',
+								'one-whole' => 'Fullbredd',
+								// 'one-half' => 'En halv',
+								// 'one-third' => 'En tredjedel',
+								// 'two-thirds' => 'Två tredjedelar',
+								// 'one-quarter' => 'En fjärdedel',
+								// 'three-quarters' => 'Tre fjärdedelar',
+							),
+							'default_value' => array (
+							),
+							'allow_null' => 0,
+							'multiple' => 0,
+							'ui' => 0,
+							'ajax' => 0,
+							'placeholder' => '',
+							'disabled' => 0,
+							'readonly' => 0,
+						),
+						
+						array (
+							'key' => 'field_56eabc5e15414',
+							'label' => 'Bläddra automatiskt',
+							'name' => 'animate',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '15%',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
+						),
+						array (
+							'key' => 'field_56eabc5e15413',
+							'label' => 'D&ouml;lj puff',
+							'name' => 'inactive',
+							'type' => 'true_false',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '15%',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
+						),
+	
+					)
+				),
 
 
 				array (

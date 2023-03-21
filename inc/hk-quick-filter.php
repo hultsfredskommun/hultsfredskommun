@@ -254,7 +254,7 @@
                 $post->categories[] = $post_category->term_id;
             }
 
-            $post->image_url = get_field('hk_featured_images', $post->ID)[0]['hk_featured_image']['sizes']['thumbnail-image'];
+            $post->image_url = (function_exists("get_field")) ? get_field('hk_featured_images', $post->ID)[0]['hk_featured_image']['sizes']['thumbnail-image']:'';
             $post->permalink = get_permalink($post->ID);
 
             $regex = '#(<h([1-6])[^>]*>)\s?(.*)?\s?(<\/h\2>)#';

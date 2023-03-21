@@ -18,15 +18,15 @@ global $default_settings;
 	</div><!-- #main -->
 
 	<?php //hk_contact_tab(); ?>
-	<?php if ($hk_options["contact_side_link"] != "") : ?>
+	<?php if (isset($hk_options["contact_side_link"]) && $hk_options["contact_side_link"] != "") : ?>
 		<div id="contact-side-tab"><a href="<?php echo $hk_options["contact_side_link"]; ?>" title="L&auml;mna din synpunkt eller felanm&auml;lan"></a></div>
 	<?php endif; ?>
 	
-	<?php if ($hk_options["comment_side_link"] != "") : ?>
+	<?php if (isset($hk_options["comment_side_link"]) && $hk_options["comment_side_link"] != "") : ?>
 		<div id="comment-side-tab"><a href="<?php echo $hk_options["comment_side_link"]; ?>" title="Hj&auml;lp oss att bli b&auml;ttre"></a></div>
 	<?php endif; ?>
 
-	<?php if ( $hk_options["logo_footer_image"] || 
+	<?php if ( (isset($hk_options["logo_footer_image"]) && $hk_options["logo_footer_image"]) || 
 			is_active_sidebar( 'footer-sidebar' ) || is_active_sidebar( 'footer-sidebar-2' ) || is_active_sidebar( 'footer-sidebar-3' ) || is_active_sidebar( 'footer-sidebar-4' ) ) : ?>
 	<footer id="colophon" class="colophon" role="contentinfo">
 			<a name="footer"></a>
@@ -83,7 +83,7 @@ global $default_settings;
 			create_footer("footer");
 			create_footer("footer2");
 
-		if (($hk_options["footer_image"] != "") || ( $hk_options["logo_footer_image"] != "")) : ?>
+		if ((isset($hk_options["footer_image"]) && $hk_options["footer_image"] != "") || ( isset($hk_options["logo_footer_image"]) && $hk_options["logo_footer_image"] != "")) : ?>
 		<div class="footer-image-wrapper">
 			<?php /* footer image */
 			if ($hk_options["footer_image"] != "") : ?>

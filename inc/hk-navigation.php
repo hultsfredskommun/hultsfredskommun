@@ -17,7 +17,7 @@ function hk_postcount() {
 			$url = "";
 			$class = "nolink";
 		}
-		if ($default_settings["hide_articles_in_subsubcat"] != 1  || !is_sub_sub_category_firstpage()) :
+		if (!is_sub_sub_category_firstpage()) :
 			echo "<span class='postcount $class float--right' href='$url'>Visar <span class='count'>" . $wp_query->post_count . "</span>";
 			if ($wp_query->max_num_pages > 1) {
 				echo " av " . $wp_query->found_posts;
@@ -290,52 +290,6 @@ function hk_mobile_navmenu_navigation($menu_name, $cat, $menu_class, $mainmenu_c
 		$sub_title = "";
 
 
-
-	/*
-	REMOVED OLD SUB-MENU
-	echo "<div class='responsive-sub-menu $menu_class'>";
-	if ($sub_parent > 0 && $parent > 0) {
-		//echo "<a class='menu-up' href='" . get_category_link($parent) . "'><span class='menu-icon up'></span></a>";
-	}
-
-	echo "<a class='js-show-main-sub-menu menu'><span class='menu-icon'></span>";
-	echo "<span class='title'>Meny</span>";//<span class='dropdown-icon'></span>";
-
-	echo "</a>";
-	echo "</div>";
-
-	if ($nav_menu_sub_parent > 0) {
-
-		if ($default_settings['num_levels_in_menu'] > 1) {
-			echo "<ul class='main-sub-menu $menu_class $mainmenu_class'>";
-			$submenu = new hk_submenu_walker_nav_menu();
-			$args = array(
-				'theme_location'	=> $menu_name,
-				'container' 		=> '',
-				'items_wrap' 		=> '%3$s',
-				'before' 			=> '',
-				'after'				=> '',
-				'depth' 			=> $default_settings['num_levels_in_menu'],
-				'echo' 				=> true,
-				'walker'			=> $submenu,
-				'nav_menu_parent'	=> $nav_menu_top_parent
-			);
-
-			if ($sub_parent > 0) {
-				$args["current_category"] = $sub_parent;
-			}
-			wp_nav_menu( $args );
-			if ( is_active_sidebar( 'right-main-sub-menu-item-sidebar' ) ) {
-				dynamic_sidebar( 'right-main-sub-menu-item-sidebar' );
-			}
-			echo "</ul>";
-		}
-	}
-	else {
-		echo "<ul class='main-sub-menu'><li class='menu-item one-whole'><a>&nbsp;</a></li></ul>";
-	}
-	*/
-
 }
 function hk_navmenu_old_navigation($menu_name, $cat, $menu_class) {
 	global $args, $hk_options, $default_settings;
@@ -449,9 +403,6 @@ function hk_navigation() {
 	$category_as_filter = $default_settings["category_as_filter"];
 	$search = get_query_var("s");
 
-	// hide menu if hide_leftmenu is set
-	if (!empty($options['hide_leftmenu']) && $options['hide_leftmenu'] == 1) return;
-	
 	if (get_post_type() == "page" && get_page_template_slug() == 'forum.php') return;
 
 	// else show menu
@@ -712,109 +663,107 @@ function hk_menu_navigation() {
 function hk_displayAllTagFilter($show_title = true, $ul_class="more-navigation", $echo = true, $a_class = "", $cat = "", $skip_ul_wrapper = false) {
 	global $default_settings;
 	$retValue = "";//cat: $cat " . get_query_var("cat");
-	if ($default_settings["show_tags"] != 0) :
 
-		$tags = get_tags();
+	$tags = get_tags();
     $tags_filter = get_query_var("tag");
 
-		if (!empty($tags) || !empty($tags_filter)) :
-            if (!$skip_ul_wrapper) {
-                $retValue .= "<ul class='$ul_class'>";
-            }
-            /* show tag title */
-			if ($show_title) {
-				$retValue .= "<li class='heading'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
-			}
-
-			/* helper to remember if all tag-filter-items has been seen */
-			if (!empty($tags_filter)) {
-				$tags_selected_and_visible = array();
-				$tag_array = explode(",",$tags_filter);
-				foreach( $tag_array as $tagslug) {
-					$tags_selected_and_visible[$tagslug] = false;
-				}
-			}
-
-			/* show tag list */
-			foreach( $tags as $tagitem) {
-				$tags_selected_and_visible[$tagitem->tag_slug] = true;
-				$tagitem = (object)array("tag_ID" => $tagitem->term_id, "tag_name" => $tagitem->name, "tag_slug" => $tagitem->slug );
-
-				$retValue .= hk_generateTagLink($tagitem, $a_class, $cat);
-			}
-
-
-			if (!$skip_ul_wrapper) {
-			 $retValue .= "</ul>";
-            }
-		endif; // endif tags available
-		if ($echo) {
-			echo $retValue;
-		} else {
-			return $retValue;
+	if (!empty($tags) || !empty($tags_filter)) :
+		if (!$skip_ul_wrapper) {
+			$retValue .= "<ul class='$ul_class'>";
 		}
-	endif;
+		/* show tag title */
+		if ($show_title) {
+			$retValue .= "<li class='heading'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
+		}
+
+		/* helper to remember if all tag-filter-items has been seen */
+		if (!empty($tags_filter)) {
+			$tags_selected_and_visible = array();
+			$tag_array = explode(",",$tags_filter);
+			foreach( $tag_array as $tagslug) {
+				$tags_selected_and_visible[$tagslug] = false;
+			}
+		}
+
+		/* show tag list */
+		foreach( $tags as $tagitem) {
+			$tags_selected_and_visible[$tagitem->tag_slug] = true;
+			$tagitem = (object)array("tag_ID" => $tagitem->term_id, "tag_name" => $tagitem->name, "tag_slug" => $tagitem->slug );
+
+			$retValue .= hk_generateTagLink($tagitem, $a_class, $cat);
+		}
+
+
+		if (!$skip_ul_wrapper) {
+			$retValue .= "</ul>";
+		}
+	endif; // endif tags available
+	if ($echo) {
+		echo $retValue;
+	} else {
+		return $retValue;
+	}
+
 }
 
 // show normal tag filter list
 function hk_displayTagFilter($show_title = true, $ul_class="more-navigation", $echo = true, $a_class = "", $cat = "", $skip_ul_wrapper = false) {
 	global $default_settings;
 	$retValue = "";//cat: $cat " . get_query_var("cat");
-	if ($default_settings["show_tags"] != 0) :
 
-		if ($cat != "") {
-            $tags = hk_getCategoryTags($cat);
-        } else {
-            $tags = hk_getCategoryTags(get_query_var("cat"));
-        }
-        $tags_filter = get_query_var("tag");
+	if ($cat != "") {
+		$tags = hk_getCategoryTags($cat);
+	} else {
+		$tags = hk_getCategoryTags(get_query_var("cat"));
+	}
+	$tags_filter = get_query_var("tag");
 
-		if (!empty($tags) || !empty($tags_filter)) :
-            if (!$skip_ul_wrapper) {
-                $retValue .= "<ul class='$ul_class'>";
-            }
-            /* show tag title */
-			if ($show_title) {
-				$retValue .= "<li class='heading'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
-			}
-
-			/* helper to remember if all tag-filter-items has been seen */
-			if (!empty($tags_filter)) {
-				$tags_selected_and_visible = array();
-				$tag_array = explode(",",$tags_filter);
-				foreach( $tag_array as $tagslug) {
-					$tags_selected_and_visible[$tagslug] = false;
-				}
-			}
-
-			/* show tag list */
-			foreach( $tags as $tagitem) {
-				$tags_selected_and_visible[$tagitem->tag_slug] = true;
-				$retValue .= hk_generateTagLink($tagitem, $a_class, $cat);
-			}
-
-			/* print if tag not exist in cat (check helper variable) */
-			foreach( $tags_selected_and_visible as $key => $value) {
-				if (!$value) {
-					$item = get_term_by("slug",$key,"post_tag", "OBJECT");
-					if ($item instanceof WP_Term) {
-						$tagitem = (object)array("tag_ID" => $item->term_id, "tag_name" => $item->name, "tag_slug" => $item->slug );
-						$retValue .= hk_generateTagLink($tagitem, $a_class);
-					}
-					//$retValue .= hk_generateTagLink($key, $a_class);
-				}
-			}
-
-			if (!$skip_ul_wrapper) {
-			 $retValue .= "</ul>";
-            }
-		endif; // endif tags available
-		if ($echo) {
-			echo $retValue;
-		} else {
-			return $retValue;
+	if (!empty($tags) || !empty($tags_filter)) :
+		if (!$skip_ul_wrapper) {
+			$retValue .= "<ul class='$ul_class'>";
 		}
-	endif;
+		/* show tag title */
+		if ($show_title) {
+			$retValue .= "<li class='heading'><a href='#' class='tag-icon'></a><a class='js-show-tag-menu-li' href='#'>Visa bara<span class='expand-icon'>+</span></a></li>";
+		}
+
+		/* helper to remember if all tag-filter-items has been seen */
+		if (!empty($tags_filter)) {
+			$tags_selected_and_visible = array();
+			$tag_array = explode(",",$tags_filter);
+			foreach( $tag_array as $tagslug) {
+				$tags_selected_and_visible[$tagslug] = false;
+			}
+		}
+
+		/* show tag list */
+		foreach( $tags as $tagitem) {
+			$tags_selected_and_visible[$tagitem->tag_slug] = true;
+			$retValue .= hk_generateTagLink($tagitem, $a_class, $cat);
+		}
+
+		/* print if tag not exist in cat (check helper variable) */
+		foreach( $tags_selected_and_visible as $key => $value) {
+			if (!$value) {
+				$item = get_term_by("slug",$key,"post_tag", "OBJECT");
+				if ($item instanceof WP_Term) {
+					$tagitem = (object)array("tag_ID" => $item->term_id, "tag_name" => $item->name, "tag_slug" => $item->slug );
+					$retValue .= hk_generateTagLink($tagitem, $a_class);
+				}
+				//$retValue .= hk_generateTagLink($key, $a_class);
+			}
+		}
+
+		if (!$skip_ul_wrapper) {
+			$retValue .= "</ul>";
+		}
+	endif; // endif tags available
+	if ($echo) {
+		echo $retValue;
+	} else {
+		return $retValue;
+	}
+	
 }
 
 /* return description if one is set, otherwise return the normal category link */

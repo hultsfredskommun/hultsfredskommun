@@ -1,27 +1,48 @@
 /**
  * basic color and stuff
  */
-$link-color:				#005BAA!default; 
-$hover-color:				#3e3e3f!default;
-$default-color:				#3e3e3f!default;
-$default-light-color:		#6e6e6f!default;
-$main-color:				#3d6a98!default; //5C85B1!default;
-$main-dark-color:			#15406D!default;
-// $main-light-color:			#25578A!default;
-// $main-lighter-color:		#5D86B0!default;
-$main-light-color:			#849cc3!default;
-$main-lighter-color:		#a3b4d2!default;
-$main-lightest-color:		#E4EDF6!default;
-$complement-color:			#644C20!default;
-$complement-light-color:	#8E7042!default;
-$important-color:			#A41D30!default;
-//$important-color:			#ED1651!default;
-$contact-color:				$main-color!default; 
-$related-color:				#f8a800!default; 
-$related-lightest-color:	#FFF3DA!default; 
+$gray-color:				var(--hultsfred-gray-color);
+$gray-light-color:			var(--hultsfred-gray-light-color);
+$link-color:				var(--hultsfred-link-color);
+$hover-color:				var(--hultsfred-hover-color);
+$default-color:				var(--hultsfred-default-color);
+$default-light-color:		var(--hultsfred-default-light-color);
+$main-color:				var(--hultsfred-main-color);
+$main-dark-color:			var(--hultsfred-main-dark-color);
+$main-light-color:			var(--hultsfred-main-light-color);
+$main-lighter-color:		var(--hultsfred-main-lighter-color);
+$main-lightest-color:		var(--hultsfred-main-lightest-color);
+$complement-color:			var(--hultsfred-complement-color);
+$complement-light-color:	var(--hultsfred-complement-light-color);
+$important-color:			var(--hultsfred-important-color);
+$contact-color:				var(--hultsfred-contact-color); 
+$related-color:				var(--hultsfred-related-color); 
+$related-lightest-color:	var(--hultsfred-related-lightest-color); 
 
-$gray-color:				#C6CACB!default;
-$gray-light-color:			#E5E6E7!default; //#EEF0F1!default; //E5E6E7
+// $gray-color:				#C6CACB!default;
+// $gray-light-color:			#E5E6E7!default; //#EEF0F1!default; //E5E6E7
+// $link-color:				#005BAA!default; 
+// $hover-color:				#3e3e3f!default;
+// $default-color:				#3e3e3f!default;
+// $default-light-color:		#6e6e6f!default;
+// $main-color:				#3d6a98!default; //5C85B1!default;
+// $main-dark-color:			#15406D!default;
+// // $main-light-color:			#25578A!default;
+// // $main-lighter-color:		#5D86B0!default;
+// $main-light-color:			#849cc3!default;
+// $main-lighter-color:		#a3b4d2!default;
+// $main-lightest-color:		#E4EDF6!default;
+// $complement-color:			#644C20!default;
+// $complement-light-color:	#8E7042!default;
+// $important-color:			#A41D30!default;
+// //$important-color:			#ED1651!default;
+// $contact-color:				$main-color!default; 
+// $related-color:				#f8a800!default; 
+// $related-lightest-color:	#FFF3DA!default; 
+
+// $gray-color:				#C6CACB!default;
+// $gray-light-color:			#E5E6E7!default; //#EEF0F1!default; //E5E6E7
+
 $face:	        			/*"Oxygen", "myriad-pro",  */'Segoe UI', Arial, sans-serif!default;
 
 .hover-text {

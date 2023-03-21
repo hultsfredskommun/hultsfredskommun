@@ -62,6 +62,7 @@ class DriftStorning {
         
         return "<script>
         var driftstorningar = " . json_encode($this->list) . ";
+        var driftstorningar_count = 0;
         (function($) {
 
             $(document).ready( () => {
@@ -73,6 +74,7 @@ class DriftStorning {
                         if (close_date > check_date) { // don't show if less than 7 days old
                             return;
                         }
+                        driftstorningar_count++;
                     }
                     var icons = {
                         category: '<svg aria-hidden=\"true\" width=\"24\" height=\"24\"><path xmlns=\"http://www.w3.org/2000/svg\" d=\"M12 0C5.371 0 0 5.371 0 12s5.371 12 12 12 12-5.371 12-12S18.629 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm-1 4v8h2V6zm0 10v2h2v-2z\"/></svg>',
@@ -96,6 +98,18 @@ class DriftStorning {
                     window.localStorage.setItem(id, Date());
                     $(this).parent().hide();
                 });
+                if (driftstorningar_count > 1) {
+                    $('#" . $this->id. "').prepend('<div class=\"close_all_wrapper\"><a class=\"close_all\">Stäng alla</a></div>');
+                    $('#" . $this->id. " .close_all').click(function(e) {
+                        e.preventDefault();
+                        $('.driftstorning').each(function () {
+                            var id = $(this).attr('data-id');
+                            window.localStorage.setItem(id, Date());
+                            $(this).hide();
+                        });
+                        $(this).hide();
+                    });
+                }
             });
         })(jQuery);
         </script>";

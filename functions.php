@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "10.6");
+define("HK_VERSION", "12.3");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -29,23 +29,20 @@ $hk_options = get_option('hk_theme');
 if ( ! isset( $default_settings ) ) {
 
 	$default_settings = array(	'thumbnail-image' => array(270, 153, true),
-								'featured-image' => array(605, 353, true), /* array(660, 396, true) */
+								'featured-image' => array(605, 353, true), 
+								'featured-image-large' => array(1210, 706, true), 
 								'slideshow-image' => array(980, 551, true),
 								'wide-image' => array(1138, 326, true),
 								'contact-image' => array(150, 190, true),
 								'thumbnail-news-image' => array(510, 289, true),
-								'startpage_cat' => $hk_options["startpage_cat"],
-								'news_tag' => $hk_options["news_tag"],
-								'hidden_cat' => $hk_options["hidden_cat"],
-								'protocol_cat' => $hk_options["protocol_cat"],
-								'num_levels_in_menu' => (!isset($hk_options["num_levels_in_menu"]) || $hk_options["num_levels_in_menu"] == "")?2:$hk_options["num_levels_in_menu"],
-								'show_tags' => (!isset($hk_options["show_tags"]) || $hk_options["show_tags"] == "")?1:$hk_options["show_tags"],
+								'startpage_cat' => isset($hk_options["startpage_cat"]) ? $hk_options["startpage_cat"] : "",
+								'news_tag' => isset($hk_options["news_tag"]) ? $hk_options["news_tag"] : "",
+								'hidden_cat' => isset($hk_options["hidden_cat"]) ? $hk_options["hidden_cat"] : "",
+								'protocol_cat' => isset($hk_options["protocol_cat"]) ? $hk_options["protocol_cat"] : "",
+								'num_levels_in_menu' => 2,
 								'sticky_number' => 1000,
-								'use_dynamic_posts_load_in_category' => (!empty($hk_options["use_dynamic_posts_load_in_category"]))?$hk_options["use_dynamic_posts_load_in_category"]:'',
-								'hide_articles_in_subsubcat' => (!empty($hk_options["hide_articles_in_subsubcat"]))?$hk_options["hide_articles_in_subsubcat"]:'',
-								'category_slideshow_thumbnail_size' => $hk_options["category_slideshow_thumbnail_size"],
 								'show_articles' => true,
-								'video_thumbnail_image' => $hk_options["video_thumbnail_image"],
+								'video_thumbnail_image' => isset($hk_options["video_thumbnail_image"]) ? $hk_options["video_thumbnail_image"] : 0,
 							);
 
 }
@@ -105,6 +102,9 @@ require( get_template_directory() . '/inc/hk-driftstorning.php' );
 
 // Grab hk forum
 require( get_template_directory() . '/inc/hk-forum.php' );
+
+// Grab hk bubble
+require( get_template_directory() . '/inc/hk-bubble.php' );
 
 /*
  * Synpunkt shortcode
@@ -501,7 +501,7 @@ function hk_pre_get_posts( $query ) {
 	}
 
 	if ($wp_query->is_home()) {
-		$cat = $options["startpage_cat"];
+		$cat = (isset($options["startpage_cat"])) ? $options["startpage_cat"] : "";
 		if ($cat != "" && $cat != "0" ) {
 			$wp_query->set( 'cat', $cat);
 		}
@@ -594,6 +594,7 @@ function hk_acf_init() {
 add_action('acf/init', 'hk_acf_init');
 
 function hk_enqueue_scripts() {
+	global $default_settings;
 	$hk_options = get_option("hk_theme");
 	if (!is_admin()) {
 
@@ -607,7 +608,39 @@ function hk_enqueue_scripts() {
 			array(),
 			HK_VERSION
 		);
-	
+
+		$videoimagesrc = $default_settings["video_thumbnail_image"];
+		$css = "
+		:root {
+			--hultsfred-video-thumbnail: 			url($videoimagesrc) no-repeat center center;
+			--hultsfred-link-color: 				#005BAA; 
+			--hultsfred-hover-color: 				#3e3e3f;
+			--hultsfred-default-color:				#535254;
+			/* --hultsfred-default-color:				#3e3e3f; */
+			--hultsfred-default-light-color:		#6e6e6f;
+			--hultsfred-main-color:					#3d6a98; /* 5C85B1; */
+			--hultsfred-main-dark-color:			#15406D;
+			--hultsfred-main-light-color:			#25578A;
+			--hultsfred-main-lighter-color:			#5D86B0;
+			--hultsfred-main-lightest-color:		#BCD3EA;
+			/* --hultsfred-main-light-color:			#849cc3; */
+			/* --hultsfred-main-lighter-color:			#a3b4d2; */
+			/* --hultsfred-main-lightest-color:			#E4EDF6; */
+			--hultsfred-complement-color:			#644C20;
+			--hultsfred-complement-light-color:		#8E7042;
+			--hultsfred-important-color:			#A41D30;
+			/* --hultsfred-important-color:			#ED1651; */
+			--hultsfred-contact-color:				var(--hultsfred-main-color); 
+			--hultsfred-related-color:				#f8a800; 
+			--hultsfred-related-lightest-color:		#FFF3DA; 
+			
+			--hultsfred-gray-color:					#C6CACB;
+			--hultsfred-gray-light-color:			#E5E6E7; /*#EEF0F1 - E5E6E7 */
+		}";
+		
+		if ($css != "") {
+			wp_add_inline_style( 'hk-parent-sass-style', $css );
+		}
 	
 		wp_enqueue_style( 'hk-style',
 			get_bloginfo( 'stylesheet_url' ),
@@ -671,8 +704,8 @@ function hk_enqueue_scripts() {
 			true
 		);
 
-		$rekai_enable = get_field('rekai_enable', 'options');
-		$rekai_id = get_field('rekai_id', 'options');
+		$rekai_enable = (function_exists("get_field")) ? get_field('rekai_enable', 'options') : false;
+		$rekai_id = (function_exists("get_field")) ? get_field('rekai_id', 'options') : '';
 		if ($rekai_enable && !empty($rekai_id)) {
 			wp_enqueue_script(
 				'rekai_js',
@@ -766,11 +799,11 @@ function setup_javascript_settings() {
 			'currentFilter' => json_encode($filter),
 			'admin_ajax_url' => '/wp-admin/admin-ajax.php',
 			'cookie_accept_enable' => (!empty($hk_options['cookie_accept_enable'])) ? $hk_options['cookie_accept_enable'] : '',
-			'cookie_text' => $hk_options['cookie_text'],
-			'cookie_button_text' => $hk_options['cookie_button_text'],
-			'cookie_link_text' => $hk_options['cookie_link_text'],
-			'cookie_link' => $hk_options['cookie_link'],
-			'rekai_autocomplete' => (get_field('rekai_enable', 'options') && get_field('rekai_autocomplete', 'options')),
+			'cookie_text' => isset($hk_options['cookie_text']) ? $hk_options['cookie_text'] : '',
+			'cookie_button_text' => isset($hk_options['cookie_button_text']) ? $hk_options['cookie_button_text'] : '',
+			'cookie_link_text' => isset($hk_options['cookie_link_text']) ? $hk_options['cookie_link_text'] : '',
+			'cookie_link' => isset($hk_options['cookie_link']) ? $hk_options['cookie_link'] : '',
+			'rekai_autocomplete' => (function_exists("get_field") && get_field('rekai_enable', 'options') && get_field('rekai_autocomplete', 'options')),
 		);
 	if (!is_admin()) {
 		wp_localize_script(
@@ -1082,13 +1115,14 @@ function hk_body_classes( $classes ) {
 		if ($current_cat > 0 ) {
 			$current_cat = get_category($current_cat);
 			$parent_cat = get_category($current_cat->category_parent);
-			if ( (!empty($current_cat) && strpos($current_cat->slug,"lattlast") !== false) ||
-					 (!empty($parent_cat) && strpos($parent_cat->slug,"lattlast") !== false) ) {
+
+			if ( !is_wp_error($parent_cat) && ((!empty($current_cat) && strpos($current_cat->slug,"lattlast") !== false) ||
+					 (!empty($parent_cat) && strpos($parent_cat->slug,"lattlast") !== false) ) ) {
 	 				$classes[] = "lattlast";
 			}
 		}
 	}
-	$classes[] = "bodytest";
+	$classes[] = "";
 	return $classes;
 }
 add_filter( 'body_class', 'hk_body_classes' );
@@ -1140,7 +1174,15 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 		}
 		while( has_sub_field('hk_featured_images', $id) && ($showAll || $countSlides == 0)) : // only once if not showAll
 			$image = get_sub_field('hk_featured_image');
+			$thumbsize_large = $thumbsize . "-large";
+			
 			$src = (!empty($image["sizes"]) && !empty($image["sizes"][$thumbsize])) ? $image["sizes"][$thumbsize] : "";
+			$src_large = (!empty($image["sizes"]) && !empty($image["sizes"][$thumbsize_large])) ? $image["sizes"][$thumbsize_large] : "";
+			
+			$srcset = '';
+			if (!empty($src_large)) {
+				$srcset = "srcset='$src 1x, $src_large 1.5x'";
+			}
 			$caption = $image["caption"];
 			$title = $image["title"];
 			$alt = $image["alt"];
@@ -1161,7 +1203,7 @@ function hk_get_the_post_thumbnail($id, $thumbsize, $showAll=true, $echo=true, $
 					if (!$only_img) {
 						$retValue .= "<div class='slide' $style>";
 					}
-					$retValue .= "<img src='$src' alt='$alt' title='$alt' />";
+					$retValue .= "<img src='$src' alt='$alt' title='$alt' $srcset class='$thumbsize' />";
 					if (!$only_img) {
 						if ($caption != "") {
 							$retValue .= "<span class='image-title'>$caption</span>";
@@ -2493,16 +2535,35 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
     }*/
 
     /* if orderby not is set, check if standard order should be date in settings */
-    if ($orderby == "" && $cat != "" && in_array($cat, explode(",",$options["order_by_date"])) ) {
-        //$args['suppress_filters'] = 'true';
-        $args['orderby'] = 'date';
-        $args['order'] = 'DESC';
-    }
-    /* if orderby not is set, check if standard order should be alpha in settings */
-    else if ($orderby == "" && $cat != "" && in_array($cat, explode(",",$options["order_by_alpha"])) ) {
-        $args['orderby'] = 'title';
-        $args['order'] = 'ASC';
-    }
+	/*
+		none : Mest klickad (standard)
+		date_asc : Datum äldst först
+		date_desc : Datum nyast först
+		alpha_asc : Alfabetisk A till Ö
+		alpha_desc : Alfabetisk Ö till A
+	 */
+	
+	// if sortering is set in category
+	if ($orderby == "" && $cat != "" && function_exists('get_field') && get_field("sortering", "category_" . $cat) != 'none'  ) {
+		switch (get_field("sortering", "category_".$cat)) {
+			case 'date_asc':
+				$args['orderby'] = 'date';
+				$args['order'] = 'ASC';
+				break;
+			case 'date_desc':
+				$args['orderby'] = 'date';
+				$args['order'] = 'DESC';
+				break;
+			case 'alpha_asc':
+				$args['orderby'] = 'title';
+				$args['order'] = 'ASC';
+				break;
+			case 'alpha_desc':
+				$args['orderby'] = 'title';
+				$args['order'] = 'DESC';
+				break;
+		}
+	}
     /* if orderby is set manually in url */
     else if ($orderby == "latest") {
         $args['orderby'] = 'date';
@@ -2530,5 +2591,40 @@ function hk_getCatQueryArgs($cat, $paged=1, $showfromchildren = false, $orderby 
     return $args;
 }
 
-
+function hk_show_post_date() {
+	// don't show if search page
+	if (!empty($_REQUEST["action"]) && $_REQUEST["action"] == "hk_search" &&
+		!empty($_REQUEST["searchstring"]) && $_REQUEST["searchstring"] != "" && function_exists('relevanssi_do_query')) {
+			return;
+	}
+	// don't show if news
+	if (!empty($default_settings["news_tag"]) && has_tag($default_settings["news_tag"])) {
+		return;
+	}
+	// check if post is in category that should show date
+	$showdate = false;
+	$categories = get_the_category();
+	foreach ($categories as $category) {
+		if (get_field('visa_datum', 'category_' . $category->term_id )) {
+			$showdate = true;
+		}
+	}
+	if ($showdate) {
+		$u_modified_time = get_the_modified_time('U');
+		if ($u_modified_time) {
+			echo "<p style='font-size: 90%; font-style: italic;'>Senast uppdaterad ";
+			the_modified_time('j F, Y');
+			echo " vid ";
+			the_modified_time('H:i');
+			echo "</p> ";
+		}
+		else {
+			echo "<p style='font-size: 90%; font-style: italic;'>Publicerad ";
+			the_time('j F, Y');
+			echo " vid ";
+			the_time('H:i');
+			echo "</p> ";
+		}
+	}
+}
 ?>

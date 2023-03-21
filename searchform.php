@@ -10,7 +10,7 @@
 	<?php $options = get_option('hk_theme'); ?>
 	<?php
 		$hk_search_form_class = '';
-		$rekai_search = get_field('rekai_search', 'options');
+		$rekai_search = (function_exists("get_field")) ? get_field('rekai_search', 'options') : false;
 
     if ( $rekai_search ) {
 		$hk_search_form_class = '';
@@ -24,6 +24,6 @@
 	<?php }  ?>
 	<form class="<?php echo $hk_search_form_class ?> form" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 		<label for="s" class="assistive-text"><?php _e( 'Search', 'twentyeleven' ); ?></label>
-		<div class="input-wrapper"><input type="text" class="field" name="s" id="s" autocomplete="off" placeholder="<?php echo $options["search_watermark"]; ?>" value="<?php echo (!empty($_REQUEST["s"])) ? $_REQUEST["s"]:''; ?>" /></div>
+		<div class="input-wrapper"><input type="text" class="field" name="s" id="s" autocomplete="off" placeholder="<?php echo isset($options["search_watermark"]) ? $options["search_watermark"] : ''; ?>" value="<?php echo (!empty($_REQUEST["s"])) ? $_REQUEST["s"]:''; ?>" /></div>
 		<input type="submit" class="submit" id="searchsubmit" value="" />
 	</form>

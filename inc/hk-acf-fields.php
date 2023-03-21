@@ -29,11 +29,22 @@ function hk_acf_op_init() {
 			'capability'	=> 'administrator',
 			'redirect'		=> false
 		));
-        acf_add_options_sub_page(array(
-            'page_title' 	=> 'Driftstörningar',
-            'menu_title'	=> 'Driftstörningar',
-            'parent_slug'	=> 'hultsfred-options',
-        ));
+		$user_can_edit = (!get_field('user_permissions_driftstorningar', 'options') || get_field('user_can_edit_driftstorningar', 'user_' . get_current_user_id())) ? true : false;
+		if ($user_can_edit) {	
+			acf_add_options_sub_page(array(
+				'page_title' 	=> 'Driftstörningar',
+				'menu_title'	=> 'Driftstörningar',
+				'parent_slug'	=> 'hultsfred-options',
+			));
+		}
+		$user_can_edit = get_field('user_can_edit_hultsfred_admin', 'user_' . get_current_user_id()) ? true : false;
+		if ($user_can_edit) {	
+			acf_add_options_sub_page(array(
+				'page_title' 	=> 'Admin',
+				'menu_title'	=> 'Admin',
+				'parent_slug'	=> 'hultsfred-options',
+			));
+		}
 
 	}
 
@@ -42,9 +53,15 @@ function hk_acf_op_init() {
 add_action('init', 'hk_acf_init_options');
 function hk_acf_init_options() {
 	if( function_exists('acf_add_local_field_group') ) :
+		// only show user fields to admins
+		if ( (is_multisite() && is_super_admin()) || (!is_multisite() && current_user_can('administrator')) ) :
+			require_once( get_template_directory() . '/inc/acf/user.php' );
+		endif;
 		require_once( get_template_directory() . '/inc/acf/options.php' );
+		require_once( get_template_directory() . '/inc/acf/hultsfred.php' );
 		require_once( get_template_directory() . '/inc/acf/mellanstartsida.php' );
 		require_once( get_template_directory() . '/inc/acf/driftstorning.php' );
+		require_once( get_template_directory() . '/inc/acf/bubble.php' );
 		require_once( get_template_directory() . '/inc/acf/category.php' );
 		require_once( get_template_directory() . '/inc/acf/forum.php' );
 	endif;
