@@ -192,6 +192,18 @@
 				}
 			}
 			.quick-driftstorning {
+				position: relative;
+				.close_all_wrapper {
+					display: flex;
+					flex-direction: row;
+					justify-content: flex-end;
+					.close_all {
+						border-radius: 20px;
+						padding: 4px 14px;
+						margin-bottom: $half-spacing-unit;
+						background-color: orange;
+					}
+				}
 				.driftstorning {
 					display: flex;
 					gap: 6px;

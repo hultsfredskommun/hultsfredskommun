@@ -87,13 +87,13 @@ Text Domain: hultsfredskommun
 .rek-prediction .rek-style-cols ul li a:before {
     content: '';
     position: absolute;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
-    width: 8px;
-    height: 8px;
-    top: 50%;
-    left: -19px;
-    transform: translateY(-50%) rotate(-45deg);
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 6px;
+    height: 11px;
+    top: 44%;
+    left: -15px;
+    transform: translateY(-50%) rotate(45deg);
 }
 
 /* readspeaker */

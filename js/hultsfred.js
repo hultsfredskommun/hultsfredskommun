@@ -520,6 +520,9 @@ if (window.location.href.indexOf("artikel") > -1) {
         });
     }
     $(document).ready(function() {
+
+        $('body').addClass('dom-ready');
+
         /* bubble */
         if ($(".bubble").length >= 2) {
             var bubble_timeout = false

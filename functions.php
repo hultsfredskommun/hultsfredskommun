@@ -11,7 +11,7 @@
  /**
   * Define HK_VERSION, will be set as version of style.css and hultsfred.js
   */
-define("HK_VERSION", "12.1");
+define("HK_VERSION", "12.3");
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -612,7 +612,30 @@ function hk_enqueue_scripts() {
 		$videoimagesrc = $default_settings["video_thumbnail_image"];
 		$css = "
 		:root {
-			--hultsfred-video-thumbnail: url($videoimagesrc) no-repeat center center;
+			--hultsfred-video-thumbnail: 			url($videoimagesrc) no-repeat center center;
+			--hultsfred-link-color: 				#005BAA; 
+			--hultsfred-hover-color: 				#3e3e3f;
+			--hultsfred-default-color:				#535254;
+			/* --hultsfred-default-color:				#3e3e3f; */
+			--hultsfred-default-light-color:		#6e6e6f;
+			--hultsfred-main-color:					#3d6a98; /* 5C85B1; */
+			--hultsfred-main-dark-color:			#15406D;
+			--hultsfred-main-light-color:			#25578A;
+			--hultsfred-main-lighter-color:			#5D86B0;
+			--hultsfred-main-lightest-color:		#BCD3EA;
+			/* --hultsfred-main-light-color:			#849cc3; */
+			/* --hultsfred-main-lighter-color:			#a3b4d2; */
+			/* --hultsfred-main-lightest-color:			#E4EDF6; */
+			--hultsfred-complement-color:			#644C20;
+			--hultsfred-complement-light-color:		#8E7042;
+			--hultsfred-important-color:			#A41D30;
+			/* --hultsfred-important-color:			#ED1651; */
+			--hultsfred-contact-color:				var(--hultsfred-main-color); 
+			--hultsfred-related-color:				#f8a800; 
+			--hultsfred-related-lightest-color:		#FFF3DA; 
+			
+			--hultsfred-gray-color:					#C6CACB;
+			--hultsfred-gray-light-color:			#E5E6E7; /*#EEF0F1 - E5E6E7 */
 		}";
 		
 		if ($css != "") {
@@ -1099,7 +1122,7 @@ function hk_body_classes( $classes ) {
 			}
 		}
 	}
-	$classes[] = "bodytest";
+	$classes[] = "";
 	return $classes;
 }
 add_filter( 'body_class', 'hk_body_classes' );

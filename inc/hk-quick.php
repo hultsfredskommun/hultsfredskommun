@@ -234,6 +234,7 @@ function hk_view_quick_links() {
 						$num_news = get_sub_field('num_news');
 						$num_news_cols = get_sub_field('num_news_cols');
 						$image_style = get_sub_field('image_style');
+						$news_icon = get_sub_field('news_icon');
 						$quick_news_args =
 							array("title" => $title,
 										"num_news" => $num_news,
@@ -241,7 +242,9 @@ function hk_view_quick_links() {
 										"rss_link_url" => "/feed/?tag=nyheter",
 										"thumb_size" => "",
 										"num_news_cols" => $num_news_cols,
-										"image_style" => $image_style,);
+										"image_style" => $image_style,
+										"news_icon" => $news_icon,
+									);
 							$retValue .= "<!-- FÖRE NYHETER -->";
 							$retValue .= get_quick_news( $quick_news_args );
 							$retValue .= "<!-- EFTER NYHETER -->";
@@ -471,7 +474,7 @@ function get_quick_news( $args ) {
 	$after_newslist = "";
 	$after_newslist2 = "";
 
-	$after_newslist .= '<span class="read-more-link inline"><a class="gtm-fpcw-news-archive-link" href="' . get_tag_link($default_settings["news_tag"]) . '">Nyhetsarkiv<span class="right-icon"></span></a></span>';
+	$after_newslist .= '<span class="read-more-link inline"><a class="gtm-fpcw-news-archive-link" href="' . get_tag_link($default_settings["news_tag"]) . '">Se fler nyheter<span class="right-icon"></span></a></span>';
 	
 	if ($rss_link_url != "" && $rss_link_text != "") {
 		$after_newslist .= "<a href='$rss_link_url' class='gtm-fpcw-rss-link read-more-link rss inline float--right'>$rss_link_text</a>";
@@ -484,7 +487,9 @@ function get_quick_news( $args ) {
 	return $retString;
 }
 
-function hk_getQuickNewsImage($id, $image_style) {
+function hk_getQuickNewsImage($id, $args) {
+	$image_style = (isset($args['image_style'])) ? $args['image_style'] : 'none';
+	$news_icon = (isset($args['news_icon'])) ? $args['news_icon'] : 0;
 	if ($image_style == 'none') return '';
 
 	$retString = '';
@@ -500,13 +505,13 @@ function hk_getQuickNewsImage($id, $image_style) {
 		if ($alt == '') {
 			$alt = $hk_featured_repeater[0]["hk_featured_image"]["title"];
 		}
-		$retString .=  "<img src='$src' alt='$alt' />";
-	} else {
-		$kommunvapen_id = get_field('kommunvapen', 'options');
-		$kommunvapen = wp_get_attachment_image_src($kommunvapen_id, 'thumbnail');
-		$src = $kommunvapen[0];		
+		$retString .=  "<div class='news-image-wrapper'><img src='$src' alt='$alt' /></div>";
+	} else if ($news_icon > 0) {
+		
+		$icon = wp_get_attachment_image_src($news_icon, 'thumbnail');
+		$src = $icon[0];		
 		if (!empty($src)) {
-			$retString .=  "<img src='$src' alt='' role='presentation' class='default-image' />";
+			$retString .=  "<div class='news-image-wrapper default-image'><img src='$src' alt='' role='presentation' /></div>";
 		}
 	}
 	return $retString;
@@ -528,7 +533,7 @@ function load_quick_news($args = []) {
 			$title = "Extern länk till " . the_title_attribute( 'echo=0' );
 		}
 	}
-	$img = hk_getQuickNewsImage(get_the_ID(), $image_style);
+	$img = hk_getQuickNewsImage(get_the_ID(), $args);
 	if (empty($href)) {
 		$href = get_permalink();
 		$title = "Länk till " . the_title_attribute( 'echo=0' );
@@ -539,7 +544,7 @@ function load_quick_news($args = []) {
 	$sticky_class = (is_sticky()) ? "sticky" : "";
 
 	$retString = "<article id='post-" . get_the_ID() . "' class='" . join( ' ', get_post_class() ) . " $image_style $sticky_class $img_wrapper_class news summary" . "'>";
-	$retString .= (!empty($img)) ? "<div class='news-image-wrapper'>$img</div>" : "";
+	$retString .= $img;
 	$retString .= "<div class='news-text-wrapper'>";
 	// if news
 	if (!empty($default_settings["news_tag"]) && has_tag($default_settings["news_tag"])) {

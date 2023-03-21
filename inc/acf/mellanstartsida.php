@@ -615,6 +615,31 @@ acf_add_local_field_group(array (
 							'max' => '',
 							'step' => '',
 						),
+						array(
+							'key' => 'field_64165de834ad7',
+							'label' => 'Nyhetsikon - transparent - kvadratisk',
+							'name' => 'news_icon',
+							'aria-label' => '',
+							'type' => 'image',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '40%',
+								'class' => '',
+								'id' => '',
+							),
+							'return_format' => 'id',
+							'library' => 'all',
+							'min_width' => '',
+							'min_height' => '',
+							'min_size' => '',
+							'max_width' => '',
+							'max_height' => '',
+							'max_size' => '',
+							'mime_types' => '',
+							'preview_size' => 'thumbnail',
+						),
 						array (
 							'key' => 'field_56cc104207f91',
 							'label' => 'Bildutseende',
@@ -645,6 +670,7 @@ acf_add_local_field_group(array (
 							'disabled' => 0,
 							'readonly' => 0,
 						),
+
 				)
 			),
 
